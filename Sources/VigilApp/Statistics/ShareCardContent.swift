@@ -55,15 +55,12 @@ struct ShareCardContent: Equatable {
         // translated sentence does not survive a language with cases.
         guard statistics.totalRescued > 1 else {
             return String(
-                localized: """
-                    of unattended agent work: 1 run that would otherwise have died when the \
-                    Mac went to sleep.
-                    """)
+                localized: "of agent work while I was away. One run would have died with the Mac asleep.")
         }
         return String(
             localized: """
-                of unattended agent work: \(statistics.totalRescued) runs that would otherwise \
-                have died when the Mac went to sleep.
+                of agent work while I was away. \(statistics.totalRescued) runs would have died \
+                with the Mac asleep.
                 """)
     }
 }

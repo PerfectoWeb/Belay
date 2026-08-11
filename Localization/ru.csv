@@ -226,8 +226,8 @@ macOS refused to create the sleep assertion (IOKit error %lld).,Detection,needs_
 no runs,Statistics,translated,,no runs,прогонов нет
 not configured,Settings: Providers,translated,,not configured,не настроено
 of agent work that carried on while I was away from the keyboard.,Statistics,translated,,of agent work that carried on while I was away from the keyboard.,"работы агента продолжалось, пока меня не было за клавиатурой."
-of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,Statistics,translated,%lld,of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,"работы агента без присмотра: %lld прогонов, которые иначе умерли бы, когда Mac уснёт."
-of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,Statistics,translated,,of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,"работы агента без присмотра: 1 прогон, который иначе умер бы, когда Mac уснёт."
+of agent work while I was away. %lld runs would have died with the Mac asleep.,Statistics,needs_review,%lld,of agent work while I was away. %lld runs would have died with the Mac asleep.,"работы агента, пока меня не было. Прогонов, которые погибли бы вместе с уснувшим Mac: %lld."
+of agent work while I was away. One run would have died with the Mac asleep.,Statistics,needs_review,,of agent work while I was away. One run would have died with the Mac asleep.,"работы агента, пока меня не было. Один прогон погиб бы вместе с уснувшим Mac."
 process %@,Settings: Providers,translated,%@,process %@,процесс %@
 runs rescued,Statistics,translated,,runs rescued,прогонов спасено
 runs watched,Statistics,translated,,runs watched,прогонов под наблюдением

@@ -4717,84 +4717,84 @@
         }
       }
     },
-    "of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep." : {
+    "of agent work while I was away. %lld runs would have died with the Mac asleep." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "unbeaufsichtigte Agentenarbeit: %lld Läufe, die sonst gestorben wären, als der Mac einschlief."
+            "state" : "needs_review",
+            "value" : "Agentenarbeit, während ich weg war. %lld Läufe wären mit dem schlafenden Mac gestorben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep."
+            "value" : "of agent work while I was away. %lld runs would have died with the Mac asleep."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "de trabajo del agente sin supervisión: %lld ejecuciones que habrían muerto al dormirse el Mac."
+            "state" : "needs_review",
+            "value" : "de trabajo del agente mientras yo no estaba. %lld ejecuciones habrían muerto con el Mac dormido."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "de travail d'agent sans surveillance : %lld exécutions qui seraient mortes à la mise en veille du Mac."
+            "state" : "needs_review",
+            "value" : "de travail de l'agent pendant mon absence. %lld exécutions seraient mortes avec le Mac endormi."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "di lavoro dell'agente non presidiato: %lld esecuzioni che sarebbero morte con il Mac in stop."
+            "state" : "needs_review",
+            "value" : "di lavoro dell'agente mentre non c'ero. %lld esecuzioni sarebbero morte con il Mac addormentato."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "работы агента без присмотра: %lld прогонов, которые иначе умерли бы, когда Mac уснёт."
+            "state" : "needs_review",
+            "value" : "работы агента, пока меня не было. Прогонов, которые погибли бы вместе с уснувшим Mac: %lld."
           }
         }
       }
     },
-    "of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep." : {
+    "of agent work while I was away. One run would have died with the Mac asleep." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "unbeaufsichtigte Agentenarbeit: 1 Lauf, der sonst gestorben wäre, als der Mac einschlief."
+            "state" : "needs_review",
+            "value" : "Agentenarbeit, während ich weg war. Ein Lauf wäre mit dem schlafenden Mac gestorben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep."
+            "value" : "of agent work while I was away. One run would have died with the Mac asleep."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "de trabajo del agente sin supervisión: 1 ejecución que habría muerto al dormirse el Mac."
+            "state" : "needs_review",
+            "value" : "de trabajo del agente mientras yo no estaba. Una ejecución habría muerto con el Mac dormido."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "de travail d'agent sans surveillance : 1 exécution qui serait morte à la mise en veille du Mac."
+            "state" : "needs_review",
+            "value" : "de travail de l'agent pendant mon absence. Une exécution serait morte avec le Mac endormi."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "di lavoro dell'agente non presidiato: 1 esecuzione che sarebbe morta con il Mac in stop."
+            "state" : "needs_review",
+            "value" : "di lavoro dell'agente mentre non c'ero. Un'esecuzione sarebbe morta con il Mac addormentato."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "работы агента без присмотра: 1 прогон, который иначе умер бы, когда Mac уснёт."
+            "state" : "needs_review",
+            "value" : "работы агента, пока меня не было. Один прогон погиб бы вместе с уснувшим Mac."
           }
         }
       }

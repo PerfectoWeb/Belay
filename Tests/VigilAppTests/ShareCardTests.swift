@@ -66,7 +66,7 @@ final class ShareCardTests: XCTestCase {
         var statistics = UsageStatistics()
         statistics.record(hold: 3600, away: 3600, on: day)
         let caption = ShareCardContent(statistics, now: day).caption
-        XCTAssertTrue(caption.contains("1 run "), caption)
+        XCTAssertTrue(caption.contains("One run "), caption)
         XCTAssertFalse(caption.contains("1 runs"), caption)
     }
 

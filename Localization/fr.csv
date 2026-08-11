@@ -226,8 +226,8 @@ macOS refused to create the sleep assertion (IOKit error %lld).,Detection,needs_
 no runs,Statistics,translated,,no runs,aucune exécution
 not configured,Settings: Providers,translated,,not configured,non configuré
 of agent work that carried on while I was away from the keyboard.,Statistics,translated,,of agent work that carried on while I was away from the keyboard.,de travail de l'agent qui s'est poursuivi pendant mon absence du clavier.
-of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,Statistics,translated,%lld,of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,de travail d'agent sans surveillance : %lld exécutions qui seraient mortes à la mise en veille du Mac.
-of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,Statistics,translated,,of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,de travail d'agent sans surveillance : 1 exécution qui serait morte à la mise en veille du Mac.
+of agent work while I was away. %lld runs would have died with the Mac asleep.,Statistics,needs_review,%lld,of agent work while I was away. %lld runs would have died with the Mac asleep.,de travail de l'agent pendant mon absence. %lld exécutions seraient mortes avec le Mac endormi.
+of agent work while I was away. One run would have died with the Mac asleep.,Statistics,needs_review,,of agent work while I was away. One run would have died with the Mac asleep.,de travail de l'agent pendant mon absence. Une exécution serait morte avec le Mac endormi.
 process %@,Settings: Providers,translated,%@,process %@,processus %@
 runs rescued,Statistics,translated,,runs rescued,exécutions sauvées
 runs watched,Statistics,translated,,runs watched,exécutions surveillées
