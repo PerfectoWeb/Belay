@@ -22,6 +22,7 @@
 %llds,Panel,translated,%lld,%llds,%lldSek
 A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviour,translated,,A backstop. Vigil stops holding after this and tells you why.,Eine Notbremse. Danach hält Vigil nicht mehr und sagt dir warum.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,"Ein sich ändernder Ordner bedeutet, dass gearbeitet wird. Ein laufender Prozess allein gilt nie als Arbeit. Er sagt Vigil nur, dass die Sitzung endet, wenn er verschwindet."
+"A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says.",Settings: General,needs_review,,"A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says.","Ein kurzer, leiser Ton, wenn Sie den Modus von Hand ändern, und an ein, zwei weiteren Stellen. Schalten Sie die Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese, egal was hier steht."
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.","Zuerst wird ein Backup mit Zeitstempel angelegt. Alles, was bereits in der Datei steht, bleibt erhalten, und „Entfernen“ stellt es exakt wieder her."
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers",translated,,About,Über
 About %@,Menu bar,translated,%@,About %@,Über %@
@@ -61,6 +62,7 @@ Done,Settings: Providers,translated,,Done,Fertig
 Download…,Settings: General,translated,,Download…,Laden…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Präzise Erkennung aktivieren
 Enable…,Settings: Providers,translated,,Enable…,Aktivieren…
+Feedback,"App, Panel, Settings: About, Settings: General",needs_review,,Feedback,Rückmeldung
 Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
 Free,Settings: About,translated,,Free,Kostenlos
@@ -101,7 +103,7 @@ Notify when Vigil stops for safety,Settings: Notifications,translated,,Notify wh
 Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,"Benachrichtigen, wenn eine lange Aufgabe fertig ist"
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,"Benachrichtigen, wenn ein Agent dich braucht"
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,"Die Zahlen bleiben auf diesem Mac, bis du sie teilst."
-Off,"App, Menu bar, Panel, Settings: General, Settings: Providers, Welcome",translated,,Off,Aus
+Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,Aus
 Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,"Standardmäßig aus. Vigil hält den Mac am Laufen, während dein Agent arbeitet; den Bildschirm schlafen zu lassen spart echten Strom und ändert sonst nichts."
 "Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.",Statistics,translated,,"Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.","Sobald Vigil deinen Mac durch einen Agentenlauf wach gehalten hat, siehst du hier, was das wert war: wie lange weitergearbeitet wurde, während du weg warst, und wie viele Läufe sonst im Ruhezustand gestorben wären."
 "Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,"Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.","Einmal am Tag fragt Vigil bei GitHub, ob es eine neuere Version gibt. Das ist das einzige Mal, dass Vigil das Netzwerk nutzt; es sendet nichts über dich und installiert nie etwas von selbst."
@@ -113,6 +115,8 @@ Open at login,"Settings, Settings: General",translated,,Open at login,Beim Anmel
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS panel so you can approve the folder,"Öffnet ein normales macOS-Fenster, damit du den Ordner freigeben kannst"
 Other agents,"App, Settings: Providers",translated,,Other agents,Weitere Agenten
 Other tools,Settings: Providers,translated,,Other tools,Weitere Werkzeuge
+Play interface sounds,Settings: General,needs_review,,Play interface sounds,Oberflächentöne abspielen
+Play sounds,Settings: General,needs_review,,Play sounds,Töne abspielen
 Precise detection,Settings: Providers,translated,,Precise detection,Präzise Erkennung
 Providers,"App, Detection, Settings, Settings: Providers",translated,,Providers,Anbieter
 Quit,"Menu bar, Settings: General",translated,,Quit,Beenden

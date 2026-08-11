@@ -7,6 +7,9 @@ struct AboutLink: View {
     let url: URL
     /// Exactly one link on this page gets the accent. Two would be a toolbar.
     var isProminent = false
+    /// Plays as the link opens. Only Donate sets one: the browser is about to
+    /// take the window, and this is the last thing Vigil gets to say.
+    var sound: Feedback.Sound?
 
     @State private var isHovering = false
     @State private var isPressed = false
@@ -38,7 +41,10 @@ struct AboutLink: View {
         .simultaneousGesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in isPressed = true }
-                .onEnded { _ in isPressed = false }
+                .onEnded { _ in
+                    isPressed = false
+                    if let sound { Feedback.play(sound) }
+                }
         )
         .accessibilityLabel(title)
     }

@@ -81,6 +81,11 @@ struct PanelModePicker: View {
             state.mode = mode
         }
         state.onModeChange(mode)
+        // Each mode has its own note, so the three are told apart without
+        // looking; the haptic is what a Force Touch trackpad gives a control
+        // moving between discrete positions.
+        Feedback.play(Feedback.sound(for: mode))
+        Feedback.levelChanged()
     }
 }
 

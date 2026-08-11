@@ -21,6 +21,7 @@ struct SettingsValues: Equatable, Sendable {
     var assertionTimeout: TimeInterval
 
     var launchAtLogin: Bool
+    var soundEffects: Bool
     var hasCompletedOnboarding: Bool
     var notifyOnAgentNeedsInput: Bool
     var notifyOnTaskFinished: Bool
@@ -45,6 +46,9 @@ extension SettingsValues {
         keepDisplayAwake = policy.keepDisplayAwake
         assertionTimeout = policy.assertionTimeout
         launchAtLogin = false
+        // On, and quiet enough to stay on. The system's own interface-sound
+        // switch still overrides this one.
+        soundEffects = true
         hasCompletedOnboarding = false
         notifyOnAgentNeedsInput = true
         // docs/05: this is the delight moment, so it ships on. Everything else

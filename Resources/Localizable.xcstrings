@@ -986,6 +986,47 @@
         }
       }
     },
+    "A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ein kurzer, leiser Ton, wenn Sie den Modus von Hand ändern, und an ein, zwei weiteren Stellen. Schalten Sie die Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese, egal was hier steht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Un tono corto y suave cuando cambias de modo a mano, y en un par de sitios más. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan, diga lo que diga esto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Une note brève et discrète quand vous changez de mode à la main, et à un ou deux autres endroits. Si vous coupez les sons de l'interface dans Réglages Système, ceux-ci se taisent aussi, quoi que dise cette case."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Una nota breve e discreta quando cambi modo a mano, e in un paio di altri punti. Se disattivi i suoni dell'interfaccia in Impostazioni di Sistema, anche questi tacciono, qualunque cosa dica qui."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Короткий тихий сигнал, когда вы меняете режим вручную, и ещё в паре мест. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат, что бы тут ни стояло."
+          }
+        }
+      }
+    },
     "A timestamped backup is made first. Everything already in the file is preserved, and \"Remove\" puts it back exactly." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2581,6 +2622,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить…"
+          }
+        }
+      }
+    },
+    "Feedback" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Rückmeldung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Respuesta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Retour"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Risposta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Отклик"
           }
         }
       }
@@ -5205,6 +5287,88 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Другие инструменты"
+          }
+        }
+      }
+    },
+    "Play interface sounds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Oberflächentöne abspielen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play interface sounds"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Reproducir sonidos de la interfaz"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Jouer les sons de l'interface"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Riproduci i suoni dell'interfaccia"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Звуки интерфейса"
+          }
+        }
+      }
+    },
+    "Play sounds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Töne abspielen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play sounds"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Reproducir sonidos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Jouer des sons"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Riproduci suoni"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Звуки"
           }
         }
       }

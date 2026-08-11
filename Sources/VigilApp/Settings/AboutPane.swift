@@ -80,7 +80,9 @@ struct AboutPane: View {
 
             HStack(spacing: 8) {
                 if let donate = Branding.donateURL {
-                    AboutLink(title: "Donate", symbol: "heart.fill", url: donate, isProminent: true)
+                    AboutLink(
+                        title: "Donate", symbol: "heart.fill", url: donate, isProminent: true,
+                        sound: .thanks)
                 }
                 if let repository = Branding.repositoryURL {
                     AboutLink(

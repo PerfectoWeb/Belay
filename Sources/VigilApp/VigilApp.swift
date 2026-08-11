@@ -44,6 +44,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         let interval = Log.signposter.beginInterval("launch")
+        // Sound is not owned by any one screen — the mode can be changed from
+        // the panel and the switch lives in Settings — so the rule is wired
+        // once, here, and read wherever something is about to make a noise.
+        Feedback.isEnabled = { [weak settings] in settings?.soundEffects ?? true }
         let controller = VigilController(settings: settings, state: appState, precise: precise)
         let panel = PanelController(state: controller.state)
         let statusItem = StatusItemController(state: controller.state, panel: panel)

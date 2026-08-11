@@ -109,6 +109,11 @@ public final class SettingsStore {
         set { update { $0.launchAtLogin = newValue } }
     }
 
+    public var soundEffects: Bool {
+        get { values.soundEffects }
+        set { update { $0.soundEffects = newValue } }
+    }
+
     public var hasCompletedOnboarding: Bool {
         get { values.hasCompletedOnboarding }
         set { update { $0.hasCompletedOnboarding = newValue } }

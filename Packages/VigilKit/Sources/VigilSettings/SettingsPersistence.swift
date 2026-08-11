@@ -22,6 +22,7 @@ enum SettingsKey: String, CaseIterable {
     case keepDisplayAwake
     case assertionTimeout
     case launchAtLogin
+    case soundEffects
     case hasCompletedOnboarding
     case notifyOnAgentNeedsInput
     case notifyOnTaskFinished
@@ -98,6 +99,7 @@ extension SettingsValues {
             .assertionTimeout, in: SettingsBounds.assertionTimeout, or: fallback.assertionTimeout)
 
         launchAtLogin = defaults.flag(.launchAtLogin) ?? fallback.launchAtLogin
+        soundEffects = defaults.flag(.soundEffects) ?? fallback.soundEffects
         hasCompletedOnboarding = defaults.flag(.hasCompletedOnboarding) ?? fallback.hasCompletedOnboarding
         notifyOnAgentNeedsInput = defaults.flag(.notifyOnAgentNeedsInput) ?? fallback.notifyOnAgentNeedsInput
         notifyOnTaskFinished = defaults.flag(.notifyOnTaskFinished) ?? fallback.notifyOnTaskFinished
@@ -129,6 +131,7 @@ extension SettingsValues {
         defaults.store(keepDisplayAwake, .keepDisplayAwake)
         defaults.store(assertionTimeout, .assertionTimeout)
         defaults.store(launchAtLogin, .launchAtLogin)
+        defaults.store(soundEffects, .soundEffects)
         defaults.store(hasCompletedOnboarding, .hasCompletedOnboarding)
         defaults.store(notifyOnAgentNeedsInput, .notifyOnAgentNeedsInput)
         defaults.store(notifyOnTaskFinished, .notifyOnTaskFinished)

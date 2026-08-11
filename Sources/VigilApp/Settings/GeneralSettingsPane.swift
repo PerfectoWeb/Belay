@@ -61,6 +61,21 @@ struct GeneralSettingsPane: View {
 
             Divider()
 
+            SettingCheckboxGroup(title: "Feedback") {
+                GroupedCheckbox(
+                    title: "Play sounds",
+                    explanation: """
+                        A short, quiet note when you change mode by hand, and one \
+                        or two other places. Turning off interface sounds in \
+                        System Settings silences these too, whatever this says.
+                        """,
+                    spokenLabel: "Play interface sounds",
+                    isOn: $settings.soundEffects
+                )
+            }
+
+            Divider()
+
             SettingCheckboxGroup(title: "While holding") {
                 GroupedCheckbox(
                     title: "Also keep the display awake",
@@ -97,9 +112,12 @@ private struct UpdatesRow: View {
             )
 
             HStack(spacing: 8) {
-                Button("Check Now") { checker.check() }
-                    .controlSize(.small)
-                    .disabled(checker.status == .checking)
+                Button("Check Now") {
+                    Feedback.play(.tick)
+                    checker.check()
+                }
+                .controlSize(.small)
+                .disabled(checker.status == .checking)
                 status
             }
         }
