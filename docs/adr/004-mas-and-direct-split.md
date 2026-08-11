@@ -1,7 +1,11 @@
 # 004 — Two schemes from one codebase, direct first
 
-**Status:** accepted. The seams it depends on (`FileAccessProvider`,
-`TipJarProviding`) exist; the second scheme itself is M6 work and in flight.
+**Status:** accepted, and half implemented. Both seams exist and the second
+scheme builds. `TipJarProviding` has its two implementations, `StoreKitTipJar`
+and `LinkTipJar`. `FileAccessProvider` does not: `DirectFileAccess` is the only
+one, nothing resolves a bookmark, and the sandboxed build therefore cannot read
+`~/.claude` at all. See `BLOCKERS.md` B8. The reasoning below stands; treat it as
+the target, not a description of the tree.
 
 ## Context
 
@@ -75,6 +79,12 @@ code.
   risk of finding out late that a bookmark went stale or FSEvents behaves
   differently on a scoped resource, and the only defence is building the second
   scheme early and running the detection tests under it.
+
+  This is the one consequence that did not hold. The second scheme was built at
+  M6 and checked for entitlements and the absence of Sparkle, never run against a
+  real session, and the bookmark implementation the whole argument rests on was
+  never written. R5 landed exactly as described: the failure is silent, and the
+  build audit passes anyway. `BLOCKERS.md` B8.
 - **Nothing in the codebase asks "am I sandboxed?"** Types depend on
   `FileAccessProvider`, which is injectable, which is also why the provider suite
   can point the whole detection path at a temp tree.

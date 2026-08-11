@@ -47,6 +47,14 @@ its absence is a selling point.
 `startAccessingSecurityScopedResource()` with a `defer` stop. Leaking these
 eventually exhausts a per-process limit and detection dies with no obvious cause.
 
+> **This is the design, not the code.** `FileAccessProvider` has one
+> implementation, `DirectFileAccess`, which calls `FileManager` directly. Nothing
+> in the tree creates or resolves a bookmark, and there is no grant flow for
+> `~/.claude`. So `Vigil-MAS` builds and passes `scripts/verify-mas-build.sh`
+> while every sandboxed read of `~/.claude` is denied at runtime and no signal is
+> ever produced. See `BLOCKERS.md` B8 and `docs/APP-STORE.md`, which lists the
+> work in order.
+
 ## App Review: expect friction, prepare for it
 
 Two things a reviewer will question. Write the answers into the review notes

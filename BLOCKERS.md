@@ -5,6 +5,9 @@ itself, with everything around them already built so that unblocking is a
 one-line change. Nothing here stops v1.0 from being complete as
 an ad-hoc-signed local build.
 
+B8 is the exception to both halves of that. It is unwritten code rather than a
+missing account, and it stops the Mac App Store build from doing its job at all.
+
 ---
 
 ## B1 — RESOLVED (2026-08-10)
@@ -101,6 +104,11 @@ the bookmark flow as if it exists.
 **Needs:** an open panel that takes a security-scoped bookmark for
 `~/.claude`, persistence of that bookmark, and `withAccess(to:)` wrapping every
 read in start/stop accessing. Then B2 and the rest of the App Store work.
+`docs/APP-STORE.md` has the whole list in the order it has to happen.
+
+Unlike the other entries here, this one is not waiting on an account or a
+decision. It is unwritten code, and it is the only blocker on this page that
+makes a shipped build lie about what it does.
 
 ## B7 — Translations have had no native review
 

@@ -125,10 +125,15 @@ extension GenericProvider {
             deadline: .now() + Self.tickInterval,
             repeating: Self.tickInterval,
             leeway: .seconds(1))
-        timer.setEventHandler { [weak self] in
+        // Hoisted into an explicitly `@Sendable` local rather than written
+        // inline: `setEventHandler` takes a `sending` parameter in some SDKs,
+        // and region-based isolation rejects a closure literal passed straight
+        // to one when it captures `self`, even weakly.
+        let tick: @Sendable () -> Void = { [weak self] in
             guard let self else { return }
             Task { await self.tick() }
         }
+        timer.setEventHandler(handler: tick)
         timer.resume()
         ticker = timer
     }

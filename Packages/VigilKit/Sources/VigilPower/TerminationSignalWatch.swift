@@ -29,13 +29,16 @@ public actor TerminationSignalWatch {
             // "terminate the process", so the default has to go first.
             signal(number, SIG_IGN)
             let source = DispatchSource.makeSignalSource(signal: number, queue: queue)
-            source.setEventHandler {
+            // See `PowerSourceMonitor.start()`: the same `sending` parameter,
+            // the same hoist.
+            let fire: @Sendable () -> Void = {
                 Task {
                     Log.power.notice("Terminating on signal \(number, privacy: .public)")
                     await handler()
                     if exitsProcess { exit(0) }
                 }
             }
+            source.setEventHandler(handler: fire)
             source.resume()
             sources.append(source)
         }

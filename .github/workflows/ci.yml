@@ -42,6 +42,10 @@ jobs:
 
       - uses: maxim-lobanov/setup-xcode@v1
         with:
+          # The runner's toolchain is older than the one this is developed
+          # against, and that gap is real: strict-concurrency diagnostics that
+          # pass locally have failed here. Treat a CI-only compile error as a
+          # portability bug in the code, not as CI being wrong.
           xcode-version: latest-stable
 
       # xcbeautify is optional: scripts/test.sh pipes xcodebuild through it when

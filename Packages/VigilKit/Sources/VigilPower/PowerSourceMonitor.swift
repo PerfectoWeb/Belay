@@ -61,9 +61,15 @@ public actor PowerSourceMonitor {
             repeating: interval,
             leeway: .milliseconds(Int(interval * 200))
         )
-        source.setEventHandler { [weak self] in
+        // Hoisted into an explicitly `@Sendable` local rather than written
+        // inline. `setEventHandler`'s parameter is `sending` in some SDKs, and
+        // region-based isolation rejects a closure literal passed straight to
+        // one when it captures `self`, even weakly. The build on this machine
+        // accepted it; the older toolchain on CI did not.
+        let tick: @Sendable () -> Void = { [weak self] in
             Task { await self?.poll() }
         }
+        source.setEventHandler(handler: tick)
         timer = source
         source.resume()
     }

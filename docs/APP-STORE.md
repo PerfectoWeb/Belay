@@ -25,8 +25,7 @@ No screenshots exist anywhere in this repository.
 
 ## Blocker zero: the sandboxed build cannot read `~/.claude`
 
-This comes before every other item on this page, and it is not recorded in
-`BLOCKERS.md` yet.
+This comes before every other item on this page. It is `BLOCKERS.md` B8.
 
 [`../Packages/VigilKit/Sources/VigilSupport/FileAccess.swift`](../Packages/VigilKit/Sources/VigilSupport/FileAccess.swift)
 defines `FileAccessProvider` with one implementation, `DirectFileAccess`, which
@@ -464,7 +463,7 @@ has not started.
       staleness across a restart, the `settings.json` write under the grant.
 - [ ] Run the full detection suite under the `Vigil-MAS` scheme, on a real
       machine, against a real Claude Code session. Not in a test host.
-- [ ] Record a new blocker entry for this in `BLOCKERS.md`. It belongs there.
+- [x] Record a new blocker entry for this in `BLOCKERS.md`. It is B8.
 
 **Resolve the naming and identity questions**
 

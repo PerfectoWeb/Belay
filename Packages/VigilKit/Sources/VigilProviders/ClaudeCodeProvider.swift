@@ -159,10 +159,12 @@ public actor ClaudeCodeProvider: ActivityProvider {
             deadline: .now() + Self.tickInterval,
             repeating: Self.tickInterval,
             leeway: .seconds(1))
-        timer.setEventHandler { [weak self] in
+        // See `PowerSourceMonitor.start()` for why this is hoisted.
+        let tick: @Sendable () -> Void = { [weak self] in
             guard let self else { return }
             Task { await self.tick() }
         }
+        timer.setEventHandler(handler: tick)
         timer.resume()
         ticker = timer
     }
