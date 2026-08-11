@@ -27,7 +27,7 @@ public struct DirectFileAccess: FileAccessProvider {
     }
 }
 
-public enum FileAccessError: LocalizedError {
+public enum FileAccessError: LocalizedError, Equatable {
     case noBookmark(URL)
     case bookmarkUnresolvable(URL)
     case accessDenied(URL)

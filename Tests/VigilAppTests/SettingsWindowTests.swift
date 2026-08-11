@@ -158,4 +158,85 @@ final class SettingsWindowTests: XCTestCase {
         settings.close()
         XCTAssertFalse(settings.isVisible)
     }
+
+    // MARK: - staying current
+
+    private func countingWindow(_ builds: Counter) throws -> SettingsWindow {
+        let defaults = try XCTUnwrap(defaults)
+        return SettingsWindow(
+            settings: SettingsStore(defaults: defaults),
+            state: AppState(),
+            precise: PreciseDetection(),
+            targets: { [] },
+            statistics: {
+                builds.value += 1
+                return UsageStatistics()
+            },
+            onTargetsChanged: { _ in }
+        )
+    }
+
+    /// Statistics opened from the menu, then opened again, showed the numbers it
+    /// was built with the first time: `show` returned early before rebuilding.
+    func testReopeningTheSamePaneRebuildsIt() throws {
+        let builds = Counter()
+        let settings = try countingWindow(builds)
+
+        settings.show(pane: .statistics)
+        let first = builds.value
+        XCTAssertGreaterThan(first, 0, "the pane was never built")
+
+        settings.show(pane: .statistics)
+        XCTAssertGreaterThan(
+            builds.value, first, "re-entering Statistics did not re-read the numbers")
+        settings.close()
+    }
+
+    /// Coming back to the window is the cheapest moment to catch up, and the one
+    /// the user notices.
+    func testComingToTheFrontRereadsTheNumbers() throws {
+        let builds = Counter()
+        let settings = try countingWindow(builds)
+        settings.show(pane: .statistics)
+        let before = builds.value
+
+        settings.windowDidBecomeKey(Notification(name: NSWindow.didBecomeKeyNotification))
+        XCTAssertGreaterThan(builds.value, before, "the pane on screen stayed stale")
+        settings.close()
+    }
+
+    /// The idle budget: nothing ticks unless the pane whose numbers move is both
+    /// open and the window the user is looking at.
+    func testOnlyAFrontmostStatisticsPanePolls() throws {
+        let settings = try makeWindow()
+        let key = Notification(name: NSWindow.didBecomeKeyNotification)
+        let resigned = Notification(name: NSWindow.didResignKeyNotification)
+
+        // Driven through the delegate rather than by activating the app: this
+        // test host is never frontmost, so a real key change would never arrive.
+        settings.show(pane: .statistics)
+        settings.windowDidResignKey(resigned)
+        XCTAssertFalse(settings.isRefreshingForTesting, "polling while another app is in front")
+
+        settings.windowDidBecomeKey(key)
+        XCTAssertTrue(settings.isRefreshingForTesting, "an open Statistics pane never updates")
+
+        settings.windowDidResignKey(resigned)
+        XCTAssertFalse(settings.isRefreshingForTesting, "it kept polling behind another app")
+
+        settings.windowDidBecomeKey(key)
+        settings.select(.general, animated: false)
+        XCTAssertFalse(settings.isRefreshingForTesting, "a pane with nothing moving is polling")
+
+        settings.select(.statistics, animated: false)
+        XCTAssertTrue(settings.isRefreshingForTesting)
+
+        settings.close()
+        XCTAssertFalse(settings.isRefreshingForTesting, "the timer outlived the window")
+    }
+}
+
+/// Somewhere for a closure under test to count into.
+private final class Counter {
+    var value = 0
 }

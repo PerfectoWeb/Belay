@@ -39,7 +39,12 @@ final class VigilController {
     ) {
         self.settings = settings
         self.state = state
-        providers = ProviderHost(precise: precise)
+        // The one composition point where the two channels differ: the direct
+        // build reads `~/.claude` outright, the sandboxed one reads it through a
+        // security-scoped bookmark, and `ClaudeAccess` is what knows which
+        // (docs/06, BLOCKERS B8).
+        providers = ProviderHost(
+            precise: precise, access: ClaudeAccess.provider, home: ClaudeAccess.home)
         coordinator = ActivityCoordinator(policy: settings.policy)
         driver = CoordinatorDriver(coordinator: coordinator)
         assertions = PowerAssertionController()
@@ -90,6 +95,9 @@ final class VigilController {
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.
         usage.flush()
+        // Closes the sandboxed build's standing scope on `~/.claude`. Harmless
+        // in the direct build, where there is none.
+        ClaudeAccess.relinquish()
 
         let done = DispatchSemaphore(value: 0)
         // `Task.detached`, not `Task`: `shutdown()` is `@MainActor`, so an
@@ -111,10 +119,14 @@ final class VigilController {
     }
 
     /// The direct build reads `~/.claude` outright, so there is nothing to ask
-    /// for; the sandboxed build resolves a security-scoped bookmark here. Wired
-    /// now so onboarding has something real to call in both builds.
+    /// for; the sandboxed build puts the open panel up here and keeps the
+    /// bookmark. The retry is not optional: the Claude Code provider refused to
+    /// start for want of access, and without it the grant only takes effect
+    /// after a relaunch the user has no reason to guess at.
     func requestProviderAccess(_ provider: ProviderID) {
+        let granted = ClaudeAccess.request()
         Task { [weak self] in
+            if granted { await self?.providers.retryStart() }
             await self?.publishProviderStatus()
         }
     }
@@ -200,12 +212,8 @@ final class VigilController {
         )
     }
 
-    /// `NSWorkspace`'s sleep notifications only arrive on its own notification
-    /// centre, which VigilPower deliberately cannot reach — so the app layer
-    /// forwards them in.
     private func observeSleepWake() {
-        forward(NSWorkspace.willSleepNotification, as: .willSleep)
-        forward(NSWorkspace.didWakeNotification, as: .didWake)
+        sleepObservers = SleepWakeForwarding.install(into: sleepObserver)
 
         tasks.append(
             Task { [sleepObserver, assertions, coordinator, weak self] in
@@ -222,14 +230,6 @@ final class VigilController {
                 }
             }
         )
-    }
-
-    private func forward(_ name: Notification.Name, as event: SystemSleepEvent) {
-        let observer = NSWorkspace.shared.notificationCenter
-            .addObserver(forName: name, object: nil, queue: .main) { [sleepObserver] _ in
-                Task { await sleepObserver.report(event) }
-            }
-        sleepObservers.append(observer)
     }
 
     private func refreshSnapshot() {

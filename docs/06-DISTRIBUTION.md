@@ -47,13 +47,43 @@ its absence is a selling point.
 `startAccessingSecurityScopedResource()` with a `defer` stop. Leaking these
 eventually exhausts a per-process limit and detection dies with no obvious cause.
 
-> **This is the design, not the code.** `FileAccessProvider` has one
-> implementation, `DirectFileAccess`, which calls `FileManager` directly. Nothing
-> in the tree creates or resolves a bookmark, and there is no grant flow for
-> `~/.claude`. So `Vigil-MAS` builds and passes `scripts/verify-mas-build.sh`
-> while every sandboxed read of `~/.claude` is denied at runtime and no signal is
-> ever produced. See `BLOCKERS.md` B8 and `docs/APP-STORE.md`, which lists the
-> work in order.
+This is now built. Where it lives:
+
+| | |
+|---|---|
+| `VigilSupport/BookmarkFileAccess.swift` | the sandboxed `FileAccessProvider` |
+| `VigilSupport/SecurityScopedBookmarks.swift` | Foundation's four calls, behind a protocol so the balance is testable |
+| `VigilSupport/BookmarkStore.swift` | the bytes, in `UserDefaults` under `VigilClaudeFolderBookmark` |
+| `VigilApp/Onboarding/ClaudeFolderPanel.swift` | the `NSOpenPanel` grant |
+| `VigilApp/Onboarding/ClaudeAccess.swift` | which implementation this channel gets |
+
+Four details that are not obvious and are load-bearing:
+
+- **The home is not the container.** `NSHomeDirectory()` and
+  `FileManager.homeDirectoryForCurrentUser` both answer with the sandbox
+  container, so a MAS build looking for `~/.claude` finds its own empty
+  container. `VigilSupport.UserHome.real` reads the account record instead.
+- **One standing scope, plus the brackets.** `withAccess` opens and closes a
+  scope around each read, which is what keeps the count balanced. It is not
+  enough on its own: FSEvents watches the granted directory continuously and
+  `FileSnapshot`'s stats happen outside any bracket, so `BookmarkFileAccess`
+  also holds exactly one scope on the granted root for as long as it lives, and
+  releases it in `VigilController.shutdown`.
+- **A stale bookmark is renewed, never dropped.** It still resolves; Foundation
+  only wants it re-encoded. Discarding it would send the user back through the
+  panel for a housekeeping detail, and a failed renewal keeps the bytes that
+  still work.
+- **The choice is made in the app.** `#if VIGIL_MAS` does not reach a local
+  SwiftPM target (`PROJECT_STATE.md` D15), so `ClaudeAccess` picks the
+  implementation and `VigilController` injects it into `ProviderHost`. Nothing
+  in detection can tell which it got.
+
+> **What is still unproved.** None of this has run inside a real sandbox: a test
+> process cannot create a scoped bookmark, so the suites cover the logic around
+> Foundation's calls rather than the calls. `BLOCKERS.md` B8 lists exactly what
+> one signed, provisioned run on a real machine has to confirm — including the
+> reads VigilProviders performs outside `withAccess`, and the generic provider's
+> folders, which are outside the `~/.claude` grant entirely.
 
 ## App Review: expect friction, prepare for it
 

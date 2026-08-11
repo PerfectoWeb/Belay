@@ -21,6 +21,7 @@ public actor PowerAssertionController {
     private var reason = ""
     private var timeout = PowerAssertionController.defaultTimeout
     private var refreshTask: Task<Void, Never>?
+    private var reconciliation: Task<Void, Never>?
     private var hasLoggedFailure = false
 
     /// The most recent IOKit failure, or `nil` once a call succeeds again.
@@ -54,8 +55,12 @@ public actor PowerAssertionController {
         self.wantsDisplay = includeDisplay
         self.timeout = max(timeout, 0.01)
         isActive = true
-        await reconcile()
+        // Started before the reconcile, not after: reconciling suspends, and a
+        // release landing in that gap stops a refresh loop that the resuming
+        // `hold` would then start again with nothing held. Intent and its timer
+        // move together, synchronously, or they can be reordered by a suspension.
         startRefreshing()
+        await reconcile()
     }
 
     /// Drops every assertion. A no-op, silent and error-free, when nothing is held.
@@ -74,9 +79,34 @@ public actor PowerAssertionController {
         await reconcile()
     }
 
+    /// Reconciles, but never concurrently with another reconcile.
+    ///
+    /// Every branch below suspends inside the backend, and `backend` is not this
+    /// actor, so the await hands the controller to whoever is waiting. Two
+    /// reconciles overlapping there lose assertions in both directions: a `hold`
+    /// parked in `create` while a `release` reads an empty table, no-ops, and
+    /// stops refreshing — the resumed `hold` then records an ID nobody will ever
+    /// release, and it expires silently while the coordinator still believes it
+    /// is holding; or a `hold` arriving while a `release` is parked, which finds
+    /// nothing recorded and takes a second assertion next to the live one.
+    /// Invariants 1 and 4 both, from a sleep notification, a SIGTERM or a quit.
+    ///
+    /// Chaining is enough, and is why there is no generation counter: the intent
+    /// (`isActive`, `reason`, `timeout`) is always written synchronously before
+    /// the call, so whichever reconcile runs last reconciles against the latest.
+    private func reconcile() async {
+        let previous = reconciliation
+        let task = Task { [weak self] in
+            await previous?.value
+            await self?.reconcileNow()
+        }
+        reconciliation = task
+        await task.value
+    }
+
     /// Makes IOKit match the requested state, one kind at a time, so a failure
     /// on the display assertion cannot take the system assertion down with it.
-    private func reconcile() async {
+    private func reconcileNow() async {
         var failure: PowerError?
         for kind in PowerAssertionKind.allCases {
             do {

@@ -13,6 +13,9 @@ struct TranscriptWatch: Sendable {
     var parent: SessionID?
     /// The subagent's configured type, for display.
     var kind: String?
+    /// The session's own name, from `~/.claude/sessions/<pid>.json`. Filled in by
+    /// Tier C, because the transcript itself does not carry it.
+    var name: String?
     /// The last activity yielded for this session, so `.idle` is not repeated
     /// every sweep while `.working` stays a heartbeat.
     var reported: SessionActivity?
@@ -23,7 +26,8 @@ struct TranscriptWatch: Sendable {
         lastWriteAt: Date,
         workspace: String?,
         parent: SessionID? = nil,
-        kind: String? = nil
+        kind: String? = nil,
+        name: String? = nil
     ) {
         self.id = id
         self.cursor = TranscriptCursor(url: url)
@@ -31,6 +35,7 @@ struct TranscriptWatch: Sendable {
         self.workspace = workspace
         self.parent = parent
         self.kind = kind
+        self.name = name
     }
 
     /// Everything derivable from where the transcript sits, read once. The

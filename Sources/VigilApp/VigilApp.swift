@@ -56,17 +56,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             statistics: { [weak controller] in controller?.usage.statistics ?? UsageStatistics() },
             onTargetsChanged: { [weak controller] in controller?.updateGenericTargets($0) }
         )
-        appState.onOpenSettings = { settingsWindow.show() }
-        statusItem.onOpenPane = { settingsWindow.show(pane: $0) }
+        statusItem.onOpenPane = { [weak settingsWindow] in settingsWindow?.show(pane: $0) }
         // The panel's "Fix" button. Every notice it can show is resolved on the
         // Providers pane — Claude Code needs folder access, the generic provider
         // needs a folder or a preset — so it opens there and asks the controller
         // for whatever the build needs, rather than doing nothing at all, which
         // is what it did.
-        appState.onGrantAccess = { [weak controller] provider in
+        appState.connect(settings: settingsWindow, panel: panel) { [weak controller] provider in
             controller?.requestProviderAccess(provider)
-            panel.hide()
-            settingsWindow.show(pane: .providers)
         }
         self.settingsWindow = settingsWindow
 
@@ -88,6 +85,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        updateTimer?.invalidate()
+        updateTimer = nil
         settingsWindow?.close()
         settingsWindow = nil
         controller?.shutdown()

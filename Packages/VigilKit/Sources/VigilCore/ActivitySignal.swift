@@ -53,6 +53,10 @@ public struct ActivitySignal: Sendable, Equatable {
     /// The agent's configured type, e.g. `general-purpose`. Structural only:
     /// what the user asked the agent to do is never read (docs/06).
     public let kind: String?
+    /// The agent's own name for this session, unique per session where the
+    /// provider knows one. Two sessions in one checkout are otherwise
+    /// indistinguishable in the UI; this is what tells them apart.
+    public let name: String?
     public let timestamp: Date
     public let confidence: Confidence
 
@@ -63,6 +67,7 @@ public struct ActivitySignal: Sendable, Equatable {
         workspace: String?,
         parent: SessionID? = nil,
         kind: String? = nil,
+        name: String? = nil,
         timestamp: Date,
         confidence: Confidence
     ) {
@@ -72,6 +77,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.workspace = workspace
         self.parent = parent
         self.kind = kind
+        self.name = name
         self.timestamp = timestamp
         self.confidence = confidence
     }

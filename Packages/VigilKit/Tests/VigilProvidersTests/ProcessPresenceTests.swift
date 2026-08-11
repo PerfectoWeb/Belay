@@ -24,6 +24,25 @@ struct ProcessPresenceTests {
         #expect(records.first?.workspace == "Vigil")
     }
 
+    private func write(pid: pid_t, _ json: String) {
+        try? Data(json.utf8).write(to: scratch.sessions.appendingPathComponent("\(pid).json"))
+    }
+
+    /// Two sessions in one checkout share a `cwd`, so the workspace name cannot
+    /// tell their rows apart. `name` is the only field that can, and a sidecar
+    /// written by an older Claude Code has none.
+    @Test("The session's own name comes through, and a missing one stays nil")
+    func readsSessionName() {
+        write(pid: 21, #"{"pid":21,"sessionId":"named","cwd":"/w/Vigil","name":"vigil-9a"}"#)
+        write(pid: 22, #"{"pid":22,"sessionId":"blank","cwd":"/w/Vigil","name":""}"#)
+        write(pid: 23, #"{"pid":23,"sessionId":"absent","cwd":"/w/Vigil"}"#)
+
+        let records = scan { _ in true }
+        #expect(records.first { $0.session == SessionID("named") }?.name == "vigil-9a")
+        #expect(records.first { $0.session == SessionID("blank") }?.name == nil)
+        #expect(records.first { $0.session == SessionID("absent") }?.name == nil)
+    }
+
     @Test("Liveness is per-record and injectable")
     func liveAndDead() {
         scratch.processFile(pid: 11, session: "alive")

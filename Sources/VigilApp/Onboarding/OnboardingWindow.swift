@@ -18,11 +18,17 @@ final class OnboardingWindow: NSObject {
     }
 
     /// Shows the screen unless the user has already been through it.
+    ///
+    /// The caller cannot know whether the sandboxed build has its bookmark yet —
+    /// `#if VIGIL_MAS` means nothing where it is composed — so readiness is
+    /// answered here, where `ClaudeAccess` can be asked. In the direct build it
+    /// is always yes and the button says "Start watching", which is the truth
+    /// there: nothing is being granted.
     func presentIfNeeded(providerReady: Bool, onGrantAccess: @escaping () -> Void) {
         guard !settings.hasCompletedOnboarding, window == nil else { return }
 
         let view = OnboardingView(
-            providerReady: providerReady,
+            providerReady: providerReady && ClaudeAccess.isGranted,
             onGrantAccess: { [weak self] in
                 onGrantAccess()
                 self?.dismiss()

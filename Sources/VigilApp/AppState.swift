@@ -46,10 +46,11 @@ final class AppState {
                 activity: snapshot.activities[session.id] ?? .idle,
                 since: session.workingSince ?? session.awaitingSince ?? session.firstSeen,
                 parent: session.parent,
-                kind: session.kind
+                kind: session.kind,
+                name: session.name
             )
         }
-        return SessionRow.nest(rows)
+        return SessionRow.disambiguate(SessionRow.nest(rows))
     }
 
     func apply(_ snapshot: CoordinatorSnapshot, totalAwake: TimeInterval) {
@@ -65,6 +66,27 @@ final class AppState {
     func apply(warning: String?) {
         self.warning = warning
     }
+
+    /// Wires the two ways the panel reaches out of itself, without taking
+    /// ownership of anything.
+    ///
+    /// Every capture here is weak on purpose. `AppState` holds these closures,
+    /// and both the Settings window and the panel hold `AppState` — so a strong
+    /// capture is a cycle, and `applicationWillTerminate` setting its references
+    /// to nil deallocates nothing. `PanelController.deinit`, which is what
+    /// finally drops the popover's SwiftUI view, then never runs at all.
+    func connect(
+        settings: SettingsWindow,
+        panel: PanelController,
+        grantAccess: @escaping (ProviderID) -> Void
+    ) {
+        onOpenSettings = { [weak settings] in settings?.show() }
+        onGrantAccess = { [weak settings, weak panel] provider in
+            grantAccess(provider)
+            panel?.hide()
+            settings?.show(pane: .providers)
+        }
+    }
 }
 
 /// One row of the panel's session list, already formatted so views do no policy
@@ -78,7 +100,21 @@ struct SessionRow: Identifiable, Equatable {
     var parent: SessionID?
     /// The agent's configured type, for subagent rows.
     var kind: String?
+    /// The agent's own name for the session, e.g. `vigil-9a`. Held for every row
+    /// but shown only when `disambiguate` decides the workspace is ambiguous.
+    var name: String?
+    /// The disambiguating fragment, once something has decided one is needed.
+    var detail: String?
     var children: [SessionRow] = []
+
+    /// What the row is called. Plain workspace in the common case; two sessions
+    /// in one checkout each get their own name appended, because otherwise the
+    /// panel shows two identical rows in different states and the user cannot
+    /// tell which is which.
+    var title: String {
+        guard let detail else { return workspace }
+        return String(localized: "\(workspace) · \(detail)")
+    }
 
     /// What the row reports, counting its subagents. A session whose fifty-four
     /// agents are mid-run is not "Idle" just because its own transcript is
@@ -113,6 +149,35 @@ extension SessionRow {
                 row.children = (children[row.id] ?? []).sorted { $0.since < $1.since }
                 return row
             }
+    }
+
+    /// Marks the rows whose workspace alone would not identify them.
+    ///
+    /// Two Claude Code sessions in the same checkout are genuinely separate
+    /// sessions, not a parent and a child, so nesting them would be a lie about
+    /// the structure. They are told apart instead — and only when they collide,
+    /// so a lone session stays plain "Vigil" and nothing extra appears in the
+    /// case that is almost always the one on screen.
+    ///
+    /// Subagents are left alone: they are already grouped under the session that
+    /// spawned them and are labelled by `kind`, not by workspace.
+    static func disambiguate(_ rows: [SessionRow]) -> [SessionRow] {
+        var counts: [String: Int] = [:]
+        for row in rows { counts[row.workspace, default: 0] += 1 }
+        return rows.map { row in
+            guard counts[row.workspace, default: 0] > 1 else { return row }
+            var row = row
+            row.detail = row.name.flatMap(Self.fragment)
+            return row
+        }
+    }
+
+    /// The part of an agent's session name worth showing. Claude Code derives
+    /// `vigil-9a` from the folder, so repeating "vigil" beside the workspace it
+    /// came from would add width and no information.
+    private static func fragment(_ name: String) -> String? {
+        let tail = name.split(separator: "-").last.map(String.init) ?? name
+        return tail.isEmpty ? nil : tail
     }
 
     /// The top-most known session above `row`, or nil if it is one itself. The

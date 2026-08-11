@@ -36,6 +36,12 @@ final class SettingsWindow: NSObject {
     /// answer during login — exactly when Vigil launches if "Open at login" is
     /// on — and nobody has opened Settings yet.
     private lazy var loginItem = LoginItem()
+    /// Alive only while a pane that moves is open and frontmost.
+    private var refreshTimer: Timer?
+    /// Tracked from the delegate callbacks rather than read off `isKeyWindow`,
+    /// so there is exactly one thing to get right and a test can drive it.
+    private var isFrontmost = false
+    var isRefreshingForTesting: Bool { refreshTimer?.isValid == true }
     let updates = ReleaseChecker()
 
     init(
@@ -62,8 +68,12 @@ final class SettingsWindow: NSObject {
     /// `pane` lets the menu open straight onto Statistics instead of making the
     /// user find it.
     func show(pane requested: SettingsPane? = nil) {
-        if let requested, requested != pane { select(requested) }
         if let window {
+            // Unconditionally, even when the pane asked for is the one already
+            // showing: `select` is what rebuilds the SwiftUI view, and returning
+            // early here is why Statistics re-entered from the menu kept showing
+            // whatever numbers were current when the window was last built.
+            select(requested ?? pane)
             NSApp.activate(ignoringOtherApps: true)
             window.makeKeyAndOrderFront(nil)
             return
@@ -107,10 +117,32 @@ final class SettingsWindow: NSObject {
         window.title = pane.title
         window.toolbar?.selectedItemIdentifier = pane.itemIdentifier
         resize(window, to: height(for: pane), animated: animated)
+        retimeRefresh()
     }
 
     func close() {
         window?.close()
+    }
+
+    /// Rebuilds the pane in place, leaving the window's size alone — remeasuring
+    /// on a tick would animate the window under the user.
+    private func refreshContent() {
+        hosting?.rootView = view(for: pane)
+    }
+
+    /// Statistics is the only pane whose numbers move while it is on screen, and
+    /// nothing ticks unless it is both open and frontmost: a Settings window left
+    /// behind another app costs exactly as much as a closed one (docs/08).
+    private func retimeRefresh() {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
+        guard pane == .statistics, isFrontmost else { return }
+        let timer = Timer(timeInterval: 10, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated { self?.refreshContent() }
+        }
+        timer.tolerance = 2
+        RunLoop.main.add(timer, forMode: .common)
+        refreshTimer = timer
     }
 
     private func makeToolbar() -> NSToolbar {
@@ -165,45 +197,6 @@ final class SettingsWindow: NSObject {
         frame.origin.y = window.frame.maxY - frame.height
         window.setFrame(frame, display: true, animate: animated)
     }
-
-    @objc private func toolbarItemSelected(_ sender: NSToolbarItem) {
-        guard let pane = SettingsPane(itemIdentifier: sender.itemIdentifier) else { return }
-        select(pane)
-    }
-}
-
-extension SettingsWindow: NSToolbarDelegate {
-    private var paneIdentifiers: [NSToolbarItem.Identifier] {
-        SettingsPane.allCases.map(\.itemIdentifier)
-    }
-
-    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        paneIdentifiers
-    }
-
-    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        paneIdentifiers
-    }
-
-    func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        paneIdentifiers
-    }
-
-    func toolbar(
-        _ toolbar: NSToolbar,
-        itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-        willBeInsertedIntoToolbar flag: Bool
-    ) -> NSToolbarItem? {
-        guard let pane = SettingsPane(itemIdentifier: itemIdentifier) else { return nil }
-        let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-        item.label = pane.title
-        item.paletteLabel = pane.title
-        item.toolTip = pane.title
-        item.image = NSImage(systemSymbolName: pane.symbol, accessibilityDescription: pane.title)
-        item.target = self
-        item.action = #selector(toolbarItemSelected(_:))
-        return item
-    }
 }
 
 extension SettingsWindow: NSWindowDelegate {
@@ -213,9 +206,22 @@ extension SettingsWindow: NSWindowDelegate {
     /// is open. Coming back to it is the moment to find out.
     func windowDidBecomeKey(_ notification: Notification) {
         loginItem.refresh()
+        isFrontmost = true
+        refreshContent()
+        retimeRefresh()
+    }
+
+    /// Coming back to the front is the moment to catch up; going away is the
+    /// moment to stop spending anything at all.
+    func windowDidResignKey(_ notification: Notification) {
+        isFrontmost = false
+        retimeRefresh()
     }
 
     func windowWillClose(_ notification: Notification) {
+        isFrontmost = false
+        refreshTimer?.invalidate()
+        refreshTimer = nil
         window?.delegate = nil
         window = nil
         hosting = nil

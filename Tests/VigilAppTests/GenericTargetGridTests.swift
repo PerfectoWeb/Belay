@@ -1,6 +1,7 @@
 import AppKit
 import SwiftUI
 import VigilProviders
+import VigilSettings
 import XCTest
 
 @testable import Vigil
@@ -171,6 +172,45 @@ final class PresetDuplicationTests: XCTestCase {
     func testAFolderPresetStaysAvailable() {
         let one = folderPreset.target(folder: URL(fileURLWithPath: "/tmp/a"))
         XCTAssertFalse(section([one]).isExhausted(folderPreset))
+    }
+
+    /// The folder picker is a sheet now, so the "user chose a folder" half of
+    /// adding a per-project preset is its own step and can be tested without an
+    /// open panel. It used to be spelled inline after a `runModal()`, which
+    /// blocked the main run loop from inside the menu's tracking loop.
+    func testAChosenFolderBecomesATargetExactlyOnce() {
+        let box = TargetBox([])
+        let section = GenericTargetsSection(
+            targets: Binding(get: { box.targets }, set: { box.targets = $0 }))
+        let folder = URL(fileURLWithPath: "/tmp/checkout-a")
+
+        section.adopt(folderPreset, folder: folder)
+        XCTAssertEqual(box.targets.map(\.watchedFolder), [folder])
+
+        section.adopt(folderPreset, folder: folder)
+        XCTAssertEqual(box.targets.count, 1, "the same folder was watched twice")
+
+        section.adopt(folderPreset, folder: URL(fileURLWithPath: "/tmp/checkout-b"))
+        XCTAssertEqual(box.targets.count, 2, "a second checkout is a second target")
+    }
+
+    /// A sheet needs a window. Without one the picker would have to fall back to
+    /// a free-floating panel, which is the behaviour being replaced.
+    func testTheSheetHasTheSettingsWindowToHangOff() throws {
+        let suite = "com.perfecto-web.vigil.tests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let settings = SettingsWindow(
+            settings: SettingsStore(defaults: defaults),
+            state: AppState(),
+            precise: PreciseDetection(),
+            targets: { [] },
+            statistics: { UsageStatistics() },
+            onTargetsChanged: { _ in })
+
+        settings.show(pane: .providers)
+        XCTAssertIdentical(GenericTargetsSection.hostWindow, settings.window)
+        settings.close()
     }
 
     func testAnotherPresetIsUnaffected() {

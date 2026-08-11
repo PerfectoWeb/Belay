@@ -11,13 +11,22 @@ import VigilSupport
 @MainActor
 final class ProviderHost {
     private let bus = SignalBus()
-    private let claudeCode = ClaudeCodeProvider()
-    private let generic = GenericProvider()
+    private let claudeCode: ClaudeCodeProvider
+    private let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
 
-    init(precise: PreciseDetection) {
+    /// `access` and `home` come from the app layer because only it knows which
+    /// channel this is (`ClaudeAccess`, `PROJECT_STATE.md` D15). Both default to
+    /// the unsandboxed answer so a preview or a test constructs one for free.
+    init(
+        precise: PreciseDetection,
+        access: FileAccessProvider = DirectFileAccess(),
+        home: URL = FileManager.default.homeDirectoryForCurrentUser
+    ) {
         self.precise = precise
+        claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
+        generic = GenericProvider(access: access)
     }
 
     /// Starts every provider and returns the merged signal stream.
@@ -47,6 +56,17 @@ final class ProviderHost {
             await bus.attach(exact)
         }
         return signals
+    }
+
+    /// Second chance for a provider that refused to start for want of folder
+    /// access. The bus is already attached to its stream, so this is a start and
+    /// not a re-wire; a provider that is already running ignores it.
+    func retryStart() async {
+        do {
+            try await claudeCode.start()
+        } catch {
+            Log.providers.error("Claude Code provider still cannot start: \(error, privacy: .public)")
+        }
     }
 
     func stop() async {

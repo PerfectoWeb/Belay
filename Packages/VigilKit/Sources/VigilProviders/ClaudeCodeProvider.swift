@@ -24,17 +24,18 @@ public actor ClaudeCodeProvider: ActivityProvider {
     public let signals: AsyncStream<ActivitySignal>
 
     let configuration: Configuration
-    /// Internal so the availability check can live in its own file.
+    /// Internal, like the four below it, so the availability check and the
+    /// sweeps can live in their own files (this one is at the linter's limit).
     let access: FileAccessProvider
-    private let clock: any Clock
+    let clock: any Clock
     private let continuation: AsyncStream<ActivitySignal>.Continuation
-    private let queue = DispatchQueue(
+    let queue = DispatchQueue(
         label: "com.perfecto-web.vigil.providers.claude-code", qos: .utility)
 
-    private var watched: [SessionID: TranscriptWatch] = [:]
+    var watched: [SessionID: TranscriptWatch] = [:]
     private var events: FileEventStream?
-    private var ticker: DispatchSourceTimer?
-    private var tickCount = 0
+    var ticker: DispatchSourceTimer?
+    var tickCount = 0
     private var isStarted = false
 
     public init(
@@ -151,75 +152,10 @@ public actor ClaudeCodeProvider: ActivityProvider {
         }
     }
 
-    // MARK: - Sweeps
-
-    private func startTicking() {
-        let timer = DispatchSource.makeTimerSource(queue: queue)
-        timer.schedule(
-            deadline: .now() + Self.tickInterval,
-            repeating: Self.tickInterval,
-            leeway: .seconds(1))
-        // See `PowerSourceMonitor.start()` for why this is hoisted.
-        let tick: @Sendable () -> Void = { [weak self] in
-            guard let self else { return }
-            Task { await self.tick() }
-        }
-        timer.setEventHandler(handler: tick)
-        timer.resume()
-        ticker = timer
-    }
-
-    func tick() {
-        let now = clock.now
-        sweepForIdle(now: now)
-        tickCount += 1
-        guard tickCount.isMultiple(of: 3) else { return }
-        sweepForDeadProcesses(now: now)
-    }
-
-    func sweepForIdle(now: Date) {
-        for (id, watch) in watched where watch.reported == .working {
-            guard now.timeIntervalSince(watch.lastWriteAt) > configuration.inferredIdleAfter else {
-                continue
-            }
-            report(.idle, for: id, at: now)
-        }
-    }
-
-    /// Tier C: reap dead sessions; keep quiet-but-working ones alive.
-    func sweepForDeadProcesses(
-        now: Date,
-        isAlive: @Sendable (pid_t) -> Bool = ProcessPresence.isAlive,
-        busyPids: @Sendable (Set<pid_t>) -> Set<pid_t>? = AgentChildren.busy
-    ) {
-        let records = ProcessPresence.scan(
-            directory: configuration.sessionsDirectory, access: access, isAlive: isAlive)
-        // Only followed sessions can pin the Mac awake; stale files are noise.
-        let tracked = records.filter { watched[$0.session] != nil }
-        // `nil` means the process table could not be read, which is "ask again
-        // later" and never "nothing is running" — collapsing it to an empty set
-        // would drop the assertion mid-turn on a transient sysctl failure.
-        let busy = busyPids(Set(tracked.filter(\.isAlive).map(\.pid)))
-
-        for record in tracked {
-            guard record.isAlive else {
-                end(record.session, at: now)
-                continue
-            }
-            if let workspace = record.workspace {
-                watched[record.session]?.workspace = workspace
-            }
-            // A live child means a tool is running (risk R6). See AgentChildren.
-            if busy?.contains(record.pid) == true {
-                report(.working, for: record.session, at: now)
-            }
-        }
-    }
-
     // MARK: - Emitting
 
     @discardableResult
-    private func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
+    func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
         guard var watch = watched[id] else { return false }
         // `.working` repeats deliberately: the coordinator treats it as a
         // heartbeat and needs a fresh timestamp. `.idle` repeating is just noise.
@@ -230,7 +166,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
         return true
     }
 
-    private func end(_ id: SessionID, at now: Date) {
+    func end(_ id: SessionID, at now: Date) {
         guard let watch = watched.removeValue(forKey: id) else { return }
         yield(.ended, from: watch, at: now)
     }
@@ -244,6 +180,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
                 workspace: watch.workspace,
                 parent: watch.parent,
                 kind: watch.kind,
+                name: watch.name,
                 timestamp: now,
                 confidence: .inferred))
     }

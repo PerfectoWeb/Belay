@@ -23,6 +23,7 @@ struct SessionLedger {
                 workspace: signal.workspace,
                 parent: signal.parent,
                 kind: signal.kind,
+                name: signal.name,
                 firstSeen: min(signal.timestamp, now)
             )
         ].record(signal)

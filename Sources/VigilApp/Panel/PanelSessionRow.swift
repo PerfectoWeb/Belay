@@ -38,7 +38,7 @@ struct PanelSessionRow: View {
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text(session.workspace)
+                Text(session.title)
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
                     .lineLimit(1)
@@ -96,7 +96,7 @@ struct PanelSessionRow: View {
     private var accessibilityLabel: Text {
         let elapsed = ElapsedTime.spoken(Date().timeIntervalSince(session.since))
         let state = String(localized: session.rollup.panelLabel)
-        return Text("\(session.workspace), \(state), for \(elapsed)")
+        return Text("\(session.title), \(state), for \(elapsed)")
     }
 }
 

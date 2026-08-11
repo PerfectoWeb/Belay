@@ -26,6 +26,7 @@ let package = Package(
         .target(name: "VigilHookBridge", dependencies: ["VigilSupport", "VigilCore"]),
         .target(name: "VigilTipJar", dependencies: ["VigilSupport"]),
 
+        .testTarget(name: "VigilSupportTests", dependencies: ["VigilSupport"]),
         .testTarget(name: "VigilCoreTests", dependencies: ["VigilCore"]),
         .testTarget(name: "VigilPowerTests", dependencies: ["VigilPower"]),
         .testTarget(name: "VigilSettingsTests", dependencies: ["VigilSettings"]),

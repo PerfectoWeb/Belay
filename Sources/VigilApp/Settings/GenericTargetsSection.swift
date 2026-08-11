@@ -72,7 +72,12 @@ struct GenericTargetsSection: View {
             return
         }
         // The preset cannot know the path — the agent writes wherever you run it.
-        guard let folder = pickFolder(prompt: prompt) else { return }
+        pickFolder(prompt: prompt) { adopt(preset, folder: $0) }
+    }
+
+    /// Not private: the test for the folder-prompt path calls this instead of
+    /// driving a real open panel, which no test can do.
+    func adopt(_ preset: GenericPreset, folder: URL) {
         let watched = preset.target(folder: folder)
         // The same folder chosen twice is the same target, whatever the panel
         // said. Nothing is watched harder for being listed twice.
@@ -86,13 +91,44 @@ struct GenericTargetsSection: View {
         targets.removeAll { $0.id == target.id }
     }
 
-    private func pickFolder(prompt: String) -> URL? {
+    /// A sheet on the Settings window, never `runModal()`.
+    ///
+    /// This is reached from a `Menu` action, so a modal session would be nested
+    /// inside `NSMenu`'s own tracking loop: the main run loop stops for as long
+    /// as the user browses, which freezes the panel and leaves the menu bar icon
+    /// showing whatever state it was last drawn in — it can say "working" while
+    /// nothing is. The same nesting is a known way to get a picker that opens
+    /// unresponsive or behind its window, and in the sandboxed build the call is
+    /// a synchronous round trip to the open-and-save panel service, which on a
+    /// cold launch is a hard freeze rather than a stutter.
+    private func pickFolder(prompt: String, then adopt: @escaping (URL) -> Void) {
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
         panel.message = prompt
         panel.prompt = String(localized: "Watch")
-        return panel.runModal() == .OK ? panel.url : nil
+
+        let finish: (NSApplication.ModalResponse) -> Void = { response in
+            guard response == .OK, let url = panel.url else { return }
+            adopt(url)
+        }
+        // Every window-presenting path in this app activates first; without it
+        // the sheet arrives behind whatever the user was looking at.
+        NSApp.activate(ignoringOtherApps: true)
+        guard let window = Self.hostWindow else {
+            // No Settings window means no sheet to hang, which should not happen
+            // — but dropping the user's click silently would be worse.
+            panel.begin(completionHandler: finish)
+            return
+        }
+        panel.beginSheetModal(for: window, completionHandler: finish)
+    }
+
+    /// The window this section is hosted in. A SwiftUI view has no route to its
+    /// own `NSWindow`, and `SettingsWindow` already stamps an identifier for
+    /// exactly this kind of lookup.
+    static var hostWindow: NSWindow? {
+        NSApp.windows.first { $0.identifier == SettingsWindow.windowIdentifier }
     }
 }

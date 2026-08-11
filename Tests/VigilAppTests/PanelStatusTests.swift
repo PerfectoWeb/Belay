@@ -88,13 +88,15 @@ final class ModeLookTests: XCTestCase {
 @MainActor
 final class AppStateCallbackTests: XCTestCase {
     func testEveryCallbackTheUIOffersIsWiredByTheApp() throws {
-        // Assignments are split between the app's composition root and the
-        // controller, so both are searched rather than assuming which.
+        // Assignments are split between the app's composition root, the
+        // controller and `AppState.connect` — which exists so the window and the
+        // panel can be captured weakly in one place — so all three are searched
+        // rather than assuming which.
         let root = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent()
             .appendingPathComponent("Sources/VigilApp")
-        let wiring = try ["VigilApp.swift", "VigilController.swift"]
+        let wiring = try ["VigilApp.swift", "VigilController.swift", "AppState.swift"]
             .map { try String(contentsOf: root.appendingPathComponent($0), encoding: .utf8) }
             .joined()
 

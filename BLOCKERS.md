@@ -5,8 +5,10 @@ itself, with everything around them already built so that unblocking is a
 one-line change. Nothing here stops v1.0 from being complete as
 an ad-hoc-signed local build.
 
-B8 is the exception to both halves of that. It is unwritten code rather than a
-missing account, and it stops the Mac App Store build from doing its job at all.
+B8 was the exception to both halves of that — unwritten code rather than a
+missing account, and the one thing that stopped the Mac App Store build from
+doing its job at all. It is written now; what is left of it is a run inside a
+real sandbox, which no machine here can perform.
 
 ---
 
@@ -86,29 +88,54 @@ collides with a similar utility, the rename is a two-file change
 `Sources/VigilApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
 are in `docs/NAMING.md`.
 
-## B8 — The App Store build cannot read `~/.claude`
+## B8 — WRITTEN (2026-08-11), never run inside a real sandbox
 
-**Blocks:** any Mac App Store submission. Does not affect the direct build.
+**Was:** the App Store build could not read `~/.claude` at all. `FileAccessProvider`
+had one implementation, `DirectFileAccess`; nothing in the tree created or
+resolved a bookmark, and `FileAccessError.noBookmark` and `.bookmarkUnresolvable`
+were declared and never thrown. `Vigil-MAS` compiled, passed
+`scripts/verify-mas-build.sh`, and would have shown a reviewer an app that
+detects nothing.
 
-`FileAccessProvider` has exactly one implementation, `DirectFileAccess`, which
-calls `FileManager` straight. There is no `bookmarkData`, no
-`resolvingBookmarkData` and no `startAccessingSecurityScopedResource` anywhere
-in the tree; `FileAccessError.noBookmark` and `.bookmarkUnresolvable` are
-declared and never thrown. The seam was designed for this and never filled in.
+**Now:** `VigilSupport.BookmarkFileAccess` is the sandboxed implementation.
+`ClaudeFolderPanel` takes the grant through a standard `NSOpenPanel`,
+`BookmarkFileAccess.grant(_:)` encodes an app-scoped bookmark and saves it in
+`UserDefaults` under `VigilClaudeFolderBookmark`, and it is resolved on launch —
+a stale bookmark is re-encoded in place rather than dropped, because Foundation
+asking for a fresh encoding is housekeeping and not a revocation. `withAccess`
+brackets every read with start/stop, balanced on the throwing path, and
+`hasAccess` answers from what is actually resolved without granting anything.
+`ClaudeAccess` in the app target picks the implementation per channel, because
+`#if VIGIL_MAS` reaches the app and not a SwiftPM target (`PROJECT_STATE.md` D15).
+`VigilSupportTests` covers the round trip, the staleness rule, the balance on
+throw, and the honest "no grant" answers; `Tests/VigilAppTests/ClaudeAccessTests`
+proves the direct build still gets `DirectFileAccess`.
 
-So `Vigil-MAS` compiles, passes `scripts/verify-mas-build.sh`, and would be
-denied every read of `~/.claude` inside the sandbox. A reviewer would see an app
-that detects nothing. `docs/06`, `docs/09` M2 and `PROJECT_STATE.md` all describe
-the bookmark flow as if it exists.
+**What is still not proved, and cannot be proved here.** Every test above runs
+outside a sandbox, so what they exercise is the logic around Foundation's four
+bookmark calls, never those calls themselves: a process without
+`com.apple.security.files.bookmarks.app-scope` cannot make a scoped bookmark, and
+`startAccessingSecurityScopedResource()` answers `false` for any URL that did not
+come from a panel. The following need one run of a signed, provisioned `Vigil-MAS`
+on a real machine, and a rejection here is a rejection at App Review:
 
-**Needs:** an open panel that takes a security-scoped bookmark for
-`~/.claude`, persistence of that bookmark, and `withAccess(to:)` wrapping every
-read in start/stop accessing. Then B2 and the rest of the App Store work.
-`docs/APP-STORE.md` has the whole list in the order it has to happen.
+- The panel grant on the real `~/.claude`, and the same bookmark resolving after
+  a relaunch, a log out, and an OS update.
+- FSEvents delivering events for a scoped directory for as long as the standing
+  scope is held.
+- Whether the reads VigilProviders performs *outside* `withAccess` are permitted
+  by the standing scope. `ProcessPresence.scan` reads each session file with
+  `Data(contentsOf:)` after the bracket has closed, and `FileSnapshot` stats
+  transcripts with no bracket at all. The standing scope is what is expected to
+  cover both; if it does not, those two call sites have to move inside
+  `withAccess` and they are in a module this work did not own.
+- The `~/.claude/settings.json` write path (`VigilHookBridge`) under the grant. It
+  does not go through `FileAccessProvider` at all.
+- The generic provider's watched folders. They are outside the `~/.claude` grant,
+  so `BookmarkFileAccess` passes them through to the sandbox, which will refuse
+  them. Tier B in the MAS build needs a grant per folder, and that is not built.
 
-Unlike the other entries here, this one is not waiting on an account or a
-decision. It is unwritten code, and it is the only blocker on this page that
-makes a shipped build lie about what it does.
+`docs/APP-STORE.md` still has the rest of the submission list in order.
 
 ## B9 — One module test fails intermittently on CI and has not been identified
 

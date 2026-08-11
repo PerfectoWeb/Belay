@@ -30,6 +30,9 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     public var parent: SessionID?
     /// The agent's configured type, for display. Never its instructions.
     public var kind: String?
+    /// The agent's own name for this session, for display. The UI shows it only
+    /// when it has to — see `SessionRow.disambiguate`.
+    public var name: String?
     public var exact: Reading?
     public var inferred: Reading?
 
@@ -46,6 +49,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         workspace: String?,
         parent: SessionID? = nil,
         kind: String? = nil,
+        name: String? = nil,
         firstSeen: Date
     ) {
         self.id = id
@@ -53,6 +57,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         self.workspace = workspace
         self.parent = parent
         self.kind = kind
+        self.name = name
         self.firstSeen = firstSeen
     }
 
@@ -85,6 +90,10 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         // simply lost track of it must not orphan the session in the list.
         if parent == nil { parent = signal.parent }
         if kind == nil { kind = signal.kind }
+        // Tier C learns the name a sweep or two after the transcript watcher has
+        // already reported the session, so this arrives late and must not be
+        // dropped — but it never changes once known.
+        if name == nil { name = signal.name }
     }
 
     /// The fusion rule from docs/03, evaluated against `now`.

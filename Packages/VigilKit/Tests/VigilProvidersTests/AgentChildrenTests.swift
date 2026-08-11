@@ -20,10 +20,11 @@ struct AgentChildrenTests {
     }
 
     /// Risk R6, caught in the wild: a session whose last transcript record was
-    /// `end_turn` eight minutes earlier still had a live `/bin/zsh` child — the
-    /// build it had backgrounded and was waiting on. Declaring that idle lets the
-    /// Mac sleep out from under a job that is still running.
-    @Test("A quiet session with a running child keeps reporting work")
+    /// `end_turn` still had a live `/bin/zsh` child — the build it had
+    /// backgrounded and was waiting on. Declaring that idle lets the Mac sleep
+    /// out from under a job that is still running. (What counts as "running" is
+    /// now bounded by age; see `onlyRecentlyStartedChildrenCount`.)
+    @Test("A quiet session with a recently started child keeps reporting work")
     func busyChildKeepsSessionAwake() async {
         let start = Date()
         let url = scratch.transcript(
@@ -39,7 +40,7 @@ struct AgentChildrenTests {
 
         // The child is the only thing that knows the work continues.
         await provider.sweepForDeadProcesses(
-            now: start.addingTimeInterval(610), isAlive: { _ in true }, busyPids: { _ in [9001] })
+            now: start.addingTimeInterval(610), isAlive: { _ in true }, busyPids: { _, _, _ in [9001] })
         #expect(await collector.wait(for: 2).map(\.activity) == [.idle, .working])
         await collector.stop()
     }
@@ -61,7 +62,7 @@ struct AgentChildrenTests {
         for tick in 1...6 {
             await provider.sweepForDeadProcesses(
                 now: start.addingTimeInterval(600 + Double(tick) * 15),
-                isAlive: { _ in true }, busyPids: { _ in [] })
+                isAlive: { _ in true }, busyPids: { _, _, _ in [] })
         }
         #expect(await collector.settle().map(\.activity) == [.idle])
         await collector.stop()
@@ -81,9 +82,54 @@ struct AgentChildrenTests {
         #expect(await collector.settle().map(\.activity) == [.idle])
 
         await provider.sweepForDeadProcesses(
-            now: start.addingTimeInterval(615), isAlive: { _ in true }, busyPids: { _ in nil })
+            now: start.addingTimeInterval(615), isAlive: { _ in true }, busyPids: { _, _, _ in nil })
         #expect(await collector.settle().map(\.activity) == [.idle])
         await collector.stop()
     }
 
+    /// The bound itself, against the real process table. Without it the second
+    /// answer is the same as the first for as long as the child lives, which is
+    /// how an MCP server or a backgrounded dev server pins the Mac awake next to
+    /// an idle agent until the max-duration cap trips.
+    @Test("Only recently started children count as work")
+    func onlyRecentlyStartedChildrenCount() throws {
+        let child = Process()
+        child.executableURL = URL(fileURLWithPath: "/bin/sleep")
+        child.arguments = ["30"]
+        try child.run()
+        defer {
+            child.terminate()
+            child.waitUntilExit()
+        }
+
+        let now = Date()
+        let me = getpid()
+        #expect(AgentChildren.busy(among: [me], youngerThan: 60, now: now)?.contains(me) == true)
+        // The same child, one horizon later: still alive, no longer evidence.
+        #expect(AgentChildren.busy(among: [me], youngerThan: 45, now: now.addingTimeInterval(600)) == [])
+    }
+
+    /// The wiring: the sweep has to hand the probe its own idle horizon and its
+    /// own clock, or the bound above is computed against the wrong numbers. The
+    /// probe answers "busy" only when given both, so a `.working` here is proof.
+    @Test("The sweep bounds the child probe by inferredIdleAfter")
+    func sweepPassesTheIdleHorizon() async {
+        let start = Date()
+        let url = scratch.transcript(
+            "wired", lines: [TranscriptScratch.record("assistant", stop: "end_turn")])
+        scratch.processFile(pid: 9004, session: "wired", cwd: "/Volumes/Work/Wired")
+        let provider = self.provider()
+        let collector = await self.collector(on: provider)
+        await provider.ingest(url, now: start)
+        await provider.sweepForIdle(now: start.addingTimeInterval(600))
+        #expect(await collector.settle().map(\.activity) == [.idle])
+
+        let swept = start.addingTimeInterval(610)
+        let horizon = scratch.configuration.inferredIdleAfter
+        await provider.sweepForDeadProcesses(
+            now: swept, isAlive: { _ in true },
+            busyPids: { pids, maxAge, now in maxAge == horizon && now == swept ? pids : [] })
+        #expect(await collector.wait(for: 2).map(\.activity) == [.idle, .working])
+        await collector.stop()
+    }
 }

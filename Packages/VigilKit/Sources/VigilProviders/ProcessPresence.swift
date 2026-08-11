@@ -8,6 +8,10 @@ struct AgentProcessRecord: Sendable, Equatable {
     let session: SessionID
     /// Last path component of the session's `cwd`, for display only.
     let workspace: String?
+    /// The per-session name Claude Code writes into the sidecar (`vigil-9a`).
+    /// Two sessions in one checkout share a workspace, so this is the only thing
+    /// that tells their rows apart. Display only, and only when it is needed.
+    let name: String?
     let isAlive: Bool
 }
 
@@ -42,6 +46,7 @@ enum ProcessPresence {
                 pid: wire.pid,
                 session: SessionID(wire.sessionId),
                 workspace: wire.cwd.map { URL(fileURLWithPath: $0).lastPathComponent },
+                name: wire.name.flatMap { $0.isEmpty ? nil : $0 },
                 isAlive: isAlive(wire.pid))
         }
     }
@@ -59,4 +64,5 @@ private struct SessionFile: Decodable {
     let pid: pid_t
     let sessionId: String
     let cwd: String?
+    let name: String?
 }

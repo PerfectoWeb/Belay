@@ -1,6 +1,19 @@
 import Foundation
 import VigilSupport
 
+/// The slice of `ActivityCoordinator` the driver actually uses.
+///
+/// It buys one thing the concrete actor cannot: a coordinator that *suspends*
+/// inside `nextDeadline`. The real one never does, so the window this file
+/// guards — deadline read, actor released, sleeper not yet installed — is
+/// unreachable from a test that drives the real coordinator.
+public protocol DrivableCoordinator: Sendable {
+    var nextDeadline: Date? { get async }
+    @discardableResult func evaluate() async -> AwakeDecision
+}
+
+extension ActivityCoordinator: DrivableCoordinator {}
+
 /// Calls `ActivityCoordinator.evaluate()` as time passes, and nothing else.
 ///
 /// The coordinator deliberately owns no timer so it stays a pure function of its
@@ -12,12 +25,16 @@ public actor CoordinatorDriver {
     /// and bounds the damage if a deadline is ever miscomputed.
     private static let idleInterval: TimeInterval = 60
 
-    private let coordinator: ActivityCoordinator
+    private let coordinator: any DrivableCoordinator
     private let clock: Clock
     private var loop: Task<Void, Never>?
     private var sleeper: Task<Void, Error>?
+    /// Bumped by every nudge. `waitForNextDeadline` stamps it before reading the
+    /// deadline and checks it after, which is what makes a nudge that lands in
+    /// that gap a wake-up rather than a lost signal.
+    private var generation: UInt64 = 0
 
-    public init(coordinator: ActivityCoordinator, clock: Clock = SystemClock()) {
+    public init(coordinator: any DrivableCoordinator, clock: Clock = SystemClock()) {
         self.coordinator = coordinator
         self.clock = clock
     }
@@ -39,6 +56,7 @@ public actor CoordinatorDriver {
     /// — which delays a release by up to `idleInterval`. The grace period is
     /// user-visible, so it must not depend on when the last nap happened to start.
     public func nudge() {
+        generation &+= 1
         sleeper?.cancel()
     }
 
@@ -50,7 +68,13 @@ public actor CoordinatorDriver {
     }
 
     private func waitForNextDeadline() async {
+        let stamp = generation
         let deadline = await coordinator.nextDeadline
+        // Reading the deadline releases the actor, so a nudge can land here —
+        // cancelling a sleeper that does not exist yet. Returning lets the loop
+        // evaluate immediately, which is the whole point of a nudge; without it
+        // the signal waits out a fresh nap of up to `idleInterval`.
+        guard stamp == generation else { return }
         let cap = clock.now.addingTimeInterval(Self.idleInterval)
         let wake = min(deadline ?? cap, cap)
 
