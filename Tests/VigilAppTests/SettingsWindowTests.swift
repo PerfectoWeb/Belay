@@ -10,7 +10,7 @@ import XCTest
 /// so both the button and Cmd+, were silently inert. These tests exist so that
 /// cannot happen again without a red test.
 ///
-/// They deliberately assert on the window and its toolbar rather than on the
+/// They deliberately assert on the window and its switcher rather than on the
 /// SwiftUI hierarchy: the test host's accessibility tree for a hosted SwiftUI
 /// view comes back empty, so anything read from it would prove nothing.
 @MainActor
@@ -75,26 +75,42 @@ final class SettingsWindowTests: XCTestCase {
         settings.close()
     }
 
-    /// The toolbar is the switcher. If an item goes missing, or a pane stops
-    /// being selectable, the pane becomes unreachable.
-    func testToolbarCarriesEveryPane() throws {
+    /// The strip in the titlebar is the switcher, and it is the only way to
+    /// reach a pane. If it stops being installed, every pane but the first
+    /// becomes unreachable and the window still looks fine.
+    func testTheSwitcherIsInstalledAndCarriesEveryPane() throws {
         let settings = try makeWindow()
         settings.show()
-        let toolbar = try XCTUnwrap(settings.window?.toolbar)
-        let expected = SettingsPane.allCases.map(\.itemIdentifier)
+        let window = try XCTUnwrap(settings.window)
 
-        XCTAssertEqual(toolbar.items.map(\.itemIdentifier), expected)
-        XCTAssertEqual(settings.toolbarSelectableItemIdentifiers(toolbar), expected)
-        XCTAssertEqual(toolbar.displayMode, .iconAndLabel)
-        XCTAssertEqual(settings.window?.toolbarStyle, .preference)
-        for item in toolbar.items {
-            XCTAssertNotNil(item.image, "\(item.itemIdentifier) has no icon")
-            XCTAssertFalse(item.label.isEmpty, "\(item.itemIdentifier) has no label")
+        XCTAssertEqual(window.titlebarAccessoryViewControllers.count, 1, "no switcher")
+        let strip = try XCTUnwrap(window.titlebarAccessoryViewControllers.first)
+        XCTAssertEqual(strip.layoutAttribute, .bottom, "the switcher is not under the title")
+        XCTAssertGreaterThan(strip.view.fittingSize.height, 30, "the switcher has no height")
+        XCTAssertGreaterThan(strip.view.fittingSize.width, 0, "the switcher has no width")
+
+        for pane in SettingsPane.allCases {
+            XCTAssertFalse(pane.title.isEmpty, "\(pane) has no label")
+            XCTAssertNotNil(
+                NSImage(systemSymbolName: pane.symbol, accessibilityDescription: nil),
+                "\(pane) has no icon")
         }
         settings.close()
     }
 
-    /// Selecting a pane has to change three things together: the toolbar
+    /// The switcher asks; the window decides. A tap that changed only the
+    /// strip's own state would move the highlight and leave the pane behind.
+    func testTappingTheSwitcherChangesThePane() throws {
+        let settings = try makeWindow()
+        settings.show()
+
+        settings.tabs.select(.behaviour)
+        XCTAssertEqual(settings.pane, .behaviour, "the strip moved but the window did not")
+        XCTAssertEqual(settings.window?.title, SettingsPane.behaviour.title)
+        settings.close()
+    }
+
+    /// Selecting a pane has to change three things together: the switcher's
     /// selection, the window title, and the window height.
     func testSelectingEachPaneRetitlesAndResizesTheWindow() throws {
         let settings = try makeWindow()
@@ -104,7 +120,7 @@ final class SettingsWindowTests: XCTestCase {
         for pane in SettingsPane.allCases {
             settings.select(pane, animated: false)
             XCTAssertEqual(window.title, pane.title)
-            XCTAssertEqual(window.toolbar?.selectedItemIdentifier, pane.itemIdentifier)
+            XCTAssertEqual(settings.tabs.pane, pane)
             XCTAssertEqual(window.contentView?.frame.width, SettingsPane.width)
             XCTAssertGreaterThanOrEqual(
                 window.contentView?.frame.height ?? 0, 160,
@@ -151,6 +167,20 @@ final class SettingsWindowTests: XCTestCase {
             window.standardWindowButton(.miniaturizeButton).map { $0.isEnabled ? "enabled" : nil } ?? nil,
             "the minimise button is still live")
         settings.close()
+    }
+
+    /// The stretch is the whole point of drawing the highlight ourselves: the
+    /// edge in front sets off first and the one behind follows a beat later. Get
+    /// this backwards and the pill squashes into its direction of travel, which
+    /// reads as a bug rather than as weight.
+    func testTheHighlightStretchesIntoItsTravel() {
+        let rightwards = SettingsTabStrip.delays(forward: true)
+        XCTAssertEqual(rightwards.trailing, 0, "the leading edge did not set off first")
+        XCTAssertGreaterThan(rightwards.leading, 0, "both edges travel together")
+
+        let leftwards = SettingsTabStrip.delays(forward: false)
+        XCTAssertEqual(leftwards.leading, 0, "the leading edge did not set off first")
+        XCTAssertGreaterThan(leftwards.trailing, 0, "both edges travel together")
     }
 
     func testCloseIsSafeWhenNothingIsOpen() throws {

@@ -1,9 +1,8 @@
-import AppKit
 import Foundation
 
 /// One pane of the Settings window.
 ///
-/// The window's toolbar is built from these cases, so adding a pane is one case
+/// The window's switcher is built from these cases, so adding a pane is one case
 /// here plus one branch in `SettingsView`.
 enum SettingsPane: String, CaseIterable, Identifiable {
     case general
@@ -13,16 +12,15 @@ enum SettingsPane: String, CaseIterable, Identifiable {
     case statistics
     case about
 
-    /// Fixed, and deliberately generous: six icon-and-label toolbar items have
-    /// to fit without AppKit folding any of them into a "more toolbar items"
-    /// chevron, which is what made the previous switcher unusable.
+    /// Fixed, and deliberately generous: six icon-and-label items have to fit on
+    /// one row with room to spare, in every language.
     static let width: CGFloat = 700
 
     var id: String { rawValue }
 
-    /// Shown in the toolbar and as the window title, both of which take a plain
-    /// `String`, so these do not localise themselves the way a SwiftUI `Text`
-    /// would and have to say so.
+    /// Shown in the switcher and as the window title. The title takes a plain
+    /// `String`, so this does not localise itself the way a SwiftUI `Text` would
+    /// and has to say so.
     var title: String {
         switch self {
         case .general: return String(localized: "General")
@@ -57,16 +55,5 @@ enum SettingsPane: String, CaseIterable, Identifiable {
         case .statistics: return 380
         case .about: return 360
         }
-    }
-
-    var itemIdentifier: NSToolbarItem.Identifier {
-        NSToolbarItem.Identifier("vigil.settings.pane.\(rawValue)")
-    }
-
-    init?(itemIdentifier: NSToolbarItem.Identifier) {
-        guard let match = Self.allCases.first(where: { $0.itemIdentifier == itemIdentifier }) else {
-            return nil
-        }
-        self = match
     }
 }

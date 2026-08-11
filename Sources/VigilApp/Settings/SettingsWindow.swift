@@ -12,11 +12,13 @@ import VigilSettings
 /// ends up responding to `showSettingsWindow:`. Owning an `NSWindow` is the same
 /// pattern `OnboardingWindow` already uses, and it can be tested.
 ///
-/// The pane switcher is a real `NSToolbar` in `.preference` style: icon over
-/// label, one item per pane, window title following the selection, window height
-/// animating to the pane. That is the Mail and Pixelmator shape, and unlike a
-/// SwiftUI `TabView` it cannot collapse into an overflow chevron or resize the
-/// window behind our back.
+/// The pane switcher is `SettingsTabStrip` in a titlebar accessory, which gives
+/// the preferences shape — icon over label, window title following the
+/// selection, window height animating to the pane — while leaving the selection
+/// highlight ours to draw. It was an `NSToolbar` in `.preference` style until the
+/// highlight needed to move rather than cut. Unlike a SwiftUI `TabView`, neither
+/// version can collapse into an overflow chevron or resize the window behind our
+/// back.
 @MainActor
 final class SettingsWindow: NSObject {
     private(set) var window: NSWindow?
@@ -43,6 +45,9 @@ final class SettingsWindow: NSObject {
     private var isFrontmost = false
     var isRefreshingForTesting: Bool { refreshTimer?.isValid == true }
     let updates = ReleaseChecker()
+    /// The switcher's view of the selection. The window stays the one place that
+    /// decides; this only mirrors it and asks.
+    let tabs = SettingsTabModel(pane: .general)
 
     init(
         settings: SettingsStore,
@@ -99,8 +104,7 @@ final class SettingsWindow: NSObject {
         window.contentViewController = hosting
         window.isReleasedWhenClosed = false
         window.delegate = self
-        window.toolbarStyle = .preference
-        window.toolbar = makeToolbar()
+        window.addTitlebarAccessoryViewController(makeSwitcher())
         self.window = window
         self.hosting = hosting
 
@@ -115,7 +119,7 @@ final class SettingsWindow: NSObject {
         guard let window, let hosting else { return }
         hosting.rootView = view(for: pane)
         window.title = pane.title
-        window.toolbar?.selectedItemIdentifier = pane.itemIdentifier
+        tabs.pane = pane
         resize(window, to: height(for: pane), animated: animated)
         retimeRefresh()
     }
@@ -145,13 +149,18 @@ final class SettingsWindow: NSObject {
         refreshTimer = timer
     }
 
-    private func makeToolbar() -> NSToolbar {
-        let toolbar = NSToolbar(identifier: "vigil.settings.toolbar")
-        toolbar.delegate = self
-        toolbar.displayMode = .iconAndLabel
-        toolbar.allowsUserCustomization = false
-        toolbar.autosavesConfiguration = false
-        return toolbar
+    /// Below the title bar, full width, with the system's own separator under
+    /// it: the accessory is what makes a drawn switcher sit where a preferences
+    /// toolbar sits instead of looking like a strip bolted onto the content.
+    private func makeSwitcher() -> NSTitlebarAccessoryViewController {
+        tabs.pane = pane
+        tabs.onSelect = { [weak self] pane in self?.select(pane) }
+        let controller = NSTitlebarAccessoryViewController()
+        controller.layoutAttribute = .bottom
+        let hosting = NSHostingView(rootView: SettingsTabStrip(model: tabs))
+        hosting.frame.size = hosting.fittingSize
+        controller.view = hosting
+        return controller
     }
 
     private func view(for pane: SettingsPane) -> SettingsView {
@@ -185,7 +194,7 @@ final class SettingsWindow: NSObject {
         return min(max(fitting, 160), ceiling)
     }
 
-    /// Grows downwards so the toolbar stays put while the window changes size,
+    /// Grows downwards so the switcher stays put while the window changes size,
     /// which is what makes the animation read as the pane changing rather than
     /// the window jumping.
     private func resize(_ window: NSWindow, to height: CGFloat, animated: Bool) {

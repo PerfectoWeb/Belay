@@ -4,12 +4,13 @@ import VigilSettings
 
 /// One pane of the Settings window, rendered on its own.
 ///
-/// There is no switcher in here on purpose. `SettingsWindow` owns an `NSToolbar`
-/// and swaps this view's `pane` when the selection changes. SwiftUI's `TabView`
-/// renders its tabs into the window toolbar on macOS 26 and folds them into a
-/// "more toolbar items" chevron whenever it decides they do not fit — it decided
-/// that at every width tried, while also overriding the window size set on the
-/// hosting controller. An `NSToolbar` cannot do either of those things to us.
+/// There is no switcher in here on purpose. `SettingsWindow` owns the strip in
+/// the titlebar and swaps this view's `pane` when the selection changes.
+/// SwiftUI's `TabView` renders its tabs into the window toolbar on macOS 26 and
+/// folds them into a "more toolbar items" chevron whenever it decides they do
+/// not fit — it decided that at every width tried, while also overriding the
+/// window size set on the hosting controller. A strip we lay out ourselves
+/// cannot do either of those things to us.
 struct SettingsView: View {
     var pane: SettingsPane = .general
     @Bindable var settings: SettingsStore
