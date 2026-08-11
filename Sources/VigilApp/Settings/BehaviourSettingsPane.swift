@@ -16,10 +16,14 @@ struct BehaviourSettingsPane: View {
                         awake a minute too long.
                         """
                 ) {
-                    Picker("", selection: $settings.gracePeriod) {
+                    // An empty label, not a label that happens to be an
+                    // empty string: the latter asks the catalogue for "".
+                    Picker(selection: $settings.gracePeriod) {
                         ForEach(SettingsPresets.gracePeriods, id: \.self) { seconds in
                             Text(ElapsedTime.compact(seconds)).tag(seconds)
                         }
+                    } label: {
+                        EmptyView()
                     }
                     .labelsHidden()
                     .frame(maxWidth: SettingsMetrics.controlWidth, alignment: .leading)
@@ -34,11 +38,13 @@ struct BehaviourSettingsPane: View {
                     title: "Maximum time awake",
                     explanation: "A backstop. Vigil stops holding after this and tells you why."
                 ) {
-                    Picker("", selection: $settings.maxContinuousAwake) {
+                    Picker(selection: $settings.maxContinuousAwake) {
                         ForEach(SettingsPresets.maxContinuousAwake, id: \.self) { limit in
                             Text(limit.map(ElapsedTime.compact) ?? String(localized: "Until turned off")).tag(
                                 limit)
                         }
+                    } label: {
+                        EmptyView()
                     }
                     .labelsHidden()
                     .frame(maxWidth: SettingsMetrics.controlWidth, alignment: .leading)

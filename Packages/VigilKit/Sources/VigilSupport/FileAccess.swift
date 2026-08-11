@@ -32,14 +32,23 @@ public enum FileAccessError: LocalizedError, Equatable {
     case bookmarkUnresolvable(URL)
     case accessDenied(URL)
 
+    /// Localised against the app bundle, like everything else in VigilKit that
+    /// can reach a person: this text lands in the panel's warning row, and an
+    /// English sentence in an otherwise Russian window is the bug.
     public var errorDescription: String? {
         switch self {
         case .noBookmark(let url):
-            return "Vigil has not been granted access to \(url.lastPathComponent) yet."
+            return String(
+                localized: "Vigil has not been granted access to \(url.lastPathComponent) yet.",
+                bundle: .main)
         case .bookmarkUnresolvable(let url):
-            return "Vigil's saved permission for \(url.lastPathComponent) is no longer valid."
+            return String(
+                localized:
+                    "Vigil's saved permission for \(url.lastPathComponent) is no longer valid.",
+                bundle: .main)
         case .accessDenied(let url):
-            return "macOS denied Vigil access to \(url.lastPathComponent)."
+            return String(
+                localized: "macOS denied Vigil access to \(url.lastPathComponent).", bundle: .main)
         }
     }
 }

@@ -1,0 +1,231 @@
+﻿key,screen,status,placeholders,source,translation
+%@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,Statistics,translated,%@ %lld %@,%@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,%@ ha vigilado %lld ejecuciones de agentes en mi Mac y lo ha mantenido despierto %@ de ellas.
+"%@ held, %@ away",Statistics,translated,%@ %@,"%@ held, %@ away","%@ mantenido, %@ ausente"
+"%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,"%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",%@ mantuvo mi Mac despierto %@ mientras yo no estaba y salvó %lld ejecuciones de agente que habrían muerto al dormirse el Mac.
+"%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@,"%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep.",%@ mantuvo mi Mac despierto %@ mientras yo no estaba y salvó 1 ejecución de agente que habría muerto al dormirse el Mac.
+%@ panel,Panel,translated,%@,%@ panel,panel de %@
+%@ · %@,"App, Panel",translated,%@ %@,%@ · %@,%@ · %@
+%@ · %lld agents,Panel,translated,%@ %lld,%@ · %lld agents,%@ · %lld agentes
+%@ · 1 agent,Panel,translated,%@,%@ · 1 agent,%@ · 1 agente
+"%@, %@",Panel,translated,%@ %@,"%@, %@","%@, %@"
+"%@, %@, for %@",Panel,translated,%@ %@ %@,"%@, %@, for %@","%@, %@, desde hace %@"
+%lld hours,Panel,translated,%lld,%lld hours,%lld horas
+%lld hours %lld minutes,Panel,translated,%lld %lld,%lld hours %lld minutes,%lld horas %lld minutos
+%lld minutes,Panel,translated,%lld,%lld minutes,%lld minutos
+%lld more,Panel,translated,%lld,%lld more,%lld más
+%lld seconds,Panel,translated,%lld,%lld seconds,%lld segundos
+"%lld sessions in total, including subagents",Panel,translated,%lld,"%lld sessions in total, including subagents","%lld sesiones en total, incluidos los subagentes"
+%lld subagents,Panel,translated,%lld,%lld subagents,%lld subagentes
+%lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lldd %@h
+%lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lldh %@min
+%lldm,Panel,translated,%lld,%lldm,%lldmin
+%llds,Panel,translated,%lld,%llds,%llds
+A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviour,translated,,A backstop. Vigil stops holding after this and tells you why.,Un tope de seguridad. Después Vigil deja de mantener y te dice por qué.
+A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Que una carpeta cambie significa que hay trabajo. Que un proceso esté vivo nunca cuenta como trabajo por sí solo: solo le dice a Vigil que la sesión terminó cuando desaparece.
+"A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.","Primero se crea una copia con marca de tiempo. Todo lo que ya está en el archivo se conserva, y «Quitar» lo devuelve exactamente."
+About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers",translated,,About,Acerca de
+About %@,Menu bar,translated,%@,About %@,Acerca de %@
+Active sessions,Panel,translated,,Active sessions,Sesiones activas
+"Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,"Add a folder to watch, or pick a preset, to cover another agent.","Añade una carpeta que observar, o elige un preajuste, para cubrir otro agente."
+Add a tool to watch,Settings: Providers,translated,,Add a tool to watch,Añadir una herramienta
+Add a tool…,Settings: Providers,translated,,Add a tool…,Añadir herramienta…
+Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Añadir a Claude Code
+All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,Todos los nombres de producto y logotipos son marcas de sus propietarios.
+Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,Mantener también la pantalla encendida
+Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always on,Siempre activo
+An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Un agente te está esperando
+An agent is waiting for you. Vigil is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Vigil is keeping your Mac awake.,Un agente te espera. Vigil mantiene el Mac despierto.
+"An agent is working, so sleep is on hold.",Panel,translated,,"An agent is working, so sleep is on hold.","Un agente está trabajando, así que el reposo está en pausa."
+An agent is working. Your Mac will be free to sleep as soon as Vigil quits.,Menu bar,translated,,An agent is working. Your Mac will be free to sleep as soon as Vigil quits.,"Un agente está trabajando. En cuanto Vigil se cierre, el Mac podrá dormir."
+Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,Automático
+Awake %@ so far,Panel,translated,%@,Awake %@ so far,Despierto %@ hasta ahora
+Awake mode,Panel,translated,,Awake mode,Modo de vigilia
+Awake only while an agent is working.,Panel,translated,,Awake only while an agent is working.,Despierto solo mientras un agente trabaja.
+Awake until you switch it off.,Panel,translated,,Awake until you switch it off.,Despierto hasta que lo desactives.
+"Battery is at %lld%%, so Vigil stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,"Battery is at %lld%%, so Vigil stopped keeping your Mac awake.","La batería está al %lld%%, así que Vigil dejó de mantener el Mac despierto."
+Behaviour,"Settings, Settings: Behaviour",translated,,Behaviour,Comportamiento
+"Below %lld%% on battery, Vigil stops holding.",Settings: Behaviour,translated,%lld,"Below %lld%% on battery, Vigil stops holding.","Por debajo del %lld%% de batería, Vigil deja de mantener."
+Buy me a coffee,Settings: About,translated,,Buy me a coffee,Invítame un café
+Cancel,"App, Detection, Menu bar, Settings: Providers",translated,,Cancel,Cancelar
+Check Now,Settings: General,translated,,Check Now,Comprobar ahora
+Check for updates automatically,Settings: General,translated,,Check for updates automatically,Buscar actualizaciones automáticamente
+Checking…,Settings: General,translated,,Checking…,Comprobando…
+Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
+Copied,Statistics,translated,,Copied,Copiado
+Copies the card image and the summary text together,Statistics,translated,,Copies the card image and the summary text together,Copia la imagen y el texto del resumen juntos
+Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,Copiar
+Copy card and link,Statistics,translated,,Copy card and link,Copiar tarjeta y enlace
+Detection health,Settings: Providers,translated,,Detection health,Estado de la detección
+Donate,Settings: About,translated,,Donate,Donar
+Done,Settings: Providers,translated,,Done,Listo
+Download…,Settings: General,translated,,Download…,Descargar…
+Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activar detección precisa
+Enable…,Settings: Providers,translated,,Enable…,Activar…
+Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Terminado
+Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corregir
+Free,Settings: About,translated,,Free,Gratis
+General,"Settings, Settings: General",translated,,General,General
+GitHub,"App, Settings: About, Settings: General",translated,,GitHub,GitHub
+GitHub answered %lld.,Settings: General,translated,%lld,GitHub answered %lld.,GitHub respondió %lld.
+Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Conceder acceso a ~/.claude
+Holding on a little longer in case more work arrives.,Panel,translated,,Holding on a little longer in case more work arrives.,Se mantiene un poco más por si llega más trabajo.
+How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Cuánto sigue manteniendo Vigil después de que tu agente calle. Más largo es más seguro: dormirse a mitad de tarea cuesta mucho más que estar despierto un minuto de más.
+Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
+It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer from you before it can carry on.,Necesita tu respuesta para continuar.
+Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Manteniendo el Mac despierto
+Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake exactly as long as your agent is working.,Mantiene el Mac despierto exactamente mientras tu agente trabaja.
+Kept awake for %@ since Vigil started,Panel,translated,%@,Kept awake for %@ since Vigil started,Despierto %@ desde que se inició Vigil
+LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,ÚLTIMOS 14 DÍAS
+Language,Settings: General,translated,,Language,Idioma
+Let Vigil read %@ so it can see that agent work.,Settings: Providers,needs_review,%@,Let Vigil read %@ so it can see that agent work.,Deja que Vigil lea %@ para que pueda ver el trabajo de ese agente.
+Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.,Permite a Vigil leer tu carpeta ~/.claude para que sepa cuándo trabaja Claude Code.
+"Lets Claude Code tell Vigil exactly when it starts and stops, instead of Vigil inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Vigil exactly when it starts and stops, instead of Vigil inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.","Permite que Claude Code le diga a Vigil exactamente cuándo empieza y termina, en vez de que Vigil lo deduzca de los archivos. Esto es lo que hace fiable «un agente te está esperando»."
+Local only,Settings: About,translated,,Local only,Solo local
+"Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,"Low battery, or the maximum awake time was reached.",Batería baja o se alcanzó el tiempo máximo despierto.
+Maximum time awake,Settings: Behaviour,translated,,Maximum time awake,Tiempo máximo despierto
+Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics",translated,,Mode,Modo
+Never checked.,Settings: General,translated,,Never checked.,Nunca comprobado.
+Never hold sleep.,Panel,translated,,Never hold sleep.,Nunca retener el reposo.
+No active sessions.,Panel,translated,,No active sessions.,No hay sesiones activas.
+No ads,Settings: About,translated,,No ads,Sin anuncios
+No providers available.,Settings: Providers,translated,,No providers available.,No hay proveedores disponibles.
+No release feed is configured.,Settings: General,translated,,No release feed is configured.,No hay un feed de versiones configurado.
+No releases have been published yet.,Settings: General,translated,,No releases have been published yet.,Todavía no se ha publicado ninguna versión.
+No tracking,Settings: About,translated,,No tracking,Sin rastreo
+Nothing configured. Vigil is watching Claude Code only.,Settings: Providers,translated,,Nothing configured. Vigil is watching Claude Code only.,Nada configurado. Vigil solo observa Claude Code.
+Nothing here ever leaves this Mac.,Statistics,translated,,Nothing here ever leaves this Mac.,Nada de esto sale nunca de este Mac.
+Nothing to show yet,Statistics,translated,,Nothing to show yet,Todavía no hay nada que mostrar
+Notifications,"Settings, Settings: Notifications",translated,,Notifications,Notificaciones
+Notify me,Settings: Notifications,translated,,Notify me,Avisarme
+Notify when Vigil stops for safety,Settings: Notifications,translated,,Notify when Vigil stops for safety,Avisar cuando Vigil se detenga por seguridad
+Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,Avisar cuando termine una tarea larga
+Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,Avisar cuando un agente te necesite
+Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,Los números se quedan en este Mac salvo que los compartas.
+Off,"App, Menu bar, Panel, Settings: General, Settings: Providers, Welcome",translated,,Off,Desactivado
+Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Desactivado por defecto. Vigil mantiene el Mac en marcha mientras tu agente trabaja; dejar dormir la pantalla ahorra energía real y no cambia nada más.
+"Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.",Statistics,translated,,"Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.","Cuando Vigil haya mantenido el Mac despierto durante una ejecución, aquí verás lo que valió: cuánto siguió trabajando mientras no estabas y cuántas ejecuciones habrían muerto al dormirse el Mac."
+"Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,"Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.","Una vez al día, Vigil pregunta a GitHub si existe una versión más nueva. Es la única vez que Vigil usa la red, no envía nada sobre ti y nunca instala nada por su cuenta."
+Only for runs longer than %@.,Settings: Notifications,translated,%@,Only for runs longer than %@.,Solo para ejecuciones de más de %@.
+Open Login Items…,Settings: General,translated,,Open Login Items…,Abrir Ítems de inicio…
+Open Settings,Panel,translated,,Open Settings,Abrir Ajustes
+Open Vigil at login,Settings: General,translated,,Open Vigil at login,Abrir Vigil al iniciar sesión
+Open at login,"Settings, Settings: General",translated,,Open at login,Abrir al iniciar sesión
+Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS panel so you can approve the folder,Abre un panel estándar de macOS para que autorices la carpeta
+Other agents,"App, Settings: Providers",translated,,Other agents,Otros agentes
+Other tools,Settings: Providers,translated,,Other tools,Otras herramientas
+Precise detection,Settings: Providers,translated,,Precise detection,Detección precisa
+Providers,"App, Detection, Settings, Settings: Providers",translated,,Providers,Proveedores
+Quit,"Menu bar, Settings: General",translated,,Quit,Salir
+Quit %@,Menu bar,translated,%@,Quit %@,Salir de %@
+Quit %@?,Menu bar,translated,%@,Quit %@?,¿Salir de %@?
+Quit Vigil and open it again to change language.,Settings: General,translated,,Quit Vigil and open it again to change language.,Cierra Vigil y ábrelo de nuevo para cambiar de idioma.
+Quit and Reopen,Settings: General,translated,,Quit and Reopen,Salir y volver a abrir
+Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Listo
+Remove,Settings: Providers,translated,,Remove,Quitar
+Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
+Removes Vigil's entries from your Claude Code settings,Settings: Providers,translated,,Removes Vigil's entries from your Claude Code settings,Elimina las entradas de Vigil de tus ajustes de Claude Code
+Report a bug,Settings: About,translated,,Report a bug,Informar de un error
+Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Welcome",translated,,Settings,Ajustes
+Settings…,Menu bar,translated,,Settings…,Ajustes…
+Share,Statistics,translated,,Share,Compartir
+"Shares a card, a summary and a link to Vigil",Statistics,translated,,"Shares a card, a summary and a link to Vigil","Comparte una tarjeta, un resumen y un enlace a Vigil"
+Shorten the wait in Low Power Mode,Settings: Behaviour,translated,,Shorten the wait in Low Power Mode,Acortar la espera en Modo de bajo consumo
+Show all sessions,Panel,translated,,Show all sessions,Mostrar todas las sesiones
+Show fewer,Panel,translated,,Show fewer,Mostrar menos
+Show fewer sessions,Panel,translated,,Show fewer sessions,Mostrar menos sesiones
+Shows exactly what will be added before anything is written,Settings: Providers,translated,,Shows exactly what will be added before anything is written,Muestra exactamente qué se añadirá antes de escribir nada
+Skip for now,Welcome,translated,,Skip for now,Omitir por ahora
+Software updates,Settings: General,translated,,Software updates,Actualizaciones
+Start watching,Welcome,translated,,Start watching,Empezar a observar
+Startup,"Settings: General, Settings: Providers",translated,,Startup,Inicio
+Statistics,"App, Menu bar, Panel, Settings, Statistics",translated,,Statistics,Estadísticas
+Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping the Mac awake on low battery,Dejar de mantener el Mac despierto con batería baja
+Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Detener con batería baja
+Stops Vigil watching this tool,Settings: Providers,translated,,Stops Vigil watching this tool,Vigil deja de observar esta herramienta
+Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagente
+System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,Sistema
+The App Store could not verify the purchase.,Detection,needs_review,,The App Store could not verify the purchase.,App Store no pudo verificar la compra.
+The exact configuration Vigil will add,Settings: Providers,translated,,The exact configuration Vigil will add,La configuración exacta que añadirá Vigil
+The purchase is waiting for approval. Nothing else is needed from you.,Detection,needs_review,,The purchase is waiting for approval. Nothing else is needed from you.,La compra espera aprobación. No necesitas hacer nada más.
+The purchase was cancelled.,Detection,needs_review,,The purchase was cancelled.,La compra se canceló.
+The run%@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run%@ took %@. Your Mac will sleep normally again.,La ejecución%@ tardó %@. El Mac volverá a dormir con normalidad.
+There is no tip called %@.,Detection,needs_review,%@,There is no tip called %@.,No existe una propina llamada %@.
+Tipping is not available in this build.,Detection,needs_review,,Tipping is not available in this build.,Las propinas no están disponibles en esta versión.
+Until turned off,Settings: Behaviour,translated,,Until turned off,Hasta desactivarlo
+Untitled project,App,translated,,Untitled project,Proyecto sin título
+Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Versión %@ (%@)
+Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La versión %@ está disponible.
+Vigil asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Vigil asks macOS for permission the first time it actually needs to notify you.,Vigil pide permiso a macOS la primera vez que de verdad necesita avisarte.
+"Vigil could not back up your Claude Code settings, so it made no changes: %@",Detection,needs_review,%@,"Vigil could not back up your Claude Code settings, so it made no changes: %@","Vigil no pudo respaldar tus ajustes de Claude Code, así que no cambió nada: %@"
+Vigil could not migrate preferences from version %lld.,Settings,needs_review,%lld,Vigil could not migrate preferences from version %lld.,Vigil no pudo migrar las preferencias de la versión %lld.
+Vigil could not read its preferences and has fallen back to defaults.,Settings,needs_review,,Vigil could not read its preferences and has fallen back to defaults.,Vigil no pudo leer sus preferencias y ha vuelto a los valores por omisión.
+Vigil could not read this Mac's power source.,Detection,needs_review,,Vigil could not read this Mac's power source.,Vigil no pudo leer la fuente de alimentación de este Mac.
+Vigil could not read your Claude Code settings: %@,Detection,needs_review,%@,Vigil could not read your Claude Code settings: %@,Vigil no pudo leer tus ajustes de Claude Code: %@
+Vigil could not start its local hook receiver: %@,Detection,needs_review,%@,Vigil could not start its local hook receiver: %@,Vigil no pudo iniciar su receptor local de hooks: %@
+Vigil could not update your Claude Code settings: %@,Detection,needs_review,%@,Vigil could not update your Claude Code settings: %@,Vigil no pudo actualizar tus ajustes de Claude Code: %@
+Vigil could not watch %@ for activity.,Settings: Providers,needs_review,%@,Vigil could not watch %@ for activity.,Vigil no pudo vigilar la actividad en %@.
+Vigil has not been granted access to %@ yet.,Detection,needs_review,%@,Vigil has not been granted access to %@ yet.,Vigil todavía no tiene acceso a %@.
+Vigil has to reopen to change language.,Settings: General,translated,,Vigil has to reopen to change language.,Vigil debe reabrirse para cambiar de idioma.
+Vigil is keeping your Mac awake: always on.,Menu bar,translated,,Vigil is keeping your Mac awake: always on.,Vigil mantiene el Mac despierto: siempre activo.
+Vigil is keeping your Mac awake: an agent is working.,Menu bar,translated,,Vigil is keeping your Mac awake: an agent is working.,Vigil mantiene el Mac despierto: un agente está trabajando.
+Vigil is off. Your Mac will sleep normally.,Menu bar,translated,,Vigil is off. Your Mac will sleep normally.,Vigil está desactivado. El Mac dormirá con normalidad.
+Vigil is only useful when it is already running.,Settings: General,translated,,Vigil is only useful when it is already running.,Vigil solo sirve si ya está en marcha.
+"Vigil is switched off, so it will not hold sleep at all.",Panel,translated,,"Vigil is switched off, so it will not hold sleep at all.","Vigil está apagado, así que no retendrá el reposo en absoluto."
+Vigil is up to date.,Settings: General,translated,,Vigil is up to date.,Vigil está actualizado.
+Vigil is watching. Nothing is running right now.,Panel,translated,,Vigil is watching. Nothing is running right now.,Vigil está vigilando. Ahora mismo no hay nada en marcha.
+Vigil is watching. Your Mac will sleep normally.,Menu bar,translated,,Vigil is watching. Your Mac will sleep normally.,Vigil está vigilando. El Mac dormirá con normalidad.
+"Vigil keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.",Welcome,translated,,"Vigil keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.",Vigil mantiene el Mac despierto mientras un agente de IA local trabaja y lo deja dormir en cuanto todo queda en silencio. Tus ajustes de reposo no se tocan.
+Vigil let your Mac sleep,Panel,translated,,Vigil let your Mac sleep,Vigil dejó dormir el Mac
+Vigil needs your permission to read %@.,Settings: Providers,needs_review,%@,Vigil needs your permission to read %@.,Vigil necesita tu permiso para leer %@.
+Vigil reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Vigil reached its maximum awake time and stopped keeping your Mac awake.,Vigil alcanzó su tiempo máximo despierto y dejó de mantener el Mac despierto.
+"Vigil reached the longest stretch you allow it to hold, so it stopped.",Panel,translated,,"Vigil reached the longest stretch you allow it to hold, so it stopped.","Vigil alcanzó el tiempo máximo que le permites mantener, así que se detuvo."
+"Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.",Settings: About,translated,,"Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.","Vigil lee de los archivos de sesión de tu agente solo lo justo para saber si está en marcha. Nunca tus prompts, nunca tu código, y nada sobre ti sale de este Mac. La única excepción es la comprobación de actualizaciones, y está desactivada hasta que la actives."
+"Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.",Welcome,translated,,"Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.","Vigil lee de los archivos de sesión de tu agente local solo lo justo para saber si está en marcha. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
+Vigil still works in Always on and Off modes,Welcome,translated,,Vigil still works in Always on and Off modes,Vigil sigue funcionando en los modos Siempre activo y Desactivado
+Vigil stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Vigil stopped holding,Vigil dejó de mantener
+Vigil stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Vigil stopped holding: battery is at %lld%%.,Vigil dejó de mantener: batería al %lld%%.
+Vigil stopped holding: the maximum awake time was reached.,Menu bar,translated,,Vigil stopped holding: the maximum awake time was reached.,Vigil dejó de mantener: se alcanzó el tiempo máximo despierto.
+Vigil will change %@ to:,Settings: Providers,translated,%@,Vigil will change %@ to:,Vigil cambiará %@ a:
+Vigil will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Vigil will keep holding no matter how low the battery gets.,Vigil seguirá manteniendo por muy baja que esté la batería.
+"Vigil will not edit this file, because it is not plain JSON. It may have comments or a format Vigil cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,"Vigil will not edit this file, because it is not plain JSON. It may have comments or a format Vigil cannot write back safely. Add this yourself instead:",Vigil no editará este archivo porque no es JSON puro: puede tener comentarios o un formato que Vigil no puede reescribir con seguridad. Añádelo tú mismo:
+Vigil's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Vigil's saved permission for %@ is no longer valid.,El permiso guardado de Vigil para %@ ya no es válido.
+Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting the Mac sleep,Esperar antes de dejar dormir el Mac
+Waiting for you,Panel,translated,,Waiting for you,Te está esperando
+Watch,"App, Detection, Settings: Providers",translated,,Watch,Observar
+Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code's session transcripts to tell when a turn is running.,Observa las transcripciones de sesión de Claude Code para saber cuándo hay un turno en marcha.
+"Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,"Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.","Observa una carpeta que elijas o escucha un webhook de una línea, para que cualquier agente pueda mantener el Mac despierto. Empieza con un preajuste o añade el tuyo."
+Welcome to %@,Welcome,translated,%@,Welcome to %@,Te damos la bienvenida a %@
+Welcome to Vigil,Welcome,translated,,Welcome to Vigil,Te damos la bienvenida a Vigil
+What Vigil reads,Welcome,translated,,What Vigil reads,Qué lee Vigil
+When Vigil stops for safety,Settings: Notifications,translated,,When Vigil stops for safety,Cuando Vigil se detiene por seguridad
+When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Cuando termina una tarea larga
+When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Cuando un agente te necesita
+While holding,Settings: General,translated,,While holding,Mientras mantiene
+Working,Panel,translated,,Working,Trabajando
+You asked Vigil to stay on until you switch it off.,Panel,translated,,You asked Vigil to stay on until you switch it off.,Le pediste a Vigil que siguiera activo hasta que lo apagues.
+"Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes.",Detection,needs_review,,"Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes.","Tu archivo de ajustes de Claude Code tiene una entrada hooks que Vigil no reconoce, así que no cambió nada."
+"Your Claude Code settings file is not plain JSON, so Vigil will not modify it.",Detection,needs_review,,"Your Claude Code settings file is not plain JSON, so Vigil will not modify it.","Tu archivo de ajustes de Claude Code no es JSON puro, así que Vigil no lo modificará."
+Your Mac will go back to its normal sleep schedule.,Menu bar,translated,,Your Mac will go back to its normal sleep schedule.,El Mac volverá a su horario de reposo habitual.
+Your Mac will sleep normally,"Menu bar, Panel, Settings: Notifications",translated,,Your Mac will sleep normally,El Mac dormirá con normalidad
+Your agent finished,Settings: Notifications,translated,,Your agent finished,Tu agente terminó
+Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Settings: Notifications,translated,,Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Tu agente está bloqueado en una solicitud de permiso o una pregunta. Para que esto sea fiable hace falta la detección precisa.
+Your agent needs input%@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input%@ before it can continue.,Tu agente necesita una respuesta%@ para continuar.
+Your agent still finishes; Vigil just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes; Vigil just lets go sooner afterwards.,Tu agente termina igualmente; Vigil solo suelta antes después.
+"Your battery is down to %lld%%, so Vigil stopped holding to save power.",Panel,translated,%lld,"Your battery is down to %lld%%, so Vigil stopped holding to save power.","La batería bajó al %lld%%, así que Vigil dejó de mantener para ahorrar energía."
+kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away from the keyboard,de trabajo mientras no estabas ante el teclado
+last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,última señal hace %@
+longest run,Statistics,translated,,longest run,ejecución más larga
+macOS denied Vigil access to %@.,Detection,needs_review,%@,macOS denied Vigil access to %@.,macOS denegó a Vigil el acceso a %@.
+macOS is waiting for you to allow this in System Settings.,Settings: General,translated,,macOS is waiting for you to allow this in System Settings.,macOS espera a que lo permitas en Ajustes del Sistema.
+macOS refused the change: %@,Settings: General,translated,%@,macOS refused the change: %@,macOS rechazó el cambio: %@
+macOS refused to create the sleep assertion (IOKit error %lld).,Detection,needs_review,%lld,macOS refused to create the sleep assertion (IOKit error %lld).,macOS rechazó crear el bloqueo de suspensión (error de IOKit %lld).
+no runs,Statistics,translated,,no runs,sin ejecuciones
+not configured,Settings: Providers,translated,,not configured,sin configurar
+of agent work that carried on while I was away from the keyboard.,Statistics,translated,,of agent work that carried on while I was away from the keyboard.,de trabajo del agente que continuó mientras yo no estaba ante el teclado.
+of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,Statistics,translated,%lld,of unattended agent work: %lld runs that would otherwise have died when the Mac went to sleep.,de trabajo del agente sin supervisión: %lld ejecuciones que habrían muerto al dormirse el Mac.
+of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,Statistics,translated,,of unattended agent work: 1 run that would otherwise have died when the Mac went to sleep.,de trabajo del agente sin supervisión: 1 ejecución que habría muerto al dormirse el Mac.
+process %@,Settings: Providers,translated,%@,process %@,proceso %@
+runs rescued,Statistics,translated,,runs rescued,ejecuciones salvadas
+runs watched,Statistics,translated,,runs watched,ejecuciones vigiladas
+total held,Statistics,translated,,total held,total mantenido
+"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",© 2026 PerfectoWeb. Licencia MIT. Hecho por frikis para frikis.

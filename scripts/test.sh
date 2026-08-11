@@ -39,6 +39,9 @@ if ! xcodebuild -scheme Vigil -destination 'platform=macOS' \
     exit 1
 fi
 
+echo "==> string catalogue"
+swift scripts/strings.swift check
+
 echo "==> swiftlint"
 swiftlint --strict
 

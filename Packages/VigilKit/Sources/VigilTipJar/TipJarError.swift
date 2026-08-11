@@ -10,15 +10,17 @@ public enum TipJarError: LocalizedError, Equatable {
     public var errorDescription: String? {
         switch self {
         case .unavailable:
-            "Tipping is not available in this build."
+            String(localized: "Tipping is not available in this build.", bundle: .main)
         case .unknownTip(let id):
-            "There is no tip called \(id)."
+            String(localized: "There is no tip called \(id).", bundle: .main)
         case .cancelled:
-            "The purchase was cancelled."
+            String(localized: "The purchase was cancelled.", bundle: .main)
         case .pending:
-            "The purchase is waiting for approval. Nothing else is needed from you."
+            String(
+                localized: "The purchase is waiting for approval. Nothing else is needed from you.",
+                bundle: .main)
         case .unverified:
-            "The App Store could not verify the purchase."
+            String(localized: "The App Store could not verify the purchase.", bundle: .main)
         }
     }
 }

@@ -7,9 +7,9 @@ public enum ProviderError: LocalizedError, Equatable {
     public var errorDescription: String? {
         switch self {
         case .watchFailed(let path):
-            return "Vigil could not watch \(path) for activity."
+            return String(localized: "Vigil could not watch \(path) for activity.", bundle: .main)
         case .accessNotGranted(let path):
-            return "Vigil needs your permission to read \(path)."
+            return String(localized: "Vigil needs your permission to read \(path).", bundle: .main)
         }
     }
 }

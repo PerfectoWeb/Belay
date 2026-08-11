@@ -24,11 +24,12 @@ public actor GenericProvider: ActivityProvider {
 
     nonisolated public let descriptor = ProviderDescriptor(
         id: .generic,
-        displayName: "Other agents",
-        summary: """
-            Watches a folder you choose, or listens for a one-line webhook, so any \
-            coding agent can hold the Mac awake. Start from a preset or add your own.
-            """,
+        displayName: String(localized: "Other agents", bundle: .main),
+        summary: String(
+            localized: """
+                Watches a folder you choose, or listens for a one-line webhook, so any \
+                coding agent can hold the Mac awake. Start from a preset or add your own.
+                """, bundle: .main),
         symbolName: "square.stack.3d.up",
         supportsPreciseDetection: false)
 
@@ -76,11 +77,18 @@ public actor GenericProvider: ActivityProvider {
     public var availability: ProviderAvailability {
         let configured = targets.filter(\.isConfigured)
         guard !configured.isEmpty else {
-            return .needsSetup("Add a folder to watch, or pick a preset, to cover another agent.")
+            return .needsSetup(
+                String(
+                    localized: "Add a folder to watch, or pick a preset, to cover another agent.",
+                    bundle: .main))
         }
         let unreachable = configured.compactMap(\.watchedFolder).first { !access.hasAccess(to: $0) }
         guard let unreachable else { return .ready }
-        return .needsSetup("Let Vigil read \(unreachable.lastPathComponent) so it can see that agent work.")
+        return .needsSetup(
+            String(
+                localized:
+                    "Let Vigil read \(unreachable.lastPathComponent) so it can see that agent work.",
+                bundle: .main))
     }
 
     /// Never throws on a bad target. One misconfigured folder must not take the

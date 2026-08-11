@@ -13,18 +13,33 @@ public enum BridgeError: LocalizedError, Equatable {
     public var errorDescription: String? {
         switch self {
         case .listenerFailed(let reason):
-            return "Vigil could not start its local hook receiver: \(reason)"
+            return String(
+                localized: "Vigil could not start its local hook receiver: \(reason)", bundle: .main)
         case .settingsNotPlainJSON:
-            return "Your Claude Code settings file is not plain JSON, so Vigil will not modify it."
+            return String(
+                localized:
+                    "Your Claude Code settings file is not plain JSON, so Vigil will not modify it.",
+                bundle: .main)
         case .settingsUnreadable(let reason):
-            return "Vigil could not read your Claude Code settings: \(reason)"
+            return String(
+                localized: "Vigil could not read your Claude Code settings: \(reason)", bundle: .main
+            )
         case .settingsWriteFailed(let reason):
-            return "Vigil could not update your Claude Code settings: \(reason)"
+            return String(
+                localized: "Vigil could not update your Claude Code settings: \(reason)",
+                bundle: .main)
         case .hooksNotAnObject:
-            return "Your Claude Code settings file has a hooks entry Vigil does not recognise, "
-                + "so it made no changes."
+            return String(
+                localized: """
+                    Your Claude Code settings file has a hooks entry Vigil does not recognise, \
+                    so it made no changes.
+                    """, bundle: .main)
         case .backupFailed(let reason):
-            return "Vigil could not back up your Claude Code settings, so it made no changes: \(reason)"
+            return String(
+                localized: """
+                    Vigil could not back up your Claude Code settings, so it made no \
+                    changes: \(reason)
+                    """, bundle: .main)
         }
     }
 }

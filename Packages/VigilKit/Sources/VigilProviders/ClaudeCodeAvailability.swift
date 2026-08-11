@@ -1,3 +1,4 @@
+import Foundation
 import VigilCore
 
 extension ClaudeCodeProvider {
@@ -6,7 +7,10 @@ extension ClaudeCodeProvider {
     public var availability: ProviderAvailability {
         guard access.hasAccess(to: configuration.projectsDirectory) else {
             return .needsSetup(
-                "Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.")
+                String(
+                    localized:
+                        "Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.",
+                    bundle: .main))
         }
         return .ready
     }

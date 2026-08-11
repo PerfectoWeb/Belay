@@ -17,7 +17,9 @@ public actor ClaudeCodeProvider: ActivityProvider {
     nonisolated public let descriptor = ProviderDescriptor(
         id: .claudeCode,
         displayName: "Claude Code",
-        summary: "Watches Claude Code's session transcripts to tell when a turn is running.",
+        summary: String(
+            localized: "Watches Claude Code's session transcripts to tell when a turn is running.",
+            bundle: .main),
         symbolName: "terminal",
         supportsPreciseDetection: true)
 
