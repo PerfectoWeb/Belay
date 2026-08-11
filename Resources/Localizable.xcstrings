@@ -131,37 +131,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ hat %lld Agentenläufe auf meinem Mac beobachtet und ihn dabei %@ lang wach gehalten."
+            "value" : "%@ hat %lld Agentenläufe auf meinem Mac beobachtet und ihn für %@ wach gehalten."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ has watched %lld agent runs on my Mac and kept it awake for %@ of them."
+            "value" : "%@ watched %lld agent runs on my Mac and kept it awake for %@."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ ha vigilado %lld ejecuciones de agentes en mi Mac y lo ha mantenido despierto %@ de ellas."
+            "value" : "%@ ha observado %lld ejecuciones de agentes en mi Mac y lo ha mantenido despierto durante %@."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ a surveillé %lld exécutions d'agents sur mon Mac et l'a gardé éveillé %@ d'entre elles."
+            "value" : "%@ a suivi %lld exécutions d'agents sur mon Mac et l'a gardé éveillé pendant %@."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ ha osservato %lld esecuzioni di agenti sul mio Mac e lo ha tenuto sveglio %@ di quelle."
+            "value" : "%@ ha seguito %lld esecuzioni di agenti sul mio Mac e lo ha tenuto sveglio per %@."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ проследил за %lld прогонами агентов на моём Mac и продержал его бодрым %@ из них."
+            "value" : "%@ следил за %lld запусками агентов на моём Mac и не давал ему уснуть в течение %@."
           }
         }
       }
@@ -172,37 +172,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ gehalten, %@ abwesend"
+            "value" : "%@ wach, %@ weg"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ held, %@ away"
+            "value" : "%@ awake, %@ away"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ mantenido, %@ ausente"
+            "value" : "%@ despierto, %@ fuera"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ maintenu, %@ absent"
+            "value" : "%@ éveillé, %@ absent"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ mantenuto, %@ assente"
+            "value" : "%@ sveglio, %@ assente"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "удержано %@, без вас %@"
+            "value" : "%@ без сна, %@ без меня"
           }
         }
       }
@@ -213,37 +213,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und %lld Agentenläufe gerettet, die sonst im Ruhezustand gestorben wären."
+            "value" : "%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und %lld Agentenläufe vor einer Unterbrechung durch den Ruhezustand bewahrt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep."
+            "value" : "%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ mantuvo mi Mac despierto %@ mientras yo no estaba y salvó %lld ejecuciones de agente que habrían muerto al dormirse el Mac."
+            "value" : "%@ mantuvo mi Mac despierto durante %@ mientras yo no estaba y evitó que el reposo interrumpiera %lld ejecuciones del agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ a gardé mon Mac éveillé %@ pendant mon absence et a sauvé %lld exécutions d'agent qui seraient mortes à la mise en veille."
+            "value" : "%@ a gardé mon Mac éveillé pendant %@ en mon absence et a évité que la veille n'interrompe %lld exécutions d'agent."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ ha tenuto sveglio il mio Mac per %@ mentre non c'ero e ha salvato %lld esecuzioni che sarebbero morte con il Mac in stop."
+            "value" : "%@ ha tenuto sveglio il mio Mac per %@ mentre non c'ero e ha evitato che lo stop interrompesse %lld esecuzioni dell'agente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ держал мой Mac бодрым %@, пока меня не было, и спас прогонов агентов: %lld, которые иначе умерли бы, когда Mac уснёт."
+            "value" : "%@ не давал моему Mac уснуть в течение %@, пока меня не было, и не дал режиму сна прервать %lld запусков агента."
           }
         }
       }
@@ -254,37 +254,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und 1 Agentenlauf gerettet, der sonst im Ruhezustand gestorben wäre."
+            "value" : "%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und 1 Agentenlauf vor einer Unterbrechung durch den Ruhezustand bewahrt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep."
+            "value" : "%@ kept my Mac awake for %@ while I was away and saved 1 agent run from being interrupted by sleep."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ mantuvo mi Mac despierto %@ mientras yo no estaba y salvó 1 ejecución de agente que habría muerto al dormirse el Mac."
+            "value" : "%@ mantuvo mi Mac despierto durante %@ mientras yo no estaba y evitó que el reposo interrumpiera 1 ejecución del agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ a gardé mon Mac éveillé %@ pendant mon absence et a sauvé 1 exécution d'agent qui serait morte à la mise en veille."
+            "value" : "%@ a gardé mon Mac éveillé pendant %@ en mon absence et a évité que la veille n'interrompe 1 exécution d'agent."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ ha tenuto sveglio il mio Mac per %@ mentre non c'ero e ha salvato 1 esecuzione che sarebbe morta con il Mac in stop."
+            "value" : "%@ ha tenuto sveglio il mio Mac per %@ mentre non c'ero e ha evitato che lo stop interrompesse 1 esecuzione dell'agente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ держал мой Mac бодрым %@, пока меня не было, и спас 1 прогон агента, который иначе умер бы, когда Mac уснёт."
+            "value" : "%@ не давал моему Mac уснуть в течение %@, пока меня не было, и не дал режиму сна прервать 1 запуск агента."
           }
         }
       }
@@ -910,37 +910,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eine Notbremse. Danach hält Vigil nicht mehr und sagt dir warum."
+            "value" : "Nach dieser Zeit hält Vigil deinen Mac nicht mehr wach und sagt dir Bescheid."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A backstop. Vigil stops holding after this and tells you why."
+            "value" : "Vigil stops keeping your Mac awake after this time and lets you know."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un tope de seguridad. Después Vigil deja de mantener y te dice por qué."
+            "value" : "Al llegar a este tiempo, Vigil deja de mantener el Mac despierto y te avisa."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un garde-fou. Ensuite Vigil cesse de maintenir et vous dit pourquoi."
+            "value" : "Après ce délai, Vigil cesse de garder votre Mac éveillé et vous prévient."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una rete di sicurezza. Dopo, Vigil smette di mantenere e ti dice perché."
+            "value" : "Dopo questo intervallo, Vigil smette di tenere sveglio il Mac e ti avvisa."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Страховка. После этого Vigil перестаёт удерживать и объясняет почему."
+            "value" : "После этого времени Vigil разрешит Mac уснуть и сообщит об этом."
           }
         }
       }
@@ -951,78 +951,78 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein sich ändernder Ordner bedeutet, dass gearbeitet wird. Ein laufender Prozess allein gilt nie als Arbeit. Er sagt Vigil nur, dass die Sitzung endet, wenn er verschwindet."
+            "value" : "Ordneraktivität zählt als Arbeit. Ein laufender Prozess zeigt Vigil nur, wann die Sitzung endet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears."
+            "value" : "Folder activity counts as work. A running process only tells Vigil when the session ends."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Que una carpeta cambie significa que hay trabajo. Que un proceso esté vivo nunca cuenta como trabajo por sí solo: solo le dice a Vigil que la sesión terminó cuando desaparece."
+            "value" : "La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Vigil cuándo termina la sesión."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un dossier qui change signifie qu'il y a du travail. Un processus vivant ne compte jamais comme du travail à lui seul. Il indique seulement à Vigil que la session est finie quand il disparaît."
+            "value" : "L'activité du dossier compte comme du travail. Un processus en cours indique seulement à Vigil quand la session se termine."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una cartella che cambia significa che c'è lavoro. Un processo vivo non conta mai come lavoro di per sé: dice a Vigil che la sessione è finita solo quando scompare."
+            "value" : "L'attività della cartella conta come lavoro. Un processo in esecuzione indica a Vigil solo quando termina la sessione."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изменение папки означает, что идёт работа. Живой процесс сам по себе работой не считается. Он лишь сообщает Vigil об окончании сессии, когда исчезает."
+            "value" : "Изменения в папке считаются работой. Запущенный процесс лишь помогает Vigil понять, когда сессия завершилась."
           }
         }
       }
     },
-    "A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says." : {
+    "A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Ein kurzer, leiser Ton, wenn Sie den Modus von Hand ändern, und an ein, zwei weiteren Stellen. Schalten Sie die Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese, egal was hier steht."
+            "value" : "Ein kurzer Ton, wenn Sie den Modus von Hand ändern. Sind Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A short, quiet note when you change mode by hand, and one or two other places. Turning off interface sounds in System Settings silences these too, whatever this says."
+            "value" : "A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Un tono corto y suave cuando cambias de modo a mano, y en un par de sitios más. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan, diga lo que diga esto."
+            "value" : "Un tono breve cuando cambias de modo a mano. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Une note brève et discrète quand vous changez de mode à la main, et à un ou deux autres endroits. Si vous coupez les sons de l'interface dans Réglages Système, ceux-ci se taisent aussi, quoi que dise cette case."
+            "value" : "Une note brève quand vous changez de mode à la main. Si les sons de l'interface sont coupés dans Réglages Système, ceux-ci se taisent aussi."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Una nota breve e discreta quando cambi modo a mano, e in un paio di altri punti. Se disattivi i suoni dell'interfaccia in Impostazioni di Sistema, anche questi tacciono, qualunque cosa dica qui."
+            "value" : "Una nota breve quando cambi modo a mano. Se i suoni dell'interfaccia sono disattivati in Impostazioni di Sistema, anche questi tacciono."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Короткий тихий сигнал, когда вы меняете режим вручную, и ещё в паре мест. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат, что бы тут ни стояло."
+            "value" : "Короткий сигнал, когда вы меняете режим вручную. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
           }
         }
       }
@@ -1033,37 +1033,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zuerst wird ein Backup mit Zeitstempel angelegt. Alles, was bereits in der Datei steht, bleibt erhalten, und „Entfernen“ stellt es exakt wieder her."
+            "value" : "Vigil legt zuerst eine Sicherung mit Zeitstempel an. „Entfernen“ stellt die ursprüngliche Datei wieder her."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A timestamped backup is made first. Everything already in the file is preserved, and \"Remove\" puts it back exactly."
+            "value" : "Vigil makes a timestamped backup first. \"Remove\" restores the original file."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Primero se crea una copia con marca de tiempo. Todo lo que ya está en el archivo se conserva, y «Quitar» lo devuelve exactamente."
+            "value" : "Vigil crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une sauvegarde horodatée est créée d'abord. Tout ce qui figure déjà dans le fichier est conservé, et « Retirer » le remet à l'identique."
+            "value" : "Vigil crée d'abord une sauvegarde horodatée. « Retirer » restaure le fichier d'origine."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prima viene creato un backup con data e ora. Tutto ciò che è già nel file viene conservato, e «Rimuovi» lo ripristina esattamente."
+            "value" : "Vigil crea prima una copia di sicurezza con data e ora. «Rimuovi» ripristina il file originale."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сначала делается резервная копия с отметкой времени. Всё, что уже есть в файле, сохраняется, а «Убрать» вернёт всё точно как было."
+            "value" : "Сначала Vigil создаёт резервную копию с отметкой времени. «Убрать» восстановит исходный файл."
           }
         }
       }
@@ -1197,37 +1197,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Füge einen Ordner zum Beobachten hinzu oder wähle eine Vorlage, um einen weiteren Agenten abzudecken."
+            "value" : "Füge einen Ordner hinzu oder wähle eine Vorlage, um einen weiteren Agenten zu beobachten."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add a folder to watch, or pick a preset, to cover another agent."
+            "value" : "Add a folder or choose a preset to watch another agent."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Añade una carpeta que observar, o elige un preajuste, para cubrir otro agente."
+            "value" : "Añade una carpeta o elige un preajuste para vigilar otro agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajoutez un dossier à surveiller, ou choisissez un préréglage, pour couvrir un autre agent."
+            "value" : "Ajoutez un dossier ou choisissez un préréglage pour surveiller un autre agent."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aggiungi una cartella da osservare, o scegli un preset, per coprire un altro agente."
+            "value" : "Aggiungi una cartella o scegli un preset per monitorare un altro agente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добавьте папку для наблюдения или выберите пресет, чтобы охватить другого агента."
+            "value" : "Добавьте папку или выберите пресет, чтобы следить ещё за одним агентом."
           }
         }
       }
@@ -1449,7 +1449,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Always on"
+            "value" : "Always On"
           }
         },
         "es" : {
@@ -1566,37 +1566,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein Agent arbeitet, deshalb ist der Ruhezustand ausgesetzt."
+            "value" : "Ein Agent arbeitet, deshalb bleibt dein Mac wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "An agent is working, so sleep is on hold."
+            "value" : "An agent is working, so your Mac is staying awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agente está trabajando, así que el reposo está en pausa."
+            "value" : "Hay un agente trabajando, así que el Mac se mantiene despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agent travaille, la veille est donc suspendue."
+            "value" : "Un agent travaille, votre Mac reste donc éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agente sta lavorando, quindi lo stop è sospeso."
+            "value" : "Un agente sta lavorando, quindi il Mac resta sveglio."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Агент работает, поэтому сон отложен."
+            "value" : "Агент работает, поэтому Mac не уснёт."
           }
         }
       }
@@ -1607,37 +1607,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ein Agent arbeitet. Sobald Vigil beendet ist, darf dein Mac schlafen."
+            "value" : "Ein Agent arbeitet. Wenn du Vigil beendest, darf dein Mac schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "An agent is working. Your Mac will be free to sleep as soon as Vigil quits."
+            "value" : "An agent is working. Quitting Vigil will let your Mac sleep."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agente está trabajando. En cuanto Vigil se cierre, el Mac podrá dormir."
+            "value" : "Hay un agente trabajando. Si cierras Vigil, el Mac podrá entrar en reposo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agent travaille. Dès que Vigil quittera, votre Mac pourra se mettre en veille."
+            "value" : "Un agent travaille. Quitter Vigil permettra à votre Mac de se mettre en veille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Un agente sta lavorando. Appena Vigil si chiude, il Mac potrà andare in stop."
+            "value" : "Un agente sta lavorando. Se chiudi Vigil, il Mac potrà andare in stop."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Агент работает. Как только Vigil закроется, Mac сможет уснуть."
+            "value" : "Агент работает. Если закрыть Vigil, Mac сможет уснуть."
           }
         }
       }
@@ -1689,31 +1689,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bisher %@ wach"
+            "value" : "Wach seit %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Awake %@ so far"
+            "value" : "Awake for %@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Despierto %@ hasta ahora"
+            "value" : "Despierto durante %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Éveillé depuis %@"
+            "value" : "Éveillé pendant %@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sveglio da %@"
+            "value" : "Sveglio per %@"
           }
         },
         "ru" : {
@@ -1771,37 +1771,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nur wach, solange ein Agent arbeitet."
+            "value" : "Nur solange ein Agent arbeitet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Awake only while an agent is working."
+            "value" : "Only while an agent is working."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Despierto solo mientras un agente trabaja."
+            "value" : "Solo mientras trabaja un agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Éveillé seulement pendant qu'un agent travaille."
+            "value" : "Seulement pendant qu'un agent travaille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sveglio solo mentre un agente lavora."
+            "value" : "Solo mentre un agente sta lavorando."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не спать, только пока агент работает."
+            "value" : "Только пока агент работает."
           }
         }
       }
@@ -1812,37 +1812,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wach, bis du es ausschaltest."
+            "value" : "Bis du es ausschaltest."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Awake until you switch it off."
+            "value" : "Until you turn it off."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Despierto hasta que lo desactives."
+            "value" : "Hasta que lo desactives."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Éveillé jusqu'à ce que vous l'éteigniez."
+            "value" : "Jusqu'à ce que vous le désactiviez."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sveglio finché non lo spegni."
+            "value" : "Finché non lo disattivi."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не спать, пока не выключите."
+            "value" : "Пока не выключите."
           }
         }
       }
@@ -1853,37 +1853,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Akku ist bei %lld%%, deshalb hält Vigil deinen Mac nicht mehr wach."
+            "value" : "Akku bei %lld%%. Vigil hält deinen Mac nicht mehr wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Battery is at %lld%%, so Vigil stopped keeping your Mac awake."
+            "value" : "Battery reached %lld%%. Vigil stopped keeping your Mac awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La batería está al %lld%%, así que Vigil dejó de mantener el Mac despierto."
+            "value" : "Batería al %lld%%. Vigil dejó de mantener el Mac despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La batterie est à %lld%%, Vigil a donc cessé de garder votre Mac éveillé."
+            "value" : "Batterie à %lld%%. Vigil a cessé de garder votre Mac éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La batteria è al %lld%%, quindi Vigil ha smesso di tenere sveglio il Mac."
+            "value" : "Batteria al %lld%%. Vigil ha smesso di tenere sveglio il Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заряд %lld%%, поэтому Vigil перестал держать Mac бодрым."
+            "value" : "Заряд %lld%%. Vigil разрешил Mac уснуть."
           }
         }
       }
@@ -1900,7 +1900,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behaviour"
+            "value" : "Behavior"
           }
         },
         "es" : {
@@ -1935,37 +1935,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unter %lld%% Akku hört Vigil auf zu halten."
+            "value" : "Im Akkubetrieb stoppt Vigil bei %lld%%."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Below %lld%% on battery, Vigil stops holding."
+            "value" : "On battery, Vigil stops at %lld%%."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Por debajo del %lld%% de batería, Vigil deja de mantener."
+            "value" : "Con batería, Vigil se detiene al llegar al %lld%%."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En dessous de %lld%% de batterie, Vigil cesse de maintenir."
+            "value" : "Sur batterie, Vigil s'arrête à %lld%%."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sotto il %lld%% di batteria, Vigil smette di mantenere."
+            "value" : "A batteria, Vigil si ferma al %lld%%."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ниже %lld%% заряда Vigil перестаёт удерживать."
+            "value" : "При работе от батареи Vigil остановится на %lld%%."
           }
         }
       }
@@ -2263,37 +2263,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kopiert Bild und Zusammenfassung zusammen"
+            "value" : "Kopiert die Karte zusammen mit der Zusammenfassung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copies the card image and the summary text together"
+            "value" : "Copies the card and summary together"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copia la imagen y el texto del resumen juntos"
+            "value" : "Copia juntos la tarjeta y el resumen"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copie l'image et le texte du résumé ensemble"
+            "value" : "Copie la carte et le résumé ensemble"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copia insieme l'immagine e il testo del riepilogo"
+            "value" : "Copia insieme la scheda e il riepilogo"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Копирует картинку и текст сводки вместе"
+            "value" : "Копирует карточку вместе со сводкой"
           }
         }
       }
@@ -2392,13 +2392,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Detection health"
+            "value" : "Detection status"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estado de la detección"
+            "value" : "Estado de detección"
           }
         },
         "fr" : {
@@ -2416,7 +2416,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Состояние детекции"
+            "value" : "Статус детекции"
           }
         }
       }
@@ -2622,47 +2622,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Включить…"
-          }
-        }
-      }
-    },
-    "Feedback" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Rückmeldung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Respuesta"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Retour"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Risposta"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Отклик"
           }
         }
       }
@@ -2878,37 +2837,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub antwortete %lld."
+            "value" : "GitHub gab %lld zurück."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub answered %lld."
+            "value" : "GitHub returned %lld."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub respondió %lld."
+            "value" : "GitHub devolvió %lld."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub a répondu %lld."
+            "value" : "GitHub a renvoyé %lld."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub ha risposto %lld."
+            "value" : "GitHub ha restituito %lld."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "GitHub ответил %lld."
+            "value" : "GitHub вернул код %lld."
           }
         }
       }
@@ -2919,19 +2878,19 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zugriff auf ~/.claude gewähren"
+            "value" : "Zugriff auf ~/.claude erlauben"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grant access to ~/.claude"
+            "value" : "Allow access to ~/.claude"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conceder acceso a ~/.claude"
+            "value" : "Permitir acceso a ~/.claude"
           }
         },
         "fr" : {
@@ -2943,13 +2902,13 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Concedi accesso a ~/.claude"
+            "value" : "Consenti accesso a ~/.claude"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дать доступ к ~/.claude"
+            "value" : "Разрешить доступ к ~/.claude"
           }
         }
       }
@@ -2960,37 +2919,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hält noch etwas länger, falls weitere Arbeit kommt."
+            "value" : "Vigil wartet noch kurz, falls weitere Arbeit startet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Holding on a little longer in case more work arrives."
+            "value" : "Waiting a little longer in case more work starts."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Se mantiene un poco más por si llega más trabajo."
+            "value" : "Vigil espera un poco más por si empieza más trabajo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maintient encore un peu au cas où du travail arriverait."
+            "value" : "Vigil attend encore un peu au cas où du travail reprendrait."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantiene ancora un po', nel caso arrivi altro lavoro."
+            "value" : "Vigil aspetta ancora un po' nel caso inizi altro lavoro."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Держим ещё немного на случай, если работа продолжится."
+            "value" : "Vigil подождёт ещё немного на случай, если работа продолжится."
           }
         }
       }
@@ -3001,37 +2960,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wie lange Vigil nach dem Verstummen deines Agenten weiterhält. Länger ist sicherer: mitten in der Aufgabe einzuschlafen kostet weit mehr als eine Minute zu lange wach zu sein."
+            "value" : "Wie lange Vigil wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long."
+            "value" : "How long Vigil waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuánto sigue manteniendo Vigil después de que tu agente calle. Más largo es más seguro: dormirse a mitad de tarea cuesta mucho más que estar despierto un minuto de más."
+            "value" : "Cuánto espera Vigil después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Combien de temps Vigil continue de maintenir après que votre agent se soit tu. Plus long est plus sûr : s'endormir en pleine tâche coûte bien plus qu'une minute d'éveil en trop."
+            "value" : "Durée pendant laquelle Vigil attend après l'arrêt d'un agent avant de laisser votre Mac se mettre en veille. Un petit délai évite la veille entre deux tâches."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Per quanto Vigil continua a mantenere dopo che il tuo agente tace. Più lungo è più sicuro: addormentarsi a metà attività costa molto più di un minuto di veglia in più."
+            "value" : "Per quanto Vigil aspetta dopo che un agente si ferma prima di lasciare andare il Mac in stop. Un piccolo margine evita lo stop tra un'attività e l'altra."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сколько Vigil продолжает удерживать после того, как агент затих. Дольше значит безопаснее: уснуть посреди задачи стоит куда дороже, чем лишняя минута бодрствования."
+            "value" : "Сколько Vigil ждёт после того, как агент затих, прежде чем разрешить Mac уснуть. Небольшой запас помогает не уснуть между задачами."
           }
         }
       }
@@ -3083,37 +3042,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Er braucht eine Antwort von dir, um weiterzumachen."
+            "value" : "Dein Agent braucht eine Antwort, bevor er weitermachen kann."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "It needs an answer from you before it can carry on."
+            "value" : "Your agent needs an answer before it can continue."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesita tu respuesta para continuar."
+            "value" : "Tu agente necesita una respuesta para continuar."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il attend votre réponse pour continuer."
+            "value" : "Votre agent a besoin d'une réponse pour continuer."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ha bisogno di una tua risposta per proseguire."
+            "value" : "Il tuo agente ha bisogno di una risposta per continuare."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ему нужен ваш ответ, чтобы продолжить."
+            "value" : "Агенту нужен ваш ответ, чтобы продолжить."
           }
         }
       }
@@ -3165,37 +3124,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hält deinen Mac genau so lange wach, wie dein Agent arbeitet."
+            "value" : "Hält deinen Mac wach, solange dein Agent arbeitet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keeps your Mac awake exactly as long as your agent is working."
+            "value" : "Keeps your Mac awake while your agent works."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mantiene el Mac despierto exactamente mientras tu agente trabaja."
+            "value" : "Mantiene el Mac despierto mientras trabaja tu agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Garde votre Mac éveillé exactement le temps que votre agent travaille."
+            "value" : "Garde votre Mac éveillé pendant que votre agent travaille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tiene sveglio il Mac esattamente finché il tuo agente lavora."
+            "value" : "Tiene sveglio il Mac mentre il tuo agente lavora."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не даёт Mac уснуть ровно столько, сколько работает агент."
+            "value" : "Не даёт Mac уснуть, пока работает агент."
           }
         }
       }
@@ -3206,37 +3165,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seit dem Start von Vigil %@ wach gehalten"
+            "value" : "Seit dem Start für %@ wach gehalten"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kept awake for %@ since Vigil started"
+            "value" : "Kept awake for %@ since launch"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Despierto %@ desde que se inició Vigil"
+            "value" : "Despierto durante %@ desde que se inició Vigil"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Éveillé %@ depuis le lancement de Vigil"
+            "value" : "Gardé éveillé pendant %@ depuis le lancement"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sveglio da %@ dall'avvio di Vigil"
+            "value" : "Tenuto sveglio per %@ dall'avvio"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не спит %@ с запуска Vigil"
+            "value" : "Не давал Mac уснуть в течение %@ с момента запуска"
           }
         }
       }
@@ -3247,37 +3206,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "weitergearbeitet, während du nicht an der Tastatur warst"
+            "value" : "weitergearbeitet, während du weg warst"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kept working while you were away from the keyboard"
+            "value" : "kept working while you were away"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de trabajo mientras no estabas ante el teclado"
+            "value" : "siguió trabajando mientras no estabas"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de travail pendant votre absence du clavier"
+            "value" : "a continué à travailler pendant votre absence"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "di lavoro mentre non eri alla tastiera"
+            "value" : "ha continuato a lavorare mentre non c'eri"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "работы шло, пока вас не было за клавиатурой"
+            "value" : "продолжал работать, пока вас не было"
           }
         }
       }
@@ -3410,38 +3369,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Erlauben Sie Vigil, %@ zu lesen, damit es die Arbeit dieses Agenten sieht."
+            "state" : "translated",
+            "value" : "Erlaube Vigil, %@ zu lesen, damit es erkennt, wann dein Agent arbeitet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Let Vigil read %@ so it can see that agent work."
+            "value" : "Allow Vigil to read %@ so it can tell when your agent is working."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Deja que Vigil lea %@ para que pueda ver el trabajo de ese agente."
+            "state" : "translated",
+            "value" : "Permite que Vigil lea %@ para saber cuándo está trabajando tu agente."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Autorisez Vigil à lire %@ pour qu'il voie le travail de cet agent."
+            "state" : "translated",
+            "value" : "Autorisez Vigil à lire %@ pour savoir quand votre agent travaille."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Consenti a Vigil di leggere %@ così può vedere il lavoro di quell'agente."
+            "state" : "translated",
+            "value" : "Consenti a Vigil di leggere %@ per sapere quando il tuo agente sta lavorando."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Разрешите Vigil читать %@, чтобы он видел работу этого агента."
+            "state" : "translated",
+            "value" : "Разрешите Vigil читать %@, чтобы понимать, когда работает агент."
           }
         }
       }
@@ -3452,37 +3411,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erlaube Vigil, deinen Ordner ~/.claude zu lesen, damit es erkennt, wann Claude Code arbeitet."
+            "value" : "Erlaube den Zugriff auf ~/.claude, damit Vigil erkennt, wann Claude Code arbeitet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Let Vigil read your ~/.claude folder so it can tell when Claude Code is working."
+            "value" : "Allow access to ~/.claude so Vigil can tell when Claude Code is working."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permite a Vigil leer tu carpeta ~/.claude para que sepa cuándo trabaja Claude Code."
+            "value" : "Permite acceso a ~/.claude para que Vigil sepa cuándo trabaja Claude Code."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autorisez Vigil à lire votre dossier ~/.claude pour qu'il sache quand Claude Code travaille."
+            "value" : "Autorisez l'accès à ~/.claude pour que Vigil sache quand Claude Code travaille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Consenti a Vigil di leggere la cartella ~/.claude così può capire quando Claude Code lavora."
+            "value" : "Consenti accesso a ~/.claude perché Vigil sappia quando Claude Code sta lavorando."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Разрешите Vigil читать папку ~/.claude, чтобы он понимал, когда Claude Code работает."
+            "value" : "Разрешите доступ к ~/.claude, чтобы Vigil понимал, когда работает Claude Code."
           }
         }
       }
@@ -3493,37 +3452,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lässt Claude Code Vigil genau mitteilen, wann es startet und stoppt, statt dass Vigil es aus Dateien ableitet. Genau das macht „Ein Agent wartet auf dich“ zuverlässig."
+            "value" : "Claude Code teilt Vigil genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lets Claude Code tell Vigil exactly when it starts and stops, instead of Vigil inferring it from files. This is also what makes \"an agent is waiting for you\" reliable."
+            "value" : "Lets Claude Code tell Vigil exactly when work starts and stops. It also makes \"waiting for you\" notifications reliable."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permite que Claude Code le diga a Vigil exactamente cuándo empieza y termina, en vez de que Vigil lo deduzca de los archivos. Esto es lo que hace fiable «un agente te está esperando»."
+            "value" : "Permite que Claude Code le indique a Vigil exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera»."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permet à Claude Code d'indiquer à Vigil exactement quand il démarre et s'arrête, au lieu que Vigil le déduise des fichiers. C'est aussi ce qui rend « un agent vous attend » fiable."
+            "value" : "Permet à Claude Code d'indiquer précisément à Vigil quand le travail commence et se termine. Cela rend aussi fiables les notifications « un agent vous attend »."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permette a Claude Code di dire a Vigil esattamente quando inizia e finisce, invece di farlo dedurre dai file. È anche ciò che rende affidabile «un agente ti sta aspettando»."
+            "value" : "Permette a Claude Code di dire a Vigil esattamente quando il lavoro inizia e finisce. Rende affidabili anche le notifiche «un agente ti aspetta»."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Позволяет Claude Code сообщать Vigil, когда именно он начинает и заканчивает, вместо того чтобы Vigil догадывался по файлам. Именно это делает надёжным «агент ждёт вас»."
+            "value" : "Claude Code сможет точно сообщать Vigil, когда работа начинается и заканчивается. Благодаря этому уведомления «Агент ждёт вас» будут надёжными."
           }
         }
       }
@@ -3605,7 +3564,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "самый долгий прогон"
+            "value" : "самый долгий запуск"
           }
         }
       }
@@ -3616,37 +3575,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Niedriger Akkustand oder die maximale Wachzeit wurde erreicht."
+            "value" : "Niedriger Akkustand oder maximale Wachzeit."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Low battery, or the maximum awake time was reached."
+            "value" : "Low battery or maximum awake time."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Batería baja o se alcanzó el tiempo máximo despierto."
+            "value" : "Batería baja o tiempo máximo despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Batterie faible, ou durée d'éveil maximale atteinte."
+            "value" : "Batterie faible ou durée d'éveil maximale."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Batteria scarica o tempo massimo di veglia raggiunto."
+            "value" : "Batteria scarica o tempo massimo di veglia."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Низкий заряд или достигнут предел времени бодрствования."
+            "value" : "Низкий заряд или предел времени без сна."
           }
         }
       }
@@ -3698,37 +3657,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS wartet darauf, dass du das in den Systemeinstellungen erlaubst."
+            "value" : "Erlaube dies in den Systemeinstellungen, um fortzufahren."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS is waiting for you to allow this in System Settings."
+            "value" : "Allow this in System Settings to continue."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS espera a que lo permitas en Ajustes del Sistema."
+            "value" : "Permite esto en Ajustes del Sistema para continuar."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS attend que vous l'autorisiez dans Réglages Système."
+            "value" : "Autorisez ceci dans Réglages Système pour continuer."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS aspetta che tu lo consenta in Impostazioni di Sistema."
+            "value" : "Consenti questa operazione in Impostazioni di Sistema per continuare."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS ждёт, что вы разрешите это в Системных настройках."
+            "value" : "Разрешите это в Системных настройках, чтобы продолжить."
           }
         }
       }
@@ -3739,37 +3698,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS hat die Änderung abgelehnt: %@"
+            "value" : "macOS konnte die Änderung nicht anwenden: %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS refused the change: %@"
+            "value" : "macOS couldn't apply the change: %@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS rechazó el cambio: %@"
+            "value" : "macOS no pudo aplicar el cambio: %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS a refusé la modification : %@"
+            "value" : "macOS n'a pas pu appliquer la modification : %@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS ha rifiutato la modifica: %@"
+            "value" : "macOS non ha potuto applicare la modifica: %@"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS отклонил изменение: %@"
+            "value" : "macOS не удалось применить изменение: %@"
           }
         }
       }
@@ -3779,38 +3738,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "macOS hat die Schlafsperre abgelehnt (IOKit-Fehler %lld)."
+            "state" : "translated",
+            "value" : "macOS konnte den Mac nicht wach halten (IOKit-Fehler %lld)."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "macOS refused to create the sleep assertion (IOKit error %lld)."
+            "value" : "macOS couldn't keep the Mac awake (IOKit error %lld)."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "macOS rechazó crear el bloqueo de suspensión (error de IOKit %lld)."
+            "state" : "translated",
+            "value" : "macOS no pudo mantener el Mac despierto (error de IOKit %lld)."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "macOS a refusé de créer le verrou de veille (erreur IOKit %lld)."
+            "state" : "translated",
+            "value" : "macOS n'a pas pu garder le Mac éveillé (erreur IOKit %lld)."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "macOS ha rifiutato di creare il blocco dello stop (errore IOKit %lld)."
+            "state" : "translated",
+            "value" : "macOS non ha potuto tenere sveglio il Mac (errore IOKit %lld)."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "macOS отказался создать блокировку сна (ошибка IOKit %lld)."
+            "state" : "translated",
+            "value" : "macOS не удалось предотвратить переход Mac в сон (ошибка IOKit %lld)."
           }
         }
       }
@@ -3827,7 +3786,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Maximum time awake"
+            "value" : "Maximum awake time"
           }
         },
         "es" : {
@@ -3851,7 +3810,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Максимальное время бодрствования"
+            "value" : "Максимальное время без сна"
           }
         }
       }
@@ -3944,37 +3903,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Den Ruhezustand nie aufhalten."
+            "value" : "Den Mac nie wach halten."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Never hold sleep."
+            "value" : "Never keep the Mac awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nunca retener el reposo."
+            "value" : "No mantener nunca el Mac despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ne jamais retenir la veille."
+            "value" : "Ne jamais garder le Mac éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Non trattenere mai lo stop."
+            "value" : "Non tenere mai sveglio il Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Никогда не удерживать сон."
+            "value" : "Никогда не мешать Mac уснуть."
           }
         }
       }
@@ -4108,31 +4067,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es ist kein Update-Feed konfiguriert."
+            "value" : "Kein Update-Feed konfiguriert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No release feed is configured."
+            "value" : "No update feed is configured."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No hay un feed de versiones configurado."
+            "value" : "No hay una fuente de actualizaciones configurada."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucun flux de versions n'est configuré."
+            "value" : "Aucune source de mises à jour n'est configurée."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nessun feed di rilascio configurato."
+            "value" : "Nessuna fonte di aggiornamenti configurata."
           }
         },
         "ru" : {
@@ -4149,37 +4108,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es wurden noch keine Versionen veröffentlicht."
+            "value" : "Noch keine Versionen verfügbar."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No releases have been published yet."
+            "value" : "No releases are available yet."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Todavía no se ha publicado ninguna versión."
+            "value" : "Aún no hay versiones disponibles."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucune version n'a encore été publiée."
+            "value" : "Aucune version n'est encore disponible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Non è ancora stata pubblicata alcuna versione."
+            "value" : "Non ci sono ancora versioni disponibili."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Релизов ещё не публиковали."
+            "value" : "Новых версий пока нет."
           }
         }
       }
@@ -4220,7 +4179,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "прогонов нет"
+            "value" : "нет запусков"
           }
         }
       }
@@ -4313,37 +4272,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nichts konfiguriert. Vigil beobachtet nur Claude Code."
+            "value" : "Keine weiteren Tools hinzugefügt. Vigil beobachtet Claude Code."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nothing configured. Vigil is watching Claude Code only."
+            "value" : "No other tools added. Vigil is watching Claude Code."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nada configurado. Vigil solo observa Claude Code."
+            "value" : "No has añadido otras herramientas. Vigil está vigilando Claude Code."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rien de configuré. Vigil surveille uniquement Claude Code."
+            "value" : "Aucun autre outil ajouté. Vigil surveille Claude Code."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nulla configurato. Vigil osserva solo Claude Code."
+            "value" : "Nessun altro strumento aggiunto. Vigil sta monitorando Claude Code."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ничего не настроено. Vigil следит только за Claude Code."
+            "value" : "Другие инструменты не добавлены. Vigil следит за Claude Code."
           }
         }
       }
@@ -4682,119 +4641,119 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agentenarbeit lief weiter, während ich nicht an der Tastatur war."
+            "value" : "Agentenarbeit, die erledigt wurde, während ich weg war."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "of agent work that carried on while I was away from the keyboard."
+            "value" : "of agent work completed while I was away."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de trabajo del agente que continuó mientras yo no estaba ante el teclado."
+            "value" : "de trabajo del agente completado mientras yo no estaba."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "de travail de l'agent qui s'est poursuivi pendant mon absence du clavier."
+            "value" : "de travail d'agent effectué pendant mon absence."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "di lavoro dell'agente proseguito mentre non ero alla tastiera."
+            "value" : "di lavoro dell'agente completato mentre non c'ero."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "работы агента продолжалось, пока меня не было за клавиатурой."
+            "value" : "работы агента, выполненной, пока меня не было."
           }
         }
       }
     },
-    "of agent work while I was away. %lld runs would have died with the Mac asleep." : {
+    "of agent work while I was away. Sleep would have interrupted %lld of those runs." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Agentenarbeit, während ich weg war. %lld Läufe wären mit dem schlafenden Mac gestorben."
+            "value" : "Agentenarbeit, während ich weg war. %lld dieser Läufe hätte der Ruhezustand unterbrochen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "of agent work while I was away. %lld runs would have died with the Mac asleep."
+            "value" : "of agent work while I was away. Sleep would have interrupted %lld of those runs."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "de trabajo del agente mientras yo no estaba. %lld ejecuciones habrían muerto con el Mac dormido."
+            "value" : "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido %lld de esas ejecuciones."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "de travail de l'agent pendant mon absence. %lld exécutions seraient mortes avec le Mac endormi."
+            "value" : "de travail de l'agent pendant mon absence. La veille aurait interrompu %lld de ces exécutions."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "di lavoro dell'agente mentre non c'ero. %lld esecuzioni sarebbero morte con il Mac addormentato."
+            "value" : "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto %lld di quelle esecuzioni."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "работы агента, пока меня не было. Прогонов, которые погибли бы вместе с уснувшим Mac: %lld."
+            "value" : "работы агента, пока меня не было. Прогонов, которые прервал бы сон: %lld."
           }
         }
       }
     },
-    "of agent work while I was away. One run would have died with the Mac asleep." : {
+    "of agent work while I was away. Sleep would have interrupted one of those runs." : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Agentenarbeit, während ich weg war. Ein Lauf wäre mit dem schlafenden Mac gestorben."
+            "value" : "Agentenarbeit, während ich weg war. Einen dieser Läufe hätte der Ruhezustand unterbrochen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "of agent work while I was away. One run would have died with the Mac asleep."
+            "value" : "of agent work while I was away. Sleep would have interrupted one of those runs."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "de trabajo del agente mientras yo no estaba. Una ejecución habría muerto con el Mac dormido."
+            "value" : "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido una de esas ejecuciones."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "de travail de l'agent pendant mon absence. Une exécution serait morte avec le Mac endormi."
+            "value" : "de travail de l'agent pendant mon absence. La veille aurait interrompu une de ces exécutions."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "di lavoro dell'agente mentre non c'ero. Un'esecuzione sarebbe morta con il Mac addormentato."
+            "value" : "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto una di quelle esecuzioni."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "работы агента, пока меня не было. Один прогон погиб бы вместе с уснувшим Mac."
+            "value" : "работы агента, пока меня не было. Один из этих прогонов сон бы прервал."
           }
         }
       }
@@ -4846,37 +4805,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Standardmäßig aus. Vigil hält den Mac am Laufen, während dein Agent arbeitet; den Bildschirm schlafen zu lassen spart echten Strom und ändert sonst nichts."
+            "value" : "Wenn der Bildschirm schläft, sparst du Energie, ohne deinen Agenten zu unterbrechen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else."
+            "value" : "Letting the display sleep saves power and won't interrupt your agent."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desactivado por defecto. Vigil mantiene el Mac en marcha mientras tu agente trabaja; dejar dormir la pantalla ahorra energía real y no cambia nada más."
+            "value" : "Dejar que la pantalla se apague ahorra energía y no interrumpe al agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Désactivé par défaut. Vigil garde le Mac actif pendant que votre agent travaille ; laisser l'écran s'éteindre économise vraiment de l'énergie et ne change rien d'autre."
+            "value" : "Laisser l'écran s'éteindre économise de l'énergie sans interrompre votre agent."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Disattivato di default. Vigil tiene il Mac attivo mentre il tuo agente lavora; lasciare spegnere lo schermo fa risparmiare energia davvero e non cambia altro."
+            "value" : "Lasciare spegnere lo schermo fa risparmiare energia e non interrompe il tuo agente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "По умолчанию выключено. Vigil держит Mac включённым, пока работает агент; погасший экран реально экономит энергию и больше ни на что не влияет."
+            "value" : "Если экран погаснет, агент продолжит работу, а Mac будет расходовать меньше энергии."
           }
         }
       }
@@ -4887,37 +4846,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einmal am Tag fragt Vigil bei GitHub, ob es eine neuere Version gibt. Das ist das einzige Mal, dass Vigil das Netzwerk nutzt; es sendet nichts über dich und installiert nie etwas von selbst."
+            "value" : "Vigil prüft einmal täglich auf GitHub, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own."
+            "value" : "Vigil checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una vez al día, Vigil pregunta a GitHub si existe una versión más nueva. Es la única vez que Vigil usa la red, no envía nada sobre ti y nunca instala nada por su cuenta."
+            "value" : "Vigil consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une fois par jour, Vigil demande à GitHub s'il existe une version plus récente. C'est la seule fois où Vigil utilise le réseau, il n'envoie rien vous concernant et n'installe jamais rien de lui-même."
+            "value" : "Vigil consulte GitHub une fois par jour pour chercher une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una volta al giorno Vigil chiede a GitHub se esiste una versione più recente. È l'unica volta che Vigil usa la rete, non invia nulla su di te e non installa mai niente da solo."
+            "value" : "Vigil controlla GitHub una volta al giorno per cercare una nuova versione. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Раз в сутки Vigil спрашивает у GitHub, вышла ли новая версия. Это единственный случай, когда Vigil пользуется сетью; о вас не отправляется ничего, и он никогда ничего не устанавливает сам."
+            "value" : "Раз в день Vigil проверяет на GitHub, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления никогда не устанавливаются автоматически."
           }
         }
       }
@@ -4928,37 +4887,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sobald Vigil deinen Mac durch einen Agentenlauf wach gehalten hat, siehst du hier, was das wert war: wie lange weitergearbeitet wurde, während du weg warst, und wie viele Läufe sonst im Ruhezustand gestorben wären."
+            "value" : "Statistiken erscheinen, nachdem Vigil deinen Mac während eines Agentenlaufs wach gehalten hat."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep."
+            "value" : "Stats appear after Vigil keeps your Mac awake through an agent run."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cuando Vigil haya mantenido el Mac despierto durante una ejecución, aquí verás lo que valió: cuánto siguió trabajando mientras no estabas y cuántas ejecuciones habrían muerto al dormirse el Mac."
+            "value" : "Las estadísticas aparecerán después de que Vigil mantenga el Mac despierto durante una ejecución."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une fois que Vigil aura gardé votre Mac éveillé pendant une exécution, vous verrez ici ce que cela valait : combien de temps le travail a continué en votre absence, et combien d'exécutions seraient mortes en veille."
+            "value" : "Les statistiques apparaîtront après que Vigil aura gardé votre Mac éveillé pendant une exécution."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quando Vigil avrà tenuto sveglio il Mac durante un'esecuzione, qui vedrai quanto è valso: per quanto ha continuato a lavorare mentre non c'eri e quante esecuzioni sarebbero morte con il Mac in stop."
+            "value" : "Le statistiche appariranno dopo che Vigil avrà tenuto sveglio il Mac durante un'esecuzione."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Когда Vigil впервые продержит Mac бодрым в течение прогона агента, здесь появится, чего это стоило: сколько работа шла, пока вас не было, и сколько прогонов иначе умерли бы во сне."
+            "value" : "Статистика появится после того, как Vigil хотя бы раз не даст Mac уснуть во время работы агента."
           }
         }
       }
@@ -4969,37 +4928,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nur für Läufe länger als %@."
+            "value" : "Für Läufe länger als %@."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Only for runs longer than %@."
+            "value" : "For runs longer than %@."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo para ejecuciones de más de %@."
+            "value" : "Para ejecuciones de más de %@."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seulement pour les exécutions de plus de %@."
+            "value" : "Pour les exécutions de plus de %@."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo per esecuzioni più lunghe di %@."
+            "value" : "Per esecuzioni più lunghe di %@."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Только для прогонов дольше %@."
+            "value" : "Для запусков дольше %@."
           }
         }
       }
@@ -5174,37 +5133,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffnet ein normales macOS-Fenster, damit du den Ordner freigeben kannst"
+            "value" : "Öffnet die macOS-Ordnerauswahl, damit du Zugriff erlauben kannst"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opens a standard macOS panel so you can approve the folder"
+            "value" : "Opens a standard macOS folder picker so you can grant access"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre un panel estándar de macOS para que autorices la carpeta"
+            "value" : "Abre el selector de carpetas estándar de macOS para que concedas acceso"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvre une fenêtre macOS standard pour autoriser le dossier"
+            "value" : "Ouvre le sélecteur de dossier standard de macOS pour vous permettre d'accorder l'accès"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apre un pannello macOS standard per autorizzare la cartella"
+            "value" : "Apre il selettore cartelle standard di macOS per consentirti di concedere l'accesso"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Откроет стандартное окно macOS, чтобы вы разрешили доступ к папке"
+            "value" : "Откроет стандартный выбор папки macOS, чтобы вы могли разрешить доступ"
           }
         }
       }
@@ -5666,37 +5625,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beende Vigil und öffne es erneut, um die Sprache zu wechseln."
+            "value" : "Öffne Vigil erneut, um die Sprachänderung anzuwenden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quit Vigil and open it again to change language."
+            "value" : "Reopen Vigil to apply the language change."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cierra Vigil y ábrelo de nuevo para cambiar de idioma."
+            "value" : "Vuelve a abrir Vigil para aplicar el cambio de idioma."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quittez Vigil et rouvrez-le pour changer de langue."
+            "value" : "Rouvrez Vigil pour appliquer le changement de langue."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chiudi Vigil e riaprilo per cambiare lingua."
+            "value" : "Riapri Vigil per applicare il cambio di lingua."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Закройте Vigil и откройте снова, чтобы сменить язык."
+            "value" : "Перезапустите Vigil, чтобы применить новый язык."
           }
         }
       }
@@ -5830,37 +5789,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Entfernt Vigils Einträge aus deinen Claude-Code-Einstellungen"
+            "value" : "Entfernt nur die Einträge, die Vigil zu deinen Claude-Code-Einstellungen hinzugefügt hat"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Removes Vigil's entries from your Claude Code settings"
+            "value" : "Removes only the entries Vigil added to your Claude Code settings"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Elimina las entradas de Vigil de tus ajustes de Claude Code"
+            "value" : "Elimina solo las entradas que Vigil añadió a tus ajustes de Claude Code"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supprime les entrées de Vigil de vos réglages Claude Code"
+            "value" : "Supprime uniquement les entrées ajoutées par Vigil à vos réglages Claude Code"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rimuove le voci di Vigil dalle impostazioni di Claude Code"
+            "value" : "Rimuove solo le voci aggiunte da Vigil alle impostazioni di Claude Code"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Уберёт записи Vigil из настроек Claude Code"
+            "value" : "Удаляет только записи, которые Vigil добавил в настройки Claude Code"
           }
         }
       }
@@ -5918,7 +5877,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "runs rescued"
+            "value" : "runs saved"
           }
         },
         "es" : {
@@ -5942,7 +5901,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "прогонов спасено"
+            "value" : "сохранено запусков"
           }
         }
       }
@@ -5983,7 +5942,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "прогонов под наблюдением"
+            "value" : "запусков отслежено"
           }
         }
       }
@@ -6117,37 +6076,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Teilt eine Karte, eine Zusammenfassung und einen Link zu Vigil"
+            "value" : "Teilt Karte, Zusammenfassung und einen Link zu Vigil"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shares a card, a summary and a link to Vigil"
+            "value" : "Shares the card, summary, and a link to Vigil"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comparte una tarjeta, un resumen y un enlace a Vigil"
+            "value" : "Comparte la tarjeta, el resumen y un enlace a Vigil"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Partage une carte, un résumé et un lien vers Vigil"
+            "value" : "Partage la carte, le résumé et un lien vers Vigil"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Condivide una scheda, un riepilogo e un link a Vigil"
+            "value" : "Condivide la scheda, il riepilogo e un link a Vigil"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Поделиться карточкой, сводкой и ссылкой на Vigil"
+            "value" : "Делится карточкой, сводкой и ссылкой на Vigil"
           }
         }
       }
@@ -6322,37 +6281,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeigt genau, was hinzugefügt wird, bevor irgendetwas geschrieben wird"
+            "value" : "Zeigt genau, was Vigil hinzufügen wird, bevor etwas geschrieben wird"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shows exactly what will be added before anything is written"
+            "value" : "Previews exactly what Vigil will add before it writes anything"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muestra exactamente qué se añadirá antes de escribir nada"
+            "value" : "Muestra exactamente qué añadirá Vigil antes de escribir nada"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Montre exactement ce qui sera ajouté avant toute écriture"
+            "value" : "Affiche exactement ce que Vigil ajoutera avant toute écriture"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra esattamente cosa verrà aggiunto prima di scrivere qualsiasi cosa"
+            "value" : "Mostra esattamente cosa aggiungerà Vigil prima di scrivere qualsiasi cosa"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Покажет, что именно будет добавлено, прежде чем что-то записать"
+            "value" : "Показывает, что именно Vigil добавит, прежде чем что-либо записывать"
           }
         }
       }
@@ -6435,6 +6394,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновления"
+          }
+        }
+      }
+    },
+    "Sound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ton"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sound"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Sonido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Son"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Suono"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Звук"
           }
         }
       }
@@ -6568,25 +6568,25 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Den Mac bei niedrigem Akku nicht mehr wach halten"
+            "value" : "Mac bei niedrigem Akkustand nicht wach halten"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stop keeping the Mac awake on low battery"
+            "value" : "Stop keeping your Mac awake on low battery"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dejar de mantener el Mac despierto con batería baja"
+            "value" : "Dejar de mantener el Mac despierto con poca batería"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cesser de garder le Mac éveillé si la batterie est faible"
+            "value" : "Cesser de garder votre Mac éveillé si la batterie est faible"
           }
         },
         "it" : {
@@ -6598,7 +6598,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не удерживать Mac при низком заряде"
+            "value" : "Не давать Mac уснуть при низком заряде"
           }
         }
       }
@@ -6650,37 +6650,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil beobachtet dieses Werkzeug nicht mehr"
+            "value" : "Beendet die Überwachung dieses Tools"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stops Vigil watching this tool"
+            "value" : "Stops watching this tool"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil deja de observar esta herramienta"
+            "value" : "Deja de vigilar esta herramienta"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil cesse de surveiller cet outil"
+            "value" : "Cesse de surveiller cet outil"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil smette di osservare questo strumento"
+            "value" : "Smette di monitorare questo strumento"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil перестанет следить за этим инструментом"
+            "value" : "Больше не следит за этим инструментом"
           }
         }
       }
@@ -6779,7 +6779,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The App Store could not verify the purchase."
+            "value" : "The App Store couldn't verify the purchase."
           }
         },
         "es" : {
@@ -6814,37 +6814,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Genau die Konfiguration, die Vigil hinzufügt"
+            "value" : "Was Vigil hinzufügen wird"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The exact configuration Vigil will add"
+            "value" : "What Vigil will add"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La configuración exacta que añadirá Vigil"
+            "value" : "Lo que añadirá Vigil"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La configuration exacte que Vigil ajoutera"
+            "value" : "Ce que Vigil ajoutera"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La configurazione esatta che Vigil aggiungerà"
+            "value" : "Cosa aggiungerà Vigil"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Точная конфигурация, которую добавит Vigil"
+            "value" : "Что добавит Vigil"
           }
         }
       }
@@ -6854,38 +6854,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Der Kauf wartet auf Freigabe. Von Ihnen ist nichts weiter nötig."
+            "state" : "translated",
+            "value" : "Der Kauf wartet auf Freigabe. Im Moment musst du nichts tun."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The purchase is waiting for approval. Nothing else is needed from you."
+            "value" : "The purchase is waiting for approval. No action is needed right now."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "La compra espera aprobación. No necesitas hacer nada más."
+            "state" : "translated",
+            "value" : "La compra está esperando aprobación. No tienes que hacer nada por ahora."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "L'achat attend une approbation. Rien d'autre ne vous est demandé."
+            "state" : "translated",
+            "value" : "L'achat attend une approbation. Vous n'avez rien à faire pour le moment."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "L'acquisto è in attesa di approvazione. Da te non serve altro."
+            "state" : "translated",
+            "value" : "L'acquisto è in attesa di approvazione. Per ora non devi fare nulla."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Покупка ждёт подтверждения. От вас больше ничего не нужно."
+            "state" : "translated",
+            "value" : "Покупка ждёт подтверждения. Пока от вас ничего не требуется."
           }
         }
       }
@@ -6937,37 +6937,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Der Lauf%@ dauerte %@. Dein Mac schläft wieder normal."
+            "value" : "Der Lauf%@ war nach %@ fertig. Dein Mac kann wieder normal schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The run%@ took %@. Your Mac will sleep normally again."
+            "value" : "The run%@ finished in %@. Your Mac can sleep normally again."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La ejecución%@ tardó %@. El Mac volverá a dormir con normalidad."
+            "value" : "La ejecución%@ terminó en %@. El Mac puede volver a dormir con normalidad."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'exécution%@ a pris %@. Votre Mac se remettra en veille normalement."
+            "value" : "L'exécution%@ s'est terminée en %@. Votre Mac peut de nouveau se mettre en veille normalement."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'esecuzione%@ è durata %@. Il Mac tornerà a dormire normalmente."
+            "value" : "L'esecuzione%@ è terminata in %@. Il Mac può tornare ad andare in stop normalmente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Прогон%@ занял %@. Mac снова будет засыпать как обычно."
+            "value" : "Запуск%@ завершился за %@. Mac снова может засыпать как обычно."
           }
         }
       }
@@ -6977,38 +6977,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Es gibt kein Trinkgeld namens %@."
+            "state" : "translated",
+            "value" : "Die Trinkgeldoption %@ ist nicht verfügbar."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "There is no tip called %@."
+            "value" : "Tip %@ isn't available."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "No existe una propina llamada %@."
+            "state" : "translated",
+            "value" : "La opción de propina %@ no está disponible."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Il n'existe aucun pourboire nommé %@."
+            "state" : "translated",
+            "value" : "L'option de pourboire %@ n'est pas disponible."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Non esiste una mancia chiamata %@."
+            "state" : "translated",
+            "value" : "L'opzione mancia %@ non è disponibile."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Чаевых с названием %@ не существует."
+            "state" : "translated",
+            "value" : "Вариант чаевых %@ недоступен."
           }
         }
       }
@@ -7018,14 +7018,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "In dieser Version sind Trinkgelder nicht verfügbar."
+            "state" : "translated",
+            "value" : "Trinkgeld ist in dieser Version nicht verfügbar."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tipping is not available in this build."
+            "value" : "Tipping isn't available in this version."
           }
         },
         "es" : {
@@ -7048,8 +7048,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "В этой сборке чаевые недоступны."
+            "state" : "translated",
+            "value" : "Чаевые недоступны в этой версии."
           }
         }
       }
@@ -7060,37 +7060,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "insgesamt gehalten"
+            "value" : "Wachzeit"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "total held"
+            "value" : "awake time"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "total mantenido"
+            "value" : "tiempo despierto"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "total maintenu"
+            "value" : "temps d'éveil"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "totale mantenuto"
+            "value" : "tempo di veglia"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "всего удержано"
+            "value" : "время без сна"
           }
         }
       }
@@ -7265,37 +7265,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil fragt macOS erst dann um Erlaubnis, wenn es dich wirklich benachrichtigen muss."
+            "value" : "Vigil fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil asks macOS for permission the first time it actually needs to notify you."
+            "value" : "Vigil asks for notification permission the first time it needs to send one."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil pide permiso a macOS la primera vez que de verdad necesita avisarte."
+            "value" : "Vigil pide permiso para enviar notificaciones la primera vez que necesita enviar una."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil demande l'autorisation à macOS la première fois qu'il a vraiment besoin de vous avertir."
+            "value" : "Vigil demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil chiede il permesso a macOS la prima volta che deve davvero avvisarti."
+            "value" : "Vigil chiede il permesso per le notifiche la prima volta che deve inviarne una."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil попросит разрешение у macOS, когда впервые действительно понадобится вас уведомить."
+            "value" : "Vigil запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
           }
         }
       }
@@ -7305,38 +7305,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil konnte Ihre Claude-Code-Einstellungen nicht sichern und hat deshalb nichts geändert: %@"
+            "state" : "translated",
+            "value" : "Vigil konnte deine Claude-Code-Einstellungen nicht sichern. Deshalb wurde nichts geändert: %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not back up your Claude Code settings, so it made no changes: %@"
+            "value" : "Vigil couldn't back up your Claude Code settings, so nothing was changed: %@"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil no pudo respaldar tus ajustes de Claude Code, así que no cambió nada: %@"
+            "state" : "translated",
+            "value" : "Vigil no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil n'a pas pu sauvegarder vos réglages Claude Code, rien n'a donc été modifié : %@"
+            "state" : "translated",
+            "value" : "Vigil n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto salvare una copia delle impostazioni di Claude Code, quindi non ha cambiato nulla: %@"
+            "state" : "translated",
+            "value" : "Vigil non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil не смог сделать резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
+            "state" : "translated",
+            "value" : "Vigil не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
           }
         }
       }
@@ -7353,25 +7353,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not migrate preferences from version %lld."
+            "value" : "Vigil couldn't import settings from version %lld."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil no pudo migrar las preferencias de la versión %lld."
+            "state" : "translated",
+            "value" : "Vigil no pudo importar los ajustes de la versión %lld."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil n'a pas pu migrer les réglages depuis la version %lld."
+            "state" : "translated",
+            "value" : "Vigil n'a pas pu importer les réglages de la version %lld."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto migrare le preferenze dalla versione %lld."
+            "state" : "translated",
+            "value" : "Vigil non ha potuto importare le impostazioni dalla versione %lld."
           }
         },
         "ru" : {
@@ -7387,38 +7387,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil konnte seine Einstellungen nicht lesen und verwendet die Standardwerte."
+            "state" : "translated",
+            "value" : "Vigil konnte seine Einstellungen nicht lesen und verwendet deshalb die Standardwerte."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not read its preferences and has fallen back to defaults."
+            "value" : "Vigil couldn't read its settings, so it's using the defaults."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil no pudo leer sus preferencias y ha vuelto a los valores por omisión."
+            "state" : "translated",
+            "value" : "Vigil no pudo leer sus ajustes, así que está usando los valores predeterminados."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil n'a pas pu lire ses réglages et est revenu aux valeurs par défaut."
+            "state" : "translated",
+            "value" : "Vigil n'a pas pu lire ses réglages et utilise donc les valeurs par défaut."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto leggere le sue preferenze ed è tornato ai valori predefiniti."
+            "state" : "translated",
+            "value" : "Vigil non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil не смог прочитать свои настройки и вернулся к стандартным."
+            "state" : "translated",
+            "value" : "Vigil не смог прочитать свои настройки, поэтому использует стандартные."
           }
         }
       }
@@ -7428,38 +7428,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil konnte die Stromquelle dieses Mac nicht auslesen."
+            "state" : "translated",
+            "value" : "Vigil konnte die Stromquelle dieses Mac nicht erkennen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not read this Mac's power source."
+            "value" : "Vigil couldn't read this Mac's power source."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil no pudo leer la fuente de alimentación de este Mac."
+            "state" : "translated",
+            "value" : "Vigil no pudo detectar la fuente de alimentación de este Mac."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil n'a pas pu lire la source d'alimentation de ce Mac."
+            "state" : "translated",
+            "value" : "Vigil n'a pas pu déterminer la source d'alimentation de ce Mac."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto leggere la fonte di alimentazione di questo Mac."
+            "state" : "translated",
+            "value" : "Vigil non ha potuto determinare la fonte di alimentazione di questo Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil не смог определить источник питания этого Mac."
+            "state" : "translated",
+            "value" : "Vigil не смог определить, от чего питается этот Mac."
           }
         }
       }
@@ -7469,14 +7469,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil konnte Ihre Claude-Code-Einstellungen nicht lesen: %@"
+            "state" : "translated",
+            "value" : "Vigil konnte deine Claude-Code-Einstellungen nicht lesen: %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not read your Claude Code settings: %@"
+            "value" : "Vigil couldn't read your Claude Code settings: %@"
           }
         },
         "es" : {
@@ -7493,8 +7493,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto leggere le tue impostazioni di Claude Code: %@"
+            "state" : "translated",
+            "value" : "Vigil non ha potuto leggere le impostazioni di Claude Code: %@"
           }
         },
         "ru" : {
@@ -7517,7 +7517,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not start its local hook receiver: %@"
+            "value" : "Vigil couldn't start its local hook listener: %@"
           }
         },
         "es" : {
@@ -7551,14 +7551,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil konnte Ihre Claude-Code-Einstellungen nicht aktualisieren: %@"
+            "state" : "translated",
+            "value" : "Vigil konnte deine Claude-Code-Einstellungen nicht aktualisieren: %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not update your Claude Code settings: %@"
+            "value" : "Vigil couldn't update your Claude Code settings: %@"
           }
         },
         "es" : {
@@ -7575,8 +7575,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto aggiornare le tue impostazioni di Claude Code: %@"
+            "state" : "translated",
+            "value" : "Vigil non ha potuto aggiornare le impostazioni di Claude Code: %@"
           }
         },
         "ru" : {
@@ -7599,7 +7599,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil could not watch %@ for activity."
+            "value" : "Vigil couldn't watch %@ for activity."
           }
         },
         "es" : {
@@ -7616,8 +7616,8 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil non ha potuto osservare l'attività in %@."
+            "state" : "translated",
+            "value" : "Vigil non ha potuto monitorare l'attività in %@."
           }
         },
         "ru" : {
@@ -7640,13 +7640,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil has not been granted access to %@ yet."
+            "value" : "Vigil doesn't have access to %@ yet."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil todavía no tiene acceso a %@."
+            "state" : "translated",
+            "value" : "Vigil aún no tiene acceso a %@."
           }
         },
         "fr" : {
@@ -7663,8 +7663,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil пока не получил доступ к %@."
+            "state" : "translated",
+            "value" : "У Vigil пока нет доступа к %@."
           }
         }
       }
@@ -7675,31 +7675,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zum Sprachwechsel muss Vigil neu geöffnet werden."
+            "value" : "Zum Ändern der Sprache muss Vigil neu gestartet werden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil has to reopen to change language."
+            "value" : "Vigil needs to reopen to change the language."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil debe reabrirse para cambiar de idioma."
+            "value" : "Vigil tiene que volver a abrirse para cambiar el idioma."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil doit rouvrir pour changer de langue."
+            "value" : "Vigil doit être relancé pour changer de langue."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil deve riaprirsi per cambiare lingua."
+            "value" : "Vigil deve essere riaperto per cambiare lingua."
           }
         },
         "ru" : {
@@ -7716,37 +7716,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält deinen Mac wach: immer an."
+            "value" : "„Immer an“ hält deinen Mac wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is keeping your Mac awake: always on."
+            "value" : "Always On is keeping your Mac awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil mantiene el Mac despierto: siempre activo."
+            "value" : "«Siempre activo» mantiene el Mac despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil garde votre Mac éveillé : toujours actif."
+            "value" : "« Toujours actif » garde votre Mac éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil tiene sveglio il Mac: sempre attivo."
+            "value" : "«Sempre attivo» tiene sveglio il Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil не даёт Mac уснуть: режим «всегда включён»."
+            "value" : "Режим «Всегда включено» не даёт Mac уснуть."
           }
         }
       }
@@ -7757,37 +7757,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält deinen Mac wach: ein Agent arbeitet."
+            "value" : "Vigil hält deinen Mac wach, solange ein Agent arbeitet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is keeping your Mac awake: an agent is working."
+            "value" : "Vigil is keeping your Mac awake while an agent works."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil mantiene el Mac despierto: un agente está trabajando."
+            "value" : "Vigil mantiene el Mac despierto mientras trabaja un agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil garde votre Mac éveillé : un agent travaille."
+            "value" : "Vigil garde votre Mac éveillé pendant qu'un agent travaille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil tiene sveglio il Mac: un agente sta lavorando."
+            "value" : "Vigil tiene sveglio il Mac mentre un agente lavora."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil не даёт Mac уснуть: агент работает."
+            "value" : "Vigil не даёт Mac уснуть, пока работает агент."
           }
         }
       }
@@ -7839,37 +7839,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil nützt nur, wenn es bereits läuft."
+            "value" : "Öffne Vigil bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is only useful when it is already running."
+            "value" : "Open Vigil at login so it's ready before an agent starts."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil solo sirve si ya está en marcha."
+            "value" : "Abre Vigil al iniciar sesión para que esté listo antes de que empiece un agente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil n'est utile que s'il est déjà lancé."
+            "value" : "Ouvrez Vigil à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil è utile solo se è già in esecuzione."
+            "value" : "Apri Vigil all'accesso così sarà pronto prima che inizi un agente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil полезен, только когда уже запущен."
+            "value" : "Включите запуск Vigil при входе, чтобы он был готов до старта агента."
           }
         }
       }
@@ -7880,37 +7880,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ist ausgeschaltet und hält den Ruhezustand gar nicht auf."
+            "value" : "Vigil ist aus und hält deinen Mac nicht wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is switched off, so it will not hold sleep at all."
+            "value" : "Vigil is off and won't keep your Mac awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil está apagado, así que no retendrá el reposo en absoluto."
+            "value" : "Vigil está desactivado y no mantendrá el Mac despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil est éteint : il ne retiendra pas la veille du tout."
+            "value" : "Vigil est désactivé et ne gardera pas votre Mac éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil è spento, quindi non tratterrà affatto lo stop."
+            "value" : "Vigil è disattivato e non terrà sveglio il Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil выключен и вообще не будет удерживать сон."
+            "value" : "Vigil выключен и не будет мешать Mac уснуть."
           }
         }
       }
@@ -7962,37 +7962,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil beobachtet. Gerade läuft nichts."
+            "value" : "Vigil beobachtet. Keine Agenten laufen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is watching. Nothing is running right now."
+            "value" : "Vigil is watching. No agents are running."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil está vigilando. Ahora mismo no hay nada en marcha."
+            "value" : "Vigil está vigilando. No hay agentes en ejecución."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil surveille. Rien ne tourne pour le moment."
+            "value" : "Vigil surveille. Aucun agent n'est en cours d'exécution."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil sta osservando. Al momento non è in esecuzione nulla."
+            "value" : "Vigil sta monitorando. Nessun agente è in esecuzione."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil следит. Сейчас ничего не выполняется."
+            "value" : "Vigil следит. Сейчас ни один агент не работает."
           }
         }
       }
@@ -8003,37 +8003,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil beobachtet. Dein Mac schläft normal."
+            "value" : "Vigil beobachtet. Dein Mac kann normal schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil is watching. Your Mac will sleep normally."
+            "value" : "Vigil is watching. Your Mac can sleep normally."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil está vigilando. El Mac dormirá con normalidad."
+            "value" : "Vigil está vigilando. El Mac puede dormir con normalidad."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil surveille. Votre Mac se mettra en veille normalement."
+            "value" : "Vigil surveille. Votre Mac peut se mettre en veille normalement."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil sta osservando. Il Mac andrà in stop normalmente."
+            "value" : "Vigil sta monitorando. Il Mac può andare in stop normalmente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil следит. Mac будет засыпать как обычно."
+            "value" : "Vigil следит. Mac может засыпать как обычно."
           }
         }
       }
@@ -8044,37 +8044,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält deinen Mac wach, solange ein lokaler KI-Agent arbeitet, und lässt ihn schlafen, sobald alles ruhig ist. Deine Ruhezustands-Einstellungen bleiben unangetastet."
+            "value" : "Vigil hält deinen Mac wach, solange ein lokaler Coding-Agent arbeitet, und lässt ihn danach wieder schlafen. Deine Ruhezustandseinstellungen bleiben unverändert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed."
+            "value" : "Vigil keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil mantiene el Mac despierto mientras un agente de IA local trabaja y lo deja dormir en cuanto todo queda en silencio. Tus ajustes de reposo no se tocan."
+            "value" : "Vigil mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil garde votre Mac éveillé pendant qu'un agent IA local travaille, et le laisse dormir dès que tout se calme. Vos réglages de veille ne sont jamais modifiés."
+            "value" : "Vigil garde votre Mac éveillé pendant qu'un agent de programmation local travaille, puis le laisse se mettre en veille une fois le travail terminé. Vos réglages de veille restent inchangés."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil tiene sveglio il Mac mentre un agente IA locale lavora e lo lascia dormire appena tutto si ferma. Le tue impostazioni di stop non vengono mai cambiate."
+            "value" : "Vigil tiene sveglio il Mac mentre lavora un agente di programmazione locale, poi lo lascia andare in stop quando il lavoro è finito. Le impostazioni di stop restano invariate."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil не даёт Mac уснуть, пока локальный ИИ-агент работает, и отпускает его, как только всё стихло. Ваши настройки сна не меняются."
+            "value" : "Vigil не даёт Mac уснуть, пока работает локальный агент для кода, а после завершения работы отпускает его в сон. Настройки сна не меняются."
           }
         }
       }
@@ -8125,20 +8125,20 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil braucht Ihre Erlaubnis, um %@ zu lesen."
+            "state" : "translated",
+            "value" : "Vigil braucht die Erlaubnis, %@ zu lesen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil needs your permission to read %@."
+            "value" : "Vigil needs permission to read %@."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil necesita tu permiso para leer %@."
+            "state" : "translated",
+            "value" : "Vigil necesita permiso para leer %@."
           }
         },
         "fr" : {
@@ -8149,14 +8149,14 @@
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil ha bisogno del tuo permesso per leggere %@."
+            "state" : "translated",
+            "value" : "Vigil ha bisogno del permesso per leggere %@."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Vigil нужно ваше разрешение, чтобы читать %@."
+            "state" : "translated",
+            "value" : "Vigil нужно разрешение на чтение %@."
           }
         }
       }
@@ -8167,37 +8167,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hat seine maximale Wachzeit erreicht und hält deinen Mac nicht mehr wach."
+            "value" : "Vigil hat die maximale Wachzeit erreicht und lässt deinen Mac wieder schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil reached its maximum awake time and stopped keeping your Mac awake."
+            "value" : "Vigil reached the maximum awake time and let your Mac sleep."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil alcanzó su tiempo máximo despierto y dejó de mantener el Mac despierto."
+            "value" : "Vigil alcanzó el tiempo máximo despierto y dejó dormir el Mac."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil a atteint sa durée d'éveil maximale et a cessé de garder votre Mac éveillé."
+            "value" : "Vigil a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ha raggiunto il tempo massimo di veglia e ha smesso di tenere sveglio il Mac."
+            "value" : "Vigil ha raggiunto il tempo massimo di veglia e ha lasciato andare il Mac in stop."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil достиг предела времени бодрствования и перестал держать Mac бодрым."
+            "value" : "Vigil достиг максимального времени без сна и разрешил Mac уснуть."
           }
         }
       }
@@ -8208,37 +8208,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hat die längste von dir erlaubte Haltezeit erreicht und aufgehört."
+            "value" : "Maximale Wachzeit erreicht. Vigil hält deinen Mac nicht mehr wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil reached the longest stretch you allow it to hold, so it stopped."
+            "value" : "Maximum awake time reached. Vigil stopped keeping your Mac awake."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil alcanzó el tiempo máximo que le permites mantener, así que se detuvo."
+            "value" : "Se alcanzó el tiempo máximo despierto. Vigil dejó de mantener el Mac despierto."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil a atteint la durée maximale que vous autorisez, il s'est donc arrêté."
+            "value" : "Durée d'éveil maximale atteinte. Vigil a cessé de garder votre Mac éveillé."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ha raggiunto il tempo massimo che gli consenti e si è fermato."
+            "value" : "Tempo massimo di veglia raggiunto. Vigil ha smesso di tenere sveglio il Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil достиг максимального времени удержания, которое вы разрешили, и остановился."
+            "value" : "Достигнуто максимальное время без сна. Vigil разрешил Mac уснуть."
           }
         }
       }
@@ -8249,37 +8249,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil liest von den Sitzungsdateien deines Agenten nur so viel, um zu wissen, ob er läuft. Nie deine Prompts, nie deinen Code, und nichts über dich verlässt diesen Mac. Die einzige Ausnahme ist die Update-Prüfung, und die ist aus, bis du sie einschaltest."
+            "value" : "Vigil liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on."
+            "value" : "Vigil reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil lee de los archivos de sesión de tu agente solo lo justo para saber si está en marcha. Nunca tus prompts, nunca tu código, y nada sobre ti sale de este Mac. La única excepción es la comprobación de actualizaciones, y está desactivada hasta que la actives."
+            "value" : "Vigil solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ne lit des fichiers de session de votre agent que le strict nécessaire pour savoir s'il tourne. Jamais vos prompts, jamais votre code, et rien vous concernant ne quitte ce Mac. La seule exception est la vérification des mises à jour, désactivée tant que vous ne l'activez pas."
+            "value" : "Vigil lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil legge dei file di sessione del tuo agente solo quanto basta per sapere se è in esecuzione. Mai i tuoi prompt, mai il tuo codice, e niente su di te lascia questo Mac. L'unica eccezione è il controllo aggiornamenti, disattivato finché non lo attivi."
+            "value" : "Vigil legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil читает файлы сессий вашего агента ровно настолько, чтобы понять, работает ли он. Никогда не читает ваши промпты, никогда не читает ваш код, и ничего о вас не покидает этот Mac. Единственное исключение составляет проверка обновлений, и она выключена, пока вы её не включите."
+            "value" : "Vigil читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
           }
         }
       }
@@ -8290,37 +8290,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil liest von den Sitzungsdateien deines lokalen Agenten nur so viel, um zu wissen, ob er läuft. Es liest nie deine Prompts oder deinen Code, und nichts verlässt jemals deinen Mac."
+            "value" : "Vigil liest nur die Sitzungsdaten, die es braucht, um zu erkennen, wann dein lokaler Agent arbeitet. Deine Prompts und deinen Code liest es nie, und nichts verlässt deinen Mac."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac."
+            "value" : "Vigil reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil lee de los archivos de sesión de tu agente local solo lo justo para saber si está en marcha. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
+            "value" : "Vigil solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ne lit des fichiers de session de votre agent local que le strict nécessaire pour savoir s'il tourne. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
+            "value" : "Vigil lit uniquement les données de session nécessaires pour savoir quand votre agent local travaille. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil legge dei file di sessione del tuo agente locale solo quanto basta per sapere se è in esecuzione. Non legge mai i tuoi prompt o il tuo codice, e niente lascia il tuo Mac."
+            "value" : "Vigil legge solo i dati di sessione necessari per capire quando il tuo agente locale sta lavorando. Non legge mai i tuoi prompt o il tuo codice, e nulla lascia il tuo Mac."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil читает файлы сессий вашего локального агента ровно настолько, чтобы понять, работает ли он. Он никогда не читает ваши промпты или код, и ничего не покидает ваш Mac."
+            "value" : "Vigil читает только данные сессии, необходимые, чтобы понять, когда работает локальный агент. Он не читает ваши промпты и код, и ничего не покидает ваш Mac."
           }
         }
       }
@@ -8331,37 +8331,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil funktioniert weiterhin in den Modi „Immer an“ und „Aus“"
+            "value" : "„Immer an“ und „Aus“ kannst du weiterhin verwenden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil still works in Always on and Off modes"
+            "value" : "You can still use Always On or Off."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil sigue funcionando en los modos Siempre activo y Desactivado"
+            "value" : "Puedes seguir usando «Siempre activo» o «Desactivado»."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil fonctionne toujours dans les modes Toujours actif et Désactivé"
+            "value" : "Vous pouvez toujours utiliser « Toujours actif » ou « Désactivé »."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil funziona comunque nelle modalità Sempre attivo e Disattivato"
+            "value" : "Puoi continuare a usare «Sempre attivo» o «Disattivato»."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil продолжает работать в режимах «Всегда» и «Выключен»"
+            "value" : "Режимы «Всегда» и «Выключен» по-прежнему доступны."
           }
         }
       }
@@ -8413,37 +8413,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält nicht mehr: Akku bei %lld%%."
+            "value" : "Vigil hält deinen Mac bei %lld%% Akkustand nicht mehr wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil stopped holding: battery is at %lld%%."
+            "value" : "Vigil stopped keeping your Mac awake at %lld%% battery."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil dejó de mantener: batería al %lld%%."
+            "value" : "Vigil dejó de mantener el Mac despierto al llegar al %lld%% de batería."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil a cessé de maintenir : batterie à %lld%%."
+            "value" : "Vigil a cessé de garder votre Mac éveillé à %lld%% de batterie."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ha smesso di mantenere: batteria al %lld%%."
+            "value" : "Vigil ha smesso di tenere sveglio il Mac al %lld%% di batteria."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil перестал удерживать: заряд %lld%%."
+            "value" : "При заряде %lld%% Vigil разрешил Mac уснуть."
           }
         }
       }
@@ -8454,37 +8454,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält nicht mehr: die maximale Wachzeit wurde erreicht."
+            "value" : "Vigil hält deinen Mac nicht mehr wach: maximale Wachzeit erreicht."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil stopped holding: the maximum awake time was reached."
+            "value" : "Vigil stopped keeping your Mac awake: maximum awake time reached."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil dejó de mantener: se alcanzó el tiempo máximo despierto."
+            "value" : "Vigil dejó de mantener el Mac despierto: se alcanzó el tiempo máximo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil a cessé de maintenir : la durée d'éveil maximale a été atteinte."
+            "value" : "Vigil a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ha smesso di mantenere: raggiunto il tempo massimo di veglia."
+            "value" : "Vigil ha smesso di tenere sveglio il Mac: raggiunto il tempo massimo di veglia."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil перестал удерживать: достигнут предел времени бодрствования."
+            "value" : "Vigil разрешил Mac уснуть: достигнуто максимальное время без сна."
           }
         }
       }
@@ -8495,31 +8495,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ändert %@ zu:"
+            "value" : "Vigil ändert %@ in:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil will change %@ to:"
+            "value" : "Vigil will update %@ to:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil cambiará %@ a:"
+            "value" : "Vigil actualizará %@ a:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil va modifier %@ en :"
+            "value" : "Vigil mettra %@ à jour ainsi :"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil cambierà %@ in:"
+            "value" : "Vigil aggiornerà %@ così:"
           }
         },
         "ru" : {
@@ -8536,37 +8536,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil hält weiter, egal wie leer der Akku wird."
+            "value" : "Vigil hält deinen Mac auch bei niedrigem Akkustand wach."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil will keep holding no matter how low the battery gets."
+            "value" : "Vigil will keep your Mac awake even on low battery."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil seguirá manteniendo por muy baja que esté la batería."
+            "value" : "Vigil mantendrá el Mac despierto incluso con poca batería."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil continuera de maintenir quel que soit le niveau de batterie."
+            "value" : "Vigil gardera votre Mac éveillé même si la batterie est faible."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil continuerà a mantenere per quanto scenda la batteria."
+            "value" : "Vigil terrà sveglio il Mac anche con batteria scarica."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil будет удерживать при любом заряде батареи."
+            "value" : "Vigil не даст Mac уснуть даже при низком заряде."
           }
         }
       }
@@ -8577,37 +8577,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil bearbeitet diese Datei nicht, weil sie kein reines JSON ist. Sie kann Kommentare oder ein Format enthalten, das Vigil nicht sicher zurückschreiben kann. Füge dies stattdessen selbst hinzu:"
+            "value" : "Vigil kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil will not edit this file, because it is not plain JSON. It may have comments or a format Vigil cannot write back safely. Add this yourself instead:"
+            "value" : "Vigil can't safely edit this file because it isn't plain JSON. Add this manually instead:"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil no editará este archivo porque no es JSON puro: puede tener comentarios o un formato que Vigil no puede reescribir con seguridad. Añádelo tú mismo:"
+            "value" : "Vigil no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil ne modifiera pas ce fichier, car ce n'est pas du JSON pur. Il peut contenir des commentaires ou un format que Vigil ne peut pas réécrire sans risque. Ajoutez ceci vous-même :"
+            "value" : "Vigil ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil non modificherà questo file perché non è JSON puro: può contenere commenti o un formato che Vigil non può riscrivere in sicurezza. Aggiungilo tu:"
+            "value" : "Vigil non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vigil не станет править этот файл: это не обычный JSON. В нём могут быть комментарии или формат, который Vigil не сможет безопасно записать обратно. Добавьте это вручную:"
+            "value" : "Vigil не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
           }
         }
       }
@@ -8659,13 +8659,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warten, bevor der Mac schlafen darf"
+            "value" : "Warten, bevor dein Mac schlafen darf"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wait before letting the Mac sleep"
+            "value" : "Wait before letting your Mac sleep"
           }
         },
         "es" : {
@@ -8677,19 +8677,19 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Attendre avant de laisser le Mac s'endormir"
+            "value" : "Attendre avant de laisser votre Mac se mettre en veille"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Attendi prima di lasciar dormire il Mac"
+            "value" : "Attendi prima di lasciare andare il Mac in stop"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ждать перед тем, как отпустить Mac"
+            "value" : "Подождать перед переходом Mac в сон"
           }
         }
       }
@@ -8782,37 +8782,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beobachtet einen von dir gewählten Ordner oder lauscht auf einen einzeiligen Webhook, damit jeder Coding-Agent den Mac wach halten kann. Starte mit einer Vorlage oder füge eigene hinzu."
+            "value" : "Beobachte einen Ordner oder nutze einen einzeiligen Webhook für einen weiteren Coding-Agenten. Starte mit einer Vorlage oder füge eine eigene hinzu."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own."
+            "value" : "Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Observa una carpeta que elijas o escucha un webhook de una línea, para que cualquier agente pueda mantener el Mac despierto. Empieza con un preajuste o añade el tuyo."
+            "value" : "Vigila una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surveille un dossier de votre choix, ou écoute un webhook d'une ligne, pour que n'importe quel agent puisse garder le Mac éveillé. Partez d'un préréglage ou ajoutez le vôtre."
+            "value" : "Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Osserva una cartella che scegli, o ascolta un webhook di una riga, così qualsiasi agente può tenere sveglio il Mac. Parti da un preset o aggiungi il tuo."
+            "value" : "Monitora una cartella o usa un webhook di una riga per supportare un altro agente di programmazione. Parti da un preset o aggiungi il tuo."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Следит за выбранной вами папкой или слушает однострочный вебхук, чтобы любой агент мог держать Mac бодрым. Начните с пресета или добавьте своё."
+            "value" : "Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой."
           }
         }
       }
@@ -8823,37 +8823,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beobachtet die Sitzungsprotokolle von Claude Code, um zu erkennen, wann ein Zug läuft."
+            "value" : "Beobachtet Claude-Code-Sitzungsdateien, um zu erkennen, wann ein Turn läuft."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Watches Claude Code's session transcripts to tell when a turn is running."
+            "value" : "Watches Claude Code session files to tell when a turn is running."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Observa las transcripciones de sesión de Claude Code para saber cuándo hay un turno en marcha."
+            "value" : "Observa los archivos de sesión de Claude Code para saber cuándo hay un turno en marcha."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Surveille les transcriptions de session de Claude Code pour savoir quand un tour est en cours."
+            "value" : "Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Osserva le trascrizioni di sessione di Claude Code per capire quando un turno è in corso."
+            "value" : "Monitora i file di sessione di Claude Code per sapere quando è in corso un turno."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Следит за транскриптами сессий Claude Code, чтобы понимать, идёт ли ход."
+            "value" : "Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
           }
         }
       }
@@ -9192,37 +9192,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Du hast Vigil gebeten, an zu bleiben, bis du es ausschaltest."
+            "value" : "„Immer an“ hält deinen Mac wach, bis du es ausschaltest."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You asked Vigil to stay on until you switch it off."
+            "value" : "Always On keeps your Mac awake until you turn it off."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le pediste a Vigil que siguiera activo hasta que lo apagues."
+            "value" : "«Siempre activo» mantiene el Mac despierto hasta que lo desactives."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous avez demandé à Vigil de rester actif jusqu'à ce que vous l'éteigniez."
+            "value" : "« Toujours actif » garde votre Mac éveillé jusqu'à ce que vous le désactiviez."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hai chiesto a Vigil di restare attivo finché non lo spegni."
+            "value" : "«Sempre attivo» tiene sveglio il Mac finché non lo disattivi."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вы попросили Vigil оставаться включённым, пока сами его не выключите."
+            "value" : "Режим «Всегда включено» не даёт Mac уснуть, пока вы его не выключите."
           }
         }
       }
@@ -9274,37 +9274,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dein Agent hängt an einer Berechtigungsabfrage oder einer Frage. Damit das zuverlässig ist, muss die präzise Erkennung an sein."
+            "value" : "Dein Agent wartet auf eine Berechtigungsabfrage oder eine Antwort. Für zuverlässige Mitteilungen ist die präzise Erkennung erforderlich."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable."
+            "value" : "Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu agente está bloqueado en una solicitud de permiso o una pregunta. Para que esto sea fiable hace falta la detección precisa."
+            "value" : "Tu agente está esperando una solicitud de permiso o una respuesta. La detección precisa es necesaria para recibir avisos fiables."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre agent est bloqué sur une demande d'autorisation ou une question. Pour être fiable, cela nécessite la détection précise."
+            "value" : "Votre agent attend une autorisation ou une réponse. La détection précise est nécessaire pour recevoir des notifications fiables."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il tuo agente è bloccato su una richiesta di permesso o una domanda. Perché sia affidabile serve il rilevamento preciso attivo."
+            "value" : "Il tuo agente sta aspettando un permesso o una risposta. Il rilevamento preciso è necessario per notifiche affidabili."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Агент застрял на запросе разрешения или вопросе. Чтобы это работало надёжно, нужна включённая точная детекция."
+            "value" : "Агент ждёт разрешения или вашего ответа. Для надёжных уведомлений нужна «Точная детекция»."
           }
         }
       }
@@ -9356,37 +9356,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dein Agent wird trotzdem fertig; Vigil lässt danach nur früher los."
+            "value" : "Dein Agent wird trotzdem fertig. Vigil lässt deinen Mac danach nur früher schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your agent still finishes; Vigil just lets go sooner afterwards."
+            "value" : "Your agent still finishes. Vigil just lets your Mac sleep sooner afterward."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu agente termina igualmente; Vigil solo suelta antes después."
+            "value" : "Tu agente termina igualmente. Después, Vigil deja que el Mac duerma un poco antes."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre agent termine quand même ; Vigil relâche simplement plus tôt ensuite."
+            "value" : "Votre agent termine quand même. Ensuite, Vigil laisse simplement votre Mac se mettre en veille plus tôt."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il tuo agente finisce comunque; Vigil lascia solo prima dopo."
+            "value" : "Il tuo agente termina comunque. Vigil lascia semplicemente andare il Mac in stop prima, una volta finito."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Агент всё равно доработает; Vigil просто отпустит раньше после этого."
+            "value" : "Агент всё равно закончит работу. Vigil просто разрешит Mac уснуть чуть раньше после завершения."
           }
         }
       }
@@ -9397,37 +9397,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dein Akku ist auf %lld%% gefallen, deshalb hält Vigil nicht mehr, um Strom zu sparen."
+            "value" : "Akku bei %lld%%. Vigil lässt deinen Mac schlafen, um Energie zu sparen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your battery is down to %lld%%, so Vigil stopped holding to save power."
+            "value" : "Battery reached %lld%%, so Vigil let your Mac sleep to save power."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La batería bajó al %lld%%, así que Vigil dejó de mantener para ahorrar energía."
+            "value" : "Batería al %lld%%. Vigil dejó dormir el Mac para ahorrar energía."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre batterie est descendue à %lld%%, Vigil a donc cessé de maintenir pour économiser l'énergie."
+            "value" : "Batterie à %lld%%. Vigil a laissé votre Mac se mettre en veille pour économiser de l'énergie."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La batteria è scesa al %lld%%, quindi Vigil ha smesso di mantenere per risparmiare energia."
+            "value" : "Batteria al %lld%%. Vigil ha lasciato andare il Mac in stop per risparmiare energia."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заряд упал до %lld%%, поэтому Vigil перестал удерживать ради экономии."
+            "value" : "Заряд %lld%%. Vigil разрешил Mac уснуть, чтобы сэкономить энергию."
           }
         }
       }
@@ -9437,38 +9437,38 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ihre Claude-Code-Einstellungsdatei enthält einen hooks-Eintrag, den Vigil nicht kennt, deshalb wurde nichts geändert."
+            "state" : "translated",
+            "value" : "Vigil hat in deinen Claude-Code-Einstellungen einen hooks-Eintrag gefunden, den es nicht erkennt. Deshalb wurde nichts geändert."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes."
+            "value" : "Vigil found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed."
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Tu archivo de ajustes de Claude Code tiene una entrada hooks que Vigil no reconoce, así que no cambió nada."
+            "state" : "translated",
+            "value" : "Vigil encontró una entrada hooks en tus ajustes de Claude Code que no reconoce, así que no cambió nada."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Votre fichier de réglages Claude Code contient une entrée hooks que Vigil ne reconnaît pas, rien n'a été modifié."
+            "state" : "translated",
+            "value" : "Vigil a trouvé dans vos réglages Claude Code une entrée hooks qu'il ne reconnaît pas. Rien n'a donc été modifié."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Il file di impostazioni di Claude Code ha una voce hooks che Vigil non riconosce, quindi non ha cambiato nulla."
+            "state" : "translated",
+            "value" : "Vigil ha trovato nelle impostazioni di Claude Code una voce hooks che non riconosce, quindi non ha modificato nulla."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "В файле настроек Claude Code есть раздел hooks, который Vigil не распознал, поэтому ничего не изменил."
+            "state" : "translated",
+            "value" : "Vigil нашёл в настройках Claude Code раздел hooks, который не распознал, поэтому ничего не изменил."
           }
         }
       }
@@ -9478,14 +9478,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Ihre Claude-Code-Einstellungsdatei ist kein reines JSON, deshalb ändert Vigil sie nicht."
+            "state" : "translated",
+            "value" : "Deine Claude-Code-Einstellungsdatei ist kein reines JSON, deshalb ändert Vigil sie nicht."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Claude Code settings file is not plain JSON, so Vigil will not modify it."
+            "value" : "Your Claude Code settings file isn't plain JSON, so Vigil won't modify it."
           }
         },
         "es" : {
@@ -9496,20 +9496,20 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Votre fichier de réglages Claude Code n'est pas du JSON simple, Vigil ne le modifiera pas."
+            "state" : "translated",
+            "value" : "Votre fichier de réglages Claude Code n'est pas du JSON pur, Vigil ne le modifiera donc pas."
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Il file di impostazioni di Claude Code non è JSON semplice, quindi Vigil non lo modifica."
+            "state" : "translated",
+            "value" : "Il file di impostazioni di Claude Code non è JSON puro, quindi Vigil non lo modificherà."
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Файл настроек Claude Code не является обычным JSON, поэтому Vigil не станет его менять."
+            "state" : "translated",
+            "value" : "Файл настроек Claude Code не является обычным JSON, поэтому Vigil не будет его менять."
           }
         }
       }
@@ -9520,37 +9520,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dein Mac kehrt zu seinem normalen Ruhezeitplan zurück."
+            "value" : "Dein Mac kann wieder normal schlafen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Mac will go back to its normal sleep schedule."
+            "value" : "Your Mac can return to its normal sleep schedule."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El Mac volverá a su horario de reposo habitual."
+            "value" : "El Mac puede volver a dormir con normalidad."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre Mac reprendra son horaire de veille habituel."
+            "value" : "Votre Mac peut reprendre son fonctionnement normal de mise en veille."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il Mac tornerà al suo normale programma di stop."
+            "value" : "Il Mac può tornare ad andare in stop normalmente."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mac вернётся к обычному расписанию сна."
+            "value" : "Mac снова может засыпать как обычно."
           }
         }
       }
@@ -9561,37 +9561,37 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dein Mac schläft normal"
+            "value" : "Dein Mac kann normal schlafen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Mac will sleep normally"
+            "value" : "Your Mac can sleep normally"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El Mac dormirá con normalidad"
+            "value" : "El Mac puede dormir con normalidad"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre Mac se mettra en veille normalement"
+            "value" : "Votre Mac peut se mettre en veille normalement"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il Mac andrà in stop normalmente"
+            "value" : "Il Mac può andare in stop normalmente"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mac будет засыпать как обычно"
+            "value" : "Mac может засыпать как обычно"
           }
         }
       }

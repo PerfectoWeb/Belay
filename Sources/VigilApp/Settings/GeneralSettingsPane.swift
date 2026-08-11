@@ -61,13 +61,12 @@ struct GeneralSettingsPane: View {
 
             Divider()
 
-            SettingCheckboxGroup(title: "Feedback") {
+            SettingCheckboxGroup(title: "Sound") {
                 GroupedCheckbox(
                     title: "Play sounds",
                     explanation: """
-                        A short, quiet note when you change mode by hand, and one \
-                        or two other places. Turning off interface sounds in \
-                        System Settings silences these too, whatever this says.
+                        A short note when you change mode by hand. Turning off \
+                        interface sounds in System Settings silences these too.
                         """,
                     spokenLabel: "Play interface sounds",
                     isOn: $settings.soundEffects

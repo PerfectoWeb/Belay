@@ -5,11 +5,12 @@
 //   swift scripts/strings.swift import            # Localization/*.csv -> catalogue
 //   swift scripts/strings.swift import --dry-run  # report what would change
 //
-// The English file is the awkward one and the reason this exists at all: a key
-// in this catalogue *is* its English text, so rewording English renames the key,
-// and the key is a literal in the Swift sources. Import therefore rewrites both,
-// which is the only way a reword does not silently fall back to the raw key on
-// screen. See Localization/README.md.
+// Rewriting English does not rename anything. A key in this catalogue started
+// life as its English text, but the two are separate fields, so a reword lands
+// in the `en` value and the key stays as it is. That is what a .strings file has
+// always done, it keeps the Swift sources out of it, and it is the only version
+// of this that survives the sources wrapping long strings across lines with
+// backslash continuations. See Localization/README.md.
 import Foundation
 
 let catalogue = URL(fileURLWithPath: "Resources/Localizable.xcstrings")
@@ -255,12 +256,10 @@ func export() throws {
 func runImport(dryRun: Bool, prune: Bool) throws {
     var catalogue = try Catalogue()
     var problems: [String] = []
-    var renames: [(String, String)] = []
+    var unknown: [String] = []
     var updates = 0
     var kept: Set<String> = []
 
-    // English first: a reword renames the key, and every other language has to
-    // land on the new key, not the one it was exported under.
     for language in ["en"] + catalogue.languages.filter({ $0 != "en" }) {
         let url = folder.appendingPathComponent("\(language).csv")
         guard let raw = try? String(contentsOf: url, encoding: .utf8) else { continue }
@@ -271,13 +270,19 @@ func runImport(dryRun: Bool, prune: Bool) throws {
         }
         for (offset, row) in rows.dropFirst().enumerated() where row.count == columns.count {
             let line = offset + 2
-            let exported = row[0]
+            let key = row[0]
             let source = row[4]
             let translation = row[5].trimmingCharacters(in: .whitespacesAndNewlines)
-            let key = renames.first { $0.0 == exported }?.1 ?? exported
 
+            // A file reviewed elsewhere goes stale the moment a string is
+            // retired here. Reported, not written: setting it would quietly put
+            // the retired string back.
+            guard catalogue.strings[key] != nil else {
+                if language == "en" { unknown.append(key) }
+                continue
+            }
             guard !translation.isEmpty else {
-                problems.append("\(language).csv:\(line): empty translation for \"\(exported)\"")
+                problems.append("\(language).csv:\(line): empty translation for \"\(key)\"")
                 continue
             }
             // House rule, and one a spreadsheet breaks by itself: some editors
@@ -291,17 +296,9 @@ func runImport(dryRun: Bool, prune: Bool) throws {
                         + "source has \(placeholders(source))")
                 continue
             }
-            if language == "en", translation != exported {
-                renames.append((exported, translation))
-            }
             if catalogue.value(key, language) != translation { updates += 1 }
-            if language == "en" {
-                catalogue.rename(exported, to: translation)
-                catalogue.set(translation, key: translation, language: language)
-                kept.insert(translation)
-            } else {
-                catalogue.set(translation, key: key, language: language)
-            }
+            catalogue.set(translation, key: key, language: language)
+            if language == "en" { kept.insert(key) }
         }
     }
 
@@ -315,38 +312,11 @@ func runImport(dryRun: Bool, prune: Bool) throws {
         problems.forEach { print("error: \($0)") }
         throw Failure("\(problems.count) problems; nothing was written")
     }
-    print(
-        "\(updates) strings changed, \(renames.count) English keys reworded, "
-            + "\(dropped.count) removed")
+    print("\(updates) strings changed, \(dropped.count) removed, \(unknown.count) unknown")
     dropped.forEach { print("removed \"\($0)\"") }
+    unknown.forEach { print("ignored, no longer in the catalogue: \"\($0)\"") }
     guard !dryRun else { return }
-
     try catalogue.save()
-    try rewriteSources(renames)
-    for (old, new) in renames { print("renamed \"\(old)\" -> \"\(new)\"") }
-}
-
-/// Rewrites reworded English in the Swift sources. Without this the catalogue
-/// knows the new key and the code still asks for the old one, which shows the
-/// raw key on screen in every language.
-func rewriteSources(_ renames: [(String, String)]) throws {
-    guard !renames.isEmpty else { return }
-    for root in sourceRoots {
-        let base = URL(fileURLWithPath: root)
-        guard let walk = FileManager.default.enumerator(at: base, includingPropertiesForKeys: nil)
-        else { continue }
-        for case let url as URL in walk where url.pathExtension == "swift" {
-            guard var text = try? String(contentsOf: url, encoding: .utf8) else { continue }
-            let before = text
-            for (old, new) in renames {
-                text = text.replacingOccurrences(of: "\"\(old)\"", with: "\"\(new)\"")
-            }
-            if text != before {
-                try text.write(to: url, atomically: true, encoding: .utf8)
-                print("updated \(url.path)")
-            }
-        }
-    }
 }
 
 // MARK: - Check

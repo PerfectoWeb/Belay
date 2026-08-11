@@ -57,16 +57,23 @@ final class ShareCardTests: XCTestCase {
         XCTAssertEqual(statistics.totalRescued, 0)
 
         let content = ShareCardContent(statistics, now: day)
-        XCTAssertFalse(content.text.lowercased().contains("saved"), content.text)
+        // The sentence is where a claim can be made, so that is what this
+        // guards. A figure labelled "runs saved" reading zero claims nothing.
+        XCTAssertFalse(content.caption.lowercased().contains("saved"), content.caption)
+        XCTAssertFalse(content.caption.lowercased().contains("interrupted"), content.caption)
+        XCTAssertEqual(content.figures.first?.value, "0", "the rescue figure disagrees")
         XCTAssertFalse(ShareStatistics.linked(statistics).lowercased().contains("saved"))
         XCTAssertNotNil(ShareCardRenderer.cgImage(for: statistics), "it still gets a card")
     }
 
+    /// One rescue is spelled, not counted. "1 run" beside a headline number
+    /// reads as a second statistic rather than as the end of the sentence.
     func testOneRescueIsSingularOnTheCard() {
         var statistics = UsageStatistics()
         statistics.record(hold: 3600, away: 3600, on: day)
         let caption = ShareCardContent(statistics, now: day).caption
-        XCTAssertTrue(caption.contains("One run "), caption)
+        XCTAssertTrue(caption.lowercased().contains("one"), caption)
+        XCTAssertFalse(caption.contains("1 run"), caption)
         XCTAssertFalse(caption.contains("1 runs"), caption)
     }
 
