@@ -1,0 +1,42 @@
+import SwiftUI
+import VigilCore
+
+/// Auto / Always on / Off, one tap, and the only place in the panel that writes
+/// policy. Every write goes out through `AppState.onModeChange` so the settings
+/// store stays the source of truth and the snapshot is never edited in place.
+struct PanelModePicker: View {
+    let state: AppState
+
+    var body: some View {
+        Picker("Mode", selection: selection) {
+            ForEach(AwakeMode.allCases, id: \.self) { mode in
+                Text(mode.pickerTitle).tag(mode)
+            }
+        }
+        .pickerStyle(.segmented)
+        .labelsHidden()
+        .accessibilityLabel("Awake mode")
+        .accessibilityValue(Text(state.mode.pickerTitle))
+    }
+
+    private var selection: Binding<AwakeMode> {
+        Binding(
+            get: { state.mode },
+            set: { newMode in
+                guard newMode != state.mode else { return }
+                state.mode = newMode
+                state.onModeChange(newMode)
+            }
+        )
+    }
+}
+
+extension AwakeMode {
+    var pickerTitle: LocalizedStringKey {
+        switch self {
+        case .auto: return "Auto"
+        case .alwaysOn: return "Always on"
+        case .off: return "Off"
+        }
+    }
+}

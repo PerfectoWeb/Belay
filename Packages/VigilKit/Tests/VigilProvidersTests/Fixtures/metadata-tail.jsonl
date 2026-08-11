@@ -1,0 +1,6 @@
+{"type": "user", "uuid": "00000000-0000-0000-0000-000000000004", "sessionId": "fixture", "timestamp": "2026-08-10T14:28:21.000Z", "message": {"role": "user", "content": []}}
+{"type": "assistant", "uuid": "00000000-0000-0000-0000-000000000005", "sessionId": "fixture", "timestamp": "2026-08-10T14:28:30.000Z", "message": {"role": "assistant", "content": [], "stop_reason": "tool_use"}}
+{"type": "assistant", "uuid": "00000000-0000-0000-0000-000000000006", "sessionId": "fixture", "timestamp": "2026-08-10T14:28:31.000Z", "message": {"role": "assistant", "content": [], "stop_reason": "end_turn"}}
+{"type": "last-prompt", "leafUuid": "abc", "sessionId": "fixture"}
+{"type": "mode", "mode": "default", "sessionId": "fixture"}
+{"type": "custom-title", "title": "x", "sessionId": "fixture", "timestamp": "2026-08-10T14:28:27.000Z"}

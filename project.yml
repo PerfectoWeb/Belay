@@ -1,0 +1,194 @@
+name: Vigil
+
+# Everything derived from these three lives here and nowhere else, so the
+# rename procedure in docs/NAMING.md stays a two-line change.
+options:
+  bundleIdPrefix: com.perfecto-web
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    # PRODUCT_NAME belongs to the app target only — setting it project-wide also
+    # renames the test bundle's Swift module to Vigil and the two collide.
+    ORG_IDENTIFIER: com.perfecto-web
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+    CLANG_ENABLE_MODULE_DEBUGGING: NO
+    # Team ID read from the Developer ID Application certificate in the login
+    # keychain. Local builds still sign ad-hoc (CODE_SIGN_IDENTITY below);
+    # scripts/release.sh overrides the identity for a distributable build.
+    DEVELOPMENT_TEAM: VSY2EB4Y9E
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+
+packages:
+  VigilKit:
+    path: Packages/VigilKit
+
+  # Sparkle is deferred, not forgotten. Enabling it is this block plus the
+  # `- package: Sparkle` line in the Vigil target below plus SUFeedURL in that
+  # target's Info.plist — and nothing else, because the app talks to updates
+  # through VigilTipJar's UpdateChannel, whose no-op implementation ships today.
+  # It must never appear under Vigil-MAS: Apple rejects third-party updaters,
+  # and scripts/verify-mas-build.sh fails the build if a Sparkle symbol shows up
+  # in that binary. See BLOCKERS.md B3.
+  #
+  # Sparkle:
+  #   url: https://github.com/sparkle-project/Sparkle
+  #   from: "2.6.4"
+
+# The two distribution channels are one target twice, not two codebases. Only
+# the five ${...} values below differ; if a sixth ever appears, question it.
+targetTemplates:
+  VigilAppChannel:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/VigilApp
+      - path: Resources
+        buildPhase: resources
+        excludes:
+          - Entitlements # signing input, not a bundle resource
+    dependencies:
+      - package: VigilKit
+        product: VigilCore
+      - package: VigilKit
+        product: VigilPower
+      - package: VigilKit
+        product: VigilSettings
+      - package: VigilKit
+        product: VigilProviders
+      - package: VigilKit
+        product: VigilHookBridge
+      - package: VigilKit
+        product: VigilSupport
+      - package: VigilKit
+        product: VigilTipJar
+    settings:
+      base:
+        PRODUCT_NAME: Vigil
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMBINE_HIDPI_IMAGES: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        CODE_SIGN_ENTITLEMENTS: ${entitlements}
+        ENABLE_HARDENED_RUNTIME: ${hardenedRuntime}
+        # Xcode 15+ synthesises entitlements from the ENABLE_* settings and
+        # merges them over the file, so this has to agree with the file or the
+        # file quietly loses.
+        ENABLE_APP_SANDBOX: ${sandbox}
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) ${channel}
+        # ...and the same fact in a form VigilKit can read. Xcode does not pass
+        # SWIFT_ACTIVE_COMPILATION_CONDITIONS down to a local SwiftPM target
+        # (verified with a #warning probe), so `#if VIGIL_MAS` works in the app
+        # and nowhere else. VigilTipJar.DistributionChannel reads this instead.
+        VIGIL_CHANNEL: ${channelName}
+    # Both targets generate the same Info.plist. Nothing in it differs by
+    # channel today; if something ever does (SUFeedURL is the likely one), split
+    # this into two paths and exclude "Info*.plist" from the sources above,
+    # otherwise each target picks up the other's plist as a bundle resource.
+    info:
+      path: Sources/VigilApp/Info.plist
+      properties:
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundleDisplayName: Vigil
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundlePackageType: APPL
+        LSUIElement: true
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSHumanReadableCopyright: "MIT licensed. No data leaves your Mac."
+        ITSAppUsesNonExemptEncryption: false
+        NSSupportsAutomaticTermination: false
+        NSSupportsSuddenTermination: false
+        VigilDistributionChannel: $(VIGIL_CHANNEL)
+
+targets:
+  # Direct channel: Developer ID, notarized, link-based tips, and Sparkle once
+  # there is a key to sign an appcast with. Ships first (docs/06).
+  Vigil:
+    templates: [VigilAppChannel]
+    templateAttributes:
+      entitlements: Resources/Entitlements/Vigil.entitlements
+      hardenedRuntime: "YES"
+      sandbox: "NO"
+      channel: VIGIL_DIRECT
+      channelName: direct
+    # dependencies:
+    #   - package: Sparkle   # see the packages block above
+
+  # Mac App Store channel: sandboxed, StoreKit tips, no updater of our own.
+  Vigil-MAS:
+    templates: [VigilAppChannel]
+    templateAttributes:
+      entitlements: Resources/Entitlements/Vigil-MAS.entitlements
+      # Hardened Runtime is a Developer ID/notarization concept; the App Store
+      # applies its own runtime policy and the setting is ignored there.
+      hardenedRuntime: "NO"
+      sandbox: "YES"
+      channel: VIGIL_MAS
+      channelName: appStore
+    settings:
+      base:
+        ENABLE_USER_SELECTED_FILES: readwrite
+      configs:
+        Debug:
+          # Both channels write Vigil.app into the same products directory, so a
+          # debug MAS build would silently replace the direct one and every
+          # local check after it would be inspecting the wrong bundle. Release —
+          # the configuration that gets archived and submitted — is plain Vigil.
+          PRODUCT_NAME: Vigil-MAS
+
+  # App-level tests only. The module suites live in the SwiftPM package and run
+  # via `swift test` — Xcode schemes generated from a spec cannot reference a
+  # local package's test targets. scripts/test.sh runs both.
+  VigilAppTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests/VigilAppTests
+    dependencies:
+      - target: Vigil
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  Vigil:
+    build:
+      targets:
+        Vigil: all
+        VigilAppTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - VigilAppTests
+    profile:
+      config: Release
+    archive:
+      config: Release
+
+  # No test action: VigilAppTests links the direct target, and duplicating it
+  # for the sandbox would test the sandbox container, not the app.
+  Vigil-MAS:
+    build:
+      targets:
+        Vigil-MAS: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    archive:
+      config: Release

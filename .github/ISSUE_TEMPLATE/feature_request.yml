@@ -1,0 +1,58 @@
+name: Feature request
+description: Suggest something Vigil should do, or an agent it should detect.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Vigil has one job: hold the Mac awake while an agent is working, and stop
+        the moment it is not. Ideas that make that job more reliable land easily.
+        Ideas that make Vigil a second app land slowly or not at all.
+
+        Two things worth checking first. Support for another agent is usually a
+        **preset**, which is one array element and documented in
+        [CONTRIBUTING.md](https://github.com/perfectoweb/vigil/blob/main/CONTRIBUTING.md),
+        so it may be faster to open a pull request than an issue. And some things
+        are already deferred on purpose: see the "Not in this release" section of
+        [CHANGELOG.md](https://github.com/perfectoweb/vigil/blob/main/CHANGELOG.md).
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is the problem
+      description: Describe the situation you are in, not the feature. The best fix is often not the one you had in mind.
+      placeholder: "I run two agents in parallel and I want to stop one of them keeping the Mac awake without turning Vigil off."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like it to do
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you do today instead
+      description: The workaround, and why it is not good enough.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints this has to live with
+      description: |
+        These are not negotiable, and an idea that needs one of them broken needs
+        a very good argument. Tick the ones you have thought about.
+      options:
+        - label: No network access and no API keys. Detection is local.
+          required: false
+        - label: Nothing reads prompts, model responses or code.
+          required: false
+        - label: One power assertion, always with a timeout, so a crashed Vigil cannot pin the Mac awake.
+          required: false
+        - label: Under 0.1% CPU and under 40 MB when idle, and no polling faster than 5 s.
+          required: false

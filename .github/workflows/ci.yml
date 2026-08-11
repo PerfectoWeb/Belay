@@ -1,0 +1,103 @@
+name: CI
+
+# The first job runs scripts/test.sh and nothing else, on purpose: that script is
+# the gate contributors run locally, and a workflow that drifts from it is a
+# workflow that goes green while the repo is broken. Add a check to the script,
+# not to this file.
+#
+# Honest notes, because this file makes claims about a machine nobody has used:
+#
+#   - It has never been executed. The repository had no remote when it was
+#     written. Treat the first run as a debugging session, not as a regression.
+#   - Vigil is developed on macOS 26.4 with Xcode 26.6 / Swift 6.3.3. The runner
+#     is older, so a failure here that does not reproduce locally is a toolchain
+#     difference first and a code problem second.
+#   - The checks that matter most cannot run here at all. Whether Vigil detects a
+#     real Claude Code session, and whether the IOKit assertion self-releases
+#     when the app is force-quit, need a real Mac with a real agent on it.
+#     docs/QA-CHECKLIST.md is that list, and it is done by hand.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    # macos-15 is the oldest image with a Swift 6 toolchain. Raise it rather than
+    # working around it.
+    runs-on: macos-15
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      # xcbeautify is optional: scripts/test.sh pipes xcodebuild through it when
+      # it is there and falls back to the last 30 lines when it is not. It is
+      # installed only so that a failing build is readable in the log.
+      - name: Install tooling
+        run: brew install xcodegen swiftlint swift-format xcbeautify
+
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: Packages/VigilKit/.build
+          key: spm-${{ runner.os }}-${{ hashFiles('Packages/VigilKit/Package.swift') }}
+
+      # There is deliberately no `xcodegen generate` step. Vigil.xcodeproj is
+      # generated and not committed, but scripts/test.sh generates it itself, and
+      # a copy of that line here is a second place to keep in step with the first.
+      # The cost is that a broken project.yml surfaces as a failing xcodebuild
+      # rather than as a failing xcodegen; the log still says which.
+      #
+      # Ad-hoc signing throughout, which the script sets itself. CI has no
+      # Developer ID and must never need one: scripts/release.sh is run by a
+      # human on a machine that holds the identity in its Keychain. See
+      # BLOCKERS.md.
+      - name: scripts/test.sh
+        run: scripts/test.sh
+
+  # Kept separate so that a red App Store build reads as a distribution problem
+  # rather than a code problem. This one has never been executed either.
+  app-store-build:
+    runs-on: macos-15
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Install tooling
+        run: brew install xcodegen xcbeautify
+
+      # Builds Vigil-MAS in Release and then asserts the two things docs/06 and
+      # docs/08 call release blockers: no Sparkle anywhere in the binary, because
+      # Apple rejects third-party updaters, and the exact sandbox entitlement
+      # set, with no com.apple.security.network.client. That missing entitlement
+      # is the argument handed to App Review about the loopback socket, so losing
+      # it silently would cost a review cycle rather than a warning.
+      - name: Build Vigil-MAS, verify no Sparkle and the sandbox set
+        run: scripts/verify-mas-build.sh
+
+      - name: Upload MAS build
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vigil-MAS
+          path: build/DerivedData-MAS/Build/Products/Release/Vigil.app
+          if-no-files-found: warn

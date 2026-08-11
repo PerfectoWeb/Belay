@@ -1,0 +1,211 @@
+#!/usr/bin/env bash
+# Cuts a notarized, stapled DMG of the direct build.
+#
+# WRITTEN, NEVER RUN. There is no Developer ID identity on the machine this was
+# developed on (BLOCKERS.md B1), so none of this is proven. Read it before the
+# first real release rather than trusting it.
+#
+# It refuses to start unless every prerequisite is present. Half a release —
+# a signed app that was never notarized, a DMG with no stapled ticket — is
+# worse than no release, because it looks finished.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# ---------------------------------------------------------------- placeholders
+# PLACEHOLDER — BLOCKERS.md B1. Set VIGIL_TEAM_ID in the environment or replace
+# this literal. The script will not run while it is still ABCDE12345.
+TEAM_ID="${VIGIL_TEAM_ID:-ABCDE12345}"
+
+# The name of the notarytool credential profile stored with
+#   xcrun notarytool store-credentials VigilNotary \
+#       --apple-id you@example.com --team-id "$TEAM_ID" --password <app-specific>
+NOTARY_PROFILE="${VIGIL_NOTARY_PROFILE:-VigilNotary}"
+
+# Empty locally; CI stores the profile in a throwaway keychain and notarytool
+# looks only in the login keychain unless it is told otherwise. Passed straight
+# through to notarize.sh, which honours the same variable.
+NOTARY_KEYCHAIN="${VIGIL_NOTARY_KEYCHAIN:-}"
+
+SIGN_IDENTITY="${VIGIL_SIGN_IDENTITY:-Developer ID Application}"
+# ------------------------------------------------------------------------------
+
+SCHEME="Vigil"
+CONFIG="Release"
+DIST="$ROOT/dist"
+ARCHIVE="$DIST/Vigil.xcarchive"
+EXPORT_DIR="$DIST/export"
+APP="$EXPORT_DIR/Vigil.app"
+
+usage() {
+    cat <<'EOF'
+release.sh - build, sign, notarize and package the direct build of Vigil.
+
+Usage: scripts/release.sh [--skip-notarize]
+
+Produces dist/Vigil-<version>.dmg, notarized and stapled.
+
+Environment:
+  VIGIL_TEAM_ID         Apple Developer team ID. Required; the placeholder in
+                        the script is rejected.
+  VIGIL_NOTARY_PROFILE  notarytool keychain profile name (default: VigilNotary)
+  VIGIL_NOTARY_KEYCHAIN keychain holding that profile. Unset means the login
+                        keychain, which is right everywhere except CI.
+  VIGIL_SIGN_IDENTITY   codesign identity (default: "Developer ID Application")
+
+Options:
+      --skip-notarize   Sign and package only. The result is NOT shippable; it
+                        exists so the packaging steps can be debugged without
+                        burning notarization round trips.
+  -h, --help            This text.
+
+Exit status:
+  0  a notarized, stapled DMG is in dist/
+  1  a step failed
+  2  a prerequisite is missing (nothing was built)
+EOF
+}
+
+SKIP_NOTARIZE=0
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --skip-notarize) SKIP_NOTARIZE=1 ;;
+        -h|--help) usage; exit 0 ;;
+        *) echo "unknown argument: $1" >&2; usage >&2; exit 2 ;;
+    esac
+    shift
+done
+
+die() { echo "release: $*" >&2; exit 2; }
+
+# ------------------------------------------------------------------- preflight
+echo "==> preflight"
+
+[ "$TEAM_ID" != "ABCDE12345" ] || die "VIGIL_TEAM_ID is still the placeholder. See BLOCKERS.md B1."
+
+for tool in xcodegen xcodebuild create-dmg; do
+    command -v "$tool" >/dev/null || case "$tool" in
+        create-dmg) die "create-dmg is not installed. brew install create-dmg" ;;
+        xcodegen)   die "xcodegen is not installed. brew install xcodegen" ;;
+        *)          die "$tool is not on PATH. Install the Xcode command line tools." ;;
+    esac
+done
+
+xcrun --find notarytool >/dev/null 2>&1 || die "notarytool is missing. Xcode 13 or newer is required."
+xcrun --find stapler >/dev/null 2>&1 || die "stapler is missing. Xcode 13 or newer is required."
+
+security find-identity -v -p codesigning | grep -q "$SIGN_IDENTITY" \
+    || die "no '$SIGN_IDENTITY' identity in the keychain. Import it from developer.apple.com first."
+
+if [ "$SKIP_NOTARIZE" -eq 0 ]; then
+    PROFILE_AUTH=(--keychain-profile "$NOTARY_PROFILE")
+    if [ -n "$NOTARY_KEYCHAIN" ]; then
+        PROFILE_AUTH+=(--keychain "$NOTARY_KEYCHAIN")
+    fi
+    # A profile is preferred but not required: notarize.sh also accepts the API
+    # key in .secrets/. Only fail here when neither is available, so that a
+    # machine set up the .secrets/ way still gets past preflight.
+    if ! xcrun notarytool history "${PROFILE_AUTH[@]}" >/dev/null 2>&1 \
+        && [ ! -f "$ROOT/.secrets/appstoreconnect.env" ]; then
+        die "no notarization credentials. Either store a profile:
+    xcrun notarytool store-credentials '$NOTARY_PROFILE' --key <p8> --key-id <id> --issuer <issuer>
+  or put the key and ids in .secrets/appstoreconnect.env. See BLOCKERS.md B6."
+    fi
+fi
+
+# The MAS target must never end up in a Developer ID archive, and Sparkle must
+# never end up in the MAS one. Cheap to assert, expensive to discover later.
+grep -q 'Vigil-MAS' "$ROOT/project.yml" || die "project.yml has no Vigil-MAS target; this is not the tree release.sh was written for."
+
+rm -rf "$DIST"
+mkdir -p "$DIST"
+
+# --------------------------------------------------------------------- archive
+echo "==> xcodegen"
+xcodegen generate --quiet
+
+echo "==> archive ($SCHEME, $CONFIG)"
+xcodebuild archive \
+    -scheme "$SCHEME" \
+    -configuration "$CONFIG" \
+    -destination 'generic/platform=macOS' \
+    -archivePath "$ARCHIVE" \
+    DEVELOPMENT_TEAM="$TEAM_ID" \
+    CODE_SIGN_STYLE=Manual \
+    CODE_SIGN_IDENTITY="$SIGN_IDENTITY" \
+    | (xcbeautify 2>/dev/null || tail -20)
+
+[ -d "$ARCHIVE" ] || die "archive step produced nothing at $ARCHIVE"
+
+# ---------------------------------------------------------------------- export
+cat > "$DIST/ExportOptions.plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key><string>developer-id</string>
+    <key>teamID</key><string>$TEAM_ID</string>
+    <key>signingStyle</key><string>manual</string>
+    <key>destination</key><string>export</string>
+</dict>
+</plist>
+EOF
+
+echo "==> export"
+xcodebuild -exportArchive \
+    -archivePath "$ARCHIVE" \
+    -exportOptionsPlist "$DIST/ExportOptions.plist" \
+    -exportPath "$EXPORT_DIR" \
+    | (xcbeautify 2>/dev/null || tail -20)
+
+[ -d "$APP" ] || die "export produced no app at $APP"
+
+echo "==> verify signature"
+codesign --verify --deep --strict --verbose=2 "$APP"
+codesign -d --entitlements - --xml "$APP" >/dev/null
+
+# Hardened Runtime is not optional for notarization and its absence is only
+# discovered by the notary service, twenty minutes later.
+codesign -d --verbose=2 "$APP" 2>&1 | grep -q 'flags=.*runtime' \
+    || die "the exported app is not hardened-runtime signed; notarization would be rejected"
+
+VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
+DMG="$DIST/Vigil-$VERSION.dmg"
+
+# ------------------------------------------------------------------------- dmg
+echo "==> dmg"
+
+# Stage the app on its own. `-exportArchive` leaves DistributionSummary.plist,
+# ExportOptions.plist and Packaging.log in the export directory, and pointing
+# create-dmg at it ships all three inside the disk image.
+DMG_STAGE="$(mktemp -d)"
+trap 'rm -rf "$DMG_STAGE"' EXIT
+cp -R "$EXPORT_DIR/Vigil.app" "$DMG_STAGE/"
+
+create-dmg \
+    --volname "Vigil $VERSION" \
+    --window-size 520 340 \
+    --icon-size 96 \
+    --icon "Vigil.app" 130 165 \
+    --app-drop-link 390 165 \
+    --no-internet-enable \
+    "$DMG" \
+    "$DMG_STAGE"
+
+[ -f "$DMG" ] || die "create-dmg exited 0 but produced no $DMG"
+
+codesign --sign "$SIGN_IDENTITY" --timestamp "$DMG"
+
+# -------------------------------------------------------------------- notarize
+if [ "$SKIP_NOTARIZE" -eq 1 ]; then
+    echo
+    echo "NOT NOTARIZED (--skip-notarize). $DMG will show Gatekeeper warnings and must not be published."
+    exit 0
+fi
+
+"$SCRIPT_DIR/notarize.sh" "$DMG"
+
+echo
+echo "released: $DMG"
+echo "next:     scripts/sign-update.sh to add it to the appcast"

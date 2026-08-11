@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	Direct (Developer ID) build. Deliberately empty.
+
+	Hardened Runtime is on, the sandbox is off, and nothing we do needs an
+	entitlement: reading ~/.claude is plain filesystem access, and the hook
+	bridge listens on 127.0.0.1 which is unrestricted outside the sandbox.
+
+	Do not add com.apple.security.cs.disable-library-validation or any JIT /
+	unsigned-memory exception here. They weaken the runtime and docs/06 says we
+	have no concrete need for one.
+	-->
+</dict>
+</plist>

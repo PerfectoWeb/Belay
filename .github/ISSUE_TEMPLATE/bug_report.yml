@@ -1,0 +1,142 @@
+name: Bug report
+description: Vigil held the assertion when it should not have, or did not when it should have.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you paste anything: **do not include your prompts, your agent's
+        replies, or your code**. Vigil never reads them and this issue tracker
+        does not want them either. Transcript paths are fine, transcript
+        contents are not.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what happened instead.
+      placeholder: |
+        Claude Code ran for 20 minutes and the Mac slept after 10.
+        The panel said "an agent is working" the whole time.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce it
+      description: Every step, including what you did in Settings.
+      placeholder: |
+        1. Auto mode, precise detection off
+        2. Start a long task in Claude Code
+        3. Walk away
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      description: Apple menu, About This Mac. macOS 14 and 15 have had no testing on real hardware, so say so if you are on one.
+      placeholder: "26.4"
+    validations:
+      required: true
+
+  - type: input
+    id: vigil-version
+    attributes:
+      label: Vigil version
+      description: Settings, About. The version and build, for example "1.0.0 (1)". If you built it yourself, say so.
+      placeholder: "1.0.0 (1)"
+    validations:
+      required: true
+
+  - type: input
+    id: mac
+    attributes:
+      label: Mac model and power state
+      description: Apple silicon or Intel, and whether it was on battery or AC. The battery guard releases below 20% on battery, by design.
+      placeholder: "MacBook Pro M3, on battery at 40%"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Which agent or tool
+      options:
+        - Claude Code
+        - Codex CLI (generic preset)
+        - Aider (generic preset)
+        - Gemini CLI (generic preset)
+        - Cline (generic preset)
+        - A generic target I configured myself
+        - The local webhook
+        - Not agent-specific
+    validations:
+      required: true
+
+  - type: dropdown
+    id: precise
+    attributes:
+      label: Is precise detection on?
+      description: Settings, Providers, "Precise detection". It is off by default and it is the difference between exact and inferred signals.
+      options:
+        - "No, off (default)"
+        - "Yes, on"
+        - "I do not know"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Which mode was Vigil in?
+      options:
+        - Auto
+        - Always on
+        - Off
+    validations:
+      required: true
+
+  - type: textarea
+    id: assertions
+    attributes:
+      label: Assertion state
+      description: |
+        Run this while the problem is happening, and paste the output. Empty
+        output is a useful answer: it means Vigil was holding nothing.
+      value: |
+        ```
+        $ pmset -g assertions | grep "pid $(pgrep -x Vigil)("
+
+        ```
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: panel
+    attributes:
+      label: What the panel said
+      description: Vigil always states its reason in plain language. Quote it, or attach a screenshot.
+      placeholder: "Nothing is running. / Battery guard: below 20% on battery."
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log output
+      description: |
+        Optional and often decisive. This prints Vigil's own os.Logger lines for
+        the last hour. Session identifiers are logged privately, so it does not
+        contain paths or prompts.
+      value: |
+        ```
+        $ log show --predicate 'subsystem == "com.perfecto-web.vigil"' --last 1h --info
+
+        ```
+      render: text
+    validations:
+      required: false

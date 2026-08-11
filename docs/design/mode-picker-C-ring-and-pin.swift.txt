@@ -1,0 +1,126 @@
+import SwiftUI
+import VigilCore
+
+/// The awake mode as one switch and one modifier, not as three peers.
+///
+/// Both earlier attempts assumed Auto / Always on / Off are three of a kind.
+/// They are not. There is one question — is Vigil holding? — and one exception:
+/// hold regardless of what the agents are doing. So the mark itself becomes the
+/// switch, wearing a ring that fills while Vigil is actually holding, and
+/// "Always on" is a pin beside the headline. Nothing is hidden behind a click:
+/// the panel says what it is doing the moment it opens, which is the whole job
+/// of a menu bar panel.
+///
+/// Both predecessors are kept verbatim under `docs/design/`.
+struct PanelModeControl: View {
+    let state: AppState
+    let status: PanelStatus
+
+    /// 30 pt of ring around an 18 pt mark: big enough to be a target, small
+    /// enough that the headline still leads.
+    private static let diameter: CGFloat = 30
+
+    var body: some View {
+        Button(action: togglePower) {
+            ZStack {
+                Circle()
+                    .stroke(ringStyle, lineWidth: 2)
+                    .frame(width: Self.diameter, height: Self.diameter)
+                Image(nsImage: VigilGlyph.image(status.look, size: 18))
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .foregroundStyle(markStyle)
+            }
+            .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .help(isOn ? "Switch Vigil off" : "Switch Vigil on")
+        .accessibilityLabel("Vigil")
+        .accessibilityValue(Text(state.mode.pickerTitle))
+        .accessibilityAddTraits(isOn ? [.isButton, .isSelected] : .isButton)
+    }
+
+    private var isOn: Bool { state.mode != .off }
+
+    /// The ring is the state, not the mode: full accent while the assertion is
+    /// actually held, a hairline while Vigil is watching and holding nothing,
+    /// and barely there when it is switched off. Somebody glancing at the panel
+    /// gets the answer from the ring before reading a word.
+    private var ringStyle: AnyShapeStyle {
+        guard isOn else { return AnyShapeStyle(.quaternary) }
+        return status.isHolding
+            ? AnyShapeStyle(Color(nsColor: .controlAccentColor))
+            : AnyShapeStyle(.tertiary)
+    }
+
+    private var markStyle: AnyShapeStyle {
+        guard !status.isInterrupted else { return AnyShapeStyle(.primary) }
+        return status.isHolding
+            ? AnyShapeStyle(Color(nsColor: .controlAccentColor))
+            : AnyShapeStyle(.secondary)
+    }
+
+    /// Off returns to Auto rather than to whatever it was before: Always on is a
+    /// decision, and silently restoring it would hold the Mac awake because of
+    /// something the user did yesterday.
+    private func togglePower() {
+        select(isOn ? .off : .auto)
+    }
+
+    /// Named so the tests can exercise the rule without synthesising a click on
+    /// a hosted SwiftUI view, whose accessibility tree comes back empty.
+    func toggleForTesting() { togglePower() }
+
+    private func select(_ mode: AwakeMode) {
+        guard mode != state.mode else { return }
+        state.mode = mode
+        state.onModeChange(mode)
+    }
+}
+
+/// "Always on", as a pin.
+///
+/// A pin is the right verb: it holds something in place until you take it out,
+/// which is exactly what this mode is and exactly what the old segment failed to
+/// say. It sits on the headline row, so the exception is visible without being
+/// given the same weight as the switch.
+struct PanelAlwaysOnPin: View {
+    let state: AppState
+
+    var body: some View {
+        Button(action: toggle) {
+            Image(systemName: isPinned ? "pin.fill" : "pin")
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(
+                    isPinned ? AnyShapeStyle(Color(nsColor: .controlAccentColor)) : AnyShapeStyle(.tertiary)
+                )
+                .rotationEffect(.degrees(isPinned ? 0 : 30))
+                .frame(width: 22, height: 22)
+                .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .help(isPinned ? "Stop holding regardless of agents" : "Hold until you switch it off")
+        .accessibilityLabel("Always on")
+        .accessibilityAddTraits(isPinned ? [.isButton, .isSelected] : .isButton)
+    }
+
+    private var isPinned: Bool { state.mode == .alwaysOn }
+
+    private func toggle() {
+        let next: AwakeMode = isPinned ? .auto : .alwaysOn
+        state.mode = next
+        state.onModeChange(next)
+    }
+
+    func toggleForTesting() { toggle() }
+}
+
+extension AwakeMode {
+    var pickerTitle: LocalizedStringKey {
+        switch self {
+        case .auto: return "Auto"
+        case .alwaysOn: return "Always on"
+        case .off: return "Off"
+        }
+    }
+}

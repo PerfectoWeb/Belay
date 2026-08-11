@@ -1,0 +1,94 @@
+included:
+  - Sources
+  - Packages/VigilKit/Sources
+  - Packages/VigilKit/Tests
+
+excluded:
+  - .build
+  - build
+  - DerivedData
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - empty_count
+  - empty_string
+  - first_where
+  - last_where
+  - contains_over_filter_count
+  - contains_over_first_not_nil
+  - redundant_nil_coalescing
+  - explicit_init
+  - closure_spacing
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - fatal_error_message
+  - joined_default_parameter
+  - literal_expression_end_indentation
+  - multiline_parameters
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
+  - toggle_bool
+  - discouraged_object_literal
+  - legacy_multiple
+
+analyzer_rules:
+  - unused_import
+  - unused_declaration
+
+disabled_rules:
+  - todo # tracked in PROJECT_STATE.md, not by the linter
+
+line_length:
+  warning: 110
+  error: 140
+  ignores_comments: false
+  ignores_urls: true
+
+file_length:
+  warning: 250
+  error: 320
+
+type_body_length:
+  warning: 200
+  error: 280
+
+function_body_length:
+  warning: 50
+  error: 80
+
+cyclomatic_complexity:
+  warning: 10
+  error: 15
+
+identifier_name:
+  min_length:
+    warning: 2
+  excluded: [id, up, on, ok]
+
+type_name:
+  min_length: 3
+
+nesting:
+  type_level: 2
+
+# docs/07: no Utils/Helpers/Common/Manager as a type or file name.
+custom_rules:
+  banned_type_suffixes:
+    name: "Banned type name"
+    regex: '\b(class|struct|enum|protocol|actor)\s+\w*(Manager|Helper|Utils|Utility|Common)\b'
+    message: "Name it after the domain concept, not the pattern (docs/07)."
+    severity: error
+  no_print:
+    name: "print() is not logging"
+    regex: '(?<![\w.])print\('
+    message: "Use VigilSupport.Log (os.Logger), never print (docs/07)."
+    severity: error
+  no_emoji_in_source:
+    name: "No emoji in source"
+    regex: '[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}]'
+    message: "No emoji in source (docs/07)."
+    severity: error
+
+reporter: xcode

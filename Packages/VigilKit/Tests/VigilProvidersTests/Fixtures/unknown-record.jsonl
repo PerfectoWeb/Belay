@@ -1,0 +1,5 @@
+{"type": "queue-operation", "sessionId": "fixture"}
+{"type": "attachment", "sessionId": "fixture"}
+{"type": "assistant", "uuid": "00000000-0000-0000-0000-000000000001", "sessionId": "fixture", "timestamp": "2026-08-10T14:28:21.000Z", "message": {"role": "assistant", "content": [], "stop_reason": "tool_use"}}
+{"type": "ai-title", "title": "y", "sessionId": "fixture"}
+{"type": "some-future-record", "shape": {"we": ["have", "never", "seen"]}}

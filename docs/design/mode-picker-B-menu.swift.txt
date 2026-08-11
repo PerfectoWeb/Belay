@@ -1,0 +1,84 @@
+import SwiftUI
+import VigilCore
+
+/// The awake mode, as a decision rather than a setting.
+///
+/// This was three equal segments, and that was the problem: `[Auto][Always on]
+/// [Off]` gives identical weight to three choices that are not remotely equal.
+/// Auto is what Vigil is for and covers virtually every launch; Always on is a
+/// decision somebody makes for one evening; Off is almost never. A control that
+/// presents them side by side asks the user to pick from three doors when there
+/// is really one door and two exceptions — and it costs a full row of a panel
+/// that is only ever glanced at.
+///
+/// So: a small menu next to the state, the way Control Centre offers a Focus.
+/// It states what Vigil is doing right now, and opening it is how you change
+/// your mind. The previous control is kept verbatim under `docs/design/`.
+struct PanelModePicker: View {
+    let state: AppState
+
+    var body: some View {
+        Menu {
+            ForEach(AwakeMode.allCases, id: \.self) { mode in
+                Button {
+                    select(mode)
+                } label: {
+                    // A tick, not a highlight: the menu is a list of choices and
+                    // one of them is already true.
+                    Label(mode.pickerTitle, systemImage: state.mode == mode ? "checkmark" : "")
+                    Text(mode.pickerExplanation)
+                }
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Image(systemName: state.mode.symbolName)
+                    .font(.system(size: 10, weight: .medium))
+                Text(state.mode.pickerTitle)
+                    .font(.system(size: 11, weight: .medium))
+                Image(systemName: "chevron.up.chevron.down")
+                    .font(.system(size: 7, weight: .semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .foregroundStyle(.primary)
+        }
+        .menuStyle(.borderlessButton)
+        .menuIndicator(.hidden)
+        .fixedSize()
+        .accessibilityLabel("Awake mode")
+        .accessibilityValue(Text(state.mode.pickerTitle))
+    }
+
+    private func select(_ mode: AwakeMode) {
+        guard mode != state.mode else { return }
+        state.mode = mode
+        state.onModeChange(mode)
+    }
+}
+
+extension AwakeMode {
+    var pickerTitle: LocalizedStringKey {
+        switch self {
+        case .auto: return "Auto"
+        case .alwaysOn: return "Always on"
+        case .off: return "Off"
+        }
+    }
+
+    /// One line each, because the difference between these three is a policy
+    /// question and the names alone do not answer it.
+    var pickerExplanation: LocalizedStringKey {
+        switch self {
+        case .auto: return "Awake only while an agent is working."
+        case .alwaysOn: return "Awake until you switch it off."
+        case .off: return "Never hold sleep."
+        }
+    }
+
+    var symbolName: String {
+        switch self {
+        case .auto: return "wand.and.sparkles"
+        case .alwaysOn: return "pin.fill"
+        case .off: return "moon.zzz"
+        }
+    }
+}

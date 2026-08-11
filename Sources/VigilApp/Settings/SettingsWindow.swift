@@ -1,0 +1,223 @@
+import AppKit
+import SwiftUI
+import VigilProviders
+import VigilSettings
+
+/// Owns the Settings window directly instead of going through SwiftUI's
+/// `Settings` scene.
+///
+/// The scene approach did not work here and the failure was silent: neither the
+/// panel's Settings button nor Cmd+, produced a window, because a `LSUIElement`
+/// app has no menu bar for the standard Settings item to live in and nothing
+/// ends up responding to `showSettingsWindow:`. Owning an `NSWindow` is the same
+/// pattern `OnboardingWindow` already uses, and it can be tested.
+///
+/// The pane switcher is a real `NSToolbar` in `.preference` style: icon over
+/// label, one item per pane, window title following the selection, window height
+/// animating to the pane. That is the Mail and Pixelmator shape, and unlike a
+/// SwiftUI `TabView` it cannot collapse into an overflow chevron or resize the
+/// window behind our back.
+@MainActor
+final class SettingsWindow: NSObject {
+    private(set) var window: NSWindow?
+    private(set) var pane: SettingsPane = .general
+    private var hosting: NSHostingController<SettingsView>?
+    private let settings: SettingsStore
+    private let state: AppState
+    private let precise: PreciseDetection
+    private let targets: () -> [GenericTarget]
+    private let statistics: () -> UsageStatistics
+    private let onTargetsChanged: ([GenericTarget]) -> Void
+    /// Owned here so the toggle survives a pane switch, and so the window can
+    /// re-read macOS when it comes back to the front.
+    ///
+    /// Lazy on purpose: constructing it asks `backgroundtaskmanagementd` for the
+    /// login-item status over XPC, on the main thread. That daemon is slowest to
+    /// answer during login — exactly when Vigil launches if "Open at login" is
+    /// on — and nobody has opened Settings yet.
+    private lazy var loginItem = LoginItem()
+    let updates = ReleaseChecker()
+
+    init(
+        settings: SettingsStore,
+        state: AppState,
+        precise: PreciseDetection,
+        targets: @escaping () -> [GenericTarget],
+        statistics: @escaping () -> UsageStatistics,
+        onTargetsChanged: @escaping ([GenericTarget]) -> Void
+    ) {
+        self.settings = settings
+        self.state = state
+        self.precise = precise
+        self.targets = targets
+        self.onTargetsChanged = onTargetsChanged
+        self.statistics = statistics
+        super.init()
+    }
+
+    static let windowIdentifier = NSUserInterfaceItemIdentifier("vigil.settings.window")
+
+    var isVisible: Bool { window?.isVisible ?? false }
+
+    /// `pane` lets the menu open straight onto Statistics instead of making the
+    /// user find it.
+    func show(pane requested: SettingsPane? = nil) {
+        if let requested, requested != pane { select(requested) }
+        if let window {
+            NSApp.activate(ignoringOtherApps: true)
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+        if let requested { pane = requested }
+
+        let hosting = NSHostingController(rootView: view(for: pane))
+        // With SwiftUI driving the window size (the default `sizingOptions`) it
+        // resized the window back down under us, so setting a size had no
+        // effect. This takes the size decision away from SwiftUI; `select`
+        // measures each pane and drives the window itself.
+        hosting.sizingOptions = []
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: SettingsPane.width, height: pane.fallbackHeight),
+            // No miniaturise: a preferences window in the Dock is a
+            // preferences window you have lost.
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.identifier = Self.windowIdentifier
+        window.contentViewController = hosting
+        window.isReleasedWhenClosed = false
+        window.delegate = self
+        window.toolbarStyle = .preference
+        window.toolbar = makeToolbar()
+        self.window = window
+        self.hosting = hosting
+
+        select(pane, animated: false)
+        window.center()
+        NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
+    }
+
+    func select(_ pane: SettingsPane, animated: Bool = true) {
+        self.pane = pane
+        guard let window, let hosting else { return }
+        hosting.rootView = view(for: pane)
+        window.title = pane.title
+        window.toolbar?.selectedItemIdentifier = pane.itemIdentifier
+        resize(window, to: height(for: pane), animated: animated)
+    }
+
+    func close() {
+        window?.close()
+    }
+
+    private func makeToolbar() -> NSToolbar {
+        let toolbar = NSToolbar(identifier: "vigil.settings.toolbar")
+        toolbar.delegate = self
+        toolbar.displayMode = .iconAndLabel
+        toolbar.allowsUserCustomization = false
+        toolbar.autosavesConfiguration = false
+        return toolbar
+    }
+
+    private func view(for pane: SettingsPane) -> SettingsView {
+        SettingsView(
+            pane: pane,
+            settings: settings,
+            state: state,
+            precise: precise,
+            targets: targets(),
+            statistics: statistics(),
+            loginItem: loginItem,
+            updates: updates,
+            onTargetsChanged: onTargetsChanged
+        )
+    }
+
+    /// The pane's own idea of how tall it wants to be, measured at the fixed
+    /// window width. Clamped so a pane that grows without bound — a long list of
+    /// watched tools — scrolls instead of running off the screen.
+    private func height(for pane: SettingsPane) -> CGFloat {
+        let probe = NSHostingView(rootView: view(for: pane).content)
+        let fitting = probe.fittingSize.height
+        guard fitting > 1 else { return pane.fallbackHeight }
+        // Bounded by the screen, not by a fixed number: adding a fourth watched
+        // tool should make the window taller, the way a Finder window grows, not
+        // introduce a scroller. The ceiling only exists so the window cannot run
+        // off a short display.
+        let ceiling =
+            (window?.screen ?? NSScreen.main)
+            .map { $0.visibleFrame.height - 80 } ?? 640
+        return min(max(fitting, 160), ceiling)
+    }
+
+    /// Grows downwards so the toolbar stays put while the window changes size,
+    /// which is what makes the animation read as the pane changing rather than
+    /// the window jumping.
+    private func resize(_ window: NSWindow, to height: CGFloat, animated: Bool) {
+        let content = NSSize(width: SettingsPane.width, height: height)
+        window.contentMinSize = content
+        window.contentMaxSize = content
+        var frame = window.frameRect(forContentRect: NSRect(origin: .zero, size: content))
+        frame.origin.x = window.frame.origin.x
+        frame.origin.y = window.frame.maxY - frame.height
+        window.setFrame(frame, display: true, animate: animated)
+    }
+
+    @objc private func toolbarItemSelected(_ sender: NSToolbarItem) {
+        guard let pane = SettingsPane(itemIdentifier: sender.itemIdentifier) else { return }
+        select(pane)
+    }
+}
+
+extension SettingsWindow: NSToolbarDelegate {
+    private var paneIdentifiers: [NSToolbarItem.Identifier] {
+        SettingsPane.allCases.map(\.itemIdentifier)
+    }
+
+    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        paneIdentifiers
+    }
+
+    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        paneIdentifiers
+    }
+
+    func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        paneIdentifiers
+    }
+
+    func toolbar(
+        _ toolbar: NSToolbar,
+        itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+        willBeInsertedIntoToolbar flag: Bool
+    ) -> NSToolbarItem? {
+        guard let pane = SettingsPane(itemIdentifier: itemIdentifier) else { return nil }
+        let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+        item.label = pane.title
+        item.paletteLabel = pane.title
+        item.toolTip = pane.title
+        item.image = NSImage(systemSymbolName: pane.symbol, accessibilityDescription: pane.title)
+        item.target = self
+        item.action = #selector(toolbarItemSelected(_:))
+        return item
+    }
+}
+
+extension SettingsWindow: NSWindowDelegate {
+    /// Dropped on close so the panes are rebuilt from current values next time,
+    /// and so nothing SwiftUI-shaped stays alive behind a closed window.
+    /// The user can revoke the login item in System Settings while this window
+    /// is open. Coming back to it is the moment to find out.
+    func windowDidBecomeKey(_ notification: Notification) {
+        loginItem.refresh()
+    }
+
+    func windowWillClose(_ notification: Notification) {
+        window?.delegate = nil
+        window = nil
+        hosting = nil
+    }
+}
