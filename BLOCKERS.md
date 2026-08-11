@@ -110,6 +110,28 @@ Unlike the other entries here, this one is not waiting on an account or a
 decision. It is unwritten code, and it is the only blocker on this page that
 makes a shipped build lie about what it does.
 
+## B9 — One module test fails intermittently on CI and has not been identified
+
+Run #1 on the public repository failed with "181 tests in 30 suites failed with
+1 issue". Run #2, with no change to any test or any line of production code,
+passed. So a suite is flaky on the GitHub runner.
+
+Not reproduced locally: 20 consecutive runs of the module suites, with every
+core but one saturated to imitate a throttled shared VM, were green 20 out of
+20. CPU contention is therefore not the trigger. What is left is the rest of the
+runner environment: a slower filesystem under FSEvents, cold caches, or the
+older toolchain's test runner.
+
+The name is unknown because a CI log scrolls the failing test off the top and
+the Actions log API needs a token even on a public repository. `scripts/test.sh`
+now reprints failures at the end and emits them as `::error::`, which becomes a
+GitHub annotation readable without auth, so the next occurrence identifies
+itself.
+
+**A flaky gate is worse than a red one:** it teaches people to press re-run,
+and a real regression then hides among the false alarms. This should be found
+before the repository takes outside contributions.
+
 ## B7 — Translations have had no native review
 
 Six languages ship: en, ru, de, es, fr, it. All 210 strings are translated and
