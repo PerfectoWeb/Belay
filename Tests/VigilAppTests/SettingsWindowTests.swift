@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import VigilProviders
 import VigilSettings
 import XCTest
 
@@ -181,6 +182,51 @@ final class SettingsWindowTests: XCTestCase {
         let leftwards = SettingsTabStrip.delays(forward: false)
         XCTAssertEqual(leftwards.leading, 0, "the leading edge did not set off first")
         XCTAssertGreaterThan(leftwards.trailing, 0, "both edges travel together")
+    }
+
+    /// A tool added below the fold is a tool you cannot see you added. The
+    /// window grows to the pane rather than handing it a scroller.
+    func testAddingAToolMakesTheWindowTaller() throws {
+        let settings = try makeWindow()
+        settings.show(pane: .providers)
+        let window = try XCTUnwrap(settings.window)
+        let watched = (0..<6).map { index in
+            GenericTarget(
+                displayName: "Tool \(index)",
+                watchedFolder: URL(fileURLWithPath: "/Users/someone/projects/repo-\(index)"),
+                processName: "tool\(index)",
+                webhookIdentifier: "tool\(index)")
+        }
+
+        // The committed size rather than the live frame: the window travels
+        // there through its animator, which needs a run loop this test has no
+        // reason to spin.
+        settings.refit(with: [])
+        let before = window.contentMinSize.height
+        settings.refit(with: watched)
+        XCTAssertGreaterThan(
+            window.contentMinSize.height, before,
+            "the pane grew but the window handed it a scroller")
+
+        settings.refit(with: [])
+        XCTAssertEqual(
+            window.contentMinSize.height, before, accuracy: 1,
+            "removing them left the window stretched")
+        settings.close()
+    }
+
+    /// The window grows downwards, so the switcher and the title stay put while
+    /// the height changes. Growing from the bottom edge walks the window up the
+    /// screen instead.
+    func testGrowingKeepsTheTopEdgeStill() throws {
+        let settings = try makeWindow()
+        settings.show(pane: .providers)
+        let window = try XCTUnwrap(settings.window)
+        let top = window.frame.maxY
+
+        settings.resize(window, to: window.frame.height + 120, animated: false)
+        XCTAssertEqual(window.frame.maxY, top, accuracy: 1, "the window moved under the user")
+        settings.close()
     }
 
     func testCloseIsSafeWhenNothingIsOpen() throws {

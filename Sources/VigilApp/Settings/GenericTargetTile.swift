@@ -16,6 +16,24 @@ enum TargetTileMetrics {
     static let markSize: CGFloat = 22
     static let padding: CGFloat = 8
 
+    /// How a tile arrives and how it goes.
+    ///
+    /// A tile that appears fully formed reads as the list having been replaced,
+    /// and one that vanishes leaves you checking whether you removed the right
+    /// thing. Arriving is the livelier of the two on purpose: adding a tool is
+    /// something the user chose and the tile should look pleased about it, while
+    /// removing one should be quick and quiet and get out of the way.
+    static let arrival = Animation.spring(duration: 0.38, bounce: 0.34)
+    static let departure = Animation.spring(duration: 0.26, bounce: 0)
+
+    /// Grows from just under full size rather than from nothing: scaling all the
+    /// way from zero is a magic trick, and this is a row appearing in a list.
+    static var transition: AnyTransition {
+        .asymmetric(
+            insertion: .scale(scale: 0.88).combined(with: .opacity),
+            removal: .scale(scale: 0.82).combined(with: .opacity))
+    }
+
     /// The control column of a `SettingRow` at the pane's fixed width.
     static let columnWidth =
         SettingsPane.width - SettingsMetrics.paneInsets.leading
@@ -42,10 +60,10 @@ struct GenericTargetGrid: View {
         LazyVGrid(columns: Self.columns, alignment: .leading, spacing: TargetTileMetrics.spacing) {
             ForEach(targets) { target in
                 GenericTargetTile(target: target, remove: remove)
+                    .transition(TargetTileMetrics.transition)
             }
         }
     }
-
 }
 
 /// One watched tool: its mark, its name, what Vigil is watching, and a way out.

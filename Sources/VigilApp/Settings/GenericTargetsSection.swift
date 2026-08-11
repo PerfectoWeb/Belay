@@ -68,7 +68,7 @@ struct GenericTargetsSection: View {
     private func add(_ preset: GenericPreset) {
         guard !isExhausted(preset) else { return }
         guard let prompt = preset.folderPrompt else {
-            targets.append(preset.target())
+            withAnimation(TargetTileMetrics.arrival) { targets.append(preset.target()) }
             return
         }
         // The preset cannot know the path — the agent writes wherever you run it.
@@ -82,13 +82,13 @@ struct GenericTargetsSection: View {
         // The same folder chosen twice is the same target, whatever the panel
         // said. Nothing is watched harder for being listed twice.
         guard !targets.contains(where: { $0.watchedFolder == watched.watchedFolder }) else { return }
-        targets.append(watched)
+        withAnimation(TargetTileMetrics.arrival) { targets.append(watched) }
     }
 
     /// Not private: the tiles' remove buttons route through here, and the test
     /// proving the right target goes calls it rather than faking a click.
     func remove(_ target: GenericTarget) {
-        targets.removeAll { $0.id == target.id }
+        withAnimation(TargetTileMetrics.departure) { targets.removeAll { $0.id == target.id } }
     }
 
     /// A sheet on the Settings window, never `runModal()`.

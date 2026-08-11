@@ -163,48 +163,21 @@ final class SettingsWindow: NSObject {
         return controller
     }
 
-    private func view(for pane: SettingsPane) -> SettingsView {
+    func view(for pane: SettingsPane, watching: [GenericTarget]? = nil) -> SettingsView {
         SettingsView(
             pane: pane,
             settings: settings,
             state: state,
             precise: precise,
-            targets: targets(),
+            targets: watching ?? targets(),
             statistics: statistics(),
             loginItem: loginItem,
             updates: updates,
-            onTargetsChanged: onTargetsChanged
+            onTargetsChanged: { [weak self] targets in
+                self?.onTargetsChanged(targets)
+                self?.refit(with: targets)
+            }
         )
-    }
-
-    /// The pane's own idea of how tall it wants to be, measured at the fixed
-    /// window width. Clamped so a pane that grows without bound — a long list of
-    /// watched tools — scrolls instead of running off the screen.
-    private func height(for pane: SettingsPane) -> CGFloat {
-        let probe = NSHostingView(rootView: view(for: pane).content)
-        let fitting = probe.fittingSize.height
-        guard fitting > 1 else { return pane.fallbackHeight }
-        // Bounded by the screen, not by a fixed number: adding a fourth watched
-        // tool should make the window taller, the way a Finder window grows, not
-        // introduce a scroller. The ceiling only exists so the window cannot run
-        // off a short display.
-        let ceiling =
-            (window?.screen ?? NSScreen.main)
-            .map { $0.visibleFrame.height - 80 } ?? 640
-        return min(max(fitting, 160), ceiling)
-    }
-
-    /// Grows downwards so the switcher stays put while the window changes size,
-    /// which is what makes the animation read as the pane changing rather than
-    /// the window jumping.
-    private func resize(_ window: NSWindow, to height: CGFloat, animated: Bool) {
-        let content = NSSize(width: SettingsPane.width, height: height)
-        window.contentMinSize = content
-        window.contentMaxSize = content
-        var frame = window.frameRect(forContentRect: NSRect(origin: .zero, size: content))
-        frame.origin.x = window.frame.origin.x
-        frame.origin.y = window.frame.maxY - frame.height
-        window.setFrame(frame, display: true, animate: animated)
     }
 }
 
