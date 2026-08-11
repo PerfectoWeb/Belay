@@ -45,4 +45,59 @@ final class AboutAnimationTests: XCTestCase {
         }
         XCTAssertGreaterThan(wraps, 0, "the cycle never came round")
     }
+
+    /// Down, not up. The direction was reversed on purpose and the wobble that
+    /// makes the field look alive is well under the drift, so no star ever
+    /// creeps backwards between frames.
+    func testStarsFall() {
+        for index in stride(from: 0, to: 90, by: 7) {
+            var last = Starfield.Star(index: index, at: 0).down
+            for step in 1...300 {
+                let down = Starfield.Star(index: index, at: Double(step) * 0.05).down
+                let wrapped = down < last - 0.5
+                XCTAssertTrue(
+                    wrapped || down >= last, "star \(index) moved up at step \(step)")
+                last = down
+            }
+        }
+    }
+
+    /// A comet is worth watching because the sky is usually empty. If the slots
+    /// ever overlap into a steady stream this fails, which is the point.
+    func testTheSkyIsUsuallyEmpty() {
+        let size = CGSize(width: 480, height: 240)
+        var lit = 0
+        var seen = 0
+        for step in 0..<2000 {
+            let now = Double(step) * 0.05
+            let comets = (0..<Starfield.cometSlots).compactMap {
+                Starfield.Comet(slot: $0, at: now, in: size)
+            }
+            if !comets.isEmpty {
+                lit += 1
+                seen = max(seen, comets.count)
+            }
+        }
+        XCTAssertGreaterThan(seen, 0, "no comet ever appeared")
+        XCTAssertLessThan(
+            Double(lit) / 2000, 0.55, "there is nearly always a comet on screen")
+    }
+
+    /// It has to arrive and burn out. Switching one on at full brightness and
+    /// off again is the thing this replaced.
+    func testACometBurnsOutRatherThanSwitchingOff() {
+        let size = CGSize(width: 480, height: 240)
+        var samples: [Double] = []
+        for step in 0..<400 {
+            guard let comet = Starfield.Comet(slot: 0, at: Double(step) * 0.01, in: size) else {
+                continue
+            }
+            samples.append(comet.alpha)
+        }
+        let first = try? XCTUnwrap(samples.first)
+        let last = try? XCTUnwrap(samples.last)
+        XCTAssertLessThan(first ?? 1, 0.1, "the comet appeared at full brightness")
+        XCTAssertLessThan(last ?? 1, 0.1, "the comet was switched off rather than fading")
+        XCTAssertGreaterThan(samples.max() ?? 0, 0.5, "the comet never got bright")
+    }
 }
