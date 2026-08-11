@@ -71,6 +71,11 @@ struct GeneralSettingsPane: View {
                     spokenLabel: "Play interface sounds",
                     isOn: $settings.soundEffects
                 )
+                // Switching it on plays one, so the setting can be judged where
+                // it is set rather than by going and changing a mode.
+                .onChange(of: settings.soundEffects) { _, on in
+                    if on { Feedback.play(.tick) }
+                }
             }
 
             Divider()

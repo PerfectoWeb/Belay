@@ -41,12 +41,8 @@ struct AboutPane: View {
                 .frame(height: 150)
                 .clipped()
 
-            VStack(spacing: 7) {
-                BreathingMark(animated: isAnimating)
-                    .frame(width: 46, height: 46)
-                Text(Branding.appName)
-                    .font(.system(size: 26, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.white)
+            VStack(spacing: 10) {
+                VigilWordmark(size: 38, animated: isAnimating)
                 Text("Version \(Branding.version) (\(Branding.build))")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.65))
@@ -65,6 +61,20 @@ struct AboutPane: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 226)
+    }
+
+    /// One translated sentence with the company name made a link, rather than
+    /// three fragments glued together: a translator handed "© 2026", a name and
+    /// "MIT licensed" separately has no sentence left to arrange.
+    private var copyright: AttributedString {
+        var line = AttributedString(
+            String(localized: "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."))
+        guard let url = Branding.homepageURL, let name = line.range(of: "PerfectoWeb") else {
+            return line
+        }
+        line[name].link = url
+        line[name].underlineStyle = .single
+        return line
     }
 
     private func body(padding: CGFloat) -> some View {
@@ -100,7 +110,7 @@ struct AboutPane: View {
             Divider()
 
             VStack(alignment: .leading, spacing: 3) {
-                Text("© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.")
+                Text(copyright)
                 // The marks in the session list belong to other people. Saying so
                 // inside the app, not only in the repository, is the point:
                 // nobody reads a NOTICE file before installing something.

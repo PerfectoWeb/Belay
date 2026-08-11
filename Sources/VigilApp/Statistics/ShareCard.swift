@@ -10,9 +10,10 @@ import SwiftUI
 /// it sits well in Telegram, Slack and Messages threads, which are dark far more
 /// often than not.
 ///
-/// The lockup is the file from `Resources/Brand`, not a glyph and a `Text` set
-/// next to each other. Rebuilding it here is how the card and the brand drift
-/// apart, and this is the one image of Vigil most people will ever see.
+/// The lockup is `VigilWordmark`, the same one About shows, rather than a glyph
+/// and a `Text` set next to each other here. This is the one image of Vigil most
+/// people will ever see, and two hand-built versions of a logo is how they end
+/// up disagreeing.
 struct ShareCard: View {
     let content: ShareCardContent
 
@@ -52,11 +53,21 @@ struct ShareCard: View {
 
     private var header: some View {
         HStack(alignment: .firstTextBaseline, spacing: 24) {
-            VigilWordmark(size: 38, word: Ink.text, mark: Ink.accent)
+            VigilWordmark(size: 44, word: Ink.text, mark: Ink.accent)
             Spacer(minLength: 24)
-            Text(content.link)
-                .font(.system(size: 18, weight: .medium, design: .monospaced))
-                .foregroundStyle(Ink.text.opacity(0.52))
+            // The mark before the address, at the height of the text: a bare
+            // URL in a corner reads as a footnote, and this one is the only
+            // instruction on the card.
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Image("logo-github")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 19, height: 19)
+                    .alignmentGuide(.firstTextBaseline) { $0.height - 4 }
+                Text(content.link)
+                    .font(.system(size: 18, weight: .medium, design: .monospaced))
+            }
+            .foregroundStyle(Ink.text.opacity(0.52))
         }
     }
 
@@ -70,13 +81,26 @@ struct ShareCard: View {
                 .monospacedDigit()
                 .foregroundStyle(Ink.accent)
                 .fixedSize()
-            Text(content.caption)
-                .font(.system(size: 27, weight: .regular))
-                .foregroundStyle(Ink.text.opacity(0.80))
-                .lineSpacing(4)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .leading, spacing: 6) {
+                ForEach(captionLines, id: \.self) { line in
+                    Text(line).fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            .font(.system(size: 27, weight: .regular))
+            .foregroundStyle(Ink.text.opacity(0.80))
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    /// Broken at the sentence, not wherever the width happens to run out. The
+    /// two sentences are the claim and its evidence, and a line that ends in the
+    /// middle of the first reads as text that did not fit.
+    private var captionLines: [String] {
+        guard let stop = content.caption.range(of: ". ") else { return [content.caption] }
+        return [
+            String(content.caption[..<stop.lowerBound]) + ".",
+            String(content.caption[stop.upperBound...])
+        ]
     }
 
     /// Four plates rather than four columns divided by a rule. The rule was
@@ -91,13 +115,17 @@ struct ShareCard: View {
                         .monospacedDigit()
                         .foregroundStyle(Ink.text)
                     Text(figure.label.uppercased())
-                        .font(.system(size: 13, weight: .semibold))
-                        .tracking(1.5)
-                        .foregroundStyle(Ink.text.opacity(0.46))
+                        .font(.system(size: 13, weight: .medium))
+                        .tracking(1.6)
+                        .foregroundStyle(Ink.text.opacity(0.50))
                         .lineLimit(1)
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 16)
+                // Not equal numbers: the number's line box carries empty space
+                // above the digits that the label's does not carry below its
+                // baseline, so equal padding lands optically top-heavy.
+                .padding(.top, 12)
+                .padding(.bottom, 17)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(glass)
             }
@@ -110,13 +138,26 @@ struct ShareCard: View {
         RoundedRectangle(cornerRadius: 18, style: .continuous)
             .fill(
                 LinearGradient(
-                    colors: [Ink.text.opacity(0.10), Ink.text.opacity(0.035)],
+                    colors: [Ink.text.opacity(0.065), Ink.text.opacity(0.018)],
                     startPoint: .top, endPoint: .bottom)
+            )
+            // A light source above and to the left of the card, caught by each
+            // plate. Faint on purpose: at chat-thumbnail size anything stronger
+            // turns four plates into four smudges.
+            .overlay(
+                RadialGradient(
+                    colors: [Ink.accent.opacity(0.16), Ink.accent.opacity(0)],
+                    center: UnitPoint(x: 0.12, y: -0.1), startRadius: 0, endRadius: 190)
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(Ink.text.opacity(0.11), lineWidth: 1)
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [Ink.text.opacity(0.20), Ink.text.opacity(0.05)],
+                            startPoint: .top, endPoint: .bottom),
+                        lineWidth: 1)
             )
+            .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     /// The label sits under the bars, on the far side of the axis they stand on:
@@ -134,7 +175,7 @@ struct ShareCard: View {
                 .font(.system(size: 12, weight: .semibold))
                 .tracking(1.8)
                 .foregroundStyle(Ink.text.opacity(0.36))
-                .padding(.top, 9)
+                .padding(.top, 14)
         }
     }
 }

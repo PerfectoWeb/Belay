@@ -52,9 +52,21 @@ struct SettingsTabStrip: View {
 
     private static let space = "vigil.settings.tabs"
 
+    /// The chip AppKit used to draw: a pane of something lying on the strip,
+    /// lit from above and edged with a hairline, not a grey rectangle. Only its
+    /// travel is ours; how it looks is meant to be indistinguishable.
     private var pill: some View {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .fill(.quaternary)
+        RoundedRectangle(cornerRadius: 7, style: .continuous)
+            .fill(
+                LinearGradient(
+                    colors: [.primary.opacity(0.11), .primary.opacity(0.06)],
+                    startPoint: .top, endPoint: .bottom)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 7, style: .continuous)
+                    .strokeBorder(.primary.opacity(0.13), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.16), radius: 1.5, y: 0.5)
             .frame(
                 width: max((trailing ?? 0) - (leading ?? 0), 0),
                 height: frames[model.pane]?.height ?? 0

@@ -9,11 +9,15 @@
 // exponential decay, which is the shape of something small being struck.
 //
 // The rules they follow, in case they are ever retuned:
-//   - Nothing lasts longer than about a third of a second. These are
-//     confirmations, not announcements.
-//   - Nothing is loud. They sit under whatever the user is listening to.
-//   - Pitch carries the meaning: rising for on, falling for off, level for a
-//     thing that merely happened.
+//   - One note. A two-note figure is a phrase, and a phrase is a ringtone: it
+//     announces itself and asks to be listened to. The first version of these
+//     was three little arpeggios and it was unbearable within a day.
+//   - Low. Anything above about 800 Hz reads as a device beeping at you.
+//   - Short. Under a tenth of a second of tone, plus the tail.
+//   - Quiet enough to sit under whatever the user is already listening to.
+//   - Pitch alone separates the three modes: higher for more awake.
+//   - A small downward bend over the first few milliseconds. Struck things go
+//     slightly sharp and settle, and without it a sine reads as electronic.
 import Foundation
 
 let rate = 44_100.0
@@ -26,9 +30,12 @@ struct Note {
     var at: Double
     var decay: Double
     var level: Double
-    /// Relative amplitudes of the harmonics above the fundamental. More of them
-    /// reads as brighter and harder; two is a soft bell, four is a chime.
-    var harmonics: [Double] = [0.28, 0.09]
+    /// Partials as (ratio to the fundamental, amplitude). Deliberately not
+    /// whole-number harmonics only: a touch of something inharmonic is the
+    /// difference between wood and a test tone.
+    var partials: [(Double, Double)] = [(2.0, 0.075), (3.17, 0.035)]
+    /// How far sharp the note starts, as a fraction, settling over 12 ms.
+    var bend: Double = 0.02
 }
 
 func render(_ notes: [Note], length: Double) -> [Double] {
@@ -39,11 +46,17 @@ func render(_ notes: [Note], length: Double) -> [Double] {
             let time = Double(index - start) / rate
             // A few milliseconds of attack. Starting at full amplitude is the
             // click that makes a synthesised sound read as an error beep.
-            let attack = min(time / 0.004, 1)
+            let attack = min(time / 0.006, 1)
             let envelope = attack * exp(-time / note.decay)
-            var value = sin(2 * .pi * note.frequency * time)
-            for (harmonic, amplitude) in note.harmonics.enumerated() {
-                value += amplitude * sin(2 * .pi * note.frequency * Double(harmonic + 2) * time)
+            // Integrated, not instantaneous: multiplying the phase by a falling
+            // frequency bends the whole note rather than its leading edge.
+            let settle = 0.012
+            let phase =
+                note.frequency
+                * (time + note.bend * settle * (1 - exp(-time / settle)))
+            var value = sin(2 * .pi * phase)
+            for (ratio, amplitude) in note.partials {
+                value += amplitude * sin(2 * .pi * phase * ratio)
             }
             samples[index] += value * envelope * note.level
         }
@@ -81,56 +94,52 @@ func wav(_ samples: [Double]) -> Data {
     return data
 }
 
-// A pentatonic set: any two of these sound intentional together, which is what
-// lets the five sounds below share a family without being arranged.
-let c6 = 1046.5
-let d6 = 1174.7
-let e6 = 1318.5
-let g6 = 1568.0
-let a6 = 1760.0
+// Low, close together, and a minor third apart: far enough to tell apart with
+// your back to the screen, near enough that the three are obviously one family.
+let offNote = 466.16   // A#4
+let autoNote = 587.33  // D5
+let onNote = 739.99    // F#5
 
 let sounds: [String: [Double]] = [
-    // Auto: rising, and unhurried. This is the mode Vigil is meant to be left
-    // in, so it is the least eventful of the three.
-    "mode-auto": render(
-        [
-            Note(frequency: e6, at: 0, decay: 0.10, level: 0.20),
-            Note(frequency: a6, at: 0.055, decay: 0.16, level: 0.20),
-        ], length: 0.34),
+    // Auto. The mode Vigil is meant to be left in, so it is the plainest.
+    "mode-auto": render([Note(frequency: autoNote, at: 0, decay: 0.075, level: 0.13)], length: 0.30),
 
-    // Always on: one note, brighter and held. A deliberate override should
-    // sound like a switch being thrown, not like a suggestion.
+    // Always on. Higher and held a little longer, because a deliberate override
+    // should not sound exactly like handing control back.
     "mode-always": render(
         [
             Note(
-                frequency: a6, at: 0, decay: 0.20, level: 0.22,
-                harmonics: [0.34, 0.16, 0.06])
-        ], length: 0.34),
+                frequency: onNote, at: 0, decay: 0.095, level: 0.13,
+                partials: [(2.0, 0.10), (3.17, 0.04)])
+        ], length: 0.32),
 
-    // Off: the same interval as Auto, downwards, quieter and shorter. Turning
-    // something off should not be the loudest thing in the set.
+    // Off. Lowest, shortest, quietest. Turning something off should not be the
+    // loudest thing in the set.
     "mode-off": render(
         [
-            Note(frequency: a6, at: 0, decay: 0.09, level: 0.17),
-            Note(frequency: e6, at: 0.055, decay: 0.13, level: 0.17),
-        ], length: 0.30),
+            Note(
+                frequency: offNote, at: 0, decay: 0.065, level: 0.115,
+                partials: [(2.0, 0.05)])
+        ], length: 0.26),
 
-    // A check that found nothing to say. Level pitch, barely there: it marks
-    // that the button did something and then gets out of the way.
+    // A button did something. Barely there on purpose.
     "tick": render(
-        [Note(frequency: g6, at: 0, decay: 0.05, level: 0.13, harmonics: [0.2])],
-        length: 0.14),
+        [
+            Note(
+                frequency: onNote, at: 0, decay: 0.032, level: 0.085,
+                partials: [(2.0, 0.04)], bend: 0.01)
+        ], length: 0.14),
 
-    // Thanks. The only sound here allowed to be a phrase rather than a note,
-    // because it is the only moment that is about the person rather than the
-    // machine.
+    // Thanks. The only one allowed to be a phrase rather than a note, because
+    // it is the only moment that is about the person rather than the machine.
     "thanks": render(
         [
-            Note(frequency: c6, at: 0, decay: 0.13, level: 0.18),
-            Note(frequency: e6, at: 0.075, decay: 0.15, level: 0.18),
-            Note(frequency: g6, at: 0.150, decay: 0.30, level: 0.20, harmonics: [0.3, 0.12, 0.05]),
-            Note(frequency: d6 * 2, at: 0.150, decay: 0.34, level: 0.06, harmonics: []),
-        ], length: 0.62),
+            Note(frequency: 523.25, at: 0, decay: 0.10, level: 0.11),
+            Note(frequency: 659.25, at: 0.085, decay: 0.11, level: 0.11),
+            Note(
+                frequency: 783.99, at: 0.170, decay: 0.24, level: 0.12,
+                partials: [(2.0, 0.09), (3.17, 0.03)]),
+        ], length: 0.58),
 ]
 
 try FileManager.default.createDirectory(

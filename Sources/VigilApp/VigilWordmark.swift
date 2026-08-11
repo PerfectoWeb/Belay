@@ -19,6 +19,9 @@ struct VigilWordmark: View {
     var size: CGFloat = 36
     var word: Color = .white
     var mark: Color = Color(red: 0.137, green: 0.475, blue: 1.0)
+    /// Whether the mark shimmers. The lockup is otherwise identical, so About
+    /// and the share card cannot end up showing two different logos.
+    var animated = false
 
     /// Against a 36 pt word: mark 26, gap 7. Both to the ascender, which is why
     /// the mark sits on the baseline rather than being centred on the word.
@@ -30,8 +33,7 @@ struct VigilWordmark: View {
             Text(verbatim: "vigil")
                 .font(.system(size: size, weight: .semibold, design: .rounded))
                 .foregroundStyle(word)
-            Image(nsImage: VigilGlyph.image(.alwaysOn, size: (size * Self.markRatio).rounded()))
-                .renderingMode(.template)
+            symbol
                 .foregroundStyle(mark)
                 // Its bottom edge on the word's baseline, so the mark occupies
                 // exactly the ascender. Alignment by frame instead would follow
@@ -41,5 +43,16 @@ struct VigilWordmark: View {
         }
         .accessibilityElement()
         .accessibilityLabel(Text(verbatim: Branding.appName))
+    }
+
+    private var markSize: CGFloat { (size * Self.markRatio).rounded() }
+
+    @ViewBuilder private var symbol: some View {
+        if animated {
+            BreathingMark(animated: true).frame(width: markSize, height: markSize)
+        } else {
+            Image(nsImage: VigilGlyph.image(.alwaysOn, size: markSize))
+                .renderingMode(.template)
+        }
     }
 }

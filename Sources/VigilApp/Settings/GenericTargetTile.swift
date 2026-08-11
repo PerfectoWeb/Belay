@@ -90,7 +90,14 @@ struct GenericTargetTile: View {
 
     /// The remove button's action, named so a test can fire it without
     /// synthesising a click on a hosted SwiftUI view.
+    ///
+    /// Focus is dropped first. Clicking the button focuses it, and the focus
+    /// ring is drawn outside the tile's own bounds, so it does not scale away
+    /// with the tile: it hangs in the air for the length of the animation and
+    /// only vanishes when the view finally goes.
     func removeAction() {
+        isFocused = false
+        isHovering = false
         remove(target)
     }
 

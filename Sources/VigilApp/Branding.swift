@@ -17,6 +17,10 @@ enum Branding {
     /// hides the row rather than shipping a dead link.
     static let coffeeURL: URL? = nil
     static let donateURL = URL(string: "https://perfecto-web.com/d/")
+    /// Whose app this is. Linked from the About footer rather than printed as
+    /// dead text: the name is already there, and a name nobody can follow is a
+    /// missed introduction.
+    static let homepageURL = URL(string: "https://perfecto-web.com/")
     static let supportURL = repositoryURL
     static let version =
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
