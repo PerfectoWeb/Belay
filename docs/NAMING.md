@@ -1,6 +1,26 @@
 # Naming
 
-## Working name: **Vigil**
+## Status, 2026-08-12: Vigil is taken and has to go
+
+The B4 search was run. It is not a near miss:
+
+- **Mac App Store** has **"Vigil - Stay Awake"** in Utilities — a menu bar
+  sleep-prevention tool. Same word, same category, same job. "Vigilante - Stay
+  Awake" sits beside it.
+- **USPTO** has a live registration for the word VIGIL in class 009 covering
+  computer software (reg. 2385400, Vigil Health Solutions, since 2000), plus a
+  pending VIGIL in 042 for SaaS.
+- **EUIPO** has Vigil Health Solutions registered to 2030, and refused a VIGIL
+  class-9 application from Stanley Black & Decker — the class is crowded.
+
+**Leading replacement: Belay.** A climbing belay is the person who holds the
+rope so the one doing the work cannot fall — the product's own metaphor, and a
+verb rather than a state, which "vigil" never was. The App Store has two apps
+with the word, an SSH client in Developer Tools and a to-do app in
+Productivity; neither is a utility and neither is about sleep. Not an empty
+field, but no collision that matters.
+
+## Original working name: **Vigil**
 
 Short, pronounceable in both English and Russian ("Виджил"), means "staying
 awake and watching over something", and has no collision with an Apple term.
