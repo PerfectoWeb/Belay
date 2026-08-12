@@ -24,20 +24,24 @@ final class ReleaseCheckerTests: XCTestCase {
         ReleaseChecker(defaults: defaults, current: current, fetch: body)
     }
 
-    /// The promise in the About pane. A checker that runs before the user opts
-    /// in makes that promise false on first launch, which is the worst possible
-    /// moment for it.
-    func testNothingIsFetchedUntilTheUserOptsIn() async {
+    /// This assertion used to be its opposite: nothing was fetched until the
+    /// user opted in, because the About pane promises nothing leaves the Mac.
+    /// The default was deliberately flipped, so what has to hold now is the
+    /// weaker pair of claims the About pane actually makes: the check is on,
+    /// and turning it off stops it dead. A checker that kept reaching the
+    /// network after the switch went off would be the real betrayal.
+    func testTurningItOffStopsTheCheck() async {
         let touched = Sent()
         let checker = checker { _ in
             await touched.mark()
             return Data()
         }
-        XCTAssertFalse(checker.isAutomatic, "update checks are on by default")
+        XCTAssertTrue(checker.isAutomatic, "the switch no longer defaults to on")
+        checker.isAutomatic = false
         checker.checkIfDue()
         try? await Task.sleep(nanoseconds: 100_000_000)
         let used = await touched.value
-        XCTAssertFalse(used, "Belay reached the network without being asked")
+        XCTAssertFalse(used, "Belay reached the network after being told not to")
     }
 
     func testADueCheckRunsOnceOptedIn() async throws {

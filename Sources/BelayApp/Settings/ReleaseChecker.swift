@@ -4,13 +4,12 @@ import Observation
 
 /// Checks for a newer release.
 ///
-/// **This is the one thing in Belay that touches the network, and it is off by
-/// default.** The app's whole pitch is that nothing leaves the Mac; an updater
-/// that phones home the moment you install it would make that a lie told in the
-/// About pane. So the user turns it on, and until they do Belay never opens a
-/// socket. What leaves the Mac when they do is one HTTPS GET carrying no query
-/// and no identifier — GitHub sees an IP and a user agent, the same as opening
-/// the releases page in a browser.
+/// **This is the one thing in Belay that touches the network.** It runs once a
+/// day and it is on unless turned off. What leaves the Mac is one HTTPS GET
+/// carrying no query and no identifier: the server sees an IP and a user agent,
+/// the same as opening the releases page in a browser. Nothing about the user,
+/// the machine or the work is sent, nothing is installed without being asked,
+/// and the About pane states the exception rather than hiding it.
 ///
 /// It only *finds* updates. Downloading and installing one in place is Sparkle's
 /// job and needs an EdDSA key and a hosted appcast (BLOCKERS.md B3); until those
@@ -30,11 +29,23 @@ final class ReleaseChecker {
 
     private(set) var status: Status = .never
 
-    /// Off until asked. Stored here rather than in `SettingsStore` because it is
-    /// not policy — it does not affect what Belay does to your Mac — and adding
-    /// it there means a schema migration for a checkbox.
+    /// On unless turned off.
+    ///
+    /// It was off until asked, on the argument that an app whose pitch is
+    /// "nothing leaves this Mac" should not open a socket nobody asked it to.
+    /// The counter-argument won: a utility that only tells you about a fix if
+    /// you go looking is a utility whose users run last year's build, and the
+    /// request carries no query, no identifier and nothing about the user. The
+    /// About pane says so in as many words, and one switch turns it off.
+    ///
+    /// `bool(forKey:)` answers false for a key that was never written, which is
+    /// the wrong default here, so absence is asked about directly.
+    ///
+    /// Stored here rather than in `SettingsStore` because it is not policy — it
+    /// does not affect what Belay does to your Mac — and adding it there means a
+    /// schema migration for a checkbox.
     var isAutomatic: Bool {
-        get { defaults.bool(forKey: Self.automaticKey) }
+        get { defaults.object(forKey: Self.automaticKey) as? Bool ?? true }
         set {
             defaults.set(newValue, forKey: Self.automaticKey)
             if newValue { check() }

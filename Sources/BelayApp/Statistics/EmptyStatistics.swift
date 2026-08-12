@@ -7,29 +7,32 @@ import SwiftUI
 /// they look at it, understand there is nothing here, and leave. So it is now
 /// the shape of the thing that is missing, centred, with one line under it.
 ///
-/// The bars breathe rather than sit still. A static grey glyph reads as a
-/// screenshot of a broken pane; the same glyph moving slowly reads as a thing
-/// that is waiting.
+/// The bars run and then stop. A first pass had them breathing continuously and
+/// it was worse than still: slow perpetual movement in a corner with nothing to
+/// say reads as a progress indicator for something that is not happening. A
+/// short burst says the pane is alive, and the stillness afterwards says there
+/// is nothing to wait for.
 struct EmptyStatistics: View {
-    /// Relative heights, so the shape is a plausible chart rather than a ramp.
+    /// Resting heights, so the shape is a plausible chart rather than a ramp.
     private static let bars: [CGFloat] = [0.42, 0.68, 0.5, 0.85, 0.6]
 
+    /// How long between one burst and the next.
+    private static let cycle: Double = 7
+    /// How long the bars move for. Three passes along the row inside it.
+    private static let burst: Double = 1.8
+
     var body: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: 12) {
             chart
-                .frame(width: 96, height: 56)
+                .frame(width: 48, height: 28)
                 .accessibilityHidden(true)
 
-            VStack(spacing: 5) {
+            VStack(spacing: 4) {
                 Text("Nothing to show yet")
                     .font(.system(size: 15, weight: .semibold))
                 Text("Your first agent run fills this in.")
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
-                Text("Nothing here ever leaves this Mac.")
-                    .font(.system(size: 11))
-                    .foregroundStyle(.tertiary)
-                    .padding(.top, 2)
             }
             .multilineTextAlignment(.center)
         }
@@ -39,24 +42,30 @@ struct EmptyStatistics: View {
     }
 
     private var chart: some View {
-        // Slow on purpose. Anything quick enough to notice is asking to be
-        // watched, and this is the corner of the app with the least to say.
-        TimelineView(.periodic(from: .now, by: 1.0 / 20)) { timeline in
+        TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
             let time = timeline.date.timeIntervalSinceReferenceDate
+                .truncatingRemainder(dividingBy: Self.cycle)
             GeometryReader { proxy in
-                HStack(alignment: .bottom, spacing: 8) {
+                HStack(alignment: .bottom, spacing: 4) {
                     ForEach(Array(Self.bars.enumerated()), id: \.offset) { index, base in
-                        // A third of a cycle between neighbours, so the movement
-                        // travels along the row instead of pulsing as one block.
-                        let wave = sin(time * 0.9 + Double(index) * 0.7)
-                        let height = base * (0.82 + 0.18 * (0.5 + 0.5 * wave))
                         Capsule()
                             .fill(.quaternary)
-                            .frame(height: max(6, proxy.size.height * height))
+                            .frame(height: max(4, proxy.size.height * height(base, index, time)))
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
         }
+    }
+
+    /// Full swing during the burst, eased out at its end so the bars settle onto
+    /// their resting heights instead of being cut off mid-move.
+    private func height(_ base: CGFloat, _ index: Int, _ time: Double) -> CGFloat {
+        guard time < Self.burst else { return base }
+        let fade = min(1, (Self.burst - time) / 0.45)
+        // Three passes across five bars, each a beat behind the one to its left,
+        // so the movement travels rather than pulsing as one block.
+        let wave = sin(time / Self.burst * 3 * 2 * .pi - Double(index) * 0.9)
+        return base * (1 - 0.45 * fade * (0.5 + 0.5 * CGFloat(wave)))
     }
 }
