@@ -121,8 +121,11 @@ final class UsageStatisticsTests: XCTestCase {
 @MainActor
 final class UsageResetTests: XCTestCase {
     func testResetClearsEverythingIncludingTheRunInProgress() {
-        let defaults = UserDefaults(suiteName: "vigil.tests.reset.\(UUID().uuidString)")!
-        defer { defaults.removePersistentDomain(forName: defaults.description) }
+        let suite = "com.perfecto-web.vigil.tests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        // `defaults.description` is not the domain name, so this emptied nothing
+        // and left a suite behind on every run.
+        defer { defaults.removePersistentDomain(forName: suite) }
         let recorder = UsageRecorder(store: UsageStatisticsStore(defaults: defaults))
         let start = Date(timeIntervalSince1970: 1_780_000_000)
 

@@ -26,6 +26,12 @@ struct ScratchDefaults {
         defaults.removePersistentDomain(forName: name)
         // Emptying the domain leaves the plist behind. It is ours, nothing else
         // will ever read it, and a test run should not litter ~/Library.
+        //
+        // The synchronize is what makes the removal stick: cfprefsd writes the
+        // file lazily, so deleting it first only means it is rewritten, empty,
+        // a moment later. Thousands of those had accumulated before anyone
+        // looked in the folder.
+        defaults.synchronize()
         let url = URL(fileURLWithPath: NSHomeDirectory())
             .appending(path: "Library/Preferences/\(name).plist")
         try? FileManager.default.removeItem(at: url)
