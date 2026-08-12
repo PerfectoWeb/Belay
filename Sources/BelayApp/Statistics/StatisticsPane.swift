@@ -15,6 +15,16 @@ struct StatisticsPane: View {
 
     @State private var isConfirmingReset = false
 
+    /// 0 when the pane appears, 1 once it has settled. Everything that is a
+    /// number counts up to it and every bar grows into it.
+    ///
+    /// Not decoration. The pane is a wall of figures, and a wall of figures
+    /// that is simply *there* when you arrive gives the eye nowhere to start;
+    /// counting up puts the headline first and the chart last in the order they
+    /// should be read. It runs once, on arrival, and then holds still.
+    @State private var reveal: Double = 0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             if statistics.isEmpty {
@@ -30,13 +40,21 @@ struct StatisticsPane: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .onAppear {
+            guard !reduceMotion else {
+                reveal = 1
+                return
+            }
+            reveal = 0
+            withAnimation(.easeOut(duration: 1.15)) { reveal = 1 }
+        }
     }
 
     private var empty: some View { EmptyStatistics() }
 
     private var headline: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(ElapsedTime.compact(statistics.totalAway))
+            Text(ElapsedTime.compact(statistics.totalAway * reveal))
                 .font(.system(size: 40, weight: .semibold, design: .rounded))
                 .monospacedDigit()
             Text("kept working while you were away from the keyboard")
@@ -50,10 +68,19 @@ struct StatisticsPane: View {
         // width of "runs saved", and four columns set to English spacing run
         // into each other in every language but English.
         HStack(alignment: .top, spacing: 34) {
-            Figure(value: "\(statistics.totalRescued)", caption: "runs rescued")
-            Figure(value: ElapsedTime.compact(statistics.longestHold), caption: "longest run")
-            Figure(value: "\(statistics.totalHolds)", caption: "runs watched")
-            Figure(value: ElapsedTime.compact(statistics.totalHeld), caption: "total held")
+            // Each one lands a beat after the one to its left, so the row
+            // reads left to right rather than arriving as a block.
+            Figure(
+                value: "\(Int((Double(statistics.totalRescued) * counted(0)).rounded()))",
+                caption: "runs rescued")
+            Figure(
+                value: ElapsedTime.compact(statistics.longestHold * counted(1)),
+                caption: "longest run")
+            Figure(
+                value: "\(Int((Double(statistics.totalHolds) * counted(2)).rounded()))",
+                caption: "runs watched")
+            Figure(
+                value: ElapsedTime.compact(statistics.totalHeld * counted(3)), caption: "total held")
         }
     }
 
@@ -62,7 +89,7 @@ struct StatisticsPane: View {
             Text("LAST 14 DAYS")
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(.secondary)
-            DayBars(days: statistics.recent(14))
+            DayBars(days: statistics.recent(14), reveal: reveal)
                 .frame(height: 56)
             if let since {
                 // The scope of everything above it. Without a start date the
@@ -72,6 +99,14 @@ struct StatisticsPane: View {
                     .foregroundStyle(.tertiary)
             }
         }
+    }
+
+    /// How far along the count for the figure in column `index` is. The row
+    /// finishes inside the first two thirds of the reveal, so the chart is the
+    /// last thing to arrive.
+    private func counted(_ index: Int) -> Double {
+        let start = Double(index) * 0.08
+        return min(1, max(0, (reveal - start) / 0.5))
     }
 
     private var since: String? {
@@ -126,16 +161,21 @@ struct StatisticsPane: View {
 /// shape of a week is readable.
 private struct DayBars: View {
     let days: [UsageStatistics.Day]
+    var reveal: Double = 1
 
     var body: some View {
         let peak = max(days.map(\.heldSeconds).max() ?? 0, 1)
         HStack(alignment: .bottom, spacing: 4) {
-            ForEach(days) { day in
+            ForEach(Array(days.enumerated()), id: \.element.id) { index, day in
                 VStack(spacing: 3) {
                     GeometryReader { geometry in
                         let full = geometry.size.height
-                        let held = full * day.heldSeconds / peak
-                        let away = full * day.awaySeconds / peak
+                        // The chart fills left to right across the back half of
+                        // the reveal, so it arrives after the figures rather
+                        // than competing with them.
+                        let grown = min(1, max(0, (reveal - 0.35 - Double(index) * 0.03) / 0.35))
+                        let held = full * day.heldSeconds / peak * grown
+                        let away = full * day.awaySeconds / peak * grown
                         ZStack(alignment: .bottom) {
                             RoundedRectangle(cornerRadius: 2)
                                 .fill(.tint.opacity(0.25))
