@@ -43,6 +43,15 @@ struct PanelView: View {
                 )
             }
 
+            // Stated without a button. A provider that is merely waiting for the
+            // tool to be used has nothing for the user to fix, and offering
+            // "Fix" is what sent people round the grant loop.
+            ForEach(waiting, id: \.id) { provider in
+                PanelNoticeRow(
+                    symbolName: provider.descriptor.symbolName,
+                    message: provider.waitingNote ?? "")
+            }
+
             Divider()
 
             PanelSessionList(sessions: sessions)
@@ -77,6 +86,10 @@ struct PanelView: View {
         state.providers.filter { $0.isEnabled && $0.setupPrompt != nil }
     }
 
+    private var waiting: [ProviderStatus] {
+        state.providers.filter { $0.isEnabled && $0.waitingNote != nil }
+    }
+
 }
 
 /// The panel's natural height, travelling from the content up to the controller.
@@ -93,5 +106,11 @@ extension ProviderStatus {
     var setupPrompt: String? {
         guard case .needsSetup(let prompt) = availability else { return nil }
         return prompt
+    }
+
+    /// Non-nil when the provider cannot run and there is nothing to press.
+    var waitingNote: String? {
+        guard case .unavailable(let why) = availability else { return nil }
+        return why
     }
 }

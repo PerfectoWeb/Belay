@@ -18,13 +18,13 @@ final class VigilController {
     private let driver: CoordinatorDriver
     private let assertions: PowerAssertionController
     private let powerSource: PowerSourceMonitor
-    private let providers: ProviderHost
+    let providers: ProviderHost
     private let sleepObserver = SystemSleepObserver()
     private let signals = TerminationSignalWatch()
 
     /// Long-lived stream pumps only. One-shot work uses a detached task that
     /// finishes on its own; keeping those here would grow without bound.
-    private var tasks: [Task<Void, Never>] = []
+    var tasks: [Task<Void, Never>] = []
     private var refresh: Task<Void, Never>?
     private var sleepObservers: [NSObjectProtocol] = []
     private var awakeTally = AwakeTally()
@@ -167,9 +167,10 @@ final class VigilController {
             }
         )
         tasks.append(Task { [weak self] in await self?.publishProviderStatus() })
+        watchForClaudeCodeAppearing()
     }
 
-    private func publishProviderStatus() async {
+    func publishProviderStatus() async {
         let last = state.snapshot.sessions.map(\.lastSignal).max()
         state.apply(providers: await providers.statuses(lastSignal: last))
     }

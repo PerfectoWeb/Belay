@@ -23,8 +23,11 @@ struct ClaudeCodeProviderTests {
     func availability() async throws {
         #expect(await provider().availability == .ready)
 
+        // Nested, so the *parent* is unreachable too. A path whose parent is
+        // readable now means "Claude Code has not opened a project yet", which
+        // is a different answer and has its own suite.
         let absent = ClaudeCodeProvider.Configuration(
-            projectsDirectory: URL(fileURLWithPath: "/nope-\(UUID().uuidString)"),
+            projectsDirectory: URL(fileURLWithPath: "/nope-\(UUID().uuidString)/projects"),
             sessionsDirectory: scratch.sessions)
         let blind = ClaudeCodeProvider(configuration: absent)
         guard case .needsSetup = await blind.availability else {

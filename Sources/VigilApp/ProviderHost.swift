@@ -38,11 +38,7 @@ final class ProviderHost {
         let signals = await bus.subscribe()
 
         await bus.attach(claudeCode.signals)
-        do {
-            try await claudeCode.start()
-        } catch {
-            Log.providers.error("Claude Code provider failed to start: \(error, privacy: .public)")
-        }
+        await startClaudeCode(first: true)
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -62,10 +58,27 @@ final class ProviderHost {
     /// access. The bus is already attached to its stream, so this is a start and
     /// not a re-wire; a provider that is already running ignores it.
     func retryStart() async {
+        await startClaudeCode(first: false)
+    }
+
+    /// Whether the Claude Code provider is still waiting for something.
+    var claudeCodeIsWaiting: Bool {
+        get async { await claudeCode.availability.isReady == false }
+    }
+
+    /// A folder that does not exist yet is not a failure. It was logged as one
+    /// every few seconds on a Mac where Claude Code had never opened a project,
+    /// which is the state every new user starts in.
+    private func startClaudeCode(first: Bool) async {
         do {
             try await claudeCode.start()
+            if !first { Log.providers.notice("Claude Code provider started") }
+        } catch ProviderError.notInUseYet(let path) {
+            guard first else { return }
+            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
         } catch {
-            Log.providers.error("Claude Code provider still cannot start: \(error, privacy: .public)")
+            guard first else { return }
+            Log.providers.error("Claude Code provider failed to start: \(error, privacy: .public)")
         }
     }
 

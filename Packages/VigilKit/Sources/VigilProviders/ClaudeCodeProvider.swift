@@ -60,7 +60,12 @@ public actor ClaudeCodeProvider: ActivityProvider {
 
     public func start() async throws {
         guard !isStarted else { return }
-        guard access.hasAccess(to: configuration.projectsDirectory) else {
+        switch reach {
+        case .ready:
+            break
+        case .noProjectsYet:
+            throw ProviderError.notInUseYet(path: configuration.projectsDirectory.path)
+        case .noAccess:
             throw ProviderError.accessNotGranted(path: configuration.projectsDirectory.path)
         }
         seedExistingTranscripts()

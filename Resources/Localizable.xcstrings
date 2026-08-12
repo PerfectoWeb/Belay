@@ -10292,6 +10292,88 @@
           }
         }
       }
+    },
+    "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code ещё не открывал здесь ни одного проекта. Vigil начнёт следить сам, как только это произойдёт."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Vigil beginnt von selbst, sobald es passiert."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code aún no ha abierto ningún proyecto en este Mac. Vigil empezará solo cuando ocurra."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code n'a encore ouvert aucun projet sur ce Mac. Vigil s'y mettra tout seul le moment venu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Vigil inizierà da solo quando succederà."
+          }
+        }
+      }
+    },
+    "Nothing to watch yet: %@ does not exist.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to watch yet: %@ does not exist."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Пока нечего отслеживать: %@ не существует."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Noch nichts zu beobachten: %@ existiert nicht."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nada que vigilar todavía: %@ no existe."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rien à surveiller pour l'instant : %@ n'existe pas."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ancora niente da osservare: %@ non esiste."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -55,3 +55,60 @@ struct ClaudeCodeTierAgreementTests {
         await collector.stop()
     }
 }
+
+/// The state every new user starts in.
+///
+/// `~/.claude/projects` does not exist until Claude Code opens its first
+/// project. That was reported as "allow access to ~/.claude", so people granted
+/// the folder, nothing changed, and they granted it again. Found on a clean
+/// macOS 15 VM where Claude Code had been installed but never used in a
+/// project.
+@Suite("Claude Code that has never opened a project")
+struct ClaudeCodeFirstRunTests {
+    private let scratch = TranscriptScratch()
+
+    @Test("A missing projects folder is not reported as a permission problem")
+    func missingProjectsIsNotAnAccessError() async {
+        let root = scratch.configuration.projectsDirectory.deletingLastPathComponent()
+        try? FileManager.default.removeItem(at: scratch.configuration.projectsDirectory)
+        try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+
+        let provider = ClaudeCodeProvider(
+            configuration: scratch.configuration, access: DirectFileAccess())
+        guard case .unavailable = await provider.availability else {
+            Issue.record("expected 'not in use yet', got \(await provider.availability)")
+            return
+        }
+
+        await #expect(throws: ProviderError.notInUseYet(path: scratch.configuration.projectsDirectory.path)) {
+            try await provider.start()
+        }
+    }
+
+    @Test("An unreachable folder is still reported as a permission problem")
+    func unreachableRootStillAsksForAccess() async {
+        var configuration = scratch.configuration
+        configuration.projectsDirectory = URL(fileURLWithPath: "/no/such/root/projects")
+        let provider = ClaudeCodeProvider(configuration: configuration, access: DirectFileAccess())
+
+        guard case .needsSetup = await provider.availability else {
+            Issue.record("expected needsSetup, got \(await provider.availability)")
+            return
+        }
+    }
+
+    /// And it starts on its own once the folder turns up, without a relaunch.
+    @Test("It starts as soon as the folder appears")
+    func startsOnceTheFolderExists() async throws {
+        try? FileManager.default.removeItem(at: scratch.configuration.projectsDirectory)
+        let provider = ClaudeCodeProvider(
+            configuration: scratch.configuration, access: DirectFileAccess())
+        try? await provider.start()
+
+        try FileManager.default.createDirectory(
+            at: scratch.configuration.projectsDirectory, withIntermediateDirectories: true)
+        try await provider.start()
+        #expect(await provider.availability.isReady)
+        await provider.stop()
+    }
+}
