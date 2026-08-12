@@ -105,12 +105,19 @@ final class GenericTargetGridTests: XCTestCase {
         XCTAssertGreaterThan(
             ink(ProviderMark.image(preset: tile.markPreset, size: 64)), 0.01,
             "the fallback mark is blank — the tile shows an empty box")
-        XCTAssertEqual(tile.detail, "process mytool")
+        // Built the way the tile builds it, interpolation included: the key is
+        // "process %@", so `String(localized: "process mytool")` is a different
+        // key with no translation and would pass only on an English Mac.
+        let ownProcess = "mytool"
+        XCTAssertEqual(tile.detail, String(localized: "process \(ownProcess)"))
 
         // Same box as a preset tile: both rows are there, neither collapsed.
         let preset = GenericPreset.all[1].target()
         XCTAssertEqual(tileSize(handRolled).height, tileSize(preset).height, accuracy: 0.5)
-        XCTAssertEqual(GenericTargetTile(target: preset, remove: { _ in }).detail, ".gemini · process gemini")
+        let presetProcess = "gemini"
+        XCTAssertEqual(
+            GenericTargetTile(target: preset, remove: { _ in }).detail,
+            ".gemini · " + String(localized: "process \(presetProcess)"))
     }
 
     func testTheRemoveButtonFiresWithItsOwnTarget() {

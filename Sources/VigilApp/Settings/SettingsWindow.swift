@@ -30,6 +30,7 @@ final class SettingsWindow: NSObject {
     private let targets: () -> [GenericTarget]
     private let statistics: () -> UsageStatistics
     private let onTargetsChanged: ([GenericTarget]) -> Void
+    private let onResetStatistics: () -> Void
     /// Owned here so the toggle survives a pane switch, and so the window can
     /// re-read macOS when it comes back to the front.
     ///
@@ -52,13 +53,15 @@ final class SettingsWindow: NSObject {
         precise: PreciseDetection,
         targets: @escaping () -> [GenericTarget],
         statistics: @escaping () -> UsageStatistics,
-        onTargetsChanged: @escaping ([GenericTarget]) -> Void
+        onTargetsChanged: @escaping ([GenericTarget]) -> Void,
+        onResetStatistics: @escaping () -> Void = {}
     ) {
         self.settings = settings
         self.state = state
         self.precise = precise
         self.targets = targets
         self.onTargetsChanged = onTargetsChanged
+        self.onResetStatistics = onResetStatistics
         self.statistics = statistics
         super.init()
     }
@@ -169,6 +172,12 @@ final class SettingsWindow: NSObject {
             onTargetsChanged: { [weak self] targets in
                 self?.onTargetsChanged(targets)
                 self?.refit(with: targets)
+            },
+            // Rebuilt straight afterwards: the pane holds a snapshot, and
+            // without this it keeps showing the numbers it was built with.
+            onResetStatistics: { [weak self] in
+                self?.onResetStatistics()
+                self?.refreshContent()
             }
         )
     }

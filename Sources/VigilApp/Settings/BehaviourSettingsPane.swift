@@ -20,7 +20,7 @@ struct BehaviourSettingsPane: View {
                     // empty string: the latter asks the catalogue for "".
                     Picker(selection: $settings.gracePeriod) {
                         ForEach(SettingsPresets.gracePeriods, id: \.self) { seconds in
-                            Text(ElapsedTime.compact(seconds)).tag(seconds)
+                            Text(verbatim: DurationChoice.label(seconds)).tag(seconds)
                         }
                     } label: {
                         EmptyView()
@@ -40,8 +40,7 @@ struct BehaviourSettingsPane: View {
                 ) {
                     Picker(selection: $settings.maxContinuousAwake) {
                         ForEach(SettingsPresets.maxContinuousAwake, id: \.self) { limit in
-                            Text(limit.map(ElapsedTime.compact) ?? String(localized: "Until turned off")).tag(
-                                limit)
+                            Text(verbatim: DurationChoice.label(limit)).tag(limit)
                         }
                     } label: {
                         EmptyView()

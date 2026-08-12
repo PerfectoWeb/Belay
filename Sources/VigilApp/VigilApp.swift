@@ -58,7 +58,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             precise: precise,
             targets: { [weak controller] in controller?.genericTargets ?? [] },
             statistics: { [weak controller] in controller?.usage.statistics ?? UsageStatistics() },
-            onTargetsChanged: { [weak controller] in controller?.updateGenericTargets($0) }
+            onTargetsChanged: { [weak controller] in controller?.updateGenericTargets($0) },
+            onResetStatistics: { [weak controller] in controller?.usage.reset() }
         )
         statusItem.onOpenPane = { [weak settingsWindow] in settingsWindow?.show(pane: $0) }
         // The panel's "Fix" button. Every notice it can show is resolved on the

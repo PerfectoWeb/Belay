@@ -21,6 +21,7 @@ struct SettingsView: View {
     var loginItem: LoginItem
     var updates: ReleaseChecker
     var onTargetsChanged: ([GenericTarget]) -> Void
+    var onResetStatistics: () -> Void = {}
 
     var body: some View {
         ScrollView(.vertical) { content }
@@ -51,7 +52,7 @@ struct SettingsView: View {
         case .notifications:
             SettingsStack { NotificationSettingsPane(settings: settings) }
         case .statistics:
-            StatisticsPane(statistics: statistics)
+            StatisticsPane(statistics: statistics, onReset: onResetStatistics)
                 .frame(width: SettingsPane.width, alignment: .topLeading)
         case .about:
             // Owned elsewhere and brings its own padding, so it is not wrapped.

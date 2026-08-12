@@ -16,10 +16,20 @@
 %lld seconds,Panel,translated,%lld,%lld seconds,%lld segundos
 "%lld sessions in total, including subagents",Panel,translated,%lld,"%lld sessions in total, including subagents","%lld sesiones en total, incluidos los subagentes"
 %lld subagents,Panel,translated,%lld,%lld subagents,%lld subagentes
-%lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lldd %@h
-%lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lldh %@min
-%lldm,Panel,translated,%lld,%lldm,%lldmin
-%llds,Panel,translated,%lld,%llds,%llds
+%lldd %@h,Panel,needs_review,%lld %@,%lldd %@h,%lld d %@ h
+%lldh %@m,Panel,needs_review,%lld %@,%lldh %@m,%lld h %@ min
+%lldm,Panel,needs_review,%lld,%lldm,%lld min
+%llds,Panel,needs_review,%lld,%llds,%lld s
+1 hour,Settings,needs_review,,1 hour,1 hora
+1 min,"Detection, Settings",needs_review,,1 min,1 min
+10 min,Settings,needs_review,,10 min,10 min
+2 hours,"Settings, Statistics",needs_review,,2 hours,2 horas
+3 min,Settings,needs_review,,3 min,3 min
+30 min,Settings,needs_review,,30 min,30 min
+30 sec,Settings,needs_review,,30 sec,30 s
+4 hours,Settings,needs_review,,4 hours,4 horas
+5 min,Settings,needs_review,,5 min,5 min
+8 hours,Settings,needs_review,,8 hours,8 horas
 A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviour,translated,,Vigil stops keeping your Mac awake after this time and lets you know.,"Al llegar a este tiempo, Vigil deja de mantener el Mac despierto y te avisa."
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Vigil when the session ends.,La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Vigil cuándo termina la sesión.
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,needs_review,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,"Un tono breve cuando cambias de modo a mano. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan."
@@ -47,7 +57,7 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,Hasta qu
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportamiento
 "Below %lld%% on battery, Vigil stops holding.",Settings: Behaviour,translated,%lld,"On battery, Vigil stops at %lld%%.","Con batería, Vigil se detiene al llegar al %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Invítame un café
-Cancel,"App, Detection, Menu bar, Settings: Providers",translated,,Cancel,Cancelar
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Cancelar
 Check Now,Settings: General,translated,,Check Now,Comprobar ahora
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Buscar actualizaciones automáticamente
 Checking…,Settings: General,translated,,Checking…,Comprobando…
@@ -62,6 +72,8 @@ Done,Settings: Providers,translated,,Done,Listo
 Download…,Settings: General,translated,,Download…,Descargar…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activar detección precisa
 Enable…,Settings: Providers,translated,,Enable…,Activar…
+Erase,Statistics,needs_review,,Erase,Borrar
+Erase your statistics?,Statistics,needs_review,,Erase your statistics?,¿Borrar tus estadísticas?
 Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Terminado
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corregir
 Free,Settings: About,translated,,Free,Gratis
@@ -128,7 +140,8 @@ Remove,Settings: Providers,translated,,Remove,Quitar
 Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
 Removes Vigil's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Vigil added to your Claude Code settings,Elimina solo las entradas que Vigil añadió a tus ajustes de Claude Code
 Report a bug,Settings: About,translated,,Report a bug,Informar de un error
-Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Welcome",translated,,Settings,Ajustes
+Reset…,Statistics,needs_review,,Reset…,Restablecer…
+Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Ajustes
 Settings…,Menu bar,translated,,Settings…,Ajustes…
 Share,Statistics,translated,,Share,Compartir
 "Shares a card, a summary and a link to Vigil",Statistics,translated,,"Shares the card, summary, and a link to Vigil","Comparte la tarjeta, el resumen y un enlace a Vigil"
@@ -137,6 +150,7 @@ Show all sessions,Panel,translated,,Show all sessions,Mostrar todas las sesiones
 Show fewer,Panel,translated,,Show fewer,Mostrar menos
 Show fewer sessions,Panel,translated,,Show fewer sessions,Mostrar menos sesiones
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Vigil will add before it writes anything,Muestra exactamente qué añadirá Vigil antes de escribir nada
+Since %@,Statistics,needs_review,%@,Since %@,Desde el %@
 Skip for now,Welcome,translated,,Skip for now,Omitir por ahora
 Software updates,Settings: General,translated,,Software updates,Actualizaciones
 Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Sonido
@@ -154,8 +168,9 @@ The purchase is waiting for approval. Nothing else is needed from you.,Detection
 The purchase was cancelled.,Detection,needs_review,,The purchase was cancelled.,La compra se canceló.
 The run%@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run%@ finished in %@. Your Mac can sleep normally again.,La ejecución%@ terminó en %@. El Mac puede volver a dormir con normalidad.
 There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,La opción de propina %@ no está disponible.
+This cannot be undone. Vigil keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Vigil keeps no copy anywhere else.,Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio.
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Las propinas no están disponibles en esta versión.
-Until turned off,Settings: Behaviour,translated,,Until turned off,Hasta desactivarlo
+Until turned off,Settings,translated,,Until turned off,Hasta desactivarlo
 Untitled project,App,translated,,Untitled project,Proyecto sin título
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Versión %@ (%@)
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La versión %@ está disponible.

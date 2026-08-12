@@ -20,6 +20,16 @@
 %lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lldh %@m
 %lldm,Panel,translated,%lld,%lldm,%lldm
 %llds,Panel,translated,%lld,%llds,%llds
+1 hour,Settings,translated,,1 hour,1 hour
+1 min,"Detection, Settings",translated,,1 min,1 min
+10 min,Settings,translated,,10 min,10 min
+2 hours,"Settings, Statistics",translated,,2 hours,2 hours
+3 min,Settings,translated,,3 min,3 min
+30 min,Settings,translated,,30 min,30 min
+30 sec,Settings,translated,,30 sec,30 sec
+4 hours,Settings,translated,,4 hours,4 hours
+5 min,Settings,translated,,5 min,5 min
+8 hours,Settings,translated,,8 hours,8 hours
 A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviour,translated,,Vigil stops keeping your Mac awake after this time and lets you know.,Vigil stops keeping your Mac awake after this time and lets you know.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Vigil when the session ends.,Folder activity counts as work. A running process only tells Vigil when the session ends.
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.
@@ -47,7 +57,7 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,Until yo
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Behavior
 "Below %lld%% on battery, Vigil stops holding.",Settings: Behaviour,translated,%lld,"On battery, Vigil stops at %lld%%.","On battery, Vigil stops at %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Buy me a coffee
-Cancel,"App, Detection, Menu bar, Settings: Providers",translated,,Cancel,Cancel
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Cancel
 Check Now,Settings: General,translated,,Check Now,Check Now
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Check for updates automatically
 Checking…,Settings: General,translated,,Checking…,Checking…
@@ -62,6 +72,8 @@ Done,Settings: Providers,translated,,Done,Done
 Download…,Settings: General,translated,,Download…,Download…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Enable precise detection
 Enable…,Settings: Providers,translated,,Enable…,Enable…
+Erase,Statistics,translated,,Erase,Erase
+Erase your statistics?,Statistics,translated,,Erase your statistics?,Erase your statistics?
 Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Finished
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Fix
 Free,Settings: About,translated,,Free,Free
@@ -128,7 +140,8 @@ Remove,Settings: Providers,translated,,Remove,Remove
 Remove %@,Settings: Providers,translated,%@,Remove %@,Remove %@
 Removes Vigil's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Vigil added to your Claude Code settings,Removes only the entries Vigil added to your Claude Code settings
 Report a bug,Settings: About,translated,,Report a bug,Report a bug
-Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Welcome",translated,,Settings,Settings
+Reset…,Statistics,translated,,Reset…,Reset…
+Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Settings
 Settings…,Menu bar,translated,,Settings…,Settings…
 Share,Statistics,translated,,Share,Share
 "Shares a card, a summary and a link to Vigil",Statistics,translated,,"Shares the card, summary, and a link to Vigil","Shares the card, summary, and a link to Vigil"
@@ -137,6 +150,7 @@ Show all sessions,Panel,translated,,Show all sessions,Show all sessions
 Show fewer,Panel,translated,,Show fewer,Show fewer
 Show fewer sessions,Panel,translated,,Show fewer sessions,Show fewer sessions
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Vigil will add before it writes anything,Previews exactly what Vigil will add before it writes anything
+Since %@,Statistics,translated,%@,Since %@,Since %@
 Skip for now,Welcome,translated,,Skip for now,Skip for now
 Software updates,Settings: General,translated,,Software updates,Software updates
 Sound,"App, Settings: About, Settings: General",translated,,Sound,Sound
@@ -154,8 +168,9 @@ The purchase is waiting for approval. Nothing else is needed from you.,Detection
 The purchase was cancelled.,Detection,translated,,The purchase was cancelled.,The purchase was cancelled.
 The run%@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run%@ finished in %@. Your Mac can sleep normally again.,The run%@ finished in %@. Your Mac can sleep normally again.
 There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,Tip %@ isn't available.
+This cannot be undone. Vigil keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Vigil keeps no copy anywhere else.,This cannot be undone. Vigil keeps no copy anywhere else.
 Tipping is not available in this build.,Detection,translated,,Tipping isn't available in this version.,Tipping isn't available in this version.
-Until turned off,Settings: Behaviour,translated,,Until turned off,Until turned off
+Until turned off,Settings,translated,,Until turned off,Until turned off
 Untitled project,App,translated,,Untitled project,Untitled project
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,Version %@ is available.

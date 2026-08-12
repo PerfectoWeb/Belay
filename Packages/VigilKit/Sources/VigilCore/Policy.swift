@@ -35,7 +35,10 @@ public struct AwakePolicy: Sendable, Equatable {
 
     public static let `default` = AwakePolicy(
         mode: .auto,
-        gracePeriod: 90,
+        // A round minute, and one of `SettingsPresets.gracePeriods`. It was 90 s,
+        // which the pop-up drew as "1 min" because the label rounded: the list
+        // and the default agreed on a number nobody could pick.
+        gracePeriod: 60,
         maxContinuousAwake: 4 * 60 * 60,
         awaitingUserBudget: 15 * 60,
         sessionTTL: 10 * 60,

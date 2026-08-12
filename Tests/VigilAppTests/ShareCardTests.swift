@@ -72,9 +72,9 @@ final class ShareCardTests: XCTestCase {
         var statistics = UsageStatistics()
         statistics.record(hold: 3600, away: 3600, on: day)
         let caption = ShareCardContent(statistics, now: day).caption
-        XCTAssertTrue(caption.lowercased().contains("one"), caption)
-        XCTAssertFalse(caption.contains("1 run"), caption)
-        XCTAssertFalse(caption.contains("1 runs"), caption)
+        // Spelled, in whatever language: a numeral here reads as a second
+        // statistic beside the headline rather than as the end of a sentence.
+        XCTAssertFalse(caption.contains(where: \.isNumber), caption)
     }
 
     /// An injected pasteboard, because a test has no business clearing the

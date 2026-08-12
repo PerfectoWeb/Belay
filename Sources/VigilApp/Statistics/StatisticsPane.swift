@@ -9,6 +9,11 @@ import SwiftUI
 /// otherwise have ended in a dead run.
 struct StatisticsPane: View {
     let statistics: UsageStatistics
+    /// Throwing the numbers away is the one destructive thing in Settings, so
+    /// it asks first and the pane does not own the data it would be discarding.
+    var onReset: () -> Void = {}
+
+    @State private var isConfirmingReset = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -63,7 +68,10 @@ struct StatisticsPane: View {
     }
 
     private var figures: some View {
-        HStack(alignment: .top, spacing: 26) {
+        // Wide gaps because the captions are: "запусков спасено" is twice the
+        // width of "runs saved", and four columns set to English spacing run
+        // into each other in every language but English.
+        HStack(alignment: .top, spacing: 34) {
             Figure(value: "\(statistics.totalRescued)", caption: "runs rescued")
             Figure(value: ElapsedTime.compact(statistics.longestHold), caption: "longest run")
             Figure(value: "\(statistics.totalHolds)", caption: "runs watched")
@@ -78,17 +86,44 @@ struct StatisticsPane: View {
                 .foregroundStyle(.secondary)
             DayBars(days: statistics.recent(14))
                 .frame(height: 56)
+            if let since {
+                // The scope of everything above it. Without a start date the
+                // totals are a number with no denominator.
+                Text("Since \(since)")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.tertiary)
+            }
+        }
+    }
+
+    private var since: String? {
+        statistics.firstRun.map {
+            $0.formatted(.dateTime.day().month(.wide).year())
         }
     }
 
     private var shareRow: some View {
-        HStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
             Text("Numbers stay on this Mac unless you share them.")
                 .font(.system(size: 10))
                 .foregroundStyle(.tertiary)
-            Spacer(minLength: 8)
-            CopyStatisticsCardButton(statistics: statistics)
-            ShareStatisticsButton(statistics: statistics)
+            HStack(spacing: 8) {
+                // Away from the two it must not be mistaken for, and quiet:
+                // a bordered button beside two bordered buttons is a button you
+                // click by aiming badly.
+                Button("Reset…") { isConfirmingReset = true }
+                    .buttonStyle(.link)
+                    .font(.system(size: 12))
+                Spacer(minLength: 8)
+                CopyStatisticsCardButton(statistics: statistics)
+                ShareStatisticsButton(statistics: statistics)
+            }
+        }
+        .alert("Erase your statistics?", isPresented: $isConfirmingReset) {
+            Button("Erase", role: .destructive, action: onReset)
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This cannot be undone. Vigil keeps no copy anywhere else.")
         }
     }
 

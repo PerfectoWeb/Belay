@@ -32,7 +32,7 @@ final class StatusMenuTests: XCTestCase {
             [
                 String(localized: "Statistics"),
                 String(localized: "Settings…"),
-                String(localized: "About Vigil"),
+                String(localized: "About \(Branding.appName)"),
                 "",
                 String(localized: "Quit")
             ],

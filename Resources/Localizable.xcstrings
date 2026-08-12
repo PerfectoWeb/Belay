@@ -704,8 +704,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldT %@Std"
+            "state": "needs_review",
+            "value": "%lld T %@ Std"
           }
         },
         "en": {
@@ -716,26 +716,26 @@
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldd %@h"
+            "state": "needs_review",
+            "value": "%lld d %@ h"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldj %@h"
+            "state": "needs_review",
+            "value": "%lld j %@ h"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldg %@h"
+            "state": "needs_review",
+            "value": "%lld g %@ h"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldд %@ч"
+            "state": "needs_review",
+            "value": "%lld д %@ ч"
           }
         }
       }
@@ -745,8 +745,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldStd %@Min"
+            "state": "needs_review",
+            "value": "%lld Std %@ Min"
           }
         },
         "en": {
@@ -757,26 +757,26 @@
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldh %@min"
+            "state": "needs_review",
+            "value": "%lld h %@ min"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldh %@min"
+            "state": "needs_review",
+            "value": "%lld h %@ min"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldh %@min"
+            "state": "needs_review",
+            "value": "%lld h %@ min"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldч %@мин"
+            "state": "needs_review",
+            "value": "%lld ч %@ мин"
           }
         }
       }
@@ -786,8 +786,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldMin"
+            "state": "needs_review",
+            "value": "%lld Min"
           }
         },
         "en": {
@@ -798,26 +798,26 @@
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldmin"
+            "state": "needs_review",
+            "value": "%lld min"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldmin"
+            "state": "needs_review",
+            "value": "%lld min"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldmin"
+            "state": "needs_review",
+            "value": "%lld min"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldмин"
+            "state": "needs_review",
+            "value": "%lld мин"
           }
         }
       }
@@ -827,8 +827,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldSek"
+            "state": "needs_review",
+            "value": "%lld Sek"
           }
         },
         "en": {
@@ -839,26 +839,26 @@
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%llds"
+            "state": "needs_review",
+            "value": "%lld s"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%llds"
+            "state": "needs_review",
+            "value": "%lld s"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%llds"
+            "state": "needs_review",
+            "value": "%lld s"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "%lldс"
+            "state": "needs_review",
+            "value": "%lld с"
           }
         }
       }
@@ -1022,7 +1022,7 @@
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Короткий сигнал, когда вы меняете режим вручную. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
+            "value": "Звуковое сопровождение интерфейса Vigil. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
           }
         }
       }
@@ -1267,8 +1267,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Добавить инструмент"
+            "state": "needs_review",
+            "value": "Добавить инструмент для наблюдения"
           }
         }
       }
@@ -1308,8 +1308,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Добавить инструмент…"
+            "state": "needs_review",
+            "value": "Добавить…"
           }
         }
       }
@@ -2374,8 +2374,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Скопировать карточку и ссылку"
+            "state": "needs_review",
+            "value": "Скопировать"
           }
         }
       }
@@ -3153,8 +3153,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Не даёт Mac уснуть, пока работает агент."
+            "state": "needs_review",
+            "value": "Vigil не даст вашему Mac заснуть, пока работают AI-агенты."
           }
         }
       }
@@ -3522,8 +3522,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Только локально"
+            "state": "needs_review",
+            "value": "Работает локально"
           }
         }
       }
@@ -4629,8 +4629,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Цифры остаются на этом Mac, пока вы сами ими не поделитесь."
+            "state": "needs_review",
+            "value": "Статистика никуда не отправляется, пока вы сами ею не поделитесь."
           }
         }
       }
@@ -4834,8 +4834,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Если экран погаснет, агент продолжит работу, а Mac будет расходовать меньше энергии."
+            "state": "needs_review",
+            "value": "При выключенном экране агент продолжит работу, а Mac будет расходовать меньше энергии."
           }
         }
       }
@@ -4875,8 +4875,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Раз в день Vigil проверяет на GitHub, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления никогда не устанавливаются автоматически."
+            "state": "needs_review",
+            "value": "Раз в день Vigil проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
           }
         }
       }
@@ -5900,8 +5900,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "сохранено запусков"
+            "state": "needs_review",
+            "value": "запусков спасено"
           }
         }
       }
@@ -5941,8 +5941,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "запусков отслежено"
+            "state": "needs_review",
+            "value": "всего запусков"
           }
         }
       }
@@ -8688,8 +8688,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Подождать перед переходом Mac в сон"
+            "state": "needs_review",
+            "value": "Переход в сон через"
           }
         }
       }
@@ -9303,8 +9303,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Агент ждёт разрешения или вашего ответа. Для надёжных уведомлений нужна «Точная детекция»."
+            "state": "needs_review",
+            "value": "Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция»."
           }
         }
       }
@@ -9385,8 +9385,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Агент всё равно закончит работу. Vigil просто разрешит Mac уснуть чуть раньше после завершения."
+            "state": "needs_review",
+            "value": "Vigil разрешит Mac уснуть чуть раньше после того, как агент закончит."
           }
         }
       }
@@ -9592,6 +9592,621 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac может засыпать как обычно"
+          }
+        }
+      }
+    },
+    "30 sec": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 sec"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 сек"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Sek."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        }
+      }
+    },
+    "1 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        }
+      }
+    },
+    "3 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        }
+      }
+    },
+    "5 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        }
+      }
+    },
+    "10 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        }
+      }
+    },
+    "30 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        }
+      }
+    },
+    "1 hour": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 час"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 Stunde"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 hora"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 heure"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 ora"
+          }
+        }
+      }
+    },
+    "2 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 часа"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 ore"
+          }
+        }
+      }
+    },
+    "4 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 часа"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 ore"
+          }
+        }
+      }
+    },
+    "8 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 часов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 ore"
+          }
+        }
+      }
+    },
+    "Reset…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Сбросить…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Zurücksetzen…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Restablecer…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Réinitialiser…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Azzera…"
+          }
+        }
+      }
+    },
+    "Erase your statistics?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase your statistics?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть статистику?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Statistik löschen?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "¿Borrar tus estadísticas?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Effacer vos statistiques ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cancellare le statistiche?"
+          }
+        }
+      }
+    },
+    "Erase": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Löschen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Borrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Effacer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cancella"
+          }
+        }
+      }
+    },
+    "This cannot be undone. Vigil keeps no copy anywhere else.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This cannot be undone. Vigil keeps no copy anywhere else."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Это нельзя отменить. Копии нигде больше нет."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Das lässt sich nicht rückgängig machen. Vigil hält nirgendwo eine Kopie."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "C'est irréversible. Vigil n'en garde aucune copie ailleurs."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Non si può annullare. Vigil non ne conserva copie altrove."
+          }
+        }
+      }
+    },
+    "Since %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Since %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "С %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Seit %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Desde el %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Depuis le %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dal %@"
           }
         }
       }

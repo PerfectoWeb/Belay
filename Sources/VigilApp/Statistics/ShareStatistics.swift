@@ -15,10 +15,10 @@ struct ShareStatisticsButton: View {
             present()
         } label: {
             Label("Share", systemImage: "square.and.arrow.up")
-                .font(.system(size: 11, weight: .medium))
+                .font(.system(size: 12, weight: .medium))
+                .padding(.vertical, 2)
         }
         .buttonStyle(.bordered)
-        .controlSize(.small)
         .accessibilityHint("Shares a card, a summary and a link to Vigil")
     }
 
@@ -45,10 +45,10 @@ struct CopyStatisticsCardButton: View {
                 copied ? "Copied" : "Copy card and link",
                 systemImage: copied ? "checkmark" : "doc.on.doc"
             )
-            .font(.system(size: 11, weight: .medium))
+            .font(.system(size: 12, weight: .medium))
+            .padding(.vertical, 2)
         }
         .buttonStyle(.bordered)
-        .controlSize(.small)
         .accessibilityHint("Copies the card image and the summary text together")
     }
 

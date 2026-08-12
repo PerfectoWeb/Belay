@@ -82,25 +82,62 @@ final class UsageStatisticsTests: XCTestCase {
 
     // MARK: - what the share text is allowed to say
 
-    func testShareTextClaimsNoRescueWhenThereWasNone() {
+    /// Three sentences, one per case, and the tests say which case was chosen
+    /// rather than what English it came out as. Asserting on the words is
+    /// asserting that the Mac running the suite is set to English, which it was
+    /// until somebody switched the app to Russian and six tests went red.
+    private func summary(rescued: Int) -> String {
         var statistics = UsageStatistics()
-        statistics.record(hold: 3600, away: 0, on: day)
-        let summary = ShareStatistics.summary(statistics)
-        XCTAssertFalse(summary.lowercased().contains("saved"), summary)
-        XCTAssertTrue(summary.contains("1 agent runs") || summary.contains("watched 1"), summary)
+        // A run counts as rescued only when it was left unattended.
+        statistics.record(hold: 3600, away: rescued > 0 ? 3600 : 0, on: day)
+        for offset in 1..<max(rescued, 1) {
+            statistics.record(hold: 600, away: 600, on: day.addingTimeInterval(Double(offset) * 86_400))
+        }
+        XCTAssertEqual(statistics.totalRescued, max(rescued, 0), "fixture does not rescue what it claims")
+        return ShareStatistics.summary(statistics)
     }
 
+    func testShareTextClaimsNoRescueWhenThereWasNone() {
+        let none = summary(rescued: 0)
+        XCTAssertNotEqual(none, summary(rescued: 1), "nothing rescued reads like something was")
+        XCTAssertNotEqual(none, summary(rescued: 3))
+        XCTAssertFalse(none.lowercased().contains("saved"), none)
+    }
+
+    /// One rescue gets its own sentence rather than the plural one with a 1 in
+    /// it, which is what a declining language needs.
     func testShareTextUsesSingularForOneRescue() {
-        var statistics = UsageStatistics()
-        statistics.record(hold: 3600, away: 3600, on: day)
-        let summary = ShareStatistics.summary(statistics)
-        XCTAssertTrue(summary.contains("1 agent run "), summary)
-        XCTAssertFalse(summary.contains("1 agent runs"), summary)
+        XCTAssertNotEqual(summary(rescued: 1), summary(rescued: 3))
     }
 
     func testShareCarriesTheLink() {
         var statistics = UsageStatistics()
         statistics.record(hold: 3600, away: 3600, on: day)
         XCTAssertTrue(ShareStatistics.items(from: statistics).contains { $0 is URL })
+    }
+}
+
+/// Erasing the statistics.
+@MainActor
+final class UsageResetTests: XCTestCase {
+    func testResetClearsEverythingIncludingTheRunInProgress() {
+        let defaults = UserDefaults(suiteName: "vigil.tests.reset.\(UUID().uuidString)")!
+        defer { defaults.removePersistentDomain(forName: defaults.description) }
+        let recorder = UsageRecorder(store: UsageStatisticsStore(defaults: defaults))
+        let start = Date(timeIntervalSince1970: 1_780_000_000)
+
+        recorder.update(holdingSince: start, now: start)
+        recorder.update(holdingSince: nil, now: start.addingTimeInterval(600))
+        XCTAssertFalse(recorder.statistics.isEmpty, "nothing was recorded to erase")
+
+        // Mid-hold on purpose: a reset that banks the run you are in the middle
+        // of is not a reset, and that run was already inside what was discarded.
+        recorder.update(holdingSince: start.addingTimeInterval(700), now: start.addingTimeInterval(700))
+        recorder.reset()
+        XCTAssertTrue(recorder.statistics.isEmpty)
+        XCTAssertNil(recorder.statistics.firstRun)
+
+        recorder.update(holdingSince: nil, now: start.addingTimeInterval(1300))
+        XCTAssertTrue(recorder.statistics.isEmpty, "the interrupted run came back after the reset")
     }
 }

@@ -24,6 +24,20 @@ final class UsageRecorder {
         statistics = store.load()
     }
 
+    /// Throws away every recorded number and starts again from now.
+    ///
+    /// The hold in progress is dropped with the rest rather than banked into
+    /// the empty record: a reset that immediately writes back the run you were
+    /// in the middle of is not a reset, and the run was already counted in what
+    /// was just discarded.
+    func reset(now: Date = Date()) {
+        holdStarted = nil
+        awayInCurrentHold = 0
+        lastSample = nil
+        statistics = UsageStatistics()
+        store.save(statistics)
+    }
+
     /// Called with the coordinator's `holdingSince` on every snapshot.
     func update(holdingSince: Date?, now: Date = Date()) {
         switch (holdStarted, holdingSince) {
