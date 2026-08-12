@@ -14,6 +14,8 @@ import VigilCore
 /// positions of one control rather than three separate buttons that happen to
 /// sit together, and it is the difference between reading as a choice and
 /// reading as a toolbar. Earlier attempts are kept verbatim in `docs/design/`.
+///
+/// Animates nothing that can change the panel's height.
 struct PanelModePicker: View {
     let state: AppState
 

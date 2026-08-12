@@ -14,19 +14,54 @@ struct PanelFooter: View {
 
             Spacer(minLength: 8)
 
-            Button(action: onOpenSettings) {
-                // Words and nothing else, in `.link` — the same blue as "Fix"
-                // two rows up, which is `linkColor` rather than the accent. Two
-                // links in one panel drawn in two different blues is the kind of
-                // thing you cannot unsee once noticed.
-                Text("Settings")
-                    .font(.system(size: 12, weight: .medium))
-                    .padding(.vertical, 3)
-                    .padding(.trailing, 2)
-                    .contentShape(.rect)
-            }
-            .buttonStyle(.link)
-            .accessibilityLabel("Open Settings")
+            SettingsGearButton(action: onOpenSettings)
         }
+    }
+}
+
+/// The way into Settings: a gear, quiet until the pointer finds it.
+///
+/// It was the word "Settings" in link blue. A panel this small has one job on
+/// screen at a time, and a second blue link under the first one competed with
+/// the notice row above it for the same attention. The gear says the same thing
+/// in a quarter of the width and stays out of the way until it is wanted.
+///
+/// Turning by exactly one tooth is the point. `gearshape` has eight, so 45° maps
+/// teeth onto teeth: the gear engages and settles rather than spinning to an
+/// arbitrary angle, which is what makes it read as a mechanism instead of a
+/// rotating picture.
+///
+/// Animates nothing that can change the panel's height.
+private struct SettingsGearButton: View {
+    let action: () -> Void
+
+    @State private var isHovering = false
+    @FocusState private var isFocused: Bool
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private var isLit: Bool { isHovering || isFocused }
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "gearshape")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundStyle(
+                    isLit ? AnyShapeStyle(Color(nsColor: .linkColor)) : AnyShapeStyle(.secondary)
+                )
+                .rotationEffect(.degrees(isLit && !reduceMotion ? 45 : 0))
+                .padding(.vertical, 2)
+                .padding(.horizontal, 2)
+                .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .focusable()
+        .focused($isFocused)
+        .onHover { isHovering = $0 }
+        // The colour is quick, the turn has weight. One animation for both makes
+        // the colour feel sluggish or the gear feel snapped.
+        .animation(.easeOut(duration: 0.12), value: isLit)
+        .animation(.spring(duration: 0.42, bounce: 0.34), value: isLit)
+        .accessibilityLabel("Open Settings")
+        .help(Text("Open Settings"))
     }
 }

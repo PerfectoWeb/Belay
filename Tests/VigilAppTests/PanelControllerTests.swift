@@ -78,6 +78,9 @@ final class PanelControllerTests: XCTestCase {
 /// `.animation(…)` modifier reappears anywhere in the panel's layout.
 @MainActor
 final class PanelAnimationTests: XCTestCase {
+    /// The sentence a panel file has to carry before it is allowed to animate.
+    static let exemption = "// Animates nothing that can change the panel's height."
+
     func testNothingInThePanelAnimatesItsOwnLayout() throws {
         let panel = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent()
@@ -85,11 +88,17 @@ final class PanelAnimationTests: XCTestCase {
             .appendingPathComponent("Sources/VigilApp/Panel")
         let files = try FileManager.default.contentsOfDirectory(at: panel, includingPropertiesForKeys: nil)
 
+        var exempt = 0
         for file in files where file.pathExtension == "swift" {
             let source = try String(contentsOf: file, encoding: .utf8)
-            // The mode picker animates a pill inside a row of fixed height,
-            // which cannot move anything. Everything else must not animate.
-            guard file.lastPathComponent != "PanelModePicker.swift" else { continue }
+            // A file may animate only if it says, in itself, that what it
+            // animates cannot move anything. Keeping the reason next to the code
+            // rather than in a list here is what stops the list growing by
+            // habit: adding an exemption has to be a deliberate sentence.
+            if source.contains(Self.exemption) {
+                exempt += 1
+                continue
+            }
             XCTAssertFalse(
                 source.contains(".animation("),
                 "\(file.lastPathComponent) animates layout — the popover will judder")
@@ -97,6 +106,7 @@ final class PanelAnimationTests: XCTestCase {
                 source.contains("withAnimation"),
                 "\(file.lastPathComponent) animates layout — the popover will judder")
         }
+        XCTAssertGreaterThan(exempt, 0, "the exemption marker no longer matches anything")
     }
 
     /// The controller, not SwiftUI, owns the size. If `sizingOptions` ever goes
