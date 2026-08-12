@@ -28,6 +28,12 @@ for our bundle ID, which is not ours. Match on the pid.
 - [x] Auto mode, no sessions → no Vigil assertion held
 - [x] Always on → `PreventUserIdleSystemSleep` named "Vigil", details string set
 - [x] Assertion carries `Timeout will fire in N secs Action=TimeoutActionRelease`
+- [x] **Invariant 2, observed 2026-08-12.** `kill -9` on Vigil while it held
+      both assertions: `pmset -g assertions | grep "pid <pid>("` listed
+      `PreventUserIdleSystemSleep` and `PreventUserIdleDisplaySleep` before, and
+      nothing at all one second after. SIGKILL on purpose — a graceful quit only
+      exercises the cleanup code we already test; this is the crash case, where
+      no handler of ours runs and the kernel has to be the one that releases.
 - [x] Refresh re-arms before expiry (observed 100→85→70→55→40, then 117)
 - [x] Quit while holding → assertion count drops to 0
 - [x] Off mode → nothing held
@@ -147,3 +153,19 @@ for our bundle ID, which is not ours. Match on the pid.
 ---
 
 **Last run:** 2026-08-10, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
+
+---
+
+## 9. The App Store build's sandbox (B8)
+
+`Tests/VigilSandboxTests` runs inside the sandbox on every gate and covers
+everything except the click. This is the click.
+
+- [ ] Build and run the MAS channel: `xcodebuild -scheme Vigil-MAS -configuration Debug ...`,
+      then open `build/DerivedData-MAS/Build/Products/Debug/Vigil-MAS.app`
+- [ ] Providers pane shows Claude Code as needing access, not as ready
+- [ ] Press the button, pick `~/.claude` in the open panel, allow
+- [ ] The pane now says ready, and the panel lists a Claude Code session while
+      one is running
+- [ ] Quit and reopen. Still ready, with no second panel: this is the bookmark,
+      and it is the half that dies silently if only the panel grant was kept

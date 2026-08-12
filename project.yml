@@ -148,6 +148,25 @@ targets:
           # the configuration that gets archived and submitted — is plain Vigil.
           PRODUCT_NAME: Vigil-MAS
 
+  # The only tests that run inside a sandbox.
+  #
+  # There used to be a comment here saying a test target on the MAS channel
+  # would "test the sandbox container, not the app". That is exactly the thing
+  # worth testing: `swift test` is not sandboxed, `VigilAppTests` is hosted by
+  # the direct build which is not sandboxed either, and both were green for a
+  # build in which the App Store app could not read `~/.claude` at all.
+  VigilSandboxTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: Tests/VigilSandboxTests
+    dependencies:
+      - target: Vigil-MAS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil.sandboxtests
+        GENERATE_INFOPLIST_FILE: YES
+
   # App-level tests only. The module suites live in the SwiftPM package and run
   # via `swift test` — Xcode schemes generated from a spec cannot reference a
   # local package's test targets. scripts/test.sh runs both.
@@ -180,14 +199,17 @@ schemes:
     archive:
       config: Release
 
-  # No test action: VigilAppTests links the direct target, and duplicating it
-  # for the sandbox would test the sandbox container, not the app.
   Vigil-MAS:
     build:
       targets:
         Vigil-MAS: all
+        VigilSandboxTests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - VigilSandboxTests
     profile:
       config: Release
     archive:

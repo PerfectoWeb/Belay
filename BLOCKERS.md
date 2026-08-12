@@ -88,7 +88,7 @@ collides with a similar utility, the rename is a two-file change
 `Sources/VigilApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
 are in `docs/NAMING.md`.
 
-## B8 — WRITTEN (2026-08-11), never run inside a real sandbox
+## B8 — RESOLVED (2026-08-12), proven inside a real sandbox
 
 **Was:** the App Store build could not read `~/.claude` at all. `FileAccessProvider`
 had one implementation, `DirectFileAccess`; nothing in the tree created or
@@ -136,6 +136,27 @@ on a real machine, and a rejection here is a rejection at App Review:
   them. Tier B in the MAS build needs a grant per folder, and that is not built.
 
 `docs/APP-STORE.md` still has the rest of the submission list in order.
+
+**Proven (2026-08-12).** `Tests/VigilSandboxTests` is a unit-test bundle hosted
+by `Vigil-MAS`, so it runs inside the App Store build's own sandbox, and
+`scripts/test.sh` runs it on every gate. It asserts, in that sandbox:
+
+- the host really is sandboxed (home is under `/Containers/`), so the other four
+  assertions mean something;
+- `homeDirectoryForCurrentUser` is the container and `UserHome.real` is not —
+  the trap that caused the original bug;
+- without a grant the account's own `~/.claude` is unreachable and `hasAccess`
+  says so, throwing `.noBookmark` rather than guessing;
+- a grant survives a relaunch: a second `BookmarkFileAccess` reading the same
+  store resolves the bookmark and reads a file through it;
+- two hundred throwing reads do not exhaust the scoped-resource limit, so the
+  balance holds on the path that leaks.
+
+**Still not proven, and it needs a person:** the click. Nothing can drive
+`NSOpenPanel`, so the tests make the panel's *product* — an app-scoped bookmark —
+for a directory the sandbox already reaches, and everything from `grant`
+onwards is the shipping code on the shipping path. One item in
+`docs/QA-CHECKLIST.md` covers the click itself.
 
 ## B9 — One module test fails intermittently on CI and has not been identified
 

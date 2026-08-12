@@ -39,6 +39,20 @@ if ! xcodebuild -scheme Vigil -destination 'platform=macOS' \
     exit 1
 fi
 
+# The only suite that runs inside a sandbox. Everything else — `swift test` and
+# the app target's tests — runs unsandboxed, and both were green for a build in
+# which the App Store app could not read ~/.claude at all.
+echo "==> xcodebuild test (sandboxed App Store build)"
+SANDBOX_LOG="$(mktemp)"
+if ! xcodebuild -scheme Vigil-MAS -destination 'platform=macOS' \
+    -derivedDataPath build/DerivedData-MAS \
+    CODE_SIGN_IDENTITY="-" test 2>&1 | tee "$SANDBOX_LOG" | (xcbeautify 2>/dev/null || tail -20); then
+    echo
+    echo "--- sandbox suite failures ---"
+    report_failures "$SANDBOX_LOG"
+    exit 1
+fi
+
 echo "==> string catalogue"
 swift scripts/strings.swift check
 
