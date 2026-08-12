@@ -17,7 +17,6 @@ set -u
 APP="${1:-}"
 [ -n "$APP" ] || APP="$(cd "$(dirname "$0")" && pwd)/Vigil.app"
 BUNDLE="com.perfecto-web.vigil"
-PREFS="$HOME/Library/Preferences/$BUNDLE.plist"
 
 say() { printf '\n=== %s ===\n' "$1"; }
 
@@ -35,6 +34,22 @@ fi
 echo "$APP"
 /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$APP/Contents/Info.plist" 2>/dev/null
 codesign -dv "$APP" 2>&1 | grep -E "Signature|Identifier|TeamIdentifier" || true
+
+# Which preferences file this build reads. A sandboxed build (the App Store
+# one) has its own container and never looks at ~/Library/Preferences, so
+# writing there sets a mode the app cannot see: it launches on the defaults,
+# holds nothing in alwaysOn, and every line below reads like a power bug.
+# That is what happened on the first macOS 15 run.
+say "preferences domain"
+if codesign -d --entitlements - "$APP" 2>/dev/null | grep -q "app-sandbox"; then
+    PREFS="$HOME/Library/Containers/$BUNDLE/Data/Library/Preferences/$BUNDLE.plist"
+    echo "sandboxed build -> container"
+else
+    PREFS="$HOME/Library/Preferences/$BUNDLE.plist"
+    echo "unsandboxed build -> home"
+fi
+echo "$PREFS"
+mkdir -p "$(dirname "$PREFS")"
 
 # Gatekeeper refuses a downloaded ad-hoc build until this is off. Removing the
 # quarantine flag from a build you made yourself is the same decision as the
@@ -80,7 +95,10 @@ for mode in alwaysOn off auto; do
     killall cfprefsd 2>/dev/null || true
     sleep 1
     start
-    echo "stored: $(defaults read "$PREFS" mode 2>/dev/null)"
+    echo "written: $(defaults read "$PREFS" mode 2>/dev/null)"
+    # What the app itself read, which is the only number that means anything.
+    echo "app read: $(log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' \
+        --last 30s --style compact 2>/dev/null | grep -o 'mode [a-zA-Z]*' | tail -1)"
     held="$(assertions)"
     if [ -n "$held" ]; then echo "$held"; else echo "(no assertion held)"; fi
 done
@@ -97,7 +115,9 @@ say "crashes since boot"
 ls -t ~/Library/Logs/DiagnosticReports/ 2>/dev/null | grep -i vigil | head -5 || echo "none"
 
 say "log, last two minutes"
-log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' --last 2m --style compact 2>/dev/null | tail -25 \
+# --info matters: everything the power layer says about holding and releasing
+# is logged at info level, and log show drops that level unless asked.
+log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' --info --last 2m --style compact 2>/dev/null | tail -30 \
     || echo "(none)"
 
 say "left for a person"

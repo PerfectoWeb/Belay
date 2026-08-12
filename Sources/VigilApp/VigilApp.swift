@@ -76,7 +76,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         self.controller = controller
         self.statusItem = statusItem
         self.panel = panel
-        Log.app.notice("Vigil \(Branding.version, privacy: .public) launched")
+        // The mode is here because a clean-machine QA run has no other way to
+        // learn which preferences domain the app actually read. Writing the
+        // plist and then reading it back proves only what the script wrote.
+        Log.app.notice(
+            """
+            Vigil \(Branding.version, privacy: .public) launched, \
+            mode \(self.settings.mode.rawValue, privacy: .public)
+            """)
         scheduleUpdateChecks(settingsWindow.updates)
         Log.signposter.endInterval("launch", interval)
 
