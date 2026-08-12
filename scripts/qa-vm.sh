@@ -97,7 +97,7 @@ for mode in alwaysOn off auto; do
     start
     echo "written: $(defaults read "$PREFS" mode 2>/dev/null)"
     # What the app itself read, which is the only number that means anything.
-    echo "app read: $(log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' \
+    echo "app read: $(/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' \
         --last 30s --style compact 2>/dev/null | grep -o 'mode [a-zA-Z]*' | tail -1)"
     held="$(assertions)"
     if [ -n "$held" ]; then echo "$held"; else echo "(no assertion held)"; fi
@@ -117,7 +117,7 @@ ls -t ~/Library/Logs/DiagnosticReports/ 2>/dev/null | grep -i vigil | head -5 ||
 say "log, last two minutes"
 # --info matters: everything the power layer says about holding and releasing
 # is logged at info level, and log show drops that level unless asked.
-log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' --info --last 2m --style compact 2>/dev/null | tail -30 \
+/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.vigil"' --info --last 2m --style compact 2>/dev/null | tail -30 \
     || echo "(none)"
 
 say "left for a person"

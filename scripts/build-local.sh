@@ -33,6 +33,14 @@ cp -R "$APP" "$ROOT/build/Vigil.app"
 echo "==> verify signature"
 codesign --verify --deep --strict --verbose=2 "$ROOT/build/Vigil.app"
 
+# Nine copies of this bundle identifier were registered on the development Mac
+# at one point, one of them at a path that no longer existed. Notification
+# Center resolves the app icon through LaunchServices by identifier, so which
+# copy wins is not a detail. Registering the fresh build makes it the newest
+# claim rather than leaving it to whichever DerivedData copy was seen last.
+LSREGISTER="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
+[ -x "$LSREGISTER" ] && "$LSREGISTER" -f "$ROOT/build/Vigil.app" 2>/dev/null || true
+
 echo
 echo "built: build/Vigil.app"
 echo "run:   open build/Vigil.app"

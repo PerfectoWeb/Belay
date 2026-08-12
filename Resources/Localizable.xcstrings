@@ -1,130 +1,6 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "%@ · %@": {
-      "comment": "A session row's title when two sessions share one workspace: the project name, then the agent's own name for the session.",
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %@"
-          }
-        }
-      }
-    },
-    "%@ · %lld agents": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %lld Agenten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %lld agents"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %lld agentes"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %lld agents"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · %lld agenti"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · агентов: %lld"
-          }
-        }
-      }
-    },
-    "%@ · 1 agent": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 Agent"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 agent"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 agente"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 agent"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 agente"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ · 1 агент"
-          }
-        }
-      }
-    },
     "%@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.": {
       "extractionState": "manual",
       "localizations": {
@@ -326,6 +202,130 @@
           "stringUnit": {
             "state": "translated",
             "value": "панель %@"
+          }
+        }
+      }
+    },
+    "%@ · %@": {
+      "comment": "A session row's title when two sessions share one workspace: the project name, then the agent's own name for the session.",
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        }
+      }
+    },
+    "%@ · %lld agents": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld Agenten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld agents"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld agentes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld agents"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld agenti"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · агентов: %lld"
+          }
+        }
+      }
+    },
+    "%@ · 1 agent": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 Agent"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 agent"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 agente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 agent"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 agente"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 агент"
           }
         }
       }
@@ -863,43 +863,494 @@
         }
       }
     },
-    "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.": {
+    "1 hour": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. MIT-Lizenz. Von Geeks für Geeks gebaut."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Licencia MIT. Hecho por frikis para frikis."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Sous licence MIT. Fait par des geeks, pour des geeks."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Licenza MIT. Fatto da smanettoni per smanettoni."
+            "value": "1 hour"
           }
         },
         "ru": {
           "stringUnit": {
+            "state": "needs_review",
+            "value": "1 час"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 Stunde"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 hora"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 heure"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 ora"
+          }
+        }
+      }
+    },
+    "1 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Лицензия MIT. Сделано гиками для гиков."
+            "value": "1 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 min"
+          }
+        }
+      }
+    },
+    "10 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 часов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 ore"
+          }
+        }
+      }
+    },
+    "10 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 min"
+          }
+        }
+      }
+    },
+    "12 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 часов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 ore"
+          }
+        }
+      }
+    },
+    "2 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 часа"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 ore"
+          }
+        }
+      }
+    },
+    "3 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        }
+      }
+    },
+    "30 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        }
+      }
+    },
+    "30 sec": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 sec"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 сек"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Sek."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        }
+      }
+    },
+    "4 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 часа"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 ore"
+          }
+        }
+      }
+    },
+    "5 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 мин"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 Min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 min"
+          }
+        }
+      }
+    },
+    "8 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8 hours"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 часов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 Stunden"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 ore"
           }
         }
       }
@@ -2052,47 +2503,6 @@
         }
       }
     },
-    "Check for updates automatically": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatisch nach Updates suchen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check for updates automatically"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Buscar actualizaciones automáticamente"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rechercher les mises à jour automatiquement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cerca aggiornamenti automaticamente"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Проверять обновления автоматически"
-          }
-        }
-      }
-    },
     "Check Now": {
       "extractionState": "manual",
       "localizations": {
@@ -2130,6 +2540,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Проверить"
+          }
+        }
+      }
+    },
+    "Check for updates automatically": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatisch nach Updates suchen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for updates automatically"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar actualizaciones automáticamente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher les mises à jour automatiquement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerca aggiornamenti automaticamente"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверять обновления автоматически"
           }
         }
       }
@@ -2212,6 +2663,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code"
+          }
+        }
+      }
+    },
+    "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code ещё не открывал здесь ни одного проекта. Vigil начнёт следить сам, как только это произойдёт."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Vigil beginnt von selbst, sobald es passiert."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code aún no ha abierto ningún proyecto en este Mac. Vigil empezará solo cuando ocurra."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code n'a encore ouvert aucun projet sur ce Mac. Vigil s'y mettra tout seul le moment venu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Vigil inizierà da solo quando succederà."
           }
         }
       }
@@ -2622,6 +3114,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Включить…"
+          }
+        }
+      }
+    },
+    "Erase": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Löschen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Borrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Effacer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cancella"
+          }
+        }
+      }
+    },
+    "Erase your statistics?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase your statistics?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть статистику?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Statistik löschen?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "¿Borrar tus estadísticas?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Effacer vos statistiques ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Cancellare le statistiche?"
           }
         }
       }
@@ -3200,88 +3774,6 @@
         }
       }
     },
-    "kept working while you were away from the keyboard": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "weitergearbeitet, während du weg warst"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kept working while you were away"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "siguió trabajando mientras no estabas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "a continué à travailler pendant votre absence"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ha continuato a lavorare mentre non c'eri"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "продолжал работать, пока вас не было"
-          }
-        }
-      }
-    },
-    "Language": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sprache"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Idioma"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Langue"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lingua"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Язык"
-          }
-        }
-      }
-    },
     "LAST 14 DAYS": {
       "extractionState": "manual",
       "localizations": {
@@ -3323,43 +3815,43 @@
         }
       }
     },
-    "last signal %@ ago": {
+    "Language": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "letztes Signal vor %@"
+            "value": "Sprache"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "last signal %@ ago"
+            "value": "Language"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "última señal hace %@"
+            "value": "Idioma"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "dernier signal il y a %@"
+            "value": "Langue"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "ultimo segnale %@ fa"
+            "value": "Lingua"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "последний сигнал %@ назад"
+            "value": "Язык"
           }
         }
       }
@@ -3528,47 +4020,6 @@
         }
       }
     },
-    "longest run": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "längster Lauf"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "longest run"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ejecución más larga"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "exécution la plus longue"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "esecuzione più lunga"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "самый долгий запуск"
-          }
-        }
-      }
-    },
     "Low battery, or the maximum awake time was reached.": {
       "extractionState": "manual",
       "localizations": {
@@ -3606,170 +4057,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Низкий заряд или предел времени без сна."
-          }
-        }
-      }
-    },
-    "macOS denied Vigil access to %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "macOS hat Vigil den Zugriff auf %@ verweigert."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS denied Vigil access to %@."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "macOS denegó a Vigil el acceso a %@."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "macOS a refusé à Vigil l'accès à %@."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "macOS ha negato a Vigil l'accesso a %@."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "macOS отказал Vigil в доступе к %@."
-          }
-        }
-      }
-    },
-    "macOS is waiting for you to allow this in System Settings.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erlaube dies in den Systemeinstellungen, um fortzufahren."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow this in System Settings to continue."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permite esto en Ajustes del Sistema para continuar."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Autorisez ceci dans Réglages Système pour continuer."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Consenti questa operazione in Impostazioni di Sistema per continuare."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Разрешите это в Системных настройках, чтобы продолжить."
-          }
-        }
-      }
-    },
-    "macOS refused the change: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS konnte die Änderung nicht anwenden: %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS couldn't apply the change: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS no pudo aplicar el cambio: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS n'a pas pu appliquer la modification : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS non ha potuto applicare la modifica: %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS не удалось применить изменение: %@"
-          }
-        }
-      }
-    },
-    "macOS refused to create the sleep assertion (IOKit error %lld).": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS konnte den Mac nicht wach halten (IOKit-Fehler %lld)."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS couldn't keep the Mac awake (IOKit error %lld)."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS no pudo mantener el Mac despierto (error de IOKit %lld)."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS n'a pas pu garder le Mac éveillé (erreur IOKit %lld)."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS non ha potuto tenere sveglio il Mac (errore IOKit %lld)."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS не удалось предотвратить переход Mac в сон (ошибка IOKit %lld)."
           }
         }
       }
@@ -4143,47 +4430,6 @@
         }
       }
     },
-    "no runs": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "keine Läufe"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "no runs"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sin ejecuciones"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "aucune exécution"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "nessuna esecuzione"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "нет запусков"
-          }
-        }
-      }
-    },
     "No tracking": {
       "extractionState": "manual",
       "localizations": {
@@ -4221,47 +4467,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Без слежки"
-          }
-        }
-      }
-    },
-    "not configured": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "nicht konfiguriert"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "not configured"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sin configurar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "non configuré"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "non configurato"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "не настроено"
           }
         }
       }
@@ -4389,6 +4594,47 @@
         }
       }
     },
+    "Nothing to watch yet: %@ does not exist.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to watch yet: %@ does not exist."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Пока нечего отслеживать: %@ не существует."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Noch nichts zu beobachten: %@ existiert nicht."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Nada que vigilar todavía: %@ no existe."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Rien à surveiller pour l'instant : %@ n'existe pas."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Ancora niente da osservare: %@ non esiste."
+          }
+        }
+      }
+    },
     "Notifications": {
       "extractionState": "manual",
       "localizations": {
@@ -4467,6 +4713,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Уведомлять"
+          }
+        }
+      }
+    },
+    "Notify when Vigil stops for safety": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benachrichtigen, wenn Vigil aus Sicherheitsgründen stoppt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when Vigil stops for safety"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisar cuando Vigil se detenga por seguridad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "M'avertir quand Vigil s'arrête par sécurité"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvisami quando Vigil si ferma per sicurezza"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уведомлять, когда Vigil останавливается ради безопасности"
           }
         }
       }
@@ -4553,47 +4840,6 @@
         }
       }
     },
-    "Notify when Vigil stops for safety": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benachrichtigen, wenn Vigil aus Sicherheitsgründen stoppt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notify when Vigil stops for safety"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avisar cuando Vigil se detenga por seguridad"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "M'avertir quand Vigil s'arrête par sécurité"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avvisami quando Vigil si ferma per sicurezza"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Уведомлять, когда Vigil останавливается ради безопасности"
-          }
-        }
-      }
-    },
     "Numbers stay on this Mac unless you share them.": {
       "extractionState": "manual",
       "localizations": {
@@ -4631,129 +4877,6 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Статистика никуда не отправляется, пока вы сами ею не поделитесь."
-          }
-        }
-      }
-    },
-    "of agent work that carried on while I was away from the keyboard.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Agentenarbeit, die erledigt wurde, während ich weg war."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "of agent work completed while I was away."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "de trabajo del agente completado mientras yo no estaba."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "de travail d'agent effectué pendant mon absence."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "di lavoro dell'agente completato mentre non c'ero."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "работы агента, выполненной, пока меня не было."
-          }
-        }
-      }
-    },
-    "of agent work while I was away. Sleep would have interrupted %lld of those runs.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Agentenarbeit, während ich weg war. %lld dieser Läufe hätte der Ruhezustand unterbrochen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "of agent work while I was away. Sleep would have interrupted %lld of those runs."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido %lld de esas ejecuciones."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "de travail de l'agent pendant mon absence. La veille aurait interrompu %lld de ces exécutions."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto %lld di quelle esecuzioni."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "работы агента, пока меня не было. Прогонов, которые прервал бы сон: %lld."
-          }
-        }
-      }
-    },
-    "of agent work while I was away. Sleep would have interrupted one of those runs.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Agentenarbeit, während ich weg war. Einen dieser Läufe hätte der Ruhezustand unterbrochen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "of agent work while I was away. Sleep would have interrupted one of those runs."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido una de esas ejecuciones."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "de travail de l'agent pendant mon absence. La veille aurait interrompu une de ces exécutions."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto una di quelle esecuzioni."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "работы агента, пока меня не было. Один из этих прогонов сон бы прервал."
           }
         }
       }
@@ -4840,47 +4963,6 @@
         }
       }
     },
-    "Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigil prüft einmal täglich auf GitHub, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigil checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigil consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigil consulte GitHub une fois par jour pour chercher une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigil controlla GitHub una volta al giorno per cercare una nuova versione. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Раз в день Vigil проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
-          }
-        }
-      }
-    },
     "Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.": {
       "extractionState": "manual",
       "localizations": {
@@ -4922,6 +5004,47 @@
         }
       }
     },
+    "Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigil prüft einmal täglich auf GitHub, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigil checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigil consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigil consulte GitHub une fois par jour pour chercher une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigil controlla GitHub una volta al giorno per cercare una nuova versione. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Раз в день Vigil проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
+          }
+        }
+      }
+    },
     "Only for runs longer than %@.": {
       "extractionState": "manual",
       "localizations": {
@@ -4959,47 +5082,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Для запусков дольше %@."
-          }
-        }
-      }
-    },
-    "Open at login": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beim Anmelden öffnen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open at login"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir al iniciar sesión"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir à l'ouverture de session"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri al login"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Запускать при входе"
           }
         }
       }
@@ -5123,6 +5205,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Запускать Vigil при входе"
+          }
+        }
+      }
+    },
+    "Open at login": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Anmelden öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open at login"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir al iniciar sesión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir à l'ouverture de session"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri al login"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запускать при входе"
           }
         }
       }
@@ -5373,47 +5496,6 @@
         }
       }
     },
-    "process %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prozess %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "process %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "proceso %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "processus %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "processo %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "процесс %@"
-          }
-        }
-      }
-    },
     "Providers": {
       "extractionState": "manual",
       "localizations": {
@@ -5578,47 +5660,6 @@
         }
       }
     },
-    "Quit and Reopen": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beenden und neu öffnen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quit and Reopen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Salir y volver a abrir"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quitter et rouvrir"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esci e riapri"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выйти и открыть заново"
-          }
-        }
-      }
-    },
     "Quit Vigil and open it again to change language.": {
       "extractionState": "manual",
       "localizations": {
@@ -5656,6 +5697,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Перезапустите Vigil, чтобы применить новый язык."
+          }
+        }
+      }
+    },
+    "Quit and Reopen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beenden und neu öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit and Reopen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salir y volver a abrir"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitter et rouvrir"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esci e riapri"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выйти и открыть заново"
           }
         }
       }
@@ -5865,84 +5947,43 @@
         }
       }
     },
-    "runs rescued": {
+    "Reset…": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "gerettete Läufe"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "runs saved"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ejecuciones salvadas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "exécutions sauvées"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "esecuzioni salvate"
+            "value": "Reset…"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "запусков спасено"
-          }
-        }
-      }
-    },
-    "runs watched": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "beobachtete Läufe"
+            "value": "Сбросить…"
           }
         },
-        "en": {
+        "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "runs watched"
+            "state": "needs_review",
+            "value": "Zurücksetzen…"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "ejecuciones vigiladas"
+            "state": "needs_review",
+            "value": "Restablecer…"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "exécutions surveillées"
+            "state": "needs_review",
+            "value": "Réinitialiser…"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "translated",
-            "value": "esecuzioni osservate"
-          }
-        },
-        "ru": {
-          "stringUnit": {
             "state": "needs_review",
-            "value": "всего запусков"
+            "value": "Azzera…"
           }
         }
       }
@@ -6312,6 +6353,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Показывает, что именно Vigil добавит, прежде чем что-либо записывать"
+          }
+        }
+      }
+    },
+    "Since %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Since %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "С %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Seit %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Desde el %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Depuis le %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Dal %@"
           }
         }
       }
@@ -6931,43 +7013,84 @@
         }
       }
     },
-    "The run%@ took %@. Your Mac will sleep normally again.": {
+    "The run in %@ took %@. Your Mac will sleep normally again.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Lauf%@ war nach %@ fertig. Dein Mac kann wieder normal schlafen."
+            "value": "Der Lauf in %@ hat %@ gedauert. Dein Mac kann wieder normal schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The run%@ finished in %@. Your Mac can sleep normally again."
+            "value": "The run in %@ took %@. Your Mac can sleep normally again."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La ejecución%@ terminó en %@. El Mac puede volver a dormir con normalidad."
+            "value": "La ejecución en %@ duró %@. El Mac puede volver a dormir con normalidad."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'exécution%@ s'est terminée en %@. Votre Mac peut de nouveau se mettre en veille normalement."
+            "value": "L'exécution dans %@ a duré %@. Votre Mac peut de nouveau se mettre en veille normalement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'esecuzione%@ è terminata in %@. Il Mac può tornare ad andare in stop normalmente."
+            "value": "L'esecuzione in %@ è durata %@. Il Mac può tornare ad andare in stop normalmente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Запуск%@ завершился за %@. Mac снова может засыпать как обычно."
+            "value": "В проекте %@ это заняло %@. Mac снова может засыпать как обычно."
+          }
+        }
+      }
+    },
+    "The run took %@. Your Mac will sleep normally again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Lauf hat %@ gedauert. Dein Mac kann wieder normal schlafen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The run took %@. Your Mac can sleep normally again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La ejecución duró %@. El Mac puede volver a dormir con normalidad."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'exécution a duré %@. Votre Mac peut de nouveau se mettre en veille normalement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'esecuzione è durata %@. Il Mac può tornare ad andare in stop normalmente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это заняло %@. Mac снова может засыпать как обычно."
           }
         }
       }
@@ -7013,6 +7136,47 @@
         }
       }
     },
+    "This cannot be undone. Vigil keeps no copy anywhere else.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This cannot be undone. Vigil keeps no copy anywhere else."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Это нельзя отменить. Копии нигде больше нет."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Das lässt sich nicht rückgängig machen. Vigil hält nirgendwo eine Kopie."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "C'est irréversible. Vigil n'en garde aucune copie ailleurs."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Non si può annullare. Vigil non ne conserva copie altrove."
+          }
+        }
+      }
+    },
     "Tipping is not available in this build.": {
       "extractionState": "manual",
       "localizations": {
@@ -7050,47 +7214,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Чаевые недоступны в этой версии."
-          }
-        }
-      }
-    },
-    "total held": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wachzeit"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "awake time"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "tiempo despierto"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "temps d'éveil"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "tempo di veglia"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "время без сна"
           }
         }
       }
@@ -8776,47 +8899,6 @@
         }
       }
     },
-    "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beobachte einen Ordner oder nutze einen einzeiligen Webhook für einen weiteren Coding-Agenten. Starte mit einer Vorlage oder füge eine eigene hinzu."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigila una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monitora una cartella o usa un webhook di una riga per supportare un altro agente di programmazione. Parti da un preset o aggiungi il tuo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой."
-          }
-        }
-      }
-    },
     "Watches Claude Code's session transcripts to tell when a turn is running.": {
       "extractionState": "manual",
       "localizations": {
@@ -8854,6 +8936,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
+          }
+        }
+      }
+    },
+    "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beobachte einen Ordner oder nutze einen einzeiligen Webhook für einen weiteren Coding-Agenten. Starte mit einer Vorlage oder füge eine eigene hinzu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vigila una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitora una cartella o usa un webhook di una riga per supportare un altro agente di programmazione. Parti da un preset o aggiungi il tuo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой."
           }
         }
       }
@@ -8981,6 +9104,47 @@
         }
       }
     },
+    "When Vigil stops for safety": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Vigil aus Sicherheitsgründen stoppt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When Vigil stops for safety"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando Vigil se detiene por seguridad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand Vigil s'arrête par sécurité"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando Vigil si ferma per sicurezza"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда Vigil останавливается ради безопасности"
+          }
+        }
+      }
+    },
     "When a long task finishes": {
       "extractionState": "manual",
       "localizations": {
@@ -9059,47 +9223,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Когда агенту нужны вы"
-          }
-        }
-      }
-    },
-    "When Vigil stops for safety": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Vigil aus Sicherheitsgründen stoppt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When Vigil stops for safety"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando Vigil se detiene por seguridad"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand Vigil s'arrête par sécurité"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando Vigil si ferma per sicurezza"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда Vigil останавливается ради безопасности"
           }
         }
       }
@@ -9223,211 +9346,6 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Mac не уснёт, пока вы не выключите режим."
-          }
-        }
-      }
-    },
-    "Your agent finished": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent ist fertig"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent finished"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente terminó"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent a terminé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente ha finito"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Агент закончил"
-          }
-        }
-      }
-    },
-    "Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent wartet auf eine Berechtigungsabfrage oder eine Antwort. Für zuverlässige Mitteilungen ist die präzise Erkennung erforderlich."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente está esperando una solicitud de permiso o una respuesta. La detección precisa es necesaria para recibir avisos fiables."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent attend une autorisation ou une réponse. La détection précise est nécessaire pour recevoir des notifications fiables."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente sta aspettando un permesso o una risposta. Il rilevamento preciso è necessario per notifiche affidabili."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция»."
-          }
-        }
-      }
-    },
-    "Your agent needs input%@ before it can continue.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent braucht eine Eingabe%@, um weiterzumachen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent needs input%@ before it can continue."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente necesita una respuesta%@ para continuar."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent a besoin d'une réponse%@ pour continuer."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente ha bisogno di una risposta%@ per continuare."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Агенту нужен ваш ответ%@, чтобы продолжить."
-          }
-        }
-      }
-    },
-    "Your agent still finishes; Vigil just lets go sooner afterwards.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent wird trotzdem fertig. Vigil lässt deinen Mac danach nur früher schlafen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent still finishes. Vigil just lets your Mac sleep sooner afterward."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente termina igualmente. Después, Vigil deja que el Mac duerma un poco antes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent termine quand même. Ensuite, Vigil laisse simplement votre Mac se mettre en veille plus tôt."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente termina comunque. Vigil lascia semplicemente andare il Mac in stop prima, una volta finito."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Vigil разрешит Mac уснуть чуть раньше после того, как агент закончит."
-          }
-        }
-      }
-    },
-    "Your battery is down to %lld%%, so Vigil stopped holding to save power.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Akku bei %lld%%, Vigil ließ den Mac schlafen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Battery is at %lld%%, so Vigil let it sleep."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Batería al %lld%%, Vigil dejó dormir al Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Batterie à %lld%%, Vigil a laissé le Mac dormir."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Batteria al %lld%%, Vigil ha lasciato dormire il Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Батарея на %lld%%, Vigil дал Mac уснуть."
           }
         }
       }
@@ -9596,781 +9514,945 @@
         }
       }
     },
-    "30 sec": {
+    "Your agent finished": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Agent ist fertig"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "30 sec"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 сек"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 Sek."
+            "value": "Your agent finished"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
+            "state": "translated",
+            "value": "Tu agente terminó"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
+            "state": "translated",
+            "value": "Votre agent a terminé"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
+            "state": "translated",
+            "value": "Il tuo agente ha finito"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент закончил работу"
           }
         }
       }
     },
-    "1 min": {
+    "Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Agent wartet auf eine Berechtigungsabfrage oder eine Antwort. Für zuverlässige Mitteilungen ist die präzise Erkennung erforderlich."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "1 min"
+            "value": "Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu agente está esperando una solicitud de permiso o una respuesta. La detección precisa es necesaria para recibir avisos fiables."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre agent attend une autorisation ou une réponse. La détection précise est nécessaire pour recevoir des notifications fiables."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il tuo agente sta aspettando un permesso o una risposta. Il rilevamento preciso è necessario per notifiche affidabili."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "1 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 min"
+            "value": "Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция»."
           }
         }
       }
     },
-    "3 min": {
+    "Your agent needs input before it can continue.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Agent braucht eine Eingabe, um weiterzumachen."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "3 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 Min."
+            "value": "Your agent needs input before it can continue."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
+            "state": "translated",
+            "value": "Tu agente necesita una respuesta para continuar."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
+            "state": "translated",
+            "value": "Votre agent a besoin d'une réponse pour continuer."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
+            "state": "translated",
+            "value": "Il tuo agente ha bisogno di una risposta per continuare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агенту нужен ваш ответ, чтобы продолжить."
           }
         }
       }
     },
-    "5 min": {
+    "Your agent needs input in %@ before it can continue.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Agent braucht eine Eingabe in %@, um weiterzumachen."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "5 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "5 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "5 Min."
+            "value": "Your agent needs input in %@ before it can continue."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "5 min"
+            "state": "translated",
+            "value": "Tu agente necesita una respuesta en %@ para continuar."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "5 min"
+            "state": "translated",
+            "value": "Votre agent a besoin d'une réponse dans %@ pour continuer."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "5 min"
+            "state": "translated",
+            "value": "Il tuo agente ha bisogno di una risposta in %@ per continuare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агенту нужен ваш ответ в %@, чтобы продолжить."
           }
         }
       }
     },
-    "10 min": {
+    "Your agent still finishes; Vigil just lets go sooner afterwards.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Agent wird trotzdem fertig. Vigil lässt deinen Mac danach nur früher schlafen."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 min"
+            "value": "Your agent still finishes. Vigil just lets your Mac sleep sooner afterward."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu agente termina igualmente. Después, Vigil deja que el Mac duerma un poco antes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre agent termine quand même. Ensuite, Vigil laisse simplement votre Mac se mettre en veille plus tôt."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il tuo agente termina comunque. Vigil lascia semplicemente andare il Mac in stop prima, una volta finito."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "10 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 min"
+            "value": "Vigil разрешит Mac уснуть чуть раньше после того, как агент закончит."
           }
         }
       }
     },
-    "30 min": {
+    "Your battery is down to %lld%%, so Vigil stopped holding to save power.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "30 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 мин"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "30 Min."
+            "value": "Akku bei %lld%%, Vigil ließ den Mac schlafen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Battery is at %lld%%, so Vigil let it sleep."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "30 min"
+            "value": "Batería al %lld%%, Vigil dejó dormir al Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "30 min"
+            "value": "Batterie à %lld%%, Vigil a laissé le Mac dormir."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "30 min"
+            "value": "Batteria al %lld%%, Vigil ha lasciato dormire il Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Батарея на %lld%%, Vigil дал Mac уснуть."
           }
         }
       }
     },
-    "1 hour": {
+    "kept working while you were away from the keyboard": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "weitergearbeitet, während du weg warst"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "1 hour"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 час"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 Stunde"
+            "value": "kept working while you were away"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "1 hora"
+            "state": "translated",
+            "value": "siguió trabajando mientras no estabas"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "1 heure"
+            "state": "translated",
+            "value": "a continué à travailler pendant votre absence"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "1 ora"
+            "state": "translated",
+            "value": "ha continuato a lavorare mentre non c'eri"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "продолжал работать, пока вас не было"
           }
         }
       }
     },
-    "2 hours": {
+    "last signal %@ ago": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "letztes Signal vor %@"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "2 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "2 часа"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "2 Stunden"
+            "value": "last signal %@ ago"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "2 horas"
+            "state": "translated",
+            "value": "última señal hace %@"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "2 heures"
+            "state": "translated",
+            "value": "dernier signal il y a %@"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "2 ore"
+            "state": "translated",
+            "value": "ultimo segnale %@ fa"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "последний сигнал %@ назад"
           }
         }
       }
     },
-    "4 hours": {
+    "longest run": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "längster Lauf"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "4 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "4 часа"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "4 Stunden"
+            "value": "longest run"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "4 horas"
+            "state": "translated",
+            "value": "ejecución más larga"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "4 heures"
+            "state": "translated",
+            "value": "exécution la plus longue"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "4 ore"
+            "state": "translated",
+            "value": "esecuzione più lunga"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "самый долгий запуск"
           }
         }
       }
     },
-    "8 hours": {
+    "macOS denied Vigil access to %@.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "8 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "8 часов"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "8 Stunden"
+            "value": "macOS hat Vigil den Zugriff auf %@ verweigert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS denied Vigil access to %@."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "8 horas"
+            "value": "macOS denegó a Vigil el acceso a %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "8 heures"
+            "value": "macOS a refusé à Vigil l'accès à %@."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "8 ore"
+            "value": "macOS ha negato a Vigil l'accesso a %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "macOS отказал Vigil в доступе к %@."
           }
         }
       }
     },
-    "Reset…": {
+    "macOS is waiting for you to allow this in System Settings.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaube dies in den Systemeinstellungen, um fortzufahren."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reset…"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Сбросить…"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Zurücksetzen…"
+            "value": "Allow this in System Settings to continue."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Restablecer…"
+            "state": "translated",
+            "value": "Permite esto en Ajustes del Sistema para continuar."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Réinitialiser…"
+            "state": "translated",
+            "value": "Autorisez ceci dans Réglages Système pour continuer."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Azzera…"
+            "state": "translated",
+            "value": "Consenti questa operazione in Impostazioni di Sistema per continuare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите это в Системных настройках, чтобы продолжить."
           }
         }
       }
     },
-    "Erase your statistics?": {
+    "macOS refused the change: %@": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS konnte die Änderung nicht anwenden: %@"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erase your statistics?"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Стереть статистику?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Statistik löschen?"
+            "value": "macOS couldn't apply the change: %@"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "¿Borrar tus estadísticas?"
+            "state": "translated",
+            "value": "macOS no pudo aplicar el cambio: %@"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Effacer vos statistiques ?"
+            "state": "translated",
+            "value": "macOS n'a pas pu appliquer la modification : %@"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Cancellare le statistiche?"
+            "state": "translated",
+            "value": "macOS non ha potuto applicare la modifica: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS не удалось применить изменение: %@"
           }
         }
       }
     },
-    "Erase": {
+    "macOS refused to create the sleep assertion (IOKit error %lld).": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS konnte den Mac nicht wach halten (IOKit-Fehler %lld)."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erase"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Стереть"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Löschen"
+            "value": "macOS couldn't keep the Mac awake (IOKit error %lld)."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Borrar"
+            "state": "translated",
+            "value": "macOS no pudo mantener el Mac despierto (error de IOKit %lld)."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Effacer"
+            "state": "translated",
+            "value": "macOS n'a pas pu garder le Mac éveillé (erreur IOKit %lld)."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Cancella"
+            "state": "translated",
+            "value": "macOS non ha potuto tenere sveglio il Mac (errore IOKit %lld)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS не удалось предотвратить переход Mac в сон (ошибка IOKit %lld)."
           }
         }
       }
     },
-    "This cannot be undone. Vigil keeps no copy anywhere else.": {
+    "no runs": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "keine Läufe"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This cannot be undone. Vigil keeps no copy anywhere else."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Это нельзя отменить. Копии нигде больше нет."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Das lässt sich nicht rückgängig machen. Vigil hält nirgendwo eine Kopie."
+            "value": "no runs"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio."
+            "state": "translated",
+            "value": "sin ejecuciones"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "C'est irréversible. Vigil n'en garde aucune copie ailleurs."
+            "state": "translated",
+            "value": "aucune exécution"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Non si può annullare. Vigil non ne conserva copie altrove."
+            "state": "translated",
+            "value": "nessuna esecuzione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "нет запусков"
           }
         }
       }
     },
-    "Since %@": {
+    "not configured": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nicht konfiguriert"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Since %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "С %@"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Seit %@"
+            "value": "not configured"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Desde el %@"
+            "state": "translated",
+            "value": "sin configurar"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Depuis le %@"
+            "state": "translated",
+            "value": "non configuré"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Dal %@"
+            "state": "translated",
+            "value": "non configurato"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "не настроено"
           }
         }
       }
     },
-    "10 hours": {
+    "of agent work that carried on while I was away from the keyboard.": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agentenarbeit, die erledigt wurde, während ich weg war."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "10 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 часов"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 Stunden"
+            "value": "of agent work completed while I was away."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "10 horas"
+            "state": "translated",
+            "value": "de trabajo del agente completado mientras yo no estaba."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "10 heures"
+            "state": "translated",
+            "value": "de travail d'agent effectué pendant mon absence."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "10 ore"
+            "state": "translated",
+            "value": "di lavoro dell'agente completato mentre non c'ero."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "работы агента, выполненной, пока меня не было."
           }
         }
       }
     },
-    "12 hours": {
+    "of agent work while I was away. Sleep would have interrupted %lld of those runs.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "12 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "12 часов"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "12 Stunden"
+            "value": "Agentenarbeit, während ich weg war. %lld dieser Läufe hätte der Ruhezustand unterbrochen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "of agent work while I was away. Sleep would have interrupted %lld of those runs."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "12 horas"
+            "value": "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido %lld de esas ejecuciones."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "12 heures"
+            "value": "de travail de l'agent pendant mon absence. La veille aurait interrompu %lld de ces exécutions."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "12 ore"
+            "value": "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto %lld di quelle esecuzioni."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "работы агента, пока меня не было. Прогонов, которые прервал бы сон: %lld."
           }
         }
       }
     },
-    "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does.": {
+    "of agent work while I was away. Sleep would have interrupted one of those runs.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Claude Code ещё не открывал здесь ни одного проекта. Vigil начнёт следить сам, как только это произойдёт."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Vigil beginnt von selbst, sobald es passiert."
+            "value": "Agentenarbeit, während ich weg war. Einen dieser Läufe hätte der Ruhezustand unterbrochen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "of agent work while I was away. Sleep would have interrupted one of those runs."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code aún no ha abierto ningún proyecto en este Mac. Vigil empezará solo cuando ocurra."
+            "value": "de trabajo del agente mientras yo no estaba. El reposo habría interrumpido una de esas ejecuciones."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code n'a encore ouvert aucun projet sur ce Mac. Vigil s'y mettra tout seul le moment venu."
+            "value": "de travail de l'agent pendant mon absence. La veille aurait interrompu une de ces exécutions."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Vigil inizierà da solo quando succederà."
+            "value": "di lavoro dell'agente mentre non c'ero. Lo stop avrebbe interrotto una di quelle esecuzioni."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "работы агента, пока меня не было. Один из этих прогонов сон бы прервал."
           }
         }
       }
     },
-    "Nothing to watch yet: %@ does not exist.": {
+    "process %@": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prozess %@"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nothing to watch yet: %@ does not exist."
+            "value": "process %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "proceso %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "processus %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "processo %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "процесс %@"
+          }
+        }
+      }
+    },
+    "runs rescued": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gerettete Läufe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "runs saved"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ejecuciones salvadas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "exécutions sauvées"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "esecuzioni salvate"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Пока нечего отслеживать: %@ не существует."
+            "value": "запусков спасено"
           }
-        },
+        }
+      }
+    },
+    "runs watched": {
+      "extractionState": "manual",
+      "localizations": {
         "de": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Noch nichts zu beobachten: %@ existiert nicht."
+            "state": "translated",
+            "value": "beobachtete Läufe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "runs watched"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Nada que vigilar todavía: %@ no existe."
+            "state": "translated",
+            "value": "ejecuciones vigiladas"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Rien à surveiller pour l'instant : %@ n'existe pas."
+            "state": "translated",
+            "value": "exécutions surveillées"
           }
         },
         "it": {
           "stringUnit": {
+            "state": "translated",
+            "value": "esecuzioni osservate"
+          }
+        },
+        "ru": {
+          "stringUnit": {
             "state": "needs_review",
-            "value": "Ancora niente da osservare: %@ non esiste."
+            "value": "всего запусков"
+          }
+        }
+      }
+    },
+    "total held": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wachzeit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "awake time"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tiempo despierto"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "temps d'éveil"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tempo di veglia"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "время без сна"
+          }
+        }
+      }
+    },
+    "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. MIT-Lizenz. Von Geeks für Geeks gebaut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Licencia MIT. Hecho por frikis para frikis."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Sous licence MIT. Fait par des geeks, pour des geeks."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Licenza MIT. Fatto da smanettoni per smanettoni."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Лицензия MIT. Сделано гиками для гиков."
           }
         }
       }

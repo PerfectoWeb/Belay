@@ -48,22 +48,32 @@ final class Notifier {
     func agentNeedsInput(session: SessionID, workspace: String?) async {
         guard settings.notifyOnAgentNeedsInput, !announcedWaiting.contains(session) else { return }
         announcedWaiting.insert(session)
-        let place = workspace.map { " in \($0)" } ?? ""
+        // Two whole sentences, not one sentence with a " in \(workspace)"
+        // fragment dropped into it. That fragment was assembled in English and
+        // then interpolated into a translated string, so a Russian
+        // notification read "Запуск in Vigil завершился" and no translator
+        // could have fixed it: the word was not in the catalogue.
+        let body =
+            workspace.map { String(localized: "Your agent needs input in \($0) before it can continue.") }
+            ?? String(localized: "Your agent needs input before it can continue.")
         await post(
             category: .needsInput,
             title: String(localized: "An agent is waiting for you"),
-            body: String(localized: "Your agent needs input\(place) before it can continue.")
+            body: body
         )
     }
 
     func taskFinished(duration: TimeInterval, workspace: String?) async {
         guard settings.notifyOnTaskFinished, duration >= settings.taskFinishedThreshold else { return }
-        let place = workspace.map { " in \($0)" } ?? ""
         let took = ElapsedTime.spoken(duration)
+        let body =
+            workspace.map {
+                String(localized: "The run in \($0) took \(took). Your Mac will sleep normally again.")
+            } ?? String(localized: "The run took \(took). Your Mac will sleep normally again.")
         await post(
             category: .taskFinished,
             title: String(localized: "Your agent finished"),
-            body: String(localized: "The run\(place) took \(took). Your Mac will sleep normally again.")
+            body: body
         )
     }
 
