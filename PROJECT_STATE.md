@@ -523,6 +523,38 @@ window now grows to its content up to the screen height rather than scrolling at
 640: a preferences pane that starts scrolling because you added a third tool
 reads as running out of room, and the window has plenty.
 
+### D27 — Three of the four macOS 15 findings were not what they looked like
+
+The first clean-machine run reported a power failure, two interface faults, and
+a permission loop. Only one of the four was the thing it appeared to be.
+
+**`alwaysOn` held no assertion. It was the QA script.** A sandboxed build keeps
+its preferences in its container; the script wrote `~/Library/Preferences`, so
+the app launched on defaults having never seen the mode, and held nothing in
+every mode including the two where holding nothing is correct. Reading the file
+back afterwards confirmed only what the script itself had written. It now picks
+the path out of the app's entitlements, and the app logs the mode it actually
+read at launch, which settles the question without anyone knowing any of the
+above. The power layer was never involved.
+
+**The power log looked silent.** Every hold and release is logged at info level
+and `log show` drops that level unless asked. One flag.
+
+**The gear went missing at random.** Its two states were a `Color` and
+`.secondary` behind `AnyShapeStyle` — different types, nothing between them to
+interpolate — and a spring driving that leaves the symbol undrawn for the length
+of the animation. This is the second time that exact pairing has produced a
+visual fault in this app; the first was the tab hover flicker. One colour at two
+opacities, and the spring drives only the rotation now.
+
+**The title flew off centre.** The titlebar centres its label in its own layout
+pass, the title was set before the frame changed, and macOS 15 does not reliably
+run that pass afterwards, so the label kept the centre it was measured against.
+Title last, then ask for the pass by name.
+
+Neither interface fix has been seen working on macOS 15 from here; both are
+reasoned from the mechanism and want a second run in the VM.
+
 ### D26 — Of the three recorded defects, one was a bug and two are trades
 
 Recorded together after the concurrency pass; they are not the same kind of
