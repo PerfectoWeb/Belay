@@ -36,10 +36,14 @@ private struct SettingsGearButton: View {
     let action: () -> Void
 
     @State private var isHovering = false
-    @FocusState private var isFocused: Bool
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private var isLit: Bool { isHovering || isFocused }
+    /// Hover only. It used to light on focus as well, and since it was the one
+    /// focusable thing in the panel it opened lit, with a focus ring around it —
+    /// a resting state that looked like a pressed button. macOS puts plain
+    /// buttons in the tab loop only under Full Keyboard Access, and draws its
+    /// own ring when it does, which is the behaviour to leave alone.
+    private var isLit: Bool { isHovering }
 
     var body: some View {
         Button(action: action) {
@@ -54,8 +58,6 @@ private struct SettingsGearButton: View {
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)
-        .focusable()
-        .focused($isFocused)
         .onHover { isHovering = $0 }
         // The colour is quick, the turn has weight. One animation for both makes
         // the colour feel sluggish or the gear feel snapped.

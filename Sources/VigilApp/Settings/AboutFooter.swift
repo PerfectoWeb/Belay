@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// The one link in the footer. Underlined until the pointer is on it, which is
-/// the wrong way round for a web page and the right way round here: at 10 pt in
-/// a corner, an underline is the only thing that says the name is a link at all,
-/// and once the pointer has found it the underline has done its job.
+/// The one link in the footer. Always underlined, because at 10 pt in a corner
+/// the underline is the only thing that says the name is a link at all. Hover
+/// changes the colour and nothing else: taking the underline away at the moment
+/// the pointer arrives reads as the link having been switched off.
 struct HomepageLink: View {
     let url: URL
     @State private var isHovering = false
@@ -11,7 +11,7 @@ struct HomepageLink: View {
     var body: some View {
         Link(destination: url) {
             Text(verbatim: "PerfectoWeb")
-                .underline(!isHovering)
+                .underline(true)
                 .foregroundStyle(isHovering ? AnyShapeStyle(.tint) : AnyShapeStyle(.tertiary))
         }
         .buttonStyle(.plain)

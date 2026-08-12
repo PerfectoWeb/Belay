@@ -115,8 +115,8 @@ struct ShareCard: View {
                         .monospacedDigit()
                         .foregroundStyle(Ink.text)
                     Text(figure.label.uppercased())
-                        .font(.system(size: 13, weight: .medium))
-                        .tracking(1.6)
+                        .font(.system(size: 13, weight: .regular))
+                        .tracking(1.7)
                         .foregroundStyle(Ink.text.opacity(0.50))
                         .lineLimit(1)
                 }
@@ -172,8 +172,8 @@ struct ShareCard: View {
                 .frame(height: 1)
                 .padding(.top, 8)
             Text("LAST 14 DAYS")
-                .font(.system(size: 12, weight: .semibold))
-                .tracking(1.8)
+                .font(.system(size: 12, weight: .regular))
+                .tracking(1.9)
                 .foregroundStyle(Ink.text.opacity(0.36))
                 .padding(.top, 14)
         }
