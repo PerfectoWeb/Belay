@@ -22,7 +22,9 @@
 %llds,Panel,needs_review,%lld,%llds,%lld Sek
 1 hour,Settings,needs_review,,1 hour,1 Stunde
 1 min,"Detection, Settings",needs_review,,1 min,1 Min.
+10 hours,Settings,needs_review,,10 hours,10 Stunden
 10 min,Settings,needs_review,,10 min,10 Min.
+12 hours,"Settings, Statistics",needs_review,,12 hours,12 Stunden
 2 hours,"Settings, Statistics",needs_review,,2 hours,2 Stunden
 3 min,Settings,needs_review,,3 min,3 Min.
 30 min,Settings,needs_review,,30 min,30 Min.

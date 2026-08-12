@@ -22,7 +22,7 @@ public enum SettingsMigrationOutcome: Equatable, Sendable {
 /// Adding version 2 is meant to be boring: bump `current`, append one
 /// `Step(from: 1, to: 2)`, and the existing tests cover the mechanism.
 enum SettingsSchema {
-    static let current = 1
+    static let current = 2
 
     struct Step: Sendable {
         let from: Int
@@ -32,7 +32,22 @@ enum SettingsSchema {
 
     /// Version 1 is the first published layout, so its step is deliberately a
     /// no-op: it exists to prove the ordering and the stamping work.
-    static let steps: [Step] = [Step(from: 0, to: 1) { _ in }]
+    ///
+    /// Version 2 moves one number. The grace period default was 90 s, which the
+    /// pop-up drew as "1 min" because the label rounded; when the list gained a
+    /// real 1 min row and 90 stopped being offered, every install that had never
+    /// touched the setting showed an empty control.
+    ///
+    /// Deliberately only 90, and deliberately not "snap anything outside the
+    /// list". A value somebody set on purpose is theirs, and a migration that
+    /// rewrites preferences it merely disagrees with is not a migration.
+    static let steps: [Step] = [
+        Step(from: 0, to: 1) { _ in },
+        Step(from: 1, to: 2) { defaults in
+            guard defaults.number(.gracePeriod) == 90 else { return }
+            defaults.store(60, .gracePeriod)
+        }
+    ]
 
     /// Brings `defaults` up to `current`, or reports that it is from the future.
     /// Never throws and never wipes: preferences are not worth crashing over.

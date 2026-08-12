@@ -3,6 +3,32 @@ import VigilCore
 import VigilSettings
 
 struct BehaviourSettingsPane: View {
+    /// A binding that reads as the nearest offered choice.
+    ///
+    /// Belt to the migration's braces. A pop-up has a row per value and none for
+    /// anything else, so a stored number outside the list draws an empty box —
+    /// which is what a `defaults write`, a downgrade, or a list widened without
+    /// a migration all produce. Writes pass straight through: what the user
+    /// picks is always in the list by definition.
+    private func offered(
+        _ binding: Binding<TimeInterval>, _ choices: [TimeInterval]
+    ) -> Binding<TimeInterval> {
+        Binding(
+            get: { SettingsPresets.nearest(binding.wrappedValue, in: choices) },
+            set: { binding.wrappedValue = $0 })
+    }
+
+    private func offered(
+        _ binding: Binding<TimeInterval?>, _ choices: [TimeInterval?]
+    ) -> Binding<TimeInterval?> {
+        Binding(
+            get: {
+                guard let value = binding.wrappedValue else { return nil }
+                return SettingsPresets.nearest(value, in: choices.compactMap { $0 })
+            },
+            set: { binding.wrappedValue = $0 })
+    }
+
     @Bindable var settings: SettingsStore
 
     var body: some View {
@@ -18,7 +44,7 @@ struct BehaviourSettingsPane: View {
                 ) {
                     // An empty label, not a label that happens to be an
                     // empty string: the latter asks the catalogue for "".
-                    Picker(selection: $settings.gracePeriod) {
+                    Picker(selection: offered($settings.gracePeriod, SettingsPresets.gracePeriods)) {
                         ForEach(SettingsPresets.gracePeriods, id: \.self) { seconds in
                             Text(verbatim: DurationChoice.label(seconds)).tag(seconds)
                         }
@@ -38,7 +64,10 @@ struct BehaviourSettingsPane: View {
                     title: "Maximum time awake",
                     explanation: "A backstop. Vigil stops holding after this and tells you why."
                 ) {
-                    Picker(selection: $settings.maxContinuousAwake) {
+                    Picker(
+                        selection: offered(
+                            $settings.maxContinuousAwake, SettingsPresets.maxContinuousAwake)
+                    ) {
                         ForEach(SettingsPresets.maxContinuousAwake, id: \.self) { limit in
                             Text(verbatim: DurationChoice.label(limit)).tag(limit)
                         }

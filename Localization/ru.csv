@@ -22,7 +22,9 @@
 %llds,Panel,needs_review,%lld,%llds,%lld с
 1 hour,Settings,needs_review,,1 hour,1 час
 1 min,"Detection, Settings",needs_review,,1 min,1 мин
+10 hours,Settings,needs_review,,10 hours,10 часов
 10 min,Settings,needs_review,,10 min,10 мин
+12 hours,"Settings, Statistics",needs_review,,12 hours,12 часов
 2 hours,"Settings, Statistics",needs_review,,2 hours,2 часа
 3 min,Settings,needs_review,,3 min,3 мин
 30 min,Settings,needs_review,,30 min,30 мин

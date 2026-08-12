@@ -44,12 +44,12 @@ import VigilCore
 
             let store = SettingsStore(defaults: scratch.defaults)
 
-            #expect(store.migration == .futureSchema(99))
+            #expect(store.migration == .futureSchema(SettingsSchema.current + 98))
             #expect(store.migration.usesStoredValues == false)
             #expect(store.policy == AwakePolicy.default)
             // The newer stamp is left alone: this build has no business
             // pretending it downgraded the store.
-            #expect(scratch.defaults.count(.schemaVersion) == 99)
+            #expect(scratch.defaults.count(.schemaVersion) == SettingsSchema.current + 98)
         }
     }
 
