@@ -20,6 +20,9 @@ struct PanelModePicker: View {
     let state: AppState
 
     @Namespace private var pill
+    /// Which unselected tab the pointer is over. One piece of state for three
+    /// tabs, so two can never be lit at once.
+    @State private var hovered: AwakeMode?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private static let corner: CGFloat = 7
@@ -50,7 +53,11 @@ struct PanelModePicker: View {
                 Text(mode.pickerTitle)
                     .font(.system(size: 11, weight: isSelected ? .semibold : .regular))
             }
-            .foregroundStyle(isSelected ? AnyShapeStyle(.white) : AnyShapeStyle(.secondary))
+            // Three steps, not two: the chosen one is white on its pill, the one
+            // under the pointer comes up to full strength, and the rest stay
+            // secondary. Without the middle step the two unchosen tabs look like
+            // labels rather than like somewhere to click.
+            .foregroundStyle(tint(mode, isSelected: isSelected))
             .frame(maxWidth: .infinity)
             .padding(.vertical, 6)
             .background {
@@ -65,9 +72,15 @@ struct PanelModePicker: View {
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
+        .onHover { inside in hovered = inside ? mode : (hovered == mode ? nil : hovered) }
         .accessibilityLabel(mode.pickerTitle)
         .accessibilityValue(Text(mode.pickerExplanation))
         .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+    }
+
+    private func tint(_ mode: AwakeMode, isSelected: Bool) -> AnyShapeStyle {
+        if isSelected { return AnyShapeStyle(.white) }
+        return AnyShapeStyle(hovered == mode ? AnyShapeStyle(.primary) : AnyShapeStyle(.secondary))
     }
 
     /// Named so the tests can exercise the rule without synthesising a click on
