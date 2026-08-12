@@ -82,9 +82,13 @@ struct PanelModePicker: View {
         .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
 
-    private func tint(_ mode: AwakeMode, isSelected: Bool) -> AnyShapeStyle {
-        if isSelected { return AnyShapeStyle(.white) }
-        return AnyShapeStyle(hovered == mode ? AnyShapeStyle(.primary) : AnyShapeStyle(.secondary))
+    /// One colour at two opacities, never `.secondary` and `.primary`. The two
+    /// hierarchical styles are different types, so SwiftUI cannot interpolate
+    /// between them: it swapped the view instead, which read as a flash to dim
+    /// followed by a slow fade up. An opacity is a number, and numbers animate.
+    private func tint(_ mode: AwakeMode, isSelected: Bool) -> Color {
+        if isSelected { return .white }
+        return .primary.opacity(hovered == mode ? 1 : 0.6)
     }
 
     /// Named so the tests can exercise the rule without synthesising a click on
