@@ -25,6 +25,19 @@ struct StatisticsPane: View {
     @State private var reveal: Double = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    // 1.8, not the 1.15 it started at. At the shorter length the chart filled
+    // in about a fifth of a second, which is quick enough that the eye reads
+    // the finished state and never sees it happen.
+    static let revealSeconds: Double = 1.8
+
+    /// Ease out, so the numbers sprint and then arrive rather than crawling to
+    /// a stop. Static and internal so a test can walk it: it has to be 0 at 0
+    /// and exactly 1 at the end, and the first version of this was neither.
+    static func eased(_ progress: Double) -> Double {
+        let clamped = min(1, max(0, progress))
+        return 1 - pow(1 - clamped, 3)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             if statistics.isEmpty {
@@ -40,13 +53,24 @@ struct StatisticsPane: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .onAppear {
+        // Driven by hand rather than by `withAnimation`.
+        //
+        // The first attempt set `reveal` to 0 and then animated it to 1 inside
+        // the same `onAppear`. SwiftUI coalesced the two into one update, the
+        // pane arrived finished, and the recording of it was thirteen seconds
+        // of a static screen. This walks the value itself, which cannot be
+        // coalesced away, and the loop ends when it arrives so nothing is left
+        // ticking behind a pane that has stopped moving.
+        .task {
             guard !reduceMotion else {
                 reveal = 1
                 return
             }
-            reveal = 0
-            withAnimation(.easeOut(duration: 1.15)) { reveal = 1 }
+            let start = Date()
+            while reveal < 1, !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(16))
+                reveal = Self.eased(Date().timeIntervalSince(start) / Self.revealSeconds)
+            }
         }
     }
 
@@ -57,6 +81,10 @@ struct StatisticsPane: View {
             Text(ElapsedTime.compact(statistics.totalAway * reveal))
                 .font(.system(size: 40, weight: .semibold, design: .rounded))
                 .monospacedDigit()
+                // No implicit animation. SwiftUI's default for a Text whose
+                // content changed is a cross-fade, and a cross-fade running
+                // sixty times a second over a counter is a smear, not a count.
+                .transaction { $0.animation = nil }
             Text("kept working while you were away from the keyboard")
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
@@ -105,8 +133,8 @@ struct StatisticsPane: View {
     /// finishes inside the first two thirds of the reveal, so the chart is the
     /// last thing to arrive.
     private func counted(_ index: Int) -> Double {
-        let start = Double(index) * 0.08
-        return min(1, max(0, (reveal - start) / 0.5))
+        let start = Double(index) * 0.07
+        return min(1, max(0, (reveal - start) / 0.42))
     }
 
     private var since: String? {
@@ -140,6 +168,7 @@ struct StatisticsPane: View {
         }
     }
 
+    /// See the headline: a counting number has to redraw, not dissolve.
     private struct Figure: View {
         let value: String
         let caption: LocalizedStringKey
@@ -149,6 +178,7 @@ struct StatisticsPane: View {
                 Text(value)
                     .font(.system(size: 17, weight: .medium, design: .rounded))
                     .monospacedDigit()
+                    .transaction { $0.animation = nil }
                 Text(caption)
                     .font(.system(size: 10))
                     .foregroundStyle(.secondary)
@@ -173,7 +203,7 @@ private struct DayBars: View {
                         // The chart fills left to right across the back half of
                         // the reveal, so it arrives after the figures rather
                         // than competing with them.
-                        let grown = min(1, max(0, (reveal - 0.35 - Double(index) * 0.03) / 0.35))
+                        let grown = min(1, max(0, (reveal - 0.3 - Double(index) * 0.028) / 0.3))
                         let held = full * day.heldSeconds / peak * grown
                         let away = full * day.awaySeconds / peak * grown
                         ZStack(alignment: .bottom) {
