@@ -75,10 +75,10 @@ let height = pad + (ascender - descender) + pad
 
 // SVG is y-down; the outlines are y-up from the baseline.
 let baseline = pad + ascender
-let wordTransform = "translate(\(f(pad - box.minX)) \(f(baseline))) scale(1 -1)"
+let wordTransform = "translate(\(f(pad + markSize + gap - box.minX)) \(f(baseline))) scale(1 -1)"
 // The mark artwork is drawn in a 24-unit box, already y-down.
 let markScale = markSize / 24
-let markX = pad + box.width + gap
+let markX = pad
 let markY = baseline - ascender
 let markTransform = "translate(\(f(markX)) \(f(markY))) scale(\(f(markScale)))"
 

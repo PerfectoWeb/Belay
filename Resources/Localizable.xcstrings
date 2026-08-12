@@ -1847,6 +1847,47 @@
         }
       }
     },
+    "Allow access to ~/.claude": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf ~/.claude erlauben"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to ~/.claude"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir acceso a ~/.claude"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autoriser l'accès à ~/.claude"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti l'accesso a ~/.claude"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешить доступ к ~/.claude"
+          }
+        }
+      }
+    },
     "Also keep the display awake": {
       "extractionState": "manual",
       "localizations": {
@@ -2089,6 +2130,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Агент работает. Если закрыть Belay, Mac сможет уснуть."
+          }
+        }
+      }
+    },
+    "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Agent arbeitet, Belay hält den Mac wach, und wenn die Arbeit endet, schläft der Mac"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente trabaja, Belay mantiene el Mac despierto y, cuando el trabajo termina, el Mac duerme"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agent travaille, Belay garde le Mac éveillé, et quand le travail s'arrête le Mac s'endort"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente lavora, Belay tiene il Mac sveglio e, quando il lavoro finisce, il Mac va in stop"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент работает, Belay не даёт Mac уснуть, а когда работа заканчивается, Mac засыпает"
           }
         }
       }
@@ -2376,6 +2458,1400 @@
           "stringUnit": {
             "state": "translated",
             "value": "Поведение"
+          }
+        }
+      }
+    },
+    "Belay asks macOS for permission the first time it actually needs to notify you.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay asks for notification permission the first time it needs to send one."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay chiede il permesso per le notifiche la prima volta che deve inviarne una."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
+          }
+        }
+      }
+    },
+    "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay sieht die Sitzungen deines Agenten. Mehr wird nicht gelesen, und nichts verlässt diesen Mac."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ve las sesiones de tu agente. No lee nada más y nada sale de este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay voit les sessions de votre agent. Rien d'autre n'est lu, et rien ne quitte ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay vede le sessioni del tuo agente. Non legge altro e nulla lascia questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay видит сессии вашего агента. Больше он ничего не читает, и ничего не покидает этот Mac."
+          }
+        }
+      }
+    },
+    "Belay could not back up your Claude Code settings, so it made no changes: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht sichern. Deshalb wurde nichts geändert: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't back up your Claude Code settings, so nothing was changed: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
+          }
+        }
+      }
+    },
+    "Belay could not migrate preferences from version %lld.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay konnte die Einstellungen aus Version %lld nicht übernehmen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't import settings from version %lld."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no pudo importar los ajustes de la versión %lld."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay n'a pas pu importer les réglages de la version %lld."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto importare le impostazioni dalla versione %lld."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не смог перенести настройки из версии %lld."
+          }
+        }
+      }
+    },
+    "Belay could not read its preferences and has fallen back to defaults.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay konnte seine Einstellungen nicht lesen und verwendet deshalb die Standardwerte."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't read its settings, so it's using the defaults."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no pudo leer sus ajustes, así que está usando los valores predeterminados."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay n'a pas pu lire ses réglages et utilise donc les valeurs par défaut."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не смог прочитать свои настройки, поэтому использует стандартные."
+          }
+        }
+      }
+    },
+    "Belay could not read this Mac's power source.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay konnte die Stromquelle dieses Mac nicht erkennen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't read this Mac's power source."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no pudo detectar la fuente de alimentación de este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay n'a pas pu déterminer la source d'alimentation de ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto determinare la fonte di alimentazione di questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не смог определить, от чего питается этот Mac."
+          }
+        }
+      }
+    },
+    "Belay could not read your Claude Code settings: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht lesen: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't read your Claude Code settings: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay no pudo leer tus ajustes de Claude Code: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay n'a pas pu lire vos réglages Claude Code : %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto leggere le impostazioni di Claude Code: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не смог прочитать настройки Claude Code: %@"
+          }
+        }
+      }
+    },
+    "Belay could not start its local hook receiver: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay konnte seinen lokalen Hook-Empfänger nicht starten: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't start its local hook listener: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay no pudo iniciar su receptor local de hooks: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay n'a pas pu démarrer son récepteur de hooks local : %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay non ha potuto avviare il ricevitore locale di hook: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не смог запустить локальный приёмник хуков: %@"
+          }
+        }
+      }
+    },
+    "Belay could not update your Claude Code settings: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht aktualisieren: %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't update your Claude Code settings: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay no pudo actualizar tus ajustes de Claude Code: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay n'a pas pu mettre à jour vos réglages Claude Code : %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto aggiornare le impostazioni di Claude Code: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не смог обновить настройки Claude Code: %@"
+          }
+        }
+      }
+    },
+    "Belay could not watch %@ for activity.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay konnte %@ nicht auf Aktivität überwachen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay couldn't watch %@ for activity."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay no pudo belayar la actividad en %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay n'a pas pu surveiller l'activité dans %@."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non ha potuto monitorare l'attività in %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не смог следить за активностью в %@."
+          }
+        }
+      }
+    },
+    "Belay has not been granted access to %@ yet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay hat noch keinen Zugriff auf %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay doesn't have access to %@ yet."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay aún no tiene acceso a %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay n'a pas encore accès à %@."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay non ha ancora accesso a %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У Belay пока нет доступа к %@."
+          }
+        }
+      }
+    },
+    "Belay has to reopen to change language.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Ändern der Sprache muss Belay neu gestartet werden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay needs to reopen to change the language."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay tiene que volver a abrirse para cambiar el idioma."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay doit être relancé pour changer de langue."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay deve essere riaperto per cambiare lingua."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы сменить язык, Belay нужно перезапустить."
+          }
+        }
+      }
+    },
+    "Belay is keeping your Mac awake: always on.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„Immer an“ hält deinen Mac wach."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always On is keeping your Mac awake."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Siempre activo» mantiene el Mac despierto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« Toujours actif » garde votre Mac éveillé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Sempre attivo» tiene sveglio il Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Режим «Всегда включено» не даёт Mac уснуть."
+          }
+        }
+      }
+    },
+    "Belay is keeping your Mac awake: an agent is working.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält deinen Mac wach, solange ein Agent arbeitet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay is keeping your Mac awake while an agent works."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantiene el Mac despierto mientras trabaja un agente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay garde votre Mac éveillé pendant qu'un agent travaille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay tiene sveglio il Mac mentre un agente lavora."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не даёт Mac уснуть, пока работает агент."
+          }
+        }
+      }
+    },
+    "Belay is off. Your Mac will sleep normally.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ist aus. Dein Mac schläft normal."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay is off. Your Mac will sleep normally."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay está desactivado. El Mac dormirá con normalidad."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay est désactivé. Votre Mac se mettra en veille normalement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay è disattivato. Il Mac andrà in stop normalmente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay выключен. Mac будет засыпать как обычно."
+          }
+        }
+      }
+    },
+    "Belay is only useful when it is already running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne Belay bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Belay at login so it's ready before an agent starts."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abre Belay al iniciar sesión para que esté listo antes de que empiece un agente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri Belay all'accesso così sarà pronto prima che inizi un agente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включите запуск Belay при входе, чтобы он был готов до старта агента."
+          }
+        }
+      }
+    },
+    "Belay is switched off, so it will not hold sleep at all.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay hält Ihren Mac nicht wach."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay won't keep your Mac awake."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay no mantendrá tu Mac despierto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay ne gardera pas votre Mac éveillé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay non terrà sveglio il tuo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay не будет держать Mac бодрым."
+          }
+        }
+      }
+    },
+    "Belay is up to date.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ist aktuell."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay is up to date."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay está actualizado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay est à jour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay è aggiornato."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У вас последняя версия."
+          }
+        }
+      }
+    },
+    "Belay is watching. Nothing is running right now.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay beobachtet. Keine Agenten laufen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay is watching. No agents are running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay está vigilando. No hay agentes en ejecución."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay surveille. Aucun agent en cours."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay sta monitorando. Nessun agente attivo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay следит. Сейчас ни один агент не работает."
+          }
+        }
+      }
+    },
+    "Belay is watching. Your Mac will sleep normally.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay beobachtet. Dein Mac kann normal schlafen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay is watching. Your Mac can sleep normally."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay está vigilando. El Mac puede dormir con normalidad."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay surveille. Votre Mac peut se mettre en veille normalement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay sta monitorando. Il Mac può andare in stop normalmente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay следит. Mac может засыпать как обычно."
+          }
+        }
+      }
+    },
+    "Belay let your Mac sleep": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hat deinen Mac schlafen lassen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay let your Mac sleep"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay dejó dormir el Mac"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a laissé votre Mac s'endormir"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha lasciato dormire il Mac"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay отпустил Mac спать"
+          }
+        }
+      }
+    },
+    "Belay needs to read ~/.claude to tell when an agent is working. Nothing else is read, and nothing leaves this Mac.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um zu erkennen, wann ein Agent arbeitet, liest Belay ~/.claude. Mehr wird nicht gelesen, und nichts verlässt diesen Mac."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay needs to read ~/.claude to tell when an agent is working. Nothing else is read, and nothing leaves this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para saber cuándo trabaja un agente, Belay lee ~/.claude. No lee nada más y nada sale de este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour savoir quand un agent travaille, Belay lit ~/.claude. Rien d'autre n'est lu, et rien ne quitte ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per sapere quando un agente lavora, Belay legge ~/.claude. Non legge altro e nulla lascia questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы понимать, когда агент работает, Belay читает ~/.claude. Больше он ничего не читает, и ничего не покидает этот Mac."
+          }
+        }
+      }
+    },
+    "Belay needs your permission to read %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay braucht die Erlaubnis, %@ zu lesen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay needs permission to read %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay necesita permiso para leer %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Belay a besoin de votre autorisation pour lire %@."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha bisogno del permesso per leggere %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay нужно разрешение на чтение %@."
+          }
+        }
+      }
+    },
+    "Belay reached its maximum awake time and stopped keeping your Mac awake.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hat die maximale Wachzeit erreicht und lässt deinen Mac wieder schlafen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay reached the maximum awake time and let your Mac sleep."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay alcanzó el tiempo máximo despierto y dejó dormir el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha raggiunto il tempo massimo di veglia e ha lasciato andare il Mac in stop."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay достиг максимального времени без сна и разрешил Mac уснуть."
+          }
+        }
+      }
+    },
+    "Belay reached the longest stretch you allow it to hold, so it stopped.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Die maximale Wachzeit ist erreicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "The maximum awake time was reached."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Se alcanzó el tiempo máximo despierto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Le temps d'éveil maximal est atteint."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Raggiunto il tempo massimo di veglia."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Достигнут предел времени без сна."
+          }
+        }
+      }
+    },
+    "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
+          }
+        }
+      }
+    },
+    "Belay still works in Always on and Off modes": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„Immer an“ und „Aus“ kannst du weiterhin verwenden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can still use Always On or Off."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puedes seguir usando «Siempre activo» o «Desactivado»."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous pouvez toujours utiliser « Toujours actif » ou « Désactivé »."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puoi continuare a usare «Sempre attivo» o «Disattivato»."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Режимы «Всегда» и «Выключен» по-прежнему доступны."
+          }
+        }
+      }
+    },
+    "Belay stopped holding": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält nicht mehr"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay stopped holding"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay dejó de mantener"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a cessé de maintenir"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha smesso di mantenere"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay перестал удерживать"
+          }
+        }
+      }
+    },
+    "Belay stopped holding: battery is at %lld%%.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält deinen Mac bei %lld%% Akkustand nicht mehr wach."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay stopped keeping your Mac awake at %lld%% battery."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay dejó de mantener el Mac despierto al llegar al %lld%% de batería."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a cessé de garder votre Mac éveillé à %lld%% de batterie."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha smesso di tenere sveglio il Mac al %lld%% di batteria."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "При заряде %lld%% Belay разрешил Mac уснуть."
+          }
+        }
+      }
+    },
+    "Belay stopped holding: the maximum awake time was reached.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält deinen Mac nicht mehr wach: maximale Wachzeit erreicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay stopped keeping your Mac awake: maximum awake time reached."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay dejó de mantener el Mac despierto: se alcanzó el tiempo máximo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha smesso di tenere sveglio il Mac: raggiunto il tempo massimo di veglia."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay разрешил Mac уснуть: достигнуто максимальное время без сна."
+          }
+        }
+      }
+    },
+    "Belay will change %@ to:": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ändert %@ in:"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay will update %@ to:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay actualizará %@ a:"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mettra %@ à jour ainsi :"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay aggiornerà %@ così:"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay изменит %@ на:"
+          }
+        }
+      }
+    },
+    "Belay will keep holding no matter how low the battery gets.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält deinen Mac auch bei niedrigem Akkustand wach."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay will keep your Mac awake even on low battery."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantendrá el Mac despierto incluso con poca batería."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay gardera votre Mac éveillé même si la batterie est faible."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay terrà sveglio il Mac anche con batteria scarica."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не даст Mac уснуть даже при низком заряде."
+          }
+        }
+      }
+    },
+    "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
+          }
+        }
+      }
+    },
+    "Belay's saved permission for %@ is no longer valid.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay's saved permission for %@ is no longer valid."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "El permiso guardado de Belay para %@ ya no es válido."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "L'autorisation enregistrée par Belay pour %@ n'est plus valide."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Il permesso salvato di Belay per %@ non è più valido."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Сохранённое разрешение Belay на %@ больше не действует."
           }
         }
       }
@@ -3452,37 +4928,37 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zugriff auf ~/.claude erlauben"
+            "value": "Zugriff auf ~/.claude gewähren"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Allow access to ~/.claude"
+            "value": "Grant access to ~/.claude"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permitir acceso a ~/.claude"
+            "value": "Conceder acceso a ~/.claude"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autoriser l'accès à ~/.claude"
+            "value": "Accorder l'accès à ~/.claude"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Consenti accesso a ~/.claude"
+            "value": "Concedi l'accesso a ~/.claude"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Разрешить доступ к ~/.claude"
+            "value": "Дать доступ к ~/.claude"
           }
         }
       }
@@ -3729,6 +5205,47 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Belay не даст вашему Mac заснуть, пока работают AI-агенты."
+          }
+        }
+      }
+    },
+    "Keeps your Mac awake while your agent works.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hält deinen Mac wach, solange dein Agent arbeitet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeps your Mac awake while your agent works."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantiene tu Mac despierto mientras tu agente trabaja."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garde votre Mac éveillé pendant que votre agent travaille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiene il Mac sveglio mentre il tuo agente lavora."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не даёт Mac уснуть, пока работает ваш агент."
           }
         }
       }
@@ -4963,47 +6480,6 @@
         }
       }
     },
-    "Once Belay has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistiken erscheinen, nachdem Belay deinen Mac während eines Agentenlaufs wach gehalten hat."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stats appear after Belay keeps your Mac awake through an agent run."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las estadísticas aparecerán después de que Belay mantenga el Mac despierto durante una ejecución."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les statistiques apparaîtront après que Belay aura gardé votre Mac éveillé pendant une exécution."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le statistiche appariranno dopo che Belay avrà tenuto sveglio il Mac durante un'esecuzione."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Статистика появится после того, как Belay хотя бы раз не даст Mac уснуть во время работы агента."
-          }
-        }
-      }
-    },
     "Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.": {
       "extractionState": "manual",
       "localizations": {
@@ -5086,6 +6562,47 @@
         }
       }
     },
+    "Open Belay at login": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay beim Anmelden öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Belay at login"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir Belay al iniciar sesión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir Belay à l'ouverture de session"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri Belay al login"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запускать Belay при входе"
+          }
+        }
+      }
+    },
     "Open Login Items…": {
       "extractionState": "manual",
       "localizations": {
@@ -5164,47 +6681,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Открыть настройки"
-          }
-        }
-      }
-    },
-    "Open Belay at login": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay beim Anmelden öffnen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Belay at login"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir Belay al iniciar sesión"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir Belay à l'ouverture de session"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri Belay al login"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Запускать Belay при входе"
           }
         }
       }
@@ -7464,1400 +8940,6 @@
         }
       }
     },
-    "Belay asks macOS for permission the first time it actually needs to notify you.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay asks for notification permission the first time it needs to send one."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay chiede il permesso per le notifiche la prima volta che deve inviarne una."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
-          }
-        }
-      }
-    },
-    "Belay could not back up your Claude Code settings, so it made no changes: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay konnte deine Claude-Code-Einstellungen nicht sichern. Deshalb wurde nichts geändert: %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't back up your Claude Code settings, so nothing was changed: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
-          }
-        }
-      }
-    },
-    "Belay could not migrate preferences from version %lld.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay konnte die Einstellungen aus Version %lld nicht übernehmen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't import settings from version %lld."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay no pudo importar los ajustes de la versión %lld."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay n'a pas pu importer les réglages de la version %lld."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto importare le impostazioni dalla versione %lld."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не смог перенести настройки из версии %lld."
-          }
-        }
-      }
-    },
-    "Belay could not read its preferences and has fallen back to defaults.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay konnte seine Einstellungen nicht lesen und verwendet deshalb die Standardwerte."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't read its settings, so it's using the defaults."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay no pudo leer sus ajustes, así que está usando los valores predeterminados."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay n'a pas pu lire ses réglages et utilise donc les valeurs par défaut."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не смог прочитать свои настройки, поэтому использует стандартные."
-          }
-        }
-      }
-    },
-    "Belay could not read this Mac's power source.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay konnte die Stromquelle dieses Mac nicht erkennen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't read this Mac's power source."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay no pudo detectar la fuente de alimentación de este Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay n'a pas pu déterminer la source d'alimentation de ce Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto determinare la fonte di alimentazione di questo Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не смог определить, от чего питается этот Mac."
-          }
-        }
-      }
-    },
-    "Belay could not read your Claude Code settings: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay konnte deine Claude-Code-Einstellungen nicht lesen: %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't read your Claude Code settings: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay no pudo leer tus ajustes de Claude Code: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay n'a pas pu lire vos réglages Claude Code : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto leggere le impostazioni di Claude Code: %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не смог прочитать настройки Claude Code: %@"
-          }
-        }
-      }
-    },
-    "Belay could not start its local hook receiver: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay konnte seinen lokalen Hook-Empfänger nicht starten: %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't start its local hook listener: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay no pudo iniciar su receptor local de hooks: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay n'a pas pu démarrer son récepteur de hooks local : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay non ha potuto avviare il ricevitore locale di hook: %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не смог запустить локальный приёмник хуков: %@"
-          }
-        }
-      }
-    },
-    "Belay could not update your Claude Code settings: %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay konnte deine Claude-Code-Einstellungen nicht aktualisieren: %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't update your Claude Code settings: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay no pudo actualizar tus ajustes de Claude Code: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay n'a pas pu mettre à jour vos réglages Claude Code : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto aggiornare le impostazioni di Claude Code: %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не смог обновить настройки Claude Code: %@"
-          }
-        }
-      }
-    },
-    "Belay could not watch %@ for activity.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay konnte %@ nicht auf Aktivität überwachen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay couldn't watch %@ for activity."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay no pudo belayar la actividad en %@."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay n'a pas pu surveiller l'activité dans %@."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non ha potuto monitorare l'attività in %@."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не смог следить за активностью в %@."
-          }
-        }
-      }
-    },
-    "Belay has not been granted access to %@ yet.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay hat noch keinen Zugriff auf %@."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay doesn't have access to %@ yet."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay aún no tiene acceso a %@."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay n'a pas encore accès à %@."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay non ha ancora accesso a %@."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "У Belay пока нет доступа к %@."
-          }
-        }
-      }
-    },
-    "Belay has to reopen to change language.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zum Ändern der Sprache muss Belay neu gestartet werden."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay needs to reopen to change the language."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay tiene que volver a abrirse para cambiar el idioma."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay doit être relancé pour changer de langue."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay deve essere riaperto per cambiare lingua."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Чтобы сменить язык, Belay нужно перезапустить."
-          }
-        }
-      }
-    },
-    "Belay is keeping your Mac awake: always on.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "„Immer an“ hält deinen Mac wach."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Always On is keeping your Mac awake."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "«Siempre activo» mantiene el Mac despierto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "« Toujours actif » garde votre Mac éveillé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "«Sempre attivo» tiene sveglio il Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Режим «Всегда включено» не даёт Mac уснуть."
-          }
-        }
-      }
-    },
-    "Belay is keeping your Mac awake: an agent is working.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac wach, solange ein Agent arbeitet."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay is keeping your Mac awake while an agent works."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay mantiene el Mac despierto mientras trabaja un agente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay garde votre Mac éveillé pendant qu'un agent travaille."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay tiene sveglio il Mac mentre un agente lavora."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не даёт Mac уснуть, пока работает агент."
-          }
-        }
-      }
-    },
-    "Belay is off. Your Mac will sleep normally.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ist aus. Dein Mac schläft normal."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay is off. Your Mac will sleep normally."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay está desactivado. El Mac dormirá con normalidad."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay est désactivé. Votre Mac se mettra en veille normalement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay è disattivato. Il Mac andrà in stop normalmente."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay выключен. Mac будет засыпать как обычно."
-          }
-        }
-      }
-    },
-    "Belay is only useful when it is already running.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Öffne Belay bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Belay at login so it's ready before an agent starts."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abre Belay al iniciar sesión para que esté listo antes de que empiece un agente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri Belay all'accesso così sarà pronto prima che inizi un agente."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Включите запуск Belay при входе, чтобы он был готов до старта агента."
-          }
-        }
-      }
-    },
-    "Belay is switched off, so it will not hold sleep at all.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay hält Ihren Mac nicht wach."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay won't keep your Mac awake."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay no mantendrá tu Mac despierto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay ne gardera pas votre Mac éveillé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay non terrà sveglio il tuo Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay не будет держать Mac бодрым."
-          }
-        }
-      }
-    },
-    "Belay is up to date.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ist aktuell."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay is up to date."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay está actualizado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay est à jour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay è aggiornato."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "У вас последняя версия."
-          }
-        }
-      }
-    },
-    "Belay is watching. Nothing is running right now.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay beobachtet. Keine Agenten laufen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay is watching. No agents are running."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay está vigilando. No hay agentes en ejecución."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay surveille. Aucun agent en cours."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay sta monitorando. Nessun agente attivo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay следит. Сейчас ни один агент не работает."
-          }
-        }
-      }
-    },
-    "Belay is watching. Your Mac will sleep normally.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay beobachtet. Dein Mac kann normal schlafen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay is watching. Your Mac can sleep normally."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay está vigilando. El Mac puede dormir con normalidad."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay surveille. Votre Mac peut se mettre en veille normalement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay sta monitorando. Il Mac può andare in stop normalmente."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay следит. Mac может засыпать как обычно."
-          }
-        }
-      }
-    },
-    "Belay keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac wach, solange ein lokaler Coding-Agent arbeitet, und lässt ihn danach wieder schlafen. Deine Ruhezustandseinstellungen bleiben unverändert."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay garde votre Mac éveillé pendant qu'un agent de programmation local travaille, puis le laisse se mettre en veille une fois le travail terminé. Vos réglages de veille restent inchangés."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay tiene sveglio il Mac mentre lavora un agente di programmazione locale, poi lo lascia andare in stop quando il lavoro è finito. Le impostazioni di stop restano invariate."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не даёт Mac уснуть, пока работает локальный агент для кода, а после завершения работы отпускает его в сон. Настройки сна не меняются."
-          }
-        }
-      }
-    },
-    "Belay let your Mac sleep": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hat deinen Mac schlafen lassen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay let your Mac sleep"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay dejó dormir el Mac"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a laissé votre Mac s'endormir"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha lasciato dormire il Mac"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay отпустил Mac спать"
-          }
-        }
-      }
-    },
-    "Belay needs your permission to read %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay braucht die Erlaubnis, %@ zu lesen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay needs permission to read %@."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay necesita permiso para leer %@."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Belay a besoin de votre autorisation pour lire %@."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha bisogno del permesso per leggere %@."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay нужно разрешение на чтение %@."
-          }
-        }
-      }
-    },
-    "Belay reached its maximum awake time and stopped keeping your Mac awake.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hat die maximale Wachzeit erreicht und lässt deinen Mac wieder schlafen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reached the maximum awake time and let your Mac sleep."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay alcanzó el tiempo máximo despierto y dejó dormir el Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha raggiunto il tempo massimo di veglia e ha lasciato andare il Mac in stop."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay достиг максимального времени без сна и разрешил Mac уснуть."
-          }
-        }
-      }
-    },
-    "Belay reached the longest stretch you allow it to hold, so it stopped.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Die maximale Wachzeit ist erreicht."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "The maximum awake time was reached."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Se alcanzó el tiempo máximo despierto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Le temps d'éveil maximal est atteint."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Raggiunto il tempo massimo di veglia."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Достигнут предел времени без сна."
-          }
-        }
-      }
-    },
-    "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
-          }
-        }
-      }
-    },
-    "Belay reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, wann dein lokaler Agent arbeitet. Deine Prompts und deinen Code liest es nie, und nichts verlässt deinen Mac."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lit uniquement les données de session nécessaires pour savoir quand votre agent local travaille. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay legge solo i dati di sessione necessari per capire quando il tuo agente locale sta lavorando. Non legge mai i tuoi prompt o il tuo codice, e nulla lascia il tuo Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay читает только данные сессии, необходимые, чтобы понять, когда работает локальный агент. Он не читает ваши промпты и код, и ничего не покидает ваш Mac."
-          }
-        }
-      }
-    },
-    "Belay still works in Always on and Off modes": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "„Immer an“ und „Aus“ kannst du weiterhin verwenden."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can still use Always On or Off."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puedes seguir usando «Siempre activo» o «Desactivado»."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous pouvez toujours utiliser « Toujours actif » ou « Désactivé »."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puoi continuare a usare «Sempre attivo» o «Disattivato»."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Режимы «Всегда» и «Выключен» по-прежнему доступны."
-          }
-        }
-      }
-    },
-    "Belay stopped holding": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält nicht mehr"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay stopped holding"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay dejó de mantener"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a cessé de maintenir"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha smesso di mantenere"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay перестал удерживать"
-          }
-        }
-      }
-    },
-    "Belay stopped holding: battery is at %lld%%.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac bei %lld%% Akkustand nicht mehr wach."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay stopped keeping your Mac awake at %lld%% battery."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay dejó de mantener el Mac despierto al llegar al %lld%% de batería."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a cessé de garder votre Mac éveillé à %lld%% de batterie."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha smesso di tenere sveglio il Mac al %lld%% di batteria."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "При заряде %lld%% Belay разрешил Mac уснуть."
-          }
-        }
-      }
-    },
-    "Belay stopped holding: the maximum awake time was reached.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac nicht mehr wach: maximale Wachzeit erreicht."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay stopped keeping your Mac awake: maximum awake time reached."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay dejó de mantener el Mac despierto: se alcanzó el tiempo máximo."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha smesso di tenere sveglio il Mac: raggiunto il tempo massimo di veglia."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay разрешил Mac уснуть: достигнуто максимальное время без сна."
-          }
-        }
-      }
-    },
-    "Belay will change %@ to:": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ändert %@ in:"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay will update %@ to:"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay actualizará %@ a:"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay mettra %@ à jour ainsi :"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay aggiornerà %@ così:"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay изменит %@ на:"
-          }
-        }
-      }
-    },
-    "Belay will keep holding no matter how low the battery gets.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac auch bei niedrigem Akkustand wach."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay will keep your Mac awake even on low battery."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay mantendrá el Mac despierto incluso con poca batería."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay gardera votre Mac éveillé même si la batterie est faible."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay terrà sveglio il Mac anche con batteria scarica."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не даст Mac уснуть даже при низком заряде."
-          }
-        }
-      }
-    },
-    "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
-          }
-        }
-      }
-    },
-    "Belay's saved permission for %@ is no longer valid.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay's saved permission for %@ is no longer valid."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "El permiso guardado de Belay para %@ ya no es válido."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "L'autorisation enregistrée par Belay pour %@ n'est plus valide."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Il permesso salvato di Belay per %@ non è più valido."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Сохранённое разрешение Belay на %@ больше не действует."
-          }
-        }
-      }
-    },
     "Wait before letting the Mac sleep": {
       "extractionState": "manual",
       "localizations": {
@@ -9093,7 +9175,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Benvenuto in %@"
+            "value": "Ti diamo il benvenuto in %@"
           }
         },
         "ru": {
@@ -9141,47 +9223,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Добро пожаловать в Belay"
-          }
-        }
-      }
-    },
-    "What Belay reads": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Was Belay liest"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What Belay reads"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Qué lee Belay"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce que Belay lit"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cosa legge Belay"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Что читает Belay"
           }
         }
       }
@@ -9305,6 +9346,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Когда агенту нужны вы"
+          }
+        }
+      }
+    },
+    "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn die Arbeit endet, schläft dein Mac wie immer. Deine Energieeinstellungen bleiben unangetastet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando el trabajo termina, tu Mac duerme como siempre. Tus ajustes de suspensión no se tocan."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand le travail s'arrête, votre Mac se met en veille comme d'habitude. Vos réglages de veille ne sont jamais modifiés."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando il lavoro finisce, il Mac va in stop come sempre. Le tue impostazioni di stop non vengono toccate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
           }
         }
       }
@@ -9838,6 +9920,47 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Батарея на %lld%%, Belay дал Mac уснуть."
+          }
+        }
+      }
+    },
+    "Your first agent run fills this in.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der erste Agentenlauf füllt das hier."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your first agent run fills this in."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La primera ejecución de un agente llenará esto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La première exécution d'un agent remplira cette page."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La prima esecuzione di un agente riempirà questa pagina."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Первый же запуск агента это заполнит."
           }
         }
       }

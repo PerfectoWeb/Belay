@@ -5,71 +5,85 @@ import SwiftUI
 ///
 /// Not a five-step wizard, and it does not ask for notification permission —
 /// that is requested lazily the first time a notification would actually fire
-/// (docs/05). The privacy statement is the centrepiece because it is both the
-/// honest thing to lead with and the argument that gets the app through review.
+/// (docs/05).
+///
+/// It used to be a grey moon, three paragraphs and a boxed privacy statement,
+/// which is a form to be got past rather than an introduction. The order is now
+/// the order somebody actually wants it in: the logo says who this is, the
+/// scene says what it does, one sentence says why, and only then, quieter and
+/// last, what it needs from them. The privacy line stays because it is both
+/// true and the argument that gets the app through review, but it is a line
+/// under the sentence rather than a box in the middle of the page.
 struct OnboardingView: View {
     let providerReady: Bool
     let onGrantAccess: () -> Void
     let onDismiss: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            header
+        VStack(spacing: 0) {
+            BelayWordmark(size: 30, word: .primary, animated: true)
+                .padding(.top, 30)
 
-            Text(
-                """
-                Belay keeps your Mac awake while a local AI coding agent is working, \
-                and lets it sleep normally the moment everything goes quiet. \
-                Your sleep settings are never changed.
-                """
-            )
-            .fixedSize(horizontal: false, vertical: true)
+            OnboardingScene()
+                .padding(.top, 22)
 
-            privacyStatement
-
-            Spacer(minLength: 0)
-            buttons
-        }
-        .padding(28)
-        .frame(width: 460)
-        .accessibilityElement(children: .contain)
-        .accessibilityLabel("Welcome to Belay")
-    }
-
-    private var header: some View {
-        HStack(spacing: 12) {
-            Image(systemName: "moon.fill")
-                .font(.system(size: 30))
-                .foregroundStyle(.secondary)
-                .accessibilityHidden(true)
-            Text("Welcome to \(Branding.appName)")
-                .font(.title2)
-                .bold()
-        }
-    }
-
-    private var privacyStatement: some View {
-        GroupBox {
-            VStack(alignment: .leading, spacing: 8) {
-                Label("What Belay reads", systemImage: "lock.shield")
-                    .font(.headline)
+            VStack(spacing: 7) {
+                Text("Keeps your Mac awake while your agent works.")
+                    .font(.system(size: 15, weight: .semibold))
                 Text(
                     """
-                    Belay reads only enough of your local agent's session files to know \
-                    whether it is running. It never reads your prompts or your code, and \
-                    nothing ever leaves your Mac.
+                    When the work stops, your Mac sleeps as it always did. \
+                    Your sleep settings are never changed.
                     """
                 )
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
-                .font(.callout)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(8)
+            .multilineTextAlignment(.center)
+            .padding(.top, 24)
+            .padding(.horizontal, 40)
+
+            Spacer(minLength: 14)
+
+            access
+            footer
         }
+        .frame(width: 470, height: 438)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Welcome to \(Branding.appName)")
     }
 
-    @ViewBuilder
-    private var buttons: some View {
+    /// The ask, deliberately the quietest thing on the page. It is a condition
+    /// of the product working, not the product, and leading with a permission
+    /// request is how an app reads as something that wants rather than gives.
+    @ViewBuilder private var access: some View {
+        HStack(alignment: .top, spacing: 9) {
+            Image(systemName: providerReady ? "checkmark.circle.fill" : "folder")
+                .font(.system(size: 12))
+                .foregroundStyle(providerReady ? AnyShapeStyle(.tint) : AnyShapeStyle(.tertiary))
+                .padding(.top, 1)
+            Text(providerReady ? granted : needed)
+                .font(.system(size: 11))
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.horizontal, 30)
+        .padding(.bottom, 18)
+    }
+
+    private var granted: LocalizedStringKey {
+        "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac."
+    }
+
+    private var needed: LocalizedStringKey {
+        """
+        Belay needs to read ~/.claude to tell when an agent is working. \
+        Nothing else is read, and nothing leaves this Mac.
+        """
+    }
+
+    private var footer: some View {
         HStack {
             Button("Skip for now", action: onDismiss)
                 .accessibilityHint("Belay still works in Always on and Off modes")
@@ -78,10 +92,13 @@ struct OnboardingView: View {
                 Button("Start watching", action: onDismiss)
                     .keyboardShortcut(.defaultAction)
             } else {
-                Button("Grant access to ~/.claude", action: onGrantAccess)
+                Button("Allow access to ~/.claude", action: onGrantAccess)
                     .keyboardShortcut(.defaultAction)
                     .accessibilityHint("Opens a standard macOS panel so you can approve the folder")
             }
         }
+        .controlSize(.large)
+        .padding(.horizontal, 26)
+        .padding(.bottom, 24)
     }
 }

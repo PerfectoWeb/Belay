@@ -8,7 +8,7 @@ generated in code rather than stored as an asset so that a state Belay can be in
 cannot fail to have a picture.
 
 **The wordmark** is in `Resources/Brand/`: the word set in the system rounded
-face at semibold, with the symbol trailing it. Use it for the README, a website,
+face at semibold, with the symbol leading it. Use it for the README, a website,
 a directory listing, a release image. Do not use it where the symbol belongs,
 and do not rebuild it by typing the word next to the icon.
 
@@ -34,14 +34,15 @@ at. Below the ascender the symbol reads as a speck of dust rather than as part o
 the mark; above it, the word starts to look like a caption to the symbol, which
 inverts what the lockup is for.
 
-The gap is 7 units at a 36-unit word. Tighter and the symbol collides with the
-`l`; wider and the lockup reads as two separate things placed near each other.
+The gap is 7 units at a 36-unit word. Tighter and the symbol crowds the `b`;
+wider and the lockup reads as two separate things placed near each other.
 
-**The symbol goes after the word.** This is the one choice that looks wrong at
-first, and it is deliberate: the symbol already lives on its own in the menu bar.
-Putting it in front makes the wordmark an icon with a caption, which is what the
-user is looking at all day anyway. Behind the word it reads as a signature, and
-the lockup stays distinct from the app icon.
+**The symbol goes before the word.** It went after it under the old name, where
+the word ended on the vertical of an `l` and a second vertical beside it read as
+a stray stroke, so the weight had to sit on the right. `belay` opens on the stem
+of a `b` and closes on the open tail of a `y`, which reverses that: the word now
+leans left, and the symbol against the stem gives the lockup a hard edge to
+start from instead of trailing off twice.
 
 The word is lowercase because `belay` is an ordinary English word, and a utility
 that keeps quiet has no business shouting its own name.

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The horizontal lockup: the word, then the mark.
+/// The horizontal lockup: the mark, then the word.
 ///
 /// Drawn here rather than loaded from `Resources/Brand`, and the reason is the
 /// opposite of the reason those files exist. They are outlined because a logo
@@ -11,9 +11,13 @@ import SwiftUI
 ///
 /// The proportions are the ones in `docs/BRAND.md` and in
 /// `scripts/make-wordmark.swift`, expressed against the word's point size so the
-/// lockup scales as one thing. The mark trailing the word is deliberate and
-/// explained there: ahead of it, the lockup reads as "icon with a caption",
-/// which is what the user already sees in the menu bar all day.
+/// lockup scales as one thing.
+///
+/// The mark leads the word. It trailed it under the old name, where the word
+/// ended in the "l" of "vigil" and a second vertical beside it read as a stray
+/// stroke. "belay" opens on the stem of a "b" and closes on the open tail of a
+/// "y", so the weight now wants to sit on the left, and the sparkle against
+/// that stem gives the lockup an edge to start from.
 struct BelayWordmark: View {
     /// Point size of the word. Everything else follows from it.
     var size: CGFloat = 36
@@ -30,9 +34,6 @@ struct BelayWordmark: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: size * Self.gapRatio) {
-            Text(verbatim: "belay")
-                .font(.system(size: size, weight: .semibold, design: .rounded))
-                .foregroundStyle(word)
             symbol
                 .foregroundStyle(mark)
                 // Its bottom edge on the word's baseline, so the mark occupies
@@ -40,6 +41,9 @@ struct BelayWordmark: View {
                 // the line box, which sits above the letters by a different
                 // amount at every size.
                 .alignmentGuide(.firstTextBaseline) { $0.height }
+            Text(verbatim: "belay")
+                .font(.system(size: size, weight: .semibold, design: .rounded))
+                .foregroundStyle(word)
         }
         .accessibilityElement()
         .accessibilityLabel(Text(verbatim: Branding.appName))
@@ -49,7 +53,7 @@ struct BelayWordmark: View {
 
     @ViewBuilder private var symbol: some View {
         if animated {
-            BreathingMark(animated: true).frame(width: markSize, height: markSize)
+            SpinningMark(colour: mark).frame(width: markSize, height: markSize)
         } else {
             Image(nsImage: BelayGlyph.image(.alwaysOn, size: markSize))
                 .renderingMode(.template)

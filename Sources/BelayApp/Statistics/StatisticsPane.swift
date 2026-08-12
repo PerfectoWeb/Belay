@@ -32,29 +32,7 @@ struct StatisticsPane: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private var empty: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Nothing to show yet")
-                .font(.system(size: 15, weight: .semibold))
-            Text(
-                """
-                Once Belay has held your Mac awake through an agent run, this is \
-                where you will see what that was worth: how long it kept working \
-                while you were away, and how many runs would otherwise have died \
-                when the Mac went to sleep.
-                """
-            )
-            .font(.system(size: 12))
-            .foregroundStyle(.secondary)
-            .fixedSize(horizontal: false, vertical: true)
-
-            Text("Nothing here ever leaves this Mac.")
-                .font(.system(size: 11))
-                .foregroundStyle(.tertiary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(minHeight: 120, alignment: .top)
-    }
+    private var empty: some View { EmptyStatistics() }
 
     private var headline: some View {
         VStack(alignment: .leading, spacing: 4) {

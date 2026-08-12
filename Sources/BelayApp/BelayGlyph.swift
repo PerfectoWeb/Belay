@@ -111,6 +111,11 @@ enum BelayGlyph {
     /// [2] bottom-right spark.
     private static let parts = SVGPath.subpaths(artwork, flipHeight: 24)
 
+    /// The same three, for anything that wants to move them independently.
+    /// Exposed rather than re-parsed, so a second copy of the mark cannot drift
+    /// away from the one in the menu bar.
+    static var artworkSubpaths: [NSBezierPath] { parts }
+
     /// Menu bar images are in points; 17 leaves the usual breathing room.
     static func statusItemImage(_ look: Look, frame: Int = 0) -> NSImage {
         image(look, frame: frame, size: 17)
