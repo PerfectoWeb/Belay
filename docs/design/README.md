@@ -27,3 +27,7 @@ control reads as a form field bolted into a panel.
 
 `PROJECT_STATE.md` D21 records the decision and the two structural defects
 (panel judder, and the resize race with `NSPopover`) found on the way.
+
+- `settings-tabs-drawn-strip.swift.txt` — the Settings switcher drawn by hand,
+  with a highlight that travelled between panes and stretched into its travel.
+  Replaced by the `NSToolbar` it was meant to improve on.

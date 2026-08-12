@@ -1,3 +1,17 @@
+// The Settings switcher, drawn rather than delegated to AppKit, with the
+// highlight travelling between panes: its two edges set off a beat apart so the
+// pill stretched into its travel, and it lost a little height while moving.
+//
+// Rejected. Two problems, one fatal. The look was never quite the system's, and
+// a titlebar accessory hands its view a 36 pt toolbar row whatever the view asks
+// for, so the chip was clipped until the strip moved into the content — at which
+// point the window lost the centred title a `.preference` toolbar gives for
+// free. The real NSToolbar does not animate and cannot be made to, and that
+// turned out to be the smaller loss.
+//
+// Kept because the travel is worth re-reading if this is ever attempted on a
+// deployment target where Liquid Glass exists.
+
 import SwiftUI
 
 /// The Settings window's pane switcher, drawn rather than delegated to AppKit.

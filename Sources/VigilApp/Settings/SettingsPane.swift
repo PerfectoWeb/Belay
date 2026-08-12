@@ -1,8 +1,9 @@
+import AppKit
 import Foundation
 
 /// One pane of the Settings window.
 ///
-/// The window's switcher is built from these cases, so adding a pane is one case
+/// The window's toolbar is built from these cases, so adding a pane is one case
 /// here plus one branch in `SettingsView`.
 enum SettingsPane: String, CaseIterable, Identifiable {
     case general
@@ -55,5 +56,16 @@ enum SettingsPane: String, CaseIterable, Identifiable {
         case .statistics: return 380
         case .about: return 360
         }
+    }
+
+    var itemIdentifier: NSToolbarItem.Identifier {
+        NSToolbarItem.Identifier("vigil.settings.pane.\(rawValue)")
+    }
+
+    init?(itemIdentifier: NSToolbarItem.Identifier) {
+        guard let match = Self.allCases.first(where: { $0.itemIdentifier == itemIdentifier }) else {
+            return nil
+        }
+        self = match
     }
 }

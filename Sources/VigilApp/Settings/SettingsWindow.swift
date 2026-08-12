@@ -12,19 +12,18 @@ import VigilSettings
 /// ends up responding to `showSettingsWindow:`. Owning an `NSWindow` is the same
 /// pattern `OnboardingWindow` already uses, and it can be tested.
 ///
-/// The pane switcher is `SettingsTabStrip`, at the top of the content. It keeps
-/// the preferences shape — icon over label, window title following the
-/// selection, window height animating to the pane — while leaving the selection
-/// highlight ours to draw. It was an `NSToolbar` in `.preference` style until the
-/// highlight needed to move rather than cut, and then a titlebar accessory until
-/// that turned out to hand its view a 36 pt toolbar row whatever the view asks
-/// for. Unlike a SwiftUI `TabView`, none of them can collapse into an overflow
-/// chevron or resize the window behind our back.
+/// The pane switcher is a real `NSToolbar` in `.preference` style: icon over
+/// label, centred title following the selection, window height animating to the
+/// pane. That is the Terminal and Mail shape, and it is the shape this window
+/// went back to after two attempts at drawing it ourselves — see
+/// `docs/design/settings-tabs-drawn-strip.swift.txt` for what was tried and why
+/// the system control won. Unlike a SwiftUI `TabView` it cannot collapse into an
+/// overflow chevron or resize the window behind our back.
 @MainActor
 final class SettingsWindow: NSObject {
     private(set) var window: NSWindow?
     private(set) var pane: SettingsPane = .general
-    private var hosting: NSHostingController<SettingsChrome>?
+    private var hosting: NSHostingController<SettingsView>?
     private let settings: SettingsStore
     private let state: AppState
     private let precise: PreciseDetection
@@ -46,9 +45,6 @@ final class SettingsWindow: NSObject {
     private var isFrontmost = false
     var isRefreshingForTesting: Bool { refreshTimer?.isValid == true }
     let updates = ReleaseChecker()
-    /// The switcher's view of the selection. The window stays the one place that
-    /// decides; this only mirrors it and asks.
-    let tabs = SettingsTabModel(pane: .general)
 
     init(
         settings: SettingsStore,
@@ -86,9 +82,7 @@ final class SettingsWindow: NSObject {
         }
         if let requested { pane = requested }
 
-        tabs.pane = pane
-        tabs.onSelect = { [weak self] pane in self?.select(pane) }
-        let hosting = NSHostingController(rootView: chrome(for: pane))
+        let hosting = NSHostingController(rootView: view(for: pane))
         // With SwiftUI driving the window size (the default `sizingOptions`) it
         // resized the window back down under us, so setting a size had no
         // effect. This takes the size decision away from SwiftUI; `select`
@@ -107,6 +101,8 @@ final class SettingsWindow: NSObject {
         window.contentViewController = hosting
         window.isReleasedWhenClosed = false
         window.delegate = self
+        window.toolbarStyle = .preference
+        window.toolbar = makeToolbar()
         self.window = window
         self.hosting = hosting
 
@@ -119,9 +115,9 @@ final class SettingsWindow: NSObject {
     func select(_ pane: SettingsPane, animated: Bool = true) {
         self.pane = pane
         guard let window, let hosting else { return }
-        hosting.rootView = chrome(for: pane)
+        hosting.rootView = view(for: pane)
         window.title = pane.title
-        tabs.pane = pane
+        window.toolbar?.selectedItemIdentifier = pane.itemIdentifier
         resize(window, to: height(for: pane), animated: animated)
         retimeRefresh()
     }
@@ -133,11 +129,16 @@ final class SettingsWindow: NSObject {
     /// Rebuilds the pane in place, leaving the window's size alone — remeasuring
     /// on a tick would animate the window under the user.
     private func refreshContent() {
-        hosting?.rootView = chrome(for: pane)
+        hosting?.rootView = view(for: pane)
     }
 
-    private func chrome(for pane: SettingsPane) -> SettingsChrome {
-        SettingsChrome(tabs: tabs, pane: view(for: pane))
+    private func makeToolbar() -> NSToolbar {
+        let toolbar = NSToolbar(identifier: "vigil.settings.toolbar")
+        toolbar.delegate = self
+        toolbar.displayMode = .iconAndLabel
+        toolbar.allowsUserCustomization = false
+        toolbar.autosavesConfiguration = false
+        return toolbar
     }
 
     /// Statistics is the only pane whose numbers move while it is on screen, and

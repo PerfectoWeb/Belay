@@ -18,17 +18,15 @@ extension SettingsWindow {
         // ignores the tiles entirely.
         probe.layoutSubtreeIfNeeded()
         let fitting = probe.fittingSize.height
-        guard fitting > 1 else { return pane.fallbackHeight + SettingsChrome.chromeHeight }
+        guard fitting > 1 else { return pane.fallbackHeight }
         // Bounded by the screen, not by a fixed number: adding a fourth watched
         // tool should make the window taller, the way a Finder window grows, not
         // introduce a scroller. The ceiling only exists so the window cannot run
         // off a short display.
         let ceiling =
-            ((window?.screen ?? NSScreen.main)
-                .map { $0.visibleFrame.height - 80 } ?? 640) - SettingsChrome.chromeHeight
-        // The window has to hold the switcher as well as the pane, and the
-        // switcher is not part of what was just measured.
-        return min(max(fitting, 160), ceiling) + SettingsChrome.chromeHeight
+            (window?.screen ?? NSScreen.main)
+            .map { $0.visibleFrame.height - 80 } ?? 640
+        return min(max(fitting, 160), ceiling)
     }
 
     /// Grows downwards so the switcher stays put while the window changes size,

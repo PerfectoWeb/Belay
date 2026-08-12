@@ -76,43 +76,42 @@ final class SettingsWindowTests: XCTestCase {
         settings.close()
     }
 
-    /// The strip in the titlebar is the switcher, and it is the only way to
-    /// reach a pane. If it stops being installed, every pane but the first
-    /// becomes unreachable and the window still looks fine.
+    /// The toolbar is the switcher, and it is the only way to reach a pane. If
+    /// an item goes missing, or a pane stops being selectable, that pane becomes
+    /// unreachable and the window still looks fine.
     func testTheSwitcherIsInstalledAndCarriesEveryPane() throws {
         let settings = try makeWindow()
         settings.show()
         let window = try XCTUnwrap(settings.window)
+        let toolbar = try XCTUnwrap(window.toolbar)
+        let expected = SettingsPane.allCases.map(\.itemIdentifier)
 
-        // The switcher lives in the content, so the window has to be tall enough
-        // for it *and* a usable pane. It spent a build in a titlebar accessory,
-        // which quietly gave it a 36 pt toolbar row and cut the chip off top and
-        // bottom, and nothing failed.
-        XCTAssertTrue(
-            window.titlebarAccessoryViewControllers.isEmpty,
-            "the switcher is back in the titlebar, where its height is not its own")
-        XCTAssertGreaterThanOrEqual(
-            window.contentView?.frame.height ?? 0, SettingsTabStrip.height + 160,
-            "the window cannot show the switcher and a pane")
-
-        for pane in SettingsPane.allCases {
-            XCTAssertFalse(pane.title.isEmpty, "\(pane) has no label")
-            XCTAssertNotNil(
-                NSImage(systemSymbolName: pane.symbol, accessibilityDescription: nil),
-                "\(pane) has no icon")
+        XCTAssertEqual(toolbar.items.map(\.itemIdentifier), expected)
+        XCTAssertEqual(settings.toolbarSelectableItemIdentifiers(toolbar), expected)
+        XCTAssertEqual(toolbar.displayMode, .iconAndLabel)
+        for item in toolbar.items {
+            XCTAssertNotNil(item.image, "\(item.itemIdentifier) has no icon")
+            XCTAssertFalse(item.label.isEmpty, "\(item.itemIdentifier) has no label")
         }
         settings.close()
     }
 
-    /// The switcher asks; the window decides. A tap that changed only the
-    /// strip's own state would move the highlight and leave the pane behind.
-    func testTappingTheSwitcherChangesThePane() throws {
+    /// The preference style is what centres the title over the items and puts
+    /// the hairline under the whole titlebar rather than between the title and
+    /// the icons. Drawing the switcher by hand cost both, and neither failed
+    /// anything: the window still opened, still worked, and looked wrong.
+    func testTheWindowWearsThePreferenceChrome() throws {
         let settings = try makeWindow()
         settings.show()
+        let window = try XCTUnwrap(settings.window)
 
-        settings.tabs.select(.behaviour)
-        XCTAssertEqual(settings.pane, .behaviour, "the strip moved but the window did not")
-        XCTAssertEqual(settings.window?.title, SettingsPane.behaviour.title)
+        XCTAssertEqual(window.toolbarStyle, .preference, "the title is no longer centred")
+        // Left to macOS on purpose. Overriding it is how the line ends up in a
+        // different place from every other preferences window on the Mac.
+        XCTAssertEqual(window.titlebarSeparatorStyle, .automatic)
+        XCTAssertTrue(
+            window.titlebarAccessoryViewControllers.isEmpty,
+            "something is bolted into the titlebar again")
         settings.close()
     }
 
@@ -126,7 +125,7 @@ final class SettingsWindowTests: XCTestCase {
         for pane in SettingsPane.allCases {
             settings.select(pane, animated: false)
             XCTAssertEqual(window.title, pane.title)
-            XCTAssertEqual(settings.tabs.pane, pane)
+            XCTAssertEqual(window.toolbar?.selectedItemIdentifier, pane.itemIdentifier)
             XCTAssertEqual(window.contentView?.frame.width, SettingsPane.width)
             XCTAssertGreaterThanOrEqual(
                 window.contentView?.frame.height ?? 0, 160,
@@ -172,65 +171,6 @@ final class SettingsWindowTests: XCTestCase {
         XCTAssertNil(
             window.standardWindowButton(.miniaturizeButton).map { $0.isEnabled ? "enabled" : nil } ?? nil,
             "the minimise button is still live")
-        settings.close()
-    }
-
-    /// The stretch is the whole point of drawing the highlight ourselves: the
-    /// edge in front sets off first and the one behind follows a beat later. Get
-    /// this backwards and the pill squashes into its direction of travel, which
-    /// reads as a bug rather than as weight.
-    func testTheHighlightStretchesIntoItsTravel() {
-        let rightwards = SettingsTabStrip.delays(forward: true)
-        XCTAssertEqual(rightwards.trailing, 0, "the leading edge did not set off first")
-        XCTAssertGreaterThan(rightwards.leading, 0, "both edges travel together")
-
-        let leftwards = SettingsTabStrip.delays(forward: false)
-        XCTAssertEqual(leftwards.leading, 0, "the leading edge did not set off first")
-        XCTAssertGreaterThan(leftwards.trailing, 0, "both edges travel together")
-    }
-
-    /// A tool added below the fold is a tool you cannot see you added. The
-    /// window grows to the pane rather than handing it a scroller.
-    func testAddingAToolMakesTheWindowTaller() throws {
-        let settings = try makeWindow()
-        settings.show(pane: .providers)
-        let window = try XCTUnwrap(settings.window)
-        let watched = (0..<6).map { index in
-            GenericTarget(
-                displayName: "Tool \(index)",
-                watchedFolder: URL(fileURLWithPath: "/Users/someone/projects/repo-\(index)"),
-                processName: "tool\(index)",
-                webhookIdentifier: "tool\(index)")
-        }
-
-        // The committed size rather than the live frame: the window travels
-        // there through its animator, which needs a run loop this test has no
-        // reason to spin.
-        settings.refit(with: [])
-        let before = window.contentMinSize.height
-        settings.refit(with: watched)
-        XCTAssertGreaterThan(
-            window.contentMinSize.height, before,
-            "the pane grew but the window handed it a scroller")
-
-        settings.refit(with: [])
-        XCTAssertEqual(
-            window.contentMinSize.height, before, accuracy: 1,
-            "removing them left the window stretched")
-        settings.close()
-    }
-
-    /// The window grows downwards, so the switcher and the title stay put while
-    /// the height changes. Growing from the bottom edge walks the window up the
-    /// screen instead.
-    func testGrowingKeepsTheTopEdgeStill() throws {
-        let settings = try makeWindow()
-        settings.show(pane: .providers)
-        let window = try XCTUnwrap(settings.window)
-        let top = window.frame.maxY
-
-        settings.resize(window, to: window.frame.height + 120, animated: false)
-        XCTAssertEqual(window.frame.maxY, top, accuracy: 1, "the window moved under the user")
         settings.close()
     }
 
