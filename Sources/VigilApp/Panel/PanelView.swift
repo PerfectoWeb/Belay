@@ -9,17 +9,10 @@ struct PanelView: View {
     /// characters and would wrap at any width a menu bar panel may honestly be —
     /// so the block also reserves two lines. See `PanelStatusLine`.
     static let width: CGFloat = 330
-    /// Floor for the seeded size, in case the first layout pass reports nothing:
-    /// an empty popover is the one outcome worse than a slightly wrong one.
-    static let minimumHeight: CGFloat = 160
-
     let state: AppState
     /// Set by `PanelController` so an action that opens a window can close the
     /// popover first.
     var onDismiss: () -> Void = {}
-    /// The content's natural height, reported so the controller can animate the
-    /// popover to it. See `PanelController.grow(to:)`.
-    var onHeightChange: (CGFloat) -> Void = { _ in }
 
     var body: some View {
         // `AppState.sessions` maps the snapshot on every read, so it is taken
@@ -65,19 +58,6 @@ struct PanelView: View {
         }
         .padding(14)
         .frame(width: Self.width)
-        // Measured at its natural height, then pinned to the top of whatever the
-        // window currently is. The window is what animates; this never does, so
-        // nothing above a disclosure can move when the disclosure opens.
-        .background(
-            GeometryReader { proxy in
-                Color.clear.preference(key: PanelHeight.self, value: proxy.size.height)
-            }
-        )
-        .frame(maxHeight: .infinity, alignment: .top)
-        .onPreferenceChange(PanelHeight.self) { height in
-            guard height > 0 else { return }
-            onHeightChange(height)
-        }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("\(Branding.appName) panel")
     }
@@ -90,15 +70,6 @@ struct PanelView: View {
         state.providers.filter { $0.isEnabled && $0.waitingNote != nil }
     }
 
-}
-
-/// The panel's natural height, travelling from the content up to the controller.
-struct PanelHeight: PreferenceKey {
-    static let defaultValue: CGFloat = 0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = max(value, nextValue())
-    }
 }
 
 extension ProviderStatus {

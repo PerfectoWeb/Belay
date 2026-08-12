@@ -27,7 +27,11 @@ final class PanelController: NSObject {
     var hostedControllerForTesting: NSViewController? { popover?.contentViewController }
 
     /// The size the panel is actually presenting at.
-    var contentSizeForTesting: NSSize? { popover?.contentSize }
+    var contentSizeForTesting: NSSize? {
+        guard let popover else { return nil }
+        let preferred = popover.contentViewController?.preferredContentSize ?? .zero
+        return preferred.height > 0 ? preferred : popover.contentSize
+    }
 
     func show(relativeTo button: NSStatusBarButton) {
         guard !isVisible else { return }
@@ -55,54 +59,31 @@ final class PanelController: NSObject {
     }
 
     private func makePopover() -> NSPopover {
-        let root = PanelView(
-            state: state,
-            onDismiss: { [weak self] in self?.hide() },
-            onHeightChange: { [weak self] in self?.grow(to: $0) })
+        let root = PanelView(state: state, onDismiss: { [weak self] in self?.hide() })
         let hosting = NSHostingController(rootView: root)
-        // Deliberately not `.preferredContentSize`. Letting SwiftUI drive the
-        // popover's size means AppKit resizes the window on every frame of a
-        // SwiftUI height animation, one frame behind — which is the visible
-        // judder that made the header jump while a disclosure opened below it.
-        // The content is laid out at its final size straight away and the
-        // *window* is what animates, so growth is downward and nothing above
-        // the disclosure can move.
-        hosting.sizingOptions = []
+        // SwiftUI owns the size, through the one path AppKit documents.
+        //
+        // This used to be `[]`, with the view measuring itself through a
+        // preference and the controller pushing the result into the popover.
+        // That was written to stop the panel juddering while a disclosure
+        // opened, and it did — on the macOS it was written on. On macOS 15 the
+        // seed and the measurement never agreed, and the panel opened shorter
+        // than its contents: the first line was cut off above the top edge and
+        // the footer below the bottom one.
+        //
+        // The judder it was avoiding has its own guard now: `PanelAnimationTests`
+        // scans this folder and fails if anything animates a layout, so nothing
+        // is left to move a height behind AppKit's back, and the supported path
+        // is the one that cannot disagree with itself.
+        hosting.sizingOptions = [.preferredContentSize]
         hosting.view.setAccessibilityLabel(String(localized: "\(Branding.appName) panel"))
 
         let popover = NSPopover()
         popover.contentViewController = hosting
-        // With SwiftUI no longer driving the size, the popover has none until the
-        // first height measurement arrives — and that is one layout pass too
-        // late to open with. Seed it from the view's own fitting size.
-        hosting.view.layoutSubtreeIfNeeded()
-        popover.contentSize = NSSize(
-            width: PanelView.width,
-            height: max(hosting.view.fittingSize.height, PanelView.minimumHeight))
         popover.behavior = .transient
         popover.animates = !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
         popover.delegate = self
         return popover
-    }
-
-    /// Resizes the popover to a new content height, in one step.
-    ///
-    /// Deliberately **not** animated. Three things wanted to animate this at
-    /// once — SwiftUI laying the content out, `NSAnimationContext` easing the
-    /// content size, and AppKit repositioning the popover against its anchor —
-    /// and each disagreed with the others by a frame, which is what the judder
-    /// was. The height measurement also arrives more than once per update, so an
-    /// eased resize could be interrupted by the next one mid-flight.
-    ///
-    /// A menu bar panel opens, does its job and closes; the disclosure is the
-    /// only thing in it that resizes, and one clean step is better than a
-    /// smoothness that shakes. If this is ever animated again it has to be the
-    /// *only* animator — which means driving the window frame directly, not
-    /// asking three layers to cooperate.
-    private func grow(to height: CGFloat) {
-        guard let popover else { return }
-        guard abs(popover.contentSize.height - height) > 0.5 else { return }
-        popover.contentSize = NSSize(width: PanelView.width, height: height)
     }
 
     /// Drops the hosting controller so nothing SwiftUI-shaped survives a close.

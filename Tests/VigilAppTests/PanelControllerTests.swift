@@ -53,9 +53,9 @@ final class PanelControllerTests: XCTestCase {
     /// A zero-height content view is
     /// the failure mode that would present an empty popover.
     ///
-    /// Asserted on the popover rather than the hosting controller: SwiftUI no
-    /// longer drives the size — the controller seeds it and then animates it —
-    /// so `preferredContentSize` is legitimately zero and proves nothing.
+    /// SwiftUI drives the size through `preferredContentSize`, so that is what
+    /// this reads, falling back to the popover for the moment before AppKit has
+    /// copied it across.
     func testTheOpenPanelHasASensibleContentSize() throws {
         let button = try XCTUnwrap(statusItem?.button)
         let panel = PanelController(state: AppState())
@@ -109,17 +109,24 @@ final class PanelAnimationTests: XCTestCase {
         XCTAssertGreaterThan(exempt, 0, "the exemption marker no longer matches anything")
     }
 
-    /// The controller, not SwiftUI, owns the size. If `sizingOptions` ever goes
-    /// back to `.preferredContentSize`, AppKit resizes on every frame of a
-    /// SwiftUI animation again.
-    func testSwiftUIDoesNotDriveThePopoverSize() throws {
+    /// SwiftUI owns the size, through `preferredContentSize`.
+    ///
+    /// This assertion used to be the exact opposite. The controller measured the
+    /// content itself and pushed the result in, which avoided the judder and
+    /// worked until macOS 15, where the seed and the measurement disagreed and
+    /// the panel opened too short to hold its own contents. The judder is now
+    /// prevented at its source by the scan above rather than by taking the size
+    /// away from the framework that computes it.
+    func testSwiftUIDrivesThePopoverSize() throws {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         defer { NSStatusBar.system.removeStatusItem(item) }
         let button = try XCTUnwrap(item.button)
         let panel = PanelController(state: AppState())
         panel.show(relativeTo: button)
         let hosting = try XCTUnwrap(panel.hostedControllerForTesting as? NSHostingController<PanelView>)
-        XCTAssertTrue(hosting.sizingOptions.isEmpty, "SwiftUI is driving the popover size again")
+        XCTAssertTrue(
+            hosting.sizingOptions.contains(.preferredContentSize),
+            "the panel is measuring itself again, and macOS 15 clipped it when it did")
         panel.hide()
     }
 }
