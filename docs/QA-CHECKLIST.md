@@ -156,20 +156,25 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ---
 
-## 9. The App Store build's sandbox (B8)
+## 9. The App Store build's sandbox (B8) — run 2026-08-12, passed
 
 `Tests/VigilSandboxTests` runs inside the sandbox on every gate and covers
 everything except the click. This is the click.
 
-- [ ] Build **without the test bundle** (`-scheme Vigil-MAS -configuration Release`),
+- [x] Build **without the test bundle** (`-scheme Vigil-MAS -configuration Release`),
       or the harness grants the app read access to `/` and the next two items
       pass for the wrong reason. See BLOCKERS B8.
-- [ ] With no grant yet, the app cannot read a file under `~/.claude`
-- [ ] Build and run the MAS channel: `xcodebuild -scheme Vigil-MAS -configuration Debug ...`,
+- [x] With no grant yet, the app cannot read a file under `~/.claude`
+- [x] Build and run the MAS channel: `xcodebuild -scheme Vigil-MAS -configuration Debug ...`,
       then open `build/DerivedData-MAS/Build/Products/Debug/Vigil-MAS.app`
-- [ ] Providers pane shows Claude Code as needing access, not as ready
-- [ ] Press the button, pick `~/.claude` in the open panel, allow
-- [ ] The pane now says ready, and the panel lists a Claude Code session while
+- [x] Providers pane shows Claude Code as needing access, not as ready
+- [x] Press the button, pick `~/.claude` in the open panel, allow
+- [x] The pane now says ready, and the panel lists a Claude Code session while
       one is running
-- [ ] Quit and reopen. Still ready, with no second panel: this is the bookmark,
+- [x] Quit and reopen. Still ready, with no second panel: this is the bookmark,
       and it is the half that dies silently if only the panel grant was kept
+
+Evidence, not just a tick: `VigilClaudeFolderBookmark` (660 bytes) is in
+`~/Library/Containers/com.perfecto-web.vigil/Data/Library/Preferences/com.perfecto-web.vigil.plist`,
+written at the moment the panel was answered. A bookmark inside the container is
+something only the sandboxed build can produce.

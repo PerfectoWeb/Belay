@@ -88,7 +88,7 @@ collides with a similar utility, the rename is a two-file change
 `Sources/VigilApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
 are in `docs/NAMING.md`.
 
-## B8 — the bookmark machinery is proven; the denial and the click are not
+## B8 — RESOLVED (2026-08-12). The click was run and it worked
 
 **Was:** the App Store build could not read `~/.claude` at all. `FileAccessProvider`
 had one implementation, `DirectFileAccess`; nothing in the tree created or
@@ -121,10 +121,11 @@ asserts the injection is there, so the next person finds this in seconds; it
 also asserts our own entitlements file has no exception, which
 `scripts/verify-mas-build.sh` confirms on the built Release binary.
 
-**Still needs a person**, both in `docs/QA-CHECKLIST.md` §9 and against a build
-with no test bundle attached: that the denial is real without a grant, and the
-end-to-end click — open panel, pick `~/.claude`, detection starts, and it
-survives a relaunch.
+**Done by hand, 2026-08-12**, on a Release MAS build with no test bundle: the
+Providers pane asked, the panel took `~/.claude`, the pane went to ready, and a
+quit and reopen did not ask again. The evidence is a 660-byte
+`VigilClaudeFolderBookmark` in the container's own preferences — something only
+the sandboxed build can write. `docs/QA-CHECKLIST.md` §9 records it.
 
 ## B9 — One module test fails intermittently on CI and has not been identified
 
