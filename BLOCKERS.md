@@ -12,6 +12,35 @@ real sandbox, which no machine here can perform.
 
 ---
 
+## The notification icon is a placeholder on this Mac, and I cannot say why
+
+Notification Center draws macOS's generic "unknown app" square instead of
+Vigil's icon. Ruled out, each by building it and watching a real notification
+fire:
+
+- **The bundle.** `NSWorkspace` resolves the icon from `/Applications/Vigil.app`
+  correctly at 32, 64, 80 and 128 px. 80 px is roughly what a notification
+  draws. `Assets.car` carries AppIcon at all ten sizes and `CFBundleIconName`
+  and `CFBundleIconFile` are both set.
+- **LaunchServices ambiguity.** Nine copies of this bundle identifier were
+  registered, one at a path that no longer existed. Cleaned down to one, still a
+  placeholder. `build-local.sh` now registers each fresh build so it cannot
+  drift back.
+- **The external volume.** Copied to `~/Applications` and then to
+  `/Applications`. Same placeholder from all three.
+- **The truncated `.icns`.** The one Xcode emits holds four representations, not
+  ten. Replaced it with a complete one built by `iconutil`. No change.
+- **Ad-hoc signing.** Re-signed with the Developer ID certificate, hardened
+  runtime and the real entitlements. No change.
+
+What is left is `usernoted`'s own record for this bundle identifier, written
+when notification permission was first granted, which no rebuild touches. That
+is a guess, and the cheap way to test it is a Mac that has never granted Vigil
+permission: if the icon is right in the VM and wrong here, it is the cache and
+no new user is affected. A test bundle with a fresh identifier would settle it
+here, but its permission prompt needs a person to click it.
+
+
 ## B1 — RESOLVED (2026-08-10)
 
 Team ID **VSY2EB4Y9E**, read from the `Developer ID Application: David
