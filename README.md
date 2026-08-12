@@ -8,8 +8,9 @@ system-sleep assertion only while the agent is genuinely working, and lets macOS
 go back to your normal sleep schedule the moment everything goes quiet. Your
 System Settings are never touched.
 
-No API key. No account. Nothing leaves your Mac unless you switch on the update
-check, which is off by default.
+No API key. No account. The only thing that ever leaves your Mac is a daily
+check for a newer version, which carries nothing about you and which one switch
+turns off.
 
 ---
 

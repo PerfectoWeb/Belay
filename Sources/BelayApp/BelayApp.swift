@@ -127,9 +127,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool { true }
 
-    /// Daily, and once shortly after launch. Both are no-ops until the user
-    /// turns update checks on, so an app nobody asked to check never opens a
-    /// socket — see `ReleaseChecker`.
+    /// Daily, and once shortly after launch.
+    ///
+    /// The post-launch one waits for onboarding to have been through at least
+    /// once. Checks are on by default now, and without this the very first
+    /// launch opened a socket eight seconds in, while the welcome screen was
+    /// still on the display saying nothing leaves this Mac. Both statements were
+    /// true separately and the pair of them was not.
     private func scheduleUpdateChecks(_ checker: ReleaseChecker) {
         let timer = Timer(timeInterval: 3600, repeats: true) { _ in
             MainActor.assumeIsolated { checker.checkIfDue() }
@@ -139,7 +143,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updateTimer = timer
         // After launch, not during it: nothing about an update belongs in the
         // cold-start path.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { checker.checkIfDue() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in
+            guard self?.settings.hasCompletedOnboarding == true else { return }
+            checker.checkIfDue()
+        }
     }
 
 }

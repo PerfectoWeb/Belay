@@ -98,6 +98,24 @@ for y in 0..<side {
 }
 let markSide = maxX - minX + 1
 print("mark box \(minX)…\(maxX) x \(minY)…\(maxY) = \(markSide)x\(maxY - minY + 1)")
+// The resize below works in one dimension, so a box that is not square would
+// leave part of the mark un-shrunk on one axis and paint bare plate on the
+// other. It is square for this artwork; the check is here so that a future one
+// fails loudly rather than producing a quietly wrong icon.
+guard maxY - minY + 1 == markSide else {
+    print("the mark's box is not square; this script only resizes square marks")
+    exit(1)
+}
+// The gradient column has to be clear of the mark, and it is sampled before the
+// mark's box is known.
+guard side * 140 / 1024 < minX else {
+    print("the plate column at x=\(side * 140 / 1024) is inside the mark")
+    exit(1)
+}
+guard scale > 0, scale <= 1 else {
+    print("scale must be greater than 0 and no more than 1")
+    exit(1)
+}
 
 /// Area average. At a 7% reduction each output pixel covers a little over one
 /// input pixel, so this is close to bilinear and simpler to be sure of.

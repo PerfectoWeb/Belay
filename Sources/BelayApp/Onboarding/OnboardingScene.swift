@@ -8,16 +8,26 @@ import SwiftUI
 ///
 /// Shown instead of a third paragraph because the product is a behaviour over
 /// time, and a behaviour over time is the one thing prose is worst at. The whole
-/// loop is eight seconds and repeats, so nobody has to catch the beginning.
+/// loop is nine seconds and repeats, so nobody has to catch the beginning.
 struct OnboardingScene: View {
-    /// One pass: work, then quiet, then sleep, then round again.
-    private static let loop: Double = 8
+    /// One pass: work, then quiet, then sleep, then wake and round again.
+    static let loop: Double = 9
+
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
-            let time = timeline.date.timeIntervalSinceReferenceDate
-                .truncatingRemainder(dividingBy: Self.loop)
-            scene(at: time)
+        Group {
+            if reduceMotion {
+                // The middle of the working half: the state the sentence under
+                // it describes, held still.
+                scene(at: 2)
+            } else {
+                TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
+                    scene(
+                        at: timeline.date.timeIntervalSinceReferenceDate
+                            .truncatingRemainder(dividingBy: Self.loop))
+                }
+            }
         }
         .frame(height: 132)
         .accessibilityElement()
@@ -25,21 +35,35 @@ struct OnboardingScene: View {
             "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops")
     }
 
-    /// 0 to 1 across the working half, then 0 for the rest.
-    private func working(at time: Double) -> Double {
-        time < 4.4 ? 1 : max(0, 1 - (time - 4.4) / 0.7)
+    /// How hard the agent is working: 1 through the working half, down to 0
+    /// while it winds down, and back up again before the loop repeats.
+    ///
+    /// That last ramp is the whole reason the loop is nine seconds and not
+    /// eight. Without it the wrap put the rope from a full belly to dead
+    /// straight in one frame, on the first animation anybody ever sees.
+    ///
+    /// Static and internal so a test can walk the seam: this and `asleep` both
+    /// have to arrive back where they started.
+    static func working(at time: Double) -> Double {
+        if time < 4.4 { return 1 }
+        if time < 5.1 { return 1 - (time - 4.4) / 0.7 }
+        if time < 8.2 { return 0 }
+        return (time - 8.2) / 0.8
     }
 
     /// How far the Mac has gone to sleep. Lags the agent by the grace period,
-    /// which is the part people do not expect and the part worth showing.
-    private func asleep(at time: Double) -> Double {
-        guard time > 5.6 else { return 0 }
-        return min(1, (time - 5.6) / 0.9)
+    /// which is the part people do not expect and the part worth showing, and
+    /// wakes again as the next turn of work starts.
+    static func asleep(at time: Double) -> Double {
+        if time < 5.6 { return 0 }
+        if time < 6.5 { return (time - 5.6) / 0.9 }
+        if time < 8.1 { return 1 }
+        return max(0, 1 - (time - 8.1) / 0.7)
     }
 
     private func scene(at time: Double) -> some View {
-        let live = working(at: time)
-        let sleep = asleep(at: time)
+        let live = Self.working(at: time)
+        let sleep = Self.asleep(at: time)
         return HStack(spacing: 0) {
             AgentBlock(activity: live, time: time)
                 .frame(width: 118, height: 96)
@@ -85,10 +109,17 @@ private struct AgentBlock: View {
                     .strokeBorder(.separator, lineWidth: 1))
     }
 
+    /// Minus the index, not plus it. With a positive term the later lines led
+    /// the earlier ones and the block filled from the bottom up, which is a
+    /// terminal scrolling the wrong way.
+    ///
+    /// Scaled by `activity` rather than gated on it, so the lines fade out with
+    /// the same ramp as the rope instead of snapping to rest a frame after it
+    /// starts moving.
     private func lineOpacity(_ index: Int) -> Double {
-        guard activity > 0 else { return 0.25 }
-        let step = (time * 1.6 + Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
-        return 0.35 + 0.65 * min(1, max(0, 1.6 - abs(step - 1.2)))
+        let step = (time * 1.6 - Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
+        let lit = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
+        return 0.25 + (lit - 0.25) * activity
     }
 }
 

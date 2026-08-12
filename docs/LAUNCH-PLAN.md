@@ -280,9 +280,9 @@ against that workflow, then there is something to post about. Not before.
 - It holds a system sleep assertion only while a local coding agent is working,
   and drops it when the work stops.
 - Claude Code needs no configuration. Everything else is configured in Settings.
-- Nothing leaves the Mac. The only outbound connection the app can make is an
-  update check that is off by default, and the App Store build cannot make it at
-  all.
+- Nothing about the user leaves the Mac. The only outbound connection the app
+  can make is a daily update check, which carries no query and no identifier,
+  which one switch turns off, and which the App Store build cannot make at all.
 - Every assertion carries a 120 second timeout and is re-armed while work
   continues, so a crashed or force-quit app cannot leave the Mac awake
   indefinitely.

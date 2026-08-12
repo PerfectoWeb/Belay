@@ -16,9 +16,16 @@ import SwiftUI
 struct SpinningMark: View {
     var colour: Color
 
-    /// Parsed once. Rebuilding the vector artwork per tick is what made the
-    /// About pane expensive the first time round.
-    @MainActor private static let parts = BelayGlyph.artworkSubpaths
+    /// The one screen this appears on before Settings is the welcome window, so
+    /// a user who has asked macOS for less motion must not meet a spinning logo
+    /// on first launch. Every other animated view in the app honours this.
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    /// Parsed *and converted* once. The parse was already cached; `cgPath`
+    /// builds a fresh path every time it is read, so asking for it inside the
+    /// timeline was nine path allocations a frame, thirty times a second, for
+    /// the three quarters of the cycle when nothing is turning.
+    @MainActor private static let parts = BelayGlyph.artworkSubpaths.map { Path($0.cgPath) }
 
     /// How long between one set of turns and the next.
     private static let cycle: Double = 11
@@ -42,10 +49,16 @@ struct SpinningMark: View {
     var body: some View {
         // 30 a second. The turn is slow and eased, and the difference against
         // the display's own rate is not visible at this size.
-        TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
-            let time = timeline.date.timeIntervalSinceReferenceDate
-                .truncatingRemainder(dividingBy: Self.cycle)
-            canvas(at: time)
+        Group {
+            if reduceMotion {
+                canvas(at: Self.cycle)
+            } else {
+                TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
+                    canvas(
+                        at: timeline.date.timeIntervalSinceReferenceDate
+                            .truncatingRemainder(dividingBy: Self.cycle))
+                }
+            }
         }
         .accessibilityHidden(true)
     }
@@ -53,7 +66,7 @@ struct SpinningMark: View {
     private func canvas(at time: Double) -> some View {
         let shapes: [(Path, Double)] = Self.parts.enumerated().compactMap { index, part in
             guard index < Self.turns.count else { return nil }
-            return (Path(part.cgPath), Self.angle(at: time, Self.turns[index]))
+            return (part, Self.angle(at: time, Self.turns[index]))
         }
         return Canvas { context, size in
             let scale = size.width / 24

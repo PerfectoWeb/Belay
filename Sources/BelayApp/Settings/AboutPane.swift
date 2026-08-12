@@ -143,7 +143,7 @@ struct AboutPane: View {
             """
             Belay reads only enough of your agent's session files to know whether it is running. \
             Never your prompts, never your code, and nothing about you leaves this Mac. The one \
-            exception is the update check, which is off until you switch it on.
+            exception is the daily update check, which you can switch off.
             """
         )
         .font(.system(size: 11))
