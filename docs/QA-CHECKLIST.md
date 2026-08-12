@@ -152,7 +152,7 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ---
 
-**Last run:** 2026-08-10, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
+**Last run:** 2026-08-12, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
 
 ---
 
@@ -161,6 +161,10 @@ for our bundle ID, which is not ours. Match on the pid.
 `Tests/VigilSandboxTests` runs inside the sandbox on every gate and covers
 everything except the click. This is the click.
 
+- [ ] Build **without the test bundle** (`-scheme Vigil-MAS -configuration Release`),
+      or the harness grants the app read access to `/` and the next two items
+      pass for the wrong reason. See BLOCKERS B8.
+- [ ] With no grant yet, the app cannot read a file under `~/.claude`
 - [ ] Build and run the MAS channel: `xcodebuild -scheme Vigil-MAS -configuration Debug ...`,
       then open `build/DerivedData-MAS/Build/Products/Debug/Vigil-MAS.app`
 - [ ] Providers pane shows Claude Code as needing access, not as ready

@@ -18,10 +18,13 @@ final class SandboxAccessTests: XCTestCase {
     private var suite = ""
     private var defaults = UserDefaults.standard
 
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         suite = "vigil.sandbox.\(UUID().uuidString)"
-        defaults = UserDefaults(suiteName: suite) ?? .standard
+        // Not `?? .standard`. Falling open would write a real bookmark into the
+        // host app's own defaults under the shipping key, and tearDown would
+        // not find it to clean up.
+        defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
     }
 
     override func tearDown() {
@@ -35,9 +38,6 @@ final class SandboxAccessTests: XCTestCase {
         XCTAssertTrue(
             NSHomeDirectory().contains("/Containers/"),
             "the test host is not sandboxed — home is \(NSHomeDirectory())")
-        XCTAssertNotNil(
-            ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"]
-                ?? (NSHomeDirectory().contains("/Containers/") ? "" : nil))
     }
 
     /// The trap that produced the original bug. Inside a sandbox
@@ -54,16 +54,55 @@ final class SandboxAccessTests: XCTestCase {
         XCTAssertNotEqual(UserHome.real, foundation)
     }
 
-    /// The denial is real, not assumed. Without a grant the sandbox refuses the
-    /// account's own `~/.claude`, and `hasAccess` says so rather than guessing.
-    func testWithoutAGrantTheRealClaudeFolderIsUnreachable() throws {
-        let access = BookmarkFileAccess.claudeHome(store: DefaultsBookmarkStore(defaults: defaults))
-        XCTAssertFalse(access.isGranted, "a fresh store claims a grant it never had")
-        XCTAssertFalse(access.hasAccess(to: access.root))
+    /// What this harness cannot test, and why — written as a test so the next
+    /// person finds out in seconds rather than in an hour.
+    ///
+    /// Hosting an XCTest bundle in a sandboxed app changes that app's sandbox.
+    /// Xcode injects
+    /// `com.apple.security.temporary-exception.files.absolute-path.read-only`
+    /// for `/` into the test host, alongside the mach-lookup exceptions the test
+    /// runner needs. So the container is real, `NSHomeDirectory()` is the
+    /// container, bookmarks behave exactly as they ship — and file reads are not
+    /// denied anywhere. A test asserting "without a grant `~/.claude` cannot be
+    /// read" passes for the wrong reason here, and one asserting the opposite
+    /// fails for the wrong reason. Both were written before this was checked.
+    ///
+    /// The denial belongs to manual QA (`docs/QA-CHECKLIST.md` §9), against a
+    /// build with no test bundle attached.
+    func testTheTestHostIsGrantedReadsTheShippingBuildIsNot() throws {
+        let injected = try hostEntitlements()
+        XCTAssertNotNil(
+            injected["com.apple.security.temporary-exception.files.absolute-path.read-only"],
+            """
+            Xcode no longer grants the test host read access to /. If that is \
+            true, a denial test can finally live here — but check it fails for \
+            the right reason before believing it.
+            """)
 
-        XCTAssertThrowsError(try access.withAccess(to: access.root) { $0 }) { error in
-            XCTAssertEqual(error as? FileAccessError, .noBookmark(access.root))
-        }
+        // The one that matters: our own entitlements, the ones that ship, carry
+        // no filesystem exception. `scripts/verify-mas-build.sh` audits the
+        // built Release binary; this catches the source going wrong first.
+        let shipping = try String(
+            contentsOf: URL(fileURLWithPath: #filePath)
+                .deletingLastPathComponent().deletingLastPathComponent()
+                .deletingLastPathComponent()
+                .appendingPathComponent("Resources/Entitlements/Vigil-MAS.entitlements"),
+            encoding: .utf8)
+        XCTAssertFalse(
+            shipping.contains("temporary-exception"),
+            "the shipping entitlements gained a sandbox exception")
+    }
+
+    private func hostEntitlements() throws -> [String: Any] {
+        var code: SecCode?
+        XCTAssertEqual(SecCodeCopySelf([], &code), errSecSuccess)
+        var info: CFDictionary?
+        let status = SecCodeCopySigningInformation(
+            try XCTUnwrap(code) as! SecStaticCode, SecCSFlags(rawValue: kSecCSSigningInformation),
+            &info)
+        XCTAssertEqual(status, errSecSuccess)
+        let dictionary = try XCTUnwrap(info as? [String: Any])
+        return dictionary["entitlements-dict"] as? [String: Any] ?? [:]
     }
 
     /// The panel's product, on the panel's path. A directory the sandbox already
@@ -88,20 +127,25 @@ final class SandboxAccessTests: XCTestCase {
         XCTAssertEqual(String(decoding: contents, as: UTF8.self), "{}\n")
     }
 
-    /// A scoped resource left open exhausts a per-process limit and detection
-    /// then dies with no visible cause. The throwing path is the one that leaks.
-    func testAccessIsBalancedEvenWhenTheReadThrows() throws {
+    /// Every read is bracketed, including the throwing path.
+    ///
+    /// What this does **not** do is prove the bracket by exhaustion. Twenty
+    /// thousand deliberately unbalanced starts were tried, looking for the
+    /// per-process wall this test used to claim it crossed; there is no
+    /// observable wall, `startAccessingSecurityScopedResource` keeps returning
+    /// true, and Foundation exposes no live count. So this is a smoke test: two
+    /// hundred failed reads, then one that must still work. The bracket itself
+    /// is held by `withAccess`'s `defer` and by reading the code.
+    func testReadsKeepWorkingAfterTwoHundredThrow() throws {
         let root = try scratchDirectory()
-        let store = DefaultsBookmarkStore(defaults: defaults)
-        let access = BookmarkFileAccess(root: root, store: store)
+        let access = BookmarkFileAccess(root: root, store: DefaultsBookmarkStore(defaults: defaults))
         try access.grant(root)
 
         struct Boom: Error {}
         for _ in 0..<200 {
             XCTAssertThrowsError(try access.withAccess(to: root) { _ in throw Boom() })
         }
-        // Still working after two hundred failed reads. An unbalanced start
-        // would have run the process out of scoped resources by now.
+
         let file = root.appendingPathComponent("after.txt")
         try access.withAccess(to: root) { _ in try Data("ok".utf8).write(to: file) }
         XCTAssertTrue(FileManager.default.fileExists(atPath: file.path))
@@ -116,3 +160,5 @@ final class SandboxAccessTests: XCTestCase {
         return root
     }
 }
+
+/// Somewhere for the probe's bookmark to live that is not the test's own store.

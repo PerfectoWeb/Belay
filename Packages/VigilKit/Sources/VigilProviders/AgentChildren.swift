@@ -29,6 +29,13 @@ import Foundation
 /// change between sweeps — needs per-sweep state, misses nothing this does not,
 /// and re-arms on a child *exiting*, which is the opposite of work starting.
 ///
+/// The two horizons compound, and that is deliberate. This one counts a child
+/// for `maxAge` after it starts; the idle sweep then waits another
+/// `inferredIdleAfter` from the last tick that saw one. A single short-lived
+/// child therefore extends the tail to roughly twice the horizon plus the
+/// coordinator's grace, not once. Bounded, in the safe direction, and worth
+/// knowing before reading either number as "the" bound.
+///
 /// The honest cost: a single silent child that runs for longer than the horizon
 /// (the 8m46s `/bin/zsh` build in `docs/DISCOVERY`) stops counting once it ages
 /// out, so Tier C no longer extends the tail indefinitely for it. That is the

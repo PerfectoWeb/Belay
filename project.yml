@@ -146,6 +146,10 @@ targets:
           # debug MAS build would silently replace the direct one and every
           # local check after it would be inspecting the wrong bundle. Release —
           # the configuration that gets archived and submitted — is plain Vigil.
+          #
+          # The sandbox test action is pinned to Debug for the same reason: its
+          # TEST_HOST is generated from PRODUCT_NAME, so a Release test run would
+          # look for a Vigil-MAS.app that Release does not build.
           PRODUCT_NAME: Vigil-MAS
 
   # The only tests that run inside a sandbox.

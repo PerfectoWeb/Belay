@@ -25,6 +25,11 @@ public struct ResolvedBookmark: Sendable, Equatable {
 /// testable is everything around those four calls — which one is made, in what
 /// order, and whether every start has its stop — and that is the part that goes
 /// wrong (`BLOCKERS.md` B8).
+///
+/// The protocol predates `Tests/VigilSandboxTests`, which is hosted by the MAS
+/// app and therefore *can* create and resolve a real app-scoped bookmark. The
+/// seam is still worth having: the module suites are not sandboxed and never
+/// will be, and they are where the ordering is exercised.
 public protocol SecurityScopedBookmarks: Sendable {
     func bookmarkData(for url: URL) throws -> Data
     func resolve(_ data: Data) throws -> ResolvedBookmark

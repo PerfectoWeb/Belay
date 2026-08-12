@@ -88,7 +88,7 @@ collides with a similar utility, the rename is a two-file change
 `Sources/VigilApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
 are in `docs/NAMING.md`.
 
-## B8 — RESOLVED (2026-08-12), proven inside a real sandbox
+## B8 — the bookmark machinery is proven; the denial and the click are not
 
 **Was:** the App Store build could not read `~/.claude` at all. `FileAccessProvider`
 had one implementation, `DirectFileAccess`; nothing in the tree created or
@@ -97,66 +97,34 @@ were declared and never thrown. `Vigil-MAS` compiled, passed
 `scripts/verify-mas-build.sh`, and would have shown a reviewer an app that
 detects nothing.
 
-**Now:** `VigilSupport.BookmarkFileAccess` is the sandboxed implementation.
-`ClaudeFolderPanel` takes the grant through a standard `NSOpenPanel`,
-`BookmarkFileAccess.grant(_:)` encodes an app-scoped bookmark and saves it in
-`UserDefaults` under `VigilClaudeFolderBookmark`, and it is resolved on launch —
-a stale bookmark is re-encoded in place rather than dropped, because Foundation
-asking for a fresh encoding is housekeeping and not a revocation. `withAccess`
-brackets every read with start/stop, balanced on the throwing path, and
-`hasAccess` answers from what is actually resolved without granting anything.
-`ClaudeAccess` in the app target picks the implementation per channel, because
-`#if VIGIL_MAS` reaches the app and not a SwiftPM target (`PROJECT_STATE.md` D15).
-`VigilSupportTests` covers the round trip, the staleness rule, the balance on
-throw, and the honest "no grant" answers; `Tests/VigilAppTests/ClaudeAccessTests`
-proves the direct build still gets `DirectFileAccess`.
+**Now:** `VigilSupport.BookmarkFileAccess` is the sandboxed implementation, and
+`Tests/VigilSandboxTests` is a test bundle hosted by `Vigil-MAS`, so it runs in
+that app's own container. `scripts/test.sh` runs it. What it proves, for real:
 
-**What is still not proved, and cannot be proved here.** Every test above runs
-outside a sandbox, so what they exercise is the logic around Foundation's four
-bookmark calls, never those calls themselves: a process without
-`com.apple.security.files.bookmarks.app-scope` cannot make a scoped bookmark, and
-`startAccessingSecurityScopedResource()` answers `false` for any URL that did not
-come from a panel. The following need one run of a signed, provisioned `Vigil-MAS`
-on a real machine, and a rejection here is a rejection at App Review:
+- the host is sandboxed — `NSHomeDirectory()` is the container;
+- `homeDirectoryForCurrentUser` is the container and `UserHome.real` is not,
+  which is the trap that caused the original bug;
+- an app-scoped bookmark is created, stored, and resolved by a second
+  `BookmarkFileAccess` that then reads a file through it. This needs the
+  `files.bookmarks.app-scope` entitlement and real Foundation calls on both
+  sides, so the entitlement, the round trip and the resolve are all exercised.
 
-- The panel grant on the real `~/.claude`, and the same bookmark resolving after
-  a relaunch, a log out, and an OS update.
-- FSEvents delivering events for a scoped directory for as long as the standing
-  scope is held.
-- Whether the reads VigilProviders performs *outside* `withAccess` are permitted
-  by the standing scope. `ProcessPresence.scan` reads each session file with
-  `Data(contentsOf:)` after the bracket has closed, and `FileSnapshot` stats
-  transcripts with no bracket at all. The standing scope is what is expected to
-  cover both; if it does not, those two call sites have to move inside
-  `withAccess` and they are in a module this work did not own.
-- The `~/.claude/settings.json` write path (`VigilHookBridge`) under the grant. It
-  does not go through `FileAccessProvider` at all.
-- The generic provider's watched folders. They are outside the `~/.claude` grant,
-  so `BookmarkFileAccess` passes them through to the sandbox, which will refuse
-  them. Tier B in the MAS build needs a grant per folder, and that is not built.
+**What it does not prove, and the reason is worth knowing.** Hosting an XCTest
+bundle in a sandboxed app *changes that app's sandbox*: Xcode injects
+`com.apple.security.temporary-exception.files.absolute-path.read-only` for `/`
+into the test host, next to the mach-lookup exceptions the runner needs. So
+inside this harness no file read is denied anywhere, and any test asserting
+"without a grant `~/.claude` cannot be read" passes for the wrong reason. Two
+versions of that test were written and both were wrong before the entitlements
+were dumped and read. `testTheTestHostIsGrantedReadsTheShippingBuildIsNot` now
+asserts the injection is there, so the next person finds this in seconds; it
+also asserts our own entitlements file has no exception, which
+`scripts/verify-mas-build.sh` confirms on the built Release binary.
 
-`docs/APP-STORE.md` still has the rest of the submission list in order.
-
-**Proven (2026-08-12).** `Tests/VigilSandboxTests` is a unit-test bundle hosted
-by `Vigil-MAS`, so it runs inside the App Store build's own sandbox, and
-`scripts/test.sh` runs it on every gate. It asserts, in that sandbox:
-
-- the host really is sandboxed (home is under `/Containers/`), so the other four
-  assertions mean something;
-- `homeDirectoryForCurrentUser` is the container and `UserHome.real` is not —
-  the trap that caused the original bug;
-- without a grant the account's own `~/.claude` is unreachable and `hasAccess`
-  says so, throwing `.noBookmark` rather than guessing;
-- a grant survives a relaunch: a second `BookmarkFileAccess` reading the same
-  store resolves the bookmark and reads a file through it;
-- two hundred throwing reads do not exhaust the scoped-resource limit, so the
-  balance holds on the path that leaks.
-
-**Still not proven, and it needs a person:** the click. Nothing can drive
-`NSOpenPanel`, so the tests make the panel's *product* — an app-scoped bookmark —
-for a directory the sandbox already reaches, and everything from `grant`
-onwards is the shipping code on the shipping path. One item in
-`docs/QA-CHECKLIST.md` covers the click itself.
+**Still needs a person**, both in `docs/QA-CHECKLIST.md` §9 and against a build
+with no test bundle attached: that the denial is real without a grant, and the
+end-to-end click — open panel, pick `~/.claude`, detection starts, and it
+survives a relaunch.
 
 ## B9 — One module test fails intermittently on CI and has not been identified
 

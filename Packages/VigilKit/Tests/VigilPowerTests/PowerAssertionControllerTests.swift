@@ -90,7 +90,7 @@ struct PowerAssertionControllerTests {
         // test that runs eighty thousand actor hops. On a three-core runner
         // under that load, "two rearms inside 160 ms of wall clock" is a bet on
         // the scheduler rather than an assertion about the controller.
-        let rearmed = await waitFor("two rearms") { await backend.rearmCount >= 2 }
+        let rearmed = await waitFor { await backend.rearmCount >= 2 }
         let seen = await backend.rearmCount
         #expect(rearmed, "only \(seen) rearms")
 
@@ -104,15 +104,13 @@ struct PowerAssertionControllerTests {
 
     /// Polls rather than sleeping a fixed span, for anything of the form "did
     /// this happen yet". A fixed sleep asserts something about the machine.
-    private func waitFor(
-        _ what: String,
-        timeout: TimeInterval = 10,
-        _ condition: () async -> Bool
-    ) async -> Bool {
+    private func waitFor(timeout: TimeInterval = 10, _ condition: () async -> Bool) async -> Bool {
         let deadline = Date().addingTimeInterval(timeout)
         while Date() < deadline {
             if await condition() { return true }
-            try? await Task.sleep(for: .milliseconds(20))
+            // Not `try?`: swallowing cancellation turns the rest of the timeout
+            // into a busy spin on a core.
+            do { try await Task.sleep(for: .milliseconds(20)) } catch { return false }
         }
         return false
     }

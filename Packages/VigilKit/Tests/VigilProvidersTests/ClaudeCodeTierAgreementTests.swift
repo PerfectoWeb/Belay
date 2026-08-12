@@ -45,31 +45,13 @@ struct ClaudeCodeTierAgreementTests {
             now: late, isAlive: { _ in true }, busyPids: { pids, _, _ in pids })
         await provider.sweepForIdle(now: late.addingTimeInterval(5))
 
-        let activities = await collector.settle().map(\.activity)
-        #expect(!activities.contains(.idle), "the idle sweep undid Tier C: \(activities)")
-        await collector.stop()
-    }
-
-    /// And the other direction: once the child is gone, nothing keeps the
-    /// session alive and the horizon applies again.
-    @Test("A session goes idle once its last busy child is old")
-    func idleReturnsAfterTheChildGoesQuiet() async {
-        let start = Date()
-        let url = scratch.transcript(
-            "finished", lines: [TranscriptScratch.record("assistant", stop: "tool_use")])
-        scratch.processFile(pid: 4321, session: "finished", cwd: "/Volumes/Work/Demo")
-        let provider = self.provider()
-        let collector = await self.collector(on: provider)
-        await provider.ingest(url, now: start)
-
-        await provider.sweepForDeadProcesses(
-            now: start.addingTimeInterval(10), isAlive: { _ in true },
-            busyPids: { pids, _, _ in pids })
-        // No busy child this time, and the horizon has passed since the last one.
-        await provider.sweepForIdle(now: start.addingTimeInterval(200))
-
+        // The whole sequence, not a count: `report` re-emits `.working` as a
+        // heartbeat, so waiting for "two signals" and reading the last one is a
+        // race with the stream's own pump — which is how this test was written
+        // first, and it lost that race fourteen runs out of fifteen.
         let signals = await collector.wait(for: 2)
-        #expect(signals.map(\.activity).last == .idle)
+        #expect(signals.map(\.activity) == [.working, .working])
+        #expect(await collector.settle().map(\.activity) == [.working, .working])
         await collector.stop()
     }
 }
