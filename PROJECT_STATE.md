@@ -552,8 +552,17 @@ pass, the title was set before the frame changed, and macOS 15 does not reliably
 run that pass afterwards, so the label kept the centre it was measured against.
 Title last, then ask for the pass by name.
 
-Neither interface fix has been seen working on macOS 15 from here; both are
-reasoned from the mechanism and want a second run in the VM.
+**The panel was clipped, and that was a third fault, not a symptom of the
+other two.** The popover measured its own content through a preference and the
+controller pushed the result in, which was written to stop the panel juddering
+while a disclosure opened. On 15.0 the seed and the measurement never agreed
+and the panel opened shorter than its contents, cutting the first line off
+above the top edge and the footer below the bottom one. `sizingOptions` is
+`.preferredContentSize` now, the path AppKit documents; the judder keeps its own
+guard in the scan that fails if anything in the panel folder animates a layout.
+
+Confirmed on the VM on 2026-08-12: panel, gear and window title all correct on
+macOS 15.0. The notification icon is the one finding still open.
 
 ### D26 — Of the three recorded defects, one was a bug and two are trades
 
