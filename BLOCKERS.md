@@ -33,12 +33,21 @@ fire:
 - **Ad-hoc signing.** Re-signed with the Developer ID certificate, hardened
   runtime and the real entitlements. No change.
 
-What is left is `usernoted`'s own record for this bundle identifier, written
-when notification permission was first granted, which no rebuild touches. That
-is a guess, and the cheap way to test it is a Mac that has never granted Vigil
-permission: if the icon is right in the VM and wrong here, it is the cache and
-no new user is affected. A test bundle with a fresh identifier would settle it
-here, but its permission prompt needs a person to click it.
+- **The asset catalogue as the only source.** Deleted `AppIcon.icns` and its
+  Info.plist key from a copy, leaving `Assets.car` alone to answer. Renders
+  byte-identically at 32, 64, 80 and 128 px. The catalogue is not the problem
+  either.
+
+The cache theory is dead. A clean macOS 15.0 VM that had never granted Vigil
+notification permission shows the same placeholder, so this is ours and not one
+machine's leftovers.
+
+What both machines still have in common is where the app was: `/Volumes/BASE`
+here, `~/Desktop` there. `usernoted` is sandboxed, and reading an app bundle out
+of a user folder is exactly the kind of thing it would be refused. `/Applications`
+was tried here, but only after this Mac had already answered wrong once, so it
+proves less than it looked like at the time. The clean test is `/Applications`
+on the VM, which is also where a real user would put it.
 
 
 ## B1 — RESOLVED (2026-08-10)
