@@ -107,7 +107,7 @@ private struct UpdatesRow: View {
             GroupedCheckbox(
                 title: "Check for updates automatically",
                 explanation: """
-                    Once a day, Vigil asks GitHub whether a newer version exists. \
+                    Once a day, Vigil checks whether a newer version exists. \
                     That is the only time Vigil uses the network, it sends nothing \
                     about you, and it never installs anything on its own.
                     """,

@@ -2872,6 +2872,47 @@
         }
       }
     },
+    "Could not reach the update service.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Update-Dienst war nicht erreichbar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not reach the update service."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se pudo contactar con el servicio de actualizaciones."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de joindre le service de mise à jour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile raggiungere il servizio di aggiornamento."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось связаться со службой обновлений."
+          }
+        }
+      }
+    },
     "Detection health": {
       "extractionState": "manual",
       "localizations": {
@@ -3401,47 +3442,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "GitHub"
-          }
-        }
-      }
-    },
-    "GitHub answered %lld.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub gab %lld zurück."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub returned %lld."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub devolvió %lld."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub a renvoyé %lld."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub ha restituito %lld."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub вернул код %lld."
           }
         }
       }
@@ -5004,42 +5004,42 @@
         }
       }
     },
-    "Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.": {
+    "Once a day, Vigil checks whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil prüft einmal täglich auf GitHub, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
+            "value": "Vigil prüft einmal täglich, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
+            "value": "Vigil checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
+            "value": "Vigil comprueba una vez al día si hay una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil consulte GitHub une fois par jour pour chercher une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
+            "value": "Vigil vérifie une fois par jour s'il existe une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil controlla GitHub una volta al giorno per cercare una nuova versione. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
+            "value": "Vigil controlla una volta al giorno se è disponibile una versione nuova. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "needs_review",
+            "state": "translated",
             "value": "Раз в день Vigil проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
           }
         }
@@ -7091,6 +7091,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Это заняло %@. Mac снова может засыпать как обычно."
+          }
+        }
+      }
+    },
+    "The server answered %lld.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Server hat %lld zurückgegeben."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server answered %lld."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El servidor devolvió %lld."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le serveur a renvoyé %lld."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il server ha restituito %lld."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сервер вернул %lld."
+          }
+        }
+      }
+    },
+    "The update service sent something Vigil could not read.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Update-Dienst hat eine Antwort gesendet, die Vigil nicht lesen konnte."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The update service sent something Vigil could not read."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El servicio de actualizaciones envió una respuesta que Vigil no pudo leer."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le service de mise à jour a renvoyé une réponse que Vigil n'a pas pu lire."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il servizio di aggiornamento ha inviato una risposta che Vigil non è riuscito a leggere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Служба обновлений прислала ответ, который Vigil не смог прочитать."
           }
         }
       }

@@ -2,7 +2,7 @@ import Foundation
 import Observation
 import VigilSupport
 
-/// Checks GitHub for a newer release.
+/// Checks for a newer release.
 ///
 /// **This is the one thing in Vigil that touches the network, and it is off by
 /// default.** The app's whole pitch is that nothing leaves the Mac; an updater
@@ -100,9 +100,27 @@ final class ReleaseChecker {
                 }
             } catch {
                 Log.app.error("update check failed: \(error.localizedDescription, privacy: .public)")
-                status = .failed(error.localizedDescription)
+                status = .failed(Self.reason(for: error))
             }
         }
+    }
+
+    /// What a failed check says out loud.
+    ///
+    /// Never the system's own description, which was what this used to show. It
+    /// names the host it could not reach, it arrives in the language macOS is
+    /// running rather than the one picked in Settings, and for a malformed
+    /// payload it is a sentence about Swift decoding. Three outcomes is all
+    /// anyone can act on, and none of them needs to say where releases live:
+    /// that is a distribution decision, and it may become the App Store.
+    private static func reason(for error: Error) -> String {
+        if let update = error as? UpdateError, let described = update.errorDescription {
+            return described
+        }
+        if error is DecodingError {
+            return String(localized: "The update service sent something Vigil could not read.")
+        }
+        return String(localized: "Could not reach the update service.")
     }
 
     var lastChecked: Date? { defaults.object(forKey: Self.lastCheckKey) as? Date }
@@ -146,7 +164,7 @@ final class ReleaseChecker {
         return data
     }
 
-    /// The two fields of GitHub's release JSON Vigil reads. Coding keys rather
+    /// The two fields of the release JSON Vigil reads. Coding keys rather
     /// than snake-cased properties, so the linters stay happy and the wire
     /// format is written down in one obvious place.
     private struct Release: Decodable {
@@ -167,7 +185,12 @@ final class ReleaseChecker {
             case .badResponse(404):
                 return String(localized: "No releases have been published yet.")
             case .badResponse(let code):
-                return String(localized: "GitHub answered \(code).")
+                // Named after the role, not the host. Where releases come
+                // from is a distribution decision that can change to the App
+                // Store or anywhere else, and a message that has to be
+                // retranslated in six languages when it does is a message that
+                // should not have said it.
+                return String(localized: "The server answered \(code).")
             }
         }
     }
