@@ -58,6 +58,10 @@ struct PanelModePicker: View {
             // secondary. Without the middle step the two unchosen tabs look like
             // labels rather than like somewhere to click.
             .foregroundStyle(tint(mode, isSelected: isSelected))
+            // Keyed to the hover alone, so it cannot reach the pill: the pill
+            // travels on the spring `select` sets, and one curve driving both
+            // would make the colour lag the cursor by the pill's length.
+            .animation(.easeInOut(duration: 0.18), value: hovered)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 6)
             .background {
