@@ -50,6 +50,20 @@ public struct GenericPreset: Sendable, Equatable, Identifiable {
 extension GenericPreset {
     /// Adding a preset is adding one element to this array. No new type, no new
     /// file, no UI change — that is the whole point of the generic provider.
+    /// The preset whose name is the one given, if any.
+    ///
+    /// Matched on the display name with case and spacing removed, and on the id
+    /// as well, because "Gemini CLI", "gemini cli" and "gemini" are all the same
+    /// answer. Nothing fuzzier than that: a row wearing the wrong vendor's mark
+    /// is worse than a row wearing none.
+    public static func matching(name: String) -> GenericPreset? {
+        func flattened(_ text: String) -> String {
+            text.lowercased().filter { !$0.isWhitespace }
+        }
+        let wanted = flattened(name)
+        return all.first { flattened($0.displayName) == wanted || $0.id == wanted }
+    }
+
     public static let all: [GenericPreset] = [
         GenericPreset(
             id: "aider",

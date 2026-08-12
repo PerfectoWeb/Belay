@@ -156,7 +156,12 @@ final class BelayController {
     private func startProviders() {
         tasks.append(
             Task { [providers, coordinator, driver, weak self] in
-                for await signal in await providers.start() {
+                // Awaited, then published: a parallel task caught the generic
+                // provider before its targets arrived, so the panel offered to
+                // set up folders it was already watching.
+                let signals = await providers.start()
+                await self?.publishProviderStatus()
+                for await signal in signals {
                     await coordinator.ingest(signal)
                     // The driver may be napping on a deadline computed before
                     // this signal existed; without this a release lands up to a
@@ -166,13 +171,24 @@ final class BelayController {
                 }
             }
         )
-        tasks.append(Task { [weak self] in await self?.publishProviderStatus() })
         watchForClaudeCodeAppearing()
     }
 
-    func publishProviderStatus() async {
-        let last = state.snapshot.sessions.map(\.lastSignal).max()
-        state.apply(providers: await providers.statuses(lastSignal: last))
+    private func observePowerSource() {
+        tasks.append(
+            Task { [powerSource, coordinator, driver] in
+                for await snapshot in await powerSource.changes() {
+                    await coordinator.setPowerConditions(
+                        PowerConditions(
+                            isOnAC: snapshot.isOnAC,
+                            charge: snapshot.charge,
+                            isLowPowerMode: snapshot.isLowPowerMode
+                        )
+                    )
+                    await driver.nudge()
+                }
+            }
+        )
     }
 
     private func observeDecisions() {
@@ -191,23 +207,6 @@ final class BelayController {
                         await assertions.release()
                     }
                     self?.refreshSnapshot()
-                }
-            }
-        )
-    }
-
-    private func observePowerSource() {
-        tasks.append(
-            Task { [powerSource, coordinator, driver] in
-                for await snapshot in await powerSource.changes() {
-                    await coordinator.setPowerConditions(
-                        PowerConditions(
-                            isOnAC: snapshot.isOnAC,
-                            charge: snapshot.charge,
-                            isLowPowerMode: snapshot.isLowPowerMode
-                        )
-                    )
-                    await driver.nudge()
                 }
             }
         )

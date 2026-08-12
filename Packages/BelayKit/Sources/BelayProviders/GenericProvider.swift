@@ -157,10 +157,18 @@ public actor GenericProvider: ActivityProvider {
     }
 
     /// The preset a target was created from, which is how the UI knows to show
-    /// Gemini's mark rather than the "some other agent" one. Targets the user
-    /// built by hand have none, and get the neutral mark.
+    /// Gemini's mark rather than the "some other agent" one.
+    ///
+    /// A target built by hand carries no preset id, and used to get the neutral
+    /// mark for ever after. But somebody who adds a folder and names the row
+    /// "Codex" has told us which tool it is as plainly as picking the preset
+    /// would have, and the app already ships that logo. So the name is matched
+    /// against the presets as a fallback. Only an exact match counts, ignoring
+    /// case and spacing: a guess here puts the wrong company's mark on a row.
     private func preset(of watch: GenericWatch) -> String? {
-        guard let owner = watch.target else { return nil }
-        return targets.first { $0.id == owner }?.webhookIdentifier
+        guard let owner = watch.target, let target = targets.first(where: { $0.id == owner })
+        else { return nil }
+        if let identifier = target.webhookIdentifier { return identifier }
+        return GenericPreset.matching(name: target.displayName)?.id
     }
 }

@@ -23,4 +23,8 @@ extension BelayController {
         )
     }
 
+    func publishProviderStatus() async {
+        let last = state.snapshot.sessions.map(\.lastSignal).max()
+        state.apply(providers: await providers.statuses(lastSignal: last))
+    }
 }
