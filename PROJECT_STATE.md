@@ -523,6 +523,42 @@ window now grows to its content up to the screen height rather than scrolling at
 640: a preferences pane that starts scrolling because you added a third tool
 reads as running out of room, and the window has plenty.
 
+### D26 — Of the three recorded defects, one was a bug and two are trades
+
+Recorded together after the concurrency pass; they are not the same kind of
+thing, and treating them as one list was the mistake.
+
+**Fixed (2026-08-12): Tier C fought the idle sweep.** Tier C reported `.working`
+from a freshly started child without moving anything the idle sweep measures,
+so five seconds later the sweep put the session back to `.idle`, and Tier C
+revived it ten seconds after that. A session held alive by a long tool call
+flipped working, idle, working for the whole call, and the panel flickered with
+it. `TranscriptWatch` now carries `lastBusyChildAt` beside `lastWriteAt` —
+different evidence, kept apart, because a running tool writes nothing — and the
+sweep measures from the later of the two. The test for it is red without the
+fix; that was checked rather than assumed.
+
+**Not fixed, and deliberately not before a release: only direct children count.**
+An agent that runs a tool through a wrapper shell older than the horizon has a
+genuinely new grandchild that `AgentChildren.busy` does not see, so the tool
+call does not register. Walking the parent chain is easy. What it changes is the
+trade the age bound exists to make: today a long-lived direct child stops
+counting once it ages out, and with ancestors it is any descendant, so a dev
+server that respawns a worker every few seconds would read as continuous work
+and pin the Mac awake next to an idle agent. That is the failure the bound was
+written to prevent, reached one level down. Sleeping mid-tool-call is the worse
+failure and the case for fixing it is real, but it is a behaviour change with a
+new failure mode attached, and slipping one of those in under a release is how
+the release goes wrong. Decide it deliberately, afterwards.
+
+**Not fixed, and probably not a defect: `shutdown()`'s one-second budget.** A
+release issued while a create is wedged in IOKit now waits for that create, so
+the budget can expire slightly more often. What happens when it does is that the
+app exits without a clean release — and the kernel then drops the assertion
+anyway, which is exactly what was watched happening under SIGKILL on
+2026-08-12. The budget exists so quitting is never slow; the correctness does
+not depend on it.
+
 ### D23 — VigilKit localises against the app bundle, and a gate checks it
 
 The panel's setup warning showed in English inside a Russian window because

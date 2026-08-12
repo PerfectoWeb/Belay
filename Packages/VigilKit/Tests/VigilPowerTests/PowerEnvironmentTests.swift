@@ -62,9 +62,13 @@ struct PowerEnvironmentTests {
         }
         raise(SIGUSR1)
 
+        // A deadline rather than a fixed number of 5 ms naps: under load each
+        // nap overruns, so counting naps quietly turns a 500 ms budget into
+        // whatever the machine felt like.
         var released = false
-        for _ in 0..<100 where !released {
-            try await Task.sleep(for: .milliseconds(5))
+        let deadline = Date().addingTimeInterval(10)
+        while !released, Date() < deadline {
+            try await Task.sleep(for: .milliseconds(20))
             released = await controller.isHeld == false
         }
 

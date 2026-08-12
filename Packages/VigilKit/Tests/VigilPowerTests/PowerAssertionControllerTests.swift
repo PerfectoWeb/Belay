@@ -85,8 +85,14 @@ struct PowerAssertionControllerTests {
         let controller = PowerAssertionController(backend: backend, refreshFraction: 0.5)
 
         await controller.hold(reason: "work", timeout: 0.06)
-        try await Task.sleep(for: .milliseconds(160))
-        #expect(await backend.rearmCount >= 2)
+        // Polled, not slept. The refresh fires every 30 ms of *scheduler* time,
+        // and the package's tests share one cooperative pool with a property
+        // test that runs eighty thousand actor hops. On a three-core runner
+        // under that load, "two rearms inside 160 ms of wall clock" is a bet on
+        // the scheduler rather than an assertion about the controller.
+        let rearmed = await waitFor("two rearms") { await backend.rearmCount >= 2 }
+        let seen = await backend.rearmCount
+        #expect(rearmed, "only \(seen) rearms")
 
         await controller.release()
         let rearmsAtRelease = await backend.rearmCount
@@ -94,6 +100,21 @@ struct PowerAssertionControllerTests {
 
         #expect(await backend.rearmCount == rearmsAtRelease)
         #expect(await backend.liveIDs.isEmpty)
+    }
+
+    /// Polls rather than sleeping a fixed span, for anything of the form "did
+    /// this happen yet". A fixed sleep asserts something about the machine.
+    private func waitFor(
+        _ what: String,
+        timeout: TimeInterval = 10,
+        _ condition: () async -> Bool
+    ) async -> Bool {
+        let deadline = Date().addingTimeInterval(timeout)
+        while Date() < deadline {
+            if await condition() { return true }
+            try? await Task.sleep(for: .milliseconds(20))
+        }
+        return false
     }
 
     @Test func failedCreateIsSurfacedAndRecoversOnTheNextTick() async {

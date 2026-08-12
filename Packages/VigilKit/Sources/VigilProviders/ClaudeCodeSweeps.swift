@@ -33,7 +33,11 @@ extension ClaudeCodeProvider {
 
     func sweepForIdle(now: Date) {
         for (id, watch) in watched where watch.reported == .working {
-            guard now.timeIntervalSince(watch.lastWriteAt) > configuration.inferredIdleAfter else {
+            // `lastEvidenceAt`, not `lastWriteAt`: a running tool call writes
+            // nothing, and Tier C's proof of one has to count or this sweep
+            // undoes it five seconds later.
+            guard now.timeIntervalSince(watch.lastEvidenceAt) > configuration.inferredIdleAfter
+            else {
                 continue
             }
             report(.idle, for: id, at: now)
@@ -73,6 +77,7 @@ extension ClaudeCodeProvider {
             watched[record.session]?.name = record.name
             // A freshly started child means a tool is running (risk R6).
             if busy?.contains(record.pid) == true {
+                watched[record.session]?.lastBusyChildAt = now
                 report(.working, for: record.session, at: now)
             }
         }

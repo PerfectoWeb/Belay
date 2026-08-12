@@ -8,6 +8,14 @@ struct TranscriptWatch: Sendable {
     var cursor: TranscriptCursor
     /// When the file was last seen to change. Drives the no-growth idle rule.
     var lastWriteAt: Date
+    /// When Tier C last saw a freshly started child process for this session.
+    ///
+    /// Separate from `lastWriteAt` because it is different evidence: the
+    /// transcript has not grown, a tool is simply running without writing. They
+    /// were the same field once, and the idle sweep then undid what Tier C had
+    /// just reported — the panel flipped working, idle, working every fifteen
+    /// seconds for the whole of a long tool call.
+    var lastBusyChildAt: Date?
     var workspace: String?
     /// The session this one was spawned by, when it is a subagent.
     var parent: SessionID?
@@ -19,6 +27,12 @@ struct TranscriptWatch: Sendable {
     /// The last activity yielded for this session, so `.idle` is not repeated
     /// every sweep while `.working` stays a heartbeat.
     var reported: SessionActivity?
+
+    /// The most recent evidence of any kind that work is happening. What the
+    /// idle sweep measures its horizon from.
+    var lastEvidenceAt: Date {
+        max(lastWriteAt, lastBusyChildAt ?? .distantPast)
+    }
 
     init(
         id: SessionID,
