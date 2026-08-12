@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 /// The top block of the panel: one glyph, one headline, one plain sentence.
@@ -7,6 +8,12 @@ struct PanelStatusLine: View {
     /// Two lines of the 11 pt detail font, spacing included. Measured, and the
     /// test in `PanelHeightStabilityTests` fails if it stops being right.
     private static let detailHeight: CGFloat = 30
+
+    /// How much width the sentence actually gets: the panel, less its padding,
+    /// the 18 pt mark and the 10 pt gap. Every status sentence is meant to fit
+    /// this on one line in every language, and `LocalizationTests` checks it.
+    static let detailWidth: CGFloat = PanelView.width - 14 * 2 - 18 - 10
+    static let detailFont = NSFont.systemFont(ofSize: 11)
 
     @Environment(\.colorSchemeContrast) private var contrast
 
@@ -59,7 +66,10 @@ struct PanelStatusLine: View {
 }
 
 extension PanelStatus {
-    var title: LocalizedStringKey {
+    /// `LocalizedStringResource`, not `LocalizedStringKey`: only the former lets
+    /// a test read back the key it will look up, and the test that matters here
+    /// measures every one of these sentences in every language.
+    var title: LocalizedStringResource {
         switch self {
         case .off, .armed: return "Your Mac will sleep normally"
         case .alwaysOn, .working, .coolingDown: return "Keeping your Mac awake"
@@ -69,7 +79,7 @@ extension PanelStatus {
         }
     }
 
-    var detail: LocalizedStringKey {
+    var detail: LocalizedStringResource {
         switch self {
         case .off:
             return "Vigil is switched off, so it will not hold sleep at all."

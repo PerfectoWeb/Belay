@@ -24,7 +24,7 @@ A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviou
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Vigil when the session ends.,Folder activity counts as work. A running process only tells Vigil when the session ends.
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Vigil makes a timestamped backup first. ""Remove"" restores the original file.","Vigil makes a timestamped backup first. ""Remove"" restores the original file."
-About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers",translated,,About,About
+About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics",translated,,About,About
 About %@,Menu bar,translated,%@,About %@,About %@
 Active sessions,Panel,translated,,Active sessions,Active sessions
 "Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,Add a folder or choose a preset to watch another agent.,Add a folder or choose a preset to watch another agent.
@@ -36,7 +36,7 @@ Also keep the display awake,"Detection, Settings: General",translated,,Also keep
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Always On
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,An agent is waiting for you
 An agent is waiting for you. Vigil is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Vigil is keeping your Mac awake.,An agent is waiting for you. Vigil is keeping your Mac awake.
-"An agent is working, so sleep is on hold.",Panel,translated,,"An agent is working, so your Mac is staying awake.","An agent is working, so your Mac is staying awake."
+"An agent is working, so sleep is on hold.",Panel,needs_review,,"An agent is working, so your Mac stays awake.","An agent is working, so your Mac stays awake."
 An agent is working. Your Mac will be free to sleep as soon as Vigil quits.,Menu bar,translated,,An agent is working. Quitting Vigil will let your Mac sleep.,An agent is working. Quitting Vigil will let your Mac sleep.
 Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,Auto
 Awake %@ so far,Panel,translated,%@,Awake for %@,Awake for %@
@@ -69,10 +69,10 @@ General,"Settings, Settings: General",translated,,General,General
 GitHub,"App, Settings: About, Settings: General",translated,,GitHub,GitHub
 GitHub answered %lld.,Settings: General,translated,%lld,GitHub returned %lld.,GitHub returned %lld.
 Grant access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Allow access to ~/.claude
-Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a little longer in case more work starts.,Waiting a little longer in case more work starts.
+Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Waiting a moment in case more work starts.
 How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Vigil waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,How long Vigil waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Idle
-It needs an answer from you before it can carry on.,Panel,translated,,Your agent needs an answer before it can continue.,Your agent needs an answer before it can continue.
+It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,It needs an answer before it can continue.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Keeping your Mac awake
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Keeps your Mac awake while your agent works.
 Kept awake for %@ since Vigil started,Panel,translated,%@,Kept awake for %@ since launch,Kept awake for %@ since launch
@@ -174,7 +174,7 @@ Vigil is keeping your Mac awake: always on.,Menu bar,translated,,Always On is ke
 Vigil is keeping your Mac awake: an agent is working.,Menu bar,translated,,Vigil is keeping your Mac awake while an agent works.,Vigil is keeping your Mac awake while an agent works.
 Vigil is off. Your Mac will sleep normally.,Menu bar,translated,,Vigil is off. Your Mac will sleep normally.,Vigil is off. Your Mac will sleep normally.
 Vigil is only useful when it is already running.,Settings: General,translated,,Open Vigil at login so it's ready before an agent starts.,Open Vigil at login so it's ready before an agent starts.
-"Vigil is switched off, so it will not hold sleep at all.",Panel,translated,,Vigil is off and won't keep your Mac awake.,Vigil is off and won't keep your Mac awake.
+"Vigil is switched off, so it will not hold sleep at all.",Panel,needs_review,,Vigil won't keep your Mac awake.,Vigil won't keep your Mac awake.
 Vigil is up to date.,Settings: General,translated,,Vigil is up to date.,Vigil is up to date.
 Vigil is watching. Nothing is running right now.,Panel,translated,,Vigil is watching. No agents are running.,Vigil is watching. No agents are running.
 Vigil is watching. Your Mac will sleep normally.,Menu bar,translated,,Vigil is watching. Your Mac can sleep normally.,Vigil is watching. Your Mac can sleep normally.
@@ -182,7 +182,7 @@ Vigil is watching. Your Mac will sleep normally.,Menu bar,translated,,Vigil is w
 Vigil let your Mac sleep,Panel,translated,,Vigil let your Mac sleep,Vigil let your Mac sleep
 Vigil needs your permission to read %@.,Settings: Providers,translated,%@,Vigil needs permission to read %@.,Vigil needs permission to read %@.
 Vigil reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Vigil reached the maximum awake time and let your Mac sleep.,Vigil reached the maximum awake time and let your Mac sleep.
-"Vigil reached the longest stretch you allow it to hold, so it stopped.",Panel,translated,,Maximum awake time reached. Vigil stopped keeping your Mac awake.,Maximum awake time reached. Vigil stopped keeping your Mac awake.
+"Vigil reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,The maximum awake time was reached.
 "Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.",Settings: About,translated,,"Vigil reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Vigil reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
 "Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.",Welcome,translated,,"Vigil reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac.","Vigil reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac."
 Vigil still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,You can still use Always On or Off.
@@ -206,7 +206,7 @@ When a long task finishes,Settings: Notifications,translated,,When a long task f
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,When an agent needs you
 While holding,Settings: General,translated,,While holding,While holding
 Working,Panel,translated,,Working,Working
-You asked Vigil to stay on until you switch it off.,Panel,translated,,Always On keeps your Mac awake until you turn it off.,Always On keeps your Mac awake until you turn it off.
+You asked Vigil to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Your Mac stays awake until you turn it off.
 "Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes.",Detection,translated,,"Vigil found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.","Vigil found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed."
 "Your Claude Code settings file is not plain JSON, so Vigil will not modify it.",Detection,translated,,"Your Claude Code settings file isn't plain JSON, so Vigil won't modify it.","Your Claude Code settings file isn't plain JSON, so Vigil won't modify it."
 Your Mac will go back to its normal sleep schedule.,Menu bar,translated,,Your Mac can return to its normal sleep schedule.,Your Mac can return to its normal sleep schedule.
@@ -215,7 +215,7 @@ Your agent finished,Settings: Notifications,translated,,Your agent finished,Your
 Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Settings: Notifications,translated,,Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications.,Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications.
 Your agent needs input%@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input%@ before it can continue.,Your agent needs input%@ before it can continue.
 Your agent still finishes; Vigil just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Vigil just lets your Mac sleep sooner afterward.,Your agent still finishes. Vigil just lets your Mac sleep sooner afterward.
-"Your battery is down to %lld%%, so Vigil stopped holding to save power.",Panel,translated,%lld,"Battery reached %lld%%, so Vigil let your Mac sleep to save power.","Battery reached %lld%%, so Vigil let your Mac sleep to save power."
+"Your battery is down to %lld%%, so Vigil stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Vigil let it sleep.","Battery is at %lld%%, so Vigil let it sleep."
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,kept working while you were away
 last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,last signal %@ ago
 longest run,Statistics,translated,,longest run,longest run

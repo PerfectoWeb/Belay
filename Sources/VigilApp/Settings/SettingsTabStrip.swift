@@ -18,6 +18,12 @@ import SwiftUI
 struct SettingsTabStrip: View {
     @Bindable var model: SettingsTabModel
 
+    /// Stated rather than measured. The strip used to live in a titlebar
+    /// accessory, which hands its view a standard 36 pt toolbar row whatever the
+    /// view asks for and clips the chip off top and bottom; it sits in the
+    /// window's content now, where the height is ours to set.
+    static let height: CGFloat = 60
+
     /// Matched to the spring. Much beyond this and the pill reads as two
     /// separate edges rather than as one that is stretching.
     static let lag: TimeInterval = 0.07
@@ -28,6 +34,10 @@ struct SettingsTabStrip: View {
     /// rather than an origin and a width for exactly the reason above.
     @State private var leading: CGFloat?
     @State private var trailing: CGFloat?
+    /// Set while the chip is travelling. Stretching along the direction of
+    /// travel without giving anything back reads as rubber; losing a little
+    /// height at the same time is what makes it read as volume.
+    @State private var squashed = false
 
     @Environment(\.colorSchemeContrast) private var contrast
 
@@ -42,9 +52,8 @@ struct SettingsTabStrip: View {
         }
         .coordinateSpace(name: Self.space)
         .onPreferenceChange(TabFrames.self) { frames = $0 }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, minHeight: Self.height, maxHeight: Self.height)
         .padding(.horizontal, 12)
-        .padding(.vertical, 6)
         .onChange(of: model.pane) { _, pane in move(to: pane) }
         .onChange(of: frames) { _, _ in if leading == nil { settle() } }
         .accessibilityElement(children: .contain)
@@ -67,6 +76,7 @@ struct SettingsTabStrip: View {
                     .strokeBorder(.primary.opacity(0.13), lineWidth: 1)
             )
             .shadow(color: .black.opacity(0.16), radius: 1.5, y: 0.5)
+            .scaleEffect(x: 1, y: squashed ? 0.90 : 1)
             .frame(
                 width: max((trailing ?? 0) - (leading ?? 0), 0),
                 height: frames[model.pane]?.height ?? 0
@@ -124,6 +134,8 @@ struct SettingsTabStrip: View {
         let delay = Self.delays(forward: frame.minX > from)
         withAnimation(Self.travel.delay(delay.leading)) { leading = frame.minX }
         withAnimation(Self.travel.delay(delay.trailing)) { trailing = frame.maxX }
+        withAnimation(.spring(duration: 0.16)) { squashed = true }
+        withAnimation(Self.travel.delay(0.14)) { squashed = false }
     }
 
     /// The edge in front sets off first and the one behind follows a beat later,
@@ -159,5 +171,28 @@ private struct TabFrames: PreferenceKey {
         value: inout [SettingsPane: CGRect], nextValue: () -> [SettingsPane: CGRect]
     ) {
         value.merge(nextValue()) { _, next in next }
+    }
+}
+
+/// The switcher, a hairline, and the pane under it.
+///
+/// One hosted view rather than a titlebar accessory plus a content view: the
+/// accessory would not give the strip the height it asked for, and there is
+/// nothing the titlebar was doing here that a strip at the top of the content
+/// does not do.
+struct SettingsChrome: View {
+    @Bindable var tabs: SettingsTabModel
+    var pane: SettingsView
+
+    /// What the window has to add to a pane's own height.
+    static var chromeHeight: CGFloat { SettingsTabStrip.height + 1 }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            SettingsTabStrip(model: tabs)
+                .background(.bar)
+            Divider()
+            pane
+        }
     }
 }

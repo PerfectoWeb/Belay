@@ -12,18 +12,19 @@ import VigilSettings
 /// ends up responding to `showSettingsWindow:`. Owning an `NSWindow` is the same
 /// pattern `OnboardingWindow` already uses, and it can be tested.
 ///
-/// The pane switcher is `SettingsTabStrip` in a titlebar accessory, which gives
+/// The pane switcher is `SettingsTabStrip`, at the top of the content. It keeps
 /// the preferences shape — icon over label, window title following the
 /// selection, window height animating to the pane — while leaving the selection
 /// highlight ours to draw. It was an `NSToolbar` in `.preference` style until the
-/// highlight needed to move rather than cut. Unlike a SwiftUI `TabView`, neither
-/// version can collapse into an overflow chevron or resize the window behind our
-/// back.
+/// highlight needed to move rather than cut, and then a titlebar accessory until
+/// that turned out to hand its view a 36 pt toolbar row whatever the view asks
+/// for. Unlike a SwiftUI `TabView`, none of them can collapse into an overflow
+/// chevron or resize the window behind our back.
 @MainActor
 final class SettingsWindow: NSObject {
     private(set) var window: NSWindow?
     private(set) var pane: SettingsPane = .general
-    private var hosting: NSHostingController<SettingsView>?
+    private var hosting: NSHostingController<SettingsChrome>?
     private let settings: SettingsStore
     private let state: AppState
     private let precise: PreciseDetection
@@ -85,7 +86,9 @@ final class SettingsWindow: NSObject {
         }
         if let requested { pane = requested }
 
-        let hosting = NSHostingController(rootView: view(for: pane))
+        tabs.pane = pane
+        tabs.onSelect = { [weak self] pane in self?.select(pane) }
+        let hosting = NSHostingController(rootView: chrome(for: pane))
         // With SwiftUI driving the window size (the default `sizingOptions`) it
         // resized the window back down under us, so setting a size had no
         // effect. This takes the size decision away from SwiftUI; `select`
@@ -104,7 +107,6 @@ final class SettingsWindow: NSObject {
         window.contentViewController = hosting
         window.isReleasedWhenClosed = false
         window.delegate = self
-        window.addTitlebarAccessoryViewController(makeSwitcher())
         self.window = window
         self.hosting = hosting
 
@@ -117,7 +119,7 @@ final class SettingsWindow: NSObject {
     func select(_ pane: SettingsPane, animated: Bool = true) {
         self.pane = pane
         guard let window, let hosting else { return }
-        hosting.rootView = view(for: pane)
+        hosting.rootView = chrome(for: pane)
         window.title = pane.title
         tabs.pane = pane
         resize(window, to: height(for: pane), animated: animated)
@@ -131,7 +133,11 @@ final class SettingsWindow: NSObject {
     /// Rebuilds the pane in place, leaving the window's size alone — remeasuring
     /// on a tick would animate the window under the user.
     private func refreshContent() {
-        hosting?.rootView = view(for: pane)
+        hosting?.rootView = chrome(for: pane)
+    }
+
+    private func chrome(for pane: SettingsPane) -> SettingsChrome {
+        SettingsChrome(tabs: tabs, pane: view(for: pane))
     }
 
     /// Statistics is the only pane whose numbers move while it is on screen, and
@@ -147,20 +153,6 @@ final class SettingsWindow: NSObject {
         timer.tolerance = 2
         RunLoop.main.add(timer, forMode: .common)
         refreshTimer = timer
-    }
-
-    /// Below the title bar, full width, with the system's own separator under
-    /// it: the accessory is what makes a drawn switcher sit where a preferences
-    /// toolbar sits instead of looking like a strip bolted onto the content.
-    private func makeSwitcher() -> NSTitlebarAccessoryViewController {
-        tabs.pane = pane
-        tabs.onSelect = { [weak self] pane in self?.select(pane) }
-        let controller = NSTitlebarAccessoryViewController()
-        controller.layoutAttribute = .bottom
-        let hosting = NSHostingView(rootView: SettingsTabStrip(model: tabs))
-        hosting.frame.size = hosting.fittingSize
-        controller.view = hosting
-        return controller
     }
 
     func view(for pane: SettingsPane, watching: [GenericTarget]? = nil) -> SettingsView {

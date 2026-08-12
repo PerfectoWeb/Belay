@@ -85,6 +85,36 @@ final class LocalizationTests: XCTestCase {
         }
     }
 
+    /// The panel's headline block reserves two lines and truncates at the
+    /// second, so a sentence that wraps is a sentence that can lose its ending
+    /// in a language nobody testing the app reads. Every status sentence has to
+    /// fit the detail column on one line, everywhere.
+    func testEveryPanelStatusFitsOneLine() throws {
+        let statuses: [PanelStatus] = [
+            .off, .armed, .alwaysOn, .working, .awaitingUser, .coolingDown,
+            .batteryLow(percent: 18), .maxDurationReached
+        ]
+        var measured = 0
+        for code in languages {
+            let table = try self.table(code)
+            for status in statuses {
+                let sentence = try XCTUnwrap(
+                    table[status.detail.key], "\(code) has no \"\(status.detail.key)\"")
+                let rendered = sentence
+                    .replacingOccurrences(of: "%lld", with: "18")
+                    .replacingOccurrences(of: "%%", with: "%")
+                let width = (rendered as NSString).size(
+                    withAttributes: [.font: PanelStatusLine.detailFont]
+                ).width
+                XCTAssertLessThanOrEqual(
+                    width, PanelStatusLine.detailWidth,
+                    "\(code): \"\(rendered)\" wraps in the panel")
+                measured += 1
+            }
+        }
+        XCTAssertEqual(measured, statuses.count * languages.count, "some sentences were skipped")
+    }
+
     private static func specifiers(in text: String) -> [String] {
         let pattern = try? NSRegularExpression(pattern: "%(?:\\d+\\$)?(?:lld|ld|[@dfsu%])")
         let range = NSRange(text.startIndex..., in: text)

@@ -84,11 +84,16 @@ final class SettingsWindowTests: XCTestCase {
         settings.show()
         let window = try XCTUnwrap(settings.window)
 
-        XCTAssertEqual(window.titlebarAccessoryViewControllers.count, 1, "no switcher")
-        let strip = try XCTUnwrap(window.titlebarAccessoryViewControllers.first)
-        XCTAssertEqual(strip.layoutAttribute, .bottom, "the switcher is not under the title")
-        XCTAssertGreaterThan(strip.view.fittingSize.height, 30, "the switcher has no height")
-        XCTAssertGreaterThan(strip.view.fittingSize.width, 0, "the switcher has no width")
+        // The switcher lives in the content, so the window has to be tall enough
+        // for it *and* a usable pane. It spent a build in a titlebar accessory,
+        // which quietly gave it a 36 pt toolbar row and cut the chip off top and
+        // bottom, and nothing failed.
+        XCTAssertTrue(
+            window.titlebarAccessoryViewControllers.isEmpty,
+            "the switcher is back in the titlebar, where its height is not its own")
+        XCTAssertGreaterThanOrEqual(
+            window.contentView?.frame.height ?? 0, SettingsTabStrip.height + 160,
+            "the window cannot show the switcher and a pane")
 
         for pane in SettingsPane.allCases {
             XCTAssertFalse(pane.title.isEmpty, "\(pane) has no label")

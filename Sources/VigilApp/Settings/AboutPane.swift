@@ -42,6 +42,10 @@ struct AboutPane: View {
                 .clipped()
 
             VStack(spacing: 10) {
+                // Two spacers rather than a top padding and one: the free space
+                // splits evenly, so the lockup sits centred in what is left
+                // above the promises instead of hanging from the top edge.
+                Spacer(minLength: 12)
                 VigilWordmark(size: 38, animated: isAnimating)
                 Text("Version \(Branding.version) (\(Branding.build))")
                     .font(.caption)
@@ -49,11 +53,10 @@ struct AboutPane: View {
                     .padding(.horizontal, 8)
                     .padding(.vertical, 2)
                     .background(.white.opacity(0.10), in: Capsule())
-
-                Spacer(minLength: 16)
+                Spacer(minLength: 12)
                 promises
             }
-            .padding(.top, 40)
+            .padding(.top, 8)
             .padding(.horizontal, 28)
             .padding(.bottom, 16)
             .opacity(appeared ? 1 : 0)
@@ -63,19 +66,26 @@ struct AboutPane: View {
         .frame(height: 226)
     }
 
-    /// One translated sentence with the company name made a link, rather than
-    /// three fragments glued together: a translator handed "© 2026", a name and
-    /// "MIT licensed" separately has no sentence left to arrange.
-    private var copyright: AttributedString {
-        var line = AttributedString(
-            String(localized: "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."))
-        guard let url = Branding.homepageURL, let name = line.range(of: "PerfectoWeb") else {
-            return line
+    /// One translated sentence, split around the company name at display time so
+    /// the name can answer the pointer. The catalogue still holds one sentence:
+    /// a translator handed "© 2026", a name and "MIT licensed" as three strings
+    /// has nothing left to arrange, and the name is a proper noun that survives
+    /// translation unchanged.
+    @ViewBuilder private var copyright: some View {
+        let sentence = String(localized: "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.")
+        let parts = sentence.components(separatedBy: Self.owner)
+        if parts.count == 2, let url = Branding.homepageURL {
+            HStack(spacing: 0) {
+                Text(verbatim: parts[0])
+                HomepageLink(url: url)
+                Text(verbatim: parts[1])
+            }
+        } else {
+            Text(verbatim: sentence)
         }
-        line[name].link = url
-        line[name].underlineStyle = .single
-        return line
     }
+
+    private static let owner = "PerfectoWeb"
 
     private func body(padding: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -110,7 +120,7 @@ struct AboutPane: View {
             Divider()
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(copyright)
+                copyright
                 // The marks in the session list belong to other people. Saying so
                 // inside the app, not only in the repository, is the point:
                 // nobody reads a NOTICE file before installing something.
