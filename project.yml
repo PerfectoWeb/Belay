@@ -1,4 +1,4 @@
-name: Vigil
+name: Belay
 
 # Everything derived from these three lives here and nowhere else, so the
 # rename procedure in docs/NAMING.md stays a two-line change.
@@ -12,7 +12,7 @@ options:
 settings:
   base:
     # PRODUCT_NAME belongs to the app target only — setting it project-wide also
-    # renames the test bundle's Swift module to Vigil and the two collide.
+    # renames the test bundle's Swift module to Belay and the two collide.
     ORG_IDENTIFIER: com.perfecto-web
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
@@ -30,14 +30,14 @@ settings:
     CODE_SIGN_STYLE: Manual
 
 packages:
-  VigilKit:
-    path: Packages/VigilKit
+  BelayKit:
+    path: Packages/BelayKit
 
   # Sparkle is deferred, not forgotten. Enabling it is this block plus the
-  # `- package: Sparkle` line in the Vigil target below plus SUFeedURL in that
+  # `- package: Sparkle` line in the Belay target below plus SUFeedURL in that
   # target's Info.plist — and nothing else, because the app talks to updates
-  # through VigilTipJar's UpdateChannel, whose no-op implementation ships today.
-  # It must never appear under Vigil-MAS: Apple rejects third-party updaters,
+  # through BelayTipJar's UpdateChannel, whose no-op implementation ships today.
+  # It must never appear under Belay-MAS: Apple rejects third-party updaters,
   # and scripts/verify-mas-build.sh fails the build if a Sparkle symbol shows up
   # in that binary. See BLOCKERS.md B3.
   #
@@ -48,34 +48,34 @@ packages:
 # The two distribution channels are one target twice, not two codebases. Only
 # the five ${...} values below differ; if a sixth ever appears, question it.
 targetTemplates:
-  VigilAppChannel:
+  BelayAppChannel:
     type: application
     platform: macOS
     sources:
-      - path: Sources/VigilApp
+      - path: Sources/BelayApp
       - path: Resources
         buildPhase: resources
         excludes:
           - Entitlements # signing input, not a bundle resource
     dependencies:
-      - package: VigilKit
-        product: VigilCore
-      - package: VigilKit
-        product: VigilPower
-      - package: VigilKit
-        product: VigilSettings
-      - package: VigilKit
-        product: VigilProviders
-      - package: VigilKit
-        product: VigilHookBridge
-      - package: VigilKit
-        product: VigilSupport
-      - package: VigilKit
-        product: VigilTipJar
+      - package: BelayKit
+        product: BelayCore
+      - package: BelayKit
+        product: BelayPower
+      - package: BelayKit
+        product: BelaySettings
+      - package: BelayKit
+        product: BelayProviders
+      - package: BelayKit
+        product: BelayHookBridge
+      - package: BelayKit
+        product: BelaySupport
+      - package: BelayKit
+        product: BelayTipJar
     settings:
       base:
-        PRODUCT_NAME: Vigil
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil
+        PRODUCT_NAME: Belay
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay
         INFOPLIST_KEY_NSHumanReadableCopyright: ""
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         COMBINE_HIDPI_IMAGES: YES
@@ -87,20 +87,20 @@ targetTemplates:
         # file quietly loses.
         ENABLE_APP_SANDBOX: ${sandbox}
         SWIFT_ACTIVE_COMPILATION_CONDITIONS: $(inherited) ${channel}
-        # ...and the same fact in a form VigilKit can read. Xcode does not pass
+        # ...and the same fact in a form BelayKit can read. Xcode does not pass
         # SWIFT_ACTIVE_COMPILATION_CONDITIONS down to a local SwiftPM target
-        # (verified with a #warning probe), so `#if VIGIL_MAS` works in the app
-        # and nowhere else. VigilTipJar.DistributionChannel reads this instead.
-        VIGIL_CHANNEL: ${channelName}
+        # (verified with a #warning probe), so `#if BELAY_MAS` works in the app
+        # and nowhere else. BelayTipJar.DistributionChannel reads this instead.
+        BELAY_CHANNEL: ${channelName}
     # Both targets generate the same Info.plist. Nothing in it differs by
     # channel today; if something ever does (SUFeedURL is the likely one), split
     # this into two paths and exclude "Info*.plist" from the sources above,
     # otherwise each target picks up the other's plist as a bundle resource.
     info:
-      path: Sources/VigilApp/Info.plist
+      path: Sources/BelayApp/Info.plist
       properties:
         CFBundleName: $(PRODUCT_NAME)
-        CFBundleDisplayName: Vigil
+        CFBundleDisplayName: Belay
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundlePackageType: APPL
@@ -110,110 +110,110 @@ targetTemplates:
         ITSAppUsesNonExemptEncryption: false
         NSSupportsAutomaticTermination: false
         NSSupportsSuddenTermination: false
-        VigilDistributionChannel: $(VIGIL_CHANNEL)
+        BelayDistributionChannel: $(BELAY_CHANNEL)
 
 targets:
   # Direct channel: Developer ID, notarized, link-based tips, and Sparkle once
   # there is a key to sign an appcast with. Ships first (docs/06).
-  Vigil:
-    templates: [VigilAppChannel]
+  Belay:
+    templates: [BelayAppChannel]
     templateAttributes:
-      entitlements: Resources/Entitlements/Vigil.entitlements
+      entitlements: Resources/Entitlements/Belay.entitlements
       hardenedRuntime: "YES"
       sandbox: "NO"
-      channel: VIGIL_DIRECT
+      channel: BELAY_DIRECT
       channelName: direct
     # dependencies:
     #   - package: Sparkle   # see the packages block above
 
   # Mac App Store channel: sandboxed, StoreKit tips, no updater of our own.
-  Vigil-MAS:
-    templates: [VigilAppChannel]
+  Belay-MAS:
+    templates: [BelayAppChannel]
     templateAttributes:
-      entitlements: Resources/Entitlements/Vigil-MAS.entitlements
+      entitlements: Resources/Entitlements/Belay-MAS.entitlements
       # Hardened Runtime is a Developer ID/notarization concept; the App Store
       # applies its own runtime policy and the setting is ignored there.
       hardenedRuntime: "NO"
       sandbox: "YES"
-      channel: VIGIL_MAS
+      channel: BELAY_MAS
       channelName: appStore
     settings:
       base:
         ENABLE_USER_SELECTED_FILES: readwrite
       configs:
         Debug:
-          # Both channels write Vigil.app into the same products directory, so a
+          # Both channels write Belay.app into the same products directory, so a
           # debug MAS build would silently replace the direct one and every
           # local check after it would be inspecting the wrong bundle. Release —
-          # the configuration that gets archived and submitted — is plain Vigil.
+          # the configuration that gets archived and submitted — is plain Belay.
           #
           # The sandbox test action is pinned to Debug for the same reason: its
           # TEST_HOST is generated from PRODUCT_NAME, so a Release test run would
-          # look for a Vigil-MAS.app that Release does not build.
-          PRODUCT_NAME: Vigil-MAS
+          # look for a Belay-MAS.app that Release does not build.
+          PRODUCT_NAME: Belay-MAS
 
   # The only tests that run inside a sandbox.
   #
   # There used to be a comment here saying a test target on the MAS channel
   # would "test the sandbox container, not the app". That is exactly the thing
-  # worth testing: `swift test` is not sandboxed, `VigilAppTests` is hosted by
+  # worth testing: `swift test` is not sandboxed, `BelayAppTests` is hosted by
   # the direct build which is not sandboxed either, and both were green for a
   # build in which the App Store app could not read `~/.claude` at all.
-  VigilSandboxTests:
+  BelaySandboxTests:
     type: bundle.unit-test
     platform: macOS
     sources:
-      - path: Tests/VigilSandboxTests
+      - path: Tests/BelaySandboxTests
     dependencies:
-      - target: Vigil-MAS
+      - target: Belay-MAS
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil.sandboxtests
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay.sandboxtests
         GENERATE_INFOPLIST_FILE: YES
 
   # App-level tests only. The module suites live in the SwiftPM package and run
   # via `swift test` — Xcode schemes generated from a spec cannot reference a
   # local package's test targets. scripts/test.sh runs both.
-  VigilAppTests:
+  BelayAppTests:
     type: bundle.unit-test
     platform: macOS
     sources:
-      - path: Tests/VigilAppTests
+      - path: Tests/BelayAppTests
     dependencies:
-      - target: Vigil
+      - target: Belay
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.vigil.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay.tests
         GENERATE_INFOPLIST_FILE: YES
 
 schemes:
-  Vigil:
+  Belay:
     build:
       targets:
-        Vigil: all
-        VigilAppTests: [test]
+        Belay: all
+        BelayAppTests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - VigilAppTests
+        - BelayAppTests
     profile:
       config: Release
     archive:
       config: Release
 
-  Vigil-MAS:
+  Belay-MAS:
     build:
       targets:
-        Vigil-MAS: all
-        VigilSandboxTests: [test]
+        Belay-MAS: all
+        BelaySandboxTests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
-        - VigilSandboxTests
+        - BelaySandboxTests
     profile:
       config: Release
     archive:

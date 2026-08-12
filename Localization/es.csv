@@ -32,14 +32,14 @@
 4 hours,Settings,needs_review,,4 hours,4 horas
 5 min,Settings,needs_review,,5 min,5 min
 8 hours,Settings,needs_review,,8 hours,8 horas
-A backstop. Vigil stops holding after this and tells you why.,Settings: Behaviour,translated,,Vigil stops keeping your Mac awake after this time and lets you know.,"Al llegar a este tiempo, Vigil deja de mantener el Mac despierto y te avisa."
-A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Vigil when the session ends.,La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Vigil cuándo termina la sesión.
+A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,"Al llegar a este tiempo, Belay deja de mantener el Mac despierto y te avisa."
+A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Belay cuándo termina la sesión.
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,needs_review,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,"Un tono breve cuando cambias de modo a mano. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan."
-"A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Vigil makes a timestamped backup first. ""Remove"" restores the original file.",Vigil crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original.
+"A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original.
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics",translated,,About,Acerca de
 About %@,Menu bar,translated,%@,About %@,Acerca de %@
 Active sessions,Panel,translated,,Active sessions,Sesiones activas
-"Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,Add a folder or choose a preset to watch another agent.,Añade una carpeta o elige un preajuste para vigilar otro agente.
+"Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,Add a folder or choose a preset to watch another agent.,Añade una carpeta o elige un preajuste para belayar otro agente.
 Add a tool to watch,Settings: Providers,translated,,Add a tool to watch,Añadir una herramienta
 Add a tool…,Settings: Providers,translated,,Add a tool…,Añadir herramienta…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Añadir a Claude Code
@@ -47,17 +47,17 @@ All product names and logos are trademarks of their respective owners.,Settings:
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,Mantener también la pantalla encendida
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Siempre activo
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Un agente te está esperando
-An agent is waiting for you. Vigil is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Vigil is keeping your Mac awake.,Un agente te espera. Vigil mantiene el Mac despierto.
+An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,Un agente te espera. Belay mantiene el Mac despierto.
 "An agent is working, so sleep is on hold.",Panel,needs_review,,"An agent is working, so your Mac stays awake.","Un agente trabaja, así que tu Mac sigue despierto."
-An agent is working. Your Mac will be free to sleep as soon as Vigil quits.,Menu bar,translated,,An agent is working. Quitting Vigil will let your Mac sleep.,"Hay un agente trabajando. Si cierras Vigil, el Mac podrá entrar en reposo."
+An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,"Hay un agente trabajando. Si cierras Belay, el Mac podrá entrar en reposo."
 Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,Automático
 Awake %@ so far,Panel,translated,%@,Awake for %@,Despierto durante %@
-Awake mode,Panel,translated,,Awake mode,Modo de vigilia
+Awake mode,Panel,translated,,Awake mode,Modo de belayia
 Awake only while an agent is working.,Panel,translated,,Only while an agent is working.,Solo mientras trabaja un agente.
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Hasta que lo desactives.
-"Battery is at %lld%%, so Vigil stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Vigil stopped keeping your Mac awake.,Batería al %lld%%. Vigil dejó de mantener el Mac despierto.
+"Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Batería al %lld%%. Belay dejó de mantener el Mac despierto.
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportamiento
-"Below %lld%% on battery, Vigil stops holding.",Settings: Behaviour,translated,%lld,"On battery, Vigil stops at %lld%%.","Con batería, Vigil se detiene al llegar al %lld%%."
+"Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","Con batería, Belay se detiene al llegar al %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Invítame un café
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Cancelar
 Check Now,Settings: General,translated,,Check Now,Comprobar ahora
@@ -84,17 +84,17 @@ GitHub,"App, Settings: About, Settings: General",translated,,GitHub,GitHub
 GitHub answered %lld.,Settings: General,translated,%lld,GitHub returned %lld.,GitHub devolvió %lld.
 Grant access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Permitir acceso a ~/.claude
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Esperando un momento por si llega más trabajo.
-How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Vigil waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Cuánto espera Vigil después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas.
+How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Cuánto espera Belay después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas.
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Necesita una respuesta para continuar.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Manteniendo el Mac despierto
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Mantiene el Mac despierto mientras trabaja tu agente.
-Kept awake for %@ since Vigil started,Panel,translated,%@,Kept awake for %@ since launch,Despierto durante %@ desde que se inició Vigil
+Kept awake for %@ since Belay started,Panel,translated,%@,Kept awake for %@ since launch,Despierto durante %@ desde que se inició Belay
 LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,ÚLTIMOS 14 DÍAS
 Language,Settings: General,translated,,Language,Idioma
-Let Vigil read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Vigil to read %@ so it can tell when your agent is working.,Permite que Vigil lea %@ para saber cuándo está trabajando tu agente.
-Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Vigil can tell when Claude Code is working.,Permite acceso a ~/.claude para que Vigil sepa cuándo trabaja Claude Code.
-"Lets Claude Code tell Vigil exactly when it starts and stops, instead of Vigil inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Vigil exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",Permite que Claude Code le indique a Vigil exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera».
+Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,Permite que Belay lea %@ para saber cuándo está trabajando tu agente.
+Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,Permite acceso a ~/.claude para que Belay sepa cuándo trabaja Claude Code.
+"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",Permite que Claude Code le indique a Belay exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera».
 Local only,Settings: About,translated,,Local only,Solo local
 "Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,Batería baja o tiempo máximo despierto.
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,Tiempo máximo despierto
@@ -107,23 +107,23 @@ No providers available.,Settings: Providers,translated,,No providers available.,
 No release feed is configured.,Settings: General,translated,,No update feed is configured.,No hay una fuente de actualizaciones configurada.
 No releases have been published yet.,Settings: General,translated,,No releases are available yet.,Aún no hay versiones disponibles.
 No tracking,Settings: About,translated,,No tracking,Sin rastreo
-Nothing configured. Vigil is watching Claude Code only.,Settings: Providers,translated,,No other tools added. Vigil is watching Claude Code.,No has añadido otras herramientas. Vigil está vigilando Claude Code.
+Nothing configured. Belay is watching Claude Code only.,Settings: Providers,translated,,No other tools added. Belay is watching Claude Code.,No has añadido otras herramientas. Belay está vigilando Claude Code.
 Nothing here ever leaves this Mac.,Statistics,translated,,Nothing here ever leaves this Mac.,Nada de esto sale nunca de este Mac.
 Nothing to show yet,Statistics,translated,,Nothing to show yet,Todavía no hay nada que mostrar
 Notifications,"Settings, Settings: Notifications",translated,,Notifications,Notificaciones
 Notify me,Settings: Notifications,translated,,Notify me,Avisarme
-Notify when Vigil stops for safety,Settings: Notifications,translated,,Notify when Vigil stops for safety,Avisar cuando Vigil se detenga por seguridad
+Notify when Belay stops for safety,Settings: Notifications,translated,,Notify when Belay stops for safety,Avisar cuando Belay se detenga por seguridad
 Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,Avisar cuando termine una tarea larga
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,Avisar cuando un agente te necesite
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,Los números se quedan en este Mac salvo que los compartas.
 Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,Desactivado
-Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Letting the display sleep saves power and won't interrupt your agent.,Dejar que la pantalla se apague ahorra energía y no interrumpe al agente.
-"Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.",Statistics,translated,,Stats appear after Vigil keeps your Mac awake through an agent run.,Las estadísticas aparecerán después de que Vigil mantenga el Mac despierto durante una ejecución.
-"Once a day, Vigil asks GitHub whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Vigil checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Vigil consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente.
+Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Letting the display sleep saves power and won't interrupt your agent.,Dejar que la pantalla se apague ahorra energía y no interrumpe al agente.
+"Once Belay has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.",Statistics,translated,,Stats appear after Belay keeps your Mac awake through an agent run.,Las estadísticas aparecerán después de que Belay mantenga el Mac despierto durante una ejecución.
+"Once a day, Belay asks GitHub whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Belay checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Belay consulta GitHub una vez al día para buscar una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente.
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Para ejecuciones de más de %@.
 Open Login Items…,Settings: General,translated,,Open Login Items…,Abrir Ítems de inicio…
 Open Settings,Panel,translated,,Open Settings,Abrir Ajustes
-Open Vigil at login,Settings: General,translated,,Open Vigil at login,Abrir Vigil al iniciar sesión
+Open Belay at login,Settings: General,translated,,Open Belay at login,Abrir Belay al iniciar sesión
 Open at login,"Settings, Settings: General",translated,,Open at login,Abrir al iniciar sesión
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,Abre el selector de carpetas estándar de macOS para que concedas acceso
 Other agents,"App, Settings: Providers",translated,,Other agents,Otros agentes
@@ -135,23 +135,23 @@ Providers,"App, Detection, Settings, Settings: Providers",translated,,Providers,
 Quit,"Menu bar, Settings: General",translated,,Quit,Salir
 Quit %@,Menu bar,translated,%@,Quit %@,Salir de %@
 Quit %@?,Menu bar,translated,%@,Quit %@?,¿Salir de %@?
-Quit Vigil and open it again to change language.,Settings: General,translated,,Reopen Vigil to apply the language change.,Vuelve a abrir Vigil para aplicar el cambio de idioma.
+Quit Belay and open it again to change language.,Settings: General,translated,,Reopen Belay to apply the language change.,Vuelve a abrir Belay para aplicar el cambio de idioma.
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Salir y volver a abrir
 Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Listo
 Remove,Settings: Providers,translated,,Remove,Quitar
 Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
-Removes Vigil's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Vigil added to your Claude Code settings,Elimina solo las entradas que Vigil añadió a tus ajustes de Claude Code
+Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,Elimina solo las entradas que Belay añadió a tus ajustes de Claude Code
 Report a bug,Settings: About,translated,,Report a bug,Informar de un error
 Reset…,Statistics,needs_review,,Reset…,Restablecer…
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Ajustes
 Settings…,Menu bar,translated,,Settings…,Ajustes…
 Share,Statistics,translated,,Share,Compartir
-"Shares a card, a summary and a link to Vigil",Statistics,translated,,"Shares the card, summary, and a link to Vigil","Comparte la tarjeta, el resumen y un enlace a Vigil"
+"Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay","Comparte la tarjeta, el resumen y un enlace a Belay"
 Shorten the wait in Low Power Mode,Settings: Behaviour,translated,,Shorten the wait in Low Power Mode,Acortar la espera en Modo de bajo consumo
 Show all sessions,Panel,translated,,Show all sessions,Mostrar todas las sesiones
 Show fewer,Panel,translated,,Show fewer,Mostrar menos
 Show fewer sessions,Panel,translated,,Show fewer sessions,Mostrar menos sesiones
-Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Vigil will add before it writes anything,Muestra exactamente qué añadirá Vigil antes de escribir nada
+Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,Muestra exactamente qué añadirá Belay antes de escribir nada
 Since %@,Statistics,needs_review,%@,Since %@,Desde el %@
 Skip for now,Welcome,translated,,Skip for now,Omitir por ahora
 Software updates,Settings: General,translated,,Software updates,Actualizaciones
@@ -161,82 +161,82 @@ Startup,"Settings: General, Settings: Providers",translated,,Startup,Inicio
 Statistics,"App, Menu bar, Panel, Settings, Statistics",translated,,Statistics,Estadísticas
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Dejar de mantener el Mac despierto con poca batería
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Detener con batería baja
-Stops Vigil watching this tool,Settings: Providers,translated,,Stops watching this tool,Deja de vigilar esta herramienta
+Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Deja de belayar esta herramienta
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagente
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,Sistema
 The App Store could not verify the purchase.,Detection,needs_review,,The App Store couldn't verify the purchase.,App Store no pudo verificar la compra.
-The exact configuration Vigil will add,Settings: Providers,translated,,What Vigil will add,Lo que añadirá Vigil
+The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Lo que añadirá Belay
 The purchase is waiting for approval. Nothing else is needed from you.,Detection,translated,,The purchase is waiting for approval. No action is needed right now.,La compra está esperando aprobación. No tienes que hacer nada por ahora.
 The purchase was cancelled.,Detection,needs_review,,The purchase was cancelled.,La compra se canceló.
 The run%@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run%@ finished in %@. Your Mac can sleep normally again.,La ejecución%@ terminó en %@. El Mac puede volver a dormir con normalidad.
 There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,La opción de propina %@ no está disponible.
-This cannot be undone. Vigil keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Vigil keeps no copy anywhere else.,Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio.
+This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Esto no se puede deshacer. Belay no guarda ninguna copia en otro sitio.
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Las propinas no están disponibles en esta versión.
 Until turned off,Settings,translated,,Until turned off,Hasta desactivarlo
 Untitled project,App,translated,,Untitled project,Proyecto sin título
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Versión %@ (%@)
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La versión %@ está disponible.
-Vigil asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Vigil asks for notification permission the first time it needs to send one.,Vigil pide permiso para enviar notificaciones la primera vez que necesita enviar una.
-"Vigil could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Vigil couldn't back up your Claude Code settings, so nothing was changed: %@","Vigil no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
-Vigil could not migrate preferences from version %lld.,Settings,translated,%lld,Vigil couldn't import settings from version %lld.,Vigil no pudo importar los ajustes de la versión %lld.
-Vigil could not read its preferences and has fallen back to defaults.,Settings,translated,,"Vigil couldn't read its settings, so it's using the defaults.","Vigil no pudo leer sus ajustes, así que está usando los valores predeterminados."
-Vigil could not read this Mac's power source.,Detection,translated,,Vigil couldn't read this Mac's power source.,Vigil no pudo detectar la fuente de alimentación de este Mac.
-Vigil could not read your Claude Code settings: %@,Detection,needs_review,%@,Vigil couldn't read your Claude Code settings: %@,Vigil no pudo leer tus ajustes de Claude Code: %@
-Vigil could not start its local hook receiver: %@,Detection,needs_review,%@,Vigil couldn't start its local hook listener: %@,Vigil no pudo iniciar su receptor local de hooks: %@
-Vigil could not update your Claude Code settings: %@,Detection,needs_review,%@,Vigil couldn't update your Claude Code settings: %@,Vigil no pudo actualizar tus ajustes de Claude Code: %@
-Vigil could not watch %@ for activity.,Settings: Providers,needs_review,%@,Vigil couldn't watch %@ for activity.,Vigil no pudo vigilar la actividad en %@.
-Vigil has not been granted access to %@ yet.,Detection,translated,%@,Vigil doesn't have access to %@ yet.,Vigil aún no tiene acceso a %@.
-Vigil has to reopen to change language.,Settings: General,translated,,Vigil needs to reopen to change the language.,Vigil tiene que volver a abrirse para cambiar el idioma.
-Vigil is keeping your Mac awake: always on.,Menu bar,translated,,Always On is keeping your Mac awake.,«Siempre activo» mantiene el Mac despierto.
-Vigil is keeping your Mac awake: an agent is working.,Menu bar,translated,,Vigil is keeping your Mac awake while an agent works.,Vigil mantiene el Mac despierto mientras trabaja un agente.
-Vigil is off. Your Mac will sleep normally.,Menu bar,translated,,Vigil is off. Your Mac will sleep normally.,Vigil está desactivado. El Mac dormirá con normalidad.
-Vigil is only useful when it is already running.,Settings: General,translated,,Open Vigil at login so it's ready before an agent starts.,Abre Vigil al iniciar sesión para que esté listo antes de que empiece un agente.
-"Vigil is switched off, so it will not hold sleep at all.",Panel,needs_review,,Vigil won't keep your Mac awake.,Vigil no mantendrá tu Mac despierto.
-Vigil is up to date.,Settings: General,translated,,Vigil is up to date.,Vigil está actualizado.
-Vigil is watching. Nothing is running right now.,Panel,translated,,Vigil is watching. No agents are running.,Vigil está vigilando. No hay agentes en ejecución.
-Vigil is watching. Your Mac will sleep normally.,Menu bar,translated,,Vigil is watching. Your Mac can sleep normally.,Vigil está vigilando. El Mac puede dormir con normalidad.
-"Vigil keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.",Welcome,translated,,"Vigil keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched.",Vigil mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian.
-Vigil let your Mac sleep,Panel,translated,,Vigil let your Mac sleep,Vigil dejó dormir el Mac
-Vigil needs your permission to read %@.,Settings: Providers,translated,%@,Vigil needs permission to read %@.,Vigil necesita permiso para leer %@.
-Vigil reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Vigil reached the maximum awake time and let your Mac sleep.,Vigil alcanzó el tiempo máximo despierto y dejó dormir el Mac.
-"Vigil reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,Se alcanzó el tiempo máximo despierto.
-"Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.",Settings: About,translated,,"Vigil reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Vigil solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
-"Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.",Welcome,translated,,"Vigil reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac.","Vigil solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
-Vigil still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,Puedes seguir usando «Siempre activo» o «Desactivado».
-Vigil stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Vigil stopped holding,Vigil dejó de mantener
-Vigil stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Vigil stopped keeping your Mac awake at %lld%% battery.,Vigil dejó de mantener el Mac despierto al llegar al %lld%% de batería.
-Vigil stopped holding: the maximum awake time was reached.,Menu bar,translated,,Vigil stopped keeping your Mac awake: maximum awake time reached.,Vigil dejó de mantener el Mac despierto: se alcanzó el tiempo máximo.
-Vigil will change %@ to:,Settings: Providers,translated,%@,Vigil will update %@ to:,Vigil actualizará %@ a:
-Vigil will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Vigil will keep your Mac awake even on low battery.,Vigil mantendrá el Mac despierto incluso con poca batería.
-"Vigil will not edit this file, because it is not plain JSON. It may have comments or a format Vigil cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Vigil can't safely edit this file because it isn't plain JSON. Add this manually instead:,Vigil no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:
-Vigil's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Vigil's saved permission for %@ is no longer valid.,El permiso guardado de Vigil para %@ ya no es válido.
+Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una.
+"Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@","Belay no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
+Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay no pudo importar los ajustes de la versión %lld.
+Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.","Belay no pudo leer sus ajustes, así que está usando los valores predeterminados."
+Belay could not read this Mac's power source.,Detection,translated,,Belay couldn't read this Mac's power source.,Belay no pudo detectar la fuente de alimentación de este Mac.
+Belay could not read your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't read your Claude Code settings: %@,Belay no pudo leer tus ajustes de Claude Code: %@
+Belay could not start its local hook receiver: %@,Detection,needs_review,%@,Belay couldn't start its local hook listener: %@,Belay no pudo iniciar su receptor local de hooks: %@
+Belay could not update your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't update your Claude Code settings: %@,Belay no pudo actualizar tus ajustes de Claude Code: %@
+Belay could not watch %@ for activity.,Settings: Providers,needs_review,%@,Belay couldn't watch %@ for activity.,Belay no pudo belayar la actividad en %@.
+Belay has not been granted access to %@ yet.,Detection,translated,%@,Belay doesn't have access to %@ yet.,Belay aún no tiene acceso a %@.
+Belay has to reopen to change language.,Settings: General,translated,,Belay needs to reopen to change the language.,Belay tiene que volver a abrirse para cambiar el idioma.
+Belay is keeping your Mac awake: always on.,Menu bar,translated,,Always On is keeping your Mac awake.,«Siempre activo» mantiene el Mac despierto.
+Belay is keeping your Mac awake: an agent is working.,Menu bar,translated,,Belay is keeping your Mac awake while an agent works.,Belay mantiene el Mac despierto mientras trabaja un agente.
+Belay is off. Your Mac will sleep normally.,Menu bar,translated,,Belay is off. Your Mac will sleep normally.,Belay está desactivado. El Mac dormirá con normalidad.
+Belay is only useful when it is already running.,Settings: General,translated,,Open Belay at login so it's ready before an agent starts.,Abre Belay al iniciar sesión para que esté listo antes de que empiece un agente.
+"Belay is switched off, so it will not hold sleep at all.",Panel,needs_review,,Belay won't keep your Mac awake.,Belay no mantendrá tu Mac despierto.
+Belay is up to date.,Settings: General,translated,,Belay is up to date.,Belay está actualizado.
+Belay is watching. Nothing is running right now.,Panel,translated,,Belay is watching. No agents are running.,Belay está vigilando. No hay agentes en ejecución.
+Belay is watching. Your Mac will sleep normally.,Menu bar,translated,,Belay is watching. Your Mac can sleep normally.,Belay está vigilando. El Mac puede dormir con normalidad.
+"Belay keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.",Welcome,translated,,"Belay keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched.",Belay mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian.
+Belay let your Mac sleep,Panel,translated,,Belay let your Mac sleep,Belay dejó dormir el Mac
+Belay needs your permission to read %@.,Settings: Providers,translated,%@,Belay needs permission to read %@.,Belay necesita permiso para leer %@.
+Belay reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Belay reached the maximum awake time and let your Mac sleep.,Belay alcanzó el tiempo máximo despierto y dejó dormir el Mac.
+"Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,Se alcanzó el tiempo máximo despierto.
+"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.",Settings: About,translated,,"Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Belay solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
+"Belay reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.",Welcome,translated,,"Belay reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac.","Belay solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
+Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,Puedes seguir usando «Siempre activo» o «Desactivado».
+Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay dejó de mantener
+Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay dejó de mantener el Mac despierto al llegar al %lld%% de batería.
+Belay stopped holding: the maximum awake time was reached.,Menu bar,translated,,Belay stopped keeping your Mac awake: maximum awake time reached.,Belay dejó de mantener el Mac despierto: se alcanzó el tiempo máximo.
+Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ to:,Belay actualizará %@ a:
+Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay mantendrá el Mac despierto incluso con poca batería.
+"Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:
+Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,El permiso guardado de Belay para %@ ya no es válido.
 Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting your Mac sleep,Esperar antes de dejar dormir el Mac
 Waiting for you,Panel,translated,,Waiting for you,Te está esperando
 Watch,"App, Detection, Settings: Providers",translated,,Watch,Observar
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Observa los archivos de sesión de Claude Code para saber cuándo hay un turno en marcha.
-"Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Vigila una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo.
+"Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Belaya una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo.
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Te damos la bienvenida a %@
-Welcome to Vigil,Welcome,translated,,Welcome to Vigil,Te damos la bienvenida a Vigil
-What Vigil reads,Welcome,translated,,What Vigil reads,Qué lee Vigil
-When Vigil stops for safety,Settings: Notifications,translated,,When Vigil stops for safety,Cuando Vigil se detiene por seguridad
+Welcome to Belay,Welcome,translated,,Welcome to Belay,Te damos la bienvenida a Belay
+What Belay reads,Welcome,translated,,What Belay reads,Qué lee Belay
+When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Cuando Belay se detiene por seguridad
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Cuando termina una tarea larga
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Cuando un agente te necesita
 While holding,Settings: General,translated,,While holding,Mientras mantiene
 Working,Panel,translated,,Working,Trabajando
-You asked Vigil to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Tu Mac sigue despierto hasta que lo desactives.
-"Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes.",Detection,translated,,"Vigil found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.","Vigil encontró una entrada hooks en tus ajustes de Claude Code que no reconoce, así que no cambió nada."
-"Your Claude Code settings file is not plain JSON, so Vigil will not modify it.",Detection,needs_review,,"Your Claude Code settings file isn't plain JSON, so Vigil won't modify it.","Tu archivo de ajustes de Claude Code no es JSON puro, así que Vigil no lo modificará."
+You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Tu Mac sigue despierto hasta que lo desactives.
+"Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.","Belay encontró una entrada hooks en tus ajustes de Claude Code que no reconoce, así que no cambió nada."
+"Your Claude Code settings file is not plain JSON, so Belay will not modify it.",Detection,needs_review,,"Your Claude Code settings file isn't plain JSON, so Belay won't modify it.","Tu archivo de ajustes de Claude Code no es JSON puro, así que Belay no lo modificará."
 Your Mac will go back to its normal sleep schedule.,Menu bar,translated,,Your Mac can return to its normal sleep schedule.,El Mac puede volver a dormir con normalidad.
 Your Mac will sleep normally,"Menu bar, Panel, Settings: Notifications",translated,,Your Mac can sleep normally,El Mac puede dormir con normalidad
 Your agent finished,Settings: Notifications,translated,,Your agent finished,Tu agente terminó
 Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Settings: Notifications,translated,,Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications.,Tu agente está esperando una solicitud de permiso o una respuesta. La detección precisa es necesaria para recibir avisos fiables.
 Your agent needs input%@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input%@ before it can continue.,Tu agente necesita una respuesta%@ para continuar.
-Your agent still finishes; Vigil just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Vigil just lets your Mac sleep sooner afterward.,"Tu agente termina igualmente. Después, Vigil deja que el Mac duerma un poco antes."
-"Your battery is down to %lld%%, so Vigil stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Vigil let it sleep.","Batería al %lld%%, Vigil dejó dormir al Mac."
+Your agent still finishes; Belay just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Belay just lets your Mac sleep sooner afterward.,"Tu agente termina igualmente. Después, Belay deja que el Mac duerma un poco antes."
+"Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Batería al %lld%%, Belay dejó dormir al Mac."
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,siguió trabajando mientras no estabas
 last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,última señal hace %@
 longest run,Statistics,translated,,longest run,ejecución más larga
-macOS denied Vigil access to %@.,Detection,needs_review,%@,macOS denied Vigil access to %@.,macOS denegó a Vigil el acceso a %@.
+macOS denied Belay access to %@.,Detection,needs_review,%@,macOS denied Belay access to %@.,macOS denegó a Belay el acceso a %@.
 macOS is waiting for you to allow this in System Settings.,Settings: General,translated,,Allow this in System Settings to continue.,Permite esto en Ajustes del Sistema para continuar.
 macOS refused the change: %@,Settings: General,translated,%@,macOS couldn't apply the change: %@,macOS no pudo aplicar el cambio: %@
 macOS refused to create the sleep assertion (IOKit error %lld).,Detection,translated,%lld,macOS couldn't keep the Mac awake (IOKit error %lld).,macOS no pudo mantener el Mac despierto (error de IOKit %lld).
@@ -247,6 +247,6 @@ of agent work while I was away. Sleep would have interrupted %lld of those runs.
 of agent work while I was away. Sleep would have interrupted one of those runs.,Statistics,needs_review,,of agent work while I was away. Sleep would have interrupted one of those runs.,de trabajo del agente mientras yo no estaba. El reposo habría interrumpido una de esas ejecuciones.
 process %@,Settings: Providers,translated,%@,process %@,proceso %@
 runs rescued,Statistics,translated,,runs saved,ejecuciones salvadas
-runs watched,Statistics,translated,,runs watched,ejecuciones vigiladas
+runs watched,Statistics,translated,,runs watched,ejecuciones belayadas
 total held,Statistics,translated,,awake time,tiempo despierto
 "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",© 2026 PerfectoWeb. Licencia MIT. Hecho por frikis para frikis.

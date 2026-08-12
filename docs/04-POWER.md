@@ -10,7 +10,7 @@ not `ProcessInfo.beginActivity` (coarse, no timeout, no visibility in
 ```swift
 let properties: [String: Any] = [
     kIOPMAssertionTypeKey as String: kIOPMAssertionTypePreventUserIdleSystemSleep,
-    kIOPMAssertionNameKey as String: "Vigil",
+    kIOPMAssertionNameKey as String: "Belay",
     kIOPMAssertionDetailsKey as String: reason,          // "Claude Code is working in acme-api"
     kIOPMAssertionHumanReadableReasonKey as String: localizedReason,
     kIOPMAssertionLocalizationBundlePathKey as String: Bundle.main.bundlePath,
@@ -102,9 +102,9 @@ re-enumerate processes, and re-derive state from scratch. Signals that arrived
 
 - **Lid closed:** an idle-sleep assertion does not keep a MacBook awake with the
   lid shut. macOS enters clamshell sleep unless the machine is on AC power with
-  an external display/keyboard attached. Vigil cannot change this and must not
+  an external display/keyboard attached. Belay cannot change this and must not
   pretend to. Say it plainly in the README; users will otherwise file it as a bug.
 - **Display sleep is normal.** By default the screen still turns off. That's
   intentional and saves real power; the machine underneath stays awake.
-- **Verify it yourself:** `pmset -g assertions | grep -i vigil`. Put this line in
+- **Verify it yourself:** `pmset -g assertions | grep -i belay`. Put this line in
   the README — it converts skeptics.

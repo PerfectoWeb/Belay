@@ -1,7 +1,7 @@
 included:
   - Sources
-  - Packages/VigilKit/Sources
-  - Packages/VigilKit/Tests
+  - Packages/BelayKit/Sources
+  - Packages/BelayKit/Tests
 
 excluded:
   - .build
@@ -83,7 +83,7 @@ custom_rules:
   no_print:
     name: "print() is not logging"
     regex: '(?<![\w.])print\('
-    message: "Use VigilSupport.Log (os.Logger), never print (docs/07)."
+    message: "Use BelaySupport.Log (os.Logger), never print (docs/07)."
     severity: error
   no_emoji_in_source:
     name: "No emoji in source"

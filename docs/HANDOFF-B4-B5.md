@@ -14,9 +14,9 @@ launch is expensive in a way a rename today is not.
 
 ### 1. Mac App Store
 
-Open App Store, search **vigil**. You are looking for one thing only: a utility
+Open App Store, search **belay**. You are looking for one thing only: a utility
 that could be confused with this one. A game, a journal app, a security camera
-service called Vigil is not a conflict. Another menu bar app about sleep,
+service called Belay is not a conflict. Another menu bar app about sleep,
 caffeine or keeping a Mac awake is.
 
 Write down, for anything close: name, developer, category, last update.
@@ -25,19 +25,19 @@ Write down, for anything close: name, developer, category, last update.
 
 Both take a search box and a minute each.
 
-- USPTO: <https://tmsearch.uspto.gov> — search `vigil`, filter to live marks in
+- USPTO: <https://tmsearch.uspto.gov> — search `belay`, filter to live marks in
   class **009** (software) and **042** (SaaS).
 - EUIPO: <https://euipo.europa.eu/eSearch/> — same term, same classes.
 
 A live mark in 009/042 held by a software company is a real problem. A live mark
-for vigil candles is not.
+for belay candles is not.
 
 ### 3. The obvious ones
 
-- `vigil.app`, `getvigil.com`, `vigilapp.com` — is any of them free, and is
+- `belay.app`, `getbelay.com`, `belayapp.com` — is any of them free, and is
   anything already at them?
-- GitHub: is there a well-known `vigil` doing something adjacent?
-- Homebrew: `brew search vigil`.
+- GitHub: is there a well-known `belay` doing something adjacent?
+- Homebrew: `brew search belay`.
 
 ### What to send me
 
@@ -61,7 +61,7 @@ On this Mac:
 scripts/build-local.sh && open build
 ```
 
-Copy `build/Vigil.app` across however you like. It is ad-hoc signed, so the
+Copy `build/Belay.app` across however you like. It is ad-hoc signed, so the
 other Mac will refuse it on first open: **right-click the app → Open → Open**.
 That is expected and is exactly what notarization removes later.
 
@@ -77,9 +77,9 @@ the ones that would actually change the release:
 3. **The panel opens from the icon** and the three modes switch.
 4. **Always On actually holds.** Switch to Always On, then in Terminal:
    ```bash
-   pmset -g assertions | grep "pid $(pgrep -x Vigil)("
+   pmset -g assertions | grep "pid $(pgrep -x Belay)("
    ```
-   You want a `PreventUserIdleSystemSleep` line naming Vigil, with
+   You want a `PreventUserIdleSystemSleep` line naming Belay, with
    `Timeout will fire in N secs Action=TimeoutActionRelease` after it.
 5. **Off releases it.** Switch to Off, run the same command: no line.
 6. **Claude Code detection**, if that Mac has Claude Code. Start a turn, watch

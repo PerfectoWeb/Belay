@@ -19,7 +19,7 @@ why this fix is the right one rather than a working one. -->
 
 macOS version and Mac:
 
-<!-- For a detection or power change, paste `pmset -g assertions | grep -i vigil`
+<!-- For a detection or power change, paste `pmset -g assertions | grep -i belay`
 before and after. macOS 14 and 15 have had no testing on real hardware, so a run
 on either is worth mentioning on its own. -->
 

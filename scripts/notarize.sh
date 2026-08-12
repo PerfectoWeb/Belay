@@ -7,12 +7,12 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-NOTARY_PROFILE="${VIGIL_NOTARY_PROFILE:-VigilNotary}"
+NOTARY_PROFILE="${BELAY_NOTARY_PROFILE:-BelayNotary}"
 
 # Empty locally, where the profile is in the login keychain and notarytool finds
 # it unaided. CI keeps it in a keychain it deletes at the end of the job, and
 # notarytool only ever looks in the login keychain unless it is told otherwise.
-NOTARY_KEYCHAIN="${VIGIL_NOTARY_KEYCHAIN:-}"
+NOTARY_KEYCHAIN="${BELAY_NOTARY_KEYCHAIN:-}"
 
 usage() {
     cat <<'EOF'
@@ -24,8 +24,8 @@ A .app cannot be submitted directly; zip it first, or pass the DMG that
 release.sh built.
 
 Environment:
-  VIGIL_NOTARY_PROFILE   notarytool keychain profile (default: VigilNotary)
-  VIGIL_NOTARY_KEYCHAIN  keychain holding that profile. Unset means the login
+  BELAY_NOTARY_PROFILE   notarytool keychain profile (default: BelayNotary)
+  BELAY_NOTARY_KEYCHAIN  keychain holding that profile. Unset means the login
                          keychain, which is right everywhere except CI.
 
 Exit status:
@@ -79,7 +79,7 @@ else
 fi
 
 echo "==> submit $(basename "$ARTEFACT")"
-SUBMIT_LOG="$(mktemp -t vigil-notary)"
+SUBMIT_LOG="$(mktemp -t belay-notary)"
 if ! xcrun notarytool submit "$ARTEFACT" \
         "${AUTH[@]}" \
         --wait \

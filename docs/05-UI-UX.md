@@ -82,8 +82,8 @@ probably shouldn't exist.
 
 Exactly one screen, shown on first launch, dismissible:
 
-1. What Vigil does, in two sentences.
-2. **The privacy statement, prominently**: "Vigil reads only enough of your
+1. What Belay does, in two sentences.
+2. **The privacy statement, prominently**: "Belay reads only enough of your
    local agent's session files to know whether it's running. It never reads your
    prompts or code, and nothing ever leaves your Mac."
 3. One button: "Grant access to ~/.claude" → `NSOpenPanel` pre-pointed at the

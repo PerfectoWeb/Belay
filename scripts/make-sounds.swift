@@ -1,4 +1,4 @@
-// Regenerates Vigil's interface sounds into Resources/Sounds.
+// Regenerates Belay's interface sounds into Resources/Sounds.
 //
 //   swift scripts/make-sounds.swift [output-dir]
 //
@@ -101,7 +101,7 @@ let autoNote = 587.33  // D5
 let onNote = 739.99    // F#5
 
 let sounds: [String: [Double]] = [
-    // Auto. The mode Vigil is meant to be left in, so it is the plainest.
+    // Auto. The mode Belay is meant to be left in, so it is the plainest.
     "mode-auto": render([Note(frequency: autoNote, at: 0, decay: 0.075, level: 0.13)], length: 0.30),
 
     // Always on. Higher and held a little longer, because a deliberate override

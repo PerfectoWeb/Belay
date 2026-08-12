@@ -1,6 +1,6 @@
 # Launch plan
 
-Getting the first users for Vigil, published at `github.com/perfectoweb/vigil` by
+Getting the first users for Belay, published at `github.com/perfectoweb/belay` by
 PerfectoWeb. Free, MIT, no telemetry, no accounts.
 
 The App Store path is a separate document: [`APP-STORE.md`](APP-STORE.md). This
@@ -19,9 +19,9 @@ impression on a bug somebody else finds.
 
 There is no `.git` directory in this working tree. Nothing has ever been
 committed or pushed. `README.md` tells people to `git clone
-https://github.com/perfectoweb/vigil.git`, `CHANGELOG.md` links to a release tag,
+https://github.com/perfectoweb/belay.git`, `CHANGELOG.md` links to a release tag,
 and `ReleaseChecker` polls
-`https://api.github.com/repos/perfectoweb/vigil/releases/latest`. All three point
+`https://api.github.com/repos/perfectoweb/belay/releases/latest`. All three point
 at a URL that does not resolve.
 
 This is prerequisite zero. Nothing else on this page means anything until the
@@ -94,7 +94,7 @@ first issue, that is a good outcome, but only if you did not claim it worked.
 
 ### The name has not been checked
 
-`BLOCKERS.md` B4. The App Store search for "Vigil" has not been done. Renaming
+`BLOCKERS.md` B4. The App Store search for "Belay" has not been done. Renaming
 after launch costs the URL, the stars and the links. Renaming before launch costs
 two files and `xcodegen generate`. Do the search.
 
@@ -167,7 +167,7 @@ removes it anywhere else. Read the channel list before posting anything.
 
 **The best form.** Not an announcement. A post that leads with the problem, "my
 Mac slept in the middle of a two-hour refactor", and shows the webhook one-liner
-from the README, which is the part that makes other tool authors care. Vigil is
+from the README, which is the part that makes other tool authors care. Belay is
 useful to them as an integration target, not just as an app.
 
 **What gets it flamed.** Anything that reads as reading transcripts. Lead with
@@ -196,7 +196,7 @@ project-showcase flair vary and have changed more than once.
 
 **The best form.** Same as the Discord: the problem first, the app second. This
 audience does not need the concept of a long agent run explained to them, so skip
-that part entirely and get to what Vigil does about it.
+that part entirely and get to what Belay does about it.
 
 **What gets it flamed.** The same privacy question, more sharply, plus a specific
 one: does installing the hooks slow Claude Code down. The answer is in the README
@@ -254,7 +254,7 @@ this is not a channel, it is a trap.
 
 ### Product Hunt. Skip for now.
 
-It rewards a polished landing page and a coordinated launch day. Vigil has
+It rewards a polished landing page and a coordinated launch day. Belay has
 neither, and a free MIT menu bar utility for a niche developer audience is not
 what that audience is browsing for. Revisit only if a real landing page ever
 exists, and even then treat it as optional.
@@ -262,8 +262,8 @@ exists, and even then treat it as optional.
 ### r/LocalLLaMA. Skip.
 
 Named in the brief, so here is the honest read: it is a mismatch. That community
-runs local models, mostly through tools Vigil covers only via the generic
-provider, which somebody has to configure by hand. Vigil's zero-configuration
+runs local models, mostly through tools Belay covers only via the generic
+provider, which somebody has to configure by hand. Belay's zero-configuration
 path is Claude Code specifically. Posting a Claude-first tool there reads as
 audience-farming, self-promotion rules are enforced, and the response would be
 correct to be cold.
@@ -306,7 +306,7 @@ the one who names your own limitation is worth more than the limitation costs.
 **"Replaces caffeinate entirely."** Always on mode is `caffeinate` with safety
 rails, and that is a fair description of that one mode. It is not a replacement
 for the tool: `caffeinate` runs over SSH, runs in scripts, can be scoped to a
-process or a duration from a command line, and needs no GUI session. Vigil is a
+process or a duration from a command line, and needs no GUI session. Belay is a
 better default for a person at a Mac. Claim that, and nothing wider.
 
 **"Keeps working after a force quit."** The opposite is the design, and the design
@@ -324,7 +324,7 @@ a well-designed safety property into an overstatement someone can disprove. Say
 **Title** (77 characters, no adjectives, links to the repository):
 
 ```
-Show HN: Vigil, a Mac menu bar app that sleeps when your coding agent is done
+Show HN: Belay, a Mac menu bar app that sleeps when your coding agent is done
 ```
 
 **First comment:**
@@ -335,7 +335,7 @@ to sleep in the middle of them. The usual fix is to set sleep to Never, which
 I then forget about for a week, or to leave `caffeinate` running in a terminal
 tab, which becomes load-bearing and dies with the shell.
 
-Vigil holds a system sleep assertion only while an agent is actually working.
+Belay holds a system sleep assertion only while an agent is actually working.
 It watches the JSONL transcripts Claude Code appends under ~/.claude/projects
 with FSEvents and reads only the bytes added since it last looked. The primary
 signal is that a file grew, which keeps working when the record format changes,
@@ -354,8 +354,8 @@ cannot pin the machine.
 
 You can check all of it without trusting me:
 
-  pmset -g assertions | grep "pid $(pgrep -x Vigil)("
-  lsof -nP -i -a -p "$(pgrep -x Vigil)" | grep -v LISTEN
+  pmset -g assertions | grep "pid $(pgrep -x Belay)("
+  lsof -nP -i -a -p "$(pgrep -x Belay)" | grep -v LISTEN
 
 The first prints what is held and why, in plain English, with the remaining
 timeout. The second should print nothing.
@@ -389,7 +389,7 @@ verified by then, say so. If it has not, leave it exactly as it is.
 For awesome lists, the r/macapps post body, and anywhere that wants a paragraph:
 
 ```
-Vigil is a free, open-source macOS menu bar app that holds a system sleep
+Belay is a free, open-source macOS menu bar app that holds a system sleep
 assertion only while a local AI coding agent is working, then lets the Mac
 return to its normal sleep schedule. It detects Claude Code with no
 configuration by watching transcript files for growth, and covers other tools
@@ -405,7 +405,7 @@ entitlement entirely. macOS 14 or later. MIT.
 For a one-line entry where a list requires one:
 
 ```
-Vigil - keeps a Mac awake only while a local AI coding agent is working.
+Belay - keeps a Mac awake only while a local AI coding agent is working.
 ```
 
 ---
@@ -450,7 +450,7 @@ weekly or lose it permanently.
 [`../.github/ISSUE_TEMPLATE/bug_report.yml`](../.github/ISSUE_TEMPLATE/bug_report.yml)
 already asks for the panel's status line and the assertion state, which is what
 makes a detection report actionable. One small fix before launch: the command it
-tells people to run is `pmset -g assertions | grep -i vigil`, and
+tells people to run is `pmset -g assertions | grep -i belay`, and
 `docs/QA-CHECKLIST.md` explains why that is the wrong grep. It also matches
 `runningboardd`'s launch assertion for the bundle identifier, which is not ours,
 so reporters will paste a line that looks like a stuck assertion and is not.

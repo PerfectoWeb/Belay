@@ -4,27 +4,27 @@
 
 Local Swift packages under `Packages/`, consumed by a thin app target. This is
 what makes the project testable, parallelisable across agents, and pleasant to
-extend. Nothing but `VigilApp` may import AppKit/SwiftUI.
+extend. Nothing but `BelayApp` may import AppKit/SwiftUI.
 
 > **As built.** One SwiftPM package with one target per module, not six packages
-> (PROJECT_STATE D1), and no `VigilHelperCLI` (D3 — the command shim was cut once
+> (PROJECT_STATE D1), and no `BelayHelperCLI` (D3 — the command shim was cut once
 > async HTTP hooks were proven to work).
 
 ```
-Vigil/
+Belay/
 ├── project.yml                 XcodeGen source of truth
-├── Packages/VigilKit/
+├── Packages/BelayKit/
 │   ├── Package.swift           the target graph *is* the dependency rule
 │   └── Sources/
-│       ├── VigilCore/          domain types, SignalBus, ActivityCoordinator, Clock
-│       ├── VigilPower/         IOKit assertions, power source, sleep/wake events
-│       ├── VigilProviders/     ClaudeCode + Generic (Codex is a Generic preset, D4)
-│       ├── VigilHookBridge/    loopback receiver + hook installer + backup/restore
-│       ├── VigilSettings/      typed preferences, migration, defaults
-│       ├── VigilTipJar/        TipJarProviding, UpdateChannel
-│       └── VigilSupport/       Log, FileAccess abstraction
-├── Sources/VigilApp/           delegate, status item, panel, settings, ProviderHost
-├── Tests/VigilAppTests/        app-level tests (module suites live in the package)
+│       ├── BelayCore/          domain types, SignalBus, ActivityCoordinator, Clock
+│       ├── BelayPower/         IOKit assertions, power source, sleep/wake events
+│       ├── BelayProviders/     ClaudeCode + Generic (Codex is a Generic preset, D4)
+│       ├── BelayHookBridge/    loopback receiver + hook installer + backup/restore
+│       ├── BelaySettings/      typed preferences, migration, defaults
+│       ├── BelayTipJar/        TipJarProviding, UpdateChannel
+│       └── BelaySupport/       Log, FileAccess abstraction
+├── Sources/BelayApp/           delegate, status item, panel, settings, ProviderHost
+├── Tests/BelayAppTests/        app-level tests (module suites live in the package)
 ├── Resources/                  Assets.xcassets, Entitlements
 └── scripts/                    build-local.sh, test.sh, perf-soak.sh, release.sh, …
 ```
@@ -32,15 +32,15 @@ Vigil/
 ### Dependency rule
 
 ```
-VigilApp ──▶ VigilCore ──▶ VigilSupport
+BelayApp ──▶ BelayCore ──▶ BelaySupport
    │            ▲   ▲
-   ├──▶ VigilPower    │
-   ├──▶ VigilProviders┘
-   ├──▶ VigilHookBridge
-   └──▶ VigilSettings
+   ├──▶ BelayPower    │
+   ├──▶ BelayProviders┘
+   ├──▶ BelayHookBridge
+   └──▶ BelaySettings
 ```
 
-`VigilCore` knows nothing about IOKit, the filesystem, or Claude. It receives
+`BelayCore` knows nothing about IOKit, the filesystem, or Claude. It receives
 signals and emits decisions. That's what makes the state machine unit-testable
 in milliseconds with zero I/O.
 
@@ -133,11 +133,11 @@ Responsibilities:
 ```
 
 An expired awaiting-user budget releases **directly** rather than routing through
-CoolingDown: PRD R7 calls the budget a bounded window after which Vigil gives up,
+CoolingDown: PRD R7 calls the budget a bounded window after which Belay gives up,
 and stacking another grace period on a 15-minute wait contradicts that
 (PROJECT_STATE D8).
 
-`Armed` and `Working` both mean "Vigil is running in auto mode"; only `Working`
+`Armed` and `Working` both mean "Belay is running in auto mode"; only `Working`
 and `AwaitingUser` hold an assertion. `CoolingDown` still holds the assertion —
 that *is* the grace period — and is what prevents the Mac dozing off between two
 tool calls.
@@ -175,7 +175,7 @@ public protocol ActivityProvider: Actor {
 detection — travels in `ProviderDescriptor`, so the pane is generated rather than
 hand-written per provider.
 
-There is no `ProviderRegistry`: `Sources/VigilApp/ProviderHost.swift` owns the
+There is no `ProviderRegistry`: `Sources/BelayApp/ProviderHost.swift` owns the
 providers and the bus (PROJECT_STATE D13), and is the one app-layer file that a
 new provider touches.
 If adding a provider requires touching more than two files outside its own
@@ -183,7 +183,7 @@ folder, the abstraction is wrong — fix the abstraction.
 
 ## Logging
 
-`VigilSupport.Log` wraps `os.Logger` with subsystem `com.<org>.vigil` and
+`BelaySupport.Log` wraps `os.Logger` with subsystem `com.<org>.belay` and
 categories per module. Use signposts around detection and assertion changes so
 Instruments traces are readable. **Never log transcript content, prompts, file
 paths inside user projects, or session IDs at default level** — session IDs are

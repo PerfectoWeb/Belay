@@ -63,7 +63,7 @@ Implementation notes that matter:
   (default 45 s). Both paths feed the same coordinator grace period, so the
   effective wake-tail is ~2 minutes worst case. That is the correct trade.
 - **Ignore stale files at startup.** On launch, seed cursors at EOF and treat
-  any file untouched for > 10 minutes as an ended session. Otherwise Vigil will
+  any file untouched for > 10 minutes as an ended session. Otherwise Belay will
   "discover" 40 old sessions and hold the Mac awake on boot.
 - **Sandbox**: FSEvents on `~/.claude` requires the user to grant access to that
   folder once via `NSOpenPanel`, stored as a security-scoped bookmark. See
@@ -95,36 +95,36 @@ Map events to activity:
 Two delivery mechanisms; implement the HTTP one if supported, keep the command
 shim as the fallback.
 
-**B1 — HTTP receiver (preferred).** Vigil runs an `NWListener` bound to
+**B1 — HTTP receiver (preferred).** Belay runs an `NWListener` bound to
 `127.0.0.1` on an ephemeral port, writes the port and a random per-install
-bearer token to `~/Library/Application Support/Vigil/bridge.json`, and registers
+bearer token to `~/Library/Application Support/Belay/bridge.json`, and registers
 hooks pointing at `http://127.0.0.1:<port>/hook`. Requests without the token are
 dropped. Bind to loopback only — never `0.0.0.0`. Requires the
 `com.apple.security.network.server` entitlement under sandbox.
 
-**B2 — Command shim (fallback).** Ship a tiny `vigil-hook` executable in
-`Vigil.app/Contents/Helpers/`. It reads stdin, connects to a Unix domain socket,
+**B2 — Command shim (fallback).** Ship a tiny `belay-hook` executable in
+`Belay.app/Contents/Helpers/`. It reads stdin, connects to a Unix domain socket,
 writes, and exits. Hard rules:
 
 - Total budget **50 ms**, enforced with a socket timeout.
 - **Always `exit 0`.** A non-zero exit from a hook can block or disrupt Claude
-  Code. Vigil must be incapable of breaking the user's agent. This is the single
+  Code. Belay must be incapable of breaking the user's agent. This is the single
   most important line in this document.
 - No dynamic dependencies, no JSON re-serialisation — forward the raw bytes.
 - Self-heal: on every app launch, check the path recorded in `settings.json`
   still points at the current bundle; rewrite it if the app was moved.
 
-**Installing hooks safely.** Vigil edits the user's `~/.claude/settings.json`.
+**Installing hooks safely.** Belay edits the user's `~/.claude/settings.json`.
 That file is precious. Therefore:
 
 1. Explicit user action in Settings → Providers → "Enable precise detection",
    with a diff preview of exactly what will be added.
-2. Timestamped backup to `~/Library/Application Support/Vigil/backups/` first.
+2. Timestamped backup to `~/Library/Application Support/Belay/backups/` first.
 3. Read → parse → merge → atomic write (write to temp in the same directory,
    `FileManager.replaceItem`). Preserve key order and formatting as far as
    `JSONSerialization` allows; if the file has comments or is otherwise not
    plain JSON, **do not write** — show the snippet and a copy button instead.
-4. All Vigil-owned entries carry an identifiable marker so uninstall is exact.
+4. All Belay-owned entries carry an identifiable marker so uninstall is exact.
 5. One-click "Remove integration" that restores cleanly, plus a documented
    manual removal procedure in the README for when someone deletes the app first.
 

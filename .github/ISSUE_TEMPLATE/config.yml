@@ -1,11 +1,11 @@
 blank_issues_enabled: true
 contact_links:
   - name: A translation that reads wrong
-    url: https://github.com/perfectoweb/vigil/blob/main/CONTRIBUTING.md#fixing-or-adding-a-translation
+    url: https://github.com/perfectoweb/belay/blob/main/CONTRIBUTING.md#fixing-or-adding-a-translation
     about: None of the six languages have had a native review. Fixing one is a single line in the string catalogue, and a pull request is faster than an issue.
-  - name: An agent Vigil does not detect
-    url: https://github.com/perfectoweb/vigil/blob/main/CONTRIBUTING.md#adding-a-provider-preset
+  - name: An agent Belay does not detect
+    url: https://github.com/perfectoweb/belay/blob/main/CONTRIBUTING.md#adding-a-provider-preset
     about: Presets are data, not code. Adding one is one array element, and you can configure the same thing yourself today in Settings, Providers.
   - name: Something that should not be public
-    url: https://github.com/perfectoweb/vigil/blob/main/SECURITY.md
-    about: How to report a security or privacy problem, and what Vigil does and does not read.
+    url: https://github.com/perfectoweb/belay/blob/main/SECURITY.md
+    about: How to report a security or privacy problem, and what Belay does and does not read.

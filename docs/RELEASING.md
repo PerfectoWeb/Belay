@@ -1,4 +1,4 @@
-# Releasing Vigil
+# Releasing Belay
 
 How a release of the direct (Developer ID) build is cut, by hand or by CI, and
 how to undo one that went wrong.
@@ -165,7 +165,7 @@ anything. Use the standard subheadings (`### Added`, `### Changed`, `### Fixed`,
 file up to date:
 
 ```markdown
-[1.0.1]: https://github.com/perfectoweb/vigil/releases/tag/v1.0.1
+[1.0.1]: https://github.com/perfectoweb/belay/releases/tag/v1.0.1
 ```
 
 Write it for someone deciding whether to install the update. The commit log is
@@ -182,7 +182,7 @@ Do this for the first release without exception, and after any change to
 
 ### 4. Verify by hand
 
-CI proves the artefact is well formed. It cannot prove Vigil works. Before
+CI proves the artefact is well formed. It cannot prove Belay works. Before
 tagging, run the local gate and walk the manual list:
 
 ```bash
@@ -203,7 +203,7 @@ them and refuses to build if they disagree, because a DMG whose filename says
 one version and whose `Info.plist` says another is a support problem forever.
 
 ```bash
-git tag -a v1.0.1 -m "Vigil 1.0.1"
+git tag -a v1.0.1 -m "Belay 1.0.1"
 git push origin v1.0.1
 ```
 
@@ -223,16 +223,16 @@ On the workflow run:
 
 On the release page:
 
-- `Vigil-<version>.dmg` and `Vigil-<version>.dmg.sha256` are both attached.
+- `Belay-<version>.dmg` and `Belay-<version>.dmg.sha256` are both attached.
 - The notes are the CHANGELOG section, not a list of commits.
 - The SHA-256 in the notes matches the sidecar file.
 
 Then, on a Mac that did not build it, ideally one that has never seen the source:
 
 ```bash
-shasum -a 256 ~/Downloads/Vigil-1.0.1.dmg          # matches the published digest
-spctl -a -t open --context context:primary-signature ~/Downloads/Vigil-1.0.1.dmg
-xcrun stapler validate ~/Downloads/Vigil-1.0.1.dmg
+shasum -a 256 ~/Downloads/Belay-1.0.1.dmg          # matches the published digest
+spctl -a -t open --context context:primary-signature ~/Downloads/Belay-1.0.1.dmg
+xcrun stapler validate ~/Downloads/Belay-1.0.1.dmg
 ```
 
 Turn the Wi-Fi off and open the DMG and the app. Offline is the real test of
@@ -283,7 +283,7 @@ be registered without the account owner; every submission needs review notes and
 a demo video written by hand, which `docs/06-DISTRIBUTION.md` describes and which
 are prose rather than build settings; and an automated upload burns a build
 number on every tag whether or not anybody meant to submit. What CI does own is
-the machine-checkable half: `ci.yml` builds `Vigil-MAS` and runs
+the machine-checkable half: `ci.yml` builds `Belay-MAS` and runs
 `scripts/verify-mas-build.sh` on every push, so a Sparkle symbol or a stray
 `network.client` entitlement is caught long before a human opens Transporter.
 
@@ -311,7 +311,7 @@ hand on a real Mac with a real agent on it.
   signed without hardened runtime, or an entitlement that Developer ID does not
   allow. Fix, then re-run just the notarize step locally on the DMG you already
   have instead of rebuilding:
-  `scripts/notarize.sh dist/Vigil-1.0.1.dmg`.
+  `scripts/notarize.sh dist/Belay-1.0.1.dmg`.
 - **`create-dmg` stalls.** It configures the DMG window with AppleScript, which
   wants a Finder session. On a headless runner it can wait before giving up. If
   this turns out to be the recurring failure, replace the DMG with a signed zip

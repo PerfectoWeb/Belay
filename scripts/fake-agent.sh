@@ -6,7 +6,7 @@
 # and `user` records, and the metadata records (`last-prompt`, `mode`) that
 # real sessions append *after* a turn ends. Nothing here contains real content.
 #
-#   scripts/fake-agent.sh --mode steady --dir /tmp/vigil-fake --seconds 30
+#   scripts/fake-agent.sh --mode steady --dir /tmp/belay-fake --seconds 30
 #
 # Modes:
 #   steady      alternating tool_use / tool_result records, then end_turn plus a
@@ -18,7 +18,7 @@
 set -uo pipefail
 
 MODE=steady
-DIR="${TMPDIR:-/tmp}/vigil-fake-agent"
+DIR="${TMPDIR:-/tmp}/belay-fake-agent"
 SECONDS_TO_RUN=20
 CADENCE=0.5
 QUIET=180

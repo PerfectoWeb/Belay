@@ -27,7 +27,7 @@ unrun release script.
 
 **Transcript path scheme confirmed** as the spec guessed: the project directory
 name is the absolute cwd with `/` replaced by `-` (note: *not* URL-encoding —
-`/Volumes/BASE/Work/Apps/MacOS/Vigil` → `-Volumes-BASE-Work-Apps-MacOS-Vigil`).
+`/Volumes/BASE/Work/Apps/MacOS/Belay` → `-Volumes-BASE-Work-Apps-MacOS-Belay`).
 Dots in path components are also mapped to `-`. Since this transform is lossy,
 **never try to reverse it** to recover a project path — take `cwd` from the
 records or from `sessions/<pid>.json` instead. The workspace display name is the
@@ -42,10 +42,10 @@ last path component.
 Not mentioned anywhere in the spec, and it materially improves Tier C:
 
 ```json
-{ "pid": 20070, "sessionId": "a6e15a28-…", "cwd": "/Volumes/BASE/…/Vigil",
+{ "pid": 20070, "sessionId": "a6e15a28-…", "cwd": "/Volumes/BASE/…/Belay",
   "startedAt": 1786372058888, "procStart": "Mon Aug 10 14:27:38 2026",
   "version": "2.1.222", "peerProtocol": 1, "kind": "interactive",
-  "entrypoint": "claude-desktop", "name": "vigil-3d", "nameSource": "derived" }
+  "entrypoint": "claude-desktop", "name": "belay-3d", "nameSource": "derived" }
 ```
 
 This gives us pid → sessionId → cwd directly, so process-presence liveness needs
@@ -93,7 +93,7 @@ Three consequences, all of which were bugs until this pass:
    row nobody started.
 
 A `agent-<id>.meta.json` sits beside each transcript: `agentType`, `spawnDepth`,
-and for Task subagents a `description` of the task. Vigil reads **`agentType`
+and for Task subagents a `description` of the task. Belay reads **`agentType`
 only** — the description is a summary of the user's prompt, and the panel is on
 screen during screen shares. Workflow agents carry no description.
 
@@ -175,8 +175,8 @@ Claude Code turn against a local listener on `127.0.0.1:8767`, and captured what
 arrived:
 
 ```
-17:30:19.025 /hook auth=Bearer vigil-test-token event=UserPromptSubmit bytes=525
-17:30:19.046 /hook auth=Bearer vigil-test-token event=SessionEnd     bytes=435
+17:30:19.025 /hook auth=Bearer belay-test-token event=UserPromptSubmit bytes=525
+17:30:19.046 /hook auth=Bearer belay-test-token event=SessionEnd     bytes=435
 ```
 
 Confirmed empirically:
@@ -188,13 +188,13 @@ Confirmed empirically:
 - The POST body is the JSON envelope.
 
 **Deviation adopted — this is the biggest one in this document.** `docs/03` B1/B2
-plan an HTTP receiver *with a `vigil-hook` command shim as fallback*, and
-`docs/02` lists a `Sources/VigilHelperCLI/` target. With `type: "http"` plus
+plan an HTTP receiver *with a `belay-hook` command shim as fallback*, and
+`docs/02` lists a `Sources/BelayHelperCLI/` target. With `type: "http"` plus
 `async: true` confirmed working, the shim earns nothing: it costs a second
 executable in the bundle, a Unix socket, a 50 ms budget to police, and the
 `exit 0` hazard that `docs/03` calls "the single most important line in this
 document". An async HTTP hook cannot block Claude Code *by construction* — there
-is no exit code and no wait. **`VigilHelperCLI` is cut.** Invariant 5 is
+is no exit code and no wait. **`BelayHelperCLI` is cut.** Invariant 5 is
 satisfied more strongly by deleting the component than by hardening it.
 
 Recorded in `PROJECT_STATE.md`. If a future Claude Code drops `http` hooks, the
@@ -222,7 +222,7 @@ decoded, never logged, never held. Called out explicitly in `SECURITY.md`.
 The installed version fires 31 events. The spec's table lists 7. Relevant
 additions, and how we map them:
 
-| Event | Vigil mapping | Why |
+| Event | Belay mapping | Why |
 |---|---|---|
 | `PermissionRequest` | `.awaitingUser` | **Precise**; the spec's `Notification` is a catch-all that also fires for non-blocking messages |
 | `Elicitation` | `.awaitingUser` | Agent is explicitly asking the user a question |
@@ -311,7 +311,7 @@ pid 1079(nsurlsessiond): [0x00005100000188df] 00:00:01 PreventUserIdleSystemSlee
 
 `PreventUserIdleSystemSleep` is the correct type name and appears both in the
 system-wide summary and the per-process listing, so `pmset -g assertions | grep
--i vigil` will show our assertion, its human-readable reason, and its remaining
+-i belay` will show our assertion, its human-readable reason, and its remaining
 timeout. Note the system already holds a `powerd` "Prevent sleep while display
 is on" assertion whenever the display is awake — during manual QA the display
 must be asleep (or that assertion accounted for) or every test looks like a pass.

@@ -1,12 +1,12 @@
 name: Bug report
-description: Vigil held the assertion when it should not have, or did not when it should have.
+description: Belay held the assertion when it should not have, or did not when it should have.
 labels: [bug]
 body:
   - type: markdown
     attributes:
       value: |
         Before you paste anything: **do not include your prompts, your agent's
-        replies, or your code**. Vigil never reads them and this issue tracker
+        replies, or your code**. Belay never reads them and this issue tracker
         does not want them either. Transcript paths are fine, transcript
         contents are not.
 
@@ -43,9 +43,9 @@ body:
       required: true
 
   - type: input
-    id: vigil-version
+    id: belay-version
     attributes:
-      label: Vigil version
+      label: Belay version
       description: Settings, About. The version and build, for example "1.0.0 (1)". If you built it yourself, say so.
       placeholder: "1.0.0 (1)"
     validations:
@@ -91,7 +91,7 @@ body:
   - type: dropdown
     id: mode
     attributes:
-      label: Which mode was Vigil in?
+      label: Which mode was Belay in?
       options:
         - Auto
         - Always on
@@ -105,10 +105,10 @@ body:
       label: Assertion state
       description: |
         Run this while the problem is happening, and paste the output. Empty
-        output is a useful answer: it means Vigil was holding nothing.
+        output is a useful answer: it means Belay was holding nothing.
       value: |
         ```
-        $ pmset -g assertions | grep "pid $(pgrep -x Vigil)("
+        $ pmset -g assertions | grep "pid $(pgrep -x Belay)("
 
         ```
       render: text
@@ -119,7 +119,7 @@ body:
     id: panel
     attributes:
       label: What the panel said
-      description: Vigil always states its reason in plain language. Quote it, or attach a screenshot.
+      description: Belay always states its reason in plain language. Quote it, or attach a screenshot.
       placeholder: "Nothing is running. / Battery guard: below 20% on battery."
     validations:
       required: false
@@ -129,12 +129,12 @@ body:
     attributes:
       label: Log output
       description: |
-        Optional and often decisive. This prints Vigil's own os.Logger lines for
+        Optional and often decisive. This prints Belay's own os.Logger lines for
         the last hour. Session identifiers are logged privately, so it does not
         contain paths or prompts.
       value: |
         ```
-        $ log show --predicate 'subsystem == "com.perfecto-web.vigil"' --last 1h --info
+        $ log show --predicate 'subsystem == "com.perfecto-web.belay"' --last 1h --info
 
         ```
       render: text

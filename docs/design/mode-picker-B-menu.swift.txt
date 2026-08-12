@@ -1,18 +1,18 @@
 import SwiftUI
-import VigilCore
+import BelayCore
 
 /// The awake mode, as a decision rather than a setting.
 ///
 /// This was three equal segments, and that was the problem: `[Auto][Always on]
 /// [Off]` gives identical weight to three choices that are not remotely equal.
-/// Auto is what Vigil is for and covers virtually every launch; Always on is a
+/// Auto is what Belay is for and covers virtually every launch; Always on is a
 /// decision somebody makes for one evening; Off is almost never. A control that
 /// presents them side by side asks the user to pick from three doors when there
 /// is really one door and two exceptions — and it costs a full row of a panel
 /// that is only ever glanced at.
 ///
 /// So: a small menu next to the state, the way Control Centre offers a Focus.
-/// It states what Vigil is doing right now, and opening it is how you change
+/// It states what Belay is doing right now, and opening it is how you change
 /// your mind. The previous control is kept verbatim under `docs/design/`.
 struct PanelModePicker: View {
     let state: AppState

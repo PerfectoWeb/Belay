@@ -1,5 +1,5 @@
 import SwiftUI
-import VigilCore
+import BelayCore
 
 /// Auto / Always on / Off, one tap, and the only place in the panel that writes
 /// policy. Every write goes out through `AppState.onModeChange` so the settings

@@ -1,10 +1,10 @@
 # Notices
 
-Vigil itself is MIT licensed — see `LICENSE`.
+Belay itself is MIT licensed — see `LICENSE`.
 
 ## Third-party trademarks and logos
 
-Vigil bundles the marks of the tools it can watch, in
+Belay bundles the marks of the tools it can watch, in
 `Resources/Assets.xcassets/logo-*.imageset`, and shows them in the Active
 Sessions list so you can tell at a glance which agent is running.
 
@@ -12,7 +12,7 @@ Sessions list so you can tell at a glance which agent is running.
 property of their respective owners.** They appear here only to identify those
 products. Their use does not imply any affiliation with, sponsorship by, or
 endorsement from their owners, and none of these companies are involved with
-Vigil in any way.
+Belay in any way.
 
 | Mark | Owner |
 |---|---|
@@ -27,5 +27,5 @@ brand colours in a menu bar panel is noise — and it does mean the marks are no
 shown in their owners' specified colours. If you own one of these marks and want
 it presented differently, or not at all, open an issue and it will be changed.
 
-Vigil ships no artwork it does not have the right to ship. If you are packaging
+Belay ships no artwork it does not have the right to ship. If you are packaging
 a fork for distribution, that responsibility becomes yours.

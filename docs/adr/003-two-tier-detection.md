@@ -4,7 +4,7 @@
 
 ## Context
 
-Vigil has to answer one question — is a local coding agent working right now? —
+Belay has to answer one question — is a local coding agent working right now? —
 and it has to keep answering it correctly after Claude Code ships a release that
 nobody told us about.
 
@@ -89,7 +89,7 @@ and whichever landed last wins forever.
 
 ### The command shim is cut
 
-`docs/03` B2 specifies a `vigil-hook` executable in `Vigil.app/Contents/Helpers/`
+`docs/03` B2 specifies a `belay-hook` executable in `Belay.app/Contents/Helpers/`
 as the fallback delivery path: reads stdin, writes to a Unix socket, 50 ms
 budget, and an absolute "always `exit 0`" rule that the document itself calls its
 single most important line.
@@ -112,9 +112,9 @@ drops `http` hooks the shim can come back without redesigning anything.
 
 ## Consequences
 
-- **The default experience needs no configuration and no trust.** Vigil detected
+- **The default experience needs no configuration and no trust.** Belay detected
   a real session on this machine at first run and held with
-  `Details: An agent is working in Vigil`; a second concurrent session aggregated
+  `Details: An agent is working in Belay`; a second concurrent session aggregated
   to `2 agent sessions are working` and resolved back down on its own.
 - **A format change degrades rather than breaks.** Worst case, structural
   classification stops contributing and idle detection falls back entirely to the
@@ -155,7 +155,7 @@ quietly do the right thing" cannot open with a configuration chore.
 
 **Transcript only.** Zero setup and no writes to anything of the user's, but it
 cannot distinguish blocked from finished, which forfeits the notification that
-gives people a reason to install Vigil at all. It also has no answer for a long
+gives people a reason to install Belay at all. It also has no answer for a long
 silent tool call other than a longer and longer idle window.
 
 **Classify the literal tail record**, as `docs/03` originally specifies. Measured
@@ -165,7 +165,7 @@ project of a spec that was reasonable to write and wrong in fact.
 
 **`KERN_PROCARGS2` for Tier C**, also from `docs/03`, which warns in the same
 breath that it may be restricted under sandbox. Unnecessary:
-`~/.claude/sessions/<pid>.json` maps pid to session id to cwd outright, so Vigil
+`~/.claude/sessions/<pid>.json` maps pid to session id to cwd outright, so Belay
 never inspects another process's argument vector. Better, and better-behaved.
 
 **Polling the transcript directory instead of FSEvents.** Discovery left FSEvents

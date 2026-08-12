@@ -32,24 +32,24 @@ cleanly. `swiftlint --strict` and `swift-format lint --strict` are clean.
 Verified at M0 exit:
 
 ```
-build/Vigil.app                     ad-hoc signed, satisfies its Designated Requirement
+build/Belay.app                     ad-hoc signed, satisfies its Designated Requirement
 LSUIElement                         no Dock icon confirmed via System Events
-pmset -g assertions | grep -i vigil no assertion held (correct at M0)
+pmset -g assertions | grep -i belay no assertion held (correct at M0)
 ```
 
 ### M1 — done
 
-`VigilPower` (assertion controller, IOKit backend + mock, refresh loop, power
-source, sleep/wake, signal handling), `VigilSettings` (typed store, clamping,
-migration) and `VigilCore` (the state machine, ledger, driver) are built and
-wired into the app through `VigilController`. 56 module tests plus 3 app tests,
+`BelayPower` (assertion controller, IOKit backend + mock, refresh loop, power
+source, sleep/wake, signal handling), `BelaySettings` (typed store, clamping,
+migration) and `BelayCore` (the state machine, ledger, driver) are built and
+wired into the app through `BelayController`. 56 module tests plus 3 app tests,
 all green; `swiftlint --strict` and `swift-format lint --strict` clean.
 
 Verified on the real machine, not just in tests:
 
 ```
 Auto mode, no sessions      no assertion held                       correct
-Always on                   PreventUserIdleSystemSleep, named "Vigil"
+Always on                   PreventUserIdleSystemSleep, named "Belay"
                             Details: Always on
                             Timeout will fire in 116 secs Action=TimeoutActionRelease
 Refresh loop                remaining counted 100→85→70→55→40 then jumped to 117
@@ -63,9 +63,9 @@ Two bugs the milestone found, both fixed:
 
 - **Nothing evaluated at startup.** A persisted Always-on mode did nothing for up
   to a minute, because the coordinator is purely reactive and the driver's first
-  tick is its idle interval away. `VigilController.start()` now seeds power
+  tick is its idle interval away. `BelayController.start()` now seeds power
   conditions and forces one evaluation.
-- **The `Observation` name collision.** `VigilCore` declared a `public struct
+- **The `Observation` name collision.** `BelayCore` declared a `public struct
   Observation`, which shadowed the Observation *module* inside the `@Observable`
   macro expansion and broke any module that used both. Renamed to `Reading`.
 
@@ -85,7 +85,7 @@ So there is no memory problem and no SwiftUI-removal work for M7. Use
 
 ### M2 — done
 
-`VigilProviders` (FSEvents watcher, incremental transcript cursors, classifier,
+`BelayProviders` (FSEvents watcher, incremental transcript cursors, classifier,
 process presence) and the panel UI are built and wired through `SignalBus` into
 the coordinator. 101 module tests + 17 app tests, lint clean.
 
@@ -101,17 +101,17 @@ yields no signal for 12 of them, while the reverse-scan rule from
 `docs/DISCOVERY.md` §2.1 correctly returns `.idle` for all 14.
 
 **M2 exit criterion met on the real machine.** With default settings and zero
-configuration, Vigil detected a live Claude Code session and held:
+configuration, Belay detected a live Claude Code session and held:
 
 ```
-Details: An agent is working in Vigil
+Details: An agent is working in Belay
 ```
 
 A second, unrelated live session in another project appeared as
 `2 agent sessions are working`, then resolved to just that project when this one
 went quiet — aggregation across sessions (PRD R3) working unprompted.
 
-New end-to-end suite `VigilIntegrationTests` runs the full pipeline (real file →
+New end-to-end suite `BelayIntegrationTests` runs the full pipeline (real file →
 provider → bus → coordinator → mock power backend) and asserts the hold/release
 timeline `docs/08` §3 asks for, including the metadata-tail case, work resuming
 inside the grace period, and stale transcripts at startup.
@@ -164,7 +164,7 @@ reverse. The wait now blocks on the specific filename. Verified 10 of 10 green.
 
 ### M3 — done
 
-`VigilHookBridge` (loopback receiver, token auth, safe `settings.json`
+`BelayHookBridge` (loopback receiver, token auth, safe `settings.json`
 installer) is built and wired through `ProviderHost`. The Providers settings
 pane carries the diff-preview consent flow. 139 module tests + 22 app tests.
 
@@ -177,7 +177,7 @@ wrong bearer token     401, body never parsed
 valid token            204
 session lifecycle      2 real sessions -> 5 with 3 hook sessions -> 2 after SessionEnd
 prompt privacy         a distinctive secret sent in the `prompt` field appears
-                       in neither bridge.json nor any Vigil log
+                       in neither bridge.json nor any Belay log
 ~/.claude/settings.json  mtime still Jul 8 13:09 — untouched throughout
 ```
 
@@ -186,16 +186,16 @@ the listener is inert on its own. `HookPreviewSheet` shows the exact JSON that
 would be written, and is the consent `docs/00-INVARIANTS.md` invariant 6 requires. Self-heal
 (repointing a changed port) is the one write with no button behind it, and it is
 deliberately narrow: it runs only when the user has already consented to an
-installation and can only rewrite entries Vigil owns.
+installation and can only rewrite entries Belay owns.
 
-The installer's marker is a query item in Vigil's own hook URL
-(`/hook?src=vigil`) rather than an extra JSON key — an unrecognised key inside a
+The installer's marker is a query item in Belay's own hook URL
+(`/hook?src=belay`) rather than an extra JSON key — an unrecognised key inside a
 hook object is a way to break the user's agent for our own bookkeeping, which is
 precisely risk R2. A string also survives `JSONSerialization` unchanged, where a
 boolean marker returns as an `NSNumber` and can stop comparing equal, making
 uninstall miss entries it owns.
 
-### D13 — `ProviderHost` split out of `VigilController`
+### D13 — `ProviderHost` split out of `BelayController`
 
 The controller crossed the 250-line rule after Tier B landed, which `docs/07`
 treats as the signal that a file is doing two jobs — and it was: "where do
@@ -209,11 +209,11 @@ Found by the integration suite. The driver naps until the coordinator's
 `nextDeadline`, capped at 60 s. It computed that deadline *before* the newest
 signal existed and had no way to be woken, so a release could land up to 60 s
 late. Stacked on 45 s of idle inference plus a 90 s grace, that breaks the PRD
-success criterion "within 2 minutes of the run finishing, `pmset` shows no Vigil
+success criterion "within 2 minutes of the run finishing, `pmset` shows no Belay
 assertion" (45 + 90 + 60 = 195 s).
 
 `CoordinatorDriver.nudge()` now cancels the in-flight sleep so the loop
-recomputes; `VigilController` calls it after every ingest, policy change and
+recomputes; `BelayController` calls it after every ingest, policy change and
 power change. The metadata-tail test went from never releasing inside 12 s to
 releasing in 1.5 s.
 
@@ -222,8 +222,8 @@ releasing in 1.5 s.
 ## Decisions
 
 ### D1 — One SwiftPM package, six targets, instead of six packages
-`docs/02` lays out `Packages/VigilCore/`, `Packages/VigilPower/`, … as separate
-packages. Built instead as one package `Packages/VigilKit` with one target per
+`docs/02` lays out `Packages/BelayCore/`, `Packages/BelayPower/`, … as separate
+packages. Built instead as one package `Packages/BelayKit` with one target per
 module. The dependency rule from `docs/02` is enforced by the target graph in
 `Package.swift`, which is exactly as strict as separate packages; module
 boundaries and directory names are unchanged, so work still splits cleanly
@@ -233,14 +233,14 @@ module ever needs independent versioning.
 
 ### D2 — `swift test` and `xcodebuild test` are two commands, not one
 XcodeGen schemes cannot reference a local SwiftPM package's test targets, so
-`xcodebuild -scheme Vigil test` runs only `VigilAppTests` (bundle metadata and,
+`xcodebuild -scheme Belay test` runs only `BelayAppTests` (bundle metadata and,
 later, app-level integration). The module suites — which is nearly all of the
-testing — run under `swift test --package-path Packages/VigilKit`.
+testing — run under `swift test --package-path Packages/BelayKit`.
 `scripts/test.sh` runs both plus both linters, and is what CI calls.
 `docs/00-INVARIANTS.md` was updated to match.
 
-### D3 — `VigilHelperCLI` is cut
-`docs/02` and `docs/03` B2 specify a `vigil-hook` command shim as the fallback
+### D3 — `BelayHelperCLI` is cut
+`docs/02` and `docs/03` B2 specify a `belay-hook` command shim as the fallback
 delivery path for hook events, with a 50 ms budget and an absolute "always exit
 0" rule. Discovery proved `type: "http"` hooks with `"async": true` work against
 a loopback listener on this machine, with `Authorization: Bearer` headers
@@ -270,7 +270,7 @@ under sandbox. See `docs/DISCOVERY.md` §1.1.
 
 ### D8 — An expired awaiting-user budget releases directly, it does not cool down
 `docs/02`'s state diagram routes `AwaitingUser --budget expires--> CoolingDown`.
-PRD R7 describes the budget as a bounded window after which Vigil gives up, and
+PRD R7 describes the budget as a bounded window after which Belay gives up, and
 stacking a further 90 s grace on top of a 15-minute wait contradicts that. The
 budget now releases directly. Relatedly, an `awaitingUser` session deliberately
 does **not** refresh the grace timer: letting it do so made the length of the
@@ -293,15 +293,15 @@ invariant's actual purpose — nothing stale may pin the Mac awake — is preser
 
 ### D10 — The hold reason is sticky through the grace period
 `HoldReason` describes why the assertion is held and survives unchanged through
-cooling-down; `VigilState` carries the change the UI renders. Swapping the reason
+cooling-down; `BelayState` carries the change the UI renders. Swapping the reason
 to "cooling down" the moment a turn ended re-emitted a decision on every pause
 between two tool calls, which is exactly the churn `docs/08`'s flapping test
 forbids. With this split, 50 working/idle flaps in 10 s produce exactly one hold
 and one release.
 
-### D7 — Bundle identifier `com.perfecto-web.vigil`
+### D7 — Bundle identifier `com.perfecto-web.belay`
 Derived from the user's domain. Defined once in `project.yml`
-(`ORG_IDENTIFIER`) and `Sources/VigilApp/Branding.swift`, per `docs/NAMING.md`.
+(`ORG_IDENTIFIER`) and `Sources/BelayApp/Branding.swift`, per `docs/NAMING.md`.
 The App Store name-conflict search is still outstanding — due before M6.
 
 ---
@@ -309,7 +309,7 @@ The App Store name-conflict search is still outstanding — due before M6.
 ## Deliberately deferred to v1.1+
 
 Per `docs/09`, not being built: per-session opt-out · menu bar elapsed-time text
-· session history and stats · Shortcuts/AppleScript · a `vigil` CLI · Focus mode
+· session history and stats · Shortcuts/AppleScript · a `belay` CLI · Focus mode
 integration · Russian localisation · remote/SSH session detection.
 
 ### M4 and M5 — done
@@ -336,7 +336,7 @@ after working   3 agent sessions are working
 after ended     2 agent sessions are working
 ```
 
-The `state=` vocabulary moved into `VigilCore` (`SessionActivity(webhookState:)`)
+The `state=` vocabulary moved into `BelayCore` (`SessionActivity(webhookState:)`)
 so the receiver, the provider and the README cannot drift apart.
 
 Two real bugs the provider's tests caught, both of which would have shipped
@@ -350,8 +350,8 @@ folder nobody touched emit `.working`.
 
 ### M6 and M7 — done
 
-**M6:** `Vigil` and `Vigil-MAS` are one XcodeGen target template instantiated
-twice — no forked source, five attributes differ. Both build. `VigilTipJar`
+**M6:** `Belay` and `Belay-MAS` are one XcodeGen target template instantiated
+twice — no forked source, five attributes differ. Both build. `BelayTipJar`
 carries `TipJarProviding` (link-based and StoreKit implementations) and
 `UpdateChannel`. Release, notarize, sign-update and MAS-audit scripts are
 written; none were run, as intended — there is no developer account here (B1).
@@ -360,8 +360,8 @@ CI workflow written, not run, not committed.
 Verified:
 
 ```
-xcodebuild -scheme Vigil                    BUILD SUCCEEDED
-xcodebuild -scheme Vigil-MAS                BUILD SUCCEEDED
+xcodebuild -scheme Belay                    BUILD SUCCEEDED
+xcodebuild -scheme Belay-MAS                BUILD SUCCEEDED
 MAS entitlements  app-sandbox, files.user-selected.read-write,
                   files.bookmarks.app-scope, network.server
                   and NO network.client
@@ -375,9 +375,9 @@ are reported as **TODO**, never as passes.
 
 ### D15 — Compile conditions do not reach a local SwiftPM target
 
-`docs/06` assumes a `#if VIGIL_MAS` split. Probed with a `#warning` under
+`docs/06` assumes a `#if BELAY_MAS` split. Probed with a `#warning` under
 Xcode 26.6: `SWIFT_ACTIVE_COMPILATION_CONDITIONS` set on an app target **does not
-propagate into a local SwiftPM target**. `#if VIGIL_MAS` inside `VigilKit` is
+propagate into a local SwiftPM target**. `#if BELAY_MAS` inside `BelayKit` is
 therefore false in every build, including the App Store one — `StoreKitTipJar`
 behind that gate would have been dead code everywhere and untestable, the exact
 opposite of the safety property the split exists to provide.
@@ -386,7 +386,7 @@ The channel is instead resolved at runtime from an `Info.plist` key each target
 sets, in one place (`TipJar.forCurrentChannel`). An unlabelled bundle resolves to
 `.appStore`, deliberately: guessing wrong that way hides a tip button, while
 guessing wrong the other way puts a payment link in a sandboxed App Store build,
-which is a guideline violation. `#if VIGIL_MAS` in the *app* target still works
+which is a guideline violation. `#if BELAY_MAS` in the *app* target still works
 and is used there.
 
 ### D14 — `docs/02`'s "one file to add a provider" claim does not hold
@@ -395,16 +395,16 @@ and is used there.
 outside its own folder, the abstraction is wrong — fix the abstraction."* The
 generic provider was the first real test of that, and the honest answer is that
 it held for a **fixed** provider and failed for a **configurable** one. Adding it
-touched four files outside `VigilProviders/`:
+touched four files outside `BelayProviders/`:
 
 1. `ProviderHost.swift` — construct, attach, start/stop, statuses. Expected.
 2. `Settings/ProvidersSettingsPane.swift` — `ProviderDescriptor` carries name,
    summary, symbol and `supportsPreciseDetection`, and has nowhere to say
    "this provider has an editor, here are its fields, here are its presets".
 3. `GenericTargetStore.swift` — nothing owned "where a provider's user
-   configuration lives". `VigilSettings` models Vigil's *policy*, not a
+   configuration lives". `BelaySettings` models Belay's *policy*, not a
    provider's config, so this went in the app layer.
-4. `VigilHookBridge/GenericWebhook.swift` — the receiver hardcoded
+4. `BelayHookBridge/GenericWebhook.swift` — the receiver hardcoded
    `provider: .claudeCode`, so routing a generic webhook needed a change there.
 
 The abstraction is right for providers that are pure code. The gap is that
@@ -426,7 +426,7 @@ because "the docs were updated" is worth being specific about.
 
 Corrected in the specs, which are required to match what was built:
 
-- `docs/02` still showed six packages and a `VigilHelperCLI` target (D1, D3), an
+- `docs/02` still showed six packages and a `BelayHelperCLI` target (D1, D3), an
   `ActivityProvider` protocol that no longer matched the real one, a
   `ProviderRegistry` that does not exist, and the old
   `AwaitingUser → CoolingDown` edge (D8).
@@ -446,7 +446,7 @@ Corrected in my own files, which had the same problem:
   ready for it". There is no string catalog. Claim removed; see the open item
   below.
 - `docs/QA-CHECKLIST.md` said the Settings window has four panes. It has five.
-- `VigilCore/ActivitySignal.swift` referenced `SessionState.apply`; the method is
+- `BelayCore/ActivitySignal.swift` referenced `SessionState.apply`; the method is
   `record`. Exactly the broken DocC reference `docs/07` wants CI to catch.
 
 ### D19 — Six languages, and why switching one needs a relaunch
@@ -600,7 +600,7 @@ anyway, which is exactly what was watched happening under SIGKILL on
 2026-08-12. The budget exists so quitting is never slow; the correctness does
 not depend on it.
 
-### D23 — VigilKit localises against the app bundle, and a gate checks it
+### D23 — BelayKit localises against the app bundle, and a gate checks it
 
 The panel's setup warning showed in English inside a Russian window because
 `GenericProvider` returned a plain Swift `String`. Every user-facing string in
@@ -643,7 +643,7 @@ the wordmark is outlined: they are a function of a file that can be read and
 adjusted, and nothing in the repository is a binary nobody can reproduce.
 
 Three gates before anything plays, in order of authority: macOS's own "play user
-interface sound effects" preference, Vigil's switch, then whether the file is
+interface sound effects" preference, Belay's switch, then whether the file is
 there. `NSSound` does not apply the first for us, so ignoring it would be a
 choice rather than an oversight.
 
@@ -736,7 +736,7 @@ Consequences worth knowing:
   screen shares. If it is ever wanted, it belongs behind an explicit setting.
 - The list caps at five sessions and "+N more" is now a **button** that opens a
   scroller, and each session discloses its agents into a scroller of their own.
-  Hiding work Vigil is awake for, with no way to reach it, was the wrong trade.
+  Hiding work Belay is awake for, with no way to reach it, was the wrong trade.
   A test measures the whole panel at 50 sessions and fails if it would run off a
   13-inch screen.
 
@@ -749,7 +749,7 @@ green test run and appeared within a minute of a person actually using the app:
    Symbol `moon.slash`, which does not exist on macOS 26.
    `NSImage(systemSymbolName:)` returned nil, the button got no image, and the
    status item disappeared — the app was running and completely invisible, with
-   no error anywhere. Symbols are now **drawn**, not looked up (`VigilGlyph`), so
+   no error anywhere. Symbols are now **drawn**, not looked up (`BelayGlyph`), so
    the failure mode is structurally impossible, and a test renders every state
    and fails if any of them draws nothing.
 2. **The Settings button did nothing.** SwiftUI's `Settings` scene never produced
@@ -774,9 +774,9 @@ green test run and appeared within a minute of a person actually using the app:
    Two process mistakes were mine and worth recording. The first assertion that
    Settings worked rested on a test proving only that *a window existed*. The
    second round of measurements was taken from a stale process: `pkill -f
-   'Vigil.app/…'` does not match `Vigil-signed.app/…`, two builds were running
+   'Belay.app/…'` does not match `Belay-signed.app/…`, two builds were running
    at once, and the accessibility queries answered from the old one. There is now
-   a single bundle at `build/Vigil.app`.
+   a single bundle at `build/Belay.app`.
 
 Demo mode is **removed**, not fixed. `docs/06` wanted it for App Review, but a
 reviewer-facing feature that can inject fake sessions into a real user's panel is
@@ -797,7 +797,7 @@ Requested 2026-08-10. Two placements, one shared rule set.
 utility people uninstall, and this one's whole pitch is that it stays out of the
 way.
 
-- Never on first launch, and never before Vigil has demonstrably done its job:
+- Never on first launch, and never before Belay has demonstrably done its job:
   gate on real use, e.g. the assertion has been held for a few hours in total or
   a handful of sessions have been detected. Asking before the user has seen the
   value is asking a stranger for a favour.
@@ -811,7 +811,7 @@ way.
   app deliberately does not have.
 - Escape dismisses. No default button that stars anything by accident.
 
-**State to persist** (`VigilSettings`): `starPromptLastShown: Date?`,
+**State to persist** (`BelaySettings`): `starPromptLastShown: Date?`,
 `starPromptShowCount: Int`, `starPromptSilenced: Bool`.
 
 **Testable rules**: the prompt is a pure decision from (usage totals, last shown,
@@ -840,7 +840,7 @@ In rough order of value:
 
 ## Open questions
 
-- App Store name-conflict search for "Vigil" (`docs/NAMING.md`) — before M6.
+- App Store name-conflict search for "Belay" (`docs/NAMING.md`) — before M6.
 - macOS 14 and 15 behaviour is unverified; only 26.4 was available.
 - Hook events beyond `UserPromptSubmit`/`SessionEnd` are mapped from the live
   reference but not yet observed on this machine — headless `claude -p` cannot

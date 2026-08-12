@@ -16,18 +16,18 @@ ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # Release on purpose. A Debug build puts almost all of the code in a separate
 # .debug.dylib, so auditing the main executable there proves close to nothing,
 # and Debug also carries get-task-allow, which never ships.
-CONFIG="${VIGIL_MAS_CONFIG:-Release}"
+CONFIG="${BELAY_MAS_CONFIG:-Release}"
 DERIVED="$ROOT/build/DerivedData-MAS"
 APP=""
 BUILD=1
 
 usage() {
     cat <<'EOF'
-verify-mas-build.sh - entitlement and no-Sparkle audit of the Vigil-MAS build.
+verify-mas-build.sh - entitlement and no-Sparkle audit of the Belay-MAS build.
 
 Usage: scripts/verify-mas-build.sh [--app <path>] [--config <Debug|Release>]
 
-With no arguments it builds the Vigil-MAS scheme ad-hoc signed into
+With no arguments it builds the Belay-MAS scheme ad-hoc signed into
 build/DerivedData-MAS and audits the result. --app skips the build and audits a
 bundle you already have.
 
@@ -55,9 +55,9 @@ FAILED=0
 if [ "$BUILD" -eq 1 ]; then
     command -v xcodegen >/dev/null || { echo "xcodegen missing: brew install xcodegen" >&2; exit 2; }
     xcodegen generate --quiet
-    echo "==> build Vigil-MAS ($CONFIG)"
+    echo "==> build Belay-MAS ($CONFIG)"
     xcodebuild \
-        -scheme Vigil-MAS \
+        -scheme Belay-MAS \
         -configuration "$CONFIG" \
         -destination 'platform=macOS' \
         -derivedDataPath "$DERIVED" \
@@ -65,7 +65,7 @@ if [ "$BUILD" -eq 1 ]; then
         CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO \
         build | (xcbeautify 2>/dev/null || tail -5)
 
-    PRODUCT="$(xcodebuild -scheme Vigil-MAS -configuration "$CONFIG" -destination 'platform=macOS' \
+    PRODUCT="$(xcodebuild -scheme Belay-MAS -configuration "$CONFIG" -destination 'platform=macOS' \
         -showBuildSettings 2>/dev/null | awk '/ FULL_PRODUCT_NAME =/ { print $3; exit }')"
     APP="$DERIVED/Build/Products/$CONFIG/$PRODUCT"
 fi

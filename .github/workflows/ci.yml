@@ -9,10 +9,10 @@ name: CI
 #
 #   - It has never been executed. The repository had no remote when it was
 #     written. Treat the first run as a debugging session, not as a regression.
-#   - Vigil is developed on macOS 26.4 with Xcode 26.6 / Swift 6.3.3. The runner
+#   - Belay is developed on macOS 26.4 with Xcode 26.6 / Swift 6.3.3. The runner
 #     is older, so a failure here that does not reproduce locally is a toolchain
 #     difference first and a code problem second.
-#   - The checks that matter most cannot run here at all. Whether Vigil detects a
+#   - The checks that matter most cannot run here at all. Whether Belay detects a
 #     real Claude Code session, and whether the IOKit assertion self-releases
 #     when the app is force-quit, need a real Mac with a real agent on it.
 #     docs/QA-CHECKLIST.md is that list, and it is done by hand.
@@ -57,10 +57,10 @@ jobs:
       - name: Cache SwiftPM
         uses: actions/cache@v4
         with:
-          path: Packages/VigilKit/.build
-          key: spm-${{ runner.os }}-${{ hashFiles('Packages/VigilKit/Package.swift') }}
+          path: Packages/BelayKit/.build
+          key: spm-${{ runner.os }}-${{ hashFiles('Packages/BelayKit/Package.swift') }}
 
-      # There is deliberately no `xcodegen generate` step. Vigil.xcodeproj is
+      # There is deliberately no `xcodegen generate` step. Belay.xcodeproj is
       # generated and not committed, but scripts/test.sh generates it itself, and
       # a copy of that line here is a second place to keep in step with the first.
       # The cost is that a broken project.yml surfaces as a failing xcodebuild
@@ -89,19 +89,19 @@ jobs:
       - name: Install tooling
         run: brew install xcodegen xcbeautify
 
-      # Builds Vigil-MAS in Release and then asserts the two things docs/06 and
+      # Builds Belay-MAS in Release and then asserts the two things docs/06 and
       # docs/08 call release blockers: no Sparkle anywhere in the binary, because
       # Apple rejects third-party updaters, and the exact sandbox entitlement
       # set, with no com.apple.security.network.client. That missing entitlement
       # is the argument handed to App Review about the loopback socket, so losing
       # it silently would cost a review cycle rather than a warning.
-      - name: Build Vigil-MAS, verify no Sparkle and the sandbox set
+      - name: Build Belay-MAS, verify no Sparkle and the sandbox set
         run: scripts/verify-mas-build.sh
 
       - name: Upload MAS build
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Vigil-MAS
-          path: build/DerivedData-MAS/Build/Products/Release/Vigil.app
+          name: Belay-MAS
+          path: build/DerivedData-MAS/Build/Products/Release/Belay.app
           if-no-files-found: warn

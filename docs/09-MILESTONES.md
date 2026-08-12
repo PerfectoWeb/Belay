@@ -21,22 +21,22 @@ working app.
 
 ## M1 — Power core (first genuinely useful build)
 
-- `VigilPower`: `PowerAssertionController`, backend protocol + mock, timeout
+- `BelayPower`: `PowerAssertionController`, backend protocol + mock, timeout
   refresh loop, battery/AC monitoring, sleep/wake notifications, signal handlers
-- `VigilSettings`: typed preferences store with defaults and a migration hook
+- `BelaySettings`: typed preferences store with defaults and a migration hook
 - Status item with Off / Always-on modes and working icon states
 - Full unit tests for the assertion controller including balance property tests
 
-**Exit:** Vigil works as a better `caffeinate` with a UI. Verified via
+**Exit:** Belay works as a better `caffeinate` with a UI. Verified via
 `pmset -g assertions`. This alone would be a shippable free utility.
 
 ---
 
 ## M2 — Claude Code detection, Tier A
 
-- `VigilCore`: `ActivitySignal`, `SignalBus`, `ActivityCoordinator` state machine,
+- `BelayCore`: `ActivitySignal`, `SignalBus`, `ActivityCoordinator` state machine,
   `Clock`, TTL eviction, grace period, mode/policy application
-- `VigilProviders`: `ClaudeCodeProvider` with the FSEvents transcript watcher,
+- `BelayProviders`: `ClaudeCodeProvider` with the FSEvents transcript watcher,
   incremental cursors, and the process-presence safety net
 - Folder-access flow (`NSOpenPanel` + security-scoped bookmark) behind
   `FileAccessProvider`
@@ -50,9 +50,9 @@ zero configuration.
 
 ## M3 — Hook bridge, Tier B
 
-- `VigilHookBridge`: receiver (HTTP loopback if supported, Unix socket + shim
+- `BelayHookBridge`: receiver (HTTP loopback if supported, Unix socket + shim
   otherwise), token auth, fire-and-forget semantics
-- `VigilHelperCLI` target if the shim is needed
+- `BelayHelperCLI` target if the shim is needed
 - Safe `settings.json` installer: backup, atomic merge, marked entries, diff
   preview UI, clean uninstall, self-heal on bundle move
 - Confidence fusion in the coordinator (`.exact` beats `.inferred`)
@@ -92,9 +92,9 @@ one-liner for arbitrary tools.
 
 ## M6 — Distribution
 
-- Two schemes (`Vigil`, `Vigil-MAS`), entitlements, compile flags
+- Two schemes (`Belay`, `Belay-MAS`), entitlements, compile flags
 - Sparkle 2 integration + appcast template + `scripts/sign-update.sh`
-- `VigilTipJar` with both implementations behind one protocol
+- `BelayTipJar` with both implementations behind one protocol
 - `scripts/release.sh` and `scripts/notarize.sh` (written, not run)
 - CI workflow file, including the "no Sparkle in MAS" guard
 
@@ -120,7 +120,7 @@ one-liner for arbitrary tools.
 ## Deliberately deferred to v1.1+
 
 Per-session opt-out · menu bar elapsed-time text · session history and stats ·
-Shortcuts/AppleScript support · `vigil` CLI · Focus mode integration ·
+Shortcuts/AppleScript support · `belay` CLI · Focus mode integration ·
 Russian localisation · remote/SSH session detection.
 
 Note them in `PROJECT_STATE.md` rather than building them. Scope discipline is

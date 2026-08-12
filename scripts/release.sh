@@ -14,45 +14,45 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # ---------------------------------------------------------------- placeholders
-# PLACEHOLDER — BLOCKERS.md B1. Set VIGIL_TEAM_ID in the environment or replace
+# PLACEHOLDER — BLOCKERS.md B1. Set BELAY_TEAM_ID in the environment or replace
 # this literal. The script will not run while it is still ABCDE12345.
-TEAM_ID="${VIGIL_TEAM_ID:-ABCDE12345}"
+TEAM_ID="${BELAY_TEAM_ID:-ABCDE12345}"
 
 # The name of the notarytool credential profile stored with
-#   xcrun notarytool store-credentials VigilNotary \
+#   xcrun notarytool store-credentials BelayNotary \
 #       --apple-id you@example.com --team-id "$TEAM_ID" --password <app-specific>
-NOTARY_PROFILE="${VIGIL_NOTARY_PROFILE:-VigilNotary}"
+NOTARY_PROFILE="${BELAY_NOTARY_PROFILE:-BelayNotary}"
 
 # Empty locally; CI stores the profile in a throwaway keychain and notarytool
 # looks only in the login keychain unless it is told otherwise. Passed straight
 # through to notarize.sh, which honours the same variable.
-NOTARY_KEYCHAIN="${VIGIL_NOTARY_KEYCHAIN:-}"
+NOTARY_KEYCHAIN="${BELAY_NOTARY_KEYCHAIN:-}"
 
-SIGN_IDENTITY="${VIGIL_SIGN_IDENTITY:-Developer ID Application}"
+SIGN_IDENTITY="${BELAY_SIGN_IDENTITY:-Developer ID Application}"
 # ------------------------------------------------------------------------------
 
-SCHEME="Vigil"
+SCHEME="Belay"
 CONFIG="Release"
 DIST="$ROOT/dist"
-ARCHIVE="$DIST/Vigil.xcarchive"
+ARCHIVE="$DIST/Belay.xcarchive"
 EXPORT_DIR="$DIST/export"
-APP="$EXPORT_DIR/Vigil.app"
+APP="$EXPORT_DIR/Belay.app"
 
 usage() {
     cat <<'EOF'
-release.sh - build, sign, notarize and package the direct build of Vigil.
+release.sh - build, sign, notarize and package the direct build of Belay.
 
 Usage: scripts/release.sh [--skip-notarize]
 
-Produces dist/Vigil-<version>.dmg, notarized and stapled.
+Produces dist/Belay-<version>.dmg, notarized and stapled.
 
 Environment:
-  VIGIL_TEAM_ID         Apple Developer team ID. Required; the placeholder in
+  BELAY_TEAM_ID         Apple Developer team ID. Required; the placeholder in
                         the script is rejected.
-  VIGIL_NOTARY_PROFILE  notarytool keychain profile name (default: VigilNotary)
-  VIGIL_NOTARY_KEYCHAIN keychain holding that profile. Unset means the login
+  BELAY_NOTARY_PROFILE  notarytool keychain profile name (default: BelayNotary)
+  BELAY_NOTARY_KEYCHAIN keychain holding that profile. Unset means the login
                         keychain, which is right everywhere except CI.
-  VIGIL_SIGN_IDENTITY   codesign identity (default: "Developer ID Application")
+  BELAY_SIGN_IDENTITY   codesign identity (default: "Developer ID Application")
 
 Options:
       --skip-notarize   Sign and package only. The result is NOT shippable; it
@@ -82,7 +82,7 @@ die() { echo "release: $*" >&2; exit 2; }
 # ------------------------------------------------------------------- preflight
 echo "==> preflight"
 
-[ "$TEAM_ID" != "ABCDE12345" ] || die "VIGIL_TEAM_ID is still the placeholder. See BLOCKERS.md B1."
+[ "$TEAM_ID" != "ABCDE12345" ] || die "BELAY_TEAM_ID is still the placeholder. See BLOCKERS.md B1."
 
 for tool in xcodegen xcodebuild create-dmg; do
     command -v "$tool" >/dev/null || case "$tool" in
@@ -116,7 +116,7 @@ fi
 
 # The MAS target must never end up in a Developer ID archive, and Sparkle must
 # never end up in the MAS one. Cheap to assert, expensive to discover later.
-grep -q 'Vigil-MAS' "$ROOT/project.yml" || die "project.yml has no Vigil-MAS target; this is not the tree release.sh was written for."
+grep -q 'Belay-MAS' "$ROOT/project.yml" || die "project.yml has no Belay-MAS target; this is not the tree release.sh was written for."
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
@@ -171,7 +171,7 @@ codesign -d --verbose=2 "$APP" 2>&1 | grep -q 'flags=.*runtime' \
     || die "the exported app is not hardened-runtime signed; notarization would be rejected"
 
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
-DMG="$DIST/Vigil-$VERSION.dmg"
+DMG="$DIST/Belay-$VERSION.dmg"
 
 # ------------------------------------------------------------------------- dmg
 echo "==> dmg"
@@ -181,13 +181,13 @@ echo "==> dmg"
 # create-dmg at it ships all three inside the disk image.
 DMG_STAGE="$(mktemp -d)"
 trap 'rm -rf "$DMG_STAGE"' EXIT
-cp -R "$EXPORT_DIR/Vigil.app" "$DMG_STAGE/"
+cp -R "$EXPORT_DIR/Belay.app" "$DMG_STAGE/"
 
 create-dmg \
-    --volname "Vigil $VERSION" \
+    --volname "Belay $VERSION" \
     --window-size 520 340 \
     --icon-size 96 \
-    --icon "Vigil.app" 130 165 \
+    --icon "Belay.app" 130 165 \
     --app-drop-link 390 165 \
     --no-internet-enable \
     "$DMG" \

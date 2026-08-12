@@ -56,7 +56,7 @@ This is a real requirement, so here is what it concretely means.
 ## Documentation
 
 - Every module has a `README.md` beside its sources
-  (`Packages/VigilKit/Sources/<Module>/README.md`): what it does, what it depends
+  (`Packages/BelayKit/Sources/<Module>/README.md`): what it does, what it depends
   on, the one or two decisions that would surprise a newcomer. There is one
   package root for all modules (PROJECT_STATE D1), so the READMEs live next to
   the code rather than at a package root each.
@@ -81,5 +81,5 @@ This is a real requirement, so here is what it concretely means.
 Before declaring a milestone done, re-read the diff as if you were reviewing a
 colleague's PR and ask: would I approve this? Common things to catch — leftover
 TODOs with no ticket, a protocol with one conformer and no test, a magic number
-that should be a named default in `VigilSettings`, a `Task { }` with no
+that should be a named default in `BelaySettings`, a `Task { }` with no
 cancellation story.

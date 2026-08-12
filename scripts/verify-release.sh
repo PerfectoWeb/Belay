@@ -8,7 +8,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-APP="$ROOT/build/Vigil.app"
+APP="$ROOT/build/Belay.app"
 CHECKLIST="$ROOT/docs/QA-CHECKLIST.md"
 
 SKIP_TESTS=0
@@ -17,15 +17,15 @@ LEAK_FLAG="--address"
 
 usage() {
     cat <<'EOF'
-verify-release.sh - the pre-ship gate for Vigil.
+verify-release.sh - the pre-ship gate for Belay.
 
 Usage: scripts/verify-release.sh [options]
 
 Runs, in the order that fails fastest:
   1. scripts/test.sh          build, both test suites, swiftlint, swift-format
   2. scripts/leak-check.sh    the module suites under a sanitizer
-  3. build/Vigil.app          exists, is ad-hoc signed, passes codesign --verify
-  3b. Vigil-MAS              sandboxed, no network.client, no Sparkle (SKIP_MAS=1 to skip)
+  3. build/Belay.app          exists, is ad-hoc signed, passes codesign --verify
+  3b. Belay-MAS              sandboxed, no network.client, no Sparkle (SKIP_MAS=1 to skip)
                               --deep --strict
   4. Info.plist               LSUIElement = true, LSMinimumSystemVersion = 14.0
   5. docs/QA-CHECKLIST.md     lists every still-unchecked manual item
@@ -107,8 +107,8 @@ else
     fi
 fi
 
-banner "code signature of build/Vigil.app"
-[ -d "$APP" ] || fail "build/Vigil.app is missing" "Build it first: scripts/build-local.sh Release"
+banner "code signature of build/Belay.app"
+[ -d "$APP" ] || fail "build/Belay.app is missing" "Build it first: scripts/build-local.sh Release"
 
 if ! codesign --verify --deep --strict --verbose=2 "$APP" >"$LOG_DIR/codesign.log" 2>&1; then
     cat "$LOG_DIR/codesign.log"
@@ -130,7 +130,7 @@ PLIST="$APP/Contents/Info.plist"
 
 plist_value() { /usr/libexec/PlistBuddy -c "Print :$1" "$PLIST" 2>/dev/null || true; }
 
-# LSUIElement is what keeps Vigil out of the Dock; shipping without it turns a
+# LSUIElement is what keeps Belay out of the Dock; shipping without it turns a
 # menu bar utility into a regular app, which is a visible product bug.
 UI_ELEMENT="$(plist_value LSUIElement)"
 case "$UI_ELEMENT" in
@@ -153,14 +153,14 @@ printf '  LSUIElement=%s  LSMinimumSystemVersion=%s  CFBundleIdentifier=%s  vers
 # specifically; a Sparkle symbol in a MAS submission is a rejection.
 banner "App Store build audit"
 if [ "${SKIP_MAS:-0}" = "1" ]; then
-    record "SKIP" "Vigil-MAS audit (SKIP_MAS=1)"
+    record "SKIP" "Belay-MAS audit (SKIP_MAS=1)"
 elif [ ! -x "$ROOT/scripts/verify-mas-build.sh" ]; then
     record FAIL "scripts/verify-mas-build.sh is missing"
 elif "$ROOT/scripts/verify-mas-build.sh" >"$LOG_DIR/verify-mas.log" 2>&1; then
-    record PASS "Vigil-MAS sandboxed, no network.client, no Sparkle"
+    record PASS "Belay-MAS sandboxed, no network.client, no Sparkle"
 else
     tail -20 "$LOG_DIR/verify-mas.log" || true
-    fail "Vigil-MAS audit" "See $LOG_DIR/verify-mas.log"
+    fail "Belay-MAS audit" "See $LOG_DIR/verify-mas.log"
 fi
 
 banner "manual checklist items still unproven"

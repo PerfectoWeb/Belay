@@ -32,7 +32,7 @@ something short (5–20 min), and works overnight or unattended.
 ## Core requirements
 
 ### R1 — Zero-configuration detection
-Vigil must detect Claude Code activity out of the box, without the user
+Belay must detect Claude Code activity out of the box, without the user
 installing anything, editing config files, or supplying credentials. A more
 precise, opt-in integration (hooks) may be offered on top, but must never be
 required.
@@ -53,7 +53,7 @@ Three modes, switchable from the menu bar in one click:
 - **Auto** (default) — awake iff an agent is working
 - **Always on** — a plain caffeinate-equivalent, with optional duration
   (30 min / 1 h / 2 h / until turned off)
-- **Off** — Vigil holds nothing; the icon reflects this unambiguously
+- **Off** — Belay holds nothing; the icon reflects this unambiguously
 
 ### R5 — Safety rails
 - Hard cap on continuous awake time (default 4 h, configurable, "unlimited" allowed)
@@ -72,7 +72,7 @@ Icon state must be readable at a glance:
 
 ### R7 — "Claude needs you" notification (differentiator)
 When an agent is blocked waiting for a permission prompt or user input, that is
-*not* work — but sleeping then is also unhelpful. Vigil surfaces a native
+*not* work — but sleeping then is also unhelpful. Belay surfaces a native
 notification ("Claude Code is waiting for your input — project *foo*") and
 enters an `awaitingUser` state that keeps the Mac awake for a bounded window
 (default 15 min) before giving up. This single feature is worth more to users
@@ -91,7 +91,7 @@ conforms to one protocol.
 > Do not build a "DeepSeek provider" that pretends otherwise.
 
 ### R9 — Privacy
-Vigil reads local agent state to determine *whether* work is happening. It must
+Belay reads local agent state to determine *whether* work is happening. It must
 never read prompt or response **content** beyond the minimum structural fields
 needed for state detection, never transmit anything off-device, and never log
 transcript contents. This is stated plainly in `SECURITY.md` and in the
@@ -110,7 +110,7 @@ it is also the argument that gets the app through App Review.
 ## Success criteria
 
 - A 2-hour unattended Claude Code run completes with the Mac never sleeping
-- Within 2 minutes of the run finishing, `pmset -g assertions` shows no Vigil
+- Within 2 minutes of the run finishing, `pmset -g assertions` shows no Belay
   assertion and the Mac sleeps on its normal schedule
 - Idle CPU indistinguishable from zero in Activity Monitor
 - A new user gets value within 30 seconds of first launch, with no setup

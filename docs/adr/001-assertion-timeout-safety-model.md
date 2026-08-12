@@ -4,7 +4,7 @@
 
 ## Context
 
-The failure mode that would make users hate Vigil is not "it let my Mac sleep
+The failure mode that would make users hate Belay is not "it let my Mac sleep
 during a task" — it is "it kept my Mac awake for nine hours and I didn't notice"
 (risk R3). A menu bar utility that pins the machine awake after it crashes, gets
 force-quit, deadlocks, or is killed by the OS is worse than no utility at all,
@@ -47,7 +47,7 @@ Good, and the whole point:
   reason and remaining timeout:
 
   ```
-  pmset -g assertions | grep -i vigil
+  pmset -g assertions | grep -i belay
   ```
 
 Costs, accepted:
@@ -70,7 +70,7 @@ Explicitly forbidden by `docs/00-INVARIANTS.md`.
 
 **`ProcessInfo.beginActivity`.** Coarse, no timeout, invisible in
 `pmset -g assertions`, and no human-readable reason. The user could not verify
-what Vigil was doing, which removes the argument that converts skeptics.
+what Belay was doing, which removes the argument that converts skeptics.
 
 **A long assertion released on exit.** Depends on a clean exit path existing.
 `SIGKILL` and kernel panics do not offer one. This is precisely the design that

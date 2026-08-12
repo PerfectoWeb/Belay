@@ -15,12 +15,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # PLACEHOLDER — BLOCKERS.md B3. Must match Appcast.feedURL in
-# Packages/VigilKit/Sources/VigilTipJar/UpdateChannel.swift and SUFeedURL in the
+# Packages/BelayKit/Sources/BelayTipJar/UpdateChannel.swift and SUFeedURL in the
 # direct build's Info.plist. HTTPS only: an appcast over HTTP hands an attacker
 # the update stream.
-DOWNLOAD_PREFIX="${VIGIL_DOWNLOAD_PREFIX:-https://updates.invalid.example/vigil/}"
+DOWNLOAD_PREFIX="${BELAY_DOWNLOAD_PREFIX:-https://updates.invalid.example/belay/}"
 
-RELEASES="${VIGIL_RELEASES_DIR:-$ROOT/dist/releases}"
+RELEASES="${BELAY_RELEASES_DIR:-$ROOT/dist/releases}"
 
 usage() {
     cat <<'EOF'
@@ -34,9 +34,9 @@ them. Keep old releases in place: dropping one removes it from the appcast and
 breaks delta updates for anyone still on it.
 
 Environment:
-  VIGIL_DOWNLOAD_PREFIX  URL the DMGs are served from. Required; the placeholder
+  BELAY_DOWNLOAD_PREFIX  URL the DMGs are served from. Required; the placeholder
                          is rejected.
-  VIGIL_RELEASES_DIR     default: dist/releases
+  BELAY_RELEASES_DIR     default: dist/releases
   SPARKLE_BIN            directory holding generate_appcast, if it is not on
                          PATH (the Sparkle distribution's bin/).
 
@@ -55,7 +55,7 @@ case "${1:-}" in
 esac
 
 case "$DOWNLOAD_PREFIX" in
-    *invalid.example*) die "VIGIL_DOWNLOAD_PREFIX is still the placeholder. See BLOCKERS.md B3." ;;
+    *invalid.example*) die "BELAY_DOWNLOAD_PREFIX is still the placeholder. See BLOCKERS.md B3." ;;
     https://*) ;;
     *) die "the download prefix must be https://" ;;
 esac

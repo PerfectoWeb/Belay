@@ -1,6 +1,6 @@
 # 00 — Invariants and ground rules
 
-Vigil is a macOS menu bar app that holds the Mac awake only while a local AI
+Belay is a macOS menu bar app that holds the Mac awake only while a local AI
 coding agent is actively working. This file is the short version of the rules
 the rest of `docs/` explains at length. If you only read one file before
 touching the code, read this one.
@@ -9,21 +9,21 @@ touching the code, read this one.
 
 ```bash
 scripts/test.sh                                      # everything CI runs, fails fastest first
-swift test --package-path Packages/VigilKit          # the module suites (nearly all tests)
-xcodegen generate                                    # regenerate Vigil.xcodeproj from project.yml
-xcodebuild -scheme Vigil -destination 'platform=macOS' build
-xcodebuild -scheme Vigil -destination 'platform=macOS' test   # app target only, see below
+swift test --package-path Packages/BelayKit          # the module suites (nearly all tests)
+xcodegen generate                                    # regenerate Belay.xcodeproj from project.yml
+xcodebuild -scheme Belay -destination 'platform=macOS' build
+xcodebuild -scheme Belay -destination 'platform=macOS' test   # app target only, see below
 swiftlint --strict
-swift-format lint --recursive Sources Packages/VigilKit/Sources Packages/VigilKit/Tests
+swift-format lint --recursive Sources Packages/BelayKit/Sources Packages/BelayKit/Tests
 scripts/build-local.sh                               # ad-hoc signed .app in build/
 ```
 
 Tests live in two places and that is deliberate: an XcodeGen scheme cannot
 reference a local SwiftPM package's test targets, so `xcodebuild test` runs only
-`VigilAppTests` and the module suites run under `swift test`. `scripts/test.sh`
+`BelayAppTests` and the module suites run under `swift test`. `scripts/test.sh`
 runs both plus both linters. See `PROJECT_STATE.md` D2.
 
-Never hand-edit `Vigil.xcodeproj`. It is generated. Edit `project.yml`.
+Never hand-edit `Belay.xcodeproj`. It is generated. Edit `project.yml`.
 
 ## Non-negotiables
 
@@ -53,7 +53,7 @@ never touches IOKit directly.
    user toggle off, battery guard trip, and max-duration cap.
 5. A hook handler must never block or slow down Claude Code. Fire-and-forget,
    sub-50 ms, always exit 0.
-6. Vigil never writes to `~/.claude/` without explicit, per-action user consent
+6. Belay never writes to `~/.claude/` without explicit, per-action user consent
    in the UI, and always makes a timestamped backup first.
 
 ## Style

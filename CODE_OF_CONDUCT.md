@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement by opening an
-issue at https://github.com/perfectoweb/vigil/issues. There is no email address
+issue at https://github.com/perfectoweb/belay/issues. There is no email address
 to publish; if a report should not be public, say so in the issue without
 detail and the maintainer will arrange a private channel. All complaints will be
 reviewed and investigated promptly and fairly.

@@ -15,7 +15,7 @@ import Foundation
 
 let catalogue = URL(fileURLWithPath: "Resources/Localizable.xcstrings")
 let folder = URL(fileURLWithPath: "Localization")
-let sourceRoots = ["Sources", "Packages/VigilKit/Sources"]
+let sourceRoots = ["Sources", "Packages/BelayKit/Sources"]
 
 // MARK: - Catalogue
 
@@ -333,7 +333,7 @@ func check(configuration: String) throws {
     // Scoped to one configuration: a Release build left in DerivedData from
     // some earlier day reports the keys that existed on that day.
     let build = URL(fileURLWithPath: "build/DerivedData/Build/Intermediates.noindex")
-        .appendingPathComponent("Vigil.build/\(configuration)")
+        .appendingPathComponent("Belay.build/\(configuration)")
     guard let walk = FileManager.default.enumerator(at: build, includingPropertiesForKeys: nil)
     else { throw Failure("no \(configuration) build products; build the app target first") }
 
@@ -385,7 +385,7 @@ func packageLiterals() throws -> [(String, String)] {
         pattern: "localized:\\s*(?:\"\"\"(.*?)\"\"\"|\"((?:[^\"\\\\]|\\\\.)*)\")",
         options: .dotMatchesLineSeparators)
     var found: [(String, String)] = []
-    let base = URL(fileURLWithPath: "Packages/VigilKit/Sources")
+    let base = URL(fileURLWithPath: "Packages/BelayKit/Sources")
     guard let walk = FileManager.default.enumerator(at: base, includingPropertiesForKeys: nil)
     else { return [] }
     for case let url as URL in walk where url.pathExtension == "swift" {

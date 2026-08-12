@@ -73,7 +73,7 @@ struct SettingsTabStrip: View {
         .accessibilityElement(children: .contain)
     }
 
-    private static let space = "vigil.settings.tabs"
+    private static let space = "belay.settings.tabs"
 
     /// The chip AppKit used to draw: a pane of something lying on the strip,
     /// lit from above and edged with a hairline, not a grey rectangle. Only its

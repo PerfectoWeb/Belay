@@ -4,7 +4,7 @@
 
 ## Context
 
-Vigil is a menu bar app and nothing else — `LSUIElement`, no Dock icon, no
+Belay is a menu bar app and nothing else — `LSUIElement`, no Dock icon, no
 window on launch. The entire product surface is a 2 mm monochrome glyph and a
 panel that drops from it. SwiftUI offers `MenuBarExtra(.window)`, which would let
 the whole UI be SwiftUI with no AppKit at all.

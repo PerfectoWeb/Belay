@@ -14,7 +14,7 @@ Read [`../BLOCKERS.md`](../BLOCKERS.md) first. Nothing here contradicts it.
 
 ## Status, plainly
 
-The `Vigil-MAS` scheme builds. It is sandboxed, it carries exactly the four
+The `Belay-MAS` scheme builds. It is sandboxed, it carries exactly the four
 entitlements `docs/06` specifies, it has no `com.apple.security.network.client`,
 and [`../scripts/verify-mas-build.sh`](../scripts/verify-mas-build.sh) proves all
 of that plus the absence of Sparkle. That is real and it is done.
@@ -27,7 +27,7 @@ No screenshots exist anywhere in this repository.
 
 This comes before every other item on this page. It is `BLOCKERS.md` B8.
 
-[`../Packages/VigilKit/Sources/VigilSupport/FileAccess.swift`](../Packages/VigilKit/Sources/VigilSupport/FileAccess.swift)
+[`../Packages/BelayKit/Sources/BelaySupport/FileAccess.swift`](../Packages/BelayKit/Sources/BelaySupport/FileAccess.swift)
 defines `FileAccessProvider` with one implementation, `DirectFileAccess`, which
 calls `FileManager` and nothing else. The error cases `noBookmark` and
 `bookmarkUnresolvable` are declared. Nothing throws them, because nothing
@@ -36,7 +36,7 @@ resolves a bookmark. Grep the tree: there is no `bookmarkData`, no
 `NSOpenPanel` in the app belongs to the generic provider's folder picker, not to
 a grant flow for `~/.claude`.
 
-So `Vigil-MAS` builds, passes its own audit, and would launch on a reviewer's Mac
+So `Belay-MAS` builds, passes its own audit, and would launch on a reviewer's Mac
 with the core feature dead: sandboxed `FileManager` reads of `~/.claude` are
 denied, no signal is ever produced, and the panel says nothing is running. That
 is a Guideline 2.1 rejection on the first launch, before any of the interesting
@@ -77,7 +77,7 @@ ID build cannot necessarily create a listing.
 
 ### Bundle identifier registration
 
-`com.perfecto-web.vigil`, set in [`../project.yml`](../project.yml). It has never
+`com.perfecto-web.belay`, set in [`../project.yml`](../project.yml). It has never
 been registered as an explicit App ID in the Developer portal, and the App
 Sandbox capability has to be enabled on it there before a Mac App Store
 provisioning profile can be issued.
@@ -86,14 +86,14 @@ One open question, not a decision this document should make: `docs/NAMING.md`
 says both channels use the same bundle identifier. That is legal, but it means a
 user who has the direct build installed and then installs the App Store build
 ends up with two bundles claiming one identifier, one `UserDefaults` suite, and
-one `~/Library/Application Support/Vigil` directory holding one `bridge.json`.
+one `~/Library/Application Support/Belay` directory holding one `bridge.json`.
 Decide deliberately whether the MAS build gets its own suffix before the
 identifier is registered, because changing it afterwards means a new app record.
 
 ### Category
 
 `LSApplicationCategoryType` is **absent** from
-[`../Sources/VigilApp/Info.plist`](../Sources/VigilApp/Info.plist). Add it:
+[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist). Add it:
 
 ```
 LSApplicationCategoryType   public.app-category.utilities
@@ -127,10 +127,10 @@ somewhere you can hand to Apple if asked:
   and it is absent from this channel by construction.
 - The MAS build has no `com.apple.security.network.client` entitlement, so it
   cannot make an outbound connection at all. See
-  [`../Resources/Entitlements/Vigil-MAS.entitlements`](../Resources/Entitlements/Vigil-MAS.entitlements),
+  [`../Resources/Entitlements/Belay-MAS.entitlements`](../Resources/Entitlements/Belay-MAS.entitlements),
   where the absence is documented as deliberate.
 - The update check that exists in the direct build is compiled out here
-  (`ReleaseChecker.isSupported` is false under `VIGIL_MAS`), and it was off by
+  (`ReleaseChecker.isSupported` is false under `BELAY_MAS`), and it was off by
   default anyway.
 - Statistics are durations and counts in one local file, with no project names
   and no prompts in them. They leave the Mac only if the user shares a card
@@ -145,7 +145,7 @@ sentence.
 ### Export compliance
 
 `ITSAppUsesNonExemptEncryption` is already `false` in
-[`../Sources/VigilApp/Info.plist`](../Sources/VigilApp/Info.plist), which is what
+[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist), which is what
 suppresses the export question on every upload. It is correct here, for reasons
 worth writing down once:
 
@@ -197,7 +197,7 @@ shows project folder names and that is somebody's directory tree.
 Both are required fields, both must be publicly reachable without a login, and
 neither exists yet, because the repository has never been pushed anywhere.
 
-- **Support URL.** `https://github.com/perfectoweb/vigil/issues` once the repo is
+- **Support URL.** `https://github.com/perfectoweb/belay/issues` once the repo is
   public. It is a legitimate support channel for a free MIT project and Apple
   accepts it.
 - **Privacy policy URL.** A GitHub issues page is not a privacy policy. Two
@@ -233,7 +233,7 @@ and the review notes should say so explicitly.
 ### In-app purchase products
 
 `BLOCKERS.md` B2, and
-[`../Packages/VigilKit/Sources/VigilTipJar/TipProducts.swift`](../Packages/VigilKit/Sources/VigilTipJar/TipProducts.swift):
+[`../Packages/BelayKit/Sources/BelayTipJar/TipProducts.swift`](../Packages/BelayKit/Sources/BelayTipJar/TipProducts.swift):
 three consumable identifiers are declared, `areRegistered` is `false`, and
 `StoreKitTipJar.isAvailable` is therefore false, so no tip UI is ever built.
 
@@ -371,7 +371,7 @@ is a guideline violation, not a grey area. The code already defends against this
 the channel is resolved at runtime from an `Info.plist` key, and an unlabelled
 bundle resolves to `.appStore` deliberately, because guessing wrong that way
 hides a button while guessing wrong the other way ships a violation
-(`PROJECT_STATE.md` D15). Before submitting, confirm `VigilDistributionChannel`
+(`PROJECT_STATE.md` D15). Before submitting, confirm `BelayDistributionChannel`
 in the built MAS `Info.plist` reads `appStore`, and confirm the About pane shows
 no support link.
 
@@ -402,12 +402,12 @@ One grant on the parent directory covers all three, which is an argument for
 asking for `~/.claude` rather than for each subdirectory.
 
 **Self-contained, single app bundle, nothing installed into shared locations.**
-Vigil satisfies this today. It has no helper tool, no launch daemon, no
+Belay satisfies this today. It has no helper tool, no launch daemon, no
 privileged component, and no `LaunchAgents` plist of its own. Launch at login
 goes through `SMAppService.mainApp`, which registers the app itself. Keep it that
 way: the moment a helper appears, this stops being free.
 
-**No downloading or installing standalone code.** Nothing in Vigil downloads
+**No downloading or installing standalone code.** Nothing in Belay downloads
 anything. The MAS build cannot. The presets that look like configuration are
 configuration: array elements, not fetched content.
 
@@ -461,15 +461,15 @@ has not started.
 - [ ] Inject the right implementation per channel at composition.
 - [ ] Add the sandbox test matrix: FSEvents on a scoped resource, bookmark
       staleness across a restart, the `settings.json` write under the grant.
-- [ ] Run the full detection suite under the `Vigil-MAS` scheme, on a real
+- [ ] Run the full detection suite under the `Belay-MAS` scheme, on a real
       machine, against a real Claude Code session. Not in a test host.
 - [x] Record a new blocker entry for this in `BLOCKERS.md`. It is B8.
 
 **Resolve the naming and identity questions**
 
-- [ ] Do the App Store name-conflict search for "Vigil" (`BLOCKERS.md` B4,
+- [ ] Do the App Store name-conflict search for "Belay" (`BLOCKERS.md` B4,
       `docs/NAMING.md`). Before the app record exists, not after.
-- [ ] Decide whether the MAS build shares `com.perfecto-web.vigil` or takes a
+- [ ] Decide whether the MAS build shares `com.perfecto-web.belay` or takes a
       distinct identifier, and write the decision down.
 - [ ] Confirm the Apple Developer account role can create app records.
 - [ ] Register the App ID with the App Sandbox capability enabled.
@@ -477,14 +477,14 @@ has not started.
 **Fix the bundle metadata**
 
 - [ ] Add `LSApplicationCategoryType = public.app-category.utilities` to
-      `Sources/VigilApp/Info.plist` and regenerate with `xcodegen generate`.
+      `Sources/BelayApp/Info.plist` and regenerate with `xcodegen generate`.
 - [ ] Confirm `ITSAppUsesNonExemptEncryption` is still `false` and still true.
-- [ ] Confirm `VigilDistributionChannel` reads `appStore` in the built MAS
+- [ ] Confirm `BelayDistributionChannel` reads `appStore` in the built MAS
       bundle.
 
 **Build the publishing surface**
 
-- [ ] Push the repository to `github.com/perfectoweb/vigil` and make it public.
+- [ ] Push the repository to `github.com/perfectoweb/belay` and make it public.
       Every URL below depends on this.
 - [ ] Publish the privacy policy (GitHub Pages preferred) and verify the URL
       loads in a private browser window.

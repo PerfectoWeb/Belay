@@ -2,9 +2,9 @@
 
 Two marks, and they are not interchangeable.
 
-**The symbol** is the sparkle drawn by `Sources/VigilApp/VigilGlyph.swift`. It is
+**The symbol** is the sparkle drawn by `Sources/BelayApp/BelayGlyph.swift`. It is
 the app icon and the menu bar item, it changes shape with state, and it is
-generated in code rather than stored as an asset so that a state Vigil can be in
+generated in code rather than stored as an asset so that a state Belay can be in
 cannot fail to have a picture.
 
 **The wordmark** is in `Resources/Brand/`: the word set in the system rounded
@@ -16,10 +16,10 @@ and do not rebuild it by typing the word next to the icon.
 
 | File | Use |
 |---|---|
-| `vigil-wordmark-light.svg` | On white and light backgrounds |
-| `vigil-wordmark-dark.svg` | On dark backgrounds |
-| `vigil-wordmark-mono.svg` | One colour, inherits `currentColor`. Print, embroidery, a background that is neither light nor dark |
-| `vigil-wordmark-{light,dark}.png` and `@2x`, `@3x` | Where SVG is not accepted |
+| `belay-wordmark-light.svg` | On white and light backgrounds |
+| `belay-wordmark-dark.svg` | On dark backgrounds |
+| `belay-wordmark-mono.svg` | One colour, inherits `currentColor`. Print, embroidery, a background that is neither light nor dark |
+| `belay-wordmark-{light,dark}.png` and `@2x`, `@3x` | Where SVG is not accepted |
 
 The SVG carries **no font dependency**: the letters are outlines, not text. A
 wordmark that falls back to Times on somebody else's machine is not a wordmark.
@@ -43,7 +43,7 @@ Putting it in front makes the wordmark an icon with a caption, which is what the
 user is looking at all day anyway. Behind the word it reads as a signature, and
 the lockup stays distinct from the app icon.
 
-The word is lowercase because `vigil` is an ordinary English word, and a utility
+The word is lowercase because `belay` is an ordinary English word, and a utility
 that keeps quiet has no business shouting its own name.
 
 ## Clear space and minimum size

@@ -19,7 +19,7 @@ name: Release
 #     the `mac-app-store` non-job at the bottom of this file.
 #
 # The whole job is driven through scripts/release.sh and scripts/notarize.sh.
-# Those scripts are the source of truth for how Vigil is signed and packaged; if
+# Those scripts are the source of truth for how Belay is signed and packaged; if
 # a signing detail needs to change, change it there so a local release and a CI
 # release cannot diverge.
 
@@ -55,8 +55,8 @@ jobs:
       # Where the throwaway keychain and the two decoded credential files live.
       # RUNNER_TEMP is wiped with the runner, and the cleanup step below removes
       # them explicitly anyway.
-      KEYCHAIN_PATH: ${{ runner.temp }}/vigil-release.keychain-db
-      NOTARY_PROFILE: VigilReleaseCI
+      KEYCHAIN_PATH: ${{ runner.temp }}/belay-release.keychain-db
+      NOTARY_PROFILE: BelayReleaseCI
 
     steps:
       - uses: actions/checkout@v4
@@ -247,15 +247,15 @@ jobs:
       # developer-id, hardened-runtime assertion, create-dmg, sign the DMG, then
       # scripts/notarize.sh to submit, wait, staple and validate.
       #
-      # VIGIL_NOTARY_KEYCHAIN is the one thing CI needs that a local release does
+      # BELAY_NOTARY_KEYCHAIN is the one thing CI needs that a local release does
       # not: locally the notarytool profile is in the login keychain and
       # notarytool finds it unaided. Both scripts treat it as optional.
       - name: Build, sign, notarize, staple and package
         env:
-          VIGIL_TEAM_ID: ${{ steps.facts.outputs.team }}
-          VIGIL_NOTARY_PROFILE: ${{ env.NOTARY_PROFILE }}
-          VIGIL_NOTARY_KEYCHAIN: ${{ env.KEYCHAIN_PATH }}
-          VIGIL_SIGN_IDENTITY: Developer ID Application
+          BELAY_TEAM_ID: ${{ steps.facts.outputs.team }}
+          BELAY_NOTARY_PROFILE: ${{ env.NOTARY_PROFILE }}
+          BELAY_NOTARY_KEYCHAIN: ${{ env.KEYCHAIN_PATH }}
+          BELAY_SIGN_IDENTITY: Developer ID Application
         run: scripts/release.sh
 
       # -------------------------------------------------------------- verify
@@ -273,8 +273,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          APP="dist/export/Vigil.app"
-          DMG="dist/Vigil-${{ steps.facts.outputs.version }}.dmg"
+          APP="dist/export/Belay.app"
+          DMG="dist/Belay-${{ steps.facts.outputs.version }}.dmg"
           [ -d "$APP" ] || { echo "no app at $APP" >&2; exit 1; }
           [ -f "$DMG" ] || { echo "no dmg at $DMG" >&2; exit 1; }
 
@@ -311,7 +311,7 @@ jobs:
         id: digest
         run: |
           set -euo pipefail
-          DMG_NAME="Vigil-${{ steps.facts.outputs.version }}.dmg"
+          DMG_NAME="Belay-${{ steps.facts.outputs.version }}.dmg"
           (cd dist && shasum -a 256 "$DMG_NAME" > "$DMG_NAME.sha256")
           SHA="$(awk '{ print $1 }' "dist/$DMG_NAME.sha256")"
           echo "sha256=$SHA" >> "$GITHUB_OUTPUT"
@@ -321,7 +321,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Vigil-${{ steps.facts.outputs.version }}
+          name: Belay-${{ steps.facts.outputs.version }}
           path: |
             dist/*.dmg
             dist/*.dmg.sha256
@@ -339,7 +339,7 @@ jobs:
           set -euo pipefail
           TAG='${{ steps.facts.outputs.tag }}'
           VERSION='${{ steps.facts.outputs.version }}'
-          DMG_NAME="Vigil-$VERSION.dmg"
+          DMG_NAME="Belay-$VERSION.dmg"
 
           {
             cat "$RUNNER_TEMP/notes.md"
@@ -356,7 +356,7 @@ jobs:
           } > "$RUNNER_TEMP/release-body.md"
 
           gh release create "$TAG" \
-            --title "Vigil $VERSION" \
+            --title "Belay $VERSION" \
             --notes-file "$RUNNER_TEMP/release-body.md" \
             --verify-tag \
             "dist/$DMG_NAME" \
@@ -369,7 +369,7 @@ jobs:
           {
             echo "### Dry run"
             echo
-            echo "Built, notarized, stapled and verified Vigil ${{ steps.facts.outputs.version }}."
+            echo "Built, notarized, stapled and verified Belay ${{ steps.facts.outputs.version }}."
             echo "Nothing was published, because this run had no tag."
             echo
             echo "SHA-256: \`${{ steps.digest.outputs.sha256 }}\`"
@@ -408,7 +408,7 @@ jobs:
 #     anybody intended to submit, and build numbers cannot be reused.
 #
 # What CI does own is the part a machine can prove: .github/workflows/ci.yml
-# builds Vigil-MAS and runs scripts/verify-mas-build.sh on every push, so a
+# builds Belay-MAS and runs scripts/verify-mas-build.sh on every push, so a
 # Sparkle symbol or a stray network.client entitlement is caught long before a
 # human opens Transporter. The upload stays manual until B2 is resolved.
 #

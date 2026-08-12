@@ -24,7 +24,7 @@ real Claude Code turn with and without hooks installed and compares latency.
 The one failure mode that would make users hate the app.
 
 *Mitigation:* the assertion timeout model in `docs/04-POWER.md`. Session TTL.
-Max-duration cap. Release on every termination path. A user-visible "Vigil is
+Max-duration cap. Release on every termination path. A user-visible "Belay is
 holding your Mac awake because X" string, always. If you only get one thing right
 in this project, get this one right.
 

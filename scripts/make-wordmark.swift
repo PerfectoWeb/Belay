@@ -54,7 +54,7 @@ func svgPath(_ path: CGPath) -> String {
 
 func f(_ value: CGFloat) -> String { String(format: "%.2f", value) }
 
-let word = wordPath("vigil", size: 36)
+let word = wordPath("belay", size: 36)
 let box = word.boundingBoxOfPath
 print("WORD \(f(box.minX)) \(f(box.minY)) \(f(box.width)) \(f(box.height))")
 print(svgPath(word))
@@ -85,7 +85,7 @@ let markTransform = "translate(\(f(markX)) \(f(markY))) scale(\(f(markScale)))"
 func document(word: String, mark: String) -> String {
     """
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 \(f(width)) \(f(height))" \
-    width="\(f(width))" height="\(f(height))" role="img" aria-label="Vigil">
+    width="\(f(width))" height="\(f(height))" role="img" aria-label="Belay">
     <path transform="\(wordTransform)" fill="\(word)" d="\(svgPath(self_word))"/>
     <path transform="\(markTransform)" fill="\(mark)" d="\(markArt)"/>
     </svg>
@@ -95,9 +95,9 @@ let self_word = word
 let out = CommandLine.arguments[2]
 let blue = "#2379FF"
 try! document(word: "#111111", mark: blue)
-    .write(toFile: out + "/vigil-wordmark-light.svg", atomically: true, encoding: .utf8)
+    .write(toFile: out + "/belay-wordmark-light.svg", atomically: true, encoding: .utf8)
 try! document(word: "#FFFFFF", mark: blue)
-    .write(toFile: out + "/vigil-wordmark-dark.svg", atomically: true, encoding: .utf8)
+    .write(toFile: out + "/belay-wordmark-dark.svg", atomically: true, encoding: .utf8)
 try! document(word: "currentColor", mark: "currentColor")
-    .write(toFile: out + "/vigil-wordmark-mono.svg", atomically: true, encoding: .utf8)
+    .write(toFile: out + "/belay-wordmark-mono.svg", atomically: true, encoding: .utf8)
 print("SVG \(f(width))x\(f(height))")

@@ -1355,84 +1355,84 @@
         }
       }
     },
-    "A backstop. Vigil stops holding after this and tells you why.": {
+    "A backstop. Belay stops holding after this and tells you why.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nach dieser Zeit hält Vigil deinen Mac nicht mehr wach und sagt dir Bescheid."
+            "value": "Nach dieser Zeit hält Belay deinen Mac nicht mehr wach und sagt dir Bescheid."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil stops keeping your Mac awake after this time and lets you know."
+            "value": "Belay stops keeping your Mac awake after this time and lets you know."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Al llegar a este tiempo, Vigil deja de mantener el Mac despierto y te avisa."
+            "value": "Al llegar a este tiempo, Belay deja de mantener el Mac despierto y te avisa."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Après ce délai, Vigil cesse de garder votre Mac éveillé et vous prévient."
+            "value": "Après ce délai, Belay cesse de garder votre Mac éveillé et vous prévient."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dopo questo intervallo, Vigil smette di tenere sveglio il Mac e ti avvisa."
+            "value": "Dopo questo intervallo, Belay smette di tenere sveglio il Mac e ti avvisa."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "После этого времени Vigil разрешит Mac уснуть и сообщит об этом."
+            "value": "После этого времени Belay разрешит Mac уснуть и сообщит об этом."
           }
         }
       }
     },
-    "A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Vigil the session has ended when it disappears.": {
+    "A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ordneraktivität zählt als Arbeit. Ein laufender Prozess zeigt Vigil nur, wann die Sitzung endet."
+            "value": "Ordneraktivität zählt als Arbeit. Ein laufender Prozess zeigt Belay nur, wann die Sitzung endet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Folder activity counts as work. A running process only tells Vigil when the session ends."
+            "value": "Folder activity counts as work. A running process only tells Belay when the session ends."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Vigil cuándo termina la sesión."
+            "value": "La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Belay cuándo termina la sesión."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'activité du dossier compte comme du travail. Un processus en cours indique seulement à Vigil quand la session se termine."
+            "value": "L'activité du dossier compte comme du travail. Un processus en cours indique seulement à Belay quand la session se termine."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'attività della cartella conta come lavoro. Un processo in esecuzione indica a Vigil solo quando termina la sessione."
+            "value": "L'attività della cartella conta come lavoro. Un processo in esecuzione indica a Belay solo quando termina la sessione."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Изменения в папке считаются работой. Запущенный процесс лишь помогает Vigil понять, когда сессия завершилась."
+            "value": "Изменения в папке считаются работой. Запущенный процесс лишь помогает Belay понять, когда сессия завершилась."
           }
         }
       }
@@ -1473,7 +1473,7 @@
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Звуковое сопровождение интерфейса Vigil. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
+            "value": "Звуковое сопровождение интерфейса Belay. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
           }
         }
       }
@@ -1484,37 +1484,37 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil legt zuerst eine Sicherung mit Zeitstempel an. „Entfernen“ stellt die ursprüngliche Datei wieder her."
+            "value": "Belay legt zuerst eine Sicherung mit Zeitstempel an. „Entfernen“ stellt die ursprüngliche Datei wieder her."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil makes a timestamped backup first. \"Remove\" restores the original file."
+            "value": "Belay makes a timestamped backup first. \"Remove\" restores the original file."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original."
+            "value": "Belay crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil crée d'abord une sauvegarde horodatée. « Retirer » restaure le fichier d'origine."
+            "value": "Belay crée d'abord une sauvegarde horodatée. « Retirer » restaure le fichier d'origine."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil crea prima una copia di sicurezza con data e ora. «Rimuovi» ripristina il file originale."
+            "value": "Belay crea prima una copia di sicurezza con data e ora. «Rimuovi» ripristina il file originale."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сначала Vigil создаёт резервную копию с отметкой времени. «Убрать» восстановит исходный файл."
+            "value": "Сначала Belay создаёт резервную копию с отметкой времени. «Убрать» восстановит исходный файл."
           }
         }
       }
@@ -1660,7 +1660,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Añade una carpeta o elige un preajuste para vigilar otro agente."
+            "value": "Añade una carpeta o elige un preajuste para belayar otro agente."
           }
         },
         "fr": {
@@ -1970,43 +1970,43 @@
         }
       }
     },
-    "An agent is waiting for you. Vigil is keeping your Mac awake.": {
+    "An agent is waiting for you. Belay is keeping your Mac awake.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ein Agent wartet auf dich. Vigil hält deinen Mac wach."
+            "value": "Ein Agent wartet auf dich. Belay hält deinen Mac wach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "An agent is waiting for you. Vigil is keeping your Mac awake."
+            "value": "An agent is waiting for you. Belay is keeping your Mac awake."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un agente te espera. Vigil mantiene el Mac despierto."
+            "value": "Un agente te espera. Belay mantiene el Mac despierto."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un agent vous attend. Vigil garde votre Mac éveillé."
+            "value": "Un agent vous attend. Belay garde votre Mac éveillé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un agente ti aspetta. Vigil tiene sveglio il Mac."
+            "value": "Un agente ti aspetta. Belay tiene sveglio il Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Агент ждёт вас. Vigil не даёт Mac уснуть."
+            "value": "Агент ждёт вас. Belay не даёт Mac уснуть."
           }
         }
       }
@@ -2052,43 +2052,43 @@
         }
       }
     },
-    "An agent is working. Your Mac will be free to sleep as soon as Vigil quits.": {
+    "An agent is working. Your Mac will be free to sleep as soon as Belay quits.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ein Agent arbeitet. Wenn du Vigil beendest, darf dein Mac schlafen."
+            "value": "Ein Agent arbeitet. Wenn du Belay beendest, darf dein Mac schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "An agent is working. Quitting Vigil will let your Mac sleep."
+            "value": "An agent is working. Quitting Belay will let your Mac sleep."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hay un agente trabajando. Si cierras Vigil, el Mac podrá entrar en reposo."
+            "value": "Hay un agente trabajando. Si cierras Belay, el Mac podrá entrar en reposo."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un agent travaille. Quitter Vigil permettra à votre Mac de se mettre en veille."
+            "value": "Un agent travaille. Quitter Belay permettra à votre Mac de se mettre en veille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un agente sta lavorando. Se chiudi Vigil, il Mac potrà andare in stop."
+            "value": "Un agente sta lavorando. Se chiudi Belay, il Mac potrà andare in stop."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Агент работает. Если закрыть Vigil, Mac сможет уснуть."
+            "value": "Агент работает. Если закрыть Belay, Mac сможет уснуть."
           }
         }
       }
@@ -2193,7 +2193,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Modo de vigilia"
+            "value": "Modo de belayia"
           }
         },
         "fr": {
@@ -2298,43 +2298,43 @@
         }
       }
     },
-    "Battery is at %lld%%, so Vigil stopped keeping your Mac awake.": {
+    "Battery is at %lld%%, so Belay stopped keeping your Mac awake.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Akku bei %lld%%. Vigil hält deinen Mac nicht mehr wach."
+            "value": "Akku bei %lld%%. Belay hält deinen Mac nicht mehr wach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Battery reached %lld%%. Vigil stopped keeping your Mac awake."
+            "value": "Battery reached %lld%%. Belay stopped keeping your Mac awake."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batería al %lld%%. Vigil dejó de mantener el Mac despierto."
+            "value": "Batería al %lld%%. Belay dejó de mantener el Mac despierto."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batterie à %lld%%. Vigil a cessé de garder votre Mac éveillé."
+            "value": "Batterie à %lld%%. Belay a cessé de garder votre Mac éveillé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batteria al %lld%%. Vigil ha smesso di tenere sveglio il Mac."
+            "value": "Batteria al %lld%%. Belay ha smesso di tenere sveglio il Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Заряд %lld%%. Vigil разрешил Mac уснуть."
+            "value": "Заряд %lld%%. Belay разрешил Mac уснуть."
           }
         }
       }
@@ -2380,43 +2380,43 @@
         }
       }
     },
-    "Below %lld%% on battery, Vigil stops holding.": {
+    "Below %lld%% on battery, Belay stops holding.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Im Akkubetrieb stoppt Vigil bei %lld%%."
+            "value": "Im Akkubetrieb stoppt Belay bei %lld%%."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "On battery, Vigil stops at %lld%%."
+            "value": "On battery, Belay stops at %lld%%."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Con batería, Vigil se detiene al llegar al %lld%%."
+            "value": "Con batería, Belay se detiene al llegar al %lld%%."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sur batterie, Vigil s'arrête à %lld%%."
+            "value": "Sur batterie, Belay s'arrête à %lld%%."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "A batteria, Vigil si ferma al %lld%%."
+            "value": "A batteria, Belay si ferma al %lld%%."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "При работе от батареи Vigil остановится на %lld%%."
+            "value": "При работе от батареи Belay остановится на %lld%%."
           }
         }
       }
@@ -2667,43 +2667,43 @@
         }
       }
     },
-    "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does.": {
+    "Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude Code has not opened a project on this Mac yet. Vigil starts watching by itself when it does."
+            "value": "Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code ещё не открывал здесь ни одного проекта. Vigil начнёт следить сам, как только это произойдёт."
+            "value": "Claude Code ещё не открывал здесь ни одного проекта. Belay начнёт следить сам, как только это произойдёт."
           }
         },
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Vigil beginnt von selbst, sobald es passiert."
+            "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code aún no ha abierto ningún proyecto en este Mac. Vigil empezará solo cuando ocurra."
+            "value": "Claude Code aún no ha abierto ningún proyecto en este Mac. Belay empezará solo cuando ocurra."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code n'a encore ouvert aucun projet sur ce Mac. Vigil s'y mettra tout seul le moment venu."
+            "value": "Claude Code n'a encore ouvert aucun projet sur ce Mac. Belay s'y mettra tout seul le moment venu."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Vigil inizierà da solo quando succederà."
+            "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Belay inizierà da solo quando succederà."
           }
         }
       }
@@ -3528,43 +3528,43 @@
         }
       }
     },
-    "How long Vigil keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.": {
+    "How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wie lange Vigil wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
+            "value": "Wie lange Belay wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "How long Vigil waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks."
+            "value": "How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuánto espera Vigil después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas."
+            "value": "Cuánto espera Belay después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Durée pendant laquelle Vigil attend après l'arrêt d'un agent avant de laisser votre Mac se mettre en veille. Un petit délai évite la veille entre deux tâches."
+            "value": "Durée pendant laquelle Belay attend après l'arrêt d'un agent avant de laisser votre Mac se mettre en veille. Un petit délai évite la veille entre deux tâches."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Per quanto Vigil aspetta dopo che un agente si ferma prima di lasciare andare il Mac in stop. Un piccolo margine evita lo stop tra un'attività e l'altra."
+            "value": "Per quanto Belay aspetta dopo che un agente si ferma prima di lasciare andare il Mac in stop. Un piccolo margine evita lo stop tra un'attività e l'altra."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сколько Vigil ждёт после того, как агент затих, прежде чем разрешить Mac уснуть. Небольшой запас помогает не уснуть между задачами."
+            "value": "Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть. Небольшой запас помогает не уснуть между задачами."
           }
         }
       }
@@ -3728,12 +3728,12 @@
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не даст вашему Mac заснуть, пока работают AI-агенты."
+            "value": "Belay не даст вашему Mac заснуть, пока работают AI-агенты."
           }
         }
       }
     },
-    "Kept awake for %@ since Vigil started": {
+    "Kept awake for %@ since Belay started": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -3751,7 +3751,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Despierto durante %@ desde que se inició Vigil"
+            "value": "Despierto durante %@ desde que se inició Belay"
           }
         },
         "fr": {
@@ -3856,125 +3856,125 @@
         }
       }
     },
-    "Let Vigil read %@ so it can see that agent work.": {
+    "Let Belay read %@ so it can see that agent work.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erlaube Vigil, %@ zu lesen, damit es erkennt, wann dein Agent arbeitet."
+            "value": "Erlaube Belay, %@ zu lesen, damit es erkennt, wann dein Agent arbeitet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Allow Vigil to read %@ so it can tell when your agent is working."
+            "value": "Allow Belay to read %@ so it can tell when your agent is working."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permite que Vigil lea %@ para saber cuándo está trabajando tu agente."
+            "value": "Permite que Belay lea %@ para saber cuándo está trabajando tu agente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autorisez Vigil à lire %@ pour savoir quand votre agent travaille."
+            "value": "Autorisez Belay à lire %@ pour savoir quand votre agent travaille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Consenti a Vigil di leggere %@ per sapere quando il tuo agente sta lavorando."
+            "value": "Consenti a Belay di leggere %@ per sapere quando il tuo agente sta lavorando."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Разрешите Vigil читать %@, чтобы понимать, когда работает агент."
+            "value": "Разрешите Belay читать %@, чтобы понимать, когда работает агент."
           }
         }
       }
     },
-    "Let Vigil read your ~/.claude folder so it can tell when Claude Code is working.": {
+    "Let Belay read your ~/.claude folder so it can tell when Claude Code is working.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erlaube den Zugriff auf ~/.claude, damit Vigil erkennt, wann Claude Code arbeitet."
+            "value": "Erlaube den Zugriff auf ~/.claude, damit Belay erkennt, wann Claude Code arbeitet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Allow access to ~/.claude so Vigil can tell when Claude Code is working."
+            "value": "Allow access to ~/.claude so Belay can tell when Claude Code is working."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permite acceso a ~/.claude para que Vigil sepa cuándo trabaja Claude Code."
+            "value": "Permite acceso a ~/.claude para que Belay sepa cuándo trabaja Claude Code."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autorisez l'accès à ~/.claude pour que Vigil sache quand Claude Code travaille."
+            "value": "Autorisez l'accès à ~/.claude pour que Belay sache quand Claude Code travaille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Consenti accesso a ~/.claude perché Vigil sappia quando Claude Code sta lavorando."
+            "value": "Consenti accesso a ~/.claude perché Belay sappia quando Claude Code sta lavorando."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Разрешите доступ к ~/.claude, чтобы Vigil понимал, когда работает Claude Code."
+            "value": "Разрешите доступ к ~/.claude, чтобы Belay понимал, когда работает Claude Code."
           }
         }
       }
     },
-    "Lets Claude Code tell Vigil exactly when it starts and stops, instead of Vigil inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
+    "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude Code teilt Vigil genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
+            "value": "Claude Code teilt Belay genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lets Claude Code tell Vigil exactly when work starts and stops. It also makes \"waiting for you\" notifications reliable."
+            "value": "Lets Claude Code tell Belay exactly when work starts and stops. It also makes \"waiting for you\" notifications reliable."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permite que Claude Code le indique a Vigil exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera»."
+            "value": "Permite que Claude Code le indique a Belay exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera»."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permet à Claude Code d'indiquer précisément à Vigil quand le travail commence et se termine. Cela rend aussi fiables les notifications « un agent vous attend »."
+            "value": "Permet à Claude Code d'indiquer précisément à Belay quand le travail commence et se termine. Cela rend aussi fiables les notifications « un agent vous attend »."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permette a Claude Code di dire a Vigil esattamente quando il lavoro inizia e finisce. Rende affidabili anche le notifiche «un agente ti aspetta»."
+            "value": "Permette a Claude Code di dire a Belay esattamente quando il lavoro inizia e finisce. Rende affidabili anche le notifiche «un agente ti aspetta»."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude Code сможет точно сообщать Vigil, когда работа начинается и заканчивается. Благодаря этому уведомления «Агент ждёт вас» будут надёжными."
+            "value": "Claude Code сможет точно сообщать Belay, когда работа начинается и заканчивается. Благодаря этому уведомления «Агент ждёт вас» будут надёжными."
           }
         }
       }
@@ -4471,43 +4471,43 @@
         }
       }
     },
-    "Nothing configured. Vigil is watching Claude Code only.": {
+    "Nothing configured. Belay is watching Claude Code only.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keine weiteren Tools hinzugefügt. Vigil beobachtet Claude Code."
+            "value": "Keine weiteren Tools hinzugefügt. Belay beobachtet Claude Code."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No other tools added. Vigil is watching Claude Code."
+            "value": "No other tools added. Belay is watching Claude Code."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No has añadido otras herramientas. Vigil está vigilando Claude Code."
+            "value": "No has añadido otras herramientas. Belay está vigilando Claude Code."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aucun autre outil ajouté. Vigil surveille Claude Code."
+            "value": "Aucun autre outil ajouté. Belay surveille Claude Code."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nessun altro strumento aggiunto. Vigil sta monitorando Claude Code."
+            "value": "Nessun altro strumento aggiunto. Belay sta monitorando Claude Code."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Другие инструменты не добавлены. Vigil следит за Claude Code."
+            "value": "Другие инструменты не добавлены. Belay следит за Claude Code."
           }
         }
       }
@@ -4618,7 +4618,7 @@
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Nada que vigilar todavía: %@ no existe."
+            "value": "Nada que belayar todavía: %@ no existe."
           }
         },
         "fr": {
@@ -4717,43 +4717,43 @@
         }
       }
     },
-    "Notify when Vigil stops for safety": {
+    "Notify when Belay stops for safety": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Benachrichtigen, wenn Vigil aus Sicherheitsgründen stoppt"
+            "value": "Benachrichtigen, wenn Belay aus Sicherheitsgründen stoppt"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notify when Vigil stops for safety"
+            "value": "Notify when Belay stops for safety"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avisar cuando Vigil se detenga por seguridad"
+            "value": "Avisar cuando Belay se detenga por seguridad"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "M'avertir quand Vigil s'arrête par sécurité"
+            "value": "M'avertir quand Belay s'arrête par sécurité"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avvisami quando Vigil si ferma per sicurezza"
+            "value": "Avvisami quando Belay si ferma per sicurezza"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Уведомлять, когда Vigil останавливается ради безопасности"
+            "value": "Уведомлять, когда Belay останавливается ради безопасности"
           }
         }
       }
@@ -4922,7 +4922,7 @@
         }
       }
     },
-    "Off by default. Vigil keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.": {
+    "Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -4963,84 +4963,84 @@
         }
       }
     },
-    "Once Vigil has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.": {
+    "Once Belay has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Statistiken erscheinen, nachdem Vigil deinen Mac während eines Agentenlaufs wach gehalten hat."
+            "value": "Statistiken erscheinen, nachdem Belay deinen Mac während eines Agentenlaufs wach gehalten hat."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Stats appear after Vigil keeps your Mac awake through an agent run."
+            "value": "Stats appear after Belay keeps your Mac awake through an agent run."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las estadísticas aparecerán después de que Vigil mantenga el Mac despierto durante una ejecución."
+            "value": "Las estadísticas aparecerán después de que Belay mantenga el Mac despierto durante una ejecución."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les statistiques apparaîtront après que Vigil aura gardé votre Mac éveillé pendant une exécution."
+            "value": "Les statistiques apparaîtront après que Belay aura gardé votre Mac éveillé pendant une exécution."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le statistiche appariranno dopo che Vigil avrà tenuto sveglio il Mac durante un'esecuzione."
+            "value": "Le statistiche appariranno dopo che Belay avrà tenuto sveglio il Mac durante un'esecuzione."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Статистика появится после того, как Vigil хотя бы раз не даст Mac уснуть во время работы агента."
+            "value": "Статистика появится после того, как Belay хотя бы раз не даст Mac уснуть во время работы агента."
           }
         }
       }
     },
-    "Once a day, Vigil checks whether a newer version exists. That is the only time Vigil uses the network, it sends nothing about you, and it never installs anything on its own.": {
+    "Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil prüft einmal täglich, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
+            "value": "Belay prüft einmal täglich, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
+            "value": "Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil comprueba una vez al día si hay una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
+            "value": "Belay comprueba una vez al día si hay una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil vérifie une fois par jour s'il existe une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
+            "value": "Belay vérifie une fois par jour s'il existe une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil controlla una volta al giorno se è disponibile una versione nuova. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
+            "value": "Belay controlla una volta al giorno se è disponibile una versione nuova. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Раз в день Vigil проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
+            "value": "Раз в день Belay проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
           }
         }
       }
@@ -5168,43 +5168,43 @@
         }
       }
     },
-    "Open Vigil at login": {
+    "Open Belay at login": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil beim Anmelden öffnen"
+            "value": "Belay beim Anmelden öffnen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Vigil at login"
+            "value": "Open Belay at login"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abrir Vigil al iniciar sesión"
+            "value": "Abrir Belay al iniciar sesión"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrir Vigil à l'ouverture de session"
+            "value": "Ouvrir Belay à l'ouverture de session"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apri Vigil al login"
+            "value": "Apri Belay al login"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Запускать Vigil при входе"
+            "value": "Запускать Belay при входе"
           }
         }
       }
@@ -5660,43 +5660,43 @@
         }
       }
     },
-    "Quit Vigil and open it again to change language.": {
+    "Quit Belay and open it again to change language.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne Vigil erneut, um die Sprachänderung anzuwenden."
+            "value": "Öffne Belay erneut, um die Sprachänderung anzuwenden."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reopen Vigil to apply the language change."
+            "value": "Reopen Belay to apply the language change."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vuelve a abrir Vigil para aplicar el cambio de idioma."
+            "value": "Vuelve a abrir Belay para aplicar el cambio de idioma."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rouvrez Vigil pour appliquer le changement de langue."
+            "value": "Rouvrez Belay pour appliquer le changement de langue."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Riapri Vigil per applicare il cambio di lingua."
+            "value": "Riapri Belay per applicare il cambio di lingua."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Перезапустите Vigil, чтобы применить новый язык."
+            "value": "Перезапустите Belay, чтобы применить новый язык."
           }
         }
       }
@@ -5865,43 +5865,43 @@
         }
       }
     },
-    "Removes Vigil's entries from your Claude Code settings": {
+    "Removes Belay's entries from your Claude Code settings": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Entfernt nur die Einträge, die Vigil zu deinen Claude-Code-Einstellungen hinzugefügt hat"
+            "value": "Entfernt nur die Einträge, die Belay zu deinen Claude-Code-Einstellungen hinzugefügt hat"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Removes only the entries Vigil added to your Claude Code settings"
+            "value": "Removes only the entries Belay added to your Claude Code settings"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elimina solo las entradas que Vigil añadió a tus ajustes de Claude Code"
+            "value": "Elimina solo las entradas que Belay añadió a tus ajustes de Claude Code"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Supprime uniquement les entrées ajoutées par Vigil à vos réglages Claude Code"
+            "value": "Supprime uniquement les entrées ajoutées par Belay à vos réglages Claude Code"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rimuove solo le voci aggiunte da Vigil alle impostazioni di Claude Code"
+            "value": "Rimuove solo le voci aggiunte da Belay alle impostazioni di Claude Code"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Удаляет только записи, которые Vigil добавил в настройки Claude Code"
+            "value": "Удаляет только записи, которые Belay добавил в настройки Claude Code"
           }
         }
       }
@@ -6111,43 +6111,43 @@
         }
       }
     },
-    "Shares a card, a summary and a link to Vigil": {
+    "Shares a card, a summary and a link to Belay": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Teilt Karte, Zusammenfassung und einen Link zu Vigil"
+            "value": "Teilt Karte, Zusammenfassung und einen Link zu Belay"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shares the card, summary, and a link to Vigil"
+            "value": "Shares the card, summary, and a link to Belay"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Comparte la tarjeta, el resumen y un enlace a Vigil"
+            "value": "Comparte la tarjeta, el resumen y un enlace a Belay"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Partage la carte, le résumé et un lien vers Vigil"
+            "value": "Partage la carte, le résumé et un lien vers Belay"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Condivide la scheda, il riepilogo e un link a Vigil"
+            "value": "Condivide la scheda, il riepilogo e un link a Belay"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Делится карточкой, сводкой и ссылкой на Vigil"
+            "value": "Делится карточкой, сводкой и ссылкой на Belay"
           }
         }
       }
@@ -6322,37 +6322,37 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zeigt genau, was Vigil hinzufügen wird, bevor etwas geschrieben wird"
+            "value": "Zeigt genau, was Belay hinzufügen wird, bevor etwas geschrieben wird"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Previews exactly what Vigil will add before it writes anything"
+            "value": "Previews exactly what Belay will add before it writes anything"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Muestra exactamente qué añadirá Vigil antes de escribir nada"
+            "value": "Muestra exactamente qué añadirá Belay antes de escribir nada"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Affiche exactement ce que Vigil ajoutera avant toute écriture"
+            "value": "Affiche exactement ce que Belay ajoutera avant toute écriture"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mostra esattamente cosa aggiungerà Vigil prima di scrivere qualsiasi cosa"
+            "value": "Mostra esattamente cosa aggiungerà Belay prima di scrivere qualsiasi cosa"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Показывает, что именно Vigil добавит, прежде чем что-либо записывать"
+            "value": "Показывает, что именно Belay добавит, прежде чем что-либо записывать"
           }
         }
       }
@@ -6726,7 +6726,7 @@
         }
       }
     },
-    "Stops Vigil watching this tool": {
+    "Stops Belay watching this tool": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -6744,7 +6744,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deja de vigilar esta herramienta"
+            "value": "Deja de belayar esta herramienta"
           }
         },
         "fr": {
@@ -6890,43 +6890,43 @@
         }
       }
     },
-    "The exact configuration Vigil will add": {
+    "The exact configuration Belay will add": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Was Vigil hinzufügen wird"
+            "value": "Was Belay hinzufügen wird"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "What Vigil will add"
+            "value": "What Belay will add"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lo que añadirá Vigil"
+            "value": "Lo que añadirá Belay"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ce que Vigil ajoutera"
+            "value": "Ce que Belay ajoutera"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cosa aggiungerà Vigil"
+            "value": "Cosa aggiungerà Belay"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Что добавит Vigil"
+            "value": "Что добавит Belay"
           }
         }
       }
@@ -7136,43 +7136,43 @@
         }
       }
     },
-    "The update service sent something Vigil could not read.": {
+    "The update service sent something Belay could not read.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Update-Dienst hat eine Antwort gesendet, die Vigil nicht lesen konnte."
+            "value": "Der Update-Dienst hat eine Antwort gesendet, die Belay nicht lesen konnte."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The update service sent something Vigil could not read."
+            "value": "The update service sent something Belay could not read."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El servicio de actualizaciones envió una respuesta que Vigil no pudo leer."
+            "value": "El servicio de actualizaciones envió una respuesta que Belay no pudo leer."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le service de mise à jour a renvoyé une réponse que Vigil n'a pas pu lire."
+            "value": "Le service de mise à jour a renvoyé une réponse que Belay n'a pas pu lire."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il servizio di aggiornamento ha inviato una risposta che Vigil non è riuscito a leggere."
+            "value": "Il servizio di aggiornamento ha inviato una risposta che Belay non è riuscito a leggere."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Служба обновлений прислала ответ, который Vigil не смог прочитать."
+            "value": "Служба обновлений прислала ответ, который Belay не смог прочитать."
           }
         }
       }
@@ -7218,13 +7218,13 @@
         }
       }
     },
-    "This cannot be undone. Vigil keeps no copy anywhere else.": {
+    "This cannot be undone. Belay keeps no copy anywhere else.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This cannot be undone. Vigil keeps no copy anywhere else."
+            "value": "This cannot be undone. Belay keeps no copy anywhere else."
           }
         },
         "ru": {
@@ -7236,25 +7236,25 @@
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Das lässt sich nicht rückgängig machen. Vigil hält nirgendwo eine Kopie."
+            "value": "Das lässt sich nicht rückgängig machen. Belay hält nirgendwo eine Kopie."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Esto no se puede deshacer. Vigil no guarda ninguna copia en otro sitio."
+            "value": "Esto no se puede deshacer. Belay no guarda ninguna copia en otro sitio."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "C'est irréversible. Vigil n'en garde aucune copie ailleurs."
+            "value": "C'est irréversible. Belay n'en garde aucune copie ailleurs."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Non si può annullare. Vigil non ne conserva copie altrove."
+            "value": "Non si può annullare. Belay non ne conserva copie altrove."
           }
         }
       }
@@ -7464,458 +7464,458 @@
         }
       }
     },
-    "Vigil asks macOS for permission the first time it actually needs to notify you.": {
+    "Belay asks macOS for permission the first time it actually needs to notify you.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
+            "value": "Belay fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil asks for notification permission the first time it needs to send one."
+            "value": "Belay asks for notification permission the first time it needs to send one."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil pide permiso para enviar notificaciones la primera vez que necesita enviar una."
+            "value": "Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
+            "value": "Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil chiede il permesso per le notifiche la prima volta che deve inviarne una."
+            "value": "Belay chiede il permesso per le notifiche la prima volta che deve inviarne una."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
+            "value": "Belay запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
           }
         }
       }
     },
-    "Vigil could not back up your Claude Code settings, so it made no changes: %@": {
+    "Belay could not back up your Claude Code settings, so it made no changes: %@": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil konnte deine Claude-Code-Einstellungen nicht sichern. Deshalb wurde nichts geändert: %@"
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht sichern. Deshalb wurde nichts geändert: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't back up your Claude Code settings, so nothing was changed: %@"
+            "value": "Belay couldn't back up your Claude Code settings, so nothing was changed: %@"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
+            "value": "Belay no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@"
+            "value": "Belay n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
+            "value": "Belay non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
+            "value": "Belay не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
           }
         }
       }
     },
-    "Vigil could not migrate preferences from version %lld.": {
+    "Belay could not migrate preferences from version %lld.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil konnte die Einstellungen aus Version %lld nicht übernehmen."
+            "value": "Belay konnte die Einstellungen aus Version %lld nicht übernehmen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't import settings from version %lld."
+            "value": "Belay couldn't import settings from version %lld."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil no pudo importar los ajustes de la versión %lld."
+            "value": "Belay no pudo importar los ajustes de la versión %lld."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil n'a pas pu importer les réglages de la version %lld."
+            "value": "Belay n'a pas pu importer les réglages de la version %lld."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto importare le impostazioni dalla versione %lld."
+            "value": "Belay non ha potuto importare le impostazioni dalla versione %lld."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не смог перенести настройки из версии %lld."
+            "value": "Belay не смог перенести настройки из версии %lld."
           }
         }
       }
     },
-    "Vigil could not read its preferences and has fallen back to defaults.": {
+    "Belay could not read its preferences and has fallen back to defaults.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil konnte seine Einstellungen nicht lesen und verwendet deshalb die Standardwerte."
+            "value": "Belay konnte seine Einstellungen nicht lesen und verwendet deshalb die Standardwerte."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't read its settings, so it's using the defaults."
+            "value": "Belay couldn't read its settings, so it's using the defaults."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil no pudo leer sus ajustes, así que está usando los valores predeterminados."
+            "value": "Belay no pudo leer sus ajustes, así que está usando los valores predeterminados."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil n'a pas pu lire ses réglages et utilise donc les valeurs par défaut."
+            "value": "Belay n'a pas pu lire ses réglages et utilise donc les valeurs par défaut."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
+            "value": "Belay non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не смог прочитать свои настройки, поэтому использует стандартные."
+            "value": "Belay не смог прочитать свои настройки, поэтому использует стандартные."
           }
         }
       }
     },
-    "Vigil could not read this Mac's power source.": {
+    "Belay could not read this Mac's power source.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil konnte die Stromquelle dieses Mac nicht erkennen."
+            "value": "Belay konnte die Stromquelle dieses Mac nicht erkennen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't read this Mac's power source."
+            "value": "Belay couldn't read this Mac's power source."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil no pudo detectar la fuente de alimentación de este Mac."
+            "value": "Belay no pudo detectar la fuente de alimentación de este Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil n'a pas pu déterminer la source d'alimentation de ce Mac."
+            "value": "Belay n'a pas pu déterminer la source d'alimentation de ce Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto determinare la fonte di alimentazione di questo Mac."
+            "value": "Belay non ha potuto determinare la fonte di alimentazione di questo Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не смог определить, от чего питается этот Mac."
+            "value": "Belay не смог определить, от чего питается этот Mac."
           }
         }
       }
     },
-    "Vigil could not read your Claude Code settings: %@": {
+    "Belay could not read your Claude Code settings: %@": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil konnte deine Claude-Code-Einstellungen nicht lesen: %@"
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht lesen: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't read your Claude Code settings: %@"
+            "value": "Belay couldn't read your Claude Code settings: %@"
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil no pudo leer tus ajustes de Claude Code: %@"
+            "value": "Belay no pudo leer tus ajustes de Claude Code: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil n'a pas pu lire vos réglages Claude Code : %@"
+            "value": "Belay n'a pas pu lire vos réglages Claude Code : %@"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto leggere le impostazioni di Claude Code: %@"
+            "value": "Belay non ha potuto leggere le impostazioni di Claude Code: %@"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не смог прочитать настройки Claude Code: %@"
+            "value": "Belay не смог прочитать настройки Claude Code: %@"
           }
         }
       }
     },
-    "Vigil could not start its local hook receiver: %@": {
+    "Belay could not start its local hook receiver: %@": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil konnte seinen lokalen Hook-Empfänger nicht starten: %@"
+            "value": "Belay konnte seinen lokalen Hook-Empfänger nicht starten: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't start its local hook listener: %@"
+            "value": "Belay couldn't start its local hook listener: %@"
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil no pudo iniciar su receptor local de hooks: %@"
+            "value": "Belay no pudo iniciar su receptor local de hooks: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil n'a pas pu démarrer son récepteur de hooks local : %@"
+            "value": "Belay n'a pas pu démarrer son récepteur de hooks local : %@"
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil non ha potuto avviare il ricevitore locale di hook: %@"
+            "value": "Belay non ha potuto avviare il ricevitore locale di hook: %@"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не смог запустить локальный приёмник хуков: %@"
+            "value": "Belay не смог запустить локальный приёмник хуков: %@"
           }
         }
       }
     },
-    "Vigil could not update your Claude Code settings: %@": {
+    "Belay could not update your Claude Code settings: %@": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil konnte deine Claude-Code-Einstellungen nicht aktualisieren: %@"
+            "value": "Belay konnte deine Claude-Code-Einstellungen nicht aktualisieren: %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't update your Claude Code settings: %@"
+            "value": "Belay couldn't update your Claude Code settings: %@"
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil no pudo actualizar tus ajustes de Claude Code: %@"
+            "value": "Belay no pudo actualizar tus ajustes de Claude Code: %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil n'a pas pu mettre à jour vos réglages Claude Code : %@"
+            "value": "Belay n'a pas pu mettre à jour vos réglages Claude Code : %@"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto aggiornare le impostazioni di Claude Code: %@"
+            "value": "Belay non ha potuto aggiornare le impostazioni di Claude Code: %@"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не смог обновить настройки Claude Code: %@"
+            "value": "Belay не смог обновить настройки Claude Code: %@"
           }
         }
       }
     },
-    "Vigil could not watch %@ for activity.": {
+    "Belay could not watch %@ for activity.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil konnte %@ nicht auf Aktivität überwachen."
+            "value": "Belay konnte %@ nicht auf Aktivität überwachen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil couldn't watch %@ for activity."
+            "value": "Belay couldn't watch %@ for activity."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil no pudo vigilar la actividad en %@."
+            "value": "Belay no pudo belayar la actividad en %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil n'a pas pu surveiller l'activité dans %@."
+            "value": "Belay n'a pas pu surveiller l'activité dans %@."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non ha potuto monitorare l'attività in %@."
+            "value": "Belay non ha potuto monitorare l'attività in %@."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не смог следить за активностью в %@."
+            "value": "Belay не смог следить за активностью в %@."
           }
         }
       }
     },
-    "Vigil has not been granted access to %@ yet.": {
+    "Belay has not been granted access to %@ yet.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil hat noch keinen Zugriff auf %@."
+            "value": "Belay hat noch keinen Zugriff auf %@."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil doesn't have access to %@ yet."
+            "value": "Belay doesn't have access to %@ yet."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil aún no tiene acceso a %@."
+            "value": "Belay aún no tiene acceso a %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil n'a pas encore accès à %@."
+            "value": "Belay n'a pas encore accès à %@."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil non ha ancora accesso a %@."
+            "value": "Belay non ha ancora accesso a %@."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "У Vigil пока нет доступа к %@."
+            "value": "У Belay пока нет доступа к %@."
           }
         }
       }
     },
-    "Vigil has to reopen to change language.": {
+    "Belay has to reopen to change language.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zum Ändern der Sprache muss Vigil neu gestartet werden."
+            "value": "Zum Ändern der Sprache muss Belay neu gestartet werden."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil needs to reopen to change the language."
+            "value": "Belay needs to reopen to change the language."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil tiene que volver a abrirse para cambiar el idioma."
+            "value": "Belay tiene que volver a abrirse para cambiar el idioma."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil doit être relancé pour changer de langue."
+            "value": "Belay doit être relancé pour changer de langue."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil deve essere riaperto per cambiare lingua."
+            "value": "Belay deve essere riaperto per cambiare lingua."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Чтобы сменить язык, Vigil нужно перезапустить."
+            "value": "Чтобы сменить язык, Belay нужно перезапустить."
           }
         }
       }
     },
-    "Vigil is keeping your Mac awake: always on.": {
+    "Belay is keeping your Mac awake: always on.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -7956,201 +7956,201 @@
         }
       }
     },
-    "Vigil is keeping your Mac awake: an agent is working.": {
+    "Belay is keeping your Mac awake: an agent is working.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält deinen Mac wach, solange ein Agent arbeitet."
+            "value": "Belay hält deinen Mac wach, solange ein Agent arbeitet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil is keeping your Mac awake while an agent works."
+            "value": "Belay is keeping your Mac awake while an agent works."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil mantiene el Mac despierto mientras trabaja un agente."
+            "value": "Belay mantiene el Mac despierto mientras trabaja un agente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil garde votre Mac éveillé pendant qu'un agent travaille."
+            "value": "Belay garde votre Mac éveillé pendant qu'un agent travaille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil tiene sveglio il Mac mentre un agente lavora."
+            "value": "Belay tiene sveglio il Mac mentre un agente lavora."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не даёт Mac уснуть, пока работает агент."
+            "value": "Belay не даёт Mac уснуть, пока работает агент."
           }
         }
       }
     },
-    "Vigil is off. Your Mac will sleep normally.": {
+    "Belay is off. Your Mac will sleep normally.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ist aus. Dein Mac schläft normal."
+            "value": "Belay ist aus. Dein Mac schläft normal."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil is off. Your Mac will sleep normally."
+            "value": "Belay is off. Your Mac will sleep normally."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil está desactivado. El Mac dormirá con normalidad."
+            "value": "Belay está desactivado. El Mac dormirá con normalidad."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil est désactivé. Votre Mac se mettra en veille normalement."
+            "value": "Belay est désactivé. Votre Mac se mettra en veille normalement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil è disattivato. Il Mac andrà in stop normalmente."
+            "value": "Belay è disattivato. Il Mac andrà in stop normalmente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil выключен. Mac будет засыпать как обычно."
+            "value": "Belay выключен. Mac будет засыпать как обычно."
           }
         }
       }
     },
-    "Vigil is only useful when it is already running.": {
+    "Belay is only useful when it is already running.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne Vigil bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
+            "value": "Öffne Belay bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Vigil at login so it's ready before an agent starts."
+            "value": "Open Belay at login so it's ready before an agent starts."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abre Vigil al iniciar sesión para que esté listo antes de que empiece un agente."
+            "value": "Abre Belay al iniciar sesión para que esté listo antes de que empiece un agente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrez Vigil à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
+            "value": "Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apri Vigil all'accesso così sarà pronto prima che inizi un agente."
+            "value": "Apri Belay all'accesso così sarà pronto prima che inizi un agente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Включите запуск Vigil при входе, чтобы он был готов до старта агента."
+            "value": "Включите запуск Belay при входе, чтобы он был готов до старта агента."
           }
         }
       }
     },
-    "Vigil is switched off, so it will not hold sleep at all.": {
+    "Belay is switched off, so it will not hold sleep at all.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil hält Ihren Mac nicht wach."
+            "value": "Belay hält Ihren Mac nicht wach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil won't keep your Mac awake."
+            "value": "Belay won't keep your Mac awake."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil no mantendrá tu Mac despierto."
+            "value": "Belay no mantendrá tu Mac despierto."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil ne gardera pas votre Mac éveillé."
+            "value": "Belay ne gardera pas votre Mac éveillé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil non terrà sveglio il tuo Mac."
+            "value": "Belay non terrà sveglio il tuo Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil не будет держать Mac бодрым."
+            "value": "Belay не будет держать Mac бодрым."
           }
         }
       }
     },
-    "Vigil is up to date.": {
+    "Belay is up to date.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ist aktuell."
+            "value": "Belay ist aktuell."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil is up to date."
+            "value": "Belay is up to date."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil está actualizado."
+            "value": "Belay está actualizado."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil est à jour."
+            "value": "Belay est à jour."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil è aggiornato."
+            "value": "Belay è aggiornato."
           }
         },
         "ru": {
@@ -8161,253 +8161,253 @@
         }
       }
     },
-    "Vigil is watching. Nothing is running right now.": {
+    "Belay is watching. Nothing is running right now.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil beobachtet. Keine Agenten laufen."
+            "value": "Belay beobachtet. Keine Agenten laufen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil is watching. No agents are running."
+            "value": "Belay is watching. No agents are running."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil está vigilando. No hay agentes en ejecución."
+            "value": "Belay está vigilando. No hay agentes en ejecución."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil surveille. Aucun agent en cours."
+            "value": "Belay surveille. Aucun agent en cours."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil sta monitorando. Nessun agente attivo."
+            "value": "Belay sta monitorando. Nessun agente attivo."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil следит. Сейчас ни один агент не работает."
+            "value": "Belay следит. Сейчас ни один агент не работает."
           }
         }
       }
     },
-    "Vigil is watching. Your Mac will sleep normally.": {
+    "Belay is watching. Your Mac will sleep normally.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil beobachtet. Dein Mac kann normal schlafen."
+            "value": "Belay beobachtet. Dein Mac kann normal schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil is watching. Your Mac can sleep normally."
+            "value": "Belay is watching. Your Mac can sleep normally."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil está vigilando. El Mac puede dormir con normalidad."
+            "value": "Belay está vigilando. El Mac puede dormir con normalidad."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil surveille. Votre Mac peut se mettre en veille normalement."
+            "value": "Belay surveille. Votre Mac peut se mettre en veille normalement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil sta monitorando. Il Mac può andare in stop normalmente."
+            "value": "Belay sta monitorando. Il Mac può andare in stop normalmente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil следит. Mac может засыпать как обычно."
+            "value": "Belay следит. Mac может засыпать как обычно."
           }
         }
       }
     },
-    "Vigil keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.": {
+    "Belay keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält deinen Mac wach, solange ein lokaler Coding-Agent arbeitet, und lässt ihn danach wieder schlafen. Deine Ruhezustandseinstellungen bleiben unverändert."
+            "value": "Belay hält deinen Mac wach, solange ein lokaler Coding-Agent arbeitet, und lässt ihn danach wieder schlafen. Deine Ruhezustandseinstellungen bleiben unverändert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched."
+            "value": "Belay keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian."
+            "value": "Belay mantiene el Mac despierto mientras trabaja un agente de programación local y lo deja dormir cuando termina. Tus ajustes de reposo no cambian."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil garde votre Mac éveillé pendant qu'un agent de programmation local travaille, puis le laisse se mettre en veille une fois le travail terminé. Vos réglages de veille restent inchangés."
+            "value": "Belay garde votre Mac éveillé pendant qu'un agent de programmation local travaille, puis le laisse se mettre en veille une fois le travail terminé. Vos réglages de veille restent inchangés."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil tiene sveglio il Mac mentre lavora un agente di programmazione locale, poi lo lascia andare in stop quando il lavoro è finito. Le impostazioni di stop restano invariate."
+            "value": "Belay tiene sveglio il Mac mentre lavora un agente di programmazione locale, poi lo lascia andare in stop quando il lavoro è finito. Le impostazioni di stop restano invariate."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не даёт Mac уснуть, пока работает локальный агент для кода, а после завершения работы отпускает его в сон. Настройки сна не меняются."
+            "value": "Belay не даёт Mac уснуть, пока работает локальный агент для кода, а после завершения работы отпускает его в сон. Настройки сна не меняются."
           }
         }
       }
     },
-    "Vigil let your Mac sleep": {
+    "Belay let your Mac sleep": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hat deinen Mac schlafen lassen"
+            "value": "Belay hat deinen Mac schlafen lassen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil let your Mac sleep"
+            "value": "Belay let your Mac sleep"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil dejó dormir el Mac"
+            "value": "Belay dejó dormir el Mac"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a laissé votre Mac s'endormir"
+            "value": "Belay a laissé votre Mac s'endormir"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha lasciato dormire il Mac"
+            "value": "Belay ha lasciato dormire il Mac"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil отпустил Mac спать"
+            "value": "Belay отпустил Mac спать"
           }
         }
       }
     },
-    "Vigil needs your permission to read %@.": {
+    "Belay needs your permission to read %@.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil braucht die Erlaubnis, %@ zu lesen."
+            "value": "Belay braucht die Erlaubnis, %@ zu lesen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil needs permission to read %@."
+            "value": "Belay needs permission to read %@."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil necesita permiso para leer %@."
+            "value": "Belay necesita permiso para leer %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil a besoin de votre autorisation pour lire %@."
+            "value": "Belay a besoin de votre autorisation pour lire %@."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha bisogno del permesso per leggere %@."
+            "value": "Belay ha bisogno del permesso per leggere %@."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil нужно разрешение на чтение %@."
+            "value": "Belay нужно разрешение на чтение %@."
           }
         }
       }
     },
-    "Vigil reached its maximum awake time and stopped keeping your Mac awake.": {
+    "Belay reached its maximum awake time and stopped keeping your Mac awake.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hat die maximale Wachzeit erreicht und lässt deinen Mac wieder schlafen."
+            "value": "Belay hat die maximale Wachzeit erreicht und lässt deinen Mac wieder schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil reached the maximum awake time and let your Mac sleep."
+            "value": "Belay reached the maximum awake time and let your Mac sleep."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil alcanzó el tiempo máximo despierto y dejó dormir el Mac."
+            "value": "Belay alcanzó el tiempo máximo despierto y dejó dormir el Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille."
+            "value": "Belay a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha raggiunto il tempo massimo di veglia e ha lasciato andare il Mac in stop."
+            "value": "Belay ha raggiunto il tempo massimo di veglia e ha lasciato andare il Mac in stop."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil достиг максимального времени без сна и разрешил Mac уснуть."
+            "value": "Belay достиг максимального времени без сна и разрешил Mac уснуть."
           }
         }
       }
     },
-    "Vigil reached the longest stretch you allow it to hold, so it stopped.": {
+    "Belay reached the longest stretch you allow it to hold, so it stopped.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -8448,89 +8448,89 @@
         }
       }
     },
-    "Vigil reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.": {
+    "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
+            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
+            "value": "Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
+            "value": "Belay solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
+            "value": "Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
+            "value": "Belay legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
+            "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
           }
         }
       }
     },
-    "Vigil reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.": {
+    "Belay reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil liest nur die Sitzungsdaten, die es braucht, um zu erkennen, wann dein lokaler Agent arbeitet. Deine Prompts und deinen Code liest es nie, und nichts verlässt deinen Mac."
+            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, wann dein lokaler Agent arbeitet. Deine Prompts und deinen Code liest es nie, und nichts verlässt deinen Mac."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac."
+            "value": "Belay reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
+            "value": "Belay solo lee los datos de sesión que necesita para saber cuándo trabaja tu agente local. Nunca lee tus prompts ni tu código, y nada sale de tu Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil lit uniquement les données de session nécessaires pour savoir quand votre agent local travaille. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
+            "value": "Belay lit uniquement les données de session nécessaires pour savoir quand votre agent local travaille. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil legge solo i dati di sessione necessari per capire quando il tuo agente locale sta lavorando. Non legge mai i tuoi prompt o il tuo codice, e nulla lascia il tuo Mac."
+            "value": "Belay legge solo i dati di sessione necessari per capire quando il tuo agente locale sta lavorando. Non legge mai i tuoi prompt o il tuo codice, e nulla lascia il tuo Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil читает только данные сессии, необходимые, чтобы понять, когда работает локальный агент. Он не читает ваши промпты и код, и ничего не покидает ваш Mac."
+            "value": "Belay читает только данные сессии, необходимые, чтобы понять, когда работает локальный агент. Он не читает ваши промпты и код, и ничего не покидает ваш Mac."
           }
         }
       }
     },
-    "Vigil still works in Always on and Off modes": {
+    "Belay still works in Always on and Off modes": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -8571,289 +8571,289 @@
         }
       }
     },
-    "Vigil stopped holding": {
+    "Belay stopped holding": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält nicht mehr"
+            "value": "Belay hält nicht mehr"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil stopped holding"
+            "value": "Belay stopped holding"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil dejó de mantener"
+            "value": "Belay dejó de mantener"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a cessé de maintenir"
+            "value": "Belay a cessé de maintenir"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha smesso di mantenere"
+            "value": "Belay ha smesso di mantenere"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil перестал удерживать"
+            "value": "Belay перестал удерживать"
           }
         }
       }
     },
-    "Vigil stopped holding: battery is at %lld%%.": {
+    "Belay stopped holding: battery is at %lld%%.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält deinen Mac bei %lld%% Akkustand nicht mehr wach."
+            "value": "Belay hält deinen Mac bei %lld%% Akkustand nicht mehr wach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil stopped keeping your Mac awake at %lld%% battery."
+            "value": "Belay stopped keeping your Mac awake at %lld%% battery."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil dejó de mantener el Mac despierto al llegar al %lld%% de batería."
+            "value": "Belay dejó de mantener el Mac despierto al llegar al %lld%% de batería."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a cessé de garder votre Mac éveillé à %lld%% de batterie."
+            "value": "Belay a cessé de garder votre Mac éveillé à %lld%% de batterie."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha smesso di tenere sveglio il Mac al %lld%% di batteria."
+            "value": "Belay ha smesso di tenere sveglio il Mac al %lld%% di batteria."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "При заряде %lld%% Vigil разрешил Mac уснуть."
+            "value": "При заряде %lld%% Belay разрешил Mac уснуть."
           }
         }
       }
     },
-    "Vigil stopped holding: the maximum awake time was reached.": {
+    "Belay stopped holding: the maximum awake time was reached.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält deinen Mac nicht mehr wach: maximale Wachzeit erreicht."
+            "value": "Belay hält deinen Mac nicht mehr wach: maximale Wachzeit erreicht."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil stopped keeping your Mac awake: maximum awake time reached."
+            "value": "Belay stopped keeping your Mac awake: maximum awake time reached."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil dejó de mantener el Mac despierto: se alcanzó el tiempo máximo."
+            "value": "Belay dejó de mantener el Mac despierto: se alcanzó el tiempo máximo."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte."
+            "value": "Belay a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha smesso di tenere sveglio il Mac: raggiunto il tempo massimo di veglia."
+            "value": "Belay ha smesso di tenere sveglio il Mac: raggiunto il tempo massimo di veglia."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil разрешил Mac уснуть: достигнуто максимальное время без сна."
+            "value": "Belay разрешил Mac уснуть: достигнуто максимальное время без сна."
           }
         }
       }
     },
-    "Vigil will change %@ to:": {
+    "Belay will change %@ to:": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ändert %@ in:"
+            "value": "Belay ändert %@ in:"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil will update %@ to:"
+            "value": "Belay will update %@ to:"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil actualizará %@ a:"
+            "value": "Belay actualizará %@ a:"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil mettra %@ à jour ainsi :"
+            "value": "Belay mettra %@ à jour ainsi :"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil aggiornerà %@ così:"
+            "value": "Belay aggiornerà %@ così:"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil изменит %@ на:"
+            "value": "Belay изменит %@ на:"
           }
         }
       }
     },
-    "Vigil will keep holding no matter how low the battery gets.": {
+    "Belay will keep holding no matter how low the battery gets.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hält deinen Mac auch bei niedrigem Akkustand wach."
+            "value": "Belay hält deinen Mac auch bei niedrigem Akkustand wach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil will keep your Mac awake even on low battery."
+            "value": "Belay will keep your Mac awake even on low battery."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil mantendrá el Mac despierto incluso con poca batería."
+            "value": "Belay mantendrá el Mac despierto incluso con poca batería."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil gardera votre Mac éveillé même si la batterie est faible."
+            "value": "Belay gardera votre Mac éveillé même si la batterie est faible."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil terrà sveglio il Mac anche con batteria scarica."
+            "value": "Belay terrà sveglio il Mac anche con batteria scarica."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не даст Mac уснуть даже при низком заряде."
+            "value": "Belay не даст Mac уснуть даже при низком заряде."
           }
         }
       }
     },
-    "Vigil will not edit this file, because it is not plain JSON. It may have comments or a format Vigil cannot write back safely. Add this yourself instead:": {
+    "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
+            "value": "Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil can't safely edit this file because it isn't plain JSON. Add this manually instead:"
+            "value": "Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:"
+            "value": "Belay no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :"
+            "value": "Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:"
+            "value": "Belay non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
+            "value": "Belay не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
           }
         }
       }
     },
-    "Vigil's saved permission for %@ is no longer valid.": {
+    "Belay's saved permission for %@ is no longer valid.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Die gespeicherte Berechtigung von Vigil für %@ gilt nicht mehr."
+            "value": "Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil's saved permission for %@ is no longer valid."
+            "value": "Belay's saved permission for %@ is no longer valid."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "El permiso guardado de Vigil para %@ ya no es válido."
+            "value": "El permiso guardado de Belay para %@ ya no es válido."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "L'autorisation enregistrée par Vigil pour %@ n'est plus valide."
+            "value": "L'autorisation enregistrée par Belay pour %@ n'est plus valide."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Il permesso salvato di Vigil per %@ non è più valido."
+            "value": "Il permesso salvato di Belay per %@ non è più valido."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Сохранённое разрешение Vigil на %@ больше не действует."
+            "value": "Сохранённое разрешение Belay на %@ больше не действует."
           }
         }
       }
@@ -9040,7 +9040,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigila una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo."
+            "value": "Belaya una carpeta o usa un webhook de una línea para otro agente de programación. Empieza con un preajuste o añade el tuyo."
           }
         },
         "fr": {
@@ -9104,125 +9104,125 @@
         }
       }
     },
-    "Welcome to Vigil": {
+    "Welcome to Belay": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Willkommen bei Vigil"
+            "value": "Willkommen bei Belay"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Welcome to Vigil"
+            "value": "Welcome to Belay"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Te damos la bienvenida a Vigil"
+            "value": "Te damos la bienvenida a Belay"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bienvenue dans Vigil"
+            "value": "Bienvenue dans Belay"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Benvenuto in Vigil"
+            "value": "Benvenuto in Belay"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Добро пожаловать в Vigil"
+            "value": "Добро пожаловать в Belay"
           }
         }
       }
     },
-    "What Vigil reads": {
+    "What Belay reads": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Was Vigil liest"
+            "value": "Was Belay liest"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "What Vigil reads"
+            "value": "What Belay reads"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qué lee Vigil"
+            "value": "Qué lee Belay"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ce que Vigil lit"
+            "value": "Ce que Belay lit"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cosa legge Vigil"
+            "value": "Cosa legge Belay"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Что читает Vigil"
+            "value": "Что читает Belay"
           }
         }
       }
     },
-    "When Vigil stops for safety": {
+    "When Belay stops for safety": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn Vigil aus Sicherheitsgründen stoppt"
+            "value": "Wenn Belay aus Sicherheitsgründen stoppt"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "When Vigil stops for safety"
+            "value": "When Belay stops for safety"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuando Vigil se detiene por seguridad"
+            "value": "Cuando Belay se detiene por seguridad"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quand Vigil s'arrête par sécurité"
+            "value": "Quand Belay s'arrête par sécurité"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quando Vigil si ferma per sicurezza"
+            "value": "Quando Belay si ferma per sicurezza"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Когда Vigil останавливается ради безопасности"
+            "value": "Когда Belay останавливается ради безопасности"
           }
         }
       }
@@ -9391,7 +9391,7 @@
         }
       }
     },
-    "You asked Vigil to stay on until you switch it off.": {
+    "You asked Belay to stay on until you switch it off.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
@@ -9432,84 +9432,84 @@
         }
       }
     },
-    "Your Claude Code settings file has a hooks entry Vigil does not recognise, so it made no changes.": {
+    "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil hat in deinen Claude-Code-Einstellungen einen hooks-Eintrag gefunden, den es nicht erkennt. Deshalb wurde nichts geändert."
+            "value": "Belay hat in deinen Claude-Code-Einstellungen einen hooks-Eintrag gefunden, den es nicht erkennt. Deshalb wurde nichts geändert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed."
+            "value": "Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil encontró una entrada hooks en tus ajustes de Claude Code que no reconoce, así que no cambió nada."
+            "value": "Belay encontró una entrada hooks en tus ajustes de Claude Code que no reconoce, así que no cambió nada."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil a trouvé dans vos réglages Claude Code une entrée hooks qu'il ne reconnaît pas. Rien n'a donc été modifié."
+            "value": "Belay a trouvé dans vos réglages Claude Code une entrée hooks qu'il ne reconnaît pas. Rien n'a donc été modifié."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil ha trovato nelle impostazioni di Claude Code una voce hooks che non riconosce, quindi non ha modificato nulla."
+            "value": "Belay ha trovato nelle impostazioni di Claude Code una voce hooks che non riconosce, quindi non ha modificato nulla."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vigil нашёл в настройках Claude Code раздел hooks, который не распознал, поэтому ничего не изменил."
+            "value": "Belay нашёл в настройках Claude Code раздел hooks, который не распознал, поэтому ничего не изменил."
           }
         }
       }
     },
-    "Your Claude Code settings file is not plain JSON, so Vigil will not modify it.": {
+    "Your Claude Code settings file is not plain JSON, so Belay will not modify it.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deine Claude-Code-Einstellungsdatei ist kein reines JSON, deshalb ändert Vigil sie nicht."
+            "value": "Deine Claude-Code-Einstellungsdatei ist kein reines JSON, deshalb ändert Belay sie nicht."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your Claude Code settings file isn't plain JSON, so Vigil won't modify it."
+            "value": "Your Claude Code settings file isn't plain JSON, so Belay won't modify it."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Tu archivo de ajustes de Claude Code no es JSON puro, así que Vigil no lo modificará."
+            "value": "Tu archivo de ajustes de Claude Code no es JSON puro, así que Belay no lo modificará."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre fichier de réglages Claude Code n'est pas du JSON pur, Vigil ne le modifiera donc pas."
+            "value": "Votre fichier de réglages Claude Code n'est pas du JSON pur, Belay ne le modifiera donc pas."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il file di impostazioni di Claude Code non è JSON puro, quindi Vigil non lo modificherà."
+            "value": "Il file di impostazioni di Claude Code non è JSON puro, quindi Belay non lo modificherà."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Файл настроек Claude Code не является обычным JSON, поэтому Vigil не будет его менять."
+            "value": "Файл настроек Claude Code не является обычным JSON, поэтому Belay не будет его менять."
           }
         }
       }
@@ -9760,84 +9760,84 @@
         }
       }
     },
-    "Your agent still finishes; Vigil just lets go sooner afterwards.": {
+    "Your agent still finishes; Belay just lets go sooner afterwards.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dein Agent wird trotzdem fertig. Vigil lässt deinen Mac danach nur früher schlafen."
+            "value": "Dein Agent wird trotzdem fertig. Belay lässt deinen Mac danach nur früher schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your agent still finishes. Vigil just lets your Mac sleep sooner afterward."
+            "value": "Your agent still finishes. Belay just lets your Mac sleep sooner afterward."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu agente termina igualmente. Después, Vigil deja que el Mac duerma un poco antes."
+            "value": "Tu agente termina igualmente. Después, Belay deja que el Mac duerma un poco antes."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre agent termine quand même. Ensuite, Vigil laisse simplement votre Mac se mettre en veille plus tôt."
+            "value": "Votre agent termine quand même. Ensuite, Belay laisse simplement votre Mac se mettre en veille plus tôt."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il tuo agente termina comunque. Vigil lascia semplicemente andare il Mac in stop prima, una volta finito."
+            "value": "Il tuo agente termina comunque. Belay lascia semplicemente andare il Mac in stop prima, una volta finito."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Vigil разрешит Mac уснуть чуть раньше после того, как агент закончит."
+            "value": "Belay разрешит Mac уснуть чуть раньше после того, как агент закончит."
           }
         }
       }
     },
-    "Your battery is down to %lld%%, so Vigil stopped holding to save power.": {
+    "Your battery is down to %lld%%, so Belay stopped holding to save power.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Akku bei %lld%%, Vigil ließ den Mac schlafen."
+            "value": "Akku bei %lld%%, Belay ließ den Mac schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Battery is at %lld%%, so Vigil let it sleep."
+            "value": "Battery is at %lld%%, so Belay let it sleep."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Batería al %lld%%, Vigil dejó dormir al Mac."
+            "value": "Batería al %lld%%, Belay dejó dormir al Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Batterie à %lld%%, Vigil a laissé le Mac dormir."
+            "value": "Batterie à %lld%%, Belay a laissé le Mac dormir."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Batteria al %lld%%, Vigil ha lasciato dormire il Mac."
+            "value": "Batteria al %lld%%, Belay ha lasciato dormire il Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "Батарея на %lld%%, Vigil дал Mac уснуть."
+            "value": "Батарея на %lld%%, Belay дал Mac уснуть."
           }
         }
       }
@@ -9965,43 +9965,43 @@
         }
       }
     },
-    "macOS denied Vigil access to %@.": {
+    "macOS denied Belay access to %@.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "macOS hat Vigil den Zugriff auf %@ verweigert."
+            "value": "macOS hat Belay den Zugriff auf %@ verweigert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "macOS denied Vigil access to %@."
+            "value": "macOS denied Belay access to %@."
           }
         },
         "es": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "macOS denegó a Vigil el acceso a %@."
+            "value": "macOS denegó a Belay el acceso a %@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "macOS a refusé à Vigil l'accès à %@."
+            "value": "macOS a refusé à Belay l'accès à %@."
           }
         },
         "it": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "macOS ha negato a Vigil l'accesso a %@."
+            "value": "macOS ha negato a Belay l'accesso a %@."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "needs_review",
-            "value": "macOS отказал Vigil в доступе к %@."
+            "value": "macOS отказал Belay в доступе к %@."
           }
         }
       }
@@ -10434,7 +10434,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "ejecuciones vigiladas"
+            "value": "ejecuciones belayadas"
           }
         },
         "fr": {

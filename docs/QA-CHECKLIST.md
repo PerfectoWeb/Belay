@@ -15,20 +15,20 @@ with the screen on, **everything looks like a pass**. Either let the display
 sleep first, or filter to our process:
 
 ```bash
-pmset -g assertions | grep "pid $(pgrep -x Vigil)("
+pmset -g assertions | grep "pid $(pgrep -x Belay)("
 ```
 
-Grepping for the word "vigil" also matches `runningboardd`'s launch assertion
+Grepping for the word "belay" also matches `runningboardd`'s launch assertion
 for our bundle ID, which is not ours. Match on the pid.
 
 ---
 
 ## 1. Power core (M1)
 
-- [x] Auto mode, no sessions → no Vigil assertion held
-- [x] Always on → `PreventUserIdleSystemSleep` named "Vigil", details string set
+- [x] Auto mode, no sessions → no Belay assertion held
+- [x] Always on → `PreventUserIdleSystemSleep` named "Belay", details string set
 - [x] Assertion carries `Timeout will fire in N secs Action=TimeoutActionRelease`
-- [x] **Invariant 2, observed 2026-08-12.** `kill -9` on Vigil while it held
+- [x] **Invariant 2, observed 2026-08-12.** `kill -9` on Belay while it held
       both assertions: `pmset -g assertions | grep "pid <pid>("` listed
       `PreventUserIdleSystemSleep` and `PreventUserIdleDisplaySleep` before, and
       nothing at all one second after. SIGKILL on purpose — a graceful quit only
@@ -61,7 +61,7 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Set system sleep to 1 minute, run a 10-minute task → no sleep during, then
       the Mac sleeps ~1 minute after it ends
 - [ ] `kill -9` the `claude` process mid-task → release within TTL
-- [x] Launch Vigil with 45 old transcripts present → does **not** discover them
+- [x] Launch Belay with 45 old transcripts present → does **not** discover them
       as active sessions and pin the Mac awake
 - [ ] Hook events beyond `UserPromptSubmit`/`SessionEnd` observed for real.
       Only those two were captured during discovery; the rest are mapped from
@@ -90,7 +90,7 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Second display with different scaling
 - [ ] Full keyboard navigation through the panel
 - [ ] VoiceOver reads the status item state and every panel control
-- [ ] Settings window opens (Cmd+, with Vigil active, or the panel footer link)
+- [ ] Settings window opens (Cmd+, with Belay active, or the panel footer link)
       and all five panes render (General, Providers, Behaviour,
       Notifications, About)
 - [ ] "Open at login" toggle actually registers with `SMAppService`, survives a
@@ -115,7 +115,7 @@ for our bundle ID, which is not ours. Match on the pid.
 > accessibility API instead — it can only see our own process:
 >
 > ```bash
-> osascript -e 'tell application "System Events" to tell process "Vigil" \
+> osascript -e 'tell application "System Events" to tell process "Belay" \
 >   to get {count of windows, description of menu bar item 1 of menu bar 2}'
 > ```
 
@@ -158,15 +158,15 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ## 9. The App Store build's sandbox (B8) — run 2026-08-12, passed
 
-`Tests/VigilSandboxTests` runs inside the sandbox on every gate and covers
+`Tests/BelaySandboxTests` runs inside the sandbox on every gate and covers
 everything except the click. This is the click.
 
-- [x] Build **without the test bundle** (`-scheme Vigil-MAS -configuration Release`),
+- [x] Build **without the test bundle** (`-scheme Belay-MAS -configuration Release`),
       or the harness grants the app read access to `/` and the next two items
       pass for the wrong reason. See BLOCKERS B8.
 - [x] With no grant yet, the app cannot read a file under `~/.claude`
-- [x] Build and run the MAS channel: `xcodebuild -scheme Vigil-MAS -configuration Debug ...`,
-      then open `build/DerivedData-MAS/Build/Products/Debug/Vigil-MAS.app`
+- [x] Build and run the MAS channel: `xcodebuild -scheme Belay-MAS -configuration Debug ...`,
+      then open `build/DerivedData-MAS/Build/Products/Debug/Belay-MAS.app`
 - [x] Providers pane shows Claude Code as needing access, not as ready
 - [x] Press the button, pick `~/.claude` in the open panel, allow
 - [x] The pane now says ready, and the panel lists a Claude Code session while
@@ -174,7 +174,7 @@ everything except the click. This is the click.
 - [x] Quit and reopen. Still ready, with no second panel: this is the bookmark,
       and it is the half that dies silently if only the panel grant was kept
 
-Evidence, not just a tick: `VigilClaudeFolderBookmark` (660 bytes) is in
-`~/Library/Containers/com.perfecto-web.vigil/Data/Library/Preferences/com.perfecto-web.vigil.plist`,
+Evidence, not just a tick: `BelayClaudeFolderBookmark` (660 bytes) is in
+`~/Library/Containers/com.perfecto-web.belay/Data/Library/Preferences/com.perfecto-web.belay.plist`,
 written at the moment the panel was answered. A bookmark inside the container is
 something only the sandboxed build can produce.

@@ -19,7 +19,7 @@ was a reasonable reading of the previous one's failure.
 | `mode-picker-B-menu.swift.txt` | A small menu on the headline's line | Hid the answer behind a click, in a panel whose whole job is to say what it is doing the moment it opens |
 | `mode-picker-C-ring-and-pin.swift.txt` | The mark as a switch, Always on as a pin | Made the third state something the user had to work out from two controls |
 
-The shipped control (`Sources/VigilApp/Panel/PanelModePicker.swift`) returns to
+The shipped control (`Sources/BelayApp/Panel/PanelModePicker.swift`) returns to
 three visible targets, drawn rather than stock: one track, three tabs, and a
 selection pill that slides between them. The conclusion was that the original
 shape was right and the original *rendering* was wrong — a stock segmented

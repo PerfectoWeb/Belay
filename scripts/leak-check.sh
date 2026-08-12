@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run the VigilKit module suites under the sanitizers, once per milestone
+# Run the BelayKit module suites under the sanitizers, once per milestone
 # (docs/07, "Memory & lifecycle").
 #
 # Read this before trusting a clean run: on Darwin, Apple's AddressSanitizer
@@ -12,7 +12,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-PACKAGE="$ROOT/Packages/VigilKit"
+PACKAGE="$ROOT/Packages/BelayKit"
 
 SANITIZERS="address"
 KEEP_GOING=0
@@ -20,7 +20,7 @@ EXTRA=()
 
 usage() {
     cat <<'EOF'
-leak-check.sh - run the VigilKit test suites under the sanitizers.
+leak-check.sh - run the BelayKit test suites under the sanitizers.
 
 Usage: scripts/leak-check.sh [options] [-- extra swift-test args]
 

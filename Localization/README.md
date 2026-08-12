@@ -1,6 +1,6 @@
 # Localization
 
-Every user-visible string in Vigil, one CSV per language. These files are for
+Every user-visible string in Belay, one CSV per language. These files are for
 rewriting text; the app reads `Resources/Localizable.xcstrings`, which is
 generated from them.
 

@@ -15,10 +15,10 @@ real sandbox, which no machine here can perform.
 ## The notification icon is a placeholder on this Mac, and I cannot say why
 
 Notification Center draws macOS's generic "unknown app" square instead of
-Vigil's icon. Ruled out, each by building it and watching a real notification
+Belay's icon. Ruled out, each by building it and watching a real notification
 fire:
 
-- **The bundle.** `NSWorkspace` resolves the icon from `/Applications/Vigil.app`
+- **The bundle.** `NSWorkspace` resolves the icon from `/Applications/Belay.app`
   correctly at 32, 64, 80 and 128 px. 80 px is roughly what a notification
   draws. `Assets.car` carries AppIcon at all ten sizes and `CFBundleIconName`
   and `CFBundleIconFile` are both set.
@@ -38,7 +38,7 @@ fire:
   byte-identically at 32, 64, 80 and 128 px. The catalogue is not the problem
   either.
 
-The cache theory is dead. A clean macOS 15.0 VM that had never granted Vigil
+The cache theory is dead. A clean macOS 15.0 VM that had never granted Belay
 notification permission shows the same placeholder, so this is ours and not one
 machine's leftovers.
 
@@ -95,13 +95,13 @@ outward-facing action on the owner's account. To do it:
 ```bash
 scripts/release.sh                       # archive, export, package, notarize
 # or, on an artefact you already have:
-scripts/notarize.sh dist/Vigil-1.0.0.dmg
+scripts/notarize.sh dist/Belay-1.0.0.dmg
 ```
 
 Optional one-time step so the private key is not read off disk each run:
 
 ```bash
-xcrun notarytool store-credentials VigilNotary \
+xcrun notarytool store-credentials BelayNotary \
   --key .secrets/AuthKey_<KEY_ID>.p8 \
   --key-id U43BKFM82D \
   --issuer <ISSUER_ID>   # both live in .secrets/appstoreconnect.env, which is gitignored
@@ -116,14 +116,14 @@ xcrun notarytool store-credentials VigilNotary \
 The private key belongs in the user's Keychain and must never enter this repo.
 `scripts/sign-update.sh` wraps `generate_appcast` and expects it there.
 
-## B4 — App Store name-conflict search for "Vigil"
+## B4 — App Store name-conflict search for "Belay"
 
 **Blocks:** nothing yet; due before M6 per `docs/NAMING.md`.
 
-The App Store search has not been done yet. If "Vigil"
+The App Store search has not been done yet. If "Belay"
 collides with a similar utility, the rename is a two-file change
 (`project.yml` `PRODUCT_NAME`/`ORG_IDENTIFIER` and
-`Sources/VigilApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
+`Sources/BelayApp/Branding.swift`) plus `xcodegen generate`. Ranked alternatives
 are in `docs/NAMING.md`.
 
 ## B8 — RESOLVED (2026-08-12). The click was run and it worked
@@ -131,12 +131,12 @@ are in `docs/NAMING.md`.
 **Was:** the App Store build could not read `~/.claude` at all. `FileAccessProvider`
 had one implementation, `DirectFileAccess`; nothing in the tree created or
 resolved a bookmark, and `FileAccessError.noBookmark` and `.bookmarkUnresolvable`
-were declared and never thrown. `Vigil-MAS` compiled, passed
+were declared and never thrown. `Belay-MAS` compiled, passed
 `scripts/verify-mas-build.sh`, and would have shown a reviewer an app that
 detects nothing.
 
-**Now:** `VigilSupport.BookmarkFileAccess` is the sandboxed implementation, and
-`Tests/VigilSandboxTests` is a test bundle hosted by `Vigil-MAS`, so it runs in
+**Now:** `BelaySupport.BookmarkFileAccess` is the sandboxed implementation, and
+`Tests/BelaySandboxTests` is a test bundle hosted by `Belay-MAS`, so it runs in
 that app's own container. `scripts/test.sh` runs it. What it proves, for real:
 
 - the host is sandboxed — `NSHomeDirectory()` is the container;
@@ -162,7 +162,7 @@ also asserts our own entitlements file has no exception, which
 **Done by hand, 2026-08-12**, on a Release MAS build with no test bundle: the
 Providers pane asked, the panel took `~/.claude`, the pane went to ready, and a
 quit and reopen did not ask again. The evidence is a 660-byte
-`VigilClaudeFolderBookmark` in the container's own preferences — something only
+`BelayClaudeFolderBookmark` in the container's own preferences — something only
 the sandboxed build can write. `docs/QA-CHECKLIST.md` §9 records it.
 
 ## B9 — One module test fails intermittently on CI and has not been identified

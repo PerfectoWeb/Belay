@@ -14,7 +14,7 @@ xcodegen generate --quiet
 echo "==> build ($CONFIG)"
 DERIVED="$ROOT/build/DerivedData"
 xcodebuild \
-    -scheme Vigil \
+    -scheme Belay \
     -configuration "$CONFIG" \
     -destination 'platform=macOS' \
     -derivedDataPath "$DERIVED" \
@@ -23,15 +23,15 @@ xcodebuild \
     CODE_SIGNING_ALLOWED=YES \
     build | (xcbeautify 2>/dev/null || cat)
 
-APP="$DERIVED/Build/Products/$CONFIG/Vigil.app"
+APP="$DERIVED/Build/Products/$CONFIG/Belay.app"
 [ -d "$APP" ] || { echo "build produced no app at $APP" >&2; exit 1; }
 
-rm -rf "$ROOT/build/Vigil.app"
+rm -rf "$ROOT/build/Belay.app"
 mkdir -p "$ROOT/build"
-cp -R "$APP" "$ROOT/build/Vigil.app"
+cp -R "$APP" "$ROOT/build/Belay.app"
 
 echo "==> verify signature"
-codesign --verify --deep --strict --verbose=2 "$ROOT/build/Vigil.app"
+codesign --verify --deep --strict --verbose=2 "$ROOT/build/Belay.app"
 
 # Nine copies of this bundle identifier were registered on the development Mac
 # at one point, one of them at a path that no longer existed. Notification
@@ -39,9 +39,9 @@ codesign --verify --deep --strict --verbose=2 "$ROOT/build/Vigil.app"
 # copy wins is not a detail. Registering the fresh build makes it the newest
 # claim rather than leaving it to whichever DerivedData copy was seen last.
 LSREGISTER="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
-[ -x "$LSREGISTER" ] && "$LSREGISTER" -f "$ROOT/build/Vigil.app" 2>/dev/null || true
+[ -x "$LSREGISTER" ] && "$LSREGISTER" -f "$ROOT/build/Belay.app" 2>/dev/null || true
 
 echo
-echo "built: build/Vigil.app"
-echo "run:   open build/Vigil.app"
-echo "check: pmset -g assertions | grep -i vigil"
+echo "built: build/Belay.app"
+echo "run:   open build/Belay.app"
+echo "check: pmset -g assertions | grep -i belay"

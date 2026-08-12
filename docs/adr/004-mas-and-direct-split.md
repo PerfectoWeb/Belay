@@ -9,7 +9,7 @@ the target, not a description of the tree.
 
 ## Context
 
-Vigil wants to ship through two channels that disagree about almost everything it
+Belay wants to ship through two channels that disagree about almost everything it
 does.
 
 The direct build is Developer ID signed and notarized, unsandboxed, updates
@@ -18,7 +18,7 @@ Store build must be sandboxed, cannot ship a third-party updater at all, and mus
 use StoreKit consumables for tipping — a Ko-fi link inside a MAS build is a
 guideline violation, not a grey area.
 
-Worse, the sandbox lands directly on the one thing Vigil exists to do. Reading
+Worse, the sandbox lands directly on the one thing Belay exists to do. Reading
 `~/.claude` unsandboxed is a `FileManager` call; sandboxed it needs the user to
 grant the folder through an open panel and a security-scoped bookmark resolved on
 every launch, with `startAccessingSecurityScopedResource()` balanced by a `defer`
@@ -38,21 +38,21 @@ abandoned one.
 
 ## Decision
 
-One codebase, one source tree, two XcodeGen schemes — `Vigil` and `Vigil-MAS` —
-differing by a compile condition (`VIGIL_MAS`) and an entitlements file. Do not
+One codebase, one source tree, two XcodeGen schemes — `Belay` and `Belay-MAS` —
+differing by a compile condition (`BELAY_MAS`) and an entitlements file. Do not
 fork the source.
 
 Every channel difference is isolated behind a protocol with two implementations,
 and both protocols are defined by what the *product* needs rather than by which
 build is running:
 
-- **`FileAccessProvider`** (in `VigilSupport`) abstracts the only real difference
+- **`FileAccessProvider`** (in `BelaySupport`) abstracts the only real difference
   in the detection path: whether reaching `~/.claude` needs a security-scoped
   bookmark. `DirectFileAccess` reads the path outright. Every provider, cursor
   and sweep takes a `FileAccessProvider` and asks `hasAccess(to:)` or
   `withAccess(to:)`; not one of them can tell which build it is in, and
   `withAccess` releases on the throwing path as well as the normal one.
-- **`TipJarProviding`** (in `VigilTipJar`) is the monetisation seam, with
+- **`TipJarProviding`** (in `BelayTipJar`) is the monetisation seam, with
   `isAvailable` false until real products exist so the UI simply is not there.
 
 Ship direct first. It is the build that can be released without waiting on
@@ -88,7 +88,7 @@ code.
 - **Nothing in the codebase asks "am I sandboxed?"** Types depend on
   `FileAccessProvider`, which is injectable, which is also why the provider suite
   can point the whole detection path at a temp tree.
-- **`#if VIGIL_MAS` is confined to composition.** Which implementation is handed
+- **`#if BELAY_MAS` is confined to composition.** Which implementation is handed
   in, which entitlements are attached, and whether Sparkle is linked. If the
   condition ever appears inside detection or power logic, the abstraction has
   failed and the fix is the abstraction.
@@ -118,7 +118,7 @@ loopback hook bridge — the tier that makes "an agent is waiting for you" possi
 that fewer people run silently falls behind. This is the failure mode this ADR
 exists to prevent.
 
-**`#if VIGIL_MAS` inline wherever behaviour differs.** No new types, and it looks
+**`#if BELAY_MAS` inline wherever behaviour differs.** No new types, and it looks
 cheaper right up to the point where the detection path has three conditionals in
 it and only one of the two configurations is ever actually run. Protocol
 boundaries mean the tests exercise both.

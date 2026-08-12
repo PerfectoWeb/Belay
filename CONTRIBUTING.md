@@ -1,6 +1,6 @@
 # Contributing
 
-Vigil is a small macOS menu bar app with a strict safety story. Most of the rules
+Belay is a small macOS menu bar app with a strict safety story. Most of the rules
 below exist because getting one of them wrong keeps somebody's Mac awake for nine
 hours. Read [`docs/00-INVARIANTS.md`](docs/00-INVARIANTS.md) for the non-negotiables and
 [`docs/02-ARCHITECTURE.md`](docs/02-ARCHITECTURE.md) for the shape; this file is
@@ -31,17 +31,17 @@ signing (`CODE_SIGN_IDENTITY = "-"`), which is enough to produce a runnable app.
 ## Build
 
 ```bash
-xcodegen generate                                     # regenerate Vigil.xcodeproj
-xcodebuild -scheme Vigil -destination 'platform=macOS' build
+xcodegen generate                                     # regenerate Belay.xcodeproj
+xcodebuild -scheme Belay -destination 'platform=macOS' build
 scripts/build-local.sh                                # ad-hoc signed .app in build/
 ```
 
-**`Vigil.xcodeproj` is generated and must never be hand-edited.** It is produced
+**`Belay.xcodeproj` is generated and must never be hand-edited.** It is produced
 by XcodeGen from [`project.yml`](project.yml), it is not in the repository, and
 an edit made in Xcode's project editor survives exactly until the next
 `xcodegen generate`. Change `project.yml` instead. The bundle identifier, the
 deployment target and the product name are defined there once, and in
-`Sources/VigilApp/Branding.swift`, so a rename stays a two-file change.
+`Sources/BelayApp/Branding.swift`, so a rename stays a two-file change.
 
 ## Test
 
@@ -56,18 +56,18 @@ is exactly what CI runs. A change is not done until it prints `all green`.
 Underneath, the tests run as **two** commands, on purpose:
 
 ```bash
-swift test --package-path Packages/VigilKit                  # the module suites
-xcodebuild -scheme Vigil -destination 'platform=macOS' test   # the app target only
+swift test --package-path Packages/BelayKit                  # the module suites
+xcodebuild -scheme Belay -destination 'platform=macOS' test   # the app target only
 ```
 
 An Xcode scheme generated from a spec cannot reference a local SwiftPM package's
-test targets, so `xcodebuild test` sees only `VigilAppTests`: bundle metadata,
+test targets, so `xcodebuild test` sees only `BelayAppTests`: bundle metadata,
 the string catalogue check, and the handful of app-layer types worth testing.
-Nearly all of the suite lives in `Packages/VigilKit/Tests` and runs under
+Nearly all of the suite lives in `Packages/BelayKit/Tests` and runs under
 `swift test`. Running only one of the two commands and calling it green is the
 mistake this section exists to prevent. See `PROJECT_STATE.md` D2.
 
-`VigilIntegrationTests` is the exception to the one-target-per-module rule: it
+`BelayIntegrationTests` is the exception to the one-target-per-module rule: it
 spans provider to bus to coordinator to a mock power backend, because no
 single-module test target can import all four and the hold/release timeline is
 only meaningful end to end.
@@ -81,7 +81,7 @@ by hand against a real Claude Code session.
 
 ```bash
 swiftlint --strict
-swift-format lint --recursive --strict Sources Packages/VigilKit/Sources Packages/VigilKit/Tests
+swift-format lint --recursive --strict Sources Packages/BelayKit/Sources Packages/BelayKit/Tests
 ```
 
 Both must be clean before a change is done. `scripts/test.sh` runs them last, so
@@ -99,7 +99,7 @@ change breaks by accident. A pull request that touches power, detection or
 2. **Every assertion carries a hard timeout and is refreshed while busy.** It is
    created with `IOPMAssertionCreateWithProperties`, a 120 s
    `kIOPMAssertionTimeoutKey` and `kIOPMAssertionTimeoutActionRelease`, and
-   re-armed at 75% of that. This is what makes a crashed Vigil harmless. Do not
+   re-armed at 75% of that. This is what makes a crashed Belay harmless. Do not
    raise the timeout to avoid a refresh bug, and do not reach for `caffeinate` or
    `NSProcessInfo.beginActivity` as the mechanism.
 3. **Every tracked session has a TTL.** A session with no signal for `sessionTTL`
@@ -111,13 +111,13 @@ change breaks by accident. A pull request that touches power, detection or
 5. **A hook handler must never block or slow Claude Code down.** Hooks are
    registered `"async": true` and there is no exit code that could stall a turn.
    Keep it that way.
-6. **Vigil never writes to `~/.claude/` without explicit, per-action consent in
+6. **Belay never writes to `~/.claude/` without explicit, per-action consent in
    the UI, and always makes a timestamped backup first.** If the file is not
    plain JSON it refuses to write at all and offers a snippet to paste.
 7. **Nothing reads prompts, model responses or code.** The transcript reader
    decodes a record `type` and `stop_reason` and nothing else; the hook envelope
    decoder has no property for `prompt`, and a test asserts a distinctive prompt
-   string reaches neither the signal nor any file Vigil writes. A change that
+   string reaches neither the signal nor any file Belay writes. A change that
    adds a field to either decoder needs a very good reason in the description.
 8. **No API keys, ever.** Detection is local. There is no provider account to
    talk to and no endpoint that knows whether your agent is busy.
@@ -137,7 +137,7 @@ enough.
 
 Adding Continue, Goose, OpenCode or whatever you use means one element in
 `GenericPreset.all`, in
-[`Packages/VigilKit/Sources/VigilProviders/GenericPreset.swift`](Packages/VigilKit/Sources/VigilProviders/GenericPreset.swift):
+[`Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift`](Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift):
 
 ```swift
 GenericPreset(
@@ -177,7 +177,7 @@ use this daily and the path is right" is worth more than the diff.
 
 ## Fixing or adding a translation
 
-Vigil ships in English, Russian, German, Spanish, French and Italian.
+Belay ships in English, Russian, German, Spanish, French and Italian.
 **None of the six have had a native review.** The copy is deliberately voicier
 than typical interface text, which is exactly the register a non-native
 translation flattens, so a correction from someone who speaks the language is a
@@ -190,7 +190,7 @@ string and a column per language, or edit the JSON directly if you prefer. The
 English text is the key, so leave it alone: changing it orphans every
 translation.
 
-Rules that the tests enforce, in `Tests/VigilAppTests/LocalizationTests.swift`:
+Rules that the tests enforce, in `Tests/BelayAppTests/LocalizationTests.swift`:
 
 - Every language must have every string. A missing one falls back to English and
   looks like nothing is wrong, which is why the count is asserted.
@@ -200,7 +200,7 @@ Rules that the tests enforce, in `Tests/VigilAppTests/LocalizationTests.swift`:
 - No empty values, and no language that is a wholesale copy of English.
 
 Adding a seventh language means the strings plus one case in `AppLanguage`
-(`Sources/VigilApp/Settings/AppLanguage.swift`), whose `endonym` is written in
+(`Sources/BelayApp/Settings/AppLanguage.swift`), whose `endonym` is written in
 the language itself, because a picker that lists "German" to somebody who only
 reads German is a picker they cannot use. The picker offering a language the
 bundle does not have is a test failure, not a silent fallback.
@@ -213,43 +213,43 @@ attention if you only have ten minutes.
 
 ## Modules and the dependency rule
 
-The whole library lives in one SwiftPM package, `Packages/VigilKit`, with one
+The whole library lives in one SwiftPM package, `Packages/BelayKit`, with one
 target per module. The original architecture doc describes six separate packages;
 one package with six targets enforces exactly the same boundaries through the
 target graph in `Package.swift`, while giving one `swift test` for everything and
 no cross-package resolution on every build.
 
 ```
-VigilApp ──▶ VigilCore ──────▶ VigilSupport
+BelayApp ──▶ BelayCore ──────▶ BelaySupport
    │
-   ├──▶ VigilPower  ─────────▶ VigilSupport
-   ├──▶ VigilProviders ──────▶ VigilCore, VigilSupport
-   ├──▶ VigilHookBridge ─────▶ VigilCore, VigilSupport
-   └──▶ VigilSettings ───────▶ VigilCore, VigilSupport
+   ├──▶ BelayPower  ─────────▶ BelaySupport
+   ├──▶ BelayProviders ──────▶ BelayCore, BelaySupport
+   ├──▶ BelayHookBridge ─────▶ BelayCore, BelaySupport
+   └──▶ BelaySettings ───────▶ BelayCore, BelaySupport
 
-VigilTipJar ─────────────────▶ VigilSupport
+BelayTipJar ─────────────────▶ BelaySupport
 ```
 
-`VigilTipJar` is a target in the same package but is not yet a dependency of the
+`BelayTipJar` is a target in the same package but is not yet a dependency of the
 app; it holds the `TipJarProviding` seam described in
 [`docs/adr/004-mas-and-direct-split.md`](docs/adr/004-mas-and-direct-split.md).
 
 Three rules follow from that graph, and `Package.swift` will stop you if you
 break them:
 
-- **`VigilCore` knows nothing about IOKit, the filesystem, Claude Code or time of
+- **`BelayCore` knows nothing about IOKit, the filesystem, Claude Code or time of
   day.** It takes signals and a `Clock` and emits decisions. That is what lets
   the state machine simulate hours of behaviour in milliseconds with no I/O.
-- **Nothing but `VigilApp` imports AppKit or SwiftUI.** Where a framework only
+- **Nothing but `BelayApp` imports AppKit or SwiftUI.** Where a framework only
   speaks to AppKit, and `NSWorkspace`'s sleep notifications are the live example,
   the app layer observes and forwards a plain value inward.
-- **Modules do not import each other sideways.** `VigilProviders` and
-  `VigilHookBridge` both produce `ActivitySignal`s and neither knows the other
+- **Modules do not import each other sideways.** `BelayProviders` and
+  `BelayHookBridge` both produce `ActivitySignal`s and neither knows the other
   exists; the app layer fans them together through `SignalBus`.
 
 Adding a provider with real code, rather than a preset, should mean one new type
 conforming to `ActivityProvider` plus registration in
-`Sources/VigilApp/ProviderHost.swift`. If it needs more than that, the
+`Sources/BelayApp/ProviderHost.swift`. If it needs more than that, the
 abstraction is wrong: fix the abstraction rather than the caller.
 
 Each module has a `README.md` next to its sources covering what it does, what it
@@ -267,12 +267,12 @@ review will actually catch.
 
 - **Line length** 110 warning, 140 error. Comments count; URLs do not.
 - **File length** 250 warning, 320 error. A file past 250 lines is doing two
-  jobs; that is how `ProviderHost` got split out of `VigilController`.
+  jobs; that is how `ProviderHost` got split out of `BelayController`.
 - **Type body** 200 / 280. **Function body** 50 / 80. **Cyclomatic complexity**
   10 / 15.
 - **No force unwrapping and no implicitly unwrapped optionals.** Both are opt-in
   rules and both are on.
-- **`print()` is an error.** Use `VigilSupport.Log`, which is `os.Logger` with one
+- **`print()` is an error.** Use `BelaySupport.Log`, which is `os.Logger` with one
   category per module.
 - **No emoji anywhere in source.** Also an error.
 - **No `Manager`, `Helper`, `Utils`, `Utility` or `Common`** in a type name. Name
@@ -358,7 +358,7 @@ In the description, say:
 
 Then re-read the diff as if it were a colleague's. The things that come up most
 often: a `Task { }` with no cancellation story, a magic number that should be a
-clamped default in `VigilSettings`, a protocol with one conformer and no test,
+clamped default in `BelaySettings`, a protocol with one conformer and no test,
 and a comment that says what the next line already says.
 
 Screenshots for anything visible, in light and dark appearance.

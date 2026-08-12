@@ -1,74 +1,80 @@
 # Naming
 
-## Status, 2026-08-12: Vigil is taken and has to go
+## Settled, 2026-08-12: the app is **Belay**
 
-The B4 search was run. It is not a near miss:
+A belay is the person holding the rope so the one doing the work cannot fall.
+That is the product, and it is a verb rather than a state, which "Vigil" never
+was: "vigil" is staying awake, "belay" is holding so the one working does not
+come off.
 
-- **Mac App Store** has **"Vigil - Stay Awake"** in Utilities — a menu bar
+### Why the old name had to go
+
+The B4 search was run against **Vigil** and it was not a near miss:
+
+- **Mac App Store** had **"Vigil - Stay Awake"** in Utilities, a menu bar
   sleep-prevention tool. Same word, same category, same job. "Vigilante - Stay
-  Awake" sits beside it.
+  Awake" sat beside it.
 - **USPTO** has a live registration for the word VIGIL in class 009 covering
   computer software (reg. 2385400, Vigil Health Solutions, since 2000), plus a
   pending VIGIL in 042 for SaaS.
 - **EUIPO** has Vigil Health Solutions registered to 2030, and refused a VIGIL
-  class-9 application from Stanley Black & Decker — the class is crowded.
+  class-9 application from Stanley Black & Decker. The class is crowded.
 
-**Leading replacement: Belay.** A climbing belay is the person who holds the
-rope so the one doing the work cannot fall — the product's own metaphor, and a
-verb rather than a state, which "vigil" never was. The App Store has two apps
-with the word, an SSH client in Developer Tools and a to-do app in
-Productivity; neither is a utility and neither is about sleep. Not an empty
-field, but no collision that matters.
+### What Belay's own field looks like
 
-## Original working name: **Vigil**
+Two App Store apps carry the word: an SSH client in Developer Tools and a to-do
+app in Productivity. Neither is a utility and neither is about sleep, so there
+is no collision that matters, but the field is not empty and that was known
+when the name was chosen.
 
-Short, pronounceable in both English and Russian ("Виджил"), means "staying
-awake and watching over something", and has no collision with an Apple term.
+Three other finalists were searched and rejected. **Kedge** has kedge.dev, a
+deployment platform, which is the same broad space we are in, plus KEDGE
+Business School's apps. **Pawl** has a pet app on Google Play and a PHP
+WebSocket library. **Prusik** turned up nothing in software and was the
+cleanest field of the four, but it needs explaining to anyone who does not
+climb, and a name that needs explaining loses to one that does not.
 
-**Before M6, search the Mac App Store and USPTO/EUIPO for conflicts.** If
-"Vigil" is taken by a similar utility, switch — the rename is cheap if you
-follow the procedure below, and expensive after launch.
+Still owed: the formal USPTO and EUIPO checks in classes 009 and 042, and the
+domain. A web search is not a register search.
 
-## Alternatives, in the order I'd pick them
+### What did not change
 
-| Name | Note |
-|---|---|
-| **Nocturne** | Elegant, matches the overnight use case; possible music-app collisions |
-| **Wakeful** | Descriptive, friendly, likely available |
-| **Lantern** | Warm, memorable, less literal |
-| **Perch** | Short, odd in a good way, very available |
-| **Sentry** | Clear but crowded — many security products use it |
-
-Avoid: anything with "Caffeine", "Awake", "NoSleep", "Amphetamine" — the
-category is saturated and the names are unregistrable.
+The icon, the wordmark's typeface and the sparkle mark are the same artwork as
+before. Only the word was redrawn, from the same SF Pro Rounded semibold
+outlines, by the same script.
 
 ## Identifiers
 
-Replace `<org>` with the user's reverse-DNS domain once known.
-
 ```
-Bundle ID (direct)  com.<org>.vigil
-Bundle ID (MAS)     com.<org>.vigil        # same; different provisioning
-Helper              com.<org>.vigil.hook
-App group           <TEAMID>.com.<org>.vigil
-Log subsystem       com.<org>.vigil
-Defaults suite      com.<org>.vigil
+Bundle ID (direct)  com.perfecto-web.belay
+Bundle ID (MAS)     com.perfecto-web.belay      # same; different provisioning
+Helper              com.perfecto-web.belay.hook
+App group           <TEAMID>.com.perfecto-web.belay
+Log subsystem       com.perfecto-web.belay
+Defaults suite      com.perfecto-web.belay
 ```
 
-Team ID and org domain are unknown to you. Define them **once** in
-`project.yml` as `PRODUCT_NAME` / `ORG_IDENTIFIER` / `DEVELOPMENT_TEAM`
-variables, reference them everywhere else, and record in `BLOCKERS.md` that the
-user must fill in the team ID before a signed release.
+`ORG_IDENTIFIER` and `PRODUCT_NAME` live in `project.yml` and everything else
+derives from them. The team ID is still owed before a signed release; see
+`BLOCKERS.md`.
 
-## Rename procedure
+## Rename procedure, as actually run
 
-Because everything derives from `project.yml` variables and a single
-`Branding.swift` constants file, renaming is:
+The claim here used to be that renaming was a two-file change. It was not, and
+the Vigil to Belay pass is the record of what it really takes:
 
-1. change `PRODUCT_NAME` and `ORG_IDENTIFIER` in `project.yml`
-2. update `Sources/VigilApp/Branding.swift`
-3. `xcodegen generate`
-4. rename the `Vigil*` package directories if you care about cosmetics
+1. rename every path containing the old word, deepest first, with `git mv`
+2. rewrite the word in every text file, with a negative lookahead so the
+   Spanish "vigilando" in the translations survives
+3. re-sort the leading import block in every Swift file, because renaming the
+   modules moved them in the alphabet
+4. regenerate the wordmark outlines and rasterise them at the established
+   scale, which is twice the SVG units at 1x
+5. `xcodegen generate`, then the full gate
+6. rename the repository on GitHub and update the remote
+
+Steps 3 and 4 are the ones that were not in the old procedure and are the ones
+that break the build and the About pane respectively.
 
 Do not scatter the product name through source strings. Every user-visible
-occurrence comes from `Branding.appName` or the string catalog.
+occurrence comes from `Branding.appName` or the string catalogue.

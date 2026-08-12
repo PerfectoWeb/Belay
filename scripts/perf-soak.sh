@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Measure a running Vigil against the docs/08 budgets and print a pass/fail table.
+# Measure a running Belay against the docs/08 budgets and print a pass/fail table.
 #
 # Two measurement traps this script exists to avoid (docs/QA-CHECKLIST.md §0, §4):
 #
@@ -8,7 +8,7 @@
 #      phys_footprint of ~15 MB, and it already produced one false alarm on this
 #      project. This script uses `footprint -p <pid>` and reports phys_footprint.
 #   2. `pmset -g assertions` must be matched on **pid**. The bundle id contains
-#      "vigil", and runningboardd holds an unrelated launch assertion for it, so
+#      "belay", and runningboardd holds an unrelated launch assertion for it, so
 #      grepping the word matches something that is not ours.
 #
 # CPU is gated on CPU-seconds actually consumed divided by wall time, not on the
@@ -37,7 +37,7 @@ ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 usage() {
     cat <<'EOF'
-perf-soak.sh - measure a running Vigil against the docs/08 performance budgets.
+perf-soak.sh - measure a running Belay against the docs/08 performance budgets.
 
 Usage: scripts/perf-soak.sh [options]
 
@@ -46,7 +46,7 @@ Options:
   -i, --interval SECS   Sampling period. Default 5, and 5 is also the floor:
                         sampling faster would disturb what we are measuring.
   -m, --mode MODE       auto | idle | active. Which CPU budget to gate on.
-                        auto (default) classifies each interval by whether Vigil
+                        auto (default) classifies each interval by whether Belay
                         held an assertion during it, and gates idle intervals at
                         0.1% and active ones at 1.0%.
   -o, --out DIR         Where to write samples.csv and summary.txt.
@@ -55,13 +55,13 @@ Options:
   -h, --help            This text.
 
 Measures: CPU (avg + peak), phys_footprint (first/last/peak, growth),
-idle wakeups per second, and the Vigil power assertion (held, for how long,
-with what timeout). Matches the assertion on pid, never on the string "vigil".
+idle wakeups per second, and the Belay power assertion (held, for how long,
+with what timeout). Matches the assertion on pid, never on the string "belay".
 
 Exit status:
   0  every measured budget passed
   1  a budget was breached, or the soak was interrupted
-  2  Vigil is not running, or the arguments do not make sense
+  2  Belay is not running, or the arguments do not make sense
 
 Examples:
   scripts/perf-soak.sh                        # the real 30-minute soak
@@ -91,12 +91,12 @@ case "$INTERVAL" in ''|*[!0-9]*) die "interval must be whole seconds, got '$INTE
 case "$MODE" in auto|idle|active) ;; *) die "mode must be auto, idle or active, got '$MODE'" ;; esac
 
 # One pid, or nothing to measure. Two would make every number ambiguous.
-PIDS="$(pgrep -x Vigil || true)"
-[ -n "$PIDS" ] || die "Vigil is not running. Build and launch it first:
-    scripts/build-local.sh Release && open build/Vigil.app
+PIDS="$(pgrep -x Belay || true)"
+[ -n "$PIDS" ] || die "Belay is not running. Build and launch it first:
+    scripts/build-local.sh Release && open build/Belay.app
 then re-run this script." 2
 PID_COUNT="$(printf '%s\n' "$PIDS" | wc -l | tr -d ' ')"
-[ "$PID_COUNT" -eq 1 ] || die "found $PID_COUNT Vigil processes ($(echo "$PIDS" | tr '\n' ' ')); quit all but one first" 2
+[ "$PID_COUNT" -eq 1 ] || die "found $PID_COUNT Belay processes ($(echo "$PIDS" | tr '\n' ' ')); quit all but one first" 2
 PID="$PIDS"
 
 STAMP="$(date '+%Y%m%d-%H%M%S')"
@@ -126,7 +126,7 @@ cputime_seconds() {
 }
 
 # Emits "count|age_s|timeout_s|type". Blocks are keyed on the pid, because the
-# bundle id contains "vigil" and runningboardd holds a launch assertion for it.
+# bundle id contains "belay" and runningboardd holds a launch assertion for it.
 sample_assertion() {
     pmset -g assertions 2>/dev/null | awk -v pid="$PID" '
         /^[^[:space:]]/ { inblock = 0 }
@@ -183,9 +183,9 @@ if [ -n "$POWERMETRICS" ]; then
     fi
 fi
 
-printf 'iso_time,elapsed_s,cpu_interval_pct,ps_pct_cpu,cputime_s,phys_footprint_bytes,assertion_count,assertion_age_s,assertion_timeout_s,assertion_type,wakeups_per_s,vigil_processes\n' >"$CSV"
+printf 'iso_time,elapsed_s,cpu_interval_pct,ps_pct_cpu,cputime_s,phys_footprint_bytes,assertion_count,assertion_age_s,assertion_timeout_s,assertion_type,wakeups_per_s,belay_processes\n' >"$CSV"
 
-echo "==> soaking Vigil pid $PID for ${DURATION}s at ${INTERVAL}s intervals"
+echo "==> soaking Belay pid $PID for ${DURATION}s at ${INTERVAL}s intervals"
 echo "    mode: $MODE   wakeups: $WAKEUPS_STATUS"
 echo "    output: $OUT_DIR"
 echo
@@ -205,7 +205,7 @@ while :; do
     [ "$INTERRUPTED" -eq 0 ] || break
 
     kill -0 "$PID" 2>/dev/null || {
-        echo "perf-soak: Vigil (pid $PID) exited after ${ELAPSED}s of the soak" >&2
+        echo "perf-soak: Belay (pid $PID) exited after ${ELAPSED}s of the soak" >&2
         INTERRUPTED=1
         break
     }
@@ -226,9 +226,9 @@ while :; do
     PREV_T="$T"
     PREV_CPU="$CPUTIME"
 
-    # Invariant 1 is about the assertion existing once, and a second Vigil
+    # Invariant 1 is about the assertion existing once, and a second Belay
     # process would hold a second one. An xcodebuild test host counts.
-    NPROC="$(pgrep -x Vigil 2>/dev/null | wc -l | tr -d ' ')"
+    NPROC="$(pgrep -x Belay 2>/dev/null | wc -l | tr -d ' ')"
 
     printf '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n' \
         "$(date '+%Y-%m-%dT%H:%M:%S')" "$ELAPSED" "$CPU_PCT" "${PSCPU:-}" "${CPUTIME:-}" \
@@ -377,7 +377,7 @@ if [ "$ASSERT_MULTI_N" -eq 0 ] && [ "$PROC_MAX" -le 1 ]; then V=PASS; else V=FAI
 if [ "$ASSERT_MULTI_N" -gt 0 ]; then
     DETAIL="2+ in $ASSERT_MULTI_N samples"
 elif [ "$PROC_MAX" -gt 1 ]; then
-    DETAIL="$PROC_MAX Vigil processes seen"
+    DETAIL="$PROC_MAX Belay processes seen"
 else
     DETAIL="max 1, in 1 process"
 fi
@@ -391,7 +391,7 @@ else
 fi
 
 {
-    echo "Vigil performance soak"
+    echo "Belay performance soak"
     echo "----------------------"
     printf 'when          %s\n' "$(date '+%Y-%m-%d %H:%M:%S %z')"
     printf 'host          %s, macOS %s (%s)\n' "$(uname -m)" "$(sw_vers -productVersion)" "$(sw_vers -buildVersion)"

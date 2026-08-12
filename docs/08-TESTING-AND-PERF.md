@@ -56,7 +56,7 @@ Documented as a checklist in `docs/QA-CHECKLIST.md`, run on the host machine:
 - set system sleep to 1 minute, run a 10-minute task, confirm no sleep, then
   confirm the Mac sleeps ~1 minute after the task ends
 - kill `claude` mid-task with `SIGKILL`; confirm release within TTL
-- force-quit Vigil while holding; confirm the assertion self-releases within
+- force-quit Belay while holding; confirm the assertion self-releases within
   the timeout window
 - sleep the Mac manually, wake it, confirm state resyncs correctly
 - run on macOS 14, 15 and 26 (VMs are fine for 14/15), and on the 27 beta
