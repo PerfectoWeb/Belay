@@ -119,10 +119,29 @@ final class SettingsWindow: NSObject {
         self.pane = pane
         guard let window, let hosting else { return }
         hosting.rootView = view(for: pane)
-        window.title = pane.title
         window.toolbar?.selectedItemIdentifier = pane.itemIdentifier
         resize(window, to: height(for: pane), animated: animated)
+        // Title last, then a layout pass asked for by name.
+        //
+        // The titlebar centres the label in its own layout, and a frame change
+        // does not reliably provoke that pass on macOS 15: the label keeps the
+        // centre it was measured against and sits off to one side until
+        // something unrelated moves the window. Setting the title before the
+        // resize is what put it in that position; asking for the pass afterwards
+        // is what gets it back, and it costs nothing on the versions that were
+        // already doing it themselves.
+        window.title = pane.title
+        recentreTitle(of: window)
         retimeRefresh()
+    }
+
+    private func recentreTitle(of window: NSWindow) {
+        // The close button's superview *is* the titlebar view. There is no
+        // public handle on it, and this is the one that does not depend on a
+        // private class name.
+        guard let titlebar = window.standardWindowButton(.closeButton)?.superview else { return }
+        titlebar.needsLayout = true
+        titlebar.layoutSubtreeIfNeeded()
     }
 
     func close() {

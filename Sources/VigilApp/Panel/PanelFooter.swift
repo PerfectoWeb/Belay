@@ -49,20 +49,23 @@ private struct SettingsGearButton: View {
         Button(action: action) {
             Image(systemName: "gearshape")
                 .font(.system(size: 14, weight: .medium))
-                .foregroundStyle(
-                    isLit ? AnyShapeStyle(Color(nsColor: .linkColor)) : AnyShapeStyle(.secondary)
-                )
+                // Two `Color`s, deliberately, not `.secondary` and a colour
+                // behind `AnyShapeStyle`. Those are different types, so there is
+                // nothing to interpolate between, and a spring driving a style
+                // it cannot interpolate leaves the gear undrawn for the length
+                // of the animation. It reads as a gear that is sometimes
+                // missing, which is exactly what the macOS 15 pass found.
+                .foregroundStyle(isLit ? Color(nsColor: .linkColor) : Color.primary.opacity(0.55))
+                // The colour is quick; only the turn has weight.
+                .animation(.easeOut(duration: 0.12), value: isLit)
                 .rotationEffect(.degrees(isLit && !reduceMotion ? 45 : 0))
+                .animation(.spring(duration: 0.42, bounce: 0.34), value: isLit)
                 .padding(.vertical, 2)
                 .padding(.horizontal, 2)
                 .contentShape(.rect)
         }
         .buttonStyle(.plain)
         .onHover { isHovering = $0 }
-        // The colour is quick, the turn has weight. One animation for both makes
-        // the colour feel sluggish or the gear feel snapped.
-        .animation(.easeOut(duration: 0.12), value: isLit)
-        .animation(.spring(duration: 0.42, bounce: 0.34), value: isLit)
         .accessibilityLabel("Open Settings")
         .help(Text("Open Settings"))
     }
