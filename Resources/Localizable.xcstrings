@@ -2913,6 +2913,47 @@
         }
       }
     },
+    "Belay has saved %lld runs for you. A star on GitHub helps the next person find it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hat %lld Läufe für dich gerettet. Ein Stern auf GitHub hilft dem Nächsten, es zu finden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay has saved %lld runs for you. A star on GitHub helps the next person find it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha salvado %lld ejecuciones tuyas. Una estrella en GitHub ayuda al siguiente a encontrarlo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a sauvé %lld exécutions pour vous. Une étoile sur GitHub aide le suivant à le trouver."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha salvato %lld esecuzioni per te. Una stella su GitHub aiuta il prossimo a trovarlo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay спас для вас %lld запусков. Звезда на GitHub поможет следующему найти его."
+          }
+        }
+      }
+    },
     "Belay has to reopen to change language.": {
       "extractionState": "manual",
       "localizations": {
@@ -4881,47 +4922,6 @@
         }
       }
     },
-    "GitHub": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GitHub"
-          }
-        }
-      }
-    },
     "Grant access to ~/.claude": {
       "extractionState": "manual",
       "localizations": {
@@ -5984,6 +5984,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Без слежки"
+          }
+        }
+      }
+    },
+    "Not now": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt nicht"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not now"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahora no"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas maintenant"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Non ora"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не сейчас"
           }
         }
       }
@@ -7993,6 +8034,88 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Звук"
+          }
+        }
+      }
+    },
+    "Star": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stern geben"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Star"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dar estrella"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mettre une étoile"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metti una stella"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поставить звезду"
+          }
+        }
+      }
+    },
+    "Star on GitHub": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stern auf GitHub"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Star on GitHub"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estrella en GitHub"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Étoile sur GitHub"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stella su GitHub"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звезда на GitHub"
           }
         }
       }

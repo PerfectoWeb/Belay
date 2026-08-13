@@ -83,10 +83,21 @@ final class ReleaseCheckerTests: XCTestCase {
     }
 
     func testAFailureIsReportedRatherThanSwallowed() async throws {
-        let checker = checker { _ in throw ReleaseChecker.UpdateError.badResponse(404) }
+        let checker = checker { _ in throw ReleaseChecker.UpdateError.badResponse(503) }
         checker.check()
         try await settle(checker)
         guard case .failed = checker.status else { return XCTFail("\(checker.status)") }
+    }
+
+    /// 404 used to take the same path and was drawn in orange behind a warning
+    /// triangle. A project with no releases yet is not a fault, and the one
+    /// place that reads as a fault is the place people look when something
+    /// seems wrong.
+    func testAnEmptyFeedIsNotAFailure() async throws {
+        let checker = checker { _ in throw ReleaseChecker.UpdateError.badResponse(404) }
+        checker.check()
+        try await settle(checker)
+        XCTAssertEqual(checker.status, .noneYet)
     }
 
     /// String comparison calls 1.10.0 older than 1.9.0 and quietly stops

@@ -48,6 +48,7 @@ struct StatisticsPane: View {
                 figures
                 Divider()
                 chart
+                StarAsk(rescued: statistics.totalRescued)
                 shareRow
             }
         }

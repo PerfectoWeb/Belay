@@ -24,6 +24,12 @@ final class ReleaseChecker {
         case checking
         case upToDate(Date)
         case available(version: String, url: URL)
+        /// The feed answered, and there is nothing published yet. Its own case
+        /// because it is not a failure: a project with no releases returns 404
+        /// and used to be drawn in orange behind a warning triangle, which
+        /// reads as "something is broken" when the honest answer is "nothing
+        /// here yet".
+        case noneYet
         case failed(String)
     }
 
@@ -111,7 +117,7 @@ final class ReleaseChecker {
                 }
             } catch {
                 Log.app.error("update check failed: \(error.localizedDescription, privacy: .public)")
-                status = .failed(Self.reason(for: error))
+                status = Self.outcome(for: error)
             }
         }
     }
@@ -124,6 +130,12 @@ final class ReleaseChecker {
     /// payload it is a sentence about Swift decoding. Three outcomes is all
     /// anyone can act on, and none of them needs to say where releases live:
     /// that is a distribution decision, and it may become the App Store.
+    /// 404 is an answer, not a fault. Everything else is.
+    private static func outcome(for error: Error) -> Status {
+        if case UpdateError.badResponse(404) = error { return .noneYet }
+        return .failed(reason(for: error))
+    }
+
     private static func reason(for error: Error) -> String {
         if let update = error as? UpdateError, let described = update.errorDescription {
             return described
@@ -193,8 +205,6 @@ final class ReleaseChecker {
 
         var errorDescription: String? {
             switch self {
-            case .badResponse(404):
-                return String(localized: "No releases have been published yet.")
             case .badResponse(let code):
                 // Named after the role, not the host. Where releases come
                 // from is a distribution decision that can change to the App

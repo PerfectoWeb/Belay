@@ -144,6 +144,10 @@ private struct UpdatesRow: View {
                 Text("Version \(version) is available.").font(.caption)
                 Link("Download…", destination: url).font(.caption)
             }
+        case .noneYet:
+            // Deliberately as quiet as "up to date": nothing is wrong.
+            Text("No releases have been published yet.")
+                .font(.caption).foregroundStyle(.secondary)
         case .failed(let reason):
             Label(reason, systemImage: "exclamationmark.circle")
                 .font(.caption).foregroundStyle(.orange).lineLimit(2)

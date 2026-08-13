@@ -105,8 +105,11 @@ struct AboutPane: View {
                         sound: .thanks)
                 }
                 if let repository = Branding.repositoryURL {
-                    AboutLink(
-                        title: "GitHub", symbol: "chevron.left.forwardslash.chevron.right", url: repository)
+                    // "Star" rather than "GitHub": the destination is the same
+                    // and the label may as well say what it is for. Anyone who
+                    // dismissed the ask in Statistics, or never reached it, can
+                    // still find this.
+                    AboutLink(title: "Star on GitHub", symbol: "star", url: repository)
                 }
                 if let issues = Branding.issuesURL {
                     AboutLink(title: "Report a bug", symbol: "ladybug", url: issues)
