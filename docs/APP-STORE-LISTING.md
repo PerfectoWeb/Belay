@@ -33,7 +33,22 @@ Both were `perfecto-web.com/belay` addresses and both returned 404 on the day
 of the first release. Apple requires these to load without a login and checks
 them at review, so they point at pages that exist. Move them back to the
 product's own domain whenever those pages are built.
-**Privacy policy URL** `https://perfectoweb.github.io/Belay/privacy/`
+**Privacy policy URL**, one per App Store Connect localisation:
+
+| Localisation | URL |
+|---|---|
+| English (U.S.) | `https://perfectoweb.github.io/Belay/privacy/` |
+| Russian | `https://perfectoweb.github.io/Belay/privacy/ru/` |
+| German | `https://perfectoweb.github.io/Belay/privacy/de/` |
+| Spanish (Spain) | `https://perfectoweb.github.io/Belay/privacy/es/` |
+| French | `https://perfectoweb.github.io/Belay/privacy/fr/` |
+| Italian | `https://perfectoweb.github.io/Belay/privacy/it/` |
+
+Apple would have accepted the English address in all six boxes. It is a real
+policy in each language instead, because this is the one document where a
+reader needs to understand exactly what is read off their disk, and the app
+already speaks all six. Each translation says it is a translation and links to
+the English, which governs.
 
 The capital B is not optional. GitHub Pages paths are case-sensitive even
 though github.com URLs are not, and the lowercase spelling of this address
