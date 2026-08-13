@@ -158,23 +158,8 @@ def landing(code):
         "</ul>",
         "",
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
-        '<figure class="modes">',
-        f'    <img src="../img/modes.png" alt="{t["modes_head"]}" width="1096" height="378">',
-        '    <svg class="pointers" viewBox="0 0 1096 150" aria-hidden="true">',
-        # One arrow per third, so they keep pointing at the right segment
-        # whatever width the image is scaled to.
-        # The picker's three segments sit at 0.19, 0.5 and 0.81 of the image
-        # width, measured off the file rather than guessed, so the arrows keep
-        # their aim at any scale.
-        '        <path d="M208 120 C 208 62, 208 38, 208 12"/>',
-        '        <path d="M548 120 C 548 62, 548 38, 548 12"/>',
-        '        <path d="M888 120 C 888 62, 888 38, 888 12"/>',
-        "    </svg>",
-        '    <figcaption>',
-        f'        <span class="hand">Auto</span><span>{t["modes_auto"]}</span>',
-        f'        <span class="hand">Always On</span><span>{t["modes_always"]}</span>',
-        f'        <span class="hand">Off</span><span>{t["modes_off"]}</span>',
-        "    </figcaption>",
+        '<figure class="panel">',
+        f'    <img src="../img/panel.png" alt="{t["modes_head"]}" width="1600" height="1000">',
         "</figure>",
         "",
         "",
@@ -204,7 +189,7 @@ def landing(code):
         "    </div>",
         f'    <p class="fine">{T[code]["fine"]}</p>',
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
-        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>. '
+        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
         'All product names and logos are trademarks of their respective owners.</p>',
         "</footer>",
         "",
