@@ -180,7 +180,7 @@ Quit %@,Menu bar,translated,%@,Quit %@,Quitter %@
 Quit %@?,Menu bar,translated,%@,Quit %@?,Quitter %@ ?
 Quit Belay and open it again to change language.,Settings: General,translated,,Reopen Belay to apply the language change.,Rouvrez Belay pour appliquer le changement de langue.
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Quitter et rouvrir
-Rate on the App Store,Settings: About,translated,,Rate on the App Store,Noter sur l'App Store
+Rate Belay,Settings: About,translated,,Rate Belay,Noter Belay
 Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Prêt
 Remove,Settings: Providers,translated,,Remove,Retirer
 Remove %@,Settings: Providers,translated,%@,Remove %@,Retirer %@

@@ -22,7 +22,7 @@ struct AboutLinks: View {
         HStack(spacing: 8) {
             prominent
             if DistributionChannel.current == .appStore, let review = Branding.appStoreReviewURL {
-                AboutLink(title: "Rate on the App Store", symbol: "star.bubble", url: review)
+                AboutLink(title: "Rate Belay", symbol: "star.bubble", url: review)
             }
             if let repository = Branding.repositoryURL {
                 // "Star" rather than "GitHub": the destination is the same and

@@ -7423,43 +7423,43 @@
         }
       }
     },
-    "Rate on the App Store": {
+    "Rate Belay": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Im App Store bewerten"
+            "value": "Belay bewerten"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rate on the App Store"
+            "value": "Rate Belay"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Valorar en el App Store"
+            "value": "Valorar Belay"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noter sur l'App Store"
+            "value": "Noter Belay"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Valuta su App Store"
+            "value": "Valuta Belay"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оценить в App Store"
+            "value": "Оценить Belay"
           }
         }
       }
