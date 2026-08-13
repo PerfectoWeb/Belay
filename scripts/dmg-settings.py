@@ -43,7 +43,12 @@ background = os.path.join(root, "Promo/dmg/background.tiff")
 # this size: no resampling, and the same proportions CleanMyMac uses. Treating
 # 1080x720 as the point size instead would open a window three quarters the
 # width of a laptop screen.
-window_rect = ((200, 180), (540, 360))
+# 540x388, not 540x360. This rectangle is the window *frame*, and Finder's
+# title bar takes 28 points out of it, so asking for 360 left a 332 point
+# content area and cut the bottom 28 points off the artwork: the "by
+# PerfectoWeb" line under the logo was sliced in half. Everything below is in
+# content coordinates, where the picture is a full 540x360.
+window_rect = ((200, 180), (540, 388))
 default_view = "icon-view"
 show_status_bar = False
 show_tab_view = False
@@ -56,10 +61,14 @@ label_pos = "bottom"
 text_size = 13
 icon_size = 96
 
-# The panel in the artwork runs x 65.5..472.5 and y 108..271 in window points.
-# Each icon sits at the midpoint of its half of that panel, level with the
-# arrow between them.
+# Measured off the artwork, not chosen. The panel runs x 65.5..472.5 in window
+# points and the arrow's centre is at (266, 187) — the designer put it a little
+# above and left of the panel's own centre, and the icons follow the arrow
+# rather than the panel, because that is the line the eye reads.
+#
+# Each icon sits at the midpoint of its half of the panel, measured to the
+# arrow rather than to the panel's centre.
 icon_locations = {
-    appname: (167, 190),
-    "Applications": (371, 190),
+    appname: (166, 187),
+    "Applications": (369, 187),
 }
