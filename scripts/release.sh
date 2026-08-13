@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 # Cuts a notarized, stapled DMG of the direct build.
 #
-# WRITTEN, NEVER RUN. There is no Developer ID identity on the machine this was
-# developed on (BLOCKERS.md B1), so none of this is proven. Read it before the
-# first real release rather than trusting it.
+# Run for real on 2026-08-13: this script built, signed, notarized, stapled and
+# packaged the v1.0.0 DMG that shipped. The Developer ID identity is in the
+# login keychain (BLOCKERS.md B1) and notarization is closed (B6).
+#
+# Three faults only showed up when it was finally run, and each is commented
+# where it was found rather than here: get-task-allow surviving into a release
+# archive, an attempt to staple a zip, and a hardened-runtime check that failed
+# on correctly hardened apps because of pipefail. Reading a release script is
+# not the same as running one.
 #
 # It refuses to start unless every prerequisite is present. Half a release —
 # a signed app that was never notarized, a DMG with no stapled ticket — is
@@ -255,7 +261,7 @@ rm -f "$DMG"
     "Belay $VERSION" "$DMG" \
     || die "dmgbuild failed"
 
-[ -f "$DMG" ] || die "create-dmg exited 0 but produced no $DMG"
+[ -f "$DMG" ] || die "dmgbuild exited 0 but produced no $DMG"
 
 codesign --sign "$SIGN_IDENTITY" --timestamp "$DMG"
 

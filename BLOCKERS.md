@@ -2,8 +2,8 @@
 
 Things that need an account or a decision the repository cannot make for
 itself, with everything around them already built so that unblocking is a
-one-line change. Nothing here stops v1.0 from being complete as
-an ad-hoc-signed local build.
+one-line change. Nothing here stopped v1.0 from shipping as a
+notarized Developer ID build on 2026-08-13.
 
 B8 was the exception to both halves of that — unwritten code rather than a
 missing account, and the one thing that stopped the Mac App Store build from
@@ -82,10 +82,13 @@ xcrun notarytool store-credentials belay-appstore \
 `generate_keys` puts the private half in the login keychain and prints the
 public half, which goes in `Info.plist`. Nothing about it is per-release.
 
-**One thing to install here:** `create-dmg`, which `release.sh` requires and
-refuses to start without. `brew install create-dmg`.
+**One thing to install here:** `dmgbuild`, version 1.6.7 or newer, which
+`release.sh` requires and refuses to start without. `pipx install
+'dmgbuild>=1.6.7'`. It needs Python 3.10 or newer, so the system 3.9 will not
+do. An older dmgbuild is rejected by preflight because it leaves the disk image
+with no background on macOS 26.2 and later.
 
-With the key in the keychain and `create-dmg` present, the whole chain runs
+With the key in the keychain and `dmgbuild` present, the whole chain runs
 from this machine: build, sign, notarize, staple, DMG, GitHub release, and
 upload to App Store Connect. Publishing steps stay behind an explicit
 instruction each time, because a release and an App Store submission are not
@@ -189,9 +192,9 @@ codesign --verify --deep --strict  satisfies its Designated Requirement
 spctl -a -t exec                   rejected: "Unnotarized Developer ID"
 ```
 
-That last line is the expected and only remaining step: the app is correctly
-signed, and Gatekeeper wants a notarization ticket before it will run without a
-prompt on a machine that did not build it. See B6.
+That step is done. See B6: `spctl` reports the shipped app and the disk image
+both as `source=Notarized Developer ID`, and both carry a stapled ticket, so a
+first launch needs no network.
 
 ## B2 — StoreKit IAP product identifiers (Mac App Store tip jar)
 
@@ -203,7 +206,7 @@ Consumable product IDs cannot be registered without the user's App Store Connect
 account. They are declared as placeholders in one constants file and the tip UI
 is behind a feature flag that stays off until real products exist.
 
-## B6 — Notarization has credentials but has never been run
+## B6 — RESOLVED (2026-08-13). Kept for the credential reference below
 
 **Blocks:** nothing locally. An ad-hoc or Developer ID signed build runs fine on
 this Mac. It matters when the app is given to someone else.
@@ -288,27 +291,34 @@ quit and reopen did not ask again. The evidence is a 660-byte
 `BelayClaudeFolderBookmark` in the container's own preferences — something only
 the sandboxed build can write. `docs/QA-CHECKLIST.md` §9 records it.
 
-## B9 — One module test fails intermittently on CI and has not been identified
+## B9 — RESOLVED (2026-08-13). It was the settings window, found by name
 
 Run #1 on the public repository failed with "181 tests in 30 suites failed with
-1 issue". Run #2, with no change to any test or any line of production code,
-passed. So a suite is flaky on the GitHub runner.
+1 issue" and run #2, with nothing changed, passed. Twenty consecutive local runs
+with the machine loaded were green, so it stayed unidentified.
 
-Not reproduced locally: 20 consecutive runs of the module suites, with every
-core but one saturated to imitate a throttled shared VM, were green 20 out of
-20. CPU contention is therefore not the trigger. What is left is the rest of the
-runner environment: a slower filesystem under FSEvents, cold caches, or the
-older toolchain's test runner.
+It turned up on release day, three times in a row, on a laptop that had just had
+the app opened and closed repeatedly for smoke testing:
+`PresetDuplicationTests.testTheSheetHasTheSettingsWindowToHangOff`, asserting
+that the window the folder sheet would hang off is the settings window it just
+made.
 
-The name is unknown because a CI log scrolls the failing test off the top and
-the Actions log API needs a token even on a public repository. `scripts/test.sh`
-now reprints failures at the end and emits them as `::error::`, which becomes a
-GitHub annotation readable without auth, so the next occurrence identifies
-itself.
+`GenericTargetsSection.hostWindow` found that window with
+`NSApp.windows.first { $0.identifier == SettingsWindow.windowIdentifier }`. A
+closed settings window stays in `NSApp.windows` until AppKit lets go of it, so a
+process that has opened settings more than once has two windows wearing that
+identifier and `first` is a coin toss. Which is why it was intermittent, why
+load never reproduced it, and why a CI runner — different order, different
+timing — was where it first showed.
 
-**A flaky gate is worse than a red one:** it teaches people to press re-run,
-and a real regression then hides among the false alarms. This should be found
-before the repository takes outside contributions.
+The fault was never in the test. Losing that toss in the shipped app attaches
+the folder picker to a window nobody can see, which reads to a user as the
+picker simply not opening. `hostWindow` now requires `isVisible`, which is what
+it always meant. Four consecutive suite runs green afterwards.
+
+**A flaky gate is worse than a red one:** it teaches people to press re-run, and
+a real regression then hides among the false alarms. This one was hiding a real
+regression the whole time.
 
 ## B7 — Translations have had no native review
 

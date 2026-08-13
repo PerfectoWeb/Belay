@@ -128,7 +128,15 @@ struct GenericTargetsSection: View {
     /// The window this section is hosted in. A SwiftUI view has no route to its
     /// own `NSWindow`, and `SettingsWindow` already stamps an identifier for
     /// exactly this kind of lookup.
+    ///
+    /// Visible, not merely first. A closed settings window stays in
+    /// `NSApp.windows` until AppKit gets round to letting go of it, so opening
+    /// settings a second time can leave two windows wearing this identifier and
+    /// `first` is then a coin toss. Losing that toss attaches the folder sheet
+    /// to a window nobody can see, which looks exactly like the picker failing
+    /// to open. A test caught this as an intermittent failure long before
+    /// anyone would have reported it as a bug.
     static var hostWindow: NSWindow? {
-        NSApp.windows.first { $0.identifier == SettingsWindow.windowIdentifier }
+        NSApp.windows.first { $0.identifier == SettingsWindow.windowIdentifier && $0.isVisible }
     }
 }

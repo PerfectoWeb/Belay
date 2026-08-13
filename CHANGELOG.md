@@ -5,7 +5,32 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-08-10
+## [Unreleased]
+
+### Fixed
+
+**The folder picker could attach its sheet to an invisible window.**
+`GenericTargetsSection.hostWindow` matched the settings window by identifier and
+took the first hit, but a closed settings window lingers in `NSApp.windows`, so
+a session that had opened settings twice had two candidates and picked between
+them by luck. Losing looked, from the outside, like the picker refusing to open.
+It now requires the window to be visible. This was `BLOCKERS.md` B9, the
+intermittent CI failure that had never been identified.
+
+**The update check retried hourly whenever it failed.** The timestamp that
+paces it to once a day was written only after a successful fetch, so an offline
+Mac left nothing behind and every hourly tick read the check as still due — up
+to twenty four attempts in a day the app, the privacy policy and the release
+notes all describe as one. The attempt is what gets recorded now, because the
+attempt is what was promised.
+
+**Three mode names were clipped in translation.** All three sit side by side in
+one 330pt panel, and Spanish ran four points over the tab it had to fit in;
+Italian and French cleared it by less than two. Shortened in Spanish, Italian,
+French and German, and a test now measures every language against the metrics
+the picker lays out with.
+
+## [1.0.0] - 2026-08-13
 
 First release of Belay, a macOS menu bar app that holds the Mac awake only while
 a local AI coding agent is actually working, and lets it sleep normally the rest
@@ -128,8 +153,8 @@ receive closure chain rather than on the receiver actor. Session identifiers are
 logged `.private`.
 
 The one thing that touches the network is the update check, which asks GitHub
-whether there is a newer release. It is off by default, it sends no query and no
-identifier, and it is absent entirely from the App Store build, which ships
+whether there is a newer release. It is on by default and one switch in Settings
+under General turns it off; it sends no query and no identifier, and it is absent entirely from the App Store build, which ships
 without the `com.apple.security.network.client` entitlement.
 
 ### Not in this release
@@ -149,9 +174,8 @@ The `belay-hook` command shim that the original detection spec describes as a
 fallback delivery path was cut before it was written. See
 `docs/adr/003-two-tier-detection.md`.
 
-Three things are built but not finished, and they are listed in `BLOCKERS.md`:
-the app has never been notarized, so a build from someone else's Mac needs a
-right-click to open; Sparkle is not wired up, so the update check finds a release
-but cannot install it; and the translations have had no native review.
+Two things are built but not finished, and they are listed in `BLOCKERS.md`:
+Sparkle is not wired up, so the update check finds a release but cannot install
+it, and the translations have had no native review.
 
 [1.0.0]: https://github.com/perfectoweb/belay/releases/tag/v1.0.0

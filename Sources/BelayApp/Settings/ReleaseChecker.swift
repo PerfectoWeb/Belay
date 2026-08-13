@@ -106,9 +106,16 @@ final class ReleaseChecker {
                 status = .failed(String(localized: "No release feed is configured."))
                 return
             }
+            // Stamped before the fetch, not after it succeeds. Written only on
+            // success, a failed check left no timestamp, `checkIfDue` went on
+            // reading the attempt as still due, and the hourly timer retried
+            // every hour for as long as the network was unavailable — twenty
+            // four requests in a day where the app, the privacy policy and the
+            // release notes all promise one. What is being recorded is that an
+            // attempt was made, and an attempt was made either way.
+            defaults.set(now, forKey: Self.lastCheckKey)
             do {
                 let release = try JSONDecoder().decode(Release.self, from: try await fetch(url))
-                defaults.set(now, forKey: Self.lastCheckKey)
                 let latest = release.tag.trimmingCharacters(in: CharacterSet(charactersIn: "vV"))
                 if Self.isNewer(latest, than: current), let page = URL(string: release.page) {
                     status = .available(version: latest, url: page)

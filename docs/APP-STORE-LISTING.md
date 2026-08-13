@@ -25,8 +25,13 @@ no screenshot.
 **Age rating** 4+
 **Price** Free
 **Copyright** `2026 PerfectoWeb`
-**Support URL** `https://perfecto-web.com/belay/support`
-**Marketing URL** `https://perfecto-web.com/belay`
+**Support URL** `https://github.com/PerfectoWeb/Belay/issues`
+**Marketing URL** `https://perfectoweb.github.io/Belay/`
+
+Both were `perfecto-web.com/belay` addresses and both returned 404 on the day
+of the first release. Apple requires these to load without a login and checks
+them at review, so they point at pages that exist. Move them back to the
+product's own domain whenever those pages are built.
 **Privacy policy URL** `https://perfectoweb.github.io/Belay/privacy/`
 
 The capital B is not optional. GitHub Pages paths are case-sensitive even

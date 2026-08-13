@@ -68,6 +68,27 @@ final class ReleaseCheckerTests: XCTestCase {
         XCTAssertEqual(count, 1, "checked \(count) times inside one interval")
     }
 
+    /// The same interval has to hold when the check fails, and it did not.
+    /// The timestamp was written only on the success path, so an offline Mac
+    /// left nothing behind, every hourly tick read the check as still due, and
+    /// the app made twenty four attempts in the day it promises one. The
+    /// promise is about attempts, so attempts are what get stamped.
+    func testAFailedCheckStillCountsAgainstTheInterval() async throws {
+        let counter = Counter()
+        let checker = checker { _ in
+            await counter.bump()
+            throw URLError(.notConnectedToInternet)
+        }
+        checker.isAutomatic = true
+        try await settle(checker)
+
+        checker.checkIfDue()
+        try await Task.sleep(nanoseconds: 100_000_000)
+
+        let count = await counter.value
+        XCTAssertEqual(count, 1, "a failed check was retried \(count) times inside one interval")
+    }
+
     func testTheManualButtonIgnoresTheInterval() async throws {
         let counter = Counter()
         let checker = checker { _ in

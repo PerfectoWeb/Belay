@@ -76,16 +76,24 @@ Xcode 16 or later, plus `xcodegen`, `swiftlint` and `swift-format` from Homebrew
 
 ## Install
 
+**[Download Belay 1.0.0](https://github.com/PerfectoWeb/Belay/releases/latest)**
+— macOS 14 or later, Apple silicon and Intel. Open the disk image and drag Belay
+to Applications.
+
+The app and the disk image are both signed with a Developer ID and notarized by
+Apple, and both carry a stapled ticket, so the first launch works with no
+network and without right-click-Open.
+
+Or build it yourself, which needs no Apple Developer account:
+
 ```bash
 git clone https://github.com/perfectoweb/belay.git && cd belay
 scripts/build-local.sh
 open build/Belay.app
 ```
 
-That produces an ad-hoc signed app and needs no Apple Developer account. Belay
-has never been notarized, so there is no download to hand somebody else yet, and
-a build from another Mac would need a right-click to open. See
-[`BLOCKERS.md`](BLOCKERS.md).
+That one is ad-hoc signed and will not open on anyone else's Mac without a
+right-click.
 
 On first launch you get one screen explaining what Belay reads. Then it lives in
 the menu bar: left-click for the panel, right-click for a compact menu.

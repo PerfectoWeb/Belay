@@ -96,7 +96,8 @@ struct GeneralSettingsPane: View {
 
 /// The updates block.
 ///
-/// Off by default, and the caption says why in one line rather than burying it:
+/// On by default, and the caption says what it costs in one line rather than
+/// burying it:
 /// this is the only network access in the app, and the About pane promises
 /// there is none.
 private struct UpdatesRow: View {
