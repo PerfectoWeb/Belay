@@ -16,7 +16,15 @@ enum Branding {
     /// Placeholder until there is somewhere real to point it. The About pane
     /// hides the row rather than shipping a dead link.
     static let coffeeURL: URL? = nil
+    /// Nil in the App Store build, and nil at compile time rather than hidden
+    /// at runtime: a payment link there is a guideline violation, and the
+    /// address should not be in the binary at all for someone to find with
+    /// `strings`. `coffeeURL` is nil everywhere for the same reason.
+    #if BELAY_MAS
+    static let donateURL: URL? = nil
+    #else
     static let donateURL = URL(string: "https://perfecto-web.com/d/")
+    #endif
     /// Whose app this is. Linked from the About footer rather than printed as
     /// dead text: the name is already there, and a name nobody can follow is a
     /// missed introduction.
@@ -27,6 +35,19 @@ enum Branding {
     /// not guessable from it: App Store Connect issues it when the record is
     /// created, and it is on the App Information page.
     static let appStoreID: String? = "6801207644"
+
+    /// The review sheet for Belay's own listing. Only ever shown in the App
+    /// Store build, which is the only place the listing is reachable from and
+    /// the only place someone can have installed it from.
+    static var appStoreReviewURL: URL? {
+        appStoreID.flatMap {
+            URL(string: "macappstore://apps.apple.com/app/id\($0)?action=write-review")
+        }
+    }
+
+    /// The product page on the web. Where the App Store build sends people
+    /// instead of the donate link it is not allowed to carry.
+    static var websiteURL: URL? { URL(string: "https://perfectoweb.github.io/Belay/") }
 
     /// Opening this asks the App Store app to do the work. It is a hand-off,
     /// not a request: the App Store build has no outbound network entitlement

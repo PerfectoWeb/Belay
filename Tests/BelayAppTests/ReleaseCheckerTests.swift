@@ -1,4 +1,3 @@
-import BelayTipJar
 import XCTest
 
 @testable import Belay
@@ -153,23 +152,4 @@ private actor Sent {
 private actor Counter {
     private(set) var value = 0
     func bump() { value += 1 }
-}
-
-/// The channel is decided twice, by two build settings that must agree:
-/// `SWIFT_ACTIVE_COMPILATION_CONDITIONS` gives `#if BELAY_MAS`, which
-/// `ReleaseChecker.isSupported` reads, and `BELAY_CHANNEL` writes the Info.plist
-/// key that `DistributionChannel.current` reads. Nothing links them, and
-/// `channel(named:)` resolves anything it does not recognise to `.appStore`.
-///
-/// Get one of the two wrong in `project.yml` and the direct build prints
-/// "Mac App Store" beside its version in About while still running the daily
-/// network check, which is the exact confusion that line was added to prevent.
-final class DistributionChannelAgreementTests: XCTestCase {
-    @MainActor
-    func testTheTwoWaysOfAskingWhichChannelAgree() {
-        let fromCompileCondition = ReleaseChecker.isSupported
-        XCTAssertEqual(
-            fromCompileCondition, DistributionChannel.current == .direct,
-            "the compile condition and the Info.plist key disagree about the channel")
-    }
 }

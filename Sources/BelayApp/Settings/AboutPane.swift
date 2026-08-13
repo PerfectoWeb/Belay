@@ -99,31 +99,7 @@ struct AboutPane: View {
 
             privacyNote
 
-            HStack(spacing: 8) {
-                // Direct channel only. A payment link inside a Mac App Store
-                // build is a guideline violation and a rejection, which is why
-                // BelayTipJar exists and why coffeeURL is a permanent nil. This
-                // row was added later and went round the seam built to stop it.
-                if DistributionChannel.current == .direct, let donate = Branding.donateURL {
-                    AboutLink(
-                        title: "Donate", symbol: "heart.fill", url: donate, isProminent: true,
-                        sound: .thanks)
-                }
-                if let repository = Branding.repositoryURL {
-                    // "Star" rather than "GitHub": the destination is the same
-                    // and the label may as well say what it is for. Anyone who
-                    // dismissed the ask in Statistics, or never reached it, can
-                    // still find this.
-                    AboutLink(title: "Star on GitHub", symbol: "star", url: repository)
-                }
-                if let issues = Branding.issuesURL {
-                    AboutLink(title: "Report a bug", symbol: "ladybug", url: issues)
-                }
-                if let coffee = Branding.coffeeURL {
-                    AboutLink(title: "Buy me a coffee", symbol: "cup.and.saucer", url: coffee)
-                }
-                Spacer(minLength: 0)
-            }
+            AboutLinks()
 
             Divider()
 

@@ -180,6 +180,7 @@ Quit %@,Menu bar,translated,%@,Quit %@,Quitter %@
 Quit %@?,Menu bar,translated,%@,Quit %@?,Quitter %@ ?
 Quit Belay and open it again to change language.,Settings: General,translated,,Reopen Belay to apply the language change.,Rouvrez Belay pour appliquer le changement de langue.
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Quitter et rouvrir
+Rate on the App Store,Settings: About,translated,,Rate on the App Store,Noter sur l'App Store
 Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Prêt
 Remove,Settings: Providers,translated,,Remove,Retirer
 Remove %@,Settings: Providers,translated,%@,Remove %@,Retirer %@
@@ -231,6 +232,7 @@ Waiting for you,Panel,translated,,Waiting for you,Vous attend
 Watch,"App, Detection, Settings: Providers",translated,,Watch,Surveiller
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre.
+Website,Settings: About,translated,,Website,Site web
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Bienvenue dans Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Quand Belay s'arrête par sécurité
