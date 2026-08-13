@@ -27,7 +27,12 @@ no screenshot.
 **Copyright** `2026 PerfectoWeb`
 **Support URL** `https://perfecto-web.com/belay/support`
 **Marketing URL** `https://perfecto-web.com/belay`
-**Privacy policy URL** `https://perfectoweb.github.io/belay/privacy`
+**Privacy policy URL** `https://perfectoweb.github.io/Belay/privacy/`
+
+The capital B is not optional. GitHub Pages paths are case-sensitive even
+though github.com URLs are not, and the lowercase spelling of this address
+returns 404. It was written lowercase here until the page went up and the
+two were compared.
 
 ---
 

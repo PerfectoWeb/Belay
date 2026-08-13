@@ -486,7 +486,7 @@ has not started.
 
 - [ ] Push the repository to `github.com/perfectoweb/belay` and make it public.
       Every URL below depends on this.
-- [ ] Publish the privacy policy (GitHub Pages preferred) and verify the URL
+- [x] Publish the privacy policy (GitHub Pages preferred) and verify the URL
       loads in a private browser window.
 - [ ] Verify the support URL loads.
 
