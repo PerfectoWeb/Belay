@@ -192,15 +192,45 @@ DMG_STAGE="$(mktemp -d)"
 trap 'rm -rf "$DMG_STAGE"' EXIT
 cp -R "$EXPORT_DIR/Belay.app" "$DMG_STAGE/"
 
-create-dmg \
-    --volname "Belay $VERSION" \
-    --window-size 520 340 \
-    --icon-size 96 \
-    --icon "Belay.app" 130 165 \
-    --app-drop-link 390 165 \
-    --no-internet-enable \
-    "$DMG" \
-    "$DMG_STAGE"
+# The window is 640x420 points. Any background art has to match that exactly,
+# in points, or Finder scales it and the icon positions below stop landing
+# where the picture expects them.
+DMG_ARGS=(
+    --volname "Belay $VERSION"
+    --window-size 640 420
+    --icon-size 96
+    --icon "Belay.app" 170 220
+    --app-drop-link 470 220
+    --no-internet-enable
+)
+
+# The icon of the mounted volume, which is what Finder shows in the sidebar and
+# on the desktop. Without it a disk image gets the generic grey arrow, which is
+# why some installers look unfinished before they have even been opened. The
+# app's own icon is the right one; it is built already, so nothing to draw.
+VOLICON="$EXPORT_DIR/Belay.app/Contents/Resources/AppIcon.icns"
+[ -f "$VOLICON" ] && DMG_ARGS+=(--volicon "$VOLICON")
+
+# Optional, and only used when it exists, so a release never waits on artwork.
+# Make it with scripts/make-dmg-background.sh, which pairs the 1x and 2x
+# exports into the one file Finder needs.
+DMG_BACKGROUND="$ROOT/Promo/dmg-background.tiff"
+if [ -f "$DMG_BACKGROUND" ]; then
+    DMG_ARGS+=(--background "$DMG_BACKGROUND")
+else
+    echo "note: no $DMG_BACKGROUND; packaging on the plain window"
+fi
+
+# create-dmg lays the window out by driving Finder over Apple Events, so it
+# needs Automation permission for whatever is running this script. Denied, it
+# fails late and leaves its read-write staging image behind in dist/, which
+# looks like a build product and is not one.
+if ! create-dmg "${DMG_ARGS[@]}" "$DMG" "$DMG_STAGE"; then
+    rm -f "$DIST"/rw.*.dmg
+    die "create-dmg failed. If it said 'Not authorized to send Apple events to
+Finder', grant Automation permission in System Settings, Privacy & Security,
+Automation, and tick Finder under whichever app is running this script."
+fi
 
 [ -f "$DMG" ] || die "create-dmg exited 0 but produced no $DMG"
 
