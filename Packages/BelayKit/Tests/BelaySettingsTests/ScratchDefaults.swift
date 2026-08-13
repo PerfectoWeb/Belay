@@ -4,14 +4,14 @@ import Testing
 /// A throwaway preferences suite, one per test, removed when the test ends.
 ///
 /// Every test in this target goes through here: a test that wrote into the real
-/// `com.perfecto-web.belay` domain would change the behaviour of the installed
+/// `com.perfectoweb.belay` domain would change the behaviour of the installed
 /// app on the machine running it.
 struct ScratchDefaults {
     let name: String
     let defaults: UserDefaults
 
     init() throws {
-        let name = "com.perfecto-web.belay.tests.\(UUID().uuidString)"
+        let name = "com.perfectoweb.belay.tests.\(UUID().uuidString)"
         self.name = name
         defaults = try #require(UserDefaults(suiteName: name))
     }

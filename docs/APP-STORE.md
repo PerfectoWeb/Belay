@@ -77,7 +77,7 @@ ID build cannot necessarily create a listing.
 
 ### Bundle identifier registration
 
-`com.perfecto-web.belay`, set in [`../project.yml`](../project.yml). It has never
+`com.perfectoweb.belay`, set in [`../project.yml`](../project.yml). It has never
 been registered as an explicit App ID in the Developer portal, and the App
 Sandbox capability has to be enabled on it there before a Mac App Store
 provisioning profile can be issued.
@@ -469,7 +469,7 @@ has not started.
 
 - [ ] Do the App Store name-conflict search for "Belay" (`BLOCKERS.md` B4,
       `docs/NAMING.md`). Before the app record exists, not after.
-- [ ] Decide whether the MAS build shares `com.perfecto-web.belay` or takes a
+- [ ] Decide whether the MAS build shares `com.perfectoweb.belay` or takes a
       distinct identifier, and write the decision down.
 - [ ] Confirm the Apple Developer account role can create app records.
 - [ ] Register the App ID with the App Sandbox capability enabled.

@@ -18,7 +18,7 @@ no screenshot.
 
 ## Fields that are the same in every language
 
-**Bundle ID** `com.perfecto-web.belay`
+**Bundle ID** `com.perfectoweb.belay`
 **SKU** `belay-mac-1`
 **Primary category** Developer Tools
 **Secondary category** Utilities

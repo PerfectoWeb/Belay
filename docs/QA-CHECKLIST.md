@@ -175,6 +175,6 @@ everything except the click. This is the click.
       and it is the half that dies silently if only the panel grant was kept
 
 Evidence, not just a tick: `BelayClaudeFolderBookmark` (660 bytes) is in
-`~/Library/Containers/com.perfecto-web.belay/Data/Library/Preferences/com.perfecto-web.belay.plist`,
+`~/Library/Containers/com.perfectoweb.belay/Data/Library/Preferences/com.perfectoweb.belay.plist`,
 written at the moment the panel was answered. A bookmark inside the container is
 something only the sandboxed build can produce.

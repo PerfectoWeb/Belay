@@ -75,7 +75,7 @@ targetTemplates:
     settings:
       base:
         PRODUCT_NAME: Belay
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfectoweb.belay
         INFOPLIST_KEY_NSHumanReadableCopyright: ""
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         COMBINE_HIDPI_IMAGES: YES
@@ -199,7 +199,7 @@ targets:
       - target: Belay-MAS
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay.sandboxtests
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfectoweb.belay.sandboxtests
         GENERATE_INFOPLIST_FILE: YES
 
   # App-level tests only. The module suites live in the SwiftPM package and run
@@ -214,7 +214,7 @@ targets:
       - target: Belay
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.perfecto-web.belay.tests
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfectoweb.belay.tests
         GENERATE_INFOPLIST_FILE: YES
 
 schemes:

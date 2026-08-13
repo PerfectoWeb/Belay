@@ -8,7 +8,7 @@ import Foundation
 /// survivable, but two minutes of unexplained wakefulness is still a bug.
 public actor TerminationSignalWatch {
     private var sources: [DispatchSourceSignal] = []
-    private let queue = DispatchQueue(label: "com.perfecto-web.belay.signals")
+    private let queue = DispatchQueue(label: "com.perfectoweb.belay.signals")
 
     public init() {}
 

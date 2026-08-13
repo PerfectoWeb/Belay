@@ -37,7 +37,7 @@ FSEvents and the `stat` calls outside any bracket work at all. Both are
 deliberate and the reasoning is in that file's header and in `docs/06`.
 
 **The subsystem string is a literal, not derived from the bundle.**
-`Log.subsystem` is `"com.perfecto-web.belay"`, hardcoded — a module in a SwiftPM
+`Log.subsystem` is `"com.perfectoweb.belay"`, hardcoded — a module in a SwiftPM
 package has no bundle identifier to read, and `Bundle.main` inside a test runner
 is the test runner. It is one of the strings the rename procedure in
 `docs/NAMING.md` has to touch.

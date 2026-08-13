@@ -71,7 +71,7 @@ xcrun notarytool store-credentials belay-appstore \
 
 **One-time human steps in Apple's web interfaces**, which no key can do:
 
-- Register the App ID `com.perfecto-web.belay` in the Developer portal with the
+- Register the App ID `com.perfectoweb.belay` in the Developer portal with the
   App Sandbox capability enabled.
 - Create the app record in App Store Connect: name Belay, primary language,
   bundle ID, SKU `belay-mac-1`.

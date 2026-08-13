@@ -32,7 +32,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
     let clock: any Clock
     private let continuation: AsyncStream<ActivitySignal>.Continuation
     let queue = DispatchQueue(
-        label: "com.perfecto-web.belay.providers.claude-code", qos: .utility)
+        label: "com.perfectoweb.belay.providers.claude-code", qos: .utility)
 
     var watched: [SessionID: TranscriptWatch] = [:]
     private var events: FileEventStream?

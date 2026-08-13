@@ -121,7 +121,7 @@ final class UsageStatisticsTests: XCTestCase {
 @MainActor
 final class UsageResetTests: XCTestCase {
     func testResetClearsEverythingIncludingTheRunInProgress() {
-        let suite = "com.perfecto-web.belay.tests.\(UUID().uuidString)"
+        let suite = "com.perfectoweb.belay.tests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: suite)!
         // `defaults.description` is not the domain name, so this emptied nothing
         // and left a suite behind on every run.

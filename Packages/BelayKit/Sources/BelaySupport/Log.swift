@@ -7,7 +7,7 @@ import OSLog
 /// paths or session identifiers at the default level — session IDs go through
 /// `%{private}@`. See docs/02 and SECURITY.md.
 public enum Log {
-    public static let subsystem = "com.perfecto-web.belay"
+    public static let subsystem = "com.perfectoweb.belay"
 
     public static let app = Logger(subsystem: subsystem, category: "app")
     public static let core = Logger(subsystem: subsystem, category: "core")

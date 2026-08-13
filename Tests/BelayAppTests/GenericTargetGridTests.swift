@@ -204,7 +204,7 @@ final class PresetDuplicationTests: XCTestCase {
     /// A sheet needs a window. Without one the picker would have to fall back to
     /// a free-floating panel, which is the behaviour being replaced.
     func testTheSheetHasTheSettingsWindowToHangOff() throws {
-        let suite = "com.perfecto-web.belay.tests.\(UUID().uuidString)"
+        let suite = "com.perfectoweb.belay.tests.\(UUID().uuidString)"
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
         defer { defaults.removePersistentDomain(forName: suite) }
         let settings = SettingsWindow(

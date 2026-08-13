@@ -30,7 +30,7 @@ public actor PowerSourceMonitor {
     public static let minimumInterval: TimeInterval = 15
 
     let interval: TimeInterval
-    private let queue = DispatchQueue(label: "com.perfecto-web.belay.powersource", qos: .utility)
+    private let queue = DispatchQueue(label: "com.perfectoweb.belay.powersource", qos: .utility)
     private var timer: DispatchSourceTimer?
     private var subscribers = ContinuationRegistry<PowerSourceSnapshot>()
 

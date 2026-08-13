@@ -28,7 +28,7 @@ public actor HookReceiver {
     private let store: BridgeEndpointStore
     private let clock: any Clock
     private let continuation: AsyncStream<ActivitySignal>.Continuation
-    private let queue = DispatchQueue(label: "com.perfecto-web.belay.bridge", qos: .utility)
+    private let queue = DispatchQueue(label: "com.perfectoweb.belay.bridge", qos: .utility)
 
     private var listener: NWListener?
     private var connections: [ObjectIdentifier: NWConnection] = [:]

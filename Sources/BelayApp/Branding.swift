@@ -4,11 +4,11 @@ import Foundation
 /// procedure in docs/NAMING.md stays a two-file change.
 enum Branding {
     static let appName = "Belay"
-    static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "com.perfecto-web.belay"
+    static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "com.perfectoweb.belay"
 
-    /// The GitHub account, spelled once. Note it is **not** the bundle-id prefix:
-    /// that is `perfecto-web`, the account is `perfectoweb`, and writing the URLs
-    /// out by hand three times is how one of them ends up pointing at a 404.
+    /// The GitHub account, spelled once, because writing these URLs out by hand
+    /// three times is how one of them ends up pointing at a 404. The bundle id
+    /// now shares this spelling; the web domain does not, and is hyphenated.
     static let repositorySlug = "perfectoweb/belay"
 
     static let repositoryURL = URL(string: "https://github.com/\(repositorySlug)")

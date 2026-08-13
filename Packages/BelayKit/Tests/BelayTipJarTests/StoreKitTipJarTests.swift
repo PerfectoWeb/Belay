@@ -29,6 +29,6 @@ import Testing
 
     @Test func productIdentifiersAreDistinctAndBundleScoped() {
         #expect(TipProducts.identifiers.count == Set(TipProducts.identifiers).count)
-        #expect(TipProducts.identifiers.allSatisfy { $0.hasPrefix("com.perfecto-web.belay.tip.") })
+        #expect(TipProducts.identifiers.allSatisfy { $0.hasPrefix("com.perfectoweb.belay.tip.") })
     }
 }

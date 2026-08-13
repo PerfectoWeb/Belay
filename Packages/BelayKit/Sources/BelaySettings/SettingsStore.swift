@@ -15,7 +15,7 @@ import Observation
 @Observable
 public final class SettingsStore {
     /// The app's preferences domain.
-    public static let suiteName = "com.perfecto-web.belay"
+    public static let suiteName = "com.perfectoweb.belay"
 
     /// What init found on disk. The only evidence a migration ran.
     public let migration: SettingsMigrationOutcome

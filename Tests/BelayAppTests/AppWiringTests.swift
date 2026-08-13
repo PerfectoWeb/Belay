@@ -18,7 +18,7 @@ final class AppWiringTests: XCTestCase {
     private var suiteName = ""
 
     override func setUp() async throws {
-        suiteName = "com.perfecto-web.belay.tests.\(UUID().uuidString)"
+        suiteName = "com.perfectoweb.belay.tests.\(UUID().uuidString)"
         defaults = UserDefaults(suiteName: suiteName)
     }
 

@@ -299,7 +299,7 @@ between two tool calls, which is exactly the churn `docs/08`'s flapping test
 forbids. With this split, 50 working/idle flaps in 10 s produce exactly one hold
 and one release.
 
-### D7 — Bundle identifier `com.perfecto-web.belay`
+### D7 — Bundle identifier `com.perfectoweb.belay`
 Derived from the user's domain. Defined once in `project.yml`
 (`ORG_IDENTIFIER`) and `Sources/BelayApp/Branding.swift`, per `docs/NAMING.md`.
 The App Store name-conflict search is still outstanding — due before M6.

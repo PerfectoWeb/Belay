@@ -16,7 +16,7 @@ struct GenericTargetStore {
     private let key = "genericTargets"
     private let defaults: UserDefaults
 
-    init(defaults: UserDefaults = UserDefaults(suiteName: "com.perfecto-web.belay") ?? .standard) {
+    init(defaults: UserDefaults = UserDefaults(suiteName: "com.perfectoweb.belay") ?? .standard) {
         self.defaults = defaults
     }
 

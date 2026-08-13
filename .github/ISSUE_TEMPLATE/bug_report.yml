@@ -134,7 +134,7 @@ body:
         contain paths or prompts.
       value: |
         ```
-        $ log show --predicate 'subsystem == "com.perfecto-web.belay"' --last 1h --info
+        $ log show --predicate 'subsystem == "com.perfectoweb.belay"' --last 1h --info
 
         ```
       render: text

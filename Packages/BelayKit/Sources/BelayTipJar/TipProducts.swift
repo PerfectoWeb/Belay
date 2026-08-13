@@ -11,9 +11,9 @@ import Foundation
 /// ever built — asking StoreKit for products that do not exist succeeds and
 /// returns nothing, which would show the user an empty tip sheet.
 public enum TipProducts {
-    public static let small = "com.perfecto-web.belay.tip.small"
-    public static let medium = "com.perfecto-web.belay.tip.medium"
-    public static let large = "com.perfecto-web.belay.tip.large"
+    public static let small = "com.perfectoweb.belay.tip.small"
+    public static let medium = "com.perfectoweb.belay.tip.medium"
+    public static let large = "com.perfectoweb.belay.tip.large"
 
     public static let identifiers = [small, medium, large]
 

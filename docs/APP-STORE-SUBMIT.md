@@ -29,7 +29,7 @@ open Belay.xcodeproj
 
 Scheme: **Belay-MAS**. Destination: **My Mac**. Then Product, Archive.
 
-The first archive is where Xcode registers the App ID `com.perfecto-web.belay`,
+The first archive is where Xcode registers the App ID `com.perfectoweb.belay`,
 issues an Apple Distribution certificate and creates the provisioning profile.
 If it asks to do any of that, say yes.
 
@@ -45,7 +45,7 @@ against it, replacing the path with the archive you just made:
 codesign -dv --verbose=2 ~/Library/Developer/Xcode/Archives/*/Belay-MAS*.xcarchive/Products/Applications/Belay.app
 ```
 
-Two lines matter. `Identifier=com.perfecto-web.belay`, not `Identifier=Belay`,
+Two lines matter. `Identifier=com.perfectoweb.belay`, not `Identifier=Belay`,
 and `TeamIdentifier=VSY2EB4Y9E`, not `not set`. If you see `Signature=adhoc`
 the app was not signed at all, and nothing downstream will tell you so.
 
@@ -70,7 +70,7 @@ briefly configured with an empty signing identity. Xcode reported nothing.
 | Platform | macOS |
 | Name | `Belay - Awake for AI Agents` (or the alternative in APP-STORE-LISTING.md) |
 | Primary language | English (U.S.) |
-| Bundle ID | `com.perfecto-web.belay`, in the list once step 2 has run |
+| Bundle ID | `com.perfectoweb.belay`, in the list once step 2 has run |
 | SKU | `belay-mac-1` |
 | Access | Full Access |
 

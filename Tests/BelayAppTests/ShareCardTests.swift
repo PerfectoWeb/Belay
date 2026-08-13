@@ -80,7 +80,7 @@ final class ShareCardTests: XCTestCase {
     /// An injected pasteboard, because a test has no business clearing the
     /// user's clipboard.
     func testCopyPutsBothTheCardAndTheWordsOnOnePasteboard() throws {
-        let pasteboard = NSPasteboard(name: NSPasteboard.Name("com.perfecto-web.belay.tests.card"))
+        let pasteboard = NSPasteboard(name: NSPasteboard.Name("com.perfectoweb.belay.tests.card"))
         defer { pasteboard.releaseGlobally() }
 
         XCTAssertTrue(ShareStatistics.copy(fortnight(), to: pasteboard))

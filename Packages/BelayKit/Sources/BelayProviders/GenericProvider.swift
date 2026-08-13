@@ -39,7 +39,7 @@ public actor GenericProvider: ActivityProvider {
     let clock: any Clock
     let roster: @Sendable () -> Set<String>?
     private let continuation: AsyncStream<ActivitySignal>.Continuation
-    let queue = DispatchQueue(label: "com.perfecto-web.belay.providers.generic", qos: .utility)
+    let queue = DispatchQueue(label: "com.perfectoweb.belay.providers.generic", qos: .utility)
 
     var targets: [GenericTarget]
     var watches: [SessionID: GenericWatch] = [:]

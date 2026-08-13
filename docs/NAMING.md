@@ -46,12 +46,12 @@ outlines, by the same script.
 ## Identifiers
 
 ```
-Bundle ID (direct)  com.perfecto-web.belay
-Bundle ID (MAS)     com.perfecto-web.belay      # same; different provisioning
-Helper              com.perfecto-web.belay.hook
-App group           <TEAMID>.com.perfecto-web.belay
-Log subsystem       com.perfecto-web.belay
-Defaults suite      com.perfecto-web.belay
+Bundle ID (direct)  com.perfectoweb.belay      # no hyphen: matches com.perfectoweb.f64
+Bundle ID (MAS)     com.perfectoweb.belay      # same; different provisioning
+Helper              com.perfectoweb.belay.hook
+App group           <TEAMID>.com.perfectoweb.belay
+Log subsystem       com.perfectoweb.belay
+Defaults suite      com.perfectoweb.belay
 ```
 
 `ORG_IDENTIFIER` and `PRODUCT_NAME` live in `project.yml` and everything else
