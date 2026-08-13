@@ -12,6 +12,58 @@ real sandbox, which no machine here can perform.
 
 ---
 
+## What is still needed from the account holder, exactly
+
+Notarization is done and needed nothing. Everything below is for the two things
+that are still not automated: a public release, and an App Store submission.
+
+**One App Store Connect API key covers almost all of it.** App Store Connect,
+Users and Access, Integrations, App Store Connect API, generate a key with the
+**App Manager** role. The `.p8` downloads once and cannot be downloaded again.
+Three things come with it: the key file, a **Key ID** and an **Issuer ID**.
+
+Do not paste the `.p8` anywhere. Locally, one command puts it in the keychain
+and nothing else ever needs to see it:
+
+```
+xcrun notarytool store-credentials belay-appstore \
+    --key ~/Downloads/AuthKey_XXXXXXXXXX.p8 --key-id XXXXXXXXXX --issuer YYYYYYYY-...
+```
+
+**For GitHub Actions**, these repository secrets:
+
+| Secret | Where it comes from |
+|---|---|
+| `DEVELOPER_ID_P12_BASE64` | Keychain Access, export "Developer ID Application: David Petrosyan" *with its private key* as .p12, then `base64 -i cert.p12 \| pbcopy` |
+| `DEVELOPER_ID_P12_PASSWORD` | whatever password was set on that export |
+| `ASC_KEY_ID`, `ASC_ISSUER_ID` | from the API key above |
+| `ASC_PRIVATE_KEY` | the contents of the `.p8`, whole file including the BEGIN and END lines |
+
+`VSY2EB4Y9E` is the team ID and is not a secret; it is already in `project.yml`.
+
+**One-time human steps in Apple's web interfaces**, which no key can do:
+
+- Register the App ID `com.perfecto-web.belay` in the Developer portal with the
+  App Sandbox capability enabled.
+- Create the app record in App Store Connect: name Belay, primary language,
+  bundle ID, SKU `belay-mac-1`.
+- Add the Mac App Distribution and Mac Installer Distribution certificates to
+  this Mac, which the App Store build needs and the Developer ID one does not.
+
+**For updates on the direct channel** (B3), a Sparkle EdDSA key pair. Sparkle's
+`generate_keys` puts the private half in the login keychain and prints the
+public half, which goes in `Info.plist`. Nothing about it is per-release.
+
+**One thing to install here:** `create-dmg`, which `release.sh` requires and
+refuses to start without. `brew install create-dmg`.
+
+With the key in the keychain and `create-dmg` present, the whole chain runs
+from this machine: build, sign, notarize, staple, DMG, GitHub release, and
+upload to App Store Connect. Publishing steps stay behind an explicit
+instruction each time, because a release and an App Store submission are not
+things to do because a script was ready.
+
+
 ## B6 is closed: Belay is notarized
 
 Run on 2026-08-13, submission `ad2ec9b8-bfbb-44d7-9675-7b18ededa008`, verdict
