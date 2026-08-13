@@ -324,6 +324,18 @@ worked"), which is precisely the register a non-native translation flattens or
 gets wrong. Nothing here is machine-translated, but one careful pass by one
 person is not review.
 
+One thing this did catch, on 2026-08-13, from someone switching the app between
+languages and looking: the three mode names in the panel picker are the strings
+a long translation breaks first, because all three sit side by side in one 330pt
+panel. Measured against the tab they have to fit in, Spanish was four points
+over and was being truncated on Spanish Macs and nowhere else. Italian and
+French were inside it by less than two points. They are shortened now, and
+`testEveryModeNameFitsItsTab` measures every language against the same numbers
+the view lays out with, so the next translation cannot quietly overflow.
+
+Note what that says about the rest: nothing in the build, the tests or CI knew.
+It took a person changing the language and looking at the result.
+
 **Needs:** a native speaker per language, reading the app rather than the
 catalogue. Highest value on the strings a new user meets first — the onboarding
 pane, the panel status line, and the About tagline.

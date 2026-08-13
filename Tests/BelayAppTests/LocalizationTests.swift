@@ -115,6 +115,29 @@ final class LocalizationTests: XCTestCase {
         XCTAssertEqual(measured, statuses.count * languages.count, "some sentences were skipped")
     }
 
+    /// The three mode names sit side by side in one 330pt panel, so they are
+    /// the strings a long translation breaks first. Spanish shipped four points
+    /// over the tab it had to fit in, and nothing anywhere said so: the label
+    /// simply truncated on a Spanish Mac and on no one else's.
+    func testEveryModeNameFitsItsTab() throws {
+        let keys = ["Auto", "Always on", "Off"]
+        var measured = 0
+        for code in languages {
+            let table = try self.table(code)
+            for key in keys {
+                let name = try XCTUnwrap(table[key], "\(code) has no \"\(key)\"")
+                let width = (name as NSString).size(
+                    withAttributes: [.font: PanelModePicker.titleFont]
+                ).width
+                XCTAssertLessThanOrEqual(
+                    width, PanelModePicker.labelWidth,
+                    "\(code): \"\(name)\" is clipped in the mode picker")
+                measured += 1
+            }
+        }
+        XCTAssertEqual(measured, keys.count * languages.count, "some mode names were skipped")
+    }
+
     private static func specifiers(in text: String) -> [String] {
         let pattern = try? NSRegularExpression(pattern: "%(?:\\d+\\$)?(?:lld|ld|[@dfsu%])")
         let range = NSRange(text.startIndex..., in: text)

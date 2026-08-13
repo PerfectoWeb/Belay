@@ -27,6 +27,20 @@ struct PanelModePicker: View {
 
     private static let corner: CGFloat = 7
 
+    /// What one tab has to draw a label in, and the font it draws with. Held
+    /// here rather than inline so a test can measure every translation against
+    /// the same numbers the view lays out with: Spanish already overflowed this
+    /// by four points, and nothing in the build said so.
+    static let symbolSize: CGFloat = 10
+    static let titleFont = NSFont.systemFont(ofSize: 11, weight: .semibold)
+    static let labelWidth: CGFloat = {
+        // The picker's own 2pt padding, then 2pt between each pair of tabs,
+        // then each tab's horizontal padding, its glyph and the gap after it.
+        let track = PanelView.width - 4
+        let tab = (track - 4) / 3
+        return tab - 16 - symbolSize - 4
+    }()
+
     var body: some View {
         HStack(spacing: 2) {
             ForEach(AwakeMode.allCases, id: \.self) { mode in

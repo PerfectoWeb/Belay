@@ -1947,19 +1947,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Siempre activo"
+            "value": "Siempre"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toujours actif"
+            "value": "Toujours"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sempre attivo"
+            "value": "Sempre"
           }
         },
         "ru": {
@@ -2181,7 +2181,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Automatisch"
+            "value": "Automatik"
           }
         },
         "en": {
@@ -2193,7 +2193,7 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Automático"
+            "value": "Auto"
           }
         },
         "fr": {
@@ -2205,7 +2205,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Automatico"
+            "value": "Auto"
           }
         },
         "ru": {
@@ -6457,19 +6457,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Desactivado"
+            "value": "Apagado"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Désactivé"
+            "value": "Arrêt"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Disattivato"
+            "value": "Spento"
           }
         },
         "ru": {
