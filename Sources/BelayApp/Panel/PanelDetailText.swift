@@ -44,23 +44,36 @@ struct PanelDetailText: View {
     private var overflow: CGFloat { max(textWidth - boxWidth, 0) }
 
     var body: some View {
-        Text(text)
-            .font(.system(size: 11))
-            .foregroundStyle(contrast == .increased ? .primary : .secondary)
-            .lineLimit(1)
-            .truncationMode(.tail)
-            // Only while walking. Fixed the rest of the time, the sentence would
-            // overflow its box instead of gaining an ellipsis.
-            .fixedSize(horizontal: isExpanded, vertical: false)
-            .offset(x: offset)
+        // The sentence lives in an overlay, and that is the whole trick. An
+        // overlay is handed its host's size and can never push back, so a
+        // sentence drawn at full natural width has no way to widen the panel.
+        // Laid out inline instead, `fixedSize` proposes that natural width all
+        // the way up the tree, and the panel grew every time the pointer
+        // arrived: the ellipsis was fixed and the panel started flinching.
+        Color.clear
             .frame(height: Self.lineHeight)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .leading) { sentence }
             .clipped()
             .background { measureBox }
             .background(alignment: .leading) { measureText }
             .contentShape(.rect)
             .onHover(perform: walk)
             .help(overflow > 0 ? Text(verbatim: text) : Text(verbatim: ""))
+    }
+
+    private var sentence: some View {
+        Text(text)
+            .font(.system(size: 11))
+            .foregroundStyle(contrast == .increased ? .primary : .secondary)
+            .lineLimit(1)
+            .truncationMode(.tail)
+            // Pinned to the measured box while it is still, which is what puts
+            // the ellipsis there; at its own width while walking, which is what
+            // there is to read.
+            .fixedSize(horizontal: isExpanded, vertical: false)
+            .frame(width: isExpanded || boxWidth == 0 ? nil : boxWidth, alignment: .leading)
+            .offset(x: offset)
     }
 
     private var measureBox: some View {
