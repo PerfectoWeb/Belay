@@ -44,7 +44,12 @@ two were compared.
 ## English
 
 **Name** (30)
-`Belay - Awake for AI Agents` — 27
+`Belay - Keep Mac Awake` — 22
+
+**Chosen on 2026-08-13.** The two lines finish each other's sentence, which is
+worth more than the keyword arithmetic that favoured the alternative below.
+"AI" is bought back out of the keyword budget, where it costs three characters
+and ranks the same: Apple pools the name, the subtitle and the keywords.
 
 Plain `Belay` is taken on the Mac App Store, by an SSH client and by an
 assistant, so the name carries a description the way theirs do. "Mac" is left
@@ -53,18 +58,18 @@ in a search that is already restricted to Macs. What it buys instead is room
 for "AI", which is what people are typing this year.
 
 **Subtitle** (30)
-`Your Mac sleeps when they do` — 28
+`While your coding agents work` — 29
 
 Changed when "AI Agents" moved into the name. Apple searches the name, the
 subtitle and the keywords as one pool, so a word in two of them is a word
 wasted: the old subtitle repeated "awake" and "agents", and this one spends
 those characters on "Mac" and "sleeps" instead.
 
-### The other candidate, still open
+### The candidate that was not chosen
 
 ```
-Name      Belay - Keep Mac Awake          22
-Subtitle  While your coding agents work    29
+Name      Belay - Awake for AI Agents     27
+Subtitle  Your Mac sleeps when they do    28
 ```
 
 It reads better than the one above, and the two lines finish each other's
@@ -87,7 +92,10 @@ whose shop it is should make it.
 actually working. When the run ends, your Mac sleeps the way it always did.` — 150
 
 **Keywords** (100, comma separated, no spaces)
-`claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer,power` — 93
+`ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer` — 90
+
+`ai` is here rather than in the name, which is the trade the chosen name makes.
+`power` came out to pay for it: it is the vaguest term on the list.
 
 `agent` and `awake` came out for the same reason: both are in the name now,
 and repeating a term in the keyword field does not rank it twice. The freed
