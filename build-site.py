@@ -147,13 +147,10 @@ def landing(code):
         '<ul class="badges">',
         '    <li><span class="apple" aria-hidden="true">&#63743;</span>macOS 14+</li>',
         '    <li class="outline"><svg class="chip-glyph" viewBox="0 0 20 20" aria-hidden="true">'
-        '<rect x="5.2" y="5.2" width="9.6" height="9.6" rx="1.6" fill="none" stroke="currentColor" '
-        'stroke-width="1.3"/>'
-        '<path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M8 5.2V3M12 5.2V3'
-        'M8 17v-2.2M12 17v-2.2M5.2 8H3M5.2 12H3M17 8h-2.2M17 12h-2.2"/>'
-        '<text x="10" y="12.7" text-anchor="middle" font-size="6.4" font-weight="700" '
-        'fill="currentColor" font-family="-apple-system, system-ui, sans-serif">M</text>'
-        "</svg>Apple silicon</li>',
+        '<rect x="5.2" y="5.2" width="9.6" height="9.6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/>'
+        '<path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M8 5.2V3M12 5.2V3M8 17v-2.2M12 17v-2.2M5.2 8H3M5.2 12H3M17 8h-2.2M17 12h-2.2"/>'
+        '<text x="10" y="12.6" text-anchor="middle" font-size="6.4" font-weight="700" fill="currentColor">M</text>'
+        '</svg>Apple silicon</li>',
         '    <li class="outline"><svg class="chip-glyph" viewBox="0 0 16 16" aria-hidden="true">'
         '<circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/>'
         '<path fill="currentColor" d="M5.6 5.9h1.5v4.2H5.6zM8.4 5.9h1.1v.7a1.4 1.4 0 0 1 1.2-.8c.9 0 1.4.6'
