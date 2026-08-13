@@ -36,6 +36,31 @@ If it asks to do any of that, say yes.
 Watch for one thing: the scheme must be `Belay-MAS` and not `Belay`. The direct
 build has no sandbox and would be rejected on upload.
 
+### Check the archive before you go any further
+
+An archive can look perfectly normal in the Organizer and be useless. Run this
+against it, replacing the path with the archive you just made:
+
+```
+codesign -dv --verbose=2 ~/Library/Developer/Xcode/Archives/*/Belay-MAS*.xcarchive/Products/Applications/Belay.app
+```
+
+Two lines matter. `Identifier=com.perfecto-web.belay`, not `Identifier=Belay`,
+and `TeamIdentifier=VSY2EB4Y9E`, not `not set`. If you see `Signature=adhoc`
+the app was not signed at all, and nothing downstream will tell you so.
+
+Then check the sandbox is really in there:
+
+```
+codesign -d --entitlements :- ~/Library/Developer/Xcode/Archives/*/Belay-MAS*.xcarchive/Products/Applications/Belay.app | grep app-sandbox
+```
+
+One line of output is right. Silence means the archive is the wrong build, and
+uploading it wastes a review cycle.
+
+The first archive made on this Mac failed both checks, because the target was
+briefly configured with an empty signing identity. Xcode reported nothing.
+
 ## Step 3. Create the app record
 
 <https://appstoreconnect.apple.com>, Apps, "+", New App.
