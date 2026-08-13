@@ -44,3 +44,15 @@ dist/
 *.provisionprofile
 .env
 **/AuthKey_*.p8
+
+# Promotional material
+#
+# The covers are committed: they are a few megabytes of final artwork and it is
+# useful to know which version of them shipped with which release.
+#
+# The footage is not, and must not be. ProRes does not delta-compress, so every
+# re-export adds its whole size to the repository for ever, and git has no way
+# to forget it afterwards. 226 MB of it as of the first release. Video belongs
+# on a release asset or outside the repository.
+Promo/video-footage/
+.DS_Store
