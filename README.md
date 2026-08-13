@@ -98,6 +98,27 @@ right-click.
 On first launch you get one screen explaining what Belay reads. Then it lives in
 the menu bar: left-click for the panel, right-click for a compact menu.
 
+## Helping out
+
+Belay is free and always will be. The most useful things, in order:
+
+**A star.** It costs nothing and it is how other people find this.
+
+**A bug report.** Especially one with the macOS version and what agent you were
+running. `docs/QA-CHECKLIST.md` lists what has and has not been exercised on a
+real machine, and macOS 14 and 15 are on the second list.
+
+**A translation read by someone who speaks it.** Six languages ship and only
+English and Russian have been read properly by a person. The files are in
+`Localization/`, one CSV per language, and `CONTRIBUTING.md` explains the round
+trip.
+
+**Money, last.** There is a Donate link in the app and on the site, and it is
+deliberately the least interesting item here.
+
+The code is MIT: fork it, rename it, sell it. The name and the mark are not,
+and `TRADEMARKS.md` says exactly what that does and does not stop you doing.
+
 ## Modes
 
 | Mode | What it does |

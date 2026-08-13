@@ -1,6 +1,8 @@
 # Notices
 
-Belay itself is MIT licensed — see `LICENSE`.
+Belay itself is MIT licensed, see `LICENSE`. The name "Belay" and the Belay
+marks are not part of that licence, see `TRADEMARKS.md`: the code is yours to
+take, the name is not yours to ship.
 
 ## Third-party trademarks and logos
 
