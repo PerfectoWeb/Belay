@@ -297,3 +297,27 @@ footer .row p { margin: 0; }
     font-size: 17px;
     line-height: 1;
 }
+
+/* Both of these are read after the decision, not before it. */
+.version, .stamp { font-size: 13px; }
+
+/* The lockup was sized for a footer and this is a masthead. */
+header .mark { height: 42px; }
+
+.button .glyph {
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+    vertical-align: -2px;
+}
+
+/* A drawn chevron: the character that was here renders as a different glyph,
+   or none, depending on the font the reader happens to have. */
+.languages summary::after { content: none; }
+
+.chevron {
+    width: 10px;
+    height: 7px;
+    margin-left: 5px;
+    opacity: 0.7;
+}
