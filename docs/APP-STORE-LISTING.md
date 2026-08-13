@@ -20,12 +20,13 @@ no screenshot.
 
 **Bundle ID** `com.perfectoweb.belay`
 **SKU** `belay-mac-1`
+**Apple ID** `6801207644`, issued when the record was created
 **Primary category** Developer Tools
 **Secondary category** Utilities
 **Age rating** 4+
 **Price** Free
 **Copyright** `2026 PerfectoWeb`
-**Support URL** `https://github.com/PerfectoWeb/Belay/issues`
+**Support URL** `https://perfecto-web.com/en/contacts/`
 **Marketing URL** `https://perfectoweb.github.io/Belay/`
 
 Both were `perfecto-web.com/belay` addresses and both returned 404 on the day

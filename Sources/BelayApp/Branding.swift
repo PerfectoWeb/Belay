@@ -23,10 +23,10 @@ enum Branding {
     static let homepageURL = URL(string: "https://perfecto-web.com/")
     static let supportURL = repositoryURL
 
-    /// The numeric Apple ID of the Mac App Store listing, once there is one.
-    /// Until then the button opens the App Store's Updates page, which is the
-    /// right place either way and needs no identifier.
-    static let appStoreID: String? = nil
+    /// The numeric Apple ID of the Mac App Store listing. Not the bundle id and
+    /// not guessable from it: App Store Connect issues it when the record is
+    /// created, and it is on the App Information page.
+    static let appStoreID: String? = "6801207644"
 
     /// Opening this asks the App Store app to do the work. It is a hand-off,
     /// not a request: the App Store build has no outbound network entitlement
