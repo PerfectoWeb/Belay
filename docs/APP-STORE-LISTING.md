@@ -39,17 +39,32 @@ two were compared.
 ## English
 
 **Name** (30)
-`Belay`
+`Belay - Awake for AI Agents` — 27
+
+Plain `Belay` is taken on the Mac App Store, by an SSH client and by an
+assistant, so the name carries a description the way theirs do. "Mac" is left
+out on purpose: every app in this store is a Mac app, and the word buys nothing
+in a search that is already restricted to Macs. What it buys instead is room
+for "AI", which is what people are typing this year.
 
 **Subtitle** (30)
-`Stay awake while agents work` — 28
+`Your Mac sleeps when they do` — 28
+
+Changed when "AI Agents" moved into the name. Apple searches the name, the
+subtitle and the keywords as one pool, so a word in two of them is a word
+wasted: the old subtitle repeated "awake" and "agents", and this one spends
+those characters on "Mac" and "sleeps" instead.
 
 **Promotional text** (170)
 `Belay watches your local coding agent and holds sleep off only while it is
 actually working. When the run ends, your Mac sleeps the way it always did.` — 150
 
 **Keywords** (100, comma separated, no spaces)
-`claude,codex,gemini,cline,agent,awake,sleep,caffeine,insomnia,menubar,coding,developer,power` — 92
+`claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer,power` — 93
+
+`agent` and `awake` came out for the same reason: both are in the name now,
+and repeating a term in the keyword field does not rank it twice. The freed
+characters went to `cli` and `terminal`.
 
 **Description** (4000)
 
