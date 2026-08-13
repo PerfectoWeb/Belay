@@ -109,7 +109,12 @@ targetTemplates:
         CFBundlePackageType: APPL
         LSUIElement: true
         LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
-        NSHumanReadableCopyright: "MIT licensed. No data leaves your Mac."
+        # Finder shows this in Get Info, so it is read by people and should be
+        # a copyright line. It used to carry "No data leaves your Mac", which is
+        # true of the App Store build and not of the direct one, where a daily
+        # update check does leave. One string cannot make a claim that depends
+        # on which channel it is compiled into, so it makes none.
+        NSHumanReadableCopyright: "© 2026 PerfectoWeb. MIT licensed."
         ITSAppUsesNonExemptEncryption: false
         NSSupportsAutomaticTermination: false
         NSSupportsSuddenTermination: false
