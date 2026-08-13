@@ -76,7 +76,7 @@ Xcode 16 or later, plus `xcodegen`, `swiftlint` and `swift-format` from Homebrew
 
 ## Install
 
-**[Download Belay 1.0.0](https://github.com/PerfectoWeb/Belay/releases/latest)**
+**[Download Belay](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)**
 — macOS 14 or later, Apple silicon and Intel. Open the disk image and drag Belay
 to Applications.
 

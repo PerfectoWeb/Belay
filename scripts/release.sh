@@ -274,6 +274,13 @@ fi
 
 "$SCRIPT_DIR/notarize.sh" "$DMG"
 
+# A second copy under a name that never changes. The versioned name is what
+# people should keep on disk, but a download button on a web page cannot know
+# next release's version, and /releases/latest/download/Belay.dmg can.
+cp "$DMG" "$DIST/Belay.dmg"
+
 echo
 echo "released: $DMG"
+echo "          $DIST/Belay.dmg — upload this one too, it is what the site links to:"
+echo "          gh release upload <tag> $DIST/Belay.dmg --clobber"
 echo "next:     scripts/sign-update.sh to add it to the appcast"
