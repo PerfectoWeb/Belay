@@ -192,7 +192,28 @@ def landing(code):
     lines += [
         "    </div>",
         f'    <p class="fine">{T[code]["fine"]}</p>',
-        "</footer>", "", "</div>", "</body>", "</html>", "",
+        '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
+        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.</p>',
+        "</footer>",
+        "",
+        "<script>",
+        "  // Closes the language picker when the click lands anywhere else.",
+        "  // CSS cannot see a click outside an element, and the alternative was",
+        "  // a hidden checkbox with a full-screen label over the page, which is",
+        "  // more machinery in the markup than this is in script. Without it the",
+        "  // picker still opens, still closes on its own summary, and every link",
+        "  // in it works.",
+        "  document.addEventListener('click', function (event) {",
+        "    document.querySelectorAll('details.languages[open]').forEach(function (picker) {",
+        "      if (!picker.contains(event.target)) { picker.open = false; }",
+        "    });",
+        "  });",
+        "</script>",
+        "",
+        "</div>",
+        "</body>",
+        "</html>",
+        "",
     ]
     return "\n".join(lines)
 
@@ -239,7 +260,26 @@ def privacy(code):
     lines += [
         "    </div>",
         f'    <p class="fine">{t["fine"]}</p>',
-        "</footer>", "", "</div>", "</body>", "</html>", "",
+        "</footer>",
+        "",
+        "<script>",
+        "  // Closes the language picker when the click lands anywhere else.",
+        "  // CSS cannot see a click outside an element, and the alternative was",
+        "  // a hidden checkbox with a full-screen label over the page, which is",
+        "  // more machinery in the markup than this is in script. Without it the",
+        "  // picker still opens, still closes on its own summary, and every link",
+        "  // in it works.",
+        "  document.addEventListener('click', function (event) {",
+        "    document.querySelectorAll('details.languages[open]').forEach(function (picker) {",
+        "      if (!picker.contains(event.target)) { picker.open = false; }",
+        "    });",
+        "  });",
+        "</script>",
+        "",
+        "</div>",
+        "</body>",
+        "</html>",
+        "",
     ]
     return "\n".join(lines)
 

@@ -86,6 +86,20 @@
     <p class="fine">Claude Code, Codex CLI, Gemini CLI et Cline sont l'œuvre d'autres personnes. Belay fonctionne à leurs côtés et n'est ni affilié ni approuvé par aucun d'eux.</p>
 </footer>
 
+<script>
+  // Closes the language picker when the click lands anywhere else.
+  // CSS cannot see a click outside an element, and the alternative was
+  // a hidden checkbox with a full-screen label over the page, which is
+  // more machinery in the markup than this is in script. Without it the
+  // picker still opens, still closes on its own summary, and every link
+  // in it works.
+  document.addEventListener('click', function (event) {
+    document.querySelectorAll('details.languages[open]').forEach(function (picker) {
+      if (!picker.contains(event.target)) { picker.open = false; }
+    });
+  });
+</script>
+
 </div>
 </body>
 </html>

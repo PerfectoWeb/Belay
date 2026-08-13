@@ -321,3 +321,28 @@ header .mark { height: 42px; }
     margin-left: 5px;
     opacity: 0.7;
 }
+
+/* Hover states. Everything that can be clicked says so on the way in, and
+   says it over 150ms rather than instantly, because an instant change reads
+   as a glitch and a slow one reads as lag. */
+.button {
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        filter 0.15s ease-in-out;
+}
+
+.button:hover { filter: brightness(1.12); }
+.button.secondary:hover { border-color: rgba(255, 255, 255, 0.85); filter: none; }
+
+footer a { transition: color 0.15s ease-in-out; }
+footer .row a:hover { text-decoration: underline; }
+
+/* The chevron turns over when the picker is open, so the control says which
+   way it is going rather than only what it is. */
+.chevron { transition: transform 0.18s ease-in-out; }
+.languages[open] .chevron { transform: rotate(180deg); }
+
+/* Air above "Helping out" to match what is below it. */
+.actions + h2, .stamp + h2 { margin-top: 56px; }
+
+.copyright { margin-top: 10px; opacity: 0.75; }
+.copyright a { color: inherit; text-decoration: underline; }
