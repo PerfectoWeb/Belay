@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// The two moving pieces of the About pane, kept together and kept cheap.
+/// The moving piece of the About pane, kept together and kept cheap.
 ///
 /// Measured, then cut down. The first version rebuilt the mark from its vector
 /// paths on every tick and the About pane cost **8.3% CPU** — indefensible in an

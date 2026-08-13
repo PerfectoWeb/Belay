@@ -9,7 +9,7 @@ public enum SettingsPresets {
     /// the app's `DurationChoice`, and a test fails if one ever does not.
     public static let gracePeriods: [TimeInterval] = [30, 60, 180, 300, 600]
 
-    /// 30 min through 12 h, then nil for "until turned off", where `nil` is "until turned off".
+    /// 30 min through 12 h, then `nil` for "until turned off".
     /// Must contain `AwakePolicy.default.maxContinuousAwake`. It did not, and
     /// the consequence was not cosmetic: the pop-up had no matching tag, drew
     /// blank, and SwiftUI wrote a different value back — silently turning the

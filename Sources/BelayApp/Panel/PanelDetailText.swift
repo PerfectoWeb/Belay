@@ -107,6 +107,14 @@ struct PanelDetailText: View {
             .hidden()
     }
 
+    /// Puts the sentence back to its resting state: still, and cut with an
+    /// ellipsis. Bumps `generation` so any slide already scheduled is dropped.
+    private func reset() {
+        generation += 1
+        isExpanded = false
+        offset = 0
+    }
+
     /// Walks the sentence left far enough to read its end, and leaves it there
     /// for as long as the pointer stays.
     ///
@@ -117,12 +125,6 @@ struct PanelDetailText: View {
     /// truncated again, so what slid back and forth was an ellipsis with
     /// nothing behind it. The end never became readable, which was the whole
     /// point. One pass, held at the end, and no repeating animation to cancel.
-    private func reset() {
-        generation += 1
-        isExpanded = false
-        offset = 0
-    }
-
     private func walk(_ hovering: Bool) {
         generation += 1
         let mine = generation
@@ -134,6 +136,10 @@ struct PanelDetailText: View {
         }
 
         guard hovering else {
+            // Collapsed here as well as in the deferred block. Coming back
+            // within returnDuration invalidates that block, and without this
+            // the sentence stayed at full width with the offset already home:
+            // clipped mid-glyph, no ellipsis, nothing moving.
             withAnimation(.easeOut(duration: Self.returnDuration)) { offset = 0 }
             // Held at full width until it is home. Flipping this now would
             // re-truncate the sentence mid-slide.

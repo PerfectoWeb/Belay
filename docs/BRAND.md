@@ -19,7 +19,7 @@ and do not rebuild it by typing the word next to the icon.
 | `belay-wordmark-light.svg` | On white and light backgrounds |
 | `belay-wordmark-dark.svg` | On dark backgrounds |
 | `belay-wordmark-mono.svg` | One colour, inherits `currentColor`. Print, embroidery, a background that is neither light nor dark |
-| `belay-wordmark-{light,dark}.png` and `@2x`, `@3x` | Where SVG is not accepted |
+| `belay-wordmark-dark@3x.png` | Where SVG is not accepted. Only the one size, and only because `scripts/make-store-slides.swift` reads it; the other seven rasterisations had no readers and were deleted. |
 
 The SVG carries **no font dependency**: the letters are outlines, not text. A
 wordmark that falls back to Times on somebody else's machine is not a wordmark.

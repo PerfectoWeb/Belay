@@ -44,12 +44,14 @@ Add a tool to watch,Settings: Providers,translated,,Add a tool to watch,Ajouter 
 Add a tool…,Settings: Providers,translated,,Add a tool…,Ajouter un outil…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Ajouter à Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,Tous les noms de produits et logos sont des marques de leurs propriétaires.
+Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Autoriser l'accès à ~/.claude
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,Garder aussi l'écran allumé
-Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Toujours actif
+Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Toujours
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Un agent vous attend
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,Un agent vous attend. Belay garde votre Mac éveillé.
 "An agent is working, so sleep is on hold.",Panel,needs_review,,"An agent is working, so your Mac stays awake.","Un agent travaille, votre Mac reste éveillé."
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,Un agent travaille. Quitter Belay permettra à votre Mac de se mettre en veille.
+"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","Un agent travaille, Belay garde le Mac éveillé, et quand le travail s'arrête le Mac s'endort"
 Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,Auto
 Awake %@ so far,Panel,translated,%@,Awake for %@,Éveillé pendant %@
 Awake mode,Panel,translated,,Awake mode,Mode d'éveil
@@ -57,6 +59,42 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Jusqu'à ce que vous le désactiviez.
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Batterie à %lld%%. Belay a cessé de garder votre Mac éveillé.
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportement
+Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une.
+"Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.",Welcome,translated,,"Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.","Belay voit les sessions de votre agent. Rien d'autre n'est lu, et rien ne quitte ce Mac."
+"Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@",Belay n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@
+Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay n'a pas pu importer les réglages de la version %lld.
+Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.",Belay n'a pas pu lire ses réglages et utilise donc les valeurs par défaut.
+Belay could not read this Mac's power source.,Detection,translated,,Belay couldn't read this Mac's power source.,Belay n'a pas pu déterminer la source d'alimentation de ce Mac.
+Belay could not read your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't read your Claude Code settings: %@,Belay n'a pas pu lire vos réglages Claude Code : %@
+Belay could not start its local hook receiver: %@,Detection,needs_review,%@,Belay couldn't start its local hook listener: %@,Belay n'a pas pu démarrer son récepteur de hooks local : %@
+Belay could not update your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't update your Claude Code settings: %@,Belay n'a pas pu mettre à jour vos réglages Claude Code : %@
+Belay could not watch %@ for activity.,Settings: Providers,needs_review,%@,Belay couldn't watch %@ for activity.,Belay n'a pas pu surveiller l'activité dans %@.
+Belay has not been granted access to %@ yet.,Detection,needs_review,%@,Belay doesn't have access to %@ yet.,Belay n'a pas encore accès à %@.
+Belay has saved %lld runs for you. A star on GitHub helps the next person find it.,Statistics,translated,%lld,Belay has saved %lld runs for you. A star on GitHub helps the next person find it.,Belay a sauvé %lld exécutions pour vous. Une étoile sur GitHub aide le suivant à le trouver.
+Belay has to reopen to change language.,Settings: General,translated,,Belay needs to reopen to change the language.,Belay doit être relancé pour changer de langue.
+Belay is keeping your Mac awake: always on.,Menu bar,translated,,Always On is keeping your Mac awake.,« Toujours actif » garde votre Mac éveillé.
+Belay is keeping your Mac awake: an agent is working.,Menu bar,translated,,Belay is keeping your Mac awake while an agent works.,Belay garde votre Mac éveillé pendant qu'un agent travaille.
+Belay is off. Your Mac will sleep normally.,Menu bar,translated,,Belay is off. Your Mac will sleep normally.,Belay est désactivé. Votre Mac se mettra en veille normalement.
+Belay is only useful when it is already running.,Settings: General,translated,,Open Belay at login so it's ready before an agent starts.,Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent.
+"Belay is switched off, so it will not hold sleep at all.",Panel,needs_review,,Belay won't keep your Mac awake.,Belay ne gardera pas votre Mac éveillé.
+Belay is up to date.,Settings: General,translated,,Belay is up to date.,Belay est à jour.
+Belay is watching. Nothing is running right now.,Panel,needs_review,,Belay is watching. No agents are running.,Belay surveille. Aucun agent en cours.
+Belay is watching. Your Mac will sleep normally.,Menu bar,translated,,Belay is watching. Your Mac can sleep normally.,Belay surveille. Votre Mac peut se mettre en veille normalement.
+Belay let your Mac sleep,Panel,translated,,Belay let your Mac sleep,Belay a laissé votre Mac s'endormir
+"Belay needs to read ~/.claude to tell when an agent is working. Nothing else is read, and nothing leaves this Mac.",Welcome,translated,,"Belay needs to read ~/.claude to tell when an agent is working. Nothing else is read, and nothing leaves this Mac.","Pour savoir quand un agent travaille, Belay lit ~/.claude. Rien d'autre n'est lu, et rien ne quitte ce Mac."
+Belay needs your permission to read %@.,Settings: Providers,needs_review,%@,Belay needs permission to read %@.,Belay a besoin de votre autorisation pour lire %@.
+Belay reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Belay reached the maximum awake time and let your Mac sleep.,Belay a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille.
+"Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,Le temps d'éveil maximal est atteint.
+"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac.
+"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the daily update check, which you can switch off.",Settings,translated,,"Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
+Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,Vous pouvez toujours utiliser « Toujours actif » ou « Désactivé ».
+Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay a cessé de maintenir
+Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay a cessé de garder votre Mac éveillé à %lld%% de batterie.
+Belay stopped holding: the maximum awake time was reached.,Menu bar,translated,,Belay stopped keeping your Mac awake: maximum awake time reached.,Belay a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte.
+Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ to:,Belay mettra %@ à jour ainsi :
+Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay gardera votre Mac éveillé même si la batterie est faible.
+"Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :
+Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,L'autorisation enregistrée par Belay pour %@ n'est plus valide.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","Sur batterie, Belay s'arrête à %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Offrez-moi un café
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Annuler
@@ -64,11 +102,14 @@ Check Now,Settings: General,translated,,Check Now,Vérifier
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Rechercher les mises à jour automatiquement
 Checking…,Settings: General,translated,,Checking…,Vérification…
 Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
+Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code n'a encore ouvert aucun projet sur ce Mac. Belay s'y mettra tout seul le moment venu.
 Copied,Statistics,translated,,Copied,Copié
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copie la carte et le résumé ensemble
 Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,Copier
 Copy card and link,Statistics,translated,,Copy card and link,Copier la carte et le lien
+Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Impossible de joindre le service de mise à jour.
 Detection health,Settings: Providers,translated,,Detection status,État de la détection
+Direct download,"Settings, Settings: About",translated,,Direct download,Téléchargement direct
 Donate,Settings: About,translated,,Donate,Faire un don
 Done,Settings: Providers,translated,,Done,Terminé
 Download…,Settings: General,translated,,Download…,Télécharger…
@@ -80,15 +121,14 @@ Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Termin�
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corriger
 Free,Settings: About,translated,,Free,Gratuit
 General,"Settings, Settings: General",translated,,General,Général
-GitHub,"App, Settings: About, Settings: General",translated,,GitHub,GitHub
-GitHub answered %lld.,Settings: General,translated,%lld,GitHub returned %lld.,GitHub a renvoyé %lld.
-Grant access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Autoriser l'accès à ~/.claude
+Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Accorder l'accès à ~/.claude
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,On attend un instant au cas où.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Durée pendant laquelle Belay attend après l'arrêt d'un agent avant de laisser votre Mac se mettre en veille. Un petit délai évite la veille entre deux tâches.
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactif
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Il attend une réponse pour continuer.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Votre Mac reste éveillé
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Garde votre Mac éveillé pendant que votre agent travaille.
+Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,Garde votre Mac éveillé pendant que votre agent travaille.
 Kept awake for %@ since Belay started,Panel,translated,%@,Kept awake for %@ since launch,Gardé éveillé pendant %@ depuis le lancement
 LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,14 DERNIERS JOURS
 Language,Settings: General,translated,,Language,Langue
@@ -97,8 +137,9 @@ Let Belay read your ~/.claude folder so it can tell when Claude Code is working.
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",Permet à Claude Code d'indiquer précisément à Belay quand le travail commence et se termine. Cela rend aussi fiables les notifications « un agent vous attend ».
 Local only,Settings: About,translated,,Local only,En local
 "Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,Batterie faible ou durée d'éveil maximale.
+Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,Durée d'éveil maximale
-Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics",translated,,Mode,Mode
+Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Mode
 Never checked.,Settings: General,translated,,Never checked.,Jamais vérifié.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,Ne jamais garder le Mac éveillé.
 No active sessions.,Panel,translated,,No active sessions.,Aucune session active.
@@ -107,24 +148,26 @@ No providers available.,Settings: Providers,translated,,No providers available.,
 No release feed is configured.,Settings: General,translated,,No update feed is configured.,Aucune source de mises à jour n'est configurée.
 No releases have been published yet.,Settings: General,translated,,No releases are available yet.,Aucune version n'est encore disponible.
 No tracking,Settings: About,translated,,No tracking,Aucun suivi
+Not now,Statistics,translated,,Not now,Pas maintenant
 Nothing configured. Belay is watching Claude Code only.,Settings: Providers,translated,,No other tools added. Belay is watching Claude Code.,Aucun autre outil ajouté. Belay surveille Claude Code.
-Nothing here ever leaves this Mac.,Statistics,translated,,Nothing here ever leaves this Mac.,Rien de tout cela ne quitte ce Mac.
+Nothing here ever leaves this Mac.,(unused),translated,,Nothing here ever leaves this Mac.,Rien de tout cela ne quitte ce Mac.
 Nothing to show yet,Statistics,translated,,Nothing to show yet,Rien à afficher pour l'instant
+Nothing to watch yet: %@ does not exist.,Settings: Providers,needs_review,%@,Nothing to watch yet: %@ does not exist.,Rien à surveiller pour l'instant : %@ n'existe pas.
 Notifications,"Settings, Settings: Notifications",translated,,Notifications,Notifications
 Notify me,Settings: Notifications,translated,,Notify me,M'avertir
 Notify when Belay stops for safety,Settings: Notifications,translated,,Notify when Belay stops for safety,M'avertir quand Belay s'arrête par sécurité
 Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,M'avertir quand une longue tâche se termine
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,M'avertir quand un agent a besoin de vous
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,Les chiffres restent sur ce Mac tant que vous ne les partagez pas.
-Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,Désactivé
+Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,Arrêt
 Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Letting the display sleep saves power and won't interrupt your agent.,Laisser l'écran s'éteindre économise de l'énergie sans interrompre votre agent.
-"Once Belay has held your Mac awake through an agent run, this is where you will see what that was worth: how long it kept working while you were away, and how many runs would otherwise have died when the Mac went to sleep.",Statistics,translated,,Stats appear after Belay keeps your Mac awake through an agent run.,Les statistiques apparaîtront après que Belay aura gardé votre Mac éveillé pendant une exécution.
-"Once a day, Belay asks GitHub whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Belay checks GitHub once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Belay consulte GitHub une fois par jour pour chercher une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement.
+"Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Belay vérifie une fois par jour s'il existe une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement.
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Pour les exécutions de plus de %@.
+Open Belay at login,Settings: General,translated,,Open Belay at login,Ouvrir Belay à l'ouverture de session
 Open Login Items…,Settings: General,translated,,Open Login Items…,Ouvrir Ouverture au démarrage…
 Open Settings,Panel,translated,,Open Settings,Ouvrir les réglages
-Open Belay at login,Settings: General,translated,,Open Belay at login,Ouvrir Belay à l'ouverture de session
 Open at login,"Settings, Settings: General",translated,,Open at login,Ouvrir à l'ouverture de session
+Open the App Store,Settings: General,translated,,Open the App Store,Ouvrir l'App Store
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,Ouvre le sélecteur de dossier standard de macOS pour vous permettre d'accorder l'accès
 Other agents,"App, Settings: Providers",translated,,Other agents,Autres agents
 Other tools,Settings: Providers,translated,,Other tools,Autres outils
@@ -156,71 +199,44 @@ Since %@,Statistics,needs_review,%@,Since %@,Depuis le %@
 Skip for now,Welcome,translated,,Skip for now,Passer pour l'instant
 Software updates,Settings: General,translated,,Software updates,Mises à jour
 Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Son
+Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Mettre une étoile
+Star on GitHub,Settings: About,translated,,Star on GitHub,Étoile sur GitHub
 Start watching,Welcome,translated,,Start watching,Commencer la surveillance
 Startup,"Settings: General, Settings: Providers",translated,,Startup,Démarrage
-Statistics,"App, Menu bar, Panel, Settings, Statistics",translated,,Statistics,Statistiques
+Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistiques
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Cesser de garder votre Mac éveillé si la batterie est faible
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Arrêter si la batterie est faible
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Cesse de surveiller cet outil
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Sous-agent
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,Système
 The App Store could not verify the purchase.,Detection,needs_review,,The App Store couldn't verify the purchase.,L'App Store n'a pas pu vérifier l'achat.
+The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,L'App Store garde Belay à jour et vous prévient quand une nouvelle version est prête. Belay ne se connecte jamais à internet.
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Ce que Belay ajoutera
 The purchase is waiting for approval. Nothing else is needed from you.,Detection,translated,,The purchase is waiting for approval. No action is needed right now.,L'achat attend une approbation. Vous n'avez rien à faire pour le moment.
 The purchase was cancelled.,Detection,needs_review,,The purchase was cancelled.,L'achat a été annulé.
-The run%@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run%@ finished in %@. Your Mac can sleep normally again.,L'exécution%@ s'est terminée en %@. Votre Mac peut de nouveau se mettre en veille normalement.
+The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,L'exécution dans %@ a duré %@. Votre Mac peut de nouveau se mettre en veille normalement.
+The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,L'exécution a duré %@. Votre Mac peut de nouveau se mettre en veille normalement.
+The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Le serveur a renvoyé %lld.
+The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,Le service de mise à jour a renvoyé une réponse que Belay n'a pas pu lire.
 There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,L'option de pourboire %@ n'est pas disponible.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,C'est irréversible. Belay n'en garde aucune copie ailleurs.
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Les pourboires ne sont pas disponibles dans cette version.
 Until turned off,Settings,translated,,Until turned off,Jusqu'à désactivation
 Untitled project,App,translated,,Untitled project,Projet sans titre
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
+Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Version %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La version %@ est disponible.
-Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une.
-"Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@",Belay n'a pas pu sauvegarder vos réglages Claude Code. Rien n'a donc été modifié : %@
-Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay n'a pas pu importer les réglages de la version %lld.
-Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.",Belay n'a pas pu lire ses réglages et utilise donc les valeurs par défaut.
-Belay could not read this Mac's power source.,Detection,translated,,Belay couldn't read this Mac's power source.,Belay n'a pas pu déterminer la source d'alimentation de ce Mac.
-Belay could not read your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't read your Claude Code settings: %@,Belay n'a pas pu lire vos réglages Claude Code : %@
-Belay could not start its local hook receiver: %@,Detection,needs_review,%@,Belay couldn't start its local hook listener: %@,Belay n'a pas pu démarrer son récepteur de hooks local : %@
-Belay could not update your Claude Code settings: %@,Detection,needs_review,%@,Belay couldn't update your Claude Code settings: %@,Belay n'a pas pu mettre à jour vos réglages Claude Code : %@
-Belay could not watch %@ for activity.,Settings: Providers,needs_review,%@,Belay couldn't watch %@ for activity.,Belay n'a pas pu surveiller l'activité dans %@.
-Belay has not been granted access to %@ yet.,Detection,needs_review,%@,Belay doesn't have access to %@ yet.,Belay n'a pas encore accès à %@.
-Belay has to reopen to change language.,Settings: General,translated,,Belay needs to reopen to change the language.,Belay doit être relancé pour changer de langue.
-Belay is keeping your Mac awake: always on.,Menu bar,translated,,Always On is keeping your Mac awake.,« Toujours actif » garde votre Mac éveillé.
-Belay is keeping your Mac awake: an agent is working.,Menu bar,translated,,Belay is keeping your Mac awake while an agent works.,Belay garde votre Mac éveillé pendant qu'un agent travaille.
-Belay is off. Your Mac will sleep normally.,Menu bar,translated,,Belay is off. Your Mac will sleep normally.,Belay est désactivé. Votre Mac se mettra en veille normalement.
-Belay is only useful when it is already running.,Settings: General,translated,,Open Belay at login so it's ready before an agent starts.,Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent.
-"Belay is switched off, so it will not hold sleep at all.",Panel,needs_review,,Belay won't keep your Mac awake.,Belay ne gardera pas votre Mac éveillé.
-Belay is up to date.,Settings: General,translated,,Belay is up to date.,Belay est à jour.
-Belay is watching. Nothing is running right now.,Panel,needs_review,,Belay is watching. No agents are running.,Belay surveille. Aucun agent en cours.
-Belay is watching. Your Mac will sleep normally.,Menu bar,translated,,Belay is watching. Your Mac can sleep normally.,Belay surveille. Votre Mac peut se mettre en veille normalement.
-"Belay keeps your Mac awake while a local AI coding agent is working, and lets it sleep normally the moment everything goes quiet. Your sleep settings are never changed.",Welcome,translated,,"Belay keeps your Mac awake while a local coding agent works, then lets it sleep when the work is done. Your sleep settings stay untouched.","Belay garde votre Mac éveillé pendant qu'un agent de programmation local travaille, puis le laisse se mettre en veille une fois le travail terminé. Vos réglages de veille restent inchangés."
-Belay let your Mac sleep,Panel,translated,,Belay let your Mac sleep,Belay a laissé votre Mac s'endormir
-Belay needs your permission to read %@.,Settings: Providers,needs_review,%@,Belay needs permission to read %@.,Belay a besoin de votre autorisation pour lire %@.
-Belay reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Belay reached the maximum awake time and let your Mac sleep.,Belay a atteint la durée d'éveil maximale et a laissé votre Mac se mettre en veille.
-"Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,Le temps d'éveil maximal est atteint.
-"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the update check, which is off until you switch it on.",Settings: About,translated,,"Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
-"Belay reads only enough of your local agent's session files to know whether it is running. It never reads your prompts or your code, and nothing ever leaves your Mac.",Welcome,translated,,"Belay reads only the session data it needs to tell when your local agent is working. It never reads your prompts or code, and nothing leaves your Mac.","Belay lit uniquement les données de session nécessaires pour savoir quand votre agent local travaille. Il ne lit jamais vos prompts ni votre code, et rien ne quitte votre Mac."
-Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,Vous pouvez toujours utiliser « Toujours actif » ou « Désactivé ».
-Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay a cessé de maintenir
-Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay a cessé de garder votre Mac éveillé à %lld%% de batterie.
-Belay stopped holding: the maximum awake time was reached.,Menu bar,translated,,Belay stopped keeping your Mac awake: maximum awake time reached.,Belay a cessé de garder votre Mac éveillé : durée d'éveil maximale atteinte.
-Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ to:,Belay mettra %@ à jour ainsi :
-Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay gardera votre Mac éveillé même si la batterie est faible.
-"Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :
-Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,L'autorisation enregistrée par Belay pour %@ n'est plus valide.
 Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting your Mac sleep,Attendre avant de laisser votre Mac se mettre en veille
 Waiting for you,Panel,translated,,Waiting for you,Vous attend
 Watch,"App, Detection, Settings: Providers",translated,,Watch,Surveiller
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre.
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
-Welcome to Belay,Welcome,translated,,Welcome to Belay,Bienvenue dans Belay
-What Belay reads,Welcome,translated,,What Belay reads,Ce que Belay lit
+Welcome to Belay,(unused),translated,,Welcome to Belay,Bienvenue dans Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Quand Belay s'arrête par sécurité
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Quand une longue tâche se termine
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Quand un agent a besoin de vous
+"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Quand le travail s'arrête, votre Mac se met en veille comme d'habitude. Vos réglages de veille ne sont jamais modifiés."
 While holding,Settings: General,translated,,While holding,Pendant le maintien
 Working,Panel,translated,,Working,En cours
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Votre Mac reste éveillé tant que c'est activé.
@@ -230,9 +246,11 @@ Your Mac will go back to its normal sleep schedule.,Menu bar,translated,,Your Ma
 Your Mac will sleep normally,"Menu bar, Panel, Settings: Notifications",translated,,Your Mac can sleep normally,Votre Mac peut se mettre en veille normalement
 Your agent finished,Settings: Notifications,translated,,Your agent finished,Votre agent a terminé
 Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Settings: Notifications,translated,,Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications.,Votre agent attend une autorisation ou une réponse. La détection précise est nécessaire pour recevoir des notifications fiables.
-Your agent needs input%@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input%@ before it can continue.,Votre agent a besoin d'une réponse%@ pour continuer.
+Your agent needs input before it can continue.,Settings: Notifications,translated,,Your agent needs input before it can continue.,Votre agent a besoin d'une réponse pour continuer.
+Your agent needs input in %@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input in %@ before it can continue.,Votre agent a besoin d'une réponse dans %@ pour continuer.
 Your agent still finishes; Belay just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Belay just lets your Mac sleep sooner afterward.,"Votre agent termine quand même. Ensuite, Belay laisse simplement votre Mac se mettre en veille plus tôt."
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Batterie à %lld%%, Belay a laissé le Mac dormir."
+Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,La première exécution d'un agent remplira cette page.
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,a continué à travailler pendant votre absence
 last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,dernier signal il y a %@
 longest run,Statistics,translated,,longest run,exécution la plus longue

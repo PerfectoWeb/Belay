@@ -29,7 +29,8 @@ final class BundleMetadataTests: XCTestCase {
         XCTAssertEqual(minimum, "14.0")
     }
 
-    /// The account is `perfectoweb`; the bundle-id prefix is `perfecto-web`. They
+    /// The account and the bundle-id prefix are both `perfectoweb`; the web
+    /// domain is the hyphenated `perfecto-web.com`. They
     /// look alike and only one of them is a real GitHub account, so every link
     /// the app ships — About, the bug report, the shared statistics — is checked
     /// against the slug rather than trusted to have been typed correctly.
