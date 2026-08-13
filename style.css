@@ -1,0 +1,120 @@
+/* One stylesheet for both pages. No fonts are fetched, no scripts run and
+   nothing is loaded from anywhere: a privacy policy that phoned a CDN would be
+   an embarrassing thing to serve. */
+
+:root {
+    color-scheme: light dark;
+    --ink: #12161d;
+    --ink-soft: #4a5464;
+    --page: #ffffff;
+    --panel: #f4f6fa;
+    --rule: #dfe4ec;
+    --accent: #1f6bff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ink: #eef2f8;
+        --ink-soft: #98a3b4;
+        --page: #0d1016;
+        --panel: #151a22;
+        --rule: #252c38;
+        --accent: #5b93ff;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0 24px 96px;
+    background: var(--page);
+    color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 44rem; margin: 0 auto; }
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 40px 0 8px;
+}
+
+header svg { width: 34px; height: 34px; flex: none; }
+
+header a {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+h1 {
+    font-size: clamp(30px, 6vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 32px 0 8px;
+}
+
+h2 {
+    font-size: 21px;
+    letter-spacing: -0.015em;
+    margin: 44px 0 10px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+}
+
+p, li { color: var(--ink-soft); }
+p { margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+strong { color: var(--ink); font-weight: 600; }
+a { color: var(--accent); }
+
+.stamp {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+}
+
+.lede { font-size: 19px; }
+
+.note {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 24px 0;
+}
+
+.note p:last-child { margin-bottom: 0; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 8px; }
+
+.button {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.button.secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+}
+
+footer {
+    margin-top: 64px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
+    color: var(--ink-soft);
+}
