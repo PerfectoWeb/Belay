@@ -100,6 +100,9 @@ targetTemplates:
       path: Sources/BelayApp/Info.plist
       properties:
         CFBundleName: $(PRODUCT_NAME)
+        # Set here rather than left to Xcode's warning. The App Store requires
+        # a category and the direct build may as well agree with it.
+        LSApplicationCategoryType: public.app-category.developer-tools
         CFBundleDisplayName: Belay
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)

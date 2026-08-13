@@ -167,8 +167,17 @@ codesign -d --entitlements - --xml "$APP" >/dev/null
 
 # Hardened Runtime is not optional for notarization and its absence is only
 # discovered by the notary service, twenty minutes later.
-codesign -d --verbose=2 "$APP" 2>&1 | grep -q 'flags=.*runtime' \
-    || die "the exported app is not hardened-runtime signed; notarization would be rejected"
+#
+# Read into a variable rather than piped into `grep -q`. Under `set -o
+# pipefail` that pipeline fails even when the match succeeds: `grep -q` exits
+# the moment it finds the line, `codesign` gets SIGPIPE, and the pipeline
+# reports 141. The first real run of this script died here on a correctly
+# hardened app.
+SIGNING="$(codesign -d --verbose=2 "$APP" 2>&1 || true)"
+case "$SIGNING" in
+    *"flags="*"runtime"*) ;;
+    *) die "the exported app is not hardened-runtime signed; notarization would be rejected" ;;
+esac
 
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
 DMG="$DIST/Belay-$VERSION.dmg"

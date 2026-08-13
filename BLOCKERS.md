@@ -90,9 +90,21 @@ was already accepted at that point, which is the worst place to stop, because
 the work is done and the artefact does not know it. It staples the app inside
 the zip now and says to re-zip.
 
-Still owed before a public download: `create-dmg` is not installed on this
-machine, so `release.sh` refuses to start and the DMG half is unproven. The
-zip is notarized and distributable as it stands.
+**The whole chain has now been run**, on 2026-08-13: `release.sh` built,
+signed, notarized (`bb88c0e2`), stapled and produced `dist/Belay-1.0.0.dmg`,
+which `spctl` accepts offline as a notarized Developer ID app. It found one
+more fault of its own on the way.
+
+`set -o pipefail` and `grep -q` do not get along. The hardened-runtime check
+piped `codesign` into `grep -q`, which exits the instant it matches, and
+`codesign` then dies of SIGPIPE and takes the pipeline's exit status with it.
+The script refused to package a correctly hardened app, and the message it
+printed said the opposite of what was true. It reads the output into a
+variable now.
+
+The archive also warned that no `LSApplicationCategoryType` was set, which the
+App Store requires and which was on the checklist as a separate item. It is
+`public.app-category.developer-tools`, in `project.yml`, for both channels.
 
 
 ## The notification icon is a placeholder on this Mac, and I cannot say why
