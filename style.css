@@ -393,3 +393,25 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.9; transform: scale(1.015); }
 }
+
+/* The two architecture badges are outlines: the requirement is the filled one,
+   these two are what it runs on, and a row of three identical chips made all
+   three read as equally load-bearing. */
+.badges .outline {
+    background: none;
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.badges .chip {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+.badges .chip-glyph { width: 13px; height: 13px; }
+
+/* The picker's links are inside the footer row and were catching its
+   underline. They are marked by position and by colour on hover, which is
+   enough for a list of six words. */
+footer .row .languages a { text-decoration: none; }
