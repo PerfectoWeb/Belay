@@ -68,7 +68,11 @@ icon_size = 96
 #
 # Each icon sits at the midpoint of its half of the panel, measured to the
 # arrow rather than to the panel's centre.
+# Ten points above the arrow's line rather than on it. An icon's position is
+# the centre of the icon alone, but what the eye centres is the icon *and* its
+# label, and the label hangs below: sitting the icons exactly on the arrow put
+# that block low in the panel.
 icon_locations = {
-    appname: (166, 187),
-    "Applications": (369, 187),
+    appname: (166, 177),
+    "Applications": (369, 177),
 }
