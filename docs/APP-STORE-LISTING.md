@@ -134,7 +134,7 @@ IT LETS GO
 A hold is never open ended. Belay releases after the work stops, after a
 ceiling you set, when the battery falls below a level you set, and when it
 quits for any reason including being killed. Your energy settings are never
-changed, and nothing is left behind if you delete the app.
+changed: a power assertion sits alongside them rather than editing them.
 
 WHAT IT READS
 
@@ -209,8 +209,8 @@ Belay также может узнавать о начале и конце хо�
 Удержание никогда не бесконечно. Belay отпускает после того, как работа
 закончилась, по достижении заданного вами предела, при падении заряда ниже
 выбранного уровня и при завершении работы приложения, в том числе аварийном.
-Ваши настройки энергосбережения не меняются, а после удаления приложения не
-остаётся ничего.
+Ваши настройки энергосбережения не меняются: ассертион существует рядом с
+ними, а не правит их.
 
 ЧТО ОН ЧИТАЕТ
 
@@ -282,7 +282,7 @@ ES LÄSST LOS
 Kein Halten ist unbegrenzt. Belay lässt los, wenn die Arbeit endet, bei einer
 von dir gesetzten Obergrenze, wenn der Akku unter einen von dir gesetzten Stand
 fällt, und wenn die App beendet wird, auch unsanft. Deine Energieeinstellungen
-werden nie verändert, und beim Löschen bleibt nichts zurück.
+werden nie verändert: eine Assertion steht neben ihnen, statt sie zu ändern.
 
 WAS ES LIEST
 
@@ -353,7 +353,7 @@ SUELTA
 Ninguna retención es indefinida. Belay suelta cuando el trabajo termina, al
 llegar al límite que fijes, cuando la batería baja del nivel que fijes, y
 cuando la app termina, incluso de forma abrupta. Tus ajustes de energía nunca
-se modifican, y al borrar la app no queda nada.
+se modifican: una aserción convive con ellos en vez de editarlos.
 
 QUÉ LEE
 
@@ -423,7 +423,7 @@ IL LÂCHE
 Aucune retenue n'est illimitée. Belay lâche quand le travail s'arrête, à la
 limite que vous fixez, quand la batterie passe sous le niveau que vous fixez,
 et quand l'app se termine, même brutalement. Vos réglages d'énergie ne sont
-jamais modifiés, et rien ne reste après une suppression.
+jamais modifiés : une assertion coexiste avec eux au lieu de les changer.
 
 CE QU'IL LIT
 
@@ -492,7 +492,7 @@ LASCIA ANDARE
 Nessuna trattenuta è illimitata. Belay lascia andare quando il lavoro finisce,
 al limite che imposti, quando la batteria scende sotto il livello che imposti,
 e quando l'app termina, anche bruscamente. Le tue impostazioni di energia non
-vengono mai cambiate, e dopo la rimozione non resta nulla.
+vengono mai cambiate: un'asserzione convive con esse invece di modificarle.
 
 COSA LEGGE
 
