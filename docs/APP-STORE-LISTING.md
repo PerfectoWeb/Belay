@@ -27,7 +27,7 @@ no screenshot.
 **Price** Free
 **Copyright** `2026 PerfectoWeb`
 **Support URL** `https://perfecto-web.com/en/contacts/`
-**Marketing URL** `https://perfectoweb.github.io/Belay/`
+**Marketing URL** `https://perfectoweb.github.io/Belay/` (redirects to the reader's language)
 
 Both were `perfecto-web.com/belay` addresses and both returned 404 on the day
 of the first release. Apple requires these to load without a login and checks
@@ -37,12 +37,12 @@ product's own domain whenever those pages are built.
 
 | Localisation | URL |
 |---|---|
-| English (U.S.) | `https://perfectoweb.github.io/Belay/privacy/` |
-| Russian | `https://perfectoweb.github.io/Belay/privacy/ru/` |
-| German | `https://perfectoweb.github.io/Belay/privacy/de/` |
-| Spanish (Spain) | `https://perfectoweb.github.io/Belay/privacy/es/` |
-| French | `https://perfectoweb.github.io/Belay/privacy/fr/` |
-| Italian | `https://perfectoweb.github.io/Belay/privacy/it/` |
+| English (U.S.) | `https://perfectoweb.github.io/Belay/en/privacy/` |
+| Russian | `https://perfectoweb.github.io/Belay/ru/privacy/` |
+| German | `https://perfectoweb.github.io/Belay/de/privacy/` |
+| Spanish (Spain) | `https://perfectoweb.github.io/Belay/es/privacy/` |
+| French | `https://perfectoweb.github.io/Belay/fr/privacy/` |
+| Italian | `https://perfectoweb.github.io/Belay/it/privacy/` |
 
 Apple would have accepted the English address in all six boxes. It is a real
 policy in each language instead, because this is the one document where a

@@ -6,8 +6,9 @@ Belay doesn't have accounts, analytics, advertising or crash reporting. It
 doesn't build a profile of you or send your work to us. Most of what Belay needs
 never leaves your Mac.
 
-This file and <https://perfectoweb.github.io/Belay/privacy/> are the same
-policy. Change one and change the other.
+This file and <https://perfectoweb.github.io/Belay/en/privacy/> are the same
+policy. Change one and change the other. The site carries it in six languages,
+all generated from one source; the English is the authoritative text.
 
 ## What Belay reads
 
