@@ -346,3 +346,50 @@ footer .row a:hover { text-decoration: underline; }
 
 .copyright { margin-top: 10px; opacity: 0.75; }
 .copyright a { color: inherit; text-decoration: underline; }
+
+/* The picker's rows: colour rather than a rule, and no second background
+   fighting the one that marks where you are. */
+.languages nav a:hover { background: none; color: var(--accent); text-decoration: none; }
+
+/* A lighter grey than the resting border, not white. White on a dark page is
+   the brightest thing in it, which is a lot to say for "you are hovering". */
+.button.secondary:hover { border-color: rgba(255, 255, 255, 0.38); }
+
+/* Underlined at rest, plain on hover. The link is already marked; what hover
+   has to say is only "this one", and taking the rule away says it. */
+footer .row a, .version a, .stamp a { text-decoration: underline; }
+footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
+
+/* Requirements as three quiet facts. */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.badges li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ink) 7%, transparent);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+}
+
+.badges .apple { font-size: 13px; line-height: 1; }
+
+/* The lockup breathes, very slightly. A static page with one thing alive on
+   it reads as awake; the same thing done faster reads as a banner ad. */
+@media (prefers-reduced-motion: no-preference) {
+    header .mark { animation: breathe 6s ease-in-out infinite; }
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.015); }
+}

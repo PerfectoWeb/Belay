@@ -144,7 +144,11 @@ def landing(code):
         f'<p class="version">{t["version"].format(version=VERSION)} '
         f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a></p>',
         "",
-        f'<p class="stamp">{t["requires"]}</p>',
+        '<ul class="badges">',
+        '    <li><span class="apple" aria-hidden="true">&#63743;</span>macOS 14+</li>',
+        "    <li>Apple silicon</li>",
+        "    <li>Intel</li>",
+        "</ul>",
         "",
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
         '<figure class="modes">',
@@ -193,7 +197,8 @@ def landing(code):
         "    </div>",
         f'    <p class="fine">{T[code]["fine"]}</p>',
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
-        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.</p>',
+        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>. '
+        'All product names and logos are trademarks of their respective owners.</p>',
         "</footer>",
         "",
         "<script>",
