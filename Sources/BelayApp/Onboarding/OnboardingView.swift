@@ -19,57 +19,93 @@ struct OnboardingView: View {
     let onGrantAccess: () -> Void
     let onDismiss: () -> Void
 
+    /// The hero and the words below it are two blocks, not one flow. The hero
+    /// is a lit panel with the night sky in it, inset from every edge and
+    /// rounded hard enough to read as a screen inside the window rather than a
+    /// band across the top. Everything under it shares one left edge: heading,
+    /// sentence, buttons, and the line about access. Centred text under a
+    /// left-aligned lockup was the old arrangement and it read as a poster.
     var body: some View {
-        VStack(spacing: 0) {
-            BelayWordmark(size: 30, word: .primary, animated: true)
-                .padding(.top, 30)
-
-            OnboardingScene()
-                .padding(.top, 22)
-
-            VStack(spacing: 7) {
-                Text("Keeps your Mac awake while your agent works.")
-                    .font(.system(size: 15, weight: .semibold))
-                Text(
-                    """
-                    When the work stops, your Mac sleeps as it always did. \
-                    Your sleep settings are never changed.
-                    """
-                )
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-            }
-            .multilineTextAlignment(.center)
-            .padding(.top, 24)
-            .padding(.horizontal, 40)
-
-            Spacer(minLength: 14)
-
-            access
-            footer
+        VStack(alignment: .leading, spacing: 0) {
+            hero
+            words
+            buttons
+            accessLine
         }
-        .frame(width: 470, height: 438)
+        .frame(width: 470, height: 520)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Welcome to \(Branding.appName)")
     }
 
-    /// The ask, deliberately the quietest thing on the page. It is a condition
-    /// of the product working, not the product, and leading with a permission
-    /// request is how an app reads as something that wants rather than gives.
-    @ViewBuilder private var access: some View {
-        HStack(alignment: .top, spacing: 9) {
-            Image(systemName: providerReady ? "checkmark.circle.fill" : "folder")
-                .font(.system(size: 12))
-                .foregroundStyle(providerReady ? AnyShapeStyle(.tint) : AnyShapeStyle(.tertiary))
-                .padding(.top, 1)
-            Text(providerReady ? granted : needed)
-                .font(.system(size: 11))
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+    private var hero: some View {
+        ZStack(alignment: .topLeading) {
+            Starfield(animated: true)
+            OnboardingScene()
+                .padding(.top, 26)
+            BelayWordmark(size: 22, word: .primary, animated: true)
+                .padding(20)
         }
+        .frame(height: 250)
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(.white.opacity(0.07), lineWidth: 1)
+        )
+        .padding(.horizontal, 22)
+        .padding(.top, 22)
+    }
+
+    private var words: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            Text("Keeps your Mac awake while your agent works.")
+                .font(.system(size: 18, weight: .semibold))
+            Text(
+                """
+                When the work stops, your Mac sleeps as it always did. \
+                Your sleep settings are never changed.
+                """
+            )
+            .font(.system(size: 14))
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+        }
+        .multilineTextAlignment(.leading)
         .padding(.horizontal, 30)
-        .padding(.bottom, 18)
+        .padding(.top, 26)
+    }
+
+    private var buttons: some View {
+        HStack(spacing: 10) {
+            if providerReady {
+                Button("Start watching", action: onDismiss)
+                    .keyboardShortcut(.defaultAction)
+            } else {
+                Button("Allow access to ~/.claude", action: onGrantAccess)
+                    .keyboardShortcut(.defaultAction)
+                    .accessibilityHint("Opens a standard macOS panel so you can approve the folder")
+            }
+            Button("Skip for now", action: onDismiss)
+                .accessibilityHint("Belay still works in Always on and Off modes")
+            Spacer(minLength: 0)
+        }
+        .controlSize(.large)
+        .padding(.horizontal, 30)
+        .padding(.top, 22)
+    }
+
+    /// Under the buttons rather than above them, and with no icon. The tick
+    /// that used to sit here looked like a checkbox somebody had already
+    /// ticked on the reader's behalf, which is the wrong thing for a sentence
+    /// about what an app may read.
+    private var accessLine: some View {
+        Text(providerReady ? granted : needed)
+            .font(.system(size: 12))
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.leading)
+            .padding(.horizontal, 30)
+            .padding(.top, 18)
+            .padding(.bottom, 30)
     }
 
     private var granted: LocalizedStringKey {
@@ -81,24 +117,5 @@ struct OnboardingView: View {
         Belay needs to read ~/.claude to tell when an agent is working. \
         Nothing else is read, and nothing leaves this Mac.
         """
-    }
-
-    private var footer: some View {
-        HStack {
-            Button("Skip for now", action: onDismiss)
-                .accessibilityHint("Belay still works in Always on and Off modes")
-            Spacer()
-            if providerReady {
-                Button("Start watching", action: onDismiss)
-                    .keyboardShortcut(.defaultAction)
-            } else {
-                Button("Allow access to ~/.claude", action: onGrantAccess)
-                    .keyboardShortcut(.defaultAction)
-                    .accessibilityHint("Opens a standard macOS panel so you can approve the folder")
-            }
-        }
-        .controlSize(.large)
-        .padding(.horizontal, 26)
-        .padding(.bottom, 24)
     }
 }
