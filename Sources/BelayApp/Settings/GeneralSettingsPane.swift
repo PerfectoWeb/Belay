@@ -1,3 +1,4 @@
+import AppKit
 import BelaySettings
 import SwiftUI
 
@@ -54,9 +55,11 @@ struct GeneralSettingsPane: View {
                 }
             }
 
+            Divider()
             if ReleaseChecker.isSupported {
-                Divider()
                 UpdatesRow(checker: updates)
+            } else {
+                AppStoreUpdatesRow()
             }
 
             Divider()
@@ -89,6 +92,40 @@ struct GeneralSettingsPane: View {
                         """,
                     isOn: $settings.keepDisplayAwake
                 )
+            }
+        }
+    }
+}
+
+/// What the App Store build shows where the update check would be.
+///
+/// It cannot check for itself: that build ships without an outbound network
+/// entitlement, which is also the evidence handed to App Review about the
+/// loopback listener, and buying a version check with it would be a poor
+/// trade. What it can do is say where updates come from and open the place
+/// they arrive, which is a hand-off to another app rather than a request.
+///
+/// The alternative was leaving a hole where the row is on the other channel.
+/// A user who cannot find out whether they are current assumes they are not.
+private struct AppStoreUpdatesRow: View {
+    var body: some View {
+        SettingCheckboxGroup(title: "Software updates") {
+            Text(
+                """
+                The App Store keeps Belay up to date and tells you when a new \
+                version is ready. Belay itself makes no network connections at all.
+                """
+            )
+            .font(.callout)
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+
+            if let store = Branding.appStoreURL {
+                Button("Open the App Store") {
+                    Feedback.play(.tick)
+                    NSWorkspace.shared.open(store)
+                }
+                .controlSize(.small)
             }
         }
     }

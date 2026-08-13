@@ -22,6 +22,21 @@ enum Branding {
     /// missed introduction.
     static let homepageURL = URL(string: "https://perfecto-web.com/")
     static let supportURL = repositoryURL
+
+    /// The numeric Apple ID of the Mac App Store listing, once there is one.
+    /// Until then the button opens the App Store's Updates page, which is the
+    /// right place either way and needs no identifier.
+    static let appStoreID: String? = nil
+
+    /// Opening this asks the App Store app to do the work. It is a hand-off,
+    /// not a request: the App Store build has no outbound network entitlement
+    /// and could not check for a new version itself if it wanted to.
+    static var appStoreURL: URL? {
+        if let appStoreID {
+            return URL(string: "macappstore://apps.apple.com/app/id\(appStoreID)")
+        }
+        return URL(string: "macappstore://showUpdatesPage")
+    }
     static let version =
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
     static let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"

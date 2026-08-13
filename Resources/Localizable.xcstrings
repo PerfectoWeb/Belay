@@ -4471,6 +4471,47 @@
         }
       }
     },
+    "Direct download": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direkter Download"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direct download"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Descarga directa"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Téléchargement direct"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download diretto"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прямая загрузка"
+          }
+        }
+      }
+    },
     "Donate": {
       "extractionState": "manual",
       "localizations": {
@@ -5574,6 +5615,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Низкий заряд или предел времени без сна."
+          }
+        }
+      }
+    },
+    "Mac App Store": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac App Store"
           }
         }
       }
@@ -6763,6 +6845,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Запускать при входе"
+          }
+        }
+      }
+    },
+    "Open the App Store": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the App Store"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir el App Store"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir l'App Store"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri l'App Store"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть App Store"
           }
         }
       }
@@ -8489,6 +8612,47 @@
         }
       }
     },
+    "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself makes no network connections at all.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der App Store hält Belay aktuell und sagt dir, wenn eine neue Version bereit ist. Belay selbst stellt überhaupt keine Netzwerkverbindungen her."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself makes no network connections at all."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El App Store mantiene Belay al día y te avisa cuando hay una versión nueva. Belay no hace ninguna conexión de red por su cuenta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'App Store garde Belay à jour et vous prévient quand une nouvelle version est prête. Belay ne fait lui-même aucune connexion réseau."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'App Store tiene Belay aggiornato e ti avvisa quando è pronta una nuova versione. Belay non effettua alcuna connessione di rete."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение сетевых запросов не делает вовсе."
+          }
+        }
+      }
+    },
     "The exact configuration Belay will add": {
       "extractionState": "manual",
       "localizations": {
@@ -9018,6 +9182,47 @@
           "stringUnit": {
             "state": "translated",
             "value": "Версия %@ (%@)"
+          }
+        }
+      }
+    },
+    "Version %@ (%@) · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@ (%@) · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@ (%@) · %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versión %@ (%@) · %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@ (%@) · %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versione %@ (%@) · %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Версия %@ (%@) · %@"
           }
         }
       }

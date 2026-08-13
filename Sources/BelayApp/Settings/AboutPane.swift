@@ -1,4 +1,5 @@
 import AppKit
+import BelayTipJar
 import SwiftUI
 
 /// The About pane.
@@ -47,7 +48,7 @@ struct AboutPane: View {
                 // above the promises instead of hanging from the top edge.
                 Spacer(minLength: 12)
                 BelayWordmark(size: 38, animated: isAnimating)
-                Text("Version \(Branding.version) (\(Branding.build))")
+                Text(versionLine)
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.65))
                     .padding(.horizontal, 8)
@@ -161,6 +162,12 @@ struct AboutPane: View {
     /// night sky is the container. A band with its own plate sitting directly
     /// beneath a framed hero read as two boxes arguing about which one was the
     /// header.
+    /// "1.0.0 (1) · Direct download". See `DistributionChannel.displayName`.
+    private var versionLine: String {
+        let channel = DistributionChannel.current.displayName
+        return String(localized: "Version \(Branding.version) (\(Branding.build)) · \(channel)")
+    }
+
     private var promises: some View {
         HStack(spacing: 12) {
             ForEach(Promise.all) { promise in
