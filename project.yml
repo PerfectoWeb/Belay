@@ -152,7 +152,14 @@ targets:
       base:
         ENABLE_USER_SELECTED_FILES: readwrite
         CODE_SIGN_STYLE: Automatic
-        CODE_SIGN_IDENTITY: "Apple Distribution"
+        # Empty, not "Apple Distribution". Naming an identity while the style
+        # is Automatic is what Xcode calls conflicting provisioning settings,
+        # and it refuses to build: automatic signing picks a development
+        # identity to build with and swaps to a distribution one when the
+        # archive is exported, so pinning either end takes that choice away.
+        # The project-wide default is ad-hoc "-", which conflicts the same way,
+        # hence clearing it here rather than leaving it unset.
+        CODE_SIGN_IDENTITY: ""
       configs:
         Debug:
           # Both channels write Belay.app into the same products directory, so a
