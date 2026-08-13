@@ -99,8 +99,29 @@ if command -v dmgbuild >/dev/null; then
 elif python3 -c 'import dmgbuild' 2>/dev/null; then
     DMGBUILD="python3 -m dmgbuild"
 else
-    die "dmgbuild is not installed. pipx install dmgbuild, or pip3 install --user dmgbuild"
+    die "dmgbuild is not installed. pipx install 'dmgbuild>=1.6.7'"
 fi
+
+# Check the defect, not the version number. Before 1.6.7 dmgbuild wrote a pBBk
+# bookmark into the .DS_Store alongside the alias, and Finder from macOS 26.2
+# onwards silently draws no background at all when it finds one. The window
+# size and the icon positions from the same file still come out right, so the
+# failure looks like bad artwork rather than a bad builder, and cost an
+# afternoon here before it was found. dmgbuild has no --version flag, so ask
+# the interpreter that owns it whether the offending key is still in its source.
+case "$DMGBUILD" in
+    *"python3 -m"*) DMGBUILD_PY="python3" ;;
+    *) DMGBUILD_PY="$(head -1 "$DMGBUILD" | sed 's|^#!||')" ;;
+esac
+[ -x "${DMGBUILD_PY%% *}" ] || DMGBUILD_PY="python3"
+
+"$DMGBUILD_PY" -c "
+import inspect, sys
+import dmgbuild.core
+sys.exit(1 if 'pBBk' in inspect.getsource(dmgbuild.core) else 0)
+" || die "this dmgbuild still writes the pBBk bookmark, which leaves the disk
+image with no background on macOS 26.2 and later. Upgrade it:
+    pipx install --force 'dmgbuild>=1.6.7'"
 
 xcrun --find notarytool >/dev/null 2>&1 || die "notarytool is missing. Xcode 13 or newer is required."
 xcrun --find stapler >/dev/null 2>&1 || die "stapler is missing. Xcode 13 or newer is required."

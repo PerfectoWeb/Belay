@@ -12,6 +12,34 @@ real sandbox, which no machine here can perform.
 
 ---
 
+## The disk image had no background, and nothing about the picture was wrong
+
+Three rebuilds, a hand-drawn volume icon, a folder layout copied from three
+shipping installers and a change of volume name all failed to make the
+background appear. The artwork was fine the whole time, and so was the
+`.DS_Store` this project wrote: the window opened at exactly the size asked
+for and both icons landed on the pixel they were told to.
+
+dmgbuild before 1.6.7 writes the background twice. Once as the classic alias
+inside `icvp`, which is correct and which Finder has always used, and once as
+an `NSURL` bookmark under the key `pBBk`. Finder from macOS 26.2 onwards reads
+`pBBk` first, fails to resolve it, and then draws no background at all rather
+than falling back to the alias it already has. It keeps honouring everything
+else in the same file, which is what makes the fault read as an art problem.
+This machine is on 26.4. Upstream removed the bookmark in dmgbuild PR #275,
+released as 1.6.7; Blender and Rhino hit the same wall.
+
+Worth keeping in mind for the next one of these: every hypothesis tested was
+about our own inputs, the file format, the layout, the volume name, the
+quarantine flag. The thing that was actually broken was the tool, and the
+evidence for it was sitting in the output the whole time under a four-letter
+key nobody had reason to look at.
+
+`release.sh` now refuses to package with a dmgbuild that still writes it, and
+checks for the key in the installed source rather than trusting a version
+number, because dmgbuild has no `--version` flag to trust.
+
+
 ## What is still needed from the account holder, exactly
 
 Notarization is done and needed nothing. Everything below is for the two things

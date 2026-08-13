@@ -1,5 +1,14 @@
 # Layout for the disk image, read by dmgbuild.
 #
+# dmgbuild 1.6.7 or newer is required. Older versions write a second reference
+# to the background picture into the .DS_Store, an NSURL bookmark under the key
+# pBBk, alongside the classic alias inside icvp. Finder from macOS 26.2 onwards
+# reads pBBk first and, when it finds one, draws no background at all, while
+# still honouring the window size and the icon positions from the same file.
+# This machine is on 26.4, which is why the picture never appeared and why
+# nothing about the picture itself was ever wrong. Upstream removed the
+# bookmark in dmgbuild PR #275.
+#
 # dmgbuild is used instead of create-dmg because create-dmg drives Finder over
 # Apple Events to arrange the window. That needs Automation permission, which
 # a build machine does not have and cannot be given non-interactively, and it
