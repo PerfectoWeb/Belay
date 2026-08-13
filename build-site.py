@@ -270,6 +270,9 @@ def privacy(code):
     lines += language_picker(code, 2, L[code]["language"], "privacy/")
     lines += [
         "    </div>",
+        '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
+        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
+        'All product names and logos are trademarks of their respective owners.</p>',
         f'    <p class="fine">{t["fine"]}</p>',
         "</footer>",
         "",
