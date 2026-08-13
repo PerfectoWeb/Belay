@@ -132,13 +132,16 @@ def landing(code):
         "",
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
         '<figure class="modes">',
-        f'    <img src="../img/modes.png" alt="{t["modes_head"]}" width="1180" height="380">',
-        '    <svg class="pointers" viewBox="0 0 1180 150" aria-hidden="true">',
+        f'    <img src="../img/modes.png" alt="{t["modes_head"]}" width="1096" height="378">',
+        '    <svg class="pointers" viewBox="0 0 1096 150" aria-hidden="true">',
         # One arrow per third, so they keep pointing at the right segment
         # whatever width the image is scaled to.
-        '        <path d="M180 120 C 180 60, 210 40, 236 14"/>',
-        '        <path d="M590 120 C 590 60, 590 40, 590 14"/>',
-        '        <path d="M1000 120 C 1000 60, 970 40, 944 14"/>',
+        # The picker's three segments sit at 0.19, 0.5 and 0.81 of the image
+        # width, measured off the file rather than guessed, so the arrows keep
+        # their aim at any scale.
+        '        <path d="M208 120 C 208 62, 208 38, 208 12"/>',
+        '        <path d="M548 120 C 548 62, 548 38, 548 12"/>',
+        '        <path d="M888 120 C 888 62, 888 38, 888 12"/>',
         "    </svg>",
         '    <figcaption>',
         f'        <span class="hand">Auto</span><span>{t["modes_auto"]}</span>',
