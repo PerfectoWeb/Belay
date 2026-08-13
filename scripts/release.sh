@@ -213,6 +213,30 @@ esac
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Contents/Info.plist")"
 DMG="$DIST/Belay-$VERSION.dmg"
 
+# ------------------------------------------------------- notarize the app first
+# The app is notarized and stapled before it goes into the disk image, and the
+# disk image is notarized and stapled after. Two round trips, on purpose.
+#
+# Stapling only the DMG leaves the copy in /Applications with no ticket of its
+# own. It still launches, because Gatekeeper asks Apple over the network and is
+# told the app is notarized — but a first launch with no network, on a plane or
+# behind a captive portal, has nothing to ask and shows the warning instead. A
+# ticket inside the app answers the question locally and for ever.
+if [ "$SKIP_NOTARIZE" -eq 0 ]; then
+    echo "==> notarize the app"
+    APP_ZIP="$DIST/Belay-app-for-notarization.zip"
+    /usr/bin/ditto -c -k --keepParent "$APP" "$APP_ZIP"
+
+    # notarize.sh knows a zip cannot hold a ticket and staples the bundle
+    # instead, but it works that bundle out from the zip's name. This zip is
+    # named for its errand rather than for the app, so tell it directly.
+    BELAY_STAPLE_APP="$APP" "$SCRIPT_DIR/notarize.sh" "$APP_ZIP"
+    rm -f "$APP_ZIP"
+
+    xcrun stapler validate "$APP" \
+        || die "the app was notarized but the ticket did not staple to it"
+fi
+
 # ------------------------------------------------------------------------- dmg
 echo "==> dmg"
 
