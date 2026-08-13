@@ -23,6 +23,7 @@ some folders.
 
 import io
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -120,6 +121,18 @@ def language_picker(code, depth, label, page):
     ]
 
 
+def external(markup):
+    """Adds target and rel to every off-site link in a built line.
+
+    Done here rather than at each call site because there are eleven of them
+    and the eleventh is the one somebody forgets. `noopener` is not optional:
+    without it the page being opened gets a handle back to this one.
+    """
+    return re.sub(
+        r'<a ((?:class="[^"]*" )?href="https?://(?!perfectoweb\.github\.io)[^"]+")',
+        r'<a \1 target="_blank" rel="noopener"', markup)
+
+
 def landing(code):
     t = L[code]
     lines = head(code, t["title"], t["meta"], 1, "")
@@ -188,10 +201,10 @@ def landing(code):
     lines += language_picker(code, 1, t["language"], "")
     lines += [
         "    </div>",
-        f'    <p class="fine">{T[code]["fine"]}</p>',
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
         '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
         'All product names and logos are trademarks of their respective owners.</p>',
+        f'    <p class="fine">{T[code]["fine"]}</p>',
         "</footer>",
         "",
         "<script>",
@@ -213,7 +226,7 @@ def landing(code):
         "</html>",
         "",
     ]
-    return "\n".join(lines)
+    return external("\n".join(lines))
 
 
 def privacy(code):
@@ -279,7 +292,7 @@ def privacy(code):
         "</html>",
         "",
     ]
-    return "\n".join(lines)
+    return external("\n".join(lines))
 
 
 def fixed_redirect(target, depth, note):

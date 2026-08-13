@@ -401,3 +401,10 @@ footer .row .languages a { text-decoration: none; }
     font-weight: 400;
     color: rgba(255, 255, 255, 0.7);
 }
+
+/* The button's two lines share the left edge. Centring a short line under a
+   long one puts the version somewhere the eye has to go and find. */
+.button.stacked { align-items: flex-start; }
+
+/* The third-party note sits under the copyright, with room between them. */
+footer .copyright + .fine { margin-top: 8px; }
