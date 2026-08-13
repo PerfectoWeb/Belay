@@ -57,14 +57,59 @@ HEART = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
          ' 1.74C14.5 10.5 8 14.25 8 14.25Z"/></svg>')
 
 
-# The real lockup from Resources/Brand, not a redrawing of it. Two files
-# rather than one recoloured by CSS: the wordmark is a filled path, and a
-# stylesheet cannot repaint the inside of an <img>.
-def wordmark(up):
-    return (
-        f'''<img class="mark light" src="{up}brand/belay-wordmark-light.svg" alt="Belay" width="129" height="49">
-    <img class="mark dark" src="{up}brand/belay-wordmark-dark.svg" alt="Belay" width="129" height="49">'''
-    )
+# The real lockup from Resources/Brand, not a redrawing of it: the file is read
+# here and taken apart, so the drawing has one home and this is not a second
+# copy of it that can drift.
+#
+# It goes into the page inline rather than through <img>, because the three
+# stars turn on three different centres and a stylesheet cannot reach inside an
+# image. One copy now serves both themes: the letters take `currentColor`, so
+# the theme sets them the way it sets every other piece of text, and the mark
+# keeps its blue in both because that is the product's colour, not the page's.
+BRAND = os.path.join(os.path.dirname(os.path.abspath(__file__)), "brand",
+                     "belay-wordmark-dark.svg")
+
+# The three stars in the order the file draws them, which is not the order of
+# their size: middle, large, small.
+STARS = ["star-mid", "star-big", "star-small"]
+
+
+def _attr(tag, name):
+    found = re.search(rf'{name}="([^"]*)"', tag)
+    if not found:
+        raise SystemExit(f"{BRAND}: no {name} where one is required")
+    return found.group(1)
+
+
+def wordmark():
+    """The lockup as inline SVG, with each star its own element.
+
+    The shape of the file is asserted rather than assumed. If the brand asset
+    is ever redrawn with a different number of paths, this stops the build
+    instead of quietly shipping a lockup with the wrong pieces moving.
+    """
+    svg = io.open(BRAND, encoding="utf-8").read()
+    box = _attr(svg, "viewBox")
+    paths = re.findall(r"<path\b[^>]*?/>", svg)
+    if len(paths) != 2:
+        raise SystemExit(f"{BRAND}: expected two paths, found {len(paths)}")
+    letters, mark = paths
+
+    stars = [d for d in re.split(r"(?=M)", _attr(mark, "d")) if d]
+    if len(stars) != len(STARS):
+        raise SystemExit(f"{BRAND}: expected three stars, found {len(stars)}")
+
+    lines = [
+        f'<svg class="mark" viewBox="{box}" width="129" height="48.52"'
+        ' role="img" aria-label="Belay">',
+        f'        <path fill="currentColor"'
+        f' transform="{_attr(letters, "transform")}" d="{_attr(letters, "d")}"/>',
+        f'        <g fill="{_attr(mark, "fill")}" transform="{_attr(mark, "transform")}">',
+    ]
+    lines += [f'            <path class="{name}" d="{d}"/>'
+              for name, d in zip(STARS, stars)]
+    lines += ["        </g>", "    </svg>"]
+    return "\n".join(lines)
 
 
 def head(code, title, meta, depth, page):
@@ -94,7 +139,7 @@ def header(code, depth):
     up = "../" * depth
     return [
         "<header>",
-        f'    <a href="{up}{code}/">{wordmark(up)}</a>',
+        f'    <a href="{up}{code}/">{wordmark()}</a>',
         "</header>",
         "",
     ]

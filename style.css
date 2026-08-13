@@ -161,15 +161,18 @@ footer {
 .languages a:hover { color: var(--accent); text-decoration: underline; }
 .languages .here { color: var(--ink); font-weight: 600; }
 
-/* The real lockup, one file per theme: a filled SVG inside an <img> cannot be
-   recoloured from here, so both ship and the theme picks. */
-header .mark { display: block; height: 34px; width: auto; }
-header .light { display: none; }
-header .dark { display: block; }
-
-@media (prefers-color-scheme: light) {
-    header .light { display: block; }
-    header .dark { display: none; }
+/* The real lockup, inline rather than in an <img>: the three stars have to
+   turn on three different centres, and a stylesheet cannot reach inside an
+   image. One copy serves both themes now, because the letters take
+   `currentColor` and the theme sets them the way it sets any other text.
+   The aspect ratio is written down so the masthead does not reflow if the
+   width has to be worked out before the drawing is measured. */
+header .mark {
+    display: block;
+    height: 34px;
+    width: auto;
+    aspect-ratio: 129 / 48.52;
+    color: var(--ink);
 }
 
 /* The version, under the buttons rather than beside the requirements: it is
@@ -351,15 +354,66 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 
 .badges .apple { font-size: 13px; line-height: 1; }
 
-/* The lockup breathes, very slightly. A static page with one thing alive on
-   it reads as awake; the same thing done faster reads as a banner ad. */
+/* One thing on the page is alive, and it is the mark rather than the lockup.
+   The whole lockup used to breathe as a block, which moved the letters with it
+   and read as a card being hovered; the stars carry the same idea and mean
+   something, because turning is what these stars are drawn doing.
+
+   `fill-box` is what lets each one turn on its own centre. Without it the
+   origin is the corner of the viewBox and all three swing around the letters.
+   It is set on the stars alone: the letters carry a transform of their own in
+   the markup, and changing the box it is measured against would move them. */
 @media (prefers-reduced-motion: no-preference) {
-    header .mark { animation: breathe 6s ease-in-out infinite; }
+    .mark .star-big,
+    .mark .star-mid,
+    .mark .star-small {
+        transform-box: fill-box;
+        transform-origin: center;
+    }
+
+    .mark .star-big { animation: star-turn-big 8s 0.4s infinite; }
+    .mark .star-mid { animation: star-turn-mid 8s 0.4s infinite; }
+    .mark .star-small { animation: star-turn-small 8s 0.4s infinite; }
 }
 
-@keyframes breathe {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.015); }
+/* One gust turns all three at once, then they stand still until the next one.
+   The turn is at the front of the cycle and the wait is behind it, so somebody
+   who has just opened the page sees the thing move rather than arriving during
+   the silence and being shown a still logo for five seconds. The delay before
+   the first one is there only so the movement starts after the page has
+   settled and not during it.
+
+   The same period for all three is the point: three loops of different lengths
+   would line up only occasionally, and the rest of the time the mark would look
+   like it had something loose in it. What differs is how fast each one goes
+   round, and that goes with the weight — the small ones are up to speed and
+   finished while the big one is still turning, which is the only reason the
+   three read as one impulse rather than three decisions.
+
+   Each does exactly one turn. The stars have four points, so a whole turn ends
+   where it started and nothing snaps back into place at the end. */
+@keyframes star-turn-big {
+    0% {
+        transform: rotate(0turn);
+        animation-timing-function: cubic-bezier(0.5, 0, 0.2, 1);
+    }
+    42%, 100% { transform: rotate(1turn); }
+}
+
+@keyframes star-turn-mid {
+    0% {
+        transform: rotate(0turn);
+        animation-timing-function: cubic-bezier(0.46, 0, 0.13, 1);
+    }
+    24%, 100% { transform: rotate(1turn); }
+}
+
+@keyframes star-turn-small {
+    0% {
+        transform: rotate(0turn);
+        animation-timing-function: cubic-bezier(0.42, 0, 0.11, 1);
+    }
+    16%, 100% { transform: rotate(1turn); }
 }
 
 /* The two architecture badges are outlines: the requirement is the filled one,
