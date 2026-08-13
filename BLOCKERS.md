@@ -12,6 +12,37 @@ real sandbox, which no machine here can perform.
 
 ---
 
+## B6 is closed: Belay is notarized
+
+Run on 2026-08-13, submission `ad2ec9b8-bfbb-44d7-9675-7b18ededa008`, verdict
+**Accepted**. The app is stapled and `spctl` reports it offline as
+`source=Notarized Developer ID`.
+
+No credentials were added for it. The sibling project already had a notarytool
+keychain profile called `gibson`, the Apple account is the same one, and a
+profile is per-account rather than per-app: `BELAY_NOTARY_PROFILE=gibson` was
+the whole of the configuration. The secret stayed in the login keychain and
+nothing about it is in this repository.
+
+Two things only a real run could have found, both now fixed:
+
+**The first submission was rejected.** A plain `xcodebuild build` leaves
+`com.apple.security.get-task-allow` in the entitlements, which the notary
+service refuses, once per architecture. The archive-and-export path
+`release.sh` already used strips it. Building for release and building for the
+notary are not the same command, and nothing in the script said so.
+
+**The script stopped one step from the end.** It stapled the artefact it
+submitted, and a zip cannot hold a ticket: `stapler` refuses. The submission
+was already accepted at that point, which is the worst place to stop, because
+the work is done and the artefact does not know it. It staples the app inside
+the zip now and says to re-zip.
+
+Still owed before a public download: `create-dmg` is not installed on this
+machine, so `release.sh` refuses to start and the DMG half is unproven. The
+zip is notarized and distributable as it stands.
+
+
 ## The notification icon is a placeholder on this Mac, and I cannot say why
 
 Notification Center draws macOS's generic "unknown app" square instead of

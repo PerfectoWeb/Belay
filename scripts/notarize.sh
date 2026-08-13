@@ -7,6 +7,9 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# The profile is whatever `notarytool store-credentials` was told to call it.
+# On this machine it is `gibson`, made for the sibling project and shared
+# because the Apple account is the same one; nothing about it is per-app.
 NOTARY_PROFILE="${BELAY_NOTARY_PROFILE:-BelayNotary}"
 
 # Empty locally, where the profile is in the login keychain and notarytool finds
@@ -98,14 +101,45 @@ if ! grep -q 'status: Accepted' "$SUBMIT_LOG"; then
     exit 1
 fi
 
-echo "==> staple"
-xcrun stapler staple "$ARTEFACT"
-xcrun stapler validate "$ARTEFACT"
-
-# Proves the ticket works the way Gatekeeper will read it, offline.
+# ------------------------------------------------------------------- staple
+# A zip cannot hold a ticket. `stapler` says so plainly — "incapable of working
+# with ZIP archive files" — and the first real run of this script stopped there
+# with the submission already accepted, which is the worst place to stop: the
+# work is done and the artefact does not know it.
+#
+# So a zip is stapled by stapling what is inside it. The app beside the zip is
+# the one that was submitted, and re-zipping it afterwards is what makes a
+# download that Gatekeeper clears without asking the network.
+STAPLE_TARGET="$ARTEFACT"
 case "$ARTEFACT" in
-    *.dmg) spctl --assess --type open --context context:primary-signature -v "$ARTEFACT" ;;
-    *.pkg) spctl --assess --type install -v "$ARTEFACT" ;;
+    *.zip)
+        APP="${BELAY_STAPLE_APP:-}"
+        if [ -z "$APP" ]; then
+            # The convention release.sh uses: dist/export/Belay.app beside
+            # dist/Belay.zip.
+            APP="$(dirname "$ARTEFACT")/export/$(basename "${ARTEFACT%.zip}").app"
+        fi
+        [ -d "$APP" ] || die "a zip cannot be stapled. Pass BELAY_STAPLE_APP=<the .app that is inside it>"
+        STAPLE_TARGET="$APP"
+        ;;
 esac
 
-echo "notarized: $ARTEFACT"
+echo "==> staple"
+xcrun stapler staple "$STAPLE_TARGET"
+xcrun stapler validate "$STAPLE_TARGET"
+
+# Proves the ticket works the way Gatekeeper will read it, offline.
+case "$STAPLE_TARGET" in
+    *.dmg) spctl --assess --type open --context context:primary-signature -v "$STAPLE_TARGET" ;;
+    *.pkg) spctl --assess --type install -v "$STAPLE_TARGET" ;;
+    *.app) spctl --assess --type install -vv "$STAPLE_TARGET" ;;
+esac
+
+if [ "$STAPLE_TARGET" != "$ARTEFACT" ]; then
+    echo
+    echo "the ticket is stapled to $STAPLE_TARGET, not to the zip you submitted."
+    echo "re-zip it before publishing:"
+    echo "  ditto -c -k --sequesterRsrc --keepParent \"$STAPLE_TARGET\" <name>.zip"
+fi
+
+echo "notarized: $STAPLE_TARGET"
