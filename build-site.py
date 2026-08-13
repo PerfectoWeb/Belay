@@ -132,8 +132,9 @@ def landing(code):
         f'<p>{t["body"]}</p>',
         "",
         '<div class="actions">',
-        '    <a class="button" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
-        f'{t["download"]}</a>',
+        '    <a class="button stacked" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
+        f'<span>{t["download"]}</span>'
+        f'<span class="under">{t["version"].format(version=VERSION)}</span></a>',
     ] + ([
         f'    <a class="button appstore" href="{APP_STORE_URL}">'
         f'<span class="apple" aria-hidden="true">&#63743;</span>{t["appstore"]}</a>',
@@ -141,7 +142,7 @@ def landing(code):
         f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
         "</div>",
         "",
-        f'<p class="version">{t["version"].format(version=VERSION)} '
+        f'<p class="version">{t["free"]} '
         f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a></p>',
         "",
         '<ul class="badges">',

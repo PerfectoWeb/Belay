@@ -382,3 +382,22 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
    underline. They are marked by position and by colour on hover, which is
    enough for a list of six words. */
 footer .row .languages a { text-decoration: none; }
+
+/* The version belongs on the button it describes, not in a line under it.
+   Thinner, smaller and half lit, so it reads as a detail of the button
+   rather than a second thing to decide about. */
+.button.stacked {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    line-height: 1.25;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.button.stacked .under {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
