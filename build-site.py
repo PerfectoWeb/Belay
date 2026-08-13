@@ -32,6 +32,16 @@ from policy_text import LANGUAGES, T
 
 CODES = [code for code, _, _ in LANGUAGES]
 
+# Flip when the listing is approved and the link stops being a 404. Until then
+# a button pointing at a page that does not exist is worse than no button.
+APP_STORE_LIVE = False
+APP_STORE_URL = "https://apps.apple.com/app/id6801207644"
+
+# Flip when GitHub Sponsors is enabled on the account. Same reasoning.
+SPONSORS_LIVE = False
+SPONSORS_URL = "https://github.com/sponsors/PerfectoWeb"
+DONATE_URL = "https://perfecto-web.com/d/"
+
 # The real lockup from Resources/Brand, not a redrawing of it. Two files
 # rather than one recoloured by CSS: the wordmark is a filled path, and a
 # stylesheet cannot repaint the inside of an <img>.
@@ -108,6 +118,10 @@ def landing(code):
         '<div class="actions">',
         '    <a class="button" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
         f'{t["download"]}</a>',
+    ] + ([
+        f'    <a class="button appstore" href="{APP_STORE_URL}">'
+        f'<span class="apple" aria-hidden="true">&#63743;</span>{t["appstore"]}</a>',
+    ] if APP_STORE_LIVE else []) + [
         f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
         "</div>",
         "",
@@ -115,6 +129,36 @@ def landing(code):
         f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a></p>',
         "",
         f'<p class="stamp">{t["requires"]}</p>',
+        "",
+        f'<h2 class="modes-head">{t["modes_head"]}</h2>',
+        '<figure class="modes">',
+        f'    <img src="../img/modes.png" alt="{t["modes_head"]}" width="1180" height="380">',
+        '    <svg class="pointers" viewBox="0 0 1180 150" aria-hidden="true">',
+        # One arrow per third, so they keep pointing at the right segment
+        # whatever width the image is scaled to.
+        '        <path d="M180 120 C 180 60, 210 40, 236 14"/>',
+        '        <path d="M590 120 C 590 60, 590 40, 590 14"/>',
+        '        <path d="M1000 120 C 1000 60, 970 40, 944 14"/>',
+        "    </svg>",
+        '    <figcaption>',
+        f'        <span class="hand">Auto</span><span>{t["modes_auto"]}</span>',
+        f'        <span class="hand">Always On</span><span>{t["modes_always"]}</span>',
+        f'        <span class="hand">Off</span><span>{t["modes_off"]}</span>',
+        "    </figcaption>",
+        "</figure>",
+        "",
+        "",
+        f'<h2>{t["support_head"]}</h2>',
+        "",
+        f'<p>{t["support_body"]}</p>',
+        "",
+        '<div class="actions">',
+        f'    <a class="button secondary" href="{DONATE_URL}">{t["donate"]}</a>',
+    ] + ([
+        f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>',
+    ] if SPONSORS_LIVE else []) + [
+        f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">{t["star"]}</a>',
+        "</div>",
         "",
         "<footer>",
         '    <div class="row">',

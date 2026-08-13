@@ -230,3 +230,70 @@ footer .row p { margin: 0; }
 
 .languages nav a:hover { background: rgba(31, 107, 255, 0.12); color: #12161d; }
 .languages nav .here { font-weight: 600; background: rgba(10, 16, 28, 0.06); }
+
+/* The three modes, shown rather than described.
+   The picture is the real panel, cropped from the App Store artwork, so what
+   is annotated is the app and not a drawing of it. */
+.modes-head { margin-top: 56px; }
+
+.modes { margin: 0; }
+
+.modes img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+}
+
+/* Arrows at a sixth, a half and five sixths of the width. The picker is three
+   equal segments, so those fractions keep pointing at the right one however
+   the image is scaled. */
+.pointers {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: -6px;
+    overflow: visible;
+}
+
+.pointers path {
+    fill: none;
+    stroke: var(--ink-soft);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.55;
+}
+
+.modes figcaption {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px 16px;
+    margin-top: -10px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--ink-soft);
+}
+
+.modes figcaption span:nth-child(odd) { grid-row: 1; }
+.modes figcaption span:nth-child(even) { grid-row: 2; }
+
+/* Handwritten where a Mac has a hand to write with, and a plain cursive
+   fallback anywhere else. Nothing is fetched for it. */
+.hand {
+    font-family: "Bradley Hand", "Chalkboard SE", "Marker Felt", cursive;
+    font-size: 21px;
+    color: var(--ink);
+}
+
+@media (max-width: 560px) {
+    .pointers { display: none; }
+    .modes figcaption { grid-template-columns: 1fr; text-align: left; }
+    .modes figcaption span { grid-row: auto !important; }
+}
+
+/* The App Store button, when there is a listing to point it at. */
+.button.appstore .apple {
+    margin-right: 7px;
+    font-size: 17px;
+    line-height: 1;
+}
