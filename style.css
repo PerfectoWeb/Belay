@@ -397,19 +397,18 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 /* The two architecture badges are outlines: the requirement is the filled one,
    these two are what it runs on, and a row of three identical chips made all
    three read as equally load-bearing. */
+/* `background: none` alone lost to the shorthand on `.badges li` in some
+   engines, so the fill is set to transparent outright. */
 .badges .outline {
-    background: none;
-    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.badges .chip {
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.02em;
+@media (prefers-color-scheme: light) {
+    .badges .outline { border-color: rgba(10, 16, 28, 0.16); }
 }
 
-.badges .chip-glyph { width: 13px; height: 13px; }
+.badges .chip-glyph { width: 15px; height: 15px; }
 
 /* The picker's links are inside the footer row and were catching its
    underline. They are marked by position and by colour on hover, which is
