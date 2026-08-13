@@ -129,3 +129,19 @@ footer {
     color: var(--ink-soft);
     opacity: 0.8;
 }
+
+/* The language row under the date on the privacy pages. Quiet: it is a way
+   out for someone who cannot read this page, not a feature of it. */
+.languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin: -20px 0 28px;
+    font-size: 14px;
+}
+
+.languages a { color: var(--ink-soft); text-decoration: none; }
+.languages a:hover { color: var(--accent); text-decoration: underline; }
+.languages .here { color: var(--ink); font-weight: 600; }
+
+.translated { margin-top: -12px; }
