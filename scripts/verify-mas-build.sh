@@ -62,6 +62,7 @@ if [ "$BUILD" -eq 1 ]; then
         -destination 'platform=macOS' \
         -derivedDataPath "$DERIVED" \
         CODE_SIGN_IDENTITY="-" \
+        CODE_SIGN_STYLE=Manual \
         CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO \
         build | (xcbeautify 2>/dev/null || tail -5)
 

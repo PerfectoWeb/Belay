@@ -132,6 +132,14 @@ targets:
   # Mac App Store channel: sandboxed, StoreKit tips, no updater of our own.
   Belay-MAS:
     templates: [BelayAppChannel]
+    # Xcode manages this one's signing. The App Store needs a distribution
+    # certificate and a provisioning profile that only Apple can issue, and
+    # letting Xcode create them on demand is both the supported path and the
+    # one the neighbouring shipped app used. The direct channel stays manual
+    # and ad-hoc, which is what keeps local builds working with no account.
+    #
+    # verify-mas-build.sh passes CODE_SIGN_STYLE=Manual back on the command
+    # line, so the offline check does not start asking Apple for anything.
     templateAttributes:
       entitlements: Resources/Entitlements/Belay-MAS.entitlements
       # Hardened Runtime is a Developer ID/notarization concept; the App Store
@@ -143,6 +151,8 @@ targets:
     settings:
       base:
         ENABLE_USER_SELECTED_FILES: readwrite
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Distribution"
       configs:
         Debug:
           # Both channels write Belay.app into the same products directory, so a
