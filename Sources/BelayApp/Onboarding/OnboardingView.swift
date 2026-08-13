@@ -32,16 +32,32 @@ struct OnboardingView: View {
             buttons
             accessLine
         }
-        .frame(width: 470, height: 520)
+        .frame(width: 470, height: 486)
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Welcome to \(Branding.appName)")
     }
 
     private var hero: some View {
         ZStack(alignment: .topLeading) {
+            // The same night sky as About, and for the same reason: a panel
+            // that borrows the window's own grey is not a panel, it is a
+            // rectangle drawn on the wall. The gradient is what makes it read
+            // as something lit from inside.
+            LinearGradient(
+                colors: [
+                    Color(red: 0.05, green: 0.06, blue: 0.10),
+                    Color(red: 0.09, green: 0.10, blue: 0.15)
+                ],
+                startPoint: .top, endPoint: .bottom)
+
             Starfield(animated: true)
+
+            // Below the lockup rather than behind it, and centred in what is
+            // left, so the scene has a place of its own to grow into.
             OnboardingScene()
-                .padding(.top, 26)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .padding(.top, 46)
+
             BelayWordmark(size: 22, word: .primary, animated: true)
                 .padding(20)
         }
@@ -51,8 +67,8 @@ struct OnboardingView: View {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .strokeBorder(.white.opacity(0.07), lineWidth: 1)
         )
-        .padding(.horizontal, 22)
-        .padding(.top, 22)
+        .padding(.horizontal, 30)
+        .padding(.top, 0)
     }
 
     private var words: some View {
@@ -99,17 +115,20 @@ struct OnboardingView: View {
     /// about what an app may read.
     private var accessLine: some View {
         Text(providerReady ? granted : needed)
-            .font(.system(size: 12))
+            .font(.system(size: 10))
             .foregroundStyle(.secondary)
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
             .padding(.horizontal, 30)
-            .padding(.top, 18)
-            .padding(.bottom, 30)
+            .padding(.top, 16)
+            .padding(.bottom, 18)
     }
 
     private var granted: LocalizedStringKey {
-        "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac."
+        """
+        Belay can see your agent's sessions.
+        Nothing else is read, and nothing leaves this Mac.
+        """
     }
 
     private var needed: LocalizedStringKey {

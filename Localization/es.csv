@@ -36,7 +36,7 @@ A backstop. Belay stops holding after this and tells you why.,Settings: Behaviou
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Belay cuándo termina la sesión.
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,needs_review,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,"Un tono breve cuando cambias de modo a mano. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan."
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay crea primero una copia de seguridad con fecha y hora. «Quitar» restaura el archivo original.
-About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics",translated,,About,Acerca de
+About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,Acerca de
 About %@,Menu bar,translated,%@,About %@,Acerca de %@
 Active sessions,Panel,translated,,Active sessions,Sesiones activas
 "Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,Add a folder or choose a preset to watch another agent.,Añade una carpeta o elige un preajuste para belayar otro agente.
@@ -60,7 +60,10 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,Hasta qu
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Batería al %lld%%. Belay dejó de mantener el Mac despierto.
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportamiento
 Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una.
-"Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.",Welcome,translated,,"Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.",Belay ve las sesiones de tu agente. No lee nada más y nada sale de este Mac.
+"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.","Belay ve las sesiones de tu agente.
+No lee nada más y nada sale de este Mac."
 "Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@","Belay no pudo hacer una copia de seguridad de tus ajustes de Claude Code, así que no cambió nada: %@"
 Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay no pudo importar los ajustes de la versión %lld.
 Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.","Belay no pudo leer sus ajustes, así que está usando los valores predeterminados."

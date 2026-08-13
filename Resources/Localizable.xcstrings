@@ -2503,43 +2503,43 @@
         }
       }
     },
-    "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac.": {
+    "Belay can see your agent's sessions.\nNothing else is read, and nothing leaves this Mac.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay sieht die Sitzungen deines Agenten. Mehr wird nicht gelesen, und nichts verlässt diesen Mac."
+            "value": "Belay sieht die Sitzungen deines Agenten.\nMehr wird nicht gelesen, und nichts verlässt diesen Mac."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay can see your agent's sessions. Nothing else is read, and nothing leaves this Mac."
+            "value": "Belay can see your agent's sessions.\nNothing else is read, and nothing leaves this Mac."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay ve las sesiones de tu agente. No lee nada más y nada sale de este Mac."
+            "value": "Belay ve las sesiones de tu agente.\nNo lee nada más y nada sale de este Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay voit les sessions de votre agent. Rien d'autre n'est lu, et rien ne quitte ce Mac."
+            "value": "Belay voit les sessions de votre agent.\nRien d'autre n'est lu, et rien ne quitte ce Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay vede le sessioni del tuo agente. Non legge altro e nulla lascia questo Mac."
+            "value": "Belay vede le sessioni del tuo agente.\nNon legge altro e nulla lascia questo Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay видит сессии вашего агента. Больше он ничего не читает, и ничего не покидает этот Mac."
+            "value": "Belay видит сессии вашего агента.\nБольше он ничего не читает, и ничего не покидает этот Mac."
           }
         }
       }

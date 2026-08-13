@@ -47,11 +47,30 @@ final class OnboardingWindow: NSObject {
         window.titleVisibility = .hidden
         window.isReleasedWhenClosed = false
         window.delegate = self
-        window.center()
+        // `center()` is not centred: AppKit puts a window slightly above the
+        // middle, and it works from the screen the window happens to be on,
+        // which for a window at .zero is whichever one contains the origin.
+        // On a second display that is the wrong screen and the wrong height.
+        centre(window)
         self.window = window
 
         NSApp.activate(ignoringOtherApps: true)
         window.makeKeyAndOrderFront(nil)
+    }
+
+    /// The middle of the screen the user is actually looking at, which is the
+    /// one with the pointer on it, falling back to the main display.
+    private func centre(_ window: NSWindow) {
+        window.layoutIfNeeded()
+        let pointer = NSEvent.mouseLocation
+        let under = NSScreen.screens.first { NSMouseInRect(pointer, $0.frame, false) }
+        let screen = under ?? NSScreen.main
+        guard let frame = screen?.visibleFrame else { return }
+        let size = window.frame.size
+        window.setFrameOrigin(
+            NSPoint(
+                x: frame.midX - size.width / 2,
+                y: frame.midY - size.height / 2))
     }
 
     /// Marks onboarding done however it was closed, including the red button —
