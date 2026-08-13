@@ -116,7 +116,10 @@ struct OnboardingView: View {
     private var accessLine: some View {
         Text(providerReady ? granted : needed)
             .font(.system(size: 10))
-            .foregroundStyle(.secondary)
+            // Quieter than secondary. It is a condition of the thing working,
+            // and at full secondary it was competing with the sentence above
+            // it for the same attention.
+            .foregroundStyle(.tertiary)
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
             .padding(.horizontal, 30)
