@@ -54,7 +54,11 @@ final class ReleaseChecker {
         get { defaults.object(forKey: Self.automaticKey) as? Bool ?? true }
         set {
             defaults.set(newValue, forKey: Self.automaticKey)
-            if newValue { check() }
+            // checkIfDue, not check. Switching the box on is not a reason to
+            // reach the network: `check()` has no interval guard, so five
+            // flicks of the checkbox were five requests, from a row whose own
+            // caption promises once a day.
+            if newValue { checkIfDue() }
         }
     }
 
@@ -93,8 +97,14 @@ final class ReleaseChecker {
     /// `check()`.
     func checkIfDue(now: Date = Date()) {
         guard Self.isSupported, isAutomatic else { return }
+        // A timestamp in the future is treated as due rather than as recent. A
+        // Mac whose clock is ahead — a dead battery before NTP catches up —
+        // would otherwise stamp a date it cannot reach again for a day and
+        // stop checking until real time got there. Stamping every attempt
+        // rather than every success made that easier to hit, not harder: a
+        // skewed clock fails TLS, and the failure now stamps too.
         let last = defaults.object(forKey: Self.lastCheckKey) as? Date
-        guard last.map({ now.timeIntervalSince($0) >= Self.interval }) ?? true else { return }
+        if let last, last <= now, now.timeIntervalSince(last) < Self.interval { return }
         check(now: now)
     }
 
@@ -102,18 +112,20 @@ final class ReleaseChecker {
         guard Self.isSupported, status != .checking else { return }
         status = .checking
         Task { [fetch, current] in
+            // Stamped here, above every exit. See below for why the attempt is
+            // what gets recorded; this guard is the one path that used to
+            // escape without recording it.
+            defaults.set(now, forKey: Self.lastCheckKey)
             guard let url = Self.latestReleaseURL else {
                 status = .failed(String(localized: "No release feed is configured."))
                 return
             }
-            // Stamped before the fetch, not after it succeeds. Written only on
+            // The attempt is what is recorded, not the success. Written only on
             // success, a failed check left no timestamp, `checkIfDue` went on
-            // reading the attempt as still due, and the hourly timer retried
-            // every hour for as long as the network was unavailable — twenty
-            // four requests in a day where the app, the privacy policy and the
-            // release notes all promise one. What is being recorded is that an
-            // attempt was made, and an attempt was made either way.
-            defaults.set(now, forKey: Self.lastCheckKey)
+            // reading it as still due, and the hourly timer retried every hour
+            // for as long as the network was away — twenty four requests in a
+            // day the app, the privacy policy and the release notes all
+            // describe as one.
             do {
                 let release = try JSONDecoder().decode(Release.self, from: try await fetch(url))
                 let latest = release.tag.trimmingCharacters(in: CharacterSet(charactersIn: "vV"))

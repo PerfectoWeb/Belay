@@ -8612,43 +8612,43 @@
         }
       }
     },
-    "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself makes no network connections at all.": {
+    "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der App Store hält Belay aktuell und sagt dir, wenn eine neue Version bereit ist. Belay selbst stellt überhaupt keine Netzwerkverbindungen her."
+            "value": "Der App Store hält Belay aktuell und sagt dir, wenn eine neue Version bereit ist. Belay selbst verbindet sich nie ins Internet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself makes no network connections at all."
+            "value": "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El App Store mantiene Belay al día y te avisa cuando hay una versión nueva. Belay no hace ninguna conexión de red por su cuenta."
+            "value": "El App Store mantiene Belay al día y te avisa cuando hay una versión nueva. Belay nunca se conecta a internet por su cuenta."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'App Store garde Belay à jour et vous prévient quand une nouvelle version est prête. Belay ne fait lui-même aucune connexion réseau."
+            "value": "L'App Store garde Belay à jour et vous prévient quand une nouvelle version est prête. Belay ne se connecte jamais à internet."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'App Store tiene Belay aggiornato e ti avvisa quando è pronta una nuova versione. Belay non effettua alcuna connessione di rete."
+            "value": "L'App Store tiene Belay aggiornato e ti avvisa quando è pronta una nuova versione. Belay non si connette mai a internet."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение сетевых запросов не делает вовсе."
+            "value": "App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
           }
         }
       }

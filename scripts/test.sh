@@ -69,7 +69,7 @@ swift-format lint --recursive --strict Sources Packages/BelayKit/Sources Package
 echo "==> scratch preferences"
 swept=0
 for folder in "$HOME/Library/Preferences" \
-    "$HOME/Library/Containers/com.perfecto-web.belay/Data/Library/Preferences"; do
+    "$HOME/Library/Containers/com.perfectoweb.belay/Data/Library/Preferences"; do
     [ -d "$folder" ] || continue
     # Matched on shape, not on a list of prefixes. Every throwaway suite ends
     # in a UUID, five different prefixes have been used over the life of the

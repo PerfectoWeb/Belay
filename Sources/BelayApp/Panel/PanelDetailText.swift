@@ -59,6 +59,12 @@ struct PanelDetailText: View {
             .background(alignment: .leading) { measureText }
             .contentShape(.rect)
             .onHover(perform: walk)
+            // The sentence changes under the pointer every time the status
+            // does, and `onHover` does not fire again for that. Without this
+            // the new sentence inherits the old one's scroll position and its
+            // opening words sit off the left edge, cut with no ellipsis
+            // because a sentence at natural width has nothing to truncate.
+            .onChange(of: text) { _, _ in reset() }
             .help(overflow > 0 ? Text(verbatim: text) : Text(verbatim: ""))
     }
 
@@ -111,6 +117,12 @@ struct PanelDetailText: View {
     /// truncated again, so what slid back and forth was an ellipsis with
     /// nothing behind it. The end never became readable, which was the whole
     /// point. One pass, held at the end, and no repeating animation to cancel.
+    private func reset() {
+        generation += 1
+        isExpanded = false
+        offset = 0
+    }
+
     private func walk(_ hovering: Bool) {
         generation += 1
         let mine = generation
@@ -132,9 +144,16 @@ struct PanelDetailText: View {
             return
         }
 
-        isExpanded = true
-        withAnimation(.linear(duration: Double(overflow / Self.speed)).delay(Self.leadIn)) {
-            offset = -overflow
+        // Both halves wait out the lead-in. Expanding at once drops the
+        // ellipsis and cuts the last word mid-glyph while nothing is moving
+        // yet, so a pointer crossing the row made it flicker: exactly the
+        // restlessness the lead-in exists to prevent.
+        DispatchQueue.main.asyncAfter(deadline: .now() + Self.leadIn) {
+            guard generation == mine else { return }
+            isExpanded = true
+            withAnimation(.linear(duration: Double(overflow / Self.speed))) {
+                offset = -overflow
+            }
         }
     }
 }

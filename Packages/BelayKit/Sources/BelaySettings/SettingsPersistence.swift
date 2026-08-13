@@ -69,7 +69,9 @@ extension UserDefaults {
     func store(_ value: String, _ key: SettingsKey) { set(value, forKey: key.rawValue) }
     func store(_ value: [String], _ key: SettingsKey) { set(value, forKey: key.rawValue) }
 
-    var holdsAnySetting: Bool {
+    /// Whether Belay has ever written a setting here. Public because the app
+    /// target asks it of a *different* domain: see `PreviousDomain`.
+    public var holdsAnySetting: Bool {
         SettingsKey.settingKeys.contains { object(forKey: $0.rawValue) != nil }
     }
 }

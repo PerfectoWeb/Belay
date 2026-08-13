@@ -16,7 +16,7 @@ set -u
 
 APP="${1:-}"
 [ -n "$APP" ] || APP="$(cd "$(dirname "$0")" && pwd)/Belay.app"
-BUNDLE="com.perfecto-web.belay"
+BUNDLE="com.perfectoweb.belay"
 
 say() { printf '\n=== %s ===\n' "$1"; }
 
@@ -86,7 +86,7 @@ echo "running, pid $(pid)"
 for mode in alwaysOn off auto; do
     say "mode: $mode"
     stop
-    # By path, not by domain. `defaults write com.perfecto-web.belay …` looks
+    # By path, not by domain. `defaults write com.perfectoweb.belay …` looks
     # right and lands somewhere the app does not read as soon as a sandboxed
     # build of the same bundle id has ever run on the machine — the App Store
     # build's container wins the domain. An hour went into that on the
@@ -97,7 +97,7 @@ for mode in alwaysOn off auto; do
     start
     echo "written: $(defaults read "$PREFS" mode 2>/dev/null)"
     # What the app itself read, which is the only number that means anything.
-    echo "app read: $(/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.belay"' \
+    echo "app read: $(/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfectoweb.belay"' \
         --last 30s --style compact 2>/dev/null | grep -o 'mode [a-zA-Z]*' | tail -1)"
     held="$(assertions)"
     if [ -n "$held" ]; then echo "$held"; else echo "(no assertion held)"; fi
@@ -117,7 +117,7 @@ ls -t ~/Library/Logs/DiagnosticReports/ 2>/dev/null | grep -i belay | head -5 ||
 say "log, last two minutes"
 # --info matters: everything the power layer says about holding and releasing
 # is logged at info level, and log show drops that level unless asked.
-/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfecto-web.belay"' --info --last 2m --style compact 2>/dev/null | tail -30 \
+/usr/bin/log show --predicate 'subsystem BEGINSWITH "com.perfectoweb.belay"' --info --last 2m --style compact 2>/dev/null | tail -30 \
     || echo "(none)"
 
 say "left for a person"

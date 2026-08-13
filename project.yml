@@ -3,7 +3,7 @@ name: Belay
 # Everything derived from these three lives here and nowhere else, so the
 # rename procedure in docs/NAMING.md stays a two-line change.
 options:
-  bundleIdPrefix: com.perfecto-web
+  bundleIdPrefix: com.perfectoweb
   deploymentTarget:
     macOS: "14.0"
   createIntermediateGroups: true
@@ -13,7 +13,7 @@ settings:
   base:
     # PRODUCT_NAME belongs to the app target only — setting it project-wide also
     # renames the test bundle's Swift module to Belay and the two collide.
-    ORG_IDENTIFIER: com.perfecto-web
+    ORG_IDENTIFIER: com.perfectoweb
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
     SWIFT_VERSION: "6.0"

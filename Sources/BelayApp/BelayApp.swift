@@ -23,7 +23,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// Built eagerly so the Settings scene has something to bind to before
     /// `applicationDidFinishLaunching` runs. Reading preferences touches no
     /// hardware and costs nothing.
-    let settings = SettingsStore()
+    let settings: SettingsStore = {
+        // Before anything reads preferences, and before the schema migration
+        // inside SettingsStore runs on them. See PreviousDomain.
+        PreviousDomain.adopt()
+        return SettingsStore()
+    }()
     let appState: AppState
     let precise = PreciseDetection()
 

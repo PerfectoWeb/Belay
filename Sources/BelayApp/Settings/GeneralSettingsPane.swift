@@ -113,7 +113,7 @@ private struct AppStoreUpdatesRow: View {
             Text(
                 """
                 The App Store keeps Belay up to date and tells you when a new \
-                version is ready. Belay itself makes no network connections at all.
+                version is ready. Belay itself never connects out to the internet.
                 """
             )
             .font(.callout)

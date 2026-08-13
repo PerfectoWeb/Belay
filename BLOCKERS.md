@@ -212,7 +212,8 @@ is behind a feature flag that stays off until real products exist.
 this Mac. It matters when the app is given to someone else.
 
 Credentials are in place (App Store Connect API key, `.secrets/`, key id
-`U43BKFM82D`). `scripts/notarize.sh` uses a notarytool keychain profile if one
+the key id is in `.secrets/`, not here). `scripts/notarize.sh` uses a
+notarytool keychain profile if one
 exists and otherwise falls back to that key, so no setup step is required.
 
 Not run yet because notarization uploads the binary to Apple, which is an
@@ -229,7 +230,7 @@ Optional one-time step so the private key is not read off disk each run:
 ```bash
 xcrun notarytool store-credentials BelayNotary \
   --key .secrets/AuthKey_<KEY_ID>.p8 \
-  --key-id U43BKFM82D \
+  --key-id <the key id from .secrets/> \
   --issuer <ISSUER_ID>   # both live in .secrets/appstoreconnect.env, which is gitignored
 ```
 
