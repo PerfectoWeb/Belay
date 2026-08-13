@@ -1,4 +1,12 @@
-"""The landing page, in the six languages the app speaks."""
+"""The landing page, in the six languages the app speaks.
+
+VERSION is written here by the release workflow rather than fetched by the
+page. A visitor should not have to wait on api.github.com, and a version
+number that only appears when a request succeeds is worse than one that is
+simply true at build time.
+"""
+
+VERSION = "1.0.0"
 
 L = {}
 
@@ -11,6 +19,7 @@ L["en"] = {
     "download": "Download for macOS",
     "source": "Source on GitHub",
     "requires": "Requires macOS 14 or later. Apple silicon and Intel.",
+    "version": "Version {version}, free and open source.",
     "notes": "Release notes",
     "privacy": "Privacy policy",
     "bug": "Report a bug",
@@ -26,6 +35,7 @@ L["ru"] = {
     "download": "Скачать для macOS",
     "source": "Исходный код на GitHub",
     "requires": "Нужна macOS 14 или новее. Apple silicon и Intel.",
+    "version": "Версия {version}, бесплатно и с открытым кодом.",
     "notes": "Описание выпуска",
     "privacy": "Политика приватности",
     "bug": "Сообщить об ошибке",
@@ -41,6 +51,7 @@ L["de"] = {
     "download": "Für macOS laden",
     "source": "Quellcode auf GitHub",
     "requires": "Benötigt macOS 14 oder neuer. Apple Silicon und Intel.",
+    "version": "Version {version}, kostenlos und quelloffen.",
     "notes": "Versionshinweise",
     "privacy": "Datenschutz",
     "bug": "Fehler melden",
@@ -56,6 +67,7 @@ L["es"] = {
     "download": "Descargar para macOS",
     "source": "Código en GitHub",
     "requires": "Requiere macOS 14 o posterior. Apple silicon e Intel.",
+    "version": "Versión {version}, gratis y de código abierto.",
     "notes": "Notas de la versión",
     "privacy": "Privacidad",
     "bug": "Informar de un error",
@@ -71,6 +83,7 @@ L["fr"] = {
     "download": "Télécharger pour macOS",
     "source": "Code source sur GitHub",
     "requires": "Nécessite macOS 14 ou plus récent. Apple silicon et Intel.",
+    "version": "Version {version}, gratuit et open source.",
     "notes": "Notes de version",
     "privacy": "Confidentialité",
     "bug": "Signaler un bug",
@@ -86,6 +99,7 @@ L["it"] = {
     "download": "Scarica per macOS",
     "source": "Codice su GitHub",
     "requires": "Richiede macOS 14 o successivo. Apple silicon e Intel.",
+    "version": "Versione {version}, gratis e open source.",
     "notes": "Note di versione",
     "privacy": "Privacy",
     "bug": "Segnala un bug",

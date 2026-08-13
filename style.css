@@ -160,3 +160,73 @@ footer {
 .languages a { color: var(--ink-soft); text-decoration: none; }
 .languages a:hover { color: var(--accent); text-decoration: underline; }
 .languages .here { color: var(--ink); font-weight: 600; }
+
+/* The real lockup, one file per theme: a filled SVG inside an <img> cannot be
+   recoloured from here, so both ship and the theme picks. */
+header .mark { display: block; height: 34px; width: auto; }
+header .light { display: none; }
+header .dark { display: block; }
+
+@media (prefers-color-scheme: light) {
+    header .light { display: block; }
+    header .dark { display: none; }
+}
+
+/* The version, under the buttons rather than beside the requirements: it is
+   the line people look for before they click, not after. */
+.version {
+    margin: 18px 0 4px;
+    font-size: 15px;
+    color: var(--ink-soft);
+}
+
+/* The footer's own line: links at one end, the language picker at the other. */
+footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 20px;
+}
+
+footer .row p { margin: 0; }
+
+.languages { position: relative; margin: 0; font-size: 15px; }
+
+.languages summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--ink-soft);
+}
+
+.languages summary::-webkit-details-marker { display: none; }
+.languages summary::after { content: " ⌄"; opacity: 0.6; }
+.languages summary:hover { color: var(--accent); }
+
+/* The panel. No border: a shadow and a solid ground are enough to lift it,
+   and a rule around it would be the loudest thing in the footer. */
+.languages nav {
+    position: absolute;
+    right: 0;
+    bottom: 1.9em;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    min-width: 148px;
+    padding: 6px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 8px 28px rgba(10, 16, 28, 0.28), 0 1px 2px rgba(10, 16, 28, 0.14);
+}
+
+.languages nav a,
+.languages nav .here {
+    padding: 7px 12px;
+    border-radius: 6px;
+    color: #12161d;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.languages nav a:hover { background: rgba(31, 107, 255, 0.12); color: #12161d; }
+.languages nav .here { font-weight: 600; background: rgba(10, 16, 28, 0.06); }

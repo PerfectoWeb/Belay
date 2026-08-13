@@ -27,15 +27,19 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from landing import L
+from landing import L, VERSION
 from policy_text import LANGUAGES, T
 
 CODES = [code for code, _, _ in LANGUAGES]
 
-MARK = '''<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M32 6 L38.5 25.5 L58 32 L38.5 38.5 L32 58 L25.5 38.5 L6 32 L25.5 25.5 Z" fill="#1f6bff"/>
-        <path d="M50 8 L52.5 15.5 L60 18 L52.5 20.5 L50 28 L47.5 20.5 L40 18 L47.5 15.5 Z" fill="#5b93ff"/>
-    </svg>'''
+# The real lockup from Resources/Brand, not a redrawing of it. Two files
+# rather than one recoloured by CSS: the wordmark is a filled path, and a
+# stylesheet cannot repaint the inside of an <img>.
+def wordmark(up):
+    return (
+        f'''<img class="mark light" src="{up}brand/belay-wordmark-light.svg" alt="Belay" width="129" height="49">
+    <img class="mark dark" src="{up}brand/belay-wordmark-dark.svg" alt="Belay" width="129" height="49">'''
+    )
 
 
 def head(code, title, meta, depth, page):
@@ -63,7 +67,12 @@ def head(code, title, meta, depth, page):
 
 def header(code, depth):
     up = "../" * depth
-    return ["<header>", f"    {MARK}", f'    <a href="{up}{code}/">belay</a>', "</header>", ""]
+    return [
+        "<header>",
+        f'    <a href="{up}{code}/">{wordmark(up)}</a>',
+        "</header>",
+        "",
+    ]
 
 
 def language_picker(code, depth, label, page):
@@ -102,17 +111,25 @@ def landing(code):
         f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
         "</div>",
         "",
-        f'<p class="stamp">{t["requires"]}',
-        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a>.</p>',
+        f'<p class="version">{t["version"].format(version=VERSION)} '
+        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a></p>',
+        "",
+        f'<p class="stamp">{t["requires"]}</p>',
         "",
         "<footer>",
-        f'    <a href="privacy/">{t["privacy"]}</a> &middot;',
-        f'    <a href="https://github.com/PerfectoWeb/Belay/issues">{t["bug"]}</a> &middot;',
-        '    <a href="https://perfecto-web.com">perfecto-web.com</a>',
-        f'    <p class="fine">{T[code]["fine"]}</p>',
+        '    <div class="row">',
+        "        <p>",
+        f'            <a href="privacy/">{t["privacy"]}</a> &middot;',
+        f'            <a href="https://github.com/PerfectoWeb/Belay/issues">{t["bug"]}</a> &middot;',
+        '            <a href="https://perfecto-web.com">perfecto-web.com</a>',
+        "        </p>",
     ]
     lines += language_picker(code, 1, t["language"], "")
-    lines += ["</footer>", "", "</div>", "</body>", "</html>", ""]
+    lines += [
+        "    </div>",
+        f'    <p class="fine">{T[code]["fine"]}</p>',
+        "</footer>", "", "</div>", "</body>", "</html>", "",
+    ]
     return "\n".join(lines)
 
 
@@ -148,12 +165,18 @@ def privacy(code):
 
     lines += [
         "<footer>",
-        f'    <a href="../">Belay</a> &middot;',
-        f'    <a href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
-        f'    <p class="fine">{t["fine"]}</p>',
+        '    <div class="row">',
+        "        <p>",
+        f'            <a href="../">Belay</a> &middot;',
+        f'            <a href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
+        "        </p>",
     ]
     lines += language_picker(code, 2, L[code]["language"], "privacy/")
-    lines += ["</footer>", "", "</div>", "</body>", "</html>", ""]
+    lines += [
+        "    </div>",
+        f'    <p class="fine">{t["fine"]}</p>',
+        "</footer>", "", "</div>", "</body>", "</html>", "",
+    ]
     return "\n".join(lines)
 
 
