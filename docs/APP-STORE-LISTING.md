@@ -55,6 +55,28 @@ subtitle and the keywords as one pool, so a word in two of them is a word
 wasted: the old subtitle repeated "awake" and "agents", and this one spends
 those characters on "Mac" and "sleeps" instead.
 
+### The other candidate, still open
+
+```
+Name      Belay - Keep Mac Awake          22
+Subtitle  While your coding agents work    29
+```
+
+It reads better than the one above, and the two lines finish each other's
+sentence, which no amount of keyword arithmetic is worth ignoring.
+
+What it costs: "AI" appears in neither field, so it has to be bought back out
+of the keyword budget, where it is three characters and ranks the same as it
+would anywhere else — Apple pools all three fields, so a term in the keywords
+is not worth less than a term in the name. "Mac" costs four characters in a
+store where every app is a Mac app.
+
+So the real trade is: this pair spends 7 characters on `Mac` and on reading
+well, and the other spends them on `Awake for AI Agents` reading like a label.
+Both fit. Neither is a mistake. Left here undecided on purpose, because it is a
+judgement about the shop window rather than about the software, and the person
+whose shop it is should make it.
+
 **Promotional text** (170)
 `Belay watches your local coding agent and holds sleep off only while it is
 actually working. When the run ends, your Mac sleeps the way it always did.` — 150
