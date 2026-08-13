@@ -118,3 +118,14 @@ footer {
     font-size: 15px;
     color: var(--ink-soft);
 }
+
+/* The non-affiliation line under the footer links. Smaller than the links it
+   sits below, because it is a fact people need available rather than a fact
+   they need read. */
+.fine {
+    margin: 12px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    opacity: 0.8;
+}
