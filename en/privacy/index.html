@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy: Belay</title>
+<meta name="description" content="Belay has no accounts, analytics, advertising or crash reporting. What it reads, what it stores, and the one request it can make.">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="en" href="https://perfectoweb.github.io/Belay/en/privacy/">
+<link rel="alternate" hreflang="ru" href="https://perfectoweb.github.io/Belay/ru/privacy/">
+<link rel="alternate" hreflang="de" href="https://perfectoweb.github.io/Belay/de/privacy/">
+<link rel="alternate" hreflang="es" href="https://perfectoweb.github.io/Belay/es/privacy/">
+<link rel="alternate" hreflang="fr" href="https://perfectoweb.github.io/Belay/fr/privacy/">
+<link rel="alternate" hreflang="it" href="https://perfectoweb.github.io/Belay/it/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://perfectoweb.github.io/Belay/en/privacy/">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M32 6 L38.5 25.5 L58 32 L38.5 38.5 L32 58 L25.5 38.5 L6 32 L25.5 25.5 Z" fill="#1f6bff"/>
+        <path d="M50 8 L52.5 15.5 L60 18 L52.5 20.5 L50 28 L47.5 20.5 L40 18 L47.5 15.5 Z" fill="#5b93ff"/>
+    </svg>
+    <a href="../../en/">belay</a>
+</header>
+
+<h1>Privacy policy</h1>
+<p class="stamp">Belay for macOS. Last updated 13 August 2026.</p>
+
+<p class="lede">Belay doesn't have accounts, analytics, advertising or crash reporting. It doesn't build a profile of you or send your work to us. Most of what Belay needs never leaves your Mac.</p>
+
+<h2>What Belay reads</h2>
+
+<p>Belay needs to know one thing: is an agent working right now?</p>
+
+<p>For Claude Code, Belay watches the session files Claude Code already writes on your Mac. It looks at how large a file is, whether it grew, when it was last written, and, in the part that grew, two fields of each record: what kind of record it is, and whether the turn ended. Your prompts, your replies and your code are not read out of those files and no copy of them is kept.</p>
+
+<p>For other agents, Belay can watch a folder you choose. macOS tells Belay which files changed and when, and that is all Belay uses: it does not open those files or read what is in them. The folder stays yours, and nothing in it is uploaded.</p>
+
+<p>Which folders Belay looks at is up to you. <code>~/.claude</code> for Claude Code, and for anything else only what you point it at.</p>
+
+<h2>What leaves your Mac</h2>
+
+<div class="note">
+    <p><strong>Mac App Store.</strong> Belay makes no outbound network connections. That build ships without the entitlement macOS requires for them. Precise detection, if you turn it on, uses a connection that begins and ends on your own Mac and sends nothing over the internet.</p>
+    <p><strong>Direct download.</strong> The version downloaded from GitHub can check for updates once a day. It sends an ordinary HTTPS request to the GitHub releases API with no account, no query and no Belay identifier; GitHub sees the request's IP address and a user agent, as it would for any web request. You can turn automatic checks off in Settings, under General, and Belay never installs an update without you asking.</p>
+</div>
+
+<h2>What Belay stores</h2>
+
+<p>Belay stores its settings and simple usage counters in your Mac user preferences. The counters hold durations, run counts and days. They don't hold project names, prompts or code.</p>
+
+<p>You can reset your statistics at any time in Settings, under Statistics.</p>
+
+<h2>What Belay changes on your Mac</h2>
+
+<p>To keep your Mac awake, Belay uses the power assertion API macOS provides for it. It doesn't rewrite your Energy Saver settings, and it can't: an assertion sits alongside those settings rather than editing them.</p>
+
+<p>If you turn on precise detection for Claude Code, Belay shows you the exact configuration it would add before anything is written, and only writes after you confirm. It takes a timestamped backup first, adds only its own entry, and "Remove" on the same screen puts the file back.</p>
+
+<h2>Sharing</h2>
+
+<p>Belay doesn't send your usage statistics, your settings or your work to us. There are no analytics or advertising services in the app.</p>
+
+<p>The Statistics pane can make an image of your own numbers. If you share one, macOS asks you where it goes, and nothing is shared until you do that yourself.</p>
+
+<h2>Changes to this policy</h2>
+
+<p>If this policy changes, we'll update the date above. Any meaningful privacy change will also be mentioned in the release notes.</p>
+
+<h2>Contact</h2>
+
+<p>Questions about this policy: <a href="https://github.com/PerfectoWeb/Belay/issues">the issue tracker</a>, or the address on <a href="https://perfecto-web.com">perfecto-web.com</a>.</p>
+
+<footer>
+    <a href="../">Belay</a> &middot;
+    <a href="https://github.com/PerfectoWeb/Belay">Source on GitHub</a>
+    <p class="fine">Claude Code, Codex CLI, Gemini CLI and Cline are made by other people. Belay works alongside them and is not affiliated with or endorsed by any of them.</p>
+    <details class="languages">
+        <summary>Language</summary>
+        <nav><span class="here">English</span> <a href="../../ru/privacy/">Русский</a> <a href="../../de/privacy/">Deutsch</a> <a href="../../es/privacy/">Español</a> <a href="../../fr/privacy/">Français</a> <a href="../../it/privacy/">Italiano</a></nav>
+    </details>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,87 +1,11 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Политика приватности: Belay</title>
-<meta name="description" content="У Belay нет аккаунтов, аналитики, рекламы и сбора отчётов о сбоях. Что приложение читает, что хранит и какой единственный запрос может сделать.">
-<link rel="stylesheet" href="../../style.css">
-<link rel="alternate" hreflang="en" href="https://perfectoweb.github.io/Belay/privacy/">
-<link rel="alternate" hreflang="ru" href="https://perfectoweb.github.io/Belay/privacy/ru/">
-<link rel="alternate" hreflang="de" href="https://perfectoweb.github.io/Belay/privacy/de/">
-<link rel="alternate" hreflang="es" href="https://perfectoweb.github.io/Belay/privacy/es/">
-<link rel="alternate" hreflang="fr" href="https://perfectoweb.github.io/Belay/privacy/fr/">
-<link rel="alternate" hreflang="it" href="https://perfectoweb.github.io/Belay/privacy/it/">
+<!-- Kept: this address was published for one evening. -->
+<link rel="canonical" href="https://perfectoweb.github.io/Belay/ru/privacy/">
+<meta http-equiv="refresh" content="0; url=../../ru/privacy/">
+<title>Belay</title>
 </head>
-<body>
-<div class="wrap">
-
-<header>
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M32 6 L38.5 25.5 L58 32 L38.5 38.5 L32 58 L25.5 38.5 L6 32 L25.5 25.5 Z" fill="#1f6bff"/>
-        <path d="M50 8 L52.5 15.5 L60 18 L52.5 20.5 L50 28 L47.5 20.5 L40 18 L47.5 15.5 Z" fill="#5b93ff"/>
-    </svg>
-    <a href="../../">belay</a>
-</header>
-
-<h1>Политика приватности</h1>
-<p class="stamp">Belay для macOS. Обновлено 13 августа 2026 года.</p>
-
-<nav class="languages"><a href="../">English</a> <span class="here">Русский</span> <a href="../de/">Deutsch</a> <a href="../es/">Español</a> <a href="../fr/">Français</a> <a href="../it/">Italiano</a></nav>
-
-<p class="stamp translated">Это перевод. Основной текст политики <a href="../">на английском</a>.</p>
-
-<p class="lede">У Belay нет аккаунтов, аналитики, рекламы и сбора отчётов о сбоях. Он не составляет ваш профиль и не отправляет нам вашу работу. Почти всё, что нужно Belay, не покидает ваш Mac.</p>
-
-<h2>Что Belay читает</h2>
-
-<p>Belay нужно знать одно: работает ли агент прямо сейчас?</p>
-
-<p>Для Claude Code он смотрит на файлы сессий, которые Claude Code и так пишет на вашем Mac. Его интересует размер файла, вырос ли он, когда в него писали в последний раз, и в той части, что выросла, два поля каждой записи: её тип и завершился ли ход. Ваши промпты, ответы и код из этих файлов не извлекаются, и их копии нигде не остаются.</p>
-
-<p>Для других агентов Belay может следить за папкой, которую вы сами выберете. macOS сообщает ему, какие файлы изменились и когда, и этим Belay и ограничивается: он не открывает эти файлы и не читает их содержимое. Папка остаётся вашей, и ничего из неё никуда не загружается.</p>
-
-<p>За какими папками следить, решаете вы. <code>~/.claude</code> для Claude Code, а для остального только то, на что вы укажете сами.</p>
-
-<h2>Что уходит с вашего Mac</h2>
-
-<div class="note">
-    <p><strong>Mac App Store.</strong> Belay не делает исходящих сетевых соединений. У этой сборки нет права, которое macOS для них требует. Точное определение, если вы его включите, использует соединение, которое начинается и заканчивается на вашем же Mac, и в интернет ничего не отправляет.</p>
-    <p><strong>Прямая загрузка.</strong> Версия, скачанная с GitHub, может раз в сутки проверять обновления. Это обычный HTTPS-запрос к API релизов GitHub, без аккаунта, без параметров запроса и без идентификатора Belay; GitHub видит IP-адрес запроса и строку user agent, как при любом обращении к сайту. Автоматическую проверку можно выключить в Настройках, в разделе «Общие», и Belay никогда не устанавливает обновление без вашего участия.</p>
-</div>
-
-<h2>Что Belay хранит</h2>
-
-<p>Настройки и простые счётчики использования, в пользовательских настройках вашего Mac. Счётчики содержат длительности, число запусков и даты. В них нет ни названий проектов, ни промптов, ни кода.</p>
-
-<p>Сбросить статистику можно в любой момент в Настройках, в разделе «Статистика».</p>
-
-<h2>Что Belay меняет на вашем Mac</h2>
-
-<p>Чтобы не давать Mac уснуть, Belay использует предусмотренный для этого механизм macOS, power assertion. Ваши настройки энергосбережения он не переписывает и не может: ассертион существует рядом с ними, а не правит их.</p>
-
-<p>Если вы включаете точное определение для Claude Code, Belay сначала показывает точный текст, который добавит, и пишет только после вашего подтверждения. Перед записью делается резервная копия с отметкой времени, добавляется только собственная запись Belay, а кнопка «Удалить» на том же экране возвращает файл как было.</p>
-
-<h2>Передача данных</h2>
-
-<p>Belay не отправляет нам ни вашу статистику, ни настройки, ни вашу работу. Никаких аналитических и рекламных сервисов в приложении нет.</p>
-
-<p>В разделе «Статистика» можно сделать картинку с вашими же числами. Если вы решите ею поделиться, macOS спросит куда, и до этого момента никуда ничего не уходит.</p>
-
-<h2>Изменения этой политики</h2>
-
-<p>Если политика изменится, мы обновим дату выше. Любое значимое изменение, касающееся приватности, будет упомянуто и в описании выпуска.</p>
-
-<h2>Связь</h2>
-
-<p>Вопросы по этой политике: <a href="https://github.com/PerfectoWeb/Belay/issues">трекер задач</a> или адрес на <a href="https://perfecto-web.com">perfecto-web.com</a>.</p>
-
-<footer>
-    <a href="../../">Belay</a> &middot;
-    <a href="https://github.com/PerfectoWeb/Belay">Исходный код на GitHub</a>
-    <p class="fine">Claude Code, Codex CLI, Gemini CLI и Cline сделаны другими людьми. Belay работает рядом с ними и не связан с ними и не одобрен ими.</p>
-</footer>
-
-</div>
-</body>
+<body><a href="../../ru/privacy/">Belay</a></body>
 </html>

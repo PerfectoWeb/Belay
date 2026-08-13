@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung: Belay</title>
+<meta name="description" content="Belay hat keine Konten, keine Analytik, keine Werbung und keine Absturzberichte. Was es liest, was es speichert und die eine Anfrage, die es stellen kann.">
+<link rel="stylesheet" href="../../style.css">
+<link rel="alternate" hreflang="en" href="https://perfectoweb.github.io/Belay/en/privacy/">
+<link rel="alternate" hreflang="ru" href="https://perfectoweb.github.io/Belay/ru/privacy/">
+<link rel="alternate" hreflang="de" href="https://perfectoweb.github.io/Belay/de/privacy/">
+<link rel="alternate" hreflang="es" href="https://perfectoweb.github.io/Belay/es/privacy/">
+<link rel="alternate" hreflang="fr" href="https://perfectoweb.github.io/Belay/fr/privacy/">
+<link rel="alternate" hreflang="it" href="https://perfectoweb.github.io/Belay/it/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://perfectoweb.github.io/Belay/en/privacy/">
+</head>
+<body>
+<div class="wrap">
+
+<header>
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M32 6 L38.5 25.5 L58 32 L38.5 38.5 L32 58 L25.5 38.5 L6 32 L25.5 25.5 Z" fill="#1f6bff"/>
+        <path d="M50 8 L52.5 15.5 L60 18 L52.5 20.5 L50 28 L47.5 20.5 L40 18 L47.5 15.5 Z" fill="#5b93ff"/>
+    </svg>
+    <a href="../../de/">belay</a>
+</header>
+
+<h1>Datenschutzerklärung</h1>
+<p class="stamp">Belay für macOS. Zuletzt aktualisiert am 13. August 2026.</p>
+
+<p class="stamp translated">Dies ist eine Übersetzung. Maßgeblich ist die <a href="../">englische Fassung</a>.</p>
+
+<p class="lede">Belay hat keine Konten, keine Analytik, keine Werbung und keine Absturzberichte. Es legt kein Profil von dir an und schickt uns deine Arbeit nicht. Das meiste, was Belay braucht, verlässt deinen Mac nie.</p>
+
+<h2>Was Belay liest</h2>
+
+<p>Belay muss eines wissen: Arbeitet gerade ein Agent?</p>
+
+<p>Für Claude Code schaut Belay auf die Sitzungsdateien, die Claude Code ohnehin auf deinem Mac schreibt. Es sieht, wie groß eine Datei ist, ob sie gewachsen ist, wann zuletzt geschrieben wurde, und im gewachsenen Teil zwei Felder je Eintrag: um welche Art Eintrag es sich handelt und ob der Zug beendet wurde. Deine Prompts, deine Antworten und dein Code werden aus diesen Dateien nicht ausgelesen, und es wird keine Kopie davon aufbewahrt.</p>
+
+<p>Für andere Agenten kann Belay einen Ordner beobachten, den du auswählst. macOS teilt Belay mit, welche Dateien sich wann geändert haben, und mehr nutzt Belay nicht: Es öffnet diese Dateien nicht und liest ihren Inhalt nicht. Der Ordner bleibt deiner, und nichts daraus wird hochgeladen.</p>
+
+<p>Welche Ordner Belay ansieht, entscheidest du. <code>~/.claude</code> für Claude Code, und sonst nur das, worauf du es selbst richtest.</p>
+
+<h2>Was deinen Mac verlässt</h2>
+
+<div class="note">
+    <p><strong>Mac App Store.</strong> Belay stellt keine ausgehenden Netzwerkverbindungen her. Dieser Build wird ohne die Berechtigung ausgeliefert, die macOS dafür verlangt. Die präzise Erkennung nutzt, wenn du sie einschaltest, eine Verbindung, die auf deinem eigenen Mac beginnt und endet, und sendet nichts ins Internet.</p>
+    <p><strong>Direkter Download.</strong> Die von GitHub geladene Version kann einmal täglich nach Updates sehen. Das ist eine gewöhnliche HTTPS-Anfrage an die GitHub-Releases-API, ohne Konto, ohne Abfrageparameter und ohne Belay-Kennung; GitHub sieht die IP-Adresse der Anfrage und einen User Agent, wie bei jedem Web-Aufruf. Die automatische Prüfung lässt sich in den Einstellungen unter „Allgemein“ abschalten, und Belay installiert nie ein Update, ohne dass du es verlangst.</p>
+</div>
+
+<h2>Was Belay speichert</h2>
+
+<p>Seine Einstellungen und einfache Nutzungszähler, in den Benutzereinstellungen deines Macs. Die Zähler enthalten Dauern, Anzahl der Läufe und Tage. Sie enthalten keine Projektnamen, keine Prompts und keinen Code.</p>
+
+<p>Du kannst deine Statistik jederzeit in den Einstellungen unter „Statistik“ zurücksetzen.</p>
+
+<h2>Was Belay auf deinem Mac verändert</h2>
+
+<p>Um deinen Mac wach zu halten, nutzt Belay die dafür vorgesehene Power-Assertion-API von macOS. Deine Energiespar-Einstellungen schreibt es nicht um, und es kann es auch nicht: Eine Assertion steht neben ihnen, statt sie zu ändern.</p>
+
+<p>Wenn du die präzise Erkennung für Claude Code einschaltest, zeigt Belay zuerst genau die Konfiguration, die es hinzufügen würde, und schreibt erst nach deiner Bestätigung. Vorher wird eine Sicherung mit Zeitstempel angelegt, es wird nur der eigene Eintrag hinzugefügt, und „Entfernen“ im selben Fenster stellt die Datei wieder her.</p>
+
+<h2>Weitergabe</h2>
+
+<p>Belay schickt uns weder deine Nutzungsstatistik noch deine Einstellungen noch deine Arbeit. Es gibt keine Analyse- oder Werbedienste in der App.</p>
+
+<p>Der Statistik-Bereich kann ein Bild deiner eigenen Zahlen erzeugen. Wenn du es teilst, fragt macOS dich wohin, und vorher wird nichts geteilt.</p>
+
+<h2>Änderungen an dieser Erklärung</h2>
+
+<p>Ändert sich diese Erklärung, aktualisieren wir das Datum oben. Jede bedeutsame Änderung beim Datenschutz wird auch in den Versionshinweisen genannt.</p>
+
+<h2>Kontakt</h2>
+
+<p>Fragen zu dieser Erklärung: <a href="https://github.com/PerfectoWeb/Belay/issues">der Issue-Tracker</a> oder die Adresse auf <a href="https://perfecto-web.com">perfecto-web.com</a>.</p>
+
+<footer>
+    <a href="../">Belay</a> &middot;
+    <a href="https://github.com/PerfectoWeb/Belay">Quellcode auf GitHub</a>
+    <p class="fine">Claude Code, Codex CLI, Gemini CLI und Cline stammen von anderen. Belay arbeitet neben ihnen und steht mit keinem von ihnen in Verbindung und wird von keinem unterstützt.</p>
+    <details class="languages">
+        <summary>Sprache</summary>
+        <nav><a href="../../en/privacy/">English</a> <a href="../../ru/privacy/">Русский</a> <span class="here">Deutsch</span> <a href="../../es/privacy/">Español</a> <a href="../../fr/privacy/">Français</a> <a href="../../it/privacy/">Italiano</a></nav>
+    </details>
+</footer>
+
+</div>
+</body>
+</html>

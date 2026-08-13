@@ -130,18 +130,33 @@ footer {
     opacity: 0.8;
 }
 
-/* The language row under the date on the privacy pages. Quiet: it is a way
-   out for someone who cannot read this page, not a feature of it. */
+.translated { margin-top: -12px; }
+
+/* The language picker. A disclosure rather than a select: no script, works
+   from the keyboard, and shut until someone wants it. In the footer because
+   choosing a language is something you do once, not something the page is
+   about. */
 .languages {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+}
+
+.languages summary {
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.8;
+}
+
+.languages summary:hover { color: var(--accent); opacity: 1; }
+
+.languages nav {
     display: flex;
     flex-wrap: wrap;
     gap: 4px 14px;
-    margin: -20px 0 28px;
-    font-size: 14px;
+    margin-top: 8px;
 }
 
 .languages a { color: var(--ink-soft); text-decoration: none; }
 .languages a:hover { color: var(--accent); text-decoration: underline; }
 .languages .here { color: var(--ink); font-weight: 600; }
-
-.translated { margin-top: -12px; }

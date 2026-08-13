@@ -1,0 +1,249 @@
+#!/usr/bin/env python3
+"""Builds the whole site: six languages, two pages each, plus the redirects.
+
+    python3 build-site.py .
+
+Layout. The language is the first path segment, so every page has the same
+shape and a seventh page or a seventh language is not a special case:
+
+    /en/  /en/privacy/        /ru/  /ru/privacy/   … and so on
+
+The root is a redirect stub. GitHub Pages serves static files and has no
+server-side redirects, so it is done in the page: a script reads the browser's
+preferred languages and replaces the location with one we have, and a
+<noscript> meta refresh sends everyone else to English. That is the only script
+on the site, it renders nothing, and it decides which door rather than what is
+behind it. The privacy policy itself never depends on JavaScript running.
+
+/privacy/ and /privacy/<lang>/ are kept as redirect stubs because those
+addresses are already out in the world: the published 1.0.0 release notes link
+to /privacy/, and a link somebody saved should not answer 404 because we moved
+some folders.
+"""
+
+import io
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from landing import L
+from policy_text import LANGUAGES, T
+
+CODES = [code for code, _, _ in LANGUAGES]
+
+MARK = '''<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M32 6 L38.5 25.5 L58 32 L38.5 38.5 L32 58 L25.5 38.5 L6 32 L25.5 25.5 Z" fill="#1f6bff"/>
+        <path d="M50 8 L52.5 15.5 L60 18 L52.5 20.5 L50 28 L47.5 20.5 L40 18 L47.5 15.5 Z" fill="#5b93ff"/>
+    </svg>'''
+
+
+def head(code, title, meta, depth, page):
+    """`depth` is how far this file sits below the site root."""
+    up = "../" * depth
+    lines = [
+        "<!doctype html>",
+        f'<html lang="{code}">',
+        "<head>",
+        '<meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        f"<title>{title}</title>",
+        f'<meta name="description" content="{meta}">',
+        f'<link rel="stylesheet" href="{up}style.css">',
+    ]
+    for other in CODES:
+        href = f"https://perfectoweb.github.io/Belay/{other}/{page}"
+        lines.append(f'<link rel="alternate" hreflang="{other}" href="{href}">')
+    lines.append(
+        '<link rel="alternate" hreflang="x-default" '
+        f'href="https://perfectoweb.github.io/Belay/en/{page}">')
+    lines += ["</head>", "<body>", '<div class="wrap">', ""]
+    return lines
+
+
+def header(code, depth):
+    up = "../" * depth
+    return ["<header>", f"    {MARK}", f'    <a href="{up}{code}/">belay</a>', "</header>", ""]
+
+
+def language_picker(code, depth, label, page):
+    """A disclosure, not a select. It needs no script, it is reachable from the
+    keyboard, and it stays shut until someone wants it."""
+    up = "../" * depth
+    links = []
+    for other in CODES:
+        name = dict((c, n) for c, n, _ in LANGUAGES)[other]
+        if other == code:
+            links.append(f'<span class="here">{name}</span>')
+        else:
+            links.append(f'<a href="{up}{other}/{page}">{name}</a>')
+    return [
+        '    <details class="languages">',
+        f"        <summary>{label}</summary>",
+        '        <nav>' + " ".join(links) + "</nav>",
+        "    </details>",
+    ]
+
+
+def landing(code):
+    t = L[code]
+    lines = head(code, t["title"], t["meta"], 1, "")
+    lines += header(code, 1)
+    lines += [
+        f'<h1>{t["h1"]}</h1>',
+        "",
+        f'<p class="lede">{t["lede"]}</p>',
+        "",
+        f'<p>{t["body"]}</p>',
+        "",
+        '<div class="actions">',
+        '    <a class="button" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
+        f'{t["download"]}</a>',
+        f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
+        "</div>",
+        "",
+        f'<p class="stamp">{t["requires"]}',
+        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a>.</p>',
+        "",
+        "<footer>",
+        f'    <a href="privacy/">{t["privacy"]}</a> &middot;',
+        f'    <a href="https://github.com/PerfectoWeb/Belay/issues">{t["bug"]}</a> &middot;',
+        '    <a href="https://perfecto-web.com">perfecto-web.com</a>',
+        f'    <p class="fine">{T[code]["fine"]}</p>',
+    ]
+    lines += language_picker(code, 1, t["language"], "")
+    lines += ["</footer>", "", "</div>", "</body>", "</html>", ""]
+    return "\n".join(lines)
+
+
+def privacy(code):
+    t = T[code]
+    lines = head(code, t["title"], t["meta"], 2, "privacy/")
+    lines += header(code, 2)
+    lines += [f'<h1>{t["h1"]}</h1>', f'<p class="stamp">{t["stamp"]}</p>', ""]
+    if t["authoritative"]:
+        lines += [f'<p class="stamp translated">{t["authoritative"]}</p>', ""]
+    lines += [f'<p class="lede">{t["lede"]}</p>', ""]
+
+    sections = [
+        ("reads_head", ["reads_1", "reads_2", "reads_3", "reads_4"], False),
+        ("leaves_head", ["leaves_mas", "leaves_direct"], True),
+        ("stores_head", ["stores_1", "stores_2"], False),
+        ("changes_head", ["changes_1", "changes_2"], False),
+        ("sharing_head", ["sharing_1", "sharing_2"], False),
+        ("policy_head", ["policy_1"], False),
+        ("contact_head", ["contact_1"], False),
+    ]
+    for heading, bodies, boxed in sections:
+        lines += [f"<h2>{t[heading]}</h2>", ""]
+        if boxed:
+            lines.append('<div class="note">')
+            lines += [f"    <p>{t[key]}</p>" for key in bodies]
+            lines.append("</div>")
+        else:
+            for key in bodies:
+                lines += [f"<p>{t[key]}</p>", ""]
+            lines.pop()
+        lines.append("")
+
+    lines += [
+        "<footer>",
+        f'    <a href="../">Belay</a> &middot;',
+        f'    <a href="https://github.com/PerfectoWeb/Belay">{t["source"]}</a>',
+        f'    <p class="fine">{t["fine"]}</p>',
+    ]
+    lines += language_picker(code, 2, L[code]["language"], "privacy/")
+    lines += ["</footer>", "", "</div>", "</body>", "</html>", ""]
+    return "\n".join(lines)
+
+
+def fixed_redirect(target, depth, note):
+    """For an address that already named its language. Somebody who saved
+    /privacy/ru/ asked for Russian; guessing again from their browser would
+    overrule a choice they had already made."""
+    up = "../" * depth
+    return "\n".join([
+        "<!doctype html>",
+        '<html lang="en">',
+        "<head>",
+        '<meta charset="utf-8">',
+        f"<!-- {note} -->",
+        f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{target}">',
+        f'<meta http-equiv="refresh" content="0; url={up}{target}">',
+        "<title>Belay</title>",
+        "</head>",
+        f'<body><a href="{up}{target}">Belay</a></body>',
+        "</html>",
+        "",
+    ])
+
+
+def redirect(target, depth, note):
+    """A page whose only job is to send the reader somewhere else.
+
+    `location.replace` rather than an assignment, so Back does not land here
+    again and bounce. The noscript refresh is the same destination for anyone
+    without JavaScript, which is why the detection can afford to be simple.
+    """
+    up = "../" * depth
+    return "\n".join([
+        "<!doctype html>",
+        '<html lang="en">',
+        "<head>",
+        '<meta charset="utf-8">',
+        f"<!-- {note} -->",
+        f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{target}">',
+        f'<noscript><meta http-equiv="refresh" content="0; url={up}{target}"></noscript>',
+        "<title>Belay</title>",
+        "<script>",
+        f"  var known = {CODES!r};".replace("'", '"'),
+        '  var wanted = (navigator.languages || [navigator.language || "en"])',
+        '    .map(function (tag) { return String(tag).slice(0, 2).toLowerCase(); })',
+        "    .filter(function (code) { return known.indexOf(code) !== -1; })[0];",
+        f'  location.replace("{up}" + (wanted || "en") + "/{target.split("/", 1)[1] if "/" in target else ""}");',
+        "</script>",
+        "</head>",
+        f'<body><a href="{up}{target}">Belay</a></body>',
+        "</html>",
+        "",
+    ])
+
+
+def main(root):
+    written = []
+    for code in CODES:
+        folder = os.path.join(root, code)
+        os.makedirs(folder, exist_ok=True)
+        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(landing(code))
+        written.append(f"{code}/")
+
+        folder = os.path.join(root, code, "privacy")
+        os.makedirs(folder, exist_ok=True)
+        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(privacy(code))
+        written.append(f"{code}/privacy/")
+
+    io.open(os.path.join(root, "index.html"), "w", encoding="utf-8").write(
+        redirect("en/", 0, "The site root. Sends the reader to their own language if we have it."))
+    written.append("/")
+
+    # The addresses that already exist in the world.
+    os.makedirs(os.path.join(root, "privacy"), exist_ok=True)
+    io.open(os.path.join(root, "privacy", "index.html"), "w", encoding="utf-8").write(
+        redirect("en/privacy/", 1, "Kept: the published 1.0.0 release notes link here."))
+    written.append("privacy/")
+    for code in CODES:
+        if code == "en":
+            continue
+        folder = os.path.join(root, "privacy", code)
+        os.makedirs(folder, exist_ok=True)
+        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(
+            fixed_redirect(
+                f"{code}/privacy/", 2, "Kept: this address was published for one evening."))
+        written.append(f"privacy/{code}/")
+
+    for path in written:
+        print(f"  {path}")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])
