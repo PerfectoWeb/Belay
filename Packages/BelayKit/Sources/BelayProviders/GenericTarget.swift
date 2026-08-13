@@ -69,8 +69,8 @@ public struct GenericTarget: Sendable, Equatable, Codable, Identifiable {
 /// generic report is one call — `await generic.ingest(report)` — for any tool
 /// that can run a shell command in a hook:
 ///
-///     curl -s -m 1 "http://127.0.0.1:$PORT/hook?token=$TOKEN&provider=generic\
-///     &session=aider&state=working" >/dev/null 2>&1 || true
+///     curl -s -X POST -H "Authorization: Bearer $TOKEN" \
+///       "http://127.0.0.1:$PORT/hook?provider=generic&session=aider&state=working"
 ///
 /// `session` is arbitrary and chosen by the caller. A report whose identifier
 /// matches a configured target is attributed to it; anything else becomes its

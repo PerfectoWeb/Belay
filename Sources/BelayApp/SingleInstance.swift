@@ -18,7 +18,7 @@ enum SingleInstance {
         guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else {
             return true
         }
-        let identifier = Bundle.main.bundleIdentifier ?? "com.perfectoweb.belay"
+        let identifier = Branding.bundleIdentifier
         let mine = ProcessInfo.processInfo.processIdentifier
 
         let others = NSRunningApplication.runningApplications(withBundleIdentifier: identifier)

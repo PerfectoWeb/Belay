@@ -135,8 +135,7 @@ private struct AppStoreUpdatesRow: View {
 ///
 /// On by default, and the caption says what it costs in one line rather than
 /// burying it:
-/// this is the only network access in the app, and the About pane promises
-/// there is none.
+/// this is the only network access in the app.
 private struct UpdatesRow: View {
     @Bindable var checker: ReleaseChecker
 

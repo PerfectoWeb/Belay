@@ -16,7 +16,12 @@ struct GenericTargetStore {
     private let key = "genericTargets"
     private let defaults: UserDefaults
 
-    init(defaults: UserDefaults = UserDefaults(suiteName: "com.perfectoweb.belay") ?? .standard) {
+    // `.standard`, not a suite named after the app. `UserDefaults(suiteName:)`
+    // returns nil when the name is the app's own bundle identifier, so this
+    // took the fallback on every launch and logged "does not make sense" each
+    // time. SettingsStore documents the same trap; this is the second copy of
+    // that identifier, and the reason there is now none.
+    init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
     }
 

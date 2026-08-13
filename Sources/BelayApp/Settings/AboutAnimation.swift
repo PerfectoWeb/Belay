@@ -192,35 +192,6 @@ struct Starfield: View {
     }
 }
 
-/// The product mark, breathing. Reuses the menu bar artwork so About and the
-/// menu bar can never drift apart.
-struct BreathingMark: View {
-    var animated: Bool
-
-    /// Rendered once. Rebuilding the vector artwork on every tick was most of
-    /// the 8.3% this pane used to cost.
-    @MainActor private static let frames: [NSImage] = (0..<BelayGlyph.frameCount).map {
-        BelayGlyph.image(.working, frame: $0, size: 46)
-    }
-
-    var body: some View {
-        // Not the menu bar's schedule. Up there the hold is the point — it is
-        // what keeps a moving icon affordable. Here it reads as the animation
-        // having stopped, and About is the one page in the app whose job is to
-        // present rather than to stay out of the way.
-        TimelineView(.periodic(from: .now, by: animated ? 0.075 : 3600)) { timeline in
-            let frame =
-                animated
-                ? Int(timeline.date.timeIntervalSinceReferenceDate / 0.075) % BelayGlyph.frameCount
-                : 0
-            Image(nsImage: Self.frames[frame])
-                .resizable()
-                .foregroundStyle(.tint)
-        }
-        .accessibilityHidden(true)
-    }
-}
-
 /// Deterministic noise. `SystemRandomNumberGenerator` would move the stars on
 /// every launch, which reads as a rendering bug rather than as a starfield.
 private struct SplitMix {

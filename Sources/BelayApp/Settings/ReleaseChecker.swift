@@ -92,7 +92,8 @@ final class ReleaseChecker {
         self.fetch = fetch
     }
 
-    /// Runs a check if one is due. Called at launch and on a daily timer, and it
+    /// Runs a check if one is due. Called at launch and on an hourly timer that
+    /// checks at most once a day, and it
     /// is the *only* automatic caller — the button below goes straight to
     /// `check()`.
     func checkIfDue(now: Date = Date()) {

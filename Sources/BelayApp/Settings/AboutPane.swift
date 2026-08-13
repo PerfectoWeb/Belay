@@ -100,7 +100,11 @@ struct AboutPane: View {
             privacyNote
 
             HStack(spacing: 8) {
-                if let donate = Branding.donateURL {
+                // Direct channel only. A payment link inside a Mac App Store
+                // build is a guideline violation and a rejection, which is why
+                // BelayTipJar exists and why coffeeURL is a permanent nil. This
+                // row was added later and went round the seam built to stop it.
+                if DistributionChannel.current == .direct, let donate = Branding.donateURL {
                     AboutLink(
                         title: "Donate", symbol: "heart.fill", url: donate, isProminent: true,
                         sound: .thanks)
@@ -143,16 +147,10 @@ struct AboutPane: View {
     /// commitment look like a marketing badge, and the sentence is better than
     /// the badge.
     private var privacyNote: some View {
-        Text(
-            """
-            Belay reads only enough of your agent's session files to know whether it is running. \
-            Never your prompts, never your code, and nothing about you leaves this Mac. The one \
-            exception is the daily update check, which you can switch off.
-            """
-        )
-        .font(.system(size: 11))
-        .foregroundStyle(.secondary)
-        .fixedSize(horizontal: false, vertical: true)
+        Text(PrivacyPromise.forThisChannel)
+            .font(.system(size: 11))
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
     }
 
     /// Stated plainly, because these are the reasons to trust a utility that

@@ -26,7 +26,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
     public let signals: AsyncStream<ActivitySignal>
 
     let configuration: Configuration
-    /// Internal, like the four below it, so the availability check and the
+    /// Internal, like the five below it, so the availability check and the
     /// sweeps can live in their own files (this one is at the linter's limit).
     let access: FileAccessProvider
     let clock: any Clock
