@@ -1,4 +1,3 @@
-import BelaySupport
 import Foundation
 
 /// Waiting for Claude Code to be used for the first time.

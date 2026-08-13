@@ -279,8 +279,11 @@ review will actually catch.
   it after the domain concept.
 - Type names are at least 3 characters, identifiers at least 2 (`id`, `up`, `on`
   and `ok` are excused), and types nest at most two deep.
-- The analyzer rules `unused_import` and `unused_declaration` are on, so a stray
-  import is a build gate rather than a nit.
+- The analyzer rules `unused_import` and `unused_declaration` are configured in
+  `.swiftlint.yml`, but `scripts/test.sh` runs `swiftlint --strict`, which does
+  not execute them: analyzer rules need `swiftlint analyze` and a compiler log.
+  So they are not a gate yet, whatever this file used to claim. Four unused
+  imports and a dead 33-line view survived a green run before anyone checked.
 - `todo` is deliberately disabled: work in flight is tracked in
   `PROJECT_STATE.md`, not by the linter.
 
