@@ -62,7 +62,11 @@ rather than being told about it.
 3. **Regenerate the project.** XcodeGen reads the catalogue and writes
    `knownRegions` from it; without this the strings compile into nothing and the
    app silently shows English.
-4. **Translate, import, and run `scripts/test.sh`.** `LocalizationTests` is what
+4. **Write the terminology down before translating.** One list of the recurring
+   words, decided once. Three people translating the same interface from the
+   same English without one will produce three vocabularies, and the drift shows
+   in an interface this small. `zh-Hans-glossary.md` is the worked example.
+5. **Translate, import, and run `scripts/test.sh`.** `LocalizationTests` is what
    catches the two ways this goes wrong quietly: a language that is offered in
    the picker but absent from the bundle, and one that is present but is still
    mostly the English seed.
