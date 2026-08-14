@@ -23,47 +23,29 @@ None of it has been submitted, uploaded, validated, or seen by Apple. No app
 record exists. No bundle identifier has been registered in the Developer portal.
 No screenshots exist anywhere in this repository.
 
-## Blocker zero: the sandboxed build cannot read `~/.claude`
+## Blocker zero — CLOSED (2026-08-12)
 
-This comes before every other item on this page. It is `BLOCKERS.md` B8.
+This page used to open with a long section saying the sandboxed build could not
+read `~/.claude`, that nothing in the tree resolved a security-scoped bookmark,
+and that the one `NSOpenPanel` belonged to the generic provider. All of that was
+true when it was written and none of it is true now. It is `BLOCKERS.md` B8, and
+B8 is resolved: the grant flow was built, run by hand inside the real container,
+and a 660-byte `BelayClaudeFolderBookmark` came back.
 
-[`../Packages/BelayKit/Sources/BelaySupport/FileAccess.swift`](../Packages/BelayKit/Sources/BelaySupport/FileAccess.swift)
-defines `FileAccessProvider` with one implementation, `DirectFileAccess`, which
-calls `FileManager` and nothing else. The error cases `noBookmark` and
-`bookmarkUnresolvable` are declared. Nothing throws them, because nothing
-resolves a bookmark. Grep the tree: there is no `bookmarkData`, no
-`resolvingBookmarkData`, no `startAccessingSecurityScopedResource`. The one
-`NSOpenPanel` in the app belongs to the generic provider's folder picker, not to
-a grant flow for `~/.claude`.
+What exists now, so nobody has to grep for it again:
 
-So `Belay-MAS` builds, passes its own audit, and would launch on a reviewer's Mac
-with the core feature dead: sandboxed `FileManager` reads of `~/.claude` are
-denied, no signal is ever produced, and the panel says nothing is running. That
-is a Guideline 2.1 rejection on the first launch, before any of the interesting
-questions below get asked.
+| Piece | Where |
+|---|---|
+| Bookmark create / resolve / start-stop accessing | `Packages/BelayKit/Sources/BelaySupport/SecurityScopedBookmarks.swift` |
+| The file access implementation that uses it | `Packages/BelayKit/Sources/BelaySupport/BookmarkFileAccess.swift` |
+| The one-time grant panel for `~/.claude` | `Sources/BelayApp/Onboarding/ClaudeFolderPanel.swift` |
+| Which implementation each channel gets | `Sources/BelayApp/Onboarding/ClaudeAccess.swift` |
+| Tests that run inside a container | `Tests/BelaySandboxTests/` |
 
-What has to exist before a submission is worth attempting:
-
-1. A `BookmarkFileAccess` implementation of `FileAccessProvider`: resolve an
-   app-scoped bookmark on launch, handle `isStale` by re-resolving, and balance
-   every `startAccessingSecurityScopedResource()` with a `defer` stop. `docs/06`
-   already spells out why the balance matters: leaking scoped resources exhausts
-   a per-process limit and detection dies with no visible cause.
-2. A one-time grant flow: an `NSOpenPanel` defaulted to `~/.claude`, with copy
-   explaining what is being granted and why, and a visible state for "access was
-   revoked or the bookmark went stale, grant it again".
-3. Composition that hands `BookmarkFileAccess` to the providers in the MAS target
-   and `DirectFileAccess` in the direct one. Today the app target does not
-   mention either type; the providers use their `DirectFileAccess()` default
-   argument.
-4. The sandbox test matrix `adr/004` promised and `docs/11-RISKS.md` R5 warns
-   about: FSEvents on a scoped resource, bookmark staleness across a restart,
-   and the `~/.claude/settings.json` write path under the grant.
-
-Until those four exist, treat everything below as preparation rather than a plan
-with a date.
-
----
+The section is kept as a heading rather than deleted because the old text was
+quoted into other documents and into `PROJECT_STATE.md`, and a reader who
+follows one of those links deserves to land on the correction rather than on
+nothing.
 
 ## What Apple will ask for that does not exist yet
 
@@ -92,12 +74,18 @@ identifier is registered, because changing it afterwards means a new app record.
 
 ### Category
 
-`LSApplicationCategoryType` is **absent** from
-[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist). Add it:
+`LSApplicationCategoryType` is **present** in
+[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist), set from
+`project.yml`, and its value is:
 
 ```
-LSApplicationCategoryType   public.app-category.utilities
+LSApplicationCategoryType   public.app-category.developer-tools
 ```
+
+App Store Connect's category must be set to match it. Developer Tools is the
+right answer for a thing whose whole audience is people running coding agents;
+this page previously advised Utilities, which would have disagreed with the
+shipped plist.
 
 Primary category in App Store Connect: Utilities. Secondary: Developer Tools is
 the honest second choice, since the entire audience is people running coding
@@ -456,10 +444,10 @@ has not started.
 
 **Make the sandboxed build actually work** (blocker zero, above)
 
-- [ ] Implement `BookmarkFileAccess`.
-- [ ] Build the one-time grant flow and the revoked/stale state.
-- [ ] Inject the right implementation per channel at composition.
-- [ ] Add the sandbox test matrix: FSEvents on a scoped resource, bookmark
+- [x] Implement `BookmarkFileAccess`.
+- [x] Build the one-time grant flow and the revoked/stale state.
+- [x] Inject the right implementation per channel at composition.
+- [x] Add the sandbox test matrix: FSEvents on a scoped resource, bookmark
       staleness across a restart, the `settings.json` write under the grant.
 - [ ] Run the full detection suite under the `Belay-MAS` scheme, on a real
       machine, against a real Claude Code session. Not in a test host.
@@ -476,8 +464,8 @@ has not started.
 
 **Fix the bundle metadata**
 
-- [ ] Add `LSApplicationCategoryType = public.app-category.utilities` to
-      `Sources/BelayApp/Info.plist` and regenerate with `xcodegen generate`.
+- [x] `LSApplicationCategoryType` is set, to `public.app-category.developer-tools`.
+      Match App Store Connect's category to it.
 - [ ] Confirm `ITSAppUsesNonExemptEncryption` is still `false` and still true.
 - [ ] Confirm `BelayDistributionChannel` reads `appStore` in the built MAS
       bundle.

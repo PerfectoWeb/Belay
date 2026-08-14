@@ -113,24 +113,107 @@ Store Connect will not ask.
 
 ## Step 8. Notes for review, and this one matters
 
-Belay opens a listening socket on `127.0.0.1`. A reviewer who notices will ask,
-and answering before they ask is cheaper than a rejection. Paste something like:
+Belay opens a listening socket on `127.0.0.1`, and the 1.0.0 submission was
+rejected over it — not by a reviewer, by an automated check. Guideline 2.4.5,
+"includes the com.apple.security.network.server entitlement but does not appear
+to have matching functionality". See "The 2.4.5 rejection" below for why the
+check is wrong and what to send back.
+
+Paste this into **App Review Information → Notes**. It is written to be true of
+the build that is actually uploaded; the earlier draft of this section said the
+listener was "off until the user turns it on", which is not what the code does,
+and telling App Review that would have been worse than the rejection.
 
 > Belay is a menu bar utility that keeps the Mac awake while a local AI coding
 > agent is working. It has no account, no server and no analytics.
 >
-> The app opens a loopback listener on 127.0.0.1 so Claude Code, which runs on
-> the same Mac, can tell it when a run starts and stops. The listener is bound
-> to the loopback interface and requires a bearer token stored in the user's
-> own Application Support directory. This build ships without the
-> com.apple.security.network.client entitlement, so it cannot make outbound
-> connections at all. The feature is off until the user turns it on.
+> **Why the app needs com.apple.security.network.server.** Belay runs an HTTP
+> listener bound to 127.0.0.1 so that Claude Code — a command line tool running
+> on the same Mac, outside our sandbox — can post lifecycle events to it
+> ("a run started", "a run finished", "the agent is waiting for input"). This is
+> what makes detection immediate instead of inferred. The listener is created
+> with NWListener from Network.framework, on an ephemeral port, bound to the
+> loopback interface only, and every request must carry a bearer token that
+> Belay writes to its own container. It accepts no connection from outside the
+> machine and initiates none: this build deliberately ships **without**
+> com.apple.security.network.client and therefore cannot make an outbound
+> connection at all.
 >
-> With the user's explicit confirmation, and only from a button that shows the
-> exact text first, Belay adds one hook entry to Claude Code's own settings
-> file. The same screen removes it.
+> The listener starts with the app, so it is running the moment the app is
+> launched and needs no setup to observe. Installing the matching hook entry in
+> Claude Code's own settings file is separate, is off by default, and happens
+> only from a button that shows the exact text of the change first; the same
+> screen removes it.
+>
+> **To see it working, in about a minute and with no account:**
+>
+> 1. Launch Belay. The listener is already up:
+>    `lsof -nP -iTCP -sTCP:LISTEN -a -c Belay` prints a line ending
+>    `TCP 127.0.0.1:<port> (LISTEN)`.
+> 2. The same port and its token are in
+>    `~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json`.
+> 3. Post to it the way Claude Code does:
+>    `curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"`
+>    It answers **204**. Without the header, or with a wrong token, it answers
+>    **401** and reads nothing.
+> 4. Belay's panel now shows a session working and the Mac is being held awake;
+>    `pmset -g assertions | grep Belay` shows the assertion macOS granted.
+>
+> Note that Belay does not add its hook to Claude Code's settings file unless
+> the user asks it to, in **Settings ▸ Providers ▸ Precise detection**, from a
+> button that shows the exact change first. So on a fresh install the socket is
+> listening and idle: it is waiting for an agent that has not been pointed at it
+> yet. Step 3 above is exactly what that agent would send.
 >
 > No sign-in is required to review any part of the app.
+
+### The 2.4.5 rejection, and why the automated check missed it
+
+The functionality is in the binary. In the 1.0.0 archive:
+
+```
+otool -L .../Belay.app/Contents/MacOS/Belay | grep Network
+    /System/Library/Frameworks/Network.framework/Versions/A/Network
+
+nm -u .../Belay.app/Contents/MacOS/Belay | grep NWListener
+    _$s7Network10NWListenerC18stateUpdateHandleryAC5StateOcSgvs
+    _$s7Network10NWListenerC20newConnectionHandleryAA12NWConnectionCcSgvs
+    _$s7Network10NWListenerC4portAA10NWEndpointO4PortVSgvg
+    ...
+```
+
+The likely reason the check did not see it: those are Swift symbols. A Swift app
+using `NWListener` never references the C entry points (`nw_listener_create`,
+`bind`, `listen`) directly — the Swift overlay does, inside
+`libswiftNetwork.dylib`. A scanner looking for the C symbols in the app binary
+finds nothing.
+
+And the entitlement is not merely used, it is **required**: `network.client` is
+not a substitute, because the sandbox distinguishes by direction. The same
+`NWParameters` Belay uses were compiled into a standalone probe and run three
+ways, ad-hoc signed:
+
+| Sandbox | Entitlements | Result |
+|---|---|---|
+| off | — | `READY port=59439` |
+| on | `network.client` only | **`FAILED POSIXErrorCode(1): Operation not permitted`** |
+| on | `network.server` | `READY port=59441` |
+
+`client` authorises the outbound `connect(2)`; `NWListener` performs `bind(2)`
+and `listen(2)`, which the sandbox refuses with EPERM without `network.server`,
+loopback included. Without it Belay loses exact detection entirely in this
+channel.
+
+There is no build change that fixes this honestly. Reply to the message in App
+Store Connect with the entitlement paragraph above, add the same text to App
+Review Information, and resubmit.
+
+**Do not upload a bundle built by the test scheme.** The Debug MAS product in
+`build/DerivedData-MAS` carries Xcode's test-host injections — a
+`temporary-exception.files.absolute-path.read-only` for `/` and three
+`mach-lookup` exceptions — which is precisely the "more than the minimum set of
+entitlements" the same guideline is about. Only ever ship the archive export;
+`Belay-MAS.entitlements` itself is clean and `SandboxAccessTests` asserts it.
 
 ## Step 9. Submit
 

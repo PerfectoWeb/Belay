@@ -354,8 +354,11 @@ folder nobody touched emit `.working`.
 twice — no forked source, five attributes differ. Both build. `BelayTipJar`
 carries `TipJarProviding` (link-based and StoreKit implementations) and
 `UpdateChannel`. Release, notarize, sign-update and MAS-audit scripts are
-written; none were run, as intended — there is no developer account here (B1).
-CI workflow written, not run, not committed.
+written, and as of 2026-08-14 all of them have been run: v1.0.0 and v1.1.0
+were archived, signed, notarized, stapled and published, and the release
+workflow has gone green as a dry run in CI.
+CI has been running on every push since the repository went public; the
+release workflow first went green, as a dry run, on 2026-08-14.
 
 Verified:
 

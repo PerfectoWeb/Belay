@@ -5,8 +5,8 @@
 | | **Direct** (Developer ID + notarized) | **Mac App Store** |
 |---|---|---|
 | Sandbox | off | required |
-| Updates | Sparkle 2 (EdDSA-signed appcast) | App Store |
-| Monetisation | "Buy me a coffee" link | StoreKit 2 consumable tips |
+| Updates | A daily check against the GitHub releases API (`ReleaseChecker`). Sparkle is written but commented out of `project.yml` and ships in neither channel. | App Store |
+| Monetisation | A Donate link. `coffeeURL` is permanently nil. | Nothing. The StoreKit tip jar exists in `BelayTipJar` but has no call site in the app and is not linked into the binary. |
 | Hook installation | direct filesystem write | user-granted, bookmark-scoped |
 | Risk | none | review friction (see below) |
 
@@ -140,7 +140,7 @@ exist, and note it in `BLOCKERS.md`.
 - Local dev: ad-hoc signing (`CODE_SIGN_IDENTITY = "-"`) so `scripts/build-local.sh`
   produces a runnable `.app` with no developer account. This is what you'll use
   for the whole build.
-- `scripts/release.sh` (written, not run): archive, export with Developer ID,
+- `scripts/release.sh` (run for real on 2026-08-13 and 2026-08-14): archive, export with Developer ID,
   `notarytool submit --wait`, `stapler staple`, produce a DMG via
   `create-dmg`. Leave the team ID as a clearly-marked placeholder.
 - Hardened Runtime on for the direct build. No `disable-library-validation`
