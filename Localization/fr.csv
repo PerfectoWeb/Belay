@@ -120,7 +120,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Activer…
 Erase,Statistics,needs_review,,Erase,Effacer
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Effacer vos statistiques ?
-Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Terminé
+Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Terminé
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corriger
 Free,Settings: About,translated,,Free,Gratuit
 General,"Settings, Settings: General",translated,,General,Général
@@ -200,12 +200,12 @@ Show fewer,Panel,translated,,Show fewer,Afficher moins
 Show fewer sessions,Panel,translated,,Show fewer sessions,Afficher moins de sessions
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,Affiche exactement ce que Belay ajoutera avant toute écriture
 Since %@,Statistics,needs_review,%@,Since %@,Depuis le %@
-Skip for now,Welcome,translated,,Skip for now,Passer
+Skip for now,Welcome,translated,,Skip now,Passer
 Software updates,Settings: General,translated,,Software updates,Mises à jour
 Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Son
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Mettre une étoile
 Star on GitHub,Settings: About,translated,,Star on GitHub,Étoile sur GitHub
-Start watching,Welcome,translated,,Start watching,Commencer la surveillance
+Start watching,Welcome,translated,,Start Magic,Commencer la surveillance
 Startup,"Settings: General, Settings: Providers",translated,,Startup,Démarrage
 Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistiques
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Cesser de garder votre Mac éveillé si la batterie est faible
@@ -236,6 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Surveiller
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre.
 Website,Settings: About,translated,,Website,Site web
+Welcome,Welcome,translated,,Welcome,Bienvenue
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Bienvenue dans Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Quand Belay s'arrête par sécurité

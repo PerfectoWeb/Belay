@@ -33,6 +33,11 @@ struct OnboardingView: View {
     /// with no arrival and no delay.
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    /// Whether the greeting has finished. It runs once, when the window opens,
+    /// and the scene takes the space for good; the loop never returns to it.
+    /// Under Reduce Motion it never runs at all.
+    @State private var greeted = false
+
     /// The hero and the words below it are two blocks, not one flow. The hero
     /// is a lit panel with the night sky in it, inset from every edge and
     /// rounded hard enough to read as a screen inside the window rather than a
@@ -102,9 +107,24 @@ struct OnboardingView: View {
 
             // Below the lockup rather than behind it, and centred in what is
             // left, so the scene has a place of its own to grow into.
-            OnboardingScene()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .padding(.top, 34 + Self.titlebar)
+            //
+            // The greeting has that space first and the scene is not built
+            // until it is done. Building both and hiding one would start the
+            // scene's nine-second loop behind the greeting, and it would come
+            // into view already halfway through its story.
+            Group {
+                // Reduce Motion is checked here and not in `onAppear`,
+                // because the first render happens before `onAppear` runs and
+                // the greeting would appear for exactly one frame before being
+                // taken away again.
+                if greeted || reduceMotion {
+                    OnboardingScene()
+                } else {
+                    WelcomeFlourish { greeted = true }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .padding(.top, 34 + Self.titlebar)
 
             // Under the window's buttons, not beside them, and on the same
             // left edge as every line of text below.

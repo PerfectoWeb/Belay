@@ -120,7 +120,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Включить…
 Erase,Statistics,needs_review,,Erase,Стереть
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Стереть статистику?
-Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Завершено
+Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Завершено
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Исправить
 Free,Settings: About,translated,,Free,Бесплатно
 General,"Settings, Settings: General",translated,,General,Основные
@@ -200,12 +200,12 @@ Show fewer,Panel,translated,,Show fewer,Свернуть
 Show fewer sessions,Panel,translated,,Show fewer sessions,Показать меньше сессий
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,"Показывает, что именно Belay добавит, прежде чем что-либо записывать"
 Since %@,Statistics,needs_review,%@,Since %@,С %@
-Skip for now,Welcome,translated,,Skip for now,Пропустить
+Skip for now,Welcome,translated,,Skip now,Пропустить
 Software updates,Settings: General,translated,,Software updates,Обновления
 Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Звук
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Поставить звезду
 Star on GitHub,Settings: About,translated,,Star on GitHub,Звезда на GitHub
-Start watching,Welcome,translated,,Start watching,Начать наблюдение
+Start watching,Welcome,translated,,Start Magic,Начать наблюдение
 Startup,"Settings: General, Settings: Providers",translated,,Startup,Запуск
 Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Статистика
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Не давать Mac уснуть при низком заряде
@@ -236,6 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Следить
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,"Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой.
 Website,Settings: About,translated,,Website,Сайт
+Welcome,Welcome,translated,,Welcome,Добро пожаловать
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Добро пожаловать в %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Добро пожаловать в Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Когда Belay останавливается ради безопасности

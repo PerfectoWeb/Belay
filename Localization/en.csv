@@ -120,7 +120,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Enable…
 Erase,Statistics,translated,,Erase,Erase
 Erase your statistics?,Statistics,translated,,Erase your statistics?,Erase your statistics?
-Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,Finished
+Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Finished
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Fix
 Free,Settings: About,translated,,Free,Free
 General,"Settings, Settings: General",translated,,General,General
@@ -200,12 +200,12 @@ Show fewer,Panel,translated,,Show fewer,Show fewer
 Show fewer sessions,Panel,translated,,Show fewer sessions,Show fewer sessions
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,Previews exactly what Belay will add before it writes anything
 Since %@,Statistics,translated,%@,Since %@,Since %@
-Skip for now,Welcome,translated,,Skip for now,Skip now
+Skip for now,Welcome,translated,,Skip now,Skip now
 Software updates,Settings: General,translated,,Software updates,Software updates
 Sound,"App, Settings: About, Settings: General",translated,,Sound,Sound
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Star
 Star on GitHub,Settings: About,translated,,Star on GitHub,Star on GitHub
-Start watching,Welcome,translated,,Start watching,Start Magic
+Start watching,Welcome,translated,,Start Magic,Start Magic
 Startup,"Settings: General, Settings: Providers",translated,,Startup,Startup
 Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistics
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Stop keeping your Mac awake on low battery
@@ -236,6 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Watch
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Watches Claude Code session files to tell when a turn is running.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.
 Website,Settings: About,translated,,Website,Website
+Welcome,Welcome,translated,,Welcome,Welcome
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Welcome to %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Welcome to Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,When Belay stops for safety

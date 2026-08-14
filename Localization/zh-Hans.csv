@@ -4,7 +4,7 @@
 "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep.,%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 %lld 次智能体运行，使它们不被睡眠打断。
 "%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@,%@ kept my Mac awake for %@ while I was away and saved 1 agent run from being interrupted by sleep.,%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 1 次智能体运行，使它不被睡眠打断。
 %@ panel,Panel,translated,%@,%@ panel,%@ 面板
-%@ · %@,"App, Panel",translated,%@ %@,%@ · %@,%@ · %@
+%@ · %@,"App, Panel",needs_review,%@ %@,%@ · %@,%@ · %@
 %@ · %lld agents,Panel,translated,%@ %lld,%@ · %lld agents,%@ · %lld 个智能体
 %@ · 1 agent,Panel,translated,%@,%@ · 1 agent,%@ · 1 个智能体
 "%@, %@",Panel,translated,%@ %@,"%@, %@",%@，%@
@@ -104,7 +104,7 @@ Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,C
 Check Now,Settings: General,translated,,Check Now,立即检查
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,自动检查更新
 Checking…,Settings: General,translated,,Checking…,正在检查…
-Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
+Claude Code,"App, Detection, Settings: Providers, Welcome",needs_review,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
 Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
@@ -120,7 +120,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,开启…
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
-Finished,"Panel, Settings, Settings: Notifications",translated,,Finished,已完成
+Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
 Free,Settings: About,translated,,Free,免费
 General,"Settings, Settings: General",translated,,General,通用
@@ -140,7 +140,7 @@ Let Belay read your ~/.claude folder so it can tell when Claude Code is working.
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",让 Claude Code 直接告诉 Belay 工作何时开始、何时结束。这也让“等待回应”通知变得可靠。
 Local only,Settings: About,translated,,Local only,仅本地
 "Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,电量低或达到最长唤醒时间。
-Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
+Mac App Store,"App, Detection, Settings, Settings: About",needs_review,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,最长唤醒时间
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,模式
 Never checked.,Settings: General,translated,,Never checked.,从未检查过。
@@ -200,12 +200,12 @@ Show fewer,Panel,translated,,Show fewer,收起
 Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
-Skip for now,Welcome,translated,,Skip for now,跳过
+Skip for now,Welcome,translated,,Skip now,跳过
 Software updates,Settings: General,translated,,Software updates,软件更新
 Sound,"App, Settings: About, Settings: General",translated,,Sound,声音
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,加星标
 Star on GitHub,Settings: About,translated,,Star on GitHub,在 GitHub 上加星标
-Start watching,Welcome,translated,,Start watching,开始监视
+Start watching,Welcome,translated,,Start Magic,开始监视
 Startup,"Settings: General, Settings: Providers",translated,,Startup,启动
 Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,统计
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,电量低时停止让 Mac 保持唤醒
@@ -236,6 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,监视
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。
 Website,Settings: About,translated,,Website,网站
+Welcome,Welcome,translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,欢迎使用 Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Belay 因安全原因停止时
