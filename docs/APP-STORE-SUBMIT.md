@@ -113,6 +113,17 @@ Store Connect will not ask.
 
 ## Step 8. Notes for review, and this one matters
 
+> **2026-08-14, still outstanding.** The notes field in App Store Connect holds
+> the *old* text, the one that says Precise Detection "is off by default" and
+> that Belay "listens only when enabled by the user". That is not what the code
+> does — the listener starts in `applicationDidFinishLaunching` and runs for the
+> lifetime of the app — and it is the worst possible thing to have said in a
+> 2.4.5 dispute, because it tells the reviewer the functionality is switched
+> off. The replacement is `docs/app-review-notes.txt`; paste it into App Review
+> Information by hand. The App Store Connect API key in `.secrets/` can read
+> that field but not write it: `PATCH` returns 403 FORBIDDEN_ERROR, "the API key
+> in use does not allow this request".
+
 Belay opens a listening socket on `127.0.0.1`, and the 1.0.0 submission was
 rejected over it — not by a reviewer, by an automated check. Guideline 2.4.5,
 "includes the com.apple.security.network.server entitlement but does not appear

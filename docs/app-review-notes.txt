@@ -1,0 +1,38 @@
+Belay is a menu bar utility that keeps the Mac awake while a local AI coding
+agent is working. It has no account, no server and no analytics, and no sign-in
+is required to review any part of it.
+
+Why the app needs com.apple.security.network.server. Belay runs an HTTP listener
+bound to 127.0.0.1 so that Claude Code, a command line tool running on the same
+Mac and outside our sandbox, can post lifecycle events to it: a run started, a
+run finished, the agent is waiting for input. The listener is created with
+NWListener from Network.framework on an ephemeral port, is restricted to the
+loopback interface, and requires a bearer token that Belay writes into its own
+container. It starts in applicationDidFinishLaunching and runs for the lifetime
+of the app.
+
+The app cannot make outbound connections. This build deliberately ships without
+com.apple.security.network.client, which is also why network.client is not an
+alternative: the sandbox distinguishes by direction. network.client authorises
+connect(2), while NWListener performs bind(2) and listen(2), which the sandbox
+denies with EPERM without network.server, loopback included.
+
+To see it working, about a minute, no account needed:
+
+1. Launch Belay. The listener is already up:
+   lsof -nP -iTCP -sTCP:LISTEN -a -c Belay
+   prints a line ending TCP 127.0.0.1:<port> (LISTEN).
+2. The same port and its token are in
+   ~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json
+3. Post to it the way Claude Code does:
+   curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"
+   It answers 204. Without the header, or with a wrong token, it answers 401.
+4. Belay's panel now shows a session working, and
+   pmset -g assertions | grep Belay
+   shows the assertion macOS granted.
+
+Note that Belay does not add its hook to Claude Code's settings file unless the
+user asks it to, in Settings > Providers > Precise detection, from a button that
+shows the exact change first. So on a fresh install the socket is listening and
+idle: it is waiting for an agent that has not been pointed at it yet. Step 3
+above is exactly what that agent would send.
