@@ -48,7 +48,7 @@ sixty seconds too long costs nothing at all.
 
 ## 📦 Install
 
-**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a>&nbsp;<a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle"></a> — macOS 14 or later, Apple silicon and Intel, about 4 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a>&nbsp;<a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version"></a> — macOS 14 or later, Apple silicon and Intel, about 4 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
@@ -63,7 +63,7 @@ network and without the right-click-Open dance.
 <details>
 <summary><b>Other ways to install</b></summary>
 
-#### Homebrew
+#### 🍺 Homebrew
 
 ```bash
 brew install --cask perfectoweb/tap/belay
@@ -79,12 +79,12 @@ notability bar — a project needs a certain number of stars, forks or watchers
 before it is accepted — and Belay has not cleared it yet. Same command shape,
 one extra word.
 
-#### From the Mac App Store
+#### 🍎 From the Mac App Store
 
-Coming. The sandboxed build exists and is what the App Store target builds; the
-listing is not up yet.
+> ⏳ **Waiting on review.** The sandboxed build exists and is what the App Store
+> target builds; the listing is not up yet.
 
-#### Build it yourself
+#### 🔨 Build it yourself
 
 No Apple Developer account needed:
 
@@ -98,7 +98,7 @@ Needs Xcode 16 or later, plus `xcodegen`, `swiftlint` and `swift-format` from
 Homebrew. The result is ad-hoc signed, which means it runs on your Mac and will
 not open on anyone else's without a right-click.
 
-#### Verify what you downloaded
+#### 🔎 Verify what you downloaded
 
 ```bash
 spctl -a -vvv -t install /Applications/Belay.app
