@@ -54,11 +54,21 @@ jobs:
       - name: Install tooling
         run: brew install xcodegen swiftlint swift-format xcbeautify
 
+      # The repository name is in the key, and it is load-bearing. SwiftPM bakes
+      # absolute paths into the precompiled headers it leaves in .build, and a
+      # runner checks the repository out at /Users/runner/work/<name>/<name>. So
+      # when this project was renamed from Vigil to Belay, every run restored a
+      # cache whose headers still named the old path and every build failed with
+      # "PCH was compiled with module cache path ... but the path is currently".
+      # The hash of Package.swift could not see that: nothing in the manifest
+      # changes when a repository is renamed.
       - name: Cache SwiftPM
         uses: actions/cache@v4
         with:
           path: Packages/BelayKit/.build
-          key: spm-${{ runner.os }}-${{ hashFiles('Packages/BelayKit/Package.swift') }}
+          key: >-
+            spm-${{ runner.os }}-${{ github.repository }}-${{
+            hashFiles('Packages/BelayKit/Package.swift') }}
 
       # There is deliberately no `xcodegen generate` step. Belay.xcodeproj is
       # generated and not committed, but scripts/test.sh generates it itself, and
