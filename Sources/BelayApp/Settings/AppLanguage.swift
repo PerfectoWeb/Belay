@@ -23,6 +23,11 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
     case spanish = "es"
     case french = "fr"
     case italian = "it"
+    /// Simplified Chinese. The code carries its script rather than a country:
+    /// `zh-Hans` is the writing system, and it is what a reader in the mainland,
+    /// in Singapore and in the diaspora all resolve to. `zh-CN` would tie the
+    /// same characters to one place and miss the others.
+    case chinese = "zh-Hans"
 
     var id: String { rawValue }
 
@@ -41,6 +46,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
         case .spanish: return "Español"
         case .french: return "Français"
         case .italian: return "Italiano"
+        case .chinese: return "简体中文"
         }
     }
 

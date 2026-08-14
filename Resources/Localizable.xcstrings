@@ -39,6 +39,12 @@
             "state": "translated",
             "value": "%@ следил за %lld запусками агентов на моём Mac и не давал ему уснуть в течение %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 在我的 Mac 上监视了 %lld 次智能体运行，并让它保持唤醒 %@。"
+          }
         }
       }
     },
@@ -79,6 +85,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ без сна, %@ без меня"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "唤醒 %@，离开 %@"
           }
         }
       }
@@ -121,6 +133,12 @@
             "state": "translated",
             "value": "%@ не давал моему Mac уснуть в течение %@, пока меня не было, и не дал режиму сна прервать %lld запусков агента."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 %lld 次智能体运行，使它们不被睡眠打断。"
+          }
         }
       }
     },
@@ -162,6 +180,12 @@
             "state": "translated",
             "value": "%@ не давал моему Mac уснуть в течение %@, пока меня не было, и не дал режиму сна прервать 1 запуск агента."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 1 次智能体运行，使它不被睡眠打断。"
+          }
         }
       }
     },
@@ -202,6 +226,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "панель %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 面板"
           }
         }
       }
@@ -245,6 +275,12 @@
             "state": "translated",
             "value": "%@ · %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "%@ · %@"
+          }
         }
       }
     },
@@ -285,6 +321,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ · агентов: %lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld 个智能体"
           }
         }
       }
@@ -327,6 +369,12 @@
             "state": "translated",
             "value": "%@ · 1 агент"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · 1 个智能体"
+          }
         }
       }
     },
@@ -367,6 +415,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@, %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，%@"
           }
         }
       }
@@ -409,6 +463,12 @@
             "state": "translated",
             "value": "%@, %@, уже %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，%@，持续 %@"
+          }
         }
       }
     },
@@ -449,6 +509,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld ч"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时"
           }
         }
       }
@@ -491,6 +557,12 @@
             "state": "translated",
             "value": "%lld ч %lld мин"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时 %lld 分钟"
+          }
         }
       }
     },
@@ -531,6 +603,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 分钟"
           }
         }
       }
@@ -573,6 +651,12 @@
             "state": "translated",
             "value": "ещё %lld"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还有 %lld 个"
+          }
         }
       }
     },
@@ -613,6 +697,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld с"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 秒"
           }
         }
       }
@@ -655,6 +745,12 @@
             "state": "translated",
             "value": "всего %lld сессий, включая подагентов"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共 %lld 个会话，包括子智能体"
+          }
         }
       }
     },
@@ -695,6 +791,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "подагентов: %lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个子智能体"
           }
         }
       }
@@ -737,6 +839,12 @@
             "state": "needs_review",
             "value": "%lld д %@ ч"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 天 %@ 时"
+          }
         }
       }
     },
@@ -777,6 +885,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "%lld ч %@ мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 时 %@ 分"
           }
         }
       }
@@ -819,6 +933,12 @@
             "state": "needs_review",
             "value": "%lld мин"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 分"
+          }
         }
       }
     },
@@ -859,6 +979,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "%lld с"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 秒"
           }
         }
       }
@@ -901,6 +1027,12 @@
             "state": "needs_review",
             "value": "1 час"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 小时"
+          }
         }
       }
     },
@@ -941,6 +1073,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "1 мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 分钟"
           }
         }
       }
@@ -983,6 +1121,12 @@
             "state": "needs_review",
             "value": "10 часов"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 小时"
+          }
         }
       }
     },
@@ -1023,6 +1167,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "10 мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 分钟"
           }
         }
       }
@@ -1065,6 +1215,12 @@
             "state": "needs_review",
             "value": "12 часов"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 小时"
+          }
         }
       }
     },
@@ -1105,6 +1261,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "2 часа"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 小时"
           }
         }
       }
@@ -1147,6 +1309,12 @@
             "state": "needs_review",
             "value": "3 мин"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 分钟"
+          }
         }
       }
     },
@@ -1187,6 +1355,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "30 мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 分钟"
           }
         }
       }
@@ -1229,6 +1403,12 @@
             "state": "needs_review",
             "value": "30 сек"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 秒"
+          }
         }
       }
     },
@@ -1269,6 +1449,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "4 часа"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4 小时"
           }
         }
       }
@@ -1311,6 +1497,12 @@
             "state": "needs_review",
             "value": "5 мин"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 分钟"
+          }
         }
       }
     },
@@ -1351,6 +1543,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "8 часов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8 小时"
           }
         }
       }
@@ -1393,6 +1591,12 @@
             "state": "translated",
             "value": "После этого времени Belay разрешит Mac уснуть и сообщит об этом."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过这段时间后，Belay 会让 Mac 进入睡眠并通知你。"
+          }
         }
       }
     },
@@ -1433,6 +1637,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Изменения в папке считаются работой. Запущенный процесс лишь помогает Belay понять, когда сессия завершилась."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件夹活动算作工作。正在运行的进程只用于告诉 Belay 会话何时结束。"
           }
         }
       }
@@ -1475,6 +1685,12 @@
             "state": "needs_review",
             "value": "Звуковое сопровождение интерфейса Belay. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手动切换模式时的一声轻响。在“系统设置”中关闭界面声音后，这些声音也会静音。"
+          }
         }
       }
     },
@@ -1515,6 +1731,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сначала Belay создаёт резервную копию с отметкой времени. «Убрать» восстановит исходный файл."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 会先创建带时间戳的备份。“移除”会还原原始文件。"
           }
         }
       }
@@ -1557,6 +1779,12 @@
             "state": "translated",
             "value": "О программе"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
+          }
         }
       }
     },
@@ -1597,6 +1825,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "О программе %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于 %@"
           }
         }
       }
@@ -1639,6 +1873,12 @@
             "state": "translated",
             "value": "Активные сессии"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "活跃会话"
+          }
         }
       }
     },
@@ -1679,6 +1919,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Добавьте папку или выберите пресет, чтобы следить ещё за одним агентом."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加文件夹或选择预设，即可监视另一个智能体。"
           }
         }
       }
@@ -1721,6 +1967,12 @@
             "state": "needs_review",
             "value": "Добавить инструмент для наблюдения"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加要监视的工具"
+          }
         }
       }
     },
@@ -1761,6 +2013,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Добавить…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加工具…"
           }
         }
       }
@@ -1803,6 +2061,12 @@
             "state": "translated",
             "value": "Добавить в Claude Code"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "添加到 Claude Code"
+          }
         }
       }
     },
@@ -1843,6 +2107,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Все названия продуктов и логотипы являются товарными знаками их владельцев."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有产品名称和标志均为其各自所有者的商标。"
           }
         }
       }
@@ -1885,6 +2155,12 @@
             "state": "translated",
             "value": "Разрешить доступ к ~/.claude"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.claude"
+          }
         }
       }
     },
@@ -1925,6 +2201,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Также не гасить экран"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同时让显示器保持唤醒"
           }
         }
       }
@@ -1967,6 +2249,12 @@
             "state": "translated",
             "value": "Всегда"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常开"
+          }
         }
       }
     },
@@ -2007,6 +2295,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Агент ждёт вас"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体在等你回应"
           }
         }
       }
@@ -2049,6 +2343,12 @@
             "state": "translated",
             "value": "Агент ждёт вас. Belay не даёт Mac уснуть."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体在等你回应。Belay 正在让 Mac 保持唤醒。"
+          }
         }
       }
     },
@@ -2089,6 +2389,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Агент работает, поэтому Mac не спит."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体正在工作，Mac 保持唤醒。"
           }
         }
       }
@@ -2131,6 +2437,12 @@
             "state": "translated",
             "value": "Агент работает. Если закрыть Belay, Mac сможет уснуть."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体正在工作。退出 Belay 会让 Mac 进入睡眠。"
+          }
         }
       }
     },
@@ -2171,6 +2483,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Агент работает, Belay не даёт Mac уснуть, а когда работа заканчивается, Mac засыпает"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体工作，Belay 让 Mac 保持唤醒，工作停止后 Mac 进入睡眠"
           }
         }
       }
@@ -2213,6 +2531,12 @@
             "state": "translated",
             "value": "Авто"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动"
+          }
         }
       }
     },
@@ -2253,6 +2577,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Не спит уже %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保持唤醒 %@"
           }
         }
       }
@@ -2295,6 +2625,12 @@
             "state": "translated",
             "value": "Режим бодрствования"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "唤醒模式"
+          }
         }
       }
     },
@@ -2335,6 +2671,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Только пока агент работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅在智能体工作时。"
           }
         }
       }
@@ -2377,6 +2719,12 @@
             "state": "translated",
             "value": "Пока не выключите."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直到你关闭为止。"
+          }
         }
       }
     },
@@ -2417,6 +2765,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Заряд %lld%%. Belay разрешил Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量降至 %lld%%。Belay 已停止保持唤醒。"
           }
         }
       }
@@ -2459,6 +2813,12 @@
             "state": "translated",
             "value": "Поведение"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "行为"
+          }
         }
       }
     },
@@ -2499,6 +2859,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 会在首次需要发送通知时请求通知权限。"
           }
         }
       }
@@ -2541,6 +2907,12 @@
             "state": "translated",
             "value": "Belay видит сессии вашего агента.\nБольше он ничего не читает, и ничего не покидает этот Mac."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 可以看到智能体的会话。\n其他内容一概不读，也没有任何内容离开这台 Mac。"
+          }
         }
       }
     },
@@ -2581,6 +2953,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay не смог сохранить резервную копию настроек Claude Code, поэтому ничего не изменил: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法备份 Claude Code 设置，因此未做任何更改：%@"
           }
         }
       }
@@ -2623,6 +3001,12 @@
             "state": "needs_review",
             "value": "Belay не смог перенести настройки из версии %lld."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法导入版本 %lld 的设置。"
+          }
         }
       }
     },
@@ -2663,6 +3047,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay не смог прочитать свои настройки, поэтому использует стандартные."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法读取自己的设置，因此使用默认值。"
           }
         }
       }
@@ -2705,6 +3095,12 @@
             "state": "translated",
             "value": "Belay не смог определить, от чего питается этот Mac."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法确定这台 Mac 的供电方式。"
+          }
         }
       }
     },
@@ -2745,6 +3141,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Belay не смог прочитать настройки Claude Code: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法读取 Claude Code 设置：%@"
           }
         }
       }
@@ -2787,6 +3189,12 @@
             "state": "needs_review",
             "value": "Belay не смог запустить локальный приёмник хуков: %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法启动本地钩子监听器：%@"
+          }
         }
       }
     },
@@ -2827,6 +3235,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Belay не смог обновить настройки Claude Code: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法更新 Claude Code 设置：%@"
           }
         }
       }
@@ -2869,6 +3283,12 @@
             "state": "needs_review",
             "value": "Belay не смог следить за активностью в %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 无法监视 %@ 的活动。"
+          }
         }
       }
     },
@@ -2909,6 +3329,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "У Belay пока нет доступа к %@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 尚未获得 %@ 的访问权限。"
           }
         }
       }
@@ -2951,6 +3377,12 @@
             "state": "translated",
             "value": "Belay спас для вас %lld запусков. Звезда на GitHub поможет следующему найти его."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 已为你保住 %lld 次运行。在 GitHub 上加一颗星标，能帮下一个人找到它。"
+          }
         }
       }
     },
@@ -2991,6 +3423,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Чтобы сменить язык, Belay нужно перезапустить."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改语言需要重新打开 Belay。"
           }
         }
       }
@@ -3033,6 +3471,12 @@
             "state": "translated",
             "value": "Режим «Всегда включено» не даёт Mac уснуть."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“常开”正在让 Mac 保持唤醒。"
+          }
         }
       }
     },
@@ -3073,6 +3517,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay не даёт Mac уснуть, пока работает агент."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体工作期间，Belay 正在让 Mac 保持唤醒。"
           }
         }
       }
@@ -3115,6 +3565,12 @@
             "state": "translated",
             "value": "Belay выключен. Mac будет засыпать как обычно."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 已关闭。Mac 将正常进入睡眠。"
+          }
         }
       }
     },
@@ -3155,6 +3611,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Включите запуск Belay при входе, чтобы он был готов до старта агента."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时打开 Belay，让它在智能体启动前就准备就绪。"
           }
         }
       }
@@ -3197,6 +3659,12 @@
             "state": "needs_review",
             "value": "Belay не будет держать Mac бодрым."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 不会让 Mac 保持唤醒。"
+          }
         }
       }
     },
@@ -3237,6 +3705,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "У вас последняя версия."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 已是最新版本。"
           }
         }
       }
@@ -3279,6 +3753,12 @@
             "state": "translated",
             "value": "Belay следит. Сейчас ни один агент не работает."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 正在监视。没有智能体在运行。"
+          }
         }
       }
     },
@@ -3319,6 +3799,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay следит. Mac может засыпать как обычно."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 正在监视。Mac 可以正常进入睡眠。"
           }
         }
       }
@@ -3361,6 +3847,12 @@
             "state": "translated",
             "value": "Belay отпустил Mac спать"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 已让 Mac 进入睡眠"
+          }
         }
       }
     },
@@ -3401,6 +3893,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Чтобы понимать, когда агент работает, Belay читает ~/.claude. Больше он ничего не читает, и ничего не покидает этот Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 需要读取 ~/.claude，才能判断智能体何时在工作。不会读取其他内容，也不会有任何内容离开这台 Mac。"
           }
         }
       }
@@ -3443,6 +3941,12 @@
             "state": "translated",
             "value": "Belay нужно разрешение на чтение %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 需要读取 %@ 的权限。"
+          }
         }
       }
     },
@@ -3483,6 +3987,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay достиг максимального времени без сна и разрешил Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 达到最长唤醒时间，已让 Mac 进入睡眠。"
           }
         }
       }
@@ -3525,6 +4035,12 @@
             "state": "needs_review",
             "value": "Достигнут предел времени без сна."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已达到最长唤醒时间。"
+          }
         }
       }
     },
@@ -3565,6 +4081,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。一切都留在这台 Mac 上。"
           }
         }
       }
@@ -3607,6 +4129,12 @@
             "state": "translated",
             "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。除可选的更新检查外，一切都留在这台 Mac 上。"
+          }
         }
       }
     },
@@ -3647,6 +4175,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Режимы «Всегда» и «Выключен» по-прежнему доступны."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你仍然可以使用“常开”或“关闭”。"
           }
         }
       }
@@ -3689,6 +4223,12 @@
             "state": "translated",
             "value": "Belay перестал удерживать"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 已停止保持唤醒"
+          }
         }
       }
     },
@@ -3729,6 +4269,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "При заряде %lld%% Belay разрешил Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量降至 %lld%%，Belay 已停止保持唤醒。"
           }
         }
       }
@@ -3771,6 +4317,12 @@
             "state": "translated",
             "value": "Belay разрешил Mac уснуть: достигнуто максимальное время без сна."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已达到最长唤醒时间，Belay 已停止保持唤醒。"
+          }
         }
       }
     },
@@ -3811,6 +4363,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay изменит %@ на:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 会将 %@ 更新为："
           }
         }
       }
@@ -3853,6 +4411,12 @@
             "state": "translated",
             "value": "Belay не даст Mac уснуть даже при низком заряде."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "即使电量低，Belay 也会让 Mac 保持唤醒。"
+          }
         }
       }
     },
@@ -3893,6 +4457,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容："
           }
         }
       }
@@ -3935,6 +4505,12 @@
             "state": "needs_review",
             "value": "Сохранённое разрешение Belay на %@ больше не действует."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 保存的 %@ 访问权限已失效。"
+          }
         }
       }
     },
@@ -3975,6 +4551,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "При работе от батареи Belay остановится на %lld%%."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池时，Belay 会在电量降至 %lld%% 时停止。"
           }
         }
       }
@@ -4017,6 +4599,12 @@
             "state": "translated",
             "value": "Купить мне кофе"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打赏"
+          }
         }
       }
     },
@@ -4057,6 +4645,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Отмена"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
           }
         }
       }
@@ -4099,6 +4693,12 @@
             "state": "translated",
             "value": "Проверить"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即检查"
+          }
         }
       }
     },
@@ -4139,6 +4739,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Проверять обновления автоматически"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动检查更新"
           }
         }
       }
@@ -4181,6 +4787,12 @@
             "state": "translated",
             "value": "Проверяю…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查…"
+          }
         }
       }
     },
@@ -4220,6 +4832,12 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
+            "value": "Claude Code"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
             "value": "Claude Code"
           }
         }
@@ -4263,6 +4881,12 @@
             "state": "needs_review",
             "value": "Claude Code ещё не открывал здесь ни одного проекта. Belay начнёт следить сам, как только это произойдёт."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。"
+          }
         }
       }
     },
@@ -4303,6 +4927,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Скопировано"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已复制"
           }
         }
       }
@@ -4345,6 +4975,12 @@
             "state": "translated",
             "value": "Копирует карточку вместе со сводкой"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同时复制卡片和摘要"
+          }
         }
       }
     },
@@ -4385,6 +5021,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Копировать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制"
           }
         }
       }
@@ -4427,6 +5069,12 @@
             "state": "needs_review",
             "value": "Скопировать"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制卡片和链接"
+          }
         }
       }
     },
@@ -4467,6 +5115,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Не удалось связаться со службой обновлений."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法连接更新服务。"
           }
         }
       }
@@ -4509,6 +5163,12 @@
             "state": "translated",
             "value": "Статус детекции"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测状态"
+          }
         }
       }
     },
@@ -4549,6 +5209,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Прямая загрузка"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直接下载"
           }
         }
       }
@@ -4591,6 +5257,12 @@
             "state": "translated",
             "value": "Поддержать"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "捐赠"
+          }
         }
       }
     },
@@ -4631,6 +5303,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Готово"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
           }
         }
       }
@@ -4673,6 +5351,12 @@
             "state": "translated",
             "value": "Скачать…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载…"
+          }
         }
       }
     },
@@ -4713,6 +5397,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Включить точную детекцию"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启精确检测"
           }
         }
       }
@@ -4755,6 +5445,12 @@
             "state": "translated",
             "value": "Включить…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启…"
+          }
         }
       }
     },
@@ -4795,6 +5491,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Стереть"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除"
           }
         }
       }
@@ -4837,6 +5539,12 @@
             "state": "needs_review",
             "value": "Стереть статистику?"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要清除统计数据吗？"
+          }
         }
       }
     },
@@ -4877,6 +5585,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Завершено"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已完成"
           }
         }
       }
@@ -4919,6 +5633,12 @@
             "state": "translated",
             "value": "Исправить"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复"
+          }
         }
       }
     },
@@ -4959,6 +5679,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Бесплатно"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "免费"
           }
         }
       }
@@ -5001,6 +5727,12 @@
             "state": "translated",
             "value": "Основные"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通用"
+          }
         }
       }
     },
@@ -5041,6 +5773,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Дать доступ к ~/.claude"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.claude"
           }
         }
       }
@@ -5083,6 +5821,12 @@
             "state": "needs_review",
             "value": "Ждём немного на случай новой работы."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会再等片刻，以防还有新工作开始。"
+          }
         }
       }
     },
@@ -5123,6 +5867,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть. Небольшой запас помогает не уснуть между задачами."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。"
           }
         }
       }
@@ -5165,6 +5915,12 @@
             "state": "translated",
             "value": "Простой"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空闲"
+          }
         }
       }
     },
@@ -5205,6 +5961,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Ему нужен ваш ответ, чтобы продолжить."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要你回应后才能继续。"
           }
         }
       }
@@ -5247,6 +6009,12 @@
             "state": "translated",
             "value": "Не даём Mac уснуть"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在让 Mac 保持唤醒"
+          }
         }
       }
     },
@@ -5287,6 +6055,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Belay не даст вашему Mac заснуть, пока работают AI-агенты."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在智能体工作时让 Mac 保持唤醒。"
           }
         }
       }
@@ -5329,6 +6103,12 @@
             "state": "translated",
             "value": "Не даёт Mac уснуть, пока работает ваш агент."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在智能体工作时让 Mac 保持唤醒。"
+          }
         }
       }
     },
@@ -5369,6 +6149,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Не давал Mac уснуть в течение %@ с момента запуска"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动以来已保持唤醒 %@"
           }
         }
       }
@@ -5411,6 +6197,12 @@
             "state": "translated",
             "value": "ПОСЛЕДНИЕ 14 ДНЕЙ"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 14 天"
+          }
         }
       }
     },
@@ -5451,6 +6243,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Язык"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
           }
         }
       }
@@ -5493,6 +6291,12 @@
             "state": "translated",
             "value": "Разрешите Belay читать %@, чтобы понимать, когда работает агент."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许 Belay 读取 %@，以便判断智能体何时在工作。"
+          }
         }
       }
     },
@@ -5533,6 +6337,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Разрешите доступ к ~/.claude, чтобы Belay понимал, когда работает Claude Code."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.claude，以便 Belay 判断 Claude Code 何时在工作。"
           }
         }
       }
@@ -5575,6 +6385,12 @@
             "state": "translated",
             "value": "Claude Code сможет точно сообщать Belay, когда работа начинается и заканчивается. Благодаря этому уведомления «Агент ждёт вас» будут надёжными."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Claude Code 直接告诉 Belay 工作何时开始、何时结束。这也让“等待回应”通知变得可靠。"
+          }
         }
       }
     },
@@ -5615,6 +6431,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Работает локально"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅本地"
           }
         }
       }
@@ -5657,6 +6479,12 @@
             "state": "translated",
             "value": "Низкий заряд или предел времени без сна."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量低或达到最长唤醒时间。"
+          }
         }
       }
     },
@@ -5696,6 +6524,12 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
+            "value": "Mac App Store"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
             "value": "Mac App Store"
           }
         }
@@ -5739,6 +6573,12 @@
             "state": "translated",
             "value": "Максимальное время без сна"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最长唤醒时间"
+          }
         }
       }
     },
@@ -5779,6 +6619,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Режим"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模式"
           }
         }
       }
@@ -5821,6 +6667,12 @@
             "state": "translated",
             "value": "Ещё не проверялось."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从未检查过。"
+          }
         }
       }
     },
@@ -5861,6 +6713,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Никогда не мешать Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从不让 Mac 保持唤醒。"
           }
         }
       }
@@ -5903,6 +6761,12 @@
             "state": "translated",
             "value": "Активных сессий нет."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有活跃会话。"
+          }
         }
       }
     },
@@ -5943,6 +6807,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Без рекламы"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无广告"
           }
         }
       }
@@ -5985,6 +6855,12 @@
             "state": "translated",
             "value": "Нет доступных провайдеров."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有可用的来源。"
+          }
         }
       }
     },
@@ -6025,6 +6901,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Источник обновлений не настроен."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未配置更新源。"
           }
         }
       }
@@ -6067,6 +6949,12 @@
             "state": "translated",
             "value": "Новых версий пока нет."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未发布任何版本。"
+          }
         }
       }
     },
@@ -6107,6 +6995,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Без слежки"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无跟踪"
           }
         }
       }
@@ -6149,6 +7043,12 @@
             "state": "translated",
             "value": "Не сейчас"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂不"
+          }
         }
       }
     },
@@ -6189,6 +7089,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Другие инструменты не добавлены. Belay следит за Claude Code."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未添加其他工具。Belay 正在监视 Claude Code。"
           }
         }
       }
@@ -6231,6 +7137,12 @@
             "state": "translated",
             "value": "Ничего отсюда не покидает этот Mac."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这里的一切都不会离开这台 Mac。"
+          }
         }
       }
     },
@@ -6271,6 +7183,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Пока нечего показать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无内容"
           }
         }
       }
@@ -6313,6 +7231,12 @@
             "state": "needs_review",
             "value": "Пока нечего отслеживать: %@ не существует."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无可监视的内容：%@ 不存在。"
+          }
         }
       }
     },
@@ -6353,6 +7277,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Уведомления"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知"
           }
         }
       }
@@ -6395,6 +7325,12 @@
             "state": "translated",
             "value": "Уведомлять"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知我"
+          }
         }
       }
     },
@@ -6435,6 +7371,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Уведомлять, когда Belay останавливается ради безопасности"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 因安全原因停止时通知我"
           }
         }
       }
@@ -6477,6 +7419,12 @@
             "state": "translated",
             "value": "Уведомлять о завершении долгой задачи"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "长任务完成时通知我"
+          }
         }
       }
     },
@@ -6517,6 +7465,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Уведомлять, когда агенту нужны вы"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体需要你时通知我"
           }
         }
       }
@@ -6559,6 +7513,12 @@
             "state": "needs_review",
             "value": "Статистика никуда не отправляется, пока вы сами ею не поделитесь."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "除非你共享，这些数字都留在这台 Mac 上。"
+          }
         }
       }
     },
@@ -6599,6 +7559,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Выключен"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
           }
         }
       }
@@ -6641,6 +7607,12 @@
             "state": "needs_review",
             "value": "При выключенном экране агент продолжит работу, а Mac будет расходовать меньше энергии."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让显示器进入睡眠可以节省电量，且不会打断智能体。"
+          }
         }
       }
     },
@@ -6681,6 +7653,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Раз в день Belay проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 每天检查一次是否有新版本。这是它唯一的网络请求。它不会发送任何个人数据，也不会自动安装更新。"
           }
         }
       }
@@ -6723,6 +7701,12 @@
             "state": "translated",
             "value": "Для запусков дольше %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅针对时长超过 %@ 的运行。"
+          }
         }
       }
     },
@@ -6763,6 +7747,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Запускать Belay при входе"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时打开 Belay"
           }
         }
       }
@@ -6805,6 +7795,12 @@
             "state": "translated",
             "value": "Открыть «Объекты входа»…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开“登录项”…"
+          }
         }
       }
     },
@@ -6845,6 +7841,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Открыть настройки"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开设置"
           }
         }
       }
@@ -6887,6 +7889,12 @@
             "state": "translated",
             "value": "Запускать при входе"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时打开"
+          }
         }
       }
     },
@@ -6927,6 +7935,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Открыть App Store"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 App Store"
           }
         }
       }
@@ -6969,6 +7983,12 @@
             "state": "translated",
             "value": "Откроет стандартный выбор папки macOS, чтобы вы могли разрешить доступ"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开标准的 macOS 文件夹选择面板，供你允许访问"
+          }
         }
       }
     },
@@ -7009,6 +8029,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Другие агенты"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他智能体"
           }
         }
       }
@@ -7051,6 +8077,12 @@
             "state": "translated",
             "value": "Другие инструменты"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他工具"
+          }
         }
       }
     },
@@ -7091,6 +8123,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Звуки интерфейса"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放界面声音"
           }
         }
       }
@@ -7133,6 +8171,12 @@
             "state": "needs_review",
             "value": "Звуки"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "播放声音"
+          }
         }
       }
     },
@@ -7173,6 +8217,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Точная детекция"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测"
           }
         }
       }
@@ -7215,6 +8265,12 @@
             "state": "translated",
             "value": "Провайдеры"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源"
+          }
         }
       }
     },
@@ -7255,6 +8311,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Выйти"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出"
           }
         }
       }
@@ -7297,6 +8359,12 @@
             "state": "translated",
             "value": "Выйти из %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出 %@"
+          }
         }
       }
     },
@@ -7337,6 +8405,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Выйти из %@?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要退出 %@ 吗？"
           }
         }
       }
@@ -7379,6 +8453,12 @@
             "state": "translated",
             "value": "Перезапустите Belay, чтобы применить новый язык."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新打开 Belay 以应用语言更改。"
+          }
         }
       }
     },
@@ -7419,6 +8499,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Выйти и открыть заново"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出并重新打开"
           }
         }
       }
@@ -7461,6 +8547,12 @@
             "state": "translated",
             "value": "Оценить Belay"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为 Belay 评分"
+          }
         }
       }
     },
@@ -7501,6 +8593,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Готов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "就绪"
           }
         }
       }
@@ -7543,6 +8641,12 @@
             "state": "translated",
             "value": "Убрать"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除"
+          }
         }
       }
     },
@@ -7583,6 +8687,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Убрать %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除 %@"
           }
         }
       }
@@ -7625,6 +8735,12 @@
             "state": "translated",
             "value": "Удаляет только записи, которые Belay добавил в настройки Claude Code"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅移除 Belay 添加到 Claude Code 设置中的条目"
+          }
         }
       }
     },
@@ -7665,6 +8781,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сообщить об ошибке"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报告问题"
           }
         }
       }
@@ -7707,6 +8829,12 @@
             "state": "needs_review",
             "value": "Сбросить…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置…"
+          }
         }
       }
     },
@@ -7747,6 +8875,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Настройки"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
           }
         }
       }
@@ -7789,6 +8923,12 @@
             "state": "translated",
             "value": "Настройки…"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置…"
+          }
         }
       }
     },
@@ -7829,6 +8969,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Поделиться"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共享"
           }
         }
       }
@@ -7871,6 +9017,12 @@
             "state": "translated",
             "value": "Делится карточкой, сводкой и ссылкой на Belay"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共享卡片、摘要和 Belay 的链接"
+          }
         }
       }
     },
@@ -7911,6 +9063,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сокращать ожидание в режиме энергосбережения"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "低电量模式下缩短等待时间"
           }
         }
       }
@@ -7953,6 +9111,12 @@
             "state": "translated",
             "value": "Показать все сессии"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示全部会话"
+          }
         }
       }
     },
@@ -7993,6 +9157,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Свернуть"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起"
           }
         }
       }
@@ -8035,6 +9205,12 @@
             "state": "translated",
             "value": "Показать меньше сессий"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收起会话"
+          }
         }
       }
     },
@@ -8075,6 +9251,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Показывает, что именно Belay добавит, прежде чем что-либо записывать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在写入任何内容前，预览 Belay 将添加的确切内容"
           }
         }
       }
@@ -8117,6 +9299,12 @@
             "state": "needs_review",
             "value": "С %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自 %@ 起"
+          }
         }
       }
     },
@@ -8157,6 +9345,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Пропустить"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时跳过"
           }
         }
       }
@@ -8199,6 +9393,12 @@
             "state": "translated",
             "value": "Обновления"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "软件更新"
+          }
         }
       }
     },
@@ -8239,6 +9439,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Звук"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "声音"
           }
         }
       }
@@ -8281,6 +9487,12 @@
             "state": "translated",
             "value": "Поставить звезду"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加星标"
+          }
         }
       }
     },
@@ -8321,6 +9533,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Звезда на GitHub"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 GitHub 上加星标"
           }
         }
       }
@@ -8363,6 +9581,12 @@
             "state": "translated",
             "value": "Начать наблюдение"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始监视"
+          }
         }
       }
     },
@@ -8403,6 +9627,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Запуск"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动"
           }
         }
       }
@@ -8445,6 +9675,12 @@
             "state": "translated",
             "value": "Статистика"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计"
+          }
         }
       }
     },
@@ -8485,6 +9721,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Не давать Mac уснуть при низком заряде"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量低时停止让 Mac 保持唤醒"
           }
         }
       }
@@ -8527,6 +9769,12 @@
             "state": "translated",
             "value": "Останавливать при низком заряде"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量低时停止"
+          }
         }
       }
     },
@@ -8567,6 +9815,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Больше не следит за этим инструментом"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止监视此工具"
           }
         }
       }
@@ -8609,6 +9863,12 @@
             "state": "translated",
             "value": "Подагент"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "子智能体"
+          }
         }
       }
     },
@@ -8649,6 +9909,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Системный"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统"
           }
         }
       }
@@ -8691,6 +9957,12 @@
             "state": "needs_review",
             "value": "App Store не смог подтвердить покупку."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store 无法验证此次购买。"
+          }
         }
       }
     },
@@ -8731,6 +10003,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store 会让 Belay 保持最新，并在新版本就绪时通知你。Belay 自身从不连接互联网。"
           }
         }
       }
@@ -8773,6 +10051,12 @@
             "state": "translated",
             "value": "Что добавит Belay"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 将添加的内容"
+          }
         }
       }
     },
@@ -8813,6 +10097,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Покупка ждёт подтверждения. Пока от вас ничего не требуется."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此次购买正在等待批准。目前无需任何操作。"
           }
         }
       }
@@ -8855,6 +10145,12 @@
             "state": "needs_review",
             "value": "Покупка отменена."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "购买已取消。"
+          }
         }
       }
     },
@@ -8895,6 +10191,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "В проекте %@ это заняло %@. Mac снова может засыпать как обычно."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 中的运行用时 %@。Mac 现在可以正常进入睡眠。"
           }
         }
       }
@@ -8937,6 +10239,12 @@
             "state": "translated",
             "value": "Это заняло %@. Mac снова может засыпать как обычно."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本次运行用时 %@。Mac 现在可以正常进入睡眠。"
+          }
         }
       }
     },
@@ -8977,6 +10285,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сервер вернул %lld."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "服务器返回 %lld。"
           }
         }
       }
@@ -9019,6 +10333,12 @@
             "state": "translated",
             "value": "Служба обновлений прислала ответ, который Belay не смог прочитать."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新服务返回了 Belay 无法读取的内容。"
+          }
         }
       }
     },
@@ -9059,6 +10379,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Вариант чаевых %@ недоступен."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打赏项 %@ 不可用。"
           }
         }
       }
@@ -9101,6 +10427,12 @@
             "state": "needs_review",
             "value": "Это нельзя отменить. Копии нигде больше нет."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此操作无法撤销。Belay 不会在其他任何地方保留副本。"
+          }
         }
       }
     },
@@ -9141,6 +10473,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Чаевые недоступны в этой версии."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此版本不支持打赏。"
           }
         }
       }
@@ -9183,6 +10521,12 @@
             "state": "translated",
             "value": "Пока не выключу"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直到手动关闭"
+          }
         }
       }
     },
@@ -9223,6 +10567,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Проект без названия"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未命名项目"
           }
         }
       }
@@ -9265,6 +10615,12 @@
             "state": "translated",
             "value": "Версия %@ (%@)"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本 %@ (%@)"
+          }
         }
       }
     },
@@ -9305,6 +10661,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Версия %@ (%@) · %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本 %@ (%@) · %@"
           }
         }
       }
@@ -9347,6 +10709,12 @@
             "state": "translated",
             "value": "Доступна версия %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本 %@ 已可用。"
+          }
         }
       }
     },
@@ -9387,6 +10755,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Переход в сон через"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Mac 进入睡眠前的等待时间"
           }
         }
       }
@@ -9429,6 +10803,12 @@
             "state": "translated",
             "value": "Ждёт вас"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待回应"
+          }
         }
       }
     },
@@ -9469,6 +10849,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Следить"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视"
           }
         }
       }
@@ -9511,6 +10897,12 @@
             "state": "translated",
             "value": "Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视 Claude Code 的会话文件，以判断轮次何时在运行。"
+          }
         }
       }
     },
@@ -9551,6 +10943,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。"
           }
         }
       }
@@ -9593,6 +10991,12 @@
             "state": "translated",
             "value": "Сайт"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "网站"
+          }
         }
       }
     },
@@ -9633,6 +11037,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Добро пожаловать в %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "欢迎使用 %@"
           }
         }
       }
@@ -9675,6 +11085,12 @@
             "state": "translated",
             "value": "Добро пожаловать в Belay"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "欢迎使用 Belay"
+          }
         }
       }
     },
@@ -9715,6 +11131,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Когда Belay останавливается ради безопасности"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 因安全原因停止时"
           }
         }
       }
@@ -9757,6 +11179,12 @@
             "state": "translated",
             "value": "Когда завершается долгая задача"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "长任务完成时"
+          }
         }
       }
     },
@@ -9797,6 +11225,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Когда агенту нужны вы"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体需要你时"
           }
         }
       }
@@ -9839,6 +11273,12 @@
             "state": "translated",
             "value": "Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。"
+          }
         }
       }
     },
@@ -9879,6 +11319,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Пока удерживает"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持唤醒期间"
           }
         }
       }
@@ -9921,6 +11367,12 @@
             "state": "translated",
             "value": "Работает"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作中"
+          }
         }
       }
     },
@@ -9961,6 +11413,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Mac не уснёт, пока вы не выключите режим."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac 将保持唤醒，直到你关闭为止。"
           }
         }
       }
@@ -10003,6 +11461,12 @@
             "state": "translated",
             "value": "Belay нашёл в настройках Claude Code раздел hooks, который не распознал, поэтому ничего не изменил."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 在 Claude Code 设置中发现无法识别的 hooks 条目，因此未做任何更改。"
+          }
         }
       }
     },
@@ -10043,6 +11507,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Файл настроек Claude Code не является обычным JSON, поэтому Belay не будет его менять."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code 设置文件不是纯 JSON，因此 Belay 不会修改它。"
           }
         }
       }
@@ -10085,6 +11555,12 @@
             "state": "translated",
             "value": "Mac снова может засыпать как обычно."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac 可以恢复正常的睡眠计划。"
+          }
         }
       }
     },
@@ -10125,6 +11601,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac может засыпать как обычно"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac 可以正常进入睡眠"
           }
         }
       }
@@ -10167,6 +11649,12 @@
             "state": "translated",
             "value": "Агент закончил работу"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体已完成"
+          }
         }
       }
     },
@@ -10207,6 +11695,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция»."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体正在等待你回应权限询问或问题。要让通知可靠，需要开启精确检测。"
           }
         }
       }
@@ -10249,6 +11743,12 @@
             "state": "translated",
             "value": "Агенту нужен ваш ответ, чтобы продолжить."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体需要你的输入才能继续。"
+          }
         }
       }
     },
@@ -10289,6 +11789,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Агенту нужен ваш ответ в %@, чтобы продолжить."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 中的智能体需要你的输入才能继续。"
           }
         }
       }
@@ -10331,6 +11837,12 @@
             "state": "needs_review",
             "value": "Belay разрешит Mac уснуть чуть раньше после того, как агент закончит."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体仍会完成工作。Belay 只是会更早让 Mac 进入睡眠。"
+          }
         }
       }
     },
@@ -10371,6 +11883,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Батарея на %lld%%, Belay дал Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量为 %lld%%，Belay 已让 Mac 进入睡眠。"
           }
         }
       }
@@ -10413,6 +11931,12 @@
             "state": "translated",
             "value": "Первый же запуск агента это заполнит."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第一次智能体运行后，这里就会有内容。"
+          }
         }
       }
     },
@@ -10453,6 +11977,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "продолжал работать, пока вас не было"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在你离开时继续工作"
           }
         }
       }
@@ -10495,6 +12025,12 @@
             "state": "translated",
             "value": "последний сигнал %@ назад"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次信号在 %@ 前"
+          }
         }
       }
     },
@@ -10535,6 +12071,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "самый долгий запуск"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最长运行"
           }
         }
       }
@@ -10577,6 +12119,12 @@
             "state": "needs_review",
             "value": "macOS отказал Belay в доступе к %@."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 拒绝了 Belay 对 %@ 的访问。"
+          }
         }
       }
     },
@@ -10617,6 +12165,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Разрешите это в Системных настройках, чтобы продолжить."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在“系统设置”中允许此操作以继续。"
           }
         }
       }
@@ -10659,6 +12213,12 @@
             "state": "translated",
             "value": "macOS не удалось применить изменение: %@"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 无法应用此更改：%@"
+          }
         }
       }
     },
@@ -10699,6 +12259,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "macOS не удалось предотвратить переход Mac в сон (ошибка IOKit %lld)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 无法让 Mac 保持唤醒（IOKit 错误 %lld）。"
           }
         }
       }
@@ -10741,6 +12307,12 @@
             "state": "translated",
             "value": "нет запусков"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无运行"
+          }
         }
       }
     },
@@ -10781,6 +12353,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "не настроено"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未配置"
           }
         }
       }
@@ -10823,6 +12401,12 @@
             "state": "translated",
             "value": "работы агента, выполненной, пока меня не было."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "的智能体工作在我离开期间完成。"
+          }
         }
       }
     },
@@ -10863,6 +12447,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "работы агента, пока меня не было. Прогонов, которые прервал бы сон: %lld."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "的智能体工作在我离开期间进行。睡眠本会打断其中 %lld 次运行。"
           }
         }
       }
@@ -10905,6 +12495,12 @@
             "state": "needs_review",
             "value": "работы агента, пока меня не было. Один из этих прогонов сон бы прервал."
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "的智能体工作在我离开期间进行。睡眠本会打断其中 1 次运行。"
+          }
         }
       }
     },
@@ -10945,6 +12541,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "процесс %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "进程 %@"
           }
         }
       }
@@ -10987,6 +12589,12 @@
             "state": "needs_review",
             "value": "запусков спасено"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保住的运行"
+          }
         }
       }
     },
@@ -11027,6 +12635,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "всего запусков"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视的运行"
           }
         }
       }
@@ -11069,6 +12683,12 @@
             "state": "translated",
             "value": "время без сна"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "唤醒时长"
+          }
         }
       }
     },
@@ -11109,6 +12729,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "© 2026 PerfectoWeb. Лицензия MIT. Сделано гиками для гиков."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb。采用 MIT 许可证。由极客打造，为极客而作。"
           }
         }
       }
