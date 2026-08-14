@@ -13,8 +13,12 @@ import SwiftUI
 /// another file would collide with this one on a day nobody was thinking about
 /// onboarding.
 extension OnboardingScene {
-    /// The Mac: a screen on a deck. Lines of output arrive on it while the agent
-    /// works, and it goes dark under a moon once Belay lets go.
+    /// The Mac: a MacBook, opaque and with some thickness to it.
+    ///
+    /// Recognisably the machine rather than a grey rectangle: a bezel with a
+    /// notch cut into it, a lid that sits on a base rather than floating, and a
+    /// front lip so the base has a depth. No logo, because that is somebody
+    /// else's mark to put on things.
     struct Laptop: View {
         /// 1 while the Mac is being held awake, 0 once it is asleep.
         var lit: Double
@@ -23,79 +27,99 @@ extension OnboardingScene {
         var time: Double
 
         private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45]
+        /// The aluminium the whole machine is cut from.
+        private static let shell = Color(red: 0.30, green: 0.33, blue: 0.40)
+        private static let shellDark = Color(red: 0.20, green: 0.22, blue: 0.28)
+        private static let glass = Color(red: 0.07, green: 0.09, blue: 0.14)
 
         var body: some View {
             VStack(spacing: 0) {
-                screen
-                Deck()
-                    .fill(.quaternary)
-                    .overlay(Deck().stroke(.separator, lineWidth: 1))
-                    .frame(height: 8)
+                lid
+                base
             }
         }
 
-        private var screen: some View {
+        /// The lid: aluminium, a black bezel, and the screen inside it.
+        private var lid: some View {
             RoundedRectangle(cornerRadius: 9, style: .continuous)
-                .fill(.quaternary)
-                // A screen that is on is not the same grey as a screen that is off.
-                // Swapping the picture on it for a moon changes the symbol and
-                // leaves the panel behind it exactly as bright, so the one thing
-                // the eye reads at this size — how lit the rectangle is — says
-                // nothing at all.
-                .overlay(wash(Color.accentColor.opacity(0.16 * lit)))
-                .overlay(wash(Color.black.opacity(0.34 * (1 - lit))))
-                .overlay(alignment: .topLeading) {
-                    lines.padding(13).opacity(lit)
-                }
+                .fill(Self.shell)
                 .overlay {
-                    Image(systemName: "moon.fill")
-                        .font(.system(size: 19))
-                        .foregroundStyle(.secondary)
-                        .opacity(1 - lit)
+                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        .fill(Self.glass)
+                        .overlay { display }
+                        .overlay(alignment: .top) { notch }
+                        .padding(3)
                 }
                 .overlay(
                     RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .strokeBorder(.separator, lineWidth: 1)
-                        // The outline stays, dimmer. Without it a sleeping Mac
-                        // loses its edge against the night sky and the scene ends
-                        // up with nothing holding its left-hand side.
-                        .opacity(1 - 0.45 * (1 - lit))
-                )
-                .padding(.horizontal, 6)
-                .padding(.bottom, 1)
+                        .strokeBorder(Color.white.opacity(0.14), lineWidth: 1))
         }
 
+        /// The camera housing every MacBook has had since 2021. Three points
+        /// wide is enough at this size; any more and it reads as a bite.
+        private var notch: some View {
+            UnevenRoundedRectangle(
+                bottomLeadingRadius: 3, bottomTrailingRadius: 3, style: .continuous
+            )
+            .fill(Self.glass)
+            .frame(width: 26, height: 5)
+        }
+
+        /// What is on the screen: the work, or a moon once it has stopped.
+        private var display: some View {
+            ZStack {
+                Rectangle()
+                    .fill(Color.accentColor.opacity(0.14 * lit))
+                lines
+                    .padding(.horizontal, 10)
+                    .padding(.top, 13)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                    .opacity(lit)
+                Image(systemName: "moon.fill")
+                    .font(.system(size: 17))
+                    .foregroundStyle(Color.white.opacity(0.55))
+                    .opacity(1 - lit)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+        }
+
+        /// The base, seen at a slight angle, with a lip along the front so it
+        /// has a thickness. Flat, it read as a sheet of paper.
+        private var base: some View {
+            VStack(spacing: 0) {
+                Deck()
+                    .fill(
+                        LinearGradient(
+                            colors: [Self.shell, Self.shellDark],
+                            startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(height: 5)
+                Deck()
+                    .fill(Self.shellDark)
+                    .overlay(Deck().stroke(Color.white.opacity(0.10), lineWidth: 1))
+                    .frame(height: 4)
+            }
+        }
+
+        /// The work, as lines arriving one after another.
         private var lines: some View {
-            VStack(alignment: .leading, spacing: 7) {
+            VStack(alignment: .leading, spacing: 5) {
                 ForEach(Array(Self.widths.enumerated()), id: \.offset) { index, width in
                     Capsule()
-                        .fill(index == 0 ? Color.accentColor.opacity(0.8) : Color.secondary)
-                        .frame(width: 74 * width, height: 5)
-                        // Each line fades in a beat after the one above, so the
-                        // screen reads as filling up rather than blinking.
+                        .fill(index == 0 ? Color.accentColor : Color.white.opacity(0.75))
+                        .frame(width: 62 * width, height: 4)
                         .opacity(lineOpacity(index))
                 }
             }
         }
 
-        /// A wash the exact shape of the screen. Named because it is applied twice
-        /// and the shape has to be the same both times: a rectangle a corner radius
-        /// out of step shows as a bright hairline along the rounding.
-        private func wash(_ colour: Color) -> some View {
-            RoundedRectangle(cornerRadius: 9, style: .continuous).fill(colour)
-        }
-
-        /// Minus the index, not plus it. With a positive term the later lines led
-        /// the earlier ones and the screen filled from the bottom up, which is a
-        /// terminal scrolling the wrong way.
-        ///
-        /// Scaled by `working` rather than gated on it, so the lines settle with
-        /// the same ramp as the rope instead of snapping to rest a frame after it
-        /// starts moving.
+        /// Minus the index, not plus it. With a positive term the later lines
+        /// led the earlier ones and the screen filled from the bottom up, which
+        /// is a terminal scrolling the wrong way.
         private func lineOpacity(_ index: Int) -> Double {
             let step = (time * 1.6 - Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
-            let lit = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
-            return 0.25 + (lit - 0.25) * working
+            let shown = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
+            return 0.2 + (shown - 0.2) * working
         }
     }
 
@@ -115,17 +139,20 @@ extension OnboardingScene {
         }
     }
 
-    /// Charge arriving at the machine, drawn as it is drawn everywhere: three
-    /// bolts, of three sizes. They are the only thing in the picture that says
-    /// the holding is happening rather than merely arranged, so they go out the
-    /// moment Belay lets go and come back when it takes hold again.
+    /// The charge at the machine while it is held, and the sleep once it is not.
+    ///
+    /// One turns into the other rather than one leaving and the other arriving:
+    /// the bolts shrink away on the spot as the letters grow out of it, so the
+    /// eye reads a single thing changing its mind. Cartoons have drawn sleep as
+    /// three rising Zs for a century and there is no reason to invent a
+    /// second way.
     struct ChargeBolts: View {
+        /// 1 while Belay is holding the Mac awake.
         var charge: Double
+        /// 1 once the Mac has gone to sleep.
+        var sleeping: Double
         var time: Double
 
-        /// One bolt: where it sits beside the socket, how big it is drawn, and
-        /// where it is in its own flicker. Named fields rather than a tuple of
-        /// four, which nothing can read at the point it is written down.
         private struct Spark {
             var dx: CGFloat
             var dy: CGFloat
@@ -133,30 +160,57 @@ extension OnboardingScene {
             var phase: Double
         }
 
-        private static let bolts = [
-            Spark(dx: 2, dy: -13, size: 10, phase: 0),
-            Spark(dx: 10, dy: -2, size: 8, phase: 0.9),
-            Spark(dx: 1, dy: 10, size: 7, phase: 1.7)
+        private static let sparks = [
+            Spark(dx: 2, dy: -13, size: 11, phase: 0),
+            Spark(dx: 11, dy: -1, size: 9, phase: 0.9),
+            Spark(dx: 1, dy: 11, size: 8, phase: 1.7)
         ]
 
         var body: some View {
             ZStack {
-                ForEach(Array(Self.bolts.enumerated()), id: \.offset) { _, bolt in
+                ForEach(Array(Self.sparks.enumerated()), id: \.offset) { index, spark in
                     Image(systemName: "bolt.fill")
-                        .font(.system(size: bolt.size, weight: .semibold))
+                        .font(.system(size: spark.size, weight: .semibold))
                         .foregroundStyle(.tint)
-                        .offset(x: bolt.dx, y: bolt.dy)
-                        .opacity(flicker(bolt.phase) * charge)
+                        .offset(x: spark.dx, y: spark.dy)
+                        .opacity(flicker(spark.phase) * charge)
+                        .scaleEffect(1 - sleeping)
+
+                    // The same three places, becoming letters. Each drifts up
+                    // and fades on its own beat, so they rise in a line rather
+                    // than as a block.
+                    // Verbatim: this is a drawing of a snore, not a word
+                    // anybody should be asked to translate.
+                    Text(verbatim: "z")
+                        .font(.system(size: spark.size + 3, weight: .semibold, design: .rounded))
+                        .foregroundStyle(Color.white.opacity(0.7))
+                        .offset(
+                            x: spark.dx + CGFloat(index) * 3,
+                            y: spark.dy - CGFloat(drift(index)) * 9
+                        )
+                        .opacity(sleeping * (0.35 + 0.65 * fade(index)))
+                        .scaleEffect(sleeping * (0.8 + 0.2 * Double(index)))
                 }
             }
+            .accessibilityHidden(true)
         }
 
-        /// Each on its own phase, so the three never blink as one. Never fully out
-        /// while the power is on: a bolt that reaches zero reads as a fault rather
-        /// than as current.
+        /// Each on its own phase, so the three never blink as one. Never fully
+        /// out while the power is on: a bolt that reaches zero reads as a fault
+        /// rather than as current.
         private func flicker(_ phase: Double) -> Double {
             0.45 + 0.55 * (0.5 + 0.5 * sin(time * 3.1 + phase * 6.283))
         }
-    }
 
+        /// How far up this letter has floated on its own cycle.
+        private func drift(_ index: Int) -> Double {
+            let step = (time * 0.55 + Double(index) * 0.33).truncatingRemainder(dividingBy: 1)
+            return step
+        }
+
+        /// In at the bottom, out at the top.
+        private func fade(_ index: Int) -> Double {
+            sin(drift(index) * .pi)
+        }
+    }
 }

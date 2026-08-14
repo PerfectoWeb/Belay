@@ -24,7 +24,10 @@ struct Bouncer: View {
     private static let ringEdge = Color(red: 0.984, green: 0.522, blue: 0.0)
 
     /// One bounce every this many seconds.
-    private static let beat: Double = 1.15
+    /// Slower than a real bounce on purpose. The reference moves gently and so
+    /// should this: at one and a bit seconds it read as bouncing, at one and
+    /// three quarters it reads as enjoying itself.
+    private static let beat: Double = 1.75
 
     /// One arm or leg: where it leaves the body, how far it reaches, and how
     /// much it swings as the jump opens out.
@@ -33,11 +36,14 @@ struct Bouncer: View {
         var length: Double
         var swing: Double
 
+        // Arms leave at the shoulder, barely above the middle, and the bend
+        // carries them up. Leaving at a third of a turn from horizontal they
+        // came out of the top of the head and read as antennae.
         static let all = [
-            Limb(angle: .pi * 1.22, length: 1.15, swing: -0.30),
-            Limb(angle: .pi * 1.78, length: 1.15, swing: 0.30),
-            Limb(angle: .pi * 0.72, length: 1.05, swing: -0.22),
-            Limb(angle: .pi * 0.28, length: 1.05, swing: 0.22)
+            Limb(angle: .pi * 1.09, length: 0.95, swing: -0.26),
+            Limb(angle: .pi * 1.91, length: 0.95, swing: 0.26),
+            Limb(angle: .pi * 0.70, length: 0.86, swing: -0.16),
+            Limb(angle: .pi * 0.30, length: 0.86, swing: 0.16)
         ]
     }
 
@@ -127,13 +133,19 @@ struct Bouncer: View {
                 style: StrokeStyle(lineWidth: 2.8 * unit, lineCap: .round))
         }
         context.fill(Path(ellipseIn: ball), with: .color(Self.body))
-        // The face, which is the whole of the character.
-        let eye = 2.3 * unit
+        // The face, which is the whole of the character. The eyes are tilted
+        // towards each other, which is the difference between a face and two
+        // dots, and the mouth is open because the figure is having a good time.
+        let eye = CGSize(width: 2.6 * unit, height: 3.4 * unit)
         for side in [-1.0, 1.0] {
-            let spot = CGRect(
-                x: centre.x + 5.5 * unit * side - eye, y: centre.y - 5 * unit - eye,
-                width: eye * 2, height: eye * 2)
-            context.fill(Path(ellipseIn: spot), with: .color(.black))
+            var oval = Path(
+                ellipseIn: CGRect(
+                    x: -eye.width, y: -eye.height, width: eye.width * 2, height: eye.height * 2))
+            oval = oval.applying(CGAffineTransform(rotationAngle: 0.22 * side))
+            oval = oval.applying(
+                CGAffineTransform(
+                    translationX: centre.x + 5.8 * unit * side, y: centre.y - 4.6 * unit))
+            context.fill(oval, with: .color(.black))
         }
         let grin = CGRect(
             x: centre.x - 3 * unit, y: centre.y + 1.5 * unit,

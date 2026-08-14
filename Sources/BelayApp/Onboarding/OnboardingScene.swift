@@ -87,27 +87,37 @@ struct OnboardingScene: View {
         return (beat.truncatingRemainder(dividingBy: 1) < 0.5 ? 0.15 : 1) * dark
     }
 
+    /// One half of the ring, placed. Both halves take the same frame, so an
+    /// agent handed from one to the other does not jump.
+    @MainActor private static func orbit(_ half: AgentOrbit.Half, at time: Double) -> some View {
+        AgentOrbit(
+            half: half,
+            popped: (0..<4).map { popped($0, at: time) },
+            glow: glow(at: time),
+            time: time
+        )
+        .frame(width: 150, height: 116)
+        .position(x: 176, y: 52)
+    }
+
     /// One frame of the scene. Static so a test can render it without a window.
     @MainActor static func still(at time: Double) -> some View {
         let live = working(at: time)
         let sleep = asleep(at: time)
         let held = 1 - sleep
         return ZStack(alignment: .topLeading) {
+            // The far half of the orbit first, so the laptop covers it.
+            orbit(.behind, at: time)
+
             Laptop(lit: held, working: live, time: time)
-                .frame(width: 150, height: 86)
-                .position(x: 96, y: 92)
+                .frame(width: 150, height: 92)
+                .position(x: 96, y: 90)
 
-            ChargeBolts(charge: held, time: time)
-                .frame(width: 26, height: 58)
-                .position(x: 26, y: 76)
+            ChargeBolts(charge: held, sleeping: sleep, time: time)
+                .frame(width: 30, height: 58)
+                .position(x: 18, y: 62)
 
-            AgentOrbit(
-                popped: (0..<4).map { popped($0, at: time) },
-                glow: glow(at: time),
-                time: time
-            )
-            .frame(width: 150, height: 116)
-            .position(x: 176, y: 52)
+            orbit(.inFront, at: time)
 
             Bouncer(resting: sleep, time: time)
                 .frame(width: 108, height: 140)
