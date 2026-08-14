@@ -142,6 +142,19 @@ def head(code, title, meta, depth, page):
         f"<title>{title}</title>",
         f'<meta name="description" content="{meta}">',
         f'<link rel="stylesheet" href="{up}style.css">',
+        # Open Graph. Without these a link to this page unfurls in Slack,
+        # iMessage, Discord and X as a bare URL, which is what it did for the
+        # whole of 1.0. The card is 1280x640, rendered by
+        # scripts/make-social.swift in the app's repository.
+        '<meta property="og:type" content="website">',
+        f'<meta property="og:title" content="{title}">',
+        f'<meta property="og:description" content="{meta}">',
+        f'<meta property="og:url" content="https://perfectoweb.github.io/Belay/{code}/{page}">',
+        '<meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png">',
+        '<meta property="og:image:width" content="1280">',
+        '<meta property="og:image:height" content="640">',
+        '<meta property="og:site_name" content="Belay">',
+        '<meta name="twitter:card" content="summary_large_image">',
     ]
     for other in CODES:
         href = f"https://perfectoweb.github.io/Belay/{other}/{page}"
