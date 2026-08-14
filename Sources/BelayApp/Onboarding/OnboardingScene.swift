@@ -2,11 +2,9 @@ import SwiftUI
 
 /// The first thing anyone sees: what Belay does, shown rather than described.
 ///
-/// A laptop with work running on it, Belay's mark beside it with the agents in
-/// orbit, a charge arcing at the machine while it is being held, and the person
-/// who owns it out on a trampoline. The agents finish and pop one at a time; the
-/// mark blinks; the screen goes dark under a moon. The person keeps bouncing,
-/// because that was the point.
+/// A laptop with work running on it and Belay's mark beside it, with the agents
+/// in orbit. The agents finish and pop one at a time; the mark blinks and goes
+/// grey; the screen goes dark under a moon, and three letters rise off it.
 ///
 /// Shown instead of a third paragraph because the product is a behaviour over
 /// time, and a behaviour over time is the one thing prose is worst at. The loop
@@ -32,11 +30,11 @@ struct OnboardingScene: View {
     /// in the middle and the two loose things are allowed to hang off it.
     nonisolated static let machine = CGPoint(x: box.width / 2, y: 86)
 
-    /// The mark, and the charge, as offsets from the machine. Held here rather
+    /// The mark, and the snore, as offsets from the machine. Held here rather
     /// than as absolute points so that moving the machine moves the picture
     /// with it instead of taking it apart.
     nonisolated static let markAt = CGSize(width: 62, height: -50)
-    nonisolated static let chargeAt = CGSize(width: -68, height: -38)
+    nonisolated static let snoreAt = CGSize(width: -68, height: -38)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -54,42 +52,13 @@ struct OnboardingScene: View {
                         at: timeline.date.timeIntervalSince(began)
                             .truncatingRemainder(dividingBy: Self.loop))
                 }
-                .task { await soundtrack() }
+                .task { await Self.soundtrack(from: began) }
             }
         }
         .frame(width: Self.box.width, height: Self.box.height)
         .accessibilityElement()
         .accessibilityLabel(
             "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops")
-    }
-
-    // MARK: - The one pass that makes a noise
-
-    /// What is heard, and when. Four agents finishing, the Mac letting go, and
-    /// the Mac coming back.
-    ///
-    /// Gated the same way every other sound in the app is — the system's
-    /// interface-sounds preference first, then Belay's own switch — because a
-    /// welcome screen is the worst possible place to be the exception.
-    private static var cues: [(at: Double, sound: Feedback.Sound)] {
-        (0..<4).map { (at: popTime($0), sound: Feedback.Sound.agentPop) }
-            + [(at: 8.35, sound: .driftingOff), (at: 10.8, sound: .wakingUp)]
-    }
-
-    /// Walks the cues in order, sleeping the gap between each, and goes round
-    /// with the picture. Cancelled with the view, so a window closed mid-pass
-    /// makes no noise afterwards.
-    private func soundtrack() async {
-        while !Task.isCancelled {
-            var played = 0.0
-            for cue in Self.cues {
-                try? await Task.sleep(for: .seconds(cue.at - played))
-                if Task.isCancelled { return }
-                Feedback.play(cue.sound)
-                played = cue.at
-            }
-            try? await Task.sleep(for: .seconds(Self.loop - played))
-        }
     }
 
     // MARK: - The clock
@@ -217,12 +186,11 @@ struct OnboardingScene: View {
                 .frame(width: Laptop.width, height: Laptop.width / Laptop.aspect)
                 .position(machine)
 
-            // Rising off the top left corner of the screen: the lowest bolt is
-            // on the glass and the other two are already above the machine, so
-            // the three read as leaving it rather than as sitting on it.
-            ChargeBolts(charge: held, sleeping: sleep, time: time)
+            // Rising off the machine's top left corner, and only once it has
+            // stopped.
+            Snore(sleeping: sleep, time: time)
                 .frame(width: 30, height: 58)
-                .position(x: machine.x + chargeAt.width, y: machine.y + chargeAt.height)
+                .position(x: machine.x + snoreAt.width, y: machine.y + snoreAt.height)
 
             orbit(.inFront, at: time)
         }

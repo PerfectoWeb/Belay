@@ -141,16 +141,17 @@ extension OnboardingScene {
         }
     }
 
-    /// The charge at the machine while it is held, and the sleep once it is not.
+    /// Three letters rising off a Mac that has stopped.
     ///
-    /// One turns into the other rather than one leaving and the other arriving:
-    /// the bolts shrink away on the spot as the letters grow out of it, so the
-    /// eye reads a single thing changing its mind. Cartoons have drawn sleep as
-    /// three rising Zs for a century and there is no reason to invent a
-    /// second way.
-    struct ChargeBolts: View {
-        /// 1 while Belay is holding the Mac awake.
-        var charge: Double
+    /// There were bolts here too, arcing at the machine while Belay held it
+    /// awake, and they were cut: the picture already says "held" with a lit
+    /// screen, a blue mark and four agents going round, and a fourth thing
+    /// saying it was decoration standing where the eye wanted quiet. What is
+    /// left is the one state that had nothing of its own.
+    ///
+    /// Cartoons have drawn sleep as three rising Zs for a century and there is
+    /// no reason to invent a second way.
+    struct Snore: View {
         /// 1 once the Mac has gone to sleep.
         var sleeping: Double
         var time: Double
@@ -159,27 +160,17 @@ extension OnboardingScene {
             var dx: CGFloat
             var dy: CGFloat
             var size: CGFloat
-            var phase: Double
         }
 
         private static let sparks = [
-            Spark(dx: -2, dy: -19, size: 11, phase: 0),
-            Spark(dx: 7, dy: -7, size: 9, phase: 0.9),
-            Spark(dx: -3, dy: 5, size: 8, phase: 1.7)
+            Spark(dx: -2, dy: -19, size: 11),
+            Spark(dx: 7, dy: -7, size: 9),
+            Spark(dx: -3, dy: 5, size: 8)
         ]
 
         var body: some View {
             ZStack {
                 ForEach(Array(Self.sparks.enumerated()), id: \.offset) { index, spark in
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: spark.size, weight: .semibold))
-                        .foregroundStyle(.white)
-                        .offset(x: spark.dx, y: spark.dy)
-                        .opacity(flicker(spark.phase) * charge * (1 - sleeping))
-
-                    // The same three places, becoming letters. Each drifts up
-                    // and fades on its own beat, so they rise in a line rather
-                    // than as a block.
                     // Verbatim: this is a drawing of a snore, not a word
                     // anybody should be asked to translate.
                     Text(verbatim: "z")
@@ -195,17 +186,9 @@ extension OnboardingScene {
             .accessibilityHidden(true)
         }
 
-        /// Each on its own phase, so the three never blink as one. Never fully
-        /// out while the power is on: a bolt that reaches zero reads as a fault
-        /// rather than as current.
-        private func flicker(_ phase: Double) -> Double {
-            0.45 + 0.55 * (0.5 + 0.5 * sin(time * 3.1 + phase * 6.283))
-        }
-
         /// How far up this letter has floated on its own cycle.
         private func drift(_ index: Int) -> Double {
-            let step = (time * 0.55 + Double(index) * 0.33).truncatingRemainder(dividingBy: 1)
-            return step
+            (time * 0.55 + Double(index) * 0.33).truncatingRemainder(dividingBy: 1)
         }
 
         /// In at the bottom, out at the top, and nought at both ends. Any

@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import XCTest
 
@@ -98,5 +99,32 @@ final class OnboardingSceneTests: XCTestCase {
         let sleeping = stride(from: 0, through: loop, by: step)
             .first { OnboardingScene.asleep(at: $0) > 0 } ?? loop
         XCTAssertGreaterThan(sleeping, stopped, "the Mac starts sleeping before the agent stops")
+    }
+
+    /// Nothing is ever heard over anything else, including across the wrap.
+    ///
+    /// The scene's sounds are scheduled by a list of times and played by files
+    /// of a fixed length, so two of them landing on top of each other is
+    /// arithmetic and not something anybody should have to notice by ear.
+    func testNoTwoSceneSoundsAreHeardAtOnce() throws {
+        let cues = OnboardingScene.cues
+        var last: (at: Double, ends: Double)?
+        for cue in cues {
+            let file = try XCTUnwrap(
+                Bundle(for: Self.self).url(forResource: cue.sound.rawValue, withExtension: "wav")
+                    ?? Bundle.main.url(forResource: cue.sound.rawValue, withExtension: "wav"))
+            let effect = try XCTUnwrap(NSSound(contentsOf: file, byReference: false))
+            if let previous = last {
+                XCTAssertLessThanOrEqual(
+                    previous.ends, cue.at,
+                    "\(cue.sound.rawValue) at \(cue.at) starts before the one before it ends")
+            }
+            last = (cue.at, cue.at + effect.duration)
+        }
+        // And the last one has to be finished before the loop comes round and
+        // the first one starts again.
+        let wrap = try XCTUnwrap(last)
+        XCTAssertLessThanOrEqual(
+            wrap.ends, loop + (cues.first?.at ?? 0), "the last sound runs into the next pass")
     }
 }
