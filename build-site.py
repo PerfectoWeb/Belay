@@ -279,7 +279,8 @@ def landing(code):
     lines += [
         "    </div>",
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
-        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
+        f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
+        f'{L[code]["licence"]}</a>.<br>'
         f'{L[code]["trademarks"]}</p>',
         f'    <p class="fine">{T[code]["fine"]}</p>',
         "</footer>",
@@ -348,7 +349,8 @@ def privacy(code):
     lines += [
         "    </div>",
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
-        '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
+        f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
+        f'{L[code]["licence"]}</a>.<br>'
         f'{L[code]["trademarks"]}</p>',
         f'    <p class="fine">{t["fine"]}</p>',
         "</footer>",
