@@ -49,7 +49,7 @@ struct OnboardingView: View {
             buttons.modifier(Entrance(shown: entered, delay: 0.17, animated: !reduceMotion))
             accessLine.modifier(Entrance(shown: entered, delay: 0.24, animated: !reduceMotion))
         }
-        .frame(width: 470, height: 486)
+        .frame(width: 470)
         // Behind, and not in the stack. A view inside a stack cannot grow past
         // the stack's own top edge, and the window adds a titlebar's height to
         // whatever the content asks for, so a taller panel made a taller window
@@ -73,6 +73,13 @@ struct OnboardingView: View {
     /// reaches up under.
     static let heroHeight: CGFloat = 250
 
+    /// The one inset everything below the panel shares, sides and ends alike.
+    /// The ends take a little off it: a text's box is taller than its letters,
+    /// so matching the side inset by the number draws a bigger gap than the
+    /// sides have. The two numbers below were measured off the rendered window
+    /// until both ends came out at thirty points of actual space.
+    static let margin: CGFloat = 30
+
     private var hero: some View {
         ZStack(alignment: .topLeading) {
             // The same night sky as About, and for the same reason: a panel
@@ -94,12 +101,11 @@ struct OnboardingView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .padding(.top, 34 + Self.titlebar)
 
-            // Beside the window's own buttons rather than under them. They sit
-            // on the panel now, so the lockup has to start after them or it
-            // shares a row with three circles it has nothing to do with.
+            // Under the window's buttons, not beside them, and on the same
+            // left edge as every line of text below.
             BelayWordmark(size: 22, word: .primary, animated: true)
-                .padding(.leading, 76)
-                .padding(.top, 14)
+                .padding(.leading, Self.margin)
+                .padding(.top, Self.titlebar + 12)
         }
         .frame(height: Self.heroHeight + Self.titlebar)
         .ignoresSafeArea(.container, edges: .top)
@@ -120,8 +126,8 @@ struct OnboardingView: View {
             .fixedSize(horizontal: false, vertical: true)
         }
         .multilineTextAlignment(.leading)
-        .padding(.horizontal, 30)
-        .padding(.top, 26)
+        .padding(.horizontal, Self.margin)
+        .padding(.top, Self.margin - 4)
     }
 
     private var buttons: some View {
@@ -139,7 +145,7 @@ struct OnboardingView: View {
             Spacer(minLength: 0)
         }
         .controlSize(.large)
-        .padding(.horizontal, 30)
+        .padding(.horizontal, Self.margin)
         .padding(.top, 22)
     }
 
@@ -156,9 +162,9 @@ struct OnboardingView: View {
             .foregroundStyle(.tertiary)
             .fixedSize(horizontal: false, vertical: true)
             .multilineTextAlignment(.leading)
-            .padding(.horizontal, 30)
+            .padding(.horizontal, Self.margin)
             .padding(.top, 16)
-            .padding(.bottom, 18)
+            .padding(.bottom, Self.margin - 2)
     }
 
     private var granted: LocalizedStringKey {
