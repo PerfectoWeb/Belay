@@ -1,21 +1,48 @@
-MIT License
-
+Belay Source-Available License 1.0
 Copyright (c) 2026 PerfectoWeb
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to use, copy,
+modify, merge, publish and distribute the Software, subject to the following
+conditions.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. NO SELLING.
+
+   You may not sell the Software, or any modified or derivative version of it,
+   and you may not charge any fee for access to it. In particular you may not:
+
+     a. sell copies of the Software, whether on their own or bundled with
+        anything else;
+     b. charge a subscription, licence fee, or any other payment for the right
+        to obtain, run or continue running the Software;
+     c. offer the Software, or a derivative of it, as a paid product or as a
+        paid part of a paid product or service.
+
+   Using the Software is free of charge and stays free of charge for everyone,
+   including inside a company and including for commercial work. What this
+   condition forbids is charging other people for it.
+
+   Voluntary donations to the copyright holder are not a fee.
+
+2. ATTRIBUTION.
+
+   The above copyright notice and this licence must be included in all copies or
+   substantial portions of the Software.
+
+   Any work that is built on the Software, or that includes a substantial
+   portion of it, must credit it visibly and legibly to the people it is
+   distributed to, naming "Belay by PerfectoWeb" and linking to
+   <https://github.com/PerfectoWeb/Belay>. A line in an about screen, a readme,
+   or a credits page is enough; a line buried only in source code is not.
+
+3. NAME AND MARKS.
+
+   This licence grants no rights in the name "Belay", the Belay wordmark, or the
+   Belay icon. See TRADEMARKS.md.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

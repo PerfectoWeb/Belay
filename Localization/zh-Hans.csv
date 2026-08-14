@@ -100,7 +100,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay 保存的 %@ 访问权限已失效。
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",使用电池时，Belay 会在电量降至 %lld%% 时停止。
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,取消
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
 Check Now,Settings: General,translated,,Check Now,立即检查
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,自动检查更新
 Checking…,Settings: General,translated,,Checking…,正在检查…
@@ -202,7 +202,7 @@ Shows exactly what will be added before anything is written,Settings: Providers,
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
 Software updates,Settings: General,translated,,Software updates,软件更新
-Sound,"App, Settings: About, Settings: General",translated,,Sound,声音
+Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,声音
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,加星标
 Star on GitHub,Settings: About,translated,,Star on GitHub,在 GitHub 上加星标
 Start watching,Welcome,translated,,Start Magic,开始监视
@@ -236,7 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,监视
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。
 Website,Settings: About,translated,,Website,网站
-Welcome,Welcome,translated,,Welcome,欢迎
+Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,欢迎使用 Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Belay 因安全原因停止时
@@ -273,4 +273,4 @@ process %@,Settings: Providers,translated,%@,process %@,进程 %@
 runs rescued,Statistics,translated,,runs saved,保住的运行
 runs watched,Statistics,translated,,runs watched,监视的运行
 total held,Statistics,translated,,awake time,唤醒时长
-"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",© 2026 PerfectoWeb。采用 MIT 许可证。由极客打造，为极客而作。
+"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。

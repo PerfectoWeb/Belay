@@ -249,3 +249,79 @@ render("og", width: 1280, height: 640, seed: 0x0B3D_9C41) { rect in
         underline, font: caption(19), colour: NSColor.white.withAlphaComponent(0.72),
         at: CGPoint(x: 0, y: 120), kern: 1.8, centred: rect.midX)
 }
+
+// MARK: - Buttons
+
+/// The buttons under the masthead and in Install.
+///
+/// Drawn rather than fetched from shields.io, and the reason is the corner: every
+/// shields style is either square or barely rounded, and none of them can be a
+/// pill. Rounding them in the README is not an option either — GitHub strips
+/// `style` out of README HTML, so a border-radius written there is dropped in
+/// silence. A picture of a button is the only rounded button GitHub will show.
+///
+/// Rendered at 3x and used at a third of the size, so they stay sharp on a
+/// Retina display.
+func button(_ name: String, _ label: String, fill: NSColor?, ink: NSColor, glyph: String?) {
+    let scale: CGFloat = 3
+    let height: CGFloat = 44 * scale
+    let radius = height / 2
+    let font = NSFont(name: "AvenirNext-DemiBold", size: 17 * scale)
+        ?? NSFont.systemFont(ofSize: 17 * scale, weight: .semibold)
+
+    let text = (glyph.map { "\($0)  " } ?? "") + label
+    let measured = NSAttributedString(string: text, attributes: [.font: font, .kern: 0.2 * scale])
+    let width = ceil(measured.size().width) + 34 * scale * 2
+
+    guard
+        let rep = NSBitmapImageRep(
+            bitmapDataPlanes: nil, pixelsWide: Int(width), pixelsHigh: Int(height),
+            bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+            colorSpaceName: .calibratedRGB, bytesPerRow: 0, bitsPerPixel: 0)
+    else { exit(1) }
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
+
+    let box = NSRect(x: 0, y: 0, width: width, height: height)
+    let pill = NSBezierPath(roundedRect: box.insetBy(dx: 1, dy: 1), xRadius: radius, yRadius: radius)
+    if let fill {
+        fill.setFill()
+        pill.fill()
+    } else {
+        // The secondary button is an outline. A filled grey next to a filled
+        // blue reads as two choices of equal weight, and they are not.
+        NSColor(srgbRed: 0.55, green: 0.58, blue: 0.65, alpha: 0.55).setStroke()
+        pill.lineWidth = 1.6 * scale
+        pill.stroke()
+    }
+
+    // Centred by giving the label a box exactly one line tall and placing that
+    // box, rather than by nudging a baseline. `draw(in:)` puts the first line at
+    // the top of whatever rect it is handed, so a full-height rect in an
+    // unflipped context hangs the text off the top of the pill.
+    let lineHeight = font.ascender - font.descender
+    let paragraph = NSMutableParagraphStyle()
+    paragraph.alignment = .center
+    NSAttributedString(
+        string: text,
+        attributes: [
+            .font: font, .foregroundColor: ink, .kern: 0.2 * scale,
+            .paragraphStyle: paragraph
+        ]
+    ).draw(in: NSRect(x: 0, y: (height - lineHeight) / 2, width: width, height: lineHeight))
+    NSGraphicsContext.restoreGraphicsState()
+
+    try? FileManager.default.createDirectory(atPath: "\(output)/buttons", withIntermediateDirectories: true)
+    let path = "\(output)/buttons/\(name).png"
+    guard let data = rep.representation(using: .png, properties: [:]) else { exit(1) }
+    try? data.write(to: URL(fileURLWithPath: path))
+    print("wrote \(path) — \(Int(width / scale))x\(Int(height / scale)) at 1x")
+}
+
+let accent = NSColor(srgbRed: 0x1F / 255, green: 0x6B / 255, blue: 1, alpha: 1)
+let quiet = NSColor(srgbRed: 0.62, green: 0.66, blue: 0.74, alpha: 1)
+
+button("download", "Download for macOS", fill: accent, ink: .white, glyph: "\u{2193}")
+button("website", "Website", fill: nil, ink: quiet, glyph: nil)
+button("download-now", "Download Now", fill: accent, ink: .white, glyph: "\u{2193}")
+button("site", "Website", fill: nil, ink: quiet, glyph: "\u{2192}")

@@ -73,7 +73,8 @@ struct AboutPane: View {
     /// has nothing left to arrange, and the name is a proper noun that survives
     /// translation unchanged.
     @ViewBuilder private var copyright: some View {
-        let sentence = String(localized: "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.")
+        let sentence = String(
+            localized: "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.")
         let parts = sentence.components(separatedBy: Self.owner)
         if parts.count == 2, let url = Branding.homepageURL {
             HStack(spacing: 0) {

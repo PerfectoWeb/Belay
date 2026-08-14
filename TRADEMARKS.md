@@ -1,20 +1,20 @@
 # The name and the mark
 
-The code in this repository is MIT licensed. `LICENSE` is the whole of what is
+The code in this repository is under the Belay Source-Available License 1.0. `LICENSE` is the whole of what is
 granted, and it grants a great deal: copy it, change it, ship it, sell it. That
 is deliberate and it is not going to be narrowed.
 
-What the MIT licence does not grant, because a copyright licence never does, is
+What that licence does not grant, because a copyright licence never does, is
 the right to use somebody's name for your product. So, plainly:
 
 **"Belay", the Belay wordmark and the Belay app icon are not covered by the
-MIT licence.** They belong to PerfectoWeb.
+licence.** They belong to PerfectoWeb.
 
 ## What that means in practice
 
 **Fork it, rename it, sell it.** Genuinely. Take the code, call it something
 else, put your own mark on it, charge for it. You need nothing from us beyond
-keeping the copyright notice the MIT licence asks for.
+keeping the copyright notice and the credit the licence asks for.
 
 **Do not ship it as "Belay".** A build that is not ours should not arrive on
 somebody's Mac wearing our name, because the person installing it cannot tell

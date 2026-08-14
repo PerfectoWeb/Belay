@@ -198,7 +198,7 @@ Both are required fields and both must be publicly reachable without a login.
 The repository is public now, so both exist.
 
 - **Support URL.** `https://github.com/perfectoweb/belay/issues`. It is a
-  legitimate support channel for a free MIT project and Apple accepts it.
+  legitimate support channel for a free project and Apple accepts it.
 - **Privacy policy URL.** A GitHub issues page is not a privacy policy. Two
   workable options for a repo-only project:
   - **GitHub Pages.** Enable Pages on the repository and publish one page whose
@@ -421,7 +421,8 @@ it. Say all of that in the notes; a background utility that starts at login is
 exactly what this clause exists to catch, and the honest answer clears it.
 
 **No license screens, license keys or self-implemented copy protection.** Not
-applicable. The app is free and MIT.
+applicable. The app is free, and source-available under a licence that
+forbids selling it.
 
 Two more, outside 2.4.5:
 

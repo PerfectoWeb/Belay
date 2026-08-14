@@ -100,7 +100,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Сохранённое разрешение Belay на %@ больше не действует.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",При работе от батареи Belay остановится на %lld%%.
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Купить мне кофе
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Отмена
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Отмена
 Check Now,Settings: General,translated,,Check Now,Проверить
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Проверять обновления автоматически
 Checking…,Settings: General,translated,,Checking…,Проверяю…
@@ -202,7 +202,7 @@ Shows exactly what will be added before anything is written,Settings: Providers,
 Since %@,Statistics,needs_review,%@,Since %@,С %@
 Skip for now,Welcome,translated,,Skip now,Пропустить
 Software updates,Settings: General,translated,,Software updates,Обновления
-Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Звук
+Sound,"App, Settings: About, Settings: General, Welcome",needs_review,,Sound,Звук
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Поставить звезду
 Star on GitHub,Settings: About,translated,,Star on GitHub,Звезда на GitHub
 Start watching,Welcome,translated,,Start Magic,Начать наблюдение
@@ -236,7 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Следить
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,"Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Следите за папкой или используйте однострочный вебхук для другого агента. Начните с пресета или добавьте свой.
 Website,Settings: About,translated,,Website,Сайт
-Welcome,Welcome,translated,,Welcome,Добро пожаловать
+Welcome,"App, Menu bar, Welcome",translated,,Welcome,Добро пожаловать
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Добро пожаловать в %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Добро пожаловать в Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Когда Belay останавливается ради безопасности
@@ -273,4 +273,4 @@ process %@,Settings: Providers,translated,%@,process %@,процесс %@
 runs rescued,Statistics,needs_review,,runs saved,запусков спасено
 runs watched,Statistics,needs_review,,runs watched,всего запусков
 total held,Statistics,translated,,awake time,время без сна
-"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",© 2026 PerfectoWeb. Лицензия MIT. Сделано гиками для гиков.
+"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb. Бесплатно и не продаётся. Сделано гиками для гиков.

@@ -12740,49 +12740,49 @@
         }
       }
     },
-    "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.": {
+    "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. MIT-Lizenz. Von Geeks für Geeks gebaut."
+            "value": "© 2026 PerfectoWeb. Kostenlos und unverkäuflich. Von Geeks für Geeks gebaut."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."
+            "value": "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Licencia MIT. Hecho por frikis para frikis."
+            "value": "© 2026 PerfectoWeb. Gratis y nunca a la venta. Hecho por frikis para frikis."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Sous licence MIT. Fait par des geeks, pour des geeks."
+            "value": "© 2026 PerfectoWeb. Gratuit, jamais à vendre. Fait par des geeks, pour des geeks."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Licenza MIT. Fatto da smanettoni per smanettoni."
+            "value": "© 2026 PerfectoWeb. Gratuito e mai in vendita. Fatto da smanettoni per smanettoni."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Лицензия MIT. Сделано гиками для гиков."
+            "value": "© 2026 PerfectoWeb. Бесплатно и не продаётся. Сделано гиками для гиков."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb。采用 MIT 许可证。由极客打造，为极客而作。"
+            "value": "© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。"
           }
         }
       }

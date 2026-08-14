@@ -100,7 +100,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay's saved permission for %@ is no longer valid.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","On battery, Belay stops at %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Buy me a coffee
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Cancel
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Cancel
 Check Now,Settings: General,translated,,Check Now,Check Now
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Check for updates automatically
 Checking…,Settings: General,translated,,Checking…,Checking…
@@ -202,7 +202,7 @@ Shows exactly what will be added before anything is written,Settings: Providers,
 Since %@,Statistics,translated,%@,Since %@,Since %@
 Skip for now,Welcome,translated,,Skip now,Skip now
 Software updates,Settings: General,translated,,Software updates,Software updates
-Sound,"App, Settings: About, Settings: General",translated,,Sound,Sound
+Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,Sound
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Star
 Star on GitHub,Settings: About,translated,,Star on GitHub,Star on GitHub
 Start watching,Welcome,translated,,Start Magic,Start Magic
@@ -236,7 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Watch
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Watches Claude Code session files to tell when a turn is running.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.
 Website,Settings: About,translated,,Website,Website
-Welcome,Welcome,translated,,Welcome,Welcome
+Welcome,"App, Menu bar, Welcome",translated,,Welcome,Welcome
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Welcome to %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Welcome to Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,When Belay stops for safety
@@ -273,4 +273,4 @@ process %@,Settings: Providers,translated,%@,process %@,process %@
 runs rescued,Statistics,translated,,runs saved,runs saved
 runs watched,Statistics,translated,,runs watched,runs watched
 total held,Statistics,translated,,awake time,awake time
-"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.","© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks."
+"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.","© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks."

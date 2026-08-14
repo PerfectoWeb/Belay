@@ -100,7 +100,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,L'autorisation enregistrée par Belay pour %@ n'est plus valide.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","Sur batterie, Belay s'arrête à %lld%%."
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Offrez-moi un café
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics",translated,,Cancel,Annuler
+Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Annuler
 Check Now,Settings: General,translated,,Check Now,Vérifier
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Rechercher les mises à jour automatiquement
 Checking…,Settings: General,translated,,Checking…,Vérification…
@@ -202,7 +202,7 @@ Shows exactly what will be added before anything is written,Settings: Providers,
 Since %@,Statistics,needs_review,%@,Since %@,Depuis le %@
 Skip for now,Welcome,translated,,Skip now,Passer
 Software updates,Settings: General,translated,,Software updates,Mises à jour
-Sound,"App, Settings: About, Settings: General",needs_review,,Sound,Son
+Sound,"App, Settings: About, Settings: General, Welcome",needs_review,,Sound,Son
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Mettre une étoile
 Star on GitHub,Settings: About,translated,,Star on GitHub,Étoile sur GitHub
 Start watching,Welcome,translated,,Start Magic,Commencer la surveillance
@@ -236,7 +236,7 @@ Watch,"App, Detection, Settings: Providers",translated,,Watch,Surveiller
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Surveillez un dossier ou utilisez un webhook d'une ligne pour prendre en charge un autre agent de programmation. Commencez avec un préréglage ou ajoutez le vôtre.
 Website,Settings: About,translated,,Website,Site web
-Welcome,Welcome,translated,,Welcome,Bienvenue
+Welcome,"App, Menu bar, Welcome",translated,,Welcome,Bienvenue
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
 Welcome to Belay,(unused),translated,,Welcome to Belay,Bienvenue dans Belay
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Quand Belay s'arrête par sécurité
@@ -273,4 +273,4 @@ process %@,Settings: Providers,translated,%@,process %@,processus %@
 runs rescued,Statistics,translated,,runs saved,exécutions sauvées
 runs watched,Statistics,translated,,runs watched,exécutions surveillées
 total held,Statistics,translated,,awake time,temps d'éveil
-"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. MIT licensed. Built by geeks, for geeks.","© 2026 PerfectoWeb. Sous licence MIT. Fait par des geeks, pour des geeks."
+"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.","© 2026 PerfectoWeb. Gratuit, jamais à vendre. Fait par des geeks, pour des geeks."
