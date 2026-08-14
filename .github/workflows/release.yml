@@ -52,13 +52,24 @@ jobs:
     timeout-minutes: 90
 
     env:
-      # Where the throwaway keychain and the two decoded credential files live.
-      # RUNNER_TEMP is wiped with the runner, and the cleanup step below removes
-      # them explicitly anyway.
-      KEYCHAIN_PATH: ${{ runner.temp }}/belay-release.keychain-db
       NOTARY_PROFILE: BelayReleaseCI
 
     steps:
+      # KEYCHAIN_PATH is set here rather than in the job's `env` above, and it
+      # has to be. The `runner` context is not available to a job-level `env`
+      # block, only `github`, `needs`, `strategy`, `matrix`, `vars`, `secrets`
+      # and `inputs` are, so `${{ runner.temp }}` there made the whole file
+      # invalid: GitHub rejected the workflow outright, named it after its own
+      # path because it never got as far as reading `name`, and logged a failed
+      # run with no jobs on every single push. RUNNER_TEMP is an ordinary
+      # environment variable in a step, which is all this ever needed.
+      #
+      # Where the throwaway keychain and the two decoded credential files live.
+      # It is wiped with the runner, and the cleanup step below removes them
+      # explicitly anyway.
+      - name: Place the throwaway keychain
+        run: echo "KEYCHAIN_PATH=$RUNNER_TEMP/belay-release.keychain-db" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v4
 
       - uses: maxim-lobanov/setup-xcode@v1
