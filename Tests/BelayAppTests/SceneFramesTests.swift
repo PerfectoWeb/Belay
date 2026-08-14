@@ -24,8 +24,13 @@ final class SceneFramesTests: XCTestCase {
 
         let times = stride(from: 0.0, through: OnboardingScene.loop, by: OnboardingScene.loop / 12)
         for (index, time) in times.enumerated() {
+            // With room around it. The scene's box is where its parts are
+            // measured from and not a boundary — nothing clips to it, and the
+            // ring reaches above it by design — so a frame cropped to the box
+            // would show agents cut in half that are whole in the window.
             let view = OnboardingScene.still(at: time)
                 .frame(width: OnboardingScene.box.width, height: OnboardingScene.box.height)
+                .padding(20)
                 .background(Color(red: 0.05, green: 0.06, blue: 0.10))
             let renderer = ImageRenderer(content: view)
             renderer.scale = 2

@@ -30,13 +30,13 @@ struct OnboardingScene: View {
     /// the two pushed the machine off to the left of a window whose heading,
     /// buttons and lockup are all measured against the middle. The subject sits
     /// in the middle and the two loose things are allowed to hang off it.
-    nonisolated static let machine = CGPoint(x: box.width / 2, y: 94)
+    nonisolated static let machine = CGPoint(x: box.width / 2, y: 86)
 
     /// The mark, and the charge, as offsets from the machine. Held here rather
     /// than as absolute points so that moving the machine moves the picture
     /// with it instead of taking it apart.
     nonisolated static let markAt = CGSize(width: 72, height: -40)
-    nonisolated static let chargeAt = CGSize(width: -58, height: -48)
+    nonisolated static let chargeAt = CGSize(width: -68, height: -38)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
