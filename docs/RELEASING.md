@@ -18,7 +18,7 @@ What has been run, and what still has not:
 | `dmgbuild` | run, for v1.0.0 |
 | Notarization and stapling | run and accepted (B6 closed) |
 | GitHub Release published | v1.0.0, by hand |
-| `.github/workflows/release.yml` | still never run |
+| `.github/workflows/release.yml` | run green as a dry run, 2026-08-14 |
 | Sparkle appcast (`scripts/sign-update.sh`) | never run, and blocked on B3 |
 | Mac App Store submission | never; stays manual, see below |
 
@@ -33,6 +33,24 @@ works just as well, and `scripts/release.sh` accepts either shape.
 prefers a `notarytool` profile and falls back to the App Store Connect key in
 `.secrets/appstoreconnect.env`, which is what v1.1.0 was notarized with. A
 missing `BelayNotary` profile is not a blocker.
+
+### The first green workflow run, and what it cost
+
+The five secrets went in on 2026-08-14 and it took three dispatches to go green.
+Both faults were real and neither could have been found by reading:
+
+1. The workflow installed `create-dmg`. Nothing calls it — `release.sh` packages
+   with `dmgbuild`, and `create-dmg` survives only in the comment explaining why
+   it was dropped. The install line never followed the change because no run had
+   ever got far enough to notice.
+2. `release.sh` read the interpreter out of `dmgbuild`'s shebang and ran the
+   whole line as one word. pipx writes `#!<venv>/bin/python -E`, so the shell
+   went looking for a file called `python -E`, and the script then blamed the
+   version of dmgbuild rather than itself. A plain virtualenv writes a shebang
+   with no flags, which is why a local release never saw it.
+
+Do the dry run. Neither of these is visible from the source, and both stop the
+job dead in the step that signs and notarizes.
 
 ---
 
