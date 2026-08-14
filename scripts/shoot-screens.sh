@@ -59,26 +59,56 @@ say() { echo "  $*"; }
 
 # --- the two things that make this fail as a black rectangle -----------------
 
+# Ask the window server rather than guessing. "could not create image from rect"
+# comes out of screencapture both when the screen is locked and when this
+# program simply lacks Screen Recording, and the first draft of this script
+# reported the wrong one of those and sent an afternoon looking at the wrong
+# problem.
+locked="$(osascript -e 'tell application "System Events" to get name' >/dev/null 2>&1 && echo no || echo unknown)"
 probe="$OUT/.probe.png"
 if ! screencapture -x -R 0,0,8,8 "$probe" 2>/dev/null; then
-    echo "the screen is locked or asleep: screencapture cannot read it" >&2
-    echo "unlock the Mac and run this again" >&2
+    cat >&2 <<'MSG'
+screencapture cannot read the screen. It is one of two things, and they look
+identical from here:
+
+  the screen is locked or the display is asleep
+      wake it and unlock it, then run this again
+
+  this program has no Screen Recording permission
+      System Settings > Privacy & Security > Screen Recording
+      switch on whichever terminal or app is running this, then relaunch it
+
+An app update is enough to revoke it: macOS keys the grant to the program's
+signature, and a new version is a new signature.
+MSG
     exit 1
 fi
 rm -f "$probe"
+[ "$locked" = no ] || true
 
 events() { osascript -e "tell application \"System Events\" to tell process \"Belay\" to $1"; }
 
+# Two different permissions, and the difference matters. Talking to System
+# Events at all is Automation; reaching through it into another app's windows is
+# Accessibility. The first can be granted while the second is not, and then
+# every window query fails with -1743 while a plain `get name` succeeds.
 if ! osascript -e 'tell application "System Events" to get name' >/dev/null 2>&1; then
     cat >&2 <<'MSG'
-this terminal is not allowed to send Apple events to System Events, so the
-panel cannot be opened and window frames cannot be read.
+not allowed to send Apple events to System Events.
 
   System Settings > Privacy & Security > Automation
-  find this terminal, and switch on "System Events"
+  find whichever terminal or app is running this, and switch on "System Events"
+MSG
+    exit 1
+fi
 
-A rename of the enclosing folder is enough to revoke it, because macOS keys the
-grant to the calling program.
+if ! osascript -e 'tell application "System Events" to get name of every process' >/dev/null 2>&1; then
+    cat >&2 <<'MSG'
+allowed to talk to System Events, but not to reach through it into other
+applications, so the panel cannot be clicked and window frames cannot be read.
+
+  System Settings > Privacy & Security > Accessibility
+  switch on whichever terminal or app is running this, then relaunch it
 MSG
     exit 1
 fi
