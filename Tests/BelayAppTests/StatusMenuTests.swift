@@ -27,16 +27,31 @@ final class StatusMenuTests: XCTestCase {
         let titles = menu.items.map(\.title)
         // Compared against the localised strings, not English literals: the
         // suite has to pass on a Mac that is not running in English.
-        XCTAssertEqual(
-            titles,
-            [
-                String(localized: "Statistics"),
-                String(localized: "Settings…"),
-                String(localized: "About \(Branding.appName)"),
-                "",
-                String(localized: "Quit")
-            ],
-            "the separator is the empty title")
+        var expected = [
+            String(localized: "Statistics"),
+            String(localized: "Settings…"),
+            String(localized: "About \(Branding.appName)")
+        ]
+        // The workbench item for replaying the welcome screen. It is compiled
+        // into debug builds only, and the tests are a debug build, so it is
+        // here; the shipping menu is the four items this test is named after.
+        #if DEBUG
+        expected += ["", "Welcome"]
+        #endif
+        expected += ["", String(localized: "Quit")]
+        XCTAssertEqual(titles, expected, "the separator is the empty title")
+    }
+
+    /// The item above exists for development and must never reach anybody else.
+    func testTheWelcomeItemIsDebugOnly() {
+        let titles = controller.menuForTesting.items.map(\.title)
+        #if DEBUG
+        XCTAssertTrue(titles.contains("Welcome"))
+        #else
+        XCTAssertFalse(
+            titles.contains("Welcome"),
+            "a workbench control reached a release build")
+        #endif
     }
 
     /// An ellipsis promises a dialog that asks for something first. Statistics

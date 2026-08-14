@@ -33,12 +33,10 @@ struct OnboardingView: View {
     /// with no arrival and no delay.
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    /// The three acts of the opening, in order. The panel starts as nothing but
-    /// its gradient: no sky, no lockup, no scene. The word is written into that
-    /// emptiness, and only once it begins to fade does the sky come up under it
-    /// and the scene take the floor. All of it runs once, when the window opens;
-    /// the loop never returns to the greeting. Under Reduce Motion none of it
-    /// runs and the finished panel is simply there.
+    /// The opening, in order: the panel is nothing but its gradient, the word is
+    /// written into that emptiness, and only as it fades does the sky come up
+    /// and the scene take the floor. Once, on opening; the loop never goes back.
+    /// Under Reduce Motion none of it runs and the finished panel is just there.
     @State private var skyUp = false
     @State private var greeted = false
 
@@ -115,10 +113,9 @@ struct OnboardingView: View {
             // Below the lockup rather than behind it, and centred in what is
             // left, so the scene has a place of its own to grow into.
             //
-            // The greeting has that space first and the scene is not built
-            // until it is done. Building both and hiding one would start the
-            // scene's nine-second loop behind the greeting, and it would come
-            // into view already halfway through its story.
+            // The scene is not built until the greeting is done. Building both
+            // and hiding one would run the nine-second loop behind the word,
+            // and it would arrive already halfway through its story.
             Group {
                 // Reduce Motion is checked here and not in `onAppear`,
                 // because the first render happens before `onAppear` runs and
