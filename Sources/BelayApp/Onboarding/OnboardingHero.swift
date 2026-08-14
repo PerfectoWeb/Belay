@@ -41,7 +41,7 @@ extension OnboardingView {
                 // name arguing with the traffic lights for the same corner.
                 // Under the picture and on its centre line it is a caption, and
                 // the machine rises about thirty points into the space it left.
-                VStack(spacing: 16) {
+                VStack(spacing: 6) {
                     OnboardingScene()
                     BelayWordmark(size: 22, word: .primary, animated: true)
                 }

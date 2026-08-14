@@ -34,11 +34,13 @@ enum Feedback {
         case agentPop = "agent-pop"
         /// The Mac letting go, in the welcome scene. Slow, low and quiet.
         case driftingOff = "drifting-off"
+        /// And coming back: the same two notes the other way up.
+        case wakingUp = "waking-up"
     }
 
     static var isEnabled: () -> Bool = { true }
 
-    /// Loaded once each. Seven files of about 30 KB, which is cheaper than
+    /// Loaded once each. Eight files of about 30 KB, which is cheaper than
     /// reading them off disk at the moment somebody is watching for a response.
     private static var loaded: [Sound: NSSound] = [:]
 

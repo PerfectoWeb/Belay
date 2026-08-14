@@ -128,44 +128,6 @@ extension OnboardingScene {
         }
     }
 
-    /// The mark at the end of the last line: an agent still thinking.
-    ///
-    /// Six spokes from a common centre, each breathing on its own phase and the
-    /// whole thing turning slowly. Every terminal agent draws some version of
-    /// this and they are all the same idea — the answer has not arrived, but
-    /// something is happening. Drawn rather than typed, because an asterisk in
-    /// a font is a glyph that cannot move its own arms.
-    struct Thinking: View {
-        var time: Double
-
-        private static let spokes = 6
-
-        var body: some View {
-            Canvas { context, size in
-                let centre = CGPoint(x: size.width / 2, y: size.height / 2)
-                let longest = min(size.width, size.height) / 2
-                for spoke in 0..<Self.spokes {
-                    let turn = Double(spoke) * (.pi / Double(Self.spokes)) + time * 0.55
-                    // Never all the way in and never all the way out: an arm
-                    // that reaches zero reads as a dropped frame.
-                    let breath = 0.45 + 0.55 * (0.5 + 0.5 * sin(time * 3.4 + Double(spoke) * 1.1))
-                    let reach = longest * breath
-                    var arm = Path()
-                    arm.move(
-                        to: CGPoint(
-                            x: centre.x - cos(turn) * reach, y: centre.y - sin(turn) * reach))
-                    arm.addLine(
-                        to: CGPoint(
-                            x: centre.x + cos(turn) * reach, y: centre.y + sin(turn) * reach))
-                    context.stroke(
-                        arm, with: .color(.white.opacity(0.85)),
-                        style: StrokeStyle(lineWidth: 1.4, lineCap: .round))
-                }
-            }
-            .allowsHitTesting(false)
-        }
-    }
-
     /// The charge at the machine while it is held, and the sleep once it is not.
     ///
     /// One turns into the other rather than one leaving and the other arriving:

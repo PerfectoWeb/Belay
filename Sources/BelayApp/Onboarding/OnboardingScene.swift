@@ -23,6 +23,21 @@ struct OnboardingScene: View {
     /// machine in its left third and left a third of the panel empty.
     nonisolated static let box = CGSize(width: 280, height: 150)
 
+    /// The middle of the machine, and the middle of the picture.
+    ///
+    /// Centring the group instead of the machine is what was wrong before. The
+    /// orbit reaches further right than the charge reaches left, so balancing
+    /// the two pushed the machine off to the left of a window whose heading,
+    /// buttons and lockup are all measured against the middle. The subject sits
+    /// in the middle and the two loose things are allowed to hang off it.
+    nonisolated static let machine = CGPoint(x: box.width / 2, y: 94)
+
+    /// The mark, and the charge, as offsets from the machine. Held here rather
+    /// than as absolute points so that moving the machine moves the picture
+    /// with it instead of taking it apart.
+    nonisolated static let markAt = CGSize(width: 72, height: -40)
+    nonisolated static let chargeAt = CGSize(width: -58, height: -48)
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     /// When this view appeared, which is where the loop starts. Off the wall
@@ -50,31 +65,30 @@ struct OnboardingScene: View {
 
     // MARK: - The one pass that makes a noise
 
-    /// What is heard, and when, on the first pass only.
-    ///
-    /// The picture repeats every twelve seconds for as long as the window is
-    /// open, and a sound on every repeat would be a metronome: four pops and a
-    /// sigh, over and over, at somebody who is reading two sentences and
-    /// deciding whether to press a button. Once is an interface being
-    /// underlined. Twice is an interface asking to be noticed.
+    /// What is heard, and when. Four agents finishing, the Mac letting go, and
+    /// the Mac coming back.
     ///
     /// Gated the same way every other sound in the app is — the system's
     /// interface-sounds preference first, then Belay's own switch — because a
     /// welcome screen is the worst possible place to be the exception.
     private static var cues: [(at: Double, sound: Feedback.Sound)] {
         (0..<4).map { (at: popTime($0), sound: Feedback.Sound.agentPop) }
-            + [(at: 8.35, sound: .driftingOff)]
+            + [(at: 8.35, sound: .driftingOff), (at: 10.8, sound: .wakingUp)]
     }
 
-    /// Walks the cues in order, sleeping the gap between each. Cancelled with
-    /// the view, so a window closed mid-pass makes no noise afterwards.
+    /// Walks the cues in order, sleeping the gap between each, and goes round
+    /// with the picture. Cancelled with the view, so a window closed mid-pass
+    /// makes no noise afterwards.
     private func soundtrack() async {
-        var played = 0.0
-        for cue in Self.cues {
-            try? await Task.sleep(for: .seconds(cue.at - played))
-            if Task.isCancelled { return }
-            Feedback.play(cue.sound)
-            played = cue.at
+        while !Task.isCancelled {
+            var played = 0.0
+            for cue in Self.cues {
+                try? await Task.sleep(for: .seconds(cue.at - played))
+                if Task.isCancelled { return }
+                Feedback.play(cue.sound)
+                played = cue.at
+            }
+            try? await Task.sleep(for: .seconds(Self.loop - played))
         }
     }
 
@@ -182,9 +196,9 @@ struct OnboardingScene: View {
         // Sized so the ring clears the top of the box: any wider and the
         // agents at twelve o'clock are cut in half by the edge of the panel.
         .frame(width: 112, height: 112)
-        // Centred on the machine's top right corner, so the mark reads as
-        // sitting on it rather than floating beside it.
-        .position(x: 194, y: 54)
+        // On the machine's top right corner, so the mark reads as sitting on it
+        // rather than floating beside it.
+        .position(x: machine.x + markAt.width, y: machine.y + markAt.height)
     }
 
     /// One frame of the scene. Static so a test can render it without a window.
@@ -201,14 +215,14 @@ struct OnboardingScene: View {
                 // placed inside it by fractions, so a guessed height would put
                 // our screen through the bezel.
                 .frame(width: Laptop.width, height: Laptop.width / Laptop.aspect)
-                .position(x: 122, y: 94)
+                .position(machine)
 
             // Rising off the top left corner of the screen: the lowest bolt is
             // on the glass and the other two are already above the machine, so
             // the three read as leaving it rather than as sitting on it.
             ChargeBolts(charge: held, sleeping: sleep, time: time)
                 .frame(width: 30, height: 58)
-                .position(x: 64, y: 46)
+                .position(x: machine.x + chargeAt.width, y: machine.y + chargeAt.height)
 
             orbit(.inFront, at: time)
         }

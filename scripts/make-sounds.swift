@@ -165,6 +165,20 @@ let sounds: [String: [Double]] = [
                 frequency: 220.00, at: 0.13, decay: 0.26, level: 0.05,
                 partials: [(2.0, 0.04)]),
         ], length: 0.72),
+
+    // The Mac coming back, and deliberately the same figure read backwards:
+    // the two notes of "drifting-off" in the other order, a little shorter and
+    // a little brighter. A waking sound that is not obviously the sleeping one
+    // reversed makes the loop sound like two unrelated events.
+    "waking-up": render(
+        [
+            Note(
+                frequency: 220.00, at: 0, decay: 0.16, level: 0.05,
+                partials: [(2.0, 0.04)]),
+            Note(
+                frequency: 329.63, at: 0.11, decay: 0.24, level: 0.055,
+                partials: [(2.0, 0.05)]),
+        ], length: 0.62),
 ]
 
 try FileManager.default.createDirectory(
