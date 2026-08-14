@@ -866,22 +866,16 @@
     "1 hour": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 hour"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 час"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "1 Stunde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 hour"
           }
         },
         "es": {
@@ -901,28 +895,28 @@
             "state": "needs_review",
             "value": "1 ora"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 час"
+          }
         }
       }
     },
     "1 min": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "1 мин"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "1 Min."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 min"
           }
         },
         "es": {
@@ -942,28 +936,28 @@
             "state": "needs_review",
             "value": "1 min"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "1 мин"
+          }
         }
       }
     },
     "10 hours": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "10 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 часов"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "10 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 hours"
           }
         },
         "es": {
@@ -983,28 +977,28 @@
             "state": "needs_review",
             "value": "10 ore"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 часов"
+          }
         }
       }
     },
     "10 min": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "10 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "10 мин"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "10 Min."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 min"
           }
         },
         "es": {
@@ -1024,28 +1018,28 @@
             "state": "needs_review",
             "value": "10 min"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "10 мин"
+          }
         }
       }
     },
     "12 hours": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "12 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "12 часов"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "12 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 hours"
           }
         },
         "es": {
@@ -1065,28 +1059,28 @@
             "state": "needs_review",
             "value": "12 ore"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "12 часов"
+          }
         }
       }
     },
     "2 hours": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "2 часа"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "2 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 hours"
           }
         },
         "es": {
@@ -1106,16 +1100,46 @@
             "state": "needs_review",
             "value": "2 ore"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "2 часа"
+          }
         }
       }
     },
     "3 min": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 Min."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "3 min"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "3 min"
           }
         },
         "ru": {
@@ -1123,40 +1147,40 @@
             "state": "needs_review",
             "value": "3 мин"
           }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "3 min"
-          }
         }
       }
     },
     "30 min": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Min."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "30 min"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 min"
           }
         },
         "ru": {
@@ -1164,40 +1188,40 @@
             "state": "needs_review",
             "value": "30 мин"
           }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 min"
-          }
         }
       }
     },
     "30 sec": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 Sek."
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "30 sec"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "30 s"
           }
         },
         "ru": {
@@ -1205,52 +1229,22 @@
             "state": "needs_review",
             "value": "30 сек"
           }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 Sek."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "30 s"
-          }
         }
       }
     },
     "4 hours": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "4 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "4 часа"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "4 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4 hours"
           }
         },
         "es": {
@@ -1270,28 +1264,28 @@
             "state": "needs_review",
             "value": "4 ore"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "4 часа"
+          }
         }
       }
     },
     "5 min": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "5 мин"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "5 Min."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 min"
           }
         },
         "es": {
@@ -1311,28 +1305,28 @@
             "state": "needs_review",
             "value": "5 min"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "5 мин"
+          }
         }
       }
     },
     "8 hours": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "8 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "8 часов"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "8 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8 hours"
           }
         },
         "es": {
@@ -1351,6 +1345,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "8 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "8 часов"
           }
         }
       }
@@ -4228,22 +4228,16 @@
     "Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Claude Code ещё не открывал здесь ни одного проекта. Belay начнёт следить сам, как только это произойдёт."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does."
           }
         },
         "es": {
@@ -4262,6 +4256,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Claude Code non ha ancora aperto un progetto su questo Mac. Belay inizierà da solo quando succederà."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Claude Code ещё не открывал здесь ни одного проекта. Belay начнёт следить сам, как только это произойдёт."
           }
         }
       }
@@ -4761,22 +4761,16 @@
     "Erase": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erase"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Стереть"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Löschen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase"
           }
         },
         "es": {
@@ -4796,28 +4790,28 @@
             "state": "needs_review",
             "value": "Cancella"
           }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть"
+          }
         }
       }
     },
     "Erase your statistics?": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erase your statistics?"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Стереть статистику?"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Statistik löschen?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erase your statistics?"
           }
         },
         "es": {
@@ -4836,6 +4830,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Cancellare le statistiche?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Стереть статистику?"
           }
         }
       }
@@ -6278,22 +6278,16 @@
     "Nothing to watch yet: %@ does not exist.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nothing to watch yet: %@ does not exist."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Пока нечего отслеживать: %@ не существует."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Noch nichts zu beobachten: %@ existiert nicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to watch yet: %@ does not exist."
           }
         },
         "es": {
@@ -6312,6 +6306,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Ancora niente da osservare: %@ non esiste."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Пока нечего отслеживать: %@ не существует."
           }
         }
       }
@@ -7672,22 +7672,16 @@
     "Reset…": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset…"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Сбросить…"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Zurücksetzen…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset…"
           }
         },
         "es": {
@@ -7706,6 +7700,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Azzera…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Сбросить…"
           }
         }
       }
@@ -8082,22 +8082,16 @@
     "Since %@": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Since %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "С %@"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Seit %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Since %@"
           }
         },
         "es": {
@@ -8116,6 +8110,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Dal %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "С %@"
           }
         }
       }
@@ -9066,22 +9066,16 @@
     "This cannot be undone. Belay keeps no copy anywhere else.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This cannot be undone. Belay keeps no copy anywhere else."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Это нельзя отменить. Копии нигде больше нет."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "needs_review",
             "value": "Das lässt sich nicht rückgängig machen. Belay hält nirgendwo eine Kopie."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This cannot be undone. Belay keeps no copy anywhere else."
           }
         },
         "es": {
@@ -9100,6 +9094,12 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Non si può annullare. Belay non ne conserva copie altrove."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Это нельзя отменить. Копии нигде больше нет."
           }
         }
       }

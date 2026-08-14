@@ -76,16 +76,76 @@ struct Catalogue {
         strings[old] = nil
     }
 
-    /// Writes the catalogue back sorted, so a one-word change is a one-line diff
-    /// rather than a reshuffle of all two hundred entries.
+    /// Writes the catalogue back in one shape, on every machine.
+    ///
+    /// Neither half of this is cosmetic. `JSONSerialization` has changed both
+    /// its spacing and its `.sortedKeys` order between OS releases: the
+    /// committed catalogue is written `"key": "value"` with its top level in
+    /// plain code-point order, and a current Foundation writes `"key" : "value"`
+    /// and puts `"%@ · %@"` first. Re-saving the file *without changing a word*
+    /// therefore rewrote fourteen thousand of its lines, which turns every
+    /// localisation change into a diff nobody can read and buries the one line
+    /// that actually changed.
+    ///
+    /// So the top level is emitted here rather than handed to Foundation, and
+    /// each entry is pretty-printed on its own. Entry keys are all ASCII, where
+    /// the two orderings agree, so only the outer loop needs to be ours.
     func save() throws {
+        var out = "{\n"
         var root = root
         root["strings"] = strings
-        let data = try JSONSerialization.data(
-            withJSONObject: root, options: [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes])
-        try (String(data: data, encoding: .utf8)! + "\n").write(
-            to: catalogue, atomically: true, encoding: .utf8)
+        let keys = root.keys.sorted()
+        for (index, key) in keys.enumerated() {
+            let comma = index == keys.count - 1 ? "" : ","
+            if key == "strings" {
+                out += "  \(Self.scalar(key)): {\n"
+                let inner = strings.keys.sorted()
+                for (position, name) in inner.enumerated() {
+                    let body = Self.indent(try Self.pretty(strings[name]!), by: 4)
+                    out += "    \(Self.scalar(name)): \(body)"
+                    out += position == inner.count - 1 ? "\n" : ",\n"
+                }
+                out += "  }\(comma)\n"
+            } else {
+                out += "  \(Self.scalar(key)): \(try Self.pretty(root[key]!))\(comma)\n"
+            }
+        }
+        out += "}\n"
+        try out.write(to: catalogue, atomically: true, encoding: .utf8)
     }
+
+    /// One value, pretty-printed the way the rest of the file is.
+    static func pretty(_ value: Any) throws -> String {
+        let data = try JSONSerialization.data(
+            withJSONObject: value,
+            options: [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes, .fragmentsAllowed])
+        let text = String(data: data, encoding: .utf8)!
+        // Anchored on the start of a line, which is what makes it safe: after
+        // pretty-printing a key is always first on its own line, so a `" : "`
+        // inside a translation is never touched.
+        let spaced = try NSRegularExpression(
+            pattern: #"^(\s*"(?:[^"\\]|\\.)*") : "#, options: [.anchorsMatchLines])
+        return spaced.stringByReplacingMatches(
+            in: text, range: NSRange(text.startIndex..., in: text), withTemplate: "$1: ")
+    }
+
+    /// A bare string, encoded as JSON.
+    static func scalar(_ value: String) -> String {
+        let data = try! JSONSerialization.data(
+            withJSONObject: value, options: [.withoutEscapingSlashes, .fragmentsAllowed])
+        return String(data: data, encoding: .utf8)!
+    }
+
+    /// Every line but the first gets the indent, because the first is already
+    /// sitting after its key.
+    static func indent(_ text: String, by spaces: Int) -> String {
+        let pad = String(repeating: " ", count: spaces)
+        return text.split(separator: "\n", omittingEmptySubsequences: false)
+            .enumerated()
+            .map { $0.offset == 0 ? String($0.element) : pad + $0.element }
+            .joined(separator: "\n")
+    }
+
 }
 
 struct Failure: Error, CustomStringConvertible {
