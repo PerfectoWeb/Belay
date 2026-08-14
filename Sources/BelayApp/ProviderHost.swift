@@ -16,17 +16,25 @@ final class ProviderHost {
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
 
-    /// `access` and `home` come from the app layer because only it knows which
-    /// channel this is (`ClaudeAccess`, `PROJECT_STATE.md` D15). Both default to
-    /// the unsandboxed answer so a preview or a test constructs one for free.
+    /// `access`, `folders` and `home` come from the app layer because only it
+    /// knows which channel this is (`ClaudeAccess`, `WatchedFolderAccess`,
+    /// `PROJECT_STATE.md` D15). All three default to the unsandboxed answer so a
+    /// preview or a test constructs one for free.
+    ///
+    /// Two access objects, not one. `access` is the grant for `~/.claude`;
+    /// `folders` is the grant for whatever the user picked for a generic target.
+    /// They were the same object once, and that quietly meant a sandboxed build
+    /// could never read a picked folder, because no folder a user picks is
+    /// inside `~/.claude`.
     init(
         precise: PreciseDetection,
         access: FileAccessProvider = DirectFileAccess(),
+        folders: FileAccessProvider = DirectFileAccess(),
         home: URL = FileManager.default.homeDirectoryForCurrentUser
     ) {
         self.precise = precise
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
-        generic = GenericProvider(access: access)
+        generic = GenericProvider(access: folders)
     }
 
     /// Starts every provider and returns the merged signal stream.

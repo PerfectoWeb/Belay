@@ -25,8 +25,8 @@ Belay in any way.
 | Cline | Cline Bot Inc. |
 
 The artwork is rendered as a monochrome template image so it takes the colour of
-the surrounding interface. That is a deliberate interface choice — a row of
-brand colours in a menu bar panel is noise — and it does mean the marks are not
+the surrounding interface. That is a deliberate interface choice, because a row of
+brand colours in a menu bar panel is noise, and it does mean the marks are not
 shown in their owners' specified colours. If you own one of these marks and want
 it presented differently, or not at all, open an issue and it will be changed.
 

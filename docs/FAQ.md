@@ -11,7 +11,7 @@ do when something is wrong**, that is the Troubleshooting section in
 Because you have to remember to stop it.
 
 `caffeinate -i` holds until you kill it, so a forgotten terminal tab keeps the
-Mac awake all week — and if it dies with the shell, your run dies with it.
+Mac awake all week, and if it dies with the shell, your run dies with it.
 
 Belay starts and stops on its own, its assertion expires by itself if the app is
 not there to refresh it, and it will not hold past four hours or below 20%
@@ -40,9 +40,9 @@ Claude Code is first-class and needs no setup. Everything else goes through the
 generic provider in **Settings ▸ Providers**: watch a folder, watch a process,
 or send Belay a webhook.
 
-Aider, Gemini CLI, Cline and Codex CLI ship as **presets** — pre-filled
-configurations, not code. That is deliberate: a wrong path in a preset costs you
-one edit, never a release.
+Aider, Gemini CLI, Cline and Codex CLI ship as **presets**, which are
+pre-filled configurations rather than code. That is deliberate: a wrong path in
+a preset costs you one edit, never a release.
 
 On DeepSeek specifically: there is no first-party DeepSeek CLI to hook into. It
 is consumed through other tools, and those tools are what Belay watches.
@@ -56,7 +56,7 @@ anything.
 ### Why does it need to read my session files at all?
 
 Because that is the only local, honest evidence that an agent is working. Belay
-reads whether a file grew, plus a record's `type` and `stop_reason` — never your
+reads whether a file grew, plus a record's `type` and `stop_reason`, never your
 prompts, your model's responses, or your code.
 [`HOW-IT-WORKS.md`](HOW-IT-WORKS.md#privacy) has the detail and
 [`../SECURITY.md`](../SECURITY.md) has the proof.

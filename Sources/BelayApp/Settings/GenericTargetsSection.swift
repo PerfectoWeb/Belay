@@ -82,12 +82,19 @@ struct GenericTargetsSection: View {
         // The same folder chosen twice is the same target, whatever the panel
         // said. Nothing is watched harder for being listed twice.
         guard !targets.contains(where: { $0.watchedFolder == watched.watchedFolder }) else { return }
+        // Before the target is stored, and from here rather than from wherever
+        // it is saved: taking the bookmark needs the scope the open panel just
+        // handed this process, and that scope does not survive the trip.
+        WatchedFolderAccess.remember(folder)
         withAnimation(TargetTileMetrics.arrival) { targets.append(watched) }
     }
 
     /// Not private: the tiles' remove buttons route through here, and the test
     /// proving the right target goes calls it rather than faking a click.
     func remove(_ target: GenericTarget) {
+        // The grant goes with the target. A bookmark for a folder nothing
+        // watches any more is an open door nobody is using.
+        if let folder = target.watchedFolder { WatchedFolderAccess.forget(folder) }
         withAnimation(TargetTileMetrics.departure) { targets.removeAll { $0.id == target.id } }
     }
 

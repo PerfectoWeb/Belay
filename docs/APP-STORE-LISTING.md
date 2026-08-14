@@ -60,7 +60,7 @@ two were compared.
 ## English
 
 **Name** (30)
-`Belay - Keep Mac Awake` — 22
+`Belay - Keep Mac Awake` / 22
 
 **Chosen on 2026-08-13.** The two lines finish each other's sentence, which is
 worth more than the keyword arithmetic that favoured the alternative below.
@@ -74,7 +74,7 @@ in a search that is already restricted to Macs. What it buys instead is room
 for "AI", which is what people are typing this year.
 
 **Subtitle** (30)
-`While your coding agents work` — 29
+`While your coding agents work` / 29
 
 Changed when "AI Agents" moved into the name. Apple searches the name, the
 subtitle and the keywords as one pool, so a word in two of them is a word
@@ -93,8 +93,8 @@ sentence, which no amount of keyword arithmetic is worth ignoring.
 
 What it costs: "AI" appears in neither field, so it has to be bought back out
 of the keyword budget, where it is three characters and ranks the same as it
-would anywhere else — Apple pools all three fields, so a term in the keywords
-is not worth less than a term in the name. "Mac" costs four characters in a
+would anywhere else, because Apple pools all three fields: a term in the
+keywords is not worth less than a term in the name. "Mac" costs four characters in a
 store where every app is a Mac app.
 
 So the real trade is: this pair spends 7 characters on `Mac` and on reading
@@ -105,10 +105,10 @@ whose shop it is should make it.
 
 **Promotional text** (170)
 `Belay watches your local coding agent and holds sleep off only while it is
-actually working. When the run ends, your Mac sleeps the way it always did.` — 150
+actually working. When the run ends, your Mac sleeps the way it always did.` / 150
 
 **Keywords** (100, comma separated, no spaces)
-`ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer` — 90
+`ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer` / 90
 
 `ai` is here rather than in the name, which is the trade the chosen name makes.
 `power` came out to pay for it: it is the vaguest term on the list.
@@ -183,14 +183,14 @@ First release.
 ## Русский
 
 **Subtitle** (30)
-`Mac не спит, пока агент занят` — 29
+`Mac не спит, пока агент занят` / 29
 
 **Promotional text** (170)
 `Belay следит за локальным агентом и не даёт Mac уснуть, только пока тот
-действительно работает. Работа закончилась, и Mac засыпает как обычно.` — 142
+действительно работает. Работа закончилась, и Mac засыпает как обычно.` / 142
 
 **Keywords** (100)
-`claude,codex,gemini,cline,агент,сон,бодрствование,кофеин,меню,разработка,питание` — 80
+`claude,codex,gemini,cline,агент,сон,бодрствование,кофеин,меню,разработка,питание` / 80
 
 **Description**
 
@@ -255,14 +255,14 @@ Belay также может узнавать о начале и конце хо�
 ## Deutsch
 
 **Subtitle** (30)
-`Wach, solange der Agent läuft` — 29
+`Wach, solange der Agent läuft` / 29
 
 **Promotional text** (170)
 `Belay beobachtet deinen lokalen Agenten und hält den Ruhezustand nur so lange
-auf, wie wirklich gearbeitet wird. Danach schläft dein Mac wie immer.` — 147
+auf, wie wirklich gearbeitet wird. Danach schläft dein Mac wie immer.` / 147
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agent,wach,schlaf,koffein,menuleiste,entwickler,energie` — 81
+`claude,codex,gemini,cline,agent,wach,schlaf,koffein,menuleiste,entwickler,energie` / 81
 
 **Description**
 
@@ -327,14 +327,14 @@ Italienisch.
 ## Español
 
 **Subtitle** (30)
-`Despierto mientras el agente` — 28
+`Despierto mientras el agente` / 28
 
 **Promotional text** (170)
 `Belay vigila tu agente local y evita la suspensión solo mientras trabaja de
-verdad. Cuando la ejecución termina, tu Mac duerme como siempre lo hizo.` — 148
+verdad. Cuando la ejecución termina, tu Mac duerme como siempre lo hizo.` / 148
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agente,despierto,suspension,cafeina,menu,desarrollo,energia` — 85
+`claude,codex,gemini,cline,agente,despierto,suspension,cafeina,menu,desarrollo,energia` / 85
 
 **Description**
 
@@ -396,14 +396,14 @@ Seis idiomas: inglés, ruso, alemán, español, francés e italiano.
 ## Français
 
 **Subtitle** (30)
-`Éveillé pendant que l'agent` — 27
+`Éveillé pendant que l'agent` / 27
 
 **Promotional text** (170)
 `Belay surveille votre agent local et retient la veille seulement pendant qu'il
-travaille vraiment. Une fois l'exécution finie, votre Mac dort comme avant.` — 154
+travaille vraiment. Une fois l'exécution finie, votre Mac dort comme avant.` / 154
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agent,eveil,veille,cafeine,menu,developpeur,energie` — 77
+`claude,codex,gemini,cline,agent,eveil,veille,cafeine,menu,developpeur,energie` / 77
 
 **Description**
 
@@ -466,14 +466,14 @@ Six langues : anglais, russe, allemand, espagnol, français, italien.
 ## Italiano
 
 **Subtitle** (30)
-`Sveglio mentre l'agente lavora` — 30
+`Sveglio mentre l'agente lavora` / 30
 
 **Promotional text** (170)
 `Belay osserva il tuo agente locale e trattiene lo stop solo mentre sta davvero
-lavorando. Finita l'esecuzione, il Mac va in stop come ha sempre fatto.` — 150
+lavorando. Finita l'esecuzione, il Mac va in stop come ha sempre fatto.` / 150
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agente,sveglio,stop,caffeina,menu,sviluppo,energia` — 76
+`claude,codex,gemini,cline,agente,sveglio,stop,caffeina,menu,sviluppo,energia` / 76
 
 **Description**
 

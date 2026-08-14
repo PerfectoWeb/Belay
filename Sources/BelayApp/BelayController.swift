@@ -40,11 +40,14 @@ final class BelayController {
         self.settings = settings
         self.state = state
         // The one composition point where the two channels differ: the direct
-        // build reads `~/.claude` outright, the sandboxed one reads it through a
-        // security-scoped bookmark, and `ClaudeAccess` is what knows which
-        // (docs/06, BLOCKERS B8).
+        // build reads folders outright, the sandboxed one reads them through
+        // security-scoped bookmarks (docs/06, BLOCKERS B8). Two grants, because
+        // `~/.claude` and a folder the user picked are not the same permission.
         providers = ProviderHost(
-            precise: precise, access: ClaudeAccess.provider, home: ClaudeAccess.home)
+            precise: precise,
+            access: ClaudeAccess.provider,
+            folders: WatchedFolderAccess.provider,
+            home: ClaudeAccess.home)
         coordinator = ActivityCoordinator(policy: settings.policy)
         driver = CoordinatorDriver(coordinator: coordinator)
         assertions = PowerAssertionController()
@@ -95,9 +98,9 @@ final class BelayController {
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.
         usage.flush()
-        // Closes the sandboxed build's standing scope on `~/.claude`. Harmless
-        // in the direct build, where there is none.
+        // Closes the sandboxed build's standing scopes. None in the direct build.
         ClaudeAccess.relinquish()
+        WatchedFolderAccess.relinquish()
 
         let done = DispatchSemaphore(value: 0)
         // `Task.detached`, not `Task`: `shutdown()` is `@MainActor`, so an
@@ -200,9 +203,7 @@ final class BelayController {
                         let timeout = max(30, until.timeIntervalSinceNow)
                         await assertions.hold(
                             reason: reason,
-                            includeDisplay: settings.keepDisplayAwake,
-                            timeout: timeout
-                        )
+                            includeDisplay: settings.keepDisplayAwake, timeout: timeout)
                     case .release:
                         await assertions.release()
                     }

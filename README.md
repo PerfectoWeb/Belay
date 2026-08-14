@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Promo/Social/masthead-2x.png" alt="Belay — keeps your Mac awake while your AI agent works" width="100%">
+<img src="Promo/Social/masthead-2x.png" alt="Belay: keeps your Mac awake while your AI agent works" width="100%">
 
 <br>
 
@@ -35,29 +35,32 @@ sixty seconds too long costs nothing at all.
 
 ## ✨ Features
 
-| | |
-|---|---|
-| 🎯 **Zero&nbsp;setup** | Claude Code is detected automatically. Nothing to configure, no key to paste. |
-| 🔌 **Every&nbsp;agent** | Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook. |
-| 🛡 **Never&nbsp;stuck** | Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it — your Mac is back to normal within two minutes. |
-| 🔋 **Your&nbsp;rails** | A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change. |
-| 👀 **Subagents&nbsp;too** | Parallel subagents are counted as the one session they belong to, not as noise. |
-| 📊 **Time&nbsp;saved** | It counts the time it held while you were away from the keyboard — the only time that was ever at risk. |
-| 🔒 **Stays&nbsp;local** | No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off. |
-| 🌍 **Seven&nbsp;languages** | English, Русский, Deutsch, Español, Français, Italiano, 简体中文. |
+<table>
+<tr><td>🎯 <b>Zero setup</b><br>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌 <b>Every agent</b><br>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
+<tr><td>🛡 <b>Never stuck</b><br>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
+<tr><td>🔋 <b>Your rails</b><br>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
+<tr><td>👀 <b>Subagents too</b><br>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
+<tr><td>📊 <b>Time saved</b><br>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
+<tr><td>🔒 <b>Stays local</b><br>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
+<tr><td>🌍 <b>Seven languages</b><br>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
+</table>
 
 ## 📦 Install
 
-**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a>&nbsp;<a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version"></a> — macOS 14 or later, Apple silicon and Intel, about 4 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle">&nbsp;&nbsp;macOS 14 or later, Apple silicon and Intel, about 4 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
-<img src="Promo/dmg-window.png" alt="The Belay disk image: drag the app into Applications" width="62%">
+<picture>
+  <source media="(max-width: 500px)" srcset="Promo/Social/dmg-window.png">
+  <img src="Promo/Social/dmg-window-wide.png" alt="The Belay disk image: drag the app into Applications" width="100%">
+</picture>
 
 **3.** That is the install. Launch it and it lives in the menu bar.
 
 The app and the disk image are both signed with a Developer ID and **notarized
-by Apple**, and both carry a stapled ticket — so the first launch works with no
+by Apple**, and both carry a stapled ticket, so the first launch works with no
 network and without the right-click-Open dance.
 
 <details>
@@ -75,8 +78,8 @@ SHA-256 before it opens it.
 
 The cask lives in [our own tap](https://github.com/PerfectoWeb/homebrew-tap)
 rather than in homebrew-cask itself. Homebrew's main cask repository has a
-notability bar — a project needs a certain number of stars, forks or watchers
-before it is accepted — and Belay has not cleared it yet. Same command shape,
+notability bar. A project needs a certain number of stars, forks or watchers
+before it is accepted, and Belay has not cleared it yet. Same command shape,
 one extra word.
 
 #### 🍎 From the Mac App Store
@@ -112,7 +115,7 @@ You should see `source=Notarized Developer ID` and team `VSY2EB4Y9E`.
 ## 🚀 How to Use
 
 **1. Launch it.** One welcome screen explains what Belay reads. Then it lives in
-the menu bar — there is no Dock icon and no window.
+the menu bar. There is no Dock icon and no window.
 
 **2. Leave it in Auto.** That is the whole product. Belay holds the Mac awake
 while an agent is working and lets it sleep when nothing is.
@@ -124,7 +127,7 @@ while an agent is working and lets it sleep when nothing is.
 | 🌙 **Off** | Belay holds nothing |
 
 **3. Left-click the menu bar icon** for the panel: what is running, for how
-long, and — when Belay is *not* holding — the reason, in plain language.
+long, and, when Belay is *not* holding, the reason in plain language.
 Right-click for a compact menu.
 
 <p align="center">
@@ -139,25 +142,23 @@ pmset -g assertions | grep "pid $(pgrep -x Belay)("
 
 You will see the assertion, a plain-English reason, and how long it has left.
 
-> **Adding a tool Belay has never heard of** takes one line — if it can run a
+> **Adding a tool Belay has never heard of** takes one line. If it can run a
 > shell command, it can talk to Belay. See
 > [`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything).
 
 ## 🖼 Screenshots
 
-<p align="center">
-  <img src="Promo/Social/shots/providers.png" alt="Providers settings" width="49.5%">
-  <img src="Promo/Social/shots/statistics.png" alt="Statistics" width="49.5%">
-  <img src="Promo/Social/shots/behaviour.png" alt="Behaviour settings" width="49.5%">
-  <img src="Promo/Social/shots/languages.png" alt="Belay in seven languages" width="49.5%">
-</p>
+<picture>
+  <source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png">
+  <img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and seven languages" width="100%">
+</picture>
 
 ## 🧯 Troubleshooting
 
 <details>
 <summary><b>My Mac still went to sleep</b></summary>
 
-Open the panel — it always says why in plain language. The usual answers are
+Open the panel. It always says why in plain language. The usual answers are
 the battery guard, the maximum awake time, or that Belay did not think anything
 was running. If it is the last one and your agent *was* working, that is a bug
 worth reporting: include the tool and the macOS version.
@@ -168,7 +169,7 @@ worth reporting: include the tool and the macOS version.
 <summary><b>It does not work with the lid closed</b></summary>
 
 Nothing can make it. An idle-sleep assertion does not keep a MacBook awake with
-the lid shut — macOS enters clamshell sleep unless the machine is on AC power
+the lid shut. macOS enters clamshell sleep unless the machine is on AC power
 with an external display attached. Belay will not pretend otherwise.
 
 </details>
@@ -197,7 +198,7 @@ one line.
 <summary><b>It says "needs setup"</b></summary>
 
 A preset's path did not exist on your machine. Presets are configuration, not
-code — open Settings ▸ Providers and correct the path. A wrong preset costs one
+code, so open Settings ▸ Providers and correct the path. A wrong preset costs one
 edit, never a release.
 
 </details>
@@ -208,7 +209,7 @@ edit, never a release.
 [Open an issue.](https://github.com/PerfectoWeb/Belay/issues) The macOS version
 and the agent you were running are the two things that make a report
 actionable. [`docs/QA-CHECKLIST.md`](docs/QA-CHECKLIST.md) lists what has and
-has not been exercised on a real machine — macOS 14 and 15 are still on the
+has not been exercised on a real machine, and macOS 14 and 15 are still on the
 second list.
 
 </details>
@@ -217,13 +218,13 @@ second list.
 
 Belay is free and always will be. The most useful things, in order:
 
-⭐ **[Star it](https://github.com/PerfectoWeb/Belay)** — it costs nothing and it
+⭐ **[Star it](https://github.com/PerfectoWeb/Belay)**. It costs nothing and it
 is how other people find this.
 
-🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)** — the
+🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
 
-🌍 **[Fix a translation](Localization/)** — seven languages ship and only
+🌍 **[Fix a translation](Localization/)**. Seven languages ship and only
 English and Russian have been read by a person who speaks them. One CSV per
 language, and it is data rather than code. This is the most wanted contribution
 here.
@@ -231,35 +232,35 @@ here.
 🔌 **[Add a preset](CONTRIBUTING.md)** for an agent Belay does not know yet.
 Also data, also no need to learn the codebase.
 
-💛 **[Donate](https://perfecto-web.com/d/)** — last on the list on purpose.
+💛 **[Donate](https://perfecto-web.com/d/)**. Last on the list on purpose.
 
 Start at [`CONTRIBUTING.md`](CONTRIBUTING.md). Security reports go through
 [`SECURITY.md`](SECURITY.md), not the issue tracker.
 
 ### 📖 Documentation
 
-| | |
-|---|---|
-| [How it works](docs/HOW-IT-WORKS.md) | Detection, the safety rails, privacy, and talking to Belay from anything |
-| [FAQ](docs/FAQ.md) | Why not `caffeinate`, why not CPU, why not an API key |
-| [Contributing](CONTRIBUTING.md) | Building, testing, translating, adding a preset |
-| [Architecture](docs/02-ARCHITECTURE.md) | How the app is put together |
-| [Security](SECURITY.md) | What Belay reads, what it cannot read, and how to verify it |
-| [Changelog](CHANGELOG.md) | What changed, and why |
+<table>
+<tr><td width="180"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
+<tr><td width="180"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
+<tr><td width="180"><a href="CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
+<tr><td width="180"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
+<tr><td width="180"><a href="SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
+<tr><td width="180"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
+</table>
 
 ## 📝 License
 
-**[Belay Source-Available License 1.0](LICENSE)** — use it anywhere, fork it,
+**[Belay Source-Available License 1.0](LICENSE)**. Use it anywhere, fork it,
 build on it. Two conditions:
 
 🚫 **You may not sell it.** Not the app, not a derivative, not access to it. Use
-is free and stays free for everyone, including at work and for commercial work —
-what is forbidden is charging other people for it.
+is free and stays free for everyone, including at work and for commercial work.
+What is forbidden is charging other people for it.
 
 📛 **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
 
-The **name and the mark** are separate again — [`TRADEMARKS.md`](TRADEMARKS.md)
+The **name and the mark** are separate again. [`TRADEMARKS.md`](TRADEMARKS.md)
 says exactly what that does and does not stop you doing.
 
 Belay shows each tool's own logo in the sessions list so you can tell at a

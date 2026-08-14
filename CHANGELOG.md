@@ -17,7 +17,7 @@ two bugs found underneath it.
 
 **A welcome screen that shows what the app does instead of describing it.** The
 greeting is handwritten and draws itself, traced from the artwork as thirty-one
-curve segments and stroked by trimming a path — no animation runtime, no asset
+curve segments and stroked by trimming a path. No animation runtime, no asset
 loaded at launch, and one number under `withAnimation`. It plays once, on
 opening, and never comes back.
 
@@ -37,7 +37,7 @@ and then by Belay's own switch.
 ### Fixed
 
 **The scene's sound drifted away from the picture.** It was scheduled as a chain
-of relative sleeps — wait the gap, play, wait the next gap — and `Task.sleep`
+of relative sleeps, wait the gap, play, wait the next gap, and `Task.sleep`
 guarantees a floor rather than a deadline. On the main actor, which is redrawing
 the scene thirty times a second, every wait wakes a little late and the error
 accumulates: about three quarters of a second per pass, so by the fifth pass the
@@ -55,7 +55,7 @@ intermittent CI failure that had never been identified.
 
 **The update check retried hourly whenever it failed.** The timestamp that
 paces it to once a day was written only after a successful fetch, so an offline
-Mac left nothing behind and every hourly tick read the check as still due — up
+Mac left nothing behind and every hourly tick read the check as still due, up
 to twenty four attempts in a day the app, the privacy policy and the release
 notes all describe as one. The attempt is what gets recorded now, because the
 attempt is what was promised.

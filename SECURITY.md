@@ -47,19 +47,19 @@ If you turn on precise detection, Claude Code POSTs lifecycle events to Belay's
 loopback listener. Those payloads include a `prompt` field containing **your full
 prompt text**.
 
-Belay's decoder declares keys for exactly four fields — `session_id`,
-`hook_event_name`, `cwd`, `transcript_path` — and has no property for `prompt`.
+Belay's decoder declares keys for exactly four fields, `session_id`,
+`hook_event_name`, `cwd` and `transcript_path`, and has no property for `prompt`.
 It is never decoded, never logged, never stored. A test sends a distinctive
 string in the `prompt` field and asserts it appears in neither the emitted signal
 nor any file Belay writes.
 
 ## What Belay writes
 
-- `~/Library/Application Support/Belay/bridge.json` — the loopback port and a
+- `~/Library/Application Support/Belay/bridge.json`, the loopback port and a
   random per-install token, created `0600`.
-- `~/Library/Application Support/Belay/backups/` — timestamped copies of your
+- `~/Library/Application Support/Belay/backups/`, timestamped copies of your
   `~/.claude/settings.json`, taken before any change.
-- `~/.claude/settings.json` — **only** when you explicitly enable precise
+- `~/.claude/settings.json`, **only** when you explicitly enable precise
   detection, and only after showing you the exact JSON that will be added.
 
 On that last one, the rules the code enforces:
@@ -84,7 +84,7 @@ server. It is not reachable from the network. The bearer token is what protects
 it from other local processes.
 
 The App Store build ships **without** the `com.apple.security.network.client`
-entitlement, so it is not merely that Belay does not phone home — it cannot.
+entitlement, so it is not merely that Belay does not phone home. It cannot.
 
 ## Verify it yourself
 
@@ -92,10 +92,10 @@ entitlement, so it is not merely that Belay does not phone home — it cannot.
 # What Belay is holding, and why, in plain language:
 pmset -g assertions | grep "pid $(pgrep -x Belay)("
 
-# What it is listening on — expect 127.0.0.1, never *:
+# What it is listening on. Expect 127.0.0.1, never *:
 lsof -nP -iTCP -sTCP:LISTEN -a -p "$(pgrep -x Belay)"
 
-# Any outbound connections at all — expect none:
+# Any outbound connections at all. Expect none:
 lsof -nP -i -a -p "$(pgrep -x Belay)" | grep -v LISTEN
 ```
 
@@ -110,5 +110,5 @@ disclosure. There is no bug bounty; this is a free utility.
 Belay is not a security product. It defends against accidental exposure of your
 prompts and code by simply never reading them, and against another local process
 driving its listener by requiring a token. It does not defend against an attacker
-who already has your user account — such an attacker can read `~/.claude`
+who already has your user account. Such an attacker can read `~/.claude`
 directly and does not need Belay to do it.

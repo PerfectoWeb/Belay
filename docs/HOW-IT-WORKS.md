@@ -2,7 +2,7 @@
 
 Everything here used to live in `README.md`. It was moved out because a person
 deciding whether to download an app should not have to read about state
-machines first — but the detail is the reason to trust the app, so none of it
+machines first. But the detail is the reason to trust the app, so none of it
 was cut.
 
 For the design documents behind these decisions, see
@@ -15,7 +15,7 @@ and [`DISCOVERY.md`](DISCOVERY.md).
 
 Two layers, both entirely local. Neither talks to a network.
 
-### Transcript watcher — the default, zero setup
+### Transcript watcher, the default, with no setup
 
 Claude Code appends each session's conversation to a JSONL file under
 `~/.claude/projects/`. Belay watches those files with FSEvents and reads only
@@ -34,12 +34,12 @@ No growth for 45 seconds infers idle. Transcripts untouched for more than ten
 minutes at launch are not followed at all, so starting Belay on a machine with
 dozens of old projects does not resurrect them.
 
-### Hook bridge — optional, exact
+### Hook bridge, optional and exact
 
-Claude Code can POST lifecycle events — prompt submitted, tool starting, turn
-finished, permission needed — to a listener Belay runs on `127.0.0.1`. This
-gives sub-second detection and is what makes *"an agent is waiting for you"*
-reliable rather than a guess.
+Claude Code can POST lifecycle events to a listener Belay runs on `127.0.0.1`:
+prompt submitted, tool starting, turn finished, permission needed. This gives
+sub-second detection and is what makes *"an agent is waiting for you"* reliable
+rather than a guess.
 
 The hooks are registered as `"async": true`, so Claude Code never waits on Belay
 for anything. There is no exit code Belay could return that would block your
@@ -119,7 +119,7 @@ needs no code at all: point it at wherever the tool writes while it is working.
 
 ## Requirements
 
-macOS 14 or later. Nothing else — no Apple Developer account, no agent account,
+macOS 14 or later. Nothing else: no Apple Developer account, no agent account,
 no network.
 
 Only macOS 26 on Apple silicon has been exercised on a real machine so far;
