@@ -61,13 +61,16 @@ private struct Face<Label: View>: View {
 
         return HStack(spacing: 7) {
             Image(systemName: "wand.and.stars")
-                .font(.system(size: 13, weight: .semibold))
+                .font(.system(size: 12, weight: .semibold))
             label
         }
-        .font(.system(size: 14, weight: .semibold))
+        // Sized to the button beside it, not to itself. A primary action that
+        // is also physically larger than the secondary one reads as a different
+        // kind of control, and the row stops looking like a row.
+        .font(.system(size: 13, weight: .semibold))
         .foregroundStyle(.white)
-        .padding(.horizontal, 18)
-        .padding(.vertical, 9)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 6)
         .background {
             Capsule(style: .continuous)
                 .fill(Color.accentColor)
