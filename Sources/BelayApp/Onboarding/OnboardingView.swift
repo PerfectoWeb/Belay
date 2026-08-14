@@ -133,7 +133,12 @@ struct OnboardingView: View {
     private var buttons: some View {
         HStack(spacing: 10) {
             if providerReady {
+                // The key is still "Start watching"; what English shows is
+                // "Start Magic". A key here is not the text it displays, and
+                // renaming one would rename it in five other languages that
+                // still say "start watching" and mean it.
                 Button("Start watching", action: onDismiss)
+                    .buttonStyle(MagicButtonStyle())
                     .keyboardShortcut(.defaultAction)
             } else {
                 Button("Allow access to ~/.claude", action: onGrantAccess)
