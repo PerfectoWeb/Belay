@@ -7,7 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-14
+
+A new welcome screen, and two fixes. Nothing about detection, power or the panel
+changed: this release is what somebody sees in the first thirty seconds and the
+two bugs found underneath it.
+
+### Added
+
+**A welcome screen that shows what the app does instead of describing it.** The
+greeting is handwritten and draws itself, traced from the artwork as thirty-one
+curve segments and stroked by trimming a path — no animation runtime, no asset
+loaded at launch, and one number under `withAnimation`. It plays once, on
+opening, and never comes back.
+
+What follows it is a twelve-second loop: a MacBook with an agent writing into
+it, Belay's mark beside it as the sun of a circular orbit, four agents going
+round and finishing one at a time, the mark blinking and going grey, and the
+screen falling dark under a moon with three letters rising off it. The machine
+is Apple's own product bezel, whose display is cut out of the artwork, so our
+screen sits behind it; the two PNGs come to fifteen kilobytes.
+
+**Sound under the scene, and only there.** An agent finishing is a bubble; the
+Mac letting go and coming back are the same two notes read in either direction.
+All three are synthesised by `scripts/make-sounds.swift` like every other sound
+in the app, and all three are gated by the system's interface-sounds preference
+and then by Belay's own switch.
+
 ### Fixed
+
+**The scene's sound drifted away from the picture.** It was scheduled as a chain
+of relative sleeps — wait the gap, play, wait the next gap — and `Task.sleep`
+guarantees a floor rather than a deadline. On the main actor, which is redrawing
+the scene thirty times a second, every wait wakes a little late and the error
+accumulates: about three quarters of a second per pass, so by the fifth pass the
+sleeping note landed on a lit screen. Every wait is now measured to its due
+moment on the same clock the picture is drawn from, and a cue more than 0.35 s
+late is dropped rather than played against the wrong frame.
 
 **The folder picker could attach its sheet to an invisible window.**
 `GenericTargetsSection.hostWindow` matched the settings window by identifier and
@@ -178,4 +214,5 @@ Two things are built but not finished, and they are listed in `BLOCKERS.md`:
 Sparkle is not wired up, so the update check finds a release but cannot install
 it, and the translations have had no native review.
 
+[1.1.0]: https://github.com/perfectoweb/belay/releases/tag/v1.1.0
 [1.0.0]: https://github.com/perfectoweb/belay/releases/tag/v1.0.0
