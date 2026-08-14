@@ -58,7 +58,14 @@ extension OnboardingScene {
         /// Six now, not four. The screen is a terminal with an agent talking
         /// into it, and four lines read as a form with four fields.
         private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45, 0.7, 0.35]
+        /// The screen with something on it: a navy that is lit from behind.
         private static let glass = Color(red: 0.07, green: 0.09, blue: 0.14)
+        /// And with nothing on it. Near enough to the bezel's own black that
+        /// the machine reads as one dark object rather than as a dark frame
+        /// with a blue panel still glowing inside it.
+        private static let dark = Color(red: 0.045, green: 0.05, blue: 0.06)
+        /// Moonlight. White read as a spotlight on a screen that is off.
+        private static let moonlight = Color(red: 0.60, green: 0.71, blue: 0.98)
 
         var body: some View {
             GeometryReader { geometry in
@@ -81,7 +88,10 @@ extension OnboardingScene {
         /// What is on the screen: the work, or a moon once it has stopped.
         private var display: some View {
             ZStack {
-                Rectangle().fill(Self.glass)
+                Rectangle().fill(Self.dark)
+                // The navy is what being awake looks like, so it arrives and
+                // leaves with the work rather than sitting under it.
+                Rectangle().fill(Self.glass).opacity(lit)
                 Rectangle().fill(Color.accentColor.opacity(0.16 * lit))
                 lines
                     .padding(.horizontal, 12)
@@ -90,7 +100,10 @@ extension OnboardingScene {
                     .opacity(lit)
                 Image(systemName: "moon.fill")
                     .font(.system(size: 20))
-                    .foregroundStyle(Color.white.opacity(0.55))
+                    .foregroundStyle(Self.moonlight.opacity(0.85))
+                    // Off the display's true centre, which is not where the
+                    // middle looks: the notch weights the top of the screen.
+                    .offset(y: 2)
                     .opacity(1 - lit)
             }
         }
