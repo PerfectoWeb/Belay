@@ -227,6 +227,7 @@ This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_revie
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Las propinas no están disponibles en esta versión.
 Until turned off,Settings,translated,,Until turned off,Hasta desactivarlo
 Untitled project,App,translated,,Untitled project,Proyecto sin título
+Update Now,Settings: General,translated,,Update Now,Actualizar ahora
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Versión %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Versión %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La versión %@ está disponible.

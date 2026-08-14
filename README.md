@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Promo/Social/masthead.png" alt="Belay — keeps your Mac awake while your AI agent works" width="100%">
+<img src="Promo/Social/masthead-2x.png" alt="Belay — keeps your Mac awake while your AI agent works" width="100%">
 
 <br>
 
@@ -48,9 +48,7 @@ sixty seconds too long costs nothing at all.
 
 ## 📦 Install
 
-**1.** [**Download Now**](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)
-&nbsp;[![version](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat-square&label=&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
-— macOS 14 or later, Apple silicon and Intel, about 4 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a>&nbsp;<a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle"></a> — macOS 14 or later, Apple silicon and Intel, about 4 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
@@ -244,10 +242,6 @@ what is forbidden is charging other people for it.
 
 📛 **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
-
-This is deliberately **not** an OSI open-source licence, so GitHub shows it as
-"Other". Releases 1.0.0 and 1.1.0 went out under MIT and keep those terms
-forever; this applies from the next release onward.
 
 The **name and the mark** are separate again — [`TRADEMARKS.md`](TRADEMARKS.md)
 says exactly what that does and does not stop you doing.

@@ -227,6 +227,7 @@ This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_revie
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Les pourboires ne sont pas disponibles dans cette version.
 Until turned off,Settings,translated,,Until turned off,Jusqu'à désactivation
 Untitled project,App,translated,,Untitled project,Projet sans titre
+Update Now,Settings: General,translated,,Update Now,Mettre à jour
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Version %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La version %@ est disponible.

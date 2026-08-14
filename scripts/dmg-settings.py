@@ -75,4 +75,19 @@ icon_size = 96
 icon_locations = {
     appname: (166, 177),
     "Applications": (369, 177),
+    # The two files dmgbuild has to put on the volume: the background picture
+    # and the volume icon. Both are dot-prefixed, so Finder hides them from
+    # anybody who has not switched hidden files on — and somebody who has
+    # switched them on sees them sitting in the middle of the artwork, which is
+    # how this was noticed.
+    #
+    # Placed far below the window instead. The window is 540x360 of content, so
+    # at y=900 they are outside it in a view that does not scroll: `arrange_by`
+    # is None and the window is not resizable by the .DS_Store, so Finder has
+    # nothing to scroll to. They cannot be removed — a background needs a file
+    # on the volume and a custom volume icon needs .VolumeIcon.icns at its root
+    # — but they can be put where the picture is not.
+    ".background.tiff": (60, 900),
+    ".VolumeIcon.icns": (180, 900),
+    ".fseventsd": (300, 900),
 }

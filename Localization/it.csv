@@ -227,6 +227,7 @@ This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_revie
 Tipping is not available in this build.,Detection,needs_review,,Tipping isn't available in this version.,Le mance non sono disponibili in questa versione.
 Until turned off,Settings,translated,,Until turned off,Fino allo spegnimento
 Untitled project,App,translated,,Untitled project,Progetto senza titolo
+Update Now,Settings: General,translated,,Update Now,Aggiorna ora
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Versione %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Versione %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,È disponibile la versione %@.

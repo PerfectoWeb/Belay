@@ -227,6 +227,7 @@ This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_revie
 Tipping is not available in this build.,Detection,translated,,Tipping isn't available in this version.,Чаевые недоступны в этой версии.
 Until turned off,Settings,translated,,Until turned off,Пока не выключу
 Untitled project,App,translated,,Untitled project,Проект без названия
+Update Now,Settings: General,translated,,Update Now,Обновить
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Версия %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Версия %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,Доступна версия %@.

@@ -153,12 +153,28 @@ private struct UpdatesRow: View {
             )
 
             HStack(spacing: 8) {
-                Button("Check Now") {
-                    Feedback.play(.tick)
-                    checker.check()
+                // One button, two jobs. When there is nothing to install it
+                // checks; when there is, it becomes the way to get it, tinted
+                // green and saying so. A separate "Download…" link beside an
+                // unchanged "Check Now" made the row read as two controls with
+                // no obvious relationship, and put the thing you actually want
+                // second.
+                if case .available(_, let url) = checker.status {
+                    Button("Update Now") {
+                        Feedback.play(.tick)
+                        NSWorkspace.shared.open(url)
+                    }
+                    .controlSize(.small)
+                    .tint(.green)
+                    .buttonStyle(.borderedProminent)
+                } else {
+                    Button("Check Now") {
+                        Feedback.play(.tick)
+                        checker.check()
+                    }
+                    .controlSize(.small)
+                    .disabled(checker.status == .checking)
                 }
-                .controlSize(.small)
-                .disabled(checker.status == .checking)
                 status
             }
         }
@@ -176,11 +192,9 @@ private struct UpdatesRow: View {
         case .upToDate:
             Label("Belay is up to date.", systemImage: "checkmark.circle")
                 .font(.caption).foregroundStyle(.secondary)
-        case .available(let version, let url):
-            HStack(spacing: 6) {
-                Text("Version \(version) is available.").font(.caption)
-                Link("Download…", destination: url).font(.caption)
-            }
+        case .available(let version, _):
+            // No link here any more: the button beside this is the link.
+            Text("Version \(version) is available.").font(.caption)
         case .noneYet:
             // Deliberately as quiet as "up to date": nothing is wrong.
             Text("No releases have been published yet.")
