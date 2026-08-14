@@ -22,8 +22,12 @@ struct AgentOrbit: View {
     var half: Half
     /// One entry per agent, nought while it runs and one once popped.
     var popped: [Double]
-    /// How lit the mark is. Blinks at the end, then settles.
+    /// One entry per agent, nought before it lands and one once it has.
+    var arrived: [Double]
+    /// The halo behind the mark. Goes out with the machine.
     var glow: Double
+    /// The mark's own brightness. Only the two beats as Belay lets go.
+    var blink: Double
     var time: Double
 
     /// The logos the app already ships, in the order they take the ring.
@@ -94,32 +98,84 @@ struct AgentOrbit: View {
                     .renderingMode(.template)
                     .foregroundStyle(.white)
             }
+            // The halo is what the machine takes with it. The tile itself stays
+            // solid: an app icon that fades out reads as the app quitting.
             .shadow(color: Color.accentColor.opacity(0.55 * glow), radius: 10 * glow)
-            .opacity(0.55 + 0.45 * glow)
+            .opacity(blink)
     }
 
     /// One agent: a slate disc with its logo in white, riding the ellipse. The
     /// pop is a quick swell and out, which is what a bubble does.
     private func chip(_ name: String, index: Int, centre: CGPoint, radius: CGFloat) -> some View {
         let gone = popped[min(index, popped.count - 1)]
+        let landed = arrived[min(index, arrived.count - 1)]
         let angle = Self.angle(index, at: time)
         let point = CGPoint(
             x: centre.x + cos(angle) * radius,
             y: centre.y + sin(angle) * radius * 0.62)
+        // Swells before it goes, the way a bubble does.
         let swell = 1 + 0.55 * sin(min(1, gone * 1.6) * .pi)
-        return Circle()
-            .fill(Self.disc)
-            .frame(width: 21, height: 21)
-            .overlay {
-                // Drawn as a template so every agent arrives the same weight of
-                // white. Their own artwork is six different colours, and at this
-                // size that reads as confetti rather than as a set.
-                Image(nsImage: ProviderMark.image(preset: name, size: 13))
-                    .renderingMode(.template)
-                    .foregroundStyle(.white)
+        return ZStack {
+            Circle()
+                .fill(Self.disc)
+                .frame(width: 21, height: 21)
+                .overlay {
+                    // Drawn as a template so every agent arrives the same weight
+                    // of white. Their own artwork is six different colours, and
+                    // at this size that reads as confetti rather than as a set.
+                    Image(nsImage: ProviderMark.image(preset: name, size: 13))
+                        .renderingMode(.template)
+                        .foregroundStyle(.white)
+                }
+                .scaleEffect(gone >= 1 ? 0.001 : swell * Self.landing(landed))
+                .opacity((1 - gone) * min(1, landed * 3))
+
+            Burst(progress: gone)
+                .frame(width: 44, height: 44)
+        }
+        .position(point)
+    }
+
+    /// A back-out: overshoots a little and settles. An agent that scales
+    /// straight to one arrives like a switch being thrown.
+    private static func landing(_ progress: Double) -> Double {
+        guard progress < 1 else { return 1 }
+        let back = progress - 1
+        return 1 + 2.2 * back * back * back + 1.4 * back * back
+    }
+}
+
+/// What is left of an agent for the moment after it pops: a few short strokes
+/// going out from where it was. A bubble that simply vanishes reads as a
+/// dropped frame; the same bubble that throws something reads as bursting.
+private struct Burst: View {
+    var progress: Double
+
+    var body: some View {
+        Canvas { context, size in
+            guard progress > 0, progress < 1 else { return }
+            let centre = CGPoint(x: size.width / 2, y: size.height / 2)
+            // Out fast, then slowing, and gone before it has travelled far.
+            let travel = 1 - pow(1 - progress, 2)
+            let fade = 1 - progress
+            for spoke in 0..<7 {
+                let angle = Double(spoke) * (2 * .pi / 7) + 0.4
+                let near = 9 + 9 * travel
+                let far = near + 5 * (1 - travel * 0.5)
+                var stick = Path()
+                stick.move(
+                    to: CGPoint(
+                        x: centre.x + cos(angle) * near,
+                        y: centre.y + sin(angle) * near))
+                stick.addLine(
+                    to: CGPoint(
+                        x: centre.x + cos(angle) * far,
+                        y: centre.y + sin(angle) * far))
+                context.stroke(
+                    stick, with: .color(.white.opacity(0.85 * fade)),
+                    style: StrokeStyle(lineWidth: 1.6, lineCap: .round))
             }
-            .scaleEffect(gone >= 1 ? 0.001 : swell)
-            .opacity(1 - gone)
-            .position(point)
+        }
+        .allowsHitTesting(false)
     }
 }

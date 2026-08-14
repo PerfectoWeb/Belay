@@ -24,10 +24,9 @@ struct Bouncer: View {
     private static let ringEdge = Color(red: 0.984, green: 0.522, blue: 0.0)
 
     /// One bounce every this many seconds.
-    /// Slower than a real bounce on purpose. The reference moves gently and so
-    /// should this: at one and a bit seconds it read as bouncing, at one and
-    /// three quarters it reads as enjoying itself.
-    private static let beat: Double = 1.75
+    /// One bounce a second and a bit. At one and three quarters it read as
+    /// low gravity, which is a different joke from the one being told.
+    private static let beat: Double = 1.05
 
     /// One arm or leg: where it leaves the body, how far it reaches, and how
     /// much it swings as the jump opens out.
@@ -35,15 +34,19 @@ struct Bouncer: View {
         var angle: Double
         var length: Double
         var swing: Double
+        /// Which way the limb curls. Taken from the angle alone, the two arms
+        /// bent opposite ways and the figure waved with one hand while the
+        /// other hung down.
+        var curl: Double
 
         // Arms leave at the shoulder, barely above the middle, and the bend
         // carries them up. Leaving at a third of a turn from horizontal they
         // came out of the top of the head and read as antennae.
         static let all = [
-            Limb(angle: .pi * 1.09, length: 0.95, swing: -0.26),
-            Limb(angle: .pi * 1.91, length: 0.95, swing: 0.26),
-            Limb(angle: .pi * 0.70, length: 0.86, swing: -0.16),
-            Limb(angle: .pi * 0.30, length: 0.86, swing: 0.16)
+            Limb(angle: .pi * 1.09, length: 0.95, swing: -0.26, curl: 1),
+            Limb(angle: .pi * 1.91, length: 0.95, swing: 0.26, curl: -1),
+            Limb(angle: .pi * 0.70, length: 0.86, swing: -0.16, curl: -1),
+            Limb(angle: .pi * 0.30, length: 0.86, swing: 0.16, curl: 1)
         ]
     }
 
@@ -56,9 +59,11 @@ struct Bouncer: View {
             // 4t(1-t) is that curve and needs no easing table.
             let flight = 4 * phase * (1 - phase)
             // Kept inside the frame: at forty-six the head left the top of it.
-            let height = (30 * unit) * flight * (1 - resting)
+            // The jump does not stop when the Mac does. That is the whole
+            // point of the picture: the machine sleeps, the person carries on.
+            let height = (32 * unit) * flight
             // Squashed where the mat catches them, stretched on the way up.
-            let squash = 1 - 0.18 * (1 - min(1, flight * 4)) * (1 - resting)
+            let squash = 1 - 0.20 * (1 - min(1, flight * 4))
 
             draw(
                 trampoline: &context, size: size, unit: unit, matY: matY,
@@ -98,6 +103,47 @@ struct Bouncer: View {
             style: StrokeStyle(lineWidth: 3.4 * unit))
     }
 
+    /// The face: two lenses and a smile. Split out because the figure's own
+    /// drawing was over the length a function is allowed here, and because a
+    /// face is a separate piece of work from a body.
+    private func draw(face context: inout GraphicsContext, unit: CGFloat, centre: CGPoint) {
+        // Sunglasses, not eyes. Two dots read as a toy; a pair of shades reads
+        // as somebody who has left the machine to get on with it.
+        let lens = CGSize(width: 5.2 * unit, height: 4.0 * unit)
+        let browY = centre.y - 4.4 * unit
+        var bridge = Path()
+        bridge.move(to: CGPoint(x: centre.x - 1.9 * unit, y: browY - 0.4 * unit))
+        bridge.addLine(to: CGPoint(x: centre.x + 1.9 * unit, y: browY - 0.4 * unit))
+        context.stroke(
+            bridge, with: .color(.black),
+            style: StrokeStyle(lineWidth: 1.5 * unit, lineCap: .round))
+        for side in [-1.0, 1.0] {
+            let frame = CGRect(
+                x: centre.x + 4.9 * unit * side - lens.width / 2, y: browY - lens.height / 2,
+                width: lens.width, height: lens.height)
+            var lensPath = Path(roundedRect: frame, cornerRadius: 1.6 * unit)
+            // Tilted down towards the nose, which is what makes them shades
+            // rather than goggles.
+            lensPath = lensPath.applying(
+                CGAffineTransform(translationX: -frame.midX, y: -frame.midY)
+                    .concatenating(CGAffineTransform(rotationAngle: 0.16 * side))
+                    .concatenating(CGAffineTransform(translationX: frame.midX, y: frame.midY)))
+            context.fill(lensPath, with: .color(.black))
+        }
+
+        // A small smile, drawn as a line. Filled, it was a mouth wearing
+        // lipstick rather than a face enjoying itself.
+        var smile = Path()
+        let smileY = centre.y + 3.4 * unit
+        smile.move(to: CGPoint(x: centre.x - 3.2 * unit, y: smileY))
+        smile.addQuadCurve(
+            to: CGPoint(x: centre.x + 3.2 * unit, y: smileY),
+            control: CGPoint(x: centre.x, y: smileY + 3.4 * unit))
+        context.stroke(
+            smile, with: .color(Self.mouth),
+            style: StrokeStyle(lineWidth: 1.8 * unit, lineCap: .round))
+    }
+
     private func draw(
         figure context: inout GraphicsContext,
         unit: CGFloat,
@@ -123,8 +169,8 @@ struct Bouncer: View {
                 x: centre.x + cos(angle) * (radius + reach),
                 y: centre.y + sin(angle) * (radius + reach))
             let bend = CGPoint(
-                x: (from.x + to.x) / 2 + cos(angle + .pi / 2) * radius * 0.30,
-                y: (from.y + to.y) / 2 + sin(angle + .pi / 2) * radius * 0.30)
+                x: (from.x + to.x) / 2 + cos(angle + .pi / 2 * limb.curl) * radius * 0.34,
+                y: (from.y + to.y) / 2 + sin(angle + .pi / 2 * limb.curl) * radius * 0.34)
             var path = Path()
             path.move(to: from)
             path.addQuadCurve(to: to, control: bend)
@@ -133,23 +179,6 @@ struct Bouncer: View {
                 style: StrokeStyle(lineWidth: 2.8 * unit, lineCap: .round))
         }
         context.fill(Path(ellipseIn: ball), with: .color(Self.body))
-        // The face, which is the whole of the character. The eyes are tilted
-        // towards each other, which is the difference between a face and two
-        // dots, and the mouth is open because the figure is having a good time.
-        let eye = CGSize(width: 2.6 * unit, height: 3.4 * unit)
-        for side in [-1.0, 1.0] {
-            var oval = Path(
-                ellipseIn: CGRect(
-                    x: -eye.width, y: -eye.height, width: eye.width * 2, height: eye.height * 2))
-            oval = oval.applying(CGAffineTransform(rotationAngle: 0.22 * side))
-            oval = oval.applying(
-                CGAffineTransform(
-                    translationX: centre.x + 5.8 * unit * side, y: centre.y - 4.6 * unit))
-            context.fill(oval, with: .color(.black))
-        }
-        let grin = CGRect(
-            x: centre.x - 3 * unit, y: centre.y + 1.5 * unit,
-            width: 6 * unit, height: 5 * unit)
-        context.fill(Path(ellipseIn: grin), with: .color(Self.mouth))
+        draw(face: &context, unit: unit, centre: centre)
     }
 }

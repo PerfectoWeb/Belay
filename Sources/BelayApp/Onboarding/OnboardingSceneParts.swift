@@ -83,22 +83,45 @@ extension OnboardingScene {
             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
         }
 
-        /// The base, seen at a slight angle, with a lip along the front so it
-        /// has a thickness. Flat, it read as a sheet of paper.
+        /// The base. Two planes, not two sheets: the deck seen from above, and
+        /// the front edge of the machine below it, which is what gives the
+        /// thing a depth instead of looking cut from card.
         private var base: some View {
-            VStack(spacing: 0) {
-                Deck()
+            ZStack(alignment: .top) {
+                // The front edge, sitting under and slightly wider than the
+                // deck, with a lit top rim where the two planes meet.
+                RoundedRectangle(cornerRadius: 3, style: .continuous)
                     .fill(
                         LinearGradient(
                             colors: [Self.shell, Self.shellDark],
                             startPoint: .top, endPoint: .bottom)
                     )
-                    .frame(height: 5)
+                    .frame(height: 8)
+                    .overlay(alignment: .top) {
+                        Rectangle()
+                            .fill(Color.white.opacity(0.25))
+                            .frame(height: 1)
+                    }
+                    .padding(.top, 4)
+                    .padding(.horizontal, 2)
+
+                // The deck itself, tapering away from the viewer.
                 Deck()
-                    .fill(Self.shellDark)
-                    .overlay(Deck().stroke(Color.white.opacity(0.10), lineWidth: 1))
-                    .frame(height: 4)
+                    .fill(
+                        LinearGradient(
+                            colors: [Self.shellDark, Self.shell],
+                            startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(height: 5)
+                    // The notch the lid closes into.
+                    .overlay(alignment: .bottom) {
+                        Capsule()
+                            .fill(Color.black.opacity(0.35))
+                            .frame(width: 26, height: 1.5)
+                            .padding(.bottom, 1)
+                    }
             }
+            .frame(height: 12)
         }
 
         /// The work, as lines arriving one after another.
@@ -161,9 +184,9 @@ extension OnboardingScene {
         }
 
         private static let sparks = [
-            Spark(dx: 2, dy: -13, size: 11, phase: 0),
-            Spark(dx: 11, dy: -1, size: 9, phase: 0.9),
-            Spark(dx: 1, dy: 11, size: 8, phase: 1.7)
+            Spark(dx: -2, dy: -19, size: 11, phase: 0),
+            Spark(dx: 7, dy: -7, size: 9, phase: 0.9),
+            Spark(dx: -3, dy: 5, size: 8, phase: 1.7)
         ]
 
         var body: some View {
@@ -171,7 +194,7 @@ extension OnboardingScene {
                 ForEach(Array(Self.sparks.enumerated()), id: \.offset) { index, spark in
                     Image(systemName: "bolt.fill")
                         .font(.system(size: spark.size, weight: .semibold))
-                        .foregroundStyle(.tint)
+                        .foregroundStyle(.white)
                         .offset(x: spark.dx, y: spark.dy)
                         .opacity(flicker(spark.phase) * charge)
                         .scaleEffect(1 - sleeping)
@@ -188,7 +211,7 @@ extension OnboardingScene {
                             x: spark.dx + CGFloat(index) * 3,
                             y: spark.dy - CGFloat(drift(index)) * 9
                         )
-                        .opacity(sleeping * (0.35 + 0.65 * fade(index)))
+                        .opacity(sleeping * fade(index))
                         .scaleEffect(sleeping * (0.8 + 0.2 * Double(index)))
                 }
             }
@@ -208,7 +231,10 @@ extension OnboardingScene {
             return step
         }
 
-        /// In at the bottom, out at the top.
+        /// In at the bottom, out at the top, and nought at both ends. Any
+        /// floor under this and the letter is still visible at the moment it
+        /// jumps back down to start again, which is the one frame that must
+        /// not be seen.
         private func fade(_ index: Int) -> Double {
             sin(drift(index) * .pi)
         }

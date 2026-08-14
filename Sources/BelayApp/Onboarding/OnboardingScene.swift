@@ -73,18 +73,35 @@ struct OnboardingScene: View {
     /// is a glitch and four in a row is a queue emptying.
     nonisolated static func popped(_ index: Int, at time: Double) -> Double {
         let start = 5.0 + Double(index) * 0.55
-        if time < start { return time > 11.0 ? max(0, 1 - (time - 11.0) / 0.6) : 0 }
-        return min(1, (time - start) / 0.5)
+        if time < start { return 0 }
+        if time < 10.9 { return min(1, (time - start) / 0.45) }
+        // Past this the arrival has the chip and the pop must let go of it, or
+        // the two fight over the same scale.
+        return 0
     }
 
-    /// The mark's own light. Steady while it holds, two blinks as it lets go,
-    /// then down with the screen.
+    /// How far an agent has arrived at the top of a pass. They come back one
+    /// after another rather than all at once, and each overshoots and settles,
+    /// so they land rather than switch on.
+    nonisolated static func arrived(_ index: Int, at time: Double) -> Double {
+        if time < 10.9 { return 1 }
+        let start = 10.9 + Double(index) * 0.22
+        if time < start { return 0 }
+        return min(1, (time - start) / 0.6)
+    }
+
+    /// The mark's own light: full while it holds, gone once it sleeps. This is
+    /// the halo only. The tile itself never fades.
     nonisolated static func glow(at time: Double) -> Double {
-        let dark = 1 - asleep(at: time)
-        guard time >= 7.4, time < 8.3 else { return dark }
-        // Two on-off beats across nine tenths of a second.
+        1 - asleep(at: time)
+    }
+
+    /// Two beats as Belay lets go. It is the one moment the mark is allowed to
+    /// go dim, and it comes back to full before the screen does.
+    nonisolated static func blink(at time: Double) -> Double {
+        guard time >= 7.4, time < 8.3 else { return 1 }
         let beat = (time - 7.4) / 0.45
-        return (beat.truncatingRemainder(dividingBy: 1) < 0.5 ? 0.15 : 1) * dark
+        return beat.truncatingRemainder(dividingBy: 1) < 0.5 ? 0.3 : 1
     }
 
     /// One half of the ring, placed. Both halves take the same frame, so an
@@ -93,7 +110,9 @@ struct OnboardingScene: View {
         AgentOrbit(
             half: half,
             popped: (0..<4).map { popped($0, at: time) },
+            arrived: (0..<4).map { arrived($0, at: time) },
             glow: glow(at: time),
+            blink: blink(at: time),
             time: time
         )
         .frame(width: 150, height: 116)
