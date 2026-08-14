@@ -4,19 +4,19 @@ import SwiftUI
 /// never seen again.
 ///
 /// It is a greeting, so it is over before it is in the way: the panel holds it
-/// for two seconds and then hands the space to the scene, which is the part
-/// that has something to say. Coming back to it on every loop would turn a
-/// greeting into a slogan.
+/// for a moment and then hands the space to the scene, which is the part with
+/// something to say. Coming back to it every loop would turn a greeting into a
+/// slogan.
 ///
-/// Drawn here rather than played from a file. An animation format would mean a
-/// runtime, an asset and a dependency, in an app whose whole argument is that it
-/// brings nothing with it; and a file would carry one hard-coded language, while
-/// this is the reader's own word in the reader's own script.
+/// Written rather than revealed. A nib as tall as the line travels along the
+/// word's own midline and the letters appear where it has been, which is what
+/// writing looks like; the first version slid a straight vertical edge across
+/// finished text, and that is a card being pulled away.
 ///
-/// The stroke is a mask travelling along the line rather than an outline being
-/// traced. A traced outline is what a font can give you and it reads as a letter
-/// being *drawn around*; ink arriving along the pen's own path is what writing
-/// looks like, and against a connected script it is the same picture.
+/// No animation runtime and no asset. The motion is one number going from
+/// nought to one under `withAnimation`, so SwiftUI interpolates it on the
+/// render thread at the display's own rate: no timer, no frame loop, nothing
+/// per-frame to allocate, and it is as smooth as the panel it sits in.
 struct WelcomeFlourish: View {
     /// Called when the word has been written and held, at the moment it starts
     /// to fade. The sky comes up on this, so the two cross rather than queue.
@@ -24,64 +24,47 @@ struct WelcomeFlourish: View {
     /// Called once the word is gone and the space is free.
     var onFinished: () -> Void
 
-    /// How far the ink has travelled, nought to one.
+    /// How far the nib has travelled, nought to one.
     @State private var written: CGFloat = 0
     @State private var faded = false
 
     /// Long enough to be read as writing rather than as a wipe, short enough
-    /// that nobody waits for it. The rest of the budget is the pause afterwards,
-    /// which is what stops it feeling like a transition.
-    private static let writing: Double = 1.25
+    /// that nobody waits for it.
+    private static let writing: Double = 1.5
     /// Long enough to be a pause and not a beat. Under half a second the word
-    /// read as a transition; this is a greeting, and a greeting waits.
+    /// read as a transition; a greeting waits.
     private static let holding: Double = 1.2
     private static let fading: Double = 0.5
 
-    /// The soft leading edge, as a fraction of the width. Without it the ink has
-    /// a straight vertical end and the word reads as being uncovered by a card.
-    private static let nib: CGFloat = 0.06
-
     var body: some View {
         Text("Welcome")
-            // Snell Roundhand is on every Mac and it is a connected script, so
-            // the mask travels along one continuous line instead of jumping
-            // between separate letters. Where it has no glyphs, as in Chinese,
-            // the system substitutes and the same sweep still reads as strokes
-            // arriving.
-            .font(.custom("SnellRoundhand-Black", size: 52))
-            .foregroundStyle(.white.opacity(0.95))
-            .shadow(color: Color.accentColor.opacity(0.35), radius: 12)
+            // A rounded brush script, and connected, so the nib crosses from
+            // one letter into the next instead of stepping between islands.
+            // It is on every Mac; where it has no glyphs, as in Chinese, the
+            // system substitutes and the same hand still writes them.
+            .font(.custom("SignPainter-HouseScript", size: 64))
+            .foregroundStyle(.white.opacity(0.97))
+            .shadow(color: Color.accentColor.opacity(0.30), radius: 14)
             .lineLimit(1)
-            // Some languages need most of the panel for this word. Shrinking is
-            // better than clipping, and better than a second size chosen by
-            // guessing which language is longest.
             .minimumScaleFactor(0.4)
             .padding(.horizontal, 24)
-            .mask(alignment: .leading) { ink }
+            .mask(alignment: .center) { nib }
             .opacity(faded ? 0 : 1)
             .task { await run() }
             .accessibilityHidden(true)
     }
 
-    /// White where the ink has been, clear where it has not, with the nib's
-    /// width of gradient between the two.
-    private var ink: some View {
-        GeometryReader { geometry in
-            let head = written * (1 + Self.nib)
-            let tail = max(0, head - Self.nib)
-            LinearGradient(
-                stops: [
-                    .init(color: .white, location: min(tail, 0.999)),
-                    .init(color: .clear, location: min(max(head, 0.001), 1))
-                ],
-                startPoint: .leading, endPoint: .trailing
-            )
-            .frame(width: geometry.size.width, height: geometry.size.height)
-        }
+    /// The nib: a stroke as tall as the line, trimmed to how far it has gone.
+    /// Trimming a shape is animated by SwiftUI itself, which is why this needs
+    /// no clock of its own.
+    private var nib: some View {
+        Stroke()
+            .trim(from: 0, to: written)
+            .stroke(style: StrokeStyle(lineWidth: 150, lineCap: .round, lineJoin: .round))
     }
 
-    /// Written, held, faded, gone. Eased in and out because a hand starts and
-    /// stops; a linear sweep is a machine printing.
+    /// Written, held, faded, gone. Eased because a hand starts and stops; a
+    /// linear sweep is a machine printing.
     private func run() async {
         withAnimation(.easeInOut(duration: Self.writing)) { written = 1 }
         try? await Task.sleep(for: .seconds(Self.writing + Self.holding))
@@ -89,5 +72,30 @@ struct WelcomeFlourish: View {
         withAnimation(.easeIn(duration: Self.fading)) { faded = true }
         try? await Task.sleep(for: .seconds(Self.fading))
         onFinished()
+    }
+}
+
+/// The path the nib takes: left to right along the middle, rising and falling
+/// gently. The wander is what stops the leading edge reading as a ruler; it is
+/// small, because a hand writing a word this size does not swing.
+private struct Stroke: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let steps = 120
+        // Started and finished outside the text, so the first letter is not
+        // already half-inked at nought and the last is fully inked at one.
+        let lead = rect.height * 0.6
+        for step in 0...steps {
+            let along = CGFloat(step) / CGFloat(steps)
+            let point = CGPoint(
+                x: rect.minX - lead + (rect.width + lead * 2) * along,
+                y: rect.midY + sin(along * .pi * 2.6) * rect.height * 0.12)
+            if step == 0 {
+                path.move(to: point)
+            } else {
+                path.addLine(to: point)
+            }
+        }
+        return path
     }
 }
