@@ -204,9 +204,50 @@ and `listen(2)`, which the sandbox refuses with EPERM without `network.server`,
 loopback included. Without it Belay loses exact detection entirely in this
 channel.
 
-There is no build change that fixes this honestly. Reply to the message in App
-Store Connect with the entitlement paragraph above, add the same text to App
-Review Information, and resubmit.
+There is no build change that fixes this honestly, and no entitlement to drop:
+the four in `Belay-MAS.entitlements` each have a named consumer in the code, and
+the direct build declares none at all.
+
+So: reply to the message, put the same explanation in App Review Information,
+and resubmit. Reply text, ready to paste:
+
+> The com.apple.security.network.server entitlement is required and is used at
+> every launch.
+>
+> Belay keeps a Mac awake while a local AI coding agent is working. To know when
+> a run starts and stops it accepts events from Claude Code, a command line tool
+> running on the same Mac and outside our sandbox. It receives them over an HTTP
+> listener created with NWListener (Network.framework), bound to 127.0.0.1 on an
+> ephemeral port, restricted to the loopback interface, and protected by a
+> bearer token written to the app's own container. The listener starts in
+> applicationDidFinishLaunching and runs for the lifetime of the app.
+>
+> The app cannot make outbound connections: it deliberately ships without
+> com.apple.security.network.client, which is also why network.client is not an
+> alternative here. The sandbox distinguishes by direction — client authorises
+> connect(2), while NWListener performs bind(2) and listen(2), which the sandbox
+> denies with EPERM without network.server even on the loopback address. We
+> verified this with a standalone probe using the same NWParameters: sandboxed
+> with network.client only it fails with "Operation not permitted"; with
+> network.server it binds.
+>
+> The listener may appear idle on a fresh install, which we think is why the
+> automated analysis did not match it to functionality. Nothing posts to it
+> until the user enables the integration in Settings > Providers > Precise
+> detection. To exercise it directly:
+>
+>   lsof -nP -iTCP -sTCP:LISTEN -a -c Belay
+>   cat ~/Library/Containers/com.perfectoweb.belay/Data/Library/Application\ Support/Belay/bridge.json
+>   curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"
+>
+> The third command returns 204 and the app's panel immediately shows a working
+> session; the same request without the token returns 401. No account or sign-in
+> is needed for any of this.
+>
+> We would also note that the app binary references NWListener through Swift's
+> Network overlay rather than the C entry points (nw_listener_create, bind,
+> listen), which a symbol-level scan of the app binary would not find. The
+> symbols are present as _$s7Network10NWListenerC... in the submitted build.
 
 **Do not upload a bundle built by the test scheme.** The Debug MAS product in
 `build/DerivedData-MAS` carries Xcode's test-host injections — a
