@@ -246,7 +246,7 @@ def landing(code):
         f'<p>{t["support_body"]}</p>',
         "",
         '<div class="actions">',
-        f'    <a class="button" href="{DONATE_URL}">{HEART}{t["donate"]}</a>',
+        f'    <a class="button donate" href="{DONATE_URL}">{HEART}{t["donate"]}</a>',
     ] + ([
         f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>',
     ] if SPONSORS_LIVE else []) + [

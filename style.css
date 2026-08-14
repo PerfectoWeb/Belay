@@ -10,6 +10,9 @@
     --panel: #f4f6fa;
     --rule: #dfe4ec;
     --accent: #1f6bff;
+    /* Donate is the one button that is not asking you to install anything, so
+       it does not compete with the blue that is. */
+    --give: #12855a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,6 +23,7 @@
         --panel: #151a22;
         --rule: #252c38;
         --accent: #5b93ff;
+        --give: #2ea36b;
     }
 }
 
@@ -104,6 +108,8 @@ a { color: var(--accent); }
     font-size: 16px;
     text-decoration: none;
 }
+
+.button.donate { background: var(--give); }
 
 .button.secondary {
     background: transparent;

@@ -1,12 +1,16 @@
 """The landing page, in the six languages the app speaks.
 
-VERSION is written here by the release workflow rather than fetched by the
-page. A visitor should not have to wait on api.github.com, and a version
-number that only appears when a request succeeds is worse than one that is
-simply true at build time.
+VERSION is written here rather than fetched by the page. A visitor should not
+have to wait on api.github.com, and a version number that only appears when a
+request succeeds is worse than one that is simply true at build time.
+
+It is written by `.github/workflows/release.yml`, which rewrites this line, runs
+build-site.py and pushes the result after it publishes a release. It said so
+before that was true, and the site sat on 1.0.0 through the whole of 1.1.0
+because nothing anywhere actually did it.
 """
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 
 L = {}
 
