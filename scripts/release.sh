@@ -100,10 +100,14 @@ done
 # dmgbuild is a Python package, so it can be on PATH, in a virtualenv, or
 # reachable as a module. Accept any of them rather than insisting on one shape
 # of install.
+#
+# Held as an array. It can be one word or three, and a three-word command stored
+# in a plain string and then run as "$DMGBUILD" is a single filename with spaces
+# in it, which is not a thing.
 if command -v dmgbuild >/dev/null; then
-    DMGBUILD="$(command -v dmgbuild)"
+    DMGBUILD=("$(command -v dmgbuild)")
 elif python3 -c 'import dmgbuild' 2>/dev/null; then
-    DMGBUILD="python3 -m dmgbuild"
+    DMGBUILD=(python3 -m dmgbuild)
 else
     die "dmgbuild is not installed. pipx install 'dmgbuild>=1.6.7'"
 fi
@@ -115,13 +119,20 @@ fi
 # failure looks like bad artwork rather than a bad builder, and cost an
 # afternoon here before it was found. dmgbuild has no --version flag, so ask
 # the interpreter that owns it whether the offending key is still in its source.
-case "$DMGBUILD" in
-    *"python3 -m"*) DMGBUILD_PY="python3" ;;
-    *) DMGBUILD_PY="$(head -1 "$DMGBUILD" | sed 's|^#!||')" ;;
-esac
-[ -x "${DMGBUILD_PY%% *}" ] || DMGBUILD_PY="python3"
+if [ "${#DMGBUILD[@]}" -gt 1 ]; then
+    DMGBUILD_PY=(python3)
+else
+    # A shebang is a command line, not a path. pipx writes
+    # `#!<venv>/bin/python -E`, and taking the whole line as one word sends the
+    # shell looking for a file called "python -E". That is what the release
+    # workflow died on the first time its credentials were good enough to get
+    # this far, and it never showed up locally because a plain virtualenv
+    # writes a shebang with no flags on it.
+    read -r -a DMGBUILD_PY <<<"$(head -1 "${DMGBUILD[0]}" | sed 's|^#!||')"
+fi
+[ -n "${DMGBUILD_PY[0]:-}" ] && [ -x "${DMGBUILD_PY[0]}" ] || DMGBUILD_PY=(python3)
 
-"$DMGBUILD_PY" -c "
+"${DMGBUILD_PY[@]}" -c "
 import inspect, sys
 import dmgbuild.core
 sys.exit(1 if 'pBBk' in inspect.getsource(dmgbuild.core) else 0)
@@ -256,7 +267,7 @@ echo "==> dmg"
 # .DS_Store itself and never talks to Finder, so the same command works over
 # ssh and in CI.
 rm -f "$DMG"
-"$DMGBUILD" -s "$ROOT/scripts/dmg-settings.py" \
+"${DMGBUILD[@]}" -s "$ROOT/scripts/dmg-settings.py" \
     -D root="$ROOT" -D app="$EXPORT_DIR/Belay.app" \
     "Belay $VERSION" "$DMG" \
     || die "dmgbuild failed"
