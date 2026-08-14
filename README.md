@@ -2,13 +2,13 @@
 
 <img src="Promo/Social/masthead.png" alt="Belay — keeps your Mac awake while your AI agent works" width="100%">
 
-<br><br>
+<br>
 
-<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/buttons/download.png" alt="Download for macOS" height="44"></a>
-&nbsp;
-<a href="https://perfectoweb.github.io/Belay/"><img src="Promo/Social/buttons/website.png" alt="Website" height="44"></a>
+<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/buttons/download.png" alt="Download for macOS" height="46"></a>
+&nbsp;&nbsp;
+<a href="https://perfectoweb.github.io/Belay/"><img src="Promo/Social/buttons/website.png" alt="Website" height="46"></a>
 
-<br><br>
+<br>
 
 [![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=release&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
@@ -16,17 +16,7 @@
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 ![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)
 
-**Your Mac stays awake exactly as long as your AI coding agent is working — and not a minute longer.**
-
-No API key · No account · Nothing leaves your Mac
-
-<br>
-
-<img src="Promo/Social/panel.png" alt="The Belay panel, showing four agents working and the Mac being held awake" width="88%">
-
 </div>
-
-<br>
 
 ## 📚 What is it?
 
@@ -58,14 +48,15 @@ sixty seconds too long costs nothing at all.
 
 ## 📦 Install
 
-<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/buttons/download-now.png" alt="Download Now" height="44"></a>
-&nbsp;
-<a href="https://perfectoweb.github.io/Belay/"><img src="Promo/Social/buttons/site.png" alt="Website" height="44"></a>
+**1.** [**Download Now**](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)
+&nbsp;[![version](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat-square&label=&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
+— macOS 14 or later, Apple silicon and Intel, about 4 MB.
 
-macOS 14 or later · Apple silicon and Intel · about 4 MB
+**2.** Open the disk image and drag **Belay** into Applications.
 
-Open the disk image and drag **Belay** to Applications. That is the whole
-install.
+<img src="Promo/dmg-window.png" alt="The Belay disk image: drag the app into Applications" width="62%">
+
+**3.** That is the install. Launch it and it lives in the menu bar.
 
 The app and the disk image are both signed with a Developer ID and **notarized
 by Apple**, and both carry a stapled ticket — so the first launch works with no
@@ -122,6 +113,10 @@ while an agent is working and lets it sleep when nothing is.
 long, and — when Belay is *not* holding — the reason, in plain language.
 Right-click for a compact menu.
 
+<p align="center">
+  <img src="Promo/Social/panel.png" alt="The Belay panel, showing four agents working and the Mac being held awake" width="94%">
+</p>
+
 **4. Check it yourself, any time.** Belay never asks to be trusted:
 
 ```bash
@@ -137,11 +132,10 @@ You will see the assertion, a plain-English reason, and how long it has left.
 ## 🖼 Screenshots
 
 <p align="center">
-  <img src="Promo/Social/shots/providers.png" alt="Providers settings" width="49%">
-  <img src="Promo/Social/shots/statistics.png" alt="Statistics" width="49%">
-  <br><br>
-  <img src="Promo/Social/shots/behaviour.png" alt="Behaviour settings" width="49%">
-  <img src="Promo/Social/shots/languages.png" alt="Belay in seven languages" width="49%">
+  <img src="Promo/Social/shots/providers.png" alt="Providers settings" width="49.5%">
+  <img src="Promo/Social/shots/statistics.png" alt="Statistics" width="49.5%">
+  <img src="Promo/Social/shots/behaviour.png" alt="Behaviour settings" width="49.5%">
+  <img src="Promo/Social/shots/languages.png" alt="Belay in seven languages" width="49.5%">
 </p>
 
 ## 🧯 Troubleshooting

@@ -148,7 +148,16 @@ func blueprint(in rect: NSRect, seed: UInt64) {
     context.restoreGState()
 }
 
-// MARK: - Type and the lockup
+// MARK: - Type
+
+/// SF Pro, which is what the app itself draws in. The App Store slides use
+/// Charter because they are posters; this artwork sits next to the product, so
+/// it uses the product's typeface. `systemFont` resolves to SF Pro Display above
+/// twenty points and SF Pro Text below it, which is the behaviour we want and
+/// not something to second-guess by naming a file.
+func sf(_ size: CGFloat, _ weight: NSFont.Weight) -> NSFont {
+    NSFont.systemFont(ofSize: size, weight: weight)
+}
 
 func draw(
     _ string: String, font: NSFont, colour: NSColor, at point: CGPoint, kern: CGFloat = 0,
@@ -162,16 +171,14 @@ func draw(
     text.draw(at: CGPoint(x: centred.map { $0 - width / 2 } ?? point.x, y: point.y))
 }
 
-/// The lockup, from `Resources/Brand`. Drawn from the shipped artwork rather
-/// than redrawn here: a second copy of the wordmark is the first thing to drift.
+/// The lockup, from `Resources/Brand`, flattened to white. The shipped artwork
+/// has a blue mark beside white letters, which is right on the app's near-black
+/// and invisible here: the field it would sit on is the same blue.
 func wordmark(centreX: CGFloat, bottom: CGFloat, height: CGFloat) {
     guard let image = NSImage(contentsOfFile: "Resources/Brand/belay-wordmark-dark@3x.png") else {
         FileHandle.standardError.write(Data("no wordmark in Resources/Brand\n".utf8))
         exit(1)
     }
-    // Flattened to white. The shipped lockup has a blue mark beside white
-    // letters, which is right on the app's own near-black and invisible here:
-    // the field it would sit on is the same blue.
     let white = NSImage(size: image.size)
     white.lockFocus()
     image.draw(in: NSRect(origin: .zero, size: image.size))
@@ -183,7 +190,83 @@ func wordmark(centreX: CGFloat, bottom: CGFloat, height: CGFloat) {
     white.draw(in: NSRect(x: centreX - width / 2, y: bottom, width: width, height: height))
 }
 
-func render(_ name: String, width: CGFloat, height: CGFloat, seed: UInt64, body: (NSRect) -> Void) {
+// MARK: - Chips
+
+/// One promise, as a filled pill with an SF Symbol in front of it.
+///
+/// Filled and not outlined. Three outlined pills in a row read as a form with
+/// three empty fields; the same three filled at low opacity read as labels on
+/// the thing above them, which is what they are.
+struct Chip {
+    var symbol: String
+    var label: String
+}
+
+func chips(_ items: [Chip], centreX: CGFloat, baseline: CGFloat, scale: CGFloat) {
+    let font = sf(15 * scale, .semibold)
+    let iconSize = 15 * scale
+    let padding = 15 * scale
+    let gap = 8 * scale
+    let height = 34 * scale
+    let between = 10 * scale
+
+    func icon(_ name: String) -> NSImage? {
+        guard let image = NSImage(systemSymbolName: name, accessibilityDescription: nil) else {
+            return nil
+        }
+        let configured = image.withSymbolConfiguration(
+            .init(pointSize: iconSize, weight: .semibold)) ?? image
+        let white = NSImage(size: configured.size)
+        white.lockFocus()
+        configured.draw(in: NSRect(origin: .zero, size: configured.size))
+        NSColor.white.withAlphaComponent(0.92).set()
+        NSRect(origin: .zero, size: configured.size).fill(using: .sourceAtop)
+        white.unlockFocus()
+        return white
+    }
+
+    // Measured first so the row can be centred as one object rather than as
+    // three things that happen to be near each other.
+    var widths: [CGFloat] = []
+    for item in items {
+        let text = NSAttributedString(string: item.label, attributes: [.font: font])
+        let glyph = icon(item.symbol)
+        let iconWidth = glyph.map { $0.size.width * (iconSize / max($0.size.height, 1)) + gap } ?? 0
+        widths.append(padding * 2 + iconWidth + ceil(text.size().width))
+    }
+    let total = widths.reduce(0, +) + between * CGFloat(items.count - 1)
+
+    var x = centreX - total / 2
+    for (index, item) in items.enumerated() {
+        let box = NSRect(x: x, y: baseline, width: widths[index], height: height)
+        NSColor.white.withAlphaComponent(0.15).setFill()
+        NSBezierPath(roundedRect: box, xRadius: height / 2, yRadius: height / 2).fill()
+
+        var cursor = box.minX + padding
+        if let glyph = icon(item.symbol) {
+            let width = glyph.size.width * (iconSize / max(glyph.size.height, 1))
+            glyph.draw(
+                in: NSRect(x: cursor, y: box.midY - iconSize / 2, width: width, height: iconSize))
+            cursor += width + gap
+        }
+        let line = font.ascender - font.descender
+        NSAttributedString(
+            string: item.label,
+            attributes: [.font: font, .foregroundColor: NSColor.white.withAlphaComponent(0.92)]
+        ).draw(at: CGPoint(x: cursor, y: box.midY - line / 2 - font.descender * 0.5))
+        x += widths[index] + between
+    }
+}
+
+// MARK: - Rendering
+
+/// `radius` rounds the artwork itself. GitHub strips `style` out of README HTML,
+/// so a border-radius written there is dropped in silence and the only rounding
+/// that survives is rounding baked into the file.
+func render(
+    _ name: String, width: CGFloat, height: CGFloat, seed: UInt64, radius: CGFloat = 0,
+    body: (NSRect) -> Void
+) {
     let rect = NSRect(x: 0, y: 0, width: width, height: height)
     guard
         let rep = NSBitmapImageRep(
@@ -193,6 +276,9 @@ func render(_ name: String, width: CGFloat, height: CGFloat, seed: UInt64, body:
     else { exit(1) }
     NSGraphicsContext.saveGraphicsState()
     NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
+    if radius > 0 {
+        NSBezierPath(roundedRect: rect, xRadius: radius, yRadius: radius).addClip()
+    }
     gradient(in: rect)
     blueprint(in: rect, seed: seed)
     body(rect)
@@ -205,73 +291,61 @@ func render(_ name: String, width: CGFloat, height: CGFloat, seed: UInt64, body:
     print("wrote \(path) — \(Int(width))x\(Int(height))")
 }
 
-// MARK: - The two cards
+let promises = [
+    Chip(symbol: "person.crop.circle.badge.xmark", label: "No account"),
+    Chip(symbol: "eye.slash.fill", label: "No tracking"),
+    Chip(symbol: "lock.laptopcomputer", label: "Nothing leaves your Mac"),
+]
 
-let display = NSFont(name: "Charter-Black", size: 1) != nil ? "Charter-Black" : "Charter-Bold"
-func heading(_ size: CGFloat) -> NSFont {
-    NSFont(name: display, size: size) ?? NSFont.systemFont(ofSize: size, weight: .heavy)
-}
-func body(_ size: CGFloat) -> NSFont {
-    NSFont(name: "AvenirNext-Medium", size: size) ?? NSFont.systemFont(ofSize: size)
-}
-func caption(_ size: CGFloat) -> NSFont {
-    NSFont(name: "AvenirNext-DemiBold", size: size) ?? NSFont.systemFont(ofSize: size, weight: .semibold)
-}
-
-let tagline = "Keeps your Mac awake while your AI agent works."
-let underline = "No account  ·  No tracking  ·  Nothing leaves your Mac"
-
-// The README masthead. Short, because it sits above the badges and the whole
-// block has to be readable before anybody scrolls.
-render("masthead", width: 1280, height: 400, seed: 0x5E1F_2A77) { rect in
-    wordmark(centreX: rect.midX, bottom: 236, height: 84)
+// The README masthead. Rounded, because it is the first thing on the page and a
+// square edge against GitHub's rounded everything else looks like a mistake.
+render("masthead", width: 1280, height: 400, seed: 0x5E1F_2A77, radius: 28) { rect in
+    wordmark(centreX: rect.midX, bottom: 246, height: 78)
     draw(
-        tagline, font: heading(38), colour: .white,
-        at: CGPoint(x: 0, y: 160), kern: -0.4, centred: rect.midX)
-    // Nudged down from the wordmark by an amount that looks like one gap
-    // rather than two things that happen to be near each other.
-    draw(
-        underline, font: caption(17), colour: NSColor.white.withAlphaComponent(0.72),
-        at: CGPoint(x: 0, y: 96), kern: 1.6, centred: rect.midX)
+        "Keeps your Mac awake while your AI agent works.", font: sf(37, .bold), colour: .white,
+        at: CGPoint(x: 0, y: 168), kern: -0.5, centred: rect.midX)
+    chips(promises, centreX: rect.midX, baseline: 92, scale: 1)
 }
 
-// The Open Graph card. Taller, so the tagline gets two lines of room and the
-// crop that some clients apply to 2:1 cannot take the wordmark with it.
+// The Open Graph card. Square on purpose: it is composited onto whatever colour
+// Slack, iMessage or Discord happens to use, and a transparent corner there
+// comes out as a notch of somebody else's background.
 render("og", width: 1280, height: 640, seed: 0x0B3D_9C41) { rect in
-    wordmark(centreX: rect.midX, bottom: 392, height: 104)
+    wordmark(centreX: rect.midX, bottom: 404, height: 100)
     draw(
-        "Stays awake while", font: heading(60), colour: .white, at: CGPoint(x: 0, y: 280),
-        kern: -0.8, centred: rect.midX)
+        "Stays awake while", font: sf(62, .bold), colour: .white, at: CGPoint(x: 0, y: 286),
+        kern: -1.2, centred: rect.midX)
     draw(
-        "your agents work.", font: heading(60), colour: .white, at: CGPoint(x: 0, y: 196),
-        kern: -0.8, centred: rect.midX)
-    draw(
-        underline, font: caption(19), colour: NSColor.white.withAlphaComponent(0.72),
-        at: CGPoint(x: 0, y: 120), kern: 1.8, centred: rect.midX)
+        "your agents work.", font: sf(62, .bold), colour: .white, at: CGPoint(x: 0, y: 196),
+        kern: -1.2, centred: rect.midX)
+    chips(promises, centreX: rect.midX, baseline: 108, scale: 1.15)
 }
 
 // MARK: - Buttons
 
-/// The buttons under the masthead and in Install.
+/// The buttons under the masthead.
 ///
-/// Drawn rather than fetched from shields.io, and the reason is the corner: every
-/// shields style is either square or barely rounded, and none of them can be a
-/// pill. Rounding them in the README is not an option either — GitHub strips
-/// `style` out of README HTML, so a border-radius written there is dropped in
-/// silence. A picture of a button is the only rounded button GitHub will show.
+/// Drawn rather than fetched from shields.io, and the reason is the corner:
+/// every shields style is either square or barely rounded, and none of them can
+/// be a pill. Rounding them in the README is not an option either, for the same
+/// reason the masthead is rounded in the file.
 ///
 /// Rendered at 3x and used at a third of the size, so they stay sharp on a
-/// Retina display.
-func button(_ name: String, _ label: String, fill: NSColor?, ink: NSColor, glyph: String?) {
+/// Retina display. The fill is a gradient and not a flat colour: one is a
+/// rectangle painted blue, the other is a button.
+func button(_ name: String, _ label: String, primary: Bool, glyph: String?) {
     let scale: CGFloat = 3
-    let height: CGFloat = 44 * scale
+    let height: CGFloat = 46 * scale
     let radius = height / 2
-    let font = NSFont(name: "AvenirNext-DemiBold", size: 17 * scale)
-        ?? NSFont.systemFont(ofSize: 17 * scale, weight: .semibold)
+    let font = sf(17 * scale, .semibold)
+    let glyphFont = sf(18 * scale, .medium)
 
-    let text = (glyph.map { "\($0)  " } ?? "") + label
-    let measured = NSAttributedString(string: text, attributes: [.font: font, .kern: 0.2 * scale])
-    let width = ceil(measured.size().width) + 34 * scale * 2
+    let padding = 30 * scale
+    let gap = 9 * scale
+    let text = NSAttributedString(string: label, attributes: [.font: font, .kern: 0.1 * scale])
+    let mark = glyph.map { NSAttributedString(string: $0, attributes: [.font: glyphFont]) }
+    let markWidth = mark.map { ceil($0.size().width) + gap } ?? 0
+    let width = ceil(text.size().width) + markWidth + padding * 2
 
     guard
         let rep = NSBitmapImageRep(
@@ -283,45 +357,54 @@ func button(_ name: String, _ label: String, fill: NSColor?, ink: NSColor, glyph
     NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: rep)
 
     let box = NSRect(x: 0, y: 0, width: width, height: height)
-    let pill = NSBezierPath(roundedRect: box.insetBy(dx: 1, dy: 1), xRadius: radius, yRadius: radius)
-    if let fill {
-        fill.setFill()
-        pill.fill()
+    let pill = NSBezierPath(roundedRect: box, xRadius: radius, yRadius: radius)
+    if primary {
+        NSGradient(
+            starting: NSColor(srgbRed: 0x3C / 255, green: 0x84 / 255, blue: 1, alpha: 1),
+            ending: NSColor(srgbRed: 0x0B / 255, green: 0x57 / 255, blue: 0xE8 / 255, alpha: 1)
+        )?.draw(in: pill, angle: -90)
+        // The hairline along the top edge is what a real control has and a flat
+        // fill does not: light landing on a raised thing.
+        NSColor.white.withAlphaComponent(0.28).setStroke()
+        let rim = NSBezierPath(
+            roundedRect: box.insetBy(dx: 0.8 * scale, dy: 0.8 * scale),
+            xRadius: radius, yRadius: radius)
+        rim.lineWidth = 1.2 * scale
+        rim.stroke()
     } else {
-        // The secondary button is an outline. A filled grey next to a filled
-        // blue reads as two choices of equal weight, and they are not.
-        NSColor(srgbRed: 0.55, green: 0.58, blue: 0.65, alpha: 0.55).setStroke()
-        pill.lineWidth = 1.6 * scale
-        pill.stroke()
+        NSColor.white.withAlphaComponent(0.10).setFill()
+        pill.fill()
+        NSColor.white.withAlphaComponent(0.16).setStroke()
+        let rim = NSBezierPath(
+            roundedRect: box.insetBy(dx: 0.8 * scale, dy: 0.8 * scale),
+            xRadius: radius, yRadius: radius)
+        rim.lineWidth = 1.2 * scale
+        rim.stroke()
     }
 
-    // Centred by giving the label a box exactly one line tall and placing that
-    // box, rather than by nudging a baseline. `draw(in:)` puts the first line at
-    // the top of whatever rect it is handed, so a full-height rect in an
-    // unflipped context hangs the text off the top of the pill.
-    let lineHeight = font.ascender - font.descender
-    let paragraph = NSMutableParagraphStyle()
-    paragraph.alignment = .center
+    let ink = primary ? NSColor.white : NSColor.white.withAlphaComponent(0.86)
+    var cursor = padding
+    if let mark {
+        let line = glyphFont.ascender - glyphFont.descender
+        NSAttributedString(
+            string: mark.string, attributes: [.font: glyphFont, .foregroundColor: ink]
+        ).draw(at: CGPoint(x: cursor, y: height / 2 - line / 2 - glyphFont.descender * 0.55))
+        cursor += ceil(mark.size().width) + gap
+    }
+    let line = font.ascender - font.descender
     NSAttributedString(
-        string: text,
-        attributes: [
-            .font: font, .foregroundColor: ink, .kern: 0.2 * scale,
-            .paragraphStyle: paragraph
-        ]
-    ).draw(in: NSRect(x: 0, y: (height - lineHeight) / 2, width: width, height: lineHeight))
+        string: label, attributes: [.font: font, .foregroundColor: ink, .kern: 0.1 * scale]
+    ).draw(at: CGPoint(x: cursor, y: height / 2 - line / 2 - font.descender * 0.5))
     NSGraphicsContext.restoreGraphicsState()
 
-    try? FileManager.default.createDirectory(atPath: "\(output)/buttons", withIntermediateDirectories: true)
+    try? FileManager.default.createDirectory(
+        atPath: "\(output)/buttons", withIntermediateDirectories: true)
     let path = "\(output)/buttons/\(name).png"
     guard let data = rep.representation(using: .png, properties: [:]) else { exit(1) }
     try? data.write(to: URL(fileURLWithPath: path))
     print("wrote \(path) — \(Int(width / scale))x\(Int(height / scale)) at 1x")
 }
 
-let accent = NSColor(srgbRed: 0x1F / 255, green: 0x6B / 255, blue: 1, alpha: 1)
-let quiet = NSColor(srgbRed: 0.62, green: 0.66, blue: 0.74, alpha: 1)
-
-button("download", "Download for macOS", fill: accent, ink: .white, glyph: "\u{2193}")
-button("website", "Website", fill: nil, ink: quiet, glyph: nil)
-button("download-now", "Download Now", fill: accent, ink: .white, glyph: "\u{2193}")
-button("site", "Website", fill: nil, ink: quiet, glyph: "\u{2192}")
+// U+F8FF is the Apple logo, which the system fonts carry and nothing else does.
+button("download", "Download for macOS", primary: true, glyph: "\u{F8FF}")
+button("website", "Website", primary: false, glyph: nil)
