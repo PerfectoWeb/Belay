@@ -473,5 +473,16 @@ footer .row .languages a { text-decoration: none; }
    long one puts the version somewhere the eye has to go and find. */
 .button.stacked { align-items: flex-start; }
 
+/* A break the headline asks for, in the one place there is room to grant it.
+   The Russian headline has a comma where the thought turns, and above the
+   phone width the line is broken there rather than wherever the words happen
+   to run out. Narrower than that, two forced lines become four ragged ones, so
+   the break is dropped and the browser goes back to deciding. */
+h1 .turn { display: inline; }
+
+@media (max-width: 560px) {
+    h1 .turn { display: none; }
+}
+
 /* The third-party note sits under the copyright, with room between them. */
 footer .copyright + .fine { margin-top: 8px; }
