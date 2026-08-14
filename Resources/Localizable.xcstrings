@@ -9314,31 +9314,31 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vorerst überspringen"
+            "value": "Überspringen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skip for now"
+            "value": "Skip now"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Omitir por ahora"
+            "value": "Omitir"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Passer pour l'instant"
+            "value": "Passer"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salta per ora"
+            "value": "Salta"
           }
         },
         "ru": {
@@ -9350,7 +9350,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "暂时跳过"
+            "value": "跳过"
           }
         }
       }

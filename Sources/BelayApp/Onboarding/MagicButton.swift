@@ -70,7 +70,7 @@ private struct Face<Label: View>: View {
         .font(.system(size: 13, weight: .semibold))
         .foregroundStyle(.white)
         .padding(.horizontal, 16)
-        .padding(.vertical, 6)
+        .padding(.vertical, 7.5)
         .background {
             Capsule(style: .continuous)
                 .fill(Color.accentColor)

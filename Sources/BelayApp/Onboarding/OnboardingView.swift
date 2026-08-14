@@ -80,6 +80,11 @@ struct OnboardingView: View {
     /// until both ends came out at thirty points of actual space.
     static let margin: CGFloat = 30
 
+    /// Both buttons stand this tall. The standard control is asked for it
+    /// directly; the magic one arrives at it through its own padding, because a
+    /// custom style has no bezel to stretch.
+    static let buttonHeight: CGFloat = 31
+
     private var hero: some View {
         ZStack(alignment: .topLeading) {
             // The same night sky as About, and for the same reason: a panel
@@ -145,8 +150,16 @@ struct OnboardingView: View {
                     .keyboardShortcut(.defaultAction)
                     .accessibilityHint("Opens a standard macOS panel so you can approve the folder")
             }
-            Button("Skip for now", action: onDismiss)
-                .accessibilityHint("Belay still works in Always on and Off modes")
+            // The padding is inside the label on purpose. A bordered button's
+            // bezel comes in fixed steps, 28 points at large and 36 at extra
+            // large, and it ignores a frame put around it; what it does honour
+            // is the size of the label it has to wrap. This is the only way to
+            // land between the steps and keep the system's own chrome.
+            Button(action: onDismiss) {
+                Text("Skip for now").padding(.vertical, (Self.buttonHeight - 28) / 2)
+            }
+            .buttonStyle(.bordered)
+            .accessibilityHint("Belay still works in Always on and Off modes")
             Spacer(minLength: 0)
         }
         .controlSize(.large)
