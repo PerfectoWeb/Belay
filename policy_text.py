@@ -92,9 +92,9 @@ T["ru"] = {
     "policy_1": "Если политика изменится, мы обновим дату выше. Любое значимое изменение, касающееся приватности, будет упомянуто и в описании выпуска.",
     "contact_head": "Связь",
     "contact_1": 'Вопросы по этой политике: <a href="https://github.com/PerfectoWeb/Belay/issues">трекер задач</a> или адрес на <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI и Cline сделаны другими людьми. Belay работает рядом с ними и не связан с ними и не одобрен ими.",
+    "fine": "Belay не связан с Claude Code, Codex CLI, Gemini CLI и Cline, которые принадлежат своим правообладателям. Belay тихо сидит рядом с ними и мониторит активность агентов локально.",
     "authoritative": 'Это перевод. Основной текст политики <a href="../">на английском</a>.',
-    "source": "Исходный код на GitHub",
+    "source": "Исходный код",
 }
 
 T["de"] = {
@@ -126,7 +126,7 @@ T["de"] = {
     "contact_1": 'Fragen zu dieser Erklärung: <a href="https://github.com/PerfectoWeb/Belay/issues">der Issue-Tracker</a> oder die Adresse auf <a href="https://perfecto-web.com">perfecto-web.com</a>.',
     "fine": "Claude Code, Codex CLI, Gemini CLI und Cline stammen von anderen. Belay arbeitet neben ihnen und steht mit keinem von ihnen in Verbindung und wird von keinem unterstützt.",
     "authoritative": 'Dies ist eine Übersetzung. Maßgeblich ist die <a href="../">englische Fassung</a>.',
-    "source": "Quellcode auf GitHub",
+    "source": "Quellcode",
 }
 
 T["es"] = {
@@ -158,7 +158,7 @@ T["es"] = {
     "contact_1": 'Dudas sobre esta política: <a href="https://github.com/PerfectoWeb/Belay/issues">el gestor de incidencias</a> o la dirección que aparece en <a href="https://perfecto-web.com">perfecto-web.com</a>.',
     "fine": "Claude Code, Codex CLI, Gemini CLI y Cline son de otras personas. Belay funciona junto a ellos y no está afiliado ni respaldado por ninguno.",
     "authoritative": 'Esto es una traducción. La versión de referencia está <a href="../">en inglés</a>.',
-    "source": "Código en GitHub",
+    "source": "Código fuente",
 }
 
 T["fr"] = {
@@ -190,7 +190,7 @@ T["fr"] = {
     "contact_1": 'Questions sur cette politique : <a href="https://github.com/PerfectoWeb/Belay/issues">le suivi des tickets</a>, ou l\'adresse indiquée sur <a href="https://perfecto-web.com">perfecto-web.com</a>.',
     "fine": "Claude Code, Codex CLI, Gemini CLI et Cline sont l'œuvre d'autres personnes. Belay fonctionne à leurs côtés et n'est ni affilié ni approuvé par aucun d'eux.",
     "authoritative": 'Ceci est une traduction. La version de référence est <a href="../">en anglais</a>.',
-    "source": "Code source sur GitHub",
+    "source": "Code source",
 }
 
 T["it"] = {
@@ -222,6 +222,6 @@ T["it"] = {
     "contact_1": 'Domande su questa informativa: <a href="https://github.com/PerfectoWeb/Belay/issues">il tracker delle segnalazioni</a> o l\'indirizzo su <a href="https://perfecto-web.com">perfecto-web.com</a>.',
     "fine": "Claude Code, Codex CLI, Gemini CLI e Cline sono di altri. Belay funziona accanto a loro e non è affiliato né sostenuto da nessuno di essi.",
     "authoritative": 'Questa è una traduzione. La versione di riferimento è <a href="../">in inglese</a>.',
-    "source": "Codice su GitHub",
+    "source": "Codice sorgente",
 }
 

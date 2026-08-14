@@ -248,7 +248,7 @@ def landing(code):
         "    </div>",
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
         '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
-        'All product names and logos are trademarks of their respective owners.</p>',
+        f'{L[code]["trademarks"]}</p>',
         f'    <p class="fine">{T[code]["fine"]}</p>',
         "</footer>",
         "",
@@ -317,7 +317,7 @@ def privacy(code):
         "    </div>",
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
         '<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">MIT licensed</a>.<br>'
-        'All product names and logos are trademarks of their respective owners.</p>',
+        f'{L[code]["trademarks"]}</p>',
         f'    <p class="fine">{t["fine"]}</p>',
         "</footer>",
         "",
