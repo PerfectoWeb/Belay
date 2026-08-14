@@ -20,7 +20,8 @@ What has been run, and what still has not:
 | GitHub Release published | v1.0.0, by hand |
 | `.github/workflows/release.yml` | run green as a dry run, 2026-08-14 |
 | Sparkle appcast (`scripts/sign-update.sh`) | never run, and blocked on B3 |
-| Mac App Store submission | never; stays manual, see below |
+| Mac App Store submission | submitted 2026-08-14, rejected on 2.4.5; see `APP-STORE-SUBMIT.md` |
+| Homebrew cask (`perfectoweb/tap/belay`) | published 2026-08-14; `scripts/bump-cask.sh` moves it |
 
 Two things that cost time on the first real run and will cost it again:
 

@@ -63,6 +63,22 @@ network and without the right-click-Open dance.
 <details>
 <summary><b>Other ways to install</b></summary>
 
+#### Homebrew
+
+```bash
+brew install --cask perfectoweb/tap/belay
+```
+
+`brew upgrade` keeps it current afterwards. It installs the same signed,
+notarized disk image the button above gives you, and Homebrew checks its
+SHA-256 before it opens it.
+
+The cask lives in [our own tap](https://github.com/PerfectoWeb/homebrew-tap)
+rather than in homebrew-cask itself. Homebrew's main cask repository has a
+notability bar — a project needs a certain number of stars, forks or watchers
+before it is accepted — and Belay has not cleared it yet. Same command shape,
+one extra word.
+
 #### From the Mac App Store
 
 Coming. The sandboxed build exists and is what the App Store target builds; the

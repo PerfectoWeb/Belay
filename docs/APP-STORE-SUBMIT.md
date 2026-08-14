@@ -281,3 +281,12 @@ in the submission depends on it.
    `BLOCKERS.md` B5.
 4. **Translations have had no native review** beyond English and Russian.
    `BLOCKERS.md` B7.
+
+---
+
+## After a release goes out
+
+`scripts/bump-cask.sh` points the Homebrew cask at the new version. It is not
+part of `release.sh` on purpose: the cask can only be moved once the asset is
+downloadable, which is after the GitHub Release exists, and a release script
+that half-fails leaves a tap pointing at a file nobody can fetch.
