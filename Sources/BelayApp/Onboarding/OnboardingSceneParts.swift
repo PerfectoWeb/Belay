@@ -68,7 +68,7 @@ extension OnboardingScene {
         /// is off, and the blue it was tried in read as the screen still being
         /// on. It is the one thing left on a dark machine and it should barely
         /// be there.
-        private static let moonlight = Color(white: 0.45)
+        private static let moonlight = Color(white: 0.36)
 
         var body: some View {
             GeometryReader { geometry in

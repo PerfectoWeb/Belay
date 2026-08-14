@@ -19,7 +19,11 @@ struct OnboardingScene: View {
     ///
     /// Narrowed when the trampoline left: a box kept at the old width put the
     /// machine in its left third and left a third of the panel empty.
-    nonisolated static let box = CGSize(width: 280, height: 150)
+    ///
+    /// The height is what the picture needs below the machine and no more. It
+    /// is what the lockup underneath is spaced from, so dead room at the bottom
+    /// of the box is a gap nobody asked for between the two.
+    nonisolated static let box = CGSize(width: 280, height: 140)
 
     /// The middle of the machine, and the middle of the picture.
     ///
