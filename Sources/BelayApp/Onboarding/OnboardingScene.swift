@@ -129,8 +129,8 @@ struct OnboardingScene: View {
             orbit(.behind, at: time)
 
             Laptop(lit: held, working: live, time: time)
-                .frame(width: 150, height: 92)
-                .position(x: 96, y: 90)
+                .frame(width: 122, height: 88)
+                .position(x: 92, y: 90)
 
             ChargeBolts(charge: held, sleeping: sleep, time: time)
                 .frame(width: 30, height: 58)

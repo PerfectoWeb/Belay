@@ -34,7 +34,9 @@ extension OnboardingScene {
 
         var body: some View {
             VStack(spacing: 0) {
-                lid
+                // The lid is inset: the base has to come out past it on both
+                // sides or the machine reads as a screen balanced on a stick.
+                lid.padding(.horizontal, 7)
                 base
             }
         }
@@ -152,7 +154,9 @@ extension OnboardingScene {
     struct Deck: Shape {
         func path(in rect: CGRect) -> Path {
             var path = Path()
-            let inset = rect.width * 0.085
+            // Opened out: a shallow taper read as a rectangle with the corners
+            // knocked off rather than as a deck going away from the viewer.
+            let inset = rect.width * 0.17
             path.move(to: CGPoint(x: rect.minX + inset, y: rect.minY))
             path.addLine(to: CGPoint(x: rect.maxX - inset, y: rect.minY))
             path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
@@ -196,8 +200,7 @@ extension OnboardingScene {
                         .font(.system(size: spark.size, weight: .semibold))
                         .foregroundStyle(.white)
                         .offset(x: spark.dx, y: spark.dy)
-                        .opacity(flicker(spark.phase) * charge)
-                        .scaleEffect(1 - sleeping)
+                        .opacity(flicker(spark.phase) * charge * (1 - sleeping))
 
                     // The same three places, becoming letters. Each drifts up
                     // and fades on its own beat, so they rise in a line rather
@@ -212,7 +215,6 @@ extension OnboardingScene {
                             y: spark.dy - CGFloat(drift(index)) * 9
                         )
                         .opacity(sleeping * fade(index))
-                        .scaleEffect(sleeping * (0.8 + 0.2 * Double(index)))
                 }
             }
             .accessibilityHidden(true)

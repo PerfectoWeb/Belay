@@ -26,16 +26,28 @@ struct AgentOrbit: View {
     var arrived: [Double]
     /// The halo behind the mark. Goes out with the machine.
     var glow: Double
-    /// The mark's own brightness. Only the two beats as Belay lets go.
+    /// 1 while the mark is lit, 0 on an off beat. It is a colour change, not a
+    /// fade: an icon going transparent reads as the app quitting, an icon going
+    /// grey reads as the thing it does being switched off.
     var blink: Double
     var time: Double
 
     /// The logos the app already ships, in the order they take the ring.
     private static let agents = ["claude", "codex", "gemini", "cline"]
-    /// Each one's own rate, in turns per second, and none divides into another.
-    private static let rates: [Double] = [0.085, -0.062, 0.11, -0.048]
+    /// Each one's own rate, in turns per second, and none divides into another
+    /// so the four never fall into step. All the same sign: with two running
+    /// the other way the ring read as changing direction rather than as four
+    /// things at four speeds.
+    private static let rates: [Double] = [0.052, 0.071, 0.094, 0.117]
     /// The disc every agent rides on.
     private static let disc = Color(red: 0.169, green: 0.216, blue: 0.325)
+    /// The tile, holding and let go.
+    private static let lit = [
+        Color(red: 0.29, green: 0.56, blue: 1), Color(red: 0.13, green: 0.42, blue: 1)
+    ]
+    private static let off = [
+        Color(red: 0.40, green: 0.43, blue: 0.49), Color(red: 0.28, green: 0.31, blue: 0.36)
+    ]
 
     var body: some View {
         GeometryReader { geometry in
@@ -49,6 +61,11 @@ struct AgentOrbit: View {
                 ForEach(Array(Self.agents.enumerated()), id: \.offset) { index, name in
                     if Self.isBehind(index, at: time) == (half == .behind) {
                         chip(name, index: index, centre: centre, radius: radius)
+                            // The handover between the two halves must not be
+                            // animated. Left to itself SwiftUI reads it as one
+                            // view leaving and another arriving, and the chip
+                            // jumps as it crosses the edge of the screen.
+                            .transaction { $0.animation = nil }
                     }
                 }
                 if half == .inFront {
@@ -86,10 +103,7 @@ struct AgentOrbit: View {
         RoundedRectangle(cornerRadius: 11, style: .continuous)
             .fill(
                 LinearGradient(
-                    colors: [
-                        Color(red: 0.29, green: 0.56, blue: 1),
-                        Color(red: 0.13, green: 0.42, blue: 1)
-                    ],
+                    colors: blink > 0.5 ? Self.lit : Self.off,
                     startPoint: .top, endPoint: .bottom)
             )
             .frame(width: 42, height: 42)
@@ -101,7 +115,6 @@ struct AgentOrbit: View {
             // The halo is what the machine takes with it. The tile itself stays
             // solid: an app icon that fades out reads as the app quitting.
             .shadow(color: Color.accentColor.opacity(0.55 * glow), radius: 10 * glow)
-            .opacity(blink)
     }
 
     /// One agent: a slate disc with its logo in white, riding the ellipse. The
