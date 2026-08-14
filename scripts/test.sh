@@ -18,6 +18,12 @@ report_failures() {
     done
 }
 
+# First, because it costs a hundredth of a second and because the thing it
+# guards against is the one that cannot be fixed after the fact: a public
+# repository that credits an AI for the work.
+echo "==> no AI attribution"
+./scripts/no-attribution.sh
+
 echo "==> swift test (module suites)"
 MODULE_LOG="$(mktemp)"
 if ! swift test --package-path Packages/BelayKit 2>&1 | tee "$MODULE_LOG"; then

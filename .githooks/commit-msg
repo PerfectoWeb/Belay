@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Refuses a commit message with a Co-Authored-By trailer or a generator line.
+# The message is not a file in the tree, so no-attribution.sh cannot see it
+# until the commit exists; this catches it a moment earlier.
+set -euo pipefail
+if grep -InE '^[[:space:]]*Co-[Aa]uthored-[Bb]y:|noreply@anthropic\.com|[Gg]enerated with \[?[Cc]laude|🤖 [Gg]enerated' -- "$1"; then
+    echo "the commit message credits an AI; remove that line" >&2
+    exit 1
+fi

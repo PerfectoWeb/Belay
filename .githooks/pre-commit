@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Refuses a commit that would put AI attribution into a tracked file.
+# Enable with:  git config core.hooksPath .githooks
+exec "$(git rev-parse --show-toplevel)/scripts/no-attribution.sh" --staged
