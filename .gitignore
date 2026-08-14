@@ -55,4 +55,10 @@ dist/
 # to forget it afterwards. 226 MB of it as of the first release. Video belongs
 # on a release asset or outside the repository.
 Promo/video-footage/
+
+# Layered artwork from other people's kits, kept locally as the source the
+# exports came from. Apple's MacBook bezel alone is 16 MB, and nothing in the
+# build reads it: what ships is the flattened PNG beside it and the small
+# imageset cut from that.
+Promo/**/*.psd
 .DS_Store

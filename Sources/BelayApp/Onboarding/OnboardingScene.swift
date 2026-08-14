@@ -18,7 +18,10 @@ struct OnboardingScene: View {
     /// Everything is placed by hand against this box rather than stacked. A
     /// stack lays itself out, and a picture with an orbit in it cannot afford
     /// that: move the mark by a point and the ring is no longer around it.
-    nonisolated static let box = CGSize(width: 360, height: 150)
+    ///
+    /// Narrowed when the trampoline left: a box kept at the old width put the
+    /// machine in its left third and left a third of the panel empty.
+    nonisolated static let box = CGSize(width: 280, height: 150)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -72,7 +75,7 @@ struct OnboardingScene: View {
     /// They go one at a time, in order, because four bubbles bursting together
     /// is a glitch and four in a row is a queue emptying.
     nonisolated static func popped(_ index: Int, at time: Double) -> Double {
-        let start = 5.0 + Double(index) * 0.55
+        let start = popTime(index)
         if time < start { return 0 }
         if time < 10.9 { return min(1, (time - start) / 0.45) }
         // Past this the arrival has the chip and the pop must let go of it, or
@@ -80,12 +83,30 @@ struct OnboardingScene: View {
         return 0
     }
 
+    /// When an agent pops, and when it comes back.
+    nonisolated static func popTime(_ index: Int) -> Double { 5.0 + Double(index) * 0.55 }
+    nonisolated static func birthTime(_ index: Int) -> Double { 10.9 + Double(index) * 0.22 }
+
+    /// How long an agent is on the ring across one pass: from the top of the
+    /// loop to its pop, plus from its return to the end.
+    nonisolated static func aliveSpan(_ index: Int) -> Double {
+        popTime(index) + (loop - birthTime(index))
+    }
+
+    /// How much of that it has used by now. Frozen while it is away, which is
+    /// what puts it back exactly where it left.
+    nonisolated static func aliveTime(_ index: Int, at time: Double) -> Double {
+        if time < popTime(index) { return time }
+        if time < birthTime(index) { return popTime(index) }
+        return popTime(index) + (time - birthTime(index))
+    }
+
     /// How far an agent has arrived at the top of a pass. They come back one
     /// after another rather than all at once, and each overshoots and settles,
     /// so they land rather than switch on.
     nonisolated static func arrived(_ index: Int, at time: Double) -> Double {
         if time < 10.9 { return 1 }
-        let start = 10.9 + Double(index) * 0.22
+        let start = birthTime(index)
         if time < start { return 0 }
         return min(1, (time - start) / 0.6)
     }
@@ -115,8 +136,12 @@ struct OnboardingScene: View {
             blink: blink(at: time),
             time: time
         )
-        .frame(width: 150, height: 116)
-        .position(x: 176, y: 52)
+        // Sized so the ring clears the top of the box: any wider and the
+        // agents at twelve o'clock are cut in half by the edge of the panel.
+        .frame(width: 112, height: 112)
+        // Centred on the machine's top right corner, so the mark reads as
+        // sitting on it rather than floating beside it.
+        .position(x: 194, y: 54)
     }
 
     /// One frame of the scene. Static so a test can render it without a window.
@@ -125,22 +150,22 @@ struct OnboardingScene: View {
         let sleep = asleep(at: time)
         let held = 1 - sleep
         return ZStack(alignment: .topLeading) {
-            // The far half of the orbit first, so the laptop covers it.
+            // The far half of the orbit first, so the machine covers it.
             orbit(.behind, at: time)
 
             Laptop(lit: held, working: live, time: time)
-                .frame(width: 122, height: 88)
-                .position(x: 92, y: 90)
+                // Height from the artwork's own proportion: the display is
+                // placed inside it by fractions, so a guessed height would put
+                // our screen through the bezel.
+                .frame(width: Laptop.width, height: Laptop.width / Laptop.aspect)
+                .position(x: 122, y: 94)
 
+            // Over the screen's left end, not off in the dark beside it.
             ChargeBolts(charge: held, sleeping: sleep, time: time)
                 .frame(width: 30, height: 58)
-                .position(x: 18, y: 62)
+                .position(x: 73, y: 80)
 
             orbit(.inFront, at: time)
-
-            Bouncer(resting: sleep, time: time)
-                .frame(width: 108, height: 140)
-                .position(x: 296, y: 74)
         }
         .frame(width: box.width, height: box.height)
     }

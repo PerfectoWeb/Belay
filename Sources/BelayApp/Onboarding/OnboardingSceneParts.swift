@@ -8,17 +8,22 @@ import SwiftUI
 /// piece sits, and what the three states look like — and this owns the pieces,
 /// none of which knows what time it is.
 ///
-/// Nested inside the scene rather than left at file scope. `Plug`, `Socket` and
-/// `Deck` are names an app of this size will want again, and a second `Rope` in
-/// another file would collide with this one on a day nobody was thinking about
-/// onboarding.
+/// Nested inside the scene rather than left at file scope. `Laptop` is a name an
+/// app of this size will want again, and a second one in another file would
+/// collide with this on a day nobody was thinking about onboarding.
 extension OnboardingScene {
-    /// The Mac: a MacBook, opaque and with some thickness to it.
+    /// The Mac: Apple's own MacBook Pro artwork, with our screen behind it.
     ///
-    /// Recognisably the machine rather than a grey rectangle: a bezel with a
-    /// notch cut into it, a lid that sits on a base rather than floating, and a
-    /// front lip so the base has a depth. No logo, because that is somebody
-    /// else's mark to put on things.
+    /// This was a drawn machine for a long while and it never quite became one.
+    /// The proportion of the lid, the radius of its corners and the depth of the
+    /// base are the whole of what makes a MacBook recognisable as a MacBook, and
+    /// none of the three survives being approximated by hand at this size.
+    ///
+    /// Apple publishes the bezel for exactly this, and the display is cut out of
+    /// it, so our screen needs no mask: it is laid down first and the artwork
+    /// goes over the top. Two PNGs, fifteen kilobytes together, decoded once by
+    /// the asset catalogue. The notch is ours, drawn over the artwork, because
+    /// the cut-out does not include it.
     struct Laptop: View {
         /// 1 while the Mac is being held awake, 0 once it is asleep.
         var lit: Double
@@ -26,113 +31,89 @@ extension OnboardingScene {
         var working: Double
         var time: Double
 
+        /// The artwork's own proportion, and the caller has to honour it. The
+        /// display is placed as fractions of the frame, so a frame of the wrong
+        /// shape slides our screen out from behind the bezel.
+        static let aspect: CGFloat = 4221.0 / 2578.0
+        /// How wide the machine is drawn. Kept here beside the proportion so
+        /// the two are never changed apart.
+        static let width: CGFloat = 150
+
+        /// Where the display is cut out of the artwork, as fractions of it.
+        /// Measured off its alpha channel rather than guessed.
+        private struct Hole {
+            var left: CGFloat
+            var top: CGFloat
+            var width: CGFloat
+            var height: CGFloat
+        }
+
+        private static let hole = Hole(
+            left: 0.0905, top: 0.0465, width: 0.8188, height: 0.8417)
         private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45]
-        /// The aluminium the whole machine is cut from.
-        private static let shell = Color(red: 0.30, green: 0.33, blue: 0.40)
-        private static let shellDark = Color(red: 0.20, green: 0.22, blue: 0.28)
         private static let glass = Color(red: 0.07, green: 0.09, blue: 0.14)
 
         var body: some View {
-            VStack(spacing: 0) {
-                // The lid is inset: the base has to come out past it on both
-                // sides or the machine reads as a screen balanced on a stick.
-                lid.padding(.horizontal, 7)
-                base
-            }
-        }
-
-        /// The lid: aluminium, a black bezel, and the screen inside it.
-        private var lid: some View {
-            RoundedRectangle(cornerRadius: 9, style: .continuous)
-                .fill(Self.shell)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 6, style: .continuous)
-                        .fill(Self.glass)
-                        .overlay { display }
-                        .overlay(alignment: .top) { notch }
-                        .padding(3)
+            GeometryReader { geometry in
+                let size = geometry.size
+                ZStack(alignment: .topLeading) {
+                    display
+                        .frame(
+                            width: size.width * Self.hole.width,
+                            height: size.height * Self.hole.height
+                        )
+                        .offset(x: size.width * Self.hole.left, y: size.height * Self.hole.top)
+                    Image("macbook-bezel")
+                        .resizable()
+                        .frame(width: size.width, height: size.height)
+                    notch(across: size)
                 }
-                .overlay(
-                    RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .strokeBorder(Color.white.opacity(0.14), lineWidth: 1))
+            }
+            .accessibilityHidden(true)
         }
 
-        /// The camera housing every MacBook has had since 2021. Three points
-        /// wide is enough at this size; any more and it reads as a bite.
-        private var notch: some View {
-            UnevenRoundedRectangle(
-                bottomLeadingRadius: 3, bottomTrailingRadius: 3, style: .continuous
+        /// The camera housing, hanging from the top of the display and drawn
+        /// after the artwork so it sits over our screen rather than under it.
+        /// Wider than the real one in proportion: at this size a truthful notch
+        /// is a nub nobody reads as a notch.
+        private func notch(across size: CGSize) -> some View {
+            let width = size.width * Self.hole.width * 0.17
+            let height = size.height * Self.hole.height * 0.08
+            return UnevenRoundedRectangle(
+                bottomLeadingRadius: height / 2, bottomTrailingRadius: height / 2,
+                style: .continuous
             )
-            .fill(Self.glass)
-            .frame(width: 26, height: 5)
+            .fill(.black)
+            .frame(width: width, height: height)
+            .offset(
+                x: size.width * (Self.hole.left + Self.hole.width / 2) - width / 2,
+                y: size.height * Self.hole.top)
         }
 
         /// What is on the screen: the work, or a moon once it has stopped.
         private var display: some View {
             ZStack {
-                Rectangle()
-                    .fill(Color.accentColor.opacity(0.14 * lit))
+                Rectangle().fill(Self.glass)
+                Rectangle().fill(Color.accentColor.opacity(0.16 * lit))
                 lines
-                    .padding(.horizontal, 10)
-                    .padding(.top, 13)
+                    .padding(.horizontal, 12)
+                    .padding(.top, 15)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                     .opacity(lit)
                 Image(systemName: "moon.fill")
-                    .font(.system(size: 17))
+                    .font(.system(size: 20))
                     .foregroundStyle(Color.white.opacity(0.55))
                     .opacity(1 - lit)
             }
-            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-        }
-
-        /// The base. Two planes, not two sheets: the deck seen from above, and
-        /// the front edge of the machine below it, which is what gives the
-        /// thing a depth instead of looking cut from card.
-        private var base: some View {
-            ZStack(alignment: .top) {
-                // The front edge, sitting under and slightly wider than the
-                // deck, with a lit top rim where the two planes meet.
-                RoundedRectangle(cornerRadius: 3, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [Self.shell, Self.shellDark],
-                            startPoint: .top, endPoint: .bottom)
-                    )
-                    .frame(height: 8)
-                    .overlay(alignment: .top) {
-                        Rectangle()
-                            .fill(Color.white.opacity(0.25))
-                            .frame(height: 1)
-                    }
-                    .padding(.top, 4)
-                    .padding(.horizontal, 2)
-
-                // The deck itself, tapering away from the viewer.
-                Deck()
-                    .fill(
-                        LinearGradient(
-                            colors: [Self.shellDark, Self.shell],
-                            startPoint: .top, endPoint: .bottom)
-                    )
-                    .frame(height: 5)
-                    // The notch the lid closes into.
-                    .overlay(alignment: .bottom) {
-                        Capsule()
-                            .fill(Color.black.opacity(0.35))
-                            .frame(width: 26, height: 1.5)
-                            .padding(.bottom, 1)
-                    }
-            }
-            .frame(height: 12)
         }
 
         /// The work, as lines arriving one after another.
         private var lines: some View {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 6) {
                 ForEach(Array(Self.widths.enumerated()), id: \.offset) { index, width in
                     Capsule()
                         .fill(index == 0 ? Color.accentColor : Color.white.opacity(0.75))
-                        .frame(width: 62 * width, height: 4)
+                        .frame(width: 68 * width, height: 4)
                         .opacity(lineOpacity(index))
                 }
             }
@@ -145,24 +126,6 @@ extension OnboardingScene {
             let step = (time * 1.6 - Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
             let shown = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
             return 0.2 + (shown - 0.2) * working
-        }
-    }
-
-    /// The keyboard half, wider at the front than at the back. Two rectangles one
-    /// above the other read as a screen sitting on a box; the taper is the whole of
-    /// what makes it read as a laptop seen from slightly above.
-    struct Deck: Shape {
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-            // Opened out: a shallow taper read as a rectangle with the corners
-            // knocked off rather than as a deck going away from the viewer.
-            let inset = rect.width * 0.17
-            path.move(to: CGPoint(x: rect.minX + inset, y: rect.minY))
-            path.addLine(to: CGPoint(x: rect.maxX - inset, y: rect.minY))
-            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-            path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-            path.closeSubpath()
-            return path
         }
     }
 

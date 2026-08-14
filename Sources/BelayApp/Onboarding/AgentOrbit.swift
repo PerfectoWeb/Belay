@@ -34,11 +34,11 @@ struct AgentOrbit: View {
 
     /// The logos the app already ships, in the order they take the ring.
     private static let agents = ["claude", "codex", "gemini", "cline"]
-    /// Each one's own rate, in turns per second, and none divides into another
-    /// so the four never fall into step. All the same sign: with two running
-    /// the other way the ring read as changing direction rather than as four
-    /// things at four speeds.
-    private static let rates: [Double] = [0.052, 0.071, 0.094, 0.117]
+    /// Whole turns each agent makes while it is on the ring. Whole, because a
+    /// fraction of a turn is the seam: the agent pops at one angle and comes
+    /// back at another, and the loop visibly cuts. Different for each, and none
+    /// dividing into the next, so the four never fall into step.
+    private static let turns: [Double] = [1, 2, 3, 4]
     /// The disc every agent rides on.
     private static let disc = Color(red: 0.169, green: 0.216, blue: 0.325)
     /// The tile, holding and let go.
@@ -53,7 +53,9 @@ struct AgentOrbit: View {
         GeometryReader { geometry in
             let size = geometry.size
             let centre = CGPoint(x: size.width / 2, y: size.height / 2)
-            let radius = min(size.width, size.height) / 2 - 13
+            // A circle, not an ellipse. Seen head on the mark is the sun and
+            // the ring is a true orbit around it; tilted, it read as a plate.
+            let radius = min(size.width, size.height) / 2 - 12
             ZStack {
                 if half == .behind {
                     ring(radius: radius, centre: centre)
@@ -76,13 +78,20 @@ struct AgentOrbit: View {
         .accessibilityHidden(true)
     }
 
-    /// Whether an agent is on the far side of the ring at this moment.
+    /// Whether an agent is on the side of the ring that crosses the machine.
+    /// The laptop sits to the left of the mark, so that is the left half.
     static func isBehind(_ index: Int, at time: Double) -> Bool {
-        sin(angle(index, at: time)) < 0
+        cos(angle(index, at: time)) < 0
     }
 
+    /// Where an agent is. The clock only runs while it is up: frozen from the
+    /// moment it pops to the moment it returns, so it comes back exactly where
+    /// it left. Combined with a whole number of turns per pass, the ring closes
+    /// on itself and there is nothing to see at the wrap.
     private static func angle(_ index: Int, at time: Double) -> Double {
-        time * rates[index] * 2 * .pi + Double(index) * (2 * .pi / 4)
+        let alive = OnboardingScene.aliveTime(index, at: time)
+        let span = OnboardingScene.aliveSpan(index)
+        return alive / span * turns[index] * 2 * .pi + Double(index) * (2 * .pi / 4)
     }
 
     /// The track. It goes with the agents: left behind after the last one pops,
@@ -94,7 +103,7 @@ struct AgentOrbit: View {
                 Color.white.opacity(0.16 * left),
                 style: StrokeStyle(lineWidth: 1, dash: [2, 4])
             )
-            .frame(width: radius * 2, height: radius * 2 * 0.62)
+            .frame(width: radius * 2, height: radius * 2)
             .position(centre)
     }
 
@@ -125,7 +134,7 @@ struct AgentOrbit: View {
         let angle = Self.angle(index, at: time)
         let point = CGPoint(
             x: centre.x + cos(angle) * radius,
-            y: centre.y + sin(angle) * radius * 0.62)
+            y: centre.y + sin(angle) * radius)
         // Swells before it goes, the way a bubble does.
         let swell = 1 + 0.55 * sin(min(1, gone * 1.6) * .pi)
         return ZStack {
