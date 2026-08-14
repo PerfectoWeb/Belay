@@ -46,8 +46,12 @@ extension OnboardingView {
                     BelayWordmark(size: 22, word: .primary, animated: true)
                 }
                 .transition(.opacity)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .padding(.top, 20 + Self.titlebar)
+                // Hung from the top, not centred in what is left. Centred, the
+                // block moves half of any change made inside it: nudge the
+                // machine up ten and the group re-centres and gives five back.
+                // From the top, a number here is the number that happens.
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .padding(.top, 34 + Self.titlebar)
             } else {
                 // Centred in all of the panel, titlebar included: it has the
                 // panel to itself, and centring under the titlebar read as low.

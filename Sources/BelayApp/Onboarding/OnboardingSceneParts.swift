@@ -64,8 +64,11 @@ extension OnboardingScene {
         /// the machine reads as one dark object rather than as a dark frame
         /// with a blue panel still glowing inside it.
         private static let dark = Color(red: 0.045, green: 0.05, blue: 0.06)
-        /// Moonlight. White read as a spotlight on a screen that is off.
-        private static let moonlight = Color(red: 0.60, green: 0.71, blue: 0.98)
+        /// The moon. Grey and dim: white read as a spotlight on a screen that
+        /// is off, and the blue it was tried in read as the screen still being
+        /// on. It is the one thing left on a dark machine and it should barely
+        /// be there.
+        private static let moonlight = Color(white: 0.45)
 
         var body: some View {
             GeometryReader { geometry in
@@ -100,7 +103,7 @@ extension OnboardingScene {
                     .opacity(lit)
                 Image(systemName: "moon.fill")
                     .font(.system(size: 20))
-                    .foregroundStyle(Self.moonlight.opacity(0.85))
+                    .foregroundStyle(Self.moonlight)
                     // Off the display's true centre, which is not where the
                     // middle looks: the notch weights the top of the screen.
                     .offset(y: 2)

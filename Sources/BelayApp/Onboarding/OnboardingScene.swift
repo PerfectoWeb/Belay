@@ -33,7 +33,7 @@ struct OnboardingScene: View {
     /// The mark, and the snore, as offsets from the machine. Held here rather
     /// than as absolute points so that moving the machine moves the picture
     /// with it instead of taking it apart.
-    nonisolated static let markAt = CGSize(width: 62, height: -50)
+    nonisolated static let markAt = CGSize(width: 62, height: -49)
     nonisolated static let snoreAt = CGSize(width: -68, height: -38)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
