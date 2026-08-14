@@ -113,16 +113,23 @@ Store Connect will not ask.
 
 ## Step 8. Notes for review, and this one matters
 
-> **2026-08-14, still outstanding.** The notes field in App Store Connect holds
-> the *old* text, the one that says Precise Detection "is off by default" and
-> that Belay "listens only when enabled by the user". That is not what the code
-> does — the listener starts in `applicationDidFinishLaunching` and runs for the
-> lifetime of the app — and it is the worst possible thing to have said in a
-> 2.4.5 dispute, because it tells the reviewer the functionality is switched
-> off. The replacement is `docs/app-review-notes.txt`; paste it into App Review
-> Information by hand. The App Store Connect API key in `.secrets/` can read
-> that field but not write it: `PATCH` returns 403 FORBIDDEN_ERROR, "the API key
-> in use does not allow this request".
+> **2026-08-14, done.** The notes field held the old text — the one claiming
+> Precise Detection "is off by default" and that Belay "listens only when
+> enabled by the user" — which is not what the code does and was the worst
+> possible thing to have said in a 2.4.5 dispute. It was replaced by hand and
+> the version resubmitted; `docs/app-review-notes.txt` is a copy of what is
+> actually in App Store Connect, pulled back out of the API rather than
+> retyped. The key in `.secrets/` can read that field but not write it: `PATCH`
+> returns 403 FORBIDDEN_ERROR, "the API key in use does not allow this
+> request". Writing it needs a second key with the App Manager role.
+>
+> One argument was trimmed out of the submitted version and is worth having
+> ready if this comes back: **`network.client` is not a substitute.** The
+> sandbox distinguishes by direction — `client` authorises `connect(2)`, while
+> `NWListener` performs `bind(2)` and `listen(2)`, which the sandbox denies
+> with EPERM without `network.server`, loopback included. A probe built on
+> Belay's own `NWParameters` fails with "Operation not permitted" sandboxed
+> with `client` only, and binds with `server`.
 
 Belay opens a listening socket on `127.0.0.1`, and the 1.0.0 submission was
 rejected over it — not by a reviewer, by an automated check. Guideline 2.4.5,

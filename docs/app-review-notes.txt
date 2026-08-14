@@ -1,38 +1,22 @@
-Belay is a menu bar utility that keeps the Mac awake while a local AI coding
-agent is working. It has no account, no server and no analytics, and no sign-in
-is required to review any part of it.
+Belay is a menu bar utility that keeps the Mac awake while a coding agent is working. No account or sign-in is required to review the app.
 
-Why the app needs com.apple.security.network.server. Belay runs an HTTP listener
-bound to 127.0.0.1 so that Claude Code, a command line tool running on the same
-Mac and outside our sandbox, can post lifecycle events to it: a run started, a
-run finished, the agent is waiting for input. The listener is created with
-NWListener from Network.framework on an ephemeral port, is restricted to the
-loopback interface, and requires a bearer token that Belay writes into its own
-container. It starts in applicationDidFinishLaunching and runs for the lifetime
-of the app.
+Belay uses `com.apple.security.network.server` only for Precise Detection. It listens on `127.0.0.1` so Claude Code, running on the same Mac, can send local lifecycle events such as started, finished, or waiting for input. The listener uses an ephemeral port and requires a bearer token stored in Belay's own container.
 
-The app cannot make outbound connections. This build deliberately ships without
-com.apple.security.network.client, which is also why network.client is not an
-alternative: the sandbox distinguishes by direction. network.client authorises
-connect(2), while NWListener performs bind(2) and listen(2), which the sandbox
-denies with EPERM without network.server, loopback included.
+This App Store build does not include `com.apple.security.network.client` and makes no outbound network connections.
 
-To see it working, about a minute, no account needed:
+To verify the listener:
 
-1. Launch Belay. The listener is already up:
-   lsof -nP -iTCP -sTCP:LISTEN -a -c Belay
-   prints a line ending TCP 127.0.0.1:<port> (LISTEN).
-2. The same port and its token are in
-   ~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json
-3. Post to it the way Claude Code does:
-   curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"
-   It answers 204. Without the header, or with a wrong token, it answers 401.
-4. Belay's panel now shows a session working, and
-   pmset -g assertions | grep Belay
-   shows the assertion macOS granted.
+1. Launch Belay and run:
+   `lsof -nP -iTCP -sTCP:LISTEN -a -c Belay`
 
-Note that Belay does not add its hook to Claude Code's settings file unless the
-user asks it to, in Settings > Providers > Precise detection, from a button that
-shows the exact change first. So on a fresh install the socket is listening and
-idle: it is waiting for an agent that has not been pointed at it yet. Step 3
-above is exactly what that agent would send.
+You should see Belay listening on `127.0.0.1:<port>`.
+
+2. The port and token are stored in:
+   `~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json`
+
+3. Send a local event:
+   `curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"`
+
+Belay returns `204`. A missing or incorrect token returns `401`.
+
+Precise Detection is optional. Belay does not add anything to Claude Code's settings until the user enables it in Settings > Providers > Precise Detection and confirms the change shown on screen. On a fresh install, the local listener is running but idle.
