@@ -19,10 +19,10 @@ report_failures() {
 }
 
 # First, because it costs a hundredth of a second and because the thing it
-# guards against is the one that cannot be fixed after the fact: a public
-# repository that credits an AI for the work.
-echo "==> no AI attribution"
-./scripts/no-attribution.sh
+# guards against is the one that is expensive to undo: a public repository whose
+# history claims an author it does not have.
+echo "==> authorship"
+./scripts/one-author.sh
 
 echo "==> swift test (module suites)"
 MODULE_LOG="$(mktemp)"

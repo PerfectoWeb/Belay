@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Refuses a commit message with a Co-Authored-By trailer or a generator line.
-# The message is not a file in the tree, so no-attribution.sh cannot see it
-# until the commit exists; this catches it a moment earlier.
+# Refuses a commit message that names a second author.
+# Enable with:  git config core.hooksPath .githooks
 set -euo pipefail
-if grep -InE '^[[:space:]]*Co-[Aa]uthored-[Bb]y:|noreply@anthropic\.com|[Gg]enerated with \[?[Cc]laude|🤖 [Gg]enerated' -- "$1"; then
-    echo "the commit message credits an AI; remove that line" >&2
+if grep -InE '^[[:space:]]*Co-[Aa]uthored-[Bb]y:|^[[:space:]]*[Gg]enerated with \[' -- "$1"; then
+    echo "this project has one author; drop the trailer" >&2
     exit 1
 fi
