@@ -41,16 +41,37 @@ struct OnboardingView: View {
     /// left-aligned lockup was the old arrangement and it read as a poster.
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            hero.modifier(Entrance(shown: entered, delay: 0, animated: !reduceMotion))
+            // The panel's place in the stack, so everything below it sits where
+            // it always did. The panel itself is drawn behind, because it has to
+            // reach higher than this box does.
+            Color.clear.frame(height: Self.heroHeight)
             words.modifier(Entrance(shown: entered, delay: 0.10, animated: !reduceMotion))
             buttons.modifier(Entrance(shown: entered, delay: 0.17, animated: !reduceMotion))
             accessLine.modifier(Entrance(shown: entered, delay: 0.24, animated: !reduceMotion))
         }
         .frame(width: 470, height: 486)
+        // Behind, and not in the stack. A view inside a stack cannot grow past
+        // the stack's own top edge, and the window adds a titlebar's height to
+        // whatever the content asks for, so a taller panel made a taller window
+        // with an empty strip along the bottom rather than a panel that reached
+        // the top. As a background it is free to ignore the safe area and run up
+        // behind the window's buttons, and the window stays the size it was.
+        .background(alignment: .top) {
+            hero.modifier(Entrance(shown: entered, delay: 0, animated: !reduceMotion))
+        }
         .onAppear { entered = true }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Welcome to \(Branding.appName)")
     }
+
+    /// The height of the titlebar the panel now reaches up under. The window is
+    /// `.fullSizeContentView`, so this is space the content already owns and was
+    /// simply not using.
+    static let titlebar: CGFloat = 32
+
+    /// How much of the window the panel occupies, not counting the titlebar it
+    /// reaches up under.
+    static let heroHeight: CGFloat = 250
 
     private var hero: some View {
         ZStack(alignment: .topLeading) {
@@ -71,19 +92,17 @@ struct OnboardingView: View {
             // left, so the scene has a place of its own to grow into.
             OnboardingScene()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .padding(.top, 34)
+                .padding(.top, 34 + Self.titlebar)
 
+            // Beside the window's own buttons rather than under them. They sit
+            // on the panel now, so the lockup has to start after them or it
+            // shares a row with three circles it has nothing to do with.
             BelayWordmark(size: 22, word: .primary, animated: true)
-                .padding(20)
+                .padding(.leading, 76)
+                .padding(.top, 14)
         }
-        .frame(height: 250)
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .strokeBorder(.white.opacity(0.07), lineWidth: 1)
-        )
-        .padding(.horizontal, 30)
-        .padding(.top, 0)
+        .frame(height: Self.heroHeight + Self.titlebar)
+        .ignoresSafeArea(.container, edges: .top)
     }
 
     private var words: some View {
