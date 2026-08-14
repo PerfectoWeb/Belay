@@ -3,25 +3,36 @@
 How a release of the direct (Developer ID) build is cut, by hand or by CI, and
 how to undo one that went wrong.
 
-**Read this first.** Most of what follows has never been executed. The scripts
-are written and reviewed, the workflow parses, and the certificate exists, but
-the app has never been notarized and no GitHub Release has ever been published
-from this repository. `BLOCKERS.md` B6 is the record of that. Treat the first
-run as a debugging session and do it as a dry run, not as a tag push.
+**Read this first.** This path has been run. v1.0.0 was cut on 2026-08-13 and
+published on 2026-08-14: archived, signed with Developer ID, notarized, stapled,
+packaged and attached to a GitHub Release. What follows describes what actually
+happened, not what was intended.
 
-What has actually been done, as of this writing:
+What has been run, and what still has not:
 
 | Step | State |
 |---|---|
 | Ad-hoc local build (`scripts/build-local.sh`) | run many times |
 | Developer ID signing, hardened runtime, secure timestamp | run and verified (B1) |
-| `xcodebuild archive` / `-exportArchive` with developer-id | never run |
-| `create-dmg` | never run |
-| Notarization and stapling | never run (B6) |
-| `.github/workflows/release.yml` | never run |
-| GitHub Release published | never |
+| `xcodebuild archive` / `-exportArchive` with developer-id | run, for v1.0.0 |
+| `dmgbuild` | run, for v1.0.0 |
+| Notarization and stapling | run and accepted (B6 closed) |
+| GitHub Release published | v1.0.0, by hand |
+| `.github/workflows/release.yml` | still never run |
 | Sparkle appcast (`scripts/sign-update.sh`) | never run, and blocked on B3 |
 | Mac App Store submission | never; stays manual, see below |
+
+Two things that cost time on the first real run and will cost it again:
+
+**`dmgbuild` needs Python 3.10 or newer**, and the `python3` on `PATH` here is
+Xcode's 3.9. `pipx install 'dmgbuild>=1.6.7'` is the documented route; a
+virtualenv built on Homebrew's `python3.12` with its `bin` prepended to `PATH`
+works just as well, and `scripts/release.sh` accepts either shape.
+
+**Notarization does not need the keychain profile.** `scripts/notarize.sh`
+prefers a `notarytool` profile and falls back to the App Store Connect key in
+`.secrets/appstoreconnect.env`, which is what v1.1.0 was notarized with. A
+missing `BelayNotary` profile is not a blocker.
 
 ---
 

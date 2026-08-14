@@ -194,12 +194,11 @@ shows project folder names and that is somebody's directory tree.
 
 ### Support URL and privacy policy URL
 
-Both are required fields, both must be publicly reachable without a login, and
-neither exists yet, because the repository has never been pushed anywhere.
+Both are required fields and both must be publicly reachable without a login.
+The repository is public now, so both exist.
 
-- **Support URL.** `https://github.com/perfectoweb/belay/issues` once the repo is
-  public. It is a legitimate support channel for a free MIT project and Apple
-  accepts it.
+- **Support URL.** `https://github.com/perfectoweb/belay/issues`. It is a
+  legitimate support channel for a free MIT project and Apple accepts it.
 - **Privacy policy URL.** A GitHub issues page is not a privacy policy. Two
   workable options for a repo-only project:
   - **GitHub Pages.** Enable Pages on the repository and publish one page whose
