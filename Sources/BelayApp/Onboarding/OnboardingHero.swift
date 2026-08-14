@@ -34,11 +34,20 @@ extension OnboardingView {
             // Reduce Motion is read here, not in `onAppear`, which runs a frame
             // too late and would flash the greeting.
             if greeted || reduceMotion {
-                // Pushed past the titlebar: it shares the panel with the lockup.
-                OnboardingScene()
-                    .transition(.opacity)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .padding(.top, 34 + Self.titlebar)
+                // The scene and the lockup as one block, centred together.
+                //
+                // The lockup used to sit up in the corner under the window's
+                // buttons, which put the machine low in the panel and left the
+                // name arguing with the traffic lights for the same corner.
+                // Under the picture and on its centre line it is a caption, and
+                // the machine rises about thirty points into the space it left.
+                VStack(spacing: 16) {
+                    OnboardingScene()
+                    BelayWordmark(size: 22, word: .primary, animated: true)
+                }
+                .transition(.opacity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .padding(.top, 20 + Self.titlebar)
             } else {
                 // Centred in all of the panel, titlebar included: it has the
                 // panel to itself, and centring under the titlebar read as low.
@@ -47,15 +56,6 @@ extension OnboardingView {
                     onFinished: { withAnimation(.easeInOut(duration: 0.45)) { greeted = true } }
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            }
-
-            // Under the window's buttons, not beside them, and on the same
-            // left edge as every line of text below.
-            if skyUp || reduceMotion {
-                BelayWordmark(size: 22, word: .primary, animated: true)
-                    .transition(.opacity)
-                    .padding(.leading, Self.margin)
-                    .padding(.top, Self.titlebar + 12)
             }
         }
         .frame(height: Self.heroHeight + Self.titlebar)

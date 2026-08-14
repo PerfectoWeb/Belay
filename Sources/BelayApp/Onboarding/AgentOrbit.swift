@@ -26,9 +26,10 @@ struct AgentOrbit: View {
     var arrived: [Double]
     /// The halo behind the mark. Goes out with the machine.
     var glow: Double
-    /// 1 while the mark is lit, 0 on an off beat. It is a colour change, not a
+    /// 1 while the mark is lit, 0 while it is not. It is a colour change, not a
     /// fade: an icon going transparent reads as the app quitting, an icon going
-    /// grey reads as the thing it does being switched off.
+    /// grey reads as the thing it does being switched off. Between the two it
+    /// mixes, so the blink and the return are the same gesture at two speeds.
     var blink: Double
     var time: Double
 
@@ -109,21 +110,28 @@ struct AgentOrbit: View {
 
     /// The app icon, on its own rounded tile, the way it appears in the Dock.
     private var tile: some View {
-        RoundedRectangle(cornerRadius: 11, style: .continuous)
-            .fill(
-                LinearGradient(
-                    colors: blink > 0.5 ? Self.lit : Self.off,
-                    startPoint: .top, endPoint: .bottom)
-            )
-            .frame(width: 42, height: 42)
-            .overlay {
-                Image(nsImage: BelayGlyph.image(.alwaysOn, size: 26))
-                    .renderingMode(.template)
-                    .foregroundStyle(.white)
-            }
-            // The halo is what the machine takes with it. The tile itself stays
-            // solid: an app icon that fades out reads as the app quitting.
-            .shadow(color: Color.accentColor.opacity(0.55 * glow), radius: 10 * glow)
+        // Grey underneath and blue over it, rather than one fill chosen by a
+        // threshold. A threshold could only snap, and the mark has to be able
+        // to come back up with the machine over a third of a second.
+        ZStack {
+            RoundedRectangle(cornerRadius: 11, style: .continuous)
+                .fill(
+                    LinearGradient(colors: Self.off, startPoint: .top, endPoint: .bottom))
+            RoundedRectangle(cornerRadius: 11, style: .continuous)
+                .fill(
+                    LinearGradient(colors: Self.lit, startPoint: .top, endPoint: .bottom)
+                )
+                .opacity(blink)
+        }
+        .frame(width: 42, height: 42)
+        .overlay {
+            Image(nsImage: BelayGlyph.image(.alwaysOn, size: 26))
+                .renderingMode(.template)
+                .foregroundStyle(.white)
+        }
+        // The halo is what the machine takes with it. The tile itself stays
+        // solid: an app icon that fades out reads as the app quitting.
+        .shadow(color: Color.accentColor.opacity(0.55 * glow), radius: 10 * glow)
     }
 
     /// One agent: a slate disc with its logo in white, riding the ellipse. The

@@ -39,12 +39,43 @@ struct OnboardingScene: View {
                         at: timeline.date.timeIntervalSince(began)
                             .truncatingRemainder(dividingBy: Self.loop))
                 }
+                .task { await soundtrack() }
             }
         }
         .frame(width: Self.box.width, height: Self.box.height)
         .accessibilityElement()
         .accessibilityLabel(
             "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops")
+    }
+
+    // MARK: - The one pass that makes a noise
+
+    /// What is heard, and when, on the first pass only.
+    ///
+    /// The picture repeats every twelve seconds for as long as the window is
+    /// open, and a sound on every repeat would be a metronome: four pops and a
+    /// sigh, over and over, at somebody who is reading two sentences and
+    /// deciding whether to press a button. Once is an interface being
+    /// underlined. Twice is an interface asking to be noticed.
+    ///
+    /// Gated the same way every other sound in the app is — the system's
+    /// interface-sounds preference first, then Belay's own switch — because a
+    /// welcome screen is the worst possible place to be the exception.
+    private static var cues: [(at: Double, sound: Feedback.Sound)] {
+        (0..<4).map { (at: popTime($0), sound: Feedback.Sound.agentPop) }
+            + [(at: 8.35, sound: .driftingOff)]
+    }
+
+    /// Walks the cues in order, sleeping the gap between each. Cancelled with
+    /// the view, so a window closed mid-pass makes no noise afterwards.
+    private func soundtrack() async {
+        var played = 0.0
+        for cue in Self.cues {
+            try? await Task.sleep(for: .seconds(cue.at - played))
+            if Task.isCancelled { return }
+            Feedback.play(cue.sound)
+            played = cue.at
+        }
     }
 
     // MARK: - The clock
@@ -64,11 +95,15 @@ struct OnboardingScene: View {
 
     /// How far the Mac has gone to sleep. Lags the work by the grace period,
     /// which is the part people do not expect and the part worth showing.
+    /// A crossfade rather than a dissolve: the work and the moon are two states
+    /// of one screen, and a long ramp between them shows a third that is
+    /// neither. Just over a third of a second each way, which is about as fast
+    /// as a change of state can be and still be seen to happen.
     nonisolated static func asleep(at time: Double) -> Double {
         if time < 8.3 { return 0 }
-        if time < 9.2 { return (time - 8.3) / 0.9 }
+        if time < 8.65 { return (time - 8.3) / 0.35 }
         if time < 10.8 { return 1 }
-        return max(0, 1 - (time - 10.8) / 0.8)
+        return max(0, 1 - (time - 10.8) / 0.35)
     }
 
     /// How far gone an agent is: nought while it runs, one once it has popped.
@@ -120,9 +155,17 @@ struct OnboardingScene: View {
     /// Two beats as Belay lets go. It is the one moment the mark is allowed to
     /// go dim, and it comes back to full before the screen does.
     nonisolated static func blink(at time: Double) -> Double {
-        guard time >= 7.4, time < 8.3 else { return 1 }
-        let beat = (time - 7.4) / 0.45
-        return beat.truncatingRemainder(dividingBy: 1) < 0.5 ? 0.3 : 1
+        if time < 7.4 { return 1 }
+        if time < 8.3 {
+            let beat = (time - 7.4) / 0.45
+            return beat.truncatingRemainder(dividingBy: 1) < 0.5 ? 0.3 : 1
+        }
+        // And then it stays down. The blink is Belay letting go, so the mark
+        // going back to blue while the Mac is dark would say it had taken hold
+        // of nothing. It comes back with the machine, on the same ramp, which
+        // is what makes the two read as one event.
+        if time < 10.8 { return 0 }
+        return min(1, (time - 10.8) / 0.35)
     }
 
     /// One half of the ring, placed. Both halves take the same frame, so an
@@ -160,10 +203,12 @@ struct OnboardingScene: View {
                 .frame(width: Laptop.width, height: Laptop.width / Laptop.aspect)
                 .position(x: 122, y: 94)
 
-            // Over the screen's left end, not off in the dark beside it.
+            // Rising off the top left corner of the screen: the lowest bolt is
+            // on the glass and the other two are already above the machine, so
+            // the three read as leaving it rather than as sitting on it.
             ChargeBolts(charge: held, sleeping: sleep, time: time)
                 .frame(width: 30, height: 58)
-                .position(x: 73, y: 80)
+                .position(x: 64, y: 46)
 
             orbit(.inFront, at: time)
         }

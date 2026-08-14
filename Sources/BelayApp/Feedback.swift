@@ -30,11 +30,15 @@ enum Feedback {
         case tick
         /// The only sound here that is about the person rather than the machine.
         case thanks
+        /// An agent finishing, in the welcome scene. A bubble, not a chime.
+        case agentPop = "agent-pop"
+        /// The Mac letting go, in the welcome scene. Slow, low and quiet.
+        case driftingOff = "drifting-off"
     }
 
     static var isEnabled: () -> Bool = { true }
 
-    /// Loaded once each. Five files of about 30 KB, which is cheaper than
+    /// Loaded once each. Seven files of about 30 KB, which is cheaper than
     /// reading them off disk at the moment somebody is watching for a response.
     private static var loaded: [Sound: NSSound] = [:]
 

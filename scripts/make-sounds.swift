@@ -140,6 +140,31 @@ let sounds: [String: [Double]] = [
                 frequency: 783.99, at: 0.170, decay: 0.24, level: 0.12,
                 partials: [(2.0, 0.09), (3.17, 0.03)]),
         ], length: 0.58),
+
+    // An agent finishing, in the welcome scene. A bubble, so the pitch runs the
+    // other way: it starts well flat and arrives, which is what a negative bend
+    // is. Twenty milliseconds of decay, because a pop that rings is a droplet.
+    "agent-pop": render(
+        [
+            Note(
+                frequency: 660, at: 0, decay: 0.020, level: 0.07,
+                partials: [(2.0, 0.05), (3.17, 0.02)], bend: -0.6)
+        ], length: 0.11),
+
+    // The Mac letting go, in the welcome scene. The slowest of the set and
+    // still inside the three-quarters of a second the others keep to: it was
+    // written at 1.1s and the test was right to refuse it. Nothing here gets to
+    // be a mood. Two notes falling a fifth, low and quiet, which is what keeps
+    // it under the picture rather than on top of it.
+    "drifting-off": render(
+        [
+            Note(
+                frequency: 329.63, at: 0, decay: 0.18, level: 0.055,
+                partials: [(2.0, 0.05)]),
+            Note(
+                frequency: 220.00, at: 0.13, decay: 0.26, level: 0.05,
+                partials: [(2.0, 0.04)]),
+        ], length: 0.72),
 ]
 
 try FileManager.default.createDirectory(

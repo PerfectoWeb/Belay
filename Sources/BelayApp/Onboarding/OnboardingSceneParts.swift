@@ -22,8 +22,8 @@ extension OnboardingScene {
     /// Apple publishes the bezel for exactly this, and the display is cut out of
     /// it, so our screen needs no mask: it is laid down first and the artwork
     /// goes over the top. Two PNGs, fifteen kilobytes together, decoded once by
-    /// the asset catalogue. The notch is ours, drawn over the artwork, because
-    /// the cut-out does not include it.
+    /// the asset catalogue. The notch comes with it, as an opaque tab hanging
+    /// into the cut-out, and so do the display's rounded corners.
     struct Laptop: View {
         /// 1 while the Mac is being held awake, 0 once it is asleep.
         var lit: Double
@@ -40,7 +40,12 @@ extension OnboardingScene {
         static let width: CGFloat = 150
 
         /// Where the display is cut out of the artwork, as fractions of it.
-        /// Measured off its alpha channel rather than guessed.
+        ///
+        /// Measured off its alpha channel, and measured away from the middle.
+        /// The first reading was taken down the centre column, which runs
+        /// straight through the notch: it put the top of the screen sixty-four
+        /// artwork pixels too low and left a torn strip of window showing
+        /// between the bezel and our screen.
         private struct Hole {
             var left: CGFloat
             var top: CGFloat
@@ -49,8 +54,10 @@ extension OnboardingScene {
         }
 
         private static let hole = Hole(
-            left: 0.0905, top: 0.0465, width: 0.8188, height: 0.8417)
-        private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45]
+            left: 0.0905, top: 0.0217, width: 0.8188, height: 0.8666)
+        /// Six now, not four. The screen is a terminal with an agent talking
+        /// into it, and four lines read as a form with four fields.
+        private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45, 0.7, 0.35]
         private static let glass = Color(red: 0.07, green: 0.09, blue: 0.14)
 
         var body: some View {
@@ -66,28 +73,9 @@ extension OnboardingScene {
                     Image("macbook-bezel")
                         .resizable()
                         .frame(width: size.width, height: size.height)
-                    notch(across: size)
                 }
             }
             .accessibilityHidden(true)
-        }
-
-        /// The camera housing, hanging from the top of the display and drawn
-        /// after the artwork so it sits over our screen rather than under it.
-        /// Wider than the real one in proportion: at this size a truthful notch
-        /// is a nub nobody reads as a notch.
-        private func notch(across size: CGSize) -> some View {
-            let width = size.width * Self.hole.width * 0.17
-            let height = size.height * Self.hole.height * 0.08
-            return UnevenRoundedRectangle(
-                bottomLeadingRadius: height / 2, bottomTrailingRadius: height / 2,
-                style: .continuous
-            )
-            .fill(.black)
-            .frame(width: width, height: height)
-            .offset(
-                x: size.width * (Self.hole.left + Self.hole.width / 2) - width / 2,
-                y: size.height * Self.hole.top)
         }
 
         /// What is on the screen: the work, or a moon once it has stopped.
@@ -107,14 +95,25 @@ extension OnboardingScene {
             }
         }
 
-        /// The work, as lines arriving one after another.
+        /// The work, as lines arriving one after another, with something still
+        /// thinking at the end of the last of them.
         private var lines: some View {
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 5) {
                 ForEach(Array(Self.widths.enumerated()), id: \.offset) { index, width in
-                    Capsule()
-                        .fill(index == 0 ? Color.accentColor : Color.white.opacity(0.75))
-                        .frame(width: 68 * width, height: 4)
-                        .opacity(lineOpacity(index))
+                    HStack(spacing: 5) {
+                        Capsule()
+                            .fill(index == 0 ? Color.accentColor : Color.white.opacity(0.75))
+                            .frame(width: 68 * width, height: 4)
+                            .opacity(lineOpacity(index))
+                        if index == Self.widths.count - 1 {
+                            // Steady while the line it sits on comes and goes.
+                            // The lines are output arriving; this is the thing
+                            // producing them, and it does not flicker.
+                            Thinking(time: time)
+                                .frame(width: 11, height: 11)
+                                .opacity(working)
+                        }
+                    }
                 }
             }
         }
@@ -126,6 +125,44 @@ extension OnboardingScene {
             let step = (time * 1.6 - Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
             let shown = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
             return 0.2 + (shown - 0.2) * working
+        }
+    }
+
+    /// The mark at the end of the last line: an agent still thinking.
+    ///
+    /// Six spokes from a common centre, each breathing on its own phase and the
+    /// whole thing turning slowly. Every terminal agent draws some version of
+    /// this and they are all the same idea — the answer has not arrived, but
+    /// something is happening. Drawn rather than typed, because an asterisk in
+    /// a font is a glyph that cannot move its own arms.
+    struct Thinking: View {
+        var time: Double
+
+        private static let spokes = 6
+
+        var body: some View {
+            Canvas { context, size in
+                let centre = CGPoint(x: size.width / 2, y: size.height / 2)
+                let longest = min(size.width, size.height) / 2
+                for spoke in 0..<Self.spokes {
+                    let turn = Double(spoke) * (.pi / Double(Self.spokes)) + time * 0.55
+                    // Never all the way in and never all the way out: an arm
+                    // that reaches zero reads as a dropped frame.
+                    let breath = 0.45 + 0.55 * (0.5 + 0.5 * sin(time * 3.4 + Double(spoke) * 1.1))
+                    let reach = longest * breath
+                    var arm = Path()
+                    arm.move(
+                        to: CGPoint(
+                            x: centre.x - cos(turn) * reach, y: centre.y - sin(turn) * reach))
+                    arm.addLine(
+                        to: CGPoint(
+                            x: centre.x + cos(turn) * reach, y: centre.y + sin(turn) * reach))
+                    context.stroke(
+                        arm, with: .color(.white.opacity(0.85)),
+                        style: StrokeStyle(lineWidth: 1.4, lineCap: .round))
+                }
+            }
+            .allowsHitTesting(false)
         }
     }
 
