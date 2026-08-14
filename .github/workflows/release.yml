@@ -389,6 +389,44 @@ jobs:
             "dist/$DMG_NAME" \
             "dist/$DMG_NAME.sha256"
 
+      # The site carries the version number as text so a visitor never waits on
+      # api.github.com to find out what the current release is. That is a good
+      # decision with one consequence nobody honoured: something has to write it.
+      # `landing.py` claimed this workflow did from the day it was written, and
+      # for the whole of 1.1.0 the site said 1.0.0.
+      - name: Put the new version on the site
+        if: steps.facts.outputs.publish == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.facts.outputs.version }}
+        run: |
+          set -euo pipefail
+          SITE="$RUNNER_TEMP/site"
+          git clone --depth 1 --branch gh-pages \
+            "https://x-access-token:$GH_TOKEN@github.com/${{ github.repository }}.git" "$SITE"
+          cd "$SITE"
+
+          # Rewritten by line, not by pattern: a loose s/1\.0\.0/ would also hit
+          # the release-notes URLs that are deliberately pinned to old versions.
+          python3 - "$VERSION" <<'PY'
+          import io, re, sys
+          version = sys.argv[1]
+          path = "landing.py"
+          text = io.open(path, encoding="utf-8").read()
+          updated = re.sub(r'^VERSION = "[^"]*"$', f'VERSION = "{version}"', text, count=1, flags=re.M)
+          if updated == text:
+              raise SystemExit("landing.py already says " + version + ", or its VERSION line moved")
+          io.open(path, "w", encoding="utf-8").write(updated)
+          PY
+
+          python3 build-site.py .
+
+          git config user.name  "$(git log -1 --format=%an)"
+          git config user.email "$(git log -1 --format=%ae)"
+          git add -A
+          git commit -m "Site says $VERSION"
+          git push
+
       - name: Dry run summary
         if: steps.facts.outputs.publish != '1'
         run: |

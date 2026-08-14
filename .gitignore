@@ -61,4 +61,8 @@ Promo/video-footage/
 # build reads it: what ships is the flattened PNG beside it and the small
 # imageset cut from that.
 Promo/**/*.psd
+
+# Screenshots of our own website, taken for reference while the pages were being
+# built. Nine megabytes of a thing that is live on the internet.
+Promo/Github Pages/
 .DS_Store

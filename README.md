@@ -1,259 +1,265 @@
-# Belay
+<div align="center">
 
-> Keeps your Mac awake exactly as long as your AI coding agent is working, and
-> not a minute longer.
+<img src="Promo/Social/masthead.png" alt="Belay — keeps your Mac awake while your AI agent works" width="100%">
 
-Belay is a macOS menu bar utility. It watches your local coding agent, holds a
-system-sleep assertion only while the agent is genuinely working, and lets macOS
-go back to your normal sleep schedule the moment everything goes quiet. Your
-System Settings are never touched.
+<br>
 
-No API key. No account. The only thing that ever leaves your Mac is a daily
-check for a newer version, which carries nothing about you and which one switch
-turns off.
+[![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=for-the-badge&label=Download&color=1f6bff&logo=apple&logoColor=white)](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)
+[![Website](https://img.shields.io/badge/Website-perfectoweb.github.io-6b46e8?style=for-the-badge)](https://perfectoweb.github.io/Belay/)
 
----
+![macOS 14+](https://img.shields.io/badge/macOS-14%2B-black?style=flat-square&logo=apple&logoColor=white)
+![Apple silicon & Intel](https://img.shields.io/badge/Universal-Apple%20silicon%20%26%20Intel-black?style=flat-square)
+[![CI](https://img.shields.io/github/actions/workflow/status/PerfectoWeb/Belay/ci.yml?style=flat-square&label=CI)](https://github.com/PerfectoWeb/Belay/actions)
+[![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat-square&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
+[![License](https://img.shields.io/badge/License-MIT-informational?style=flat-square)](LICENSE)
 
-## The problem
+**Your Mac stays awake exactly as long as your AI coding agent is working — and not a minute longer.**
+
+No API key · No account · Nothing leaves your Mac
+
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://perfectoweb.github.io/Belay/img/panel.png" alt="The Belay panel, showing four agents working and the Mac being held awake" width="88%">
+</div>
+
+<br>
+
+## 📚 What is it?
 
 You start a long Claude Code task and walk away. Ten minutes later your Mac
-sleeps and the run dies. So you set sleep to "Never", forget to change it back,
-and your laptop cooks itself for a week.
+sleeps, the run dies, and you come back to nothing. So you set sleep to
+**Never**, forget to change it back, and your laptop cooks itself for a week.
 
-The cost of getting this wrong is lopsided: sleeping too early kills a
-long-running job silently and wastes both tokens and an evening, while staying
-awake sixty seconds too long costs nothing. Belay is tuned accordingly.
+Belay is a macOS menu bar app that fixes exactly that, and nothing else. It
+watches your local coding agents, holds the Mac awake **only while one is
+genuinely working**, and hands sleep straight back the moment everything goes
+quiet. Your System Settings are never touched.
 
-## How it works
+The trade-off it is tuned around is lopsided on purpose: sleeping sixty seconds
+too early kills a long run silently and wastes an evening, while staying awake
+sixty seconds too long costs nothing at all.
 
-Two layers, both entirely local.
+## ✨ Features
 
-**Transcript watcher** (default, zero setup). Claude Code appends each session's
-conversation to a JSONL file under `~/.claude/projects/`. Belay watches those
-files with FSEvents and reads only the bytes appended since it last looked. The
-primary signal is simply that a file grew, which keeps working even when the
-record format changes, because it does not depend on the format at all.
+| | |
+|---|---|
+| 🎯 **Zero setup for Claude Code** | It is detected automatically. Nothing to configure, no key to paste. |
+| 🔌 **Codex, Gemini CLI, Cline, Aider** | Ship as presets. Anything else: watch a folder, watch a process, or send a webhook. |
+| 🛡 **It cannot get stuck on** | Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it — your Mac is back to normal within two minutes. |
+| 🔋 **Rails you choose** | A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change. |
+| 👀 **Subagent aware** | Parallel subagents are counted as the one session they belong to, not as noise. |
+| 📊 **It counts what it saved** | Time held while you were away from the keyboard — the only time that was ever at risk. |
+| 🔒 **Nothing leaves your Mac** | No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off. |
+| 🌍 **Seven languages** | English, Русский, Deutsch, Español, Français, Italiano, 简体中文. |
 
-**Hook bridge** (optional, exact). Claude Code can POST lifecycle events, prompt
-submitted, tool starting, turn finished, permission needed, to a listener
-Belay runs on `127.0.0.1`. This gives sub-second detection and is what makes
-"an agent is waiting for you" reliable. The hooks are registered as
-`"async": true`, which means Claude Code never waits on Belay for anything.
+## 📦 Install
 
-Signals from both layers feed one state machine that decides whether to hold.
-An exact signal outranks an inferred one while it is fresh, so a trailing disk
-write cannot resurrect a turn the hook already said was finished.
+### Direct download — the way most people should
 
-## Safety
+<div align="center">
 
-The failure mode that would make you hate this app is not "it let my Mac sleep".
-It is "it kept my Mac awake for nine hours and I did not notice". So:
+### [⬇️ Download Belay.dmg](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)
 
-- Every assertion is created with a **120-second timeout** and re-armed while
-  work continues. If Belay crashes, hangs, is force-quit, or is killed by the OS,
-  your Mac returns to normal sleep behaviour within two minutes. There is no such
-  thing as a zombie caffeination.
-- Every tracked session has a TTL. A session that goes silent is presumed dead.
-- A hard cap on continuous awake time (default 4 hours), a battery guard
-  (default: stop below 20% on battery), and release on sleep, quit, `SIGTERM`
-  and mode change.
+macOS 14 or later · Apple silicon and Intel · about 4 MB
 
-Check any of it yourself:
+</div>
+
+Open the disk image and drag **Belay** to Applications. That is the whole
+install.
+
+The app and the disk image are both signed with a Developer ID and **notarized
+by Apple**, and both carry a stapled ticket — so the first launch works with no
+network and without the right-click-Open dance.
+
+<details>
+<summary><b>Other ways to install</b></summary>
+
+#### From the Mac App Store
+
+Coming. The sandboxed build exists and is what the App Store target builds; the
+listing is not up yet.
+
+#### Build it yourself
+
+No Apple Developer account needed:
+
+```bash
+git clone https://github.com/PerfectoWeb/Belay.git && cd Belay
+scripts/build-local.sh
+open build/Belay.app
+```
+
+Needs Xcode 16 or later, plus `xcodegen`, `swiftlint` and `swift-format` from
+Homebrew. The result is ad-hoc signed, which means it runs on your Mac and will
+not open on anyone else's without a right-click.
+
+#### Verify what you downloaded
+
+```bash
+spctl -a -vvv -t install /Applications/Belay.app
+codesign -dv --verbose=2 /Applications/Belay.app
+```
+
+You should see `source=Notarized Developer ID` and team `VSY2EB4Y9E`.
+
+</details>
+
+## 🚀 How to Use
+
+**1. Launch it.** One welcome screen explains what Belay reads. Then it lives in
+the menu bar — there is no Dock icon and no window.
+
+**2. Leave it in Auto.** That is the whole product. Belay holds the Mac awake
+while an agent is working and lets it sleep when nothing is.
+
+| Mode | What it does |
+|---|---|
+| 🪄 **Auto** *(default)* | Awake if and only if an agent is working |
+| ☀️ **Always On** | A better `caffeinate`, with the same safety rails |
+| 🌙 **Off** | Belay holds nothing |
+
+**3. Left-click the menu bar icon** for the panel: what is running, for how
+long, and — when Belay is *not* holding — the reason, in plain language.
+Right-click for a compact menu.
+
+**4. Check it yourself, any time.** Belay never asks to be trusted:
 
 ```bash
 pmset -g assertions | grep "pid $(pgrep -x Belay)("
 ```
 
-You will see the assertion, a plain-English reason, and its remaining timeout.
+You will see the assertion, a plain-English reason, and how long it has left.
 
-## Requirements
+> **Adding a tool Belay has never heard of** takes one line — if it can run a
+> shell command, it can talk to Belay. See
+> [`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything).
 
-macOS 14 or later. Nothing else: no Apple Developer account, no agent account,
-no network. Only macOS 26 on Apple silicon has been tested so far. Claude Code
-is detected with no setup;
-anything else is configured in Settings, Providers. Building it yourself needs
-Xcode 16 or later, plus `xcodegen`, `swiftlint` and `swift-format` from Homebrew.
+## 🖼 Screenshots
 
-## Install
+<table>
+<tr>
+<td width="50%"><img src="Promo/Social/shots/providers.png" alt="Providers settings"></td>
+<td width="50%"><img src="Promo/Social/shots/statistics.png" alt="Statistics"></td>
+</tr>
+<tr>
+<td width="50%"><img src="Promo/Social/shots/behaviour.png" alt="Behaviour settings"></td>
+<td width="50%"><img src="Promo/Social/shots/languages.png" alt="Belay in seven languages"></td>
+</tr>
+</table>
 
-**[Download Belay](https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg)**
-— macOS 14 or later, Apple silicon and Intel. Open the disk image and drag Belay
-to Applications.
+## 🧯 Troubleshooting
 
-The app and the disk image are both signed with a Developer ID and notarized by
-Apple, and both carry a stapled ticket, so the first launch works with no
-network and without right-click-Open.
+<details>
+<summary><b>My Mac still went to sleep</b></summary>
 
-Or build it yourself, which needs no Apple Developer account:
+Open the panel — it always says why in plain language. The usual answers are
+the battery guard, the maximum awake time, or that Belay did not think anything
+was running. If it is the last one and your agent *was* working, that is a bug
+worth reporting: include the tool and the macOS version.
 
-```bash
-git clone https://github.com/perfectoweb/belay.git && cd belay
-scripts/build-local.sh
-open build/Belay.app
-```
+</details>
 
-That one is ad-hoc signed and will not open on anyone else's Mac without a
-right-click.
+<details>
+<summary><b>It does not work with the lid closed</b></summary>
 
-On first launch you get one screen explaining what Belay reads. Then it lives in
-the menu bar: left-click for the panel, right-click for a compact menu.
+Nothing can make it. An idle-sleep assertion does not keep a MacBook awake with
+the lid shut — macOS enters clamshell sleep unless the machine is on AC power
+with an external display attached. Belay will not pretend otherwise.
 
-## Helping out
+</details>
 
-Belay is free and always will be. The most useful things, in order:
+<details>
+<summary><b>My screen still turns off</b></summary>
 
-**A star.** It costs nothing and it is how other people find this.
-
-**A bug report.** Especially one with the macOS version and what agent you were
-running. `docs/QA-CHECKLIST.md` lists what has and has not been exercised on a
-real machine, and macOS 14 and 15 are on the second list.
-
-**A translation read by someone who speaks it.** Six languages ship and only
-English and Russian have been read properly by a person. The files are in
-`Localization/`, one CSV per language, and `CONTRIBUTING.md` explains the round
-trip.
-
-**Money, last.** There is a Donate link in the app and on the site, and it is
-deliberately the least interesting item here.
-
-The code is MIT: fork it, rename it, sell it. The name and the mark are not,
-and `TRADEMARKS.md` says exactly what that does and does not stop you doing.
-
-## Modes
-
-| Mode | What it does |
-|---|---|
-| **Auto** (default) | Awake if and only if an agent is working |
-| **Always on** | A better `caffeinate`, with the same safety rails |
-| **Off** | Belay holds nothing |
-
-## Privacy
-
-Belay reads only enough of your agent's session files to know whether it is
-running: whether a file grew, and a record's `type` and `stop_reason`. It never
-reads your prompts, your model's responses, or your code.
-
-The hook payload for `UserPromptSubmit` contains your entire prompt. Belay's
-decoder has no field for it. It is never decoded, never logged, never stored,
-and there is a test that proves it.
-
-Full detail, including how to verify all of this yourself, is in
-[`SECURITY.md`](SECURITY.md).
-
-## Languages
-
-English, Russian, German, Spanish, French and Italian. Belay follows your Mac's
-language and falls back to English when it does not ship yours; Settings ▸
-General has a picker, and changing it reopens the app, because the menu bar menu
-and the alerts are AppKit and will not switch language under a running process.
-
-None of the translations have had a native review yet. The copy in this app is
-voicier than most interface text, which is exactly where a translation slips, so
-corrections are genuinely welcome, and each one is a one-line change in
-[`Resources/Localizable.xcstrings`](Resources/Localizable.xcstrings).
-
-## FAQ
-
-**Why not just use `caffeinate`?**
-Because you have to remember to stop it. `caffeinate -i` holds until you kill it,
-so a forgotten terminal tab keeps the Mac awake all week, and if it dies with the
-shell your run dies with it. Belay starts and stops on its own, its assertion
-expires by itself if the app is not there to refresh it, and it will not hold
-past four hours or below 20% battery no matter what your agent is doing. Always
-on mode is `caffeinate` with those rails, if that is all you want.
-
-**Does it work with a closed lid?**
-No, and nothing can make it. An idle-sleep assertion does not keep a MacBook
-awake with the lid shut; macOS enters clamshell sleep unless the machine is on AC
-power with an external display attached. Belay will not pretend otherwise.
-
-**My screen still turns off.**
 That is intentional and saves real power. Belay prevents *system* sleep; the
 machine underneath keeps working. There is a setting to keep the display awake
 too, off by default.
 
-**Why not use the Anthropic API to ask if my agent is busy?**
-There is no such endpoint. The API has no knowledge of a local Claude Code
-process, so asking it would cost money to learn nothing. Any design that needs
-you to paste an API key is solving a different problem.
+</details>
 
-**Why not watch CPU usage?**
-It fails in both directions. An agent waiting ninety seconds on a network
-response uses no CPU but is very much working, and a language server in the same
-project can peg a core while nothing is happening.
+<details>
+<summary><b>Belay does not see my agent</b></summary>
 
-**What about Codex, Aider, Gemini CLI, Cline, DeepSeek?**
-Claude Code is first-class. Everything else is covered by the generic provider,
-configured in Settings > Providers: watch a folder, watch a process, or send
-Belay a webhook. Aider, Gemini CLI, Cline and Codex CLI ship as presets, which
-are pre-filled configurations, not code. On DeepSeek specifically: there is no
-first-party DeepSeek CLI to hook into; it is consumed through other tools, and
-those tools are what Belay watches.
+Claude Code needs no setup. Everything else is configured in **Settings ▸
+Providers**: switch on a preset, or point the folder watcher at wherever your
+tool writes while it works. If your tool can run a shell command, the webhook in
+[`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything) is
+one line.
 
-**Integrating a tool Belay has never heard of**
-If your tool can run a shell command, it can talk to Belay in one line. Port and
-token come from `~/Library/Application Support/Belay/bridge.json`:
+</details>
 
-```bash
-curl -s -X POST -H "Authorization: Bearer $TOKEN" \
-  "http://127.0.0.1:$PORT/hook?provider=generic&session=my-tool&state=working"
-```
+<details>
+<summary><b>It says "needs setup"</b></summary>
 
-`state` accepts `working` / `busy` / `start`, `idle` / `stop` / `done`,
-`waiting` / `blocked`, and `ended` / `exit`. An unrecognised state is dropped
-rather than guessed. Add `&workspace=name` to control what the panel shows.
+A preset's path did not exist on your machine. Presets are configuration, not
+code — open Settings ▸ Providers and correct the path. A wrong preset costs one
+edit, never a release.
 
-**Will the hooks slow Claude Code down?**
-They cannot. They are registered `"async": true`, so Claude Code does not wait
-for a response, and there is no exit code that could block anything.
+</details>
 
-**It stopped keeping my Mac awake.**
-Check the panel. It always says why in plain language: battery guard, maximum
-awake time, or simply that nothing is running.
+<details>
+<summary><b>Something else</b></summary>
 
-## Contributing
+[Open an issue.](https://github.com/PerfectoWeb/Belay/issues) The macOS version
+and the agent you were running are the two things that make a report
+actionable. [`docs/QA-CHECKLIST.md`](docs/QA-CHECKLIST.md) lists what has and
+has not been exercised on a real machine — macOS 14 and 15 are still on the
+second list.
 
-Start with [`CONTRIBUTING.md`](CONTRIBUTING.md). The two contributions wanted
-most are a fix to one of the six translations, none of which have had a native
-review, and a preset for an agent Belay does not know about yet; both are data
-rather than code, and neither needs you to learn the codebase.
+</details>
 
-## Development
+## 💬 Support & Contributions
 
-```bash
-scripts/test.sh          # build, tests, both linters, everything CI runs
-scripts/build-local.sh   # ad-hoc signed .app in build/
-scripts/perf-soak.sh     # measure against the performance budgets
-```
+Belay is free and always will be. The most useful things, in order:
 
-Tests live in two places on purpose: the module suites run under `swift test`,
-and `xcodebuild test` runs the app-target tests, because an XcodeGen scheme
-cannot reference a local SwiftPM package's test targets.
+⭐ **A star.** It costs nothing and it is how other people find this.
 
-`Belay.xcodeproj` is generated by XcodeGen from `project.yml` and must never be
-hand-edited.
+🐛 **A bug report.** Especially one with the macOS version and the agent you
+were running.
 
-Architecture, the detection design, and the empirical findings that shaped both
-are in [`docs/`](docs/). Start with
-[`docs/02-ARCHITECTURE.md`](docs/02-ARCHITECTURE.md) and
-[`docs/DISCOVERY.md`](docs/DISCOVERY.md). Decisions and where the implementation
-deliberately diverged from the original specs are in
-[`PROJECT_STATE.md`](PROJECT_STATE.md).
+🌍 **A translation read by someone who actually speaks it.** Seven languages
+ship and only English and Russian have been read properly by a person. One CSV
+per language in [`Localization/`](Localization/), and
+[`CONTRIBUTING.md`](CONTRIBUTING.md) explains the round trip. This is the single
+most wanted contribution, and it is data rather than code.
 
-## Status
+🔌 **A preset for an agent Belay does not know yet.** Also data, also no need to
+learn the codebase.
 
-v1.0, built and verified on macOS 26.4. macOS 14 and 15 are supported targets but
-have not yet been exercised on real machines. See
-[`docs/QA-CHECKLIST.md`](docs/QA-CHECKLIST.md) for exactly what has and has not
-been verified, including the items still outstanding.
+💛 **Money, last.** There is a Donate link in the app and on the site, and it is
+deliberately the least interesting item on this list.
 
-## License
+Start at [`CONTRIBUTING.md`](CONTRIBUTING.md). Security reports go through
+[`SECURITY.md`](SECURITY.md), not the issue tracker.
 
-MIT. See [`LICENSE`](LICENSE).
+### 📖 Documentation
 
-### Trademarks
+| | |
+|---|---|
+| [How it works](docs/HOW-IT-WORKS.md) | Detection, the safety rails, privacy, and talking to Belay from anything |
+| [FAQ](docs/FAQ.md) | Why not `caffeinate`, why not CPU, why not an API key |
+| [Contributing](CONTRIBUTING.md) | Building, testing, translating, adding a preset |
+| [Architecture](docs/02-ARCHITECTURE.md) | How the app is put together |
+| [Security](SECURITY.md) | What Belay reads, what it cannot read, and how to verify it |
+| [Changelog](CHANGELOG.md) | What changed, and why |
 
-The Active Sessions list shows each tool's own logo, so you can tell at a glance
-which agent is working. All product names, logos and trademarks are the property
-of their respective owners; they are used here only to identify those products
-and imply no affiliation or endorsement. See [`NOTICE.md`](NOTICE.md).
+## 📝 License
+
+[MIT](LICENSE) — fork it, rename it, sell it.
+
+The **name and the mark** are not covered by that licence;
+[`TRADEMARKS.md`](TRADEMARKS.md) says exactly what that does and does not stop
+you doing.
+
+Belay shows each tool's own logo in the sessions list so you can tell at a
+glance which agent is working. All product names, logos and trademarks are the
+property of their respective owners, used only to identify those products, and
+imply no affiliation or endorsement. See [`NOTICE.md`](NOTICE.md).
+
+<div align="center">
+<br>
+<sub>Built for people who leave their agents running and go and do something else.</sub>
+</div>
