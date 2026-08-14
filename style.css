@@ -488,7 +488,38 @@ h1 .turn { display: inline; }
 
 @media (max-width: 560px) {
     h1 .turn { display: none; }
+
+    /* 10, 11 — on a phone the two buttons share the width instead of sitting
+       at their own natural sizes. Two pills of different lengths on one row
+       read as a primary and an afterthought; equal halves read as a choice,
+       and both are big enough to hit. */
+    /* 10 — the pair that installs the app goes full width, one per row. Half a
+       phone is not enough for "Download for macOS": it wraps, and a two-line
+       label beside a one-line one is what makes equal halves look unequal.
+       Full width also gives the primary action the whole thumb. */
+    .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
+    .actions.get .button { text-align: center; }
+
+    /* 11 — the pair in the footer shares the width instead. Both labels are
+       short enough to fit, and neither of them is the reason anybody is here. */
+    .actions.give { flex-wrap: nowrap; gap: 10px; }
+    .actions.give .button {
+        flex: 1 1 0;
+        text-align: center;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    /* 8 — the picker opened off the left of the screen. It is anchored to a
+       summary that sits at the left edge of the footer, and `right: 0` on a
+       panel wider than that summary puts its left edge past the viewport. It
+       opens from the left here, and is kept off both edges. */
+    .languages nav {
+        right: auto;
+        left: 0;
+        max-width: calc(100vw - 48px);
+    }
 }
 
-/* The third-party note sits under the copyright, with room between them. */
-footer .copyright + .fine { margin-top: 8px; }
+/* The copyright sits under the third-party note, with room between them. */
+footer .fine + .copyright { margin-top: 12px; }

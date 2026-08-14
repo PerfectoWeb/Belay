@@ -220,7 +220,7 @@ def landing(code):
         "",
         f'<p>{t["body"]}</p>',
         "",
-        '<div class="actions">',
+        '<div class="actions get">',
         '    <a class="button stacked" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
         f'<span>{t["download"]}</span>'
         f'<span class="under">{t["version"].format(version=VERSION)}</span></a>',
@@ -258,7 +258,7 @@ def landing(code):
         "",
         f'<p>{t["support_body"]}</p>',
         "",
-        '<div class="actions">',
+        '<div class="actions give">',
         f'    <a class="button donate" href="{DONATE_URL}">{HEART}{t["donate"]}</a>',
     ] + ([
         f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>',
@@ -278,11 +278,11 @@ def landing(code):
     lines += language_picker(code, 1, t["language"], "")
     lines += [
         "    </div>",
+        f'    <p class="fine">{T[code]["fine"]}</p>',
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
         f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
         f'{L[code]["licence"]}</a>.<br>'
         f'{L[code]["trademarks"]}</p>',
-        f'    <p class="fine">{T[code]["fine"]}</p>',
         "</footer>",
         "",
         "<script>",
@@ -348,11 +348,11 @@ def privacy(code):
     lines += language_picker(code, 2, L[code]["language"], "privacy/")
     lines += [
         "    </div>",
+        f'    <p class="fine">{t["fine"]}</p>',
         '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
         f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
         f'{L[code]["licence"]}</a>.<br>'
         f'{L[code]["trademarks"]}</p>',
-        f'    <p class="fine">{t["fine"]}</p>',
         "</footer>",
         "",
         "<script>",
