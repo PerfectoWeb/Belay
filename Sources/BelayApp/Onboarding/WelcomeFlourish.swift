@@ -30,7 +30,7 @@ struct WelcomeFlourish: View {
 
     /// How wide the word is drawn. The height follows from the artwork's own
     /// proportion, so the hand is never stretched.
-    private static let width: CGFloat = 300
+    private static let width: CGFloat = 262
     private static let writing: Double = 1.5
     /// Long enough to be a pause and not a beat. Under half a second the word
     /// read as a transition; a greeting waits.

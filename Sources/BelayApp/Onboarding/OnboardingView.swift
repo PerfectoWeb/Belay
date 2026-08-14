@@ -31,14 +31,14 @@ struct OnboardingView: View {
 
     /// Somebody who has asked macOS for less motion gets the finished screen,
     /// with no arrival and no delay.
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
 
     /// The opening, in order: the panel is nothing but its gradient, the word is
     /// written into that emptiness, and only as it fades does the sky come up
     /// and the scene take the floor. Once, on opening; the loop never goes back.
     /// Under Reduce Motion none of it runs and the finished panel is just there.
-    @State private var skyUp = false
-    @State private var greeted = false
+    @State var skyUp = false
+    @State var greeted = false
 
     /// The hero and the words below it are two blocks, not one flow. The hero
     /// is a lit panel with the night sky in it, inset from every edge and
@@ -91,60 +91,6 @@ struct OnboardingView: View {
     /// directly; the magic one arrives at it through its own padding, because a
     /// custom style has no bezel to stretch.
     static let buttonHeight: CGFloat = 31
-
-    private var hero: some View {
-        ZStack(alignment: .topLeading) {
-            // The same night sky as About, and for the same reason: a panel
-            // that borrows the window's own grey is not a panel, it is a
-            // rectangle drawn on the wall. The gradient is what makes it read
-            // as something lit from inside.
-            LinearGradient(
-                colors: [
-                    Color(red: 0.05, green: 0.06, blue: 0.10),
-                    Color(red: 0.09, green: 0.10, blue: 0.15)
-                ],
-                startPoint: .top, endPoint: .bottom)
-
-            if skyUp || reduceMotion {
-                Starfield(animated: true)
-                    .transition(.opacity)
-            }
-
-            // Below the lockup rather than behind it, and centred in what is
-            // left, so the scene has a place of its own to grow into.
-            //
-            // The scene is not built until the greeting is done. Building both
-            // and hiding one would run the nine-second loop behind the word,
-            // and it would arrive already halfway through its story.
-            Group {
-                // Reduce Motion is checked here and not in `onAppear`,
-                // because the first render happens before `onAppear` runs and
-                // the greeting would appear for exactly one frame before being
-                // taken away again.
-                if greeted || reduceMotion {
-                    OnboardingScene()
-                        .transition(.opacity)
-                } else {
-                    WelcomeFlourish(
-                        onWritten: { withAnimation(.easeInOut(duration: 0.8)) { skyUp = true } },
-                        onFinished: { withAnimation(.easeInOut(duration: 0.45)) { greeted = true } })
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .padding(.top, 34 + Self.titlebar)
-
-            // Under the window's buttons, not beside them, and on the same
-            // left edge as every line of text below.
-            if skyUp || reduceMotion {
-                BelayWordmark(size: 22, word: .primary, animated: true)
-                    .transition(.opacity)
-                    .padding(.leading, Self.margin)
-                    .padding(.top, Self.titlebar + 12)
-            }
-        }
-        .frame(height: Self.heroHeight + Self.titlebar)
-        .ignoresSafeArea(.container, edges: .top)
-    }
 
     private var words: some View {
         VStack(alignment: .leading, spacing: 9) {
