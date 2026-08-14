@@ -44,6 +44,9 @@ final class StatusItemController {
     /// way to see it.
     var menuForTesting: NSMenu { contextMenu }
 
+    /// Replays the welcome screen. Debug builds only; see `makeMenu`.
+    var onShowWelcome: () -> Void = {}
+
     init(state: AppState, panel: PanelController) {
         self.state = state
         self.panel = panel
@@ -170,6 +173,15 @@ final class StatusItemController {
             item(
                 String(localized: "About \(Branding.appName)"), #selector(openAbout),
                 symbol: SettingsPane.about.symbol))
+        #if DEBUG
+        // A way to watch the welcome screen from its first frame without
+        // clearing a preference and relaunching. Debug only on purpose: it is a
+        // workbench control, and the build that goes to other people should not
+        // offer to replay an introduction they have already been through.
+        menu.addItem(.separator())
+        menu.addItem(item("Welcome", #selector(showWelcome), symbol: "sparkles"))
+        #endif
+
         menu.addItem(.separator())
         menu.addItem(
             item(
@@ -198,6 +210,12 @@ final class StatusItemController {
     @objc private func openSettings() {
         onOpenPane(.general)
     }
+
+    #if DEBUG
+    @objc private func showWelcome() {
+        onShowWelcome()
+    }
+    #endif
 
     @objc private func openStatistics() {
         onOpenPane(.statistics)

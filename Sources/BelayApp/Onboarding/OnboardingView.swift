@@ -33,9 +33,13 @@ struct OnboardingView: View {
     /// with no arrival and no delay.
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    /// Whether the greeting has finished. It runs once, when the window opens,
-    /// and the scene takes the space for good; the loop never returns to it.
-    /// Under Reduce Motion it never runs at all.
+    /// The three acts of the opening, in order. The panel starts as nothing but
+    /// its gradient: no sky, no lockup, no scene. The word is written into that
+    /// emptiness, and only once it begins to fade does the sky come up under it
+    /// and the scene take the floor. All of it runs once, when the window opens;
+    /// the loop never returns to the greeting. Under Reduce Motion none of it
+    /// runs and the finished panel is simply there.
+    @State private var skyUp = false
     @State private var greeted = false
 
     /// The hero and the words below it are two blocks, not one flow. The hero
@@ -103,7 +107,10 @@ struct OnboardingView: View {
                 ],
                 startPoint: .top, endPoint: .bottom)
 
-            Starfield(animated: true)
+            if skyUp || reduceMotion {
+                Starfield(animated: true)
+                    .transition(.opacity)
+            }
 
             // Below the lockup rather than behind it, and centred in what is
             // left, so the scene has a place of its own to grow into.
@@ -119,8 +126,11 @@ struct OnboardingView: View {
                 // taken away again.
                 if greeted || reduceMotion {
                     OnboardingScene()
+                        .transition(.opacity)
                 } else {
-                    WelcomeFlourish { greeted = true }
+                    WelcomeFlourish(
+                        onWritten: { withAnimation(.easeInOut(duration: 0.8)) { skyUp = true } },
+                        onFinished: { withAnimation(.easeInOut(duration: 0.45)) { greeted = true } })
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -128,9 +138,12 @@ struct OnboardingView: View {
 
             // Under the window's buttons, not beside them, and on the same
             // left edge as every line of text below.
-            BelayWordmark(size: 22, word: .primary, animated: true)
-                .padding(.leading, Self.margin)
-                .padding(.top, Self.titlebar + 12)
+            if skyUp || reduceMotion {
+                BelayWordmark(size: 22, word: .primary, animated: true)
+                    .transition(.opacity)
+                    .padding(.leading, Self.margin)
+                    .padding(.top, Self.titlebar + 12)
+            }
         }
         .frame(height: Self.heroHeight + Self.titlebar)
         .ignoresSafeArea(.container, edges: .top)

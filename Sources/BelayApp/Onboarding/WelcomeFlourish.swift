@@ -18,7 +18,10 @@ import SwiftUI
 /// being *drawn around*; ink arriving along the pen's own path is what writing
 /// looks like, and against a connected script it is the same picture.
 struct WelcomeFlourish: View {
-    /// Called once the word has been written, held and faded.
+    /// Called when the word has been written and held, at the moment it starts
+    /// to fade. The sky comes up on this, so the two cross rather than queue.
+    var onWritten: () -> Void
+    /// Called once the word is gone and the space is free.
     var onFinished: () -> Void
 
     /// How far the ink has travelled, nought to one.
@@ -29,7 +32,9 @@ struct WelcomeFlourish: View {
     /// that nobody waits for it. The rest of the budget is the pause afterwards,
     /// which is what stops it feeling like a transition.
     private static let writing: Double = 1.25
-    private static let holding: Double = 0.45
+    /// Long enough to be a pause and not a beat. Under half a second the word
+    /// read as a transition; this is a greeting, and a greeting waits.
+    private static let holding: Double = 1.2
     private static let fading: Double = 0.5
 
     /// The soft leading edge, as a fraction of the width. Without it the ink has
@@ -80,6 +85,7 @@ struct WelcomeFlourish: View {
     private func run() async {
         withAnimation(.easeInOut(duration: Self.writing)) { written = 1 }
         try? await Task.sleep(for: .seconds(Self.writing + Self.holding))
+        onWritten()
         withAnimation(.easeIn(duration: Self.fading)) { faded = true }
         try? await Task.sleep(for: .seconds(Self.fading))
         onFinished()

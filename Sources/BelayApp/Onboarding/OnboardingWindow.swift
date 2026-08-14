@@ -17,6 +17,15 @@ final class OnboardingWindow: NSObject {
         super.init()
     }
 
+    /// Shows the screen again from its first frame, whatever the preference
+    /// says. For the workbench: the greeting only plays on a fresh window, so
+    /// re-presenting is the only way to watch it twice.
+    func presentAgain(providerReady: Bool, onGrantAccess: @escaping () -> Void) {
+        dismiss()
+        settings.hasCompletedOnboarding = false
+        presentIfNeeded(providerReady: providerReady, onGrantAccess: onGrantAccess)
+    }
+
     /// Shows the screen unless the user has already been through it.
     ///
     /// The caller cannot know whether the sandboxed build has its bookmark yet —

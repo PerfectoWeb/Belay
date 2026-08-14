@@ -99,6 +99,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             controller?.requestProviderAccess(.claudeCode)
         }
         self.onboarding = onboarding
+
+        #if DEBUG
+        statusItem.onShowWelcome = { [weak controller] in
+            onboarding.presentAgain(providerReady: true) {
+                controller?.requestProviderAccess(.claudeCode)
+            }
+        }
+        #endif
     }
 
     func applicationWillTerminate(_ notification: Notification) {
