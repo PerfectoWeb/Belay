@@ -30,9 +30,7 @@ extension OnboardingScene {
                 Deck()
                     .fill(.quaternary)
                     .overlay(Deck().stroke(.separator, lineWidth: 1))
-                    .frame(
-                        width: OnboardingScene.Place.deck.width,
-                        height: OnboardingScene.Place.deck.height)
+                    .frame(height: 8)
             }
         }
 
@@ -63,9 +61,8 @@ extension OnboardingScene {
                         // up with nothing holding its left-hand side.
                         .opacity(1 - 0.45 * (1 - lit))
                 )
-                .frame(
-                    width: OnboardingScene.Place.screen.width,
-                    height: OnboardingScene.Place.screen.height)
+                .padding(.horizontal, 6)
+                .padding(.bottom, 1)
         }
 
         private var lines: some View {
@@ -118,58 +115,12 @@ extension OnboardingScene {
         }
     }
 
-    /// The socket, which belongs to the Mac and never changes. What changes is
-    /// whether anything is in it.
-    struct Socket: View {
-        var body: some View {
-            RoundedRectangle(cornerRadius: 5, style: .continuous)
-                .fill(.quaternary)
-                .overlay(alignment: .top) {
-                    HStack(spacing: 6) {
-                        hole
-                        hole
-                    }
-                    .padding(.top, 5)
-                }
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5, style: .continuous)
-                        .strokeBorder(.separator, lineWidth: 1)
-                )
-                .frame(width: 26, height: 20)
-        }
-
-        private var hole: some View {
-            Capsule().fill(.black.opacity(0.5)).frame(width: 3, height: 7)
-        }
-    }
-
-    /// Belay's end of the rope. Accent-coloured, because it is the one object in
-    /// the picture that belongs to this app: the laptop and the socket are the
-    /// user's, and the plug is the thing Belay puts in and takes out.
-    struct Plug: View {
-        var body: some View {
-            VStack(spacing: 0) {
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(Color.accentColor)
-                    .frame(width: 19, height: 13)
-                HStack(spacing: 6) {
-                    prong
-                    prong
-                }
-            }
-        }
-
-        private var prong: some View {
-            Capsule().fill(Color.accentColor).frame(width: 3, height: 6)
-        }
-    }
-
-    /// Power arriving, drawn as it is drawn everywhere: three bolts, of three
-    /// sizes, off to one side. They are the only thing in the picture that says the
-    /// holding is active rather than merely connected, so they go out the moment
-    /// Belay lets go and come back when it takes hold again.
-    struct Bolts: View {
-        var intensity: Double
+    /// Charge arriving at the machine, drawn as it is drawn everywhere: three
+    /// bolts, of three sizes. They are the only thing in the picture that says
+    /// the holding is happening rather than merely arranged, so they go out the
+    /// moment Belay lets go and come back when it takes hold again.
+    struct ChargeBolts: View {
+        var charge: Double
         var time: Double
 
         /// One bolt: where it sits beside the socket, how big it is drawn, and
@@ -195,7 +146,7 @@ extension OnboardingScene {
                         .font(.system(size: bolt.size, weight: .semibold))
                         .foregroundStyle(.tint)
                         .offset(x: bolt.dx, y: bolt.dy)
-                        .opacity(flicker(bolt.phase) * intensity)
+                        .opacity(flicker(bolt.phase) * charge)
                 }
             }
         }
@@ -208,21 +159,4 @@ extension OnboardingScene {
         }
     }
 
-    /// The rope. Straight under load, and it bellies when the load comes off.
-    struct Rope: Shape {
-        var from: CGPoint
-        var to: CGPoint
-        var sag: CGFloat
-
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-            path.move(to: from)
-            // A quadratic is enough: a real catenary is a nicer curve and nobody
-            // can tell the difference across ninety points.
-            path.addQuadCurve(
-                to: to,
-                control: CGPoint(x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 + sag))
-            return path
-        }
-    }
 }
