@@ -18,6 +18,11 @@ LANGUAGES = [
     ("es", "Español", "es"),
     ("fr", "Français", "fr"),
     ("it", "Italiano", "it"),
+    # The path stays two letters, because the root redirect matches on the
+    # first two of the browser's tag. The third field is what the markup
+    # declares, and Chinese is the reason it exists: what ships is the
+    # simplified script, which is not a country.
+    ("zh", "简体中文", "zh-Hans"),
 ]
 
 # Section keys in the order they appear on the page.
@@ -225,3 +230,34 @@ T["it"] = {
     "source": "Codice sorgente",
 }
 
+T["zh"] = {
+    "title": "隐私政策：Belay",
+    "meta": "Belay 没有账户、分析、广告或崩溃报告。它读取什么、存储什么，以及它唯一可能发出的请求。",
+    "h1": "隐私政策",
+    "stamp": "Belay for macOS。最后更新于 2026 年 8 月 13 日。",
+    "lede": "Belay 没有账户、分析、广告或崩溃报告。它不会为你建立画像，也不会把你的工作发送给我们。Belay 需要的绝大部分内容从不离开你的 Mac。",
+    "reads_head": "Belay 读取什么",
+    "reads_1": "Belay 只需要知道一件事：现在有智能体在工作吗？",
+    "reads_2": "对于 Claude Code，Belay 监视 Claude Code 本就会在你的 Mac 上写入的会话文件。它查看文件有多大、是否变大、最后写入的时间，以及在新增的那部分中每条记录的两个字段：这是哪一类记录，以及该轮次是否已经结束。你的提示词、你的回复和你的代码不会从这些文件中被读取，也不会留下任何副本。",
+    "reads_3": "对于其他智能体，Belay 可以监视一个由你选择的文件夹。macOS 会告诉 Belay 哪些文件在何时发生了变化，Belay 用到的仅此而已：它不会打开这些文件，也不会读取其中的内容。文件夹仍然属于你，其中没有任何内容会被上传。",
+    "reads_4": "Belay 查看哪些文件夹由你决定。Claude Code 是 <code>~/.claude</code>，其余的只看你指给它的位置。",
+    "leaves_head": "什么会离开你的 Mac",
+    "leaves_mas": "<strong>Mac App Store。</strong>Belay 不发起任何对外的网络连接。该版本在构建时就没有包含 macOS 为此所要求的授权。精确检测如果开启，使用的是一条在你自己的 Mac 上开始、也在那里结束的连接，不会通过互联网发送任何内容。",
+    "leaves_direct": "<strong>直接下载。</strong>从 GitHub 下载的版本每天可以检查一次更新。它向 GitHub 的发布 API 发送一个普通的 HTTPS 请求，不带账户、不带查询、也不带任何 Belay 标识；GitHub 会看到该请求的 IP 地址和一个 user agent，与任何网页请求一样。你可以在设置的“通用”中关闭自动检查，而且未经你要求，Belay 从不安装更新。",
+    "stores_head": "Belay 存储什么",
+    "stores_1": "Belay 把它的设置和简单的使用计数存在你的 Mac 用户偏好设置中。这些计数保存的是时长、运行次数和天数，不保存项目名称、提示词或代码。",
+    "stores_2": "你可以随时在设置的“统计”中重置你的统计数据。",
+    "changes_head": "Belay 在你的 Mac 上更改什么",
+    "changes_1": "为了让 Mac 保持唤醒，Belay 使用 macOS 专为此提供的电源断言 API。它不会改写你的节能设置，也做不到：断言与那些设置并存，而不是修改它们。",
+    "changes_2": "如果你为 Claude Code 开启精确检测，Belay 会在写入任何内容之前，先让你看到它将要添加的确切配置，只有你确认之后才写入。它会先做一份带时间戳的备份，只添加属于它自己的条目，而同一屏上的“移除”会把文件恢复原样。",
+    "sharing_head": "共享",
+    "sharing_1": "Belay 不会把你的使用统计、你的设置或你的工作发送给我们。应用中没有任何分析或广告服务。",
+    "sharing_2": "统计面板可以把你自己的数据生成一张图片。如果你要分享它，macOS 会询问你发送到哪里，在你亲自操作之前不会共享任何内容。",
+    "policy_head": "本政策的变更",
+    "policy_1": "如果本政策发生变更，我们会更新上方的日期。任何有实质意义的隐私变更也会写进版本说明。",
+    "contact_head": "联系",
+    "contact_1": '关于本政策的问题：<a href="https://github.com/PerfectoWeb/Belay/issues">问题追踪器</a>，或 <a href="https://perfecto-web.com">perfecto-web.com</a> 上的地址。',
+    "fine": "Claude Code、Codex CLI、Gemini CLI 和 Cline 由其他人开发。Belay 与它们并行工作，与其中任何一方均无关联，也未获得它们的认可。",
+    "authoritative": '这是译文。本政策的正式文本为<a href="../">英文版</a>。',
+    "source": "源代码",
+}

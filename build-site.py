@@ -33,6 +33,12 @@ from policy_text import LANGUAGES, T
 
 CODES = [code for code, _, _ in LANGUAGES]
 
+# What the markup declares, which is not always what the path is called. They
+# match everywhere but Chinese: the path stays two letters because the root
+# redirect matches on the first two of the browser's tag, while the language
+# itself is a script rather than a country.
+TAG = {code: tag for code, _, tag in LANGUAGES}
+
 # Flip when the listing is approved and the link stops being a 404. Until then
 # a button pointing at a page that does not exist is worse than no button.
 APP_STORE_LIVE = False
@@ -57,10 +63,10 @@ HEART = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
          ' 1.74C14.5 10.5 8 14.25 8 14.25Z"/></svg>')
 
 
-# The panel screenshot, in the language of the page it sits on. English and
-# Russian share the English shot: the app speaks Russian, but the picture we
-# have of it does not, and a screenshot in one language under a heading in
-# another is worse than one that is plainly foreign.
+# The panel screenshot, in the language of the page it sits on. English,
+# Russian and Chinese share the English shot: the app speaks all three, but the
+# picture we have of it does not, and a screenshot in one language under a
+# heading in another is worse than one that is plainly foreign.
 PANEL = {
     "de": "panel-de.png",
     "es": "panel-es.png",
@@ -129,7 +135,7 @@ def head(code, title, meta, depth, page):
     up = "../" * depth
     lines = [
         "<!doctype html>",
-        f'<html lang="{code}">',
+        f'<html lang="{TAG[code]}">',
         "<head>",
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
@@ -139,7 +145,7 @@ def head(code, title, meta, depth, page):
     ]
     for other in CODES:
         href = f"https://perfectoweb.github.io/Belay/{other}/{page}"
-        lines.append(f'<link rel="alternate" hreflang="{other}" href="{href}">')
+        lines.append(f'<link rel="alternate" hreflang="{TAG[other]}" href="{href}">')
     lines.append(
         '<link rel="alternate" hreflang="x-default" '
         f'href="https://perfectoweb.github.io/Belay/en/{page}">')
