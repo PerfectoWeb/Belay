@@ -77,7 +77,23 @@ jobs:
           xcode-version: latest-stable
 
       - name: Install tooling
-        run: brew install xcodegen create-dmg xcbeautify
+        run: |
+          set -euo pipefail
+          brew install xcodegen xcbeautify
+
+          # dmgbuild, not create-dmg. The script stopped driving Finder with
+          # AppleScript some time ago and this line was never followed, so the
+          # first run with working credentials got all the way past signing and
+          # notarization setup and then died on `dmgbuild is not installed` —
+          # having installed a packager nobody calls.
+          #
+          # It comes through pipx because it needs Python 3.10 or newer and the
+          # `python3` on a runner's PATH is not guaranteed to be one. `pipx` puts
+          # it in ~/.local/bin, which is not on PATH for later steps until it is
+          # put there.
+          brew install pipx
+          pipx install 'dmgbuild>=1.6.7'
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       # ------------------------------------------------------------------ facts
       # Everything downstream reads the version from here, and the version comes
