@@ -136,7 +136,7 @@ struct OnboardingView: View {
     }
 
     private var buttons: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 7) {
             if providerReady {
                 // The key is still "Start watching"; what English shows is
                 // "Start Magic". A key here is not the text it displays, and
