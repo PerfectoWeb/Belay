@@ -19,6 +19,20 @@ struct OnboardingView: View {
     let onGrantAccess: () -> Void
     let onDismiss: () -> Void
 
+    /// Whether the screen has arrived. False for exactly one frame.
+    ///
+    /// The window opens on a first launch, and a screen that is simply *there*
+    /// reads as a screenshot of an app rather than an app starting. The four
+    /// blocks come up in the order they are read, a breath apart, which also
+    /// buys the panel a moment alone before there is anything to read — the
+    /// scene inside it is the argument, and it was competing with a heading
+    /// from the first frame.
+    @State private var entered = false
+
+    /// Somebody who has asked macOS for less motion gets the finished screen,
+    /// with no arrival and no delay.
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     /// The hero and the words below it are two blocks, not one flow. The hero
     /// is a lit panel with the night sky in it, inset from every edge and
     /// rounded hard enough to read as a screen inside the window rather than a
@@ -27,12 +41,13 @@ struct OnboardingView: View {
     /// left-aligned lockup was the old arrangement and it read as a poster.
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            hero
-            words
-            buttons
-            accessLine
+            hero.modifier(Entrance(shown: entered, delay: 0, animated: !reduceMotion))
+            words.modifier(Entrance(shown: entered, delay: 0.10, animated: !reduceMotion))
+            buttons.modifier(Entrance(shown: entered, delay: 0.17, animated: !reduceMotion))
+            accessLine.modifier(Entrance(shown: entered, delay: 0.24, animated: !reduceMotion))
         }
         .frame(width: 470, height: 486)
+        .onAppear { entered = true }
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Welcome to \(Branding.appName)")
     }
@@ -56,7 +71,7 @@ struct OnboardingView: View {
             // left, so the scene has a place of its own to grow into.
             OnboardingScene()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .padding(.top, 46)
+                .padding(.top, 34)
 
             BelayWordmark(size: 22, word: .primary, animated: true)
                 .padding(20)
@@ -139,5 +154,24 @@ struct OnboardingView: View {
         Belay needs to read ~/.claude to tell when an agent is working. \
         Nothing else is read, and nothing leaves this Mac.
         """
+    }
+}
+
+/// One block arriving: up a little, and in.
+///
+/// The offset is eight points and not thirty. A welcome screen that slides its
+/// parts across the window is a title sequence, and this one is followed
+/// immediately by two buttons somebody has to aim at; the movement is here to
+/// say the screen is alive, not to be watched.
+private struct Entrance: ViewModifier {
+    var shown: Bool
+    var delay: Double
+    var animated: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(shown ? 1 : 0)
+            .offset(y: shown ? 0 : 8)
+            .animation(animated ? .smooth(duration: 0.5).delay(delay) : nil, value: shown)
     }
 }

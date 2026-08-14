@@ -2,18 +2,43 @@ import SwiftUI
 
 /// The first thing anyone sees: what Belay does, shown rather than described.
 ///
-/// An agent on the left, the Mac on the right, a rope between them. While the
-/// agent works the rope is taut and the screen is lit; when it stops, the rope
-/// goes slack and the Mac sleeps. Then it starts again.
+/// One laptop, and above it the mark, holding a rope. The rope runs on down to
+/// a plug, which sits in its socket while the Mac is being held awake and is
+/// lifted out once Belay lets go. The screen says who is doing what: lines of
+/// output while the agent works, a moon once the Mac is allowed to sleep.
+///
+/// The earlier drawing was two grey rectangles with a rope between them, and it
+/// needed the sentence underneath to say which rectangle was which. This one
+/// has a single subject. The agent's work happens on the Mac's own screen,
+/// which is where it happens in life, and that frees the right-hand side for
+/// the thing actually worth showing: a plug, which is what "keeps your Mac
+/// awake" looks like when you draw it.
 ///
 /// Shown instead of a third paragraph because the product is a behaviour over
 /// time, and a behaviour over time is the one thing prose is worst at. The whole
 /// loop is nine seconds and repeats, so nobody has to catch the beginning.
 struct OnboardingScene: View {
     /// One pass: work, then quiet, then sleep, then wake and round again.
-    static let loop: Double = 9
+    nonisolated static let loop: Double = 9
+
+    /// Everything is placed by hand against this box rather than stacked.
+    ///
+    /// A stack lays itself out, and a picture with a rope in it cannot afford
+    /// that: move the plug by a point and the rope arrives somewhere the plug
+    /// no longer is. Absolute points mean the two ends are the same two numbers
+    /// in both places.
+    static let box = CGSize(width: 340, height: 132)
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    /// When this view first appeared, which is where the loop starts.
+    ///
+    /// It ran off the wall clock, and on a screen shown exactly once that is a
+    /// coin toss: roughly a fifth of first launches opened on the sleeping
+    /// frame, so the first thing a new user saw was a dark laptop and a plug
+    /// hanging out of its socket — the end of the story, told first. Anchored
+    /// here, everybody gets it in order: working, then stopping, then let go.
+    @State private var began = Date()
 
     var body: some View {
         Group {
@@ -24,13 +49,17 @@ struct OnboardingScene: View {
             } else {
                 TimelineView(.periodic(from: .now, by: 1.0 / 30)) { timeline in
                     scene(
-                        at: timeline.date.timeIntervalSinceReferenceDate
+                        at: timeline.date.timeIntervalSince(began)
                             .truncatingRemainder(dividingBy: Self.loop))
                 }
             }
         }
-        .frame(height: 132)
+        .frame(width: Self.box.width, height: Self.box.height)
         .accessibilityElement()
+        // The label describes what happens, not how it is drawn. The plug and
+        // the rope are this picture's way of saying "held", and a reader who
+        // is being read to does not need the metaphor — which is also why this
+        // string is unchanged by the redraw, and its six translations stand.
         .accessibilityLabel(
             "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops")
     }
@@ -42,143 +71,135 @@ struct OnboardingScene: View {
     /// eight. Without it the wrap put the rope from a full belly to dead
     /// straight in one frame, on the first animation anybody ever sees.
     ///
-    /// Static and internal so a test can walk the seam: this and `asleep` both
-    /// have to arrive back where they started.
-    static func working(at time: Double) -> Double {
-        if time < 4.4 { return 1 }
-        if time < 5.1 { return 1 - (time - 4.4) / 0.7 }
-        if time < 8.2 { return 0 }
-        return (time - 8.2) / 0.8
+    /// `nonisolated` and internal so a test can walk the seam: this and
+    /// `asleep` both have to arrive back where they started, and neither is a
+    /// function of anything but the clock, so neither needs the main actor to
+    /// answer.
+    nonisolated static func working(at time: Double) -> Double {
+        if time < 3.6 { return 1 }
+        if time < 4.2 { return 1 - (time - 3.6) / 0.6 }
+        if time < 8.1 { return 0 }
+        // Clamped: the division overshoots one by a rounding error at the very
+        // end of the loop, and this number is read as an opacity and as a
+        // fraction of a distance, where over-one is not a no-op.
+        return min(1, (time - 8.1) / 0.9)
     }
 
     /// How far the Mac has gone to sleep. Lags the agent by the grace period,
     /// which is the part people do not expect and the part worth showing, and
     /// wakes again as the next turn of work starts.
-    static func asleep(at time: Double) -> Double {
-        if time < 5.6 { return 0 }
-        if time < 6.5 { return (time - 5.6) / 0.9 }
+    ///
+    /// The lag was six tenths of a second and it showed nothing: the rope had
+    /// barely finished falling before the screen went dark, so the pause that
+    /// is the entire point of the product passed as a rendering delay. It is
+    /// now a second and seven tenths, held deliberately, and it is the stretch
+    /// where the work has stopped and the plug is still in.
+    nonisolated static func asleep(at time: Double) -> Double {
+        if time < 5.9 { return 0 }
+        if time < 6.7 { return (time - 5.9) / 0.8 }
         if time < 8.1 { return 1 }
         return max(0, 1 - (time - 8.1) / 0.7)
     }
 
+    /// Where everything sits in `box`. Named rather than inline because the
+    /// rope's ends have to agree with the things they are tied to.
+    enum Place {
+        static let screen = CGRect(x: 30, y: 30, width: 118, height: 72)
+        static let deck = CGSize(width: 142, height: 8)
+        /// The mark, and how big it is drawn.
+        static let anchor = CGPoint(x: 244, y: 30)
+        static let anchorSize: CGFloat = 36
+        static let socket = CGPoint(x: 292, y: 105)
+        /// Seated deep enough that the body meets the socket's top edge and
+        /// the prongs are inside it. Four points higher and the plug read as
+        /// hovering above the socket rather than being in it.
+        static let plugSeated = CGPoint(x: 292, y: 92)
+        static let plugLifted = CGPoint(x: 292, y: 61)
+        /// Where the rope leaves the laptop, and the two points on the mark it
+        /// passes over. Off the mark's own centre, so the rope reads as running
+        /// across it rather than disappearing behind it.
+        static let tieOff = CGPoint(x: 146, y: 36)
+        static let overLeft = CGPoint(x: 231, y: 27)
+        static let overRight = CGPoint(x: 256, y: 38)
+    }
+
+    /// Three states, told apart without a caption:
+    ///   lines running, plug in, rope taut — an agent is working
+    ///   lines stopped, plug still in      — Belay is still holding
+    ///   plug lifted out, screen dark      — let go, and the Mac is asleep
+    ///
+    /// Slack says whether the agent is working; colour and the plug say whether
+    /// Belay is still holding. Driving both from the same number was the
+    /// picture telling a lie about the product: the rope went dead the instant
+    /// the agent stopped, when in fact that is the moment Belay carries on
+    /// holding and the grace period begins.
     private func scene(at time: Double) -> some View {
         let live = Self.working(at: time)
         let sleep = Self.asleep(at: time)
-        return HStack(spacing: 0) {
-            AgentBlock(activity: live, time: time)
-                .frame(width: 118, height: 96)
-            Rope(slack: 1 - live)
-                .stroke(
-                    Color.accentColor.opacity(0.25 + 0.75 * live),
-                    style: StrokeStyle(lineWidth: 3, lineCap: .round)
-                )
-                .frame(height: 96)
-                .frame(maxWidth: .infinity)
-            MacBlock(asleep: sleep)
-                .frame(width: 132, height: 96)
+        let held = 1 - sleep
+        // The mark breathes, a point and a half either way. The rope is tied to
+        // the same number so it moves with it instead of hanging off a point
+        // the mark has drifted away from.
+        let bob = sin(time * 1.15) * 1.5
+        let plug = CGPoint(
+            x: Place.plugSeated.x,
+            y: Place.plugSeated.y + (Place.plugLifted.y - Place.plugSeated.y) * sleep)
+
+        return ZStack(alignment: .topLeading) {
+            Laptop(lit: held, working: live, time: time)
+                .frame(width: Place.deck.width, height: Place.screen.height + Place.deck.height)
+                .position(
+                    x: Place.screen.midX,
+                    y: Place.screen.midY + Place.deck.height / 2)
+
+            Bolts(intensity: held, time: time)
+                .position(x: Place.socket.x + 24, y: Place.socket.y - 6)
+
+            // Under the mark and over the plug: the rope leaves the laptop,
+            // runs across the mark and carries the plug on its other end.
+            rope(
+                from: Place.tieOff,
+                to: shifted(Place.overLeft, by: bob),
+                sag: 16 * (1 - live),
+                held: held)
+            rope(
+                from: shifted(Place.overRight, by: bob),
+                to: CGPoint(x: plug.x, y: plug.y - 8),
+                sag: 3,
+                held: held)
+
+            Plug()
+                .position(plug)
+
+            // After the plug, not before it: the socket has to cover the
+            // prongs, or a seated plug reads as a plug resting on top of one.
+            Socket()
+                .position(Place.socket)
+
+            // Last, so both lengths of rope run behind the mark rather than
+            // stopping short of it.
+            Image(nsImage: BelayGlyph.image(.alwaysOn, size: Place.anchorSize))
+                .renderingMode(.template)
+                .foregroundStyle(.tint)
+                .position(shifted(Place.anchor, by: bob))
         }
-        .padding(.horizontal, 26)
-    }
-}
-
-/// The agent: a window with lines of output that keep arriving while it works.
-private struct AgentBlock: View {
-    var activity: Double
-    var time: Double
-
-    private static let widths: [CGFloat] = [0.8, 0.55, 0.9, 0.45]
-
-    var body: some View {
-        RoundedRectangle(cornerRadius: 12, style: .continuous)
-            .fill(.quaternary)
-            .overlay(alignment: .topLeading) {
-                VStack(alignment: .leading, spacing: 7) {
-                    ForEach(Array(Self.widths.enumerated()), id: \.offset) { index, width in
-                        Capsule()
-                            .fill(index == 0 ? Color.accentColor.opacity(0.8) : Color.secondary)
-                            .frame(width: 74 * width, height: 5)
-                            // Each line fades in a beat after the one above, so
-                            // the block reads as filling up rather than blinking.
-                            .opacity(lineOpacity(index))
-                    }
-                }
-                .padding(14)
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .strokeBorder(.separator, lineWidth: 1))
+        .frame(width: Self.box.width, height: Self.box.height)
     }
 
-    /// Minus the index, not plus it. With a positive term the later lines led
-    /// the earlier ones and the block filled from the bottom up, which is a
-    /// terminal scrolling the wrong way.
-    ///
-    /// Scaled by `activity` rather than gated on it, so the lines fade out with
-    /// the same ramp as the rope instead of snapping to rest a frame after it
-    /// starts moving.
-    private func lineOpacity(_ index: Int) -> Double {
-        let step = (time * 1.6 - Double(index) * 0.5).truncatingRemainder(dividingBy: 2.4)
-        let lit = 0.1 + 0.9 * min(1, max(0, 1.35 - abs(step - 1.2)))
-        return 0.25 + (lit - 0.25) * activity
+    private func shifted(_ point: CGPoint, by amount: CGFloat) -> CGPoint {
+        CGPoint(x: point.x, y: point.y + amount)
     }
-}
 
-/// The Mac: a lit screen with the mark on it while it is held, a moon once it
-/// has been let go.
-private struct MacBlock: View {
-    var asleep: Double
-
-    var body: some View {
-        VStack(spacing: 0) {
-            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                .fill(.quaternary)
-                .overlay(
-                    ZStack {
-                        Image(nsImage: BelayGlyph.image(.alwaysOn, size: 26))
-                            .renderingMode(.template)
-                            .foregroundStyle(.tint)
-                            .opacity(1 - asleep)
-                        Image(systemName: "moon.fill")
-                            .font(.system(size: 18))
-                            .foregroundStyle(.secondary)
-                            .opacity(asleep)
-                    }
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .strokeBorder(.separator, lineWidth: 1)
-                )
-                .frame(height: 76)
-            // The foot, so the block reads as a display rather than as a second
-            // window: two rectangles side by side and nobody knows which is the
-            // computer.
-            Capsule()
-                .fill(.quaternary)
-                .frame(width: 46, height: 5)
-                .padding(.top, 4)
+    /// Two strokes rather than one interpolated colour: a grey rope underneath
+    /// that is always there, and the accent laid over it by how much Belay is
+    /// holding. Fading a single accent stroke towards nothing made the rope
+    /// vanish while the Mac slept, and a rope that disappears when it is let go
+    /// is not a rope.
+    private func rope(from: CGPoint, to: CGPoint, sag: CGFloat, held: Double) -> some View {
+        let line = StrokeStyle(lineWidth: 2.5, lineCap: .round)
+        return ZStack {
+            Rope(from: from, to: to, sag: sag).stroke(Color.secondary.opacity(0.4), style: line)
+            Rope(from: from, to: to, sag: sag).stroke(Color.accentColor.opacity(held), style: line)
         }
-    }
-}
-
-/// The rope. Straight under load, and it bellies when the load comes off.
-private struct Rope: Shape {
-    var slack: Double
-
-    var animatableData: Double {
-        get { slack }
-        set { slack = newValue }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let left = CGPoint(x: rect.minX, y: rect.midY)
-        let right = CGPoint(x: rect.maxX, y: rect.midY)
-        path.move(to: left)
-        // A quadratic is enough: a real catenary is a nicer curve and nobody
-        // can tell the difference across ninety points.
-        path.addQuadCurve(
-            to: right,
-            control: CGPoint(x: rect.midX, y: rect.midY + rect.height * 0.42 * slack))
-        return path
     }
 }
