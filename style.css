@@ -167,13 +167,26 @@ footer {
    `currentColor` and the theme sets them the way it sets any other text.
    The aspect ratio is written down so the masthead does not reflow if the
    width has to be worked out before the drawing is measured. */
+header { --lockup: 34px; }
+
 header .mark {
     display: block;
-    height: 34px;
+    height: var(--lockup);
     width: auto;
     aspect-ratio: 129 / 48.52;
     color: var(--ink);
 }
+
+/* The drawing carries empty space to the left of the star, 16.5% of its own
+   height, and left in it the lockup read as indented against the text below,
+   which starts hard against the column edge. The pull is written against the
+   height rather than in pixels, so the larger masthead below needs one number
+   changed and not two kept in step.
+
+   It is on the link and not on the drawing inside it. Moving the drawing alone
+   left the last few pixels of the star hanging outside the link's own box,
+   where they looked clickable and were not. */
+header a { margin-left: calc(var(--lockup) * -0.165); }
 
 /* The version, under the buttons rather than beside the requirements: it is
    the line people look for before they click, not after. */
@@ -273,7 +286,7 @@ footer .row p { margin: 0; }
 .version, .stamp { font-size: 13px; }
 
 /* The lockup was sized for a footer and this is a masthead. */
-header .mark { height: 42px; }
+header { --lockup: 42px; }
 
 .button .glyph {
     width: 15px;

@@ -57,6 +57,18 @@ HEART = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
          ' 1.74C14.5 10.5 8 14.25 8 14.25Z"/></svg>')
 
 
+# The panel screenshot, in the language of the page it sits on. English and
+# Russian share the English shot: the app speaks Russian, but the picture we
+# have of it does not, and a screenshot in one language under a heading in
+# another is worse than one that is plainly foreign.
+PANEL = {
+    "de": "panel-de.png",
+    "es": "panel-es.png",
+    "fr": "panel-fr.png",
+    "it": "panel-it.png",
+}
+
+
 # The real lockup from Resources/Brand, not a redrawing of it: the file is read
 # here and taken apart, so the drawing has one home and this is not a second
 # copy of it that can drift.
@@ -218,7 +230,8 @@ def landing(code):
         "",
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
         '<figure class="panel">',
-        f'    <img src="../img/panel.png" alt="{t["modes_head"]}" width="1600" height="1000">',
+        f'    <img src="../img/{PANEL.get(code, "panel.png")}" alt="{t["modes_head"]}"'
+        ' width="1600" height="1000">',
         "</figure>",
         "",
         "",
