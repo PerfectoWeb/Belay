@@ -39,16 +39,23 @@ symlinks = {"Applications": "/Applications"}
 icon = os.path.join(root, "Promo/dmg/VolumeIcon.icns")
 background = os.path.join(root, "Promo/dmg/background.tiff")
 
-# 540x360 points. The artwork is 1080x720, which makes it an exact 2x asset at
-# this size: no resampling, and the same proportions CleanMyMac uses. Treating
-# 1080x720 as the point size instead would open a window three quarters the
-# width of a laptop screen.
-# 540x388, not 540x360. This rectangle is the window *frame*, and Finder's
-# title bar takes 28 points out of it, so asking for 360 left a 332 point
-# content area and cut the bottom 28 points off the artwork: the "by
-# PerfectoWeb" line under the logo was sliced in half. Everything below is in
-# content coordinates, where the picture is a full 540x360.
-window_rect = ((200, 180), (540, 388))
+# 540x412 of window frame, for 540x384 of artwork.
+#
+# Two things come out of that frame before the picture gets any of it, and both
+# were learned the hard way. Finder's title bar takes 28 points, which is why
+# this is not 540x384. And Finder's *status bar* takes another 24 from the
+# bottom for anybody who has switched it on, which is the part that was missed:
+# at 540x388 those people had 336 points of content for a 360 point picture, so
+# Finder gave them a scroll bar, cut the "by PerfectoWeb" line off the bottom,
+# and let them scroll down to the two dot-files below. One of them reported it.
+#
+# So the artwork is 24 points taller than the window will usually show. Somebody
+# with a status bar sees the top 360, which is the composition exactly as it was
+# drawn; everybody else sees 384, which is that composition with a little more
+# gradient under it. The objects were deliberately not re-centred when it grew:
+# centring would have pushed the lockup into the strip the status bar covers,
+# which is the thing being fixed.
+window_rect = ((200, 180), (540, 412))
 default_view = "icon-view"
 show_status_bar = False
 show_tab_view = False
@@ -81,13 +88,15 @@ icon_locations = {
     # switched them on sees them sitting in the middle of the artwork, which is
     # how this was noticed.
     #
-    # Placed far below the window instead. The window is 540x360 of content, so
-    # at y=900 they are outside it in a view that does not scroll: `arrange_by`
-    # is None and the window is not resizable by the .DS_Store, so Finder has
-    # nothing to scroll to. They cannot be removed — a background needs a file
-    # on the volume and a custom volume icon needs .VolumeIcon.icns at its root
-    # — but they can be put where the picture is not.
-    ".background.tiff": (60, 900),
-    ".VolumeIcon.icns": (180, 900),
-    ".fseventsd": (300, 900),
+    # Placed just past the bottom edge instead of far below it. Distance buys
+    # nothing: Finder sizes the canvas to the furthest item, so a bigger number
+    # makes a longer scroll region and a smaller scroll thumb, which advertises
+    # that there is something down there. Just past the fold is as hidden as
+    # very far past it, and quieter.
+    #
+    # They cannot be removed. A background needs a file on the volume, and a
+    # custom volume icon needs .VolumeIcon.icns at its root.
+    ".background.tiff": (60, 470),
+    ".VolumeIcon.icns": (180, 470),
+    ".fseventsd": (300, 470),
 }
