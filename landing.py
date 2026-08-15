@@ -17,7 +17,7 @@ L = {}
 L["en"] = {
     "title": "Belay: stays awake while your agents work",
     "meta": "A small macOS menu bar app that keeps your Mac awake while coding agents work, then lets it sleep when they're done.",
-    "h1": "Stays awake while your agents work.",
+    "h1": "Keeps your Mac awake <br class=\"turn\">while your AI agent works.",
     "lede": "Belay keeps your Mac awake while a coding agent is working. When the work stops, Belay gets out of the way and your Mac can sleep normally again.",
     "body": "Built-in detection for Claude Code, plus presets for Codex CLI, Gemini CLI and Cline. You can also point Belay at a folder for anything else. Detection stays on your Mac. No account. No telemetry. Belay never sends your prompts or code anywhere.",
     "modes_head": "Your agents, at a glance",

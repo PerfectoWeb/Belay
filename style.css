@@ -65,7 +65,7 @@ h1 {
 }
 
 h2 {
-    font-size: 21px;
+    font-size: 28px;
     letter-spacing: -0.015em;
     margin: 44px 0 10px;
     padding-top: 22px;
@@ -109,7 +109,7 @@ a { color: var(--accent); }
     text-decoration: none;
 }
 
-.button.donate { background: var(--give); color: #06231a; }
+.button.donate { background: #1cb85e; color: #fff; }
 
 /* The two hero buttons, drawn to match the pair at the top of the README:
    a pill, a mark on the left, and two lines of type that share a left edge.
@@ -117,11 +117,12 @@ a { color: var(--accent); }
    README cannot, and a button that is really text stays sharp, stays
    selectable, and reflows when the words get longer in another language. */
 .button.stacked {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 12px 22px;
-    border-radius: 999px;
+    border-radius: 46px;
     line-height: 1.2;
 }
 
@@ -138,15 +139,27 @@ a { color: var(--accent); }
 
 .button.stacked .mark { width: 22px; height: 22px; flex: none; }
 
-/* The sparks sit in the corner and are decoration, so they are the first thing
-   to go quiet. */
-.button.stacked .spark { width: 20px; height: 20px; flex: none; opacity: 0.45; margin-left: 4px; }
+/* The sparks are decoration, so they are lifted out of the row entirely and
+   pinned to the top right corner. Taken out of the flow they no longer widen
+   the button or push the labels off centre. */
+.button.stacked .spark {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+}
 
-/* Green, and dark type on it. White on #29d98a is a contrast ratio under two,
-   which is unreadable in bright light and fails every accessibility check;
-   near-black on the same green is over eleven. */
-.button.stacked.primary { background: var(--give); color: #06231a; }
-.button.stacked.primary .under { opacity: 0.66; }
+.button.stacked.primary {
+    background: linear-gradient(#7133ee, #6525e6);
+    color: #fff;
+}
+
+.button.stacked.primary .mark,
+.button.stacked.primary .spark { color: #fff; fill: currentColor; }
+
+.button.stacked.primary .under { opacity: 0.72; }
 
 .button.stacked.secondary {
     background: transparent;
