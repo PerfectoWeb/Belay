@@ -160,9 +160,15 @@ private struct UpdatesRow: View {
                 // no obvious relationship, and put the thing you actually want
                 // second.
                 if case .available(_, let url) = checker.status {
-                    Button("Update Now") {
+                    Button {
                         Feedback.play(.tick)
                         NSWorkspace.shared.open(url)
+                    } label: {
+                        // The same wand the welcome screen puts on Start Magic,
+                        // and only here. "Check Now" is a question the user is
+                        // asking; this is the answer arriving, and it is the
+                        // one control in Settings worth decorating.
+                        Label("Update Now", systemImage: "wand.and.stars")
                     }
                     .controlSize(.small)
                     .tint(.green)

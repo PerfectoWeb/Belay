@@ -243,6 +243,11 @@ xcrun notarytool store-credentials BelayNotary \
 The private key belongs in the user's Keychain and must never enter this repo.
 `scripts/sign-update.sh` wraps `generate_appcast` and expects it there.
 
+The hosting half of this is no longer open: `gh-pages` publishes the site
+already, so the appcast has somewhere to live without anything new being set
+up. What is left is the key. Scheduled for 1.2, see `docs/12-V1.2-PLAN.md`,
+which also explains why the downloader should be Sparkle rather than ours.
+
 ## B4 — App Store name-conflict search for "Belay"
 
 **Blocks:** nothing yet; due before M6 per `docs/NAMING.md`.
