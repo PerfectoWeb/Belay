@@ -100,7 +100,20 @@ icon_locations = {
     # custom volume icon needs .VolumeIcon.icns at its root. For somebody who
     # shows hidden files there is no arrangement that hides them, and this is
     # the one that keeps them off the picture.
-    ".background.tiff": (58, 470),
-    ".VolumeIcon.icns": (158, 470),
-    ".fseventsd": (258, 470),
+    # In the same three columns as the visible pair, and only just below the
+    # fold. Both numbers matter and neither is taste.
+    #
+    # The columns, because Finder lays an icon view out against the extent of
+    # its items, not against the window. Putting these at x=58 pushed the
+    # leftmost extent out and the whole grid moved sideways relative to the
+    # background — which is why the window looked square with hidden files off
+    # and out of true with them on, by about 27 points. Between 118 and 417 the
+    # extent is unchanged, so the picture and the icons stay in register.
+    #
+    # The row, because the canvas grows to the lowest item. 420 is the first
+    # value clear of the 360 point window once the icon's own 96 points are
+    # counted, so the scroll region is as short as it can be.
+    ".background.tiff": (166, 420),
+    ".VolumeIcon.icns": (268, 420),
+    ".fseventsd": (369, 420),
 }
