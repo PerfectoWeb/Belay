@@ -39,23 +39,17 @@ symlinks = {"Applications": "/Applications"}
 icon = os.path.join(root, "Promo/dmg/VolumeIcon.icns")
 background = os.path.join(root, "Promo/dmg/background.tiff")
 
-# 540x412 of window frame, for 540x384 of artwork.
+# 540x388 of window frame for 540x360 of artwork: Finder's title bar takes 28
+# points out of the frame, so asking for 360 here left a 332 point content area
+# and sliced the "by PerfectoWeb" line in half.
 #
-# Two things come out of that frame before the picture gets any of it, and both
-# were learned the hard way. Finder's title bar takes 28 points, which is why
-# this is not 540x384. And Finder's *status bar* takes another 24 from the
-# bottom for anybody who has switched it on, which is the part that was missed:
-# at 540x388 those people had 336 points of content for a 360 point picture, so
-# Finder gave them a scroll bar, cut the "by PerfectoWeb" line off the bottom,
-# and let them scroll down to the two dot-files below. One of them reported it.
-#
-# So the artwork is 24 points taller than the window will usually show. Somebody
-# with a status bar sees the top 360, which is the composition exactly as it was
-# drawn; everybody else sees 384, which is that composition with a little more
-# gradient under it. The objects were deliberately not re-centred when it grew:
-# centring would have pushed the lockup into the strip the status bar covers,
-# which is the thing being fixed.
-window_rect = ((200, 180), (540, 412))
+# This was briefly 540x412, to leave room for the status bar some people switch
+# on. It was the wrong fix and it is recorded here so nobody tries it twice: a
+# window that tall needs 24 points more artwork, and adding them at the bottom
+# doubled the margin under the lockup from 27 points to 51, which reads as a
+# composition that has slid upwards. The scroll bar it was meant to remove was
+# not caused by the window height anyway. See the icon positions below.
+window_rect = ((200, 180), (540, 388))
 default_view = "icon-view"
 show_status_bar = False
 show_tab_view = False
@@ -88,15 +82,25 @@ icon_locations = {
     # switched them on sees them sitting in the middle of the artwork, which is
     # how this was noticed.
     #
-    # Placed just past the bottom edge instead of far below it. Distance buys
-    # nothing: Finder sizes the canvas to the furthest item, so a bigger number
-    # makes a longer scroll region and a smaller scroll thumb, which advertises
-    # that there is something down there. Just past the fold is as hidden as
-    # very far past it, and quieter.
+    # Just past the bottom edge. Finder sizes an icon view's scroll area to its
+    # items and the background picture has no say in it, so leaving these three
+    # unplaced let Finder auto-arrange them below the fold, which is what put a
+    # scroll bar on the window in the first place and let somebody with hidden
+    # files switched on scroll down and find them sitting on the artwork.
     #
-    # They cannot be removed. A background needs a file on the volume, and a
-    # custom volume icon needs .VolumeIcon.icns at its root.
-    ".background.tiff": (60, 470),
-    ".VolumeIcon.icns": (180, 470),
-    ".fseventsd": (300, 470),
+    # Inside the window was tried and is worse: there is no room for three
+    # 96 point icons that does not land on the panel or across the lockup, so
+    # anybody showing hidden files would see them all the time rather than only
+    # after deciding to scroll.
+    #
+    # Further away is worse too. A bigger number is a longer scroll region and a
+    # smaller scroll thumb, which advertises that there is something down there.
+    #
+    # They cannot be removed: a background needs a file on the volume and a
+    # custom volume icon needs .VolumeIcon.icns at its root. For somebody who
+    # shows hidden files there is no arrangement that hides them, and this is
+    # the one that keeps them off the picture.
+    ".background.tiff": (58, 470),
+    ".VolumeIcon.icns": (158, 470),
+    ".fseventsd": (258, 470),
 }
