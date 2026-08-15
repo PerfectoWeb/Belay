@@ -62,6 +62,9 @@ fi
 echo "==> string catalogue"
 swift scripts/strings.swift check
 
+echo "==> disk image layout"
+python3 scripts/check-dmg-layout.py
+
 echo "==> swiftlint"
 swiftlint --strict
 

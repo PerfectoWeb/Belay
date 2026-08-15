@@ -34,14 +34,14 @@ sixty seconds too long costs nothing at all.
 ## ✨ Features
 
 <table>
-<tr><td>🎯 <b>Zero&nbsp;setup</b></td><td>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌 <b>Every&nbsp;agent</b></td><td>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
-<tr><td>🛡 <b>Never&nbsp;stuck</b></td><td>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
-<tr><td>🔋 <b>Your&nbsp;rails</b></td><td>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
-<tr><td>👀 <b>Subagents&nbsp;too</b></td><td>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
-<tr><td>📊 <b>Time&nbsp;saved</b></td><td>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
-<tr><td>🔒 <b>Stays&nbsp;local</b></td><td>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
-<tr><td>🌍 <b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
+<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌&nbsp;<b>Every&nbsp;agent</b></td><td>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
+<tr><td>🛡&nbsp;<b>Never&nbsp;stuck</b></td><td>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
+<tr><td>🔋&nbsp;<b>Your&nbsp;rails</b></td><td>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
+<tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
+<tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
+<tr><td>🔒&nbsp;<b>Stays&nbsp;local</b></td><td>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
+<tr><td>🌍&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
 
 ## 📦 Install
