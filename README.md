@@ -12,7 +12,7 @@
 
 <img src="Promo/Social/spacer.png" height="12" alt="">
 
-<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a>&nbsp;&nbsp;<a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
+<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a><picture><source media="(max-width: 500px)" srcset="Promo/Social/spacer.png"><img src="Promo/Social/spacer-16.png" alt=""></picture><a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
 </div>
 
@@ -50,7 +50,7 @@ sixty seconds too long costs nothing at all.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
-<picture><source media="(max-width: 500px)" srcset="Promo/Social/dmg-window.png"><img src="Promo/Social/dmg-window-wide.png" alt="The Belay disk image: drag the app into Applications" width="100%"></picture>
+<picture><source media="(max-width: 768px) and (prefers-color-scheme: dark)" srcset="Promo/Social/dmg-window.png"><source media="(max-width: 768px)" srcset="Promo/Social/dmg-window-light.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/dmg-window-wide.png"><img src="Promo/Social/dmg-window-light-wide.png" alt="The Belay disk image: drag the app into Applications" width="100%"></picture>
 
 **3.** That is the install. Launch it and it lives in the menu bar.
 

@@ -18,9 +18,10 @@ older idea of it, which is exactly what happened once.
 | `btn-site-dark-desk.png`, `btn-site-light-desk.png` | Learn More on a wide screen, again one per theme |
 | `btn-download.png`, `btn-download-desk.png` | The blue download button, kept for the day the colour changes back |
 | `panel.png` | The annotated panel, in How to Use |
-| `dmg-window.png`, `dmg-window-wide.png` | The disk image, in Install. The wide one carries transparent margins so one width serves both screens |
+| `dmg-window.png`, `dmg-window-light.png` | The disk image in Install, on a narrow screen, one per GitHub theme |
+| `dmg-window-wide.png`, `dmg-window-light-wide.png` | The same on a wide screen. These carry transparent side margins so one `width="100%"` draws them smaller |
+| `spacer.png`, `spacer-16.png` | One transparent pixel, and sixteen. Given no `width` attribute an image renders at its own size, which is the only way a README gets a different gap per breakpoint |
 | `shots/grid.png`, `shots/stack.png` | Screenshots, two by two on a wide screen and stacked under 500 px |
-| `spacer.png` | One transparent pixel. GitHub strips `style`, so a sized spacer image is the only way to add an exact gap |
 
 **Nothing in here is generated from anything else in here, and nothing in here
 may be edited in place by a tool.** Every file is drawn by hand. There was a
