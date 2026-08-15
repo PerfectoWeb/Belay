@@ -52,6 +52,27 @@ final class ReleaseCheckerTests: XCTestCase {
             checker.status, .available(version: "1.2.0", url: URL(string: "https://example.com/r")!))
     }
 
+    /// Pressing Update has to start a download, not open a page for somebody to
+    /// find the link on themselves.
+    func testAnAvailableUpdatePointsAtTheDiskImage() async throws {
+        let checker = checker { _ in releaseWithDiskImage("1.2.0") }
+        checker.isAutomatic = true
+        try await settle(checker)
+        XCTAssertEqual(
+            checker.status,
+            .available(version: "1.2.0", url: URL(string: "https://example.com/B.dmg")!))
+    }
+
+    /// And a release with nothing attached still offers its page rather than
+    /// reporting that the answer could not be read.
+    func testAReleaseWithNoFilesFallsBackToItsPage() async throws {
+        let checker = checker { _ in releaseJSON("1.2.0") }
+        checker.isAutomatic = true
+        try await settle(checker)
+        XCTAssertEqual(
+            checker.status, .available(version: "1.2.0", url: URL(string: "https://example.com/r")!))
+    }
+
     /// Daily, not hourly: an update checker that runs on every launch is
     /// telemetry with extra steps.
     func testACheckIsNotRepeatedWithinTheInterval() async throws {
@@ -140,8 +161,21 @@ final class ReleaseCheckerTests: XCTestCase {
 
 /// A free function, not a method: the fetch closure is `@Sendable` and cannot
 /// capture the test case.
+/// A release with no files attached, which is the shape that proves the page is
+/// still offered when there is no disk image to offer instead.
 private func releaseJSON(_ tag: String) -> Data {
     Data(#"{"tag_name":"\#(tag)","html_url":"https://example.com/r"}"#.utf8)
+}
+
+/// A release the way GitHub actually sends one, with the disk image among its
+/// assets. Update Now has to reach the file, not the page it is linked from.
+private func releaseWithDiskImage(_ tag: String) -> Data {
+    Data(
+        #"""
+        {"tag_name":"\#(tag)","html_url":"https://example.com/r",
+         "assets":[{"name":"checksums.txt","browser_download_url":"https://example.com/c.txt"},
+                   {"name":"Belay-\#(tag).dmg","browser_download_url":"https://example.com/B.dmg"}]}
+        """#.utf8)
 }
 
 private actor Sent {

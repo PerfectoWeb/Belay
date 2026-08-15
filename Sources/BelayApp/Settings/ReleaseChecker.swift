@@ -128,10 +128,12 @@ final class ReleaseChecker {
             // day the app, the privacy policy and the release notes all
             // describe as one.
             do {
-                let release = try JSONDecoder().decode(Release.self, from: try await fetch(url))
+                let data = try await fetch(url)
+                let release = try JSONDecoder().decode(GitHubRelease.self, from: data)
                 let latest = release.tag.trimmingCharacters(in: CharacterSet(charactersIn: "vV"))
-                if Self.isNewer(latest, than: current), let page = URL(string: release.page) {
-                    status = .available(version: latest, url: page)
+                let file = URL(string: release.installable)
+                if Self.isNewer(latest, than: current), let file {
+                    status = .available(version: latest, url: file)
                 } else {
                     status = .upToDate(now)
                 }
@@ -205,19 +207,6 @@ final class ReleaseChecker {
             throw UpdateError.badResponse((response as? HTTPURLResponse)?.statusCode ?? -1)
         }
         return data
-    }
-
-    /// The two fields of the release JSON Belay reads. Coding keys rather
-    /// than snake-cased properties, so the linters stay happy and the wire
-    /// format is written down in one obvious place.
-    private struct Release: Decodable {
-        let tag: String
-        let page: String
-
-        enum CodingKeys: String, CodingKey {
-            case tag = "tag_name"
-            case page = "html_url"
-        }
     }
 
     enum UpdateError: LocalizedError {

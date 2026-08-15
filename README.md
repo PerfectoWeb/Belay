@@ -1,24 +1,18 @@
 <div align="center">
 
-<picture>
-  <source media="(max-width: 500px)" srcset="Promo/Social/masthead-2x-mobile.png">
-  <img src="Promo/Social/masthead-2x.png" alt="Belay: keeps your Mac awake while your AI agent works" width="100%">
-</picture>
+<picture><source media="(max-width: 500px)" srcset="Promo/Social/masthead-2x-mobile.png"><img src="Promo/Social/masthead-2x.png" alt="Belay: keeps your Mac awake while your AI agent works" width="100%"></picture>
 
-<br><img src="Promo/Social/spacer.png" height="10" alt="">
-
-<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/btn-download.png" alt="Download Belay for macOS" height="47"></a>
-&nbsp;&nbsp;
-<a href="https://perfectoweb.github.io/Belay/"><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png">
-  <img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="48">
-</picture></a>
+<img src="Promo/Social/spacer.png" height="12" alt="">
 
 [![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=release&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/PerfectoWeb/Belay/ci.yml?style=flat&label=CI)](https://github.com/PerfectoWeb/Belay/actions)<br>
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 ![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)
+
+<img src="Promo/Social/spacer.png" height="12" alt="">
+
+<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="47"></a>&nbsp;&nbsp;<a href="https://perfectoweb.github.io/Belay/"><picture><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="48"></picture></a>
 
 </div>
 
@@ -56,10 +50,7 @@ sixty seconds too long costs nothing at all.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
-<picture>
-  <source media="(max-width: 500px)" srcset="Promo/Social/dmg-window.png">
-  <img src="Promo/Social/dmg-window-wide.png" alt="The Belay disk image: drag the app into Applications" width="100%">
-</picture>
+<picture><source media="(max-width: 500px)" srcset="Promo/Social/dmg-window.png"><img src="Promo/Social/dmg-window-wide.png" alt="The Belay disk image: drag the app into Applications" width="100%"></picture>
 
 **3.** That is the install. Launch it and it lives in the menu bar.
 
@@ -152,10 +143,7 @@ You will see the assertion, a plain-English reason, and how long it has left.
 
 ## 🖼 Screenshots
 
-<picture>
-  <source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png">
-  <img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and seven languages" width="100%">
-</picture>
+<picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and seven languages" width="100%"></picture>
 
 ## 🧯 Troubleshooting
 
