@@ -173,6 +173,9 @@ private struct UpdatesRow: View {
                     .controlSize(.small)
                     .tint(.green)
                     .buttonStyle(.borderedProminent)
+                    // Fully rounded, like the Donate button in About. Only the
+                    // shape: the tint, the size and the label stay as they are.
+                    .buttonBorderShape(.capsule)
                 } else {
                     Button("Check Now") {
                         Feedback.play(.tick)
