@@ -12,7 +12,7 @@
     --accent: #1f6bff;
     /* Donate is the one button that is not asking you to install anything, so
        it does not compete with the blue that is. */
-    --give: #12855a;
+    --give: #29d98a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +23,7 @@
         --panel: #151a22;
         --rule: #252c38;
         --accent: #5b93ff;
-        --give: #2ea36b;
+        --give: #29d98a;
     }
 }
 
@@ -109,13 +109,84 @@ a { color: var(--accent); }
     text-decoration: none;
 }
 
-.button.donate { background: var(--give); }
+.button.donate { background: var(--give); color: #06231a; }
+
+/* The two hero buttons, drawn to match the pair at the top of the README:
+   a pill, a mark on the left, and two lines of type that share a left edge.
+   Written in CSS rather than shipped as pictures because a page can do what a
+   README cannot, and a button that is really text stays sharp, stays
+   selectable, and reflows when the words get longer in another language. */
+.button.stacked {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    line-height: 1.2;
+}
+
+.button.stacked .lines { display: inline-flex; flex-direction: column; gap: 1px; }
+.button.stacked .lead { font-size: 17px; font-weight: 700; }
+
+/* Half lit and lighter, so it reads as a detail of the button rather than a
+   second thing to decide about. */
+.button.stacked .under {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.72;
+}
+
+.button.stacked .mark { width: 22px; height: 22px; flex: none; }
+
+/* The sparks sit in the corner and are decoration, so they are the first thing
+   to go quiet. */
+.button.stacked .spark { width: 20px; height: 20px; flex: none; opacity: 0.45; margin-left: 4px; }
+
+/* Green, and dark type on it. White on #29d98a is a contrast ratio under two,
+   which is unreadable in bright light and fails every accessibility check;
+   near-black on the same green is over eleven. */
+.button.stacked.primary { background: var(--give); color: #06231a; }
+.button.stacked.primary .under { opacity: 0.66; }
+
+.button.stacked.secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+}
 
 .button.secondary {
     background: transparent;
     color: var(--ink);
     border: 1px solid var(--rule);
 }
+
+/* The folded paragraph. A summary that looks like the link it behaves as, with
+   a chevron that turns over so the control says which way it is going. */
+.more { margin: 14px 0 0; }
+
+.more summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    cursor: pointer;
+    list-style: none;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform 0.18s ease-in-out;
+}
+.more[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.more p { margin-top: 10px; }
 
 footer {
     margin-top: 64px;
@@ -459,25 +530,6 @@ footer .row .languages a { text-decoration: none; }
 /* The version belongs on the button it describes, not in a line under it.
    Thinner, smaller and half lit, so it reads as a detail of the button
    rather than a second thing to decide about. */
-.button.stacked {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px;
-    line-height: 1.25;
-    padding-top: 9px;
-    padding-bottom: 9px;
-}
-
-.button.stacked .under {
-    font-size: 11.5px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* The button's two lines share the left edge. Centring a short line under a
-   long one puts the version somewhere the eye has to go and find. */
-.button.stacked { align-items: flex-start; }
 
 /* A break the headline asks for, in the one place there is room to grant it.
    The Russian headline has a comma where the thought turns, and above the
