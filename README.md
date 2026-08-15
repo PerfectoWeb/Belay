@@ -2,13 +2,11 @@
 
 <img src="Promo/Social/masthead-2x.png" alt="Belay: keeps your Mac awake while your AI agent works" width="100%">
 
-<br>
+<br><img src="Promo/Social/spacer.png" height="10" alt="">
 
 <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/buttons/download.png" alt="Download for macOS" height="46"></a>
 &nbsp;&nbsp;
 <a href="https://perfectoweb.github.io/Belay/"><img src="Promo/Social/buttons/website.png" alt="Website" height="46"></a>
-
-<br>
 
 [![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=release&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
@@ -36,19 +34,19 @@ sixty seconds too long costs nothing at all.
 ## ✨ Features
 
 <table>
-<tr><td>🎯 <b>Zero setup</b><br>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌 <b>Every agent</b><br>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
-<tr><td>🛡 <b>Never stuck</b><br>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
-<tr><td>🔋 <b>Your rails</b><br>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
-<tr><td>👀 <b>Subagents too</b><br>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
-<tr><td>📊 <b>Time saved</b><br>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
-<tr><td>🔒 <b>Stays local</b><br>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
-<tr><td>🌍 <b>Seven languages</b><br>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
+<tr><td>🎯 <b>Zero&nbsp;setup</b></td><td>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌 <b>Every&nbsp;agent</b></td><td>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
+<tr><td>🛡 <b>Never&nbsp;stuck</b></td><td>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
+<tr><td>🔋 <b>Your&nbsp;rails</b></td><td>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
+<tr><td>👀 <b>Subagents&nbsp;too</b></td><td>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
+<tr><td>📊 <b>Time&nbsp;saved</b></td><td>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
+<tr><td>🔒 <b>Stays&nbsp;local</b></td><td>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
+<tr><td>🌍 <b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
 
 ## 📦 Install
 
-**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle">&nbsp;&nbsp;macOS 14 or later, Apple silicon and Intel, about 4 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><sup><a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle" hspace="8"></a></sup> macOS 14 or later, Apple silicon and Intel, about 4 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
@@ -240,12 +238,12 @@ Start at [`CONTRIBUTING.md`](CONTRIBUTING.md). Security reports go through
 ### 📖 Documentation
 
 <table>
-<tr><td width="180"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
-<tr><td width="180"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
-<tr><td width="180"><a href="CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
-<tr><td width="180"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
-<tr><td width="180"><a href="SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
-<tr><td width="180"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
+<tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
+<tr><td width="24%"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
+<tr><td width="24%"><a href="CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
+<tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
+<tr><td width="24%"><a href="SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
+<tr><td width="24%"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
 </table>
 
 ## 📝 License
