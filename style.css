@@ -122,7 +122,12 @@ a { color: var(--accent); }
     align-items: center;
     gap: 12px;
     padding: 12px 22px;
-    border-radius: 46px;
+    /* 16, not the 46 the drawing says. A border radius is clamped to half the
+       box, and this button is 60 points tall, so anything past 30 draws the
+       same full capsule and the number stops meaning anything. The drawing is
+       180 points tall with a 52 point corner, which is 29 percent of its
+       height; at 60 points that is 17, and 16 is where it sits cleanly. */
+    border-radius: 16px;
     line-height: 1.2;
 }
 
@@ -137,15 +142,17 @@ a { color: var(--accent); }
     opacity: 0.72;
 }
 
-.button.stacked .mark { width: 22px; height: 22px; flex: none; }
+/* Two points up. The apple's glyph is drawn with its optical weight low, so
+   sitting it on the true centre of the row reads as having sagged. */
+.button.stacked .mark { width: 22px; height: 22px; flex: none; transform: translateY(-2px); }
 
 /* The sparks are decoration, so they are lifted out of the row entirely and
    pinned to the top right corner. Taken out of the flow they no longer widen
    the button or push the labels off centre. */
 .button.stacked .spark {
     position: absolute;
-    top: 10px;
-    right: 14px;
+    bottom: 8px;
+    right: 12px;
     width: 20px;
     height: 20px;
     opacity: 0.5;
