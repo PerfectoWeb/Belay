@@ -12,7 +12,7 @@
 
 <img src="Promo/Social/spacer.png" height="12" alt="">
 
-<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="47"></a>&nbsp;&nbsp;<a href="https://perfectoweb.github.io/Belay/"><picture><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="48"></picture></a>
+<a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(max-width: 500px)" srcset="Promo/Social/btn-download-green-sm.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a>&nbsp;&nbsp;<a href="https://perfectoweb.github.io/Belay/"><picture><source media="(max-width: 500px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-sm.png"><source media="(max-width: 500px)" srcset="Promo/Social/btn-site-light-sm.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
 </div>
 
