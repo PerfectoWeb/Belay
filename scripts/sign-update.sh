@@ -116,8 +116,16 @@ APPCAST="$RELEASES/appcast.xml"
 enclosures=$(grep -c '<enclosure' "$APPCAST" || true)
 signatures=$(grep -c 'sparkle:edSignature=' "$APPCAST" || true)
 [ "$enclosures" -gt 0 ] || die "$APPCAST has no enclosures at all"
-[ "$enclosures" = "$signatures" ] \
-    || die "$APPCAST has $enclosures enclosures but $signatures signatures; clients would refuse the unsigned ones"
+if [ "$enclosures" != "$signatures" ]; then
+    # Delete it. generate_appcast does not fail when it cannot read the key: it
+    # prints a warning, writes an unsigned appcast and exits 0. Observed on
+    # 2026-08-17, when the Keychain prompt was refused and two unsigned entries
+    # were written. Leaving that file on disk means the next run, or a person in
+    # a hurry, has something that looks finished and would be refused by every
+    # client it reached.
+    rm -f "$APPCAST"
+    die "$enclosures enclosures but $signatures signatures. The appcast was deleted. Answer the Keychain prompt with Always Allow and run again."
+fi
 
 # --- put each enclosure under its own tag -------------------------------------
 #
