@@ -153,21 +153,25 @@ private struct UpdatesRow: View {
             )
 
             HStack(spacing: 8) {
-                // One button, two jobs. When there is nothing to install it
-                // checks; when there is, it becomes the way to get it, tinted
-                // green and saying so. A separate "Download…" link beside an
-                // unchanged "Check Now" made the row read as two controls with
-                // no obvious relationship, and put the thing you actually want
+                // One button, two jobs. With nothing to install it checks;
+                // with something, it becomes the way to get it. A separate
+                // "Download…" beside an unchanged "Check Now" read as two
+                // controls with no relationship, and put the thing you want
                 // second.
                 if case .available(_, let url) = checker.status {
                     Button {
                         Feedback.play(.tick)
-                        NSWorkspace.shared.open(url)
+                        // Sparkle where there is one: progress, a signature
+                        // check over the bytes, the swap, the relaunch. Opening
+                        // the URL is what a build without Sparkle can do.
+                        if SoftwareUpdate.isSupported {
+                            SoftwareUpdate.install()
+                        } else {
+                            NSWorkspace.shared.open(url)
+                        }
                     } label: {
-                        // The same wand the welcome screen puts on Start Magic,
-                        // and only here. "Check Now" is a question the user is
-                        // asking; this is the answer arriving, and it is the
-                        // one control in Settings worth decorating.
+                        // The welcome screen's wand, and only here. "Check
+                        // Now" is a question; this is the answer arriving.
                         Label("Update Now", systemImage: "wand.and.stars")
                     }
                     .controlSize(.small)

@@ -39,7 +39,7 @@
 	<key>SUAutomaticallyUpdate</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
-	<true/>
+	<false/>
 	<key>SUFeedURL</key>
 	<string>https://perfectoweb.github.io/Belay/appcast.xml</string>
 	<key>SUPublicEDKey</key>

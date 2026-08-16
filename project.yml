@@ -146,7 +146,12 @@ targets:
         SUPublicEDKey: Vzv5S2MFDz1si7eu25uDdjAYO/wDqwsA+Y2iDU0c3e8=
         # Checked on a schedule, never installed without being asked. People
         # running a system utility choose when it restarts (docs/06).
-        SUEnableAutomaticChecks: true
+        # False, and not a default. Belay does its own daily check through
+        # ReleaseChecker, which the About pane describes as the app's only
+        # network access. Letting Sparkle schedule a second one would make that
+        # sentence untrue, and would be two habits to explain instead of one.
+        # Sparkle here is the installer, reached from the Update Now button.
+        SUEnableAutomaticChecks: false
         SUAutomaticallyUpdate: false
 
   # Mac App Store channel: sandboxed, StoreKit tips, no updater of our own.
