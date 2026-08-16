@@ -1,9 +1,14 @@
 # App Store listing copy
 
-Every text field App Store Connect asks for, in the six languages Belay ships,
+Every text field App Store Connect asks for, in the seven languages Belay ships,
 ready to paste. Nothing here is written from imagination: every claim maps to
 something the app does, because a claim the binary does not support is
 inaccurate metadata under guideline 2.3 and is refused at review.
+
+**This file is the copy of what is in App Store Connect, not a draft of it.** The
+descriptions below were pulled back out of the API on 2026-08-16 and then
+edited, rather than retyped from an older draft that had already drifted. When
+a field is changed in the store, change it here in the same sitting.
 
 Character limits are Apple's and are counted below each field. Cyrillic counts
 the same as Latin, so the Russian lines were written to the same budget rather
@@ -50,488 +55,549 @@ product's own domain whenever those pages are built.
 | Spanish (Spain) | `https://perfectoweb.github.io/Belay/es/privacy/` |
 | French | `https://perfectoweb.github.io/Belay/fr/privacy/` |
 | Italian | `https://perfectoweb.github.io/Belay/it/privacy/` |
+| Simplified Chinese | `https://perfectoweb.github.io/Belay/zh/privacy/` |
 
-Apple would have accepted the English address in all six boxes. It is a real
-policy in each language instead, because this is the one document where a
-reader needs to understand exactly what is read off their disk, and the app
-already speaks all six. Each translation says it is a translation and links to
-the English, which governs.
+Apple would have accepted the English address in every box. It is a real policy
+in each language instead, because this is the one document where a reader needs
+to understand exactly what is read off their disk, and the app already speaks
+all seven. Each translation says it is a translation and links to the English,
+which governs.
+---
 
-The capital B is not optional. GitHub Pages paths are case-sensitive even
-though github.com URLs are not, and the lowercase spelling of this address
-returns 404. It was written lowercase here until the page went up and the
-two were compared.
+## Names and subtitles, all seven at once
+
+Set them together, because the rule that forced this change applies to every
+localisation and three of them were still wrong on 2026-08-16: `de-DE`, `it` and
+`es-ES` were still reading `Belay - Keep Mac Awake` in App Store Connect while
+`en-US`, `ru` and `fr-FR` had been changed. One rejected localisation rejects
+the submission.
+
+Each name is localised rather than left in English. It costs one field per
+store, "Belay" leads every one of them so the brand does not move, and the tail
+is what somebody in that store would actually type. `Belay` alone is taken here
+by an SSH client and by an assistant, which is why the name carries a
+description at all.
+
+| Locale | Name | | Subtitle | |
+|---|---|---|---|---|
+| English (U.S.) | `Belay - Awake for AI Agents` | 27 | `Sleeps again when they finish` | 29 |
+| Russian | `Belay - Для AI агентов` | 22 | `Не спит, пока агент работает` | 28 |
+| German | `Belay - Wach für KI-Agenten` | 27 | `Schläft, wenn sie fertig sind` | 29 |
+| Spanish (Spain) | `Belay - Despierto para tu IA` | 28 | `Duerme cuando ellos terminan` | 28 |
+| French | `Belay - Éveillé pour vos IA` | 27 | `Se rendort quand ils ont fini` | 29 |
+| Italian | `Belay - Sveglio per le tue IA` | 29 | `Si riaddormenta a fine lavoro` | 29 |
+| Simplified Chinese | `Belay - 为 AI 智能体保持唤醒` | 20 | `工作结束后自动进入睡眠` | 11 |
+
+**If you would rather keep one name everywhere**, use
+`Belay - Awake for AI Agents` in all seven and keep the localised subtitles
+above. Search still works in each store, because Apple pools the name, the
+subtitle and the keywords, and the other two fields are in the local language.
+What is lost is the first line reading as the reader's own language.
+
+**"Mac" must not appear in a name or a subtitle in any localisation.** That is
+guideline 5.2.5 and it is what the 2026-08-16 rejection was. It stays in the
+descriptions, where it is ordinary referential use and where Apple did not
+object.
 
 ---
 
-## English
+## What changed in the descriptions for 1.3
 
-**Name** (30)
-`Belay - Awake for AI Agents` / 27
+The text below is what is live in App Store Connect, pulled back out of the API
+rather than retyped, with four edits applied to every language.
 
-**Subtitle** (30)
-`Sleeps again when they finish` / 29
+**Precise Detection is gone from the copy.** The paragraph promising that Claude
+Code can tell Belay exactly when a turn starts and stops describes a feature the
+App Store build does not have: the hook listener and its entitlement were
+removed on 2026-08-16, and the feature could never have worked in a sandbox
+anyway. Leaving the paragraph in would be inaccurate metadata under 2.3, which
+is a rejection in its own right.
 
-**Chosen on 2026-08-16, and not freely.** App Review rejected the previous pair
-under guideline 5.2.5: "Terms for 'Mac' in the app name in an inappropriate
-manner". Apple's trademark guidelines do not allow an Apple product name inside
-an app's name, and this is not a rule worth testing twice.
+**Folders are remembered.** The one line about pointing Belay at a folder now
+says that the choice survives a relaunch, which is what the security-scoped
+bookmarks in 1.3 bought.
 
-The pair that shipped to review was:
+**The menu bar says when Belay let go.** One sentence under the section about
+letting go, for the paused mark.
 
-```
-Name      Belay - Keep Mac Awake          22
-Subtitle  While your coding agents work   29
-```
+**No network at all.** The privacy section now says outright that this build
+cannot reach the network in either direction. It is the strongest claim in the
+listing and it is now literally true: there is no network entitlement of any
+kind in the App Store build.
 
-The one above was already written down here as the candidate that was not
-chosen, with the note that the decision was a judgement about the shop window
-rather than about the software. The rejection made it for us, and it turns out
-to be the better pair on its own merits: the two lines finish each other's
-sentence, and "AI" now sits in the name instead of being bought back out of the
-keyword budget.
+The languages line is corrected everywhere. Two of them were wrong before: the
+German one said "SECHS SPRACHEN" and then listed one language in English, and
+none of them mentioned Chinese.
 
-Plain `Belay` is taken on the Mac App Store, by an SSH client and by an
-assistant, so the name has to carry a description the way theirs do.
+---
 
-"Mac" is gone from both fields. It stays in the description, where it is
-ordinary referential use ("your Mac sleeps as it always did") and where Apple
-did not object. The rejection named the app name and nothing else, but a
-subtitle is searched in the same pool as the name, and there is no reason to
-find out whether that counts.
+## English (U.S.)
 
 **Promotional text** (170)
-`Belay watches your local coding agent and holds sleep off only while it is
-actually working. When the run ends, your Mac sleeps the way it always did.` / 150
+```
+Leave your agents running. Belay keeps your Mac awake while they work, then gets out of the way when they're done. No account. No telemetry.
+```
 
 **Keywords** (100, comma separated, no spaces)
-`ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer` / 90
-
-`ai` is here rather than in the name, which is the trade the chosen name makes.
-`power` came out to pay for it: it is the vaguest term on the list.
-
-`agent` and `awake` came out for the same reason: both are in the name now,
-and repeating a term in the keyword field does not rank it twice. The freed
-characters went to `cli` and `terminal`.
+```
+ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer
+```
 
 **Description** (4000)
-
 ```
-Your Mac goes to sleep. The agent you left running does not survive it.
+Your Mac goes to sleep. The coding agent you left running stops making progress.
 
-Belay sits in the menu bar and watches for a local AI coding agent doing
-actual work. While one is working it holds sleep off. The moment everything
-goes quiet it lets go, and your Mac sleeps exactly as it did before.
+Belay keeps your Mac awake while coding agents work. When they're done, Belay gets out of the way and your Mac can sleep normally again.
 
-It is not a caffeine switch you have to remember. There is nothing to turn on
-before a long run and nothing to turn off afterwards.
+No timer to start. No caffeine switch to remember. Just leave your agent running.
 
-WHAT IT WATCHES
+WORKS WITH
 
-Claude Code needs no configuration at all. Codex, Gemini CLI and Cline each
-have a one-tap preset. Anything else that writes files while it works can be
-covered by pointing Belay at a folder.
+Claude Code support is built in. Codex CLI, Gemini CLI and Cline have ready-made presets.
 
-Belay can also be told exactly when a turn starts and ends, rather than
-inferring it from files, by installing a small hook into Claude Code's own
-settings. That is one button, it is reversible, and it is what makes "an agent
-is waiting for you" reliable.
+For anything else, point Belay at a folder your tool writes to and it will use activity in that folder as the signal. The folders you choose are remembered, so you pick them once.
 
 THREE MODES
 
-Auto holds only while an agent is working. Always on holds until you say
-otherwise. Off does nothing at all.
+• Auto: keeps your Mac awake while an agent is working.
+• Always On: keeps it awake until you turn it off.
+• Off: Belay stays out of the way.
 
-IT LETS GO
+KNOWS WHEN TO LET GO
 
-A hold is never open ended. Belay releases after the work stops, after a
-ceiling you set, when the battery falls below a level you set, and when it
-quits for any reason including being killed. Your energy settings are never
-changed: a power assertion sits alongside them rather than editing them.
+Belay can wait a little after an agent goes quiet, stop after a maximum awake time, and stop on low battery. It never changes your macOS sleep settings.
 
-WHAT IT READS
-
-Only enough of your agent's session files to tell whether it is running: file
-sizes, timestamps and whether a turn ended. Never your prompts. Never your
-code. Nothing about you or your work leaves this Mac, and there is no account
-and no telemetry.
+When Belay stops on purpose, the menu bar icon shows it, so a Mac that went quiet is never a mystery.
 
 NOTIFICATIONS, IF YOU WANT THEM
 
-When an agent is blocked on a question. When a long run has finished. When
-Belay let go to protect the battery. All three can be switched off.
+Belay can let you know when an agent needs you, a long run finishes, or it stops keeping your Mac awake for safety. Each notification can be turned off.
 
-WHAT IT COUNTS
+STAYS ON YOUR MAC
 
-How long your Mac was held awake while you were away from it, and how many
-runs would otherwise have ended in a dead session. Time held while you were at
-the keyboard is not counted, because the Mac was not going to sleep anyway.
+Belay uses local activity to determine whether an agent is working. It doesn't upload your prompts or code. There is no account, no analytics and no telemetry.
 
-Six languages: English, Russian, German, Spanish, French, Italian.
-```
+This version has no network access of any kind. It cannot connect out and it does not listen for anything.
 
-**What's New** (4000), first release
-```
-First release.
+Your statistics stay on your Mac unless you choose to share them.
+
+STATISTICS THAT MEAN SOMETHING
+
+See how long Belay kept your Mac awake while you were away, plus runs watched, runs saved and your longest run.
+
+Time at the keyboard doesn't count, because your Mac wasn't going to sleep anyway.
+
+LANGUAGES
+
+English, Russian, German, Spanish, French, Italian and Simplified Chinese.
 ```
 
 ---
 
 ## Русский
 
-**Subtitle** (30)
-`Не спит, пока агент работает` / 28
-
-Changed on 2026-08-16 with the English name. Apple named only the app name in
-the rejection, but the subtitle is searched in the same pool, and "Mac" was the
-first word of this one.
-
 **Promotional text** (170)
-`Belay следит за локальным агентом и не даёт Mac уснуть, только пока тот
-действительно работает. Работа закончилась, и Mac засыпает как обычно.` / 142
+```
+Belay не даст Mac уснуть, пока ваши AI агенты работают. Приложение само разрешит Mac заснуть, как только все процессы будут завершены.
+```
 
 **Keywords** (100)
-`claude,codex,gemini,cline,агент,сон,бодрствование,кофеин,меню,разработка,питание` / 80
-
-**Description**
-
 ```
-Mac уходит в сон. Агент, которого вы оставили работать, этого не переживает.
+ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer,код
+```
 
-Belay живёт в строке меню и следит, работает ли прямо сейчас локальный
-ИИ-агент. Пока работает, сон отложен. Как только всё затихло, Belay отпускает,
-и Mac засыпает ровно так же, как раньше.
+**Description** (4000)
+```
+Belay не даёт вашему Mac уснуть, пока работают AI coding-агенты. Как только агенты закончат работу, Mac автоматически перейдет в обычный режим засыпания.
 
-Это не переключатель, который надо не забыть нажать. Перед долгим запуском
-включать нечего, и после него выключать нечего.
+Никаких таймеров. Никаких переключателей, о которых нужно помнить. Запустите Belay, настройте один раз - все остальное он сделает за вас.
 
-ЗА ЧЕМ ОН СЛЕДИТ
+ПОДДЕРЖИВАЕМЫЕ АГЕНТЫ
 
-Claude Code не требует никакой настройки. Для Codex, Gemini CLI и Cline есть
-готовые пресеты в одно нажатие. Всё остальное, что пишет файлы во время
-работы, покрывается указанием папки.
+Поддержка Claude Code встроена в Belay. Для Codex CLI, Gemini CLI и Cline есть готовые пресеты.
 
-Belay также может узнавать о начале и конце хода точно, а не по косвенным
-признакам, если установить небольшой хук в собственные настройки Claude Code.
-Это одна кнопка, она обратима, и именно она делает надёжным уведомление
-«агент ждёт вас».
+Для остальных инструментов можно выбрать папку, и Belay будет определять работу по активности в ней. Выбранные папки запоминаются, так что указать их достаточно один раз.
 
 ТРИ РЕЖИМА
 
-Авто удерживает, только пока агент работает. Всегда удерживает, пока вы не
-скажете иначе. Выключен не делает ничего.
+• Авто: Mac не засыпает, пока работает агент.
+• Всегда включено: Mac остаётся активным, пока вы сами не выключите режим.
+• Выкл.: Belay ничего не меняет.
 
-ОН ОТПУСКАЕТ
+УМНОЕ УПРАВЛЕНИЕ
 
-Удержание никогда не бесконечно. Belay отпускает после того, как работа
-закончилась, по достижении заданного вами предела, при падении заряда ниже
-выбранного уровня и при завершении работы приложения, в том числе аварийном.
-Ваши настройки энергосбережения не меняются: ассертион существует рядом с
-ними, а не правит их.
+Belay может немного подождать после завершения работы, ограничить максимальное время без сна и остановиться при низком заряде батареи. Системные настройки сна macOS при этом не меняются.
 
-ЧТО ОН ЧИТАЕТ
+Когда Belay останавливается намеренно, значок в строке меню это показывает. Затихший Mac больше не загадка.
 
-Только то, что нужно, чтобы понять, идёт ли работа: размеры файлов, отметки
-времени и признак завершения хода. Никогда ваши промпты. Никогда ваш код.
-Ничего о вас и о вашей работе не покидает этот Mac, аккаунта нет, телеметрии
-нет.
+УВЕДОМЛЕНИЯ
 
-УВЕДОМЛЕНИЯ, ЕСЛИ НУЖНЫ
+Belay может сообщить, когда агенту нужны вы, когда длительная задача завершилась или когда приложение перестало удерживать Mac от сна в целях безопасности. Каждое уведомление можно отключить.
 
-Когда агент ждёт вашего ответа. Когда длинная работа закончилась. Когда Belay
-отпустил, чтобы сберечь батарею. Все три отключаются.
+ВСЁ ОСТАЁТСЯ НА MAC
 
-ЧТО ОН СЧИТАЕТ
+Belay определяет активность локально. Ваши промпты и код никуда не загружаются. Никаких аккаунтов, аналитики или телеметрии.
 
-Сколько времени Mac не спал, пока вас не было рядом, и сколько запусков иначе
-оборвались бы. Время, когда вы были за клавиатурой, не учитывается: Mac и так
-не собирался засыпать.
+У этой версии нет доступа к сети ни в какую сторону: она не может ничего отправить и ничего не слушает.
 
-Шесть языков: английский, русский, немецкий, испанский, французский,
-итальянский.
+Статистика тоже остаётся на вашем Mac, пока вы сами не решите ею поделиться.
+
+СТАТИСТИКА СО СМЫСЛОМ
+
+Посмотрите, сколько времени Belay действительно не давал Mac уснуть, пока вас не было рядом, сколько запусков он видел, сколько сохранил и какой был самым долгим.
+
+Время за клавиатурой не считается: в этот момент Mac и так не собирался засыпать.
+
+ЛОКАЛИЗАЦИЯ
+
+English, Русский, Deutsch, Español, Français, Italiano и 简体中文.
 ```
 
 ---
 
 ## Deutsch
 
-**Subtitle** (30)
-`Wach, solange der Agent läuft` / 29
-
 **Promotional text** (170)
-`Belay beobachtet deinen lokalen Agenten und hält den Ruhezustand nur so lange
-auf, wie wirklich gearbeitet wird. Danach schläft dein Mac wie immer.` / 147
+```
+Lass deine Agents weiterarbeiten. Belay hält deinen Mac wach, solange sie arbeiten, und gibt ihn wieder frei, sobald sie fertig sind. Kein Account. Keine Telemetrie.
+```
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agent,wach,schlaf,koffein,menuleiste,entwickler,energie` / 81
-
-**Description**
-
 ```
-Dein Mac geht in den Ruhezustand. Der Agent, den du laufen lassen hast,
-übersteht das nicht.
+ruhezustand,terminal,cli,sitzung,hintergrund,automatisierung,aufgabe,energie,leerlauf,llm
+```
 
-Belay sitzt in der Menüleiste und beobachtet, ob gerade ein lokaler
-KI-Coding-Agent arbeitet. Solange einer arbeitet, bleibt der Mac wach. Sobald
-alles ruhig ist, lässt Belay los, und dein Mac schläft genau wie vorher.
+**Description** (4000)
+```
+Dein Mac schläft ein. Der Coding-Agent, den du weiterarbeiten lassen wolltest, kommt nicht mehr voran.
 
-Es ist kein Schalter, an den du denken musst. Vor einem langen Lauf ist nichts
-einzuschalten und danach nichts auszuschalten.
+Belay hält deinen Mac wach, solange Coding-Agents arbeiten. Sobald sie fertig sind, gibt Belay wieder frei und dein Mac kann ganz normal schlafen.
 
-WAS ES BEOBACHTET
+Kein Timer. Kein Schalter, an den du später denken musst. Lass deinen Agent einfach arbeiten.
 
-Claude Code braucht keinerlei Konfiguration. Für Codex, Gemini CLI und Cline
-gibt es je eine Vorlage mit einem Tipp. Alles andere, das beim Arbeiten Dateien
-schreibt, deckst du ab, indem du Belay einen Ordner nennst.
+UNTERSTÜTZTE AGENTS
 
-Belay kann auch exakt erfahren, wann ein Zug beginnt und endet, statt es aus
-Dateien zu schließen: dafür wird ein kleiner Hook in die Einstellungen von
-Claude Code eingetragen. Ein Knopf, umkehrbar, und genau das macht "ein Agent
-wartet auf dich" verlässlich.
+Claude Code wird direkt unterstützt. Für Codex CLI, Gemini CLI und Cline gibt es fertige Presets.
+
+Für alles andere kannst du einen Ordner auswählen. Belay erkennt dann anhand der Aktivität in diesem Ordner, ob gerade gearbeitet wird. Die gewählten Ordner werden gemerkt, du wählst sie also nur einmal aus.
 
 DREI MODI
 
-Automatisch hält nur, solange ein Agent arbeitet. Immer hält, bis du etwas
-anderes sagst. Aus tut gar nichts.
+• Auto: hält deinen Mac wach, solange ein Agent arbeitet.
+• Immer an: hält ihn wach, bis du den Modus ausschaltest.
+• Aus: Belay greift nicht ein.
 
-ES LÄSST LOS
+WEISS, WANN ES LOSLASSEN KANN
 
-Kein Halten ist unbegrenzt. Belay lässt los, wenn die Arbeit endet, bei einer
-von dir gesetzten Obergrenze, wenn der Akku unter einen von dir gesetzten Stand
-fällt, und wenn die App beendet wird, auch unsanft. Deine Energieeinstellungen
-werden nie verändert: eine Assertion steht neben ihnen, statt sie zu ändern.
+Belay kann nach dem Ende einer Aufgabe noch kurz warten, die maximale Wachzeit begrenzen und bei niedrigem Akkustand aufhören.
 
-WAS ES LIEST
+Deine macOS-Einstellungen für den Ruhezustand bleiben unverändert.
 
-Nur so viel aus den Sitzungsdateien deines Agenten, wie nötig ist, um zu
-erkennen, ob er läuft: Dateigrößen, Zeitstempel und ob ein Zug beendet wurde.
-Nie deine Prompts. Nie deinen Code. Nichts über dich verlässt diesen Mac, es
-gibt kein Konto und keine Telemetrie.
+Wenn Belay absichtlich aufhört, zeigt das Symbol in der Menüleiste es an. Ein Mac, der still wird, ist nie ein Rätsel.
 
-MITTEILUNGEN, WENN DU WILLST
+BENACHRICHTIGUNGEN, WENN DU SIE WILLST
 
-Wenn ein Agent auf eine Antwort wartet. Wenn ein langer Lauf fertig ist. Wenn
-Belay losgelassen hat, um den Akku zu schonen. Alle drei abschaltbar.
+Belay kann dich informieren, wenn ein Agent dich braucht, ein längerer Lauf fertig ist oder Belay aus Sicherheitsgründen aufhört, deinen Mac wach zu halten.
 
-WAS ES ZÄHLT
+Jede Benachrichtigung lässt sich einzeln ausschalten.
 
-Wie lange dein Mac wach gehalten wurde, während du weg warst, und wie viele
-Läufe sonst gestorben wären. Zeit am Schreibtisch zählt nicht mit: da wäre der
-Mac ohnehin nicht eingeschlafen.
+BLEIBT AUF DEINEM MAC
 
-Sechs Sprachen: Englisch, Russisch, Deutsch, Spanisch, Französisch,
-Italienisch.
+Belay erkennt Aktivität lokal. Deine Prompts und dein Code werden nicht hochgeladen. Kein Account, keine Analytics, keine Telemetrie.
+
+Diese Version hat überhaupt keinen Netzwerkzugriff: Sie kann nichts senden und lauscht auf nichts.
+
+Auch deine Statistiken bleiben auf deinem Mac, bis du sie selbst teilst.
+
+STATISTIKEN, DIE ETWAS AUSSAGEN
+
+Sieh, wie lange Belay deinen Mac tatsächlich wach gehalten hat, während du weg warst, wie viele Läufe erkannt und gerettet wurden und welcher am längsten dauerte.
+
+Zeit an der Tastatur zählt nicht. Dann wäre dein Mac ohnehin nicht eingeschlafen.
+
+SPRACHEN
+
+English, Deutsch, Русский, Español, Français, Italiano und 简体中文.
 ```
 
 ---
 
 ## Español
 
-**Subtitle** (30)
-`Despierto mientras el agente` / 28
-
 **Promotional text** (170)
-`Belay vigila tu agente local y evita la suspensión solo mientras trabaja de
-verdad. Cuando la ejecución termina, tu Mac duerme como siempre lo hizo.` / 148
+```
+Deja a tus agentes trabajando. Belay mantiene tu Mac despierto mientras trabajan y se aparta cuando terminan. Sin cuenta. Sin telemetría.
+```
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agente,despierto,suspension,cafeina,menu,desarrollo,energia` / 85
-
-**Description**
-
 ```
-Tu Mac se suspende. El agente que dejaste trabajando no sobrevive a eso.
+reposo,terminal,cli,sesión,segundo plano,automatización,tarea,energía,inactivo,llm
+```
 
-Belay vive en la barra de menús y vigila si hay un agente de programación local
-trabajando ahora mismo. Mientras lo haya, la suspensión espera. En cuanto todo
-queda en silencio, Belay suelta y tu Mac duerme igual que antes.
+**Description** (4000)
+```
+Tu Mac entra en reposo. El agente que dejaste trabajando deja de avanzar.
 
-No es un interruptor que haya que recordar. Antes de una ejecución larga no hay
-nada que activar, y después no hay nada que desactivar.
+Belay mantiene tu Mac despierto mientras trabajan tus agentes de código. Cuando terminan, se aparta y tu Mac vuelve a dormir con normalidad.
 
-QUÉ VIGILA
+Sin temporizadores. Sin interruptores que tengas que recordar después. Deja al agente trabajando y listo.
 
-Claude Code no necesita configuración alguna. Codex, Gemini CLI y Cline tienen
-un ajuste preparado, a un toque. Cualquier otra cosa que escriba archivos
-mientras trabaja se cubre indicándole una carpeta.
+AGENTES COMPATIBLES
 
-Belay también puede saber con exactitud cuándo empieza y termina un turno, en
-lugar de deducirlo de los archivos, instalando un pequeño enlace en los propios
-ajustes de Claude Code. Es un botón, es reversible, y es lo que hace fiable el
-aviso de que un agente te está esperando.
+Claude Code tiene soporte integrado. Codex CLI, Gemini CLI y Cline cuentan con ajustes predefinidos.
+
+Para cualquier otra herramienta, puedes elegir una carpeta y Belay usará la actividad de esa carpeta para saber si hay trabajo en curso. Las carpetas que elijas se recuerdan, así que solo las eliges una vez.
 
 TRES MODOS
 
-Automático mantiene solo mientras un agente trabaja. Siempre mantiene hasta que
-digas otra cosa. Desactivado no hace nada.
+• Auto: mantiene el Mac despierto mientras trabaja un agente.
+• Siempre activo: lo mantiene despierto hasta que lo desactives.
+• Desactivado: Belay no interviene.
 
-SUELTA
+SABE CUÁNDO SOLTAR
 
-Ninguna retención es indefinida. Belay suelta cuando el trabajo termina, al
-llegar al límite que fijes, cuando la batería baja del nivel que fijes, y
-cuando la app termina, incluso de forma abrupta. Tus ajustes de energía nunca
-se modifican: una aserción convive con ellos en vez de editarlos.
+Belay puede esperar un poco cuando el agente termina, limitar el tiempo máximo que el Mac permanece despierto y detenerse si queda poca batería.
 
-QUÉ LEE
+Tus ajustes de reposo de macOS no se modifican.
 
-Solo lo justo de los archivos de sesión de tu agente para saber si está en
-marcha: tamaños, marcas de tiempo y si un turno terminó. Nunca tus prompts.
-Nunca tu código. Nada sobre ti sale de este Mac, no hay cuenta ni telemetría.
+Cuando Belay se detiene a propósito, el icono de la barra de menús lo muestra. Un Mac que se queda en silencio nunca es un misterio.
 
 NOTIFICACIONES, SI LAS QUIERES
 
-Cuando un agente espera una respuesta. Cuando termina una ejecución larga.
-Cuando Belay soltó para cuidar la batería. Las tres se pueden desactivar.
+Belay puede avisarte cuando un agente te necesita, cuando termina una tarea larga o cuando deja de mantener el Mac despierto por seguridad.
 
-QUÉ CUENTA
+Puedes desactivar cada aviso por separado.
 
-Cuánto tiempo estuvo tu Mac despierto mientras no estabas, y cuántas
-ejecuciones habrían muerto. El tiempo con las manos en el teclado no cuenta:
-el Mac no iba a dormirse de todos modos.
+TODO SE QUEDA EN TU MAC
 
-Seis idiomas: inglés, ruso, alemán, español, francés e italiano.
+Belay detecta la actividad de forma local. Tus prompts y tu código no se suben a ningún sitio. Sin cuenta, sin analíticas y sin telemetría.
+
+Esta versión no tiene ningún acceso a la red: no puede conectarse a nada ni escucha nada.
+
+Tus estadísticas también permanecen en tu Mac hasta que decidas compartirlas.
+
+ESTADÍSTICAS QUE SÍ CUENTAN
+
+Consulta cuánto tiempo mantuvo Belay tu Mac despierto mientras estabas fuera, cuántas ejecuciones detectó, cuántas salvó y cuál fue la más larga.
+
+El tiempo frente al teclado no cuenta. En ese momento, tu Mac tampoco iba a entrar en reposo.
+
+IDIOMAS
+
+English, Español, Deutsch, Français, Italiano, Русский y 简体中文.
 ```
 
 ---
 
 ## Français
 
-**Subtitle** (30)
-`Éveillé pendant que l'agent` / 27
-
 **Promotional text** (170)
-`Belay surveille votre agent local et retient la veille seulement pendant qu'il
-travaille vraiment. Une fois l'exécution finie, votre Mac dort comme avant.` / 154
+```
+Laissez vos agents travailler. Belay garde votre Mac éveillé pendant leur travail, puis s'efface une fois qu'ils ont fini. Aucun compte. Aucune télémétrie.
+```
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agent,eveil,veille,cafeine,menu,developpeur,energie` / 77
-
-**Description**
-
 ```
-Votre Mac se met en veille. L'agent que vous avez laissé tourner n'y survit
-pas.
+veille,terminal,cli,session,arrière-plan,automatisation,tâche,énergie,inactif,llm
+```
 
-Belay se tient dans la barre des menus et surveille si un agent de code local
-travaille en ce moment. Tant qu'il y en a un, la veille attend. Dès que tout se
-tait, Belay lâche, et votre Mac dort exactement comme avant.
+**Description** (4000)
+```
+Votre Mac se met en veille. L'agent que vous aviez laissé travailler n'avance plus.
 
-Ce n'est pas un interrupteur qu'il faut penser à activer. Avant une longue
-exécution il n'y a rien à allumer, et après il n'y a rien à éteindre.
+Belay garde votre Mac éveillé tant que vos agents de code travaillent. Une fois leur tâche terminée, Belay s'efface et votre Mac peut de nouveau se mettre en veille normalement.
 
-CE QU'IL SURVEILLE
+Pas de minuteur. Pas d'interrupteur à penser à désactiver plus tard. Laissez simplement votre agent travailler.
 
-Claude Code ne demande aucune configuration. Codex, Gemini CLI et Cline ont
-chacun un réglage prêt, en une touche. Tout le reste qui écrit des fichiers en
-travaillant se couvre en désignant un dossier.
+AGENTS PRIS EN CHARGE
 
-Belay peut aussi savoir précisément quand un tour commence et finit, au lieu de
-le déduire des fichiers, en installant un petit hook dans les réglages de
-Claude Code. C'est un bouton, c'est réversible, et c'est ce qui rend fiable
-l'avertissement qu'un agent vous attend.
+Claude Code est pris en charge directement. Codex CLI, Gemini CLI et Cline disposent de préréglages prêts à l'emploi.
+
+Pour les autres outils, choisissez simplement un dossier. Belay utilisera son activité pour savoir si un travail est en cours. Les dossiers choisis sont mémorisés, vous ne les indiquez donc qu'une fois.
 
 TROIS MODES
 
-Auto retient seulement pendant qu'un agent travaille. Toujours retient jusqu'à
-ce que vous disiez autre chose. Désactivé ne fait rien.
+• Auto : garde votre Mac éveillé pendant qu'un agent travaille.
+• Toujours actif : le garde éveillé jusqu'à ce que vous désactiviez le mode.
+• Désactivé : Belay n'intervient pas.
 
-IL LÂCHE
+SAIT QUAND S'ARRÊTER
 
-Aucune retenue n'est illimitée. Belay lâche quand le travail s'arrête, à la
-limite que vous fixez, quand la batterie passe sous le niveau que vous fixez,
-et quand l'app se termine, même brutalement. Vos réglages d'énergie ne sont
-jamais modifiés : une assertion coexiste avec eux au lieu de les changer.
+Belay peut attendre quelques instants après la fin du travail, limiter la durée maximale d'éveil et s'arrêter lorsque la batterie devient faible.
 
-CE QU'IL LIT
+Vos réglages de veille macOS ne sont pas modifiés.
 
-Seulement ce qu'il faut des fichiers de session de votre agent pour savoir s'il
-tourne : tailles, horodatages et fin de tour. Jamais vos prompts. Jamais votre
-code. Rien vous concernant ne quitte ce Mac, il n'y a ni compte ni télémétrie.
+Quand Belay s'arrête volontairement, l'icône de la barre des menus l'indique. Un Mac devenu silencieux n'est jamais une énigme.
 
-NOTIFICATIONS, SI VOUS EN VOULEZ
+NOTIFICATIONS, SI VOUS LES VOULEZ
 
-Quand un agent attend une réponse. Quand une longue exécution est finie. Quand
-Belay a lâché pour ménager la batterie. Les trois se désactivent.
+Belay peut vous prévenir quand un agent a besoin de vous, quand une longue tâche se termine ou quand il cesse de garder votre Mac éveillé par sécurité.
 
-CE QU'IL COMPTE
+Chaque notification peut être désactivée séparément.
 
-Combien de temps votre Mac est resté éveillé pendant votre absence, et combien
-d'exécutions seraient mortes autrement. Le temps passé au clavier ne compte
-pas : le Mac n'allait de toute façon pas s'endormir.
+TOUT RESTE SUR VOTRE MAC
 
-Six langues : anglais, russe, allemand, espagnol, français, italien.
+Belay détecte l'activité en local. Vos invites et votre code ne sont envoyés nulle part. Aucun compte, aucune analyse, aucune télémétrie.
+
+Cette version n'a aucun accès au réseau : elle ne peut rien envoyer et n'écoute rien.
+
+Vos statistiques restent également sur votre Mac jusqu'à ce que vous décidiez de les partager.
+
+DES STATISTIQUES QUI ONT DU SENS
+
+Voyez combien de temps Belay a gardé votre Mac éveillé pendant votre absence, combien d'exécutions il a suivies, combien il en a sauvées et quelle a été la plus longue.
+
+Le temps passé au clavier ne compte pas : à ce moment-là, votre Mac n'allait de toute façon pas s'endormir.
+
+LANGUES
+
+English, Français, Deutsch, Español, Italiano, Русский et 简体中文.
 ```
 
 ---
 
 ## Italiano
 
-**Subtitle** (30)
-`Sveglio mentre l'agente lavora` / 30
-
 **Promotional text** (170)
-`Belay osserva il tuo agente locale e trattiene lo stop solo mentre sta davvero
-lavorando. Finita l'esecuzione, il Mac va in stop come ha sempre fatto.` / 150
+```
+Lascia lavorare i tuoi agenti. Belay tiene sveglio il Mac mentre lavorano e si fa da parte quando hanno finito. Nessun account. Nessuna telemetria.
+```
 
 **Keywords** (100)
-`claude,codex,gemini,cline,agente,sveglio,stop,caffeina,menu,sviluppo,energia` / 76
-
-**Description**
-
 ```
-Il Mac va in stop. L'agente che hai lasciato al lavoro non ci sopravvive.
+sospensione,stop,terminale,cli,sessione,background,automazione,attività,energia,inattivo,llm
+```
 
-Belay sta nella barra dei menu e osserva se un agente di programmazione locale
-sta lavorando adesso. Finché c'è, lo stop aspetta. Appena tutto tace, Belay
-lascia andare e il Mac va in stop esattamente come prima.
+**Description** (4000)
+```
+Il Mac va in stop. L'agente che avevi lasciato al lavoro smette di fare progressi.
 
-Non è un interruttore da ricordare. Prima di una lunga esecuzione non c'è nulla
-da accendere, e dopo non c'è nulla da spegnere.
+Belay tiene sveglio il Mac mentre i tuoi coding agent lavorano. Quando hanno finito, si fa da parte e il Mac può tornare a dormire normalmente.
 
-COSA OSSERVA
+Niente timer. Niente interruttori da ricordarsi di spegnere. Lascia lavorare l'agente e basta.
 
-Claude Code non richiede alcuna configurazione. Codex, Gemini CLI e Cline hanno
-un'impostazione pronta, con un tocco. Tutto il resto che scrive file mentre
-lavora si copre indicando una cartella.
+AGENTI SUPPORTATI
 
-Belay può anche sapere con esattezza quando un turno inizia e finisce, invece
-di dedurlo dai file, installando un piccolo hook nelle impostazioni di Claude
-Code. È un pulsante, è reversibile, ed è ciò che rende affidabile l'avviso che
-un agente ti sta aspettando.
+Claude Code è supportato direttamente. Codex CLI, Gemini CLI e Cline hanno preset già pronti.
 
-TRE MODI
+Per qualsiasi altro strumento puoi scegliere una cartella. Belay userà l'attività di quella cartella per capire se c'è del lavoro in corso. Le cartelle scelte vengono ricordate, quindi le indichi una volta sola.
 
-Auto trattiene solo mentre un agente lavora. Sempre trattiene finché non dici
-altro. Spento non fa nulla.
+TRE MODALITÀ
 
-LASCIA ANDARE
+• Auto: tiene sveglio il Mac mentre un agente lavora.
+• Sempre attivo: lo tiene sveglio finché non disattivi la modalità.
+• Disattivato: Belay non interviene.
 
-Nessuna trattenuta è illimitata. Belay lascia andare quando il lavoro finisce,
-al limite che imposti, quando la batteria scende sotto il livello che imposti,
-e quando l'app termina, anche bruscamente. Le tue impostazioni di energia non
-vengono mai cambiate: un'asserzione convive con esse invece di modificarle.
+SA QUANDO MOLLARE LA PRESA
 
-COSA LEGGE
+Belay può aspettare un po' dopo la fine del lavoro, limitare il tempo massimo di attività e fermarsi quando la batteria è quasi scarica.
 
-Solo quanto basta dei file di sessione del tuo agente per capire se è in
-esecuzione: dimensioni, orari e fine turno. Mai i tuoi prompt. Mai il tuo
-codice. Nulla che ti riguardi lascia questo Mac, non c'è account e non c'è
-telemetria.
+Le impostazioni di stop di macOS non vengono modificate.
+
+Quando Belay si ferma di proposito, l'icona nella barra dei menu lo mostra. Un Mac che tace non è mai un mistero.
 
 NOTIFICHE, SE LE VUOI
 
-Quando un agente aspetta una risposta. Quando una lunga esecuzione è finita.
-Quando Belay ha lasciato andare per risparmiare la batteria. Tutte e tre si
-possono spegnere.
+Belay può avvisarti quando un agente ha bisogno di te, quando termina un'attività lunga o quando smette di tenere sveglio il Mac per sicurezza.
 
-COSA CONTA
+Ogni notifica può essere disattivata separatamente.
 
-Per quanto tempo il Mac è rimasto sveglio mentre non c'eri, e quante esecuzioni
-sarebbero morte altrimenti. Il tempo passato alla tastiera non conta: il Mac
-non sarebbe andato in stop comunque.
+RESTA TUTTO SUL TUO MAC
 
-Sei lingue: inglese, russo, tedesco, spagnolo, francese, italiano.
+Belay rileva l'attività in locale. I tuoi prompt e il tuo codice non vengono caricati da nessuna parte. Nessun account, nessuna analisi e nessuna telemetria.
+
+Questa versione non ha alcun accesso alla rete: non può inviare nulla e non è in ascolto su nulla.
+
+Anche le statistiche restano sul tuo Mac finché non decidi di condividerle.
+
+STATISTICHE CHE CONTANO DAVVERO
+
+Scopri per quanto tempo Belay ha tenuto sveglio il Mac mentre eri lontano, quante esecuzioni ha rilevato, quante ne ha salvate e quale è durata di più.
+
+Il tempo passato alla tastiera non conta. In quel momento il Mac non sarebbe comunque andato in stop.
+
+LINGUE
+
+English, Italiano, Deutsch, Español, Français, Русский e 简体中文.
 ```
+
+---
+
+## 简体中文
+
+New in 1.3. The app has shipped Simplified Chinese since 1.1 and the store never
+offered it, so the localisation has to be **added** in App Store Connect rather
+than edited: App Information, then the language picker, then Simplified Chinese.
+Adding a localisation means the six screenshots have to be uploaded again for
+it; they carry no English text that would need redrawing.
+
+Every term here comes from [`../Localization/zh-Hans-glossary.md`](../Localization/zh-Hans-glossary.md),
+which is the file that kept three separate translation passes saying the same
+thing. The three that matter: agent is 智能体 and never 代理, keeping awake is
+保持唤醒, and letting go is 让 Mac 进入睡眠 rather than anything with 释放.
+
+**Privacy policy URL**
+`https://perfectoweb.github.io/Belay/zh/privacy/`
+
+**Promotional text** (170)
+```
+让你的智能体继续跑。它们工作时 Belay 让 Mac 保持唤醒，工作结束后就退到一边。无需账户，没有遥测。
+```
+
+**Keywords** (100)
+```
+ai,claude,codex,gemini,cline,唤醒,睡眠,防止睡眠,菜单栏,智能体,终端,编程,开发者
+```
+
+**Description** (4000)
+```
+Mac 进入了睡眠。你留着继续跑的编程智能体也就停在了那里。
+
+智能体工作时，Belay 让你的 Mac 保持唤醒；它们完成后，Belay 退到一边，Mac 照常进入睡眠。
+
+不用定时器，也不用记着去关掉某个开关。让智能体跑就行了。
+
+支持的智能体
+
+内置支持 Claude Code。Codex CLI、Gemini CLI 和 Cline 都有现成的预设。
+
+其他工具可以指定一个文件夹，Belay 会用该文件夹的活动来判断是否有工作在进行。你选择的文件夹会被记住，只需指定一次。
+
+三种模式
+
+• 自动：智能体工作时让 Mac 保持唤醒。
+• 常开：一直保持唤醒，直到你关闭为止。
+• 关闭：Belay 不做任何干预。
+
+知道什么时候该放手
+
+智能体安静下来之后，Belay 可以再等一会儿；也可以设置最长唤醒时间，或在电量偏低时停止。macOS 的睡眠设置不会被修改。
+
+当 Belay 有意停止时，菜单栏图标会显示出来。安静下来的 Mac 不再是谜。
+
+通知，如果你想要的话
+
+智能体需要你、长任务结束、或者 Belay 出于安全考虑停止保持唤醒时，都可以收到通知。每一项都能单独关闭。
+
+一切都留在你的 Mac 上
+
+Belay 在本地判断活动。你的提示词和代码不会被上传到任何地方。没有账户，没有分析，没有遥测。
+
+此版本完全没有网络访问权限：既不能对外连接，也不监听任何东西。
+
+统计数据同样留在你的 Mac 上，除非你自己选择分享。
+
+有意义的统计
+
+看看你不在的时候 Belay 实际让 Mac 保持唤醒了多久，监视了多少次运行、保住了多少次，以及最长的一次有多久。
+
+在键盘前的时间不计入其中，因为那时 Mac 本来也不会进入睡眠。
+
+语言
+
+English、简体中文、Русский、Deutsch、Español、Français、Italiano。
+```
+
 
 ---
 
@@ -547,3 +613,11 @@ direct build's daily check is absent rather than disabled there. The
 description says nothing about updates for that reason, and the privacy label
 for the App Store build is therefore "no data collected" with no exceptions to
 explain.
+
+**It no longer promises Precise Detection.** It did until 2026-08-16, and that
+was inaccurate metadata: the hook listener needs an entitlement that build no
+longer has, and the feature could not have worked in a sandbox in any case
+because the installer writes into `~/.claude/settings.json` and the sandbox home
+is the container. Anything the App Store build cannot do belongs in neither the
+description nor the promotional text; the direct build's README is where those
+features are described.
