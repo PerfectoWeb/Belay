@@ -33,6 +33,10 @@ extension WhatsNewView {
             // shared baseline sat it low against a two-line stack.
             HStack(alignment: .center) {
                 BelayWordmark(size: 24, word: .white, animated: true)
+                    // Two points up. The wordmark's own box carries descender
+                    // room its letters never use, so a true centre sits it
+                    // visibly low next to a block whose bottom line is a number.
+                    .offset(y: -2)
                 Spacer(minLength: 12)
                 VStack(alignment: .trailing, spacing: 1) {
                     Text("What's New")

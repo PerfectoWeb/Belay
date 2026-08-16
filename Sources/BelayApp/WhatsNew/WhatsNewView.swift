@@ -197,7 +197,10 @@ private struct WhatsNewAsides: View {
     let asides: [ReleaseNote.Aside]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        // Tighter than the rows above. These are one-line facts, not sentences
+        // that need air between them, and at the row spacing they read as four
+        // separate items rather than one short list.
+        VStack(alignment: .leading, spacing: 3) {
             Text("Also")
                 .font(.system(size: 11, weight: .semibold))
                 .foregroundStyle(.tertiary)
