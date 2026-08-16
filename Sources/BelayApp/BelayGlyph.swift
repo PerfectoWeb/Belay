@@ -174,11 +174,11 @@ enum BelayGlyph {
     /// 24-point box's: part 1 spans x 0 to 19.98 and y 3 to 23, middle (10, 13).
     private static func pausedBars() {
         let centre = CGPoint(x: 9.99, y: 13)
-        // Sized for 17 points, the only size the menu bar draws this at. At 2.0
-        // the bars measured 1.4 points across and vanished into the shape.
-        let width: CGFloat = 2.6
-        let gap: CGFloat = 2.4
-        let height: CGFloat = 7.0
+        // Sized for 17 points, the only size the menu bar draws this at, where
+        // a bar this wide lands on 1.6 of them. Thinner than this it disappears.
+        let width: CGFloat = 2.3
+        let gap: CGFloat = 2.0
+        let height: CGFloat = 6.4
 
         // Opaque, or the cut is only as deep as the last fill's alpha and the
         // bars come out as grey stripes instead of gaps.
