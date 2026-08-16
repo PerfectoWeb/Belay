@@ -23,7 +23,11 @@ struct QuietButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 13, weight: .semibold))
+            // Medium, where the primary button is semibold. The two are a
+            // pair and should read as one, but not as equals: the lighter
+            // weight is what says which of them is the answer. The size is
+            // untouched, so both are still the same height.
+            .font(.system(size: 13, weight: .medium))
             .foregroundStyle(.primary)
             .padding(.horizontal, 16)
             .padding(.vertical, 7.5)
