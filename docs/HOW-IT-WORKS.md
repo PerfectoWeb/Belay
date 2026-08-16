@@ -122,6 +122,6 @@ needs no code at all: point it at wherever the tool writes while it is working.
 macOS 14 or later. Nothing else: no Apple Developer account, no agent account,
 no network.
 
-Only macOS 26 on Apple silicon has been exercised on a real machine so far;
+macOS 26 and macOS 15 have been exercised on Apple silicon, 14 has not;
 [`QA-CHECKLIST.md`](QA-CHECKLIST.md) is the honest list of what has and has not
 been verified.

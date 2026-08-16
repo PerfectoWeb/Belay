@@ -148,11 +148,15 @@ for our bundle ID, which is not ours. Match on the pid.
 
 - [x] macOS 26.4 (host)
 - [ ] macOS 14 (VM) — see `BLOCKERS.md` B5
-- [ ] macOS 15 (VM)
+- [x] macOS 15.0 (24A335, Parallels, Apple silicon) — 2026-08-16
 
 ---
 
 **Last run:** 2026-08-12, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
+**Last VM run:** 2026-08-16, macOS 15.0, `scripts/qa-vm.sh`. Every mode held or
+released what it should, the 60-second cap fired at 60 seconds, no crash, and no
+`shutdown release timed out` line — which is the fix from this round showing up.
+The welcome screen and the paused mark were checked by eye and were right.
 
 ---
 

@@ -388,11 +388,18 @@ pane, the panel status line, and the About tagline.
 Until then this is a quality risk, not a correctness one: every string resolves,
 nothing crashes, and English remains the fallback for anything unsupported.
 
-## B5 — macOS 14 and 15 verification
+## B5 — macOS 14 verification. 15 is done
 
 **Blocks:** the "runs clean on 14 / 15 / 26" claim in `docs/00-INVARIANTS.md`.
 **Does not block:** development. The deployment target is 14.0 and every API
 newer than that is behind an `@available` guard.
 
-Only macOS 26.4 was available here. `docs/QA-CHECKLIST.md` lists what to run on
-a 14 and a 15 VM.
+macOS 15.0 (24A335) was run on 2026-08-16 in a Parallels VM on Apple silicon,
+with `scripts/qa-vm.sh` plus the two things only eyes can check. It found three
+real faults, all fixed and all in `main`: the assertion was not released on
+quit, the welcome window opened off-centre because its size was read before
+layout, and the Skip button was a system push button there while every other
+button in the app is drawn. The rerun after those fixes was clean.
+
+macOS 14 is the one left. Nothing about it is expected to differ, which is
+exactly why it is worth running: 15 was not expected to differ either.
