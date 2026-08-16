@@ -38,7 +38,9 @@ about and what the 2026-08-16 rejection was.
 **Age rating** 4+
 **Price** Free
 **Copyright** `2026 PerfectoWeb`
-**Support URL** `https://perfecto-web.com/en/contacts/`
+**Support URL** `https://perfecto-web.com/en/contacts/`, and
+`https://perfecto-web.com/ru/contacts/` in Russian. Chinese uses the English one
+because `/zh/contacts/` returns 404, and Apple loads these at review.
 **Marketing URL** `https://perfectoweb.github.io/Belay/` (redirects to the reader's language)
 
 Both were `perfecto-web.com/belay` addresses and both returned 404 on the day
@@ -49,7 +51,7 @@ product's own domain whenever those pages are built.
 
 | Localisation | URL |
 |---|---|
-| English (U.S.) | `https://perfectoweb.github.io/Belay/en/privacy/` |
+| English (U.S.) | `https://perfectoweb.github.io/Belay/privacy/` |
 | Russian | `https://perfectoweb.github.io/Belay/ru/privacy/` |
 | German | `https://perfectoweb.github.io/Belay/de/privacy/` |
 | Spanish (Spain) | `https://perfectoweb.github.io/Belay/es/privacy/` |
@@ -393,7 +395,7 @@ English, Español, Deutsch, Français, Italiano, Русский y 简体中文.
 
 **Promotional text** (170)
 ```
-Laissez vos agents travailler. Belay garde votre Mac éveillé pendant leur travail, puis s'efface une fois qu'ils ont fini. Aucun compte. Aucune télémétrie.
+Laissez vos agents travailler. Belay garde votre Mac éveillé pendant leur travail, puis s’efface une fois qu’ils ont fini. Aucun compte. Aucune télémétrie.
 ```
 
 **Keywords** (100)
@@ -403,31 +405,31 @@ veille,terminal,cli,session,arrière-plan,automatisation,tâche,énergie,inactif
 
 **Description** (4000)
 ```
-Votre Mac se met en veille. L'agent que vous aviez laissé travailler n'avance plus.
+Votre Mac se met en veille. L’agent que vous aviez laissé travailler n’avance plus.
 
-Belay garde votre Mac éveillé tant que vos agents de code travaillent. Une fois leur tâche terminée, Belay s'efface et votre Mac peut de nouveau se mettre en veille normalement.
+Belay garde votre Mac éveillé tant que vos agents de code travaillent. Une fois leur tâche terminée, Belay s’efface et votre Mac peut de nouveau se mettre en veille normalement.
 
-Pas de minuteur. Pas d'interrupteur à penser à désactiver plus tard. Laissez simplement votre agent travailler.
+Pas de minuteur. Pas d’interrupteur à penser à désactiver plus tard. Laissez simplement votre agent travailler.
 
 AGENTS PRIS EN CHARGE
 
-Claude Code est pris en charge directement. Codex CLI, Gemini CLI et Cline disposent de préréglages prêts à l'emploi.
+Claude Code est pris en charge directement. Codex CLI, Gemini CLI et Cline disposent de préréglages prêts à l’emploi.
 
-Pour les autres outils, choisissez simplement un dossier. Belay utilisera son activité pour savoir si un travail est en cours. Les dossiers choisis sont mémorisés, vous ne les indiquez donc qu'une fois.
+Pour les autres outils, choisissez simplement un dossier. Belay utilisera son activité pour savoir si un travail est en cours. Les dossiers choisis sont mémorisés, vous ne les indiquez donc qu’une fois.
 
 TROIS MODES
 
-• Auto : garde votre Mac éveillé pendant qu'un agent travaille.
-• Toujours actif : le garde éveillé jusqu'à ce que vous désactiviez le mode.
-• Désactivé : Belay n'intervient pas.
+• Auto : garde votre Mac éveillé pendant qu’un agent travaille.
+• Toujours actif : le garde éveillé jusqu’à ce que vous désactiviez le mode.
+• Désactivé : Belay n’intervient pas.
 
-SAIT QUAND S'ARRÊTER
+SAIT QUAND S’ARRÊTER
 
-Belay peut attendre quelques instants après la fin du travail, limiter la durée maximale d'éveil et s'arrêter lorsque la batterie devient faible.
+Belay peut attendre quelques instants après la fin du travail, limiter la durée maximale d’éveil et s’arrêter lorsque la batterie devient faible.
 
 Vos réglages de veille macOS ne sont pas modifiés.
 
-Quand Belay s'arrête volontairement, l'icône de la barre des menus l'indique. Un Mac devenu silencieux n'est jamais une énigme.
+Quand Belay s’arrête volontairement, l’icône de la barre des menus l’indique. Un Mac devenu silencieux n’est jamais une énigme.
 
 NOTIFICATIONS, SI VOUS LES VOULEZ
 
@@ -437,17 +439,17 @@ Chaque notification peut être désactivée séparément.
 
 TOUT RESTE SUR VOTRE MAC
 
-Belay détecte l'activité en local. Vos invites et votre code ne sont envoyés nulle part. Aucun compte, aucune analyse, aucune télémétrie.
+Belay détecte l’activité en local. Vos invites et votre code ne sont envoyés nulle part. Aucun compte, aucune analyse, aucune télémétrie.
 
-Cette version n'a aucun accès au réseau : elle ne peut rien envoyer et n'écoute rien.
+Cette version n’a aucun accès au réseau : elle ne peut rien envoyer et n’écoute rien.
 
-Vos statistiques restent également sur votre Mac jusqu'à ce que vous décidiez de les partager.
+Vos statistiques restent également sur votre Mac jusqu’à ce que vous décidiez de les partager.
 
 DES STATISTIQUES QUI ONT DU SENS
 
-Voyez combien de temps Belay a gardé votre Mac éveillé pendant votre absence, combien d'exécutions il a suivies, combien il en a sauvées et quelle a été la plus longue.
+Voyez combien de temps Belay a gardé votre Mac éveillé pendant votre absence, combien d’exécutions il a suivies, combien il en a sauvées et quelle a été la plus longue.
 
-Le temps passé au clavier ne compte pas : à ce moment-là, votre Mac n'allait de toute façon pas s'endormir.
+Le temps passé au clavier ne compte pas : à ce moment-là, votre Mac n’allait de toute façon pas s’endormir.
 
 LANGUES
 
@@ -470,17 +472,17 @@ sospensione,stop,terminale,cli,sessione,background,automazione,attività,energia
 
 **Description** (4000)
 ```
-Il Mac va in stop. L'agente che avevi lasciato al lavoro smette di fare progressi.
+Il Mac va in stop. L’agente che avevi lasciato al lavoro smette di fare progressi.
 
 Belay tiene sveglio il Mac mentre i tuoi coding agent lavorano. Quando hanno finito, si fa da parte e il Mac può tornare a dormire normalmente.
 
-Niente timer. Niente interruttori da ricordarsi di spegnere. Lascia lavorare l'agente e basta.
+Niente timer. Niente interruttori da ricordarsi di spegnere. Lascia lavorare l’agente e basta.
 
 AGENTI SUPPORTATI
 
 Claude Code è supportato direttamente. Codex CLI, Gemini CLI e Cline hanno preset già pronti.
 
-Per qualsiasi altro strumento puoi scegliere una cartella. Belay userà l'attività di quella cartella per capire se c'è del lavoro in corso. Le cartelle scelte vengono ricordate, quindi le indichi una volta sola.
+Per qualsiasi altro strumento puoi scegliere una cartella. Belay userà l’attività di quella cartella per capire se c’è del lavoro in corso. Le cartelle scelte vengono ricordate, quindi le indichi una volta sola.
 
 TRE MODALITÀ
 
@@ -490,21 +492,21 @@ TRE MODALITÀ
 
 SA QUANDO MOLLARE LA PRESA
 
-Belay può aspettare un po' dopo la fine del lavoro, limitare il tempo massimo di attività e fermarsi quando la batteria è quasi scarica.
+Belay può aspettare un po’ dopo la fine del lavoro, limitare il tempo massimo di attività e fermarsi quando la batteria è quasi scarica.
 
 Le impostazioni di stop di macOS non vengono modificate.
 
-Quando Belay si ferma di proposito, l'icona nella barra dei menu lo mostra. Un Mac che tace non è mai un mistero.
+Quando Belay si ferma di proposito, l’icona nella barra dei menu lo mostra. Un Mac che tace non è mai un mistero.
 
 NOTIFICHE, SE LE VUOI
 
-Belay può avvisarti quando un agente ha bisogno di te, quando termina un'attività lunga o quando smette di tenere sveglio il Mac per sicurezza.
+Belay può avvisarti quando un agente ha bisogno di te, quando termina un’attività lunga o quando smette di tenere sveglio il Mac per sicurezza.
 
 Ogni notifica può essere disattivata separatamente.
 
 RESTA TUTTO SUL TUO MAC
 
-Belay rileva l'attività in locale. I tuoi prompt e il tuo codice non vengono caricati da nessuna parte. Nessun account, nessuna analisi e nessuna telemetria.
+Belay rileva l’attività in locale. I tuoi prompt e il tuo codice non vengono caricati da nessuna parte. Nessun account, nessuna analisi e nessuna telemetria.
 
 Questa versione non ha alcun accesso alla rete: non può inviare nulla e non è in ascolto su nulla.
 
@@ -525,19 +527,21 @@ English, Italiano, Deutsch, Español, Français, Русский e 简体中文.
 
 ## 简体中文
 
-New in 1.3. The app has shipped Simplified Chinese since 1.1 and the store never
-offered it, so the localisation has to be **added** in App Store Connect rather
-than edited: App Information, then the language picker, then Simplified Chinese.
-Adding a localisation means the six screenshots have to be uploaded again for
-it; they carry no English text that would need redrawing.
+New in 1.3, and **already created in App Store Connect** on 2026-08-16 through
+the API, along with the name, the subtitle and the Chinese privacy policy URL.
+Creating the version localisation makes App Store Connect create the matching
+App Information localisation on its own, seeded from the primary language, which
+is why that half was a `PATCH` rather than a `POST`.
+
+**Screenshots are the one thing left.** A new localisation starts with none, and
+Apple will not accept a submission without them. Ours carry no English text, so
+the same six files go up again. Support points at the English contacts page,
+because `/zh/contacts/` returns 404 and Apple loads these at review.
 
 Every term here comes from [`../Localization/zh-Hans-glossary.md`](../Localization/zh-Hans-glossary.md),
 which is the file that kept three separate translation passes saying the same
 thing. The three that matter: agent is 智能体 and never 代理, keeping awake is
 保持唤醒, and letting go is 让 Mac 进入睡眠 rather than anything with 释放.
-
-**Privacy policy URL**
-`https://perfectoweb.github.io/Belay/zh/privacy/`
 
 **Promotional text** (170)
 ```
