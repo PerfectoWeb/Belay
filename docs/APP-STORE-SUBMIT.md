@@ -180,9 +180,21 @@ writing a word of reply.
 entitlements" the same guideline is about. Only ever ship the archive export;
 `Belay-MAS.entitlements` itself is clean and `SandboxAccessTests` asserts it.
 
-## Step 9. Submit
+## Step 9. Set the release to manual, then submit
 
-Add the build to the version, then Submit for Review.
+**Before submitting**, in the version's page, under **Version Release**, choose
+**Manually release this version**. The default is "Automatically release this
+version", which puts the app on sale the moment a reviewer approves it, at
+whatever hour that is. Manual parks an approved version in "Pending Developer
+Release" until the button is pressed, which is the only way to put the store and
+the direct build out together.
+
+Then add the build to the version and Submit for Review.
+
+The version number does not have to be 1.0.0, or contiguous. A version that has
+never been released can have its version string edited, and the store is allowed
+to skip numbers the direct channel used. See "One version number, two channels"
+in [`RELEASING.md`](RELEASING.md).
 
 ---
 

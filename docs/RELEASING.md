@@ -152,6 +152,38 @@ the secret values themselves in logs but does not mask what they decode to.
 
 ---
 
+## One version number, two channels
+
+Direct and App Store share `MARKETING_VERSION` and always will. A release goes
+out on GitHub the day it is cut and reaches the store whenever review lets it,
+so the store lags by a review cycle and by nothing else.
+
+**The store does not have to receive every release.** A direct-only release just
+means the store skips that number: 1.3.0 then 1.5.0 is a perfectly ordinary
+version history, and every submission is a review lottery worth spending only on
+releases that are worth it. A release that changes nothing the sandboxed build
+has, the updater for instance, has no reason to go at all.
+
+**What was rejected: a separate number per channel.** It costs two changelogs,
+two sets of release notes, and a support conversation that starts with "which
+1.2 do you have". It also breaks the "What's New" screen outright, because
+`ReleaseNotes` is keyed by version string: store 1.2 and direct 1.2 would be
+different software wearing the same key, and the screen would tell one of them
+about changes it already had.
+
+**The store starts at 1.3.0, not 1.0.0.** The 1.0.0 record was rejected twice
+and never released, so nobody has it and there is nothing to keep continuity
+with. Rebuilding today's code as "1.0.0" to satisfy the numbering would have put
+1.3.0's software behind a 1.0.0 label, which is the same lie by another route.
+The version string of a version that has never been released is editable in App
+Store Connect; it was changed there.
+
+**Publishing the two together.** App Store Connect defaults a version to
+`releaseType: AFTER_APPROVAL`, which puts the app on sale the moment a reviewer
+approves it, at whatever hour that happens. Set **Manually release this version**
+before submitting. Approval then parks it in "Pending Developer Release" and it
+waits, which is what makes "publish both channels together" possible at all.
+
 ## Cutting a release
 
 ### 1. Bump the version
