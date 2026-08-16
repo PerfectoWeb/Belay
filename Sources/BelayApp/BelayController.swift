@@ -98,28 +98,17 @@ final class BelayController {
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.
         usage.flush()
-        // Closes the sandboxed build's standing scopes. None in the direct build.
+        // Closes the sandboxed build's scopes. None in the direct build.
         ClaudeAccess.relinquish()
         WatchedFolderAccess.relinquish()
 
         let done = DispatchSemaphore(value: 0)
-        // Nothing in here may touch the main actor. `shutdown()` is
-        // `@MainActor` and the wait below blocks the main thread, so the first
-        // `await` that hops back deadlocks and the wait always times out. It
-        // did: `Task.detached` was added to fix exactly this and did not,
-        // because the body still began with `providers.stop()`, and
-        // `ProviderHost` is `@MainActor`. Every quit logged "shutdown release
-        // timed out" and the assertion was left for its own timeout to reap,
-        // which is up to two minutes of a Mac staying awake after it was told
-        // to stop. Found by the macOS 15 pass, then reproduced on 26: it was
-        // never a version difference, only nobody reading the log on quit.
-        //
-        // `providers.stop()` is not in the list on purpose. It is the only
-        // main-actor step, and it has nothing to release that outlives the
-        // process: FSEvents streams and the loopback socket are the kernel's to
-        // reclaim, and the two security scopes were already given back above.
-        // What has to happen here is the power assertion, which is the one
-        // thing that outlives us.
+        // Nothing here may touch the main actor: the wait below blocks the main
+        // thread, so the first `await` that hops back deadlocks. `Task.detached`
+        // was added for that and did not fix it, because the body began with
+        // `providers.stop()` and `ProviderHost` is `@MainActor`, so every quit
+        // logged a timeout and left the assertion to reap itself: up to two
+        // minutes awake. It is out; it holds nothing that outlives us.
         Task.detached { [assertions, coordinator, driver, powerSource] in
             await driver.stop()
             await powerSource.stop()
