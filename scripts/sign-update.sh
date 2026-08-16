@@ -93,15 +93,31 @@ security find-generic-password -s 'https://sparkle-project.org' >/dev/null 2>&1 
     || die "no Sparkle EdDSA private key in the login Keychain. Run Sparkle's generate_keys once, on the release machine only."
 
 echo "==> generate_appcast $RELEASES"
+# No deltas. generate_appcast makes them by default and names them
+# `Belay1.3.0-1.2.0.delta`, which carries no version this project can turn into
+# a GitHub release tag, so the retag step below would refuse the whole appcast
+# the first time two key-carrying releases exist. A delta saves a couple of
+# megabytes on a four-megabyte app; being able to publish at all is worth more.
 "$GENERATE_APPCAST" \
     --download-url-prefix "$DOWNLOAD_PREFIX" \
     --maximum-versions 5 \
+    --maximum-deltas 0 \
     "$RELEASES"
 
 APPCAST="$RELEASES/appcast.xml"
 [ -f "$APPCAST" ] || die "generate_appcast exited 0 but wrote no appcast.xml"
 
-grep -q 'sparkle:edSignature' "$APPCAST" || die "$APPCAST has no EdDSA signatures; clients would reject every update"
+# Every enclosure, not one of them. `grep -q` passed on an appcast where a
+# single entry was signed and the rest were not, and Sparkle refuses an unsigned
+# entry silently: the person on the old version simply never gets an update and
+# nothing anywhere says why. generate_appcast leaves an item alone if it cannot
+# read a version out of it, so a mixed appcast is producible rather than
+# theoretical.
+enclosures=$(grep -c '<enclosure' "$APPCAST" || true)
+signatures=$(grep -c 'sparkle:edSignature=' "$APPCAST" || true)
+[ "$enclosures" -gt 0 ] || die "$APPCAST has no enclosures at all"
+[ "$enclosures" = "$signatures" ] \
+    || die "$APPCAST has $enclosures enclosures but $signatures signatures; clients would refuse the unsigned ones"
 
 # --- put each enclosure under its own tag -------------------------------------
 #

@@ -86,8 +86,9 @@ The hook payload for `UserPromptSubmit` contains your entire prompt. Belay's
 decoder **has no field for it**. It is never decoded, never logged, never
 stored, and there is a test that proves it.
 
-The only thing that ever leaves your Mac is a daily check for a newer version.
-It carries nothing about you, and one switch turns it off.
+Two things reach the network, and neither carries anything about you: a daily
+check for a newer version, which one switch turns off, and the download itself
+after you press Update. Nothing is fetched or installed until you press it.
 
 Full detail, including how to verify all of this yourself, is in
 [`../SECURITY.md`](../SECURITY.md).

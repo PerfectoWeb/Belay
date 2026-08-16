@@ -25,13 +25,19 @@ final class ChannelSurfaceTests: XCTestCase {
         XCTAssertTrue(review.absoluteString.contains(identifier), "\(review) is not Belay's listing")
     }
 
-    /// The App Store build cannot check for updates, so it must not say it
-    /// does. The direct build can, so it must.
+    /// The App Store build reaches no network at all, so About must not say it
+    /// does. The direct build checks for updates and downloads them, so it must.
+    ///
+    /// Matched on the word for the network rather than on a phrase. The first
+    /// version looked for "update check", and that broke the day the sentence
+    /// was rewritten to admit the download as well: the claim was still correct
+    /// and the test failed anyway, which is the wrong way round.
     func testThePrivacyPromiseMatchesWhatTheChannelCanDo() {
         let promise = PrivacyPromise.forThisChannel
-        let mentionsUpdates = promise.contains("update check") || promise.contains("обновлен")
+        let mentionsNetwork = ["network", "сет", "Netzwerk", "réseau", "rete", "red", "网络"]
+            .contains { promise.localizedCaseInsensitiveContains($0) }
         XCTAssertEqual(
-            mentionsUpdates, DistributionChannel.current == .direct,
+            mentionsNetwork, DistributionChannel.current == .direct,
             "About and the entitlements disagree about whether this build reaches the network")
     }
 

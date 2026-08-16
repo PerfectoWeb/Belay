@@ -144,9 +144,9 @@ private struct UpdatesRow: View {
             GroupedCheckbox(
                 title: "Check for updates automatically",
                 explanation: """
-                    Once a day, Belay checks whether a newer version exists. \
-                    That is the only time Belay uses the network, it sends nothing \
-                    about you, and it never installs anything on its own.
+                    Once a day, Belay checks whether a newer version exists. It \
+                    sends nothing about you, and nothing is downloaded or \
+                    installed until you press Update.
                     """,
                 spokenLabel: "Check for updates automatically",
                 isOn: $checker.isAutomatic

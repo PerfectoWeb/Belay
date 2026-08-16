@@ -27,6 +27,11 @@ def main(path, prefix):
         if not url.startswith(prefix):
             return match.group(0)
         name = url[len(prefix):]
+        # Already under a tag. Running this twice used to produce
+        # `.../download/v1.2.0/v1.2.0/Belay-1.2.0.dmg`, which 404s at the moment
+        # somebody tries to update.
+        if re.match(r"^v\d", name):
+            return match.group(0)
         version = re.search(r"-(\d+\.\d+(?:\.\d+)?)\.(?:dmg|zip)$", name)
         if not version:
             missed.append(url)
@@ -34,12 +39,19 @@ def main(path, prefix):
         return match.group(0).replace(url, f"{prefix}v{version.group(1)}/{name}")
 
     xml = re.sub(r'url="([^"]+)"', retag, xml)
-    io.open(path, "w", encoding="utf-8").write(xml)
 
-    for url in missed:
-        print(f"  left alone, no version in the file name: {url}")
+    # Nothing is written when anything was missed. The first version of this
+    # wrote the file and *then* reported failure, so an aborted publish left a
+    # half-rewritten appcast on disk for the next run to build on.
+    if missed:
+        for url in missed:
+            print(f"  no version in the file name: {url}")
+        print("  nothing was written")
+        return 1
+
+    io.open(path, "w", encoding="utf-8").write(xml)
     print(f"  {len(re.findall(r'releases/download/v', xml))} enclosures carry a tag")
-    return 1 if missed else 0
+    return 0
 
 
 if __name__ == "__main__":

@@ -7,11 +7,13 @@ it reads, what it never reads, and how you can check for yourself.
 ## The short version
 
 - Belay makes **one** outbound connection, and only if you ask for it: an HTTPS
-  GET to `api.github.com` to see whether a newer release exists. It is off by
-  default, absent from the App Store build, sends nothing about you or your
-  machine, and never downloads or installs anything. There is no telemetry and
-  no crash reporter. With the update check off, Belay opens no sockets at all
-  except the loopback listener described below.
+  GET to `api.github.com` to see whether a newer release exists. It is absent
+  from the App Store build and sends nothing about you or your machine. It
+  downloads nothing by itself: pressing **Update** is what fetches the signed
+  disk image, and Sparkle checks it against the EdDSA public key compiled into
+  the running build before installing anything. There is no telemetry and no
+  crash reporter. With the update check off and Update unpressed, Belay opens no
+  sockets at all except the loopback listener described below.
 - It reads **structural fields only** from your agent's session files: whether a
   file grew, and a record's `type` and `stop_reason`.
 - It **never reads your prompts, your model's responses, or your code**.

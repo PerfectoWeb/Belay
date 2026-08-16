@@ -4232,49 +4232,49 @@
         }
       }
     },
-    "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the daily update check, which you can switch off.": {
+    "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac, außer der optionalen Update-Prüfung."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
+            "value": "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay liest von den Sitzungsdateien deines Agenten nur so viel, wie nötig ist, um zu wissen, ob er arbeitet. Nie deine Prompts, nie deinen Code, und nichts über dich verlässt diesen Mac. Das Netzwerk nutzt Belay zweimal: für die tägliche Prüfung auf eine neue Version, die du abschalten kannst, und für den Download selbst, wenn du darum bittest."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay solo lee los datos de sesión que necesita para saber si un agente está trabajando. Nunca lee tus prompts ni tu código. Todo se queda en este Mac, salvo la comprobación opcional de actualizaciones."
+            "value": "Belay lee de los archivos de sesión de tu agente solo lo justo para saber si está trabajando. Nunca tus prompts, nunca tu código, y nada sobre ti sale de este Mac. Usa la red dos veces: la comprobación diaria de nuevas versiones, que puedes desactivar, y la descarga en sí cuando la pides."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay lit uniquement les données de session nécessaires pour savoir si un agent travaille. Il ne lit jamais vos prompts ni votre code. Tout reste sur ce Mac, sauf la vérification facultative des mises à jour."
+            "value": "Belay ne lit des fichiers de session de votre agent que ce qu’il faut pour savoir s’il travaille. Jamais vos invites, jamais votre code, et rien vous concernant ne quitte ce Mac. Il utilise le réseau deux fois : la vérification quotidienne d’une nouvelle version, que vous pouvez désactiver, et le téléchargement lui-même quand vous le demandez."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay legge solo i dati di sessione necessari per capire se un agente sta lavorando. Non legge mai i tuoi prompt o il tuo codice. Tutto resta su questo Mac, tranne il controllo aggiornamenti facoltativo."
+            "value": "Belay legge dei file di sessione del tuo agente solo quanto basta per sapere se sta lavorando. Mai i tuoi prompt, mai il tuo codice, e nulla che ti riguardi lascia questo Mac. Usa la rete due volte: il controllo giornaliero di una nuova versione, che puoi disattivare, e il download stesso quando lo chiedi."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac, кроме необязательной проверки обновлений."
+            "value": "Belay читает из файлов сессии вашего агента ровно столько, чтобы понять, работает ли он. Никогда ваши промпты, никогда ваш код, и ничего о вас не покидает этот Mac. Сеть используется дважды: ежедневная проверка новой версии, которую можно отключить, и сама загрузка, когда вы её запросите."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。除可选的更新检查外，一切都留在这台 Mac 上。"
+            "value": "Belay 只读取智能体会话文件中足以判断它是否在工作的部分。绝不读取你的提示词，绝不读取你的代码，关于你的任何信息都不会离开这台 Mac。它只在两种情况下使用网络：每天检查一次是否有新版本（可以关闭），以及在你请求时下载新版本。"
           }
         }
       }
@@ -7851,49 +7851,49 @@
         }
       }
     },
-    "Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.": {
+    "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay prüft einmal täglich, ob eine neue Version verfügbar ist. Das ist seine einzige Netzwerkanfrage. Es sendet keine persönlichen Daten und installiert Updates nie automatisch."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically."
+            "value": "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmal am Tag prüft Belay, ob es eine neuere Version gibt. Es sendet nichts über dich, und es wird nichts geladen oder installiert, bevor du auf Aktualisieren drückst."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay comprueba una vez al día si hay una versión nueva. Es su única solicitud de red. No envía datos personales ni instala actualizaciones automáticamente."
+            "value": "Una vez al día, Belay comprueba si existe una versión más reciente. No envía nada sobre ti, y no se descarga ni se instala nada hasta que pulsas Actualizar."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay vérifie une fois par jour s'il existe une nouvelle version. C'est sa seule requête réseau. Aucune donnée personnelle n'est envoyée et les mises à jour ne sont jamais installées automatiquement."
+            "value": "Une fois par jour, Belay vérifie s’il existe une version plus récente. Il n’envoie rien vous concernant, et rien n’est téléchargé ni installé tant que vous n’appuyez pas sur Mettre à jour."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay controlla una volta al giorno se è disponibile una versione nuova. È la sua unica richiesta di rete. Non invia dati personali e non installa mai gli aggiornamenti automaticamente."
+            "value": "Una volta al giorno, Belay controlla se esiste una versione più recente. Non invia nulla che ti riguardi, e nulla viene scaricato o installato finché non premi Aggiorna."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Раз в день Belay проверяет, не вышла ли новая версия. Это его единственный сетевой запрос. Личные данные не отправляются, обновления не устанавливаются автоматически."
+            "value": "Раз в день Belay проверяет, есть ли новая версия. Он не отправляет ничего о вас, и ничего не скачивается и не устанавливается, пока вы не нажмёте «Обновить»."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 每天检查一次是否有新版本。这是它唯一的网络请求。它不会发送任何个人数据，也不会自动安装更新。"
+            "value": "Belay 每天检查一次是否有新版本。它不会发送任何关于你的信息，在你按下“更新”之前也不会下载或安装任何东西。"
           }
         }
       }

@@ -37,15 +37,27 @@ die() { echo "publish-appcast: $*" >&2; exit 2; }
 echo "==> collect the published releases"
 command -v gh >/dev/null || die "gh is not installed"
 mkdir -p "$RELEASES"
-for tag in $(gh release list -R PerfectoWeb/Belay --limit 20 --json tagName --jq '.[].tagName'); do
+tags="$(gh release list -R PerfectoWeb/Belay --limit 20 --json tagName --jq '.[].tagName')" \
+    || die "could not list the releases; is gh signed in?"
+[ -n "$tags" ] || die "the repository has no published releases"
+
+for tag in $tags; do
     # The versioned name only. Each release also carries a copy under the stable
     # name Belay.dmg for the README's download button, and two files of the same
     # version make generate_appcast write the version twice.
+    #
+    # A failure here used to be swallowed. It cannot be: this directory keeps
+    # older releases on purpose, so a download that fails leaves the previous
+    # run's files in place, every check downstream passes, and the appcast that
+    # gets published quietly omits the version somebody is waiting for.
     gh release download "$tag" -R PerfectoWeb/Belay -D "$RELEASES" \
-        --pattern "Belay-*.dmg" --clobber >/dev/null 2>&1 || true
+        --pattern "Belay-*.dmg" --clobber >/dev/null 2>&1 \
+        || die "could not download the assets of $tag"
+
+    want="$RELEASES/Belay-${tag#v}.dmg"
+    [ -f "$want" ] || die "$tag published no Belay-${tag#v}.dmg"
 done
 rm -f "$RELEASES/Belay.dmg"
-ls "$RELEASES"/*.dmg >/dev/null 2>&1 || die "no disk images were downloaded"
 ls -1 "$RELEASES"/*.dmg | sed 's|.*/|  |'
 
 # ------------------------------------------------- 2 and 3. sign, and retag
@@ -70,7 +82,8 @@ APPCAST="$RELEASES/appcast.xml"
 
 echo
 echo "==> what it says"
-grep -oE '<title>[^<]*</title>|sparkle:version="[^"]*"|url="[^"]*"' "$APPCAST" | sed 's/^/  /'
+{ grep -oE '<title>[^<]*</title>|sparkle:version="[^"]*"|url="[^"]*"' "$APPCAST" || true; } \
+    | sed 's/^/  /'
 
 if [ "$PUBLISH" = 0 ]; then
     echo

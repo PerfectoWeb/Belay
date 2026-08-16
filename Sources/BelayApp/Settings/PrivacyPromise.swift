@@ -20,8 +20,8 @@ enum PrivacyPromise {
                 localized: """
                     Belay reads only enough of your agent's session files to know whether it is \
                     running. Never your prompts, never your code, and nothing about you leaves \
-                    this Mac. The one exception is the daily update check, which you can switch \
-                    off.
+                    this Mac. It uses the network twice: a daily check for a newer version, \
+                    which you can switch off, and the download itself when you ask for one.
                     """)
         case .appStore:
             String(

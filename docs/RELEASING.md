@@ -215,6 +215,20 @@ xcodegen generate
 scripts/test.sh
 ```
 
+### 1b. Publish the appcast in the same sitting
+
+**A release without its appcast entry is a broken Update button.** The row in
+Settings is driven by the GitHub releases API and the button hands the job to
+Sparkle, which reads the appcast. Publish one without the other and the app
+says "version X is available" and then fails to find it.
+
+```bash
+scripts/publish-appcast.sh --publish
+```
+
+Run it after the release is on GitHub, not before: it downloads the published
+assets and signs those exact bytes.
+
 ### 2. Write the CHANGELOG section
 
 `CHANGELOG.md` follows Keep a Changelog. The release job extracts the notes by
