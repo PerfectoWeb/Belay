@@ -113,159 +113,65 @@ Store Connect will not ask.
 
 ## Step 8. Notes for review, and this one matters
 
-> **2026-08-14, done.** The notes field held the old text — the one claiming
-> Precise Detection "is off by default" and that Belay "listens only when
-> enabled by the user" — which is not what the code does and was the worst
-> possible thing to have said in a 2.4.5 dispute. It was replaced by hand and
-> the version resubmitted; `docs/app-review-notes.txt` is a copy of what is
-> actually in App Store Connect, pulled back out of the API rather than
-> retyped. The key in `.secrets/` can read that field but not write it: `PATCH`
-> returns 403 FORBIDDEN_ERROR, "the API key in use does not allow this
-> request". Writing it needs a second key with the App Manager role.
+> **2026-08-16.** The notes were rewritten again after the second rejection and
+> no longer describe a listener, because there is not one in this build. The
+> current text is `docs/app-review-notes.txt`, and the reply that goes with it
+> is `docs/app-review-reply.txt`.
 >
-> One argument was trimmed out of the submitted version and is worth having
-> ready if this comes back: **`network.client` is not a substitute.** The
-> sandbox distinguishes by direction — `client` authorises `connect(2)`, while
-> `NWListener` performs `bind(2)` and `listen(2)`, which the sandbox denies
-> with EPERM without `network.server`, loopback included. A probe built on
-> Belay's own `NWParameters` fails with "Operation not permitted" sandboxed
-> with `client` only, and binds with `server`.
+> The key in `.secrets/` can read this field but not write it: `PATCH` returns
+> 403 FORBIDDEN_ERROR, "the API key in use does not allow this request".
+> Writing it needs a second key with the App Manager role, so the notes are
+> pasted in by hand and `app-review-notes.txt` is kept as the copy of what is
+> actually there.
 
-Belay opens a listening socket on `127.0.0.1`, and the 1.0.0 submission was
-rejected over it — not by a reviewer, by an automated check. Guideline 2.4.5,
-"includes the com.apple.security.network.server entitlement but does not appear
-to have matching functionality". See "The 2.4.5 rejection" below for why the
-check is wrong and what to send back.
+Paste `docs/app-review-notes.txt` into **App Review Information → Notes**. It is
+written to be true of the build that is actually uploaded, which is a rule this
+project learned the hard way twice: an early draft said the listener was "off
+until the user turns it on", which is not what the code did, and the version
+after that defended an entitlement for a feature that could not work in a
+sandbox. See "The 2.4.5 rejection, twice" below.
 
-Paste this into **App Review Information → Notes**. It is written to be true of
-the build that is actually uploaded; the earlier draft of this section said the
-listener was "off until the user turns it on", which is not what the code does,
-and telling App Review that would have been worse than the rejection.
+The block that used to sit here was the old notes text, arguing for a listener
+this build no longer has. It is in the git history if the argument is ever
+wanted again; keeping a stale copy of a review answer beside the live one is how
+the wrong one gets pasted.
 
-> Belay is a menu bar utility that keeps the Mac awake while a local AI coding
-> agent is working. It has no account, no server and no analytics.
->
-> **Why the app needs com.apple.security.network.server.** Belay runs an HTTP
-> listener bound to 127.0.0.1 so that Claude Code — a command line tool running
-> on the same Mac, outside our sandbox — can post lifecycle events to it
-> ("a run started", "a run finished", "the agent is waiting for input"). This is
-> what makes detection immediate instead of inferred. The listener is created
-> with NWListener from Network.framework, on an ephemeral port, bound to the
-> loopback interface only, and every request must carry a bearer token that
-> Belay writes to its own container. It accepts no connection from outside the
-> machine and initiates none: this build deliberately ships **without**
-> com.apple.security.network.client and therefore cannot make an outbound
-> connection at all.
->
-> The listener starts with the app, so it is running the moment the app is
-> launched and needs no setup to observe. Installing the matching hook entry in
-> Claude Code's own settings file is separate, is off by default, and happens
-> only from a button that shows the exact text of the change first; the same
-> screen removes it.
->
-> **To see it working, in about a minute and with no account:**
->
-> 1. Launch Belay. The listener is already up:
->    `lsof -nP -iTCP -sTCP:LISTEN -a -c Belay` prints a line ending
->    `TCP 127.0.0.1:<port> (LISTEN)`.
-> 2. The same port and its token are in
->    `~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json`.
-> 3. Post to it the way Claude Code does:
->    `curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"`
->    It answers **204**. Without the header, or with a wrong token, it answers
->    **401** and reads nothing.
-> 4. Belay's panel now shows a session working and the Mac is being held awake;
->    `pmset -g assertions | grep Belay` shows the assertion macOS granted.
->
-> Note that Belay does not add its hook to Claude Code's settings file unless
-> the user asks it to, in **Settings ▸ Providers ▸ Precise detection**, from a
-> button that shows the exact change first. So on a fresh install the socket is
-> listening and idle: it is waiting for an agent that has not been pointed at it
-> yet. Step 3 above is exactly what that agent would send.
->
-> No sign-in is required to review any part of the app.
+### The 2.4.5 rejection, twice, and how it was actually resolved
 
-### The 2.4.5 rejection, and why the automated check missed it
+The first reply to this argued that the listener was real, that the automated
+scan had missed it because Swift's `NWListener` overlay does not use the C entry
+points, and that `network.client` is not a substitute because the sandbox
+distinguishes `connect(2)` from `bind(2)`. Every one of those statements is
+true, and the whole argument was beside the point.
 
-The functionality is in the binary. In the 1.0.0 archive:
+App Review asked again on 2026-08-16. This time the feature was checked rather
+than the argument, and the feature does not work in this build:
+`HookInstaller` writes into `~/.claude/settings.json`, which it derives from
+`FileManager.default.homeDirectoryForCurrentUser`, and inside the App Sandbox
+that is the app's own container. Pressing "Enable" in the App Store build would
+have written a hook file into `~/Library/Containers/com.perfectoweb.belay/Data/.claude/`
+and reported success. Claude Code has never read that path.
 
-```
-otool -L .../Belay.app/Contents/MacOS/Belay | grep Network
-    /System/Library/Frameworks/Network.framework/Versions/A/Network
+So the entitlement was supporting a feature with no working functionality behind
+it, which is exactly what guideline 2.4.5 says. It was removed the same day,
+along with the listener and the control that offered it:
 
-nm -u .../Belay.app/Contents/MacOS/Belay | grep NWListener
-    _$s7Network10NWListenerC18stateUpdateHandleryAC5StateOcSgvs
-    _$s7Network10NWListenerC20newConnectionHandleryAA12NWConnectionCcSgvs
-    _$s7Network10NWListenerC4portAA10NWEndpointO4PortVSgvg
-    ...
-```
+- `Belay-MAS.entitlements` now holds three keys and no network entitlement in
+  either direction.
+- `PreciseDetection.isSupported` is false under `BELAY_MAS`; `start()` returns
+  before binding, and `ProvidersSettingsPane` does not draw the row.
+- `verify-mas-build.sh` fails if either network entitlement reappears, and
+  `ChannelSurfaceTests` fails if the code and the entitlements file disagree
+  about which build this is.
 
-The likely reason the check did not see it: those are Swift symbols. A Swift app
-using `NWListener` never references the C entry points (`nw_listener_create`,
-`bind`, `listen`) directly — the Swift overlay does, inside
-`libswiftNetwork.dylib`. A scanner looking for the C symbols in the app binary
-finds nothing.
+The transcript watcher is unaffected. It reaches the real `~/.claude` through
+the security-scoped bookmark the user grants, which is why detection works in
+that build and the installer never did.
 
-And the entitlement is not merely used, it is **required**: `network.client` is
-not a substitute, because the sandbox distinguishes by direction. The same
-`NWParameters` Belay uses were compiled into a standalone probe and run three
-ways, ad-hoc signed:
-
-| Sandbox | Entitlements | Result |
-|---|---|---|
-| off | — | `READY port=59439` |
-| on | `network.client` only | **`FAILED POSIXErrorCode(1): Operation not permitted`** |
-| on | `network.server` | `READY port=59441` |
-
-`client` authorises the outbound `connect(2)`; `NWListener` performs `bind(2)`
-and `listen(2)`, which the sandbox refuses with EPERM without `network.server`,
-loopback included. Without it Belay loses exact detection entirely in this
-channel.
-
-There is no build change that fixes this honestly, and no entitlement to drop:
-the four in `Belay-MAS.entitlements` each have a named consumer in the code, and
-the direct build declares none at all.
-
-So: reply to the message, put the same explanation in App Review Information,
-and resubmit. Reply text, ready to paste:
-
-> The com.apple.security.network.server entitlement is required and is used at
-> every launch.
->
-> Belay keeps a Mac awake while a local AI coding agent is working. To know when
-> a run starts and stops it accepts events from Claude Code, a command line tool
-> running on the same Mac and outside our sandbox. It receives them over an HTTP
-> listener created with NWListener (Network.framework), bound to 127.0.0.1 on an
-> ephemeral port, restricted to the loopback interface, and protected by a
-> bearer token written to the app's own container. The listener starts in
-> applicationDidFinishLaunching and runs for the lifetime of the app.
->
-> The app cannot make outbound connections: it deliberately ships without
-> com.apple.security.network.client, which is also why network.client is not an
-> alternative here. The sandbox distinguishes by direction — client authorises
-> connect(2), while NWListener performs bind(2) and listen(2), which the sandbox
-> denies with EPERM without network.server even on the loopback address. We
-> verified this with a standalone probe using the same NWParameters: sandboxed
-> with network.client only it fails with "Operation not permitted"; with
-> network.server it binds.
->
-> The listener may appear idle on a fresh install, which we think is why the
-> automated analysis did not match it to functionality. Nothing posts to it
-> until the user enables the integration in Settings > Providers > Precise
-> detection. To exercise it directly:
->
->   lsof -nP -iTCP -sTCP:LISTEN -a -c Belay
->   cat ~/Library/Containers/com.perfectoweb.belay/Data/Library/Application\ Support/Belay/bridge.json
->   curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"
->
-> The third command returns 204 and the app's panel immediately shows a working
-> session; the same request without the token returns 401. No account or sign-in
-> is needed for any of this.
->
-> We would also note that the app binary references NWListener through Swift's
-> Network overlay rather than the C entry points (nw_listener_create, bind,
-> listen), which a symbol-level scan of the app binary would not find. The
-> symbols are present as _$s7Network10NWListenerC... in the submitted build.
+**The lesson worth keeping.** Two rounds were spent defending an entitlement
+instead of testing the feature it was for. When a reviewer says an entitlement
+has no matching functionality, run the feature in the sandboxed build before
+writing a word of reply.
 
 **Do not upload a bundle built by the test scheme.** The Debug MAS product in
 `build/DerivedData-MAS` carries Xcode's test-host injections — a
