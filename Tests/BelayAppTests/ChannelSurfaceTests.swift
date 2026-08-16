@@ -1,4 +1,4 @@
-import BelayTipJar
+import BelayChannel
 import XCTest
 
 @testable import Belay

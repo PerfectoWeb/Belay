@@ -351,9 +351,9 @@ folder nobody touched emit `.working`.
 ### M6 and M7 — done
 
 **M6:** `Belay` and `Belay-MAS` are one XcodeGen target template instantiated
-twice — no forked source, five attributes differ. Both build. `BelayTipJar`
-carries `TipJarProviding` (link-based and StoreKit implementations) and
-`UpdateChannel`. Release, notarize, sign-update and MAS-audit scripts are
+twice — no forked source, five attributes differ. Both build. `BelayChannel`
+carries `DistributionChannel` and `UpdateChannel`; it was `BelayTipJar` until
+the unused StoreKit tip jar was deleted on 2026-08-16. Release, notarize, sign-update and MAS-audit scripts are
 written, and as of 2026-08-14 all of them have been run: v1.0.0 and v1.1.0
 were archived, signed, notarized, stapled and published, and the release
 workflow has gone green as a dry run in CI.
@@ -381,15 +381,15 @@ are reported as **TODO**, never as passes.
 `docs/06` assumes a `#if BELAY_MAS` split. Probed with a `#warning` under
 Xcode 26.6: `SWIFT_ACTIVE_COMPILATION_CONDITIONS` set on an app target **does not
 propagate into a local SwiftPM target**. `#if BELAY_MAS` inside `BelayKit` is
-therefore false in every build, including the App Store one — `StoreKitTipJar`
-behind that gate would have been dead code everywhere and untestable, the exact
+therefore false in every build, including the App Store one — anything behind
+that gate would have been dead code everywhere and untestable, the exact
 opposite of the safety property the split exists to provide.
 
 The channel is instead resolved at runtime from an `Info.plist` key each target
-sets, in one place (`TipJar.forCurrentChannel`). An unlabelled bundle resolves to
-`.appStore`, deliberately: guessing wrong that way hides a tip button, while
-guessing wrong the other way puts a payment link in a sandboxed App Store build,
-which is a guideline violation. `#if BELAY_MAS` in the *app* target still works
+sets, in one place (`DistributionChannel.current`). An unlabelled bundle
+resolves to `.appStore`, deliberately: guessing wrong that way hides the Donate
+link, while guessing wrong the other way puts a payment link in a sandboxed App
+Store build, which is a guideline violation. `#if BELAY_MAS` in the *app* target still works
 and is used there.
 
 ### D14 — `docs/02`'s "one file to add a provider" claim does not hold

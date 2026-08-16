@@ -1,4 +1,4 @@
-import BelayTipJar
+import BelayChannel
 import SwiftUI
 
 /// The row of destinations under the About promises.
@@ -8,7 +8,8 @@ import SwiftUI
 ///
 /// The prominent slot is Donate on the direct build. A payment link inside a
 /// Mac App Store build is a guideline violation and a rejection, which is why
-/// `BelayTipJar` exists and why `coffeeURL` is a permanent nil. `donateURL` is
+/// the channel decides this at all and why `coffeeURL` is a permanent nil.
+/// `donateURL` is
 /// nil there at compile time, so this asks whether there is one rather than
 /// which channel it is on. Rather than leave a hole where the accent used to
 /// be, that build points at the product's own page instead.

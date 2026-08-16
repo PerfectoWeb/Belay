@@ -1,4 +1,4 @@
-import BelayTipJar
+import BelayChannel
 import Foundation
 
 /// The sentence About uses to say what Belay reads and what stays here.

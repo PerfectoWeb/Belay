@@ -4,11 +4,9 @@ import Foundation
 /// in the direct build, nothing at all in the App Store build, which ships its
 /// own updater and rejects ours.
 ///
-/// This lives alongside the tip jar because both exist for the same reason —
-/// they are the only two places the channels differ — and BelayTipJar is the
-/// module that owns that split. A dedicated `BelayUpdates` target is the
-/// tidier home and is a two-line `Package.swift` change whenever that file is
-/// in scope.
+/// It lives beside `DistributionChannel` because it is the one thing that
+/// answer is used for outside the app target, and a module per protocol is not
+/// a structure, it is a filing system.
 public protocol UpdateChannel: Sendable {
     var isSupported: Bool { get }
     func checkForUpdates()

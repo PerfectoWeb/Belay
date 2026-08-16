@@ -71,7 +71,7 @@ targetTemplates:
       - package: BelayKit
         product: BelaySupport
       - package: BelayKit
-        product: BelayTipJar
+        product: BelayChannel
     settings:
       base:
         PRODUCT_NAME: Belay
@@ -90,7 +90,7 @@ targetTemplates:
         # ...and the same fact in a form BelayKit can read. Xcode does not pass
         # SWIFT_ACTIVE_COMPILATION_CONDITIONS down to a local SwiftPM target
         # (verified with a #warning probe), so `#if BELAY_MAS` works in the app
-        # and nowhere else. BelayTipJar.DistributionChannel reads this instead.
+        # and nowhere else. BelayChannel.DistributionChannel reads this instead.
         BELAY_CHANNEL: ${channelName}
     # One plist per channel, because SUFeedURL is exactly the thing the note
     # here warned about: the App Store build must not carry it, and a shared

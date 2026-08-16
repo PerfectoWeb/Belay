@@ -21,7 +21,7 @@ Belay/
 │       ├── BelayProviders/     ClaudeCode + Generic (Codex is a Generic preset, D4)
 │       ├── BelayHookBridge/    loopback receiver + hook installer + backup/restore
 │       ├── BelaySettings/      typed preferences, migration, defaults
-│       ├── BelayTipJar/        TipJarProviding, UpdateChannel
+│       ├── BelayChannel/       DistributionChannel, UpdateChannel
 │       └── BelaySupport/       Log, FileAccess abstraction
 ├── Sources/BelayApp/           delegate, status item, panel, settings, ProviderHost
 ├── Tests/BelayAppTests/        app-level tests (module suites live in the package)

@@ -1,7 +1,7 @@
 import Foundation
 import Testing
 
-@testable import BelayTipJar
+@testable import BelayChannel
 
 @Suite struct DistributionChannelTests {
     @Test(arguments: [("direct", DistributionChannel.direct), ("appStore", .appStore)])
@@ -17,24 +17,12 @@ import Testing
         #expect(DistributionChannel.channel(named: raw) == .appStore)
     }
 
-    @Test func appStoreChannelNeverGetsTheLinkTipJar() {
-        let jar = TipJar.forCurrentChannel(
-            support: URL(fileURLWithPath: "/dev/null"),
-            open: { _ in },
-            channel: .appStore
-        )
-
-        #expect(jar is StoreKitTipJar)
-        #expect(jar.isAvailable == false)
-    }
-
-    @Test func directChannelGetsTheLink() {
-        let jar = TipJar.forCurrentChannel(
-            support: URL(fileURLWithPath: "/dev/null"),
-            open: { _ in },
-            channel: .direct
-        )
-
-        #expect(jar is LinkTipJar)
+    /// The raw values are written into `Info.plist` by `project.yml` and read
+    /// back here. If either side is renamed without the other, every build
+    /// silently becomes an App Store build, so the strings are pinned.
+    @Test func theRawValuesAreTheOnesTheBundleCarries() {
+        #expect(DistributionChannel.direct.rawValue == "direct")
+        #expect(DistributionChannel.appStore.rawValue == "appStore")
+        #expect(DistributionChannel.infoKey == "BelayDistributionChannel")
     }
 }

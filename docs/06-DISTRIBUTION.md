@@ -6,7 +6,7 @@
 |---|---|---|
 | Sandbox | off | required |
 | Updates | A daily check against the GitHub releases API (`ReleaseChecker`). Sparkle is written but commented out of `project.yml` and ships in neither channel. | App Store |
-| Monetisation | A Donate link. `coffeeURL` is permanently nil. | Nothing. The StoreKit tip jar exists in `BelayTipJar` but has no call site in the app and is not linked into the binary. |
+| Monetisation | A Donate link. `coffeeURL` is permanently nil. | Nothing. Tips need a paid-apps agreement this account cannot sign, so the StoreKit code was deleted rather than kept unused. |
 | Hook installation | direct filesystem write | user-granted, bookmark-scoped |
 | Risk | none | review friction (see below) |
 
@@ -120,20 +120,20 @@ flag. Design for this from the start so it's a one-line change, not a refactor.
 
 ## Monetisation
 
-The plan is free with optional support. Concretely:
+Free, with a Donate link in the direct build and nothing at all in the App Store
+build. That is the whole of it.
 
-- **MAS:** StoreKit 2 **consumable** IAP tips (e.g. Small/Medium/Large Coffee).
-  Apple requires in-app purchase for digital tipping; a PayPal/Ko-fi link inside
-  a MAS build is a guideline violation and will be rejected. Implement in a
-  `BelayTipJar` module with a clean `TipJarProviding` protocol; the direct build
-  supplies a link-based implementation of the same protocol.
-- **Direct:** a plain "Support development" link. No nag screens, no timed
-  prompts, no feature gating. The tip UI lives in About and nowhere else.
+The original plan had StoreKit 2 consumable tips in the App Store build, behind
+a `TipJarProviding` protocol so the direct build could supply a link-based
+implementation of the same thing. Both were written and tested. Neither was ever
+called: tips need a paid-apps agreement this account cannot sign, so no products
+could be registered and there was nothing to sell.
 
-Register the IAP product IDs yourself is **not** possible without the user's App
-Store Connect account — implement against placeholder IDs defined in one
-constants file, gate the UI behind a feature flag that's off until products
-exist, and note it in `BLOCKERS.md`.
+The code was deleted on 2026-08-16 rather than left as a seam nobody walks
+through. `BLOCKERS.md` B2 records the account decision, and the git history
+records the implementation, which is the right place for both. If tips ever
+become possible, that history is a better starting point than an untested module
+that has been rotting in the build.
 
 ## Signing & packaging
 

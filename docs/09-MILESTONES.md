@@ -94,7 +94,7 @@ one-liner for arbitrary tools.
 
 - Two schemes (`Belay`, `Belay-MAS`), entitlements, compile flags
 - Sparkle 2 integration + appcast template + `scripts/sign-update.sh`
-- `BelayTipJar` with both implementations behind one protocol
+- `BelayTipJar` with both implementations behind one protocol (deleted 2026-08-16, unused)
 - `scripts/release.sh` and `scripts/notarize.sh` (written, not run)
 - CI workflow file, including the "no Sparkle in MAS" guard
 

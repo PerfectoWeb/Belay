@@ -1,11 +1,14 @@
 # 004 — Two schemes from one codebase, direct first
 
-**Status:** accepted, and half implemented. Both seams exist and the second
-scheme builds. `TipJarProviding` has its two implementations, `StoreKitTipJar`
-and `LinkTipJar`. `FileAccessProvider` does not: `DirectFileAccess` is the only
-one, nothing resolves a bookmark, and the sandboxed build therefore cannot read
-`~/.claude` at all. See `BLOCKERS.md` B8. The reasoning below stands; treat it as
-the target, not a description of the tree.
+**Status:** accepted. The split shipped: two schemes, one codebase, direct
+first.
+
+Two things below no longer describe the tree. The monetisation seam is gone:
+`TipJarProviding` and its two implementations were deleted on 2026-08-16,
+because the account cannot register products and the code was never called from
+anywhere. And `FileAccessProvider` is no longer a single implementation:
+security-scoped bookmarks are resolved for folders the user picks, which is what
+`BLOCKERS.md` B8 was about.
 
 ## Context
 
@@ -52,8 +55,9 @@ build is running:
   and sweep takes a `FileAccessProvider` and asks `hasAccess(to:)` or
   `withAccess(to:)`; not one of them can tell which build it is in, and
   `withAccess` releases on the throwing path as well as the normal one.
-- **`TipJarProviding`** (in `BelayTipJar`) is the monetisation seam, with
-  `isAvailable` false until real products exist so the UI simply is not there.
+- **Monetisation** was to be a third seam, `TipJarProviding` in `BelayTipJar`,
+  with `isAvailable` false until real products existed. It was built and then
+  deleted: see the status note above.
 
 Ship direct first. It is the build that can be released without waiting on
 anyone, it validates the product, and it carries no review risk. Submit to the

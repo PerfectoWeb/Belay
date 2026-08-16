@@ -219,10 +219,10 @@ and the review notes should say so explicitly.
 
 ### In-app purchase products
 
-`BLOCKERS.md` B2, and
-[`../Packages/BelayKit/Sources/BelayTipJar/TipProducts.swift`](../Packages/BelayKit/Sources/BelayTipJar/TipProducts.swift):
-three consumable identifiers are declared, `areRegistered` is `false`, and
-`StoreKitTipJar.isAvailable` is therefore false, so no tip UI is ever built.
+There are none, and there is no code for any. `BLOCKERS.md` B2: the developer
+account cannot sign a paid-apps agreement, so no product could be registered.
+The StoreKit tip jar that had been written against placeholder identifiers was
+deleted on 2026-08-16.
 
 The recommendation is to **submit v1.0 with the tip jar off**. Registering three
 consumables means three more review items, tax and banking forms, and a StoreKit
@@ -343,14 +343,12 @@ means the mitigation `docs/06` counted on does not exist.
 
 ### 6. The tip jar seam with no products
 
-**What a reviewer sees.** Ideally nothing, which is the point. If they decompile
-or the flag is wrong, a StoreKit code path referencing three product identifiers
-that do not exist in the app record.
+**What a reviewer sees.** Nothing. There is no StoreKit code in the binary and
+no product identifier anywhere in the bundle.
 
-**Reply, and the check to run before submitting.** `TipProducts.areRegistered` is
-`false`, so `StoreKitTipJar.isAvailable` is false and no tip UI is constructed. A
-build submitted in that state has no purchase surface at all, which is a
-consistent thing to submit.
+**Reply, and the check to run before submitting.** There is no purchase surface
+to describe. This used to be a flag that had to be checked before every
+submission; deleting the code removed the check along with it.
 
 The failure to avoid is the opposite one: a **link-based** tip jar reaching the
 App Store build. Soliciting tips through a Ko-fi or PayPal link inside a MAS app

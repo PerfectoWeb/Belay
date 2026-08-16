@@ -1,5 +1,5 @@
 import AppKit
-import BelayTipJar
+import BelayChannel
 import SwiftUI
 
 /// The About pane.

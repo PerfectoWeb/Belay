@@ -1,6 +1,6 @@
 import Testing
 
-@testable import BelayTipJar
+@testable import BelayChannel
 
 @Suite struct UpdateChannelTests {
     /// Until there is a signing key and a real feed (BLOCKERS.md B3), the app

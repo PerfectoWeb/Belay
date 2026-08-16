@@ -200,8 +200,14 @@ first launch needs no network.
 
 Not a technical block and not something a product identifier would fix. The
 developer account is Russian, and paid items are not available to it, so there
-is nothing to register. The StoreKit code in `BelayTipJar` stays unreferenced;
-whether it is deleted is a separate decision from this one.
+is nothing to register.
+
+The StoreKit code was deleted on 2026-08-16. It had been written, tested and
+never called, and a seam nobody walks through is not free: it is a module to
+keep compiling, a flag to check before every submission, and a thing a reviewer
+could find. The git history keeps it, which is where an unused implementation
+belongs. What stayed is `BelayChannel`, which answers the question the app
+actually asks: which build is this.
 
 ## B2, as it was — StoreKit IAP product identifiers (Mac App Store tip jar)
 

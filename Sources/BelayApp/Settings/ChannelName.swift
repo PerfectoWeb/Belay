@@ -1,4 +1,4 @@
-import BelayTipJar
+import BelayChannel
 import Foundation
 
 extension DistributionChannel {

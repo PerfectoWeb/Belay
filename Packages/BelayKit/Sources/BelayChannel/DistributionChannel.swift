@@ -20,7 +20,7 @@ public enum DistributionChannel: String, Sendable {
 
     /// An unlabelled bundle — a test host, a preview, a hand-rolled build —
     /// resolves to `.appStore`, the channel with the rules. Guessing wrong that
-    /// way hides the tip UI; guessing the other way puts a payment link in a
+    /// way hides the Donate link; guessing the other way puts a payment link in a
     /// sandboxed build, which is a guideline violation.
     static func channel(named raw: String?) -> DistributionChannel {
         raw.flatMap(DistributionChannel.init(rawValue:)) ?? .appStore

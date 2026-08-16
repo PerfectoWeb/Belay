@@ -227,11 +227,11 @@ BelayApp ──▶ BelayCore ──────▶ BelaySupport
    ├──▶ BelayHookBridge ─────▶ BelayCore, BelaySupport
    └──▶ BelaySettings ───────▶ BelayCore, BelaySupport
 
-BelayTipJar ─────────────────▶ BelaySupport
+BelayChannel ────────────────▶ BelaySupport
 ```
 
-`BelayTipJar` is a target in the same package but is not yet a dependency of the
-app; it holds the `TipJarProviding` seam described in
+`BelayChannel` answers one question: which build is this, direct or App Store,
+read from `Info.plist` rather than from a compile condition. See
 [`docs/adr/004-mas-and-direct-split.md`](docs/adr/004-mas-and-direct-split.md).
 
 Three rules follow from that graph, and `Package.swift` will stop you if you
