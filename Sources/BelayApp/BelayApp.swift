@@ -41,6 +41,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: StatusItemController?
     private var panel: PanelController?
     private var onboarding: OnboardingWindow?
+    private var whatsNew: WhatsNewWindow?
     private var settingsWindow: SettingsWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -92,13 +93,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         scheduleUpdateChecks(settingsWindow.updates)
         Log.signposter.endInterval("launch", interval)
 
-        // After the interval: onboarding must not count against the cold-launch
-        // budget, and it only appears on a first run anyway.
+        // After the interval: neither of these may count against the
+        // cold-launch budget, and on most launches neither of them appears.
+        openTheScreensShownOnce(statusItem: statusItem, controller: controller)
+    }
+
+    /// The welcome screen, then the release notes, in that order and never both.
+    ///
+    /// A first launch introduces the app; it does not also announce what changed
+    /// in the only version that person has ever run. `WhatsNewDecision` says the
+    /// same thing from the preference side, and `suppressed` says it from this
+    /// one, because the two windows would otherwise land on top of each other in
+    /// the middle of the same screen.
+    private func openTheScreensShownOnce(
+        statusItem: StatusItemController, controller: BelayController
+    ) {
         let onboarding = OnboardingWindow(settings: settings)
         onboarding.presentIfNeeded(providerReady: true) { [weak controller] in
             controller?.requestProviderAccess(.claudeCode)
         }
         self.onboarding = onboarding
+
+        let whatsNew = WhatsNewWindow(settings: settings)
+        whatsNew.presentIfNeeded(suppressed: onboarding.isVisible)
+        self.whatsNew = whatsNew
 
         #if DEBUG
         statusItem.onShowWelcome = { [weak controller] in
@@ -106,6 +124,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 controller?.requestProviderAccess(.claudeCode)
             }
         }
+        statusItem.onShowWhatsNew = { whatsNew.present() }
         #endif
     }
 

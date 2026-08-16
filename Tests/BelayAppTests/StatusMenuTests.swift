@@ -32,26 +32,29 @@ final class StatusMenuTests: XCTestCase {
             String(localized: "Settings…"),
             String(localized: "About \(Branding.appName)")
         ]
-        // The workbench item for replaying the welcome screen. It is compiled
-        // into debug builds only, and the tests are a debug build, so it is
-        // here; the shipping menu is the four items this test is named after.
+        // The workbench items for replaying the two screens that are shown
+        // once. They are compiled into debug builds only, and the tests are a
+        // debug build, so they are here; the shipping menu is the four items
+        // this test is named after.
         #if DEBUG
-        expected += ["", "Welcome"]
+        expected += ["", "Welcome", "What's New"]
         #endif
         expected += ["", String(localized: "Quit")]
         XCTAssertEqual(titles, expected, "the separator is the empty title")
     }
 
-    /// The item above exists for development and must never reach anybody else.
+    /// The items above exist for development and must never reach anybody else.
     func testTheWelcomeItemIsDebugOnly() {
         let titles = controller.menuForTesting.items.map(\.title)
-        #if DEBUG
-        XCTAssertTrue(titles.contains("Welcome"))
-        #else
-        XCTAssertFalse(
-            titles.contains("Welcome"),
-            "a workbench control reached a release build")
-        #endif
+        for workbench in ["Welcome", "What's New"] {
+            #if DEBUG
+            XCTAssertTrue(titles.contains(workbench))
+            #else
+            XCTAssertFalse(
+                titles.contains(workbench),
+                "a workbench control reached a release build")
+            #endif
+        }
     }
 
     /// An ellipsis promises a dialog that asks for something first. Statistics

@@ -6,8 +6,8 @@ import BelaySupport
 ///
 /// The image is always a template image; that flag is what makes light, dark,
 /// tinted and reduced-transparency menu bars work without a single colour
-/// literal in this file. State is conveyed by shape, never by animation —
-/// a pulsing menu bar icon burns a redraw every frame and reads as cheap
+/// literal in this file. State is conveyed by shape, never by animation: a
+/// pulsing menu bar icon burns a redraw every frame and reads as cheap
 /// (docs/05).
 @MainActor
 final class StatusItemController {
@@ -15,13 +15,13 @@ final class StatusItemController {
     private let state: AppState
     private let panel: PanelController
     /// Built once and popped up manually on right-click. Assigning it to
-    /// `statusItem.menu` would hand left-click to the menu too, and left-click
-    /// belongs to the panel.
+    /// `statusItem.menu` would hand left-click to the menu, which is the
+    /// panel's.
     private lazy var contextMenu: NSMenu = makeMenu()
 
     /// Every frame of every look, rendered once at startup. Animating then costs
-    /// one property assignment per tick, not a redraw — which is what keeps a
-    /// moving menu bar icon inside the idle budget docs/08 sets.
+    /// one property assignment per tick rather than a redraw, which is what
+    /// keeps a moving icon inside the idle budget docs/08 sets.
     private lazy var frames: [BelayGlyph.Look: [NSImage]] = {
         var table: [BelayGlyph.Look: [NSImage]] = [:]
         for look in [BelayGlyph.Look.alwaysOn, .working, .resting, .calling, .off, .blocked] {
@@ -36,15 +36,15 @@ final class StatusItemController {
     private var look: BelayGlyph.Look = .resting
 
     /// One callback for every menu destination: the menu names a pane, the app
-    /// decides how to show it. Two separate closures for two panes was already
-    /// one too many.
+    /// decides how to show it.
     var onOpenPane: (SettingsPane) -> Void = { _ in }
 
-    /// The menu is built lazily and popped up by hand, so a test has no other
-    /// way to see it.
+    /// Built lazily and popped up by hand, so a test cannot see it otherwise.
     var menuForTesting: NSMenu { contextMenu }
 
+    /// The workbench destinations, stored here because an extension cannot.
     var onShowWelcome: () -> Void = {}
+    var onShowWhatsNew: () -> Void = {}
 
     init(state: AppState, panel: PanelController) {
         self.state = state
@@ -174,7 +174,7 @@ final class StatusItemController {
                 symbol: SettingsPane.about.symbol))
         #if DEBUG
         menu.addItem(.separator())
-        menu.addItem(item("Welcome", #selector(showWelcome), symbol: "sparkles"))
+        for it in workbenchItems { menu.addItem(item(it.title, it.action, symbol: it.symbol)) }
         #endif
 
         menu.addItem(.separator())

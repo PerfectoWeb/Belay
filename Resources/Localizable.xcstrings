@@ -4890,6 +4890,53 @@
         }
       }
     },
+    "Continue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fortfahren"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续"
+          }
+        }
+      }
+    },
     "Copied": {
       "extractionState": "manual",
       "localizations": {
@@ -5632,6 +5679,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "Исправить"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复"
+          }
+        }
+      }
+    },
+    "Fixes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fixes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behoben"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correcciones"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corrections"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correzioni"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исправления"
           }
         },
         "zh-Hans": {
@@ -8180,6 +8274,53 @@
         }
       }
     },
+    "Point Belay at a folder your own tool writes to, and your Mac stays awake while that folder is busy. The folders you choose are remembered.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point Belay at a folder your own tool writes to, and your Mac stays awake while that folder is busy. The folders you choose are remembered."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeig Belay einen Ordner, in den dein eigenes Werkzeug schreibt, und dein Mac bleibt wach, solange sich dort etwas tut. Die gewählten Ordner werden gemerkt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indica a Belay una carpeta en la que escriba tu propia herramienta y tu Mac seguirá despierto mientras esa carpeta esté activa. Las carpetas que elijas se recuerdan."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indiquez à Belay un dossier dans lequel votre propre outil écrit, et votre Mac reste éveillé tant que ce dossier est actif. Les dossiers choisis sont mémorisés."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Indica a Belay una cartella in cui scrive il tuo strumento e il Mac resta sveglio finché quella cartella è attiva. Le cartelle scelte vengono ricordate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Укажите Belay папку, в которую пишет ваш инструмент, и Mac не будет засыпать, пока в ней идёт работа. Выбранные папки запоминаются."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把 Belay 指向你自己的工具写入的文件夹，只要该文件夹有活动，Mac 就会保持唤醒。你选择的文件夹会被记住。"
+          }
+        }
+      }
+    },
     "Precise detection": {
       "extractionState": "manual",
       "localizations": {
@@ -8505,6 +8646,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "退出并重新打开"
+          }
+        }
+      }
+    },
+    "Quitting Belay now lets go of your Mac at once rather than a moment later, and the welcome screen opens in the middle of the screen on macOS 15.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitting Belay now lets go of your Mac at once rather than a moment later, and the welcome screen opens in the middle of the screen on macOS 15."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Beenden gibt Belay deinen Mac sofort frei statt einen Moment später, und der Willkommensbildschirm öffnet sich unter macOS 15 in der Bildschirmmitte."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al salir, Belay suelta tu Mac de inmediato en lugar de un momento después, y la pantalla de bienvenida se abre en el centro de la pantalla en macOS 15."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En quittant, Belay relâche votre Mac immédiatement plutôt qu’un instant plus tard, et l’écran de bienvenue s’ouvre au centre de l’écran sous macOS 15."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All’uscita, Belay lascia andare il Mac subito anziché un istante dopo, e la schermata di benvenuto si apre al centro dello schermo su macOS 15."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "При выходе Belay отпускает Mac сразу, а не мгновением позже, и на macOS 15 экран приветствия открывается по центру."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出时，Belay 会立刻让 Mac 进入睡眠，而不是稍后；在 macOS 15 上，欢迎屏幕会居中打开。"
           }
         }
       }
@@ -10060,6 +10248,53 @@
         }
       }
     },
+    "The menu bar says more": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The menu bar says more"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Menüleiste sagt mehr"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La barra de menús dice más"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La barre des menus en dit plus"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La barra dei menu dice di più"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значок в строке меню говорит больше"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏说得更清楚"
+          }
+        }
+      }
+    },
     "The purchase is waiting for approval. Nothing else is needed from you.": {
       "extractionState": "manual",
       "localizations": {
@@ -10624,6 +10859,100 @@
         }
       }
     },
+    "Update Now downloads the new version itself instead of sending you to a web page to find it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update Now downloads the new version itself instead of sending you to a web page to find it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„Jetzt aktualisieren“ lädt die neue Version selbst herunter, statt dich auf eine Webseite zu schicken."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Actualizar ahora» descarga la nueva versión por ti, en lugar de enviarte a una página web a buscarla."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« Mettre à jour » télécharge lui-même la nouvelle version au lieu de vous renvoyer vers une page web."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Aggiorna ora» scarica da sé la nuova versione invece di mandarti su una pagina web a cercarla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Обновить» сам скачивает новую версию, а не открывает страницу, на которой её ещё нужно найти."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“立即更新”会自行下载新版本，而不是把你带到网页上去找。"
+          }
+        }
+      }
+    },
+    "Updates arrive in one press": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates arrive in one press"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates mit einem Klick"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizaciones con un clic"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les mises à jour en un clic"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aggiornamenti con un clic"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление в одно нажатие"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一次点击即可更新"
+          }
+        }
+      }
+    },
     "Version %@ (%@)": {
       "extractionState": "manual",
       "localizations": {
@@ -10902,6 +11231,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "监视"
+          }
+        }
+      }
+    },
+    "Watch any folder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch any folder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beliebige Ordner beobachten"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observa cualquier carpeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surveillez n’importe quel dossier"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Osserva qualsiasi cartella"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наблюдение за любой папкой"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视任意文件夹"
           }
         }
       }
@@ -11189,6 +11565,53 @@
         }
       }
     },
+    "What's New": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What's New"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neuerungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novedades"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nouveautés"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novità"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что нового"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新功能"
+          }
+        }
+      }
+    },
     "When Belay stops for safety": {
       "extractionState": "manual",
       "localizations": {
@@ -11232,6 +11655,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 因安全原因停止时"
+          }
+        }
+      }
+    },
+    "When Belay stops on purpose, to save the battery or because it has been awake long enough, the mark shows it. A Mac that went quiet is never a mystery.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When Belay stops on purpose, to save the battery or because it has been awake long enough, the mark shows it. A Mac that went quiet is never a mystery."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Belay absichtlich aufhört, um den Akku zu schonen oder weil es lange genug wach war, zeigt das Zeichen es an. Ein Mac, der still wird, ist nie ein Rätsel."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando Belay se detiene a propósito, para ahorrar batería o porque ya ha estado despierto bastante, el símbolo lo muestra. Un Mac que se queda en silencio nunca es un misterio."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand Belay s’arrête volontairement, pour économiser la batterie ou parce qu’il est resté éveillé assez longtemps, le symbole l’indique. Un Mac devenu silencieux n’est jamais une énigme."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando Belay si ferma di proposito, per risparmiare batteria o perché è rimasto sveglio abbastanza a lungo, il simbolo lo mostra. Un Mac che tace non è mai un mistero."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда Belay останавливается намеренно, ради заряда батареи или потому что не спал уже достаточно долго, значок это показывает. Затихший Mac больше не загадка."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当 Belay 有意停止时，无论是为了省电，还是因为已经保持唤醒足够久，图标都会显示出来。安静下来的 Mac 不再是谜。"
           }
         }
       }

@@ -23,6 +23,9 @@ struct SettingsValues: Equatable, Sendable {
     var launchAtLogin: Bool
     var soundEffects: Bool
     var hasCompletedOnboarding: Bool
+    /// The version whose release notes this person has already been shown.
+    /// `nil` on an install that predates the key.
+    var lastSeenVersion: String?
     var notifyOnAgentNeedsInput: Bool
     var notifyOnTaskFinished: Bool
     var notifyOnSafetyRelease: Bool
@@ -50,6 +53,7 @@ extension SettingsValues {
         // switch still overrides this one.
         soundEffects = true
         hasCompletedOnboarding = false
+        lastSeenVersion = nil
         notifyOnAgentNeedsInput = true
         // docs/05: this is the delight moment, so it ships on. Everything else
         // stays conservative because notification fatigue kills utilities.

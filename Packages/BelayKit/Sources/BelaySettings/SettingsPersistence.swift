@@ -24,6 +24,9 @@ enum SettingsKey: String, CaseIterable {
     case launchAtLogin
     case soundEffects
     case hasCompletedOnboarding
+    /// The version whose release notes have been shown. Absent means nobody has
+    /// ever been told, which is not the same as "has seen nothing new".
+    case lastSeenVersion
     case notifyOnAgentNeedsInput
     case notifyOnTaskFinished
     case notifyOnSafetyRelease
@@ -103,6 +106,9 @@ extension SettingsValues {
         launchAtLogin = defaults.flag(.launchAtLogin) ?? fallback.launchAtLogin
         soundEffects = defaults.flag(.soundEffects) ?? fallback.soundEffects
         hasCompletedOnboarding = defaults.flag(.hasCompletedOnboarding) ?? fallback.hasCompletedOnboarding
+        // No fallback on purpose. `nil` is a state the caller has to handle:
+        // an install that predates this key is not a new install.
+        lastSeenVersion = defaults.text(.lastSeenVersion)
         notifyOnAgentNeedsInput = defaults.flag(.notifyOnAgentNeedsInput) ?? fallback.notifyOnAgentNeedsInput
         notifyOnTaskFinished = defaults.flag(.notifyOnTaskFinished) ?? fallback.notifyOnTaskFinished
         notifyOnSafetyRelease = defaults.flag(.notifyOnSafetyRelease) ?? fallback.notifyOnSafetyRelease
@@ -135,6 +141,9 @@ extension SettingsValues {
         defaults.store(launchAtLogin, .launchAtLogin)
         defaults.store(soundEffects, .soundEffects)
         defaults.store(hasCompletedOnboarding, .hasCompletedOnboarding)
+        // Written only when there is one, so "never told" stays distinguishable
+        // from "told about nothing".
+        if let lastSeenVersion { defaults.store(lastSeenVersion, .lastSeenVersion) }
         defaults.store(notifyOnAgentNeedsInput, .notifyOnAgentNeedsInput)
         defaults.store(notifyOnTaskFinished, .notifyOnTaskFinished)
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)

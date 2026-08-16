@@ -119,6 +119,14 @@ public final class SettingsStore {
         set { update { $0.hasCompletedOnboarding = newValue } }
     }
 
+    /// The version whose release notes have been shown. `nil` means this
+    /// install has never been told anything, which the caller must not read as
+    /// "new user": see `WhatsNewDecision`.
+    public var lastSeenVersion: String? {
+        get { values.lastSeenVersion }
+        set { update { $0.lastSeenVersion = newValue } }
+    }
+
     public var notifyOnAgentNeedsInput: Bool {
         get { values.notifyOnAgentNeedsInput }
         set { update { $0.notifyOnAgentNeedsInput = newValue } }
