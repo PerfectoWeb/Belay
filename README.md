@@ -240,6 +240,7 @@ Start at [`CONTRIBUTING.md`](CONTRIBUTING.md). Security reports go through
 <tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
 <tr><td width="24%"><a href="SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
 <tr><td width="24%"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
+<tr><td width="24%"><a href="ROADMAP.md">Roadmap</a></td><td>Where Belay is going, and what has to be true first</td></tr>
 </table>
 
 ## 📝 License
