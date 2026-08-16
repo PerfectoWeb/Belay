@@ -1,16 +1,17 @@
 import SwiftUI
 
-/// The lit panel above the release notes: the mark, the name, the version.
+/// The lit panel above the release notes: who is talking on the left, what this
+/// window is on the right.
 ///
-/// The same night sky as the welcome screen and About, at a third of the
-/// welcome screen's height. It is a masthead, not a stage: there is no scene to
-/// play and nothing to explain, so the panel's job is to say which app is
-/// talking and which version has arrived, and then get out of the way of the
-/// list.
+/// The same night sky as the welcome screen and About, at half the height it
+/// started at. It is a masthead, not a stage: there is no scene to play, so the
+/// panel says which app and which version, names the window, and gets out of the
+/// way of the list.
 ///
-/// The version is drawn here rather than in the heading below because it is
-/// identification, not news. "What's New" is the sentence; "Belay 1.3.0" is the
-/// letterhead.
+/// The title lives up here rather than as a heading below it. Down there it was
+/// a third block competing with the first item for the top of the page, and it
+/// pushed the news thirty points further from the eye for nothing. Up here it
+/// does what a masthead does: says what you are looking at.
 extension WhatsNewView {
     var hero: some View {
         ZStack {
@@ -26,16 +27,26 @@ extension WhatsNewView {
             // that has hung.
             Starfield(animated: true)
 
-            VStack(spacing: 3) {
-                BelayWordmark(size: 20, word: .white, animated: true)
-                Text(verbatim: newest)
-                    .font(.system(size: 11, weight: .medium, design: .rounded))
-                    // Against the dark panel, not against the window, so this
-                    // stays legible whatever the system appearance is.
-                    .foregroundStyle(.white.opacity(0.55))
+            // Baselines, not boxes. The wordmark and the title are set at
+            // different sizes, and aligning their boxes sits the smaller one
+            // visibly high against the larger.
+            HStack(alignment: .firstTextBaseline) {
+                BelayWordmark(size: 19, word: .white, animated: true)
+                Spacer(minLength: 12)
+                VStack(alignment: .trailing, spacing: 1) {
+                    Text("What's New")
+                        .font(.system(size: 19, weight: .semibold))
+                        .foregroundStyle(.white)
+                    Text(verbatim: newest)
+                        // Against the dark panel, not against the window, so this
+                        // stays legible whatever the system appearance is.
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.5))
+                }
             }
-            // The titlebar is space the panel reaches up under, and centring in
-            // the whole panel would sit the lockup under the traffic lights.
+            .padding(.horizontal, Self.margin)
+            // The titlebar is space the panel reaches up under, so the lockup is
+            // centred in what is left rather than under the traffic lights.
             .padding(.top, Self.titlebar)
         }
         .frame(height: Self.heroHeight + Self.titlebar)
@@ -45,9 +56,8 @@ extension WhatsNewView {
     /// The newest version being announced. `notes` arrives newest first, and is
     /// never empty: the window is not opened without something to say.
     ///
-    /// The number alone. The name is already spelled out in the wordmark
-    /// directly above it, and "Belay 1.3.0" under a word that says *belay* is
-    /// the app introducing itself twice in two lines.
+    /// The number alone. The name is already spelled out in the wordmark on the
+    /// other side of the same line.
     private var newest: String {
         notes.first?.version ?? Branding.version
     }

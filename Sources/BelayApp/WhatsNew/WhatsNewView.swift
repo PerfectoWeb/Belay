@@ -18,35 +18,81 @@ struct WhatsNewView: View {
     @State private var entered = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
+    /// One counter per icon. Bumping a row's counter is what makes its symbol
+    /// bounce, because `symbolEffect` fires on a change of value rather than on
+    /// a flag being true.
+    @State private var beats: [Int] = []
+
+    /// Whose turn it is. Counts past the last row on purpose: those extra ticks
+    /// are the rest between waves, and without them the wave reads as a loop
+    /// that never lets go.
+    @State private var turn = 0
+    @State private var ticker: Timer?
+
     /// Matched to `OnboardingView` on purpose. The two windows open on the same
     /// Mac weeks apart and any difference in these numbers reads as sloppiness
     /// rather than as variety.
     static let width: CGFloat = 470
     static let margin: CGFloat = 30
     static let titlebar: CGFloat = 32
-    static let heroHeight: CGFloat = 96
+    static let heroHeight: CGFloat = 72
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Color.clear.frame(height: Self.heroHeight)
-            heading.modifier(WhatsNewEntrance(shown: entered, delay: 0.06, animated: !reduceMotion))
-            list.modifier(WhatsNewEntrance(shown: entered, delay: 0.13, animated: !reduceMotion))
-            button.modifier(WhatsNewEntrance(shown: entered, delay: 0.20, animated: !reduceMotion))
+            list.modifier(WhatsNewEntrance(shown: entered, delay: 0.10, animated: !reduceMotion))
+            button.modifier(WhatsNewEntrance(shown: entered, delay: 0.17, animated: !reduceMotion))
         }
         .frame(width: Self.width)
         .background(alignment: .top) {
             hero.modifier(WhatsNewEntrance(shown: entered, delay: 0, animated: !reduceMotion))
         }
-        .onAppear { entered = true }
+        .onAppear {
+            entered = true
+            startTheWave()
+        }
+        .onDisappear {
+            ticker?.invalidate()
+            ticker = nil
+        }
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("What's New"))
     }
 
-    private var heading: some View {
-        Text("What's New")
-            .font(.system(size: 18, weight: .semibold))
-            .padding(.horizontal, Self.margin)
-            .padding(.top, Self.margin - 6)
+    /// Every icon in reading order, one at a time, then a pause.
+    ///
+    /// The whole point is the waiting. Bouncing all four at once is a jingle;
+    /// bouncing them in turn is the eye being walked down the list, which is
+    /// what the icons are for. `rest` is four ticks of nothing at the end, so
+    /// the wave finishes rather than churns.
+    ///
+    /// Cheap by construction: one state write every 0.5 seconds, and only the
+    /// symbol whose counter changed is redrawn. The starfield above it costs
+    /// more than this does by two orders of magnitude.
+    ///
+    /// Nothing runs under Reduce Motion, and nothing runs after the window
+    /// closes.
+    private func startTheWave() {
+        let count = notes.reduce(0) { $0 + $1.items.count }
+        beats = Array(repeating: 0, count: count)
+        guard !reduceMotion, count > 0 else { return }
+
+        let rest = 4
+        ticker = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            Task { @MainActor in
+                if turn < beats.count { beats[turn] += 1 }
+                turn = (turn + 1) % (beats.count + rest)
+            }
+        }
+    }
+
+    /// Where a row sits in the flattened list, which is what its counter is
+    /// indexed by. Versions are shown one after another, so the second version's
+    /// first row continues the first version's numbering rather than restarting.
+    private func beat(forVersionAt version: Int, item: Int) -> Int {
+        let before = notes.prefix(version).reduce(0) { $0 + $1.items.count }
+        let index = before + item
+        return index < beats.count ? beats[index] : 0
     }
 
     /// One row per item, and a version line above each group when more than one
@@ -63,7 +109,7 @@ struct WhatsNewView: View {
         // Wider between versions than between the items inside one, so a
         // version heading reads as a break rather than as another row.
         VStack(alignment: .leading, spacing: 26) {
-            ForEach(notes, id: \.version) { note in
+            ForEach(Array(notes.enumerated()), id: \.element.version) { position, note in
                 VStack(alignment: .leading, spacing: 18) {
                     if notes.count > 1 {
                         // Only when somebody skipped a release. With one version
@@ -72,8 +118,10 @@ struct WhatsNewView: View {
                             .font(.system(size: 11, weight: .semibold))
                             .foregroundStyle(.tertiary)
                     }
-                    ForEach(note.items) { item in
-                        WhatsNewRow(item: item)
+                    ForEach(Array(note.items.enumerated()), id: \.element.id) { row, item in
+                        WhatsNewRow(
+                            item: item,
+                            beat: beat(forVersionAt: position, item: row))
                     }
                     if !note.asides.isEmpty {
                         WhatsNewAsides(asides: note.asides)
@@ -82,7 +130,8 @@ struct WhatsNewView: View {
             }
         }
         .padding(.horizontal, Self.margin)
-        .padding(.vertical, 18)
+        .padding(.top, Self.margin - 6)
+        .padding(.bottom, 18)
     }
 
     private var button: some View {
@@ -110,11 +159,15 @@ struct WhatsNewView: View {
 private struct WhatsNewRow: View {
     let item: ReleaseNote.Item
 
+    /// Changes when it is this row's turn to bounce, and at no other time.
+    let beat: Int
+
     var body: some View {
         HStack(alignment: .top, spacing: 13) {
             Image(systemName: item.symbol)
                 .font(.system(size: 17))
                 .foregroundStyle(.tint)
+                .symbolEffect(.bounce, options: .nonRepeating, value: beat)
                 .frame(width: 24, alignment: .center)
                 // Aligned to the title's cap height rather than its box, which
                 // sits a symbol visibly low against a 13-point line.
@@ -151,8 +204,8 @@ private struct WhatsNewAsides: View {
                 .padding(.bottom, 1)
             ForEach(asides) { aside in
                 Text(aside.text)
-                    .font(.system(size: 12))
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 11))
+                    .foregroundStyle(.tertiary)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
