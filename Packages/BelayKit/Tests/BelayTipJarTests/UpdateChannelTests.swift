@@ -13,10 +13,16 @@ import Testing
         channel.checkForUpdates()
     }
 
-    @Test func appcastIsUnconfiguredAndItsPlaceholderIsNotReachable() {
+    /// The feed has an address now, and it is still not configured: the signing
+    /// key is the piece that is missing (BLOCKERS.md B3). This used to insist
+    /// the URL contained ".invalid.", which was a stand-in for "nothing is
+    /// wired yet" and stopped being true the moment the host was decided. What
+    /// is worth guarding is what the address has to be, not that it is fake.
+    @Test func theAppcastIsHttpsOnTheProjectsOwnSite() {
         #expect(Appcast.isConfigured == false)
         #expect(Appcast.feedURL.hasPrefix("https://"))
-        #expect(Appcast.feedURL.contains(".invalid."))
+        #expect(Appcast.feedURL.hasPrefix("https://perfectoweb.github.io/Belay/"))
+        #expect(Appcast.feedURL.hasSuffix(".xml"))
     }
 
     /// docs/06: check on a schedule, never install without being asked.

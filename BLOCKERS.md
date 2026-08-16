@@ -196,7 +196,14 @@ That step is done. See B6: `spctl` reports the shipped app and the disk image
 both as `source=Notarized Developer ID`, and both carry a stapled ticket, so a
 first launch needs no network.
 
-## B2 — StoreKit IAP product identifiers (Mac App Store tip jar)
+## B2 — CLOSED (2026-08-16). The tip jar is not happening on this account
+
+Not a technical block and not something a product identifier would fix. The
+developer account is Russian, and paid items are not available to it, so there
+is nothing to register. The StoreKit code in `BelayTipJar` stays unreferenced;
+whether it is deleted is a separate decision from this one.
+
+## B2, as it was — StoreKit IAP product identifiers (Mac App Store tip jar)
 
 **Blocks:** the tip jar in the MAS build.
 **Does not block:** the direct build, which uses a plain support link behind the
@@ -234,21 +241,45 @@ xcrun notarytool store-credentials BelayNotary \
   --issuer <ISSUER_ID>   # both live in .secrets/appstoreconnect.env, which is gitignored
 ```
 
-## B3 — Sparkle EdDSA signing key and appcast hosting URL
+## B3 — one command left: the signing key
 
 **Blocks:** shipping automatic updates in the direct build.
 **Does not block:** building or running. The update check is behind
 `UpdateChannel`, whose no-op implementation is used until a feed URL exists.
 
-The private key belongs in the user's Keychain and must never enter this repo.
-`scripts/sign-update.sh` wraps `generate_appcast` and expects it there.
+Done, 2026-08-16:
 
-The hosting half of this is no longer open: `gh-pages` publishes the site
-already, so the appcast has somewhere to live without anything new being set
-up. What is left is the key. Scheduled for 1.2, see `docs/12-V1.2-PLAN.md`,
-which also explains why the downloader should be Sparkle rather than ours.
+- **The hosting question is answered.** The feed is
+  `https://perfectoweb.github.io/Belay/appcast.xml`, on the `gh-pages` branch
+  that already publishes the site. No second host to keep alive, and the same
+  push that updates the site updates the feed. `Appcast.feedURL` says so.
+- **The download URLs are worked out.** `generate_appcast` writes every
+  enclosure as one prefix plus a file name, which suits a directory of files and
+  not GitHub, where each asset lives under its own tag.
+  `scripts/retag-appcast.py` rewrites them, reading the tag out of the file name
+  rather than guessing, and reporting anything it cannot read instead of
+  inventing a link that 404s mid-update. Exercised against a fixture.
 
-## B4 — App Store name-conflict search for "Belay"
+Left, and it has to be done by the person who holds the account:
+
+```bash
+generate_keys          # from the Sparkle 2 distribution's bin/
+```
+
+It writes the private key into the login Keychain and prints it **once** for an
+offline backup. That printout must not be pasted anywhere, including into a
+conversation with a tool; the public key it also prints is the half that goes
+into the app, as `SUPublicEDKey` in the direct build's Info.plist.
+
+With the public key in hand the rest is three edits already written down in
+`project.yml`: uncomment the `Sparkle` package, add `- package: Sparkle` to the
+Belay target, add `SUFeedURL` and `SUPublicEDKey` to its Info.plist. It must
+never appear under `Belay-MAS`, and `scripts/verify-mas-build.sh` fails the
+build if it does.
+
+## B4 — CLOSED (2026-08-16). The search was done and there is no conflict
+
+## B4, as it was — App Store name-conflict search for "Belay"
 
 **Blocks:** nothing yet; due before M6 per `docs/NAMING.md`.
 
@@ -326,7 +357,11 @@ it always meant. Four consecutive suite runs green afterwards.
 a real regression then hides among the false alarms. This one was hiding a real
 regression the whole time.
 
-## B7 — Translations have had no native review
+## B7 — five languages left, not seven
+
+English and Russian have been read by someone who speaks them. What is still
+unreviewed is **German, Spanish, French, Italian and Simplified Chinese**, and
+Chinese is the one that has never been seen running at all.
 
 Six languages ship: en, ru, de, es, fr, it. All 210 strings are translated and
 `LocalizationTests` guards the mechanical half — every offered language present

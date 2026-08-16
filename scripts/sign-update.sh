@@ -14,11 +14,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-# PLACEHOLDER — BLOCKERS.md B3. Must match Appcast.feedURL in
-# Packages/BelayKit/Sources/BelayTipJar/UpdateChannel.swift and SUFeedURL in the
-# direct build's Info.plist. HTTPS only: an appcast over HTTP hands an attacker
-# the update stream.
-DOWNLOAD_PREFIX="${BELAY_DOWNLOAD_PREFIX:-https://updates.invalid.example/belay/}"
+# Where the disk images are served from. GitHub's release assets, which is where
+# they already are, so nothing has to be uploaded twice.
+#
+# generate_appcast builds each enclosure URL as this prefix plus the file name,
+# and GitHub's are not laid out that way: every release sits under its own tag.
+# The prefix below is therefore a stand-in, and `retag` below rewrites each URL
+# to the tag its version belongs to. Doing it afterwards rather than trying to
+# make one prefix fit means the appcast can name several versions at once, which
+# is what Sparkle needs to offer somebody two releases behind a direct path
+# forward.
+DOWNLOAD_PREFIX="${BELAY_DOWNLOAD_PREFIX:-https://github.com/PerfectoWeb/Belay/releases/download/}"
 
 RELEASES="${BELAY_RELEASES_DIR:-$ROOT/dist/releases}"
 
@@ -88,6 +94,18 @@ APPCAST="$RELEASES/appcast.xml"
 
 grep -q 'sparkle:edSignature' "$APPCAST" || die "$APPCAST has no EdDSA signatures; clients would reject every update"
 
+# --- put each enclosure under its own tag -------------------------------------
+#
+# generate_appcast writes prefix + filename, and GitHub serves a release asset
+# from a path that carries its tag: .../releases/download/v1.2.0/Belay-1.2.0.dmg.
+# The version is already in the file name, so the tag is recovered from it
+# rather than guessed. A URL that does not match that shape is left alone and
+# reported, because rewriting it into a guess would produce an appcast full of
+# links that 404 at the moment somebody tries to update.
+echo "==> point each enclosure at its own tag"
+python3 "$SCRIPT_DIR/retag-appcast.py" "$APPCAST" "$DOWNLOAD_PREFIX" \
+    || die "could not rewrite the enclosure URLs"
+
 echo
 echo "appcast: $APPCAST"
-echo "publish: upload it and the .dmg files to $DOWNLOAD_PREFIX"
+echo "publish: commit it to the gh-pages branch as appcast.xml, beside index.html"

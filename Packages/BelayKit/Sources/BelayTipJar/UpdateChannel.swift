@@ -28,9 +28,11 @@ public struct NoUpdateChannel: UpdateChannel {
 /// The appcast Sparkle would read. Kept next to `NoUpdateChannel` so that
 /// turning updates on is a matter of filling this in, not of finding it.
 public enum Appcast {
-    /// PLACEHOLDER — not a real host. HTTPS only when it becomes one: an
-    /// appcast over HTTP is a remote code execution path with extra steps.
-    public static let feedURL = "https://updates.invalid.example/belay/appcast.xml"
+    /// The project's own site, which is the `gh-pages` branch of this
+    /// repository, so the feed is published by the same push that publishes the
+    /// site and there is no second host to keep alive. HTTPS, and it has to be:
+    /// an appcast over HTTP is a remote code execution path with extra steps.
+    public static let feedURL = "https://perfectoweb.github.io/Belay/appcast.xml"
 
     /// Sparkle checks on its own schedule but never installs without the user
     /// saying so. People running a system utility get to choose when it
