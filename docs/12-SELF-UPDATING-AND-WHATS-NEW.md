@@ -1,8 +1,16 @@
-# What 1.2 is for
+# Self-updating, and the "What's New" screen
 
 Two features and the work each of them actually needs. Written down before any
-of it starts, because both have a shape that is easy to get wrong and expensive
-to change afterwards.
+of it started, because both have a shape that is easy to get wrong and
+expensive to change afterwards.
+
+This was `12-V1.2-PLAN.md`. There was no 1.2: the number was skipped and the
+next release is 1.3.0. The file is named for what it is about instead, since a
+plan named after a version is wrong the moment the version moves.
+
+**Part 2 is built and in `main`.** Part 1 is half built: Sparkle is in the
+direct build and configured, but nothing in the app drives it yet. See the
+status note under it.
 
 Already in `main`, waiting for the release:
 
@@ -20,7 +28,18 @@ Already in `main`, waiting for the release:
 
 ## 1. Updating itself, with a progress bar
 
-Today **Update Now** opens the download page and the person takes it from there.
+**Status.** `Update Now` downloads the disk image itself now rather than opening
+a page, which is the useful half. Sparkle is in the direct build with its feed
+URL and public key in `Info-Direct.plist`, the signing key exists, and
+`verify-mas-build.sh` keeps it out of the App Store build. What does **not**
+exist yet is any code that drives it: there is no `SPUUpdater` anywhere in
+`Sources`, and no `appcast.xml` is published, so the feed URL currently points
+at a 404. Nobody reaches it, because nothing asks.
+
+That is the decision left: finish it, or take the framework back out until it is
+wanted. Shipping a signed framework the app never calls is weight in the bundle
+and a thing to keep signing correctly for no return.
+
 The wanted behaviour is: press it, watch the download, then be offered a
 restart, or be restarted.
 
@@ -77,6 +96,10 @@ points at the App Store page and nowhere else.
 
 ## 2. A "What's new" screen
 
+**Status: built.** `Sources/BelayApp/WhatsNew/`, with the decision table in
+`WhatsNewDecision` and a test per branch of it. What follows is the plan it was
+built from; three things came out differently and are marked where they are.
+
 Shown once, on the first launch after an update, in place of the welcome screen.
 Somebody who has never run Belay gets the welcome screen; somebody who has, and
 has just moved to a newer version, gets what changed.
@@ -102,10 +125,29 @@ finds the key missing but onboarding already done.
 
 ### What it shows
 
-The changelog already has the text, per version, in a shape a person reads
-rather than a shape a machine reads. The screen should take its content from
-there rather than from a second list that will drift, and it should say what
-changed in *this* version only, not a history.
-
 Same window and same chrome as the welcome screen. It is not a new surface, it
 is the same panel with different content, and it needs the same one way out.
+That part held: `PanelWindow` builds both, so the sizing and centring fixes
+cannot drift apart.
+
+Three things came out differently from this plan:
+
+**The content is not taken from the changelog.** The plan said it should be, to
+avoid two lists drifting. In practice they are two different documents: the
+changelog is the record, in English, at whatever length each fix deserved, and
+the screen is the announcement, translated into seven languages, three to five
+lines long. Sharing a source would have given the screen the changelog's length
+and vocabulary. `ReleaseNotes` is the announcement, and adding a release means
+writing its lines and translating them, which is a real cost and is written down
+where somebody adding one will read it.
+
+**It shows more than one version.** The plan said this version only. Belay
+updates on the user's schedule rather than a store's, so skipping a release is
+ordinary, and everything newer than what somebody last saw is what they have not
+seen. The list is capped at six items and trims from the oldest end; the version
+just installed is never trimmed.
+
+**There is no scroll view.** Two attempts had one, and both clipped the last
+item mid-sentence: a `ScrollView` has no height of its own to report, so a window
+sized from its content gets a guess. The window grows with the list instead,
+which is why the item cap exists.

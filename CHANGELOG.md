@@ -7,6 +7,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - unreleased
+
+Everything the direct build gained since 1.1.0. There was no 1.2.0: the number
+was skipped, and nothing was ever published under it.
+
+### Added
+
+**A "What's New" screen.** Shown once, on the first launch after an update, in
+the same window as the welcome screen: same width, same margins, same lit panel,
+same single button. It lists what changed in this version, and in any versions
+that were skipped, with one line each.
+
+The rule that decides who sees it is `WhatsNewDecision`, which is pure and has a
+test per branch. The case that needed the most care is the quiet one: everybody
+already running Belay has no record of a last-seen version, and reading that as
+"new install" would announce this release to people who have been running it for
+months. They are recorded silently instead and told nothing.
+
+The window has no scroll view. A `ScrollView` has no height of its own to
+report, so a window sized from its content clips the last item mid-sentence,
+which is what the first two attempts did. The window grows with the list, and
+the number of items that can reach it is capped at six, which bounds the height
+where it can be reasoned about rather than hoped about.
+
+**Belay updates itself in one press.** The update row is one button: `Check Now`
+when there is nothing to install, and a green `Update Now` with the welcome
+screen's wand when there is. It downloads the disk image itself rather than
+opening a web page for somebody to find the link on.
+
+**Folders are remembered.** A folder picked for a generic target is kept as a
+security-scoped bookmark, one per folder, so the sandboxed build can read it at
+all and can still read it after a relaunch.
+
+**Homebrew.** `brew install --cask belay`.
+
+### Changed
+
+**The paused mark is part of the icon rather than a badge on it.** Two bars are
+cut out of the big star, with no circle and no border. It was a badge in the
+corner before, and a strike through the mark before that: the strike said
+*forbidden*, which is wrong, and at 17 points a bordered circle reads as a
+notification dot.
+
+**"Skip for now" is drawn, not borrowed.** A bordered system button looked like
+a different app's control on macOS 15, beside a button that is drawn. It now
+shares the primary button's measurements exactly.
+
+**The licence.** MIT until 1.1.0, and the Belay Source-Available Licence from
+here: forking and using are free, selling is not, and attribution is required.
+
+### Fixed
+
+**Quitting did not release the hold.** `shutdown release timed out` appeared in
+the log on every quit: a `@MainActor` type blocked the main thread on a
+semaphore while waiting for work that needed the main actor to finish. The hold
+outlived the app until its own two-minute timeout reaped it. Found on macOS 15
+and fixed there.
+
+**The welcome window opened off-centre on macOS 15.** Its size was read before
+AppKit had laid it out, so the centring arithmetic ran against a size of zero
+and put the window's corner in the middle of the screen. It is sized from the
+hosting controller's fitting size now, which does not depend on when a layout
+pass happens.
+
+**The disk image showed its own hidden files** when Finder was set to show them.
+
 ## [1.1.0] - 2026-08-14
 
 A new welcome screen, and two fixes. Nothing about detection, power or the panel
