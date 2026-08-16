@@ -164,24 +164,25 @@ enum BelayGlyph {
 
     /// The safety stop: two bars cut straight out of the big star.
     ///
-    /// It was a badge in the corner before, and a strike through the mark before
-    /// that. The strike said *forbidden*: wrong, since Belay is running and has
-    /// deliberately let go to save the battery. The badge said the right thing
-    /// as a second object stuck onto the first, and at 17 points a bordered
-    /// circle reads as a notification dot, which is a third promise again.
+    /// It was a badge in the corner before, and a strike through the mark
+    /// before that. The strike said *forbidden*, and at 17 points a bordered
+    /// circle reads as a notification dot: two promises Belay is not making
+    /// while it is running and has let go on purpose to save the battery.
     ///
-    /// Now the pause is part of the mark. Nothing is drawn, only removed, so it
-    /// inherits the look's own brightness and cannot fight the template tinting
-    /// macOS applies. The numbers are the star's, not the 24-point box's: part 1
-    /// spans x 0 to 19.98 and y 3 to 23, so its middle is (10, 13).
+    /// So nothing is drawn now, only removed, and the tinting macOS applies to
+    /// a template image cannot be fought. The numbers are the star's, not the
+    /// 24-point box's: part 1 spans x 0 to 19.98 and y 3 to 23, middle (10, 13).
     private static func pausedBars() {
         let centre = CGPoint(x: 9.99, y: 13)
         // Sized for 17 points, the only size the menu bar draws this at. At 2.0
         // the bars measured 1.4 points across and vanished into the shape.
         let width: CGFloat = 2.6
         let gap: CGFloat = 2.4
-        let height: CGFloat = 8.0
+        let height: CGFloat = 7.0
 
+        // Opaque, or the cut is only as deep as the last fill's alpha and the
+        // bars come out as grey stripes instead of gaps.
+        NSColor(calibratedWhite: 0, alpha: 1).setFill()
         NSGraphicsContext.current?.compositingOperation = .destinationOut
         for side in [-1.0, 1.0] {
             let bar = NSRect(
