@@ -126,16 +126,14 @@ struct OnboardingView: View {
                     .keyboardShortcut(.defaultAction)
                     .accessibilityHint("Opens a standard macOS panel so you can approve the folder")
             }
-            // The padding is inside the label on purpose. A bordered button's
-            // bezel comes in fixed steps, 28 points at large and 36 at extra
-            // large, and it ignores a frame put around it; what it does honour
-            // is the size of the label it has to wrap. This is the only way to
-            // land between the steps and keep the system's own chrome.
-            Button(action: onDismiss) {
-                Text("Skip for now").padding(.vertical, (Self.buttonHeight - 28) / 2)
-            }
-            .buttonStyle(.bordered)
-            .accessibilityHint("Belay still works in Always on and Off modes")
+            // Drawn rather than borrowed, and the padding goes with the style.
+            // A bordered button's bezel came in fixed steps and had to be
+            // coaxed to this height through its label; `QuietButtonStyle` is
+            // built to the same measurements as the button beside it, so there
+            // is nothing left to coax.
+            Button("Skip for now", action: onDismiss)
+                .buttonStyle(QuietButtonStyle())
+                .accessibilityHint("Belay still works in Always on and Off modes")
             Spacer(minLength: 0)
         }
         .controlSize(.large)
