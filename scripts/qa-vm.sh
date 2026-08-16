@@ -111,6 +111,30 @@ off       ->  no assertion
 auto      ->  no assertion unless a coding agent is running on this machine
 EOF
 
+# The paused mark has no other way to appear on a test machine: it means the
+# safety stop fired, and the only honest way to make that happen is to make the
+# cap short. 60 seconds is the lowest the app itself accepts, so nothing here is
+# faked. `maxContinuousAwakeUnlimited` has to go with it, or the cap is ignored
+# and the wait below just expires.
+say "safety stop, so the paused icon can be looked at"
+stop
+defaults write "$PREFS" maxContinuousAwakeUnlimited -bool false
+defaults write "$PREFS" maxContinuousAwake -float 60
+defaults write "$PREFS" mode -string alwaysOn
+# The welcome screen too, since it is the other thing that needs eyes.
+defaults write "$PREFS" hasCompletedOnboarding -bool false
+killall cfprefsd 2>/dev/null || true
+sleep 1
+start
+echo "holding, waiting out the 60-second cap"
+sleep 70
+held="$(assertions)"
+if [ -n "$held" ]; then
+    echo "STILL HOLDING after the cap: $held"
+else
+    echo "released: the menu bar is showing the paused mark now"
+fi
+
 say "crashes since boot"
 ls -t ~/Library/Logs/DiagnosticReports/ 2>/dev/null | grep -i belay | head -5 || echo "none"
 
@@ -121,11 +145,25 @@ say "log, last two minutes"
     || echo "(none)"
 
 say "left for a person"
-cat <<'EOF'
-Open Settings from the menu bar icon and look at all six panes: General,
-Providers, Behaviour, Notifications, Statistics, About. Nothing empty, nothing
-clipped, no control drawn over another. Then General, tick "Open at login",
-untick it: both have to stick.
+# Unquoted heredoc: the restore commands at the bottom are only useful with the
+# real preferences path in them.
+cat <<EOF
+1. The welcome screen opened when the app relaunched. It has to be centred on
+   the screen, and "Skip for now" has to look like the other buttons rather
+   than like a system push button.
+2. The menu bar icon is the paused mark: the big star with two bars cut out of
+   it. No circle, no badge.
+3. Open Settings from the menu bar icon and look at all six panes: General,
+   Providers, Behaviour, Notifications, Statistics, About. Nothing empty,
+   nothing clipped, no control drawn over another. Then General, tick "Open at
+   login", untick it: both have to stick.
 
-Send this output plus a screenshot of anything that looks wrong.
+Send this output plus a screenshot of the welcome screen and of the menu bar.
+
+Afterwards, put the machine back:
+
+  defaults delete "$PREFS" maxContinuousAwake
+  defaults delete "$PREFS" maxContinuousAwakeUnlimited
+  defaults write "$PREFS" mode -string auto
+  killall cfprefsd
 EOF
