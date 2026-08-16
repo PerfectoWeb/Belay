@@ -43,6 +43,7 @@ direct download ship 1.1.0 until it lands.
 | :---: | :--- | :--- | :--- |
 | 📦 | **v1.2.0 published** | <img src="https://img.shields.io/badge/in%20progress-1f6bff?style=flat-square" alt="in progress" height="18"> | The release notes screen, then the gate green |
 | 🏪 | **Live on the Mac App Store** | <img src="https://img.shields.io/badge/in%20review-b45309?style=flat-square" alt="in review" height="18"> | The 1.2.0 build. Three findings already answered |
+| ⬇️ | Belay installs its own updates | <img src="https://img.shields.io/badge/one%20click%20left-b45309?style=flat-square" alt="one click left" height="18"> | A Keychain dialog, then `scripts/publish-appcast.sh --publish` |
 | 🖥 | Verified on macOS 14 | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | Nothing. 15 found three faults nobody expected |
 | 📚 | Listed in `awesome-mac` | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | 1.2.0 out, so the download matches the README |
 | 🗣 | Five languages read by people who speak them | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | Finding those people |

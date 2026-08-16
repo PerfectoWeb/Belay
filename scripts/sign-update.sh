@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Signs a release for Sparkle and regenerates the appcast.
 #
-# WRITTEN, NEVER RUN. Sparkle is not wired into the build yet and there is no
-# EdDSA key pair (BLOCKERS.md B3).
+# Called by publish-appcast.sh, which is the entry point worth using: it fetches
+# the releases first and puts the result on the site afterwards. This half is the
+# signing, and it is separate because signing is the step that needs the key.
 #
 # The private key lives in the login Keychain and nowhere else. generate_appcast
 # looks it up itself — it is never passed on the command line, never written to
@@ -75,7 +76,15 @@ fi
     || die "generate_appcast not found. Download the Sparkle 2 distribution and set SPARKLE_BIN to its bin/ directory."
 
 [ -d "$RELEASES" ] || die "no releases directory at $RELEASES"
-ls "$RELEASES"/*.dmg "$RELEASES"/*.zip >/dev/null 2>&1 || die "$RELEASES contains no .dmg or .zip to sign"
+# One `ls` over both globs fails whenever either one matches nothing, which is
+# every ordinary run: this project ships disk images and no zips. The first run
+# of this script died on exactly that, saying the directory was empty while
+# holding two disk images.
+have_any=0
+for candidate in "$RELEASES"/*.dmg "$RELEASES"/*.zip; do
+    [ -f "$candidate" ] && have_any=1
+done
+[ "$have_any" = 1 ] || die "$RELEASES contains no .dmg or .zip to sign"
 
 # generate_appcast reads the key from the Keychain under this service name. A
 # clear failure here beats an appcast full of unsigned entries, which Sparkle

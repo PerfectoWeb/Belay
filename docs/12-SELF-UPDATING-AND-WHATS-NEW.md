@@ -28,17 +28,32 @@ Already in `main`, waiting for the release:
 
 ## 1. Updating itself, with a progress bar
 
-**Status.** `Update Now` downloads the disk image itself now rather than opening
-a page, which is the useful half. Sparkle is in the direct build with its feed
-URL and public key in `Info-Direct.plist`, the signing key exists, and
-`verify-mas-build.sh` keeps it out of the App Store build. What does **not**
-exist yet is any code that drives it: there is no `SPUUpdater` anywhere in
-`Sources`, and no `appcast.xml` is published, so the feed URL currently points
-at a 404. Nobody reaches it, because nothing asks.
+**Status, 2026-08-17: wired.** The decision was taken to finish it rather than
+take the framework back out.
 
-That is the decision left: finish it, or take the framework back out until it is
-wanted. Shipping a signed framework the app never calls is weight in the bundle
-and a thing to keep signing correctly for no return.
+`SoftwareUpdate` owns an `SPUStandardUpdaterController` and `Update Now` calls
+it, so the download, the signature check, the swap and the relaunch are
+Sparkle's, with its own progress window. `Sources/BelayApp/Settings/SoftwareUpdate.swift`.
+
+Two things about the shape of it:
+
+**Finding and installing stayed separate.** `ReleaseChecker` still does the
+daily check over the GitHub API, and `SUEnableAutomaticChecks` is false, so
+Sparkle schedules nothing of its own. Two updaters both polling on their own
+timers would be two network habits, and the About pane promises one.
+
+**Sparkle re-checks the appcast rather than being handed the URL the checker
+already found.** That is the entire point of it: the appcast entry carries an
+EdDSA signature over the exact bytes, checked against the public key compiled
+into the running build. An installer handed a URL from somewhere else is
+checking nothing.
+
+**What is left is the appcast itself.** `scripts/publish-appcast.sh` fetches
+every published release, signs them, points each enclosure at its own tag and
+commits the result to `gh-pages`. It has been run as far as it can be run
+unattended: `generate_appcast` reads the private key from the login Keychain,
+which puts a dialog on screen. Until somebody answers it, the feed URL is a 404
+and pressing Update Now will say there is nothing to install.
 
 The wanted behaviour is: press it, watch the download, then be offered a
 restart, or be restarted.

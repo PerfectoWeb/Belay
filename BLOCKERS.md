@@ -247,7 +247,21 @@ xcrun notarytool store-credentials BelayNotary \
   --issuer <ISSUER_ID>   # both live in .secrets/appstoreconnect.env, which is gitignored
 ```
 
-## B3 — RESOLVED (2026-08-16). Sparkle is wired, signed and channel-split
+## B3 — RESOLVED (2026-08-16), and finished (2026-08-17)
+
+The app now drives Sparkle: `SoftwareUpdate` owns the updater and `Update Now`
+hands it the job, so a new version downloads with a progress bar, is checked
+against the public key in this build, and is swapped in. `SUEnableAutomaticChecks`
+is false, so the only scheduled network access is still Belay's own daily check.
+
+**One thing is not done, and it needs a person.** No appcast is published yet, so
+the feed URL is a 404 and Update Now would find nothing.
+`scripts/publish-appcast.sh --publish` does the whole job, and stops in the
+middle for a Keychain dialog: `generate_appcast` reads the EdDSA private key,
+and macOS asks whether it may. Answer "Always Allow" once. Everything before and
+after that dialog has been run and works.
+
+## B3, as it was — the key, the feed, and the channel split
 
 The key exists in the release machine's login Keychain; its public half,
 `Vzv5S2MFDz1si7eu25uDdjAYO/wDqwsA+Y2iDU0c3e8=`, is in the direct build's plist,
