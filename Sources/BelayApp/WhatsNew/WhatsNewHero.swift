@@ -27,11 +27,12 @@ extension WhatsNewView {
             // that has hung.
             Starfield(animated: true)
 
-            // Baselines, not boxes. The wordmark and the title are set at
-            // different sizes, and aligning their boxes sits the smaller one
-            // visibly high against the larger.
-            HStack(alignment: .firstTextBaseline) {
-                BelayWordmark(size: 19, word: .white, animated: true)
+            // Centres, not baselines. The wordmark is a lockup rather than a
+            // line of text: it carries a mark beside its word, so its optical
+            // middle is what should line up with the block opposite, and a
+            // shared baseline sat it low against a two-line stack.
+            HStack(alignment: .center) {
+                BelayWordmark(size: 24, word: .white, animated: true)
                 Spacer(minLength: 12)
                 VStack(alignment: .trailing, spacing: 1) {
                     Text("What's New")
