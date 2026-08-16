@@ -99,8 +99,14 @@ shim as the fallback.
 `127.0.0.1` on an ephemeral port, writes the port and a random per-install
 bearer token to `~/Library/Application Support/Belay/bridge.json`, and registers
 hooks pointing at `http://127.0.0.1:<port>/hook`. Requests without the token are
-dropped. Bind to loopback only — never `0.0.0.0`. Requires the
-`com.apple.security.network.server` entitlement under sandbox.
+dropped. Bind to loopback only, never `0.0.0.0`.
+
+**Direct build only.** Under the sandbox this needs
+`com.apple.security.network.server`, and it could not work there in any case:
+the installer edits `~/.claude/settings.json` and the sandbox home is the app's
+container. `PreciseDetection.isSupported` is false in the App Store build, so
+nothing binds and the control is not shown (`BLOCKERS.md`, and the 2026-08-16
+review reply in `docs/app-review-reply.txt`).
 
 **B2 — Command shim (fallback).** Ship a tiny `belay-hook` executable in
 `Belay.app/Contents/Helpers/`. It reads stdin, connects to a Unix domain socket,

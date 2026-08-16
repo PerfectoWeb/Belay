@@ -13,16 +13,25 @@
 	<key>com.apple.security.files.bookmarks.app-scope</key>
 	<true/>
 
-	<!-- Loopback listener for the Claude Code HTTP hook. Inbound only. -->
-	<key>com.apple.security.network.server</key>
-	<true/>
-
 	<!--
-	There is deliberately no com.apple.security.network.client. Belay has
-	nothing to phone home to, and the missing entitlement is the proof we hand
-	App Review when they ask about the listening socket (docs/06). Anything
-	that would need it — Sparkle, analytics, a crash reporter — does not ship
-	in this channel. Adding it is a product decision, not a build fix.
+	No network entitlements at all, in either direction, and both absences are
+	deliberate.
+
+	com.apple.security.network.server was here until 2026-08-16, for the
+	loopback listener the Claude Code hook bridge uses. App Review asked about
+	it twice under guideline 2.4.5, and they were right: the bridge cannot work
+	in this build. HookInstaller edits ~/.claude/settings.json, and inside the
+	sandbox the home directory is the container, so enabling it would have
+	written a hook file somewhere Claude Code never looks. The listener is off
+	in this build (PreciseDetection.isSupported), the control that offered it is
+	hidden, and verify-mas-build.sh fails if either the entitlement or a
+	listener symbol comes back. Detection here is the transcript watcher, which
+	needs no network.
+
+	com.apple.security.network.client has never been here. Belay has nothing to
+	phone home to. Anything that would need it, Sparkle, analytics, a crash
+	reporter, does not ship in this channel. Adding it is a product decision,
+	not a build fix.
 	-->
 </dict>
 </plist>

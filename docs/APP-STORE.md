@@ -275,20 +275,25 @@ the app works without it.
 This is invariant 6 in [`00-INVARIANTS.md`](00-INVARIANTS.md), so the behaviour is
 a design rule rather than a promise made for review.
 
-### 3. It runs a loopback HTTP listener
+### 3. It used to run a loopback HTTP listener
 
-**What a reviewer sees.** `com.apple.security.network.server` in the
-entitlements, and a listening socket if they run `lsof`.
+**What a reviewer sees.** Nothing. There is no network entitlement in this build
+and no listening socket.
 
-**Reply.** Bound to `127.0.0.1` on an ephemeral port, never `0.0.0.0`. It exists
-solely to receive lifecycle events that Claude Code, running on the same machine,
-posts to it. Every request must carry a 256-bit bearer token that is generated
-per install and stored `0600` inside a `0700` directory; a request without it is
-answered 401 and its body is never parsed. It is inbound only. The proof that
-there is nowhere for it to send anything is the deliberate absence of
-`com.apple.security.network.client`, which
-[`../scripts/verify-mas-build.sh`](../scripts/verify-mas-build.sh) enforces on
-every build.
+**What happened.** The App Store build carried
+`com.apple.security.network.server` for the hook bridge until 2026-08-16. App
+Review queried it twice under guideline 2.4.5, and the second time we checked
+the feature rather than the argument: `HookInstaller` edits
+`~/.claude/settings.json`, and inside the sandbox `homeDirectoryForCurrentUser`
+is the container, so enabling it would have written a hook file into a directory
+Claude Code has never read. An entitlement supporting a feature with no working
+functionality is exactly what 2.4.5 exists to catch.
+
+`PreciseDetection.isSupported` is false in this build, so nothing binds and the
+control is not offered, and
+[`../scripts/verify-mas-build.sh`](../scripts/verify-mas-build.sh) fails the
+build if either network entitlement reappears. Detection here is the transcript
+watcher, which needs no network at all.
 
 Point the reviewer at the verification commands in `SECURITY.md`; they take
 fifteen seconds and answer the question better than prose does.

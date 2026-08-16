@@ -12,6 +12,35 @@ import Foundation
 /// starting up; `install` and `uninstall` are only ever called from a button.
 @MainActor
 final class PreciseDetection {
+    /// Whether this build has a hook bridge at all.
+    ///
+    /// False in the App Store build, for two reasons that arrive at the same
+    /// answer.
+    ///
+    /// It cannot work there. `HookInstaller` edits `~/.claude/settings.json`,
+    /// and inside the sandbox `FileManager.homeDirectoryForCurrentUser` answers
+    /// with the container, so "Enable" would write a hook file into a directory
+    /// Claude Code has never heard of and report success. The transcript
+    /// watcher reaches the real folder because a bookmark points it there;
+    /// nothing pointed the installer anywhere.
+    ///
+    /// And it costs an entitlement. A loopback listener needs
+    /// `com.apple.security.network.server`, which App Review asked about twice,
+    /// correctly: guideline 2.4.5 is that an app carries the minimum
+    /// entitlements it needs, and an entitlement whose only feature does not
+    /// function is not minimum. It is out of `Belay-MAS.entitlements` now, and
+    /// `verify-mas-build.sh` fails the build if it comes back.
+    ///
+    /// Nothing is lost that worked. Detection in that build is the transcript
+    /// watcher, which is the default everywhere and needs no network at all.
+    static var isSupported: Bool {
+        #if BELAY_MAS
+        false
+        #else
+        true
+        #endif
+    }
+
     private let receiver = HookReceiver()
     private let installer = HookInstaller()
     private(set) var endpoint: BridgeEndpoint?
@@ -22,7 +51,15 @@ final class PreciseDetection {
 
     /// Starts the receiver. Deliberately does **not** install hooks: the
     /// listener is harmless on its own, and the user has not agreed to anything.
+    ///
+    /// Nothing binds in the App Store build. Without the entitlement the bind
+    /// would fail anyway; refusing here means one clear reason in the log
+    /// instead of a network error that reads like a fault.
     func start() async -> AsyncStream<ActivitySignal>? {
+        guard Self.isSupported else {
+            Log.bridge.notice("no hook bridge in this build; detection is the transcript watcher")
+            return nil
+        }
         do {
             endpoint = try await receiver.start()
             isInstalled = (try? installer.isInstalled()) ?? false

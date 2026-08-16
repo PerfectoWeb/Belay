@@ -1,0 +1,92 @@
+Reply to paste into App Store Connect, in answer to the message of
+2026-08-16 (submission aba5358e-ca36-41ea-98e7-5cb8745deec5).
+
+Everything below is true of the binary being uploaded with it. Nothing here
+describes an intention.
+
+-------------------------------------------------------------------------------
+
+Thank you for the detailed review. All three points are addressed below, and a
+new build is attached.
+
+GUIDELINE 2.1 - WHAT API IS USED FOR "KEEP AWAKE"
+
+Belay uses the public IOKit power management API and nothing else. There is no
+private API, no kernel extension, no helper tool, and no change to the user's
+Energy Saver or Battery settings.
+
+Specifically:
+
+- IOPMAssertionCreateWithProperties, from IOKit/pwr_mgt/IOPMLib.h, creates the
+  assertion.
+- The assertion type is kIOPMAssertionTypePreventUserIdleSystemSleep. Belay also
+  creates kIOPMAssertionTypePreventUserIdleDisplaySleep, but only while the user
+  has turned on "Keep the display awake", which is off by default.
+- Every assertion is created with kIOPMAssertionTimeoutKey set to 120 seconds
+  and kIOPMAssertionTimeoutActionKey set to kIOPMAssertionTimeoutActionRelease,
+  and is re-armed while work continues. This is deliberate: if Belay crashes, is
+  force quit, or is killed by the system, macOS releases the assertion within
+  two minutes on its own and the Mac returns to its normal sleep behaviour.
+  There is no state to clean up and no way to leave a Mac permanently awake.
+- IOPMAssertionSetProperty updates the reason and the timeout while an assertion
+  is held. IOPMAssertionRelease ends it, and Belay also releases on sleep, on
+  quit, on SIGTERM, and whenever the user changes mode.
+
+A reviewer can see the assertion, its plain-English reason and its remaining
+timeout, printed by macOS rather than by us, with:
+
+    pmset -g assertions | grep "pid $(pgrep -x Belay)("
+
+Set the mode to "Always on" from the menu bar icon and the line appears; set it
+to "Off" and it disappears.
+
+GUIDELINE 5.2.5 - APPLE TRADEMARK IN THE APP NAME
+
+The app name has been changed to remove "Mac":
+
+    Before:  Belay - Keep Mac Awake
+    After:   Belay - Awake for AI Agents
+
+The subtitle has been updated to match: "Sleeps again when they finish". The
+app's own bundle name is, and always was, "Belay" alone.
+
+GUIDELINE 2.4.5(i) - ENTITLEMENT WITHOUT MATCHING FUNCTIONALITY
+
+com.apple.security.network.server has been removed, and the new build does not
+request it. You were right to ask twice.
+
+The entitlement existed for an optional feature called Precise Detection, in
+which the Claude Code command line tool posts lifecycle events to a listener
+bound to 127.0.0.1. On investigating your question properly we found that the
+feature cannot work in a sandboxed build at all: enabling it writes a hook entry
+into ~/.claude/settings.json, and inside the App Sandbox the home directory is
+the app's own container, so the file would have been written somewhere Claude
+Code never reads. The entitlement was therefore supporting a feature that had no
+working functionality behind it, which is exactly what guideline 2.4.5 is for.
+
+In this build:
+
+- The entitlements file contains only com.apple.security.app-sandbox,
+  com.apple.security.files.user-selected.read-write and
+  com.apple.security.files.bookmarks.app-scope. There are no network
+  entitlements in either direction: com.apple.security.network.client has never
+  been present, so this build cannot make an outbound connection either.
+- No listener is created. The code path is compiled behind a build condition and
+  returns before binding.
+- The user interface control that offered the feature is not shown in this
+  build.
+
+Detection in the App Store build is the transcript watcher, which is the default
+everywhere and needs no network at all: Belay watches the session files Claude
+Code writes under a folder the user grants with the standard macOS open panel,
+and reads only whether a file grew and one status field. Prompts, model output
+and code are never read.
+
+WHAT THE TWO FOLDER ENTITLEMENTS ARE FOR
+
+Since they are the only ones left: the user chooses their agent's session folder
+in a standard NSOpenPanel, which is what user-selected.read-write covers. The
+choice is kept as an app-scoped security bookmark so the folder is still
+readable on the next launch, which is what bookmarks.app-scope covers. Without
+the bookmark the grant dies when the app quits, and the user would have to pick
+the folder again on every launch.

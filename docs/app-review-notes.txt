@@ -1,22 +1,23 @@
-Belay is a menu bar utility that keeps the Mac awake while a coding agent is working. No account or sign-in is required to review the app.
+Belay is a menu bar utility that keeps the computer awake while a local AI coding agent is working, and lets it sleep normally the rest of the time. No account, no sign-in and no server are required to review the app.
 
-Belay uses `com.apple.security.network.server` only for Precise Detection. It listens on `127.0.0.1` so Claude Code, running on the same Mac, can send local lifecycle events such as started, finished, or waiting for input. The listener uses an ephemeral port and requires a bearer token stored in Belay's own container.
+How "keep awake" works. Belay uses the public IOKit power management API only: IOPMAssertionCreateWithProperties with kIOPMAssertionTypePreventUserIdleSystemSleep, released with IOPMAssertionRelease. kIOPMAssertionTypePreventUserIdleDisplaySleep is used only while the user turns on "Keep the display awake", which is off by default. There is no private API, no kernel extension, no helper tool, and the user's Energy Saver settings are never modified.
 
-This App Store build does not include `com.apple.security.network.client` and makes no outbound network connections.
+Every assertion is created with kIOPMAssertionTimeoutKey set to 120 seconds and kIOPMAssertionTimeoutActionRelease, and re-armed while work continues, so a crash or a force quit cannot leave the machine awake. To see this, set the mode to "Always on" from the menu bar icon and run:
 
-To verify the listener:
+  pmset -g assertions | grep "pid $(pgrep -x Belay)("
 
-1. Launch Belay and run:
-   `lsof -nP -iTCP -sTCP:LISTEN -a -c Belay`
+macOS prints the assertion, its plain-English reason and its remaining timeout. Set the mode to "Off" and the line disappears.
 
-You should see Belay listening on `127.0.0.1:<port>`.
+Entitlements. This build requests three, and no network entitlement in either direction:
 
-2. The port and token are stored in:
-   `~/Library/Containers/com.perfectoweb.belay/Data/Library/Application Support/Belay/bridge.json`
+  com.apple.security.app-sandbox
+  com.apple.security.files.user-selected.read-write
+  com.apple.security.files.bookmarks.app-scope
 
-3. Send a local event:
-   `curl -i -X POST -H "Authorization: Bearer <token>" "http://127.0.0.1:<port>/hook?state=working"`
+The two folder entitlements are for one thing: the user picks their agent's session folder in a standard open panel, and the choice is kept as an app-scoped security bookmark so it survives a relaunch. Without the bookmark the user would have to pick the folder again every time the app starts.
 
-Belay returns `204`. A missing or incorrect token returns `401`.
+com.apple.security.network.server was removed on 2026-08-16 in response to review. It had supported an optional hook listener on 127.0.0.1, which cannot work in a sandboxed build: the hook entry would be written into the app's own container rather than into the user's ~/.claude/settings.json. No listener is created in this build and the control that offered it is not shown.
 
-Precise Detection is optional. Belay does not add anything to Claude Code's settings until the user enables it in Settings > Providers > Precise Detection and confirms the change shown on screen. On a fresh install, the local listener is running but idle.
+How to see it work. Detection is the transcript watcher. Grant the folder when asked, set the mode to "Auto", and Belay holds the machine awake only while an agent session file is being appended to; it lets go about 45 seconds after the writing stops. "Always on" holds it regardless and is the quickest way to see an assertion appear.
+
+Privacy. Belay reads only whether a session file grew, and one status field inside it. Prompts, model output and source code are never read, never logged and never stored. Nothing leaves the machine, and this build has no outbound network entitlement, so it could not send anything if it tried.

@@ -89,8 +89,7 @@ echo "==> required entitlements"
 for key in \
     com.apple.security.app-sandbox \
     com.apple.security.files.user-selected.read-write \
-    com.apple.security.files.bookmarks.app-scope \
-    com.apple.security.network.server
+    com.apple.security.files.bookmarks.app-scope
 do
     if [ "$(has_entitlement "$key")" = "true" ]; then
         pass "$key"
@@ -101,9 +100,12 @@ done
 
 echo
 echo "==> forbidden entitlements"
-# The absence of network.client is the answer we give App Review about the
-# loopback socket. It is a product claim, not a build detail.
+# network.server was removed on 2026-08-16 after App Review asked about it twice
+# under guideline 2.4.5. The hook bridge it existed for cannot work in a sandbox
+# anyway: the installer edits ~/.claude/settings.json and the sandbox home is the
+# container. Both network entitlements are now claims this script keeps true.
 for key in \
+    com.apple.security.network.server \
     com.apple.security.network.client \
     com.apple.security.cs.disable-library-validation \
     com.apple.security.cs.allow-unsigned-executable-memory

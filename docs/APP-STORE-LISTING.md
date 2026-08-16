@@ -18,6 +18,13 @@ no screenshot.
 
 ## Fields that are the same in every language
 
+**Name** `Belay - Awake for AI Agents`, in every localisation. App Store Connect
+keeps a name per localisation, and there is no reason for them to differ: the
+app is called Belay everywhere, and the tail is three English words that read
+the same in the five other stores this ships to. It must not contain "Mac" or
+any other Apple product name in any of them, which is what guideline 5.2.5 is
+about and what the 2026-08-16 rejection was.
+
 **Bundle ID** `com.perfectoweb.belay`
 **SKU** `belay-mac-1`
 **Apple ID** `6801207644`, issued when the record was created
@@ -60,48 +67,38 @@ two were compared.
 ## English
 
 **Name** (30)
-`Belay - Keep Mac Awake` / 22
-
-**Chosen on 2026-08-13.** The two lines finish each other's sentence, which is
-worth more than the keyword arithmetic that favoured the alternative below.
-"AI" is bought back out of the keyword budget, where it costs three characters
-and ranks the same: Apple pools the name, the subtitle and the keywords.
-
-Plain `Belay` is taken on the Mac App Store, by an SSH client and by an
-assistant, so the name carries a description the way theirs do. "Mac" is left
-out on purpose: every app in this store is a Mac app, and the word buys nothing
-in a search that is already restricted to Macs. What it buys instead is room
-for "AI", which is what people are typing this year.
+`Belay - Awake for AI Agents` / 27
 
 **Subtitle** (30)
-`While your coding agents work` / 29
+`Sleeps again when they finish` / 29
 
-Changed when "AI Agents" moved into the name. Apple searches the name, the
-subtitle and the keywords as one pool, so a word in two of them is a word
-wasted: the old subtitle repeated "awake" and "agents", and this one spends
-those characters on "Mac" and "sleeps" instead.
+**Chosen on 2026-08-16, and not freely.** App Review rejected the previous pair
+under guideline 5.2.5: "Terms for 'Mac' in the app name in an inappropriate
+manner". Apple's trademark guidelines do not allow an Apple product name inside
+an app's name, and this is not a rule worth testing twice.
 
-### The candidate that was not chosen
+The pair that shipped to review was:
 
 ```
-Name      Belay - Awake for AI Agents     27
-Subtitle  Your Mac sleeps when they do    28
+Name      Belay - Keep Mac Awake          22
+Subtitle  While your coding agents work   29
 ```
 
-It reads better than the one above, and the two lines finish each other's
-sentence, which no amount of keyword arithmetic is worth ignoring.
+The one above was already written down here as the candidate that was not
+chosen, with the note that the decision was a judgement about the shop window
+rather than about the software. The rejection made it for us, and it turns out
+to be the better pair on its own merits: the two lines finish each other's
+sentence, and "AI" now sits in the name instead of being bought back out of the
+keyword budget.
 
-What it costs: "AI" appears in neither field, so it has to be bought back out
-of the keyword budget, where it is three characters and ranks the same as it
-would anywhere else, because Apple pools all three fields: a term in the
-keywords is not worth less than a term in the name. "Mac" costs four characters in a
-store where every app is a Mac app.
+Plain `Belay` is taken on the Mac App Store, by an SSH client and by an
+assistant, so the name has to carry a description the way theirs do.
 
-So the real trade is: this pair spends 7 characters on `Mac` and on reading
-well, and the other spends them on `Awake for AI Agents` reading like a label.
-Both fit. Neither is a mistake. Left here undecided on purpose, because it is a
-judgement about the shop window rather than about the software, and the person
-whose shop it is should make it.
+"Mac" is gone from both fields. It stays in the description, where it is
+ordinary referential use ("your Mac sleeps as it always did") and where Apple
+did not object. The rejection named the app name and nothing else, but a
+subtitle is searched in the same pool as the name, and there is no reason to
+find out whether that counts.
 
 **Promotional text** (170)
 `Belay watches your local coding agent and holds sleep off only while it is
@@ -183,7 +180,11 @@ First release.
 ## Русский
 
 **Subtitle** (30)
-`Mac не спит, пока агент занят` / 29
+`Не спит, пока агент работает` / 28
+
+Changed on 2026-08-16 with the English name. Apple named only the app name in
+the rejection, but the subtitle is searched in the same pool, and "Mac" was the
+first word of this one.
 
 **Promotional text** (170)
 `Belay следит за локальным агентом и не даёт Mac уснуть, только пока тот

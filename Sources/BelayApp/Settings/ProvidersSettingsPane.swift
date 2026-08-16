@@ -62,7 +62,11 @@ struct ProvidersSettingsPane: View {
                 }
             }
 
-            if provider.descriptor.supportsPreciseDetection {
+            // The provider can take hooks, but this build may have nowhere to
+            // put them: a control that cannot do its job is worse than no
+            // control, and this one would have written into a sandbox container
+            // and said it had worked.
+            if provider.descriptor.supportsPreciseDetection, PreciseDetection.isSupported {
                 preciseDetectionRow
             }
         }

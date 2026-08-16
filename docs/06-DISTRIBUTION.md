@@ -35,10 +35,19 @@ product, and it has no review risk. Submit to the App Store after.
 com.apple.security.app-sandbox                        true
 com.apple.security.files.user-selected.read-write     true
 com.apple.security.files.bookmarks.app-scope          true
-com.apple.security.network.server                     true   # only if HTTP hook bridge ships
 ```
 
-No `network.client` in the MAS build — there is nothing to phone home to, and
+Three, and no network entitlement in either direction.
+
+`network.server` was here until 2026-08-16, for the hook bridge. App Review
+asked about it twice under guideline 2.4.5 and the answer, once we looked
+properly, was that they were right: `HookInstaller` writes into
+`~/.claude/settings.json`, and inside the sandbox the home directory is the
+container, so the feature could never have worked in this build. The listener is
+off here, the control is hidden, and `verify-mas-build.sh` fails if either comes
+back. Detection in this build is the transcript watcher, which needs no network.
+
+`network.client` has never been present. There is nothing to phone home to, and
 its absence is a selling point.
 
 **Security-scoped bookmarks.** Store the `~/.claude` bookmark in

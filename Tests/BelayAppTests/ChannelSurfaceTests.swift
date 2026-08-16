@@ -35,6 +35,19 @@ final class ChannelSurfaceTests: XCTestCase {
             "About and the entitlements disagree about whether this build reaches the network")
     }
 
+    /// The hook bridge and the entitlement that lets it bind are one decision.
+    /// If this ever says true under sandbox again, `Belay-MAS.entitlements` has
+    /// to grow `com.apple.security.network.server` back, and that is the
+    /// entitlement App Review rejected twice: it supports a feature that cannot
+    /// work in a container, because the installer writes into
+    /// `~/.claude/settings.json` and the sandbox home is the container.
+    @MainActor
+    func testTheAppStoreBuildHasNoHookBridge() {
+        XCTAssertEqual(
+            PreciseDetection.isSupported, DistributionChannel.current == .direct,
+            "the listener and the entitlements file disagree about this build")
+    }
+
     @MainActor
     func testTheTwoWaysOfAskingWhichChannelAgree() {
         let fromCompileCondition = ReleaseChecker.isSupported

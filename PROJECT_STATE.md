@@ -366,8 +366,8 @@ Verified:
 xcodebuild -scheme Belay                    BUILD SUCCEEDED
 xcodebuild -scheme Belay-MAS                BUILD SUCCEEDED
 MAS entitlements  app-sandbox, files.user-selected.read-write,
-                  files.bookmarks.app-scope, network.server
-                  and NO network.client
+                  files.bookmarks.app-scope, and no network entitlement
+                  in either direction (network.server removed 2026-08-16)
 MAS Sparkle scan  no framework, no load command, no symbols, no SUFeedURL
 direct build      adhoc+runtime, runs, quits clean, no assertion left held
 ```
