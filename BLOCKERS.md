@@ -241,41 +241,35 @@ xcrun notarytool store-credentials BelayNotary \
   --issuer <ISSUER_ID>   # both live in .secrets/appstoreconnect.env, which is gitignored
 ```
 
-## B3 — one command left: the signing key
+## B3 — RESOLVED (2026-08-16). Sparkle is wired, signed and channel-split
 
-**Blocks:** shipping automatic updates in the direct build.
-**Does not block:** building or running. The update check is behind
-`UpdateChannel`, whose no-op implementation is used until a feed URL exists.
+The key exists in the release machine's login Keychain; its public half,
+`Vzv5S2MFDz1si7eu25uDdjAYO/wDqwsA+Y2iDU0c3e8=`, is in the direct build's plist,
+which is where it belongs and where anybody can read it. The private half was
+never printed into a log, a file in this repository, or a conversation.
 
-Done, 2026-08-16:
+The feed is `https://perfectoweb.github.io/Belay/appcast.xml`, on the `gh-pages`
+branch that already publishes the site: one push updates both, and there is no
+second host to keep alive.
 
-- **The hosting question is answered.** The feed is
-  `https://perfectoweb.github.io/Belay/appcast.xml`, on the `gh-pages` branch
-  that already publishes the site. No second host to keep alive, and the same
-  push that updates the site updates the feed. `Appcast.feedURL` says so.
-- **The download URLs are worked out.** `generate_appcast` writes every
-  enclosure as one prefix plus a file name, which suits a directory of files and
-  not GitHub, where each asset lives under its own tag.
-  `scripts/retag-appcast.py` rewrites them, reading the tag out of the file name
-  rather than guessing, and reporting anything it cannot read instead of
-  inventing a link that 404s mid-update. Exercised against a fixture.
+Three things worth knowing before touching any of it again:
 
-Left, and it has to be done by the person who holds the account:
+**The Info.plist had to be split.** It was shared by both targets, and the note
+beside it predicted that the first key to differ by channel would be
+`SUFeedURL`. It was. There are now `Info-Direct.plist` and `Info-MAS.plist`,
+generated from `project.yml`, and `Info*.plist` is excluded from the app's
+sources so neither target picks the other's up as a bundle resource.
 
-```bash
-generate_keys          # from the Sparkle 2 distribution's bin/
-```
+**The App Store build is still clean.** `verify-mas-build.sh` was run after the
+change: no Sparkle framework, no Sparkle symbols or load commands, no
+`SUFeedURL`. The direct build does carry `Sparkle.framework` and the feed URL.
 
-It writes the private key into the login Keychain and prints it **once** for an
-offline backup. That printout must not be pasted anywhere, including into a
-conversation with a tool; the public key it also prints is the half that goes
-into the app, as `SUPublicEDKey` in the direct build's Info.plist.
-
-With the public key in hand the rest is three edits already written down in
-`project.yml`: uncomment the `Sparkle` package, add `- package: Sparkle` to the
-Belay target, add `SUFeedURL` and `SUPublicEDKey` to its Info.plist. It must
-never appear under `Belay-MAS`, and `scripts/verify-mas-build.sh` fails the
-build if it does.
+**The private key cannot be rotated.** A client running an old build verifies
+against the public key compiled into *that* build, so a new key would be
+rejected by everyone who has not already updated. Losing it does not mean
+issuing a new one; it means every existing user is stranded on the version they
+have and has to reinstall by hand. Back it up somewhere that is not this
+repository and not this machine.
 
 ## B4 — CLOSED (2026-08-16). The search was done and there is no conflict
 

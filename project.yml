@@ -36,17 +36,12 @@ packages:
   BelayKit:
     path: Packages/BelayKit
 
-  # Sparkle is deferred, not forgotten. Enabling it is this block plus the
-  # `- package: Sparkle` line in the Belay target below plus SUFeedURL in that
-  # target's Info.plist — and nothing else, because the app talks to updates
-  # through BelayTipJar's UpdateChannel, whose no-op implementation ships today.
-  # It must never appear under Belay-MAS: Apple rejects third-party updaters,
-  # and scripts/verify-mas-build.sh fails the build if a Sparkle symbol shows up
-  # in that binary. See BLOCKERS.md B3.
-  #
-  # Sparkle:
-  #   url: https://github.com/sparkle-project/Sparkle
-  #   from: "2.6.4"
+  # Sparkle, in the direct channel only. It must never appear under Belay-MAS:
+  # Apple rejects third-party updaters, and scripts/verify-mas-build.sh fails
+  # the build if a Sparkle symbol, or SUFeedURL, shows up there.
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: "2.6.4"
 
 # The two distribution channels are one target twice, not two codebases. Only
 # the five ${...} values below differ; if a sixth ever appears, question it.
@@ -56,6 +51,8 @@ targetTemplates:
     platform: macOS
     sources:
       - path: Sources/BelayApp
+        excludes:
+          - "Info*.plist" # generated per channel, not a resource
       - path: Resources
         buildPhase: resources
         excludes:
@@ -95,12 +92,13 @@ targetTemplates:
         # (verified with a #warning probe), so `#if BELAY_MAS` works in the app
         # and nowhere else. BelayTipJar.DistributionChannel reads this instead.
         BELAY_CHANNEL: ${channelName}
-    # Both targets generate the same Info.plist. Nothing in it differs by
-    # channel today; if something ever does (SUFeedURL is the likely one), split
-    # this into two paths and exclude "Info*.plist" from the sources above,
-    # otherwise each target picks up the other's plist as a bundle resource.
+    # One plist per channel, because SUFeedURL is exactly the thing the note
+    # here warned about: the App Store build must not carry it, and a shared
+    # plist cannot hold a key for one target and not the other. The path comes
+    # from the template attribute; "Info*.plist" is excluded from the sources
+    # above so neither target picks up the other's as a bundle resource.
     info:
-      path: Sources/BelayApp/Info.plist
+      path: ${infoPlist}
       properties:
         CFBundleName: $(PRODUCT_NAME)
         # Set here rather than left to Xcode's warning. The App Store requires
@@ -134,8 +132,22 @@ targets:
       sandbox: "NO"
       channel: BELAY_DIRECT
       channelName: direct
-    # dependencies:
-    #   - package: Sparkle   # see the packages block above
+      infoPlist: Sources/BelayApp/Info-Direct.plist
+    dependencies:
+      - package: Sparkle
+    info:
+      path: Sources/BelayApp/Info-Direct.plist
+      properties:
+        # Where Sparkle looks, and the key it checks every download against.
+        # The private half lives in the login Keychain of the release machine
+        # and nowhere else; this is the public half, and it is meant to be
+        # readable by anybody who opens the bundle.
+        SUFeedURL: https://perfectoweb.github.io/Belay/appcast.xml
+        SUPublicEDKey: Vzv5S2MFDz1si7eu25uDdjAYO/wDqwsA+Y2iDU0c3e8=
+        # Checked on a schedule, never installed without being asked. People
+        # running a system utility choose when it restarts (docs/06).
+        SUEnableAutomaticChecks: true
+        SUAutomaticallyUpdate: false
 
   # Mac App Store channel: sandboxed, StoreKit tips, no updater of our own.
   Belay-MAS:
@@ -156,6 +168,7 @@ targets:
       sandbox: "YES"
       channel: BELAY_MAS
       channelName: appStore
+      infoPlist: Sources/BelayApp/Info-MAS.plist
     settings:
       base:
         ENABLE_USER_SELECTED_FILES: readwrite
