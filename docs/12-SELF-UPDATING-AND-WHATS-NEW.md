@@ -48,6 +48,20 @@ EdDSA signature over the exact bytes, checked against the public key compiled
 into the running build. An installer handed a URL from somewhere else is
 checking nothing.
 
+**Seeing it work.** The button only appears when there is something newer than
+the running build, so a machine on the newest version cannot demonstrate this.
+Build one deliberately behind:
+
+```bash
+sed -i "" 's/MARKETING_VERSION: "1.2.0"/MARKETING_VERSION: "1.0.9"/' project.yml
+xcodegen generate && scripts/build-local.sh Debug
+git checkout project.yml          # put the real number back before committing
+```
+
+Launch that, press Check Now, and the row offers 1.1.0: a real release, signed
+and notarized, fetched from the real feed. That is the whole path exercised
+rather than a mock of it.
+
 **What is left is the appcast itself.** `scripts/publish-appcast.sh` fetches
 every published release, signs them, points each enclosure at its own tag and
 commits the result to `gh-pages`. It has been run as far as it can be run
