@@ -103,13 +103,24 @@ final class BelayController {
         WatchedFolderAccess.relinquish()
 
         let done = DispatchSemaphore(value: 0)
-        // `Task.detached`, not `Task`: `shutdown()` is `@MainActor`, so an
-        // inherited-isolation task has to be scheduled on the main thread, which
-        // the semaphore below is blocking. The body never ran, the wait always
-        // timed out, and the assertion survived only because the kernel reaps a
-        // dead process's IOKit assertions.
-        Task.detached { [assertions, coordinator, driver, powerSource, providers] in
-            await providers.stop()
+        // Nothing in here may touch the main actor. `shutdown()` is
+        // `@MainActor` and the wait below blocks the main thread, so the first
+        // `await` that hops back deadlocks and the wait always times out. It
+        // did: `Task.detached` was added to fix exactly this and did not,
+        // because the body still began with `providers.stop()`, and
+        // `ProviderHost` is `@MainActor`. Every quit logged "shutdown release
+        // timed out" and the assertion was left for its own timeout to reap,
+        // which is up to two minutes of a Mac staying awake after it was told
+        // to stop. Found by the macOS 15 pass, then reproduced on 26: it was
+        // never a version difference, only nobody reading the log on quit.
+        //
+        // `providers.stop()` is not in the list on purpose. It is the only
+        // main-actor step, and it has nothing to release that outlives the
+        // process: FSEvents streams and the loopback socket are the kernel's to
+        // reclaim, and the two security scopes were already given back above.
+        // What has to happen here is the power assertion, which is the one
+        // thing that outlives us.
+        Task.detached { [assertions, coordinator, driver, powerSource] in
             await driver.stop()
             await powerSource.stop()
             await assertions.release()

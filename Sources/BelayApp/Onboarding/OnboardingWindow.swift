@@ -1,5 +1,6 @@
 import AppKit
 import BelaySettings
+import BelaySupport
 import SwiftUI
 
 /// Presents `OnboardingView` once, on first launch.
@@ -51,7 +52,17 @@ final class OnboardingWindow: NSObject {
             backing: .buffered,
             defer: false
         )
-        window.contentViewController = NSHostingController(rootView: view)
+        let host = NSHostingController(rootView: view)
+        window.contentViewController = host
+        // Sized from the content before anything is measured against it. The
+        // window was created at `.zero` and `layoutIfNeeded()` was trusted to
+        // have given it a size by the time `centre` read `frame.size`. On macOS
+        // 26 it had; on macOS 15 it had not, so the centring arithmetic ran with
+        // a size of zero and placed the window's bottom left corner on the
+        // middle of the screen, which put the whole thing up and to the right.
+        // Asking the hosting controller for its own fitting size does not
+        // depend on when AppKit gets round to a layout pass.
+        window.setContentSize(host.view.fittingSize)
         window.titlebarAppearsTransparent = true
         window.titleVisibility = .hidden
         window.isReleasedWhenClosed = false
@@ -71,6 +82,14 @@ final class OnboardingWindow: NSObject {
     /// one with the pointer on it, falling back to the main display.
     private func centre(_ window: NSWindow) {
         window.layoutIfNeeded()
+        // Belt and braces: the size is set from the content above, and this is
+        // the second chance to notice if it is still nothing rather than to
+        // place the window somewhere absurd.
+        guard window.frame.width > 0, window.frame.height > 0 else {
+            Log.app.error("the welcome window had no size to centre; leaving it to AppKit")
+            window.center()
+            return
+        }
         let pointer = NSEvent.mouseLocation
         let under = NSScreen.screens.first { NSMouseInRect(pointer, $0.frame, false) }
         let screen = under ?? NSScreen.main
