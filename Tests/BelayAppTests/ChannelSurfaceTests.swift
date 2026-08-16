@@ -41,6 +41,13 @@ final class ChannelSurfaceTests: XCTestCase {
     /// entitlement App Review rejected twice: it supports a feature that cannot
     /// work in a container, because the installer writes into
     /// `~/.claude/settings.json` and the sandbox home is the container.
+    ///
+    /// Two pieces of interface hang off this answer, and both are hidden when it
+    /// is false: the Precise detection row in Providers, and the "when an agent
+    /// needs you" switch in Notifications. That notification is the only one the
+    /// bridge alone can raise. `awaitingUser` comes from `HookEvent` and nowhere
+    /// else; the transcript classifier answers working or idle and has no third
+    /// answer, so without a bridge the switch could be turned on and never fire.
     @MainActor
     func testTheAppStoreBuildHasNoHookBridge() {
         XCTAssertEqual(
