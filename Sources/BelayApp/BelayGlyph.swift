@@ -158,37 +158,39 @@ enum BelayGlyph {
             // "The battery guard stopped me" must never look like "you turned me
             // off" — they are different situations and only one is the user's
             // doing.
-            if look == .blocked { pausedBadge() }
+            if look == .blocked { pausedBars() }
         }
     }
 
-    /// The safety-stop badge: two short bars, the universal pause, tucked into
-    /// the corner of the mark.
+    /// The safety stop: two bars cut straight out of the big star.
     ///
-    /// This used to be a line struck through the whole glyph, and it was wrong
-    /// twice over. A strike says *forbidden* or *broken*, and neither is what
-    /// happened: Belay is running, watching, and has deliberately let go to save
-    /// the battery. It also read as a rendering fault to the person who built
-    /// it, which is a good sign that a stranger would file it as a bug.
+    /// It was a badge in the corner before, and a strike through the mark before
+    /// that. The strike said *forbidden*: wrong, since Belay is running and has
+    /// deliberately let go to save the battery. The badge said the right thing
+    /// as a second object stuck onto the first, and at 17 points a bordered
+    /// circle reads as a notification dot, which is a third promise again.
     ///
-    /// A badge in the corner keeps the mark whole, so the app still looks like
-    /// itself, and says "held" rather than "no".
-    private static func pausedBadge() {
-        let box = NSRect(x: 14.5, y: 1.5, width: 8, height: 8)
-        // Punched out of whatever is underneath, so the badge reads at 17 pt on
-        // a busy menu bar instead of blending into the sparkle behind it.
-        NSGraphicsContext.current?.compositingOperation = .destinationOut
-        NSBezierPath(ovalIn: box.insetBy(dx: -1.2, dy: -1.2)).fill()
-        NSGraphicsContext.current?.compositingOperation = .sourceOver
-
-        NSColor(calibratedWhite: 0, alpha: 1).setFill()
-        NSBezierPath(ovalIn: box).fill()
+    /// Now the pause is part of the mark. Nothing is drawn, only removed, so it
+    /// inherits the look's own brightness and cannot fight the template tinting
+    /// macOS applies. The numbers are the star's, not the 24-point box's: part 1
+    /// spans x 0 to 19.98 and y 3 to 23, so its middle is (10, 13).
+    private static func pausedBars() {
+        let centre = CGPoint(x: 9.99, y: 13)
+        // Sized for 17 points, the only size the menu bar draws this at. At 2.0
+        // the bars measured 1.4 points across and vanished into the shape.
+        let width: CGFloat = 2.6
+        let gap: CGFloat = 2.4
+        let height: CGFloat = 8.0
 
         NSGraphicsContext.current?.compositingOperation = .destinationOut
-        for offset in [-1.4, 0.6] {
-            NSBezierPath(
-                rect: NSRect(x: box.midX + offset, y: box.minY + 2.1, width: 0.9, height: 3.8)
-            ).fill()
+        for side in [-1.0, 1.0] {
+            let bar = NSRect(
+                x: centre.x + CGFloat(side) * gap / 2 - (side < 0 ? width : 0),
+                y: centre.y - height / 2,
+                width: width, height: height)
+            // Rounded ends: the star has no straight edges of its own, and a
+            // square-cut bar inside it reads as damage.
+            NSBezierPath(roundedRect: bar, xRadius: width / 2, yRadius: width / 2).fill()
         }
         NSGraphicsContext.current?.compositingOperation = .sourceOver
     }

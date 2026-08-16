@@ -129,4 +129,30 @@ final class BelayGlyphTests: XCTestCase {
         }
         return true
     }
+
+    /// Writes the mark to PNGs so it can be looked at, the way
+    /// `SceneFramesTests` does for the welcome scene. Skipped unless
+    /// `BELAY_GLYPHS` names a directory.
+    ///
+    /// The menu bar draws this at 17 points and nothing else, so that is the
+    /// size a judgement has to be made at; the large one is only there to see
+    /// what the small one is made of.
+    func testWriteGlyphs() throws {
+        guard let folder = ProcessInfo.processInfo.environment["BELAY_GLYPHS"] else {
+            throw XCTSkip("set BELAY_GLYPHS to a directory to write the marks")
+        }
+        let out = URL(fileURLWithPath: folder)
+        try? FileManager.default.createDirectory(at: out, withIntermediateDirectories: true)
+        for look in [BelayGlyph.Look.blocked, .alwaysOn, .off] {
+            for size in [CGFloat(17), 96] {
+                let image = BelayGlyph.image(look, size: size)
+                guard let tiff = image.tiffRepresentation,
+                    let rep = NSBitmapImageRep(data: tiff),
+                    let png = rep.representation(using: .png, properties: [:])
+                else { continue }
+                try png.write(
+                    to: out.appendingPathComponent("\(look)-\(Int(size)).png"))
+            }
+        }
+    }
 }
