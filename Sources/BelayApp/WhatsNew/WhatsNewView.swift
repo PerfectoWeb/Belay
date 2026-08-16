@@ -75,6 +75,9 @@ struct WhatsNewView: View {
                     ForEach(note.items) { item in
                         WhatsNewRow(item: item)
                     }
+                    if !note.asides.isEmpty {
+                        WhatsNewAsides(asides: note.asides)
+                    }
                 }
             }
         }
@@ -84,7 +87,10 @@ struct WhatsNewView: View {
 
     private var button: some View {
         HStack {
-            Button("Continue", action: onDismiss)
+            // Not "Continue", which is what a form says. This window interrupted
+            // somebody once, on purpose, and the button should sound like the
+            // end of the interruption rather than the next step of one.
+            Button("Back to work", action: onDismiss)
                 .buttonStyle(MagicButtonStyle())
                 .keyboardShortcut(.defaultAction)
             Spacer(minLength: 0)
@@ -116,7 +122,7 @@ private struct WhatsNewRow: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 3) {
                 Text(item.title)
-                    .font(.system(size: 13, weight: .semibold))
+                    .font(.system(size: 14, weight: .semibold))
                 Text(item.body)
                     .font(.system(size: 12))
                     .foregroundStyle(.secondary)
@@ -125,6 +131,35 @@ private struct WhatsNewRow: View {
             Spacer(minLength: 0)
         }
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// The short list under the rows: everything real that is not worth an icon.
+///
+/// Indented to the titles above rather than to the margin, so it reads as the
+/// tail of the list instead of a second list. No bullets: three left-aligned
+/// lines are already a list, and a glyph in front of each would be the fourth
+/// column of marks on a screen that has three.
+private struct WhatsNewAsides: View {
+    let asides: [ReleaseNote.Aside]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Also")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(.tertiary)
+                .padding(.bottom, 1)
+            ForEach(asides) { aside in
+                Text(aside.text)
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        // 24 for the symbol column plus the 13 beside it, so these start on the
+        // same vertical line as every title above them.
+        .padding(.leading, 37)
+        .padding(.top, 2)
     }
 }
 

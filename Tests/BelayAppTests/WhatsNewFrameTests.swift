@@ -36,7 +36,7 @@ final class WhatsNewFrameTests: XCTestCase {
         for (name, notes) in [
             ("whatsnew", ReleaseNotes.all),
             ("whatsnew-two-versions", ReleaseNotes.all + [extra]),
-            ("whatsnew-one-item", [ReleaseNote(version: "1.3.0", items: [ReleaseNotes.all[0].items[0]])])
+            ("whatsnew-one-item", [ReleaseNote(version: "1.2.0", items: [ReleaseNotes.all[0].items[0]])])
         ] {
             for appearance in [NSAppearance.Name.darkAqua, .aqua] {
                 try write(notes, to: out, name: "\(name)-\(appearance == .aqua ? "light" : "dark")",

@@ -7,17 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.3.0] - unreleased
+## [1.2.0] - unreleased
 
-Everything the direct build gained since 1.1.0. There was no 1.2.0: the number
-was skipped, and nothing was ever published under it.
+Everything the direct build gained since 1.1.0.
 
 ### Added
 
 **A "What's New" screen.** Shown once, on the first launch after an update, in
 the same window as the welcome screen: same width, same margins, same lit panel,
-same single button. It lists what changed in this version, and in any versions
-that were skipped, with one line each.
+same single button. Three to five things get an icon and a sentence; everything
+else real gets one line under "Also", which is what keeps a release with ten
+changes in it from becoming a wall of icons.
+
+Items are channel-aware. `Update Now` and Homebrew are direct-build facts, and
+the App Store build is shown neither, for the same reason Precise Detection came
+out of the store listing: a screen must not promise what its build cannot do.
 
 The rule that decides who sees it is `WhatsNewDecision`, which is pure and has a
 test per branch. The case that needed the most care is the quiet one: everybody

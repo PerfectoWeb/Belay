@@ -21,14 +21,13 @@ extension WhatsNewView {
                 ],
                 startPoint: .top, endPoint: .bottom)
 
-            // Still, unlike the welcome screen's. That one is drifting behind a
-            // scene somebody watches for twelve seconds; this window is read and
-            // dismissed, and a moving background under a list of sentences
-            // competes with the sentences.
-            Starfield(animated: false)
+            // Alive, exactly as on the welcome screen. A still starfield under a
+            // still wordmark does not read as restraint, it reads as a window
+            // that has hung.
+            Starfield(animated: true)
 
             VStack(spacing: 3) {
-                BelayWordmark(size: 20, word: .white, animated: false)
+                BelayWordmark(size: 20, word: .white, animated: true)
                 Text(verbatim: newest)
                     .font(.system(size: 11, weight: .medium, design: .rounded))
                     // Against the dark panel, not against the window, so this

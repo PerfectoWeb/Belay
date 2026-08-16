@@ -1,4 +1,5 @@
 import AppKit
+import BelayChannel
 import XCTest
 
 @testable import Belay
@@ -11,8 +12,8 @@ import XCTest
 /// updated.
 final class WhatsNewDecisionTests: XCTestCase {
     private let notes = [
-        ReleaseNote(version: "1.3.0", items: [.init(symbol: "gift", title: "a", body: "b")]),
-        ReleaseNote(version: "1.2.0", items: [.init(symbol: "bell", title: "c", body: "d")])
+        ReleaseNote(version: "1.2.0", items: [.init(symbol: "gift", title: "a", body: "b")]),
+        ReleaseNote(version: "1.1.0", items: [.init(symbol: "bell", title: "c", body: "d")])
     ]
 
     private func outcome(_ current: String, _ lastSeen: String?, onboarded: Bool = true)
@@ -23,21 +24,21 @@ final class WhatsNewDecisionTests: XCTestCase {
     }
 
     func testAFirstLaunchBelongsToTheWelcomeScreen() {
-        XCTAssertEqual(outcome("1.3.0", nil, onboarded: false), .nothing)
-        XCTAssertEqual(outcome("1.3.0", "1.2.0", onboarded: false), .nothing)
+        XCTAssertEqual(outcome("1.2.0", nil, onboarded: false), .nothing)
+        XCTAssertEqual(outcome("1.2.0", "1.1.0", onboarded: false), .nothing)
     }
 
     /// The one that would embarrass the app. Everybody running 1.1.0 has no such
     /// key, and reading that as "new" tells all of them about a version they may
     /// have had for months.
     func testAnInstallFromBeforeTheKeyIsRecordedAndNotToldAnything() {
-        XCTAssertEqual(outcome("1.3.0", nil), .recordOnly("1.3.0"))
+        XCTAssertEqual(outcome("1.2.0", nil), .recordOnly("1.2.0"))
     }
 
     func testTheSameVersionIsNotAnnouncedTwice() {
-        XCTAssertEqual(outcome("1.3.0", "1.3.0"), .nothing)
+        XCTAssertEqual(outcome("1.2.0", "1.2.0"), .nothing)
         // Trailing zeros are the same version, not an update.
-        XCTAssertEqual(outcome("1.3.0", "1.3"), .nothing)
+        XCTAssertEqual(outcome("1.2.0", "1.2"), .nothing)
     }
 
     /// String comparison says "1.10.0" < "1.9.0". This is the test that earns
@@ -51,32 +52,32 @@ final class WhatsNewDecisionTests: XCTestCase {
     }
 
     func testAnUpdateShowsEverythingReleasedSinceTheLastOneSeen() {
-        XCTAssertEqual(outcome("1.3.0", "1.1.0"), .show(notes: notes, record: "1.3.0"))
-        XCTAssertEqual(outcome("1.3.0", "1.2.0"), .show(notes: [notes[0]], record: "1.3.0"))
+        XCTAssertEqual(outcome("1.2.0", "1.0.0"), .show(notes: notes, record: "1.2.0"))
+        XCTAssertEqual(outcome("1.2.0", "1.1.0"), .show(notes: [notes[0]], record: "1.2.0"))
     }
 
     /// Notes committed for a version this build does not have yet must not
     /// escape the repository into somebody's window.
     func testNotesForAVersionNewerThanThisBuildAreNotShown() {
-        XCTAssertEqual(outcome("1.2.0", "1.1.0"), .show(notes: [notes[1]], record: "1.2.0"))
+        XCTAssertEqual(outcome("1.1.0", "1.0.0"), .show(notes: [notes[1]], record: "1.1.0"))
     }
 
     /// A hotfix with nothing written for it. Recorded, so the next real release
     /// is still detected, and silent, so nobody is shown an empty window.
     func testAVersionWithNoNotesIsRecordedSilently() {
-        XCTAssertEqual(outcome("1.4.0", "1.3.0"), .recordOnly("1.4.0"))
+        XCTAssertEqual(outcome("1.3.0", "1.2.0"), .recordOnly("1.3.0"))
     }
 
     /// Going back a version. Nothing to announce, and the stored number has to
     /// come down or the way back up would announce nothing either.
     func testADowngradeRecordsWithoutShowing() {
-        XCTAssertEqual(outcome("1.2.0", "1.3.0"), .recordOnly("1.2.0"))
+        XCTAssertEqual(outcome("1.1.0", "1.2.0"), .recordOnly("1.1.0"))
     }
 
     func testAVersionThatIsNotAVersionDecidesNothing() {
-        XCTAssertEqual(outcome("not.a.version", "1.2.0"), .nothing)
+        XCTAssertEqual(outcome("not.a.version", "1.1.0"), .nothing)
         // An unreadable stored value is treated as no value: recorded, silent.
-        XCTAssertEqual(outcome("1.3.0", "banana"), .recordOnly("1.3.0"))
+        XCTAssertEqual(outcome("1.2.0", "banana"), .recordOnly("1.2.0"))
     }
 
     /// The window has no scroll view, so the item count is the window height.
@@ -103,12 +104,12 @@ final class WhatsNewDecisionTests: XCTestCase {
     func testTheNewestVersionIsNeverTrimmed() {
         let fat = [
             ReleaseNote(
-                version: "1.3.0",
+                version: "1.2.0",
                 items: (1...9).map { .init(symbol: "gift\($0)", title: "t", body: "b") })
         ]
         guard
             case .show(let shown, _) = WhatsNewDecision.outcome(
-                current: "1.3.0", lastSeen: "1.2.0", onboarded: true, catalogue: fat)
+                current: "1.2.0", lastSeen: "1.1.0", onboarded: true, catalogue: fat)
         else { return XCTFail("expected notes") }
         XCTAssertEqual(shown.first?.items.count, 9)
     }
@@ -149,6 +150,21 @@ final class ReleaseNotesTests: XCTestCase {
             ReleaseNotes.all.contains { $0.version == Branding.version },
             "no release notes written for \(Branding.version)")
     }
+
+    /// Nothing may promise what this build cannot do. `Update Now` and Homebrew
+    /// are direct-channel facts, and the App Store build has neither an updater
+    /// nor anything to say about a package manager. Same rule that took Precise
+    /// Detection out of the store listing, applied one screen earlier.
+    @MainActor
+    func testNothingDirectOnlyReachesTheAppStoreBuild() {
+        guard DistributionChannel.current == .appStore else { return }
+        for note in ReleaseNotes.all {
+            XCTAssertFalse(
+                note.items.contains(where: \.directOnly), "\(note.version) leaked a direct-only item")
+            XCTAssertFalse(
+                note.asides.contains(where: \.directOnly), "\(note.version) leaked a direct-only aside")
+        }
+    }
 }
 
 final class AppVersionTests: XCTestCase {
@@ -166,6 +182,6 @@ final class AppVersionTests: XCTestCase {
     }
 
     func testItPrintsWhatItWasGiven() {
-        XCTAssertEqual(AppVersion("1.3.0")?.description, "1.3.0")
+        XCTAssertEqual(AppVersion("1.2.0")?.description, "1.2.0")
     }
 }
