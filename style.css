@@ -122,8 +122,12 @@ h1 .ch.cold { color: var(--ink-unfilled); }
    the whole point of the ending. */
 @media (prefers-reduced-motion: no-preference) {
     h1.is-cooling .word {
-        animation: word-cool 0.9s ease-in forwards;
-        animation-delay: 0s;
+        animation: word-cool 0.8s ease-in forwards;
+        /* `--cool-step` is written per word by the script, not by the builder,
+           because the order is reshuffled on every cycle and a stylesheet cannot
+           shuffle. A word with no step of its own goes at once: that is the two
+           lettered words, which are already grey and paint nothing here. */
+        animation-delay: calc(var(--cool-step, 0) * 0.18s);
     }
 }
 
