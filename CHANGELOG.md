@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.2.0] - unreleased
+## [1.2.0] - 2026-08-17
 
 Everything the direct build gained since 1.1.0.
 
@@ -35,10 +35,20 @@ which is what the first two attempts did. The window grows with the list, and
 the number of items that can reach it is capped at six, which bounds the height
 where it can be reasoned about rather than hoped about.
 
-**Belay updates itself in one press.** The update row is one button: `Check Now`
-when there is nothing to install, and a green `Update Now` with the welcome
-screen's wand when there is. It downloads the disk image itself rather than
-opening a web page for somebody to find the link on.
+**Belay installs its own updates.** The update row is one button: `Check Now`
+when there is nothing to install, and a green `Update Now` when there is.
+Pressing it downloads the new version, checks it against the signing key
+compiled into the running app, replaces the app and offers to relaunch. Sparkle
+does that part; nothing here reimplements it.
+
+The right-click menu carries the same job: **Check for Updates** until there is
+one, then **Update Now (v1.3.0)** naming the version, so the row says what
+pressing it will get you.
+
+Updating in place begins with this version and cannot reach back. Sparkle
+refuses an update whose app carries no signing key when the running one does,
+correctly, and 1.0.0 and 1.1.0 shipped before the key existed. Anyone on those
+updates by hand or through Homebrew once, and never again after that.
 
 **Folders are remembered.** A folder picked for a generic target is kept as a
 security-scoped bookmark, one per folder, so the sandboxed build can read it at
