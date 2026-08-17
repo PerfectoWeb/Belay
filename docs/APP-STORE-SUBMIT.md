@@ -113,23 +113,21 @@ Store Connect will not ask.
 
 ## Step 8. Notes for review, and this one matters
 
-> **2026-08-16.** The notes were rewritten again after the second rejection and
-> no longer describe a listener, because there is not one in this build. The
-> current text is `docs/app-review-notes.txt`, and the reply that goes with it
-> is `docs/app-review-reply.txt`.
->
-> The key in `.secrets/` can read this field but not write it: `PATCH` returns
-> 403 FORBIDDEN_ERROR, "the API key in use does not allow this request".
-> Writing it needs a second key with the App Manager role, so the notes are
-> pasted in by hand and `app-review-notes.txt` is kept as the copy of what is
-> actually there.
+> **2026-08-17.** The notes were rewritten after the second rejection and no
+> longer describe a listener, because this build does not have one. They are in
+> App Store Connect, which is the only place they belong: correspondence with a
+> reviewer is not source, and a copy in the repository is a copy that goes stale
+> and gets pasted by mistake.
 
-Paste `docs/app-review-notes.txt` into **App Review Information → Notes**. It is
-written to be true of the build that is actually uploaded, which is a rule this
-project learned the hard way twice: an early draft said the listener was "off
-until the user turns it on", which is not what the code did, and the version
-after that defended an entitlement for a feature that could not work in a
-sandbox. See "The 2.4.5 rejection, twice" below.
+Write the notes to be true of the build that is actually uploaded. This project
+learned that twice: an early draft said the listener was "off until the user
+turns it on", which is not what the code did, and the version after that
+defended an entitlement for a feature that could not work in a sandbox. See
+"The 2.4.5 rejection, twice" below.
+
+What to say, in one paragraph each: which public API keeps the Mac awake and how
+a reviewer can watch it with `pmset`, what each entitlement is for, and how to
+see detection work without an account.
 
 The block that used to sit here was the old notes text, arguing for a listener
 this build no longer has. It is in the git history if the argument is ever
@@ -192,9 +190,9 @@ Everything that can be prepared without the binary is done, through the API:
 | Name and subtitle | all seven localisations, no Apple product name in any |
 | Description, keywords, promo | all seven, with the 1.2.0 copy |
 | Screenshots | all seven localisations, Chinese included |
-| Review notes | `docs/app-review-notes.txt`, pasted in |
+| Review notes | written and pasted in |
 | Build | **not attached.** Archive `Belay-MAS`, upload, then attach |
-| Reply in the thread | **not sent.** `docs/app-review-reply.txt`, after the build is attached |
+| Reply in the thread | **not sent.** Send it once the build is attached |
 
 ## Step 9. Set the release to manual, then submit
 

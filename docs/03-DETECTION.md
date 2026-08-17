@@ -105,8 +105,7 @@ dropped. Bind to loopback only, never `0.0.0.0`.
 `com.apple.security.network.server`, and it could not work there in any case:
 the installer edits `~/.claude/settings.json` and the sandbox home is the app's
 container. `PreciseDetection.isSupported` is false in the App Store build, so
-nothing binds and the control is not shown (`BLOCKERS.md`, and the 2026-08-16
-review reply in `docs/app-review-reply.txt`).
+nothing binds and the control is not shown. See `BLOCKERS.md` B3.
 
 **B2 — Command shim (fallback).** Ship a tiny `belay-hook` executable in
 `Belay.app/Contents/Helpers/`. It reads stdin, connects to a Unix domain socket,
