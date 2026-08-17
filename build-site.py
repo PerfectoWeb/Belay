@@ -67,10 +67,13 @@ GITHUB_MARK = (
 )
 
 # The two sparks in the corner of the download button, as on the README's own.
+# One path per sparkle and a class on each, so the two can turn on their own.
+# Animating the group rotated them as one object, which is not what two sparkles
+# side by side should do.
 SPARKLE = (
     '<svg class="spark" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">'
-    '<path d="M15 2l1.4 4.1L20.5 7.5 16.4 8.9 15 13l-1.4-4.1L9.5 7.5l4.1-1.4z"/>'
-    '<path d="M7.5 13l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6L4 16.5l2.6-.9z"/></svg>'
+    '<path class="big" d="M15 2l1.4 4.1L20.5 7.5 16.4 8.9 15 13l-1.4-4.1L9.5 7.5l4.1-1.4z"/>'
+    '<path class="small" d="M7.5 13l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6L4 16.5l2.6-.9z"/></svg>'
 )
 
 DOWNLOAD_MARK = (
@@ -281,13 +284,19 @@ SLIDE_COUNT = 5
 # the files are also what App Store Connect was fed from.
 SLIDE_CODE = {"es": "sp"}
 
+# Languages whose slide zero does not exist. Starting at one shows five real
+# pictures in the right language; pointing at the missing file would show a
+# broken frame, and borrowing English would show the wrong language.
+SLIDE_ZERO_MISSING = {"zh"}
+
 
 def slides(code):
     """Every slide for this language, in order, as absolute URLs."""
     name = SLIDE_CODE.get(code, code)
+    first = 1 if code in SLIDE_ZERO_MISSING else SLIDE_FIRST
     return [
         f"{SLIDE_SOURCE}/belay-appimage-{name}-{n}.png"
-        for n in range(SLIDE_FIRST, SLIDE_COUNT + 1)
+        for n in range(first, SLIDE_COUNT + 1)
     ]
 
 
@@ -320,7 +329,7 @@ def gallery(code, t):
         f' aria-label="{t["gallery_next"]}"></button>',
         '    <div class="dots" role="tablist">',
     ]
-    for index in range(SLIDE_COUNT - SLIDE_FIRST + 1):
+    for index in range(len(slides(code))):
         lines.append(
             f'        <button class="dot{" is-on" if index == 0 else ""}" type="button"'
             f' role="tab" data-to="{index}"'
@@ -382,7 +391,7 @@ def landing(code):
         "",
         '<div class="actions get">',
         '    <a class="button stacked primary" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
-        f'{APPLE_MARK}{DOWNLOAD_MARK}<span class="lines"><span class="lead">{t["download"]}</span>'
+        f'<span class="marks">{DOWNLOAD_MARK}{APPLE_MARK}</span><span class="lines"><span class="lead">{t["download"]}</span>'
         f'<span class="under">{t["version"].format(version=VERSION)}</span></span>'
         f'{SPARKLE}{SPARK_BED}</a>',
     ] + ([

@@ -863,32 +863,76 @@ footer .fine + .copyright { margin-top: 12px; }
 
 /* Hovering the download button.
    ---------------------------------------------------------------------------
-   The Apple mark becomes a download arrow, and the two sparkles in the corner
-   wake up. The mark that arrives is positioned rather than added to the row: two
-   glyphs in the flex line would widen the button, and a button that changes size
-   under the pointer is a button that moves away from the click. */
-.button.stacked.primary .mark.alt {
-    position: absolute;
-    left: 22px;
-    top: 50%;
-    transform: translateY(calc(-50% - 2px));
-    opacity: 0;
-    transition: opacity 0.22s ease-out;
+   The download arrow comes down from above, pushes the Apple mark out of the
+   slot and takes its place; the Apple mark returns from below when the pointer
+   leaves. Both live in a box the size of one glyph with `overflow: hidden`, so
+   each one starts and ends its journey outside the button entirely and is never
+   seen arriving.
+
+   The first attempt crossfaded the two in place. It read as a glitch: two marks
+   of different weight dissolving into each other at 22 pixels is mush, and
+   nothing about it said which way the swap was going.
+
+   Nothing here moves the button. The box is the same 22 points the single mark
+   occupied, so the row does not reflow and the click target does not shift. */
+.button.stacked .marks {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    flex: none;
+    overflow: hidden;
+    /* The nudge the single mark used to carry, moved out to the box. */
+    transform: translateY(-2px);
 }
 
-.button.stacked.primary .mark:not(.alt) { transition: opacity 0.22s ease-out; }
-.button.stacked.primary:hover .mark:not(.alt) { opacity: 0; }
-.button.stacked.primary:hover .mark.alt { opacity: 1; }
+.button.stacked .marks .mark {
+    position: absolute;
+    inset: 0;
+    width: 22px;
+    height: 22px;
+    /* Overrides the shared -2px, which now belongs to the box above. */
+    transform: none;
+    /* y2 past 1 is the overshoot: the arriving mark goes a little too far and
+       settles, which is the weight of something being pushed. */
+    transition: transform 0.42s cubic-bezier(0.24, 1.45, 0.4, 1);
+}
+
+/* Waiting above the slot, out of sight. */
+.button.stacked .marks .mark.alt { transform: translateY(-115%); }
+
+.button.stacked.primary:hover .marks .mark.alt { transform: translateY(0); }
+.button.stacked.primary:hover .marks .mark:not(.alt) { transform: translateY(115%); }
+
+/* The two corner sparkles turn opposite ways, which is what makes them read as
+   a pair of gears rather than as one thing spinning. The larger one is slower,
+   as a larger gear is. Each path is rotated about its own centre, which is what
+   `fill-box` is for: the default box is the whole 24-unit canvas, and both
+   sparkles would swing around a point outside themselves. */
+.button.stacked .spark .big,
+.button.stacked .spark .small {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.button.stacked .spark { transition: opacity 0.25s ease-out; }
+.button.stacked.primary:hover .spark { opacity: 0.95; }
 
 @media (prefers-reduced-motion: no-preference) {
-    .button.stacked.primary:hover .spark {
-        animation: corner-wake 1.4s ease-in-out infinite;
+    .button.stacked.primary:hover .spark .big {
+        animation: gear-anticlockwise 2.6s linear infinite;
+    }
+
+    .button.stacked.primary:hover .spark .small {
+        animation: gear-clockwise 1.7s linear infinite;
     }
 }
 
-@keyframes corner-wake {
-    0%, 100% { opacity: 0.5; transform: rotate(0deg) scale(1); }
-    50% { opacity: 1; transform: rotate(14deg) scale(1.18); }
+@keyframes gear-anticlockwise {
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes gear-clockwise {
+    to { transform: rotate(360deg); }
 }
 
 /* Hovering the two support buttons.
