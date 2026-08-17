@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Belay: se mantiene despierto mientras trabajan tus agentes</title>
 <meta name="description" content="Una pequeña app de la barra de menús de macOS que mantiene el Mac despierto mientras trabajan los agentes y lo deja dormir cuando terminan.">
-<link rel="stylesheet" href="../style.css?v=b27c406b9f">
+<link rel="stylesheet" href="../style.css?v=a2f2789f54">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -69,7 +69,7 @@
       return { top: r.top - room, bottom: r.bottom + room };
     }
 
-    function lap(el, opening) {
+    function lap(el) {
       var u = unit();
       var w = pick(36, 56) * u;
       var h = w * pick(0.7, 0.95);
@@ -92,8 +92,14 @@
       el.style.height = Math.round(h) + 'px';
       el.style.left = Math.round(x - w / 2) + 'px';
       el.style.top = Math.round(y - h / 2) + 'px';
-      el.style.setProperty('--tone',
-        Math.random() < 0.6 ? 'var(--glow-blue)' : 'var(--glow-violet)');
+      // Dealt rather than rolled. A coin per appearance came up the same
+      // three times often enough to look deliberate — with three lights and
+      // a fair coin it is one round in four — and three of one colour reads
+      // as a single wash instead of as separate lights. Each light simply
+      // takes the other tone from the one it had, and the three start on
+      // opposite feet, so there is always a mix on screen.
+      el.dataset.tone = el.dataset.tone === 'violet' ? 'blue' : 'violet';
+      el.style.setProperty('--tone', 'var(--glow-' + el.dataset.tone + ')');
       // Not every light at full strength, or three of them at once reads as
       // one even wash.
       el.style.setProperty('--peak',
@@ -114,15 +120,23 @@
         { transform: 'translate3d(' + (Math.cos(turn) * away).toFixed(1) + 'px,'
           + (Math.sin(turn) * away).toFixed(1) + 'px,0) scale(1.14)', opacity: 0 }
       ], { duration: life, easing: 'ease-in-out' });
-      // The first lap starts in the middle of itself, so the lights are
-      // already lit in the first frame the reader sees. Starting all three
-      // from zero meant several seconds of a page with nothing behind it,
-      // and the three of them blooming together afterwards.
-      if (opening) { run.currentTime = life * pick(0.25, 0.6); }
-      run.finished.then(function () { lap(el, false); }).catch(function () {});
+      run.finished.then(function () { lap(el); }).catch(function () {});
     }
 
-    lights.forEach(function (el) { lap(el, true); });
+    // The page opens dark and the room fills in: a second or two of nothing,
+    // then one light, then the next. Starting all three lit was tried and
+    // reads as a background rather than as something happening, and the
+    // arrival is the best part of it.
+    //
+    // Reduce Motion gets its light at once, because there is no arrival to
+    // wait for when nothing is going to move.
+    lights.forEach(function (el, i) {
+      // Odd ones start blue, even ones violet: `lap` flips before it reads,
+      // so this is the tone *before* the first appearance.
+      el.dataset.tone = i % 2 ? 'blue' : 'violet';
+      setTimeout(function () { lap(el); },
+        still ? 0 : pick(0.8, 2.6) * 1000 + i * 1600);
+    });
   })();
 </script>
 <div class="wrap">
