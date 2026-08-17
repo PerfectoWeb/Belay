@@ -17,11 +17,13 @@ final class StatusItemController {
     /// Built once and popped up manually on right-click. Assigning it to
     /// `statusItem.menu` would hand left-click to the menu, which is the
     /// panel's.
-    private lazy var contextMenu: NSMenu = makeMenu()
+    /// Made fresh on each right-click: the update row and the workbench tick
+    /// read state as they are drawn, and a menu built once shows what was true
+    /// at first launch.
+    private var contextMenu: NSMenu { makeMenu() }
 
-    /// Every frame of every look, rendered once at startup. Animating then costs
-    /// one property assignment per tick rather than a redraw, which is what
-    /// keeps a moving icon inside the idle budget docs/08 sets.
+    /// Every frame of every look, rendered once at startup, so animating costs
+    /// one property assignment per tick rather than a redraw (docs/08).
     private lazy var frames: [BelayGlyph.Look: [NSImage]] = {
         var table: [BelayGlyph.Look: [NSImage]] = [:]
         for look in [BelayGlyph.Look.alwaysOn, .working, .resting, .calling, .off, .blocked] {
@@ -38,6 +40,11 @@ final class StatusItemController {
     /// One callback for every menu destination: the menu names a pane, the app
     /// decides how to show it.
     var onOpenPane: (SettingsPane) -> Void = { _ in }
+
+    /// What the update row says and does. Set by the app: the checker lives
+    /// with Settings rather than here.
+    var updateStatus: () -> (title: String, waiting: Bool)? = { nil }
+    var onUpdate: () -> Void = {}
 
     /// Built lazily and popped up by hand, so a test cannot see it otherwise.
     var menuForTesting: NSMenu { contextMenu }
@@ -151,72 +158,21 @@ final class StatusItemController {
         }
     }
 
-    /// The modes live in the panel a left-click away; duplicating them here made
-    /// the menu look like a control surface when it is really just a way out.
-    ///
-    /// An ellipsis promises a dialog that will ask you for something before
-    /// anything happens (HIG, "Menu Anatomy"). Statistics and About just show a
-    /// pane, so they do not get one; Settings keeps it, because every macOS app
-    /// spells it that way and matching the platform beats being right alone.
-    private func makeMenu() -> NSMenu {
-        let menu = NSMenu()
-        menu.autoenablesItems = false
-        menu.addItem(
-            item(
-                String(localized: "Statistics"), #selector(openStatistics),
-                symbol: SettingsPane.statistics.symbol))
-        menu.addItem(
-            item(
-                String(localized: "Settings…"), #selector(openSettings), key: ",",
-                symbol: SettingsPane.general.symbol))
-        menu.addItem(
-            item(
-                String(localized: "About \(Branding.appName)"), #selector(openAbout),
-                symbol: SettingsPane.about.symbol))
-        #if DEBUG
-        addWorkbench(to: menu)
-        #endif
-
-        menu.addItem(.separator())
-        menu.addItem(
-            item(
-                // "Quit", not "Quit Belay": every other item in this menu is
-                // already about Belay, and the app name is on the item above it.
-                String(localized: "Quit"), #selector(confirmQuit), key: "q",
-                symbol: "power"))
-        return menu
-    }
-
-    func item(
-        _ title: String, _ action: Selector, key: String = "", symbol: String? = nil
-    ) -> NSMenuItem {
-        let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
-        item.target = self
-        // Menu-bar extras are the one place AppKit expects images on plain items,
-        // and with four items of different weight the icons are what makes the
-        // menu scannable rather than a list of words.
-        item.image = symbol.flatMap {
-            NSImage(systemSymbolName: $0, accessibilityDescription: nil)?
-                .withSymbolConfiguration(.init(pointSize: 13, weight: .regular))
-        }
-        return item
-    }
-
-    @objc private func openSettings() {
+    @objc func openSettings() {
         onOpenPane(.general)
     }
 
-    @objc private func openStatistics() {
+    @objc func openStatistics() {
         onOpenPane(.statistics)
     }
 
-    @objc private func openAbout() {
+    @objc func openAbout() {
         onOpenPane(.about)
     }
 
     /// Quitting stops Belay holding the Mac awake, and a mis-click here means an
     /// overnight run dies quietly hours later. Cheap to confirm, expensive not to.
-    @objc private func confirmQuit() {
+    @objc func confirmQuit() {
         let alert = NSAlert()
         alert.messageText = String(localized: "Quit \(Branding.appName)?")
         alert.informativeText =

@@ -68,6 +68,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             onResetStatistics: { [weak controller] in controller?.usage.reset() }
         )
         statusItem.onOpenPane = { [weak settingsWindow] in settingsWindow?.show(pane: $0) }
+        wireUpdateRow(statusItem, settingsWindow)
         // The panel's "Fix" button. Every notice it can show is resolved on the
         // Providers pane — Claude Code needs folder access, the generic provider
         // needs a folder or a preset — so it opens there and asks the controller
@@ -96,6 +97,35 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // After the interval: neither of these may count against the
         // cold-launch budget, and on most launches neither of them appears.
         openTheScreensShownOnce(statusItem: statusItem, controller: controller)
+    }
+
+    /// The status menu's update row: a question until there is an answer.
+    ///
+    /// Absent in the App Store build, which updates through the store. Where it
+    /// is present, the wording is the whole point: "Check for Updates" asks, and
+    /// once the checker knows, the row names the version, which is the only
+    /// phrasing that says what pressing it will get you without opening a window
+    /// first.
+    private func wireUpdateRow(_ statusItem: StatusItemController, _ settings: SettingsWindow?) {
+        statusItem.updateStatus = { [weak settings] in
+            guard ReleaseChecker.isSupported, let checker = settings?.updates else { return nil }
+            if case .available(let version, _) = checker.status {
+                return (String(localized: "Update Now (v\(version))"), true)
+            }
+            return (String(localized: "Check for Updates"), false)
+        }
+        statusItem.onUpdate = { [weak settings] in
+            guard let checker = settings?.updates else { return }
+            // Already know there is one: go straight to installing it. Otherwise
+            // this is the question, and the answer belongs where the detail is.
+            if case .available = checker.status {
+                Feedback.play(.tick)
+                if SoftwareUpdate.isSupported { SoftwareUpdate.install() }
+            } else {
+                checker.check()
+                settings?.show(pane: .general)
+            }
+        }
     }
 
     /// The welcome screen, then the release notes, in that order and never both.
