@@ -92,6 +92,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             mode \(self.settings.mode.rawValue, privacy: .public)
             """)
         scheduleUpdateChecks(settingsWindow.updates)
+        observeUpdateStatus(settingsWindow.updates)
         Log.signposter.endInterval("launch", interval)
 
         // After the interval: neither of these may count against the
@@ -211,14 +212,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// launch opened a socket eight seconds in, while the welcome screen was
     /// still on the display saying nothing leaves this Mac. Both statements were
     /// true separately and the pair of them was not.
-    private func scheduleUpdateChecks(_ checker: ReleaseChecker) {
-        let timer = Timer(timeInterval: 3600, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated {
-                checker.checkIfDue()
-                // The mark redraws when the app asks it to, and a check landing
-                // is one of the two things that can change what it should show.
+    /// Redraws the mark when the checker's answer changes.
+    ///
+    /// Not when the question is asked. `checkIfDue` starts a network task and
+    /// returns immediately, so rendering on the line after it renders the answer
+    /// from before the check. The status is `@Observable`, so the change itself is
+    /// the event, and re-arming inside the handler is what makes it more than a
+    /// one-shot.
+    private func observeUpdateStatus(_ checker: ReleaseChecker) {
+        withObservationTracking {
+            _ = checker.status
+        } onChange: { [weak self] in
+            Task { @MainActor [weak self] in
                 self?.statusItem?.render()
+                self?.observeUpdateStatus(checker)
             }
+        }
+    }
+
+    private func scheduleUpdateChecks(_ checker: ReleaseChecker) {
+        let timer = Timer(timeInterval: 3600, repeats: true) { _ in
+            MainActor.assumeIsolated { checker.checkIfDue() }
         }
         timer.tolerance = 600
         RunLoop.main.add(timer, forMode: .common)
@@ -228,7 +242,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in
             guard self?.settings.hasCompletedOnboarding == true else { return }
             checker.checkIfDue()
-            self?.statusItem?.render()
         }
     }
 
