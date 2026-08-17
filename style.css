@@ -21,6 +21,17 @@
        ink that the fill was hard to see at all. Still comfortably above the
        page, so an unfilled word is read rather than guessed at. */
     --ink-unfilled: #e9edf2;
+    /* The two lights behind the page. Held as bare channels rather than as
+       colours so the alpha can be written per use: one blob is drawn twice, at
+       full strength in its middle and at nothing on its edge, and
+       `rgb(var(--x) / 0)` is the only way to say "the same colour, gone" that
+       every engine interpolates cleanly. `transparent` would do it too on
+       current browsers, but it once meant transparent *black*, and a grey haze
+       across a gradient is a hard bug to see and an easy one to avoid. */
+    --glow-blue: 31 107 255;
+    --glow-violet: 113 51 238;
+    --glow-strength: 0.075;
+
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
     interpolate-size: allow-keywords;
@@ -36,6 +47,12 @@
         --accent: #5b93ff;
         --give: #29d98a;
         --ink-unfilled: #232830;
+        --glow-blue: 91 147 255;
+        --glow-violet: 124 68 245;
+        /* Higher than the light theme's, and still the smaller effect of the
+           two: a tint has to fight a white page and only has to join a dark
+           one. */
+        --glow-strength: 0.16;
     }
 }
 
@@ -50,7 +67,79 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.wrap { max-width: 44rem; margin: 0 auto; }
+/* Two lights in the room, behind everything.
+
+   They are fixed rather than scrolled: the page moves past them the way a page
+   moves past a window, and a glow that scrolls with the text reads as a shape
+   drawn on the page instead of as light in the room.
+
+   Both sit almost entirely off screen. Only the near fringe of each one is
+   visible, which is the whole trick: the strongest part of a soft gradient is
+   also the part that looks painted, and the fringe is what looks like light. It
+   also keeps them out of the headline's band, where the unfilled grey is tuned
+   two points above the page and would be swallowed by anything brighter behind
+   it.
+
+   `z-index: 0` puts them over the body's own ground and under `.wrap`, which
+   takes a layer of its own below. */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    top: -46vmax;
+    right: -24vmax;
+    width: 86vmax;
+    height: 72vmax;
+    background: radial-gradient(closest-side,
+        rgb(var(--glow-blue) / var(--glow-strength)),
+        rgb(var(--glow-blue) / 0));
+}
+
+body::after {
+    bottom: -52vmax;
+    left: -30vmax;
+    width: 78vmax;
+    height: 66vmax;
+    background: radial-gradient(closest-side,
+        rgb(var(--glow-violet) / calc(var(--glow-strength) * 0.8)),
+        rgb(var(--glow-violet) / 0));
+}
+
+/* The drift. Slow enough that you cannot catch it moving, and small enough that
+   there is nothing to catch: a couple of viewport percent over most of a minute.
+   The two periods are deliberately not multiples of each other, so the pair
+   never settles into a rhythm you could count. */
+@media (prefers-reduced-motion: no-preference) {
+    body::before { animation: glow-drift-a 53s ease-in-out infinite; }
+    body::after { animation: glow-drift-b 67s ease-in-out infinite; }
+}
+
+@keyframes glow-drift-a {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-3vmax, 2.5vmax, 0) scale(1.06); }
+}
+
+@keyframes glow-drift-b {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1.04); }
+    50% { transform: translate3d(3vmax, -2vmax, 0) scale(1); }
+}
+
+/* Everything readable rides above the lights. One layer here rather than a
+   z-index on each section: the panel in the footer and the lightbox both carry
+   their own, and they keep working because this establishes the context they sit
+   in rather than competing with them. */
+.wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 44rem;
+    margin: 0 auto;
+}
 
 header {
     display: flex;
