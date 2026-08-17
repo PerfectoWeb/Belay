@@ -84,6 +84,11 @@ GITHUB = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
           ' 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42'
           '-3.58-8-8-8Z"/></svg>')
 
+STAR = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
+        '<path fill="currentColor" d="M8 1.4l1.9 4 4.4.6-3.2 3.1.8 4.4L8 11.4l-3.9 2.1'
+        ' .8-4.4L1.7 6l4.4-.6z"/></svg>')
+
+
 HEART = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
          '<path fill="currentColor" d="M8 14.25S1.5 10.5 1.5 5.94A3.44 3.44 0 0 1 8 4.2a3.44 3.44 0 0 1 6.5'
          ' 1.74C14.5 10.5 8 14.25 8 14.25Z"/></svg>')
@@ -235,12 +240,90 @@ def external(markup):
         r'<a \1 target="_blank" rel="noopener"', markup)
 
 
+
+
+# The extra three are placeholders and are meant to be replaced; the first is the
+# real panel and is the one that matters.
+SLIDES = ["slide-providers.png", "slide-behaviour.png", "slide-statistics.png"]
+
+
+def gallery(code, t):
+    """The panel, and three more, with dots and two invisible click zones.
+
+    Enhanced rather than required. With no JavaScript this is the first figure
+    and nothing else: the images after it are hidden by the stylesheet, the dots
+    are hidden, and what remains is exactly the single picture that was here
+    before. That is the same rule the disclosure above follows, and the reason
+    the script at the bottom of the page is eleven lines rather than a framework.
+    """
+    first = PANEL.get(code, "panel.png")
+    lines = ['<div class="gallery" data-gallery>', '    <div class="frames">']
+    for index, name in enumerate([first] + SLIDES):
+        # The first frame is the one that is on screen, so it loads eagerly; the
+        # other three are behind it and wait until something asks for them.
+        on = " is-on" if index == 0 else ""
+        lazy = "" if index == 0 else ' loading="lazy"'
+        lines.append(
+            f'        <img class="frame{on}" src="../img/{name}" '
+            f'alt="{t["modes_head"]}" width="1600" height="1000"{lazy}>')
+    lines += ['    </div>']
+    # Left and right thirds of the picture, transparent, pointer cursor. Buttons
+    # rather than divs so a keyboard reaches them.
+    lines += [
+        f'    <button class="turn back" type="button" data-step="-1"'
+        f' aria-label="{t["gallery_back"]}"></button>',
+        f'    <button class="turn next" type="button" data-step="1"'
+        f' aria-label="{t["gallery_next"]}"></button>',
+        '    <div class="dots" role="tablist">',
+    ]
+    for index in range(len(SLIDES) + 1):
+        lines.append(
+            f'        <button class="dot{" is-on" if index == 0 else ""}" type="button"'
+            f' role="tab" data-to="{index}"'
+            f' aria-label="{t["gallery_dot"].format(n=index + 1)}"></button>')
+    lines += ['    </div>', '</div>']
+    return lines
+
+
+def filled_heading(text):
+    """The h1, one span per word, each carrying its place in the order.
+
+    The animation lives in the stylesheet; this only supplies the words and the
+    index.
+
+    Tags are stepped over rather than split on. The English headline carries a
+    `<br class="turn">` in the middle of it, and splitting the whole string on
+    spaces tore that into `<br` and `class="turn">while`, which is broken markup
+    that a browser then guesses at. Anything inside angle brackets is passed
+    through untouched and takes no delay of its own.
+
+    A language with no spaces between words, Chinese here, comes out as one or
+    two spans rather than ten. That is the right answer: the alternative is
+    guessing where a word ends in a script this project has no business
+    segmenting.
+    """
+    out = []
+    step = 0
+    for piece in re.split(r"(<[^>]+>)", text):
+        if not piece:
+            continue
+        if piece.startswith("<"):
+            out.append(piece)
+            continue
+        for word in piece.split(" "):
+            if not word:
+                continue
+            out.append(f'<span class="word" style="--fill-step: {step}">{word}</span>')
+            step += 1
+    return " ".join(out)
+
+
 def landing(code):
     t = L[code]
     lines = head(code, t["title"], t["meta"], 1, "")
     lines += header(code, 1)
     lines += [
-        f'<h1>{t["h1"]}</h1>',
+        f'<h1>{filled_heading(t["h1"])}</h1>',
         "",
         f'<p class="lede">{t["lede"]}</p>',
         "",
@@ -282,10 +365,7 @@ def landing(code):
         "</ul>",
         "",
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
-        '<figure class="panel">',
-        f'    <img src="../img/{PANEL.get(code, "panel.png")}" alt="{t["modes_head"]}"'
-        ' width="1600" height="1000">',
-        "</figure>",
+    ] + gallery(code, t) + [
         "",
         "",
         f'<h2>{t["support_head"]}</h2>',
@@ -298,7 +378,7 @@ def landing(code):
         f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>',
     ] if SPONSORS_LIVE else []) + [
         f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">'
-        f'{GITHUB}{t["star"]}</a>',
+        f'{STAR}{t["star"]}</a>',
         "</div>",
         "",
         "<footer>",
@@ -329,6 +409,39 @@ def landing(code):
         "  document.addEventListener('click', function (event) {",
         "    document.querySelectorAll('details.languages[open]').forEach(function (picker) {",
         "      if (!picker.contains(event.target)) { picker.open = false; }",
+        "    });",
+        "  });",
+        "</script>",
+        "",
+        # The gallery. Everything it does is add and remove two class names, and
+        # the movement is the stylesheet's. It marks itself live first, which is
+        # what reveals the dots and the click zones: they are hidden until
+        # something can answer them, because a pointer cursor over a strip that
+        # does nothing is a promise the page cannot keep.
+        "<script>",
+        "  document.querySelectorAll('[data-gallery]').forEach(function (gallery) {",
+        "    var frames = gallery.querySelectorAll('.frame');",
+        "    var dots = gallery.querySelectorAll('.dot');",
+        "    if (frames.length < 2) { return; }",
+        "    var at = 0;",
+        "    gallery.classList.add('is-live');",
+        "    function show(next) {",
+        "      next = (next + frames.length) % frames.length;",
+        "      if (next === at) { return; }",
+        "      // Which way it is going, so the frame that leaves goes the other way.",
+        "      if (next < at) { gallery.setAttribute('data-back', ''); }",
+        "      else { gallery.removeAttribute('data-back'); }",
+        "      frames[at].classList.remove('is-on');",
+        "      dots[at].classList.remove('is-on');",
+        "      at = next;",
+        "      frames[at].classList.add('is-on');",
+        "      dots[at].classList.add('is-on');",
+        "    }",
+        "    dots.forEach(function (dot) {",
+        "      dot.addEventListener('click', function () { show(Number(dot.dataset.to)); });",
+        "    });",
+        "    gallery.querySelectorAll('.turn').forEach(function (zone) {",
+        "      zone.addEventListener('click', function () { show(at + Number(zone.dataset.step)); });",
         "    });",
         "  });",
         "</script>",

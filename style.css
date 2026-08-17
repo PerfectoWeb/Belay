@@ -13,6 +13,9 @@
     /* Donate is the one button that is not asking you to install anything, so
        it does not compete with the blue that is. */
     --give: #29d98a;
+    /* Lets a height of `auto` take part in a transition, which is what makes the
+       disclosure below open with any weight at all. */
+    interpolate-size: allow-keywords;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -64,6 +67,30 @@ h1 {
     margin: 32px 0 8px;
 }
 
+/* The headline arrives grey and fills in, word by word, left to right, and then
+   stays. A gradient sliding across one text node would sweep both lines at once,
+   which reads as a scanner rather than as a sentence being said; each word is
+   therefore its own span with its own delay.
+
+   `--fill-step` is set per word in the markup, in tenths, so a longer
+   translation keeps the same rhythm rather than the same duration. Nothing runs
+   under Reduce Motion: the words are simply white from the first frame. */
+h1 .word {
+    color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    h1 .word {
+        color: var(--ink-soft);
+        animation: word-fill 0.5s ease-out forwards;
+        animation-delay: calc(var(--fill-step) * 0.085s);
+    }
+}
+
+@keyframes word-fill {
+    to { color: var(--ink); }
+}
+
 h2 {
     font-size: 28px;
     letter-spacing: -0.015em;
@@ -110,6 +137,11 @@ a { color: var(--accent); }
 }
 
 .button.donate { background: #1cb85e; color: #fff; }
+
+/* The support pair, rounded to match the hero buttons above them rather than
+   left at the generic 10px. Not fully круглые: these are shorter than the hero
+   pair, and a full pill at this height reads as a tag rather than a button. */
+.actions.give .button { border-radius: 16px; }
 
 /* The two hero buttons, drawn to match the pair at the top of the README:
    a pill, a mark on the left, and two lines of type that share a left edge.
@@ -163,6 +195,61 @@ a { color: var(--accent); }
     color: #fff;
 }
 
+/* The same liberty the app takes on its own primary button, and for the same
+   reason: on a dark page beside a second button of nearly the same size, colour
+   alone does not say "this is the answer". Breathing and a glow, nothing that
+   moves the button: no transform, no change of size, colour or position, so the
+   thing you aim at is where it was. */
+@media (prefers-reduced-motion: no-preference) {
+    .button.stacked.primary {
+        animation: button-breath 3.2s ease-in-out infinite;
+    }
+}
+
+@keyframes button-breath {
+    0%, 100% { box-shadow: 0 0 0 rgba(113, 51, 238, 0); filter: brightness(1); }
+    50% { box-shadow: 0 6px 26px rgba(113, 51, 238, 0.45); filter: brightness(1.06); }
+}
+
+/* Sparks. Two pseudo-elements on a wrapper that is bigger than the button, so a
+   spark can leave the edge: a canvas that clips at the border reads as texture
+   rather than as something going. Drawn as small rotated squares with rounded
+   corners, which at four pixels is indistinguishable from the app's four-armed
+   sparkle and costs no extra markup. */
+.button.stacked.primary::before,
+.button.stacked.primary::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 1.5px;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .button.stacked.primary::before {
+        left: 22%;
+        top: 6px;
+        animation: spark-rise 2.6s ease-out infinite;
+    }
+
+    .button.stacked.primary::after {
+        left: 68%;
+        top: 10px;
+        width: 4px;
+        height: 4px;
+        animation: spark-rise 3.3s ease-out infinite 1.1s;
+    }
+}
+
+@keyframes spark-rise {
+    0% { opacity: 0; transform: translateY(0) rotate(45deg) scale(0.6); }
+    18% { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-26px) rotate(45deg) scale(1); }
+}
+
 .button.stacked.primary .mark,
 .button.stacked.primary .spark { color: #fff; fill: currentColor; }
 
@@ -207,6 +294,27 @@ a { color: var(--accent); }
 }
 .more[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
 .more p { margin-top: 10px; }
+
+/* Opening and closing with some weight to it. `interpolate-size` is what lets a
+   height of `auto` be transitioned at all; `::details-content` is the box that
+   grows. Where either is unsupported the disclosure still works, it just snaps
+   the way it did before, which is why this is written as an enhancement and not
+   as a script. The easing overshoots slightly on the way open and settles, which
+   is the inertia. */
+.more::details-content {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        height 0.42s cubic-bezier(0.22, 1.2, 0.36, 1),
+        content-visibility 0.42s allow-discrete,
+        opacity 0.3s ease-out 0.06s;
+}
+
+.more[open]::details-content {
+    height: auto;
+    opacity: 1;
+}
 
 footer {
     margin-top: 64px;
@@ -595,3 +703,105 @@ h1 .turn { display: inline; }
 
 /* The copyright sits under the third-party note, with room between them. */
 footer .fine + .copyright { margin-top: 12px; }
+
+/* The gallery under "Your agents, at a glance".
+   ---------------------------------------------------------------------------
+   Enhanced, not required. Without the script at the foot of the page the first
+   frame is the only one shown, the dots are hidden, and what is left is the
+   single picture this section used to be. The rule the disclosure above follows,
+   applied again: nothing here disappears when the JavaScript does.
+
+   The frames are stacked rather than laid in a row, so the container is as tall
+   as one picture and no width arithmetic is needed for four of them. Crossfade
+   plus a small slide, with an easing that overshoots and settles, which is the
+   weight asked for. */
+.gallery {
+    position: relative;
+    margin: 0;
+}
+
+.gallery .frames {
+    position: relative;
+    display: grid;
+}
+
+.gallery .frame {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    opacity: 0;
+    transform: translateX(14px);
+    transition: opacity 0.45s ease-out, transform 0.55s cubic-bezier(0.22, 1.1, 0.36, 1);
+}
+
+.gallery .frame.is-on {
+    opacity: 1;
+    transform: none;
+}
+
+/* Leaving to the other side, so a step back and a step forward do not both
+   slide the same way. */
+.gallery[data-back] .frame:not(.is-on) { transform: translateX(-14px); }
+
+/* Two transparent strips over the picture, a fifth of its width each. Hidden
+   until the script marks the gallery live: a click zone that does nothing is
+   worse than no click zone, and the cursor would promise something. */
+.gallery .turn {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.gallery .turn.back { left: 0; }
+.gallery .turn.next { right: 0; }
+.gallery .turn:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+
+.gallery .dots {
+    display: none;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    gap: 7px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    /* Over a picture whose corner could be any colour, so the dots carry their
+       own ground rather than trusting the pixels behind them. */
+    background: rgba(10, 12, 16, 0.38);
+    backdrop-filter: blur(6px);
+}
+
+.gallery .dot {
+    width: 7px;
+    height: 7px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.42);
+    cursor: pointer;
+    transition: background 0.25s ease-out, width 0.25s ease-out;
+}
+
+.gallery .dot.is-on {
+    /* Wider rather than merely brighter: the current one should be findable
+       without comparing brightness across four small circles. */
+    width: 16px;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.gallery.is-live .turn,
+.gallery.is-live .dots { display: flex; }
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery .frame { transition: none; }
+}
