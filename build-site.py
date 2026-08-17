@@ -381,6 +381,13 @@ def filled_heading(text):
     guessing where a word ends in a script this project has no business
     segmenting.
     """
+    # Which words get taken apart. The last two, whatever language this is: no
+    # per-locale list to keep in step, and in every one of the seven the closing
+    # two words are the ones about the agent working.
+    words = [w for piece in re.split(r"(<[^>]+>)", text) if not piece.startswith("<")
+             for w in piece.split(" ") if w]
+    lettered = set(range(max(0, len(words) - 2), len(words)))
+
     out = []
     step = 0
     for piece in re.split(r"(<[^>]+>)", text):
@@ -392,7 +399,10 @@ def filled_heading(text):
         for word in piece.split(" "):
             if not word:
                 continue
-            out.append(f'<span class="word" style="--fill-step: {step}">{word}</span>')
+            body = word
+            if step in lettered:
+                body = "".join(f'<span class="ch">{letter}</span>' for letter in word)
+            out.append(f'<span class="word" style="--fill-step: {step}">{body}</span>')
             step += 1
     return " ".join(out)
 
@@ -500,7 +510,7 @@ def landing(code):
         # does nothing is a promise the page cannot keep.
         # The lightbox lives outside every section so nothing can clip it, and
         # carries `hidden` so it does not exist for anybody without the script.
-        '<div class="lightbox" data-lightbox hidden>',
+        '<div class="lightbox" data-lightbox hidden tabindex="-1" role="dialog" aria-modal="true">',
         '    <button class="sheet" type="button" data-close aria-label="Close"></button>',
         '    <img alt="">',
         '    <button class="page back" type="button" data-step="-1" aria-label="Previous">'
@@ -513,6 +523,94 @@ def landing(code):
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
         ' stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>',
         "</div>",
+        "",
+        # The headline's cycle: fill white, a green pass along the last two
+        # words, a blink, back to grey, again. Class toggles only, one at a time,
+        # so the cost is a style recalculation on a handful of spans and never a
+        # timer doing arithmetic on every frame.
+        "<script>",
+        "  (function () {",
+        "    var head = document.querySelector('h1');",
+        "    if (!head) { return; }",
+        "    var words = head.querySelectorAll('.word');",
+        "    var letters = head.querySelectorAll('.ch');",
+        "    if (!letters.length) { return; }",
+        "    // Nothing loops for somebody who asked for less movement. The fill",
+        "    // itself is already guarded in the stylesheet.",
+        "    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }",
+        "",
+        "    // Paused whenever the heading is off screen or the tab is in the",
+        "    // background, so an animation nobody is looking at costs nothing.",
+        "    var seen = true;",
+        "    if ('IntersectionObserver' in window) {",
+        "      new IntersectionObserver(function (entries) {",
+        "        seen = entries[0].isIntersecting;",
+        "      }, { threshold: 0.2 }).observe(head);",
+        "    }",
+        "    function idle() { return document.hidden || !seen; }",
+        "    function wait(ms) {",
+        "      return new Promise(function (done) {",
+        "        setTimeout(function tick() {",
+        "          if (idle()) { setTimeout(tick, 400); return; }",
+        "          done();",
+        "        }, ms);",
+        "      });",
+        "    }",
+        "",
+        "    // The fill is the stylesheet's, and its length is the last word's",
+        "    // delay plus its own duration.",
+        "    var FILL = (words.length - 1) * 102 + 600;",
+        "",
+        "    function refill() {",
+        "      head.classList.remove('is-cooling');",
+        "      letters.forEach(function (ch) { ch.classList.remove('hot', 'cold'); });",
+        "      words.forEach(function (word) {",
+        "        // Restarting a CSS animation takes a reset and a reflow read.",
+        "        word.style.animation = 'none';",
+        "        void word.offsetWidth;",
+        "        word.style.animation = '';",
+        "      });",
+        "    }",
+        "",
+        "    // One pass of the green along the letters, leaving `stop` lit. The",
+        "    // letter hands the colour to the next and goes back to white, which",
+        "    // is why only one is hot at a time.",
+        "    async function pass(stop) {",
+        "      for (var i = 0; i <= stop; i++) {",
+        "        if (i > 0) { letters[i - 1].classList.remove('hot'); }",
+        "        letters[i].classList.add('hot');",
+        "        await wait(58);",
+        "      }",
+        "      await wait(200);",
+        "    }",
+        "",
+        "    async function cycle() {",
+        "      for (;;) {",
+        "        refill();",
+        "        await wait(FILL + 2400);",
+        "        // Each pass leaves one more letter lit, from the last backwards,",
+        "        // until the two words are green.",
+        "        for (var stop = letters.length - 1; stop >= 0; stop--) {",
+        "          await pass(stop);",
+        "        }",
+        "        await wait(2400);",
+        "        // Blinking off: green, grey, green, grey, and it stays grey.",
+        "        for (var blink = 0; blink < 3; blink++) {",
+        "          letters.forEach(function (ch) { ch.classList.add('cold'); });",
+        "          await wait(340);",
+        "          if (blink < 2) {",
+        "            letters.forEach(function (ch) { ch.classList.remove('cold'); });",
+        "            await wait(340);",
+        "          }",
+        "        }",
+        "        await wait(2400);",
+        "        head.classList.add('is-cooling');",
+        "        await wait(1400);",
+        "      }",
+        "    }",
+        "    cycle();",
+        "  })();",
+        "</script>",
         "",
         "<script>",
         "  // The support heading types itself when it comes into view, once.",
@@ -600,7 +698,7 @@ def landing(code):
         "      // A frame, so the browser has the element before the class lands",
         "      // and the fade actually runs.",
         "      requestAnimationFrame(function () { box.classList.add('is-open'); });",
-        "      box.querySelector('.shut').focus();",
+        "      box.focus();",
         "    }",
         "    function drop() {",
         "      open = false;",

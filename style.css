@@ -13,6 +13,9 @@
     /* Donate is the one button that is not asking you to install anything, so
        it does not compete with the blue that is. */
     --give: #29d98a;
+    /* The Donate button's own green, named so the caret and the heading's green
+       pass can borrow it instead of repeating the hex in three places. */
+    --donate-green: #1cb85e;
     /* The headline before it fills. Dimmer than the body grey on purpose: that
        one is tuned for reading a paragraph, and at 42px it sat so close to the
        ink that the fill was hard to see at all. Still comfortably above the
@@ -99,6 +102,21 @@ h1 .word {
     to { color: var(--ink); }
 }
 
+/* The last two words are split into letters so the green can travel along them.
+   A letter with no state of its own inherits the word's colour, which is what
+   keeps the fill above working exactly as it did. */
+h1 .ch { transition: color 0.22s ease-out; }
+h1 .ch.hot { color: var(--donate-green); }
+h1 .ch.cold { color: var(--ink-unfilled); }
+
+/* The whole heading going back to grey at the end of a cycle. Slower than the
+   letters and eased in, so it reads as a light going out rather than as a
+   repaint. */
+h1.is-cooling .word,
+h1.is-cooling .ch { transition: color 0.9s ease-in; }
+h1.is-cooling .word { color: var(--ink-unfilled); }
+h1.is-cooling .ch { color: inherit; }
+
 h2 {
     font-size: 28px;
     letter-spacing: -0.015em;
@@ -144,7 +162,7 @@ a { color: var(--accent); }
     text-decoration: none;
 }
 
-.button.donate { background: #1cb85e; color: #fff; }
+.button.donate { background: var(--donate-green); color: #fff; }
 
 /* The support pair, rounded to match the hero buttons above them rather than
    left at the generic 10px. Not fully круглые: these are shorter than the hero
@@ -1027,12 +1045,15 @@ h2.typed.is-armed .ch.is-on { display: inline; }
    pixels, so it stays proportional at every heading size. */
 h2.typed .caret {
     display: inline-block;
-    width: 0.5em;
+    /* Was 0.5em, which at this size is a block rather than a caret. */
+    width: 0.36em;
     height: 1em;
-    margin-left: 0.06em;
-    background: currentColor;
+    /* About three pixels of air at the heading's size: a caret touching the
+       last letter reads as part of the word. */
+    margin-left: 0.13em;
+    background: var(--donate-green);
     vertical-align: -0.12em;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1060,6 +1081,13 @@ h2.typed .caret {
    still swallowing every click and showing a zoom-out cursor everywhere. Any
    author rule for `display` has to exclude the attribute explicitly. */
 .lightbox[hidden] { display: none; }
+
+/* Focus lands here when it opens, so that Escape and the arrows have a home
+   inside the dialog. It is a container, not a control, and a ring around the
+   whole screen is meaningless: the controls inside keep theirs. */
+.lightbox:focus { outline: none; }
+.lightbox .page:focus-visible,
+.lightbox .shut:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .lightbox {
     position: fixed;

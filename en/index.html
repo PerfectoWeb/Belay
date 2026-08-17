@@ -38,7 +38,7 @@
     </svg></a>
 </header>
 
-<h1><span class="word" style="--fill-step: 0">Keeps</span> <span class="word" style="--fill-step: 1">your</span> <span class="word" style="--fill-step: 2">Mac</span> <span class="word" style="--fill-step: 3">awake</span> <br class="turn"> <span class="word" style="--fill-step: 4">while</span> <span class="word" style="--fill-step: 5">your</span> <span class="word" style="--fill-step: 6">AI</span> <span class="word" style="--fill-step: 7">agent</span> <span class="word" style="--fill-step: 8">works.</span></h1>
+<h1><span class="word" style="--fill-step: 0">Keeps</span> <span class="word" style="--fill-step: 1">your</span> <span class="word" style="--fill-step: 2">Mac</span> <span class="word" style="--fill-step: 3">awake</span> <br class="turn"> <span class="word" style="--fill-step: 4">while</span> <span class="word" style="--fill-step: 5">your</span> <span class="word" style="--fill-step: 6">AI</span> <span class="word" style="--fill-step: 7"><span class="ch">a</span><span class="ch">g</span><span class="ch">e</span><span class="ch">n</span><span class="ch">t</span></span> <span class="word" style="--fill-step: 8"><span class="ch">w</span><span class="ch">o</span><span class="ch">r</span><span class="ch">k</span><span class="ch">s</span><span class="ch">.</span></span></h1>
 
 <p class="lede">Belay keeps your Mac awake while a coding agent is working. When the work stops, Belay gets out of the way and your Mac can sleep normally again.</p>
 
@@ -121,13 +121,97 @@
   });
 </script>
 
-<div class="lightbox" data-lightbox hidden>
+<div class="lightbox" data-lightbox hidden tabindex="-1" role="dialog" aria-modal="true">
     <button class="sheet" type="button" data-close aria-label="Close"></button>
     <img alt="">
     <button class="page back" type="button" data-step="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="page next" type="button" data-step="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
     <button class="shut" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 </div>
+
+<script>
+  (function () {
+    var head = document.querySelector('h1');
+    if (!head) { return; }
+    var words = head.querySelectorAll('.word');
+    var letters = head.querySelectorAll('.ch');
+    if (!letters.length) { return; }
+    // Nothing loops for somebody who asked for less movement. The fill
+    // itself is already guarded in the stylesheet.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+
+    // Paused whenever the heading is off screen or the tab is in the
+    // background, so an animation nobody is looking at costs nothing.
+    var seen = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        seen = entries[0].isIntersecting;
+      }, { threshold: 0.2 }).observe(head);
+    }
+    function idle() { return document.hidden || !seen; }
+    function wait(ms) {
+      return new Promise(function (done) {
+        setTimeout(function tick() {
+          if (idle()) { setTimeout(tick, 400); return; }
+          done();
+        }, ms);
+      });
+    }
+
+    // The fill is the stylesheet's, and its length is the last word's
+    // delay plus its own duration.
+    var FILL = (words.length - 1) * 102 + 600;
+
+    function refill() {
+      head.classList.remove('is-cooling');
+      letters.forEach(function (ch) { ch.classList.remove('hot', 'cold'); });
+      words.forEach(function (word) {
+        // Restarting a CSS animation takes a reset and a reflow read.
+        word.style.animation = 'none';
+        void word.offsetWidth;
+        word.style.animation = '';
+      });
+    }
+
+    // One pass of the green along the letters, leaving `stop` lit. The
+    // letter hands the colour to the next and goes back to white, which
+    // is why only one is hot at a time.
+    async function pass(stop) {
+      for (var i = 0; i <= stop; i++) {
+        if (i > 0) { letters[i - 1].classList.remove('hot'); }
+        letters[i].classList.add('hot');
+        await wait(58);
+      }
+      await wait(200);
+    }
+
+    async function cycle() {
+      for (;;) {
+        refill();
+        await wait(FILL + 2400);
+        // Each pass leaves one more letter lit, from the last backwards,
+        // until the two words are green.
+        for (var stop = letters.length - 1; stop >= 0; stop--) {
+          await pass(stop);
+        }
+        await wait(2400);
+        // Blinking off: green, grey, green, grey, and it stays grey.
+        for (var blink = 0; blink < 3; blink++) {
+          letters.forEach(function (ch) { ch.classList.add('cold'); });
+          await wait(340);
+          if (blink < 2) {
+            letters.forEach(function (ch) { ch.classList.remove('cold'); });
+            await wait(340);
+          }
+        }
+        await wait(2400);
+        head.classList.add('is-cooling');
+        await wait(1400);
+      }
+    }
+    cycle();
+  })();
+</script>
 
 <script>
   // The support heading types itself when it comes into view, once.
@@ -215,7 +299,7 @@
       // A frame, so the browser has the element before the class lands
       // and the fade actually runs.
       requestAnimationFrame(function () { box.classList.add('is-open'); });
-      box.querySelector('.shut').focus();
+      box.focus();
     }
     function drop() {
       open = false;
