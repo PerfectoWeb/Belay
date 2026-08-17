@@ -184,6 +184,14 @@ def wordmark():
 # a rebuild that touched nothing leaves every cache intact. Every script on this
 # site is inline in the page it belongs to, and a page is revalidated anyway, so
 # the stylesheet is the only file that needs this.
+# Cloudflare Web Analytics, on every page except the privacy policy. Cookieless
+# and stores nothing on the visitor's machine, which is why this site carries no
+# consent banner; what it records is spelled out in the policy itself, in all
+# seven languages. A beacon on the page that promises nobody is watching would be
+# an embarrassing thing to serve, which is the rule the stylesheet already
+# follows about fonts.
+ANALYTICS_TOKEN = "8999ea5c44b046c19a08dcf09d5b4336"
+
 STYLE_STAMP = ""
 
 # The same treatment for the social card, and for a sharper reason: Slack,
@@ -205,6 +213,12 @@ def head(code, title, meta, depth, page):
         f"<title>{title}</title>",
         f'<meta name="description" content="{meta}">',
         f'<link rel="stylesheet" href="{up}style.css{STYLE_STAMP}">',
+    ]
+    if page != "privacy/":
+        lines.append(
+            '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"'
+            f" data-cf-beacon='{{\"token\": \"{ANALYTICS_TOKEN}\"}}'></script>")
+    lines += [
         # The icons. Paths are relative on purpose: this site lives under
         # /Belay/, so a root-absolute `/favicon.ico` would point at the domain
         # root, which is not ours. Declaring them explicitly is also what stops
@@ -837,7 +851,7 @@ def privacy(code):
         ("leaves_head", ["leaves_mas", "leaves_direct"], True),
         ("stores_head", ["stores_1", "stores_2"], False),
         ("changes_head", ["changes_1", "changes_2"], False),
-        ("sharing_head", ["sharing_1", "sharing_2"], False),
+        ("sharing_head", ["sharing_1", "sharing_2", "sharing_site"], False),
         ("policy_head", ["policy_1"], False),
         ("contact_head", ["contact_1"], False),
     ]
