@@ -15,6 +15,9 @@
 <meta property="og:image:height" content="640">
 <meta property="og:site_name" content="Belay">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="PerfectoWeb">
+<meta name="copyright" content="PerfectoWeb">
+<link rel="author" href="https://perfecto-web.com">
 <link rel="alternate" hreflang="en" href="https://perfectoweb.github.io/Belay/en/">
 <link rel="alternate" hreflang="ru" href="https://perfectoweb.github.io/Belay/ru/">
 <link rel="alternate" hreflang="de" href="https://perfectoweb.github.io/Belay/de/">
@@ -38,7 +41,7 @@
     </svg></a>
 </header>
 
-<h1><span class="word" style="--fill-step: 0">Keeps</span> <span class="word" style="--fill-step: 1">your</span> <span class="word" style="--fill-step: 2">Mac</span> <span class="word" style="--fill-step: 3">awake</span> <br class="turn"> <span class="word" style="--fill-step: 4">while</span> <span class="word" style="--fill-step: 5">your</span> <span class="word" style="--fill-step: 6">AI</span> <span class="word" style="--fill-step: 7"><span class="ch">a</span><span class="ch">g</span><span class="ch">e</span><span class="ch">n</span><span class="ch">t</span><span class="ch">s</span></span> <span class="word" style="--fill-step: 8"><span class="ch">w</span><span class="ch">o</span><span class="ch">r</span><span class="ch">k</span><span class="ch">.</span></span></h1>
+<h1><span class="word" style="--fill-step: 0">Keeps</span> <span class="word" style="--fill-step: 1">your</span> <span class="word" style="--fill-step: 2">Mac</span> <span class="word" style="--fill-step: 3">awake</span> <br class="turn"> <span class="word" style="--fill-step: 4">while</span> <span class="word" style="--fill-step: 5">your</span> <span class="word" style="--fill-step: 6">AI</span> <span class="word tint" style="--fill-step: 7; --tint-step: 0">agents</span> <span class="word tint" style="--fill-step: 8; --tint-step: 1">work.</span></h1>
 
 <p class="lede">Belay keeps your Mac awake while a coding agent is working. When the work stops, Belay gets out of the way and your Mac can sleep normally again.</p>
 
@@ -134,8 +137,8 @@
     var head = document.querySelector('h1');
     if (!head) { return; }
     var words = Array.prototype.slice.call(head.querySelectorAll('.word'));
-    var letters = head.querySelectorAll('.ch');
-    if (!letters.length) { return; }
+    var tints = head.querySelectorAll('.tint');
+    if (!tints.length) { return; }
     // Nothing loops for somebody who asked for less movement. The fill
     // itself is already guarded in the stylesheet.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
@@ -158,16 +161,18 @@
       });
     }
 
-    // The fill is the stylesheet's, and its length is the last word's
-    // delay plus its own duration. Both numbers live in two places, and
-    // this is the second: change one, change the other.
+    // Both fills are the stylesheet's, and each one lasts the last
+    // word's delay plus its own duration. The three numbers below live
+    // in two places: change one, change the other.
     var FILL = (words.length - 1) * 150 + 900;
+    var GREEN = (tints.length - 1) * 150 + 900;
+    var BLINK = 5 * 340;
 
     function refill() {
+      head.removeAttribute('data-tint');
       head.classList.remove('is-cooling', 'is-lit');
-      words.forEach(function (word) { word.style.removeProperty('--cool-step'); });
-      letters.forEach(function (ch) { ch.classList.remove('hot', 'cold'); });
       words.forEach(function (word) {
+        word.style.removeProperty('--cool-step');
         // Restarting a CSS animation takes a reset and a reflow read.
         word.style.animation = 'none';
         void word.offsetWidth;
@@ -181,10 +186,12 @@
     // choreographed. Returns how many words are in it, which is what the
     // wait afterwards is measured from.
     //
-    // The last two words are left out on purpose: they arrive here already
-    // grey from the blink, and they contain no text of their own to fade.
+    // The two green words are left out on purpose: they arrive here
+    // already grey from the blink, and they hold it.
     function coolOrder() {
-      var pool = words.slice(0, Math.max(0, words.length - 2));
+      var pool = words.filter(function (word) {
+        return !word.classList.contains('tint');
+      });
       if (!pool.length) { return 0; }
       var first = 0;
       for (var i = 0; i < pool.length; i++) {
@@ -201,27 +208,14 @@
       return pool.length;
     }
 
-    // One pass of the green along the letters, leaving `stop` lit. The
-    // letter hands the colour to the next and goes back to white, which
-    // is why only one is hot at a time.
-    async function pass(stop) {
-      for (var i = 0; i <= stop; i++) {
-        if (i > 0) { letters[i - 1].classList.remove('hot'); }
-        letters[i].classList.add('hot');
-        await wait(29);
-      }
-      await wait(100);
-    }
-
     async function cycle() {
       for (;;) {
         refill();
         await wait(FILL + 2400);
-        // Each pass leaves one more letter lit, from the last backwards,
-        // until the two words are green.
-        for (var stop = letters.length - 1; stop >= 0; stop--) {
-          await pass(stop);
-        }
+        // White to green, word after word, the same way grey became
+        // white. One effect, one style, rather than two.
+        head.dataset.tint = 'green';
+        await wait(GREEN + 300);
         // Whole and green: now it is allowed to glow.
         head.classList.add('is-lit');
         await wait(2400);
@@ -229,27 +223,9 @@
         // blinking starts from a flat green and reads as a switch.
         head.classList.remove('is-lit');
         await wait(500);
-        // Blinking off: grey, green, grey, green, and it stays grey.
-        // `hot` comes off as well as `cold` going on. Leaving it meant
-        // both classes on the same letter, and `hot` wins that, so the
-        // grey half of the blink never showed.
-        for (var blink = 0; blink < 3; blink++) {
-          letters.forEach(function (ch) {
-            ch.classList.remove('hot');
-            ch.classList.add('cold');
-          });
-          await wait(340);
-          if (blink < 2) {
-            letters.forEach(function (ch) {
-              ch.classList.remove('cold');
-              ch.classList.add('hot');
-            });
-            await wait(340);
-          }
-        }
+        head.dataset.tint = 'blink';
+        await wait(BLINK);
         await wait(2400);
-        // The two words hold the grey they already have while the white
-        // ones come down to meet it. Nothing brightens on the way.
         // Word by word rather than all together: the last one to go out
         // decides how long this takes, so the wait is measured, not fixed.
         var going = coolOrder();

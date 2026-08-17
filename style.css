@@ -103,32 +103,59 @@ h1 .word {
     to { color: var(--ink); }
 }
 
-/* The last two words are split into letters so the green can travel along them.
-   A letter with no state of its own inherits the word's colour, which is what
-   keeps the fill above working exactly as it did. */
-h1 .ch { transition: color 0.22s ease-out; }
-h1 .ch.cold { color: var(--ink-unfilled); }
+/* The two closing words, which turn green once the white fill has finished and
+   blink out again at the end of the cycle.
 
-/* The whole heading going back to grey at the end of a cycle.
-   This runs the fill backwards as a second animation rather than as a colour
-   declaration, and it has to. `word-fill` ends `forwards`, and a filling
-   animation beats any normal rule in the cascade, so a plain
-   `color: var(--ink-unfilled)` here was fighting the white it was trying to
-   replace. Swapping the animation *name* is a property cascade, which this
-   selector wins outright, and changing the name is also what restarts it.
+   Every colour in here is an animation rather than a `color`, and it has to be.
+   `word-fill` ends `forwards`, and a filling animation beats any normal rule in
+   the cascade, so a plain `color` loses to the white it is trying to replace.
+   Swapping the animation *name* is a property cascade instead, which these
+   selectors win outright, and changing the name is also what restarts it.
 
-   The two lettered words are left out. They arrived at this moment already grey
-   from the blink and they wait there while the white words catch up, which is
-   the whole point of the ending. */
+   The states hang off one attribute rather than off two classes so that they are
+   mutually exclusive by construction. Two equally specific rules would be
+   settled by source order, and a colour that depends on which rule was typed
+   second is a colour waiting to break. */
+h1 .tint {
+    transition: text-shadow 0.5s ease-out;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-    h1.is-cooling .word {
+    /* White to green, one word after the other, on the same step and the same
+       curve as the fill above. It used to travel letter by letter, which worked
+       but read as a second style bolted onto the first. */
+    h1[data-tint="green"] .tint {
+        animation: word-green 0.9s ease-out forwards;
+        animation-delay: calc(var(--tint-step) * 0.15s);
+    }
+
+    /* Five half-cycles, alternating, so it finishes on `to`: green, grey, green,
+       grey, green, grey. `forwards` is what holds that last grey while the white
+       words come down to meet it. */
+    h1[data-tint="blink"] .tint {
+        animation: word-blink 0.34s ease-in-out 5 alternate forwards;
+        animation-delay: 0s;
+    }
+
+    /* The white words going out at the end, one at a time. The green pair is
+       excluded by name: they are already grey and they stay that way. */
+    h1.is-cooling .word:not(.tint) {
         animation: word-cool 0.8s ease-in forwards;
         /* `--cool-step` is written per word by the script, not by the builder,
            because the order is reshuffled on every cycle and a stylesheet cannot
-           shuffle. A word with no step of its own goes at once: that is the two
-           lettered words, which are already grey and paint nothing here. */
+           shuffle. */
         animation-delay: calc(var(--cool-step, 0) * 0.18s);
     }
+}
+
+@keyframes word-green {
+    from { color: var(--ink); }
+    to { color: var(--donate-green); }
+}
+
+@keyframes word-blink {
+    from { color: var(--donate-green); }
+    to { color: var(--ink-unfilled); }
 }
 
 @keyframes word-cool {
@@ -136,31 +163,8 @@ h1 .ch.cold { color: var(--ink-unfilled); }
     to { color: var(--ink-unfilled); }
 }
 
-/* Last, so it wins. `hot` is the one state that must always be visible, and it
-   shares its specificity with `cold`, which a letter can still be carrying from
-   the previous cycle.
-
-   `transition: none` is the whole reason the travelling green looks green. The
-   pass hands the colour on every 58ms while the transition above takes 220ms, so
-   a letter that eased into green never got past a quarter of the way there and
-   the moving green read as a pale smear. It snaps on now, and only the fade back
-   to white is eased, because a letter that has lost the colour is transitioning
-   under the plain `.ch` rule. */
-h1 .ch.hot {
-    color: var(--donate-green);
-    /* Colour snaps, glow does not. One shorthand `transition: none` here killed
-       the glow's fade along with the colour's, and the glow is the one thing in
-       this heading that has to arrive slowly. */
-    transition: color 0s, text-shadow 0.5s ease-out;
-}
-
-/* The glow, once every letter is lit and not before. It hangs on `is-lit` rather
-   than on `hot` so that the travelling green stays flat: a halo under a letter
-   that is about to hand the colour on reads as a bloom smear.
-
-   Taken off again when the blinking starts, which is what makes the blink read
-   as a light being switched off rather than as a colour change. */
-h1.is-lit .ch.hot {
+/* The glow, once both words are green and not while they are getting there. */
+h1.is-lit .tint {
     text-shadow: 0 0 18px color-mix(in srgb, var(--donate-green) 58%, transparent);
 }
 
