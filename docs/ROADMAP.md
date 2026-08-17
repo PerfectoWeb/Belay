@@ -20,7 +20,7 @@ App Store copy is submitted and in review.
 
 <br>
 
-| | Milestone | Status | When, or what it waits on |
+| | Milestone | Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | When, or what it waits on |
 | :---: | :--- | :--- | :--- |
 | 🌱 | First commit | <img src="badges/done.svg" alt="done" height="24"> | [11 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/94ed3d1) |
 | 🔌 | Holds and releases a real power assertion | <img src="badges/done.svg" alt="done" height="24"> | [12 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/pre-release-baseline) |
