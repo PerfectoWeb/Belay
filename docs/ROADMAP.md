@@ -39,12 +39,17 @@ place from here on.
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
 | 🔔 | Say an update is waiting without being asked | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | A shape for it that does not nag. See the note below |
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
+| 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
+| 🗂 | Listed on `macmenubar.com` | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026 |
+| 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
 | 📚 | Listed in `awesome-mac` | <img src="badges/next.svg" alt="next" height="24"> | Cleared: 1.2.0 is out, so the download matches the README |
 | 📥 | **First 1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues. Counted on GitHub releases only, so Homebrew and the App Store are not in the number |
 | 🗣 | Five languages read by people who speak them | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **First 100 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
 | 📈 | 5000 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | A write-up, or one thread that goes somewhere |
-| 🧩 | Listed in `awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 100 stars, or 28 Aug 2026, whichever comes first |
+| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, one line in the tooling section |
+| 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, same shape |
+| 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, plus an entry in `applications.json` |
 | 📰 | First write-up anywhere | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something to say beyond "an app exists" |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
 | 🌟 | **First 1000 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
@@ -81,8 +86,6 @@ on only started existing in 1.2.0.
 
 ## Where the detail lives
 
-[`docs/CATALOGUES.md`](CATALOGUES.md) has every list worth submitting to,
-its rules, and the entry text already written.
 [`BLOCKERS.md`](BLOCKERS.md) has the things waiting on an account or a decision.
 [`docs/09-MILESTONES.md`](09-MILESTONES.md) is the engineering history,
 closed through M7.
