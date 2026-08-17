@@ -80,7 +80,7 @@
 </div>
 
 
-<h2>搭把手</h2>
+<h2 class="typed" data-typed><span class="ch" style="--ch: 0">搭</span><span class="ch" style="--ch: 1">把</span><span class="ch" style="--ch: 2">手</span><span class="caret" aria-hidden="true"></span></h2>
 
 <p>Belay 免费，而且一直都会免费。如果它保住了你的一次运行，在 GitHub 上加个星标不花什么，也能帮别人找到它。错误报告和翻译比钱更有价值。</p>
 
@@ -119,6 +119,29 @@
   });
 </script>
 
+<div class="lightbox" data-lightbox hidden>
+    <button class="sheet" type="button" data-close aria-label="Close"></button>
+    <img alt="">
+    <button class="page back" type="button" data-step="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="page next" type="button" data-step="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="shut" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<script>
+  // The support heading types itself when it comes into view, once.
+  document.querySelectorAll('[data-typed]').forEach(function (head) {
+    if (!('IntersectionObserver' in window)) { head.classList.add('is-typed'); return; }
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-typed');
+        watch.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+    watch.observe(head);
+  });
+</script>
+
 <script>
   document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
     var frames = gallery.querySelectorAll('.frame');
@@ -150,6 +173,44 @@
     gallery.querySelectorAll('.turn').forEach(function (zone) {
       var step = Number(zone.dataset.step);
       zone.addEventListener('click', function () { show(at + step, step < 0); });
+    });
+
+    // The middle of the picture, which the two zones deliberately leave
+    // alone, opens it full size.
+    var box = document.querySelector('[data-lightbox]');
+    if (!box) { return; }
+    var big = box.querySelector('img');
+    var open = false;
+    function lift(index) {
+      index = (index + frames.length) % frames.length;
+      at = index;
+      big.src = frames[index].src;
+      box.hidden = false;
+      open = true;
+      // A frame, so the browser has the element before the class lands
+      // and the fade actually runs.
+      requestAnimationFrame(function () { box.classList.add('is-open'); });
+      box.querySelector('.shut').focus();
+    }
+    function drop() {
+      open = false;
+      box.classList.remove('is-open');
+      // Long enough for the fade out, then really gone.
+      setTimeout(function () { if (!open) { box.hidden = true; } }, 260);
+      show(at, false);
+    }
+    gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });
+    box.querySelectorAll('[data-close]').forEach(function (shut) {
+      shut.addEventListener('click', drop);
+    });
+    box.querySelectorAll('.page').forEach(function (page) {
+      page.addEventListener('click', function () { lift(at + Number(page.dataset.step)); });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (!open) { return; }
+      if (event.key === 'Escape') { drop(); }
+      if (event.key === 'ArrowRight') { lift(at + 1); }
+      if (event.key === 'ArrowLeft') { lift(at - 1); }
     });
   });
 </script>

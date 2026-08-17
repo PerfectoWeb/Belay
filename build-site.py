@@ -339,6 +339,31 @@ def gallery(code, t):
     return lines
 
 
+
+def typed_heading(text):
+    """A heading that types itself, one letter at a time, with a cursor.
+
+    Each letter is its own span carrying its index; the stylesheet turns the
+    index into a delay. The letters are `display: none` until their turn, not
+    merely transparent, so the cursor after them advances as the words appear:
+    hidden letters that still take up space would leave the cursor sitting at
+    the end from the first frame.
+
+    Spaces become non-breaking, because a `display: none` run of letters either
+    side of an ordinary space collapses it and the words jump together as they
+    arrive.
+
+    It starts when the heading is scrolled into view rather than on load; that is
+    the one line of script this needs, and without the script the heading is
+    simply there, which is the same bargain the gallery and the disclosure make.
+    """
+    out = []
+    for index, letter in enumerate(text):
+        shown = "&#160;" if letter == " " else letter
+        out.append(f'<span class="ch" style="--ch: {index}">{shown}</span>')
+    return "".join(out) + '<span class="caret" aria-hidden="true"></span>'
+
+
 def filled_heading(text):
     """The h1, one span per word, each carrying its place in the order.
 
@@ -423,7 +448,7 @@ def landing(code):
     ] + gallery(code, t) + [
         "",
         "",
-        f'<h2>{t["support_head"]}</h2>',
+        f'<h2 class="typed" data-typed>{typed_heading(t["support_head"])}</h2>',
         "",
         f'<p>{t["support_body"]}</p>',
         "",
@@ -473,6 +498,37 @@ def landing(code):
         # what reveals the dots and the click zones: they are hidden until
         # something can answer them, because a pointer cursor over a strip that
         # does nothing is a promise the page cannot keep.
+        # The lightbox lives outside every section so nothing can clip it, and
+        # carries `hidden` so it does not exist for anybody without the script.
+        '<div class="lightbox" data-lightbox hidden>',
+        '    <button class="sheet" type="button" data-close aria-label="Close"></button>',
+        '    <img alt="">',
+        '    <button class="page back" type="button" data-step="-1" aria-label="Previous">'
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
+        ' stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>',
+        '    <button class="page next" type="button" data-step="1" aria-label="Next">'
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
+        ' stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>',
+        '    <button class="shut" type="button" data-close aria-label="Close">'
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
+        ' stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>',
+        "</div>",
+        "",
+        "<script>",
+        "  // The support heading types itself when it comes into view, once.",
+        "  document.querySelectorAll('[data-typed]').forEach(function (head) {",
+        "    if (!('IntersectionObserver' in window)) { head.classList.add('is-typed'); return; }",
+        "    var watch = new IntersectionObserver(function (entries) {",
+        "      entries.forEach(function (entry) {",
+        "        if (!entry.isIntersecting) { return; }",
+        "        entry.target.classList.add('is-typed');",
+        "        watch.unobserve(entry.target);",
+        "      });",
+        "    }, { threshold: 0.6 });",
+        "    watch.observe(head);",
+        "  });",
+        "</script>",
+        "",
         "<script>",
         "  document.querySelectorAll('[data-gallery]').forEach(function (gallery) {",
         "    var frames = gallery.querySelectorAll('.frame');",
@@ -504,6 +560,44 @@ def landing(code):
         "    gallery.querySelectorAll('.turn').forEach(function (zone) {",
         "      var step = Number(zone.dataset.step);",
         "      zone.addEventListener('click', function () { show(at + step, step < 0); });",
+        "    });",
+        "",
+        "    // The middle of the picture, which the two zones deliberately leave",
+        "    // alone, opens it full size.",
+        "    var box = document.querySelector('[data-lightbox]');",
+        "    if (!box) { return; }",
+        "    var big = box.querySelector('img');",
+        "    var open = false;",
+        "    function lift(index) {",
+        "      index = (index + frames.length) % frames.length;",
+        "      at = index;",
+        "      big.src = frames[index].src;",
+        "      box.hidden = false;",
+        "      open = true;",
+        "      // A frame, so the browser has the element before the class lands",
+        "      // and the fade actually runs.",
+        "      requestAnimationFrame(function () { box.classList.add('is-open'); });",
+        "      box.querySelector('.shut').focus();",
+        "    }",
+        "    function drop() {",
+        "      open = false;",
+        "      box.classList.remove('is-open');",
+        "      // Long enough for the fade out, then really gone.",
+        "      setTimeout(function () { if (!open) { box.hidden = true; } }, 260);",
+        "      show(at, false);",
+        "    }",
+        "    gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });",
+        "    box.querySelectorAll('[data-close]').forEach(function (shut) {",
+        "      shut.addEventListener('click', drop);",
+        "    });",
+        "    box.querySelectorAll('.page').forEach(function (page) {",
+        "      page.addEventListener('click', function () { lift(at + Number(page.dataset.step)); });",
+        "    });",
+        "    document.addEventListener('keydown', function (event) {",
+        "      if (!open) { return; }",
+        "      if (event.key === 'Escape') { drop(); }",
+        "      if (event.key === 'ArrowRight') { lift(at + 1); }",
+        "      if (event.key === 'ArrowLeft') { lift(at - 1); }",
         "    });",
         "  });",
         "</script>",

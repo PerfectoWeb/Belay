@@ -17,7 +17,7 @@
        one is tuned for reading a paragraph, and at 42px it sat so close to the
        ink that the fill was hard to see at all. Still comfortably above the
        page, so an unfilled word is read rather than guessed at. */
-    --ink-unfilled: #c3c9d4;
+    --ink-unfilled: #d5dae2;
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
     interpolate-size: allow-keywords;
@@ -32,7 +32,7 @@
         --rule: #252c38;
         --accent: #5b93ff;
         --give: #29d98a;
-        --ink-unfilled: #454c58;
+        --ink-unfilled: #343a44;
     }
 }
 
@@ -686,7 +686,14 @@ h1 .turn { display: inline; }
        label beside a one-line one is what makes equal halves look unequal.
        Full width also gives the primary action the whole thumb. */
     .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
-    .actions.get .button { text-align: center; }
+
+    /* Not `text-align: center`. That centred the labels inside the full-width
+       button and left the mark against the left edge, so the icon and the words
+       it belongs to drifted apart. Centring the flex row keeps them one object;
+       the labels still share a left edge with each other, which is what makes
+       two lines of different length read as a block rather than as a stack. */
+    .actions.get .button.stacked { justify-content: center; }
+    .actions.get .button.stacked .lines { text-align: left; }
 
     /* 11 — the pair in the footer shares the width instead. Both labels are
        short enough to fit, and neither of them is the reason anybody is here. */
@@ -998,3 +1005,144 @@ footer .fine + .copyright { margin-top: 12px; }
     0% { opacity: 0.9; transform: scale(1); }
     100% { opacity: 0; transform: scale(2.6); }
 }
+
+/* The support heading, typed.
+   ---------------------------------------------------------------------------
+   No change of typeface: the letters are the same as every other h2, they simply
+   arrive one at a time. A monospace typewriter effect using `ch` widths would
+   have meant swapping the font, which is the one thing not to do here.
+
+   Nothing types until the script marks the heading, and without the script the
+   base rule below leaves every letter in place. */
+/* `display` in a keyframe needs `transition-behavior: allow-discrete`-era
+   support. Where it is missing the letters would never come back, so the hidden
+   state is set only where the animation can undo it. */
+@supports (transition-behavior: allow-discrete) {
+    h2.typed .ch { display: none; }
+
+    h2.typed.is-typed .ch {
+        animation: type-in 1ms steps(1) forwards;
+        animation-delay: calc(var(--ch) * 55ms);
+    }
+}
+
+@keyframes type-in {
+    to { display: inline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    h2.typed .ch { display: inline; }
+    h2.typed.is-typed .ch { animation: none; }
+}
+
+/* A block that goes on blinking after the words have landed, because a cursor
+   that stops is a cursor that looks broken. Sized from the type rather than in
+   pixels, so it stays proportional at every heading size. */
+h2.typed .caret {
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    margin-left: 0.06em;
+    background: currentColor;
+    vertical-align: -0.12em;
+    opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    h2.typed .caret { animation: caret-blink 1.1s steps(1) infinite; }
+}
+
+@keyframes caret-blink {
+    0%, 49% { opacity: 0.85; }
+    50%, 100% { opacity: 0; }
+}
+
+/* The lightbox.
+   ---------------------------------------------------------------------------
+   Opened by clicking the middle of a slide, which is the part the two turning
+   zones deliberately leave alone. Escape closes it, the arrow keys page through
+   it, and the backdrop is a button so a click anywhere off the picture closes it
+   too.
+
+   The ground is the page's own colour at high opacity plus a blur, so it reads
+   as the same room with the lights down rather than as a black hole; that also
+   means it is right in both themes without a second set of colours. */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    opacity: 0;
+    transition: opacity 0.24s ease-out;
+}
+
+.lightbox.is-open { opacity: 1; }
+
+/* The backdrop, and the click target that closes. A button rather than a div so
+   the keyboard can reach it and so it announces itself. */
+.lightbox .sheet {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    padding: 0;
+    background: color-mix(in srgb, var(--page) 78%, transparent);
+    backdrop-filter: blur(18px) saturate(1.1);
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    position: relative;
+    max-width: min(1280px, 100%);
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    /* Arrives with the fade rather than snapping to full size inside it. */
+    transform: scale(0.985);
+    transition: transform 0.28s cubic-bezier(0.22, 1.1, 0.36, 1);
+}
+
+.lightbox.is-open img { transform: none; }
+
+.lightbox .page,
+.lightbox .shut {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--page) 70%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.18s ease-out, transform 0.18s ease-out;
+}
+
+.lightbox .page svg,
+.lightbox .shut svg { width: 20px; height: 20px; }
+
+.lightbox .page:hover,
+.lightbox .shut:hover { background: var(--panel); transform: scale(1.06); }
+
+.lightbox .page.back { left: 18px; }
+.lightbox .page.next { right: 18px; }
+.lightbox .shut { top: 18px; right: 18px; }
+
+/* On a phone the arrows would sit on top of the picture, so they go under it and
+   the close button stays where a thumb expects it. */
+@media (max-width: 560px) {
+    .lightbox { padding: 16px; }
+    .lightbox .page { top: auto; bottom: 18px; }
+    .lightbox .page.back { left: 24%; }
+    .lightbox .page.next { right: 24%; }
+}
+
+/* The middle of a slide is what opens it, so say so. */
+.gallery.is-live .frames { cursor: zoom-in; }

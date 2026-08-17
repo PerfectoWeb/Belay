@@ -82,7 +82,7 @@
 </div>
 
 
-<h2>Donner un coup de main</h2>
+<h2 class="typed" data-typed><span class="ch" style="--ch: 0">D</span><span class="ch" style="--ch: 1">o</span><span class="ch" style="--ch: 2">n</span><span class="ch" style="--ch: 3">n</span><span class="ch" style="--ch: 4">e</span><span class="ch" style="--ch: 5">r</span><span class="ch" style="--ch: 6">&#160;</span><span class="ch" style="--ch: 7">u</span><span class="ch" style="--ch: 8">n</span><span class="ch" style="--ch: 9">&#160;</span><span class="ch" style="--ch: 10">c</span><span class="ch" style="--ch: 11">o</span><span class="ch" style="--ch: 12">u</span><span class="ch" style="--ch: 13">p</span><span class="ch" style="--ch: 14">&#160;</span><span class="ch" style="--ch: 15">d</span><span class="ch" style="--ch: 16">e</span><span class="ch" style="--ch: 17">&#160;</span><span class="ch" style="--ch: 18">m</span><span class="ch" style="--ch: 19">a</span><span class="ch" style="--ch: 20">i</span><span class="ch" style="--ch: 21">n</span><span class="caret" aria-hidden="true"></span></h2>
 
 <p>Belay est gratuit et le restera. S'il vous a sauvé une exécution, une étoile sur GitHub ne coûte rien et aide les autres à le trouver. Les rapports de bugs et les traductions valent plus que l'argent.</p>
 
@@ -121,6 +121,29 @@
   });
 </script>
 
+<div class="lightbox" data-lightbox hidden>
+    <button class="sheet" type="button" data-close aria-label="Close"></button>
+    <img alt="">
+    <button class="page back" type="button" data-step="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="page next" type="button" data-step="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="shut" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+
+<script>
+  // The support heading types itself when it comes into view, once.
+  document.querySelectorAll('[data-typed]').forEach(function (head) {
+    if (!('IntersectionObserver' in window)) { head.classList.add('is-typed'); return; }
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-typed');
+        watch.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+    watch.observe(head);
+  });
+</script>
+
 <script>
   document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
     var frames = gallery.querySelectorAll('.frame');
@@ -152,6 +175,44 @@
     gallery.querySelectorAll('.turn').forEach(function (zone) {
       var step = Number(zone.dataset.step);
       zone.addEventListener('click', function () { show(at + step, step < 0); });
+    });
+
+    // The middle of the picture, which the two zones deliberately leave
+    // alone, opens it full size.
+    var box = document.querySelector('[data-lightbox]');
+    if (!box) { return; }
+    var big = box.querySelector('img');
+    var open = false;
+    function lift(index) {
+      index = (index + frames.length) % frames.length;
+      at = index;
+      big.src = frames[index].src;
+      box.hidden = false;
+      open = true;
+      // A frame, so the browser has the element before the class lands
+      // and the fade actually runs.
+      requestAnimationFrame(function () { box.classList.add('is-open'); });
+      box.querySelector('.shut').focus();
+    }
+    function drop() {
+      open = false;
+      box.classList.remove('is-open');
+      // Long enough for the fade out, then really gone.
+      setTimeout(function () { if (!open) { box.hidden = true; } }, 260);
+      show(at, false);
+    }
+    gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });
+    box.querySelectorAll('[data-close]').forEach(function (shut) {
+      shut.addEventListener('click', drop);
+    });
+    box.querySelectorAll('.page').forEach(function (page) {
+      page.addEventListener('click', function () { lift(at + Number(page.dataset.step)); });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (!open) { return; }
+      if (event.key === 'Escape') { drop(); }
+      if (event.key === 'ArrowRight') { lift(at + 1); }
+      if (event.key === 'ArrowLeft') { lift(at - 1); }
     });
   });
 </script>
