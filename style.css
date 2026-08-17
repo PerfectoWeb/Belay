@@ -730,14 +730,9 @@ h1 .turn { display: inline; }
 @media (max-width: 560px) {
     h1 .turn { display: none; }
 
-    /* On a phone the two buttons share the width instead of sitting
-       at their own natural sizes. Two pills of different lengths on one row
-       read as a primary and an afterthought; equal halves read as a choice,
-       and both are big enough to hit. */
-    /* The pair that installs the app goes full width, one per row. Half a
-       phone is not enough for "Download for macOS": it wraps, and a two-line
-       label beside a one-line one is what makes equal halves look unequal.
-       Full width also gives the primary action the whole thumb. */
+    /* Below 375 the three go full width, one per row: half a phone is not
+       enough for "Download for macOS", and a two-line label beside a one-line
+       one is what makes equal halves look unequal. */
     .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
 
     /* Left aligned, all three, with the inset the buttons already carry. Centring
@@ -751,12 +746,43 @@ h1 .turn { display: inline; }
     .actions.get .button.stacked { justify-content: flex-start; }
     .actions.get .button.stacked .lines { text-align: left; }
 
-    /* One height for the three of them. The store button carries a 19px name
-       where the others carry a 17px one, so left alone it stands a little taller
-       than its neighbours, and three full-width buttons in a column are exactly
-       where two pixels show. */
+    /* One height across the group. The store button carries a 19px name where
+       the others carry a 17px one, so in the column below 375 it stands a pixel
+       taller unless its padding gives that pixel back. */
     .actions.get .button.stacked { min-height: 62px; }
     .actions.get .button.stacked.appstore { padding-top: 10px; padding-bottom: 10px; }
+
+    /* From 375 up, which is every current iPhone, the download and the store
+       share the first row and the source code takes the second. The store
+       shrinks to its glyph: the download label needs the room, and the store
+       badge is recognisable without its words. Below that the column above
+       stands, because the longest label, "Telecharger pour macOS", stops
+       fitting beside it and a lone tile on its own row reads as a mistake. */
+    @media (min-width: 375px) {
+        .actions.get { flex-direction: row; flex-wrap: wrap; }
+        .actions.get .button.stacked.primary { flex: 1 1 auto; }
+        .actions.get .button.stacked:not(.primary):not(.appstore) { flex: 1 1 100%; }
+
+        /* Tighter than the desktop inset, and the same on all three so the
+           icons still share one left edge. The room this frees is what keeps
+           the store button on the first row in every language. */
+        .actions.get .button.stacked { padding-left: 14px; padding-right: 14px; gap: 10px; }
+
+        /* Down to its glyph: 52 wide against the 62 it inherits in height,
+           which is above the 44px touch minimum and reads as one mark rather
+           than as a button with its words cut off. */
+        .actions.get .button.stacked.appstore {
+            flex: 0 0 auto;
+            width: 52px;
+            padding-left: 0;
+            padding-right: 0;
+            justify-content: center;
+        }
+
+        .actions.get .button.stacked.appstore .lines { display: none; }
+
+        .actions.get .button.stacked.appstore .mark { width: 25px; height: 22px; }
+    }
 
     /* The pair in the footer shares the width instead. Both labels are
        short enough to fit, and neither of them is the reason anybody is here. */

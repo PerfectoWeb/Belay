@@ -493,7 +493,10 @@ def landing(code):
         f'<span class="under">{t["version"].format(version=VERSION)}</span></span>'
         f'{SPARKLE}{SPARK_BED}</a>',
     ] + ([
-        f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}">'
+        # The words inside are hidden on a phone, where the button shrinks to
+        # its glyph, so the name has to live on the link itself.
+        f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}" '
+        f'aria-label="{t["appstore_top"]} {t["appstore_name"]}">'
         f'{APPSTORE_MARK}<span class="lines">'
         f'<span class="under">{t["appstore_top"]}</span>'
         f'<span class="lead">{t["appstore_name"]}</span></span></a>',
