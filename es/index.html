@@ -159,8 +159,9 @@
     }
 
     // The fill is the stylesheet's, and its length is the last word's
-    // delay plus its own duration.
-    var FILL = (words.length - 1) * 102 + 600;
+    // delay plus its own duration. Both numbers live in two places, and
+    // this is the second: change one, change the other.
+    var FILL = (words.length - 1) * 150 + 900;
 
     function refill() {
       head.classList.remove('is-cooling');
@@ -195,18 +196,30 @@
           await pass(stop);
         }
         await wait(2400);
-        // Blinking off: green, grey, green, grey, and it stays grey.
+        // Blinking off: grey, green, grey, green, and it stays grey.
+        // `hot` comes off as well as `cold` going on. Leaving it meant
+        // both classes on the same letter, and `hot` wins that, so the
+        // grey half of the blink never showed.
         for (var blink = 0; blink < 3; blink++) {
-          letters.forEach(function (ch) { ch.classList.add('cold'); });
+          letters.forEach(function (ch) {
+            ch.classList.remove('hot');
+            ch.classList.add('cold');
+          });
           await wait(340);
           if (blink < 2) {
-            letters.forEach(function (ch) { ch.classList.remove('cold'); });
+            letters.forEach(function (ch) {
+              ch.classList.remove('cold');
+              ch.classList.add('hot');
+            });
             await wait(340);
           }
         }
         await wait(2400);
+        // The two words hold the grey they already have while the white
+        // ones come down to meet it. Nothing brightens on the way.
         head.classList.add('is-cooling');
         await wait(1400);
+        await wait(900);
       }
     }
     cycle();

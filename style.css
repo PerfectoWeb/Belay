@@ -20,7 +20,7 @@
        one is tuned for reading a paragraph, and at 42px it sat so close to the
        ink that the fill was hard to see at all. Still comfortably above the
        page, so an unfilled word is read rather than guessed at. */
-    --ink-unfilled: #e0e4ea;
+    --ink-unfilled: #e9edf2;
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
     interpolate-size: allow-keywords;
@@ -35,7 +35,7 @@
         --rule: #252c38;
         --accent: #5b93ff;
         --give: #29d98a;
-        --ink-unfilled: #2b3038;
+        --ink-unfilled: #232830;
     }
 }
 
@@ -91,10 +91,11 @@ h1 .word {
 @media (prefers-reduced-motion: no-preference) {
     h1 .word {
         color: var(--ink-unfilled);
-        /* A fifth slower than the first attempt, which read as a flicker rather
-           than as a sentence filling in. */
-        animation: word-fill 0.6s ease-out forwards;
-        animation-delay: calc(var(--fill-step) * 0.102s);
+        /* Slowed twice now. The first attempt read as a flicker; this one is
+           half a second longer again, in the step as well as the fade, so a
+           longer translation still gains the same half second. */
+        animation: word-fill 0.9s ease-out forwards;
+        animation-delay: calc(var(--fill-step) * 0.15s);
     }
 }
 
@@ -108,19 +109,43 @@ h1 .word {
 h1 .ch { transition: color 0.22s ease-out; }
 h1 .ch.cold { color: var(--ink-unfilled); }
 
-/* The whole heading going back to grey at the end of a cycle. Slower than the
-   letters and eased in, so it reads as a light going out rather than as a
-   repaint. */
-h1.is-cooling .word,
-h1.is-cooling .ch { transition: color 0.9s ease-in; }
-h1.is-cooling .word { color: var(--ink-unfilled); }
+/* The whole heading going back to grey at the end of a cycle.
+   This runs the fill backwards as a second animation rather than as a colour
+   declaration, and it has to. `word-fill` ends `forwards`, and a filling
+   animation beats any normal rule in the cascade, so a plain
+   `color: var(--ink-unfilled)` here was fighting the white it was trying to
+   replace. Swapping the animation *name* is a property cascade, which this
+   selector wins outright, and changing the name is also what restarts it.
+
+   The two lettered words are left out. They arrived at this moment already grey
+   from the blink and they wait there while the white words catch up, which is
+   the whole point of the ending. */
+@media (prefers-reduced-motion: no-preference) {
+    h1.is-cooling .word {
+        animation: word-cool 0.9s ease-in forwards;
+        animation-delay: 0s;
+    }
+}
+
+@keyframes word-cool {
+    from { color: var(--ink); }
+    to { color: var(--ink-unfilled); }
+}
 
 /* Last, so it wins. `hot` is the one state that must always be visible, and it
-   shares its specificity with two rules above: `cold`, which a letter can still
-   be carrying from the previous cycle, and the cooling rule, which used to force
-   the letters to `inherit` and swallowed the green whenever the two overlapped.
-   That rule is gone: a cooling letter is already the same grey through `cold`. */
-h1 .ch.hot { color: var(--donate-green); }
+   shares its specificity with `cold`, which a letter can still be carrying from
+   the previous cycle.
+
+   `transition: none` is the whole reason the travelling green looks green. The
+   pass hands the colour on every 58ms while the transition above takes 220ms, so
+   a letter that eased into green never got past a quarter of the way there and
+   the moving green read as a pale smear. It snaps on now, and only the fade back
+   to white is eased, because a letter that has lost the colour is transitioning
+   under the plain `.ch` rule. */
+h1 .ch.hot {
+    color: var(--donate-green);
+    transition: none;
+}
 
 h2 {
     font-size: 28px;
