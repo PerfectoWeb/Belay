@@ -512,6 +512,23 @@ has not started.
       entitlement or plist warning in the email that follows.
 - [ ] Submit.
 
+**Two things learned the hard way in August 2026, worth reading before the next
+submission**
+
+- **Test the feature before defending the entitlement.** Two review rounds were
+  spent arguing that the listener was real and that `network.client` was not a
+  substitute. Every word of that was true and all of it was beside the point: the
+  feature behind the entitlement did not work in a sandboxed build at all. When a
+  reviewer says an entitlement has no matching functionality, run the feature in
+  the sandboxed build before writing a word of reply.
+- **Never upload a bundle built by the test scheme.** The Debug MAS product in
+  `build/DerivedData-MAS` carries Xcode's test-host injections: a
+  `temporary-exception.files.absolute-path.read-only` for `/` and three
+  `mach-lookup` exceptions. That is precisely the "more than the minimum set of
+  entitlements" the same guideline is about. Ship the archive export and nothing
+  else. `Belay-MAS.entitlements` itself is clean and `SandboxAccessTests` asserts
+  it.
+
 **After a rejection, if one comes**
 
 - [ ] Reply in Resolution Center with the relevant note above rather than a
