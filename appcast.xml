@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Belay</title>
+        <item>
+            <title>1.2.0</title>
+            <pubDate>Mon, 17 Aug 2026 11:39:37 +0300</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.2.0/Belay-1.2.0.dmg" length="5052451" type="application/octet-stream" sparkle:edSignature="aeqvVGdmyWB+PvvsFUZDmFkU18s0ivMwDaE5S6V9ztPwIZptAnVcwuyPajnzmtFQUI8o14/0UrI7+i/sLZGcBA=="/>
+        </item>
+    </channel>
+</rss>
