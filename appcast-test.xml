@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  A TEST feed. Not the one the app ships with.
+
+  It exists so the download-and-install path can be exercised before there is a
+  release newer than the running build. The payload is the real, signed,
+  notarized v1.1.0 disk image; the version it advertises is deliberately absurd
+  so that any build offers it.
+
+  Installing from this feed downgrades the app to 1.1.0, which is the point: the
+  bytes that arrive are checked against the public key compiled into the running
+  build, so a successful install proves the whole chain. Rebuild afterwards.
+
+  Production is appcast.xml. Only a debug build with Pretend Update switched on
+  ever reads this file. Delete it once the path is confirmed.
+-->
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Belay test feed</title>
+    <item>
+      <title>1.9.9</title>
+      <sparkle:version>999</sparkle:version>
+      <sparkle:shortVersionString>1.9.9</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <p>A test of the update path. The download is the real v1.1.0 disk image,
+        signed with Belay's own key.</p>
+      ]]></description>
+      <enclosure
+        url="https://github.com/PerfectoWeb/Belay/releases/download/v1.1.0/Belay-1.1.0.dmg"
+        sparkle:edSignature="FbBBo9CBjn0UGiJGsrW4R2YYY49IQ6lw3zvAWmdCKM0g+njHtnaOWeffLIsxthJQ9FtmC5hnr6887rzjRjfyDg=="
+        length="4019650"
+        type="application/octet-stream" />
+    </item>
+  </channel>
+</rss>
