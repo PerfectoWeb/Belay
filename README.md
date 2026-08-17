@@ -10,6 +10,7 @@
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 ![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)<br>
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
+[![Mac App Store](https://img.shields.io/badge/Mac%20App%20Store-Belay-1f6bff?style=flat&logo=apple&logoColor=white)](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644)
 [![Notarized](https://img.shields.io/badge/notarized-by%20Apple-111?style=flat&logo=apple&logoColor=white)](#-verify-what-you-downloaded)
 
 <img src="Promo/Social/spacer.png" height="12" alt="">
@@ -81,8 +82,9 @@ one extra word.
 
 #### 🍎 From the Mac App Store
 
-> ⏳ **Waiting on review.** The sandboxed build exists and is what the App Store
-> target builds; the listing is not up yet.
+[**Belay - Awake for AI Agents**](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644),
+free, macOS 14 or later. The sandboxed build, so it updates through the store
+rather than through Sparkle and has no network access at all.
 
 #### 🔨 Build it yourself
 

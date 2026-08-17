@@ -13,8 +13,8 @@ release that closed the line, and nothing is marked done before it has one.
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.2.0 is out** on GitHub and Homebrew, and updates in place from here on. The
-App Store copy is submitted and in review.
+**1.2.0 is out** on GitHub, on Homebrew and on the Mac App Store, and updates in
+place from here on.
 
 </div>
 
@@ -36,7 +36,7 @@ App Store copy is submitted and in review.
 | 🎁 | A "What's New" screen after every update | <img src="badges/done.svg" alt="done" height="24"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/0fb678f) |
 | ⬇️ | Belay installs its own updates | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 | 📦 | **v1.2.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
-| 🏪 | **Live on the Mac App Store** | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026, with the 1.2.0 build |
+| 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
 | 🔔 | Say an update is waiting without being asked | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | A shape for it that does not nag. See the note below |
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
 | 📚 | Listed in `awesome-mac` | <img src="badges/next.svg" alt="next" height="24"> | Cleared: 1.2.0 is out, so the download matches the README |

@@ -302,7 +302,9 @@ and one release.
 ### D7 — Bundle identifier `com.perfectoweb.belay`
 Derived from the user's domain. Defined once in `project.yml`
 (`ORG_IDENTIFIER`) and `Sources/BelayApp/Branding.swift`, per `docs/NAMING.md`.
-The App Store name-conflict search is still outstanding — due before M6.
+The App Store name-conflict search was done and found no conflict
+(`docs/BLOCKERS.md` B4, 2026-08-16). The listing is live as
+`Belay - Awake for AI Agents`.
 
 ---
 
@@ -350,7 +352,10 @@ folder nobody touched emit `.working`.
 
 ### M6 and M7 — done
 
-**M6:** `Belay` and `Belay-MAS` are one XcodeGen target template instantiated
+**M6:** the App Store listing went live on 2026-08-17 as
+`Belay - Awake for AI Agents`, version 1.2.0, free, macOS 14 or later, seven
+languages: <https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644>.
+`Belay` and `Belay-MAS` are one XcodeGen target template instantiated
 twice — no forked source, five attributes differ. Both build. `BelayChannel`
 carries `DistributionChannel` and `UpdateChannel`; it was `BelayTipJar` until
 the unused StoreKit tip jar was deleted on 2026-08-16. Release, notarize, sign-update and MAS-audit scripts are
@@ -843,8 +848,7 @@ In rough order of value:
 
 ## Open questions
 
-- App Store name-conflict search for "Belay" (`docs/NAMING.md`) — before M6.
-- macOS 14 and 15 behaviour is unverified; only 26.4 was available.
+- macOS 14 behaviour is unverified; 15 and 26 have both been checked.
 - Hook events beyond `UserPromptSubmit`/`SessionEnd` are mapped from the live
   reference but not yet observed on this machine — headless `claude -p` cannot
   authenticate here. Re-verify during the M3 manual pass.
