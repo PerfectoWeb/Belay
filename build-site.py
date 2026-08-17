@@ -679,7 +679,7 @@ def landing(code):
         "        await wait(GREEN + 3200);",
         "        head.dataset.tint = 'blink';",
         "        await wait(BLINK);",
-        "        await wait(2400);",
+        "        await wait(800);",
         "        // Word by word rather than all together: the last one to go out",
         "        // decides how long this takes, so the wait is measured, not fixed.",
         "        var going = coolOrder();",
