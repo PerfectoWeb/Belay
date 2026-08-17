@@ -118,18 +118,6 @@ HEART = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
          ' 1.74C14.5 10.5 8 14.25 8 14.25Z"/></svg>')
 
 
-# The panel screenshot, in the language of the page it sits on. English,
-# Russian and Chinese share the English shot: the app speaks all three, but the
-# picture we have of it does not, and a screenshot in one language under a
-# heading in another is worse than one that is plainly foreign.
-PANEL = {
-    "de": "panel-de.png",
-    "es": "panel-es.png",
-    "fr": "panel-fr.png",
-    "it": "panel-it.png",
-}
-
-
 # The real lockup from Resources/Brand, not a redrawing of it: the file is read
 # here and taken apart, so the drawing has one home and this is not a second
 # copy of it that can drift.
@@ -580,9 +568,9 @@ def landing(code):
         "</div>",
         "",
         # The headline's cycle: fill white, the two closing words turn green,
-        # they glow, they blink out, then the white words go grey one at a time
-        # and it starts over. Every colour here is an animation rather than a
-        # `color`, for the reason spelled out in the stylesheet.
+        # they blink out, then the white words go grey one at a time and it
+        # starts over. Every colour here is an animation rather than a `color`,
+        # for the reason spelled out in the stylesheet.
         "<script>",
         "  (function () {",
         "    var head = document.querySelector('h1');",
@@ -666,8 +654,6 @@ def landing(code):
         "        // White to green, word after word, the same way grey became",
         "        // white. One effect, one style, rather than two.",
         "        head.dataset.tint = 'green';",
-        "        // One pause, holding the green. There used to be a glow here and",
-        "        // two shorter waits around it; the total is deliberately the same.",
         "        await wait(GREEN + 3200);",
         "        head.dataset.tint = 'blink';",
         "        await wait(BLINK);",
@@ -742,9 +728,8 @@ def landing(code):
         "        }",
         "      });",
         "    }",
-        "    // Warming the neighbours waits for the page to finish: the point of",
-        "    // holding the addresses back is the first paint, and undoing that one",
-        "    // line later would be silly.",
+        "    // Warming the neighbours waits for the page to finish loading: the",
+        "    // point of holding the addresses back is the first paint.",
         "    if (document.readyState === 'complete') { wake(0); }",
         "    else { window.addEventListener('load', function () { wake(0); }); }",
         "    function show(next, back) {",

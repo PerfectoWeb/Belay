@@ -10,9 +10,6 @@
     --panel: #f4f6fa;
     --rule: #dfe4ec;
     --accent: #1f6bff;
-    /* Donate is the one button that is not asking you to install anything, so
-       it does not compete with the blue that is. */
-    --give: #29d98a;
     /* The Donate button's own green, named so the caret and the heading's green
        pass can borrow it instead of repeating the hex in three places. */
     --donate-green: #1cb85e;
@@ -34,7 +31,6 @@
         --panel: #151a22;
         --rule: #252c38;
         --accent: #5b93ff;
-        --give: #29d98a;
         --ink-unfilled: #232830;
     }
 }
@@ -95,9 +91,6 @@ h1 .word {
 @media (prefers-reduced-motion: no-preference) {
     h1 .word {
         color: var(--ink-unfilled);
-        /* Slowed twice now. The first attempt read as a flicker; this one is
-           half a second longer again, in the step as well as the fade, so a
-           longer translation still gains the same half second. */
         animation: word-fill 0.9s ease-out forwards;
         animation-delay: calc(var(--fill-step) * 0.15s);
     }
@@ -123,8 +116,7 @@ h1 .word {
 
 @media (prefers-reduced-motion: no-preference) {
     /* White to green, one word after the other, on the same step and the same
-       curve as the fill above. It used to travel letter by letter, which worked
-       but read as a second style bolted onto the first. */
+       curve as the fill above. */
     h1[data-tint="green"] .tint {
         /* `both`, not `forwards`. A delayed animation with no backwards fill
            leaves the word at its plain declared colour until its turn comes,
@@ -294,45 +286,6 @@ a { color: var(--accent); }
     50% { box-shadow: 0 6px 26px rgba(113, 51, 238, 0.45); filter: brightness(1.06); }
 }
 
-/* Sparks. Two pseudo-elements on a wrapper that is bigger than the button, so a
-   spark can leave the edge: a canvas that clips at the border reads as texture
-   rather than as something going. Drawn as small rotated squares with rounded
-   corners, which at four pixels is indistinguishable from the app's four-armed
-   sparkle and costs no extra markup. */
-.button.stacked.primary::before,
-.button.stacked.primary::after {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 1.5px;
-    background: #fff;
-    opacity: 0;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .button.stacked.primary::before {
-        left: 22%;
-        top: 6px;
-        animation: spark-rise 2.6s ease-out infinite;
-    }
-
-    .button.stacked.primary::after {
-        left: 68%;
-        top: 10px;
-        width: 4px;
-        height: 4px;
-        animation: spark-rise 3.3s ease-out infinite 1.1s;
-    }
-}
-
-@keyframes spark-rise {
-    0% { opacity: 0; transform: translateY(0) rotate(45deg) scale(0.6); }
-    18% { opacity: 0.9; }
-    100% { opacity: 0; transform: translateY(-26px) rotate(45deg) scale(1); }
-}
-
 .button.stacked.primary .mark,
 .button.stacked.primary .spark { color: #fff; fill: currentColor; }
 
@@ -381,8 +334,8 @@ a { color: var(--accent); }
 /* Opening and closing with some weight to it. `interpolate-size` is what lets a
    height of `auto` be transitioned at all; `::details-content` is the box that
    grows. Where either is unsupported the disclosure still works, it just snaps
-   the way it did before, which is why this is written as an enhancement and not
-   as a script. The easing overshoots slightly on the way open and settles, which
+   instead of easing, which is why this is a stylesheet enhancement and not a
+   script. The easing overshoots slightly on the way open and settles, which
    is the inertia. */
 .more::details-content {
     height: 0;
@@ -535,33 +488,8 @@ footer .row p { margin: 0; }
 .languages nav a:hover { background: rgba(31, 107, 255, 0.12); color: #12161d; }
 .languages nav .here { font-weight: 600; background: rgba(10, 16, 28, 0.06); }
 
-/* The panel, annotated. One picture, its own radius rather than the page's,
-   because a screenshot with square corners inside a rounded layout reads as
-   something pasted on rather than something shown. */
+/* The heading over the gallery. */
 .modes-head { margin-top: 56px; }
-
-.panel { margin: 0; }
-
-.panel img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 18px;
-}
-
-/* Handwritten where a Mac has a hand to write with, and a plain cursive
-   fallback anywhere else. Nothing is fetched for it. */
-.hand {
-    font-family: "Bradley Hand", "Chalkboard SE", "Marker Felt", cursive;
-    font-size: 21px;
-    color: var(--ink);
-}
-
-@media (max-width: 560px) {
-    .pointers { display: none; }
-    .modes figcaption { grid-template-columns: 1fr; text-align: left; }
-    .modes figcaption span { grid-row: auto !important; }
-}
 
 /* The App Store button, when there is a listing to point it at. */
 .button.appstore .apple {
@@ -656,9 +584,8 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 .badges .apple { font-size: 13px; line-height: 1; }
 
 /* One thing on the page is alive, and it is the mark rather than the lockup.
-   The whole lockup used to breathe as a block, which moved the letters with it
-   and read as a card being hovered; the stars carry the same idea and mean
-   something, because turning is what these stars are drawn doing.
+   The stars alone, not the lockup: turning is what these stars are drawn doing,
+   and moving the whole lockup reads as a card being hovered.
 
    `fill-box` is what lets each one turn on its own centre. Without it the
    origin is the corner of the viewBox and all three swing around the letters.
@@ -752,11 +679,11 @@ h1 .turn { display: inline; }
 @media (max-width: 560px) {
     h1 .turn { display: none; }
 
-    /* 10, 11 — on a phone the two buttons share the width instead of sitting
+    /* On a phone the two buttons share the width instead of sitting
        at their own natural sizes. Two pills of different lengths on one row
        read as a primary and an afterthought; equal halves read as a choice,
        and both are big enough to hit. */
-    /* 10 — the pair that installs the app goes full width, one per row. Half a
+    /* The pair that installs the app goes full width, one per row. Half a
        phone is not enough for "Download for macOS": it wraps, and a two-line
        label beside a one-line one is what makes equal halves look unequal.
        Full width also gives the primary action the whole thumb. */
@@ -770,7 +697,7 @@ h1 .turn { display: inline; }
     .actions.get .button.stacked { justify-content: center; }
     .actions.get .button.stacked .lines { text-align: left; }
 
-    /* 11 — the pair in the footer shares the width instead. Both labels are
+    /* The pair in the footer shares the width instead. Both labels are
        short enough to fit, and neither of them is the reason anybody is here. */
     .actions.give { flex-wrap: nowrap; gap: 10px; }
     .actions.give .button {
@@ -780,7 +707,7 @@ h1 .turn { display: inline; }
         padding-right: 8px;
     }
 
-    /* 8 — the picker opened off the left of the screen. It is anchored to a
+    /* The picker opened off the left of the screen. It is anchored to a
        summary that sits at the left edge of the footer, and `right: 0` on a
        panel wider than that summary puts its left edge past the viewport. It
        opens from the left here, and is kept off both edges. */
@@ -797,9 +724,9 @@ footer .fine + .copyright { margin-top: 12px; }
 /* The gallery under "Your agents, at a glance".
    ---------------------------------------------------------------------------
    Enhanced, not required. Without the script at the foot of the page the first
-   frame is the only one shown, the dots are hidden, and what is left is the
-   single picture this section used to be. The rule the disclosure above follows,
-   applied again: nothing here disappears when the JavaScript does.
+   frame is the only one shown, the dots are hidden, and what is left is a single
+   picture. The rule the disclosure above follows, applied again: nothing here
+   disappears when the JavaScript does.
 
    The frames are stacked rather than laid in a row, so the container is as tall
    as one picture and no width arithmetic is needed for four of them. Crossfade
@@ -898,15 +825,10 @@ footer .fine + .copyright { margin-top: 12px; }
 
 /* The spark bed on the download button.
    ---------------------------------------------------------------------------
-   Six of them where there were two, each with its own size, starting point,
-   distance and timing. CSS has no randomness, so the numbers are written into
+   Six sparks, each with its own size, starting point, distance and timing. CSS has no randomness, so the numbers are written into
    the markup one spark at a time: six specs chosen by hand read as random and
    are the same on every page, which a random function would not be.
-
-   The two pseudo-element sparks from the first attempt are gone; this replaces
-   them. */
-.button.stacked.primary::before,
-.button.stacked.primary::after { content: none; }
+ */
 
 .sparks {
     position: absolute;
@@ -951,10 +873,6 @@ footer .fine + .copyright { margin-top: 12px; }
    each one starts and ends its journey outside the button entirely and is never
    seen arriving.
 
-   The first attempt crossfaded the two in place. It read as a glitch: two marks
-   of different weight dissolving into each other at 22 pixels is mush, and
-   nothing about it said which way the swap was going.
-
    Nothing here moves the button. The box is the same 22 points the single mark
    occupied, so the row does not reflow and the click target does not shift. */
 .button.stacked .marks {
@@ -963,7 +881,7 @@ footer .fine + .copyright { margin-top: 12px; }
     height: 22px;
     flex: none;
     overflow: hidden;
-    /* The nudge the single mark used to carry, moved out to the box. */
+    /* The optical nudge, on the box rather than on either glyph inside it. */
     transform: translateY(-2px);
 }
 
