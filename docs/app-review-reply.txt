@@ -1,6 +1,9 @@
 Reply to paste into App Store Connect, in answer to the message of
 2026-08-16 (submission aba5358e-ca36-41ea-98e7-5cb8745deec5).
 
+Post this with the 1.2.0 build attached, not before: it says a new build is
+attached, and a reply that says so without one invites the same question back.
+
 Everything below is true of the binary being uploaded with it. Nothing here
 describes an intention.
 
@@ -46,6 +49,9 @@ The app name has been changed to remove "Mac":
 
     Before:  Belay - Keep Mac Awake
     After:   Belay - Awake for AI Agents
+
+The other six localisations were changed in the same way, and none of them now
+contains an Apple product name.
 
 The subtitle has been updated to match: "Sleeps again when they finish". The
 app's own bundle name is, and always was, "Belay" alone.

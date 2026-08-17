@@ -180,6 +180,22 @@ writing a word of reply.
 entitlements" the same guideline is about. Only ever ship the archive export;
 `Belay-MAS.entitlements` itself is clean and `SandboxAccessTests` asserts it.
 
+## Where this stood on 2026-08-17
+
+Everything that can be prepared without the binary is done, through the API:
+
+| | |
+| :--- | :--- |
+| Version | `1.2.0`, matching the GitHub release |
+| State | `DEVELOPER_REJECTED`, which is what accepts a new build |
+| Release | `MANUAL`, so approval parks it in Pending Developer Release |
+| Name and subtitle | all seven localisations, no Apple product name in any |
+| Description, keywords, promo | all seven, with the 1.2.0 copy |
+| Screenshots | all seven localisations, Chinese included |
+| Review notes | `docs/app-review-notes.txt`, pasted in |
+| Build | **not attached.** Archive `Belay-MAS`, upload, then attach |
+| Reply in the thread | **not sent.** `docs/app-review-reply.txt`, after the build is attached |
+
 ## Step 9. Set the release to manual, then submit
 
 **Before submitting**, in the version's page, under **Version Release**, choose
