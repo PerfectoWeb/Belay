@@ -142,11 +142,11 @@ h1 .word {
            impossible to miss: with six words staggered over a second, every one
            of them dropped to grey the moment cooling started, then jumped back
            to white when its own turn arrived and faded from there. */
-        animation: word-cool 0.8s ease-in both;
+        animation: word-cool 0.62s ease-in both;
         /* `--cool-step` is written per word by the script, not by the builder,
            because the order is reshuffled on every cycle and a stylesheet cannot
            shuffle. */
-        animation-delay: calc(var(--cool-step, 0) * 0.18s);
+        animation-delay: calc(var(--cool-step, 0) * 0.138s);
     }
 }
 

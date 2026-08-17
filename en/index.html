@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Belay: stays awake while your agents work</title>
 <meta name="description" content="A small macOS menu bar app that keeps your Mac awake while coding agents work, then lets it sleep when they're done.">
-<link rel="stylesheet" href="../style.css?v=0d79d801be">
+<link rel="stylesheet" href="../style.css?v=e0e1adc4bd">
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8999ea5c44b046c19a08dcf09d5b4336"}'></script>
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
@@ -226,12 +226,12 @@
         await wait(GREEN + 3200);
         head.dataset.tint = 'blink';
         await wait(BLINK);
-        await wait(800);
+        await wait(400);
         // Word by word rather than all together: the last one to go out
         // decides how long this takes, so the wait is measured, not fixed.
         var going = coolOrder();
         head.classList.add('is-cooling');
-        await wait(Math.max(0, going - 1) * 180 + 800);
+        await wait(Math.max(0, going - 1) * 138 + 620);
         await wait(900);
       }
     }
