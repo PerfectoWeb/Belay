@@ -17,7 +17,7 @@
        one is tuned for reading a paragraph, and at 42px it sat so close to the
        ink that the fill was hard to see at all. Still comfortably above the
        page, so an unfilled word is read rather than guessed at. */
-    --ink-unfilled: #d5dae2;
+    --ink-unfilled: #e0e4ea;
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
     interpolate-size: allow-keywords;
@@ -32,7 +32,7 @@
         --rule: #252c38;
         --accent: #5b93ff;
         --give: #29d98a;
-        --ink-unfilled: #343a44;
+        --ink-unfilled: #2b3038;
     }
 }
 
@@ -1014,26 +1014,13 @@ footer .fine + .copyright { margin-top: 12px; }
 
    Nothing types until the script marks the heading, and without the script the
    base rule below leaves every letter in place. */
-/* `display` in a keyframe needs `transition-behavior: allow-discrete`-era
-   support. Where it is missing the letters would never come back, so the hidden
-   state is set only where the animation can undo it. */
-@supports (transition-behavior: allow-discrete) {
-    h2.typed .ch { display: none; }
-
-    h2.typed.is-typed .ch {
-        animation: type-in 1ms steps(1) forwards;
-        animation-delay: calc(var(--ch) * 55ms);
-    }
-}
-
-@keyframes type-in {
-    to { display: inline; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    h2.typed .ch { display: inline; }
-    h2.typed.is-typed .ch { animation: none; }
-}
+/* Hidden only after the script marks the heading, so a page without one keeps
+   its heading whole. The first version animated `display` from a keyframe, and
+   the letters simply never appeared in Safari: the support query said yes and the
+   animation did nothing. Revealing them from the script instead needs no
+   discrete-animation support at all. */
+h2.typed.is-armed .ch { display: none; }
+h2.typed.is-armed .ch.is-on { display: inline; }
 
 /* A block that goes on blinking after the words have landed, because a cursor
    that stops is a cursor that looks broken. Sized from the type rather than in
@@ -1067,6 +1054,13 @@ h2.typed .caret {
    The ground is the page's own colour at high opacity plus a blur, so it reads
    as the same room with the lights down rather than as a black hole; that also
    means it is right in both themes without a second set of colours. */
+/* `display` here beats the `hidden` attribute, which is only the UA stylesheet
+   saying `display: none`. Written as `display: grid` alone, the closed lightbox
+   stayed on top of the whole page: invisible at opacity 0, and its backdrop
+   still swallowing every click and showing a zoom-out cursor everywhere. Any
+   author rule for `display` has to exclude the attribute explicitly. */
+.lightbox[hidden] { display: none; }
+
 .lightbox {
     position: fixed;
     inset: 0;
