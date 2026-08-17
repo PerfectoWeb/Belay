@@ -114,12 +114,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
             return (String(localized: "Check for Updates"), false)
         }
+        statusItem.isUpdateWaiting = { [weak settings] in
+            guard ReleaseChecker.isSupported, let checker = settings?.updates else { return false }
+            return UpdateWaiting.isWaiting(checker.status)
+        }
+        statusItem.onSkipUpdate = { [weak settings] in
+            guard let checker = settings?.updates,
+                case .available(let version, _) = checker.status
+            else { return }
+            UpdateWaiting.skip(version)
+        }
         statusItem.onUpdate = { [weak settings] in
             guard let checker = settings?.updates else { return }
             // Already know there is one: go straight to installing it. Otherwise
             // this is the question, and the answer belongs where the detail is.
             if case .available = checker.status {
                 Feedback.play(.tick)
+                // Installing is the other way a skip stops being true.
+                UpdateWaiting.clear()
                 if SoftwareUpdate.isSupported { SoftwareUpdate.install() }
             } else {
                 checker.check()
@@ -200,8 +212,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// still on the display saying nothing leaves this Mac. Both statements were
     /// true separately and the pair of them was not.
     private func scheduleUpdateChecks(_ checker: ReleaseChecker) {
-        let timer = Timer(timeInterval: 3600, repeats: true) { _ in
-            MainActor.assumeIsolated { checker.checkIfDue() }
+        let timer = Timer(timeInterval: 3600, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated {
+                checker.checkIfDue()
+                // The mark redraws when the app asks it to, and a check landing
+                // is one of the two things that can change what it should show.
+                self?.statusItem?.render()
+            }
         }
         timer.tolerance = 600
         RunLoop.main.add(timer, forMode: .common)
@@ -211,6 +228,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) { [weak self] in
             guard self?.settings.hasCompletedOnboarding == true else { return }
             checker.checkIfDue()
+            self?.statusItem?.render()
         }
     }
 

@@ -46,19 +46,35 @@ final class StatusMenuTests: XCTestCase {
         XCTAssertEqual(titles, expected, "the separator is the empty title")
     }
 
-    /// The update row appears only once something has told the controller what
-    /// to say, and it arrives fenced off from the rows above it: those three go
-    /// somewhere to look at something, and this one changes the app on disk.
-    func testTheUpdateRowIsFencedOffWhenThereIsOne() {
+    /// The update rows appear only once something has told the controller what to
+    /// say, and they arrive fenced off from the rows above them: those three go
+    /// somewhere to look at something, and these change the app on disk.
+    ///
+    /// It is the block that is fenced, not one row. When an update is waiting the
+    /// block is two rows, install and skip, and they belong together: they are
+    /// the two answers to the same question. What the fence exists for is
+    /// unchanged, that nothing else runs into them.
+    func testTheUpdateRowsAreFencedOffWhenThereAreSome() {
         controller.updateStatus = { (title: "Update Now (v9.9.9)", waiting: true) }
         let titles = controller.menuForTesting.items.map(\.title)
         let row = try? XCTUnwrap(titles.firstIndex(of: "Update Now (v9.9.9)"))
         XCTAssertNotNil(row, "the row was not built")
-        if let row {
-            XCTAssertEqual(titles[row - 1], "", "no separator above the update row")
-            XCTAssertEqual(
-                titles[row + 1], "", "no separator below it either, so it runs into what follows")
-        }
+        guard let row else { return }
+        XCTAssertEqual(titles[row - 1], "", "no separator above the update block")
+        XCTAssertEqual(
+            titles[row + 1], String(localized: "Skip This Version"),
+            "skip does not sit with the row it belongs to")
+        XCTAssertEqual(
+            titles[row + 2], "", "no separator below the block, so it runs into what follows")
+    }
+
+    /// Skip is offered only when there is something to skip. A control that does
+    /// nothing is worse than no control, and this menu has none of those.
+    func testSkipIsAbsentWhenNothingIsWaiting() {
+        controller.updateStatus = { (title: "Check for Updates", waiting: false) }
+        let titles = controller.menuForTesting.items.map(\.title)
+        XCTAssertTrue(titles.contains("Check for Updates"))
+        XCTAssertFalse(titles.contains(String(localized: "Skip This Version")))
     }
 
     /// The items above exist for development and must never reach anybody else.

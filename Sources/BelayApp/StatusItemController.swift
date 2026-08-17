@@ -22,13 +22,28 @@ final class StatusItemController {
     /// at first launch.
     private var contextMenu: NSMenu { makeMenu() }
 
+    /// A look and whether an update is waiting: the two things that decide which
+    /// image goes in the button.
+    private struct Key: Hashable {
+        let look: BelayGlyph.Look
+        let waiting: Bool
+    }
+
     /// Every frame of every look, rendered once at startup, so animating costs
     /// one property assignment per tick rather than a redraw (docs/08).
-    private lazy var frames: [BelayGlyph.Look: [NSImage]] = {
-        var table: [BelayGlyph.Look: [NSImage]] = [:]
+    ///
+    /// Both update states are rendered up front for the same reason. Drawing the
+    /// dotted variant at the moment a check lands would put a redraw on the
+    /// path that is supposed to be free.
+    private lazy var frames: [Key: [NSImage]] = {
+        var table: [Key: [NSImage]] = [:]
         for look in [BelayGlyph.Look.alwaysOn, .working, .resting, .calling, .off, .blocked] {
             let count = look.isAnimated ? BelayGlyph.frameCount : 1
-            table[look] = (0..<count).map { BelayGlyph.statusItemImage(look, frame: $0) }
+            for waiting in [false, true] {
+                table[Key(look: look, waiting: waiting)] = (0..<count).map {
+                    BelayGlyph.statusItemImage(look, frame: $0, waiting: waiting)
+                }
+            }
         }
         return table
     }()
@@ -36,6 +51,12 @@ final class StatusItemController {
     private var ticker: Timer?
     private var frame = 0
     private var look: BelayGlyph.Look = .resting
+    private var waiting = false
+
+    /// Whether an update is waiting, asked rather than stored, so the answer
+    /// cannot go stale between a check landing and the next redraw. Set by the
+    /// app: the checker lives with Settings.
+    var isUpdateWaiting: () -> Bool = { false }
 
     /// One callback for every menu destination: the menu names a pane, the app
     /// decides how to show it.
@@ -45,6 +66,10 @@ final class StatusItemController {
     /// with Settings rather than here.
     var updateStatus: () -> (title: String, waiting: Bool)? = { nil }
     var onUpdate: () -> Void = {}
+
+    /// Records that this version is not wanted. Separate from `onUpdate` because
+    /// the two are opposites and sharing one hook would need a flag.
+    var onSkipUpdate: () -> Void = {}
 
     /// Built lazily and popped up by hand, so a test cannot see it otherwise.
     var menuForTesting: NSMenu { contextMenu }
@@ -94,7 +119,9 @@ final class StatusItemController {
             frame = 0
             retimeAnimation()
         }
-        button.image = frames[look]?[frame]
+        let nextWaiting = isUpdateWaiting()
+        if nextWaiting != waiting { waiting = nextWaiting }
+        button.image = frames[Key(look: look, waiting: waiting)]?[frame]
         button.image?.accessibilityDescription = appearance.label
         button.setAccessibilityLabel(appearance.label)
         button.toolTip = appearance.label
@@ -120,7 +147,8 @@ final class StatusItemController {
             MainActor.assumeIsolated {
                 guard let self, self.look.isAnimated else { return }
                 self.frame = (self.frame + 1) % BelayGlyph.frameCount
-                self.statusItem.button?.image = self.frames[self.look]?[self.frame]
+                self.statusItem.button?.image =
+                    self.frames[Key(look: self.look, waiting: self.waiting)]?[self.frame]
                 self.scheduleNextFrame()
             }
         }

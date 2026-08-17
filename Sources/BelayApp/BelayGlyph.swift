@@ -117,20 +117,22 @@ enum BelayGlyph {
     static var artworkSubpaths: [NSBezierPath] { parts }
 
     /// Menu bar images are in points; 17 leaves the usual breathing room.
-    static func statusItemImage(_ look: Look, frame: Int = 0) -> NSImage {
-        image(look, frame: frame, size: 17)
+    static func statusItemImage(_ look: Look, frame: Int = 0, waiting: Bool = false) -> NSImage {
+        image(look, frame: frame, size: 17, waiting: waiting)
     }
 
-    static func image(_ look: Look, frame: Int = 0, size: CGFloat) -> NSImage {
+    static func image(
+        _ look: Look, frame: Int = 0, size: CGFloat, waiting: Bool = false
+    ) -> NSImage {
         let image = NSImage(size: NSSize(width: size, height: size), flipped: false) { _ in
-            draw(look, frame: frame, size: size)
+            draw(look, frame: frame, size: size, waiting: waiting)
             return true
         }
         image.isTemplate = true
         return image
     }
 
-    private static func draw(_ look: Look, frame: Int, size: CGFloat) {
+    private static func draw(_ look: Look, frame: Int, size: CGFloat, waiting: Bool) {
         guard parts.count == 3 else { return }
         NSGraphicsContext.saveGraphicsState()
         defer { NSGraphicsContext.restoreGraphicsState() }
@@ -160,40 +162,16 @@ enum BelayGlyph {
             // doing.
             if look == .blocked { pausedBars() }
         }
-    }
 
-    /// The safety stop: two bars cut straight out of the big star.
-    ///
-    /// Not a strike and not a badge: a strike says *forbidden*, and at 17 points
-    /// a bordered circle reads as a notification dot. Both are promises Belay is
-    /// not making while it is running and has let go on purpose to save the
-    /// battery.
-    ///
-    /// So nothing is drawn now, only removed, and the tinting macOS applies to
-    /// a template image cannot be fought. The numbers are the star's, not the
-    /// 24-point box's: part 1 spans x 0 to 19.98 and y 3 to 23, middle (10, 13).
-    private static func pausedBars() {
-        let centre = CGPoint(x: 9.99, y: 13)
-        // Sized for 17 points, the only size the menu bar draws this at, where
-        // a bar this wide lands on 1.6 of them. Thinner than this it disappears.
-        let width: CGFloat = 2.3
-        let gap: CGFloat = 2.0
-        let height: CGFloat = 6.4
-
-        // Opaque, or the cut is only as deep as the last fill's alpha and the
-        // bars come out as grey stripes instead of gaps.
-        NSColor(calibratedWhite: 0, alpha: 1).setFill()
-        NSGraphicsContext.current?.compositingOperation = .destinationOut
-        for side in [-1.0, 1.0] {
-            let bar = NSRect(
-                x: centre.x + CGFloat(side) * gap / 2 - (side < 0 ? width : 0),
-                y: centre.y - height / 2,
-                width: width, height: height)
-            // Rounded ends: the star has no straight edges of its own, and a
-            // square-cut bar inside it reads as damage.
-            NSBezierPath(roundedRect: bar, xRadius: width / 2, yRadius: width / 2).fill()
-        }
-        NSGraphicsContext.current?.compositingOperation = .sourceOver
+        // An update is waiting, and this is the only place the app says so
+        // without being asked.
+        //
+        // Not while an agent is working, and not while one is waiting on the
+        // user. Belay exists to protect exactly those two moments, and a new
+        // mark appearing in the middle of a run is the app interrupting the
+        // thing it is for. The rule lives here rather than at the call site so
+        // that no caller can get it wrong.
+        if waiting, look != .working, look != .calling { updateDot() }
     }
 
     /// How bright each part is for the looks that light everything uniformly.
@@ -224,7 +202,7 @@ enum BelayGlyph {
 
     /// Template images are black-on-transparent; AppKit tints them for the menu
     /// bar, so alpha here reads as "dimmer", not "grey".
-    private static func fill(_ path: NSBezierPath, alpha: CGFloat, scale: CGFloat = 1) {
+    static func fill(_ path: NSBezierPath, alpha: CGFloat, scale: CGFloat = 1) {
         guard alpha > 0.01 else { return }
         NSColor(calibratedWhite: 0, alpha: alpha).setFill()
         guard scale != 1 else { return path.fill() }
