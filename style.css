@@ -13,6 +13,11 @@
     /* Donate is the one button that is not asking you to install anything, so
        it does not compete with the blue that is. */
     --give: #29d98a;
+    /* The headline before it fills. Dimmer than the body grey on purpose: that
+       one is tuned for reading a paragraph, and at 42px it sat so close to the
+       ink that the fill was hard to see at all. Still comfortably above the
+       page, so an unfilled word is read rather than guessed at. */
+    --ink-unfilled: #a7b0bf;
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
     interpolate-size: allow-keywords;
@@ -27,6 +32,7 @@
         --rule: #252c38;
         --accent: #5b93ff;
         --give: #29d98a;
+        --ink-unfilled: #5c6675;
     }
 }
 
@@ -81,9 +87,11 @@ h1 .word {
 
 @media (prefers-reduced-motion: no-preference) {
     h1 .word {
-        color: var(--ink-soft);
-        animation: word-fill 0.5s ease-out forwards;
-        animation-delay: calc(var(--fill-step) * 0.085s);
+        color: var(--ink-unfilled);
+        /* A fifth slower than the first attempt, which read as a flicker rather
+           than as a sentence filling in. */
+        animation: word-fill 0.6s ease-out forwards;
+        animation-delay: calc(var(--fill-step) * 0.102s);
     }
 }
 

@@ -242,33 +242,54 @@ def external(markup):
 
 
 
-# The extra three are placeholders and are meant to be replaced; the first is the
-# real panel and is the one that matters.
-SLIDES = ["slide-providers.png", "slide-behaviour.png", "slide-statistics.png"]
+# The App Store slides, which is where these pictures already exist and are
+# already translated. Linked to the repository rather than copied here, so there
+# is one place to change them: edit `Promo/AppStore/` in the Belay repo and every
+# page follows on the next hard refresh.
+#
+# Five of the six. The sixth asks for a rating on the Mac App Store, which is the
+# right thing to say inside the store and the wrong thing to say on a page whose
+# own download button is two sections up.
+SLIDE_SOURCE = "https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore"
+SLIDE_COUNT = 5
+
+# The slides were named before the site was, and Spanish disagrees: the files say
+# `sp` and every locale code here says `es`. Mapped rather than renamed, because
+# the files are also what App Store Connect was fed from.
+SLIDE_CODE = {"es": "sp"}
+
+
+def slides(code):
+    """Every slide for this language, in order, as absolute URLs."""
+    name = SLIDE_CODE.get(code, code)
+    return [
+        f"{SLIDE_SOURCE}/belay-appimage-{name}-{n}.png"
+        for n in range(1, SLIDE_COUNT + 1)
+    ]
 
 
 def gallery(code, t):
-    """The panel, and three more, with dots and two invisible click zones.
+    """The App Store slides for this language, with dots and two click zones.
 
-    Enhanced rather than required. With no JavaScript this is the first figure
-    and nothing else: the images after it are hidden by the stylesheet, the dots
-    are hidden, and what remains is exactly the single picture that was here
-    before. That is the same rule the disclosure above follows, and the reason
-    the script at the bottom of the page is eleven lines rather than a framework.
+    Enhanced rather than required. With no JavaScript this is the first slide and
+    nothing else: the rest are hidden by the stylesheet, the dots are hidden, and
+    what remains is one picture, which is what this section was before. That is
+    the same rule the disclosure above follows.
+
+    Only the first slide loads eagerly. The others are 2880 wide and about two
+    megabytes each, so fetching all five on load would cost more than the rest of
+    the page put together.
     """
-    first = PANEL.get(code, "panel.png")
     lines = ['<div class="gallery" data-gallery>', '    <div class="frames">']
-    for index, name in enumerate([first] + SLIDES):
-        # The first frame is the one that is on screen, so it loads eagerly; the
-        # other three are behind it and wait until something asks for them.
+    for index, url in enumerate(slides(code)):
         on = " is-on" if index == 0 else ""
         lazy = "" if index == 0 else ' loading="lazy"'
         lines.append(
-            f'        <img class="frame{on}" src="../img/{name}" '
-            f'alt="{t["modes_head"]}" width="1600" height="1000"{lazy}>')
+            f'        <img class="frame{on}" src="{url}" '
+            f'alt="{t["modes_head"]}" width="2880" height="1800"{lazy}>')
     lines += ['    </div>']
-    # Left and right thirds of the picture, transparent, pointer cursor. Buttons
-    # rather than divs so a keyboard reaches them.
+    # The left and right fifths of the picture, transparent, pointer cursor.
+    # Buttons rather than divs so a keyboard reaches them.
     lines += [
         f'    <button class="turn back" type="button" data-step="-1"'
         f' aria-label="{t["gallery_back"]}"></button>',
@@ -276,7 +297,7 @@ def gallery(code, t):
         f' aria-label="{t["gallery_next"]}"></button>',
         '    <div class="dots" role="tablist">',
     ]
-    for index in range(len(SLIDES) + 1):
+    for index in range(SLIDE_COUNT):
         lines.append(
             f'        <button class="dot{" is-on" if index == 0 else ""}" type="button"'
             f' role="tab" data-to="{index}"'
