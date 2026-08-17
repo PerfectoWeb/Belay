@@ -47,9 +47,9 @@ place from here on.
 | 🗣 | Five languages read by people who speak them | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **First 100 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
 | 📈 | 5000 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | A write-up, or one thread that goes somewhere |
-| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, one line in the tooling section |
-| 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, same shape |
-| 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/waiting.svg" alt="waiting" height="24"> | A pull request, plus an entry in `applications.json` |
+| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 100 stars. Their form only, and it must be a person |
+| 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 17 Aug 2026](https://github.com/jqueryscript/awesome-claude-code/pull/601) |
+| 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/maybe.svg" alt="maybe" height="24"> | That list is for open source, and ours is source available |
 | 📰 | First write-up anywhere | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something to say beyond "an app exists" |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
 | 🌟 | **First 1000 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
