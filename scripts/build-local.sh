@@ -46,22 +46,25 @@ cp -R "$APP" "$ROOT/build/Belay.app"
 #   BELAY_SIGN_LOCAL="Developer ID Application" scripts/build-local.sh Debug
 IDENTITY="${BELAY_SIGN_LOCAL:--}"
 
-if [ -d "$ROOT/build/Belay.app/Contents/Frameworks" ]; then
-    if [ "$IDENTITY" = "-" ]; then
-        echo "==> re-sign embedded frameworks (ad-hoc)"
-    else
-        echo "==> re-sign embedded frameworks ($IDENTITY)"
-    fi
-    # Deepest first: signing a bundle seals what is inside it, so an inner
-    # helper signed afterwards invalidates the seal around it.
-    find "$ROOT/build/Belay.app/Contents/Frameworks" \
-        \( -name "*.app" -o -name "*.xpc" -o -name "*.framework" \) -print0 \
-        | sort -rz \
-        | xargs -0 -I{} codesign --force --sign "$IDENTITY" --options runtime --timestamp=none {} \
-            >/dev/null 2>&1
-    codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
-        "$ROOT/build/Belay.app" >/dev/null 2>&1
-fi
+echo "==> re-sign everything inside ($IDENTITY)"
+# Everything, not only the framework bundles. A Debug build keeps most of its
+# code in `Belay.debug.dylib` beside the executable, and Xcode leaves a
+# `__preview.dylib` there too. Signing the app with a real identity turns on
+# Library Validation, which then refuses to load a dylib signed by somebody
+# else: the app died at launch with "Library not loaded: @rpath/Belay.debug.dylib"
+# and a crash report that blamed dyld. Observed 2026-08-17, the first time this
+# script was asked for a Developer ID signature.
+#
+# Deepest first: signing a bundle seals what is inside it, so an inner helper
+# signed afterwards invalidates the seal around it.
+find "$ROOT/build/Belay.app" \
+    \( -name "*.app" -o -name "*.xpc" -o -name "*.framework" -o -name "*.dylib" \) \
+    -not -path "$ROOT/build/Belay.app" -print0 \
+    | sort -rz \
+    | xargs -0 -I{} codesign --force --sign "$IDENTITY" --options runtime --timestamp=none {} \
+        >/dev/null 2>&1
+codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
+    "$ROOT/build/Belay.app" >/dev/null 2>&1
 
 echo "==> verify signature"
 codesign --verify --deep --strict --verbose=2 "$ROOT/build/Belay.app"
