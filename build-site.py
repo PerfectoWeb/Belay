@@ -335,10 +335,11 @@ SLIDE_COUNT = 5
 # the files are also what App Store Connect was fed from.
 SLIDE_CODE = {"es": "sp"}
 
-# Languages whose slide zero does not exist. Starting at one shows five real
-# pictures in the right language; pointing at the missing file would show a
-# broken frame, and borrowing English would show the wrong language.
-SLIDE_ZERO_MISSING = {"zh"}
+# Languages whose slide zero does not exist. Empty since 17 Aug 2026, when the
+# Chinese one was drawn; kept because the next language added will need it before
+# its slides are done, and pointing at a missing file shows a broken frame while
+# borrowing English shows the wrong language.
+SLIDE_ZERO_MISSING = set()
 
 
 def slides(code):
