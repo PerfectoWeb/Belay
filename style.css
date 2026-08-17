@@ -144,7 +144,20 @@ h1 .ch.cold { color: var(--ink-unfilled); }
    under the plain `.ch` rule. */
 h1 .ch.hot {
     color: var(--donate-green);
-    transition: none;
+    /* Colour snaps, glow does not. One shorthand `transition: none` here killed
+       the glow's fade along with the colour's, and the glow is the one thing in
+       this heading that has to arrive slowly. */
+    transition: color 0s, text-shadow 0.5s ease-out;
+}
+
+/* The glow, once every letter is lit and not before. It hangs on `is-lit` rather
+   than on `hot` so that the travelling green stays flat: a halo under a letter
+   that is about to hand the colour on reads as a bloom smear.
+
+   Taken off again when the blinking starts, which is what makes the blink read
+   as a light being switched off rather than as a colour change. */
+h1.is-lit .ch.hot {
+    text-shadow: 0 0 18px color-mix(in srgb, var(--donate-green) 58%, transparent);
 }
 
 h2 {
