@@ -2,16 +2,14 @@ import SwiftUI
 
 /// What Statistics shows before there is anything to show.
 ///
-/// It used to be a left-aligned heading over a four-line paragraph explaining
-/// what would eventually appear. Nobody reads a paragraph in an empty state:
-/// they look at it, understand there is nothing here, and leave. So it is now
-/// the shape of the thing that is missing, centred, with one line under it.
+/// The shape of the thing that is missing, centred, with one line under it.
+/// Not a paragraph explaining what will eventually appear: nobody reads one in
+/// an empty state. They look at it, understand there is nothing here, and leave.
 ///
-/// The bars run and then stop. A version before this had them breathing
-/// continuously and it was worse than still: slow perpetual movement in a
-/// corner with nothing to say reads as a progress indicator for something that
-/// is not happening. A short burst says the pane is alive, and the stillness
-/// afterwards says there is nothing to wait for.
+/// The bars run and then stop, rather than breathing continuously. Slow
+/// perpetual movement in a corner with nothing to say reads as a progress
+/// indicator for something that is not happening; a short burst says the pane is
+/// alive, and the stillness afterwards says there is nothing to wait for.
 struct EmptyStatistics: View {
     /// Resting heights, so the shape is a plausible chart rather than a ramp.
     private static let bars: [CGFloat] = [0.42, 0.68, 0.5, 0.85, 0.6]

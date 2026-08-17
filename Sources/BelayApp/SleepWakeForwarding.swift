@@ -5,8 +5,8 @@ import BelayPower
 /// BelayPower owns.
 ///
 /// Split out of `BelayController` only to keep that file under the length rule,
-/// the same way `ClaudeCodeAvailability` is split out of its provider. The
-/// reason it has to exist at all: those notifications are delivered on
+/// the same way `ClaudeCodeArrival` is. The reason it has to exist at all:
+/// those notifications are delivered on
 /// `NSWorkspace`'s own notification centre, which BelayPower deliberately
 /// cannot reach, so the app layer forwards them in.
 @MainActor

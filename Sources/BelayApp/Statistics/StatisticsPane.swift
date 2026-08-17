@@ -56,12 +56,11 @@ struct StatisticsPane: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         // Driven by hand rather than by `withAnimation`.
         //
-        // The first attempt set `reveal` to 0 and then animated it to 1 inside
-        // the same `onAppear`. SwiftUI coalesced the two into one update, the
-        // pane arrived finished, and the recording of it was thirteen seconds
-        // of a static screen. This walks the value itself, which cannot be
-        // coalesced away, and the loop ends when it arrives so nothing is left
-        // ticking behind a pane that has stopped moving.
+        // Setting `reveal` to 0 and animating it to 1 inside the same
+        // `onAppear` does not work: SwiftUI coalesces the two into one update
+        // and the pane arrives finished. Walking the value cannot be coalesced
+        // away, and the loop ends when it arrives, so nothing is left ticking
+        // behind a pane that has stopped moving.
         .task {
             guard !reduceMotion else {
                 reveal = 1

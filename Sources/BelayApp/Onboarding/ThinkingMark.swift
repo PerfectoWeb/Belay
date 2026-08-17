@@ -2,7 +2,7 @@ import SwiftUI
 
 /// The one part of the welcome scene that is a character rather than a thing.
 ///
-/// Its own file because `OnboardingSceneParts` had reached the length this
+/// Its own file because `OnboardingSceneParts.swift` had reached the length this
 /// project allows, and of everything in there this is the piece that owes the
 /// least to the rest: the machine, its screen and the charge are one drawing
 /// with shared measurements, and this is a mark that happens to sit at the end

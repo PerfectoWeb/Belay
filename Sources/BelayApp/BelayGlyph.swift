@@ -164,10 +164,10 @@ enum BelayGlyph {
 
     /// The safety stop: two bars cut straight out of the big star.
     ///
-    /// It was a badge in the corner before, and a strike through the mark
-    /// before that. The strike said *forbidden*, and at 17 points a bordered
-    /// circle reads as a notification dot: two promises Belay is not making
-    /// while it is running and has let go on purpose to save the battery.
+    /// Not a strike and not a badge: a strike says *forbidden*, and at 17 points
+    /// a bordered circle reads as a notification dot. Both are promises Belay is
+    /// not making while it is running and has let go on purpose to save the
+    /// battery.
     ///
     /// So nothing is drawn now, only removed, and the tinting macOS applies to
     /// a template image cannot be fought. The numbers are the star's, not the
