@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Belay: bleibt wach, solange deine Agenten arbeiten</title>
 <meta name="description" content="Eine kleine macOS-Menüleisten-App, die deinen Mac wach hält, solange Coding-Agenten arbeiten, und ihn danach schlafen lässt.">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css?v=4781753254">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <meta property="og:title" content="Belay: bleibt wach, solange deine Agenten arbeiten">
 <meta property="og:description" content="Eine kleine macOS-Menüleisten-App, die deinen Mac wach hält, solange Coding-Agenten arbeiten, und ihn danach schlafen lässt.">
 <meta property="og:url" content="https://perfectoweb.github.io/Belay/de/">
-<meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png">
+<meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:site_name" content="Belay">
@@ -176,7 +176,7 @@
 
     function refill() {
       head.removeAttribute('data-tint');
-      head.classList.remove('is-cooling', 'is-lit');
+      head.classList.remove('is-cooling');
       words.forEach(function (word) {
         word.style.removeProperty('--cool-step');
         // Restarting a CSS animation takes a reset and a reflow read.
@@ -221,14 +221,9 @@
         // White to green, word after word, the same way grey became
         // white. One effect, one style, rather than two.
         head.dataset.tint = 'green';
-        await wait(GREEN + 300);
-        // Whole and green: now it is allowed to glow.
-        head.classList.add('is-lit');
-        await wait(2400);
-        // Put the glow out first, and let it go out visibly, so the
-        // blinking starts from a flat green and reads as a switch.
-        head.classList.remove('is-lit');
-        await wait(500);
+        // One pause, holding the green. There used to be a glow here and
+        // two shorter waits around it; the total is deliberately the same.
+        await wait(GREEN + 3200);
         head.dataset.tint = 'blink';
         await wait(BLINK);
         await wait(2400);

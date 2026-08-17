@@ -120,9 +120,6 @@ h1 .word {
    mutually exclusive by construction. Two equally specific rules would be
    settled by source order, and a colour that depends on which rule was typed
    second is a colour waiting to break. */
-h1 .tint {
-    transition: text-shadow 0.5s ease-out;
-}
 
 @media (prefers-reduced-motion: no-preference) {
     /* White to green, one word after the other, on the same step and the same
@@ -176,10 +173,6 @@ h1 .tint {
     to { color: var(--ink-unfilled); }
 }
 
-/* The glow, once both words are green and not while they are getting there. */
-h1.is-lit .tint {
-    text-shadow: 0 0 18px color-mix(in srgb, var(--donate-green) 58%, transparent);
-}
 
 h2 {
     font-size: 28px;

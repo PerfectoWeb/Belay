@@ -21,6 +21,7 @@ to /privacy/, and a link somebody saved should not answer 404 because we moved
 some folders.
 """
 
+import hashlib
 import io
 import os
 import re
@@ -184,6 +185,21 @@ def wordmark():
     return "\n".join(lines)
 
 
+# Appended to the stylesheet link so that a reader who has the old one gets the
+# new one on their next visit. It is the file's own hash rather than a counter or
+# a date: the address changes when the bytes change and not one build sooner, so
+# a rebuild that touched nothing leaves every cache intact. Every script on this
+# site is inline in the page it belongs to, and a page is revalidated anyway, so
+# the stylesheet is the only file that needs this.
+STYLE_STAMP = ""
+
+# The same treatment for the social card, and for a sharper reason: Slack,
+# iMessage, X and Facebook each keep their own copy of whatever was at this
+# address the first time somebody posted it. Changing the address is the only way
+# to make them fetch the new one.
+OG_STAMP = ""
+
+
 def head(code, title, meta, depth, page):
     """`depth` is how far this file sits below the site root."""
     up = "../" * depth
@@ -195,7 +211,7 @@ def head(code, title, meta, depth, page):
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         f"<title>{title}</title>",
         f'<meta name="description" content="{meta}">',
-        f'<link rel="stylesheet" href="{up}style.css">',
+        f'<link rel="stylesheet" href="{up}style.css{STYLE_STAMP}">',
         # The icons. Paths are relative on purpose: this site lives under
         # /Belay/, so a root-absolute `/favicon.ico` would point at the domain
         # root, which is not ours. Declaring them explicitly is also what stops
@@ -219,7 +235,8 @@ def head(code, title, meta, depth, page):
         f'<meta property="og:title" content="{title}">',
         f'<meta property="og:description" content="{meta}">',
         f'<meta property="og:url" content="https://perfectoweb.github.io/Belay/{code}/{page}">',
-        '<meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png">',
+        f'<meta property="og:image" '
+        f'content="https://perfectoweb.github.io/Belay/img/og.png{OG_STAMP}">',
         '<meta property="og:image:width" content="1280">',
         '<meta property="og:image:height" content="640">',
         '<meta property="og:site_name" content="Belay">',
@@ -593,7 +610,7 @@ def landing(code):
         "",
         "    function refill() {",
         "      head.removeAttribute('data-tint');",
-        "      head.classList.remove('is-cooling', 'is-lit');",
+        "      head.classList.remove('is-cooling');",
         "      words.forEach(function (word) {",
         "        word.style.removeProperty('--cool-step');",
         "        // Restarting a CSS animation takes a reset and a reflow read.",
@@ -638,14 +655,9 @@ def landing(code):
         "        // White to green, word after word, the same way grey became",
         "        // white. One effect, one style, rather than two.",
         "        head.dataset.tint = 'green';",
-        "        await wait(GREEN + 300);",
-        "        // Whole and green: now it is allowed to glow.",
-        "        head.classList.add('is-lit');",
-        "        await wait(2400);",
-        "        // Put the glow out first, and let it go out visibly, so the",
-        "        // blinking starts from a flat green and reads as a switch.",
-        "        head.classList.remove('is-lit');",
-        "        await wait(500);",
+        "        // One pause, holding the green. There used to be a glow here and",
+        "        // two shorter waits around it; the total is deliberately the same.",
+        "        await wait(GREEN + 3200);",
         "        head.dataset.tint = 'blink';",
         "        await wait(BLINK);",
         "        await wait(2400);",
@@ -915,6 +927,19 @@ def redirect(target, depth, note):
 
 
 def main(root):
+    global STYLE_STAMP, OG_STAMP
+    style = os.path.join(root, "style.css")
+    if os.path.exists(style):
+        digest = hashlib.sha256(io.open(style, "rb").read()).hexdigest()[:10]
+        STYLE_STAMP = f"?v={digest}"
+        print(f"  style.css {STYLE_STAMP}")
+
+    card = os.path.join(root, "img", "og.png")
+    if os.path.exists(card):
+        digest = hashlib.sha256(io.open(card, "rb").read()).hexdigest()[:10]
+        OG_STAMP = f"?v={digest}"
+        print(f"  img/og.png {OG_STAMP}")
+
     written = []
     for code in CODES:
         folder = os.path.join(root, code)
