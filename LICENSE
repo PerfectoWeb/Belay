@@ -38,7 +38,18 @@ conditions.
 3. NAME AND MARKS.
 
    This licence grants no rights in the name "Belay", the Belay wordmark, or the
-   Belay icon. See TRADEMARKS.md.
+   Belay icon. See docs/TRADEMARKS.md.
+
+4. THE COPYRIGHT HOLDER IS NOT BOUND BY THIS LICENCE.
+
+   This licence says what the copyright holder grants to everyone else. It puts
+   no limit on the copyright holder, who may licence the Software to anyone on
+   different terms by separate written agreement, may release later versions
+   under a different licence, and may transfer or sell the copyright itself.
+
+   This does not reach backwards. A copy already obtained under this licence
+   stays under this licence, permanently, whatever is agreed with anyone
+   afterwards.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
