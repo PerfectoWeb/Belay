@@ -113,6 +113,37 @@ body {
     will-change: transform, opacity;
 }
 
+/* The dither.
+
+   A light a third of the window across spreads its falloff over four hundred
+   pixels, and eight bits of colour cannot describe a ramp that long: the alpha
+   arrives in steps, each step lands on the same byte for a dozen pixels or more,
+   and what should be light reads as concentric bands. Measured on the real ramp:
+   ninety-three steps across nine hundred pixels, with flat stretches up to
+   seventeen pixels wide.
+
+   Grain is the fix, and it is the one the print trade has used for a century. A
+   little noise over the ramp pushes each pixel to one side or the other of the
+   step it sits on, so the contour dissolves and the eye averages back to the
+   colour the file could not store. The same measurement with the grain on: eight
+   hundred and eighty-two steps, nothing flat wider than three pixels.
+
+   The tile is a written file rather than an `feTurbulence`, because a filter is
+   rasterised a little differently by every engine and this has to look the same
+   in all of them. It is white, so the layer only ever adds light, and the opacity
+   is arithmetic rather than taste: at most three of two hundred and fifty-five
+   over the page colour, which is the size of one step. */
+.lights::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Resolved against this stylesheet, which sits at the site root, not against
+       the page that loaded it. */
+    background-image: url("img/grain.png");
+    background-repeat: repeat;
+    opacity: 0.014;
+}
+
 /* Everything readable rides above the lights. One layer here rather than a
    z-index on each section: the panel in the footer and the lightbox both carry
    their own, and they keep working because this establishes the context they sit

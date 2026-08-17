@@ -409,7 +409,13 @@ def external(markup):
 # Five of the six. The sixth asks for a rating on the Mac App Store, which is the
 # right thing to say inside the store and the wrong thing to say on a page whose
 # own download button is two sections up.
-SLIDE_SOURCE = "https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore"
+# Served from this site as WebP rather than fetched from the repository as PNG.
+# The same six slides in seven languages are 77 MB of PNG and 9.8 MB of WebP, and
+# a reader was pulling six of the PNGs, about 11 MB, to look at one picture.
+#
+# The path is relative and assumes the gallery only ever appears one level down,
+# which is where the landing page lives. It is the only page with a gallery.
+SLIDE_SOURCE = "../img/slides"
 # Zero is the panel that was here before the gallery, kept as the first frame;
 # one to five are the App Store slides.
 SLIDE_FIRST = 0
@@ -431,7 +437,7 @@ def slides(code):
     name = SLIDE_CODE.get(code, code)
     first = 1 if code in SLIDE_ZERO_MISSING else SLIDE_FIRST
     return [
-        f"{SLIDE_SOURCE}/belay-appimage-{name}-{n}.png"
+        f"{SLIDE_SOURCE}/belay-appimage-{name}-{n}.webp"
         for n in range(first, SLIDE_COUNT + 1)
     ]
 
@@ -444,17 +450,22 @@ def gallery(code, t):
     what remains is one picture, which is what this section was before. That is
     the same rule the disclosure above follows.
 
-    Only the first slide loads eagerly. The others are 2880 wide and about two
-    megabytes each, so fetching all five on load would cost more than the rest of
-    the page put together.
+    Only the first slide has a `src`. The rest carry `data-src` and are given a
+    real one the first time they are needed, which the script does on the way to
+    showing them.
+
+    `loading="lazy"` was the obvious answer and does nothing here: the frames are
+    stacked in one grid cell and differ only in opacity, so every one of them is
+    in the viewport as far as the browser is concerned, and all six were fetched
+    on load. Holding the address back is the only thing that actually defers it.
     """
     lines = ['<div class="gallery" data-gallery>', '    <div class="frames">']
     for index, url in enumerate(slides(code)):
         on = " is-on" if index == 0 else ""
-        lazy = "" if index == 0 else ' loading="lazy"'
+        where = f'src="{url}"' if index == 0 else f'data-src="{url}"'
         lines.append(
-            f'        <img class="frame{on}" src="{url}" '
-            f'alt="{t["modes_head"]}" width="2880" height="1800"{lazy}>')
+            f'        <img class="frame{on}" {where} '
+            f'alt="{t["modes_head"]}" width="2880" height="1800" decoding="async">')
     lines += ['    </div>']
     # The left and right fifths of the picture, transparent, pointer cursor.
     # Buttons rather than divs so a keyboard reaches them.
@@ -816,8 +827,27 @@ def landing(code):
         "    if (frames.length < 2) { return; }",
         "    var at = 0;",
         "    gallery.classList.add('is-live');",
+        "",
+        "    // Give a frame its address the first time anything wants to see it,",
+        "    // and warm its two neighbours so a step either way is already there.",
+        "    // Called from `show` and from the lightbox, because the lightbox can",
+        "    // reach a frame the gallery never showed.",
+        "    function wake(index) {",
+        "      [index, index - 1, index + 1].forEach(function (n) {",
+        "        var frame = frames[(n + frames.length) % frames.length];",
+        "        if (frame && !frame.getAttribute('src') && frame.dataset.src) {",
+        "          frame.src = frame.dataset.src;",
+        "        }",
+        "      });",
+        "    }",
+        "    // Warming the neighbours waits for the page to finish: the point of",
+        "    // holding the addresses back is the first paint, and undoing that one",
+        "    // line later would be silly.",
+        "    if (document.readyState === 'complete') { wake(0); }",
+        "    else { window.addEventListener('load', function () { wake(0); }); }",
         "    function show(next, back) {",
         "      next = (next + frames.length) % frames.length;",
+        "      wake(next);",
         "      if (next === at) { return; }",
         "      // Which way it is going. Taken from the control that was pressed,",
         "      // because comparing the indexes gets the two wrapping steps",
@@ -857,7 +887,8 @@ def landing(code):
         "    function lift(index) {",
         "      index = (index + frames.length) % frames.length;",
         "      bigAt = index;",
-        "      big.src = frames[index].src;",
+        "      wake(index);",
+        "      big.src = frames[index].getAttribute('src') || frames[index].dataset.src;",
         "      box.hidden = false;",
         "      open = true;",
         "      // A frame, so the browser has the element before the class lands",

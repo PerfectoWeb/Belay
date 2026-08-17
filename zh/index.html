@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Belay：智能体工作时，让 Mac 保持唤醒</title>
 <meta name="description" content="一个小巧的 macOS 菜单栏应用：编程智能体工作时让 Mac 保持唤醒，工作结束后让它照常睡眠。">
-<link rel="stylesheet" href="../style.css?v=84ba9cb080">
+<link rel="stylesheet" href="../style.css?v=b27c406b9f">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -162,11 +162,11 @@
 <h2 class="modes-head">你的智能体，一眼尽览</h2>
 <div class="gallery" data-gallery>
     <div class="frames">
-        <img class="frame is-on" src="https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore/belay-appimage-zh-1.png" alt="你的智能体，一眼尽览" width="2880" height="1800">
-        <img class="frame" src="https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore/belay-appimage-zh-2.png" alt="你的智能体，一眼尽览" width="2880" height="1800" loading="lazy">
-        <img class="frame" src="https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore/belay-appimage-zh-3.png" alt="你的智能体，一眼尽览" width="2880" height="1800" loading="lazy">
-        <img class="frame" src="https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore/belay-appimage-zh-4.png" alt="你的智能体，一眼尽览" width="2880" height="1800" loading="lazy">
-        <img class="frame" src="https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore/belay-appimage-zh-5.png" alt="你的智能体，一眼尽览" width="2880" height="1800" loading="lazy">
+        <img class="frame is-on" src="../img/slides/belay-appimage-zh-1.webp" alt="你的智能体，一眼尽览" width="2880" height="1800" decoding="async">
+        <img class="frame" data-src="../img/slides/belay-appimage-zh-2.webp" alt="你的智能体，一眼尽览" width="2880" height="1800" decoding="async">
+        <img class="frame" data-src="../img/slides/belay-appimage-zh-3.webp" alt="你的智能体，一眼尽览" width="2880" height="1800" decoding="async">
+        <img class="frame" data-src="../img/slides/belay-appimage-zh-4.webp" alt="你的智能体，一眼尽览" width="2880" height="1800" decoding="async">
+        <img class="frame" data-src="../img/slides/belay-appimage-zh-5.webp" alt="你的智能体，一眼尽览" width="2880" height="1800" decoding="async">
     </div>
     <button class="turn back" type="button" data-step="-1" aria-label="上一张"></button>
     <button class="turn next" type="button" data-step="1" aria-label="下一张"></button>
@@ -373,8 +373,27 @@
     if (frames.length < 2) { return; }
     var at = 0;
     gallery.classList.add('is-live');
+
+    // Give a frame its address the first time anything wants to see it,
+    // and warm its two neighbours so a step either way is already there.
+    // Called from `show` and from the lightbox, because the lightbox can
+    // reach a frame the gallery never showed.
+    function wake(index) {
+      [index, index - 1, index + 1].forEach(function (n) {
+        var frame = frames[(n + frames.length) % frames.length];
+        if (frame && !frame.getAttribute('src') && frame.dataset.src) {
+          frame.src = frame.dataset.src;
+        }
+      });
+    }
+    // Warming the neighbours waits for the page to finish: the point of
+    // holding the addresses back is the first paint, and undoing that one
+    // line later would be silly.
+    if (document.readyState === 'complete') { wake(0); }
+    else { window.addEventListener('load', function () { wake(0); }); }
     function show(next, back) {
       next = (next + frames.length) % frames.length;
+      wake(next);
       if (next === at) { return; }
       // Which way it is going. Taken from the control that was pressed,
       // because comparing the indexes gets the two wrapping steps
@@ -414,7 +433,8 @@
     function lift(index) {
       index = (index + frames.length) % frames.length;
       bigAt = index;
-      big.src = frames[index].src;
+      wake(index);
+      big.src = frames[index].getAttribute('src') || frames[index].dataset.src;
       box.hidden = false;
       open = true;
       // A frame, so the browser has the element before the class lands
