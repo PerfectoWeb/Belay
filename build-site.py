@@ -73,6 +73,26 @@ SPARKLE = (
     '<path d="M7.5 13l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6L4 16.5l2.6-.9z"/></svg>'
 )
 
+DOWNLOAD_MARK = (
+    '<svg class="mark alt" viewBox="0 0 24 24" aria-hidden="true" fill="none"'
+    ' stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M12 3v12"/><path d="M6.5 10.5 12 16l5.5-5.5"/><path d="M4 20h16"/></svg>'
+)
+
+# Six sparks, each with where it starts across the button, how big it is, how far
+# it rises, how long it takes and when it begins. Written out rather than
+# generated so the pattern is the same on every page and can be looked at.
+SPARK_BED = (
+    '<span class="sparks" aria-hidden="true">'
+    '<i style="--x: 14%; --size: 6px; --rise: 30px; --dur: 2.4s; --delay: 0s"></i>'
+    '<i style="--x: 31%; --size: 4px; --rise: 22px; --dur: 3.1s; --delay: 0.7s"></i>'
+    '<i style="--x: 47%; --size: 7px; --rise: 34px; --dur: 2.7s; --delay: 1.5s"></i>'
+    '<i style="--x: 63%; --size: 3px; --rise: 25px; --dur: 3.6s; --delay: 0.3s"></i>'
+    '<i style="--x: 78%; --size: 5px; --rise: 28px; --dur: 2.2s; --delay: 1.1s"></i>'
+    '<i style="--x: 92%; --size: 4px; --rise: 20px; --dur: 3.9s; --delay: 2s"></i>'
+    '</span>'
+)
+
 DONATE_URL = "https://perfecto-web.com/d/"
 
 GITHUB = ('<svg class="glyph" viewBox="0 0 16 16" aria-hidden="true">'
@@ -251,6 +271,9 @@ def external(markup):
 # right thing to say inside the store and the wrong thing to say on a page whose
 # own download button is two sections up.
 SLIDE_SOURCE = "https://raw.githubusercontent.com/PerfectoWeb/Belay/main/Promo/AppStore"
+# Zero is the panel that was here before the gallery, kept as the first frame;
+# one to five are the App Store slides.
+SLIDE_FIRST = 0
 SLIDE_COUNT = 5
 
 # The slides were named before the site was, and Spanish disagrees: the files say
@@ -264,7 +287,7 @@ def slides(code):
     name = SLIDE_CODE.get(code, code)
     return [
         f"{SLIDE_SOURCE}/belay-appimage-{name}-{n}.png"
-        for n in range(1, SLIDE_COUNT + 1)
+        for n in range(SLIDE_FIRST, SLIDE_COUNT + 1)
     ]
 
 
@@ -297,10 +320,11 @@ def gallery(code, t):
         f' aria-label="{t["gallery_next"]}"></button>',
         '    <div class="dots" role="tablist">',
     ]
-    for index in range(SLIDE_COUNT):
+    for index in range(SLIDE_COUNT - SLIDE_FIRST + 1):
         lines.append(
             f'        <button class="dot{" is-on" if index == 0 else ""}" type="button"'
             f' role="tab" data-to="{index}"'
+            f' aria-selected="{"true" if index == 0 else "false"}"'
             f' aria-label="{t["gallery_dot"].format(n=index + 1)}"></button>')
     lines += ['    </div>', '</div>']
     return lines
@@ -358,8 +382,9 @@ def landing(code):
         "",
         '<div class="actions get">',
         '    <a class="button stacked primary" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
-        f'{APPLE_MARK}<span class="lines"><span class="lead">{t["download"]}</span>'
-        f'<span class="under">{t["version"].format(version=VERSION)}</span></span>{SPARKLE}</a>',
+        f'{APPLE_MARK}{DOWNLOAD_MARK}<span class="lines"><span class="lead">{t["download"]}</span>'
+        f'<span class="under">{t["version"].format(version=VERSION)}</span></span>'
+        f'{SPARKLE}{SPARK_BED}</a>',
     ] + ([
         f'    <a class="button appstore" href="{APP_STORE_URL}">'
         f'<span class="apple" aria-hidden="true">&#63743;</span>{t["appstore"]}</a>',
@@ -446,23 +471,30 @@ def landing(code):
         "    if (frames.length < 2) { return; }",
         "    var at = 0;",
         "    gallery.classList.add('is-live');",
-        "    function show(next) {",
+        "    function show(next, back) {",
         "      next = (next + frames.length) % frames.length;",
         "      if (next === at) { return; }",
-        "      // Which way it is going, so the frame that leaves goes the other way.",
-        "      if (next < at) { gallery.setAttribute('data-back', ''); }",
+        "      // Which way it is going. Taken from the control that was pressed,",
+        "      // because comparing the indexes gets the two wrapping steps",
+        "      // backwards: last to first is a smaller number and still forward.",
+        "      if (back === undefined) { back = next < at; }",
+        "      if (back) { gallery.setAttribute('data-back', ''); }",
         "      else { gallery.removeAttribute('data-back'); }",
         "      frames[at].classList.remove('is-on');",
         "      dots[at].classList.remove('is-on');",
         "      at = next;",
         "      frames[at].classList.add('is-on');",
         "      dots[at].classList.add('is-on');",
+        "      dots.forEach(function (dot, index) {",
+        "        dot.setAttribute('aria-selected', index === at ? 'true' : 'false');",
+        "      });",
         "    }",
         "    dots.forEach(function (dot) {",
         "      dot.addEventListener('click', function () { show(Number(dot.dataset.to)); });",
         "    });",
         "    gallery.querySelectorAll('.turn').forEach(function (zone) {",
-        "      zone.addEventListener('click', function () { show(at + Number(zone.dataset.step)); });",
+        "      var step = Number(zone.dataset.step);",
+        "      zone.addEventListener('click', function () { show(at + step, step < 0); });",
         "    });",
         "  });",
         "</script>",
