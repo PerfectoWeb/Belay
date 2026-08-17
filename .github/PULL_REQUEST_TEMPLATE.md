@@ -35,6 +35,14 @@ stops it? "None of them, here is why" is a valid answer, but say it. -->
 - [ ] Nothing writes to `~/.claude/` without consent in the UI and a backup first
 - [ ] No new network access, and no timer faster than 5 s
 
+## Contributor terms
+
+<!-- Once per contributor, not once per pull request, but leave it ticked. The
+terms are four short paragraphs at the end of docs/CONTRIBUTING.md. You keep your
+copyright. -->
+
+- [ ] I agree to the contributor terms in `docs/CONTRIBUTING.md`
+
 ## User-visible strings
 
 - [ ] None

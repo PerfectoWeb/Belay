@@ -368,3 +368,43 @@ Screenshots for anything visible, in light and dark appearance.
 
 Finally: no AI provider API keys, ever, and `PROJECT_STATE.md` is updated at
 every milestone.
+
+## Contributor terms
+
+Read this once before your first pull request. It is four sentences of substance
+and it is the only paperwork here.
+
+**You keep the copyright in what you write.** Nothing here asks you to sign it
+away, and nothing here is exclusive: your contribution stays yours to use
+elsewhere however you like.
+
+**What you grant, by opening a pull request:**
+
+> I certify that I wrote this contribution myself, or otherwise have the right to
+> submit it, and that I am not knowingly including anyone else's work under terms
+> that forbid it. Where my employer has rights in what I write, I have their
+> permission to contribute it.
+>
+> I grant PerfectoWeb a perpetual, worldwide, non-exclusive, royalty-free and
+> irrevocable licence to use, reproduce, modify, publish, distribute and
+> sublicense my contribution, and to do so **under any licence terms**, including
+> terms different from the ones this project uses today. I grant the same for any
+> patent claims of mine that the contribution would otherwise infringe.
+
+**Why this exists, plainly.** Belay is not under an OSI-approved licence: it is
+source-available, and its terms forbid selling it. That is deliberate. The
+licence is also something the copyright holder may need to change one day, or
+grant differently to someone under a separate agreement. A project owned by one
+author can do that. A project where five people each own a patch cannot, without
+finding all five and getting every one of them to agree. This clause is what
+keeps that door open, and it costs you nothing but the copyright you keep.
+
+**How you agree.** Opening the pull request is the agreement, and the box in the
+template is where you say so. Signing your commits off makes it a matter of
+record rather than of memory:
+
+```
+git commit -s -m "Fix the leak"
+```
+
+which adds a `Signed-off-by:` line with the name and address in your git config.
