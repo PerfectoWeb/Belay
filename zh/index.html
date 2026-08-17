@@ -144,15 +144,24 @@
         setTimeout(function () { letter.classList.add('is-on'); }, index * 55);
       });
     }
-    if (!('IntersectionObserver' in window)) { type(); return; }
+    // Once, whoever gets there first, and the heading is never left
+    // blank: hiding the letters and then failing to reveal them is the
+    // one outcome worse than not animating at all.
+    var typed = false;
+    function once() { if (!typed) { typed = true; type(); } }
+    if (!('IntersectionObserver' in window)) { once(); return; }
     var watch = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) { return; }
         watch.unobserve(entry.target);
-        type();
+        once();
       });
     }, { threshold: 0.6 });
     watch.observe(head);
+    // The watchdog. An observer that never fires leaves eleven hidden
+    // letters and a blinking caret, which is what a browser pane that
+    // does not run its rendering pipeline actually did.
+    setTimeout(once, 6000);
   });
 </script>
 
