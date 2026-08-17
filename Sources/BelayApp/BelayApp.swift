@@ -125,6 +125,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         statusItem.onShowWhatsNew = { whatsNew.present() }
+        statusItem.onPretendUpdateChanged = { [weak settingsWindow] in
+            settingsWindow?.updates.check()
+        }
         #endif
     }
 

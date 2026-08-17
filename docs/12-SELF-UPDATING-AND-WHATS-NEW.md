@@ -48,26 +48,37 @@ EdDSA signature over the exact bytes, checked against the public key compiled
 into the running build. An installer handed a URL from somewhere else is
 checking nothing.
 
-**Seeing it work.** The button only appears when there is something newer than
-the running build, so a machine on the newest version cannot demonstrate this.
-Build one deliberately behind:
+**Nothing published before 1.2.0 can ever be offered this way, and that is
+permanent.** `generate_appcast` signs an update only for a bundle that declares
+`SUPublicEDKey`, and v1.0.0 and v1.1.0 were built before Sparkle was configured:
+their `Info.plist` has neither the key nor the feed URL. Checked on 2026-08-17 by
+mounting the shipped disk image. So the first run of `publish-appcast.sh` writes
+two entries and zero signatures, the signature gate refuses it, and there is
+nothing to publish.
+
+The consequence is worth stating plainly: **in-app updating begins at 1.2.0.**
+1.2.0 is the first build carrying the key, so it is the first build that can be
+offered a newer one. Anybody on 1.1.0 updates by hand or through Homebrew once,
+and never again after that. No amount of work on this end changes that; the key
+has to be inside the *running* app, and 1.1.0 shipped without it.
+
+**Seeing it work, once 1.2.0 is published.** Release 1.2.0, run
+`scripts/publish-appcast.sh --publish`, then build one deliberately behind:
 
 ```bash
-sed -i "" 's/MARKETING_VERSION: "1.2.0"/MARKETING_VERSION: "1.0.9"/' project.yml
+sed -i "" 's/MARKETING_VERSION: "1.2.0"/MARKETING_VERSION: "1.1.9"/' project.yml
 xcodegen generate && scripts/build-local.sh Debug
 git checkout project.yml          # put the real number back before committing
 ```
 
-Launch that, press Check Now, and the row offers 1.1.0: a real release, signed
-and notarized, fetched from the real feed. That is the whole path exercised
-rather than a mock of it.
+That build carries the key, so the appcast's signed 1.2.0 entry is offered to it,
+downloaded and installed. The whole path, not a mock of it.
 
-**What is left is the appcast itself.** `scripts/publish-appcast.sh` fetches
-every published release, signs them, points each enclosure at its own tag and
-commits the result to `gh-pages`. It has been run as far as it can be run
-unattended: `generate_appcast` reads the private key from the login Keychain,
-which puts a dialog on screen. Until somebody answers it, the feed URL is a 404
-and pressing Update Now will say there is nothing to install.
+**Before then, for the design only.** Debug builds have **Pretend Update** in the
+status menu. It makes the next check report the newest release as available
+whatever this build's number is, so the row and the button can be looked at.
+It moves the status and nothing else: the button still goes to Sparkle, and
+Sparkle still refuses anything the appcast has not signed.
 
 The wanted behaviour is: press it, watch the download, then be offered a
 restart, or be restarted.

@@ -100,7 +100,7 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: "arrow.down.circle",
-                        title: "Updates in one press",
+                        title: "One click updater",
                         body: "Update Now fetches the new version itself. No web page, no hunting.",
                         directOnly: true),
                     .init(

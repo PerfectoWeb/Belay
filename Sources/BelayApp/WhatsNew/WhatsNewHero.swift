@@ -32,13 +32,7 @@ extension WhatsNewView {
             // middle is what should line up with the block opposite, and a
             // shared baseline sat it low against a two-line stack.
             HStack(alignment: .center) {
-                BelayWordmark(size: 24, word: .white, animated: true)
-                    // Two points up. The wordmark's own box carries descender
-                    // room its letters never use, so a true centre sits it
-                    // visibly low next to a block whose bottom line is a number.
-                    .offset(y: -2)
-                Spacer(minLength: 12)
-                VStack(alignment: .trailing, spacing: 1) {
+                VStack(alignment: .leading, spacing: 1) {
                     Text("What's New")
                         .font(.system(size: 19, weight: .semibold))
                         .foregroundStyle(.white)
@@ -48,6 +42,12 @@ extension WhatsNewView {
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundStyle(.white.opacity(0.5))
                 }
+                Spacer(minLength: 12)
+                BelayWordmark(size: 24, word: .white, animated: true)
+                    // Two points up. The wordmark's own box carries descender
+                    // room its letters never use, so a true centre sits it
+                    // visibly low next to a block whose bottom line is a number.
+                    .offset(y: -2)
             }
             .padding(.horizontal, Self.margin)
             // The titlebar is space the panel reaches up under, so the lockup is

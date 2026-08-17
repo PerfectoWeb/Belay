@@ -145,7 +145,13 @@ struct WhatsNewView: View {
             Spacer(minLength: 0)
         }
         .controlSize(.large)
-        .padding(.horizontal, Self.margin)
+        // 37 is the symbol column plus its gap, the same inset the asides use,
+        // so the button's left edge lands on the vertical line every title
+        // starts from. Against the window margin instead, it sat a symbol's
+        // width to the left of everything above it and read as belonging to the
+        // window rather than to the list.
+        .padding(.leading, Self.margin + 37)
+        .padding(.trailing, Self.margin)
         .padding(.top, 4)
         .padding(.bottom, Self.margin - 2)
     }

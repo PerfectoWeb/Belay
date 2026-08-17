@@ -109,6 +109,25 @@ final class ReleaseChecker {
         check(now: now)
     }
 
+    /// The workbench switch, debug builds only.
+    ///
+    /// The update row only appears when a newer version exists, so on the
+    /// machine that builds the newest version it never appears at all, and the
+    /// one control in Settings worth looking at cannot be looked at. With this
+    /// on, a check reports the newest published release as available whatever
+    /// this build's number is.
+    ///
+    /// It changes the *status*, not the installer: the button still goes to
+    /// Sparkle, which still refuses anything the appcast has not signed.
+    #if DEBUG
+    static let pretendKey = "belay.updates.pretendAvailable"
+
+    static var isPretending: Bool {
+        get { UserDefaults.standard.bool(forKey: pretendKey) }
+        set { UserDefaults.standard.set(newValue, forKey: pretendKey) }
+    }
+    #endif
+
     func check(now: Date = Date()) {
         guard Self.isSupported, status != .checking else { return }
         status = .checking
@@ -132,7 +151,11 @@ final class ReleaseChecker {
                 let release = try JSONDecoder().decode(GitHubRelease.self, from: data)
                 let latest = release.tag.trimmingCharacters(in: CharacterSet(charactersIn: "vV"))
                 let file = URL(string: release.installable)
-                if Self.isNewer(latest, than: current), let file {
+                var newer = Self.isNewer(latest, than: current)
+                #if DEBUG
+                if Self.isPretending { newer = true }
+                #endif
+                if newer, let file {
                     status = .available(version: latest, url: file)
                 } else {
                     status = .upToDate(now)

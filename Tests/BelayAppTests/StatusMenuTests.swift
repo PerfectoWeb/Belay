@@ -37,7 +37,7 @@ final class StatusMenuTests: XCTestCase {
         // debug build, so they are here; the shipping menu is the four items
         // this test is named after.
         #if DEBUG
-        expected += ["", "Welcome", "What's New"]
+        expected += ["", "Welcome", "What's New", "Pretend Update"]
         #endif
         expected += ["", String(localized: "Quit")]
         XCTAssertEqual(titles, expected, "the separator is the empty title")
@@ -46,7 +46,7 @@ final class StatusMenuTests: XCTestCase {
     /// The items above exist for development and must never reach anybody else.
     func testTheWelcomeItemIsDebugOnly() {
         let titles = controller.menuForTesting.items.map(\.title)
-        for workbench in ["Welcome", "What's New"] {
+        for workbench in ["Welcome", "What's New", "Pretend Update"] {
             #if DEBUG
             XCTAssertTrue(titles.contains(workbench))
             #else

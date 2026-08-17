@@ -45,6 +45,7 @@ final class StatusItemController {
     /// The workbench destinations, stored here because an extension cannot.
     var onShowWelcome: () -> Void = {}
     var onShowWhatsNew: () -> Void = {}
+    var onPretendUpdateChanged: () -> Void = {}
 
     init(state: AppState, panel: PanelController) {
         self.state = state
@@ -173,8 +174,7 @@ final class StatusItemController {
                 String(localized: "About \(Branding.appName)"), #selector(openAbout),
                 symbol: SettingsPane.about.symbol))
         #if DEBUG
-        menu.addItem(.separator())
-        for it in workbenchItems { menu.addItem(item(it.title, it.action, symbol: it.symbol)) }
+        addWorkbench(to: menu)
         #endif
 
         menu.addItem(.separator())
@@ -187,7 +187,7 @@ final class StatusItemController {
         return menu
     }
 
-    private func item(
+    func item(
         _ title: String, _ action: Selector, key: String = "", symbol: String? = nil
     ) -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
