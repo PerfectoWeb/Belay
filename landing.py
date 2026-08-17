@@ -37,7 +37,7 @@ L["en"] = {
     "star": "Star on GitHub",
     "more": "How it works",
     "download": "Download for macOS",
-    "source": "Source on GitHub",
+    "source": "Source Code",
     "requires": "Requires macOS 14 or later. Apple silicon and Intel.",
     "free": "Free and open source.",
     "version": "Version {version}",

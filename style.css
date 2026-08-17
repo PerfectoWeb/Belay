@@ -508,10 +508,30 @@ footer .row p { margin: 0; }
     border: 1px solid var(--ink);
 }
 
+/* Light theme only: the store's own gradient, top to bottom, with the text and
+   the glyph in white. On a white page a near-black button was the heaviest thing
+   in the row and read as the primary action, which it is not. In the dark theme
+   the inversion above is already distinct from everything around it, so it
+   stays. */
+@media (prefers-color-scheme: light) {
+    .button.stacked.appstore {
+        background: linear-gradient(#18bffb, #2072f3);
+        border-color: transparent;
+        color: #ffffff;
+    }
+}
+
 /* The small line is a label here, not an afterthought, so it keeps its size but
-   loses the dimming the other buttons give it. */
+   loses most of the dimming the other buttons give it. The two lines are pulled
+   together: they are one lockup, not a heading and a detail, and the default
+   reading leading left a gap between them wide enough to read as two things. */
+.button.appstore .lines {
+    gap: 0;
+    line-height: 1.28;
+}
+
 .button.appstore .under {
-    opacity: 0.78;
+    opacity: 0.82;
     letter-spacing: 0.01em;
 }
 
@@ -520,13 +540,12 @@ footer .row p { margin: 0; }
     letter-spacing: -0.01em;
 }
 
-/* The A is drawn with strokes rather than filled, so it needs a touch more room
-   than the solid marks to read at the same weight. The nudge the others carry is
-   cancelled: it exists for the apple's low optical centre, and this glyph sits on
-   its own baseline already. */
+/* The supplied drawing is wider than it is tall, so the box follows the artwork
+   rather than the square the other marks sit in. The nudge the others carry is
+   cancelled: it exists for the apple's low optical centre. */
 .button.appstore .mark {
-    width: 23px;
-    height: 23px;
+    width: 22px;
+    height: 19px;
     transform: none;
 }
 
@@ -721,13 +740,23 @@ h1 .turn { display: inline; }
        Full width also gives the primary action the whole thumb. */
     .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
 
-    /* Not `text-align: center`. That centred the labels inside the full-width
-       button and left the mark against the left edge, so the icon and the words
-       it belongs to drifted apart. Centring the flex row keeps them one object;
-       the labels still share a left edge with each other, which is what makes
-       two lines of different length read as a block rather than as a stack. */
-    .actions.get .button.stacked { justify-content: center; }
+    /* Left aligned, all three, with the inset the buttons already carry. Centring
+       each row kept its own icon and words together but left the three icons at
+       three different distances from the edge, because each group is a different
+       width. Against a shared left edge they line up in a column, which is what
+       makes the three read as one control group.
+
+       Never `text-align: center`: that would centre the labels and leave the mark
+       against the edge, splitting the icon from the words it belongs to. */
+    .actions.get .button.stacked { justify-content: flex-start; }
     .actions.get .button.stacked .lines { text-align: left; }
+
+    /* One height for the three of them. The store button carries a 19px name
+       where the others carry a 17px one, so left alone it stands a little taller
+       than its neighbours, and three full-width buttons in a column are exactly
+       where two pixels show. */
+    .actions.get .button.stacked { min-height: 62px; }
+    .actions.get .button.stacked.appstore { padding-top: 10px; padding-bottom: 10px; }
 
     /* The pair in the footer shares the width instead. Both labels are
        short enough to fit, and neither of them is the reason anybody is here. */
