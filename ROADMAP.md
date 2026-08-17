@@ -4,57 +4,49 @@
 
 **Everything Belay has reached, and everything it is walking towards.**
 
-Dates link to the commit or release that closed the line. Nothing is marked done
-before it has one.
+One table, in the order it happened and will happen. Dates link to the commit or
+release that closed the line, and nothing is marked done before it has one.
 
-<img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=for-the-badge&label=release&color=1f6bff&labelColor=111" alt="Latest release">&nbsp;
-<img src="https://img.shields.io/github/stars/PerfectoWeb/Belay?style=for-the-badge&color=1f6bff&labelColor=111" alt="Stars">&nbsp;
-<img src="https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=for-the-badge&label=downloads&color=1f6bff&labelColor=111" alt="Downloads">
+[![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=release&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
+[![Stars](https://img.shields.io/github/stars/PerfectoWeb/Belay?style=flat&color=1f6bff&logo=github&logoColor=white)](https://github.com/PerfectoWeb/Belay/stargazers)
+[![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&label=downloads&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)<br>
+![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
+[![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
 **1.2.0 is out** on GitHub and Homebrew, and updates in place from here on. The
-App Store copy is prepared and waiting on its build.
+App Store copy is submitted and in review.
 
 </div>
 
 <br>
 
-## Reached
-
-| | Milestone | Status | When |
+| | Milestone | Status | When, or what it waits on |
 | :---: | :--- | :--- | :--- |
-| 🌱 | First commit | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [11 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/94ed3d1) |
-| 🔌 | Holds and releases a real power assertion | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [12 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/pre-release-baseline) |
-| 🍎 | Signed, notarized and stapled by Apple | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [13 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/a1d5f59) |
-| 🎉 | **v1.0.0 published** | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.0.0) |
-| 🌍 | Seven languages, Simplified Chinese included | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/42c747b) |
-| 📄 | A licence of our own: free to use, never for sale | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d3fb9b9) |
-| ✨ | A welcome screen that shows instead of explaining | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/8eb09bf) |
-| 🚀 | **v1.1.0 published** | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.1.0) |
-| 🍺 | Installable with Homebrew | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [15 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/a15cf72) |
-| 📁 | Any folder can wake it, and it remembers which | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [15 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/dd85445) |
-| 💻 | Verified on macOS 15 as well as 26 | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/815bf67) |
-| 🎁 | A "What's New" screen after every update | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/0fb678f) |
-| ⬇️ | Belay installs its own updates | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
-| 📦 | **v1.2.0 published** | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
-
-<br>
-
-## Ahead
-
-| | Milestone | Status | Gate |
-| :---: | :--- | :--- | :--- |
-
-| 🏪 | **Live on the Mac App Store** | <img src="https://img.shields.io/badge/in%20review-b45309?style=flat-square" alt="in review" height="18"> | The 1.2.0 build. Three findings already answered |
-| 🔔 | Say an update is waiting without being asked | <img src="https://img.shields.io/badge/1.2.1-1f6bff?style=flat-square" alt="1.2.1" height="18"> | A shape for it that does not nag. See the note below |
-| 🎛 | Our own update window instead of Sparkle's | <img src="https://img.shields.io/badge/maybe-6b7280?style=flat-square" alt="maybe" height="18"> | Nothing. `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
-| 🖥 | Verified on macOS 14 | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | Nothing. 15 found three faults nobody expected |
-| 📚 | Listed in `awesome-mac` | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | 1.2.0 out, so the download matches the README |
-| 🗣 | Five languages read by people who speak them | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | Finding those people |
-| ⭐ | **First 100 stars** | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | The catalogues, and one place a person reads |
-| 🧩 | Listed in `awesome-claude-code` | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | 100 stars, or 28 Aug 2026, whichever comes first |
-| 📰 | First write-up anywhere | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | Something to say beyond "an app exists" |
-| 🌟 | **First 1000 stars** | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | A reason to look, not a place to be listed |
-| 📣 | First large outlet | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | The small ones first |
+| 🌱 | First commit | <img src="docs/badges/done.svg" alt="done" height="24"> | [11 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/94ed3d1) |
+| 🔌 | Holds and releases a real power assertion | <img src="docs/badges/done.svg" alt="done" height="24"> | [12 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/pre-release-baseline) |
+| 🍎 | Signed, notarized and stapled by Apple | <img src="docs/badges/done.svg" alt="done" height="24"> | [13 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/a1d5f59) |
+| 🎉 | **v1.0.0 published** | <img src="docs/badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.0.0) |
+| 🌍 | Seven languages, Simplified Chinese included | <img src="docs/badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/42c747b) |
+| 📄 | A licence of our own: free to use, never for sale | <img src="docs/badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d3fb9b9) |
+| ✨ | A welcome screen that shows instead of explaining | <img src="docs/badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/8eb09bf) |
+| 🚀 | **v1.1.0 published** | <img src="docs/badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.1.0) |
+| 🍺 | Installable with Homebrew | <img src="docs/badges/done.svg" alt="done" height="24"> | [15 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/a15cf72) |
+| 📁 | Any folder can wake it, and it remembers which | <img src="docs/badges/done.svg" alt="done" height="24"> | [15 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/dd85445) |
+| 💻 | Verified on macOS 15 as well as 26 | <img src="docs/badges/done.svg" alt="done" height="24"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/815bf67) |
+| 🎁 | A "What's New" screen after every update | <img src="docs/badges/done.svg" alt="done" height="24"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/0fb678f) |
+| ⬇️ | Belay installs its own updates | <img src="docs/badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
+| 📦 | **v1.2.0 published** | <img src="docs/badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
+| 🏪 | **Live on the Mac App Store** | <img src="docs/badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026, with the 1.2.0 build |
+| 🔔 | Say an update is waiting without being asked | <img src="docs/badges/1-2-1.svg" alt="1.2.1" height="24"> | A shape for it that does not nag. See the note below |
+| 🖥 | Verified on macOS 14 | <img src="docs/badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
+| 📚 | Listed in `awesome-mac` | <img src="docs/badges/next.svg" alt="next" height="24"> | Cleared: 1.2.0 is out, so the download matches the README |
+| 🗣 | Five languages read by people who speak them | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
+| ⭐ | **First 100 stars** | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
+| 🧩 | Listed in `awesome-claude-code` | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | 100 stars, or 28 Aug 2026, whichever comes first |
+| 📰 | First write-up anywhere | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | Something to say beyond "an app exists" |
+| 🎛 | Our own update window instead of Sparkle's | <img src="docs/badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
+| 🌟 | **First 1000 stars** | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
+| 📣 | First large outlet | <img src="docs/badges/waiting.svg" alt="waiting" height="24"> | The small ones first |
 
 <br>
 
@@ -82,6 +74,8 @@ Shapes worth trying, in the order they seem least annoying:
 Scheduled for 1.2.1 because it is small, and because the update path it depends
 on only started existing in 1.2.0.
 
+<br>
+
 ## Where the detail lives
 
 [`docs/CATALOGUES.md`](docs/CATALOGUES.md) has every list worth submitting to,
@@ -90,5 +84,5 @@ its rules, and the entry text already written.
 [`docs/09-MILESTONES.md`](docs/09-MILESTONES.md) is the engineering history,
 closed through M7.
 
-One rule this file follows: **a milestone with no gate is a wish.** The gate
-column is what stops the next thing being started before the thing it needs.
+One rule this file follows: **a line with nothing in the last column is a wish.**
+Either a date that happened, or the thing that has to be true first.
