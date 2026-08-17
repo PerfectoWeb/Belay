@@ -58,6 +58,13 @@ APPLE_MARK = (
     '-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>'
 )
 
+APPSTORE_MARK = (
+    '<svg class="mark" viewBox="0 0 24 24" aria-hidden="true" fill="none"'
+    ' stroke="currentColor" stroke-width="2.4" stroke-linecap="round"'
+    ' stroke-linejoin="round">'
+    '<path d="M6 18.2 12.1 6.4l6.1 11.8"/><path d="M8.7 14.2h6.9"/></svg>'
+)
+
 GITHUB_MARK = (
     '<svg class="mark" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">'
     '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49'
@@ -474,8 +481,9 @@ def landing(code):
         f'{SPARKLE}{SPARK_BED}</a>',
     ] + ([
         f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}">'
-        f'{APPLE_MARK}<span class="lines"><span class="lead">{t["appstore"]}</span>'
-        f'<span class="under">{t["version"].format(version=VERSION)}</span></span></a>',
+        f'{APPSTORE_MARK}<span class="lines">'
+        f'<span class="under">{t["appstore_top"]}</span>'
+        f'<span class="lead">{t["appstore_name"]}</span></span></a>',
     ] if APP_STORE_LIVE else []) + [
         '    <a class="button stacked secondary" href="https://github.com/PerfectoWeb/Belay">'
         f'{GITHUB_MARK}<span class="lines"><span class="lead">{t["source"]}</span>'

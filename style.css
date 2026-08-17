@@ -491,13 +491,43 @@ footer .row p { margin: 0; }
 /* The heading over the gallery. */
 .modes-head { margin-top: 56px; }
 
-/* The App Store button. A stacked secondary like the source button, so the row
-   is two shapes rather than three; the purple stays the only primary. The Apple
-   glyph is a tall narrow drawing, so it gets a little less width than the square
-   marks beside it and the same optical nudge. */
+/* The App Store button.
+   ---------------------------------------------------------------------------
+   The shape of a store badge: a small line over a large one, which is the
+   reverse of the two buttons beside it and the reason it reads as a badge rather
+   than as a third download link. The markup carries the small line first, so
+   nothing here has to reorder anything.
+
+   Inverted against the page, so it cannot be mistaken for the source button it
+   sits next to: light ground and dark text on a dark page, dark ground and light
+   text on a light one. The border is the same colour as the ground, which is
+   what stops it looking like an outline that failed to fill. */
+.button.stacked.appstore {
+    background: var(--ink);
+    color: var(--page);
+    border: 1px solid var(--ink);
+}
+
+/* The small line is a label here, not an afterthought, so it keeps its size but
+   loses the dimming the other buttons give it. */
+.button.appstore .under {
+    opacity: 0.78;
+    letter-spacing: 0.01em;
+}
+
+.button.appstore .lead {
+    font-size: 19px;
+    letter-spacing: -0.01em;
+}
+
+/* The A is drawn with strokes rather than filled, so it needs a touch more room
+   than the solid marks to read at the same weight. The nudge the others carry is
+   cancelled: it exists for the apple's low optical centre, and this glyph sits on
+   its own baseline already. */
 .button.appstore .mark {
-    width: 18px;
-    margin-right: 2px;
+    width: 23px;
+    height: 23px;
+    transform: none;
 }
 
 /* Both of these are read after the decision, not before it. */
