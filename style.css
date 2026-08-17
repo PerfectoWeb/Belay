@@ -491,11 +491,13 @@ footer .row p { margin: 0; }
 /* The heading over the gallery. */
 .modes-head { margin-top: 56px; }
 
-/* The App Store button, when there is a listing to point it at. */
-.button.appstore .apple {
-    margin-right: 7px;
-    font-size: 17px;
-    line-height: 1;
+/* The App Store button. A stacked secondary like the source button, so the row
+   is two shapes rather than three; the purple stays the only primary. The Apple
+   glyph is a tall narrow drawing, so it gets a little less width than the square
+   marks beside it and the same optical nudge. */
+.button.appstore .mark {
+    width: 18px;
+    margin-right: 2px;
 }
 
 /* Both of these are read after the decision, not before it. */

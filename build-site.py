@@ -40,9 +40,9 @@ CODES = [code for code, _, _ in LANGUAGES]
 # itself is a script rather than a country.
 TAG = {code: tag for code, _, tag in LANGUAGES}
 
-# Flip when the listing is approved and the link stops being a 404. Until then
-# a button pointing at a page that does not exist is worse than no button.
-APP_STORE_LIVE = False
+# False until the listing is approved: a button pointing at a page that does not
+# exist is worse than no button. True since 17 Aug 2026.
+APP_STORE_LIVE = True
 APP_STORE_URL = "https://apps.apple.com/app/id6801207644"
 
 # Flip when GitHub Sponsors is enabled on the account. Same reasoning.
@@ -473,8 +473,9 @@ def landing(code):
         f'<span class="under">{t["version"].format(version=VERSION)}</span></span>'
         f'{SPARKLE}{SPARK_BED}</a>',
     ] + ([
-        f'    <a class="button appstore" href="{APP_STORE_URL}">'
-        f'<span class="apple" aria-hidden="true">&#63743;</span>{t["appstore"]}</a>',
+        f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}">'
+        f'{APPLE_MARK}<span class="lines"><span class="lead">{t["appstore"]}</span>'
+        f'<span class="under">{t["version"].format(version=VERSION)}</span></span></a>',
     ] if APP_STORE_LIVE else []) + [
         '    <a class="button stacked secondary" href="https://github.com/PerfectoWeb/Belay">'
         f'{GITHUB_MARK}<span class="lines"><span class="lead">{t["source"]}</span>'
