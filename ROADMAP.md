@@ -45,6 +45,7 @@ App Store copy is prepared and waiting on its build.
 | :---: | :--- | :--- | :--- |
 
 | 🏪 | **Live on the Mac App Store** | <img src="https://img.shields.io/badge/in%20review-b45309?style=flat-square" alt="in review" height="18"> | The 1.2.0 build. Three findings already answered |
+| 🔔 | Say an update is waiting without being asked | <img src="https://img.shields.io/badge/1.2.1-1f6bff?style=flat-square" alt="1.2.1" height="18"> | A shape for it that does not nag. See the note below |
 | 🎛 | Our own update window instead of Sparkle's | <img src="https://img.shields.io/badge/maybe-6b7280?style=flat-square" alt="maybe" height="18"> | Nothing. `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
 | 🖥 | Verified on macOS 14 | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | Nothing. 15 found three faults nobody expected |
 | 📚 | Listed in `awesome-mac` | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | 1.2.0 out, so the download matches the README |
@@ -56,6 +57,30 @@ App Store copy is prepared and waiting on its build.
 | 📣 | First large outlet | <img src="https://img.shields.io/badge/waiting-6b7280?style=flat-square" alt="waiting" height="18"> | The small ones first |
 
 <br>
+
+## The one idea with a note rather than a line
+
+**Telling somebody an update is waiting, without them opening Settings.** Today
+the only place that says so is the Settings row and the right-click menu, and
+neither is somewhere people look.
+
+The obvious version of this is the wrong one. A badge that sits on the menu bar
+icon forever is a permanent small complaint, and a window that appears by itself
+interrupts exactly the work Belay exists to protect. Whatever this becomes has to
+respect the one thing the app is about: it must not choose a moment when an agent
+is working.
+
+Shapes worth trying, in the order they seem least annoying:
+
+- The mark carries a quiet dot, and only until the update is installed or
+  skipped. It already has four looks, so a fifth is cheap.
+- The window opens **once**, and only when the Mac is idle and no agent has been
+  working for a while. Never during a run, never twice for the same version.
+- Nothing visual at all, and the notification the app already knows how to send,
+  under a switch like the other three.
+
+Scheduled for 1.2.1 because it is small, and because the update path it depends
+on only started existing in 1.2.0.
 
 ## Where the detail lives
 
