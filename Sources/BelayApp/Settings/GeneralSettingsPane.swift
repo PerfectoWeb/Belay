@@ -162,24 +162,25 @@ private struct UpdatesRow: View {
                     Button {
                         Feedback.play(.tick)
                         // Sparkle where there is one: progress, a signature
-                        // check over the bytes, the swap, the relaunch. Opening
-                        // the URL is what a build without Sparkle can do.
+                        // check, the swap, the relaunch. Without it, the URL.
                         if SoftwareUpdate.isSupported {
                             SoftwareUpdate.install()
                         } else {
                             NSWorkspace.shared.open(url)
                         }
                     } label: {
-                        // The welcome screen's wand, and only here. "Check
-                        // Now" is a question; this is the answer arriving.
-                        Label("Update Now", systemImage: "wand.and.stars")
+                        // No icon: the wand belongs on a screen shown once, and
+                        // here it decorated the only coloured control there is.
+                        Text("Update Now")
                     }
                     .controlSize(.small)
                     .tint(.green)
                     .buttonStyle(.borderedProminent)
-                    // Fully rounded, like the Donate button in About. Only the
-                    // shape: the tint, the size and the label stay as they are.
+                    // Fully rounded, like Donate in About. Shape only.
                     .buttonBorderShape(.capsule)
+                    // Sparks instead: an overlay rather than a style, so the
+                    // size, the shape and the green are what they were.
+                    .overlay { UpdateSparks() }
                 } else {
                     Button("Check Now") {
                         Feedback.play(.tick)

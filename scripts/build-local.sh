@@ -37,15 +37,30 @@ cp -R "$APP" "$ROOT/build/Belay.app"
 # "Library not loaded ... have different Team IDs" before any of its own code
 # runs. The release path does not hit this because it signs everything with one
 # Developer ID.
+# BELAY_SIGN_LOCAL names a real identity to use instead of ad-hoc, and the one
+# thing it is for is testing updates. Sparkle refuses an update whose app does
+# not carry the same code-signing identity as the app being replaced, which is
+# the right rule and which no ad-hoc build can satisfy against a Developer ID
+# release: "The update is improperly signed and could not be validated."
+#
+#   BELAY_SIGN_LOCAL="Developer ID Application" scripts/build-local.sh Debug
+IDENTITY="${BELAY_SIGN_LOCAL:--}"
+
 if [ -d "$ROOT/build/Belay.app/Contents/Frameworks" ]; then
-    echo "==> re-sign embedded frameworks (ad-hoc)"
+    if [ "$IDENTITY" = "-" ]; then
+        echo "==> re-sign embedded frameworks (ad-hoc)"
+    else
+        echo "==> re-sign embedded frameworks ($IDENTITY)"
+    fi
     # Deepest first: signing a bundle seals what is inside it, so an inner
     # helper signed afterwards invalidates the seal around it.
     find "$ROOT/build/Belay.app/Contents/Frameworks" \
         \( -name "*.app" -o -name "*.xpc" -o -name "*.framework" \) -print0 \
         | sort -rz \
-        | xargs -0 -I{} codesign --force --sign - --timestamp=none {} >/dev/null 2>&1
-    codesign --force --sign - --timestamp=none "$ROOT/build/Belay.app" >/dev/null 2>&1
+        | xargs -0 -I{} codesign --force --sign "$IDENTITY" --options runtime --timestamp=none {} \
+            >/dev/null 2>&1
+    codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
+        "$ROOT/build/Belay.app" >/dev/null 2>&1
 fi
 
 echo "==> verify signature"
