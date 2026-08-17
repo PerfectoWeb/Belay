@@ -30,7 +30,7 @@
        across a gradient is a hard bug to see and an easy one to avoid. */
     --glow-blue: 31 107 255;
     --glow-violet: 113 51 238;
-    --glow-strength: 0.075;
+    --glow-strength: 0.11;
 
     /* Lets a height of `auto` take part in a transition, which is what makes the
        disclosure below open with any weight at all. */
@@ -51,8 +51,13 @@
         --glow-violet: 124 68 245;
         /* Higher than the light theme's, and still the smaller effect of the
            two: a tint has to fight a white page and only has to join a dark
-           one. */
-        --glow-strength: 0.16;
+           one.
+           Raised from 0.16 once the lights got smaller. The first pair were
+           three quarters of the window across, and a wash that big registers at
+           almost any strength; a light a third of that has to be stronger to be
+           seen at all, and at 0.16 it was measurably there and practically
+           invisible. */
+        --glow-strength: 0.24;
     }
 }
 

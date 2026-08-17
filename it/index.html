@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Belay: resta sveglio mentre i tuoi agenti lavorano</title>
 <meta name="description" content="Una piccola app nella barra dei menu di macOS che tiene sveglio il Mac mentre gli agenti lavorano e lo lascia dormire quando hanno finito.">
-<link rel="stylesheet" href="../style.css?v=f7b890758a">
+<link rel="stylesheet" href="../style.css?v=84ba9cb080">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -41,7 +41,7 @@
   // A stylesheet can move a light but it cannot surprise you with one: the
   // place, the size, the colour, the direction and the lifetime all have to
   // be picked again for every appearance, and picking is what CSS does not
-  // do. So each light lives a lap here — fade in, drift, fade out — and when
+  // do. So each light lives a lap here, fade in, drift, fade out, and when
   // the lap finishes it starts another one from new numbers.
   (function () {
     var box = document.querySelector('.lights');
@@ -54,30 +54,39 @@
 
     // The headline is the one place a light may not sit behind. Its unfilled
     // grey is tuned a couple of points above the page, and anything brighter
-    // underneath swallows it, so a rolled position that lands on the words is
-    // rolled again. Read live rather than once: scroll far enough and the
-    // headline is off screen, at which point there is nothing to avoid.
-    function clear(x, y, room) {
+    // underneath swallows it.
+    //
+    // Only the vertical distance is tested. The headline runs the width of the
+    // column, so a light beside it is a light on it, and a band is a test that
+    // can always be satisfied by looking further up or down. Read live rather
+    // than once: scroll far enough and the headline is off screen, at which
+    // point there is nothing to avoid.
+    function band(room) {
       var head = document.querySelector('h1');
-      if (!head) { return true; }
+      if (!head) { return null; }
       var r = head.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) { return true; }
-      return x < r.left - room || x > r.right + room
-        || y < r.top - room || y > r.bottom + room;
+      if (r.bottom < 0 || r.top > window.innerHeight) { return null; }
+      return { top: r.top - room, bottom: r.bottom + room };
     }
 
-    function lap(el) {
+    function lap(el, opening) {
       var u = unit();
-      // Wide enough to read as a wash rather than as a ball, and nothing
-      // like the window: a light the size of the page is a background, not a
-      // light.
-      var w = pick(20, 34) * u;
+      var w = pick(36, 56) * u;
       var h = w * pick(0.7, 0.95);
-      var x = 0, y = 0;
-      for (var tries = 0; tries < 30; tries++) {
-        x = pick(-0.1, 1.1) * window.innerWidth;
-        y = pick(-0.1, 1.1) * window.innerHeight;
-        if (clear(x, y, w * 0.3)) { break; }
+      var keep = band(h * 0.22);
+      var x = pick(-0.15, 1.15) * window.innerWidth;
+      var y = 0;
+      for (var tries = 0; tries < 20; tries++) {
+        y = pick(-0.15, 1.15) * window.innerHeight;
+        if (!keep || y < keep.top || y > keep.bottom) { break; }
+      }
+      // A window short enough that the band fills it leaves no room to roll
+      // into, so take the larger side rather than giving up and landing on
+      // the words.
+      if (keep && y >= keep.top && y <= keep.bottom) {
+        y = keep.top > window.innerHeight - keep.bottom
+          ? pick(-0.15, 1) * keep.top
+          : keep.bottom + pick(0, 1) * (window.innerHeight - keep.bottom);
       }
       el.style.width = Math.round(w) + 'px';
       el.style.height = Math.round(h) + 'px';
@@ -88,28 +97,32 @@
       // Not every light at full strength, or three of them at once reads as
       // one even wash.
       el.style.setProperty('--peak',
-        'calc(var(--glow-strength) * ' + pick(0.65, 1).toFixed(2) + ')');
+        'calc(var(--glow-strength) * ' + pick(0.7, 1).toFixed(2) + ')');
 
       if (still) { el.style.opacity = '0.7'; return; }
 
-      var away = pick(7, 15) * u;
+      var away = pick(16, 30) * u;
       var turn = pick(0, Math.PI * 2);
-      var life = pick(15, 26) * 1000;
+      var life = pick(9, 15) * 1000;
       var run = el.animate([
         { transform: 'translate3d(0,0,0) scale(0.88)', opacity: 0 },
-        { opacity: 1, offset: 0.35 },
-        { opacity: 1, offset: 0.65 },
+        // Up quickly, held for most of the lap, down quickly. Spending a
+        // third of every lap fading each way left all three faint at once
+        // and the page looking as though it had nothing behind it.
+        { opacity: 1, offset: 0.2 },
+        { opacity: 1, offset: 0.8 },
         { transform: 'translate3d(' + (Math.cos(turn) * away).toFixed(1) + 'px,'
           + (Math.sin(turn) * away).toFixed(1) + 'px,0) scale(1.14)', opacity: 0 }
       ], { duration: life, easing: 'ease-in-out' });
-      run.finished.then(function () { lap(el); }).catch(function () {});
+      // The first lap starts in the middle of itself, so the lights are
+      // already lit in the first frame the reader sees. Starting all three
+      // from zero meant several seconds of a page with nothing behind it,
+      // and the three of them blooming together afterwards.
+      if (opening) { run.currentTime = life * pick(0.25, 0.6); }
+      run.finished.then(function () { lap(el, false); }).catch(function () {});
     }
 
-    // Staggered, so the three of them are never in the same part of their
-    // lap and the group never blooms or empties all at once.
-    lights.forEach(function (el, i) {
-      setTimeout(function () { lap(el); }, still ? 0 : i * 4200 + Math.random() * 2000);
-    });
+    lights.forEach(function (el) { lap(el, true); });
   })();
 </script>
 <div class="wrap">
