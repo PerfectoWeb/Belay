@@ -1,0 +1,15 @@
+{
+  "name": "Belay",
+  "short_name": "Belay",
+  "description": "Keeps your Mac awake while your AI agents work.",
+  "start_url": "./",
+  "scope": "./",
+  "theme_color": "#0d1016",
+  "background_color": "#0d1016",
+  "icons": [
+    { "src": "icon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "icon-maskable-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

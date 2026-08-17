@@ -196,6 +196,21 @@ def head(code, title, meta, depth, page):
         f"<title>{title}</title>",
         f'<meta name="description" content="{meta}">',
         f'<link rel="stylesheet" href="{up}style.css">',
+        # The icons. Paths are relative on purpose: this site lives under
+        # /Belay/, so a root-absolute `/favicon.ico` would point at the domain
+        # root, which is not ours. Declaring them explicitly is also what stops
+        # the browser probing that root and logging the 404 that started this.
+        #
+        # Four links is the whole modern set. The SVG is what a current browser
+        # picks, the .ico carries 16, 32 and 48 for everything older and for
+        # Windows, the Apple one is opaque because iOS ignores transparency, and
+        # the manifest holds the 192, 512 and maskable rasters for Android.
+        f'<link rel="icon" href="{up}favicon.ico" sizes="32x32">',
+        f'<link rel="icon" href="{up}icon.svg" type="image/svg+xml">',
+        f'<link rel="apple-touch-icon" href="{up}apple-touch-icon.png">',
+        f'<link rel="manifest" href="{up}manifest.webmanifest">',
+        '<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">',
+        '<meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)">',
         # Open Graph. Without these a link to this page unfurls in Slack,
         # iMessage, Discord and X as a bare URL, which is what it did for the
         # whole of 1.0. The card is 1280x640, rendered by
@@ -855,6 +870,8 @@ def fixed_redirect(target, depth, note):
         '<meta charset="utf-8">',
         f"<!-- {note} -->",
         f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{target}">',
+        f'<link rel="icon" href="{up}favicon.ico" sizes="32x32">',
+        f'<link rel="icon" href="{up}icon.svg" type="image/svg+xml">',
         f'<meta http-equiv="refresh" content="0; url={up}{target}">',
         "<title>Belay</title>",
         "</head>",
@@ -879,6 +896,8 @@ def redirect(target, depth, note):
         '<meta charset="utf-8">',
         f"<!-- {note} -->",
         f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{target}">',
+        f'<link rel="icon" href="{up}favicon.ico" sizes="32x32">',
+        f'<link rel="icon" href="{up}icon.svg" type="image/svg+xml">',
         f'<noscript><meta http-equiv="refresh" content="0; url={up}{target}"></noscript>',
         "<title>Belay</title>",
         "<script>",

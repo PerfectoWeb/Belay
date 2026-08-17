@@ -70,7 +70,11 @@ header a {
 }
 
 h1 {
-    font-size: clamp(30px, 6vw, 42px);
+    /* The floor is what a phone gets, and it is deliberately close to the
+       ceiling: the headline is the page, and shrinking it to fit two lines cost
+       more than the extra line does. Below 560px the forced break is dropped
+       (see `h1 .turn`), so the browser takes as many lines as it needs. */
+    font-size: clamp(36px, 6vw, 42px);
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 32px 0 8px;
@@ -125,7 +129,12 @@ h1 .tint {
        curve as the fill above. It used to travel letter by letter, which worked
        but read as a second style bolted onto the first. */
     h1[data-tint="green"] .tint {
-        animation: word-green 0.9s ease-out forwards;
+        /* `both`, not `forwards`. A delayed animation with no backwards fill
+           leaves the word at its plain declared colour until its turn comes,
+           which here is grey: the second word blinked grey and snapped back to
+           white before it started greening. `both` holds the `from` keyframe
+           through the delay. */
+        animation: word-green 0.9s ease-out both;
         animation-delay: calc(var(--tint-step) * 0.15s);
     }
 
@@ -140,7 +149,11 @@ h1 .tint {
     /* The white words going out at the end, one at a time. The green pair is
        excluded by name: they are already grey and they stay that way. */
     h1.is-cooling .word:not(.tint) {
-        animation: word-cool 0.8s ease-in forwards;
+        /* `both` for the same reason as the green above, and here it was
+           impossible to miss: with six words staggered over a second, every one
+           of them dropped to grey the moment cooling started, then jumped back
+           to white when its own turn arrived and faded from there. */
+        animation: word-cool 0.8s ease-in both;
         /* `--cool-step` is written per word by the script, not by the builder,
            because the order is reshuffled on every cycle and a stylesheet cannot
            shuffle. */
