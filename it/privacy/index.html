@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Informativa sulla privacy: Belay</title>
 <meta name="description" content="Belay non ha account, analitiche, pubblicità né segnalazioni di errori. Cosa legge, cosa conserva e l'unica richiesta che può fare.">
-<link rel="stylesheet" href="../../style.css?v=685030feaf">
+<link rel="stylesheet" href="../../style.css?v=f7b890758a">
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -34,6 +34,84 @@
 <link rel="alternate" hreflang="x-default" href="https://perfectoweb.github.io/Belay/en/privacy/">
 </head>
 <body>
+<div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+<script>
+  // Three lights, each one appearing somewhere else every time.
+  //
+  // A stylesheet can move a light but it cannot surprise you with one: the
+  // place, the size, the colour, the direction and the lifetime all have to
+  // be picked again for every appearance, and picking is what CSS does not
+  // do. So each light lives a lap here — fade in, drift, fade out — and when
+  // the lap finishes it starts another one from new numbers.
+  (function () {
+    var box = document.querySelector('.lights');
+    if (!box || !box.animate) { return; }
+    var lights = Array.prototype.slice.call(box.querySelectorAll('i'));
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function unit() { return Math.max(window.innerWidth, window.innerHeight) / 100; }
+    function pick(low, high) { return low + Math.random() * (high - low); }
+
+    // The headline is the one place a light may not sit behind. Its unfilled
+    // grey is tuned a couple of points above the page, and anything brighter
+    // underneath swallows it, so a rolled position that lands on the words is
+    // rolled again. Read live rather than once: scroll far enough and the
+    // headline is off screen, at which point there is nothing to avoid.
+    function clear(x, y, room) {
+      var head = document.querySelector('h1');
+      if (!head) { return true; }
+      var r = head.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) { return true; }
+      return x < r.left - room || x > r.right + room
+        || y < r.top - room || y > r.bottom + room;
+    }
+
+    function lap(el) {
+      var u = unit();
+      // Wide enough to read as a wash rather than as a ball, and nothing
+      // like the window: a light the size of the page is a background, not a
+      // light.
+      var w = pick(20, 34) * u;
+      var h = w * pick(0.7, 0.95);
+      var x = 0, y = 0;
+      for (var tries = 0; tries < 30; tries++) {
+        x = pick(-0.1, 1.1) * window.innerWidth;
+        y = pick(-0.1, 1.1) * window.innerHeight;
+        if (clear(x, y, w * 0.3)) { break; }
+      }
+      el.style.width = Math.round(w) + 'px';
+      el.style.height = Math.round(h) + 'px';
+      el.style.left = Math.round(x - w / 2) + 'px';
+      el.style.top = Math.round(y - h / 2) + 'px';
+      el.style.setProperty('--tone',
+        Math.random() < 0.6 ? 'var(--glow-blue)' : 'var(--glow-violet)');
+      // Not every light at full strength, or three of them at once reads as
+      // one even wash.
+      el.style.setProperty('--peak',
+        'calc(var(--glow-strength) * ' + pick(0.65, 1).toFixed(2) + ')');
+
+      if (still) { el.style.opacity = '0.7'; return; }
+
+      var away = pick(7, 15) * u;
+      var turn = pick(0, Math.PI * 2);
+      var life = pick(15, 26) * 1000;
+      var run = el.animate([
+        { transform: 'translate3d(0,0,0) scale(0.88)', opacity: 0 },
+        { opacity: 1, offset: 0.35 },
+        { opacity: 1, offset: 0.65 },
+        { transform: 'translate3d(' + (Math.cos(turn) * away).toFixed(1) + 'px,'
+          + (Math.sin(turn) * away).toFixed(1) + 'px,0) scale(1.14)', opacity: 0 }
+      ], { duration: life, easing: 'ease-in-out' });
+      run.finished.then(function () { lap(el); }).catch(function () {});
+    }
+
+    // Staggered, so the three of them are never in the same part of their
+    // lap and the group never blooms or empties all at once.
+    lights.forEach(function (el, i) {
+      setTimeout(function () { lap(el); }, still ? 0 : i * 4200 + Math.random() * 2000);
+    });
+  })();
+</script>
 <div class="wrap">
 
 <header>

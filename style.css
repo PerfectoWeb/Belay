@@ -67,67 +67,45 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Two lights in the room, behind everything.
+/* The lights behind the page: three of them, on their own layer, moving.
 
-   They are fixed rather than scrolled: the page moves past them the way a page
-   moves past a window, and a glow that scrolls with the text reads as a shape
-   drawn on the page instead of as light in the room.
+   They are fixed, so the page travels past them rather than carrying them: a
+   glow that scrolls with the text reads as a shape drawn on the page instead of
+   as light in the room. The layer clips, which is what lets each light be larger
+   than the window and wander off the edge without ever adding a scrollbar.
 
-   Both sit almost entirely off screen. Only the near fringe of each one is
-   visible, which is the whole trick: the strongest part of a soft gradient is
-   also the part that looks painted, and the fringe is what looks like light. It
-   also keeps them out of the headline's band, where the unfilled grey is tuned
-   two points above the page and would be swallowed by anything brighter behind
-   it.
-
-   `z-index: 0` puts them over the body's own ground and under `.wrap`, which
-   takes a layer of its own below. */
-body::before,
-body::after {
-    content: "";
+   `z-index: 0` puts the layer over the body's own ground and under `.wrap`. */
+.lights {
     position: fixed;
+    inset: 0;
     z-index: 0;
-    border-radius: 50%;
+    overflow: hidden;
     pointer-events: none;
 }
 
-body::before {
-    top: -46vmax;
-    right: -24vmax;
-    width: 86vmax;
-    height: 72vmax;
+/* A light has no size, place, colour or lifetime here. All four are written by
+   the script in the page, freshly for every appearance, because "somewhere else
+   each time" is not something a stylesheet can say. What stays in CSS is what
+   never varies: the shape, the falloff, and the fact that a light begins
+   invisible.
+
+   Beginning at zero is also the fallback. A page whose script never ran shows no
+   lights at all, which is the page as it was before them, rather than three
+   blobs parked in a corner. */
+.lights i {
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+    /* Both stops are the same colour, one of them at zero alpha. `transparent`
+       would read as transparent *black* on older engines and lay a grey haze
+       across the falloff, which is a hard thing to spot and an easy one to
+       avoid. */
     background: radial-gradient(closest-side,
-        rgb(var(--glow-blue) / var(--glow-strength)),
-        rgb(var(--glow-blue) / 0));
-}
-
-body::after {
-    bottom: -52vmax;
-    left: -30vmax;
-    width: 78vmax;
-    height: 66vmax;
-    background: radial-gradient(closest-side,
-        rgb(var(--glow-violet) / calc(var(--glow-strength) * 0.8)),
-        rgb(var(--glow-violet) / 0));
-}
-
-/* The drift. Slow enough that you cannot catch it moving, and small enough that
-   there is nothing to catch: a couple of viewport percent over most of a minute.
-   The two periods are deliberately not multiples of each other, so the pair
-   never settles into a rhythm you could count. */
-@media (prefers-reduced-motion: no-preference) {
-    body::before { animation: glow-drift-a 53s ease-in-out infinite; }
-    body::after { animation: glow-drift-b 67s ease-in-out infinite; }
-}
-
-@keyframes glow-drift-a {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(-3vmax, 2.5vmax, 0) scale(1.06); }
-}
-
-@keyframes glow-drift-b {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1.04); }
-    50% { transform: translate3d(3vmax, -2vmax, 0) scale(1); }
+        rgb(var(--tone, var(--glow-blue)) / var(--peak, var(--glow-strength))),
+        rgb(var(--tone, var(--glow-blue)) / 0));
+    /* Composited on the GPU: three large layers moving at once would be a
+       repaint a frame otherwise. */
+    will-change: transform, opacity;
 }
 
 /* Everything readable rides above the lights. One layer here rather than a
