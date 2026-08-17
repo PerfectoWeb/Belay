@@ -106,7 +106,6 @@ h1 .word {
    A letter with no state of its own inherits the word's colour, which is what
    keeps the fill above working exactly as it did. */
 h1 .ch { transition: color 0.22s ease-out; }
-h1 .ch.hot { color: var(--donate-green); }
 h1 .ch.cold { color: var(--ink-unfilled); }
 
 /* The whole heading going back to grey at the end of a cycle. Slower than the
@@ -115,7 +114,13 @@ h1 .ch.cold { color: var(--ink-unfilled); }
 h1.is-cooling .word,
 h1.is-cooling .ch { transition: color 0.9s ease-in; }
 h1.is-cooling .word { color: var(--ink-unfilled); }
-h1.is-cooling .ch { color: inherit; }
+
+/* Last, so it wins. `hot` is the one state that must always be visible, and it
+   shares its specificity with two rules above: `cold`, which a letter can still
+   be carrying from the previous cycle, and the cooling rule, which used to force
+   the letters to `inherit` and swallowed the green whenever the two overlapped.
+   That rule is gone: a cooling letter is already the same grey through `cold`. */
+h1 .ch.hot { color: var(--donate-green); }
 
 h2 {
     font-size: 28px;
