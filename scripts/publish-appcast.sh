@@ -58,6 +58,29 @@ for tag in $tags; do
     [ -f "$want" ] || die "$tag published no Belay-${tag#v}.dmg"
 done
 rm -f "$RELEASES/Belay.dmg"
+
+# Drop any release whose app has no SUPublicEDKey. Sparkle refuses to offer one
+# of those to a build that has a key, and says why: "Sparkle only supports
+# rotation, but not removal of (Ed)DSA keys." v1.0.0 and v1.1.0 shipped before
+# the key existed, so generate_appcast writes them unsigned and the signature
+# gate then refuses the whole appcast. Without this the first real publish would
+# be blocked by two releases nobody can update from anyway.
+for dmg in "$RELEASES"/*.dmg; do
+    [ -f "$dmg" ] || continue
+    mount="$(mktemp -d)"
+    hdiutil attach -nobrowse -quiet -mountpoint "$mount" "$dmg" || continue
+    key="$(/usr/libexec/PlistBuddy -c 'Print :SUPublicEDKey' \
+        "$mount/Belay.app/Contents/Info.plist" 2>/dev/null || true)"
+    hdiutil detach -quiet "$mount" || true
+    rmdir "$mount" 2>/dev/null || true
+    if [ -z "$key" ]; then
+        echo "  skipping $(basename "$dmg"): no SUPublicEDKey, so it cannot be updated from"
+        rm -f "$dmg"
+    fi
+done
+
+ls "$RELEASES"/*.dmg >/dev/null 2>&1 \
+    || die "no release carries a signing key yet; there is nothing to publish"
 ls -1 "$RELEASES"/*.dmg | sed 's|.*/|  |'
 
 # ------------------------------------------------- 2 and 3. sign, and retag

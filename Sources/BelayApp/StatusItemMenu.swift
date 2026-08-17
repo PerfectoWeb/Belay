@@ -33,7 +33,13 @@ extension StatusItemController {
             item(
                 String(localized: "About \(Branding.appName)"), #selector(openAbout),
                 symbol: SettingsPane.about.symbol))
+        // Fenced off above. The three rows before it go somewhere to look at
+        // something; this one changes the app on disk, and in the shipping menu
+        // the only other row that does anything irreversible is Quit, which has
+        // a rule of its own below. The separator after it is the one already
+        // there: the workbench block's in a debug build, Quit's in a release.
         if let status = updateStatus() {
+            menu.addItem(.separator())
             menu.addItem(
                 item(
                     status.title, #selector(runUpdate),

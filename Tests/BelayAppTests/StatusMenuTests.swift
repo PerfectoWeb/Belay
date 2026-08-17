@@ -32,6 +32,9 @@ final class StatusMenuTests: XCTestCase {
             String(localized: "Settings…"),
             String(localized: "About \(Branding.appName)")
         ]
+        // The update row is only there when the app has wired it, which the
+        // next test does. A bare controller has no checker to ask.
+        //
         // The workbench items for replaying the two screens that are shown
         // once. They are compiled into debug builds only, and the tests are a
         // debug build, so they are here; the shipping menu is the four items
@@ -41,6 +44,21 @@ final class StatusMenuTests: XCTestCase {
         #endif
         expected += ["", String(localized: "Quit")]
         XCTAssertEqual(titles, expected, "the separator is the empty title")
+    }
+
+    /// The update row appears only once something has told the controller what
+    /// to say, and it arrives fenced off from the rows above it: those three go
+    /// somewhere to look at something, and this one changes the app on disk.
+    func testTheUpdateRowIsFencedOffWhenThereIsOne() {
+        controller.updateStatus = { (title: "Update Now (v9.9.9)", waiting: true) }
+        let titles = controller.menuForTesting.items.map(\.title)
+        let row = try? XCTUnwrap(titles.firstIndex(of: "Update Now (v9.9.9)"))
+        XCTAssertNotNil(row, "the row was not built")
+        if let row {
+            XCTAssertEqual(titles[row - 1], "", "no separator above the update row")
+            XCTAssertEqual(
+                titles[row + 1], "", "no separator below it either, so it runs into what follows")
+        }
     }
 
     /// The items above exist for development and must never reach anybody else.
