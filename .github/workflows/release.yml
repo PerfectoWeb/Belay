@@ -382,12 +382,20 @@ jobs:
             echo "\`spctl -a -t open --context context:primary-signature $DMG_NAME\` should accept it offline."
           } > "$RUNNER_TEMP/release-body.md"
 
+          # A second copy under a stable name, because the README's download
+          # button and the site both link releases/latest/download/Belay.dmg. It
+          # was uploaded by hand for 1.0.0 and 1.1.0 and nobody wrote that down,
+          # so v1.2.0 shipped with a download button that answered 404 until it
+          # was noticed.
+          cp "dist/$DMG_NAME" "dist/Belay.dmg"
+
           gh release create "$TAG" \
             --title "Belay $VERSION" \
             --notes-file "$RUNNER_TEMP/release-body.md" \
             --verify-tag \
             "dist/$DMG_NAME" \
-            "dist/$DMG_NAME.sha256"
+            "dist/$DMG_NAME.sha256" \
+            "dist/Belay.dmg"
 
       # The site carries the version number as text so a visitor never waits on
       # api.github.com to find out what the current release is. That is a good

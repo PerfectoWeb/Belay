@@ -74,8 +74,14 @@ git checkout project.yml          # put the real number back before committing
 That build carries the key, so the appcast's signed 1.2.0 entry is offered to it,
 downloaded and installed. The whole path, not a mock of it.
 
-**Before then, the whole path is still testable.** Debug builds have **Pretend
-Update** in the status menu, and it does two things:
+**Confirmed working on 2026-08-17**, before 1.2.0 shipped, with a signed test
+payload built from the same sources: offered, downloaded, validated, installed,
+relaunched. The test feed and its payload were removed from the site afterwards,
+so the switch below now finds nothing until there is a release newer than the
+build being run.
+
+**How that test was set up.** Debug builds have **Pretend Update** in the status
+menu, and it does two things:
 
 - the next check reports an update whatever this build's number is, so the row
   and the button appear;

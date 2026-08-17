@@ -11,8 +11,8 @@ before it has one.
 <img src="https://img.shields.io/github/stars/PerfectoWeb/Belay?style=for-the-badge&color=1f6bff&labelColor=111" alt="Stars">&nbsp;
 <img src="https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=for-the-badge&label=downloads&color=1f6bff&labelColor=111" alt="Downloads">
 
-**1.2.0 is in flight.** The App Store is waiting on that build; Homebrew and the
-direct download follow the tag.
+**1.2.0 is out** on GitHub and Homebrew, and updates in place from here on. The
+App Store copy is prepared and waiting on its build.
 
 </div>
 
@@ -34,6 +34,8 @@ direct download follow the tag.
 | 📁 | Any folder can wake it, and it remembers which | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [15 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/dd85445) |
 | 💻 | Verified on macOS 15 as well as 26 | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/815bf67) |
 | 🎁 | A "What's New" screen after every update | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [16 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/0fb678f) |
+| ⬇️ | Belay installs its own updates | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
+| 📦 | **v1.2.0 published** | <img src="https://img.shields.io/badge/done-16a34a?style=flat-square" alt="done" height="18"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 
 <br>
 
@@ -41,7 +43,7 @@ direct download follow the tag.
 
 | | Milestone | Status | Gate |
 | :---: | :--- | :--- | :--- |
-| 📦 | **v1.2.0 published** | <img src="https://img.shields.io/badge/in%20progress-1f6bff?style=flat-square" alt="in progress" height="18"> | Tagged; CI signs and notarizes |
+
 | 🏪 | **Live on the Mac App Store** | <img src="https://img.shields.io/badge/in%20review-b45309?style=flat-square" alt="in review" height="18"> | The 1.2.0 build. Three findings already answered |
 | 🎛 | Our own update window instead of Sparkle's | <img src="https://img.shields.io/badge/maybe-6b7280?style=flat-square" alt="maybe" height="18"> | Nothing. `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
 | 🖥 | Verified on macOS 14 | <img src="https://img.shields.io/badge/next-6b7280?style=flat-square" alt="next" height="18"> | Nothing. 15 found three faults nobody expected |

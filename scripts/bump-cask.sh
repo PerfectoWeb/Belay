@@ -27,7 +27,10 @@ curl -fsSL -o "$WORK/Belay.dmg" "$URL" || { echo "no published asset at $URL" >&
 SHA="$(shasum -a 256 "$WORK/Belay.dmg" | awk '{print $1}')"
 echo "  sha256 $SHA"
 
-git clone --quiet https://github.com/PerfectoWeb/homebrew-tap.git "$WORK/tap"
+# Cloned through `gh` so it uses the credentials that are already there. The
+# https URL asked for a username and got "Device not configured", because this
+# runs from a script with no terminal to type into.
+gh repo clone PerfectoWeb/homebrew-tap "$WORK/tap" -- --quiet
 CASK="$WORK/tap/Casks/belay.rb"
 /usr/bin/sed -i '' -e "s/^  version \".*\"$/  version \"$VERSION\"/" \
                    -e "s/^  sha256 \".*\"$/  sha256 \"$SHA\"/" "$CASK"
