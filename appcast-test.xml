@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  A TEST feed. Not the one the app ships with.
+  A TEST feed, read only by a debug build with Pretend Update switched on.
+  Production is appcast.xml. Delete this once in-app updating has shipped.
 
-  It exists so the download-and-install path can be exercised before there is a
-  release newer than the running build. The payload is the real, signed,
-  notarized v1.1.0 disk image; the version it advertises is deliberately absurd
-  so that any build offers it.
-
-  Installing from this feed downgrades the app to 1.1.0, which is the point: the
-  bytes that arrive are checked against the public key compiled into the running
-  build, so a successful install proves the whole chain. Rebuild afterwards.
-
-  Production is appcast.xml. Only a debug build with Pretend Update switched on
-  ever reads this file. Delete it once the path is confirmed.
+  The payload is the real, signed v1.1.0 disk image and the version it advertises
+  is deliberately high, so any build is offered it. The notes below are the real
+  1.2.0 notes: the point of the exercise is to see what a person will see.
 -->
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <channel>
-    <title>Belay test feed</title>
+    <title>Belay</title>
     <item>
-      <title>1.9.9</title>
+      <title>Belay 1.9.9</title>
       <sparkle:version>999</sparkle:version>
       <sparkle:shortVersionString>1.9.9</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description><![CDATA[
-        <p>A test of the update path. The download is the real v1.1.0 disk image,
-        signed with Belay's own key.</p>
+        <style>
+          body { font: -apple-system-body; font-family: -apple-system, sans-serif; margin: 0; }
+          h2 { font-size: 13px; margin: 0 0 2px; }
+          p { font-size: 12px; margin: 0 0 12px; opacity: 0.75; }
+        </style>
+        <h2>One click updater</h2>
+        <p>Update Now fetches the new version itself. No web page, no hunting.</p>
+        <h2>Watch any folder</h2>
+        <p>Point Belay at a folder your own tool writes to. It remembers the ones you pick.</p>
+        <h2>A mark that says paused</h2>
+        <p>When Belay lets go on purpose, the menu bar shows it.</p>
+        <h2>What's New, after every update</h2>
+        <p>Belay now opens with what changed. Once, then never again.</p>
       ]]></description>
       <enclosure
         url="https://github.com/PerfectoWeb/Belay/releases/download/v1.1.0/Belay-1.1.0.dmg"
