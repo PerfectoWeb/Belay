@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="72" height="24" role="img" aria-label="waiting">
+<svg xmlns="http://www.w3.org/2000/svg" width="69" height="24" role="img" aria-label="waiting">
   <title>waiting</title>
-  <rect width="72" height="24" rx="12" fill="#2b3038"/>
-  <text x="36.0" y="16.2" text-anchor="middle"
+  <rect width="69" height="24" rx="12" fill="#2b3038"/>
+  <text x="13" y="16.2" textLength="43" lengthAdjust="spacing"
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-        font-size="12" font-weight="600" fill="#9aa4b2">waiting</text>
+        font-size="12" font-weight="600" fill="#ffffff">waiting</text>
 </svg>

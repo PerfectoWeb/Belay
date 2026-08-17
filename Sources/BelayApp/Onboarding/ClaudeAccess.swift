@@ -7,7 +7,7 @@ import BelaySupport
 /// The compile condition lives here rather than in BelayKit because it cannot
 /// live in BelayKit: `SWIFT_ACTIVE_COMPILATION_CONDITIONS` set on the app target
 /// does not reach a local SwiftPM target, so `#if BELAY_MAS` inside the package
-/// is false in every build (`PROJECT_STATE.md` D15). The app makes the choice
+/// is false in every build (`docs/PROJECT_STATE.md` D15). The app makes the choice
 /// and injects the result downwards; nothing in detection can tell which it got.
 @MainActor
 enum ClaudeAccess {

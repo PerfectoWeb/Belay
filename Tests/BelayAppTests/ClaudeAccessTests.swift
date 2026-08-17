@@ -8,7 +8,7 @@ import XCTest
 /// acquire the sandboxed implementation. The MAS half is proved by the
 /// `Belay-MAS` scheme compiling `ClaudeAccess`'s other branch at all — there is
 /// no test host for it, and `scripts/verify-mas-build.sh` is what audits that
-/// bundle (`BLOCKERS.md` B8).
+/// bundle (`docs/BLOCKERS.md` B8).
 @MainActor
 final class ClaudeAccessTests: XCTestCase {
     func testTheDirectBuildReadsTheFolderOutright() {

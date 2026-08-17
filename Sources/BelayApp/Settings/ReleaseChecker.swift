@@ -12,7 +12,7 @@ import Observation
 /// and the About pane states the exception rather than hiding it.
 ///
 /// It only *finds* updates. Downloading and installing one in place is Sparkle's
-/// job and needs an EdDSA key and a hosted appcast (BLOCKERS.md B3); until those
+/// job and needs an EdDSA key and a hosted appcast (docs/BLOCKERS.md B3); until those
 /// exist, "there is a new version, here it is" is the honest half to ship, and
 /// this type is shaped so Sparkle replaces the second half without the UI
 /// changing.

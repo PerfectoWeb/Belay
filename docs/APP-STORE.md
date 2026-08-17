@@ -8,7 +8,7 @@ it is one codebase. This file is the operational half: what Apple will ask for
 that does not exist yet, what a reviewer will see, and the order the work has to
 happen in.
 
-Read [`../BLOCKERS.md`](../BLOCKERS.md) first. Nothing here contradicts it.
+Read [`BLOCKERS.md`](BLOCKERS.md) first. Nothing here contradicts it.
 
 ---
 
@@ -75,7 +75,7 @@ identifier is registered, because changing it afterwards means a new app record.
 ### Category
 
 `LSApplicationCategoryType` is **present** in
-[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist), set from
+[`../Sources/BelayApp/Info-MAS.plist`](../Sources/BelayApp/Info-MAS.plist), set from
 `project.yml`, and its value is:
 
 ```
@@ -133,7 +133,7 @@ sentence.
 ### Export compliance
 
 `ITSAppUsesNonExemptEncryption` is already `false` in
-[`../Sources/BelayApp/Info.plist`](../Sources/BelayApp/Info.plist), which is what
+[`../Sources/BelayApp/Info-MAS.plist`](../Sources/BelayApp/Info-MAS.plist), which is what
 suppresses the export question on every upload. It is correct here, for reasons
 worth writing down once:
 
@@ -145,7 +145,8 @@ worth writing down once:
   anywhere in the tree, and nothing encrypts data at rest beyond what the OS
   does for everyone.
 
-The key lives in the shared `Info.plist`, so it also applies to the direct build.
+The key is in `Info-Direct.plist` as well, so it also applies to the direct
+build.
 It remains correct there: that build's only network use is an HTTPS GET through
 the system's own TLS, which is exempt. If a future version ever ships its own
 cryptography, this key becomes a false statement to a government, not a
@@ -190,7 +191,7 @@ The repository is public now, so both exist.
 - **Privacy policy URL.** A GitHub issues page is not a privacy policy. Two
   workable options for a repo-only project:
   - **GitHub Pages.** Enable Pages on the repository and publish one page whose
-    content is derived from [`../SECURITY.md`](../SECURITY.md), at a stable path
+    content is derived from [`SECURITY.md`](SECURITY.md), at a stable path
     such as `/privacy`. This is the better option: it is a real URL, it is
     versioned with the code, and it survives the repository being reorganised.
   - **A section of the README, linked by anchor.** Cheapest. It works, but the

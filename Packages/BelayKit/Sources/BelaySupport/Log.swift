@@ -5,7 +5,7 @@ import OSLog
 /// Categories map one-to-one onto modules so a `log stream` filter is useful
 /// without knowing the code. Never log transcript content, prompts, user file
 /// paths or session identifiers at the default level — session IDs go through
-/// `%{private}@`. See docs/02 and SECURITY.md.
+/// `%{private}@`. See docs/02 and docs/SECURITY.md.
 public enum Log {
     public static let subsystem = "com.perfectoweb.belay"
 

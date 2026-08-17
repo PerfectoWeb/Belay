@@ -2,7 +2,7 @@
 
 Belay itself is under the Belay Source-Available License 1.0, see `LICENSE`:
 free to use and to build on, never to sell, and it must be credited. The name "Belay" and the Belay
-marks are not part of that licence, see `TRADEMARKS.md`: the code is yours to
+marks are not part of that licence, see `docs/TRADEMARKS.md`: the code is yours to
 take, the name is not yours to ship.
 
 ## Third-party trademarks and logos

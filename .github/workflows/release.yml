@@ -5,13 +5,13 @@ name: Release
 #
 # Honest notes, because this file automates steps nobody has run yet:
 #
-#   - Notarization has never been executed against this account (BLOCKERS.md B6).
+#   - Notarization has never been executed against this account (docs/BLOCKERS.md B6).
 #     The credentials exist, scripts/notarize.sh knows how to use them, and this
 #     workflow wires them up, but the first tag push is a debugging session.
 #     Run it once with workflow_dispatch and no tag input first: that path builds,
 #     notarizes and verifies without creating a Release, so a failure costs
 #     nothing public.
-#   - Sparkle is not wired into the build (BLOCKERS.md B3). There is no appcast
+#   - Sparkle is not wired into the build (docs/BLOCKERS.md B3). There is no appcast
 #     step here on purpose. scripts/sign-update.sh must keep running on the
 #     maintainer's machine because the EdDSA private key lives in their login
 #     Keychain and must never be copied into a repository secret.

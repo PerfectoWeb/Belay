@@ -28,7 +28,7 @@ project's life, which `docs/07` excused by name; it now has both.
 
 **Nothing in this module decides which implementation is used.** It cannot:
 `SWIFT_ACTIVE_COMPILATION_CONDITIONS` does not reach a local SwiftPM target, so
-`#if BELAY_MAS` here is false in every build (`PROJECT_STATE.md` D15). The app
+`#if BELAY_MAS` here is false in every build (`docs/PROJECT_STATE.md` D15). The app
 target chooses in `ClaudeAccess` and injects the result.
 
 **`BookmarkFileAccess` holds one standing scope as well as bracketing reads.**

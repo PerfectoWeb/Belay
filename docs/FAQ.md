@@ -59,7 +59,7 @@ Because that is the only local, honest evidence that an agent is working. Belay
 reads whether a file grew, plus a record's `type` and `stop_reason`, never your
 prompts, your model's responses, or your code.
 [`HOW-IT-WORKS.md`](HOW-IT-WORKS.md#privacy) has the detail and
-[`../SECURITY.md`](../SECURITY.md) has the proof.
+[`SECURITY.md`](SECURITY.md) has the proof.
 
 ### Why is there no Dock icon or window?
 

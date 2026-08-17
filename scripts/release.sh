@@ -3,7 +3,7 @@
 #
 # Run for real on 2026-08-13: this script built, signed, notarized, stapled and
 # packaged the v1.0.0 DMG that shipped. The Developer ID identity is in the
-# login keychain (BLOCKERS.md B1) and notarization is closed (B6).
+# login keychain (docs/BLOCKERS.md B1) and notarization is closed (B6).
 #
 # Three faults only showed up when it was finally run, and each is commented
 # where it was found rather than here: get-task-allow surviving into a release
@@ -20,7 +20,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # ---------------------------------------------------------------- placeholders
-# PLACEHOLDER — BLOCKERS.md B1. Set BELAY_TEAM_ID in the environment or replace
+# PLACEHOLDER — docs/BLOCKERS.md B1. Set BELAY_TEAM_ID in the environment or replace
 # this literal. The script will not run while it is still ABCDE12345.
 TEAM_ID="${BELAY_TEAM_ID:-ABCDE12345}"
 
@@ -88,7 +88,7 @@ die() { echo "release: $*" >&2; exit 2; }
 # ------------------------------------------------------------------- preflight
 echo "==> preflight"
 
-[ "$TEAM_ID" != "ABCDE12345" ] || die "BELAY_TEAM_ID is still the placeholder. See BLOCKERS.md B1."
+[ "$TEAM_ID" != "ABCDE12345" ] || die "BELAY_TEAM_ID is still the placeholder. See docs/BLOCKERS.md B1."
 
 for tool in xcodegen xcodebuild; do
     command -v "$tool" >/dev/null || case "$tool" in
@@ -158,7 +158,7 @@ if [ "$SKIP_NOTARIZE" -eq 0 ]; then
         && [ ! -f "$ROOT/.secrets/appstoreconnect.env" ]; then
         die "no notarization credentials. Either store a profile:
     xcrun notarytool store-credentials '$NOTARY_PROFILE' --key <p8> --key-id <id> --issuer <issuer>
-  or put the key and ids in .secrets/appstoreconnect.env. See BLOCKERS.md B6."
+  or put the key and ids in .secrets/appstoreconnect.env. See docs/BLOCKERS.md B6."
     fi
 fi
 

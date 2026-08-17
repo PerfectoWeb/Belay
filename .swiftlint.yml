@@ -38,7 +38,7 @@ analyzer_rules:
   - unused_declaration
 
 disabled_rules:
-  - todo # tracked in PROJECT_STATE.md, not by the linter
+  - todo # tracked in docs/PROJECT_STATE.md, not by the linter
 
 line_length:
   warning: 110

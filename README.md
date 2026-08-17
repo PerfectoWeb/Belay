@@ -223,24 +223,24 @@ English and Russian have been read by a person who speaks them. One CSV per
 language, and it is data rather than code. This is the most wanted contribution
 here.
 
-🔌 **[Add a preset](CONTRIBUTING.md)** for an agent Belay does not know yet.
+🔌 **[Add a preset](docs/CONTRIBUTING.md)** for an agent Belay does not know yet.
 Also data, also no need to learn the codebase.
 
 💛 **[Donate](https://perfecto-web.com/d/)**. Last on the list on purpose.
 
-Start at [`CONTRIBUTING.md`](CONTRIBUTING.md). Security reports go through
-[`SECURITY.md`](SECURITY.md), not the issue tracker.
+Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go through
+[`docs/SECURITY.md`](docs/SECURITY.md), not the issue tracker.
 
 ### 📖 Documentation
 
 <table>
 <tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
 <tr><td width="24%"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
-<tr><td width="24%"><a href="CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
+<tr><td width="24%"><a href="docs/CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
 <tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
-<tr><td width="24%"><a href="SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
+<tr><td width="24%"><a href="docs/SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
 <tr><td width="24%"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
-<tr><td width="24%"><a href="ROADMAP.md">Roadmap</a></td><td>Where Belay is going, and what has to be true first</td></tr>
+<tr><td width="24%"><a href="docs/ROADMAP.md">Roadmap</a></td><td>Where Belay is going, and what has to be true first</td></tr>
 </table>
 
 ## 📝 License
@@ -255,7 +255,7 @@ What is forbidden is charging other people for it.
 📛 **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
 
-The **name and the mark** are separate again. [`TRADEMARKS.md`](TRADEMARKS.md)
+The **name and the mark** are separate again. [`docs/TRADEMARKS.md`](docs/TRADEMARKS.md)
 says exactly what that does and does not stop you doing.
 
 Belay shows each tool's own logo in the sessions list so you can tell at a

@@ -11,7 +11,7 @@ body:
 
         Two things worth checking first. Support for another agent is usually a
         **preset**, which is one array element and documented in
-        [CONTRIBUTING.md](https://github.com/perfectoweb/belay/blob/main/CONTRIBUTING.md),
+        [docs/CONTRIBUTING.md](https://github.com/perfectoweb/belay/blob/main/docs/CONTRIBUTING.md),
         so it may be faster to open a pull request than an issue. And some things
         are already deferred on purpose: see the "Not in this release" section of
         [CHANGELOG.md](https://github.com/perfectoweb/belay/blob/main/CHANGELOG.md).

@@ -91,7 +91,7 @@ check for a newer version, which one switch turns off, and the download itself
 after you press Update. Nothing is fetched or installed until you press it.
 
 Full detail, including how to verify all of this yourself, is in
-[`../SECURITY.md`](../SECURITY.md).
+[`SECURITY.md`](SECURITY.md).
 
 ## Talking to Belay from anything
 

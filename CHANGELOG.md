@@ -130,7 +130,7 @@ late is dropped rather than played against the wrong frame.
 took the first hit, but a closed settings window lingers in `NSApp.windows`, so
 a session that had opened settings twice had two candidates and picked between
 them by luck. Losing looked, from the outside, like the picker refusing to open.
-It now requires the window to be visible. This was `BLOCKERS.md` B9, the
+It now requires the window to be visible. This was `docs/BLOCKERS.md` B9, the
 intermittent CI failure that had never been identified.
 
 **The update check retried hourly whenever it failed.** The timestamp that
@@ -248,7 +248,7 @@ String Catalog. Belay follows the Mac's language and falls back to English;
 Settings has a picker, and changing it reopens the app, because the menu bar menu
 and the alerts are AppKit and will not switch language under a running process.
 None of the translations have had a native review yet, which is recorded in
-`BLOCKERS.md` B7 and is a wanted contribution.
+`docs/BLOCKERS.md` B7 and is a wanted contribution.
 
 **Onboarding.** One screen on first launch, dismissible, leading with what Belay
 reads and what it does not.
@@ -290,7 +290,7 @@ The `belay-hook` command shim that the original detection spec describes as a
 fallback delivery path was cut before it was written. See
 `docs/adr/003-two-tier-detection.md`.
 
-Two things are built but not finished, and they are listed in `BLOCKERS.md`:
+Two things are built but not finished, and they are listed in `docs/BLOCKERS.md`:
 Sparkle is not wired up, so the update check finds a release but cannot install
 it, and the translations have had no native review.
 

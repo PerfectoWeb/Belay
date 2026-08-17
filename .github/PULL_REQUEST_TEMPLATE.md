@@ -1,6 +1,6 @@
 <!--
 Keep this short. Delete any section that does not apply, including this comment.
-The long version of what is expected is in CONTRIBUTING.md.
+The long version of what is expected is in docs/CONTRIBUTING.md.
 -->
 
 ## What this changes

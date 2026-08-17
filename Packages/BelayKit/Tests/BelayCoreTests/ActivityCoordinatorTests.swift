@@ -75,7 +75,7 @@ struct ActivityCoordinatorTests {
     /// docs/02's diagram routes an expired awaiting budget through CoolingDown.
     /// PRD R7 calls the budget a bounded window after which Belay gives up, and
     /// stacking another grace period on top of a 15-minute wait contradicts that,
-    /// so the budget releases directly. Recorded in PROJECT_STATE.md as D8.
+    /// so the budget releases directly. Recorded in docs/PROJECT_STATE.md as D8.
     @Test("awaitingUser holds, then gives up the moment its budget expires")
     func awaitingUserBudget() async {
         let clock = TestClock()

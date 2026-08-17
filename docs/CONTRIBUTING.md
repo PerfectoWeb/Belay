@@ -2,8 +2,8 @@
 
 Belay is a small macOS menu bar app with a strict safety story. Most of the rules
 below exist because getting one of them wrong keeps somebody's Mac awake for nine
-hours. Read [`docs/00-INVARIANTS.md`](docs/00-INVARIANTS.md) for the non-negotiables and
-[`docs/02-ARCHITECTURE.md`](docs/02-ARCHITECTURE.md) for the shape; this file is
+hours. Read [`docs/00-INVARIANTS.md`](00-INVARIANTS.md) for the non-negotiables and
+[`docs/02-ARCHITECTURE.md`](02-ARCHITECTURE.md) for the shape; this file is
 about how to build, test and style the thing.
 
 Two contributions are wanted more than any other, and neither needs you to learn
@@ -37,7 +37,7 @@ scripts/build-local.sh                                # ad-hoc signed .app in bu
 ```
 
 **`Belay.xcodeproj` is generated and must never be hand-edited.** It is produced
-by XcodeGen from [`project.yml`](project.yml), it is not in the repository, and
+by XcodeGen from [`project.yml`](../project.yml), it is not in the repository, and
 an edit made in Xcode's project editor survives exactly until the next
 `xcodegen generate`. Change `project.yml` instead. The bundle identifier, the
 deployment target and the product name are defined there once, and in
@@ -74,7 +74,7 @@ only meaningful end to end.
 
 Detection cannot be proved by unit tests alone. `scripts/fake-agent.sh` writes
 plausible JSONL at a configurable rate, and
-[`docs/QA-CHECKLIST.md`](docs/QA-CHECKLIST.md) lists what still has to be checked
+[`docs/QA-CHECKLIST.md`](QA-CHECKLIST.md) lists what still has to be checked
 by hand against a real Claude Code session.
 
 ## Lint
@@ -89,7 +89,7 @@ a lint failure never masks a real test failure.
 
 ## The non-negotiables
 
-These are in [`docs/00-INVARIANTS.md`](docs/00-INVARIANTS.md) because they are the ones a well-meaning
+These are in [`docs/00-INVARIANTS.md`](00-INVARIANTS.md) because they are the ones a well-meaning
 change breaks by accident. A pull request that touches power, detection or
 `~/.claude/` will be read against this list first.
 
@@ -137,7 +137,7 @@ enough.
 
 Adding Continue, Goose, OpenCode or whatever you use means one element in
 `GenericPreset.all`, in
-[`Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift`](Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift):
+[`Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift`](../Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift):
 
 ```swift
 GenericPreset(
@@ -163,13 +163,13 @@ GenericPreset(
 The Settings UI reads `GenericPreset.all` directly, so there is no view to touch.
 `GenericPresetTests` will hold you to the rules that matter: unique ids, a target
 that is actually configured, and the 45 s quiet period that
-[`docs/DISCOVERY.md`](docs/DISCOVERY.md) measured. Run `scripts/test.sh` and you
+[`docs/DISCOVERY.md`](DISCOVERY.md) measured. Run `scripts/test.sh` and you
 are done.
 
 A logo is optional and separate: add a template imageset named `logo-<id>` under
 `Resources/Assets.xcassets` and `ProviderMark` picks it up with no code change. A
 preset with no artwork gets a drawn shape rather than a wrong logo. If you add
-one, add the owner to the table in [`NOTICE.md`](NOTICE.md) and only ship artwork
+one, add the owner to the table in [`NOTICE.md`](../NOTICE.md) and only ship artwork
 you have the right to ship.
 
 Say in your pull request whether you actually ran the agent with the preset. "I
@@ -184,7 +184,7 @@ translation flattens, so a correction from someone who speaks the language is a
 genuinely wanted contribution, including a one-string one.
 
 Everything lives in
-[`Resources/Localizable.xcstrings`](Resources/Localizable.xcstrings), a String
+[`Resources/Localizable.xcstrings`](../Resources/Localizable.xcstrings), a String
 Catalog with 210 keys. Open it in Xcode, which gives you a table with one row per
 string and a column per language, or edit the JSON directly if you prefer. The
 English text is the key, so leave it alone: changing it orphans every
@@ -232,7 +232,7 @@ BelayChannel ────────────────▶ BelaySupport
 
 `BelayChannel` answers one question: which build is this, direct or App Store,
 read from `Info.plist` rather than from a compile condition. See
-[`docs/adr/004-mas-and-direct-split.md`](docs/adr/004-mas-and-direct-split.md).
+[`docs/adr/004-mas-and-direct-split.md`](adr/004-mas-and-direct-split.md).
 
 Three rules follow from that graph, and `Package.swift` will stop you if you
 break them:
@@ -259,7 +259,7 @@ is the first thing anyone reads.
 ## Style
 
 The short version: write it like a senior macOS engineer who dislikes ceremony.
-[`docs/07-ENGINEERING-STANDARDS.md`](docs/07-ENGINEERING-STANDARDS.md) has the
+[`docs/07-ENGINEERING-STANDARDS.md`](07-ENGINEERING-STANDARDS.md) has the
 argument. What follows is what the linters actually enforce, so it is what a
 review will actually catch.
 

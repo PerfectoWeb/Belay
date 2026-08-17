@@ -71,7 +71,7 @@ struct SessionLedger {
     /// 15-minute promise could never actually be kept. The exemption is bounded
     /// by the budget, so no session outlives `max(sessionTTL, awaitingUserBudget)`
     /// and invariant 3's purpose — nothing stale pins the Mac awake — still
-    /// holds. Recorded as D9 in PROJECT_STATE.md.
+    /// holds. Recorded as D9 in docs/PROJECT_STATE.md.
     static func ttl(for activity: SessionActivity, policy: AwakePolicy) -> TimeInterval {
         guard activity == .awaitingUser else { return policy.sessionTTL }
         return max(policy.sessionTTL, policy.awaitingUserBudget)
