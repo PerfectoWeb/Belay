@@ -57,6 +57,32 @@ enum SoftwareUpdate {
     /// makes `checkForUpdates` answer. It does not schedule anything on its own:
     /// that is `SUEnableAutomaticChecks` in `Info-Direct.plist`, and it is false.
     private static let controller = SPUStandardUpdaterController(
-        startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+        startingUpdater: true, updaterDelegate: feedSwitch, userDriverDelegate: nil)
+
+    private static let feedSwitch = FeedSwitch()
+
+    /// Chooses which appcast the updater reads.
+    ///
+    /// Release builds have one answer and it comes from `SUFeedURL`. Debug builds
+    /// with **Pretend Update** on read a test feed instead, whose single entry
+    /// advertises an absurd version and carries the real, signed v1.1.0 disk
+    /// image. That is what makes the download, the signature check and the
+    /// install exercisable before a release newer than this build exists.
+    ///
+    /// Nothing about verification is relaxed for it. The bytes that arrive are
+    /// checked against `SUPublicEDKey` in the running bundle exactly as they
+    /// would be in production; the only thing the switch changes is which URL is
+    /// asked. An installed test update leaves 1.1.0 on disk, which is the proof
+    /// that it really installed.
+    private final class FeedSwitch: NSObject, SPUUpdaterDelegate {
+        func feedURLString(for updater: SPUUpdater) -> String? {
+            #if DEBUG
+            if ReleaseChecker.isPretending {
+                return "https://perfectoweb.github.io/Belay/appcast-test.xml"
+            }
+            #endif
+            return nil
+        }
+    }
     #endif
 }

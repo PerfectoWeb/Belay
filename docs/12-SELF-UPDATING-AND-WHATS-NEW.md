@@ -74,11 +74,29 @@ git checkout project.yml          # put the real number back before committing
 That build carries the key, so the appcast's signed 1.2.0 entry is offered to it,
 downloaded and installed. The whole path, not a mock of it.
 
-**Before then, for the design only.** Debug builds have **Pretend Update** in the
-status menu. It makes the next check report the newest release as available
-whatever this build's number is, so the row and the button can be looked at.
-It moves the status and nothing else: the button still goes to Sparkle, and
-Sparkle still refuses anything the appcast has not signed.
+**Before then, the whole path is still testable.** Debug builds have **Pretend
+Update** in the status menu, and it does two things:
+
+- the next check reports an update whatever this build's number is, so the row
+  and the button appear;
+- the updater reads `appcast-test.xml` instead of `appcast.xml`.
+
+That test feed advertises version 1.9.9 and carries the **real, signed v1.1.0
+disk image**. So pressing Update Now downloads a genuine release, verifies it
+against `SUPublicEDKey` in the running bundle, installs it and offers to
+relaunch. Nothing about verification is relaxed: the signature was made with the
+project's own key over those exact bytes, which is why it passes.
+
+The install leaves **1.1.0** on disk, which is the proof that it really
+installed rather than merely appearing to. Rebuild afterwards:
+
+```bash
+scripts/build-local.sh Debug && open build/Belay.app
+```
+
+`appcast-test.xml` lives beside the real feed on `gh-pages`, is read only by a
+debug build with the switch on, and should be deleted once in-app updating has
+shipped and been seen working on a real release.
 
 The wanted behaviour is: press it, watch the download, then be offered a
 restart, or be restarted.
