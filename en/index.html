@@ -290,9 +290,15 @@
     if (!box) { return; }
     var big = box.querySelector('img');
     var open = false;
+    // The lightbox keeps its own index. Writing straight into `at` left
+    // the gallery pointing at one frame while `at` said another, so
+    // closing it changed nothing (`show` returns early when the index is
+    // already current) and the next middle-click opened a picture that
+    // was not the one on the page.
+    var bigAt = 0;
     function lift(index) {
       index = (index + frames.length) % frames.length;
-      at = index;
+      bigAt = index;
       big.src = frames[index].src;
       box.hidden = false;
       open = true;
@@ -306,20 +312,22 @@
       box.classList.remove('is-open');
       // Long enough for the fade out, then really gone.
       setTimeout(function () { if (!open) { box.hidden = true; } }, 260);
-      show(at, false);
+      // Bring the gallery to whatever was last on screen in the
+      // lightbox, so closing it leaves the page where the eye left off.
+      show(bigAt, bigAt < at);
     }
     gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });
     box.querySelectorAll('[data-close]').forEach(function (shut) {
       shut.addEventListener('click', drop);
     });
     box.querySelectorAll('.page').forEach(function (page) {
-      page.addEventListener('click', function () { lift(at + Number(page.dataset.step)); });
+      page.addEventListener('click', function () { lift(bigAt + Number(page.dataset.step)); });
     });
     document.addEventListener('keydown', function (event) {
       if (!open) { return; }
       if (event.key === 'Escape') { drop(); }
-      if (event.key === 'ArrowRight') { lift(at + 1); }
-      if (event.key === 'ArrowLeft') { lift(at - 1); }
+      if (event.key === 'ArrowRight') { lift(bigAt + 1); }
+      if (event.key === 'ArrowLeft') { lift(bigAt - 1); }
     });
   });
 </script>
