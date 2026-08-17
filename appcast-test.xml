@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   A TEST feed, read only by a debug build with Pretend Update switched on.
-  Production is appcast.xml. Delete this once in-app updating has shipped.
+  Production is appcast.xml. Delete this and Belay-test.dmg once in-app updating
+  has shipped and been seen working on a real release.
 
-  The payload is the real, signed v1.1.0 disk image and the version it advertises
-  is deliberately high, so any build is offered it. The notes below are the real
-  1.2.0 notes: the point of the exercise is to see what a person will see.
+  The payload has to be a build from current sources. v1.1.0 cannot be used:
+  Sparkle refuses an update whose bundle has no SUPublicEDKey when the running
+  one has, and says so plainly ("Sparkle only supports rotation, but not removal
+  of (Ed)DSA keys"). It is right to refuse, and 1.1.0 shipped before the key
+  existed, so there is nothing to fix on this end.
 -->
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <channel>
@@ -17,9 +20,15 @@
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <description><![CDATA[
         <style>
-          body { font: -apple-system-body; font-family: -apple-system, sans-serif; margin: 0; }
-          h2 { font-size: 13px; margin: 0 0 2px; }
-          p { font-size: 12px; margin: 0 0 12px; opacity: 0.75; }
+          body {
+            font: 13px -apple-system, sans-serif;
+            /* Sparkle gives this web view no inset of its own, so the notes sat
+               against the frame on all four sides. */
+            margin: 14px 16px;
+          }
+          h2 { font-size: 13px; margin: 0 0 3px; }
+          p { font-size: 12px; margin: 0 0 14px; opacity: 0.72; line-height: 1.35; }
+          p:last-child { margin-bottom: 0; }
         </style>
         <h2>One click updater</h2>
         <p>Update Now fetches the new version itself. No web page, no hunting.</p>
@@ -31,9 +40,9 @@
         <p>Belay now opens with what changed. Once, then never again.</p>
       ]]></description>
       <enclosure
-        url="https://github.com/PerfectoWeb/Belay/releases/download/v1.1.0/Belay-1.1.0.dmg"
-        sparkle:edSignature="FbBBo9CBjn0UGiJGsrW4R2YYY49IQ6lw3zvAWmdCKM0g+njHtnaOWeffLIsxthJQ9FtmC5hnr6887rzjRjfyDg=="
-        length="4019650"
+        url="https://perfectoweb.github.io/Belay/Belay-test.dmg"
+        sparkle:edSignature="iwqe/l8pPYo2pQ0z8HcbSqrmc0DuOcujgEZNVnOVzHVf/dH48k50DitT+3eZQF/TTgnCgWdkSZsyCUqy5iWVAA=="
+        length="5035887"
         type="application/octet-stream" />
     </item>
   </channel>
