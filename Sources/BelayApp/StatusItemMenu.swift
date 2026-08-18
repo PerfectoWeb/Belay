@@ -44,15 +44,6 @@ extension StatusItemController {
                 item(
                     status.title, #selector(runUpdate),
                     symbol: status.waiting ? "arrow.down.circle.fill" : "arrow.down.circle"))
-            // Only when there is something to skip, and only ever next to the
-            // row that installs it. A "skip" with nothing waiting is a control
-            // that does nothing, and this menu has none of those.
-            if status.waiting {
-                menu.addItem(
-                    item(
-                        String(localized: "Skip This Version"), #selector(skipUpdate),
-                        symbol: "xmark.circle"))
-            }
         }
         #if DEBUG
         addWorkbench(to: menu)
@@ -69,13 +60,6 @@ extension StatusItemController {
     }
 
     @objc func runUpdate() { onUpdate() }
-
-    /// Records the skip and redraws at once, because the dot going away is the
-    /// only confirmation this row gives.
-    @objc func skipUpdate() {
-        onSkipUpdate()
-        render()
-    }
 
     func item(
         _ title: String, _ action: Selector, key: String = "", symbol: String? = nil

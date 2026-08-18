@@ -44,20 +44,23 @@ place from here on.
 | 💤 | Hold through a closed lid, as an opt-in | <img src="badges/maybe.svg" alt="maybe" height="24"> | [Issue #2](https://github.com/PerfectoWeb/Belay/issues/2). Needs a MacBook to prove it works at all |
 | 🌙 | Dim the screen at night while holding | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.2.1. The plan is written below |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
-| 🗂 | Listed on `macmenubar.com` | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026 |
+| 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
-| 📥 | **First 1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues. Counted on GitHub releases only, so Homebrew and the App Store are not in the number |
+| 📥 | **100 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues |
+| 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One place a person actually reads |
 | 🗣 | Every language read by someone who speaks it | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
-| ⭐ | **First 100 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
-| 📈 | 5000 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | A write-up, or one thread that goes somewhere |
-| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 100 stars. Their form only, and it must be a person |
+| ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people to be a room rather than a list |
+| ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One thread somewhere people argue about tools |
+| 💫 | **256 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something written that is not by us |
+| 📈 | **1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A write-up, or one thread that goes somewhere |
+| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 64 stars. Their form only, and it must be a person |
 | 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 17 Aug 2026](https://github.com/jqueryscript/awesome-claude-code/pull/601) |
 | 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/maybe.svg" alt="maybe" height="24"> | That list is for open source, and ours is source available |
 | 📰 | First write-up anywhere | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something to say beyond "an app exists" |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, about half a day, and only if the borrowed window starts to grate |
-| 🌟 | **First 1000 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
-| 🏅 | 10000 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing we can schedule. It follows the two rows above |
+| 🌠 | **512 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
+| 🏅 | **10000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing we can schedule. It follows the rows above |
 | 📣 | First large outlet | <img src="badges/waiting.svg" alt="waiting" height="24"> | The small ones first |
 
 <br>

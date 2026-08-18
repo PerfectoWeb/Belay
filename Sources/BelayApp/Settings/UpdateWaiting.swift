@@ -5,38 +5,17 @@ import Foundation
 ///
 /// Split from `ReleaseChecker` because that file is at the length limit, and
 /// because the two answer different questions. The checker answers "what is
-/// published"; this answers "should the user be told about it", which is not the
-/// same once skipping exists.
+/// published"; this answers "should the mark say so", which is not the same.
 ///
-/// Skipping is per version, not a switch. "I do not want 1.2.1" is a statement
-/// about 1.2.1, and reading it as "never tell me about updates" would silently
-/// turn off the thing the user only meant to postpone once. When 1.2.2 arrives
-/// the mark comes back on its own.
+/// There is deliberately no way to dismiss it. A skip row next to the install
+/// row is a nudge, and the mark is already the quietest thing the app could
+/// say: it sits in the corner of an icon, it never opens a window, and it goes
+/// away by itself the moment the update is installed. Something you can ignore
+/// does not also need a control for ignoring it.
 enum UpdateWaiting {
-    static let skippedKey = "belay.updates.skippedVersion"
-
-    /// True when there is a published update the user has not skipped.
-    static func isWaiting(
-        _ status: ReleaseChecker.Status, defaults: UserDefaults = .standard
-    ) -> Bool {
-        guard case .available(let version, _) = status else { return false }
-        return skipped(defaults: defaults) != version
-    }
-
-    /// The version this returns is the one the mark stays quiet about.
-    static func skipped(defaults: UserDefaults = .standard) -> String? {
-        defaults.string(forKey: skippedKey)
-    }
-
-    static func skip(_ version: String, defaults: UserDefaults = .standard) {
-        Log.app.notice("update skipped at the user's request")
-        defaults.set(version, forKey: skippedKey)
-    }
-
-    /// Called when an update is installed, so the record does not outlive the
-    /// version it was about. Without this, skipping 1.2.1 and then installing it
-    /// anyway leaves a stale string in defaults for no reason.
-    static func clear(defaults: UserDefaults = .standard) {
-        defaults.removeObject(forKey: skippedKey)
+    /// True when there is a published update newer than this build.
+    static func isWaiting(_ status: ReleaseChecker.Status) -> Bool {
+        guard case .available = status else { return false }
+        return true
     }
 }

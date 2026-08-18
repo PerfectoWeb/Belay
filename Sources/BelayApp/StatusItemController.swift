@@ -69,7 +69,6 @@ final class StatusItemController {
 
     /// Records that this version is not wanted. Separate from `onUpdate` because
     /// the two are opposites and sharing one hook would need a flag.
-    var onSkipUpdate: () -> Void = {}
 
     /// Built lazily and popped up by hand, so a test cannot see it otherwise.
     var menuForTesting: NSMenu { contextMenu }

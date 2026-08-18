@@ -119,20 +119,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             guard ReleaseChecker.isSupported, let checker = settings?.updates else { return false }
             return UpdateWaiting.isWaiting(checker.status)
         }
-        statusItem.onSkipUpdate = { [weak settings] in
-            guard let checker = settings?.updates,
-                case .available(let version, _) = checker.status
-            else { return }
-            UpdateWaiting.skip(version)
-        }
         statusItem.onUpdate = { [weak settings] in
             guard let checker = settings?.updates else { return }
             // Already know there is one: go straight to installing it. Otherwise
             // this is the question, and the answer belongs where the detail is.
             if case .available = checker.status {
                 Feedback.play(.tick)
-                // Installing is the other way a skip stops being true.
-                UpdateWaiting.clear()
                 if SoftwareUpdate.isSupported { SoftwareUpdate.install() }
             } else {
                 checker.check()
