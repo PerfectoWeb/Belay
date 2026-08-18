@@ -96,14 +96,20 @@ re-enumerate processes, and re-derive state from scratch. Signals that arrived
   default behaviour is to keep working (the user explicitly wants the agent to
   finish) but shorten the grace period. Make it a setting; don't be clever
   silently.
-- Do not attempt anything with thermal state in v1.0.
+- Do not attempt anything with thermal state in v1.0. (1.3's lid hold is the
+  deliberate exception: its thermal release is one of the two mandatory
+  guards, and it applies only with the lid shut.)
 
 ## Things to document honestly in the FAQ
 
 - **Lid closed:** an idle-sleep assertion does not keep a MacBook awake with the
   lid shut. macOS enters clamshell sleep unless the machine is on AC power with
-  an external display/keyboard attached. Belay cannot change this and must not
-  pretend to. Say it plainly in the README; users will otherwise file it as a bug.
+  an external display/keyboard attached. No assertion changes this — which is
+  why 1.3's opt-in lid hold is not one: a privileged helper (direct builds
+  only) holds the kernel's `SleepDisabled` flag on a heartbeat leash, with a
+  hard cap and a thermal release. Measured 2026-08-18 on battery, no display:
+  flag up, the lid shut and music kept playing; flag down, same lid, asleep in
+  seventy seconds ("Clamshell Sleep" in `pmset -g log`).
 - **Display sleep is normal.** By default the screen still turns off. That's
   intentional and saves real power; the machine underneath stays awake.
 - **Verify it yourself:** `pmset -g assertions | grep -i belay`. Put this line in

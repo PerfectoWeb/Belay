@@ -42,8 +42,8 @@ place from here on.
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
 | 🔇 | Say when an agent goes quiet without finishing | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
-| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/next.svg" alt="next" height="24"> | 1.3. Proved to work 18 Aug 2026: see the plan below |
-| 🌙 | Dim the screen at night while holding | <img src="badges/next.svg" alt="next" height="24"> | 1.3, with the row above. The plan is written below |
+| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/da5526b02aeebb8e64087abf78bf6b1289e9e528). Both experiments below closed the same night |
+| 🌙 | Dim the screen at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422). Ships with 1.3 |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
@@ -66,17 +66,20 @@ place from here on.
 
 <br>
 
-## Holding through a closed lid, when it is written
+## Holding through a closed lid, as built
 
-For 1.3, alongside the dimming below. Off by default and direct builds only.
+Built and proven the night of 18 Aug 2026. Off by default and direct builds
+only. What follows is the plan it was built from, kept because it says why.
 
 **It works, and that was the open question.** Measured on 18 Aug 2026: MacBook
 Pro M3 Max, macOS 26.4, on battery, no external display. With
 `SleepDisabled = 1` the machine ran for seven minutes with the lid shut and
 never missed a two second heartbeat, and audio kept playing out of the built-in
-speakers the whole time. Three runs, same answer. What is still missing is the
-control: the same seven minutes **without** the flag, to prove the flag is what
-did it rather than something else holding the machine up.
+speakers the whole time. Three runs, same answer. **The control closed the
+question the same night:** identical machine, identical closure, flag off,
+and the Mac slept in seventy seconds — `Entering Sleep state due to
+'Clamshell Sleep'` in `pmset -g log` — with the music cut at the moment the
+lid touched. The flag is what held it, and nothing else.
 
 **Why it cannot be an assertion.** Belay's hold is an idle-sleep assertion and
 lid close is not idle sleep. The only lever is `pmset -a disablesleep`, which
@@ -106,17 +109,21 @@ kill the run Belay exists to protect.
 the sandbox, and the rule for whether a hold can work at all. That part ships in
 both channels and needs no setting.
 
-**Then the documents change, after it is proven and not before:**
-`docs/01-PRD.md` lists this as a non-goal, `README.md` answers it in the FAQ and
-promises System Settings are never touched, and `docs/04-POWER.md` describes the
-assertion as the only lever.
+**The documents changed on proof, as this section always demanded:**
+`docs/01-PRD.md` carries the non-goal's honest ending, `README.md` answers the
+FAQ with the new switch and the reshaped promise, and `docs/04-POWER.md` now
+tells both halves of the experiment.
 
 <br>
 
-## Dimming the screen at night, when it is written
+## Dimming the screen at night, as built
 
-Not in 1.2.1. Written down here so the next person to pick it up does not have
-to work any of it out again.
+Built the same night, live-tested twice at the machine. The plan below is what
+it was built from; two details moved under testing. The restore is not
+instant after all but a third of a second, eased — a flash-cut read as a
+glitch the first time a human saw it. And the poll runs at a quarter of a
+second while dimmed, because a restore that starts two seconds after the
+mouse moves reads as a broken Mac, not a careful one.
 
 **The scenario.** The Mac is left running overnight. Its own display sleep
 arrives, and Belay refuses it because an agent is working. From that moment the

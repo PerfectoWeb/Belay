@@ -22,7 +22,9 @@ A menu bar app that watches local agent activity and holds a system-sleep
 assertion only while an agent is genuinely working. When every tracked session
 goes idle for a short grace period, the assertion drops and macOS resumes its
 normal, user-configured sleep behaviour. The user's System Settings are never
-modified.
+modified. (1.3 added the sole exception, opt-in and direct-channel only: the
+lid hold's privileged helper raises the kernel's own sleep switch while work
+runs, and clears it by itself — see the ROADMAP plan.)
 
 ## Target user
 
@@ -105,7 +107,9 @@ it is also the argument that gets the app through App Review.
 - Token/cost tracking, usage dashboards, session history analytics
 - iOS companion app
 - Preventing sleep on lid close (macOS does not allow this for idle
-  assertions — document it in the FAQ instead of faking it)
+  assertions — document it in the FAQ instead of faking it). Held until 1.3,
+  which shipped it honestly: not an assertion but a privileged helper holding
+  the kernel's switch, opt-in, direct builds only, proven with a control run
 
 ## Success criteria
 

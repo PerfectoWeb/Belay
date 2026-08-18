@@ -28,7 +28,8 @@ sleeps, the run dies, and you come back to nothing. So you set sleep to
 Belay is a macOS menu bar app that fixes exactly that, and nothing else. It
 watches your local coding agents, holds the Mac awake **only while one is
 genuinely working**, and hands sleep straight back the moment everything goes
-quiet. Your System Settings are never touched.
+quiet. Your System Settings are never touched — the one switch the opt-in lid
+hold exists to hold is flipped back by itself, every time.
 
 The trade-off it is tuned around is lopsided on purpose: sleeping sixty seconds
 too early kills a long run silently and wastes an evening, while staying awake
@@ -164,9 +165,19 @@ worth reporting: include the tool and the macOS version.
 <details>
 <summary><b>It does not work with the lid closed</b></summary>
 
-Nothing can make it. An idle-sleep assertion does not keep a MacBook awake with
+Out of the box, no: an idle-sleep assertion does not keep a MacBook awake with
 the lid shut. macOS enters clamshell sleep unless the machine is on AC power
-with an external display attached. Belay will not pretend otherwise.
+with an external display attached.
+
+Since 1.3 the direct build can, as an opt-in. **Hold through a closed lid** in
+Settings installs a system helper — macOS asks for your approval — that holds
+the OS's own sleep switch while an agent is working, and always lets go by
+itself: when the work ends, when Belay stops asking for it, after a hard time
+cap, or the moment the Mac runs hot with the lid shut. Proven on battery with
+no display attached, and the control run without it slept in seventy seconds.
+
+The App Store build cannot install a privileged helper (that is Apple's rule,
+and a good one), so it does not offer the switch.
 
 </details>
 
