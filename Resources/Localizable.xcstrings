@@ -10248,6 +10248,53 @@
         }
       }
     },
+    "Report an Issue…": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem melden…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report an Issue…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informar de un problema…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signaler un problème…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segnala un problema…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сообщить о проблеме…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报告问题…"
+          }
+        }
+      }
+    },
     "Reset…": {
       "extractionState": "manual",
       "localizations": {
@@ -13864,6 +13911,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "把崩溃、卡死和错误写入本机的一个文件。不会发送到任何地方，关闭时也不会收集任何内容。"
+          }
+        }
+      }
+    },
+    "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schreibt Abstürze, Einfrierer und Fehler in eine Datei auf diesem Mac. Es wird nie etwas gesendet. Wenn etwas schiefgeht, macht ein Issue mit dieser Datei daraus eine Korrektur. Ob du sie teilst, entscheidest jedes Mal du."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escribe fallos, bloqueos y errores en un archivo de este Mac. Nunca se envía nada. Si algo va mal, abrir una incidencia y adjuntar este archivo es lo que lo convierte en un arreglo. Compartirlo lo decides tú, cada vez."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Écrit les plantages, les blocages et les erreurs dans un fichier sur ce Mac. Rien n'est jamais envoyé. Si quelque chose ne va pas, ouvrir un ticket avec ce fichier est ce qui le transforme en correctif. Le partager reste votre décision, à chaque fois."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrive crash, blocchi ed errori in un file su questo Mac. Non viene mai inviato nulla. Se qualcosa va storto, aprire una segnalazione allegando questo file è ciò che la trasforma in una correzione. Condividerlo lo decidi tu, ogni volta."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пишет падения, зависания и ошибки в файл на этом Mac. Никуда и никогда ничего не отправляется. Если что-то сломалось, именно issue с приложенным файлом превращает это в исправление. Делиться им или нет, каждый раз решаете вы."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把崩溃、卡死和错误写入本机的一个文件。任何内容都不会被发送。如果出了问题，提交 issue 并附上这个文件，才能让它变成一次修复。是否分享，每次都由你决定。"
           }
         }
       }

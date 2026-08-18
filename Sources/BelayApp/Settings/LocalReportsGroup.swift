@@ -16,18 +16,29 @@ struct LocalReportsGroup: View {
                 title: "Keep local crash reports",
                 explanation: """
                     Writes crashes, freezes and errors to a file on this Mac. \
-                    Nothing is sent anywhere, and nothing is collected while \
-                    this is off.
+                    Nothing is sent anywhere, ever. If something goes wrong, \
+                    opening an issue and attaching this file is what turns it \
+                    into a fix. Sharing it is your decision, every time.
                     """,
                 spokenLabel: "Keep local crash reports",
                 isOn: $settings.keepLocalReports
             )
 
-            Button("Show Reports…") {
-                NSWorkspace.shared.activateFileViewerSelecting([Diagnostics.file])
+            HStack(spacing: 8) {
+                Button("Show Reports…") {
+                    NSWorkspace.shared.activateFileViewerSelecting([Diagnostics.file])
+                }
+                .disabled(!settings.keepLocalReports)
+
+                // Beside the file rather than only on the About page: the
+                // moment somebody has a report in their hand is the moment
+                // they might send it, and hunting for where to send it is
+                // where that intention dies.
+                if let issues = Branding.issuesURL {
+                    Link("Report an Issue…", destination: issues)
+                }
             }
             .controlSize(.small)
-            .disabled(!settings.keepLocalReports)
         }
         .onChange(of: settings.keepLocalReports) { _, on in
             Diagnostics.setEnabled(on)

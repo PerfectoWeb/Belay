@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Belay says when an agent goes quiet: a session that stopped sending anything
   and never said it had finished. Subagents count, so a parent waiting while its
   children work is not silence.
+- Local crash reports, off by default. A switch in General writes crashes,
+  freezes and errors to a file on this Mac, with a button to show it and a link
+  to open an issue. Nothing is sent anywhere.
 
 ### Changed
 
