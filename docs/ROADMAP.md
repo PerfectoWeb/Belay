@@ -39,6 +39,10 @@ place from here on.
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
 | 🔔 | Say an update is waiting without being asked | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | A shape for it that does not nag. See the note below |
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
+| 🔇 | Say when an agent goes quiet without finishing | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Deauthorisation, a killed CLI, a closed terminal. See the note below |
+| 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Off by default, nothing sent anywhere. See the note below |
+| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/maybe.svg" alt="maybe" height="24"> | [Issue #2](https://github.com/PerfectoWeb/Belay/issues/2). Needs a MacBook to prove it works at all |
+| 🌙 | Dim the screen at night while holding | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.2.1. The plan is written below |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026 |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
@@ -81,6 +85,44 @@ Shapes worth trying, in the order they seem least annoying:
 
 Scheduled for 1.2.1 because it is small, and because the update path it depends
 on only started existing in 1.2.0.
+
+<br>
+
+## Dimming the screen at night, when it is written
+
+Not in 1.2.1. Written down here so the next person to pick it up does not have
+to work any of it out again.
+
+**The scenario.** The Mac is left running overnight. Its own display sleep
+arrives, and Belay refuses it because an agent is working. From that moment the
+screen is lit in an empty room until morning. Dimming is what the display sleep
+would have done, only reversibly.
+
+**When it applies**, all four at once: the feature is on, the clock is inside
+the configured window, Belay is holding, and the display has been idle longer
+than the system's own display-sleep delay. Never while the user is at the
+keyboard, and never when Belay is not the reason the screen is still on.
+
+**How to dim.** `CGSetDisplayTransferByFormula`, the gamma ramp. Probed on
+2026-08-18: the main display reports a 1024 entry table and takes a fractional
+white point cleanly. No private API and no entitlement. The property that makes
+it safe is the one the invariants care about: gamma belongs to the process that
+set it, and CoreGraphics restores it when that process exits. A crashed Belay
+cannot leave a dark screen behind, in the same way a timed assertion cannot pin
+the Mac awake. Ramp over about a second rather than stepping, and dim every
+display, not only the main one.
+
+**How to come back.** `CGEventSource.secondsSinceLastEventType`, polled on the
+existing tick. It needs no Accessibility grant, which an event tap would.
+Restore on a key press, a click, or a mouse move that clears a distance
+threshold rather than any movement at all: a sleeping trackpad and a heavy lorry
+outside both produce single-pixel jitter, and neither means somebody is there.
+Restore instantly, not over a ramp, and do not dim again until the machine has
+been idle for the full delay once more.
+
+**Settings**, off by default: the switch, a start and an end time, and how far
+down to go, floored well above black so a glance at the room still shows the Mac
+is awake. Roughly a half day with tests and the strings in every language.
 
 <br>
 
