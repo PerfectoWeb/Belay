@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates the privacy policy in six languages from one structure.
+"""Generates the privacy policy in every language from one structure.
 
 The pages share their skeleton, their stylesheet and their section order, so a
 change to the policy is a change in one place per language rather than six

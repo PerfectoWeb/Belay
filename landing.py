@@ -1,4 +1,4 @@
-"""The landing page, in the six languages the app speaks.
+"""The landing page, in every language the app speaks.
 
 VERSION is written here rather than fetched by the page. A visitor should not
 have to wait on api.github.com, and a version number that only appears when a

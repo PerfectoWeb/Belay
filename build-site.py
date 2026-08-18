@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the whole site: six languages, two pages each, plus the redirects.
+"""Builds the whole site: every language, two pages each, plus the redirects.
 
     python3 build-site.py .
 
@@ -186,8 +186,8 @@ def wordmark():
 # the stylesheet is the only file that needs this.
 # Cloudflare Web Analytics, on every page except the privacy policy. Cookieless
 # and stores nothing on the visitor's machine, which is why this site carries no
-# consent banner; what it records is spelled out in the policy itself, in all
-# seven languages. A beacon on the page that promises nobody is watching would be
+# consent banner; what it records is spelled out in the policy itself, in every
+# language. A beacon on the page that promises nobody is watching would be
 # an embarrassing thing to serve, which is the rule the stylesheet already
 # follows about fonts.
 ANALYTICS_TOKEN = "8999ea5c44b046c19a08dcf09d5b4336"
@@ -319,7 +319,7 @@ def external(markup):
 # right thing to say inside the store and the wrong thing to say on a page whose
 # own download button is two sections up.
 # Served from this site as WebP rather than fetched from the repository as PNG.
-# The same six slides in seven languages are 77 MB of PNG and 9.8 MB of WebP, and
+# The whole slide set, every language included, is 77 MB of PNG and 9.8 MB of WebP, and
 # a reader was pulling six of the PNGs, about 11 MB, to look at one picture.
 #
 # The path is relative and assumes the gallery only ever appears one level down,
