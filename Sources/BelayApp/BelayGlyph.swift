@@ -172,10 +172,10 @@ enum BelayGlyph {
             // off" — they are different situations and only one is the user's
             // doing.
             if look == .blocked { pausedBars() }
-            // Floored rather than matching the sparkle it replaces: in the
-            // dimmed looks a sparkle is a whisper on purpose, and a whisper is
-            // not what "there is a newer version" should be.
-            if showsUpdate { updateMark(alpha: max(levels.small, 0.62)) }
+            // The star's alpha, not the sparkle's. A sparkle is dim on purpose
+            // and the mark drawn at that weight read as grey next to a white
+            // star, when the whole point is that it is the same ink.
+            if showsUpdate { updateMark(alpha: levels.big) }
         }
     }
 

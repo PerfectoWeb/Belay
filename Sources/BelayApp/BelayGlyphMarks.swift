@@ -43,34 +43,37 @@ extension BelayGlyph {
     /// says what it means instead, and it costs no space because it takes the
     /// place of something already there rather than adding a fourth thing.
     ///
-    /// The gap is punched, not painted: this is a template image, so macOS
-    /// tints every filled pixel the same colour and a drawn background behind
-    /// the arrows would be the same ink as the arrows.
+    /// Nothing is punched around it. The corner it occupies is empty artwork
+    /// once the sparkle it replaces is not drawn, so a gap would only be a
+    /// softened oval bitten out of the star for no reason.
     static func updateMark(alpha: CGFloat) {
         // `artworkSubpaths`, not `parts`: this file is an extension in another
         // file, and `private` does not reach across one.
         let slot = artworkSubpaths[0].bounds
         let box = arrows.bounds
-        // Slightly wider than the sparkle it replaces, because a ring reads
-        // smaller than a solid star of the same width.
-        let side = max(slot.width, slot.height) * 1.24
+        // A shade wider than the sparkle it replaces, because a ring reads
+        // smaller than a solid star of the same width. Only a shade: the first
+        // attempt at 1.42 ran off the edge of the 24 unit box and the mark came
+        // out with two sides sliced flat.
+        let side = min(slot.width, slot.height) * 1.16
         let factor = side / max(box.width, box.height)
 
-        var transform = AffineTransform(
-            translationByX: slot.midX, byY: slot.midY)
+        // Centred on the sparkle, then pushed back inside if that puts any of
+        // it past the edge. The artwork sits hard against the corner, so a mark
+        // grown around its centre has nowhere to go but out.
+        let margin: CGFloat = 0.35
+        var centre = CGPoint(x: slot.midX, y: slot.midY)
+        let half = side / 2
+        centre.x = min(max(centre.x, half + margin), 24 - half - margin)
+        centre.y = min(max(centre.y, half + margin), 24 - half - margin)
+
+        var transform = AffineTransform(translationByX: centre.x, byY: centre.y)
         transform.scale(factor)
         transform.translate(x: -box.midX, y: -box.midY)
 
         let mark = NSBezierPath()
         mark.append(arrows)
         mark.transform(using: transform)
-
-        NSGraphicsContext.saveGraphicsState()
-        NSColor(calibratedWhite: 0, alpha: 1).setFill()
-        NSGraphicsContext.current?.compositingOperation = .destinationOut
-        let gap = mark.bounds.insetBy(dx: -1.5, dy: -1.5)
-        NSBezierPath(ovalIn: gap).fill()
-        NSGraphicsContext.restoreGraphicsState()
 
         fill(mark, alpha: alpha)
     }
