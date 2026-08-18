@@ -9,54 +9,77 @@ import Foundation
 /// property that makes it safe is the one the invariants care about: gamma
 /// belongs to the process that set it, and CoreGraphics restores it when that
 /// process exits. A crashed Belay cannot leave a dark screen behind.
-/// `@unchecked` because the compiler cannot see the discipline: `ramp` is
-/// only ever touched on `queue`, which both public methods hop to first.
+///
+/// `@unchecked` because the compiler cannot see the discipline: every stored
+/// property is only ever touched on `queue`, which both public methods hop to
+/// first.
 final class GammaFade: @unchecked Sendable {
-    /// Down over about a second rather than stepping (docs/ROADMAP).
-    private static let rampDuration: TimeInterval = 1.0
-    private static let rampSteps = 24
+    /// Down over about a second, back in about a third of one — the cadence
+    /// the system's own display fade taught everyone to expect. Both eased,
+    /// because a linear ramp reads as a stutter at the ends.
+    private static let dimDuration: TimeInterval = 1.0
+    private static let restoreDuration: TimeInterval = 0.35
+    private static let stepInterval: TimeInterval = 1.0 / 30
 
     private let queue = DispatchQueue(
         label: "com.perfectoweb.belay.gamma-fade", qos: .userInteractive)
     private var ramp: DispatchSourceTimer?
+    /// Where the white point stands now, so a restore that interrupts a dim
+    /// starts from the brightness on screen rather than jumping.
+    private var current: Double = 1.0
 
     /// Ramps every active display down to `level` (1.0 untouched, bounded well
     /// above black by `SettingsBounds.nightDimmingLevel`).
     func dim(to level: Double) {
         queue.async { [weak self] in
-            guard let self else { return }
-            self.ramp?.cancel()
-            let displays = Self.activeDisplays()
-            guard !displays.isEmpty else { return }
-
-            var step = 0
-            let timer = DispatchSource.makeTimerSource(queue: self.queue)
-            timer.schedule(
-                deadline: .now(),
-                repeating: Self.rampDuration / Double(Self.rampSteps))
-            timer.setEventHandler { [weak self] in
-                step += 1
-                let progress = min(1, Double(step) / Double(Self.rampSteps))
-                let point = 1 - (1 - level) * progress
-                Self.apply(whitePoint: point, to: displays)
-                if progress >= 1 { self?.ramp?.cancel() }
-            }
-            timer.resume()
-            self.ramp = timer
+            self?.animate(to: level, over: Self.dimDuration) { _ in }
         }
     }
 
-    /// Instantly, not over a ramp: a person who came back is waiting.
-    ///
-    /// `CGDisplayRestoreColorSyncSettings` hands every display back to the
-    /// system's own tables — the same restore a process exit performs, so this
-    /// path and the crash path cannot disagree.
+    /// Back up quickly but smoothly: a person who moved the mouse is waiting,
+    /// and a flash-cut reads as a glitch. The final hand-off goes through
+    /// `CGDisplayRestoreColorSyncSettings`, the same restore a process exit
+    /// performs, so this path and the crash path cannot disagree.
     func restore() {
         queue.async { [weak self] in
-            self?.ramp?.cancel()
-            self?.ramp = nil
-            CGDisplayRestoreColorSyncSettings()
+            self?.animate(to: 1.0, over: Self.restoreDuration) { finished in
+                if finished { CGDisplayRestoreColorSyncSettings() }
+            }
         }
+    }
+
+    /// Queue-confined. Cancels any ramp in flight and starts from `current`,
+    /// so dim-into-restore hands over mid-flight instead of snapping.
+    private func animate(
+        to target: Double, over duration: TimeInterval, done: @escaping (Bool) -> Void
+    ) {
+        ramp?.cancel()
+        let displays = Self.activeDisplays()
+        guard !displays.isEmpty else {
+            done(false)
+            return
+        }
+        let from = current
+        let steps = max(1, Int(duration / Self.stepInterval))
+        var step = 0
+        let timer = DispatchSource.makeTimerSource(queue: queue)
+        timer.schedule(deadline: .now(), repeating: duration / Double(steps))
+        timer.setEventHandler { [weak self] in
+            guard let self else { return }
+            step += 1
+            let linear = min(1, Double(step) / Double(steps))
+            // Smoothstep: eases both ends, which is what the system fade does.
+            let progress = linear * linear * (3 - 2 * linear)
+            self.current = from + (target - from) * progress
+            Self.apply(whitePoint: self.current, to: displays)
+            if linear >= 1 {
+                self.ramp?.cancel()
+                self.ramp = nil
+                done(true)
+            }
+        }
+        timer.resume()
+        ramp = timer
     }
 
     /// Every display, not only the main one (docs/ROADMAP).

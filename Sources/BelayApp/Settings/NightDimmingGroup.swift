@@ -8,10 +8,6 @@ import SwiftUI
 struct NightDimmingGroup: View {
     @Bindable var settings: SettingsStore
 
-    /// The offered white points. Labelled as percentages by the formatter, so
-    /// the list adds no strings to translate.
-    private static let levels: [Double] = [0.4, 0.25, 0.1]
-
     var body: some View {
         GroupedCheckbox(
             title: "Dim the screen at night",
@@ -25,31 +21,39 @@ struct NightDimmingGroup: View {
         .disabled(!settings.keepDisplayAwake)
 
         if settings.nightDimming && settings.keepDisplayAwake {
-            HStack(spacing: 12) {
+            HStack(spacing: 10) {
+                // The dash says "from here to here" without a word of chrome;
+                // verbatim, so the catalogue never sees it and the no-dash
+                // import rule stays about translations.
                 DatePicker(
                     selection: minutes($settings.nightDimmingStart),
                     displayedComponents: .hourAndMinute
                 ) {
-                    Text("From")
+                    EmptyView()
                 }
+                .labelsHidden()
+                .frame(minWidth: 96)
                 .accessibilityLabel("Dim from")
+                Text(verbatim: "–").foregroundStyle(.secondary)
                 DatePicker(
                     selection: minutes($settings.nightDimmingEnd),
                     displayedComponents: .hourAndMinute
                 ) {
-                    Text("Until")
+                    EmptyView()
                 }
+                .labelsHidden()
+                .frame(minWidth: 96)
                 .accessibilityLabel("Dim until")
 
-                Picker(selection: nearestLevel) {
-                    ForEach(Self.levels, id: \.self) { level in
-                        Text(verbatim: level.formatted(.percent)).tag(level)
-                    }
-                } label: {
-                    Text("Brightness")
-                }
-                .accessibilityLabel("Dimmed brightness")
-                .fixedSize()
+                Slider(value: $settings.nightDimmingLevel, in: 0.10...0.60, step: 0.05)
+                    .controlSize(.small)
+                    .frame(width: 110)
+                    .accessibilityLabel("Dimmed brightness")
+                Text(verbatim: settings.nightDimmingLevel.formatted(.percent))
+                    .font(.caption)
+                    .monospacedDigit()
+                    .foregroundStyle(.secondary)
+                    .frame(width: 34, alignment: .leading)
             }
             .font(.callout)
         }
@@ -72,15 +76,4 @@ struct NightDimmingGroup: View {
             })
     }
 
-    /// Reads as the nearest offered choice, exactly like the duration pickers:
-    /// a stored value outside the list must not draw an empty box.
-    private var nearestLevel: Binding<Double> {
-        Binding(
-            get: {
-                Self.levels.min {
-                    abs($0 - settings.nightDimmingLevel) < abs($1 - settings.nightDimmingLevel)
-                } ?? settings.nightDimmingLevel
-            },
-            set: { settings.nightDimmingLevel = $0 })
-    }
 }

@@ -8,7 +8,12 @@ import Foundation
 /// where the tests are.
 @MainActor
 final class NightDimmingController {
+    /// The slow cadence decides when to dim; nobody notices five seconds on
+    /// the way down. The fast one runs only while the screen is dimmed, so
+    /// the way back starts within a quarter of a second of a real return —
+    /// the restore is the one direction where latency reads as a broken Mac.
     private static let tickInterval: TimeInterval = 5
+    private static let dimmedTickInterval: TimeInterval = 0.25
 
     private let settings: SettingsStore
     private let state: AppState
@@ -29,10 +34,15 @@ final class NightDimmingController {
     }
 
     func start() {
-        let timer = Timer(timeInterval: Self.tickInterval, repeats: true) { [weak self] _ in
+        schedule(every: Self.tickInterval)
+    }
+
+    private func schedule(every interval: TimeInterval) {
+        ticker?.invalidate()
+        let timer = Timer(timeInterval: interval, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.tick() }
         }
-        timer.tolerance = 1
+        timer.tolerance = interval / 5
         RunLoop.main.add(timer, forMode: .common)
         ticker = timer
     }
@@ -61,7 +71,8 @@ final class NightDimmingController {
             // `nil` is "the system would never sleep this display": the lit
             // screen is the user's arrangement, so the gate never opens.
             displaySleepDelay: DisplaySleepDelay.current(onAC: isOnAC) ?? .infinity,
-            keyOrClick: UserInputSource.keyOrClick(within: Self.tickInterval),
+            keyOrClick: UserInputSource.keyOrClick(
+                within: machine.isDimmed ? Self.dimmedTickInterval : Self.tickInterval),
             pointerTravel: travel ?? 0)
 
         let window = NightDimming.Window(
@@ -74,10 +85,12 @@ final class NightDimmingController {
                     + "delay=\(Int(sample.displaySleepDelay)) "
                     + "window=\(window.start)-\(window.end) level=\(settings.nightDimmingLevel)")
             fade.dim(to: settings.nightDimmingLevel)
+            schedule(every: Self.dimmedTickInterval)
         case .restore:
             pointerAtDim = nil
             Diagnostics.note("dim off cause=\(Self.restoreCause(sample, window: window))")
             fade.restore()
+            schedule(every: Self.tickInterval)
         case nil:
             break
         }

@@ -106,7 +106,6 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,"Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",Im Akkubetrieb stoppt Belay bei %lld%%.
-Brightness,"Settings, Welcome",translated,,Brightness,Helligkeit
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Spendier mir einen Kaffee
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Abbrechen
 Check Now,Settings: General,translated,,Check Now,Jetzt prüfen
@@ -138,7 +137,6 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
 Free,Settings: About,translated,,Free,Kostenlos
-From,"App, Detection, Settings, Settings: Providers, Welcome",translated,,From,Von
 General,"Settings, Settings: General",translated,,General,Allgemein
 Good to go,App,translated,,Good to go,Alles bereit
 Got it,App,translated,,Got it,Verstanden
@@ -256,7 +254,6 @@ The server answered %lld.,Settings: General,translated,%lld,The server answered 
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,"Der Update-Dienst hat eine Antwort gesendet, die Belay nicht lesen konnte."
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Das lässt sich nicht rückgängig machen. Belay hält nirgendwo eine Kopie.
 "Told once, never nagged",App,translated,,"Told once, never nagged","Einmal gesagt, nie genervt"
-Until,"App, Settings",translated,,Until,Bis
 Until turned off,Settings,translated,,Until turned off,Bis zum Ausschalten
 Untitled project,App,translated,,Untitled project,Unbenanntes Projekt
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Jetzt aktualisieren

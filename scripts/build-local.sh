@@ -63,6 +63,14 @@ find "$ROOT/build/Belay.app" \
     | sort -rz \
     | xargs -0 -I{} codesign --force --sign "$IDENTITY" --options runtime --timestamp=none {} \
         >/dev/null 2>&1
+# The lid helper is a bare executable, which the bundle patterns above cannot
+# see, and it must be sealed before the app is: SMAppService checks its
+# signature, and signing it after the app would break the app's own seal.
+HELPER="$ROOT/build/Belay.app/Contents/MacOS/BelayLidHelper"
+if [ -f "$HELPER" ]; then
+    codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
+        "$HELPER" >/dev/null 2>&1
+fi
 codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
     "$ROOT/build/Belay.app" >/dev/null 2>&1
 
