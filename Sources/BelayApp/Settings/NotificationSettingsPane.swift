@@ -40,6 +40,16 @@ struct NotificationSettingsPane: View {
                 )
 
                 GroupedCheckbox(
+                    title: "When an agent goes quiet",
+                    explanation: """
+                        A session that stopped sending anything and never said it had finished. \
+                        Usually a CLI that needs signing in again, or a closed terminal.
+                        """,
+                    spokenLabel: "Notify when an agent goes quiet",
+                    isOn: $settings.notifyOnAgentWentQuiet
+                )
+
+                GroupedCheckbox(
                     title: "When Belay stops for safety",
                     explanation: "Low battery, or the maximum awake time was reached.",
                     spokenLabel: "Notify when Belay stops for safety",

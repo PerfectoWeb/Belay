@@ -29,6 +29,7 @@ enum SettingsKey: String, CaseIterable {
     case lastSeenVersion
     case notifyOnAgentNeedsInput
     case notifyOnTaskFinished
+    case notifyOnAgentWentQuiet
     case notifyOnSafetyRelease
     case taskFinishedThreshold
     case enabledProviders
@@ -111,6 +112,8 @@ extension SettingsValues {
         lastSeenVersion = defaults.text(.lastSeenVersion)
         notifyOnAgentNeedsInput = defaults.flag(.notifyOnAgentNeedsInput) ?? fallback.notifyOnAgentNeedsInput
         notifyOnTaskFinished = defaults.flag(.notifyOnTaskFinished) ?? fallback.notifyOnTaskFinished
+        notifyOnAgentWentQuiet =
+            defaults.flag(.notifyOnAgentWentQuiet) ?? fallback.notifyOnAgentWentQuiet
         notifyOnSafetyRelease = defaults.flag(.notifyOnSafetyRelease) ?? fallback.notifyOnSafetyRelease
         taskFinishedThreshold = defaults.seconds(
             .taskFinishedThreshold,
@@ -146,6 +149,7 @@ extension SettingsValues {
         if let lastSeenVersion { defaults.store(lastSeenVersion, .lastSeenVersion) }
         defaults.store(notifyOnAgentNeedsInput, .notifyOnAgentNeedsInput)
         defaults.store(notifyOnTaskFinished, .notifyOnTaskFinished)
+        defaults.store(notifyOnAgentWentQuiet, .notifyOnAgentWentQuiet)
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)
         defaults.store(taskFinishedThreshold, .taskFinishedThreshold)
         defaults.store(enabledProviders.map(\.rawValue).sorted(), .enabledProviders)

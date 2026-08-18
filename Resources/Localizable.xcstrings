@@ -1650,16 +1650,16 @@
     "A mark that says paused": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A mark that says paused"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Ein Zeichen für Pause"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A mark that says paused"
           }
         },
         "es": {
@@ -1690,6 +1690,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "会显示暂停的图标"
+          }
+        }
+      }
+    },
+    "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Sitzung, die nichts mehr sendet und nie gemeldet hat, dass sie fertig ist. Meist eine CLI, die sich neu anmelden muss, oder ein geschlossenes Terminal."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sesión que dejó de enviar nada y nunca dijo que había terminado. Suele ser una CLI que necesita iniciar sesión de nuevo, o un terminal cerrado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une session qui n'envoie plus rien et n'a jamais dit qu'elle avait fini. En général une CLI à reconnecter, ou un terminal fermé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sessione che ha smesso di inviare qualsiasi cosa e non ha mai detto di aver finito. Di solito una CLI da riautenticare, o un terminale chiuso."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сессия перестала что-либо присылать и не сообщила, что закончила. Обычно это CLI, которому нужен повторный вход, или закрытый терминал."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。"
           }
         }
       }
@@ -2214,16 +2261,16 @@
     "Also": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Also"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Außerdem"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Also"
           }
         },
         "es": {
@@ -2540,6 +2587,53 @@
         }
       }
     },
+    "An agent went quiet": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Agent ist verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An agent went quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente se ha quedado en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agent s'est tu"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente è rimasto in silenzio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент замолчал"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体没有动静了"
+          }
+        }
+      }
+    },
     "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops": {
       "extractionState": "manual",
       "localizations": {
@@ -2825,16 +2919,16 @@
     "Back to work": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back to work"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Zurück an die Arbeit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Back to work"
           }
         },
         "es": {
@@ -4235,16 +4329,16 @@
     "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Belay liest von den Sitzungsdateien deines Agenten nur so viel, wie nötig ist, um zu wissen, ob er arbeitet. Nie deine Prompts, nie deinen Code, und nichts über dich verlässt diesen Mac. Das Netzwerk nutzt Belay zweimal: für die tägliche Prüfung auf eine neue Version, die du abschalten kannst, und für den Download selbst, wenn du darum bittest."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one."
           }
         },
         "es": {
@@ -4846,16 +4940,16 @@
     "Check for Updates": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check for Updates"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Nach Updates suchen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check for Updates"
           }
         },
         "es": {
@@ -5739,16 +5833,16 @@
     "Every update now opens with what changed. Once, then never again.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every update now opens with what changed. Once, then never again."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Jedes Update beginnt jetzt mit dem, was sich geändert hat. Einmal, dann nie wieder."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every update now opens with what changed. Once, then never again."
           }
         },
         "es": {
@@ -6162,16 +6256,16 @@
     "Install with Homebrew: brew install --cask belay.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Install with Homebrew: brew install --cask belay."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Installation per Homebrew: brew install --cask belay."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install with Homebrew: brew install --cask belay."
           }
         },
         "es": {
@@ -7710,6 +7804,53 @@
         }
       }
     },
+    "Notify when an agent goes quiet": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benachrichtigen, wenn ein Agent verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when an agent goes quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisar cuando un agente se queda en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avertir quand un agent se tait"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvisa quando un agente resta in silenzio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уведомлять, когда агент замолкает"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当智能体没有动静时通知我"
+          }
+        }
+      }
+    },
     "Notify when an agent needs you": {
       "extractionState": "manual",
       "localizations": {
@@ -7901,16 +8042,16 @@
     "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Einmal am Tag prüft Belay, ob es eine neuere Version gibt. Es sendet nichts über dich, und es wird nichts geladen oder installiert, bevor du auf Aktualisieren drückst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update."
           }
         },
         "es": {
@@ -7948,16 +8089,16 @@
     "One click updater": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One click updater"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Ein-Klick-Update"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One click updater"
           }
         },
         "es": {
@@ -8512,16 +8653,16 @@
     "Point Belay at a folder your own tool writes to. It remembers the ones you pick.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Point Belay at a folder your own tool writes to. It remembers the ones you pick."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Zeig Belay einen Ordner, in den dein Werkzeug schreibt. Die Auswahl bleibt gemerkt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Point Belay at a folder your own tool writes to. It remembers the ones you pick."
           }
         },
         "es": {
@@ -8888,16 +9029,16 @@
     "Quitting Belay releases your Mac at once.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quitting Belay releases your Mac at once."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Beim Beenden gibt Belay deinen Mac sofort frei."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitting Belay releases your Mac at once."
           }
         },
         "es": {
@@ -9734,16 +9875,16 @@
     "Skip This Version": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip This Version"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Diese Version überspringen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip This Version"
           }
         },
         "es": {
@@ -10483,6 +10624,100 @@
         }
       }
     },
+    "The agent in %@ stopped without finishing. It may need signing in again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Agent in %@ hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The agent in %@ stopped without finishing. It may need signing in again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El agente en %@ se detuvo sin terminar. Puede que necesite iniciar sesión de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agent dans %@ s'est arrêté sans terminer. Une reconnexion est peut-être nécessaire."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agente in %@ si è fermato senza finire. Potrebbe servire un nuovo accesso."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 中的智能体没有完成就停了。可能需要重新登录。"
+          }
+        }
+      }
+    },
+    "The agent stopped without finishing. It may need signing in again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Agent hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The agent stopped without finishing. It may need signing in again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El agente se detuvo sin terminar. Puede que necesite iniciar sesión de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agent s'est arrêté sans terminer. Une reconnexion est peut-être nécessaire."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agente si è fermato senza finire. Potrebbe servire un nuovo accesso."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体没有完成就停了。可能需要重新登录。"
+          }
+        }
+      }
+    },
     "The exact configuration Belay will add": {
       "extractionState": "manual",
       "localizations": {
@@ -10815,16 +11050,16 @@
     "The welcome screen opens centred on macOS 15.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The welcome screen opens centred on macOS 15."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Der Willkommensbildschirm öffnet sich unter macOS 15 mittig."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The welcome screen opens centred on macOS 15."
           }
         },
         "es": {
@@ -10956,16 +11191,16 @@
     "This screen": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This screen"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Dieser Bildschirm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This screen"
           }
         },
         "es": {
@@ -11191,16 +11426,16 @@
     "Update Now (v%@)": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Update Now (v%@)"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Jetzt aktualisieren (v%@)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update Now (v%@)"
           }
         },
         "es": {
@@ -11238,16 +11473,16 @@
     "Update Now fetches the new version itself. No web page, no hunting.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Update Now fetches the new version itself. No web page, no hunting."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "„Jetzt aktualisieren“ lädt die neue Version selbst. Keine Webseite, keine Suche."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update Now fetches the new version itself. No web page, no hunting."
           }
         },
         "es": {
@@ -11567,16 +11802,16 @@
     "Watch any folder": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch any folder"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Beliebige Ordner beobachten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch any folder"
           }
         },
         "es": {
@@ -11897,16 +12132,16 @@
     "What's New": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What's New"
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Neuerungen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What's New"
           }
         },
         "es": {
@@ -11944,16 +12179,16 @@
     "When Belay lets go on purpose, the menu bar shows it.": {
       "extractionState": "manual",
       "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When Belay lets go on purpose, the menu bar shows it."
-          }
-        },
         "de": {
           "stringUnit": {
             "state": "translated",
             "value": "Wenn Belay absichtlich loslässt, zeigt die Menüleiste es an."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When Belay lets go on purpose, the menu bar shows it."
           }
         },
         "es": {
@@ -12078,6 +12313,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "长任务完成时"
+          }
+        }
+      }
+    },
+    "When an agent goes quiet": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Agent verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When an agent goes quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando un agente se queda en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand un agent se tait"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando un agente resta in silenzio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда агент замолкает"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当智能体没有动静时"
           }
         }
       }

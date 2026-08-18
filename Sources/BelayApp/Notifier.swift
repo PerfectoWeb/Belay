@@ -15,6 +15,7 @@ final class Notifier {
         case needsInput = "belay.needs-input"
         case taskFinished = "belay.task-finished"
         case safetyRelease = "belay.safety-release"
+        case wentQuiet = "belay.went-quiet"
     }
 
     private let centre: UNUserNotificationCenter
@@ -41,6 +42,8 @@ final class Notifier {
                 await releasedForSafety(reason)
             case .resumed(let session):
                 forget(session)
+            case .wentQuiet(let session, let workspace):
+                await agentWentQuiet(session: session, workspace: workspace)
             }
         }
     }
@@ -59,6 +62,29 @@ final class Notifier {
         await post(
             category: .needsInput,
             title: String(localized: "An agent is waiting for you"),
+            body: body
+        )
+    }
+
+    /// Said when a session that was working disappeared without finishing.
+    ///
+    /// Forgets the session first: it may have been announced as waiting earlier,
+    /// and a session that has gone is not going to resume and clear that mark
+    /// itself.
+    func agentWentQuiet(session: SessionID, workspace: String?) async {
+        forget(session)
+        guard settings.notifyOnAgentWentQuiet else { return }
+        let body =
+            workspace.map {
+                String(
+                    localized:
+                        "The agent in \($0) stopped without finishing. It may need signing in again."
+                )
+            }
+            ?? String(localized: "The agent stopped without finishing. It may need signing in again.")
+        await post(
+            category: .wentQuiet,
+            title: String(localized: "An agent went quiet"),
             body: body
         )
     }

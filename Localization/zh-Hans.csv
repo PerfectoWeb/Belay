@@ -275,3 +275,9 @@ runs rescued,Statistics,translated,,runs saved,保住的运行
 runs watched,Statistics,translated,,runs watched,监视的运行
 total held,Statistics,translated,,awake time,唤醒时长
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。
+An agent went quiet,Settings: Notifications,needs_review,,An agent went quiet,智能体没有动静了
+The agent stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,,The agent stopped without finishing. It may need signing in again.,智能体没有完成就停了。可能需要重新登录。
+The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,%@,The agent in %@ stopped without finishing. It may need signing in again.,%@ 中的智能体没有完成就停了。可能需要重新登录。
+When an agent goes quiet,Settings: Notifications,needs_review,,When an agent goes quiet,当智能体没有动静时
+Notify when an agent goes quiet,Settings: Notifications,needs_review,,Notify when an agent goes quiet,当智能体没有动静时通知我
+"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,needs_review,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。

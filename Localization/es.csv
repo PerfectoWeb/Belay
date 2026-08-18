@@ -275,3 +275,9 @@ runs rescued,Statistics,translated,,runs saved,ejecuciones salvadas
 runs watched,Statistics,translated,,runs watched,ejecuciones belayadas
 total held,Statistics,translated,,awake time,tiempo despierto
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb. Gratis y nunca a la venta. Hecho por frikis para frikis.
+An agent went quiet,Settings: Notifications,needs_review,,An agent went quiet,Un agente se ha quedado en silencio
+The agent stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,,The agent stopped without finishing. It may need signing in again.,El agente se detuvo sin terminar. Puede que necesite iniciar sesión de nuevo.
+The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,%@,The agent in %@ stopped without finishing. It may need signing in again.,El agente en %@ se detuvo sin terminar. Puede que necesite iniciar sesión de nuevo.
+When an agent goes quiet,Settings: Notifications,needs_review,,When an agent goes quiet,Cuando un agente se queda en silencio
+Notify when an agent goes quiet,Settings: Notifications,needs_review,,Notify when an agent goes quiet,Avisar cuando un agente se queda en silencio
+"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,needs_review,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","Una sesión que dejó de enviar nada y nunca dijo que había terminado. Suele ser una CLI que necesita iniciar sesión de nuevo, o un terminal cerrado."

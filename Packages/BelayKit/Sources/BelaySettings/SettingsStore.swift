@@ -137,6 +137,14 @@ public final class SettingsStore {
         set { update { $0.notifyOnTaskFinished = newValue } }
     }
 
+    /// Whether to say that a session stopped without finishing. Separate from
+    /// `notifyOnTaskFinished` because the two answer opposite questions: one is
+    /// "the work is done", the other is "the work stopped and nobody said so".
+    public var notifyOnAgentWentQuiet: Bool {
+        get { values.notifyOnAgentWentQuiet }
+        set { update { $0.notifyOnAgentWentQuiet = newValue } }
+    }
+
     public var notifyOnSafetyRelease: Bool {
         get { values.notifyOnSafetyRelease }
         set { update { $0.notifyOnSafetyRelease = newValue } }

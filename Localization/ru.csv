@@ -275,3 +275,9 @@ runs rescued,Statistics,needs_review,,runs saved,запусков спасено
 runs watched,Statistics,needs_review,,runs watched,всего запусков
 total held,Statistics,translated,,awake time,время без сна
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb. Бесплатно и не продаётся. Сделано гиками для гиков.
+An agent went quiet,Settings: Notifications,translated,,An agent went quiet,Агент замолчал
+The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
+The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
+When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Когда агент замолкает
+Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,"Уведомлять, когда агент замолкает"
+"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","Сессия перестала что-либо присылать и не сообщила, что закончила. Обычно это CLI, которому нужен повторный вход, или закрытый терминал."
