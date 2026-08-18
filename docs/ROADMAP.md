@@ -41,8 +41,8 @@ place from here on.
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
 | 🔇 | Say when an agent goes quiet without finishing | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Deauthorisation, a killed CLI, a closed terminal. See the note below |
 | 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Off by default, nothing sent anywhere. See the note below |
-| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/maybe.svg" alt="maybe" height="24"> | [Issue #2](https://github.com/PerfectoWeb/Belay/issues/2). Needs a MacBook to prove it works at all |
-| 🌙 | Dim the screen at night while holding | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.2.1. The plan is written below |
+| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/next.svg" alt="next" height="24"> | 1.3. Proved to work 18 Aug 2026: see the plan below |
+| 🌙 | Dim the screen at night while holding | <img src="badges/next.svg" alt="next" height="24"> | 1.3, with the row above. The plan is written below |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
@@ -88,6 +88,53 @@ Shapes worth trying, in the order they seem least annoying:
 
 Scheduled for 1.2.1 because it is small, and because the update path it depends
 on only started existing in 1.2.0.
+
+<br>
+
+## Holding through a closed lid, when it is written
+
+For 1.3, alongside the dimming below. Off by default and direct builds only.
+
+**It works, and that was the open question.** Measured on 18 Aug 2026: MacBook
+Pro M3 Max, macOS 26.4, on battery, no external display. With
+`SleepDisabled = 1` the machine ran for seven minutes with the lid shut and
+never missed a two second heartbeat, and audio kept playing out of the built-in
+speakers the whole time. Three runs, same answer. What is still missing is the
+control: the same seven minutes **without** the flag, to prove the flag is what
+did it rather than something else holding the machine up.
+
+**Why it cannot be an assertion.** Belay's hold is an idle-sleep assertion and
+lid close is not idle sleep. The only lever is `pmset -a disablesleep`, which
+writes the kernel's `SleepDisabled` flag, needs root, and outlives the process
+that set it.
+
+**The shape that keeps invariant 2.** A privileged helper installed through
+`SMAppService`, holding the flag only while the app says "still here" on an
+interval, and clearing it by itself when the heartbeat stops. `launchd` restarts
+the helper if the helper is what died. That is weaker than a 120 second kernel
+timeout and the difference must be said out loud rather than glossed: the
+question becomes "is N seconds short enough", not "does the promise still hold".
+
+**App Store: not at all.** A sandboxed app cannot install a privileged helper or
+write global settings, and guideline 2.4.5 covers both. This is the first
+behavioural split between the two channels, and `verify-mas-build.sh` should
+grow a check that the helper is absent from that build.
+
+**Two guards, both required, neither optional.** A hard cap on how long the flag
+may stay set, and a thermal release: `ProcessInfo.thermalState` reaching
+`serious` clears the flag and lets the Mac sleep, recorded in Statistics the way
+a battery release is. The thermal guard applies **only** in this mode. With the
+lid open `serious` happens during an ordinary compile, and releasing there would
+kill the run Belay exists to protect.
+
+**Already built, in `Clamshell.swift`:** the lid reading, proved to work inside
+the sandbox, and the rule for whether a hold can work at all. That part ships in
+both channels and needs no setting.
+
+**Then the documents change, after it is proven and not before:**
+`docs/01-PRD.md` lists this as a non-goal, `README.md` answers it in the FAQ and
+promises System Settings are never touched, and `docs/04-POWER.md` describes the
+assertion as the only lever.
 
 <br>
 
