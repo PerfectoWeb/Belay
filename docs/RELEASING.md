@@ -190,6 +190,40 @@ waits, which is what makes "publish both channels together" possible at all.
 
 ## Cutting a release
 
+### Pick one route and stay on it
+
+There are two, they both work, and running half of each is what breaks. Learned
+on 1.2.1: the DMG was cut locally and the release published by hand, then the
+tag push started the workflow, which got as far as
+`a release with the same tag name already exists: v1.2.1` and failed. Nothing
+was damaged, but the run is red forever and the failure says nothing about what
+actually happened.
+
+**CI does it.** Bump, changelog, commit, push the tag. The job builds, signs,
+notarizes, staples and publishes. This is the shorter route and the one to
+prefer.
+
+**You do it.** Bump, changelog, commit, run `scripts/release.sh`, publish with
+`gh release create`, and **do not push the tag afterwards** unless the release
+already exists under that exact name. Push the tag first or not at all.
+
+### Three things neither route does
+
+Every one of these has been forgotten at least once.
+
+| | Command | What breaks without it |
+|---|---|---|
+| The appcast | `scripts/publish-appcast.sh --publish` | Update Now finds nothing |
+| The Homebrew cask | `scripts/bump-cask.sh` | `brew upgrade` keeps handing out the old disk image |
+| The version on the site | see below | the download button advertises the previous release |
+
+The site version is the surprising one. `landing.py` on `gh-pages` carries
+`VERSION`, and `.github/workflows/version.yml` is meant to rewrite it when a
+release is published. It never fires: the workflow lives on `gh-pages`, and
+GitHub only runs repository-event workflows from the default branch. Until that
+file moves to `main`, edit `VERSION` in `landing.py`, run `python3 build-site.py .`
+and push to `gh-pages`.
+
 ### 1. Bump the version
 
 Both version numbers live in `project.yml` under `settings.base` and nowhere
