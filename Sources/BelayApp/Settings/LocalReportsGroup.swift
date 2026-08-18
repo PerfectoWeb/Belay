@@ -13,14 +13,13 @@ struct LocalReportsGroup: View {
     var body: some View {
         SettingCheckboxGroup(title: "Diagnostics") {
             GroupedCheckbox(
-                title: "Keep local crash reports",
+                title: "Keep crash reports on this Mac",
                 explanation: """
-                    Writes crashes, freezes and errors to a file on this Mac. \
-                    Nothing is sent anywhere, ever. If something goes wrong, \
-                    opening an issue and attaching this file is what turns it \
-                    into a fix. Sharing it is your decision, every time.
+                    Belay saves crash, freeze, and error reports locally. \
+                    Nothing is sent automatically. You decide what to share \
+                    when reporting a problem.
                     """,
-                spokenLabel: "Keep local crash reports",
+                spokenLabel: "Keep crash reports on this Mac",
                 isOn: $settings.keepLocalReports
             )
 

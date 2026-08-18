@@ -4608,6 +4608,53 @@
         }
       }
     },
+    "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay speichert Berichte zu Abstürzen, Einfrierern und Fehlern lokal. Es wird nichts automatisch gesendet. Was du beim Melden teilst, entscheidest du."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay guarda los informes de fallos, bloqueos y errores en local. No se envía nada automáticamente. Tú decides qué compartir al informar de un problema."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay enregistre les rapports de plantage, de blocage et d'erreur en local. Rien n'est envoyé automatiquement. Vous décidez de ce que vous partagez en signalant un problème."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay salva in locale i rapporti di crash, blocchi ed errori. Non viene inviato nulla automaticamente. Sei tu a decidere cosa condividere quando segnali un problema."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay сохраняет отчёты о падениях, зависаниях и ошибках локально. Ничего не отправляется автоматически. Что показать при обращении, решаете вы."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 会把崩溃、卡死和错误报告保存在本机。不会自动发送任何内容。反馈问题时分享什么，由你决定。"
+          }
+        }
+      }
+    },
     "Belay still works in Always on and Off modes": {
       "extractionState": "manual",
       "localizations": {
@@ -6813,6 +6860,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "需要你回应后才能继续。"
+          }
+        }
+      }
+    },
+    "Keep crash reports on this Mac": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absturzberichte auf diesem Mac behalten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep crash reports on this Mac"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar informes de errores en este Mac"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conserver les rapports d'erreur sur ce Mac"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conserva i rapporti di errore su questo Mac"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранить отчёты об ошибках на этом Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在这台 Mac 上保留崩溃报告"
           }
         }
       }
