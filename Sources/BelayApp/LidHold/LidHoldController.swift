@@ -37,6 +37,15 @@ final class LidHoldController {
 
     func start() {
         serviceStatus = service.status
+        // The settings row registers on the flip, but a flip is not the only
+        // way the setting arrives: restored preferences, a rebuilt app, a
+        // helper unregistered behind our back. The opt-in standing while the
+        // helper is not registered is a promise nobody is keeping, so keep it.
+        if settings.lidHold, serviceStatus == .notRegistered {
+            try? service.register()
+            serviceStatus = service.status
+            Diagnostics.note("lid helper register-at-start status=\(serviceStatus.rawValue)")
+        }
         let timer = Timer(timeInterval: Self.tickInterval, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.tick() }
         }
