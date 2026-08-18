@@ -1,6 +1,6 @@
 # App Store listing copy
 
-Every text field App Store Connect asks for, in the seven languages Belay ships,
+Every text field App Store Connect asks for, in every language Belay ships,
 ready to paste. Nothing here is written from imagination: every claim maps to
 something the app does, because a claim the binary does not support is
 inaccurate metadata under guideline 2.3 and is refused at review.

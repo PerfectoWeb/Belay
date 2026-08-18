@@ -147,7 +147,7 @@ You will see the assertion, a plain-English reason, and how long it has left.
 
 ## 🖼 Screenshots
 
-<picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and seven languages" width="100%"></picture>
+<picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and a multilingual interface" width="100%"></picture>
 
 ## 🧯 Troubleshooting
 
@@ -220,7 +220,7 @@ is how other people find this.
 🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
 
-🌍 **[Fix a translation](Localization/)**. Seven languages ship and only
+🌍 **[Fix a translation](Localization/)**. Belay is multilingual, and only
 English and Russian have been read by a person who speaks them. One CSV per
 language, and it is data rather than code. This is the most wanted contribution
 here.

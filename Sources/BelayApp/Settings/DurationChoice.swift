@@ -6,7 +6,7 @@ import Foundation
 /// where "1h 04m" has to hold a fixed width so the row beside it does not shift
 /// once a minute. A pop-up has no such constraint and every other requirement:
 /// a space before the unit, no padding zero on a round hour, and a plural form
-/// that is right in six languages.
+/// that is right in every language.
 ///
 /// Written out per value rather than computed. Russian needs "1 час", "2 часа"
 /// and "8 часов"; German and Italian want their own separators. Eleven strings

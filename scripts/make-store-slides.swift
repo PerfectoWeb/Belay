@@ -365,7 +365,7 @@ render(
     "05-languages",
     {
         background(liftCentre: CGPoint(x: 2112, y: 900))
-        text("Six languages", .eyebrow, x: Grid.margin, baseline: 480)
+        text("Multilingual", .eyebrow, x: Grid.margin, baseline: 480)
         text(
             "Every word is translated.", .headline, x: Grid.margin, baseline: 624,
             width: Grid.textColumn)

@@ -199,7 +199,7 @@ Three things came out differently from this plan:
 **The content is not taken from the changelog.** The plan said it should be, to
 avoid two lists drifting. In practice they are two different documents: the
 changelog is the record, in English, at whatever length each fix deserved, and
-the screen is the announcement, translated into seven languages, three to five
+the screen is the announcement, translated into every language, three to five
 lines long. Sharing a source would have given the screen the changelog's length
 and vocabulary. `ReleaseNotes` is the announcement, and adding a release means
 writing its lines and translating them, which is a real cost and is written down

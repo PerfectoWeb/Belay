@@ -241,7 +241,7 @@ final class ReleaseChecker {
                 // Named after the role, not the host. Where releases come
                 // from is a distribution decision that can change to the App
                 // Store or anywhere else, and a message that has to be
-                // retranslated in six languages when it does is a message that
+                // retranslated in every language when it does is a message that
                 // should not have said it.
                 return String(localized: "The server answered \(code).")
             }

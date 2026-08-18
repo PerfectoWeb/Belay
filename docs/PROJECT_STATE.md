@@ -457,7 +457,7 @@ Corrected in my own files, which had the same problem:
 - `BelayCore/ActivitySignal.swift` referenced `SessionState.apply`; the method is
   `record`. Exactly the broken DocC reference `docs/07` wants CI to catch.
 
-### D19 — Six languages, and why switching one needs a relaunch
+### D19 — Multilingual, and why switching a language needs a relaunch
 
 `AppleLanguages` in the app's own defaults domain is the preference. There is no
 second stored setting, because `Bundle.main` reads that key when it picks a

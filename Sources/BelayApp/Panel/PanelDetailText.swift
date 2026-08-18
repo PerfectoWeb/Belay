@@ -3,7 +3,7 @@ import SwiftUI
 /// The panel's one-line explanation, with a way out if it ever does not fit.
 ///
 /// Every status sentence is written and measured to fit this on one line in all
-/// six languages, and `LocalizationTests` fails if one stops fitting. This is
+/// every language, and `LocalizationTests` fails if one stops fitting. This is
 /// what happens anyway: a sentence too wide is cut with an ellipsis, and resting
 /// the pointer on it walks the text far enough left to read the end.
 ///

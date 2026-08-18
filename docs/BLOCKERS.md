@@ -371,13 +371,13 @@ it always meant. Four consecutive suite runs green afterwards.
 a real regression then hides among the false alarms. This one was hiding a real
 regression the whole time.
 
-## B7 — five languages left, not seven
+## B7 — most languages have not been read by a native speaker
 
 English and Russian have been read by someone who speaks them. What is still
 unreviewed is **German, Spanish, French, Italian and Simplified Chinese**, and
 Chinese is the one that has never been seen running at all.
 
-Six languages ship: en, ru, de, es, fr, it. All 210 strings are translated and
+Every shipped language is fully translated, and
 `LocalizationTests` guards the mechanical half — every offered language present
 in the bundle, no empty tables, no wholesale copies of English, and format
 specifiers matching the source.

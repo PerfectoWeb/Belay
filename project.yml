@@ -115,7 +115,7 @@ targetTemplates:
         # true of the App Store build and not of the direct one, where a daily
         # update check does leave. One string cannot make a claim that depends
         # on which channel it is compiled into, so it makes none.
-        NSHumanReadableCopyright: "© 2026 PerfectoWeb. MIT licensed."
+        NSHumanReadableCopyright: "© 2026 PerfectoWeb. Source available."
         ITSAppUsesNonExemptEncryption: false
         NSSupportsAutomaticTermination: false
         NSSupportsSuddenTermination: false

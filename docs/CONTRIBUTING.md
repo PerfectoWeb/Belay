@@ -178,8 +178,8 @@ use this daily and the path is right" is worth more than the diff.
 ## Fixing or adding a translation
 
 Belay ships in English, Russian, German, Spanish, French, Italian and Simplified
-Chinese. **Five of the seven have never been read by somebody who speaks them:**
-German, Spanish, French, Italian and Chinese. The copy is deliberately voicier
+Chinese. **These have never been read by somebody who speaks them:** German,
+Spanish, French, Italian and Chinese. The copy is deliberately voicier
 than typical interface text, which is exactly the register a non-native
 translation flattens, so a correction from someone who speaks the language is a
 genuinely wanted contribution, including a one-string one.
@@ -201,7 +201,7 @@ a string no native speaker has read yet, which is where to start.
 [`Localization/README.md`](../Localization/README.md) has the rest: every
 column, the placeholder rules, how to retire a string, and why `en.csv` is the
 odd one. The English text is the key, so rewriting it renames the key, and
-import carries that rename through the catalogue, the other six languages and
+import carries that rename through the catalogue, every other language and
 the sources.
 
 Rules that the tests enforce, in `Tests/BelayAppTests/LocalizationTests.swift`:
@@ -213,7 +213,7 @@ Rules that the tests enforce, in `Tests/BelayAppTests/LocalizationTests.swift`:
   testing the app is using.
 - No empty values, and no language that is a wholesale copy of English.
 
-Adding an eighth language means the strings plus one case in `AppLanguage`
+Adding a language means the strings plus one case in `AppLanguage`
 (`Sources/BelayApp/Settings/AppLanguage.swift`), whose `endonym` is written in
 the language itself, because a picker that lists "German" to somebody who only
 reads German is a picker they cannot use. The picker offering a language the
@@ -336,8 +336,11 @@ review will actually catch.
 - No abstraction with a single implementation unless it exists for testing or for
   the direct/App Store split. Both of those are called out in the docs; anything
   else is speculation.
-- Any user-visible string is localized, and a new one means seven values in the
-  catalogue rather than one.
+- Any user-visible string is localized, and a new one means a value in every
+  language rather than one.
+- Never write how many languages there are. "Multilingual", or name them, but no
+  count: a number is a fact stored in prose, and adding one language then means
+  hunting it through the docs, the slides, the site and the source comments.
 
 ## Commits
 

@@ -63,7 +63,7 @@ struct ReleaseNote: Equatable {
 /// **Adding a release.** Put the newest entry at the top. Three to five items,
 /// each earning its icon, and everything else as an aside. Each `title`, `body`
 /// and aside is a new key in `Resources/Localizable.xcstrings` and has to be
-/// translated into all seven languages before the gate goes green:
+/// translated into every language before the gate goes green:
 /// `LocalizationTests` counts the tables and fails when they differ. That cost is
 /// the feature working. An announcement screen that shows English to a German
 /// user is worse than no announcement.

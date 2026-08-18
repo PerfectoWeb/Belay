@@ -7,8 +7,8 @@ doesn't build a profile of you or send your work to us. Most of what Belay needs
 never leaves your Mac.
 
 This file and <https://perfectoweb.github.io/Belay/en/privacy/> are the same
-policy. Change one and change the other. The site carries it in six languages,
-all generated from one source; the English is the authoritative text.
+policy. Change one and change the other. The site carries it in every language the app
+speaks, all generated from one source; the English is the authoritative text.
 
 ## What Belay reads
 

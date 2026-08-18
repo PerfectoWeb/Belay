@@ -26,7 +26,7 @@ place from here on.
 | 🔌 | Holds and releases a real power assertion | <img src="badges/done.svg" alt="done" height="24"> | [12 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/pre-release-baseline) |
 | 🍎 | Signed, notarized and stapled by Apple | <img src="badges/done.svg" alt="done" height="24"> | [13 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/a1d5f59) |
 | 🎉 | **v1.0.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.0.0) |
-| 🌍 | Seven languages, Simplified Chinese included | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/42c747b) |
+| 🌍 | Multilingual, Simplified Chinese included | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/42c747b) |
 | 📄 | A licence of our own: free to use, never for sale | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d3fb9b9) |
 | ✨ | A welcome screen that shows instead of explaining | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/8eb09bf) |
 | 🚀 | **v1.1.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [14 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.1.0) |
@@ -44,7 +44,7 @@ place from here on.
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
 | 📥 | **First 1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues. Counted on GitHub releases only, so Homebrew and the App Store are not in the number |
-| 🗣 | Five languages read by people who speak them | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
+| 🗣 | Every language read by someone who speaks it | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **First 100 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
 | 📈 | 5000 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | A write-up, or one thread that goes somewhere |
 | 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 100 stars. Their form only, and it must be a person |

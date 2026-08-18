@@ -243,7 +243,7 @@ releases the assertion. Each blocked session is announced once, not once per
 poll. Authorization is requested the first time a notification would actually
 fire, never at launch.
 
-**Six languages.** English, Russian, German, Spanish, French and Italian, in one
+**Multilingual.** English, Russian, German, Spanish, French and Italian, in one
 String Catalog. Belay follows the Mac's language and falls back to English;
 Settings has a picker, and changing it reopens the app, because the menu bar menu
 and the alerts are AppKit and will not switch language under a running process.
