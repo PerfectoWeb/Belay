@@ -1741,147 +1741,6 @@
         }
       }
     },
-    "A mark for a new version": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein Zeichen für eine neue Version"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A mark for a new version"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una marca para la versión nueva"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une marque pour une nouvelle version"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un segno per una nuova versione"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Значок о новой версии"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "新版本的标记"
-          }
-        }
-      }
-    },
-    "A mark that says paused": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein Zeichen für Pause"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A mark that says paused"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una marca que dice pausa"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une marque qui dit pause"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un segno che dice pausa"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Значок, который говорит «пауза»"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "会显示暂停的图标"
-          }
-        }
-      }
-    },
-    "A round of work on the interface, mostly where you already look.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Runde Arbeit an der Oberfläche, meist dort, wo du ohnehin hinschaust."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A round of work on the interface, mostly where you already look."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una ronda de trabajo en la interfaz, sobre todo donde ya miras."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un travail sur l'interface, surtout là où vous regardez déjà."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un giro di lavoro sull'interfaccia, soprattutto dove guardi già."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Поработали над интерфейсом, в основном там, куда вы и так смотрите."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "对界面做了一轮打磨，主要是你本来就会看的地方。"
-          }
-        }
-      }
-    },
     "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.": {
       "extractionState": "manual",
       "localizations": {
@@ -1925,53 +1784,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。"
-          }
-        }
-      }
-    },
-    "A session that stops without finishing now says so, instead of looking like a run that ended.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Sitzung, die ohne Abschluss stoppt, sagt das jetzt, statt wie ein beendeter Lauf auszusehen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A session that stops without finishing now says so, instead of looking like a run that ended."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una sesión que se detiene sin terminar ahora lo dice, en vez de parecer una ejecución acabada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une session qui s'arrête sans finir le dit maintenant, au lieu de ressembler à une exécution terminée."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una sessione che si ferma senza finire ora lo dice, invece di sembrare un'esecuzione conclusa."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сессия, которая остановилась не закончив, теперь сообщает об этом, а не выглядит как завершённый прогон."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有完成就停下的会话现在会说明这一点，而不是看起来像正常结束。"
           }
         }
       }
@@ -2153,7 +1965,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "О программе %@"
+            "value": "О %@"
           }
         },
         "zh-Hans": {
@@ -2576,7 +2388,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Также не гасить экран"
+            "value": "Не гасить экран"
           }
         },
         "zh-Hans": {
@@ -3147,53 +2959,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "直到你关闭为止。"
-          }
-        }
-      }
-    },
-    "Back to work": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zurück an die Arbeit"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back to work"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A trabajar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Au travail"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Al lavoro"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "За работу"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "继续工作"
           }
         }
       }
@@ -6206,53 +5971,6 @@
         }
       }
     },
-    "Every update now opens with what changed. Once, then never again.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jedes Update beginnt jetzt mit dem, was sich geändert hat. Einmal, dann nie wieder."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every update now opens with what changed. Once, then never again."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cada actualización empieza con lo que cambió. Una vez y nunca más."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chaque mise à jour commence par ce qui a changé. Une fois, puis plus jamais."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ogni aggiornamento si apre con ciò che è cambiato. Una volta, poi mai più."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Каждое обновление начинается с того, что изменилось. Один раз и больше никогда."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今后每次更新都会先告诉你改了什么。只出现一次。"
-          }
-        }
-      }
-    },
     "Finished": {
       "extractionState": "manual",
       "localizations": {
@@ -6770,53 +6488,6 @@
         }
       }
     },
-    "Install with Homebrew: brew install --cask belay.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Installation per Homebrew: brew install --cask belay."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Install with Homebrew: brew install --cask belay."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instala con Homebrew: brew install --cask belay."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Installation avec Homebrew : brew install --cask belay."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Installa con Homebrew: brew install --cask belay."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Установка через Homebrew: brew install --cask belay."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用 Homebrew 安装：brew install --cask belay。"
-          }
-        }
-      }
-    },
     "It needs an answer from you before it can carry on.": {
       "extractionState": "manual",
       "localizations": {
@@ -6907,53 +6578,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "在这台 Mac 上保留崩溃报告"
-          }
-        }
-      }
-    },
-    "Keep local crash reports": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Absturzberichte lokal behalten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep local crash reports"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guardar informes de errores en local"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conserver les rapports d'erreur en local"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conserva i rapporti di errore in locale"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хранить отчёты об ошибках локально"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在本机保留崩溃报告"
           }
         }
       }
@@ -8274,53 +7898,6 @@
         }
       }
     },
-    "Nothing here ever leaves this Mac.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nichts davon verlässt jemals diesen Mac."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nothing here ever leaves this Mac."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nada de esto sale nunca de este Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien de tout cela ne quitte ce Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Niente di tutto questo lascia mai questo Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ничего отсюда не покидает этот Mac."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这里的一切都不会离开这台 Mac。"
-          }
-        }
-      }
-    },
     "Nothing to show yet": {
       "extractionState": "manual",
       "localizations": {
@@ -8921,7 +8498,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Раз в день Belay проверяет, есть ли новая версия. Он не отправляет ничего о вас, и ничего не скачивается и не устанавливается, пока вы не нажмёте «Обновить»."
+            "value": "Belay периодически проверяет, есть ли новая версия. Скачивание и установка производятся исключительно после нажатия «Обновить»."
           }
         },
         "zh-Hans": {
@@ -8975,100 +8552,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "每个版本只提醒一次。无论此项是否开启，菜单栏图标角上的标记都会安静地说明同样的事。"
-          }
-        }
-      }
-    },
-    "One click updater": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein-Klick-Update"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One click updater"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Actualiza con un clic"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mise à jour en un clic"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aggiornamento con un clic"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновление одним нажатием"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一键更新"
-          }
-        }
-      }
-    },
-    "One notification per version. Click it to see what changed and install when you like.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Mitteilung pro Version. Klicke darauf, um zu sehen, was neu ist, und installiere es, wann du willst."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One notification per version. Click it to see what changed and install when you like."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una notificación por versión. Haz clic para ver qué ha cambiado e instalarlo cuando quieras."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une notification par version. Cliquez pour voir ce qui a changé et l'installer quand vous voulez."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una notifica per versione. Fai clic per vedere cosa è cambiato e installarlo quando vuoi."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Одно уведомление на версию. Нажмите, чтобы посмотреть изменения и установить когда удобно."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每个版本一条通知。点击即可查看更新内容并随时安装。"
           }
         }
       }
@@ -9637,53 +9120,6 @@
         }
       }
     },
-    "Point Belay at a folder your own tool writes to. It remembers the ones you pick.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeig Belay einen Ordner, in den dein Werkzeug schreibt. Die Auswahl bleibt gemerkt."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Point Belay at a folder your own tool writes to. It remembers the ones you pick."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indica a Belay una carpeta donde escriba tu herramienta. Recuerda las que eliges."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indiquez à Belay un dossier où votre outil écrit. Il retient vos choix."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indica a Belay una cartella in cui scrive il tuo strumento. Ricorda quelle che scegli."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Укажите Belay папку, в которую пишет ваш инструмент. Выбор запоминается."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "把 Belay 指向你的工具写入的文件夹。你选的会被记住。"
-          }
-        }
-      }
-    },
     "Precise detection": {
       "extractionState": "manual",
       "localizations": {
@@ -10009,53 +9445,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "退出并重新打开"
-          }
-        }
-      }
-    },
-    "Quitting Belay releases your Mac at once.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beim Beenden gibt Belay deinen Mac sofort frei."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quitting Belay releases your Mac at once."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Al salir, Belay suelta tu Mac de inmediato."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En quittant, Belay relâche votre Mac immédiatement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All’uscita, Belay lascia subito il Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "При выходе Belay сразу отпускает Mac."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "退出时，Belay 会立刻让 Mac 进入睡眠。"
           }
         }
       }
@@ -10953,53 +10342,6 @@
         }
       }
     },
-    "Skip This Version": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Version überspringen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip This Version"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Omitir esta versión"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ignorer cette version"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ignora questa versione"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пропустить эту версию"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "跳过此版本"
-          }
-        }
-      }
-    },
     "Skip for now": {
       "extractionState": "manual",
       "localizations": {
@@ -11043,53 +10385,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "跳过"
-          }
-        }
-      }
-    },
-    "Smaller things, made better": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kleinigkeiten, besser gemacht"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Smaller things, made better"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Detalles, ahora mejores"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Des détails, en mieux"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Piccole cose, fatte meglio"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Мелочи, ставшие лучше"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "细节，做得更好"
           }
         }
       }
@@ -11705,53 +11000,6 @@
         }
       }
     },
-    "The App Store could not verify the purchase.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Der App Store konnte den Kauf nicht bestätigen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The App Store couldn't verify the purchase."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "App Store no pudo verificar la compra."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "L'App Store n'a pas pu vérifier l'achat."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "L'App Store non ha potuto verificare l'acquisto."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "App Store не смог подтвердить покупку."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App Store 无法验证此次购买。"
-          }
-        }
-      }
-    },
     "The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.": {
       "extractionState": "manual",
       "localizations": {
@@ -11936,100 +11184,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 将添加的内容"
-          }
-        }
-      }
-    },
-    "The purchase is waiting for approval. Nothing else is needed from you.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Kauf wartet auf Freigabe. Im Moment musst du nichts tun."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The purchase is waiting for approval. No action is needed right now."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La compra está esperando aprobación. No tienes que hacer nada por ahora."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'achat attend une approbation. Vous n'avez rien à faire pour le moment."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'acquisto è in attesa di approvazione. Per ora non devi fare nulla."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Покупка ждёт подтверждения. Пока от вас ничего не требуется."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "此次购买正在等待批准。目前无需任何操作。"
-          }
-        }
-      }
-    },
-    "The purchase was cancelled.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Der Kauf wurde abgebrochen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The purchase was cancelled."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "La compra se canceló."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "L'achat a été annulé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "L'acquisto è stato annullato."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Покупка отменена."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "购买已取消。"
           }
         }
       }
@@ -12222,100 +11376,6 @@
         }
       }
     },
-    "The welcome screen opens centred on macOS 15.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Willkommensbildschirm öffnet sich unter macOS 15 mittig."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The welcome screen opens centred on macOS 15."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La pantalla de bienvenida se abre centrada en macOS 15."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’écran de bienvenue s’ouvre centré sous macOS 15."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La schermata di benvenuto si apre centrata su macOS 15."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "На macOS 15 экран приветствия открывается по центру."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在 macOS 15 上，欢迎界面会居中打开。"
-          }
-        }
-      }
-    },
-    "There is no tip called %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Trinkgeldoption %@ ist nicht verfügbar."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tip %@ isn't available."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La opción de propina %@ no está disponible."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'option de pourboire %@ n'est pas disponible."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'opzione mancia %@ non è disponibile."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Вариант чаевых %@ недоступен."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "打赏项 %@ 不可用。"
-          }
-        }
-      }
-    },
     "This cannot be undone. Belay keeps no copy anywhere else.": {
       "extractionState": "manual",
       "localizations": {
@@ -12359,100 +11419,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "此操作无法撤销。Belay 不会在其他任何地方保留副本。"
-          }
-        }
-      }
-    },
-    "This screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dieser Bildschirm"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This screen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esta pantalla"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cet écran"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Questa schermata"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Этот экран"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这个界面"
-          }
-        }
-      }
-    },
-    "Tipping is not available in this build.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trinkgeld ist in dieser Version nicht verfügbar."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tipping isn't available in this version."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Las propinas no están disponibles en esta versión."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Les pourboires ne sont pas disponibles dans cette version."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Le mance non sono disponibili in questa versione."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Чаевые недоступны в этой версии."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "此版本不支持打赏。"
           }
         }
       }
@@ -12688,53 +11654,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "立即更新到 v%@"
-          }
-        }
-      }
-    },
-    "Update Now fetches the new version itself. No web page, no hunting.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "„Jetzt aktualisieren“ lädt die neue Version selbst. Keine Webseite, keine Suche."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Update Now fetches the new version itself. No web page, no hunting."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "«Actualizar ahora» descarga la nueva versión. Sin páginas web, sin buscar."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "« Mettre à jour » télécharge la nouvelle version. Sans page web, sans chercher."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "«Aggiorna ora» scarica da sé la nuova versione. Nessuna pagina web, nessuna ricerca."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "«Обновить» сам скачивает новую версию. Без веб-страницы и поисков."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "“立即更新”会自行下载新版本。不必打开网页，不必翻找。"
           }
         }
       }
@@ -13068,53 +11987,6 @@
         }
       }
     },
-    "Watch any folder": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beliebige Ordner beobachten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch any folder"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Observa cualquier carpeta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Surveillez n’importe quel dossier"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Osserva qualsiasi cartella"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Наблюдение за любой папкой"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "监视任意文件夹"
-          }
-        }
-      }
-    },
     "Watches Claude Code's session transcripts to tell when a turn is running.": {
       "extractionState": "manual",
       "localizations": {
@@ -13351,53 +12223,6 @@
         }
       }
     },
-    "Welcome to Belay": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Willkommen bei Belay"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Welcome to Belay"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Te damos la bienvenida a Belay"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bienvenue dans Belay"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benvenuto in Belay"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добро пожаловать в Belay"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "欢迎使用 Belay"
-          }
-        }
-      }
-    },
     "What's New": {
       "extractionState": "manual",
       "localizations": {
@@ -13441,53 +12266,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "新功能"
-          }
-        }
-      }
-    },
-    "When Belay lets go on purpose, the menu bar shows it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Belay absichtlich loslässt, zeigt die Menüleiste es an."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When Belay lets go on purpose, the menu bar shows it."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando Belay suelta a propósito, la barra de menús lo muestra."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand Belay relâche volontairement, la barre des menus l’indique."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando Belay molla la presa di proposito, la barra dei menu lo mostra."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда Belay отпускает намеренно, строка меню это показывает."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当 Belay 有意让 Mac 进入睡眠时，菜单栏会显示出来。"
           }
         }
       }
@@ -13727,53 +12505,6 @@
         }
       }
     },
-    "When an update is out, the menu bar mark says so, and only while nothing is running.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Update da ist, zeigt das Zeichen in der Menüleiste es an, und nur wenn nichts läuft."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an update is out, the menu bar mark says so, and only while nothing is running."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando hay una actualización, la marca de la barra de menús lo indica, y solo mientras no se ejecuta nada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand une mise à jour sort, la marque de la barre de menus l'indique, et seulement quand rien ne tourne."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando esce un aggiornamento, il segno nella barra dei menu lo dice, e solo mentre non sta girando nulla."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда выходит обновление, значок в меню-баре сообщает об этом, и только пока ничего не выполняется."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有更新时，菜单栏标记会显示出来，且只在没有任务运行时。"
-          }
-        }
-      }
-    },
     "When an update is ready, the menu bar shows it, but only when nothing is running.": {
       "extractionState": "manual",
       "localizations": {
@@ -13958,100 +12689,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "工作中"
-          }
-        }
-      }
-    },
-    "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schreibt Abstürze, Einfrierer und Fehler in eine Datei auf diesem Mac. Es wird nichts gesendet, und solange dies aus ist, wird auch nichts gesammelt."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escribe fallos, bloqueos y errores en un archivo de este Mac. No se envía nada a ningún sitio, y mientras esto esté desactivado no se recoge nada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Écrit les plantages, les blocages et les erreurs dans un fichier sur ce Mac. Rien n'est envoyé nulle part, et tant que ceci est désactivé, rien n'est collecté."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scrive crash, blocchi ed errori in un file su questo Mac. Non viene inviato nulla, e finché questa opzione è spenta non viene raccolto nulla."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пишет падения, зависания и ошибки в файл на этом Mac. Никуда ничего не отправляется, а пока выключено, ничего и не собирается."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "把崩溃、卡死和错误写入本机的一个文件。不会发送到任何地方，关闭时也不会收集任何内容。"
-          }
-        }
-      }
-    },
-    "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schreibt Abstürze, Einfrierer und Fehler in eine Datei auf diesem Mac. Es wird nie etwas gesendet. Wenn etwas schiefgeht, macht ein Issue mit dieser Datei daraus eine Korrektur. Ob du sie teilst, entscheidest jedes Mal du."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escribe fallos, bloqueos y errores en un archivo de este Mac. Nunca se envía nada. Si algo va mal, abrir una incidencia y adjuntar este archivo es lo que lo convierte en un arreglo. Compartirlo lo decides tú, cada vez."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Écrit les plantages, les blocages et les erreurs dans un fichier sur ce Mac. Rien n'est jamais envoyé. Si quelque chose ne va pas, ouvrir un ticket avec ce fichier est ce qui le transforme en correctif. Le partager reste votre décision, à chaque fois."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scrive crash, blocchi ed errori in un file su questo Mac. Non viene mai inviato nulla. Se qualcosa va storto, aprire una segnalazione allegando questo file è ciò che la trasforma in una correzione. Condividerlo lo decidi tu, ogni volta."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пишет падения, зависания и ошибки в файл на этом Mac. Никуда и никогда ничего не отправляется. Если что-то сломалось, именно issue с приложенным файлом превращает это в исправление. Делиться им или нет, каждый раз решаете вы."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "把崩溃、卡死和错误写入本机的一个文件。任何内容都不会被发送。如果出了问题，提交 issue 并附上这个文件，才能让它变成一次修复。是否分享，每次都由你决定。"
           }
         }
       }

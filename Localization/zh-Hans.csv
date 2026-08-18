@@ -19,7 +19,7 @@
 %lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lld 天 %@ 时
 %lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lld 时 %@ 分
 %lldm,Panel,translated,%lld,%lldm,%lld 分
-%llds,Panel,translated,%lld,%llds,%lld 秒
+%llds,"Panel, Settings",translated,%lld,%llds,%lld 秒
 1 hour,Settings,translated,,1 hour,1 小时
 1 min,"Detection, Settings",translated,,1 min,1 分钟
 10 hours,Settings,translated,,10 hours,10 小时
@@ -34,6 +34,9 @@
 8 hours,Settings,translated,,8 hours,8 小时
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,超过这段时间后，Belay 会让 Mac 进入睡眠并通知你。
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,文件夹活动算作工作。正在运行的进程只用于告诉 Belay 会话何时结束。
+"A handful of interface improvements, mostly in places you already use.",App,translated,,"A handful of interface improvements, mostly in places you already use.",一些界面上的改进，主要在你本来就常用的地方。
+A little more polish,App,translated,,A little more polish,再打磨一点
+"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,手动切换模式时的一声轻响。在“系统设置”中关闭界面声音后，这些声音也会静音。
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay 会先创建带时间戳的备份。“移除”会还原原始文件。
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,关于
@@ -45,14 +48,16 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,添加工具…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,添加到 Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,所有产品名称和标志均为其各自所有者的商标。
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,允许访问 ~/.claude
+Also,"App, Detection, Settings: General",translated,,Also,此外
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,同时让显示器保持唤醒
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,常开
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,智能体在等你回应
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,智能体在等你回应。Belay 正在让 Mac 保持唤醒。
 "An agent is working, so sleep is on hold.",Panel,translated,,"An agent is working, so your Mac stays awake.",智能体正在工作，Mac 保持唤醒。
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,智能体正在工作。退出 Belay 会让 Mac 进入睡眠。
+An agent went quiet,Settings: Notifications,translated,,An agent went quiet,智能体没有动静了
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",智能体工作，Belay 让 Mac 保持唤醒，工作停止后 Mac 进入睡眠
-Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,自动
+Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,自动
 Awake %@ so far,Panel,translated,%@,Awake for %@,已保持唤醒 %@
 Awake mode,Panel,translated,,Awake mode,唤醒模式
 Awake only while an agent is working.,Panel,translated,,Only while an agent is working.,仅在智能体工作时。
@@ -60,10 +65,6 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,直到�
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,电量降至 %lld%%。Belay 已停止保持唤醒。
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,行为
 Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay 会在首次需要发送通知时请求通知权限。
-"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.","Belay 可以看到智能体的会话。
-其他内容一概不读，也没有任何内容离开这台 Mac。"
 "Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@",Belay 无法备份 Claude Code 设置，因此未做任何更改：%@
 Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay 无法导入版本 %lld 的设置。
 Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.",Belay 无法读取自己的设置，因此使用默认值。
@@ -89,7 +90,8 @@ Belay needs your permission to read %@.,Settings: Providers,translated,%@,Belay 
 Belay reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Belay reached the maximum awake time and let your Mac sleep.,Belay 达到最长唤醒时间，已让 Mac 进入睡眠。
 "Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,translated,,The maximum awake time was reached.,已达到最长唤醒时间。
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。一切都留在这台 Mac 上。
-"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the daily update check, which you can switch off.",Settings,translated,,"Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.",Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。除可选的更新检查外，一切都留在这台 Mac 上。
+"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Settings,translated,,"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Belay 只读取智能体会话文件中足以判断它是否在工作的部分。绝不读取你的提示词，绝不读取你的代码，关于你的任何信息都不会离开这台 Mac。它只在两种情况下使用网络：每天检查一次是否有新版本（可以关闭），以及在你请求时下载新版本。
+"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings,translated,,"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Belay 会把崩溃、卡死和错误报告保存在本机。不会自动发送任何内容。反馈问题时分享什么，由你决定。
 Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,你仍然可以使用“常开”或“关闭”。
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay 已停止保持唤醒
 Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,电量降至 %lld%%，Belay 已停止保持唤醒。
@@ -102,18 +104,21 @@ Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Bela
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
 Check Now,Settings: General,translated,,Check Now,立即检查
+Check for Updates,App,translated,,Check for Updates,检查更新
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,自动检查更新
 Checking…,Settings: General,translated,,Checking…,正在检查…
 Claude Code,"App, Detection, Settings: Providers, Welcome",needs_review,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
+Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
 Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
 Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
 Detection health,Settings: Providers,translated,,Detection status,检测状态
+Diagnostics,"App, Settings",translated,,Diagnostics,诊断
 Direct download,"Settings, Settings: About",translated,,Direct download,直接下载
-Donate,Settings: About,translated,,Donate,捐赠
+Donate,"Detection, Settings: About, Settings: General",translated,,Donate,捐赠
 Done,Settings: Providers,translated,,Done,完成
 Download…,Settings: General,translated,,Download…,下载…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,开启精确检测
@@ -124,11 +129,15 @@ Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finishe
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
 Free,Settings: About,translated,,Free,免费
 General,"Settings, Settings: General",translated,,General,通用
+Good to go,App,translated,,Good to go,准备好了
+Got it,App,translated,,Got it,明白了
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许访问 ~/.claude
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
+"If a session stops without finishing, Belay now says so instead of making it look complete.",App,translated,,"If a session stops without finishing, Belay now says so instead of making it look complete.",如果会话没有完成就停下，Belay 现在会说明，而不是让它看起来已完成。
 It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer before it can continue.,需要你回应后才能继续。
+Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,在这台 Mac 上保留崩溃报告
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,正在让 Mac 保持唤醒
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
@@ -137,14 +146,18 @@ LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,最近 14 天
 Language,Settings: General,translated,,Language,语言
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,允许 Belay 读取 %@，以便判断智能体何时在工作。
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,允许访问 ~/.claude，以便 Belay 判断 Claude Code 何时在工作。
+Let's go,App,translated,,Let's go,开始吧
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",让 Claude Code 直接告诉 Belay 工作何时开始、何时结束。这也让“等待回应”通知变得可靠。
 Local only,Settings: About,translated,,Local only,仅本地
+Looks good,App,translated,,Looks good,看起来不错
+Lovely,App,translated,,Lovely,很好
 "Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,电量低或达到最长唤醒时间。
 Mac App Store,"App, Detection, Settings, Settings: About",needs_review,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,最长唤醒时间
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,模式
 Never checked.,Settings: General,translated,,Never checked.,从未检查过。
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,从不让 Mac 保持唤醒。
+Nice one,App,translated,,Nice one,不错
 No active sessions.,Panel,translated,,No active sessions.,没有活跃会话。
 No ads,Settings: About,translated,,No ads,无广告
 No providers available.,Settings: Providers,translated,,No providers available.,没有可用的来源。
@@ -153,18 +166,21 @@ No releases have been published yet.,Settings: General,translated,,No releases a
 No tracking,Settings: About,translated,,No tracking,无跟踪
 Not now,Statistics,translated,,Not now,暂不
 Nothing configured. Belay is watching Claude Code only.,Settings: Providers,translated,,No other tools added. Belay is watching Claude Code.,未添加其他工具。Belay 正在监视 Claude Code。
-Nothing here ever leaves this Mac.,(unused),translated,,Nothing here ever leaves this Mac.,这里的一切都不会离开这台 Mac。
 Nothing to show yet,Statistics,translated,,Nothing to show yet,暂无内容
 Nothing to watch yet: %@ does not exist.,Settings: Providers,translated,%@,Nothing to watch yet: %@ does not exist.,暂无可监视的内容：%@ 不存在。
-Notifications,"Settings, Settings: Notifications",translated,,Notifications,通知
+Notifications,"App, Settings, Settings: Notifications",translated,,Notifications,通知
 Notify me,Settings: Notifications,translated,,Notify me,通知我
 Notify when Belay stops for safety,Settings: Notifications,translated,,Notify when Belay stops for safety,Belay 因安全原因停止时通知我
 Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,长任务完成时通知我
+Notify when a new version is out,Settings: Notifications,translated,,Notify when a new version is out,当有新版本时通知我
+Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,当智能体没有动静时通知我
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,智能体需要你时通知我
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,除非你共享，这些数字都留在这台 Mac 上。
 Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,关闭
 Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Letting the display sleep saves power and won't interrupt your agent.,让显示器进入睡眠可以节省电量，且不会打断智能体。
-"Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Belay 每天检查一次是否有新版本。这是它唯一的网络请求。它不会发送任何个人数据，也不会自动安装更新。
+"Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.",Settings: General,translated,,"Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.",Belay 每天检查一次是否有新版本。它不会发送任何关于你的信息，在你按下“更新”之前也不会下载或安装任何东西。
+"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",Settings: Notifications,translated,,"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",每个版本只提醒一次。无论此项是否开启，菜单栏图标角上的标记都会安静地说明同样的事。
+One notification per version. Open it to see what changed and update when you're ready.,App,translated,,One notification per version. Open it to see what changed and update when you're ready.,每个版本一条通知。打开它查看更新内容，准备好时再更新。
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,仅针对时长超过 %@ 的运行。
 Open Belay at login,Settings: General,translated,,Open Belay at login,登录时打开 Belay
 Open Login Items…,Settings: General,translated,,Open Login Items…,打开“登录项”…
@@ -189,12 +205,14 @@ Remove,Settings: Providers,translated,,Remove,移除
 Remove %@,Settings: Providers,translated,%@,Remove %@,移除 %@
 Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,仅移除 Belay 添加到 Claude Code 设置中的条目
 Report a bug,Settings: About,translated,,Report a bug,报告问题
+Report an Issue…,Settings,translated,,Report an Issue…,报告问题…
 Reset…,Statistics,translated,,Reset…,重置…
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
 Settings…,Menu bar,translated,,Settings…,设置…
 Share,Statistics,translated,,Share,共享
 "Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay",共享卡片、摘要和 Belay 的链接
 Shorten the wait in Low Power Mode,Settings: Behaviour,translated,,Shorten the wait in Low Power Mode,低电量模式下缩短等待时间
+Show Reports…,Settings,translated,,Show Reports…,显示报告…
 Show all sessions,Panel,translated,,Show all sessions,显示全部会话
 Show fewer,Panel,translated,,Show fewer,收起
 Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
@@ -203,6 +221,7 @@ Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
 Software updates,Settings: General,translated,,Software updates,软件更新
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,声音
+Sounds good,App,translated,,Sounds good,挺好
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,加星标
 Star on GitHub,Settings: About,translated,,Star on GitHub,在 GitHub 上加星标
 Start watching,Welcome,translated,,Start Magic,开始监视
@@ -213,36 +232,39 @@ Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,电量�
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,停止监视此工具
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,子智能体
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,系统
-The App Store could not verify the purchase.,Detection,translated,,The App Store couldn't verify the purchase.,App Store 无法验证此次购买。
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,App Store 会让 Belay 保持最新，并在新版本就绪时通知你。Belay 自身从不连接互联网。
+The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,%@ 中的智能体没有完成就停了。可能需要重新登录。
+The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,智能体没有完成就停了。可能需要重新登录。
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Belay 将添加的内容
-The purchase is waiting for approval. Nothing else is needed from you.,Detection,translated,,The purchase is waiting for approval. No action is needed right now.,此次购买正在等待批准。目前无需任何操作。
-The purchase was cancelled.,Detection,translated,,The purchase was cancelled.,购买已取消。
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,%@ 中的运行用时 %@。Mac 现在可以正常进入睡眠。
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,本次运行用时 %@。Mac 现在可以正常进入睡眠。
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,服务器返回 %lld。
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,更新服务返回了 Belay 无法读取的内容。
-There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,打赏项 %@ 不可用。
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,此操作无法撤销。Belay 不会在其他任何地方保留副本。
-Tipping is not available in this build.,Detection,translated,,Tipping isn't available in this version.,此版本不支持打赏。
+"Told once, never nagged",App,translated,,"Told once, never nagged",只说一次，不再打扰
 Until turned off,Settings,translated,,Until turned off,直到手动关闭
 Untitled project,App,translated,,Untitled project,未命名项目
-Update Now,Settings: General,translated,,Update Now,立即更新
+Update Now,"App, Settings, Settings: General",translated,,Update Now,立即更新
+Update Now (v%@),App,translated,%@,Update Now (v%@),立即更新到 v%@
+"Updates, right in the menu bar",App,translated,,"Updates, right in the menu bar",更新就在菜单栏里
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),版本 %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,版本 %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,版本 %@ 已可用。
 Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting your Mac sleep,让 Mac 进入睡眠前的等待时间
 Waiting for you,Panel,translated,,Waiting for you,等待回应
-Watch,"App, Detection, Settings: Providers",translated,,Watch,监视
+Watch,"App, Detection, Settings: Providers, Welcome",translated,,Watch,监视
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。
 Website,Settings: About,translated,,Website,网站
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
-Welcome to Belay,(unused),translated,,Welcome to Belay,欢迎使用 Belay
+What's New,"App, Menu bar",translated,,What's New,新功能
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Belay 因安全原因停止时
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,长任务完成时
+When a new version is out,Settings: Notifications,translated,,When a new version is out,当有新版本时
+When an agent goes quiet,"App, Settings: Notifications",translated,,When an agent goes quiet,当智能体没有动静时
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,智能体需要你时
+"When an update is ready, the menu bar shows it, but only when nothing is running.",App,translated,,"When an update is ready, the menu bar shows it, but only when nothing is running.",更新准备好时，菜单栏会显示，但只在没有任务运行时。
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
 While holding,Settings: General,translated,,While holding,保持唤醒期间
 Working,Panel,translated,,Working,工作中
@@ -275,42 +297,8 @@ runs rescued,Statistics,translated,,runs saved,保住的运行
 runs watched,Statistics,translated,,runs watched,监视的运行
 total held,Statistics,translated,,awake time,唤醒时长
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。
-An agent went quiet,Settings: Notifications,needs_review,,An agent went quiet,智能体没有动静了
-The agent stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,,The agent stopped without finishing. It may need signing in again.,智能体没有完成就停了。可能需要重新登录。
-The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,needs_review,%@,The agent in %@ stopped without finishing. It may need signing in again.,%@ 中的智能体没有完成就停了。可能需要重新登录。
-When an agent goes quiet,Settings: Notifications,needs_review,,When an agent goes quiet,当智能体没有动静时
-Notify when an agent goes quiet,Settings: Notifications,needs_review,,Notify when an agent goes quiet,当智能体没有动静时通知我
-"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,needs_review,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。
+"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.","Belay 可以看到智能体的会话。
+其他内容一概不读，也没有任何内容离开这台 Mac。"
 ✨ Belay %@ is out,Settings: Notifications,needs_review,%@,✨ Belay %@ is out,✨ Belay %@ 发布了
-Click to see what changed and install it whenever you like.,Settings: Notifications,needs_review,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
-When a new version is out,Settings: Notifications,needs_review,,When a new version is out,当有新版本时
-Notify when a new version is out,Settings: Notifications,needs_review,,Notify when a new version is out,当有新版本时通知我
-"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",Settings: Notifications,needs_review,,"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",每个版本只提醒一次。无论此项是否开启，菜单栏图标角上的标记都会安静地说明同样的事。
-A mark for a new version,What's New,needs_review,,A mark for a new version,新版本的标记
-"When an update is out, the menu bar mark says so, and only while nothing is running.",What's New,needs_review,,"When an update is out, the menu bar mark says so, and only while nothing is running.",有更新时，菜单栏标记会显示出来，且只在没有任务运行时。
-"Told once, never nagged",What's New,needs_review,,"Told once, never nagged",只说一次，不再打扰
-One notification per version. Click it to see what changed and install when you like.,What's New,needs_review,,One notification per version. Click it to see what changed and install when you like.,每个版本一条通知。点击即可查看更新内容并随时安装。
-"A session that stops without finishing now says so, instead of looking like a run that ended.",What's New,needs_review,,"A session that stops without finishing now says so, instead of looking like a run that ended.",没有完成就停下的会话现在会说明这一点，而不是看起来像正常结束。
-"Smaller things, made better",What's New,needs_review,,"Smaller things, made better",细节，做得更好
-"A round of work on the interface, mostly where you already look.",What's New,needs_review,,"A round of work on the interface, mostly where you already look.",对界面做了一轮打磨，主要是你本来就会看的地方。
-Let's go,What's New,needs_review,,Let's go,开始吧
-Sounds good,What's New,needs_review,,Sounds good,挺好
-Got it,What's New,needs_review,,Got it,明白了
-Looks good,What's New,needs_review,,Looks good,看起来不错
-Nice one,What's New,needs_review,,Nice one,不错
-Good to go,What's New,needs_review,,Good to go,准备好了
-Lovely,What's New,needs_review,,Lovely,很好
-"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",更新就在菜单栏里
-"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.",更新准备好时，菜单栏会显示，但只在没有任务运行时。
-One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,每个版本一条通知。打开它查看更新内容，准备好时再更新。
-"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.",如果会话没有完成就停下，Belay 现在会说明，而不是让它看起来已完成。
-A little more polish,What's New,needs_review,,A little more polish,再打磨一点
-"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.",一些界面上的改进，主要在你本来就常用的地方。
-Diagnostics,Settings: General,needs_review,,Diagnostics,诊断
-Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,在本机保留崩溃报告
-"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",把崩溃、卡死和错误写入本机的一个文件。不会发送到任何地方，关闭时也不会收集任何内容。
-Show Reports…,Settings: General,needs_review,,Show Reports…,显示报告…
-Report an Issue…,Settings: General,needs_review,,Report an Issue…,报告问题…
-"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.",把崩溃、卡死和错误写入本机的一个文件。任何内容都不会被发送。如果出了问题，提交 issue 并附上这个文件，才能让它变成一次修复。是否分享，每次都由你决定。
-Keep crash reports on this Mac,Settings: General,needs_review,,Keep crash reports on this Mac,在这台 Mac 上保留崩溃报告
-"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings: General,needs_review,,"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Belay 会把崩溃、卡死和错误报告保存在本机。不会自动发送任何内容。反馈问题时分享什么，由你决定。

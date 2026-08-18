@@ -19,7 +19,7 @@
 %lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lldd %@h
 %lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lldh %@m
 %lldm,Panel,translated,%lld,%lldm,%lldm
-%llds,Panel,translated,%lld,%llds,%llds
+%llds,"Panel, Settings",translated,%lld,%llds,%llds
 1 hour,Settings,translated,,1 hour,1 hour
 1 min,"Detection, Settings",translated,,1 min,1 min
 10 hours,Settings,translated,,10 hours,10 hours
@@ -34,6 +34,9 @@
 8 hours,Settings,translated,,8 hours,8 hours
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,Belay stops keeping your Mac awake after this time and lets you know.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,Folder activity counts as work. A running process only tells Belay when the session ends.
+"A handful of interface improvements, mostly in places you already use.",App,translated,,"A handful of interface improvements, mostly in places you already use.","A handful of interface improvements, mostly in places you already use."
+A little more polish,App,translated,,A little more polish,A little more polish
+"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.","Belay makes a timestamped backup first. ""Remove"" restores the original file."
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,About
@@ -45,14 +48,16 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,Add a tool…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Add to Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,All product names and logos are trademarks of their respective owners.
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Allow access to ~/.claude
+Also,"App, Detection, Settings: General",translated,,Also,Also
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,Also keep the display awake
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Always On
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,An agent is waiting for you
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,An agent is waiting for you. Belay is keeping your Mac awake.
 "An agent is working, so sleep is on hold.",Panel,needs_review,,"An agent is working, so your Mac stays awake.","An agent is working, so your Mac stays awake."
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,An agent is working. Quitting Belay will let your Mac sleep.
+An agent went quiet,Settings: Notifications,translated,,An agent went quiet,An agent went quiet
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops"
-Auto,"App, Detection, Menu bar, Panel, Settings: General",translated,,Auto,Auto
+Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Auto
 Awake %@ so far,Panel,translated,%@,Awake for %@,Awake for %@
 Awake mode,Panel,translated,,Awake mode,Awake mode
 Awake only while an agent is working.,Panel,translated,,Only while an agent is working.,Only while an agent is working.
@@ -60,10 +65,6 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,Until yo
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Battery reached %lld%%. Belay stopped keeping your Mac awake.
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Behavior
 Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay asks for notification permission the first time it needs to send one.
-"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.","Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac."
 "Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@","Belay couldn't back up your Claude Code settings, so nothing was changed: %@"
 Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay couldn't import settings from version %lld.
 Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.","Belay couldn't read its settings, so it's using the defaults."
@@ -89,7 +90,8 @@ Belay needs your permission to read %@.,Settings: Providers,translated,%@,Belay 
 Belay reached its maximum awake time and stopped keeping your Mac awake.,Settings: Notifications,translated,,Belay reached the maximum awake time and let your Mac sleep.,Belay reached the maximum awake time and let your Mac sleep.
 "Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,The maximum awake time was reached.
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.
-"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. The one exception is the daily update check, which you can switch off.",Settings,translated,,"Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check.","Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac, except the optional update check."
+"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Settings,translated,,"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.","Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one."
+"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings,translated,,"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.","Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem."
 Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,You can still use Always On or Off.
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay stopped holding
 Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay stopped keeping your Mac awake at %lld%% battery.
@@ -102,18 +104,21 @@ Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Bela
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Buy me a coffee
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Cancel
 Check Now,Settings: General,translated,,Check Now,Check Now
+Check for Updates,App,translated,,Check for Updates,Check for Updates
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Check for updates automatically
 Checking…,Settings: General,translated,,Checking…,Checking…
 Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.
+Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Click to see what changed and install it whenever you like.
 Copied,Statistics,translated,,Copied,Copied
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copies the card and summary together
 Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,Copy
 Copy card and link,Statistics,translated,,Copy card and link,Copy card and link
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Could not reach the update service.
 Detection health,Settings: Providers,translated,,Detection status,Detection status
+Diagnostics,"App, Settings",translated,,Diagnostics,Diagnostics
 Direct download,"Settings, Settings: About",translated,,Direct download,Direct download
-Donate,Settings: About,translated,,Donate,Donate
+Donate,"Detection, Settings: About, Settings: General",translated,,Donate,Donate
 Done,Settings: Providers,translated,,Done,Done
 Download…,Settings: General,translated,,Download…,Download…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Enable precise detection
@@ -124,11 +129,15 @@ Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finishe
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Fix
 Free,Settings: About,translated,,Free,Free
 General,"Settings, Settings: General",translated,,General,General
+Good to go,App,translated,,Good to go,Good to go
+Got it,App,translated,,Got it,Got it
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Grant access to ~/.claude
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Waiting a moment in case more work starts.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Idle
+"If a session stops without finishing, Belay now says so instead of making it look complete.",App,translated,,"If a session stops without finishing, Belay now says so instead of making it look complete.","If a session stops without finishing, Belay now says so instead of making it look complete."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,It needs an answer before it can continue.
+Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Keep crash reports on this Mac
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Keeping your Mac awake
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Keeps your Mac awake while your agent works.
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,Keeps your Mac awake while your agent works.
@@ -137,14 +146,18 @@ LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,LAST 14 DAYS
 Language,Settings: General,translated,,Language,Language
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,Allow Belay to read %@ so it can tell when your agent is working.
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,Allow access to ~/.claude so Belay can tell when Claude Code is working.
+Let's go,App,translated,,Let's go,Let's go
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.","Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable."
 Local only,Settings: About,translated,,Local only,Local only
+Looks good,App,translated,,Looks good,Looks good
+Lovely,App,translated,,Lovely,Lovely
 "Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,Low battery or maximum awake time.
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,Maximum awake time
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Mode
 Never checked.,Settings: General,translated,,Never checked.,Never checked.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,Never keep the Mac awake.
+Nice one,App,translated,,Nice one,Nice one
 No active sessions.,Panel,translated,,No active sessions.,No active sessions.
 No ads,Settings: About,translated,,No ads,No ads
 No providers available.,Settings: Providers,translated,,No providers available.,No providers available.
@@ -153,18 +166,21 @@ No releases have been published yet.,Settings: General,translated,,No releases a
 No tracking,Settings: About,translated,,No tracking,No tracking
 Not now,Statistics,translated,,Not now,Not now
 Nothing configured. Belay is watching Claude Code only.,Settings: Providers,translated,,No other tools added. Belay is watching Claude Code.,No other tools added. Belay is watching Claude Code.
-Nothing here ever leaves this Mac.,(unused),translated,,Nothing here ever leaves this Mac.,Nothing here ever leaves this Mac.
 Nothing to show yet,Statistics,translated,,Nothing to show yet,Nothing to show yet
 Nothing to watch yet: %@ does not exist.,Settings: Providers,translated,%@,Nothing to watch yet: %@ does not exist.,Nothing to watch yet: %@ does not exist.
-Notifications,"Settings, Settings: Notifications",translated,,Notifications,Notifications
+Notifications,"App, Settings, Settings: Notifications",translated,,Notifications,Notifications
 Notify me,Settings: Notifications,translated,,Notify me,Notify me
 Notify when Belay stops for safety,Settings: Notifications,translated,,Notify when Belay stops for safety,Notify when Belay stops for safety
 Notify when a long task finishes,Settings: Notifications,translated,,Notify when a long task finishes,Notify when a long task finishes
+Notify when a new version is out,Settings: Notifications,translated,,Notify when a new version is out,Notify when a new version is out
+Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,Notify when an agent goes quiet
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,Notify when an agent needs you
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,Numbers stay on this Mac unless you share them.
 Off,"App, Menu bar, Panel, Settings, Settings: General, Settings: Providers, Welcome",translated,,Off,Off
 Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: General,translated,,Letting the display sleep saves power and won't interrupt your agent.,Letting the display sleep saves power and won't interrupt your agent.
-"Once a day, Belay checks whether a newer version exists. That is the only time Belay uses the network, it sends nothing about you, and it never installs anything on its own.",Settings: General,translated,,Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.,Belay checks once a day for a newer version. This is its only network request. It sends no personal data and never installs updates automatically.
+"Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.",Settings: General,translated,,"Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.","Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update."
+"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",Settings: Notifications,translated,,"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.","Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off."
+One notification per version. Open it to see what changed and update when you're ready.,App,translated,,One notification per version. Open it to see what changed and update when you're ready.,One notification per version. Open it to see what changed and update when you're ready.
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,For runs longer than %@.
 Open Belay at login,Settings: General,translated,,Open Belay at login,Open Belay at login
 Open Login Items…,Settings: General,translated,,Open Login Items…,Open Login Items…
@@ -189,12 +205,14 @@ Remove,Settings: Providers,translated,,Remove,Remove
 Remove %@,Settings: Providers,translated,%@,Remove %@,Remove %@
 Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,Removes only the entries Belay added to your Claude Code settings
 Report a bug,Settings: About,translated,,Report a bug,Report a bug
+Report an Issue…,Settings,translated,,Report an Issue…,Report an Issue…
 Reset…,Statistics,translated,,Reset…,Reset…
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Settings
 Settings…,Menu bar,translated,,Settings…,Settings…
 Share,Statistics,translated,,Share,Share
 "Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay","Shares the card, summary, and a link to Belay"
 Shorten the wait in Low Power Mode,Settings: Behaviour,translated,,Shorten the wait in Low Power Mode,Shorten the wait in Low Power Mode
+Show Reports…,Settings,translated,,Show Reports…,Show Reports…
 Show all sessions,Panel,translated,,Show all sessions,Show all sessions
 Show fewer,Panel,translated,,Show fewer,Show fewer
 Show fewer sessions,Panel,translated,,Show fewer sessions,Show fewer sessions
@@ -203,6 +221,7 @@ Since %@,Statistics,translated,%@,Since %@,Since %@
 Skip for now,Welcome,translated,,Skip now,Skip now
 Software updates,Settings: General,translated,,Software updates,Software updates
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,Sound
+Sounds good,App,translated,,Sounds good,Sounds good
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Star
 Star on GitHub,Settings: About,translated,,Star on GitHub,Star on GitHub
 Start watching,Welcome,translated,,Start Magic,Start Magic
@@ -213,36 +232,39 @@ Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Stop on 
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Stops watching this tool
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagent
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,System
-The App Store could not verify the purchase.,Detection,translated,,The App Store couldn't verify the purchase.,The App Store couldn't verify the purchase.
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.
+The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,The agent in %@ stopped without finishing. It may need signing in again.
+The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,The agent stopped without finishing. It may need signing in again.
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,What Belay will add
-The purchase is waiting for approval. Nothing else is needed from you.,Detection,translated,,The purchase is waiting for approval. No action is needed right now.,The purchase is waiting for approval. No action is needed right now.
-The purchase was cancelled.,Detection,translated,,The purchase was cancelled.,The purchase was cancelled.
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,The run in %@ took %@. Your Mac can sleep normally again.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,The run took %@. Your Mac can sleep normally again.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,The server answered %lld.
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,The update service sent something Belay could not read.
-There is no tip called %@.,Detection,translated,%@,Tip %@ isn't available.,Tip %@ isn't available.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,This cannot be undone. Belay keeps no copy anywhere else.
-Tipping is not available in this build.,Detection,translated,,Tipping isn't available in this version.,Tipping isn't available in this version.
+"Told once, never nagged",App,translated,,"Told once, never nagged","Told once, never nagged"
 Until turned off,Settings,translated,,Until turned off,Until turned off
 Untitled project,App,translated,,Untitled project,Untitled project
-Update Now,Settings: General,translated,,Update Now,Update Now
+Update Now,"App, Settings, Settings: General",translated,,Update Now,Update Now
+Update Now (v%@),App,translated,%@,Update Now (v%@),Update Now (v%@)
+"Updates, right in the menu bar",App,translated,,"Updates, right in the menu bar","Updates, right in the menu bar"
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Version %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,Version %@ is available.
 Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting your Mac sleep,Wait before letting your Mac sleep
 Waiting for you,Panel,translated,,Waiting for you,Waiting for you
-Watch,"App, Detection, Settings: Providers",translated,,Watch,Watch
+Watch,"App, Detection, Settings: Providers, Welcome",translated,,Watch,Watch
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Watches Claude Code session files to tell when a turn is running.
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.
 Website,Settings: About,translated,,Website,Website
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Welcome
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Welcome to %@
-Welcome to Belay,(unused),translated,,Welcome to Belay,Welcome to Belay
+What's New,"App, Menu bar",translated,,What's New,What's New
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,When Belay stops for safety
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,When a long task finishes
+When a new version is out,Settings: Notifications,translated,,When a new version is out,When a new version is out
+When an agent goes quiet,"App, Settings: Notifications",translated,,When an agent goes quiet,When an agent goes quiet
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,When an agent needs you
+"When an update is ready, the menu bar shows it, but only when nothing is running.",App,translated,,"When an update is ready, the menu bar shows it, but only when nothing is running.","When an update is ready, the menu bar shows it, but only when nothing is running."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed."
 While holding,Settings: General,translated,,While holding,While holding
 Working,Panel,translated,,Working,Working
@@ -275,42 +297,8 @@ runs rescued,Statistics,translated,,runs saved,runs saved
 runs watched,Statistics,translated,,runs watched,runs watched
 total held,Statistics,translated,,awake time,awake time
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.","© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks."
-An agent went quiet,Settings: Notifications,translated,,An agent went quiet,An agent went quiet
-The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,The agent stopped without finishing. It may need signing in again.
-The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,The agent in %@ stopped without finishing. It may need signing in again.
-When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,When an agent goes quiet
-Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,Notify when an agent goes quiet
-"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal."
+"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.","Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac."
 ✨ Belay %@ is out,Settings: Notifications,translated,%@,✨ Belay %@ is out,✨ Belay %@ is out
-Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Click to see what changed and install it whenever you like.
-When a new version is out,Settings: Notifications,translated,,When a new version is out,When a new version is out
-Notify when a new version is out,Settings: Notifications,translated,,Notify when a new version is out,Notify when a new version is out
-"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",Settings: Notifications,translated,,"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.","Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off."
-A mark for a new version,What's New,translated,,A mark for a new version,A mark for a new version
-"When an update is out, the menu bar mark says so, and only while nothing is running.",What's New,translated,,"When an update is out, the menu bar mark says so, and only while nothing is running.","When an update is out, the menu bar mark says so, and only while nothing is running."
-"Told once, never nagged",What's New,translated,,"Told once, never nagged","Told once, never nagged"
-One notification per version. Click it to see what changed and install when you like.,What's New,translated,,One notification per version. Click it to see what changed and install when you like.,One notification per version. Click it to see what changed and install when you like.
-"A session that stops without finishing now says so, instead of looking like a run that ended.",What's New,translated,,"A session that stops without finishing now says so, instead of looking like a run that ended.","A session that stops without finishing now says so, instead of looking like a run that ended."
-"Smaller things, made better",What's New,translated,,"Smaller things, made better","Smaller things, made better"
-"A round of work on the interface, mostly where you already look.",What's New,translated,,"A round of work on the interface, mostly where you already look.","A round of work on the interface, mostly where you already look."
-Let's go,What's New,translated,,Let's go,Let's go
-Sounds good,What's New,translated,,Sounds good,Sounds good
-Got it,What's New,translated,,Got it,Got it
-Looks good,What's New,translated,,Looks good,Looks good
-Nice one,What's New,translated,,Nice one,Nice one
-Good to go,What's New,translated,,Good to go,Good to go
-Lovely,What's New,translated,,Lovely,Lovely
-"Updates, right in the menu bar",What's New,translated,,"Updates, right in the menu bar","Updates, right in the menu bar"
-"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,translated,,"When an update is ready, the menu bar shows it, but only when nothing is running.","When an update is ready, the menu bar shows it, but only when nothing is running."
-One notification per version. Open it to see what changed and update when you're ready.,What's New,translated,,One notification per version. Open it to see what changed and update when you're ready.,One notification per version. Open it to see what changed and update when you're ready.
-"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,translated,,"If a session stops without finishing, Belay now says so instead of making it look complete.","If a session stops without finishing, Belay now says so instead of making it look complete."
-A little more polish,What's New,translated,,A little more polish,A little more polish
-"A handful of interface improvements, mostly in places you already use.",What's New,translated,,"A handful of interface improvements, mostly in places you already use.","A handful of interface improvements, mostly in places you already use."
-Diagnostics,Settings: General,translated,,Diagnostics,Diagnostics
-Keep local crash reports,Settings: General,translated,,Keep local crash reports,Keep local crash reports
-"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,translated,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.","Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off."
-Show Reports…,Settings: General,translated,,Show Reports…,Show Reports…
-Report an Issue…,Settings: General,translated,,Report an Issue…,Report an Issue…
-"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.",Settings: General,translated,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time.","Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, ever. If something goes wrong, opening an issue and attaching this file is what turns it into a fix. Sharing it is your decision, every time."
-Keep crash reports on this Mac,Settings: General,translated,,Keep crash reports on this Mac,Keep crash reports on this Mac
-"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings: General,translated,,"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.","Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem."
