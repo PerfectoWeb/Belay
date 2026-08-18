@@ -17,6 +17,11 @@ extension ClaudeCodeProvider {
         /// A transcript untouched for longer than this at launch is history.
         public var staleAtStartupAfter: TimeInterval
         public var latency: TimeInterval
+        /// Idle inference resolution. Tier C runs every third tick, i.e. 15 s at
+        /// the default. Also the heartbeat cadence during the awaiting grace, so
+        /// it must stay well under the coordinator's session TTL. Configurable
+        /// for the integration suite, which scales the whole pipeline down.
+        public var tickInterval: TimeInterval
 
         public init(
             projectsDirectory: URL,
@@ -24,7 +29,8 @@ extension ClaudeCodeProvider {
             inferredIdleAfter: TimeInterval = 45,
             awaitingAssistantGrace: TimeInterval = 15 * 60,
             staleAtStartupAfter: TimeInterval = 600,
-            latency: TimeInterval = 1.0
+            latency: TimeInterval = 1.0,
+            tickInterval: TimeInterval = 5
         ) {
             self.projectsDirectory = projectsDirectory
             self.sessionsDirectory = sessionsDirectory
@@ -32,6 +38,7 @@ extension ClaudeCodeProvider {
             self.awaitingAssistantGrace = awaitingAssistantGrace
             self.staleAtStartupAfter = staleAtStartupAfter
             self.latency = latency
+            self.tickInterval = tickInterval
         }
 
         public static func claudeHome(

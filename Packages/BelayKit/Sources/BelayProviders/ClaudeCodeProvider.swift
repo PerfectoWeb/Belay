@@ -11,8 +11,6 @@ import Foundation
 ///
 /// Everything here is `.inferred`. The hook bridge produces `.exact`.
 public actor ClaudeCodeProvider: ActivityProvider {
-    /// Idle inference resolution. Tier C runs every third tick, i.e. 15 s.
-    static let tickInterval: TimeInterval = 5
 
     nonisolated public let descriptor = ProviderDescriptor(
         id: .claudeCode,

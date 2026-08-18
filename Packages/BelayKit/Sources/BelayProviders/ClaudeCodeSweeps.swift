@@ -10,9 +10,9 @@ extension ClaudeCodeProvider {
     func startTicking() {
         let timer = DispatchSource.makeTimerSource(queue: queue)
         timer.schedule(
-            deadline: .now() + Self.tickInterval,
-            repeating: Self.tickInterval,
-            leeway: .seconds(1))
+            deadline: .now() + configuration.tickInterval,
+            repeating: configuration.tickInterval,
+            leeway: .milliseconds(Int(configuration.tickInterval * 200)))
         // See `PowerSourceMonitor.start()` for why this is hoisted.
         let tick: @Sendable () -> Void = { [weak self] in
             guard let self else { return }
