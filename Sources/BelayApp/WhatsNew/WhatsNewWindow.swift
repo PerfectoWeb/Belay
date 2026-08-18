@@ -46,6 +46,9 @@ final class WhatsNewWindow: NSObject {
             settings.lastSeenVersion = version
             Log.app.notice("showing release notes for \(version, privacy: .public)")
             present(notes)
+            // Only on arrival. Reopening the notes from About is a click with
+            // its own tick; this sound belongs to the update having landed.
+            Feedback.play(.whatsNew)
         }
     }
 

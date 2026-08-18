@@ -141,6 +141,17 @@ let sounds: [String: [Double]] = [
                 partials: [(2.0, 0.09), (3.17, 0.03)]),
         ], length: 0.58),
 
+    // Something new arrived: the What's New window. One warm note that comes
+    // up from below — the agent-pop's negative bend slowed down until it stops
+    // being a bubble and starts being an unwrapping. Chosen by ear from four
+    // candidates on 2026-08-18.
+    "whats-new": render(
+        [
+            Note(
+                frequency: 659.25, at: 0, decay: 0.11, level: 0.11,
+                partials: [(2.0, 0.07), (3.17, 0.025)], bend: -0.25)
+        ], length: 0.42),
+
     // An agent finishing, in the welcome scene. A bubble, so the pitch runs the
     // other way: it starts well flat and arrives, which is what a negative bend
     // is. Twenty milliseconds of decay, because a pop that rings is a droplet.

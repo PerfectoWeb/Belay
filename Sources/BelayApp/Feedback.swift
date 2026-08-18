@@ -30,6 +30,8 @@ enum Feedback {
         case tick
         /// The only sound here that is about the person rather than the machine.
         case thanks
+        /// Something new arrived: the What's New window. Comes up from below.
+        case whatsNew = "whats-new"
         /// An agent finishing, in the welcome scene. A bubble, not a chime.
         case agentPop = "agent-pop"
         /// The Mac letting go, in the welcome scene. Slow, low and quiet.
