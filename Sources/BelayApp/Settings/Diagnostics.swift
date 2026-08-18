@@ -40,6 +40,9 @@ enum Diagnostics {
         try? FileManager.default.createDirectory(
             at: folder, withIntermediateDirectories: true)
         write("collection on, Belay \(Branding.version)")
+        // From here the kit modules write too — sessions appearing and dying,
+        // assertions going up and down. Same file, same shape.
+        EventLog.install { appendFromAnywhere($0) }
 
         // A crash that kills the process cannot write anything afterwards, so
         // the handler writes at the moment it happens and hopes to finish.
@@ -64,9 +67,18 @@ enum Diagnostics {
     }
 
     private static func stop() {
+        EventLog.install(nil)
         watchdog?.invalidate()
         watchdog = nil
         NSSetUncaughtExceptionHandler(nil)
+    }
+
+    /// Called on wake from system sleep. The watchdog measures gaps between
+    /// main-thread ticks, and a slept Mac produces a gap of exactly the nap's
+    /// length — which then reads as "the main thread stalled for 69s" over a
+    /// stall that never happened. The beat restarts at the wake instead.
+    static func resetBeat() {
+        beat = Date()
     }
 
     static func write(_ line: String) {

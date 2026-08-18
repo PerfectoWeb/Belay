@@ -126,6 +126,7 @@ public actor PowerAssertionController {
             live[kind] = id
             Log.signposter.emitEvent("power.assertion.create")
             Log.power.info("Holding \(kind.rawValue, privacy: .public) assertion")
+            EventLog.note("assertion up kind=\(kind.rawValue) timeout=\(Int(timeout))s")
         case (true, let id?):
             try await backend.rearm(id, reason: reason, timeout: timeout)
         case (false, let id?):
@@ -135,6 +136,7 @@ public actor PowerAssertionController {
             try await backend.release(id)
             Log.signposter.emitEvent("power.assertion.release")
             Log.power.info("Released \(kind.rawValue, privacy: .public) assertion")
+            EventLog.note("assertion down kind=\(kind.rawValue)")
         case (false, nil):
             break
         }
@@ -150,6 +152,7 @@ public actor PowerAssertionController {
         guard !hasLoggedFailure else { return }
         hasLoggedFailure = true
         Log.power.error("Power assertion call failed: \(failure.localizedDescription, privacy: .public)")
+        EventLog.note("assertion error=\"\(failure.localizedDescription)\"")
     }
 
     private var refreshInterval: TimeInterval { timeout * refreshFraction }

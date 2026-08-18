@@ -48,7 +48,11 @@ extension ClaudeCodeProvider {
                 report(.working, for: id, at: now)
                 continue
             }
-            report(.idle, for: id, at: now)
+            if report(.idle, for: id, at: now) {
+                EventLog.note(
+                    "session idle \(id) silence=\(Int(silence))s "
+                        + "awaiting=\(watch.awaitingAssistant ? 1 : 0)")
+            }
         }
     }
 
@@ -74,7 +78,7 @@ extension ClaudeCodeProvider {
 
         for record in tracked {
             guard record.isAlive else {
-                end(record.session, at: now)
+                end(record.session, at: now, cause: "process-dead")
                 continue
             }
             if let workspace = record.workspace {

@@ -107,7 +107,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
         let id = TranscriptWatch.sessionID(for: url)
         guard var watch = watched[id] else { return adopt(url, id: id, now: now, atStartup: false) }
         guard FileSnapshot(url: watch.url) != nil else {
-            end(id, at: now)
+            end(id, at: now, cause: "transcript-gone")
             return true
         }
         let delta = watch.cursor.read(using: access)
@@ -150,6 +150,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // waiting for the next append.
         watch.cursor.seed(.tailWindow, snapshot: snapshot)
         watched[id] = watch
+        EventLog.note("session start \(id) ws=\(watch.workspace ?? "?")")
         return ingest(url, now: now) || report(.working, for: id, at: now)
     }
 
@@ -175,8 +176,9 @@ public actor ClaudeCodeProvider: ActivityProvider {
         return true
     }
 
-    func end(_ id: SessionID, at now: Date) {
+    func end(_ id: SessionID, at now: Date, cause: String) {
         guard let watch = watched.removeValue(forKey: id) else { return }
+        EventLog.note("session end \(id) cause=\(cause)")
         yield(.ended, from: watch, at: now)
     }
 

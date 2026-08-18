@@ -62,7 +62,12 @@ final class LidHoldController {
 
     private func tick() {
         guard settings.lidHold || machine.isEngaged else { return }
+        let previous = serviceStatus
         serviceStatus = service.status
+        if serviceStatus != previous {
+            Diagnostics.note(
+                "lid helper status=\(previous.rawValue)->\(serviceStatus.rawValue)")
+        }
 
         let thermal = ProcessInfo.processInfo.thermalState
         let sample = LidHold.Sample(

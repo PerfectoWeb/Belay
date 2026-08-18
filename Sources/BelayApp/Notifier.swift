@@ -32,20 +32,36 @@ final class Notifier {
     }
 
     /// Acts on what `AnnouncementTrigger` decided is worth saying.
+    ///
+    /// The log lines land here rather than in the trigger — the trigger is
+    /// pure and tested for it — and before each notification's own settings
+    /// guard: what happened belongs in the file even when the user asked not
+    /// to be told about it out loud.
     func handle(_ announcements: [AnnouncementTrigger.Announcement]) async {
         for announcement in announcements {
             switch announcement {
             case .needsInput(let session, let workspace):
+                Diagnostics.note("session awaiting-input \(session)")
                 await agentNeedsInput(session: session, workspace: workspace)
             case .finished(let duration, let workspace):
+                Diagnostics.note("run finished after=\(Int(duration))s")
                 await taskFinished(duration: duration, workspace: workspace)
             case .releasedForSafety(let reason):
+                Diagnostics.note("release safety cause=\(Self.cause(reason))")
                 await releasedForSafety(reason)
             case .resumed(let session):
                 forget(session)
             case .wentQuiet(let session, let workspace):
+                Diagnostics.note("session went-quiet \(session)")
                 await agentWentQuiet(session: session, workspace: workspace)
             }
+        }
+    }
+
+    private static func cause(_ reason: SuspensionReason) -> String {
+        switch reason {
+        case .batteryLow(let charge): return "battery charge=\(Int((charge * 100).rounded()))"
+        case .maxDurationReached(let cap): return "cap after=\(Int(cap))s"
         }
     }
 

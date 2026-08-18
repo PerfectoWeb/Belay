@@ -34,10 +34,14 @@ extension BelayController {
                 for await event in await sleepObserver.events() {
                     switch event {
                     case .willSleep:
+                        Diagnostics.note("system sleep")
                         await assertions.release()
                     case .didWake:
                         // Every timestamp we hold predates the sleep and is
                         // meaningless now; re-derive from scratch (docs/04).
+                        // The watchdog's beat is one of those timestamps.
+                        Diagnostics.resetBeat()
+                        Diagnostics.note("system wake")
                         await coordinator.resync()
                     }
                     self?.refreshSnapshot()
