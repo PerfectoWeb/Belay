@@ -3,8 +3,16 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.2.1</title>
+            <pubDate>Tue, 18 Aug 2026 18:29:52 +0300</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.2.1/Belay-1.2.1.dmg" length="5101712" type="application/octet-stream" sparkle:edSignature="3gOO1jmEgSdTwszvGkG7HRqllwbbFr4Ardjq5Io2gyN9mGpxAHyAnfm9sjtR2RPnlFNw1x0k4Q6VKXwPtSwPDA=="/>
+        </item>
+        <item>
             <title>1.2.0</title>
-            <pubDate>Mon, 17 Aug 2026 11:39:37 +0300</pubDate>
+            <pubDate>Tue, 18 Aug 2026 18:29:54 +0300</pubDate>
             <sparkle:version>4</sparkle:version>
             <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
