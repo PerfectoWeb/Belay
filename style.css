@@ -756,7 +756,7 @@ h1 .turn { display: inline; }
        share the first row and the source code takes the second. The store
        shrinks to its glyph: the download label needs the room, and the store
        badge is recognisable without its words. Below that the column above
-       stands, because the longest label, "Telecharger pour macOS", stops
+       stands, because the longest label, "Descargar para macOS", stops
        fitting beside it and a lone tile on its own row reads as a mistake. */
     @media (min-width: 375px) {
         .actions.get { flex-direction: row; flex-wrap: wrap; }
@@ -766,9 +766,9 @@ h1 .turn { display: inline; }
         /* Tighter than the desktop inset, and the same on all three so the
            icons still share one left edge. Every pixel taken here is a pixel
            the square beside the download gets, and the longest label,
-           "Telecharger pour macOS", is what sets how tight this has to be. */
+           "Descargar para macOS", is what sets how tight this has to be. */
         .actions.get { gap: 8px; }
-        .actions.get .button.stacked { padding-left: 10px; padding-right: 10px; gap: 8px; }
+        .actions.get .button.stacked { padding-left: 14px; padding-right: 14px; gap: 8px; }
 
         /* A square: the same 62 across as the height the three of them share.
            Nothing inside it but the mark, centred. */

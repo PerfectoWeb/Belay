@@ -172,7 +172,7 @@ L["fr"] = {
     "sponsor": "Sponsoriser sur GitHub",
     "star": "Étoile sur GitHub",
     "more": "Comment ça marche",
-    "download": "Télécharger pour macOS",
+    "download": "Télécharger pour Mac",
     "source": "Code source",
     "free": "Gratuit et open source.",
     "version": "Version {version}",
