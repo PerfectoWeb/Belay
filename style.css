@@ -764,16 +764,17 @@ h1 .turn { display: inline; }
         .actions.get .button.stacked:not(.primary):not(.appstore) { flex: 1 1 100%; }
 
         /* Tighter than the desktop inset, and the same on all three so the
-           icons still share one left edge. The room this frees is what keeps
-           the store button on the first row in every language. */
-        .actions.get .button.stacked { padding-left: 14px; padding-right: 14px; gap: 10px; }
+           icons still share one left edge. Every pixel taken here is a pixel
+           the square beside the download gets, and the longest label,
+           "Telecharger pour macOS", is what sets how tight this has to be. */
+        .actions.get { gap: 8px; }
+        .actions.get .button.stacked { padding-left: 10px; padding-right: 10px; gap: 8px; }
 
-        /* Down to its glyph: 52 wide against the 62 it inherits in height,
-           which is above the 44px touch minimum and reads as one mark rather
-           than as a button with its words cut off. */
+        /* A square: the same 62 across as the height the three of them share.
+           Nothing inside it but the mark, centred. */
         .actions.get .button.stacked.appstore {
             flex: 0 0 auto;
-            width: 52px;
+            width: 62px;
             padding-left: 0;
             padding-right: 0;
             justify-content: center;
