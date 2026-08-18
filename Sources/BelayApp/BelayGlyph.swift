@@ -141,7 +141,18 @@ enum BelayGlyph {
         (AffineTransform(scaleByX: scale, byY: scale) as NSAffineTransform).concat()
 
         let big = parts[1]
-        let small = [parts[0], parts[2]]
+        // An update is waiting, and this is the only place the app says so
+        // without being asked.
+        //
+        // Not while an agent is working, and not while one is waiting on the
+        // user. Belay exists to protect exactly those two moments, and a mark
+        // changing in the middle of a run is the app interrupting the thing it
+        // is for. The rule lives here rather than at the call site so that no
+        // caller can get it wrong.
+        let showsUpdate = waiting && look != .working && look != .calling
+        // The refresh mark stands where the lower right sparkle would, so that
+        // one is not drawn underneath it.
+        let small = showsUpdate ? [parts[2]] : [parts[0], parts[2]]
 
         switch look {
         case .working:
@@ -161,17 +172,11 @@ enum BelayGlyph {
             // off" — they are different situations and only one is the user's
             // doing.
             if look == .blocked { pausedBars() }
+            // Floored rather than matching the sparkle it replaces: in the
+            // dimmed looks a sparkle is a whisper on purpose, and a whisper is
+            // not what "there is a newer version" should be.
+            if showsUpdate { updateMark(alpha: max(levels.small, 0.62)) }
         }
-
-        // An update is waiting, and this is the only place the app says so
-        // without being asked.
-        //
-        // Not while an agent is working, and not while one is waiting on the
-        // user. Belay exists to protect exactly those two moments, and a new
-        // mark appearing in the middle of a run is the app interrupting the
-        // thing it is for. The rule lives here rather than at the call site so
-        // that no caller can get it wrong.
-        if waiting, look != .working, look != .calling { updateDot() }
     }
 
     /// How bright each part is for the looks that light everything uniformly.

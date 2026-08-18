@@ -50,6 +50,16 @@ struct NotificationSettingsPane: View {
                 )
 
                 GroupedCheckbox(
+                    title: "When a new version is out",
+                    explanation: """
+                        Once per version, never twice. The mark in the corner of the menu bar \
+                        icon says the same thing quietly, whether this is on or off.
+                        """,
+                    spokenLabel: "Notify when a new version is out",
+                    isOn: $settings.notifyOnUpdateAvailable
+                )
+
+                GroupedCheckbox(
                     title: "When Belay stops for safety",
                     explanation: "Low battery, or the maximum awake time was reached.",
                     spokenLabel: "Notify when Belay stops for safety",

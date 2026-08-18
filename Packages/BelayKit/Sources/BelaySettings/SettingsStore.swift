@@ -145,6 +145,13 @@ public final class SettingsStore {
         set { update { $0.notifyOnAgentWentQuiet = newValue } }
     }
 
+    /// Whether to say once, out loud, that a new version exists. The mark in
+    /// the corner of the status item says it silently either way.
+    public var notifyOnUpdateAvailable: Bool {
+        get { values.notifyOnUpdateAvailable }
+        set { update { $0.notifyOnUpdateAvailable = newValue } }
+    }
+
     public var notifyOnSafetyRelease: Bool {
         get { values.notifyOnSafetyRelease }
         set { update { $0.notifyOnSafetyRelease = newValue } }

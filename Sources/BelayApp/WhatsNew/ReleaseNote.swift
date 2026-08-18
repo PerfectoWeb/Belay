@@ -96,6 +96,34 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
+                version: "1.2.1",
+                items: [
+                    .init(
+                        symbol: "arrow.triangle.2.circlepath",
+                        title: "A mark for a new version",
+                        body: """
+                            When an update is out, the menu bar mark says so, and \
+                            only while nothing is running.
+                            """,
+                        directOnly: true),
+                    .init(
+                        symbol: "bell.badge",
+                        title: "Told once, never nagged",
+                        body: """
+                            One notification per version. Click it to see what \
+                            changed and install when you like.
+                            """,
+                        directOnly: true),
+                    .init(
+                        symbol: "speaker.slash",
+                        title: "When an agent goes quiet",
+                        body: """
+                            A session that stops without finishing now says so, \
+                            instead of looking like a run that ended.
+                            """)
+                ]
+            ),
+            ReleaseNote(
                 version: "1.2.0",
                 items: [
                     .init(

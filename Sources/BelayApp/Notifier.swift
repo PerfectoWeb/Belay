@@ -16,6 +16,7 @@ final class Notifier {
         case taskFinished = "belay.task-finished"
         case safetyRelease = "belay.safety-release"
         case wentQuiet = "belay.went-quiet"
+        case updateAvailable = "belay.update-available"
     }
 
     private let centre: UNUserNotificationCenter
@@ -119,6 +120,22 @@ final class Notifier {
                 )
             }
         await post(category: .safetyRelease, title: String(localized: "Belay stopped holding"), body: body)
+    }
+
+    /// Says that a newer version exists, at most once per version.
+    ///
+    /// Clicking it opens the same place the menu opens, which is where the
+    /// install button lives. The emoji is the whole visual difference from the
+    /// other three: this one is good news rather than something to attend to.
+    func updateAvailable(version: String) async {
+        guard settings.notifyOnUpdateAvailable, UpdateAnnouncement.shouldAnnounce(version) else {
+            return
+        }
+        await post(
+            category: .updateAvailable,
+            title: String(localized: "\u{2728} Belay \(version) is out"),
+            body: String(localized: "Click to see what changed and install it whenever you like.")
+        )
     }
 
     /// A session that resumes may block again later, and that is worth saying.

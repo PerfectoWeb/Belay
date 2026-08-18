@@ -29,6 +29,7 @@ struct SettingsValues: Equatable, Sendable {
     var notifyOnAgentNeedsInput: Bool
     var notifyOnTaskFinished: Bool
     var notifyOnAgentWentQuiet: Bool
+    var notifyOnUpdateAvailable: Bool
     var notifyOnSafetyRelease: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
@@ -60,6 +61,7 @@ extension SettingsValues {
         // stays conservative because notification fatigue kills utilities.
         notifyOnTaskFinished = true
         notifyOnAgentWentQuiet = true
+        notifyOnUpdateAvailable = true
         notifyOnSafetyRelease = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]

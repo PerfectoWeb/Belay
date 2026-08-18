@@ -11,32 +11,68 @@ import AppKit
 /// Split from `BelayGlyph.swift` to keep that file under the length rule, not
 /// because the drawing is a separate idea.
 extension BelayGlyph {
-    /// The update mark: a dot in the corner the artwork leaves empty.
+    /// The refresh mark, drawn where the lower right sparkle sits.
     ///
-    /// Bottom left, because the two small sparkles occupy both right-hand
-    /// corners and the big one owns the middle. Measured, not guessed: the three
-    /// subpaths span x 15 to 24 and y 0 to 9, x 0 to 20 and y 3 to 23, and x 17
-    /// to 24 and y 17 to 24, which leaves the lower left free.
+    /// Two subpaths at their own 104 unit scale, exactly as supplied. Parsed
+    /// once and reused: re-parsing per frame would be a hundred times a second
+    /// while an agent works, for a shape that never changes.
+    private static let arrowArtwork =
+        "M94.1897 33.0394L89.8812 2.87707C89.527 0.40422 86.4876 -0.623392 84.7098 1.15436L78.434"
+        + "5 7.42973C70.3649 2.56182 61.2035 0 51.7832 0C23.4536 0 0.70906 22.1732 0.000963789 50.4"
+        + "789C-0.0376301 52.0262 1.08708 53.3532 2.61641 53.5734L14.792 55.3139C16.6071 55.5788 18"
+        + ".2957 54.1537 18.2705 52.2553C18.018 33.5738 33.1066 18.2813 51.7832 18.2813C56.3058 18."
+        + "2813 60.7749 19.2007 64.9051 20.9591L58.856 27.0082C57.0894 28.7748 58.0921 31.8235 60.5"
+        + "787 32.1796L90.741 36.4881C92.7284 36.7877 94.4747 35.0593 94.1897 33.0394Z M101.383 50."
+        + "662L89.2167 48.9243C87.6449 48.7252 85.7383 50.0721 85.7383 52.2033C85.7383 70.6839 70.7"
+        + "032 85.7191 52.2226 85.7191C47.7238 85.7191 43.2753 84.8087 39.1604 83.0679L45.0161 77.2"
+        + "122C46.7827 75.4456 45.7801 72.3969 43.2934 72.0408L13.1311 67.7292C11.15 67.4463 9.3956"
+        + "1 69.1452 9.68242 71.1779L13.9907 101.34C14.3454 103.816 17.3821 104.837 19.1621 103.063"
+        + "L25.5892 96.6391C33.62 101.462 42.7754 104 52.2226 104C80.4152 104 103.157 81.9373 103.9"
+        + "99 53.7715C104.043 52.2212 102.919 50.8822 101.383 50.662Z"
+
+    private static let arrows: NSBezierPath = {
+        let path = NSBezierPath()
+        for subpath in SVGPath.subpaths(arrowArtwork, flipHeight: 104) { path.append(subpath) }
+        return path
+    }()
+
+    /// The update mark: the lower right sparkle swapped for a pair of arrows.
     ///
-    /// The gap around it is what makes it read as a badge rather than as a
-    /// fourth sparkle. It has to be punched rather than painted: this is a
-    /// template image, so macOS tints every filled pixel the same colour and a
-    /// "background" behind the dot would be the same ink as the dot.
-    static func updateDot() {
-        let centre = CGPoint(x: 3.1, y: 3.1)
-        let dot: CGFloat = 2.2
-        let gap: CGFloat = 3.5
+    /// A dot in the free corner was the first shape and it read as a warning
+    /// badge, which is the wrong register for "there is a newer version". This
+    /// says what it means instead, and it costs no space because it takes the
+    /// place of something already there rather than adding a fourth thing.
+    ///
+    /// The gap is punched, not painted: this is a template image, so macOS
+    /// tints every filled pixel the same colour and a drawn background behind
+    /// the arrows would be the same ink as the arrows.
+    static func updateMark(alpha: CGFloat) {
+        // `artworkSubpaths`, not `parts`: this file is an extension in another
+        // file, and `private` does not reach across one.
+        let slot = artworkSubpaths[0].bounds
+        let box = arrows.bounds
+        // Slightly wider than the sparkle it replaces, because a ring reads
+        // smaller than a solid star of the same width.
+        let side = max(slot.width, slot.height) * 1.24
+        let factor = side / max(box.width, box.height)
+
+        var transform = AffineTransform(
+            translationByX: slot.midX, byY: slot.midY)
+        transform.scale(factor)
+        transform.translate(x: -box.midX, y: -box.midY)
+
+        let mark = NSBezierPath()
+        mark.append(arrows)
+        mark.transform(using: transform)
 
         NSGraphicsContext.saveGraphicsState()
-        // Opaque first. `destinationOut` takes the alpha of the fill, so a
-        // colour left over from an earlier draw cuts only as deep as its own
-        // alpha and the gap comes out grey instead of clear.
         NSColor(calibratedWhite: 0, alpha: 1).setFill()
         NSGraphicsContext.current?.compositingOperation = .destinationOut
-        circle(at: centre, radius: gap).fill()
+        let gap = mark.bounds.insetBy(dx: -1.5, dy: -1.5)
+        NSBezierPath(ovalIn: gap).fill()
         NSGraphicsContext.restoreGraphicsState()
 
-        fill(circle(at: centre, radius: dot), alpha: 1)
+        fill(mark, alpha: alpha)
     }
 
     static func circle(at centre: CGPoint, radius: CGFloat) -> NSBezierPath {

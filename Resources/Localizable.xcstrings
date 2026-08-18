@@ -1647,6 +1647,53 @@
         }
       }
     },
+    "A mark for a new version": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Zeichen für eine neue Version"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A mark for a new version"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una marca para la versión nueva"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une marque pour une nouvelle version"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un segno per una nuova versione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Значок о новой версии"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新版本的标记"
+          }
+        }
+      }
+    },
     "A mark that says paused": {
       "extractionState": "manual",
       "localizations": {
@@ -1737,6 +1784,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。"
+          }
+        }
+      }
+    },
+    "A session that stops without finishing now says so, instead of looking like a run that ended.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Sitzung, die ohne Abschluss stoppt, sagt das jetzt, statt wie ein beendeter Lauf auszusehen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A session that stops without finishing now says so, instead of looking like a run that ended."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sesión que se detiene sin terminar ahora lo dice, en vez de parecer una ejecución acabada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une session qui s'arrête sans finir le dit maintenant, au lieu de ressembler à une exécution terminée."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sessione che si ferma senza finire ora lo dice, invece di sembrare un'esecuzione conclusa."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сессия, которая остановилась не закончив, теперь сообщает об этом, а не выглядит как завершённый прогон."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有完成就停下的会话现在会说明这一点，而不是看起来像正常结束。"
           }
         }
       }
@@ -5172,6 +5266,53 @@
         }
       }
     },
+    "Click to see what changed and install it whenever you like.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click to see what changed and install it whenever you like."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haz clic para ver qué ha cambiado e instalarlo cuando quieras."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cliquez pour voir ce qui a changé et l'installer quand vous voulez."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fai clic per vedere cosa è cambiato e installarlo quando vuoi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите, чтобы посмотреть, что изменилось, и установить когда удобно."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击查看更新内容，随时安装。"
+          }
+        }
+      }
+    },
     "Copied": {
       "extractionState": "manual",
       "localizations": {
@@ -7804,6 +7945,53 @@
         }
       }
     },
+    "Notify when a new version is out": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benachrichtigen, wenn eine neue Version da ist"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify when a new version is out"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisar cuando sale una versión nueva"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avertir quand une nouvelle version sort"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvisa quando esce una nuova versione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уведомлять, когда выходит новая версия"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当有新版本时通知我"
+          }
+        }
+      }
+    },
     "Notify when an agent goes quiet": {
       "extractionState": "manual",
       "localizations": {
@@ -8086,6 +8274,53 @@
         }
       }
     },
+    "Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmal pro Version, nie zweimal. Das Zeichen in der Ecke des Menüleistensymbols sagt dasselbe leise, egal ob das hier an ist."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una vez por versión, nunca dos. La marca en la esquina del icono de la barra de menús dice lo mismo en silencio, esté esto activado o no."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une fois par version, jamais deux. La marque dans le coin de l'icône de la barre de menus dit la même chose en silence, que ceci soit activé ou non."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una volta per versione, mai due. Il segno nell'angolo dell'icona nella barra dei menu dice la stessa cosa in silenzio, che questo sia attivo o no."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Один раз на версию, не больше. Значок в углу иконки в меню-баре говорит то же самое тихо, независимо от этой настройки."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个版本只提醒一次。无论此项是否开启，菜单栏图标角上的标记都会安静地说明同样的事。"
+          }
+        }
+      }
+    },
     "One click updater": {
       "extractionState": "manual",
       "localizations": {
@@ -8129,6 +8364,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "一键更新"
+          }
+        }
+      }
+    },
+    "One notification per version. Click it to see what changed and install when you like.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Mitteilung pro Version. Klicke darauf, um zu sehen, was neu ist, und installiere es, wann du willst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One notification per version. Click it to see what changed and install when you like."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una notificación por versión. Haz clic para ver qué ha cambiado e instalarlo cuando quieras."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une notification par version. Cliquez pour voir ce qui a changé et l'installer quand vous voulez."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una notifica per versione. Fai clic per vedere cosa è cambiato e installarlo quando vuoi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одно уведомление на версию. Нажмите, чтобы посмотреть изменения и установить когда удобно."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个版本一条通知。点击即可查看更新内容并随时安装。"
           }
         }
       }
@@ -11282,6 +11564,53 @@
         }
       }
     },
+    "Told once, never nagged": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmal gesagt, nie genervt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Told once, never nagged"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se avisa una vez, sin insistir"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dit une fois, jamais de relance"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detto una volta, senza insistere"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скажет один раз и не будет напоминать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只说一次，不再打扰"
+          }
+        }
+      }
+    },
     "Until turned off": {
       "extractionState": "manual",
       "localizations": {
@@ -12317,6 +12646,53 @@
         }
       }
     },
+    "When a new version is out": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn eine neue Version da ist"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When a new version is out"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando sale una versión nueva"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand une nouvelle version sort"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando esce una nuova versione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда выходит новая версия"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当有新版本时"
+          }
+        }
+      }
+    },
     "When an agent goes quiet": {
       "extractionState": "manual",
       "localizations": {
@@ -12407,6 +12783,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "智能体需要你时"
+          }
+        }
+      }
+    },
+    "When an update is out, the menu bar mark says so, and only while nothing is running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Update da ist, zeigt das Zeichen in der Menüleiste es an, und nur wenn nichts läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When an update is out, the menu bar mark says so, and only while nothing is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando hay una actualización, la marca de la barra de menús lo indica, y solo mientras no se ejecuta nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand une mise à jour sort, la marque de la barre de menus l'indique, et seulement quand rien ne tourne."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando esce un aggiornamento, il segno nella barra dei menu lo dice, e solo mentre non sta girando nulla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда выходит обновление, значок в меню-баре сообщает об этом, и только пока ничего не выполняется."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有更新时，菜单栏标记会显示出来，且只在没有任务运行时。"
           }
         }
       }
@@ -13911,6 +14334,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。"
+          }
+        }
+      }
+    },
+    "✨ Belay %@ is out": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Belay %@ ist da"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Belay %@ is out"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Ya está Belay %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Belay %@ est sorti"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Belay %@ è uscito"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Вышла Belay %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✨ Belay %@ 发布了"
           }
         }
       }

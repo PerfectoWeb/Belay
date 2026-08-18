@@ -30,7 +30,7 @@ final class BelayController {
     private var awakeTally = AwakeTally()
     let usage = UsageRecorder()
     private var trigger = AnnouncementTrigger()
-    private let notifier: Notifier
+    let notifier: Notifier
 
     init(
         settings: SettingsStore = SettingsStore(),

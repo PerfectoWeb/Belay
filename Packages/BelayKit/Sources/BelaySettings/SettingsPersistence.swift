@@ -30,6 +30,7 @@ enum SettingsKey: String, CaseIterable {
     case notifyOnAgentNeedsInput
     case notifyOnTaskFinished
     case notifyOnAgentWentQuiet
+    case notifyOnUpdateAvailable
     case notifyOnSafetyRelease
     case taskFinishedThreshold
     case enabledProviders
@@ -114,6 +115,8 @@ extension SettingsValues {
         notifyOnTaskFinished = defaults.flag(.notifyOnTaskFinished) ?? fallback.notifyOnTaskFinished
         notifyOnAgentWentQuiet =
             defaults.flag(.notifyOnAgentWentQuiet) ?? fallback.notifyOnAgentWentQuiet
+        notifyOnUpdateAvailable =
+            defaults.flag(.notifyOnUpdateAvailable) ?? fallback.notifyOnUpdateAvailable
         notifyOnSafetyRelease = defaults.flag(.notifyOnSafetyRelease) ?? fallback.notifyOnSafetyRelease
         taskFinishedThreshold = defaults.seconds(
             .taskFinishedThreshold,
@@ -150,6 +153,7 @@ extension SettingsValues {
         defaults.store(notifyOnAgentNeedsInput, .notifyOnAgentNeedsInput)
         defaults.store(notifyOnTaskFinished, .notifyOnTaskFinished)
         defaults.store(notifyOnAgentWentQuiet, .notifyOnAgentWentQuiet)
+        defaults.store(notifyOnUpdateAvailable, .notifyOnUpdateAvailable)
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)
         defaults.store(taskFinishedThreshold, .taskFinishedThreshold)
         defaults.store(enabledProviders.map(\.rawValue).sorted(), .enabledProviders)
