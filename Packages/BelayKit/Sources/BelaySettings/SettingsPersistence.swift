@@ -39,6 +39,7 @@ enum SettingsKey: String, CaseIterable {
     case nightDimmingStart
     case nightDimmingEnd
     case nightDimmingLevel
+    case lidHold
 
     static var settingKeys: [SettingsKey] { allCases.filter { $0 != .schemaVersion } }
 }
@@ -154,6 +155,7 @@ extension SettingsValues {
             .nightDimmingEnd, in: SettingsBounds.minuteOfDay, or: fallback.nightDimmingEnd)
         nightDimmingLevel = defaults.fraction(
             .nightDimmingLevel, in: SettingsBounds.nightDimmingLevel, or: fallback.nightDimmingLevel)
+        lidHold = defaults.flag(.lidHold) ?? fallback.lidHold
     }
 
     func write(to defaults: UserDefaults) {
@@ -189,6 +191,7 @@ extension SettingsValues {
         defaults.store(nightDimmingStart, .nightDimmingStart)
         defaults.store(nightDimmingEnd, .nightDimmingEnd)
         defaults.store(nightDimmingLevel, .nightDimmingLevel)
+        defaults.store(lidHold, .lidHold)
     }
 
     private static func readMaxAwake(_ defaults: UserDefaults, fallback: TimeInterval?) -> TimeInterval? {

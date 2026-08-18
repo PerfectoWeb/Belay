@@ -34,6 +34,9 @@ final class BelayController {
     private var trigger = AnnouncementTrigger()
     let notifier: Notifier
     let nightDimming: NightDimmingController
+    #if !BELAY_MAS
+    private let lidHold: LidHoldController
+    #endif
 
     init(
         settings: SettingsStore = SettingsStore(),
@@ -57,6 +60,9 @@ final class BelayController {
         powerSource = PowerSourceMonitor()
         notifier = Notifier(settings: settings)
         nightDimming = NightDimmingController(settings: settings, state: state)
+        #if !BELAY_MAS
+        lidHold = LidHoldController(settings: settings, state: state)
+        #endif
         state.mode = settings.mode
     }
 
@@ -70,6 +76,9 @@ final class BelayController {
         tasks.append(Task { [powerSource] in await powerSource.start() })
         tasks.append(Task { [signals, assertions] in await signals.install(releasing: assertions) })
         nightDimming.start()
+        #if !BELAY_MAS
+        lidHold.start()
+        #endif
 
         // Seed the power conditions and force one evaluation. Without this a
         // persisted Always-on mode does nothing until the driver's first idle
@@ -99,6 +108,9 @@ final class BelayController {
         tasks.removeAll()
         refresh?.cancel()
         nightDimming.stop()
+        #if !BELAY_MAS
+        lidHold.stop()
+        #endif
         for observer in sleepObservers { NSWorkspace.shared.notificationCenter.removeObserver(observer) }
         sleepObservers.removeAll()
 
@@ -191,10 +203,14 @@ final class BelayController {
                     switch decision {
                     case .hold(let reason, let until):
                         let timeout = max(30, until.timeIntervalSinceNow)
+                        Diagnostics.note(
+                            "hold on reason=\"\(reason)\" "
+                                + "display=\(settings.keepDisplayAwake ? 1 : 0)")
                         await assertions.hold(
                             reason: reason,
                             includeDisplay: settings.keepDisplayAwake, timeout: timeout)
                     case .release:
+                        Diagnostics.note("hold off")
                         await assertions.release()
                     }
                     self?.refreshSnapshot()

@@ -57,6 +57,7 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,"Ein Agent arbeitet. Wenn du Belay beendest, darf dein Mac schlafen."
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,Ein Agent ist verstummt
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","Ein Agent arbeitet, Belay hält den Mac wach, und wenn die Arbeit endet, schläft der Mac"
+Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,"Genehmige den Helfer unter „Anmeldeobjekte“, damit er den Deckel halten kann."
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Automatik
 Awake %@ so far,Panel,translated,%@,Awake for %@,Wach seit %@
 Awake mode,Panel,translated,,Awake mode,Wachmodus
@@ -137,11 +138,12 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
 Free,Settings: About,translated,,Free,Kostenlos
-From,"Detection, Settings, Settings: Providers, Welcome",translated,,From,Von
+From,"App, Detection, Settings, Settings: Providers, Welcome",translated,,From,Von
 General,"Settings, Settings: General",translated,,General,Allgemein
 Good to go,App,translated,,Good to go,Alles bereit
 Got it,App,translated,,Got it,Verstanden
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Zugriff auf ~/.claude gewähren
+Hold through a closed lid,Settings,translated,,Hold through a closed lid,Auch zugeklappt wach halten
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,"Kurz abwarten, falls noch Arbeit kommt."
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,"Wie lange Belay wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Untätig
@@ -193,6 +195,7 @@ Off by default. Belay keeps the Mac running while your agent works; letting the 
 One notification per version. Open it to see what changed and update when you're ready.,App,translated,,One notification per version. Open it to see what changed and update when you're ready.,"Eine Mitteilung pro Version. Öffne sie, um zu sehen, was neu ist, und aktualisiere, wenn es dir passt."
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Für Läufe länger als %@.
 Open Belay at login,Settings: General,translated,,Open Belay at login,Belay beim Anmelden öffnen
+Open Login Items,"Settings, Settings: General",translated,,Open Login Items,Anmeldeobjekte öffnen
 Open Login Items…,Settings: General,translated,,Open Login Items…,Anmeldeobjekte öffnen…
 Open Settings,Panel,translated,,Open Settings,Einstellungen öffnen
 Open at login,"Settings, Settings: General",translated,,Open at login,Beim Anmelden öffnen
@@ -219,7 +222,7 @@ Report an Issue…,Settings,translated,,Report an Issue…,Problem melden…
 Reset…,Statistics,needs_review,,Reset…,Zurücksetzen…
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Einstellungen
 Settings…,Menu bar,translated,,Settings…,Einstellungen…
-Share,Statistics,translated,,Share,Teilen
+Share,"App, Statistics",translated,,Share,Teilen
 "Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay","Teilt Karte, Zusammenfassung und einen Link zu Belay"
 Shorten the wait in Low Power Mode,Settings: Behaviour,translated,,Shorten the wait in Low Power Mode,Wartezeit im Energiesparmodus verkürzen
 Show Reports…,Settings,translated,,Show Reports…,Berichte anzeigen…
@@ -235,8 +238,8 @@ Sounds good,App,translated,,Sounds good,Klingt gut
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Stern geben
 Star on GitHub,Settings: About,translated,,Star on GitHub,Stern auf GitHub
 Start watching,Welcome,translated,,Start Magic,Beobachtung starten
-Startup,"Settings: General, Settings: Providers",translated,,Startup,Start
-Statistics,"App, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistik
+Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Start
+Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistik
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Mac bei niedrigem Akkustand nicht wach halten
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Bei niedrigem Akku stoppen
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Beendet die Überwachung dieses Tools
@@ -246,13 +249,14 @@ The App Store keeps Belay up to date and tells you when a new version is ready. 
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Der Agent in %@ hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Der Agent hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Was Belay hinzufügen wird
+"The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot.",Settings,translated,,"The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot.",Die Arbeit läuft mit zugeklapptem Deckel weiter. Ein Systemhelfer hält den Schalter und lässt von selbst los: nach einem Zeitlimit oder sobald der Mac heiß läuft.
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,Der Lauf in %@ hat %@ gedauert. Dein Mac kann wieder normal schlafen.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,Der Lauf hat %@ gedauert. Dein Mac kann wieder normal schlafen.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Der Server hat %lld zurückgegeben.
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,"Der Update-Dienst hat eine Antwort gesendet, die Belay nicht lesen konnte."
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Das lässt sich nicht rückgängig machen. Belay hält nirgendwo eine Kopie.
 "Told once, never nagged",App,translated,,"Told once, never nagged","Einmal gesagt, nie genervt"
-Until,Settings,translated,,Until,Bis
+Until,"App, Settings",translated,,Until,Bis
 Until turned off,Settings,translated,,Until turned off,Bis zum Ausschalten
 Untitled project,App,translated,,Untitled project,Unbenanntes Projekt
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Jetzt aktualisieren
@@ -295,6 +299,7 @@ Your first agent run fills this in.,Statistics,translated,,Your first agent run 
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,"weitergearbeitet, während du weg warst"
 last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,letztes Signal vor %@
 longest run,Statistics,translated,,longest run,längster Lauf
+macOS cannot find the helper in this build.,Settings,translated,,macOS cannot find the helper in this build.,macOS findet den Helfer in diesem Build nicht.
 macOS denied Belay access to %@.,Detection,needs_review,%@,macOS denied Belay access to %@.,macOS hat Belay den Zugriff auf %@ verweigert.
 macOS is waiting for you to allow this in System Settings.,Settings: General,translated,,Allow this in System Settings to continue.,"Erlaube dies in den Systemeinstellungen, um fortzufahren."
 macOS refused the change: %@,Settings: General,translated,%@,macOS couldn't apply the change: %@,macOS konnte die Änderung nicht anwenden: %@

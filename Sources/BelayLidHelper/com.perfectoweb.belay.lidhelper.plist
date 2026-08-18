@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- RunAtLoad is the safety half of the design: pmset's flag persists in
+	     the power-management preferences, so after any reboot the helper runs
+	     once, clears whatever a previous life left set, and goes back to
+	     waiting on its Mach service. -->
+	<key>Label</key>
+	<string>com.perfectoweb.belay.lidhelper</string>
+	<key>BundleProgram</key>
+	<string>Contents/MacOS/BelayLidHelper</string>
+	<key>MachServices</key>
+	<dict>
+		<key>com.perfectoweb.belay.lidhelper</key>
+		<true/>
+	</dict>
+	<key>AssociatedBundleIdentifiers</key>
+	<array>
+		<string>com.perfectoweb.belay</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>

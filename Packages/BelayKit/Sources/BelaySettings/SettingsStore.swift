@@ -197,6 +197,12 @@ public final class SettingsStore {
         set { update { $0.nightDimmingLevel = newValue } }
     }
 
+    /// Hold through a closed lid. Direct builds only; waits on the helper.
+    public var lidHold: Bool {
+        get { values.lidHold }
+        set { update { $0.lidHold = newValue } }
+    }
+
     public func isEnabled(_ provider: ProviderID) -> Bool {
         values.enabledProviders.contains(provider)
     }

@@ -14478,6 +14478,241 @@
           }
         }
       }
+    },
+    "Hold through a closed lid": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auch zugeklappt wach halten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold through a closed lid"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener despierto con la tapa cerrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenir éveillé capot fermé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tenere sveglio a coperchio chiuso"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Держать при закрытой крышке"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖后继续保持唤醒"
+          }
+        }
+      }
+    },
+    "The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Arbeit läuft mit zugeklapptem Deckel weiter. Ein Systemhelfer hält den Schalter und lässt von selbst los: nach einem Zeitlimit oder sobald der Mac heiß läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El trabajo continúa con la tapa cerrada. Un ayudante del sistema sujeta el interruptor y siempre lo suelta solo: tras un límite de tiempo o en cuanto el Mac se calienta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le travail continue capot fermé. Un assistant système tient l'interrupteur et le relâche toujours de lui-même : après un plafond de temps, ou dès que le Mac chauffe."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il lavoro continua a coperchio chiuso. Un helper di sistema tiene l'interruttore e lo lascia sempre da solo: dopo un limite di tempo o appena il Mac scalda."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работа продолжается с закрытой крышкой. Системный помощник держит переключатель и всегда отпускает его сам: по лимиту времени или как только Mac перегревается."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合上盖子后运行继续。系统帮助程序托住这个开关，并且总会自行松开：到达时间上限，或 Mac 一旦过热。"
+          }
+        }
+      }
+    },
+    "Approve the helper in Login Items so it can hold the lid.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Genehmige den Helfer unter „Anmeldeobjekte“, damit er den Deckel halten kann."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approve the helper in Login Items so it can hold the lid."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aprueba el ayudante en «Ítems de inicio» para que pueda sujetar la tapa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approuvez l'assistant dans « Ouverture » pour qu'il puisse tenir le capot."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approva l'helper in «Elementi login» perché possa tenere il coperchio."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одобрите помощника в «Объектах входа», чтобы он мог держать крышку."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在“登录项”中批准帮助程序，它才能在合盖时保持唤醒。"
+          }
+        }
+      }
+    },
+    "Open Login Items": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldeobjekte öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Login Items"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir ítems de inicio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir « Ouverture »"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri Elementi login"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть «Объекты входа»"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开“登录项”"
+          }
+        }
+      }
+    },
+    "macOS cannot find the helper in this build.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS findet den Helfer in diesem Build nicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS cannot find the helper in this build."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS no encuentra el ayudante en esta compilación."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS ne trouve pas l'assistant dans cette version."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS non trova l'helper in questa build."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS не находит помощника в этой сборке."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 在此构建中找不到帮助程序。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

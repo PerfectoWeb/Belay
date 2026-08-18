@@ -69,13 +69,32 @@ final class NightDimmingController {
         switch machine.evaluate(sample, enabled: settings.nightDimming, window: window) {
         case .dim:
             pointerAtDim = UserInputSource.pointerLocation()
+            Diagnostics.note(
+                "dim on idle=\(Int(sample.secondsSinceInput)) "
+                    + "delay=\(Int(sample.displaySleepDelay)) "
+                    + "window=\(window.start)-\(window.end) level=\(settings.nightDimmingLevel)")
             fade.dim(to: settings.nightDimmingLevel)
         case .restore:
             pointerAtDim = nil
+            Diagnostics.note("dim off cause=\(Self.restoreCause(sample, window: window))")
             fade.restore()
         case nil:
             break
         }
+    }
+
+    /// Which leave-rule fired, in `NightDimming`'s own precedence, so the log
+    /// line and the decision cannot tell different stories.
+    private static func restoreCause(
+        _ sample: NightDimming.Sample, window: NightDimming.Window
+    ) -> String {
+        if !window.contains(minuteOfDay: sample.minuteOfDay) { return "window" }
+        if !sample.holdingDisplay { return "hold-ended" }
+        if sample.keyOrClick { return "key" }
+        if sample.pointerTravel > NightDimming.pointerTravelThreshold {
+            return "travel=\(Int(sample.pointerTravel))"
+        }
+        return "disabled"
     }
 
     private static func minuteOfDay(_ now: Date = Date()) -> Int {

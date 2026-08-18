@@ -1,0 +1,67 @@
+import BelaySettings
+import SwiftUI
+
+#if !BELAY_MAS
+import ServiceManagement
+
+/// The lid-hold rows: the opt-in, and whatever standing between the user and
+/// a working helper needs saying. Direct builds only — a sandboxed app cannot
+/// install a privileged helper (guideline 2.4.5), so the App Store build
+/// compiles this file to the empty view below.
+struct LidHoldGroup: View {
+    @Bindable var settings: SettingsStore
+    @State private var status: SMAppService.Status = .notRegistered
+
+    private var service: SMAppService {
+        SMAppService.daemon(plistName: LidDaemon.plistName)
+    }
+
+    var body: some View {
+        GroupedCheckbox(
+            title: "Hold through a closed lid",
+            explanation: """
+                The run continues with the lid shut. A system helper holds \
+                the switch and always lets go by itself: after a time cap, \
+                or the moment the Mac runs hot.
+                """,
+            isOn: $settings.lidHold
+        )
+        .onChange(of: settings.lidHold) { _, on in
+            // Registering here, on the flip, is what makes macOS show its
+            // approval prompt while the user is still looking at the switch.
+            if on {
+                try? service.register()
+                Diagnostics.note("lid helper register status=\(service.status.rawValue)")
+            } else {
+                service.unregister { _ in }
+                Diagnostics.note("lid helper unregistered")
+            }
+            status = service.status
+        }
+        .onAppear { status = service.status }
+
+        if settings.lidHold, status == .requiresApproval {
+            HStack(spacing: 8) {
+                Button("Open Login Items") {
+                    SMAppService.openSystemSettingsLoginItems()
+                }
+                .controlSize(.small)
+                Text("Approve the helper in Login Items so it can hold the lid.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        } else if settings.lidHold, status == .notFound {
+            Text("macOS cannot find the helper in this build.")
+                .font(.caption)
+                .foregroundStyle(.orange)
+        }
+    }
+}
+#else
+/// The App Store build has no helper to offer, so it has no rows to show.
+struct LidHoldGroup: View {
+    @Bindable var settings: SettingsStore
+
+    var body: some View { EmptyView() }
+}
+#endif

@@ -122,6 +122,28 @@ targetTemplates:
         BelayDistributionChannel: $(BELAY_CHANNEL)
 
 targets:
+  # The privileged half of "hold through a closed lid": a root daemon that
+  # writes the kernel's SleepDisabled flag and clears it by itself when the
+  # app's heartbeat stops (docs/ROADMAP). Direct channel only — a sandboxed
+  # app cannot install a privileged helper, and guideline 2.4.5 covers both —
+  # so only the Belay target below embeds it, and verify-mas-build.sh fails
+  # the other build if it ever shows up there.
+  BelayLidHelper:
+    type: tool
+    platform: macOS
+    sources:
+      - path: Sources/BelayLidHelper
+        excludes:
+          - "*.plist" # embedded by the app target's copy phase, not compiled
+      - path: Sources/BelayApp/LidHold/LidHelperProtocol.swift
+    settings:
+      base:
+        PRODUCT_NAME: BelayLidHelper
+        PRODUCT_BUNDLE_IDENTIFIER: com.perfectoweb.belay.lidhelper
+        # SMAppService identifies the executable by its embedded Info.plist.
+        CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+        INFOPLIST_FILE: Sources/BelayLidHelper/HelperInfo.plist
+
   # Direct channel: Developer ID, notarized, link-based tips, and Sparkle once
   # there is a key to sign an appcast with. Ships first (docs/06).
   Belay:
@@ -135,6 +157,26 @@ targets:
       infoPlist: Sources/BelayApp/Info-Direct.plist
     dependencies:
       - package: Sparkle
+      - target: BelayLidHelper
+        embed: false # laid out by the script below, not by Xcode's embed
+    # `SMAppService.daemon` expects the executable under Contents/MacOS and
+    # the launchd plist under Contents/Library/LaunchDaemons, a layout Xcode's
+    # embed phases cannot produce. Inputs and outputs are declared so the
+    # sandboxed script phase is allowed to write, and so it reruns only when
+    # they change.
+    postBuildScripts:
+      - name: Embed the lid helper
+        inputFiles:
+          - $(BUILT_PRODUCTS_DIR)/BelayLidHelper
+          - $(SRCROOT)/Sources/BelayLidHelper/com.perfectoweb.belay.lidhelper.plist
+        outputFiles:
+          - $(TARGET_BUILD_DIR)/$(EXECUTABLE_FOLDER_PATH)/BelayLidHelper
+          - $(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchDaemons/com.perfectoweb.belay.lidhelper.plist
+        script: |
+          cp "$BUILT_PRODUCTS_DIR/BelayLidHelper" "$TARGET_BUILD_DIR/$EXECUTABLE_FOLDER_PATH/BelayLidHelper"
+          mkdir -p "$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LaunchDaemons"
+          cp "$SRCROOT/Sources/BelayLidHelper/com.perfectoweb.belay.lidhelper.plist" \
+             "$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LaunchDaemons/"
     info:
       path: Sources/BelayApp/Info-Direct.plist
       properties:

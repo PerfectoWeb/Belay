@@ -73,6 +73,15 @@ enum Diagnostics {
         appendFromAnywhere(line)
     }
 
+    /// One structured event, written only while collection is on. The format
+    /// is `subject verb key=value …`, one line, greppable: these lines exist
+    /// so that after a test run the log alone can say what fired, when, and
+    /// with which numbers — not to read as prose.
+    static func note(_ line: String) {
+        guard watchdog != nil else { return }
+        write(line)
+    }
+
     /// Appends one line, creating the file if it is not there.
     ///
     /// `nonisolated` and free of any state but the path, because the exception

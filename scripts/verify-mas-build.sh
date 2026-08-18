@@ -167,6 +167,22 @@ else
     pass "no SUFeedURL in Info.plist"
 fi
 
+# The lid helper is the first behavioural split between the channels
+# (docs/ROADMAP): a privileged daemon may not ship in a sandboxed app, and
+# guideline 2.4.5 covers both the helper and the settings write it performs.
+echo
+echo "==> no lid helper"
+if [ -e "$APP/Contents/MacOS/BelayLidHelper" ]; then
+    fail "BelayLidHelper is embedded in the MAS bundle"
+else
+    pass "no helper executable"
+fi
+if [ -d "$APP/Contents/Library/LaunchDaemons" ]; then
+    fail "Contents/Library/LaunchDaemons exists in the MAS bundle"
+else
+    pass "no LaunchDaemons folder"
+fi
+
 echo
 if [ "$FAILED" -eq 0 ]; then
     echo "MAS build is clean: sandboxed, no network.client, no Sparkle."

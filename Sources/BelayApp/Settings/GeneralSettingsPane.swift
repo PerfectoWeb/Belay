@@ -93,6 +93,7 @@ struct GeneralSettingsPane: View {
                     isOn: $settings.keepDisplayAwake
                 )
                 NightDimmingGroup(settings: settings)
+                LidHoldGroup(settings: settings)
             }
 
             Divider()
