@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-08-18
+
+### Added
+
+- The menu bar mark says when an update is waiting, and only while nothing is
+  running. Direct builds only.
+- One notification per new version, never a second for the same one. Clicking it
+  opens the window with the install button. Direct builds only.
+- Belay says when an agent goes quiet: a session that stopped sending anything
+  and never said it had finished. Subagents count, so a parent waiting while its
+  children work is not silence.
+
+### Changed
+
+- A run that died is no longer also announced as finished. The two fired
+  together and only one of them was true.
+- What's New shows the version being announced and nothing else. The history
+  lives in this file.
+
+### Removed
+
+- "Skip This Version" and everything behind it. The mark is quiet enough to
+  ignore without a control for ignoring it.
+
 ## [1.2.0] - 2026-08-17
 
 Everything the direct build gained since 1.1.0.

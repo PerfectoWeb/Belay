@@ -51,11 +51,11 @@ extension BelayGlyph {
         // file, and `private` does not reach across one.
         let slot = artworkSubpaths[0].bounds
         let box = arrows.bounds
-        // A shade wider than the sparkle it replaces, because a ring reads
-        // smaller than a solid star of the same width. Only a shade: the first
-        // attempt at 1.42 ran off the edge of the 24 unit box and the mark came
-        // out with two sides sliced flat.
-        let side = min(slot.width, slot.height) * 1.16
+        // The size of the sparkle it replaces, near enough. Bigger was tried
+        // twice: 1.42 ran off the edge of the 24 unit box and came out with two
+        // sides sliced flat, and 1.16 fitted but sat against the star with no
+        // air between them. A ring needs the gap more than it needs the width.
+        let side = min(slot.width, slot.height) * 0.98
         let factor = side / max(box.width, box.height)
 
         // Centred on the sparkle, then pushed back inside if that puts any of

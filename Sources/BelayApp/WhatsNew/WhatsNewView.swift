@@ -139,7 +139,7 @@ struct WhatsNewView: View {
             // Not "Continue", which is what a form says. This window interrupted
             // somebody once, on purpose, and the button should sound like the
             // end of the interruption rather than the next step of one.
-            Button("Back to work", action: onDismiss)
+            Button(WhatsNewFarewell.line, action: onDismiss)
                 .buttonStyle(MagicButtonStyle())
                 .keyboardShortcut(.defaultAction)
             Spacer(minLength: 0)

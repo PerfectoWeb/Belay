@@ -76,6 +76,23 @@ enum ReleaseNotes {
     /// environment's locale as it draws, which is what lets the language picker
     /// change a window that is already open. And the channel filter below has to
     /// run per read rather than once at first touch.
+    /// The symbols these notes draw from, kept as a set so a release can be
+    /// written by picking one rather than by inventing one. The wording is
+    /// rewritten every time; the vocabulary should not be.
+    enum Mark {
+        static let update = "arrow.triangle.2.circlepath"
+        static let told = "bell.badge"
+        static let quiet = "speaker.slash"
+        static let polish = "wand.and.sparkles"
+        static let installer = "arrow.down.circle"
+        static let folder = "folder"
+        static let paused = "pause"
+        static let welcome = "sparkles"
+        static let safety = "shield"
+        static let speed = "bolt"
+        static let language = "globe"
+    }
+
     static var all: [ReleaseNote] {
         // The channel is read from the bundle rather than from
         // `ReleaseChecker.isSupported`, which says the same thing but is bound to
@@ -99,7 +116,7 @@ enum ReleaseNotes {
                 version: "1.2.1",
                 items: [
                     .init(
-                        symbol: "arrow.triangle.2.circlepath",
+                        symbol: Mark.update,
                         title: "A mark for a new version",
                         body: """
                             When an update is out, the menu bar mark says so, and \
@@ -107,7 +124,7 @@ enum ReleaseNotes {
                             """,
                         directOnly: true),
                     .init(
-                        symbol: "bell.badge",
+                        symbol: Mark.told,
                         title: "Told once, never nagged",
                         body: """
                             One notification per version. Click it to see what \
@@ -115,45 +132,18 @@ enum ReleaseNotes {
                             """,
                         directOnly: true),
                     .init(
-                        symbol: "speaker.slash",
+                        symbol: Mark.quiet,
                         title: "When an agent goes quiet",
                         body: """
                             A session that stops without finishing now says so, \
                             instead of looking like a run that ended.
-                            """)
-                ]
-            ),
-            ReleaseNote(
-                version: "1.2.0",
-                items: [
-                    .init(
-                        symbol: "arrow.down.circle",
-                        title: "One click updater",
-                        body: "Update Now fetches the new version itself. No web page, no hunting.",
-                        directOnly: true),
-                    .init(
-                        symbol: "folder",
-                        title: "Watch any folder",
-                        body: """
-                            Point Belay at a folder your own tool writes to. It \
-                            remembers the ones you pick.
                             """),
                     .init(
-                        symbol: "pause",
-                        title: "A mark that says paused",
-                        body: "When Belay lets go on purpose, the menu bar shows it.",
-                    ),
-                    .init(
-                        symbol: "sparkles",
-                        title: "This screen",
-                        body: "Every update now opens with what changed. Once, then never again."
-                    )
-                ],
-                asides: [
-                    .init(text: "Quitting Belay releases your Mac at once."),
-                    .init(text: "The welcome screen opens centred on macOS 15."),
-                    .init(text: "Install with Homebrew: brew install --cask belay.", directOnly: true)
-                ])
+                        symbol: Mark.polish,
+                        title: "Smaller things, made better",
+                        body: "A round of work on the interface, mostly where you already look.")
+                ]
+            )
         ]
     }
 }
