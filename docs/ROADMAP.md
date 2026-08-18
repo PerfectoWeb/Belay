@@ -42,7 +42,7 @@ place from here on.
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 17 Aug 2026 |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
-| 📚 | Listed in `awesome-mac` | <img src="badges/next.svg" alt="next" height="24"> | Cleared: 1.2.0 is out, so the download matches the README |
+| 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
 | 📥 | **First 1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues. Counted on GitHub releases only, so Homebrew and the App Store are not in the number |
 | 🗣 | Five languages read by people who speak them | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **First 100 stars** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues, and one place a person reads |
