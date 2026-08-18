@@ -37,10 +37,11 @@ place from here on.
 | ⬇️ | Belay installs its own updates | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 | 📦 | **v1.2.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
-| 🔔 | Say an update is waiting without being asked | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | A shape for it that does not nag. See the note below |
+| 📦 | **v1.2.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1). In App Store review |
+| 🔔 | Say an update is waiting without being asked | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
-| 🔇 | Say when an agent goes quiet without finishing | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Deauthorisation, a killed CLI, a closed terminal. See the note below |
-| 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/1-2-1.svg" alt="1.2.1" height="24"> | Off by default, nothing sent anywhere. See the note below |
+| 🔇 | Say when an agent goes quiet without finishing | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
+| 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 💤 | Hold through a closed lid, as an opt-in | <img src="badges/next.svg" alt="next" height="24"> | 1.3. Proved to work 18 Aug 2026: see the plan below |
 | 🌙 | Dim the screen at night while holding | <img src="badges/next.svg" alt="next" height="24"> | 1.3, with the row above. The plan is written below |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
@@ -62,32 +63,6 @@ place from here on.
 | 🌠 | **512 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | A reason to look, not a place to be listed |
 | 🏅 | **10000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing we can schedule. It follows the rows above |
 | 📣 | First large outlet | <img src="badges/waiting.svg" alt="waiting" height="24"> | The small ones first |
-
-<br>
-
-## The one idea with a note rather than a line
-
-**Telling somebody an update is waiting, without them opening Settings.** Today
-the only place that says so is the Settings row and the right-click menu, and
-neither is somewhere people look.
-
-The obvious version of this is the wrong one. A badge that sits on the menu bar
-icon forever is a permanent small complaint, and a window that appears by itself
-interrupts exactly the work Belay exists to protect. Whatever this becomes has to
-respect the one thing the app is about: it must not choose a moment when an agent
-is working.
-
-Shapes worth trying, in the order they seem least annoying:
-
-- The mark carries a quiet dot, and only until the update is installed or
-  skipped. It already has four looks, so a fifth is cheap.
-- The window opens **once**, and only when the Mac is idle and no agent has been
-  working for a while. Never during a run, never twice for the same version.
-- Nothing visual at all, and the notification the app already knows how to send,
-  under a switch like the other three.
-
-Scheduled for 1.2.1 because it is small, and because the update path it depends
-on only started existing in 1.2.0.
 
 <br>
 
