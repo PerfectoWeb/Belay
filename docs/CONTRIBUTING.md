@@ -177,18 +177,32 @@ use this daily and the path is right" is worth more than the diff.
 
 ## Fixing or adding a translation
 
-Belay ships in English, Russian, German, Spanish, French and Italian.
-**None of the six have had a native review.** The copy is deliberately voicier
+Belay ships in English, Russian, German, Spanish, French, Italian and Simplified
+Chinese. **Five of the seven have never been read by somebody who speaks them:**
+German, Spanish, French, Italian and Chinese. The copy is deliberately voicier
 than typical interface text, which is exactly the register a non-native
 translation flattens, so a correction from someone who speaks the language is a
 genuinely wanted contribution, including a one-string one.
 
-Everything lives in
+The app reads
 [`Resources/Localizable.xcstrings`](../Resources/Localizable.xcstrings), a String
-Catalog with 210 keys. Open it in Xcode, which gives you a table with one row per
-string and a column per language, or edit the JSON directly if you prefer. The
-English text is the key, so leave it alone: changing it orphans every
-translation.
+Catalog with 290 keys, and that is not the file to edit. Translations are
+written in [`Localization/`](../Localization/), one CSV per language, and the
+catalogue is generated from them:
+
+```bash
+swift scripts/strings.swift export            # catalogue -> the CSVs
+swift scripts/strings.swift import --dry-run  # check without writing
+swift scripts/strings.swift import            # the CSVs -> catalogue
+```
+
+`translation` is the only column to edit, and a `status` of `needs_review` marks
+a string no native speaker has read yet, which is where to start.
+[`Localization/README.md`](../Localization/README.md) has the rest: every
+column, the placeholder rules, how to retire a string, and why `en.csv` is the
+odd one. The English text is the key, so rewriting it renames the key, and
+import carries that rename through the catalogue, the other six languages and
+the sources.
 
 Rules that the tests enforce, in `Tests/BelayAppTests/LocalizationTests.swift`:
 
@@ -199,11 +213,16 @@ Rules that the tests enforce, in `Tests/BelayAppTests/LocalizationTests.swift`:
   testing the app is using.
 - No empty values, and no language that is a wholesale copy of English.
 
-Adding a seventh language means the strings plus one case in `AppLanguage`
+Adding an eighth language means the strings plus one case in `AppLanguage`
 (`Sources/BelayApp/Settings/AppLanguage.swift`), whose `endonym` is written in
 the language itself, because a picker that lists "German" to somebody who only
 reads German is a picker they cannot use. The picker offering a language the
-bundle does not have is a test failure, not a silent fallback.
+bundle does not have is a test failure, not a silent fallback. The full
+procedure, in the order the tools require, is in
+[`Localization/README.md`](../Localization/README.md#adding-a-language). The
+step that is easy to miss is regenerating the project: XcodeGen writes
+`knownRegions` from the catalogue, and without it the strings compile into
+nothing and the app silently shows English.
 
 Two things worth knowing before you translate: changing the language reopens the
 app, because the menu bar menu and the alerts are AppKit and will not switch
@@ -317,7 +336,7 @@ review will actually catch.
 - No abstraction with a single implementation unless it exists for testing or for
   the direct/App Store split. Both of those are called out in the docs; anything
   else is speculation.
-- Any user-visible string is localized, and a new one means six values in the
+- Any user-visible string is localized, and a new one means seven values in the
   catalogue rather than one.
 
 ## Commits
