@@ -97,6 +97,30 @@ struct TranscriptClassifierTests {
         #expect(TranscriptClassifier.activity(in: Fixture.lines("truncated-write")) == .working)
     }
 
+    @Test("An API-error record is a turn without an answer, not a finished one")
+    func apiErrorRecord() {
+        let verdict = TranscriptClassifier.verdict(in: [TranscriptScratch.apiErrorRecord()])
+        #expect(verdict == .init(activity: .working, awaitingAssistant: true))
+    }
+
+    @Test("The same shape without the error flag stays a finished turn")
+    func stopSequenceWithoutErrorFlag() {
+        let verdict = TranscriptClassifier.verdict(in: [record("assistant", "stop_sequence")])
+        #expect(verdict == .init(activity: .idle, awaitingAssistant: false))
+    }
+
+    @Test("Whose move it is: a user record leaves the model owing the reply")
+    func awaitingAssistant() {
+        #expect(TranscriptClassifier.verdict(in: [record("user")])?.awaitingAssistant == true)
+        #expect(
+            TranscriptClassifier.verdict(in: [record("assistant", "end_turn")])?.awaitingAssistant
+                == false)
+        // A running tool is the busy-child sweep's to vouch for, not this flag's.
+        #expect(
+            TranscriptClassifier.verdict(in: [record("assistant", "tool_use")])?.awaitingAssistant
+                == false)
+    }
+
     @Test("A record whose message is a bare string keeps its type")
     func messageOfUnexpectedShape() {
         #expect(TranscriptClassifier.activity(in: [#"{"type":"user","message":"hello"}"#]) == .working)

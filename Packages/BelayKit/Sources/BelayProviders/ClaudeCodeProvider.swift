@@ -116,10 +116,14 @@ public actor ClaudeCodeProvider: ActivityProvider {
         watched[id] = watch
         guard delta.indicatesWrite else { return false }
         watch.lastWriteAt = now
+        let verdict = TranscriptClassifier.verdict(in: delta.lines)
+        // A delta with no conversational record keeps the flag as it was: the
+        // metadata says nothing about whose move it is.
+        if let verdict { watch.awaitingAssistant = verdict.awaitingAssistant }
         watched[id] = watch
         // No conversational record in the delta still means bytes arrived, and
         // bytes arriving is itself the signal (docs/03, risk R1).
-        return report(TranscriptClassifier.activity(in: delta.lines) ?? .working, for: id, at: now)
+        return report(verdict?.activity ?? .working, for: id, at: now)
     }
 
     @discardableResult

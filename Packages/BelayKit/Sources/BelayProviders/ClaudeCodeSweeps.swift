@@ -36,8 +36,16 @@ extension ClaudeCodeProvider {
             // `lastEvidenceAt`, not `lastWriteAt`: a running tool call writes
             // nothing, and Tier C's proof of one has to count or this sweep
             // undoes it five seconds later.
-            guard now.timeIntervalSince(watch.lastEvidenceAt) > configuration.inferredIdleAfter
-            else {
+            let silence = now.timeIntervalSince(watch.lastEvidenceAt)
+            guard silence > configuration.inferredIdleAfter else { continue }
+            // A turn waiting on the API is silent by nature — a retry loop
+            // writes nothing for minutes — so it gets the longer horizon. The
+            // repeated `.working` is deliberate: the coordinator's session TTL
+            // is shorter than this grace, and without a heartbeat the ledger
+            // would evict the session mid-retry. A dead CLI does not get the
+            // grace; Tier C ends its session within a sweep or two.
+            if watch.awaitingAssistant, silence <= configuration.awaitingAssistantGrace {
+                report(.working, for: id, at: now)
                 continue
             }
             report(.idle, for: id, at: now)

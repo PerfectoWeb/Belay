@@ -10,18 +10,45 @@ import Foundation
 /// for the last record that is actually part of the conversation and classify
 /// that. See `docs/DISCOVERY.md` §2.1.
 enum TranscriptClassifier {
+    /// What the tail record says, and whose move it is.
+    ///
+    /// `awaitingAssistant` is the narrow claim that the next record can only
+    /// come from the API. That is the one silence with a legitimate reason to
+    /// run long: a 529 retry loop writes nothing for minutes — 3½ to 5½ on this
+    /// machine's transcripts — and gives up into a single error record. The
+    /// idle sweep grants that silence a longer horizon. A trailing `tool_use`
+    /// stays out: a running tool has the busy-child sweep speaking for it.
+    struct Verdict: Equatable {
+        var activity: SessionActivity
+        var awaitingAssistant: Bool
+    }
+
     /// `nil` means the delta said nothing about the turn — the caller falls back
     /// to "the file grew, so something is happening".
     static func activity(in lines: [String]) -> SessionActivity? {
+        verdict(in: lines)?.activity
+    }
+
+    static func verdict(in lines: [String]) -> Verdict? {
         for line in lines.reversed() {
             guard let record = TranscriptRecord(jsonLine: line) else { continue }
             switch record.kind {
             case .assistant:
-                return activity(forStopReason: record.stopReason)
+                // The CLI writes a synthetic assistant record when a request
+                // fails ("API Error: 529 Overloaded…"), with a stop_reason that
+                // would read as a finished turn. It is the opposite: the turn
+                // still has no answer, and the CLI is retrying or the user is
+                // about to. docs/DISCOVERY §2.3.
+                guard !record.isAPIError else {
+                    return Verdict(activity: .working, awaitingAssistant: true)
+                }
+                return Verdict(
+                    activity: activity(forStopReason: record.stopReason),
+                    awaitingAssistant: false)
             case .user:
                 // Either a tool result coming back or a prompt going out; both
-                // mean the turn is in flight.
-                return .working
+                // mean the turn is in flight and the model owes the next record.
+                return Verdict(activity: .working, awaitingAssistant: true)
             case .metadata:
                 continue
             }
@@ -57,6 +84,9 @@ private struct TranscriptRecord {
 
     let kind: Kind
     let stopReason: String?
+    /// Top-level flag on the CLI's synthetic error records. A boolean beside
+    /// the message, so reading it stays inside the R9 boundary.
+    let isAPIError: Bool
 
     init?(jsonLine: String) {
         guard let data = jsonLine.data(using: .utf8),
@@ -68,6 +98,7 @@ private struct TranscriptRecord {
         default: kind = .metadata
         }
         stopReason = wire.message?.stopReason
+        isAPIError = wire.isApiErrorMessage ?? false
     }
 }
 
@@ -87,6 +118,7 @@ private struct Wire: Decodable {
 
     let type: String
     let message: Message?
+    let isApiErrorMessage: Bool?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -95,10 +127,12 @@ private struct Wire: Decodable {
         // some metadata ones; a mistyped field must lose the field, not the
         // record, or an unknown shape becomes a missing signal.
         message = try? container.decodeIfPresent(Message.self, forKey: .message)
+        isApiErrorMessage = try? container.decodeIfPresent(Bool.self, forKey: .isApiErrorMessage)
     }
 
     private enum CodingKeys: String, CodingKey {
         case type
         case message
+        case isApiErrorMessage
     }
 }

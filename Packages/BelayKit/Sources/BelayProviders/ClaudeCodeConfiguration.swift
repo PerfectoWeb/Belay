@@ -7,6 +7,13 @@ extension ClaudeCodeProvider {
         /// No growth for this long ends the turn. docs/DISCOVERY §2.2 caught a
         /// real 10 s silence inside one tool call, so this must not be tightened.
         public var inferredIdleAfter: TimeInterval
+        /// The longer horizon for a turn still waiting on the API. A retry loop
+        /// writes nothing — 3½ to 5½ minutes between 529 records on this
+        /// machine — and that is the moment the run most needs the Mac awake:
+        /// work resumes the instant the API answers. Fifteen minutes, the same
+        /// budget `awaitingUser` gets, and bounded for the same reason: past it
+        /// Belay is guessing, not observing. docs/DISCOVERY §2.3.
+        public var awaitingAssistantGrace: TimeInterval
         /// A transcript untouched for longer than this at launch is history.
         public var staleAtStartupAfter: TimeInterval
         public var latency: TimeInterval
@@ -15,12 +22,14 @@ extension ClaudeCodeProvider {
             projectsDirectory: URL,
             sessionsDirectory: URL,
             inferredIdleAfter: TimeInterval = 45,
+            awaitingAssistantGrace: TimeInterval = 15 * 60,
             staleAtStartupAfter: TimeInterval = 600,
             latency: TimeInterval = 1.0
         ) {
             self.projectsDirectory = projectsDirectory
             self.sessionsDirectory = sessionsDirectory
             self.inferredIdleAfter = inferredIdleAfter
+            self.awaitingAssistantGrace = awaitingAssistantGrace
             self.staleAtStartupAfter = staleAtStartupAfter
             self.latency = latency
         }

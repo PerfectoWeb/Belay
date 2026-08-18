@@ -160,6 +160,38 @@ risk **R6** and it is real, not theoretical. It confirms the
 `inferredIdleAfter` = 45 s default is the right order of magnitude and must not
 be tightened; combined with the 90 s coordinator grace it gives a ~2 min tail.
 
+### 2.3 A retry loop is silent, and the record it ends in lies
+
+Measured on 2026-08-18 across every transcript on this machine: 110 synthetic
+error records (`isApiErrorMessage: true`), 90 of them with a predecessor to
+measure a gap from, **32 after a silence longer than `inferredIdleAfter`**.
+The 529 pattern is a `user` record — the prompt went out — then nothing for
+3½–5½ minutes, then one assistant record: "API Error: 529 Overloaded", written
+when the CLI gives up an attempt. A stalled stream ran 20 minutes silent. The
+"retrying (1/10)" counter on screen never touches the transcript, and no hook
+fires either: during a retry, both channels are dark.
+
+Two consequences, both bugs until 2026-08-18:
+
+- The 45 s no-growth rule read every one of those 32 silences as a finished
+  turn, and released the hold at the exact moment the run most needed the Mac
+  awake — the retry resumes work the instant the API answers.
+- The error record itself carries `stop_reason: "stop_sequence"`, which §2.1
+  maps to `.idle`. On this machine 103 of the 110 `stop_sequence` records in
+  existence are these synthetic errors: the shape that reads "finished
+  cleanly" almost always means "failed and still owed an answer". The record
+  is told apart by the **top-level** `isApiErrorMessage` flag — a boolean
+  beside the message, readable without touching content (R9).
+
+**Deviation adopted:** the classifier reports whose move it is. A trailing
+`user` record or an API-error record means the model owes the next one, and
+that session's silence gets `awaitingAssistantGrace` (15 min) instead of 45 s,
+kept alive with repeated `.working` so the coordinator's 10 min TTL does not
+evict it mid-retry. A trailing `tool_use` deliberately does not qualify — a
+running tool is the busy-child sweep's to vouch for (§2.2), and widening the
+grace to it would undo the rule that section fixed. A dead CLI never gets the
+grace: Tier C ends its sessions regardless.
+
 ## 3. Hooks — verified against the installed binary, not just the docs
 
 `~/.claude/settings.json` on this machine is `{"skipWorkflowUsageWarning": true}`

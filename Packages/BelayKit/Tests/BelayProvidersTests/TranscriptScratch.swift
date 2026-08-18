@@ -106,6 +106,15 @@ final class TranscriptScratch {
         }
         return "{\"type\":\"\(type)\",\"sessionId\":\"s\",\"timestamp\":\"\(time)\"\(message)}"
     }
+
+    /// The synthetic record the CLI writes when a request fails, shaped like the
+    /// real one: an assistant record whose stop_reason would read as a finished
+    /// turn, marked apart only by the top-level flag (docs/DISCOVERY §2.3).
+    static func apiErrorRecord(at time: String = sampleTime) -> String {
+        "{\"type\":\"assistant\",\"sessionId\":\"s\",\"timestamp\":\"\(time)\","
+            + "\"error\":\"server_error\",\"apiErrorStatus\":529,\"isApiErrorMessage\":true,"
+            + "\"message\":{\"stop_reason\":\"stop_sequence\",\"role\":\"assistant\",\"content\":[]}}"
+    }
 }
 
 /// Buffers everything a provider yields so a test can assert on the timeline.
