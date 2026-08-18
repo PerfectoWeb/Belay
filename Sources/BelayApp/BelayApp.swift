@@ -120,6 +120,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
             return (String(localized: "Check for Updates"), false)
         }
+        // Whatever the switch was last set to, honoured from launch: a crash
+        // on the next start is exactly the one worth having.
+        Diagnostics.setEnabled(self.settings.keepLocalReports)
+
         NotificationClicks.onUpdate = { [weak settings] in
             settings?.show(pane: .general)
         }

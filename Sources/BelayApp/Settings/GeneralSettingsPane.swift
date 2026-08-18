@@ -93,6 +93,10 @@ struct GeneralSettingsPane: View {
                     isOn: $settings.keepDisplayAwake
                 )
             }
+
+            Divider()
+
+            LocalReportsGroup(settings: settings)
         }
     }
 }
@@ -225,26 +229,3 @@ private struct UpdatesRow: View {
 /// Both cases end in the same place, so both offer the same way there rather
 /// than telling the user to go and find it: an instruction the app could have
 /// followed itself is a bad instruction.
-private struct LoginItemProblemRow: View {
-    let problem: LoginItem.Problem
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(message)
-                .font(.caption)
-                .foregroundStyle(problem == .needsApproval ? Color.secondary : Color.red)
-                .fixedSize(horizontal: false, vertical: true)
-            Button("Open Login Items…") { LoginItem.openSystemSettings() }
-                .controlSize(.small)
-        }
-    }
-
-    private var message: LocalizedStringKey {
-        switch problem {
-        case .needsApproval:
-            return "macOS is waiting for you to allow this in System Settings."
-        case .refused(let reason):
-            return "macOS refused the change: \(reason)"
-        }
-    }
-}

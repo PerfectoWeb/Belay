@@ -300,3 +300,13 @@ Looks good,What's New,needs_review,,Looks good,Sembra buono
 Nice one,What's New,needs_review,,Nice one,Bello
 Good to go,What's New,needs_review,,Good to go,Tutto pronto
 Lovely,What's New,needs_review,,Lovely,Ottimo
+"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",Aggiornamenti nella barra dei menu
+"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.","Quando un aggiornamento è pronto, la barra dei menu lo mostra, ma solo quando non sta girando nulla."
+One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,Una notifica per versione. Aprila per vedere cosa è cambiato e aggiorna quando vuoi.
+"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.","Se una sessione si ferma senza finire, Belay ora lo dice invece di farla sembrare completata."
+A little more polish,What's New,needs_review,,A little more polish,Un po' più di rifinitura
+"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.","Alcuni miglioramenti all'interfaccia, soprattutto dove già passi."
+Diagnostics,Settings: General,needs_review,,Diagnostics,Diagnostica
+Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,Conserva i rapporti di errore in locale
+"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.","Scrive crash, blocchi ed errori in un file su questo Mac. Non viene inviato nulla, e finché questa opzione è spenta non viene raccolto nulla."
+Show Reports…,Settings: General,needs_review,,Show Reports…,Mostra i rapporti…

@@ -300,3 +300,13 @@ Looks good,What's New,needs_review,,Looks good,Ça a l'air bien
 Nice one,What's New,needs_review,,Nice one,Super
 Good to go,What's New,needs_review,,Good to go,Tout bon
 Lovely,What's New,needs_review,,Lovely,Parfait
+"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",Les mises à jour dans la barre de menus
+"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.","Quand une mise à jour est prête, la barre de menus l'affiche, mais seulement quand rien ne tourne."
+One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,Une notification par version. Ouvrez-la pour voir ce qui a changé et mettez à jour quand vous voulez.
+"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.","Si une session s'arrête sans finir, Belay le dit maintenant au lieu de la faire passer pour terminée."
+A little more polish,What's New,needs_review,,A little more polish,Un peu plus de finition
+"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.","Quelques améliorations de l'interface, surtout aux endroits que vous utilisez déjà."
+Diagnostics,Settings: General,needs_review,,Diagnostics,Diagnostic
+Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,Conserver les rapports d'erreur en local
+"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.","Écrit les plantages, les blocages et les erreurs dans un fichier sur ce Mac. Rien n'est envoyé nulle part, et tant que ceci est désactivé, rien n'est collecté."
+Show Reports…,Settings: General,needs_review,,Show Reports…,Afficher les rapports…

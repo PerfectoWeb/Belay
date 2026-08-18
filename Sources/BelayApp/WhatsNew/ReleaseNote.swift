@@ -117,31 +117,34 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.update,
-                        title: "A mark for a new version",
+                        title: "Updates, right in the menu bar",
                         body: """
-                            When an update is out, the menu bar mark says so, and \
-                            only while nothing is running.
+                            When an update is ready, the menu bar shows it, but \
+                            only when nothing is running.
                             """,
                         directOnly: true),
                     .init(
                         symbol: Mark.told,
                         title: "Told once, never nagged",
                         body: """
-                            One notification per version. Click it to see what \
-                            changed and install when you like.
+                            One notification per version. Open it to see what \
+                            changed and update when you're ready.
                             """,
                         directOnly: true),
                     .init(
                         symbol: Mark.quiet,
                         title: "When an agent goes quiet",
                         body: """
-                            A session that stops without finishing now says so, \
-                            instead of looking like a run that ended.
+                            If a session stops without finishing, Belay now says \
+                            so instead of making it look complete.
                             """),
                     .init(
                         symbol: Mark.polish,
-                        title: "Smaller things, made better",
-                        body: "A round of work on the interface, mostly where you already look.")
+                        title: "A little more polish",
+                        body: """
+                            A handful of interface improvements, mostly in places \
+                            you already use.
+                            """)
                 ]
             )
         ]

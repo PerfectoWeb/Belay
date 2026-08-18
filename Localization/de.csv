@@ -300,3 +300,13 @@ Looks good,What's New,needs_review,,Looks good,Sieht gut aus
 Nice one,What's New,needs_review,,Nice one,Schön
 Good to go,What's New,needs_review,,Good to go,Alles bereit
 Lovely,What's New,needs_review,,Lovely,Wunderbar
+"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",Updates direkt in der Menüleiste
+"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.","Wenn ein Update bereit ist, zeigt die Menüleiste es an, aber nur wenn nichts läuft."
+One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,"Eine Mitteilung pro Version. Öffne sie, um zu sehen, was neu ist, und aktualisiere, wenn es dir passt."
+"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.","Wenn eine Sitzung ohne Abschluss stoppt, sagt Belay das jetzt, statt sie fertig aussehen zu lassen."
+A little more polish,What's New,needs_review,,A little more polish,Ein wenig mehr Feinschliff
+"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.","Ein paar Verbesserungen an der Oberfläche, meist an Stellen, die du ohnehin nutzt."
+Diagnostics,Settings: General,needs_review,,Diagnostics,Diagnose
+Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,Absturzberichte lokal behalten
+"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.","Schreibt Abstürze, Einfrierer und Fehler in eine Datei auf diesem Mac. Es wird nichts gesendet, und solange dies aus ist, wird auch nichts gesammelt."
+Show Reports…,Settings: General,needs_review,,Show Reports…,Berichte anzeigen…

@@ -300,3 +300,13 @@ Looks good,What's New,needs_review,,Looks good,看起来不错
 Nice one,What's New,needs_review,,Nice one,不错
 Good to go,What's New,needs_review,,Good to go,准备好了
 Lovely,What's New,needs_review,,Lovely,很好
+"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",更新就在菜单栏里
+"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.",更新准备好时，菜单栏会显示，但只在没有任务运行时。
+One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,每个版本一条通知。打开它查看更新内容，准备好时再更新。
+"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.",如果会话没有完成就停下，Belay 现在会说明，而不是让它看起来已完成。
+A little more polish,What's New,needs_review,,A little more polish,再打磨一点
+"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.",一些界面上的改进，主要在你本来就常用的地方。
+Diagnostics,Settings: General,needs_review,,Diagnostics,诊断
+Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,在本机保留崩溃报告
+"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",把崩溃、卡死和错误写入本机的一个文件。不会发送到任何地方，关闭时也不会收集任何内容。
+Show Reports…,Settings: General,needs_review,,Show Reports…,显示报告…

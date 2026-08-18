@@ -300,3 +300,13 @@ Looks good,What's New,needs_review,,Looks good,Se ve bien
 Nice one,What's New,needs_review,,Nice one,Muy bien
 Good to go,What's New,needs_review,,Good to go,Todo listo
 Lovely,What's New,needs_review,,Lovely,Estupendo
+"Updates, right in the menu bar",What's New,needs_review,,"Updates, right in the menu bar",Actualizaciones en la barra de menús
+"When an update is ready, the menu bar shows it, but only when nothing is running.",What's New,needs_review,,"When an update is ready, the menu bar shows it, but only when nothing is running.","Cuando hay una actualización lista, la barra de menús lo muestra, pero solo cuando no se ejecuta nada."
+One notification per version. Open it to see what changed and update when you're ready.,What's New,needs_review,,One notification per version. Open it to see what changed and update when you're ready.,Una notificación por versión. Ábrela para ver qué ha cambiado y actualiza cuando quieras.
+"If a session stops without finishing, Belay now says so instead of making it look complete.",What's New,needs_review,,"If a session stops without finishing, Belay now says so instead of making it look complete.","Si una sesión se detiene sin terminar, Belay ahora lo dice en vez de hacer que parezca completa."
+A little more polish,What's New,needs_review,,A little more polish,Un poco más de pulido
+"A handful of interface improvements, mostly in places you already use.",What's New,needs_review,,"A handful of interface improvements, mostly in places you already use.","Unas cuantas mejoras en la interfaz, sobre todo en sitios que ya usas."
+Diagnostics,Settings: General,needs_review,,Diagnostics,Diagnóstico
+Keep local crash reports,Settings: General,needs_review,,Keep local crash reports,Guardar informes de errores en local
+"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.",Settings: General,needs_review,,"Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.","Escribe fallos, bloqueos y errores en un archivo de este Mac. No se envía nada a ningún sitio, y mientras esto esté desactivado no se recoge nada."
+Show Reports…,Settings: General,needs_review,,Show Reports…,Mostrar informes…

@@ -152,6 +152,12 @@ public final class SettingsStore {
         set { update { $0.notifyOnUpdateAvailable = newValue } }
     }
 
+    /// Whether to keep a plain file of what went wrong, on this Mac only.
+    public var keepLocalReports: Bool {
+        get { values.keepLocalReports }
+        set { update { $0.keepLocalReports = newValue } }
+    }
+
     public var notifyOnSafetyRelease: Bool {
         get { values.notifyOnSafetyRelease }
         set { update { $0.notifyOnSafetyRelease = newValue } }

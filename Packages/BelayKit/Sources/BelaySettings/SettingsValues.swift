@@ -30,6 +30,7 @@ struct SettingsValues: Equatable, Sendable {
     var notifyOnTaskFinished: Bool
     var notifyOnAgentWentQuiet: Bool
     var notifyOnUpdateAvailable: Bool
+    var keepLocalReports: Bool
     var notifyOnSafetyRelease: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
@@ -62,6 +63,8 @@ extension SettingsValues {
         notifyOnTaskFinished = true
         notifyOnAgentWentQuiet = true
         notifyOnUpdateAvailable = true
+        // Off: nobody asked to be watched, and most people never need this.
+        keepLocalReports = false
         notifyOnSafetyRelease = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]

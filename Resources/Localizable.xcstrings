@@ -1647,6 +1647,100 @@
         }
       }
     },
+    "A handful of interface improvements, mostly in places you already use.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein paar Verbesserungen an der Oberfläche, meist an Stellen, die du ohnehin nutzt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A handful of interface improvements, mostly in places you already use."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unas cuantas mejoras en la interfaz, sobre todo en sitios que ya usas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelques améliorations de l'interface, surtout aux endroits que vous utilisez déjà."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alcuni miglioramenti all'interfaccia, soprattutto dove già passi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Несколько улучшений интерфейса, в основном там, где вы и так бываете."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一些界面上的改进，主要在你本来就常用的地方。"
+          }
+        }
+      }
+    },
+    "A little more polish": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein wenig mehr Feinschliff"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A little more polish"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un poco más de pulido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un peu plus de finition"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un po' più di rifinitura"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Немного больше лоска"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再打磨一点"
+          }
+        }
+      }
+    },
     "A mark for a new version": {
       "extractionState": "manual",
       "localizations": {
@@ -5642,6 +5736,53 @@
         }
       }
     },
+    "Diagnostics": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnose"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnóstico"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostic"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostica"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диагностика"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断"
+          }
+        }
+      }
+    },
     "Direct download": {
       "extractionState": "manual",
       "localizations": {
@@ -6535,6 +6676,53 @@
         }
       }
     },
+    "If a session stops without finishing, Belay now says so instead of making it look complete.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn eine Sitzung ohne Abschluss stoppt, sagt Belay das jetzt, statt sie fertig aussehen zu lassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If a session stops without finishing, Belay now says so instead of making it look complete."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si una sesión se detiene sin terminar, Belay ahora lo dice en vez de hacer que parezca completa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si une session s'arrête sans finir, Belay le dit maintenant au lieu de la faire passer pour terminée."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se una sessione si ferma senza finire, Belay ora lo dice invece di farla sembrare completata."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если сессия остановилась не закончив, Belay теперь говорит об этом, а не выдаёт её за завершённую."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果会话没有完成就停下，Belay 现在会说明，而不是让它看起来已完成。"
+          }
+        }
+      }
+    },
     "Install with Homebrew: brew install --cask belay.": {
       "extractionState": "manual",
       "localizations": {
@@ -6625,6 +6813,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "需要你回应后才能继续。"
+          }
+        }
+      }
+    },
+    "Keep local crash reports": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absturzberichte lokal behalten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep local crash reports"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guardar informes de errores en local"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conserver les rapports d'erreur en local"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conserva i rapporti di errore in locale"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранить отчёты об ошибках локально"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在本机保留崩溃报告"
           }
         }
       }
@@ -8744,6 +8979,53 @@
         }
       }
     },
+    "One notification per version. Open it to see what changed and update when you're ready.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Mitteilung pro Version. Öffne sie, um zu sehen, was neu ist, und aktualisiere, wenn es dir passt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One notification per version. Open it to see what changed and update when you're ready."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una notificación por versión. Ábrela para ver qué ha cambiado y actualiza cuando quieras."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une notification par version. Ouvrez-la pour voir ce qui a changé et mettez à jour quand vous voulez."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una notifica per versione. Aprila per vedere cosa è cambiato e aggiorna quando vuoi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одно уведомление на версию. Откройте его, чтобы посмотреть изменения и обновиться, когда будет удобно."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个版本一条通知。打开它查看更新内容，准备好时再更新。"
+          }
+        }
+      }
+    },
     "Only for runs longer than %@.": {
       "extractionState": "manual",
       "localizations": {
@@ -10244,6 +10526,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "低电量模式下缩短等待时间"
+          }
+        }
+      }
+    },
+    "Show Reports…": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berichte anzeigen…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Reports…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar informes…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les rapports…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra i rapporti…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать отчёты…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示报告…"
           }
         }
       }
@@ -12269,6 +12598,53 @@
         }
       }
     },
+    "Updates, right in the menu bar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates direkt in der Menüleiste"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates, right in the menu bar"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizaciones en la barra de menús"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les mises à jour dans la barre de menus"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aggiornamenti nella barra dei menu"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновления прямо в меню-баре"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新就在菜单栏里"
+          }
+        }
+      }
+    },
     "Version %@ (%@)": {
       "extractionState": "manual",
       "localizations": {
@@ -13257,6 +13633,53 @@
         }
       }
     },
+    "When an update is ready, the menu bar shows it, but only when nothing is running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Update bereit ist, zeigt die Menüleiste es an, aber nur wenn nichts läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When an update is ready, the menu bar shows it, but only when nothing is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando hay una actualización lista, la barra de menús lo muestra, pero solo cuando no se ejecuta nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand une mise à jour est prête, la barre de menus l'affiche, mais seulement quand rien ne tourne."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando un aggiornamento è pronto, la barra dei menu lo mostra, ma solo quando non sta girando nulla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда обновление готово, меню-бар показывает это, но только когда ничего не выполняется."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新准备好时，菜单栏会显示，但只在没有任务运行时。"
+          }
+        }
+      }
+    },
     "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.": {
       "extractionState": "manual",
       "localizations": {
@@ -13394,6 +13817,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "工作中"
+          }
+        }
+      }
+    },
+    "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schreibt Abstürze, Einfrierer und Fehler in eine Datei auf diesem Mac. Es wird nichts gesendet, und solange dies aus ist, wird auch nichts gesammelt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Writes crashes, freezes and errors to a file on this Mac. Nothing is sent anywhere, and nothing is collected while this is off."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escribe fallos, bloqueos y errores en un archivo de este Mac. No se envía nada a ningún sitio, y mientras esto esté desactivado no se recoge nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Écrit les plantages, les blocages et les erreurs dans un fichier sur ce Mac. Rien n'est envoyé nulle part, et tant que ceci est désactivé, rien n'est collecté."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrive crash, blocchi ed errori in un file su questo Mac. Non viene inviato nulla, e finché questa opzione è spenta non viene raccolto nulla."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пишет падения, зависания и ошибки в файл на этом Mac. Никуда ничего не отправляется, а пока выключено, ничего и не собирается."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把崩溃、卡死和错误写入本机的一个文件。不会发送到任何地方，关闭时也不会收集任何内容。"
           }
         }
       }
