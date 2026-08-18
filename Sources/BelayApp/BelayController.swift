@@ -14,23 +14,26 @@ import BelaySupport
 final class BelayController {
     let state: AppState
     private let settings: SettingsStore
-    private let coordinator: ActivityCoordinator
-    private let driver: CoordinatorDriver
-    private let assertions: PowerAssertionController
-    private let powerSource: PowerSourceMonitor
+    // Internal, like the four below, so the power and sleep observers can live
+    // in their own file (this one is at the linter's limit).
+    let coordinator: ActivityCoordinator
+    let driver: CoordinatorDriver
+    let assertions: PowerAssertionController
+    let powerSource: PowerSourceMonitor
     let providers: ProviderHost
-    private let sleepObserver = SystemSleepObserver()
+    let sleepObserver = SystemSleepObserver()
     private let signals = TerminationSignalWatch()
 
     /// Long-lived stream pumps only. One-shot work uses a detached task that
     /// finishes on its own; keeping those here would grow without bound.
     var tasks: [Task<Void, Never>] = []
     private var refresh: Task<Void, Never>?
-    private var sleepObservers: [NSObjectProtocol] = []
+    var sleepObservers: [NSObjectProtocol] = []
     private var awakeTally = AwakeTally()
     let usage = UsageRecorder()
     private var trigger = AnnouncementTrigger()
     let notifier: Notifier
+    let nightDimming: NightDimmingController
 
     init(
         settings: SettingsStore = SettingsStore(),
@@ -53,6 +56,7 @@ final class BelayController {
         assertions = PowerAssertionController()
         powerSource = PowerSourceMonitor()
         notifier = Notifier(settings: settings)
+        nightDimming = NightDimmingController(settings: settings, state: state)
         state.mode = settings.mode
     }
 
@@ -65,6 +69,7 @@ final class BelayController {
         tasks.append(Task { [driver] in await driver.start() })
         tasks.append(Task { [powerSource] in await powerSource.start() })
         tasks.append(Task { [signals, assertions] in await signals.install(releasing: assertions) })
+        nightDimming.start()
 
         // Seed the power conditions and force one evaluation. Without this a
         // persisted Always-on mode does nothing until the driver's first idle
@@ -79,6 +84,7 @@ final class BelayController {
                         isLowPowerMode: snapshot.isLowPowerMode
                     )
                 )
+                self?.nightDimming.isOnAC = snapshot.isOnAC
                 self?.refreshSnapshot()
             }
         )
@@ -92,6 +98,7 @@ final class BelayController {
         for task in tasks { task.cancel() }
         tasks.removeAll()
         refresh?.cancel()
+        nightDimming.stop()
         for observer in sleepObservers { NSWorkspace.shared.notificationCenter.removeObserver(observer) }
         sleepObservers.removeAll()
 
@@ -177,23 +184,6 @@ final class BelayController {
         watchForClaudeCodeAppearing()
     }
 
-    private func observePowerSource() {
-        tasks.append(
-            Task { [powerSource, coordinator, driver] in
-                for await snapshot in await powerSource.changes() {
-                    await coordinator.setPowerConditions(
-                        PowerConditions(
-                            isOnAC: snapshot.isOnAC,
-                            charge: snapshot.charge,
-                            isLowPowerMode: snapshot.isLowPowerMode
-                        )
-                    )
-                    await driver.nudge()
-                }
-            }
-        )
-    }
-
     private func observeDecisions() {
         tasks.append(
             Task { [coordinator, assertions, settings, weak self] in
@@ -213,27 +203,7 @@ final class BelayController {
         )
     }
 
-    private func observeSleepWake() {
-        sleepObservers = SleepWakeForwarding.install(into: sleepObserver)
-
-        tasks.append(
-            Task { [sleepObserver, assertions, coordinator, weak self] in
-                for await event in await sleepObserver.events() {
-                    switch event {
-                    case .willSleep:
-                        await assertions.release()
-                    case .didWake:
-                        // Every timestamp we hold predates the sleep and is
-                        // meaningless now; re-derive from scratch (docs/04).
-                        await coordinator.resync()
-                    }
-                    self?.refreshSnapshot()
-                }
-            }
-        )
-    }
-
-    private func refreshSnapshot() {
+    func refreshSnapshot() {
         refresh?.cancel()
         refresh = Task { [coordinator, assertions, weak self] in
             let snapshot = await coordinator.snapshot

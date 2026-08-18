@@ -34,6 +34,16 @@ struct SettingsValues: Equatable, Sendable {
     var notifyOnSafetyRelease: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
+
+    /// Dim the screen at night while holding. Off by default: nobody expects
+    /// their utility to touch the display until they ask it to.
+    var nightDimming: Bool
+    /// Minutes from midnight. The pair may cross it: 22:00 to 07:00.
+    var nightDimmingStart: Int
+    var nightDimmingEnd: Int
+    /// The white point the ramp lands on, 1.0 being untouched. Floored well
+    /// above black so a glance at the room still shows the Mac is awake.
+    var nightDimmingLevel: Double
 }
 
 extension SettingsValues {
@@ -68,6 +78,12 @@ extension SettingsValues {
         notifyOnSafetyRelease = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]
+        nightDimming = false
+        // Ten in the evening to seven in the morning: wide enough to cover
+        // every overnight run, and both ends are a picker away.
+        nightDimmingStart = 22 * 60
+        nightDimmingEnd = 7 * 60
+        nightDimmingLevel = 0.25
     }
 
     var policy: AwakePolicy {
@@ -109,6 +125,12 @@ extension SettingsValues {
             assertionTimeout, fallback: fallback.assertionTimeout)
         copy.taskFinishedThreshold = SettingsBounds.taskFinishedThreshold.clamping(
             taskFinishedThreshold, fallback: fallback.taskFinishedThreshold)
+        copy.nightDimmingStart = SettingsBounds.minuteOfDay.clamping(
+            nightDimmingStart, fallback: fallback.nightDimmingStart)
+        copy.nightDimmingEnd = SettingsBounds.minuteOfDay.clamping(
+            nightDimmingEnd, fallback: fallback.nightDimmingEnd)
+        copy.nightDimmingLevel = SettingsBounds.nightDimmingLevel.clamping(
+            nightDimmingLevel, fallback: fallback.nightDimmingLevel)
         return copy
     }
 }

@@ -174,6 +174,29 @@ public final class SettingsStore {
         set { update { $0.enabledProviders = newValue } }
     }
 
+    /// Dim the screen at night while holding. Off by default.
+    public var nightDimming: Bool {
+        get { values.nightDimming }
+        set { update { $0.nightDimming = newValue } }
+    }
+
+    /// Minutes from midnight; the pair may cross it.
+    public var nightDimmingStart: Int {
+        get { values.nightDimmingStart }
+        set { update { $0.nightDimmingStart = newValue } }
+    }
+
+    public var nightDimmingEnd: Int {
+        get { values.nightDimmingEnd }
+        set { update { $0.nightDimmingEnd = newValue } }
+    }
+
+    /// The dimmed white point, 1.0 being untouched. Bounded well above black.
+    public var nightDimmingLevel: Double {
+        get { values.nightDimmingLevel }
+        set { update { $0.nightDimmingLevel = newValue } }
+    }
+
     public func isEnabled(_ provider: ProviderID) -> Bool {
         values.enabledProviders.contains(provider)
     }

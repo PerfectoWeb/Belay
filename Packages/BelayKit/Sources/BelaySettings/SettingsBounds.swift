@@ -32,6 +32,18 @@ public enum SettingsBounds {
     /// 0 means "tell me about every finished task"; six hours is the far end of
     /// useful for a "that long run is done" notification.
     public static let taskFinishedThreshold: ClosedRange<TimeInterval> = 0...21_600
+    /// A clock time, in minutes from midnight.
+    public static let minuteOfDay: ClosedRange<Int> = 0...1439
+    /// The dimmed white point. The floor is the feature's promise: never so
+    /// dark that a glance at the room stops showing the Mac is awake, and a
+    /// corrupt plist must not be able to black the screen out.
+    public static let nightDimmingLevel: ClosedRange<Double> = 0.10...0.60
+}
+
+extension ClosedRange where Bound == Int {
+    func clamping(_ value: Bound, fallback: Bound) -> Bound {
+        Swift.min(Swift.max(value, lowerBound), upperBound)
+    }
 }
 
 extension ClosedRange where Bound == Double {

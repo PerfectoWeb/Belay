@@ -48,7 +48,7 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,Aggiungi strumento�
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Aggiungi a Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,Tutti i nomi di prodotto e i loghi sono marchi dei rispettivi proprietari.
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Consenti l'accesso a ~/.claude
-Also,"App, Detection, Settings: General",translated,,Also,Inoltre
+Also,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,Also,Inoltre
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,Tieni sveglio anche lo schermo
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Sempre
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Un agente ti sta aspettando
@@ -65,6 +65,10 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,Finché 
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Batteria al %lld%%. Belay ha smesso di tenere sveglio il Mac.
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportamento
 Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay chiede il permesso per le notifiche la prima volta che deve inviarne una.
+"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.","Belay vede le sessioni del tuo agente.
+Non legge altro e nulla lascia questo Mac."
 "Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@","Belay non ha potuto fare una copia di sicurezza delle impostazioni di Claude Code, quindi non ha modificato nulla: %@"
 Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay non ha potuto importare le impostazioni dalla versione %lld.
 Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.","Belay non ha potuto leggere le proprie impostazioni, quindi usa i valori predefiniti."
@@ -101,6 +105,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Il permesso salvato di Belay per %@ non è più valido.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","A batteria, Belay si ferma al %lld%%."
+Brightness,"Settings, Welcome",translated,,Brightness,Luminosità
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Offrimi un caffè
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Annulla
 Check Now,Settings: General,translated,,Check Now,Controlla ora
@@ -112,11 +117,15 @@ Claude Code has not opened a project on this Mac yet. Belay starts watching by i
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Fai clic per vedere cosa è cambiato e installarlo quando vuoi.
 Copied,Statistics,translated,,Copied,Copiato
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copia insieme la scheda e il riepilogo
-Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,Copia
+Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Copia
 Copy card and link,Statistics,translated,,Copy card and link,Copia scheda e link
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Impossibile raggiungere il servizio di aggiornamento.
 Detection health,Settings: Providers,translated,,Detection status,Stato del rilevamento
 Diagnostics,"App, Settings",translated,,Diagnostics,Diagnostica
+Dim from,Settings,translated,,Dim from,Attenuare dalle
+Dim the screen at night,Settings,translated,,Dim the screen at night,Attenuare lo schermo di notte
+Dim until,Settings,translated,,Dim until,Attenuare fino alle
+Dimmed brightness,Settings,translated,,Dimmed brightness,Luminosità attenuata
 Direct download,"Settings, Settings: About",translated,,Direct download,Download diretto
 Donate,"Detection, Settings: About, Settings: General",translated,,Donate,Dona
 Done,Settings: Providers,translated,,Done,Fatto
@@ -128,6 +137,7 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Cancellar
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Completato
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Risolvi
 Free,Settings: About,translated,,Free,Gratis
+From,"Detection, Settings, Settings: Providers, Welcome",translated,,From,Dalle
 General,"Settings, Settings: General",translated,,General,Generali
 Good to go,App,translated,,Good to go,Tutto pronto
 Got it,App,translated,,Got it,Capito
@@ -242,6 +252,7 @@ The server answered %lld.,Settings: General,translated,%lld,The server answered 
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,Il servizio di aggiornamento ha inviato una risposta che Belay non è riuscito a leggere.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Non si può annullare. Belay non ne conserva copie altrove.
 "Told once, never nagged",App,translated,,"Told once, never nagged","Detto una volta, senza insistere"
+Until,Settings,translated,,Until,Alle
 Until turned off,Settings,translated,,Until turned off,Fino allo spegnimento
 Untitled project,App,translated,,Untitled project,Progetto senza titolo
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Aggiorna ora
@@ -266,7 +277,8 @@ When an agent goes quiet,"App, Settings: Notifications",translated,,When an agen
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Quando un agente ha bisogno di te
 "When an update is ready, the menu bar shows it, but only when nothing is running.",App,translated,,"When an update is ready, the menu bar shows it, but only when nothing is running.","Quando un aggiornamento è pronto, la barra dei menu lo mostra, ma solo quando non sta girando nulla."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Quando il lavoro finisce, il Mac va in stop come sempre. Le tue impostazioni di stop non vengono toccate."
-While holding,Settings: General,translated,,While holding,Mentre mantiene
+"When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do.",Settings,translated,,"When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do.","Di notte, quando ti allontani, lo schermo si riduce a un bagliore invece di illuminare una stanza vuota. Torna appena torni tu."
+While holding,"Settings, Settings: General",translated,,While holding,Mentre mantiene
 Working,Panel,translated,,Working,Al lavoro
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Il Mac resta sveglio finché non lo disattivi.
 "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.","Belay ha trovato nelle impostazioni di Claude Code una voce hooks che non riconosce, quindi non ha modificato nulla."
@@ -297,8 +309,4 @@ runs rescued,Statistics,translated,,runs saved,esecuzioni salvate
 runs watched,Statistics,translated,,runs watched,esecuzioni osservate
 total held,Statistics,translated,,awake time,tempo di veglia
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb. Gratuito e mai in vendita. Fatto da smanettoni per smanettoni.
-"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.","Belay vede le sessioni del tuo agente.
-Non legge altro e nulla lascia questo Mac."
-✨ Belay %@ is out,Settings: Notifications,needs_review,%@,✨ Belay %@ is out,✨ Belay %@ è uscito
+✨ Belay %@ is out,(unused),translated,%@,✨ Belay %@ is out,✨ Belay %@ è uscito

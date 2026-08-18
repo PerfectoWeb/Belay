@@ -92,6 +92,7 @@ struct GeneralSettingsPane: View {
                         """,
                     isOn: $settings.keepDisplayAwake
                 )
+                NightDimmingGroup(settings: settings)
             }
 
             Divider()

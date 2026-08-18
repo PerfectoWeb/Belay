@@ -48,7 +48,7 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,添加工具…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,添加到 Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,所有产品名称和标志均为其各自所有者的商标。
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,允许访问 ~/.claude
-Also,"App, Detection, Settings: General",translated,,Also,此外
+Also,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,Also,此外
 Also keep the display awake,"Detection, Settings: General",translated,,Also keep the display awake,同时让显示器保持唤醒
 Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,常开
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,智能体在等你回应
@@ -65,6 +65,10 @@ Awake until you switch it off.,Panel,translated,,Until you turn it off.,直到�
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,电量降至 %lld%%。Belay 已停止保持唤醒。
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,行为
 Belay asks macOS for permission the first time it actually needs to notify you.,Settings: Notifications,translated,,Belay asks for notification permission the first time it needs to send one.,Belay 会在首次需要发送通知时请求通知权限。
+"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
+Nothing else is read, and nothing leaves this Mac.","Belay 可以看到智能体的会话。
+其他内容一概不读，也没有任何内容离开这台 Mac。"
 "Belay could not back up your Claude Code settings, so it made no changes: %@",Detection,translated,%@,"Belay couldn't back up your Claude Code settings, so nothing was changed: %@",Belay 无法备份 Claude Code 设置，因此未做任何更改：%@
 Belay could not migrate preferences from version %lld.,Settings,translated,%lld,Belay couldn't import settings from version %lld.,Belay 无法导入版本 %lld 的设置。
 Belay could not read its preferences and has fallen back to defaults.,Settings,translated,,"Belay couldn't read its settings, so it's using the defaults.",Belay 无法读取自己的设置，因此使用默认值。
@@ -101,6 +105,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容：
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay 保存的 %@ 访问权限已失效。
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",使用电池时，Belay 会在电量降至 %lld%% 时停止。
+Brightness,"Settings, Welcome",translated,,Brightness,亮度
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
 Check Now,Settings: General,translated,,Check Now,立即检查
@@ -112,11 +117,15 @@ Claude Code has not opened a project on this Mac yet. Belay starts watching by i
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
 Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
-Copy,"Detection, Settings: Providers, Statistics",translated,,Copy,复制
+Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
 Detection health,Settings: Providers,translated,,Detection status,检测状态
 Diagnostics,"App, Settings",translated,,Diagnostics,诊断
+Dim from,Settings,translated,,Dim from,调暗开始时间
+Dim the screen at night,Settings,translated,,Dim the screen at night,夜间调暗显示器
+Dim until,Settings,translated,,Dim until,调暗结束时间
+Dimmed brightness,Settings,translated,,Dimmed brightness,调暗后的亮度
 Direct download,"Settings, Settings: About",translated,,Direct download,直接下载
 Donate,"Detection, Settings: About, Settings: General",translated,,Donate,捐赠
 Done,Settings: Providers,translated,,Done,完成
@@ -128,6 +137,7 @@ Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除�
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
 Free,Settings: About,translated,,Free,免费
+From,"Detection, Settings, Settings: Providers, Welcome",translated,,From,从
 General,"Settings, Settings: General",translated,,General,通用
 Good to go,App,translated,,Good to go,准备好了
 Got it,App,translated,,Got it,明白了
@@ -242,6 +252,7 @@ The server answered %lld.,Settings: General,translated,%lld,The server answered 
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,更新服务返回了 Belay 无法读取的内容。
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,此操作无法撤销。Belay 不会在其他任何地方保留副本。
 "Told once, never nagged",App,translated,,"Told once, never nagged",只说一次，不再打扰
+Until,Settings,translated,,Until,至
 Until turned off,Settings,translated,,Until turned off,直到手动关闭
 Untitled project,App,translated,,Untitled project,未命名项目
 Update Now,"App, Settings, Settings: General",translated,,Update Now,立即更新
@@ -266,7 +277,8 @@ When an agent goes quiet,"App, Settings: Notifications",translated,,When an agen
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,智能体需要你时
 "When an update is ready, the menu bar shows it, but only when nothing is running.",App,translated,,"When an update is ready, the menu bar shows it, but only when nothing is running.",更新准备好时，菜单栏会显示，但只在没有任务运行时。
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
-While holding,Settings: General,translated,,While holding,保持唤醒期间
+"When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do.",Settings,translated,,"When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do.",夜间离开时，亮着的显示器会渐暗为微光，而不是照亮空房间。你一回来它就恢复。
+While holding,"Settings, Settings: General",translated,,While holding,保持唤醒期间
 Working,Panel,translated,,Working,工作中
 You asked Belay to stay on until you switch it off.,Panel,translated,,Your Mac stays awake until you turn it off.,Mac 将保持唤醒，直到你关闭为止。
 "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.",Belay 在 Claude Code 设置中发现无法识别的 hooks 条目，因此未做任何更改。
@@ -297,8 +309,4 @@ runs rescued,Statistics,translated,,runs saved,保住的运行
 runs watched,Statistics,translated,,runs watched,监视的运行
 total held,Statistics,translated,,awake time,唤醒时长
 "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。
-"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.",(unused),translated,,"Belay can see your agent's sessions.
-Nothing else is read, and nothing leaves this Mac.","Belay 可以看到智能体的会话。
-其他内容一概不读，也没有任何内容离开这台 Mac。"
-✨ Belay %@ is out,Settings: Notifications,needs_review,%@,✨ Belay %@ is out,✨ Belay %@ 发布了
+✨ Belay %@ is out,(unused),translated,%@,✨ Belay %@ is out,✨ Belay %@ 发布了

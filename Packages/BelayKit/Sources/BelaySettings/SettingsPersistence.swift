@@ -35,6 +35,10 @@ enum SettingsKey: String, CaseIterable {
     case notifyOnSafetyRelease
     case taskFinishedThreshold
     case enabledProviders
+    case nightDimming
+    case nightDimmingStart
+    case nightDimmingEnd
+    case nightDimmingLevel
 
     static var settingKeys: [SettingsKey] { allCases.filter { $0 != .schemaVersion } }
 }
@@ -66,6 +70,20 @@ extension UserDefaults {
         _ key: SettingsKey, in range: ClosedRange<TimeInterval>, or fallback: TimeInterval
     ) -> TimeInterval {
         guard let value = number(key) else { return fallback }
+        return range.clamping(value, fallback: fallback)
+    }
+
+    /// Same shape as `seconds`, for stored 0…1 fractions.
+    func fraction(
+        _ key: SettingsKey, in range: ClosedRange<Double>, or fallback: Double
+    ) -> Double {
+        guard let value = number(key) else { return fallback }
+        return range.clamping(value, fallback: fallback)
+    }
+
+    /// Same shape again, for whole numbers such as minutes from midnight.
+    func whole(_ key: SettingsKey, in range: ClosedRange<Int>, or fallback: Int) -> Int {
+        guard let value = count(key) else { return fallback }
         return range.clamping(value, fallback: fallback)
     }
 
@@ -129,6 +147,13 @@ extension SettingsValues {
             // build has never heard of cannot be enabled.
             enabledProviders = Set(raw.compactMap(ProviderID.init(rawValue:)))
         }
+        nightDimming = defaults.flag(.nightDimming) ?? fallback.nightDimming
+        nightDimmingStart = defaults.whole(
+            .nightDimmingStart, in: SettingsBounds.minuteOfDay, or: fallback.nightDimmingStart)
+        nightDimmingEnd = defaults.whole(
+            .nightDimmingEnd, in: SettingsBounds.minuteOfDay, or: fallback.nightDimmingEnd)
+        nightDimmingLevel = defaults.fraction(
+            .nightDimmingLevel, in: SettingsBounds.nightDimmingLevel, or: fallback.nightDimmingLevel)
     }
 
     func write(to defaults: UserDefaults) {
@@ -160,6 +185,10 @@ extension SettingsValues {
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)
         defaults.store(taskFinishedThreshold, .taskFinishedThreshold)
         defaults.store(enabledProviders.map(\.rawValue).sorted(), .enabledProviders)
+        defaults.store(nightDimming, .nightDimming)
+        defaults.store(nightDimmingStart, .nightDimmingStart)
+        defaults.store(nightDimmingEnd, .nightDimmingEnd)
+        defaults.store(nightDimmingLevel, .nightDimmingLevel)
     }
 
     private static func readMaxAwake(_ defaults: UserDefaults, fallback: TimeInterval?) -> TimeInterval? {
