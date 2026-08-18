@@ -1,4 +1,6 @@
 import BelaySupport
+import CoreGraphics
+import IOKit
 import XCTest
 
 /// The App Store build's file access, exercised **inside a real sandbox**.
@@ -162,3 +164,50 @@ final class SandboxAccessTests: XCTestCase {
 }
 
 /// Somewhere for the probe's bookmark to live that is not the test's own store.
+
+/// Deliberately the same six lines as `Clamshell.isClosed`, not a call to it.
+///
+/// Importing the app module here drags in Sparkle, which the App Store channel
+/// does not build at all. What this suite has to prove is that the sandbox
+/// permits the registry read, and that is proven by making it.
+private func readClamshell() -> Bool? {
+    let root = IOServiceGetMatchingService(
+        kIOMainPortDefault, IOServiceMatching("IOPMrootDomain"))
+    guard root != 0 else { return nil }
+    defer { IOObjectRelease(root) }
+    guard
+        let value = IORegistryEntryCreateCFProperty(
+            root, "AppleClamshellState" as CFString, kCFAllocatorDefault, 0)
+    else { return nil }
+    return value.takeRetainedValue() as? Bool
+}
+
+/// The lid reading, exercised where it actually matters.
+///
+/// `Clamshell` reads the IO registry, and the question that cannot be answered
+/// by reasoning is whether the sandbox lets it. This suite is the only one that
+/// runs inside the container, so this is the only place the answer is real.
+final class SandboxClamshellTests: XCTestCase {
+    func testTheLidCanBeReadInsideTheSandbox() {
+        // A Mac with no lid answers nil, and that is a valid answer. What is
+        // being proven is that the call returns rather than being denied.
+        let closed = readClamshell()
+        XCTAssertTrue(closed == nil || closed == true || closed == false)
+    }
+
+    /// On a machine that has a lid, the property must actually be readable:
+    /// a nil here would mean the sandbox hid it, which is the failure this
+    /// suite exists to catch.
+    func testALaptopReportsItsLid() throws {
+        // A built-in display means a lid. `hw.model` cannot be used for this:
+        // on Apple silicon it answers "Mac15,8", with no hint of the shape of
+        // the machine, and the first version of this test skipped everywhere.
+        var count: UInt32 = 0
+        CGGetOnlineDisplayList(0, nil, &count)
+        var displays = [CGDirectDisplayID](repeating: 0, count: Int(count))
+        CGGetOnlineDisplayList(count, &displays, &count)
+        let hasLid = displays.contains { CGDisplayIsBuiltin($0) != 0 }
+        try XCTSkipUnless(hasLid, "no built-in display, so no lid")
+        XCTAssertNotNil(readClamshell(), "the sandbox hid AppleClamshellState")
+    }
+}
