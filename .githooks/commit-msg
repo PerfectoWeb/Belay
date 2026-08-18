@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Refuses a commit message that names a second author.
+# Refuses a commit message that credits an AI tool.
 # Enable with:  git config core.hooksPath .githooks
 set -euo pipefail
 if grep -InE '^[[:space:]]*Co-[Aa]uthored-[Bb]y:|^[[:space:]]*[Gg]enerated with \[' -- "$1"; then
-    echo "this project has one author; drop the trailer" >&2
+    echo "assistants are not authors here; drop the trailer" >&2
     exit 1
 fi
