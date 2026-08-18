@@ -14103,100 +14103,6 @@
         }
       }
     },
-    "Dim the screen at night": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bildschirm nachts abdunkeln"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dim the screen at night"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atenuar la pantalla por la noche"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atténuer l'écran la nuit"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenuare lo schermo di notte"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушать экран ночью"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间调暗显示器"
-          }
-        }
-      }
-    },
-    "When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gehst du nachts weg, dimmt der Bildschirm zu einem Schimmer, statt ein leeres Zimmer zu beleuchten. Kommst du zurück, ist er sofort wieder da."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, the lit screen fades to a glow instead of lighting an empty room. It comes back the moment you do."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si te alejas por la noche, la pantalla se atenúa hasta un resplandor en vez de iluminar una habitación vacía. Vuelve en cuanto vuelves tú."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La nuit, quand vous vous éloignez, l'écran se réduit à une lueur au lieu d'éclairer une pièce vide. Il revient dès votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Di notte, quando ti allontani, lo schermo si riduce a un bagliore invece di illuminare una stanza vuota. Torna appena torni tu."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ночью, когда вы отходите, экран приглушается до слабого свечения вместо того, чтобы светить в пустую комнату. Стоит вернуться, и яркость сразу вернётся."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间离开时，亮着的显示器会渐暗为微光，而不是照亮空房间。你一回来它就恢复。"
-          }
-        }
-      }
-    },
     "Dim from": {
       "extractionState": "manual",
       "localizations": {
@@ -14338,100 +14244,6 @@
         }
       }
     },
-    "Hold through a closed lid": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auch zugeklappt wach halten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold through a closed lid"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantener despierto con la tapa cerrada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maintenir éveillé capot fermé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tenere sveglio a coperchio chiuso"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Держать при закрытой крышке"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖后继续保持唤醒"
-          }
-        }
-      }
-    },
-    "The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Arbeit läuft mit zugeklapptem Deckel weiter. Ein Systemhelfer hält den Schalter und lässt von selbst los: nach einem Zeitlimit oder sobald der Mac heiß läuft."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The run continues with the lid shut. A system helper holds the switch and always lets go by itself: after a time cap, or the moment the Mac runs hot."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El trabajo continúa con la tapa cerrada. Un ayudante del sistema sujeta el interruptor y siempre lo suelta solo: tras un límite de tiempo o en cuanto el Mac se calienta."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le travail continue capot fermé. Un assistant système tient l'interrupteur et le relâche toujours de lui-même : après un plafond de temps, ou dès que le Mac chauffe."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il lavoro continua a coperchio chiuso. Un helper di sistema tiene l'interruttore e lo lascia sempre da solo: dopo un limite di tempo o appena il Mac scalda."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Работа продолжается с закрытой крышкой. Системный помощник держит переключатель и всегда отпускает его сам: по лимиту времени или как только Mac перегревается."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合上盖子后运行继续。系统帮助程序托住这个开关，并且总会自行松开：到达时间上限，或 Mac 一旦过热。"
-          }
-        }
-      }
-    },
     "Approve the helper in Login Items so it can hold the lid.": {
       "extractionState": "manual",
       "localizations": {
@@ -14569,6 +14381,194 @@
           "stringUnit": {
             "state": "translated",
             "value": "macOS 在此构建中找不到帮助程序。"
+          }
+        }
+      }
+    },
+    "Dim the display at night": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display nachts abdunkeln"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dim the display at night"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenuar la pantalla por la noche"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténuer l'écran la nuit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenuare lo schermo di notte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушать экран ночью"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间调暗显示器"
+          }
+        }
+      }
+    },
+    "When you step away at night, Belay dims the display to this level. It brightens again when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gehst du nachts weg, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night, Belay dims the display to this level. It brightens again when you return."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si te alejas por la noche, Belay atenúa la pantalla hasta este nivel. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La nuit, quand vous vous éloignez, Belay atténue l'écran à ce niveau. Il retrouve sa luminosité à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di notte, quando ti allontani, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ночью, когда вы отходите, Belay приглушает экран до этого уровня. Когда возвращаетесь, яркость восстанавливается."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间离开时，Belay 会把显示器调暗到这一亮度。你回来时它会重新变亮。"
+          }
+        }
+      }
+    },
+    "Keep working with the lid closed": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit geschlossenem Deckel weiterarbeiten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep working with the lid closed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seguir trabajando con la tapa cerrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer à travailler capot fermé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuare a lavorare a coperchio chiuso"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работать с закрытой крышкой"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖后继续工作"
+          }
+        }
+      }
+    },
+    "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält den Mac mit geschlossenem Deckel wach und lässt von selbst los: am Zeitlimit oder wenn der Mac zu warm wird."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantiene despierto el Mac con la tapa cerrada y lo suelta solo: al llegar al límite de tiempo o si el Mac se calienta demasiado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay garde le Mac éveillé capot fermé, puis relâche de lui-même : au plafond de temps ou si le Mac chauffe trop."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay tiene sveglio il Mac a coperchio chiuso e lascia da solo: al limite di tempo o se il Mac scalda troppo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay держит Mac с закрытой крышкой и отпускает сам: по лимиту времени или если Mac слишком нагрелся."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合上盖子后 Belay 让 Mac 保持唤醒，到达时间上限或 Mac 过热时会自行松开。"
           }
         }
       }

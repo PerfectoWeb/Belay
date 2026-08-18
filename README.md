@@ -169,8 +169,9 @@ Out of the box, no: an idle-sleep assertion does not keep a MacBook awake with
 the lid shut. macOS enters clamshell sleep unless the machine is on AC power
 with an external display attached.
 
-Since 1.3 the direct build can, as an opt-in. **Hold through a closed lid** in
-Settings installs a system helper — macOS asks for your approval — that holds
+Since 1.3 the direct build can, as an opt-in. **Keep working with the lid
+closed** in Settings installs a system helper — macOS asks for your approval —
+that holds
 the OS's own sleep switch while an agent is working, and always lets go by
 itself: when the work ends, when Belay stops asking for it, after a hard time
 cap, or the moment the Mac runs hot with the lid shut. Proven on battery with

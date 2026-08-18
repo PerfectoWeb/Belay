@@ -10,21 +10,22 @@ struct NightDimmingGroup: View {
 
     var body: some View {
         GroupedCheckbox(
-            title: "Dim the screen at night",
+            title: "Dim the display at night",
             explanation: """
-                When you step away at night, the lit screen fades to a glow \
-                instead of lighting an empty room. It comes back the moment \
-                you do.
+                When you step away at night, Belay dims the display to this \
+                level. It brightens again when you return.
                 """,
             isOn: $settings.nightDimming
         )
         .disabled(!settings.keepDisplayAwake)
 
         if settings.nightDimming && settings.keepDisplayAwake {
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 // The dash says "from here to here" without a word of chrome;
                 // verbatim, so the catalogue never sees it and the no-dash
-                // import rule stays about translations.
+                // import rule stays about translations. `fixedSize` keeps each
+                // field at the size of its own digits — a widened frame drew
+                // the steppers adrift of their numbers.
                 DatePicker(
                     selection: minutes($settings.nightDimmingStart),
                     displayedComponents: .hourAndMinute
@@ -32,7 +33,7 @@ struct NightDimmingGroup: View {
                     EmptyView()
                 }
                 .labelsHidden()
-                .frame(minWidth: 96)
+                .fixedSize()
                 .accessibilityLabel("Dim from")
                 Text(verbatim: "–").foregroundStyle(.secondary)
                 DatePicker(
@@ -42,7 +43,7 @@ struct NightDimmingGroup: View {
                     EmptyView()
                 }
                 .labelsHidden()
-                .frame(minWidth: 96)
+                .fixedSize()
                 .accessibilityLabel("Dim until")
 
                 Slider(value: $settings.nightDimmingLevel, in: 0.10...0.60, step: 0.05)

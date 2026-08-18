@@ -18,11 +18,10 @@ struct LidHoldGroup: View {
 
     var body: some View {
         GroupedCheckbox(
-            title: "Hold through a closed lid",
+            title: "Keep working with the lid closed",
             explanation: """
-                The run continues with the lid shut. A system helper holds \
-                the switch and always lets go by itself: after a time cap, \
-                or the moment the Mac runs hot.
+                Belay keeps the Mac awake with the lid closed, then lets go \
+                automatically at the time limit or if the Mac gets too warm.
                 """,
             isOn: $settings.lidHold
         )

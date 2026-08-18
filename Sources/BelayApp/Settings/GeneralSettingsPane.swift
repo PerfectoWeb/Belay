@@ -83,21 +83,6 @@ struct GeneralSettingsPane: View {
 
             Divider()
 
-            SettingCheckboxGroup(title: "While holding") {
-                GroupedCheckbox(
-                    title: "Also keep the display awake",
-                    explanation: """
-                        Off by default. Belay keeps the Mac running while your agent works; \
-                        letting the screen sleep saves real power and changes nothing else.
-                        """,
-                    isOn: $settings.keepDisplayAwake
-                )
-                NightDimmingGroup(settings: settings)
-                LidHoldGroup(settings: settings)
-            }
-
-            Divider()
-
             LocalReportsGroup(settings: settings)
         }
     }
