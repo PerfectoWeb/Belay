@@ -47,7 +47,6 @@ place from here on.
 | 📦 | **v1.3.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.0) |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
-| 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
 | 📥 | **100 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | The catalogues |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One place a person actually reads |
