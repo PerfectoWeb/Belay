@@ -37,13 +37,13 @@ place from here on.
 | ⬇️ | Belay installs its own updates | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 | 📦 | **v1.2.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.0) |
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
-| 📦 | **v1.2.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1). In App Store review |
+| 📦 | **v1.2.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🔔 | Say an update is waiting without being asked | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🖥 | Verified on macOS 14 | <img src="badges/done.svg" alt="done" height="24"> | 19 Aug 2026, the 1.3.0 build on a real install. Clean |
 | 🔇 | Say when an agent goes quiet without finishing | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
-| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/da5526b02aeebb8e64087abf78bf6b1289e9e528). Both experiments below closed the same night |
-| 🌙 | Dim the screen at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422). Ships with 1.3 |
+| 💤 | Hold through a closed lid, as an opt-in | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/da5526b02aeebb8e64087abf78bf6b1289e9e528) |
+| 🌙 | Dim the screen at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422) |
 | 📦 | **v1.3.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.0) |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
