@@ -62,6 +62,13 @@ Implementation notes that matter:
   like a completed assistant turn, **or** (b) no growth for `inferredIdleAfter`
   (default 45 s). Both paths feed the same coordinator grace period, so the
   effective wake-tail is ~2 minutes worst case. That is the correct trade.
+- **A waiting turn is not idle** (shipped in 1.3). When the tail is an open
+  user turn or the CLI's own API-error record, the agent is waiting out a
+  retry against an overloaded model, not resting — exactly when the Mac must
+  stay awake. Silence then keeps `.working` under a longer, bounded grace
+  (15 min, heartbeats hold the coordinator's session TTL open). If the grace
+  runs out with no answer, the session ends as *went quiet* — reported as a
+  stall, never as a finished turn (1.3.1).
 - **Ignore stale files at startup.** On launch, seed cursors at EOF and treat
   any file untouched for > 10 minutes as an ended session. Otherwise Belay will
   "discover" 40 old sessions and hold the Mac awake on boot.

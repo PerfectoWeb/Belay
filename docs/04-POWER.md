@@ -98,7 +98,9 @@ re-enumerate processes, and re-derive state from scratch. Signals that arrived
   silently.
 - Do not attempt anything with thermal state in v1.0. (1.3's lid hold is the
   deliberate exception: its thermal release is one of the two mandatory
-  guards, and it applies only with the lid shut.)
+  guards, and it applies only with the lid shut. Since 1.3.1, both lid guards
+  say which one fired: the time cap and the heat release each post a
+  notification when they end a hold.)
 
 ## Things to document honestly in the FAQ
 
