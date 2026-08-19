@@ -1,0 +1,58 @@
+# Rewrites the version on the site when a release is published.
+#
+# The alternative was fetching it from api.github.com in the page, and that
+# makes every visitor wait on a request whose failure mode is a landing page
+# with no version on it. This runs once per release instead, and what the
+# reader gets is a static file that was already true when it was served.
+#
+# It lived on gh-pages until 1.3.0 and never fired once: GitHub only runs
+# repository-event workflows from the default branch, so every release ended
+# with somebody editing VERSION by hand. Moving the file here is the entire
+# fix. It still checks out gh-pages to do its work.
+name: Site version
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to write, e.g. 1.3.0 (defaults to the tag)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Write the released version into the site
+        run: |
+          version="${{ inputs.version }}"
+          [ -n "$version" ] || version="${GITHUB_REF_NAME#v}"
+          # A manual run from main would otherwise write "main" into the page.
+          echo "$version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' \
+              || { echo "not a version: $version (pass the version input on manual runs)"; exit 1; }
+          python3 - "$version" <<'PY'
+          import io, re, sys
+          version = sys.argv[1]
+          path = "landing.py"
+          text = io.open(path, encoding="utf-8").read()
+          text = re.sub(r'^VERSION = ".*"$', f'VERSION = "{version}"', text, count=1, flags=re.M)
+          io.open(path, "w", encoding="utf-8").write(text)
+          PY
+          python3 build-site.py .
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && { echo "already current"; exit 0; }
+          git commit -m "Site: version ${GITHUB_REF_NAME#v}"
+          git push

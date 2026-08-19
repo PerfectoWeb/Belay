@@ -72,6 +72,27 @@ struct ClaudeCodeRetryTests {
         await collector.stop()
     }
 
+    @Test("A launch in the middle of a retry lull still earns the grace")
+    func startupMidRetry() async {
+        // Belay starts while the CLI is quietly retrying: the transcript's
+        // tail is a user record and its mtime is fresh. The startup path used
+        // to assume `.working` without reading the tail, so the awaiting flag
+        // stayed down and the session decayed at the short horizon.
+        let start = Date()
+        scratch.transcript("lull", lines: [TranscriptScratch.record("user")])
+        let provider = self.provider()
+        let collector = await self.collector(on: provider)
+        await provider.seedExistingTranscripts()
+
+        let seeded = await collector.wait(for: 1)
+        #expect(seeded.first?.activity == .working)
+
+        await provider.sweepForIdle(now: start.addingTimeInterval(400))
+        let held = await collector.wait(for: 2)
+        #expect(held.map(\.activity) == [.working, .working])
+        await collector.stop()
+    }
+
     @Test("An interrupted turn still decays: the grace is not a promise to wait")
     func interruptedTurnStillDecays() async {
         let start = Date()

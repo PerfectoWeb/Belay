@@ -83,6 +83,23 @@ enum SoftwareUpdate {
             #endif
             return nil
         }
+
+        /// Sparkle's own alert says "an error occurred" and nothing else, so
+        /// a field report of a failed update used to arrive as a screenshot
+        /// of that sentence. The error's chain goes to the local log instead:
+        /// with Diagnostics on, the next report can say what actually broke —
+        /// a flaky download, a signature refusal, an installer refusal.
+        nonisolated func updater(_ updater: SPUUpdater, didAbortWithError error: Error) {
+            var failure = error as NSError
+            var chain = "update abort domain=\(failure.domain) code=\(failure.code)"
+            chain += " error=\"\(failure.localizedDescription)\""
+            while let underlying = failure.userInfo[NSUnderlyingErrorKey] as? NSError {
+                failure = underlying
+                chain += " <- \(failure.domain)#\(failure.code) \"\(failure.localizedDescription)\""
+            }
+            Log.app.error("\(chain, privacy: .public)")
+            EventLog.note(chain)
+        }
     }
     #endif
 }

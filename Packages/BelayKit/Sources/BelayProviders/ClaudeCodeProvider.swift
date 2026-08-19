@@ -139,10 +139,20 @@ public actor ClaudeCodeProvider: ActivityProvider {
             // followed but silent until it actually moves.
             let age = now.timeIntervalSince(snapshot.modified)
             guard age <= configuration.staleAtStartupAfter else { return false }
-            watch.cursor.seed(.endOfFile, snapshot: snapshot)
+            guard age <= configuration.inferredIdleAfter else {
+                watch.cursor.seed(.endOfFile, snapshot: snapshot)
+                watched[id] = watch
+                return false
+            }
+            // Fresh enough to be a live turn — so classify its tail rather
+            // than assume one. Assuming reported `.working` blind, which was
+            // almost right and wrong twice over: a turn that had just
+            // finished was held for nothing, and a session Belay opened onto
+            // mid-retry started with its awaiting flag down and decayed at
+            // the short horizon instead of getting the grace.
+            watch.cursor.seed(.tailWindow, snapshot: snapshot)
             watched[id] = watch
-            guard age <= configuration.inferredIdleAfter else { return false }
-            return report(.working, for: id, at: now)
+            return ingest(url, now: now) || report(.working, for: id, at: now)
         }
 
         // A transcript that appears while we are running is news, so pick up the

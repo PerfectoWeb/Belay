@@ -1,3 +1,4 @@
+import AppKit
 import BelaySettings
 import SwiftUI
 
@@ -38,6 +39,18 @@ struct LidHoldGroup: View {
             status = service.status
         }
         .onAppear { status = service.status }
+        // The approval happens in System Settings, which means leaving Belay
+        // and coming back — and the row used to keep saying "Open Login
+        // Items" until a tab switch re-made it. Becoming active again is
+        // exactly the moment the answer may have changed, so ask again then.
+        // A read of `SMAppService.status`, nothing heavier, and only when
+        // this row is on screen.
+        .onReceive(
+            NotificationCenter.default.publisher(
+                for: NSApplication.didBecomeActiveNotification)
+        ) { _ in
+            status = service.status
+        }
 
         if settings.lidHold, status == .requiresApproval {
             HStack(spacing: 8) {
