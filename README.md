@@ -187,7 +187,9 @@ and a good one), so it does not offer the switch.
 
 That is intentional and saves real power. Belay prevents *system* sleep; the
 machine underneath keeps working. There is a setting to keep the display awake
-too, off by default.
+too, off by default — and since 1.3, one to dim it to a glow at night while
+it is kept awake, so a screen held for an overnight run does not light an
+empty room. It brightens back the moment you return.
 
 </details>
 
@@ -217,8 +219,8 @@ edit, never a release.
 [Open an issue.](https://github.com/PerfectoWeb/Belay/issues) The macOS version
 and the agent you were running are the two things that make a report
 actionable. [`docs/QA-CHECKLIST.md`](docs/QA-CHECKLIST.md) lists what has and
-has not been exercised on a real machine, and macOS 14 and 15 are still on the
-second list.
+has not been exercised on a real machine; macOS 14, 15 and 26 have all been
+run for real.
 
 </details>
 

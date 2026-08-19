@@ -147,7 +147,7 @@ for our bundle ID, which is not ours. Match on the pid.
 ## 5. Platform coverage
 
 - [x] macOS 26.4 (host)
-- [ ] macOS 14 (VM) — see `BLOCKERS.md` B5
+- [x] macOS 14 (real install, 1.3.0 build) — 2026-08-19
 - [x] macOS 15.0 (24A335, Parallels, Apple silicon) — 2026-08-16
 
 ---

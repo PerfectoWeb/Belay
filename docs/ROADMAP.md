@@ -39,11 +39,12 @@ place from here on.
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
 | 📦 | **v1.2.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1). In App Store review |
 | 🔔 | Say an update is waiting without being asked | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
-| 🖥 | Verified on macOS 14 | <img src="badges/next.svg" alt="next" height="24"> | Nothing. 15 found three faults nobody expected |
+| 🖥 | Verified on macOS 14 | <img src="badges/done.svg" alt="done" height="24"> | 19 Aug 2026, the 1.3.0 build on a real install. Clean |
 | 🔇 | Say when an agent goes quiet without finishing | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🩺 | Local crash and freeze reports, kept on the Mac | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 💤 | Hold through a closed lid, as an opt-in | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/da5526b02aeebb8e64087abf78bf6b1289e9e528). Both experiments below closed the same night |
 | 🌙 | Dim the screen at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422). Ships with 1.3 |
+| 📦 | **v1.3.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.0) |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 💬 | First post on Reddit | <img src="badges/in-progress.svg" alt="in progress" height="24"> | r/ClaudeAI first, r/macapps a week later |

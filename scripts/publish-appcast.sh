@@ -83,6 +83,16 @@ ls "$RELEASES"/*.dmg >/dev/null 2>&1 \
     || die "no release carries a signing key yet; there is nothing to publish"
 ls -1 "$RELEASES"/*.dmg | sed 's|.*/|  |'
 
+# Release notes, for the update dialog. generate_appcast embeds any
+# Belay-<version>.html sitting beside the matching DMG as that item's
+# description; without one the dialog shows an empty pane, which is what 1.2.1
+# shipped with. The notes live in the repository so they are written with the
+# release, not remembered at publish time.
+if ls "$ROOT/docs/release-notes"/Belay-*.html >/dev/null 2>&1; then
+    cp "$ROOT/docs/release-notes"/Belay-*.html "$RELEASES/"
+    echo "  with notes: $(ls "$ROOT/docs/release-notes"/Belay-*.html | sed 's|.*/||' | tr '\n' ' ')"
+fi
+
 # ------------------------------------------------- 2 and 3. sign, and retag
 #
 # generate_appcast ships inside the Sparkle package rather than on PATH, so it

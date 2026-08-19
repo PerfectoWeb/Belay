@@ -1,0 +1,28 @@
+<!-- What Sparkle's update dialog shows for 1.3.0. generate_appcast embeds any
+     Belay-<version>.html it finds beside the matching DMG; publish-appcast.sh
+     copies these files there. One file per version, English only: Sparkle's
+     dialog has no locale negotiation, and half-translated notes read worse
+     than plainly-written English ones. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.3</h2>
+<ul>
+  <li><b>The display dims at night.</b> Step away and it fades to a glow;
+      come back and it brightens. Off by default, in
+      Settings&nbsp;&#9656;&nbsp;Behavior.</li>
+  <li><b>The lid can close now.</b> An optional helper keeps the run alive
+      with the lid shut, and always lets go by itself: at the time limit, or
+      if the Mac gets too warm.</li>
+  <li><b>Held through the retries.</b> An agent waiting out an overloaded
+      model no longer reads as idle. Belay keeps holding.</li>
+</ul>
+<p class="quiet">Also: small sounds for the welcome and What&#8217;s New
+screens, and a fuller local log. Nothing leaves your Mac, as ever.</p>

@@ -408,18 +408,17 @@ pane, the panel status line, and the About tagline.
 Until then this is a quality risk, not a correctness one: every string resolves,
 nothing crashes, and English remains the fallback for anything unsupported.
 
-## B5 — macOS 14 verification. 15 is done
+## B5 — macOS 14 verification. CLOSED, all three versions done
 
-**Blocks:** the "runs clean on 14 / 15 / 26" claim in `docs/00-INVARIANTS.md`.
-**Does not block:** development. The deployment target is 14.0 and every API
-newer than that is behind an `@available` guard.
+**Blocked:** the "runs clean on 14 / 15 / 26" claim in `docs/00-INVARIANTS.md`.
+Closed 2026-08-19: the full 1.3.0 build ran on a real macOS 14 install —
+detection, holds, night dimming, the lid helper and both welcome and What's
+New screens all behaved. No faults found.
 
-macOS 15.0 (24A335) was run on 2026-08-16 in a Parallels VM on Apple silicon,
-with `scripts/qa-vm.sh` plus the two things only eyes can check. It found three
-real faults, all fixed and all in `main`: the assertion was not released on
+For the record, macOS 15.0 (24A335) was run on 2026-08-16 in a Parallels VM,
+with `scripts/qa-vm.sh` plus the two things only eyes can check. It found
+three real faults, all fixed before 1.2.1: the assertion was not released on
 quit, the welcome window opened off-centre because its size was read before
 layout, and the Skip button was a system push button there while every other
-button in the app is drawn. The rerun after those fixes was clean.
-
-macOS 14 is the one left. Nothing about it is expected to differ, which is
-exactly why it is worth running: 15 was not expected to differ either.
+button in the app is drawn. The rerun after those fixes was clean — and 14,
+which "could not differ", was still worth running for the same reason 15 was.

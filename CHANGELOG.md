@@ -5,6 +5,44 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-08-19
+
+### Added
+
+- The display dims at night. While Belay keeps the screen awake and you step
+  away inside a set window, it fades to a chosen level and comes back the
+  moment you return. Off by default, works through the display's gamma table,
+  and a crashed Belay cannot leave the screen dark: macOS restores gamma when
+  the process that set it dies.
+- Keep working with the lid closed. Direct builds only, off by default. A
+  system helper, approved once in Login Items, holds the kernel's own sleep
+  switch while an agent works, and always lets go by itself: when the work
+  ends, when Belay stops asking, at a hard time cap, or if the Mac runs hot
+  with the lid shut. Proven both ways on battery: flag up, the lid shut and
+  music kept playing; flag off, asleep in seventy seconds.
+- A retrying agent now keeps the hold. When the model is overloaded, the CLI
+  writes nothing for minutes and Belay used to read that as idle — at exactly
+  the moment the run most needed the Mac awake. A turn still waiting on an
+  answer now gets a longer, bounded grace, and the CLI's own error records no
+  longer read as a finished turn.
+- Sounds: the welcome scene got a spell, a score and typing under the little
+  screen; the What's New window arrives like a TV switching on, with a chime.
+- Diagnostics now log what Belay did — holds, sessions, dimming, the lid —
+  not only crashes. Same local file, still nothing leaves the Mac.
+
+### Changed
+
+- What's New shows the version just installed and nothing else.
+- The night window fields centre their digits and step by quarter hours.
+- Update Now is the system button in green, not a capsule.
+- Verified on macOS 14: the full 1.3.0 build was exercised on a real install,
+  which closes the last line of the 14/15/26 support claim.
+
+### Fixed
+
+- Closing the welcome window mid-scene now stops its sounds and its script.
+- No more false "main thread stalled" report after a system sleep.
+
 ## [1.2.1] - 2026-08-18
 
 ### Added
