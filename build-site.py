@@ -507,7 +507,9 @@ def landing(code):
         "</div>",
         "",
         f'<p class="version">{t["free"]} '
-        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a></p>',
+        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a>'
+        ' <span aria-hidden="true">&#8226;</span> '
+        f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/ROADMAP.md">{t["roadmap"]}</a></p>',
         "",
         '<ul class="badges">',
         '    <li><span class="apple" aria-hidden="true">&#63743;</span>macOS 14+</li>',
