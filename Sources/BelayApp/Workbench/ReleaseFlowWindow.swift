@@ -1,7 +1,6 @@
 #if DEBUG
 import AppKit
 import SwiftUI
-import WebKit
 
 /// The release workbench: one debug window that walks the whole flow.
 ///
@@ -68,14 +67,13 @@ private struct ReleaseFlowView: View {
             )
             .tabItem { Text(verbatim: "Screens") }
             NotesTab(
-                title: "docs/release-notes/Belay-\(Branding.version).html",
                 file: ReleaseFlow.repo
                     .appendingPathComponent("docs/release-notes/Belay-\(Branding.version).html")
             )
             .tabItem { Text(verbatim: "Sparkle notes") }
             StoreTab(
                 file: ReleaseFlow.repo
-                    .appendingPathComponent("dist/appstore-notes-\(Branding.version).txt")
+                    .appendingPathComponent("docs/release-notes/appstore-\(Branding.version).txt")
             )
             .tabItem { Text(verbatim: "App Store") }
             ChecklistTab()
@@ -121,69 +119,6 @@ private struct ScreensTab: View {
     }
 }
 
-/// Renders the Sparkle HTML the way the update dialog will.
-private struct NotesTab: View {
-    let title: String
-    let file: URL
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(verbatim: title).font(.caption).foregroundStyle(.secondary)
-            if FileManager.default.fileExists(atPath: file.path) {
-                WebPage(file: file)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-            } else {
-                MissingFile(name: title)
-            }
-        }
-        .padding()
-    }
-}
-
-private struct StoreTab: View {
-    let file: URL
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(verbatim: "dist/appstore-notes-\(Branding.version).txt")
-                .font(.caption).foregroundStyle(.secondary)
-            if let text = try? String(contentsOf: file, encoding: .utf8) {
-                ScrollView {
-                    Text(verbatim: text)
-                        .font(.system(.body, design: .monospaced))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .textSelection(.enabled)
-                }
-            } else {
-                MissingFile(name: file.lastPathComponent)
-            }
-        }
-        .padding()
-    }
-}
-
-private struct MissingFile: View {
-    let name: String
-
-    var body: some View {
-        Text(verbatim: "\(name) is not written yet.")
-            .foregroundStyle(.orange)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-}
-
-private struct WebPage: NSViewRepresentable {
-    let file: URL
-
-    func makeNSView(context: Context) -> WKWebView {
-        let view = WKWebView()
-        view.loadFileURL(file, allowingReadAccessTo: file.deletingLastPathComponent())
-        return view
-    }
-
-    func updateNSView(_ view: WKWebView, context: Context) {}
-}
-
 /// The chores, in release order, ticked as they happen. State lives in
 /// UserDefaults under the version, so cutting 1.4.0 starts a fresh sheet and
 /// the 1.3.x sheet stays as the record of what was done.
@@ -193,7 +128,7 @@ private struct ChecklistTab: View {
         ("changelog", "CHANGELOG.md has this version's section"),
         ("whatsnew", "ReleaseNote.swift: entry replaced, strings translated x7"),
         ("sparkle", "docs/release-notes/Belay-<version>.html written"),
-        ("appstore", "dist/appstore-notes-<version>.txt written"),
+        ("appstore", "docs/release-notes/appstore-<version>.txt written"),
         ("roadmap", "ROADMAP rows and header updated"),
         ("readme", "README claims still true for this version"),
         ("gate", "scripts/test.sh green on the release tree"),
@@ -215,6 +150,7 @@ private struct ChecklistTab: View {
             List {
                 ForEach(Self.steps, id: \.id) { step in
                     Toggle(isOn: binding(step.id)) { Text(verbatim: step.name) }
+                        .padding(.vertical, 4)
                 }
             }
             Button {

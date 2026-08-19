@@ -1,0 +1,26 @@
+App Store "What's New in This Version" — Belay 1.3.0
+(the lid feature is deliberately absent: the store build does not have it)
+
+--- EN ---
+
+The display dims at night. When Belay keeps your screen awake and you step
+away inside a window you set, it fades to a glow — and brightens the moment
+you return. Off by default, in Settings > Behavior.
+
+Held through the retries. An agent waiting out an overloaded model no longer
+reads as idle. Belay keeps the Mac awake until the answer comes.
+
+Also: small sounds for the welcome and What's New screens, and a fuller local
+diagnostics log. Nothing leaves your Mac, as ever.
+
+--- RU ---
+
+Экран приглушается ночью. Если Belay держит экран, а вы отошли в заданное
+время, он гаснет до слабого свечения и возвращается, как только вы рядом.
+По умолчанию выключено, в Настройках > Behavior.
+
+Держит сквозь повторные попытки. Агент, пережидающий перегруженную модель,
+больше не выглядит бездействующим — Belay держит Mac, пока не придёт ответ.
+
+А ещё: небольшие звуки на экранах приветствия и «Что нового» и более полный
+локальный журнал диагностики. С Mac по-прежнему ничего не уходит.
