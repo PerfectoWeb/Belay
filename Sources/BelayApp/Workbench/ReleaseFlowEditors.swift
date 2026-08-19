@@ -49,6 +49,27 @@ struct NotesTab: View {
     }
 }
 
+/// The What's New window's text, all seven languages in one file.
+///
+/// The window draws from compiled strings, so an edit here is not live: the
+/// file is the human-shaped copy, and a rebuild syncs it into the code and
+/// the string catalogue before the Screens tab shows it. That is the loop —
+/// a person rewrites any language freely, the syncing is asked for.
+struct NoteSourceTab: View {
+    let file: URL
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(verbatim: relative(file)).font(.caption).foregroundStyle(.secondary)
+            Text(verbatim: "Edit any language, then ask for a rebuild to see it in the window.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            FileEditor(file: file) {}
+        }
+        .padding()
+    }
+}
+
 struct StoreTab: View {
     let file: URL
 

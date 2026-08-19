@@ -83,6 +83,11 @@ private struct ReleaseFlowView: View {
                     .appendingPathComponent("docs/release-notes/appstore-\(Branding.version).txt")
             )
             .tabItem { Text(verbatim: "App Store") }
+            NoteSourceTab(
+                file: ReleaseFlow.repo
+                    .appendingPathComponent("docs/release-notes/whatsnew-\(Branding.version).txt")
+            )
+            .tabItem { Text(verbatim: "What's New") }
             ChecklistTab()
                 .tabItem { Text(verbatim: "Checklist") }
         }
