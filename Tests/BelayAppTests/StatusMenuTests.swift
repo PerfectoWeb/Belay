@@ -35,12 +35,12 @@ final class StatusMenuTests: XCTestCase {
         // The update row is only there when the app has wired it, which the
         // next test does. A bare controller has no checker to ask.
         //
-        // The workbench items for replaying the two screens that are shown
-        // once. They are compiled into debug builds only, and the tests are a
-        // debug build, so they are here; the shipping menu is the four items
-        // this test is named after.
+        // The workbench collapsed to one door in 1.3.1: Release Flow, the
+        // debug window that carries the replays, the pretend toggle and the
+        // release checklist. Debug builds only; the shipping menu is the four
+        // items this test is named after.
         #if DEBUG
-        expected += ["", "Welcome", "What's New", "Pretend Update"]
+        expected += ["", "Release Flow"]
         #endif
         expected += ["", String(localized: "Quit")]
         XCTAssertEqual(titles, expected, "the separator is the empty title")
@@ -81,7 +81,7 @@ final class StatusMenuTests: XCTestCase {
     /// The items above exist for development and must never reach anybody else.
     func testTheWelcomeItemIsDebugOnly() {
         let titles = controller.menuForTesting.items.map(\.title)
-        for workbench in ["Welcome", "What's New", "Pretend Update"] {
+        for workbench in ["Release Flow"] {
             #if DEBUG
             XCTAssertTrue(titles.contains(workbench))
             #else

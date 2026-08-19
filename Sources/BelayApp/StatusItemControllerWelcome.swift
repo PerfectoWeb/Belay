@@ -41,29 +41,20 @@ extension StatusItemController {
 
     var workbenchItems: [Workbench] {
         [
-            Workbench(title: "Welcome", action: #selector(showWelcome), symbol: "sparkles"),
-            Workbench(title: "What's New", action: #selector(showWhatsNew), symbol: "gift"),
+            // One door to the whole workbench. The three loose items it
+            // replaced — Welcome, What's New, Pretend Update — live inside,
+            // beside the release notes, the store text and the checklist.
             Workbench(
-                title: "Pretend Update", action: #selector(togglePretendUpdate),
-                symbol: "arrow.down.circle", ticked: { ReleaseChecker.isPretending })
+                title: "Release Flow", action: #selector(showReleaseFlow), symbol: "shippingbox")
         ]
     }
 
-    @objc func showWelcome() {
-        onShowWelcome()
+    @objc func showReleaseFlow() {
+        ReleaseFlow.present(
+            showWelcome: onShowWelcome,
+            showWhatsNew: onShowWhatsNew,
+            pretendChanged: onPretendUpdateChanged)
     }
 
-    @objc func showWhatsNew() {
-        onShowWhatsNew()
-    }
-
-    /// Makes the next check report an update whatever this build's number is, so
-    /// the row and the button can be looked at on the machine that builds the
-    /// newest version. The menu is rebuilt on each right-click, so the item's
-    /// own title is where the state is shown.
-    @objc func togglePretendUpdate() {
-        ReleaseChecker.isPretending.toggle()
-        onPretendUpdateChanged()
-    }
 }
 #endif
