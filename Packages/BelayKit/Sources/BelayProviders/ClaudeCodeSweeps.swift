@@ -48,10 +48,19 @@ extension ClaudeCodeProvider {
                 report(.working, for: id, at: now)
                 continue
             }
+            if watch.awaitingAssistant {
+                // The grace ran out with the answer still owed. That is not a
+                // finished turn — it is a run that stopped without finishing
+                // (a retry that never came back, or a prompt abandoned at the
+                // keyboard), so the session ends rather than idles: ending is
+                // what makes the app say "went quiet" instead of "finished",
+                // which was the wrong sentence for this moment. A transcript
+                // that wakes up later is simply adopted as a fresh session.
+                end(id, at: now, cause: "awaiting-grace-expired")
+                continue
+            }
             if report(.idle, for: id, at: now) {
-                EventLog.note(
-                    "session idle \(id) silence=\(Int(silence))s "
-                        + "awaiting=\(watch.awaitingAssistant ? 1 : 0)")
+                EventLog.note("session idle \(id) silence=\(Int(silence))s")
             }
         }
     }

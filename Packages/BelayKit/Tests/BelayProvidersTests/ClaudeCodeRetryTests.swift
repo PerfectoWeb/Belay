@@ -40,10 +40,11 @@ struct ClaudeCodeRetryTests {
         let held = await collector.wait(for: 3)
         #expect(held.map(\.activity) == [.working, .working, .working])
 
-        // The grace is a budget, not a promise: past it, Belay is guessing.
+        // The grace is a budget, not a promise: past it the answer is still
+        // owed and nothing came, so the session went quiet — it did not finish.
         await provider.sweepForIdle(now: start.addingTimeInterval(15 * 60 + 1))
         let signals = await collector.wait(for: 4)
-        #expect(signals.map(\.activity) == [.working, .working, .working, .idle])
+        #expect(signals.map(\.activity) == [.working, .working, .working, .ended])
         await collector.stop()
     }
 
@@ -106,7 +107,7 @@ struct ClaudeCodeRetryTests {
 
         await provider.sweepForIdle(now: start.addingTimeInterval(16 * 60))
         let signals = await collector.wait(for: 2)
-        #expect(signals.map(\.activity) == [.working, .idle])
+        #expect(signals.map(\.activity) == [.working, .ended])
         await collector.stop()
     }
 }
