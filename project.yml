@@ -143,6 +143,11 @@ targets:
         # SMAppService identifies the executable by its embedded Info.plist.
         CREATE_INFOPLIST_SECTION_IN_BINARY: YES
         INFOPLIST_FILE: Sources/BelayLidHelper/HelperInfo.plist
+        # Notarization refuses a bare-runtime executable, and the CI release
+        # of 1.3.0 died exactly there: the app template hardens the app, but
+        # a tool target hardens nothing unless told. The 1.3.0 DMG shipped
+        # because the manual pipeline re-signed with --options runtime.
+        ENABLE_HARDENED_RUNTIME: YES
         # Never installed on its own: the app's copy phase is its only ride.
         # In archive builds this sends the binary to UninstalledProducts,
         # which that phase knows to look in.
