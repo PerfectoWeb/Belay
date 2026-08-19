@@ -213,6 +213,14 @@ echo "==> verify signature"
 codesign --verify --deep --strict --verbose=2 "$APP"
 codesign -d --entitlements - --xml "$APP" >/dev/null
 
+# The mirror of verify-mas-build.sh's "no lid helper": the direct build must
+# carry it. The 1.3.0 archive nearly shipped without it — the embed phase
+# failed quietly during archive — and nothing downstream would have noticed.
+[ -f "$APP/Contents/MacOS/BelayLidHelper" ] \
+    || die "the lid helper is missing from the exported app"
+[ -f "$APP/Contents/Library/LaunchDaemons/com.perfectoweb.belay.lidhelper.plist" ] \
+    || die "the lid helper's launchd plist is missing from the exported app"
+
 # Hardened Runtime is not optional for notarization and its absence is only
 # discovered by the notary service, twenty minutes later.
 #

@@ -143,6 +143,10 @@ targets:
         # SMAppService identifies the executable by its embedded Info.plist.
         CREATE_INFOPLIST_SECTION_IN_BINARY: YES
         INFOPLIST_FILE: Sources/BelayLidHelper/HelperInfo.plist
+        # Never installed on its own: the app's copy phase is its only ride.
+        # In archive builds this sends the binary to UninstalledProducts,
+        # which that phase knows to look in.
+        SKIP_INSTALL: YES
 
   # Direct channel: Developer ID, notarized, link-based tips, and Sparkle once
   # there is a key to sign an appcast with. Ships first (docs/06).
@@ -168,12 +172,24 @@ targets:
       - name: Embed the lid helper
         inputFiles:
           - $(BUILT_PRODUCTS_DIR)/BelayLidHelper
+          - $(UNINSTALLED_PRODUCTS_DIR)/BelayLidHelper
+          - $(UNINSTALLED_PRODUCTS_DIR)/macosx/BelayLidHelper
           - $(SRCROOT)/Sources/BelayLidHelper/com.perfectoweb.belay.lidhelper.plist
         outputFiles:
           - $(TARGET_BUILD_DIR)/$(EXECUTABLE_FOLDER_PATH)/BelayLidHelper
           - $(TARGET_BUILD_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchDaemons/com.perfectoweb.belay.lidhelper.plist
         script: |
-          cp "$BUILT_PRODUCTS_DIR/BelayLidHelper" "$TARGET_BUILD_DIR/$EXECUTABLE_FOLDER_PATH/BelayLidHelper"
+          # In an ordinary build the helper is in BUILT_PRODUCTS_DIR; in an
+          # archive, SKIP_INSTALL sends a tool to UninstalledProducts instead.
+          # The 1.3.0 release archive was nearly cut without the helper because
+          # the first copy failed quietly and the phase's exit code was the
+          # last command's — hence set -e and an explicit existence check.
+          set -e
+          HELPER="$BUILT_PRODUCTS_DIR/BelayLidHelper"
+          [ -f "$HELPER" ] || HELPER="$UNINSTALLED_PRODUCTS_DIR/BelayLidHelper"
+          [ -f "$HELPER" ] || HELPER="$UNINSTALLED_PRODUCTS_DIR/macosx/BelayLidHelper"
+          [ -f "$HELPER" ] || { echo "error: BelayLidHelper not found in BUILT_PRODUCTS_DIR or UninstalledProducts" >&2; exit 1; }
+          cp "$HELPER" "$TARGET_BUILD_DIR/$EXECUTABLE_FOLDER_PATH/BelayLidHelper"
           mkdir -p "$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LaunchDaemons"
           cp "$SRCROOT/Sources/BelayLidHelper/com.perfectoweb.belay.lidhelper.plist" \
              "$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Library/LaunchDaemons/"
