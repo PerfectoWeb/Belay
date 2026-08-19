@@ -14,6 +14,13 @@ struct StatisticsPane: View {
     var onReset: () -> Void = {}
 
     @State private var isConfirmingReset = false
+    /// The day under the cursor, if it has anything to say. While set, the
+    /// figure row speaks for that day and the chart label names its date.
+    @State private var hovered: UsageStatistics.Day?
+    /// True one pass after the reveal lands. Gating the figure morph on this
+    /// rather than on `reveal >= 1` keeps the count-up's final tick a hard
+    /// redraw instead of a lone animated digit-roll.
+    @State private var settled = false
 
     /// 0 when the pane appears, 1 once it has settled. Everything that is a
     /// number counts up to it and every bar grows into it.
@@ -64,6 +71,7 @@ struct StatisticsPane: View {
         .task {
             guard !reduceMotion else {
                 reveal = 1
+                settled = true
                 return
             }
             let start = Date()
@@ -71,6 +79,7 @@ struct StatisticsPane: View {
                 try? await Task.sleep(for: .milliseconds(16))
                 reveal = Self.eased(Date().timeIntervalSince(start) / Self.revealSeconds)
             }
+            settled = true
         }
     }
 
@@ -95,30 +104,55 @@ struct StatisticsPane: View {
         // Wide gaps because the captions are: "запусков спасено" is twice the
         // width of "runs saved", and four columns set to English spacing run
         // into each other in every language but English.
+        // A hovered day borrows the whole row: same captions, its numbers.
+        // The morph is on only after the reveal, so the opening count-up
+        // stays a hard redraw and never smears (see Figure).
         HStack(alignment: .top, spacing: 34) {
             // Each one lands a beat after the one to its left, so the row
             // reads left to right rather than arriving as a block.
             Figure(
-                value: "\(Int((Double(statistics.totalRescued) * counted(0)).rounded()))",
-                caption: "runs rescued")
+                value: hovered.map { "\($0.rescued)" }
+                    ?? "\(Int((Double(statistics.totalRescued) * counted(0)).rounded()))",
+                caption: "runs rescued", morphs: morphs)
             Figure(
-                value: ElapsedTime.compact(statistics.longestHold * counted(1)),
-                caption: "longest run")
+                value: ElapsedTime.compact(hovered?.longestHold ?? statistics.longestHold * counted(1)),
+                caption: "longest run", morphs: morphs)
             Figure(
-                value: "\(Int((Double(statistics.totalHolds) * counted(2)).rounded()))",
-                caption: "runs watched")
+                value: hovered.map { "\($0.holds)" }
+                    ?? "\(Int((Double(statistics.totalHolds) * counted(2)).rounded()))",
+                caption: "runs watched", morphs: morphs)
             Figure(
-                value: ElapsedTime.compact(statistics.totalHeld * counted(3)), caption: "total held")
+                value: ElapsedTime.compact(hovered?.heldSeconds ?? statistics.totalHeld * counted(3)),
+                caption: "total held", morphs: morphs)
         }
     }
 
+    /// Digit-rolls are motion too: Reduce Motion turns the hover swap into a
+    /// plain redraw, the same way it flattens the reveal.
+    private var morphs: Bool { settled && !reduceMotion }
+
     private var chart: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("LAST 14 DAYS")
-                .font(.system(size: 10, weight: .semibold))
-                .foregroundStyle(.secondary)
-            DayBars(days: statistics.recent(14), reveal: reveal)
-                .frame(height: 56)
+            Group {
+                if let hovered {
+                    Text(verbatim: Self.named(hovered.date))
+                } else {
+                    Text("LAST 14 DAYS")
+                }
+            }
+            .font(.system(size: 10, weight: .semibold))
+            .foregroundStyle(.secondary)
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.15), value: hovered?.id)
+            DayBars(
+                days: statistics.recent(14), reveal: reveal, hovered: hovered,
+                onHover: { hovered = $0 },
+                onLeave: { day in
+                    // Live read: an enter for the next bar may already have
+                    // landed, and its hover must survive this bar's exit.
+                    if hovered?.id == day.id { hovered = nil }
+                }
+            )
+            .frame(height: 56)
             if let since {
                 // The scope of everything above it. Without a start date the
                 // totals are a number with no denominator.
@@ -135,6 +169,12 @@ struct StatisticsPane: View {
     private func counted(_ index: Int) -> Double {
         let start = Double(index) * 0.07
         return min(1, max(0, (reveal - start) / 0.42))
+    }
+
+    /// "FRIDAY, 15 AUGUST" in the user's locale, for the chart label while a
+    /// bar is hovered. Uppercased to sit where LAST 14 DAYS sits.
+    static func named(_ date: Date) -> String {
+        date.formatted(.dateTime.weekday(.wide).day().month(.wide)).uppercased()
     }
 
     private var since: String? {
@@ -168,79 +208,27 @@ struct StatisticsPane: View {
         }
     }
 
-    /// See the headline: a counting number has to redraw, not dissolve.
+    /// See the headline: a counting number has to redraw, not dissolve —
+    /// until the reveal is over. After it, the only changes are the hover
+    /// borrowing the row and handing it back, and those roll digit by digit
+    /// (`numericText`), which is the system's own way of saying "same
+    /// counter, different value".
     private struct Figure: View {
         let value: String
         let caption: LocalizedStringKey
+        var morphs = false
 
         var body: some View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(value)
                     .font(.system(size: 17, weight: .medium, design: .rounded))
                     .monospacedDigit()
-                    .transaction { $0.animation = nil }
+                    .contentTransition(.numericText())
+                    .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
                 Text(caption)
                     .font(.system(size: 10))
                     .foregroundStyle(.secondary)
             }
         }
-    }
-}
-
-/// A bar per day, scaled to the busiest one. Empty days keep their slot so the
-/// shape of a week is readable.
-private struct DayBars: View {
-    let days: [UsageStatistics.Day]
-    var reveal: Double = 1
-
-    var body: some View {
-        let peak = max(days.map(\.heldSeconds).max() ?? 0, 1)
-        HStack(alignment: .bottom, spacing: 4) {
-            ForEach(Array(days.enumerated()), id: \.element.id) { index, day in
-                VStack(spacing: 3) {
-                    GeometryReader { geometry in
-                        let full = geometry.size.height
-                        // The chart fills left to right across the back half of
-                        // the reveal, so it arrives after the figures rather
-                        // than competing with them.
-                        let grown = min(1, max(0, (reveal - 0.3 - Double(index) * 0.028) / 0.3))
-                        let held = full * day.heldSeconds / peak * grown
-                        let away = full * day.awaySeconds / peak * grown
-                        ZStack(alignment: .bottom) {
-                            RoundedRectangle(cornerRadius: 2)
-                                .fill(.tint.opacity(0.25))
-                                .frame(height: max(held, day.heldSeconds > 0 ? 2 : 1))
-                            RoundedRectangle(cornerRadius: 2)
-                                .fill(.tint)
-                                .frame(height: max(away, 0))
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                    }
-                    Text(Self.weekday(day.date))
-                        .font(.system(size: 8))
-                        .foregroundStyle(.tertiary)
-                }
-                .accessibilityLabel(Self.spoken(day))
-            }
-        }
-    }
-
-    /// Built once. `DateFormatter` is among the more expensive things in
-    /// Foundation and this ran fourteen times per body pass.
-    private static let weekdayFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEEE"
-        return formatter
-    }()
-
-    private static func weekday(_ date: Date) -> String {
-        weekdayFormatter.string(from: date)
-    }
-
-    private static func spoken(_ day: UsageStatistics.Day) -> String {
-        guard day.heldSeconds > 0 else { return String(localized: "no runs") }
-        return String(
-            localized:
-                "\(ElapsedTime.spoken(day.heldSeconds)) held, \(ElapsedTime.spoken(day.awaySeconds)) away")
     }
 }
