@@ -166,10 +166,12 @@ private struct UpdatesRow: View {
                     }
                     .controlSize(.small)
                     .tint(.green)
+                    // The system's own button, exactly as Check Now draws it,
+                    // in green: the shape stopped being the announcement and
+                    // the colour became it. The capsule read as a control from
+                    // another family sitting in a row of settings buttons.
                     .buttonStyle(.borderedProminent)
-                    // Fully rounded, like Donate in About. Shape only.
-                    .buttonBorderShape(.capsule)
-                    // Sparks instead: an overlay rather than a style, so the
+                    // Sparks stay: an overlay rather than a style, so the
                     // size, the shape and the green are what they were.
                     .overlay { UpdateSparks() }
                 } else {

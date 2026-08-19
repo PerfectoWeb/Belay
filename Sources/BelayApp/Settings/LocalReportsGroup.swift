@@ -24,7 +24,7 @@ struct LocalReportsGroup: View {
             )
 
             HStack(spacing: 8) {
-                Button("Show Reports…") {
+                Button("Show Reports") {
                     NSWorkspace.shared.activateFileViewerSelecting([Diagnostics.file])
                 }
                 .disabled(!settings.keepLocalReports)
@@ -34,7 +34,7 @@ struct LocalReportsGroup: View {
                 // they might send it, and hunting for where to send it is
                 // where that intention dies.
                 if let issues = Branding.issuesURL {
-                    Link("Report an Issue…", destination: issues)
+                    Link("Report an Issue", destination: issues)
                 }
             }
             .controlSize(.small)
