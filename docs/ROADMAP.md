@@ -64,6 +64,34 @@ Finished work links to the commit or release that closed it. If there is no date
 
 <br>
 
+## Listings
+
+The full ledger of directories and lists Belay has been submitted to. The
+milestone table above keeps only the big ones.
+
+| Where | Status | Details |
+| :--- | :--- | :--- |
+| [Mac App Store](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) | <img src="badges/done.svg" alt="done" height="24"> | Live since 17 Aug 2026 |
+| [AlternativeTo](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) | <img src="badges/done.svg" alt="done" height="24"> | Listed 17 Aug 2026 |
+| [macmenubar.com](https://macmenubar.com/belay/) | <img src="badges/done.svg" alt="done" height="24"> | Listed 18 Aug 2026 |
+| [DirHub](https://dirhub.io/sites/belay-awake-for-ai-agents) | <img src="badges/done.svg" alt="done" height="24"> | Published 19 Aug 2026 |
+| [Product Hunt](https://www.producthunt.com/products/belay-awake-for-ai-agents) | <img src="badges/in-review.svg" alt="in review" height="24"> | Launch scheduled for 20 Aug 2026 |
+| [findmacapps.com](https://findmacapps.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
+| [macmenubar.app](https://macmenubar.app) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
+| [jaywcjlove/awesome-mac](https://github.com/jaywcjlove/awesome-mac/pull/2603) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 18 Aug 2026 |
+| [jqueryscript/awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code/pull/601) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 17 Aug 2026 |
+| [awesome-native-macosx-apps](https://github.com/open-saas-directory/awesome-native-macosx-apps/pull/142) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
+| [iCHAIT/awesome-macOS](https://github.com/iCHAIT/awesome-macOS/pull/1019) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
+| [linsa-io/macos-apps](https://github.com/linsa-io/macos-apps/pull/81) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
+| [SoloUnity/macos-apps-and-enhancements](https://github.com/SoloUnity/macos-apps-and-enhancements/pull/31) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
+| [phmullins/awesome-macos](https://github.com/phmullins/awesome-macos/pull/251) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026. The list is barely maintained |
+| [Mac-Menubar-Megalist](https://github.com/SKaplanOfficial/Mac-Menubar-Megalist/issues/54) | <img src="badges/in-review.svg" alt="in review" height="24"> | Issue opened 19 Aug 2026, their preferred channel |
+| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 64 stars. Their form requires a person |
+| [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
+| [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
+
+<br>
+
 ## Holding through a closed lid
 
 Shipped in 1.3.0 for direct builds. Off by default.
