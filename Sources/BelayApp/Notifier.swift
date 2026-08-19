@@ -120,6 +120,23 @@ final class Notifier {
         )
     }
 
+    /// The lid hold letting go on its own — the parity the ROADMAP plan asked
+    /// for: a guard that fires silently is a Mac that went to sleep with the
+    /// lid closed and no explanation, which reads as Belay failing.
+    func lidReleased(dueToHeat: Bool) async {
+        guard settings.notifyOnSafetyRelease else { return }
+        let body =
+            dueToHeat
+            ? String(localized: "The Mac ran hot with the lid closed, so Belay let it sleep.")
+            : String(
+                localized: "The lid hold reached its time limit, so Belay let the Mac sleep.")
+        await post(
+            category: .safetyRelease,
+            title: String(localized: "Belay stopped holding"),
+            body: body
+        )
+    }
+
     func releasedForSafety(_ reason: SuspensionReason) async {
         guard settings.notifyOnSafetyRelease else { return }
         let body: String =

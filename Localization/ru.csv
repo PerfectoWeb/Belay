@@ -245,11 +245,13 @@ Stops Belay watching this tool,Settings: Providers,translated,,Stops watching th
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Подагент
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,Системный
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,"App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
+"The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The display dims at night,App,translated,,The display dims at night,Экран приглушается ночью
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Что добавит Belay
 The lid can close now,App,translated,,The lid can close now,Крышку теперь можно закрывать
+"The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,В проекте %@ это заняло %@. Mac снова может засыпать как обычно.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,Это заняло %@. Mac снова может засыпать как обычно.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Сервер вернул %lld.

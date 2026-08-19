@@ -14619,6 +14619,100 @@
           }
         }
       }
+    },
+    "The Mac ran hot with the lid closed, so Belay let it sleep.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Mac wurde mit geschlossenem Deckel zu warm, also hat Belay ihn schlafen lassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Mac ran hot with the lid closed, so Belay let it sleep."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El Mac se calentó demasiado con la tapa cerrada, así que Belay lo dejó dormir."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le Mac a trop chauffé capot fermé, alors Belay l'a laissé dormir."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il Mac si è scaldato troppo a coperchio chiuso, così Belay lo ha lasciato dormire."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖后 Mac 过热，Belay 已让它进入睡眠。"
+          }
+        }
+      }
+    },
+    "The lid hold reached its time limit, so Belay let the Mac sleep.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Halten bei geschlossenem Deckel hat sein Zeitlimit erreicht, also hat Belay den Mac schlafen lassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lid hold reached its time limit, so Belay let the Mac sleep."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La retención con la tapa cerrada alcanzó su límite de tiempo, así que Belay dejó dormir el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le maintien capot fermé a atteint sa limite de temps, alors Belay a laissé le Mac dormir."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il mantenimento a coperchio chiuso ha raggiunto il limite di tempo, così Belay ha lasciato dormire il Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖保持唤醒已到达时间上限，Belay 已让 Mac 进入睡眠。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

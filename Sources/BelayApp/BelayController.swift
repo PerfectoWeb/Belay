@@ -61,7 +61,7 @@ final class BelayController {
         notifier = Notifier(settings: settings)
         nightDimming = NightDimmingController(settings: settings, state: state)
         #if !BELAY_MAS
-        lidHold = LidHoldController(settings: settings, state: state)
+        lidHold = LidHoldController(settings: settings, state: state, notifier: notifier)
         #endif
         state.mode = settings.mode
     }

@@ -245,11 +245,13 @@ Stops Belay watching this tool,Settings: Providers,translated,,Stops watching th
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagente
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,Sistema
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,L'App Store tiene Belay aggiornato e ti avvisa quando è pronta una nuova versione. Belay non si connette mai a internet.
+"The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Il Mac si è scaldato troppo a coperchio chiuso, così Belay lo ha lasciato dormire."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,L'agente in %@ si è fermato senza finire. Potrebbe servire un nuovo accesso.
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,L'agente si è fermato senza finire. Potrebbe servire un nuovo accesso.
 The display dims at night,App,translated,,The display dims at night,Lo schermo si attenua di notte
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Cosa aggiungerà Belay
 The lid can close now,App,translated,,The lid can close now,Il coperchio ora può chiudersi
+"The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Il mantenimento a coperchio chiuso ha raggiunto il limite di tempo, così Belay ha lasciato dormire il Mac."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,L'esecuzione in %@ è durata %@. Il Mac può tornare ad andare in stop normalmente.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,L'esecuzione è durata %@. Il Mac può tornare ad andare in stop normalmente.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Il server ha restituito %lld.

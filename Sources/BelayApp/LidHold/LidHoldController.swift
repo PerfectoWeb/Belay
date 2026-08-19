@@ -18,6 +18,7 @@ final class LidHoldController {
 
     private let settings: SettingsStore
     private let state: AppState
+    private let notifier: Notifier
     private var machine = LidHold()
     private var ticker: Timer?
     private var connection: NSXPCConnection?
@@ -26,9 +27,10 @@ final class LidHoldController {
     /// observation: the row reads it directly each render.
     private(set) var serviceStatus: SMAppService.Status = .notRegistered
 
-    init(settings: SettingsStore, state: AppState) {
+    init(settings: SettingsStore, state: AppState, notifier: Notifier) {
         self.settings = settings
         self.state = state
+        self.notifier = notifier
     }
 
     private var service: SMAppService {
@@ -84,6 +86,17 @@ final class LidHoldController {
             heartbeat()
         case .release(let reason):
             standDown(cause: "\(reason)")
+            // The guards say so out loud, the way the battery guard does: a
+            // Mac that slept with the lid shut and no explanation reads as
+            // Belay failing, not as Belay protecting the machine.
+            switch reason {
+            case .thermal:
+                Task { [notifier] in await notifier.lidReleased(dueToHeat: true) }
+            case .capReached:
+                Task { [notifier] in await notifier.lidReleased(dueToHeat: false) }
+            case .done:
+                break
+            }
         case nil:
             if machine.isEngaged { heartbeat() }
         }
