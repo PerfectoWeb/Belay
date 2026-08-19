@@ -46,20 +46,20 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
-| 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases), eight days after the first commit |
+| 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
 | ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
 | 💫 | **256 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
-| 📈 | **1000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
+| 📈 | **1 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
 | 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | 25 Aug 2026, or 64 stars. Their form requires a person |
 | 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 17 Aug 2026](https://github.com/jqueryscript/awesome-claude-code/pull/601) |
 | 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source; Belay is source available |
 | 📰 | First independent write-up | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something worth writing about |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, if Sparkle's window starts getting in the way |
 | 🌠 | **512 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something that gives people a reason to look |
-| 🏅 | **10000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing to schedule. It follows from the work above |
+| 🏅 | **10 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing to schedule. It follows from the work above |
 | 📣 | First large outlet | <img src="badges/waiting.svg" alt="waiting" height="24"> | Small ones first |
 
 <br>
