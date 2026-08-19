@@ -100,6 +100,48 @@ let offNote = 466.16   // A#4
 let autoNote = 587.33  // D5
 let onNote = 739.99    // F#5
 
+/// The typing on the little screen: bursts of tiny keys with word-gaps
+/// between them, thinning out while the agents finish and gone before the Mac
+/// sighs. Deterministic — the LCG's seed is fixed — so the file remains a
+/// function of this script like everything else here.
+func typing() -> [Double] {
+    var seed: UInt64 = 0x9E37_79B9_7F4A_7C15
+    func random() -> Double {
+        seed = seed &* 6_364_136_223_846_793_005 &+ 1_442_695_040_888_963_407
+        return Double(seed >> 11) / Double(1 << 53)
+    }
+    var notes: [Note] = []
+    var at = 0.15
+    while at < 6.6 {
+        let keys = 3 + Int(random() * 5)
+        for _ in 0..<keys where at < 6.6 {
+            // Full speed while the work animation runs, then sparser as the
+            // agents pop one by one: the last keystrokes of a run wrapping up.
+            let density = at < 5.0 ? 1.0 : max(0, (6.6 - at) / 1.6)
+            if random() < density {
+                notes.append(
+                    Note(
+                        frequency: 520 + random() * 240,
+                        at: at,
+                        decay: 0.014,
+                        level: 0.013 + random() * 0.006,
+                        partials: [(2.0, 0.04)],
+                        bend: -0.05))
+            }
+            at += 0.055 + random() * 0.06
+        }
+        // Now and then a thumb finds the space bar: lower, a shade longer.
+        if random() < 0.5, at < 6.4 {
+            notes.append(
+                Note(
+                    frequency: 340 + random() * 40, at: at, decay: 0.018, level: 0.015,
+                    partials: [(2.0, 0.03)], bend: -0.08))
+        }
+        at += 0.16 + random() * 0.22
+    }
+    return render(notes, length: 7.0)
+}
+
 let sounds: [String: [Double]] = [
     // Auto. The mode Belay is meant to be left in, so it is the plainest.
     "mode-auto": render([Note(frequency: autoNote, at: 0, decay: 0.075, level: 0.13)], length: 0.30),
@@ -141,16 +183,11 @@ let sounds: [String: [Double]] = [
                 partials: [(2.0, 0.09), (3.17, 0.03)]),
         ], length: 0.58),
 
-    // Something new arrived: the What's New window. One warm note that comes
-    // up from below — the agent-pop's negative bend slowed down until it stops
-    // being a bubble and starts being an unwrapping. Chosen by ear from four
-    // candidates on 2026-08-18.
-    "whats-new": render(
-        [
-            Note(
-                frequency: 659.25, at: 0, decay: 0.11, level: 0.11,
-                partials: [(2.0, 0.07), (3.17, 0.025)], bend: -0.25)
-        ], length: 0.42),
+    // The keys under the whole first act of the welcome scene: quiet enough
+    // to be texture, and the pops land on top of it the way bubbles rise off
+    // a surface. The one bed in a set of strikes; it must be finished before
+    // the Mac sighs, and the scene test holds it to that.
+    "welcome-typing": typing(),
 
     // An agent finishing, in the welcome scene. A bubble, so the pitch runs the
     // other way: it starts well flat and arrives, which is what a negative bend

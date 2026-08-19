@@ -32,3 +32,25 @@ it presented differently, or not at all, open an issue and it will be changed.
 
 Belay ships no artwork it does not have the right to ship. If you are packaging
 a fork for distribution, that responsibility becomes yours.
+
+## Third-party sounds
+
+Two recordings come from Pixabay. Every other sound in `Resources/Sounds` is
+synthesised by `scripts/make-sounds.swift`; these are the deliberate
+exception, and this is their provenance, verified against each sound's page
+on 2026-08-19:
+
+- `welcome-spell.mp3` — "Magic Spell" by freesounds123,
+  pixabay.com/sound-effects/magic-spell-333896/
+- `welcome-cinematic.mp3` — "Hybrid Cinematic - 15 sec" by LiteSaturation,
+  pixabay.com/sound-effects/hybrid-cinematic-15-sec-213055/
+
+Both are under the Pixabay Content License: free for commercial use, no
+attribution required — credited here anyway, because it costs two lines.
+
+`whats-new.wav` is the first strike cut from a chime the project's author
+supplied; it is part of Belay like the synthesised files are.
+The licence forbids redistributing content "on a standalone basis"; these
+files ship inside the app and inside its source tree as part of a larger
+work, which is the use the licence describes, not the one it forbids. Anyone
+extracting the files from either to pass along on their own is outside it.

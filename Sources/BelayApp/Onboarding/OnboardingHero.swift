@@ -56,6 +56,9 @@ extension OnboardingView {
                 // Centred in all of the panel, titlebar included: it has the
                 // panel to itself, and centring under the titlebar read as low.
                 WelcomeFlourish(
+                    // The cinematic is not started here with the sky: the
+                    // flourish owns the clock and starts it a second early,
+                    // so the picture rises into music already playing.
                     onWritten: { withAnimation(.easeInOut(duration: 0.8)) { skyUp = true } },
                     onFinished: { withAnimation(.easeInOut(duration: 0.45)) { greeted = true } }
                 )

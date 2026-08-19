@@ -46,9 +46,6 @@ final class WhatsNewWindow: NSObject {
             settings.lastSeenVersion = version
             Log.app.notice("showing release notes for \(version, privacy: .public)")
             present(notes)
-            // Only on arrival. Reopening the notes from About is a click with
-            // its own tick; this sound belongs to the update having landed.
-            Feedback.play(.whatsNew)
         }
     }
 
@@ -64,7 +61,37 @@ final class WhatsNewWindow: NSObject {
             delegate: self)
         self.window = window
         NSApp.activate(ignoringOtherApps: true)
+        switchOn(window)
+        // The window's own sound, wherever it was summoned from: the update
+        // landing, the About row, the workbench. One moment, one voice — the
+        // About row deliberately has no click sound of its own. It is the
+        // switch-on itself: a two-second glitch over a third-of-a-second
+        // expansion, so the picture is already whole while the sound settles.
+        Feedback.play(.whatsNew)
+    }
+
+    /// A television turning on: the window arrives as a strip across the
+    /// middle of where it will stand, then opens upward and downward at once
+    /// to its full height. The width never changes, so the content is only
+    /// ever revealed, not reflowed sideways.
+    ///
+    /// Reduce Motion gets the finished window with no theatre, like every
+    /// other animation in the app.
+    private func switchOn(_ window: NSWindow) {
+        let final = window.frame
+        guard !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion else {
+            window.makeKeyAndOrderFront(nil)
+            return
+        }
+        let strip = NSRect(
+            x: final.minX, y: final.midY - 5, width: final.width, height: 10)
+        window.setFrame(strip, display: false)
         window.makeKeyAndOrderFront(nil)
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.32
+            context.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            window.animator().setFrame(final, display: true)
+        }
     }
 
     func dismiss() {

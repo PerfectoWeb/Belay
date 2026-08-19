@@ -101,19 +101,19 @@ final class OnboardingSceneTests: XCTestCase {
         XCTAssertGreaterThan(sleeping, stopped, "the Mac starts sleeping before the agent stops")
     }
 
-    /// Nothing is ever heard over anything else, including across the wrap.
+    /// No two *events* are ever heard over each other, including across the
+    /// wrap. The typing bed is the deliberate exception: it is texture, the
+    /// pops land on it the way bubbles rise off a surface, and its own rule
+    /// is below — gone before the Mac sighs.
     ///
     /// The scene's sounds are scheduled by a list of times and played by files
     /// of a fixed length, so two of them landing on top of each other is
     /// arithmetic and not something anybody should have to notice by ear.
     func testNoTwoSceneSoundsAreHeardAtOnce() throws {
-        let cues = OnboardingScene.cues
+        let cues = OnboardingScene.cues.filter { $0.sound != OnboardingScene.bed }
         var last: (at: Double, ends: Double)?
         for cue in cues {
-            let file = try XCTUnwrap(
-                Bundle(for: Self.self).url(forResource: cue.sound.rawValue, withExtension: "wav")
-                    ?? Bundle.main.url(forResource: cue.sound.rawValue, withExtension: "wav"))
-            let effect = try XCTUnwrap(NSSound(contentsOf: file, byReference: false))
+            let effect = try effect(cue.sound)
             if let previous = last {
                 XCTAssertLessThanOrEqual(
                     previous.ends, cue.at,
@@ -126,5 +126,23 @@ final class OnboardingSceneTests: XCTestCase {
         let wrap = try XCTUnwrap(last)
         XCTAssertLessThanOrEqual(
             wrap.ends, loop + (cues.first?.at ?? 0), "the last sound runs into the next pass")
+    }
+
+    /// The bed's own promise: under the working act and the pops, finished
+    /// before the sigh. A keyboard heard while the Mac drifts off would say
+    /// somebody is still typing, which is the opposite of the story.
+    func testTheTypingBedEndsBeforeTheSigh() throws {
+        let cues = OnboardingScene.cues
+        let bed = try XCTUnwrap(cues.first { $0.sound == OnboardingScene.bed })
+        let sigh = try XCTUnwrap(cues.first { $0.sound == .driftingOff })
+        let ends = bed.at + (try effect(bed.sound)).duration
+        XCTAssertLessThanOrEqual(ends, sigh.at, "the typing runs into the Mac's sigh")
+    }
+
+    private func effect(_ sound: Feedback.Sound) throws -> NSSound {
+        let file = try XCTUnwrap(
+            Bundle(for: Self.self).url(forResource: sound.rawValue, withExtension: "wav")
+                ?? Bundle.main.url(forResource: sound.rawValue, withExtension: "wav"))
+        return try XCTUnwrap(NSSound(contentsOf: file, byReference: false))
     }
 }

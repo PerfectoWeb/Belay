@@ -51,8 +51,10 @@ final class WhatsNewDecisionTests: XCTestCase {
             .show(notes: big, record: "1.10.0"))
     }
 
-    func testAnUpdateShowsEverythingReleasedSinceTheLastOneSeen() {
-        XCTAssertEqual(outcome("1.2.0", "1.0.0"), .show(notes: notes, record: "1.2.0"))
+    /// The window announces the update that just happened and nothing else.
+    /// Whatever was skipped on the way lives in the changelog, not on screen.
+    func testAnUpdateShowsTheInstalledVersionOnly() {
+        XCTAssertEqual(outcome("1.2.0", "1.0.0"), .show(notes: [notes[0]], record: "1.2.0"))
         XCTAssertEqual(outcome("1.2.0", "1.1.0"), .show(notes: [notes[0]], record: "1.2.0"))
     }
 
@@ -80,8 +82,9 @@ final class WhatsNewDecisionTests: XCTestCase {
         XCTAssertEqual(outcome("1.2.0", "banana"), .recordOnly("1.2.0"))
     }
 
-    /// The window has no scroll view, so the item count is the window height.
-    func testTheListIsCappedSoTheWindowCannotOutgrowTheScreen() {
+    /// Five versions skipped, one window: only the newest is on screen, so the
+    /// window cannot outgrow the screen however long somebody waited.
+    func testSkippedVersionsStayInTheChangelog() {
         let many = (1...5).map { index in
             ReleaseNote(
                 version: "1.\(index).0",
@@ -93,25 +96,7 @@ final class WhatsNewDecisionTests: XCTestCase {
                 current: "1.5.0", lastSeen: "1.0.0", onboarded: true, catalogue: Array(many))
         else { return XCTFail("expected notes") }
 
-        XCTAssertEqual(shown.map(\.version), ["1.5.0", "1.4.0"])
-        XCTAssertLessThanOrEqual(
-            shown.reduce(0) { $0 + $1.items.count }, WhatsNewDecision.maximumItems)
-    }
-
-    /// A single release with more to say than the cap allows is shown whole.
-    /// Trimming the version somebody just installed is the one truncation that
-    /// defeats the point of the screen.
-    func testTheNewestVersionIsNeverTrimmed() {
-        let fat = [
-            ReleaseNote(
-                version: "1.2.0",
-                items: (1...9).map { .init(symbol: "gift\($0)", title: "t", body: "b") })
-        ]
-        guard
-            case .show(let shown, _) = WhatsNewDecision.outcome(
-                current: "1.2.0", lastSeen: "1.1.0", onboarded: true, catalogue: fat)
-        else { return XCTFail("expected notes") }
-        XCTAssertEqual(shown.first?.items.count, 9)
+        XCTAssertEqual(shown.map(\.version), ["1.5.0"])
     }
 }
 

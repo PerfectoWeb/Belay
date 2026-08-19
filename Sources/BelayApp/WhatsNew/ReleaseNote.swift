@@ -58,15 +58,18 @@ struct ReleaseNote: Equatable {
     }
 }
 
-/// Every version that has anything to announce.
+/// The announcement for the version being released, and only that one.
 ///
-/// **Adding a release.** Put the newest entry at the top. Three to five items,
-/// each earning its icon, and everything else as an aside. Each `title`, `body`
-/// and aside is a new key in `Resources/Localizable.xcstrings` and has to be
-/// translated into every language before the gate goes green:
-/// `LocalizationTests` counts the tables and fails when they differ. That cost is
-/// the feature working. An announcement screen that shows English to a German
-/// user is worse than no announcement.
+/// **Adding a release.** Replace the entry — the window shows the update that
+/// just happened and nothing else, and every skipped version's story lives in
+/// `CHANGELOG.md`. Retire the old entry's strings from the catalogue when it
+/// goes. Three to five items, each earning its icon, and everything else as an
+/// aside. Each `title`, `body` and aside is a new key in
+/// `Resources/Localizable.xcstrings` and has to be translated into every
+/// language before the gate goes green: `LocalizationTests` counts the tables
+/// and fails when they differ. That cost is the feature working. An
+/// announcement screen that shows English to a German user is worse than no
+/// announcement.
 ///
 /// A version with no entry here shows nothing and is recorded silently, which is
 /// the right behaviour for a hotfix. Omission is a decision, not an oversight.
@@ -91,6 +94,8 @@ enum ReleaseNotes {
         static let safety = "shield"
         static let speed = "bolt"
         static let language = "globe"
+        static let night = "moon.stars"
+        static let lid = "laptopcomputer.and.arrow.down"
     }
 
     static var all: [ReleaseNote] {
@@ -113,38 +118,37 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.2.1",
+                version: "1.3.0",
                 items: [
                     .init(
-                        symbol: Mark.update,
-                        title: "Updates, right in the menu bar",
+                        symbol: Mark.night,
+                        title: "The display dims at night",
                         body: """
-                            When an update is ready, the menu bar shows it, but \
-                            only when nothing is running.
-                            """,
-                        directOnly: true),
-                    .init(
-                        symbol: Mark.told,
-                        title: "Told once, never nagged",
-                        body: """
-                            One notification per version. Open it to see what \
-                            changed and update when you're ready.
-                            """,
-                        directOnly: true),
-                    .init(
-                        symbol: Mark.quiet,
-                        title: "When an agent goes quiet",
-                        body: """
-                            If a session stops without finishing, Belay now says \
-                            so instead of making it look complete.
+                            While Belay holds overnight, the display fades to a \
+                            glow when you step away, and comes back the moment \
+                            you return. Off by default.
                             """),
                     .init(
-                        symbol: Mark.polish,
-                        title: "A little more polish",
+                        symbol: Mark.lid,
+                        title: "The lid can close now",
                         body: """
-                            A handful of interface improvements, mostly in places \
-                            you already use.
+                            An optional system helper keeps the run alive with \
+                            the lid shut. A time cap and a heat release are \
+                            always on.
+                            """,
+                        directOnly: true),
+                    .init(
+                        symbol: Mark.safety,
+                        title: "Held through the retries",
+                        body: """
+                            When the model is overloaded and your agent is \
+                            retrying, Belay now knows the run is alive and \
+                            keeps holding.
                             """)
+                ],
+                asides: [
+                    .init(text: "Little sounds for the welcome scene and this window."),
+                    .init(text: "Diagnostics keep a fuller local log of what Belay did.")
                 ]
             )
         ]

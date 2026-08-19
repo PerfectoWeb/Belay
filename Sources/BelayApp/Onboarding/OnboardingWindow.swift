@@ -61,9 +61,21 @@ final class OnboardingWindow: NSObject {
     func dismiss() {
         settings.hasCompletedOnboarding = true
         settings.lastSeenVersion = Branding.version
+        silence()
         window?.orderOut(nil)
         window?.delegate = nil
         window = nil
+    }
+
+    /// The long sounds outlive any one picture on purpose — the recordings by
+    /// design, the typing bed by being seven seconds of texture — so the
+    /// window going away is the one thing that must cut them all off. The
+    /// short strikes are left alone: a pop's tail is over before the window
+    /// finishes ordering out.
+    private func silence() {
+        Feedback.stop(.welcomeSpell)
+        Feedback.stop(.welcomeCinematic)
+        Feedback.stop(.welcomeTyping)
     }
 
     var isVisible: Bool { window?.isVisible ?? false }
@@ -73,6 +85,7 @@ extension OnboardingWindow: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         settings.hasCompletedOnboarding = true
         settings.lastSeenVersion = Branding.version
+        silence()
         window = nil
     }
 }

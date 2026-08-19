@@ -1647,100 +1647,6 @@
         }
       }
     },
-    "A handful of interface improvements, mostly in places you already use.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein paar Verbesserungen an der Oberfläche, meist an Stellen, die du ohnehin nutzt."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A handful of interface improvements, mostly in places you already use."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unas cuantas mejoras en la interfaz, sobre todo en sitios que ya usas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quelques améliorations de l'interface, surtout aux endroits que vous utilisez déjà."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alcuni miglioramenti all'interfaccia, soprattutto dove già passi."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Несколько улучшений интерфейса, в основном там, где вы и так бываете."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一些界面上的改进，主要在你本来就常用的地方。"
-          }
-        }
-      }
-    },
-    "A little more polish": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein wenig mehr Feinschliff"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A little more polish"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un poco más de pulido"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un peu plus de finition"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un po' più di rifinitura"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Немного больше лоска"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "再打磨一点"
-          }
-        }
-      }
-    },
     "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.": {
       "extractionState": "manual",
       "localizations": {
@@ -6441,53 +6347,6 @@
         }
       }
     },
-    "If a session stops without finishing, Belay now says so instead of making it look complete.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn eine Sitzung ohne Abschluss stoppt, sagt Belay das jetzt, statt sie fertig aussehen zu lassen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If a session stops without finishing, Belay now says so instead of making it look complete."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si una sesión se detiene sin terminar, Belay ahora lo dice en vez de hacer que parezca completa."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si une session s'arrête sans finir, Belay le dit maintenant au lieu de la faire passer pour terminée."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se una sessione si ferma senza finire, Belay ora lo dice invece di farla sembrare completata."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если сессия остановилась не закончив, Belay теперь говорит об этом, а не выдаёт её за завершённую."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果会话没有完成就停下，Belay 现在会说明，而不是让它看起来已完成。"
-          }
-        }
-      }
-    },
     "It needs an answer from you before it can carry on.": {
       "extractionState": "manual",
       "localizations": {
@@ -8556,53 +8415,6 @@
         }
       }
     },
-    "One notification per version. Open it to see what changed and update when you're ready.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Mitteilung pro Version. Öffne sie, um zu sehen, was neu ist, und aktualisiere, wenn es dir passt."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One notification per version. Open it to see what changed and update when you're ready."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una notificación por versión. Ábrela para ver qué ha cambiado y actualiza cuando quieras."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une notification par version. Ouvrez-la pour voir ce qui a changé et mettez à jour quand vous voulez."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una notifica per versione. Aprila per vedere cosa è cambiato e aggiorna quando vuoi."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Одно уведомление на версию. Откройте его, чтобы посмотреть изменения и обновиться, когда будет удобно."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每个版本一条通知。打开它查看更新内容，准备好时再更新。"
-          }
-        }
-      }
-    },
     "Only for runs longer than %@.": {
       "extractionState": "manual",
       "localizations": {
@@ -9731,53 +9543,6 @@
         }
       }
     },
-    "Report an Issue…": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problem melden…"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report an Issue…"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informar de un problema…"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Signaler un problème…"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Segnala un problema…"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сообщить о проблеме…"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "报告问题…"
-          }
-        }
-      }
-    },
     "Reset…": {
       "extractionState": "manual",
       "localizations": {
@@ -10056,53 +9821,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "低电量模式下缩短等待时间"
-          }
-        }
-      }
-    },
-    "Show Reports…": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Berichte anzeigen…"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Reports…"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar informes…"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher les rapports…"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra i rapporti…"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показать отчёты…"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示报告…"
           }
         }
       }
@@ -11423,53 +11141,6 @@
         }
       }
     },
-    "Told once, never nagged": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einmal gesagt, nie genervt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Told once, never nagged"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se avisa una vez, sin insistir"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dit une fois, jamais de relance"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Detto una volta, senza insistere"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Скажет один раз и не будет напоминать"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "只说一次，不再打扰"
-          }
-        }
-      }
-    },
     "Until turned off": {
       "extractionState": "manual",
       "localizations": {
@@ -11654,53 +11325,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "立即更新到 v%@"
-          }
-        }
-      }
-    },
-    "Updates, right in the menu bar": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Updates direkt in der Menüleiste"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Updates, right in the menu bar"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Actualizaciones en la barra de menús"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les mises à jour dans la barre de menus"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aggiornamenti nella barra dei menu"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновления прямо в меню-баре"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更新就在菜单栏里"
           }
         }
       }
@@ -12411,53 +12035,6 @@
         }
       }
     },
-    "When an agent goes quiet": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Agent verstummt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an agent goes quiet"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando un agente se queda en silencio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand un agent se tait"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando un agente resta in silenzio"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда агент замолкает"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当智能体没有动静时"
-          }
-        }
-      }
-    },
     "When an agent needs you": {
       "extractionState": "manual",
       "localizations": {
@@ -12501,53 +12078,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "智能体需要你时"
-          }
-        }
-      }
-    },
-    "When an update is ready, the menu bar shows it, but only when nothing is running.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Update bereit ist, zeigt die Menüleiste es an, aber nur wenn nichts läuft."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an update is ready, the menu bar shows it, but only when nothing is running."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando hay una actualización lista, la barra de menús lo muestra, pero solo cuando no se ejecuta nada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand une mise à jour est prête, la barre de menus l'affiche, mais seulement quand rien ne tourne."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando un aggiornamento è pronto, la barra dei menu lo mostra, ma solo quando non sta girando nulla."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда обновление готово, меню-бар показывает это, но только когда ничего не выполняется."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更新准备好时，菜单栏会显示，但只在没有任务运行时。"
           }
         }
       }
@@ -14569,6 +14099,523 @@
           "stringUnit": {
             "state": "translated",
             "value": "合上盖子后 Belay 让 Mac 保持唤醒，到达时间上限或 Mac 过热时会自行松开。"
+          }
+        }
+      }
+    },
+    "The display dims at night": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Display dunkelt nachts ab"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The display dims at night"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pantalla se atenúa por la noche"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'écran s'atténue la nuit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo schermo si attenua di notte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экран приглушается ночью"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间显示器自动调暗"
+          }
+        }
+      }
+    },
+    "While Belay holds overnight, the display fades to a glow when you step away, and comes back the moment you return. Off by default.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hält Belay über Nacht wach, dimmt das Display zu einem Schimmer, sobald du weggehst, und kommt zurück, sobald du es tust. Standardmäßig aus."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While Belay holds overnight, the display fades to a glow when you step away, and comes back the moment you return. Off by default."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay mantiene el Mac despierto de noche, la pantalla se atenúa hasta un resplandor cuando te alejas y vuelve en cuanto regresas. Desactivado por defecto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand Belay veille la nuit, l'écran se réduit à une lueur dès que vous vous éloignez, et revient à votre retour. Désactivé par défaut."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se Belay tiene sveglio il Mac di notte, lo schermo si riduce a un bagliore quando ti allontani e torna al tuo ritorno. Disattivato di default."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пока Belay держит Mac ночью, экран гаснет до свечения, когда вы отходите, и возвращается в момент вашего возвращения. По умолчанию выключено."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间 Belay 保持唤醒时，你一离开，显示器就淡成微光；你一回来它就恢复。默认关闭。"
+          }
+        }
+      }
+    },
+    "The lid can close now": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Deckel darf jetzt zu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lid can close now"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La tapa ya puede cerrarse"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le capot peut se fermer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il coperchio ora può chiudersi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крышку теперь можно закрывать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "现在可以合上盖子了"
+          }
+        }
+      }
+    },
+    "An optional system helper keeps the run alive with the lid shut. A time cap and a heat release are always on.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein optionaler Systemhelfer hält die Arbeit bei geschlossenem Deckel am Leben. Zeitlimit und Hitzeschutz sind immer aktiv."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An optional system helper keeps the run alive with the lid shut. A time cap and a heat release are always on."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un ayudante opcional del sistema mantiene el trabajo vivo con la tapa cerrada. El límite de tiempo y la protección térmica siempre están activos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un assistant système facultatif garde le travail en vie capot fermé. Le plafond de temps et la protection thermique sont toujours actifs."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un helper di sistema opzionale tiene vivo il lavoro a coperchio chiuso. Limite di tempo e protezione dal calore sempre attivi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Необязательный системный помощник сохраняет работу при закрытой крышке. Лимит времени и тепловая защита включены всегда."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可选的系统帮助程序让运行在合盖后继续。时间上限与过热保护始终生效。"
+          }
+        }
+      }
+    },
+    "Held through the retries": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auch beim Neuversuch gehalten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Held through the retries"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sostenido durante los reintentos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tenu pendant les nouvelles tentatives"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tenuto durante i tentativi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Держит сквозь повторные попытки"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重试期间继续保持唤醒"
+          }
+        }
+      }
+    },
+    "When the model is overloaded and your agent is retrying, Belay now knows the run is alive and keeps holding.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ist das Modell überlastet und dein Agent versucht es erneut, weiß Belay jetzt, dass die Arbeit lebt, und hält weiter."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the model is overloaded and your agent is retrying, Belay now knows the run is alive and keeps holding."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando el modelo está sobrecargado y tu agente reintenta, Belay ahora sabe que el trabajo sigue vivo y no lo suelta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand le modèle est surchargé et que votre agent réessaie, Belay sait désormais que le travail est vivant et tient bon."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando il modello è sovraccarico e il tuo agente riprova, Belay ora sa che il lavoro è vivo e continua a tenere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда модель перегружена и агент повторяет запрос, Belay теперь знает, что работа жива, и продолжает держать."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当模型过载、智能体在重试时，Belay 现在知道运行仍在继续，会保持唤醒不放。"
+          }
+        }
+      }
+    },
+    "Little sounds for the welcome scene and this window.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kleine Klänge für die Begrüßung und dieses Fenster."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Little sounds for the welcome scene and this window."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pequeños sonidos para la bienvenida y esta ventana."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De petits sons pour l'accueil et cette fenêtre."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piccoli suoni per il benvenuto e questa finestra."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Маленькие звуки для приветствия и этого окна."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "欢迎场景和这个窗口有了小小的声音。"
+          }
+        }
+      }
+    },
+    "Diagnostics keep a fuller local log of what Belay did.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Diagnose führt ein volleres lokales Protokoll darüber, was Belay getan hat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics keep a fuller local log of what Belay did."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El diagnóstico guarda un registro local más completo de lo que hizo Belay."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les diagnostics gardent un journal local plus complet de ce que Belay a fait."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La diagnostica tiene un registro locale più completo di ciò che Belay ha fatto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диагностика ведёт более полный локальный журнал действий Belay."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断会在本机保留更完整的 Belay 行为日志。"
+          }
+        }
+      }
+    },
+    "When an agent goes quiet": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Agent verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When an agent goes quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando un agente se queda en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand un agent se tait"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando un agente resta in silenzio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда агент замолкает"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当智能体没有动静时"
+          }
+        }
+      }
+    },
+    "Show Reports": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berichte anzeigen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Reports"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar informes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les rapports"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra i rapporti"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать отчёты"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示报告"
+          }
+        }
+      }
+    },
+    "Report an Issue": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem melden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report an Issue"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informar de un problema"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signaler un problème"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segnala un problema"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сообщить о проблеме"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报告问题"
           }
         }
       }

@@ -13,8 +13,16 @@ import XCTest
 @MainActor
 final class FeedbackTests: XCTestCase {
     private func url(_ sound: Feedback.Sound) -> URL? {
-        Bundle(for: Self.self).url(forResource: sound.rawValue, withExtension: "wav")
-            ?? Bundle.main.url(forResource: sound.rawValue, withExtension: "wav")
+        for bundle in [Bundle(for: Self.self), Bundle.main] {
+            for extension_ in ["wav", "mp3"] {
+                if let found = bundle.url(
+                    forResource: sound.rawValue, withExtension: extension_)
+                {
+                    return found
+                }
+            }
+        }
+        return nil
     }
 
     func testEverySoundIsInTheBundle() throws {
@@ -25,11 +33,27 @@ final class FeedbackTests: XCTestCase {
 
     /// Confirmations, not announcements. A sound long enough to still be playing
     /// when the user has moved on is one they will turn off.
+    ///
+    /// Some sounds answer to a different clock — they are scored to the
+    /// welcome scene's pictures, not to a moment: the spell to the writing it
+    /// rings out from, the cinematic to the scene's whole arrival, the typing
+    /// bed to the first act. Cutting any to the feedback budget would stop
+    /// the sound while its picture is still moving, so each carries the
+    /// ceiling of the thing it accompanies. Named exceptions, the way
+    /// "thanks" is to the one-note rule; everything else keeps 0.8 s.
+    private static let scoredCeilings: [Feedback.Sound: Double] = [
+        .welcomeSpell: 8.5,
+        .welcomeCinematic: 16.0,
+        .welcomeTyping: 7.1,
+        .whatsNew: 1.3,
+    ]
+
     func testNothingOutstaysItsWelcome() throws {
         for sound in Feedback.Sound.allCases {
             let file = try XCTUnwrap(url(sound))
             let effect = try XCTUnwrap(NSSound(contentsOf: file, byReference: false))
-            XCTAssertLessThan(effect.duration, 0.8, "\(sound.rawValue) runs on")
+            let ceiling = Self.scoredCeilings[sound] ?? 0.8
+            XCTAssertLessThan(effect.duration, ceiling, "\(sound.rawValue) runs on")
             XCTAssertGreaterThan(effect.duration, 0.05, "\(sound.rawValue) is a click")
         }
     }

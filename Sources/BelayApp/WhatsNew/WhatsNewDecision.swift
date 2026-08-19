@@ -35,14 +35,15 @@ enum WhatsNewDecision {
     /// - **Onboarded, a newer version:** record only. A downgrade has nothing to
     ///   announce, and leaving the higher number stored would announce nothing
     ///   on the way back up either.
-    /// - **Onboarded, an older version:** show everything released since, and
+    /// - **Onboarded, an older version:** show the version just installed, and
     ///   record.
     ///
-    /// The last row is the one with a choice in it. Apple's own screens show
-    /// only the version just installed; that loses whatever was in the versions
-    /// somebody skipped, and skipping is normal for an app updated on the
-    /// user's schedule rather than the store's. Everything newer than what they
-    /// saw is what they have not seen.
+    /// The last row once showed everything released since the version last
+    /// seen. That was reversed on purpose: this window announces the update
+    /// that just happened and nothing else — the agreed rule, written into
+    /// 1.2.1's own changelog — and the versions somebody skipped are exactly
+    /// what `CHANGELOG.md` is for. An announcement that doubles as an archive
+    /// grows past the screen and teaches people to dismiss it unread.
     static func outcome(
         current: String,
         lastSeen: String?,
@@ -58,47 +59,12 @@ enum WhatsNewDecision {
             return seen == now ? .nothing : .recordOnly(current)
         }
 
-        let fresh =
-            catalogue
-            .compactMap { note -> (AppVersion, ReleaseNote)? in
-                AppVersion(note.version).map { ($0, note) }
-            }
-            // Not `> seen` alone: notes for a version this build does not have
-            // yet must not leak out of a repository into a screen.
-            .filter { $0.0 > seen && $0.0 <= now }
-            .sorted { $0.0 > $1.0 }
-            .map(\.1)
-
         // A version with no notes written for it is not an occasion. This is the
         // ordinary case for a hotfix, and showing an empty window for one would
         // teach people to dismiss the screen without reading it.
-        guard !fresh.isEmpty else { return .recordOnly(current) }
-        return .show(notes: capped(fresh), record: current)
-    }
-
-    /// The most items the window will show, across however many versions.
-    ///
-    /// The window has no scroll view: it grows with its content, which is the
-    /// only arrangement that cannot clip a sentence in half. That makes the item
-    /// count the height, so the count is bounded here rather than by hoping
-    /// nobody skips four releases. Six rows of two or three lines each is about
-    /// a 700-point window, which fits the shortest screen this app supports.
-    static let maximumItems = 6
-
-    /// Trims from the oldest end, because the version somebody just installed is
-    /// the one they came to read about. A version is dropped whole rather than
-    /// half-shown: a heading over one of its four items would misrepresent it.
-    private static func capped(_ notes: [ReleaseNote]) -> [ReleaseNote] {
-        var kept: [ReleaseNote] = []
-        var count = 0
-        for note in notes {
-            // The newest version is kept whatever its length. If a release has
-            // seven things to say, that is the release being unusual, not the
-            // reader being shown too much.
-            guard kept.isEmpty || count + note.items.count <= maximumItems else { break }
-            kept.append(note)
-            count += note.items.count
+        guard let note = catalogue.first(where: { AppVersion($0.version) == now }) else {
+            return .recordOnly(current)
         }
-        return kept
+        return .show(notes: [note], record: current)
     }
 }

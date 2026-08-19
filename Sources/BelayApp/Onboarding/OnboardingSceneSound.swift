@@ -23,9 +23,15 @@ extension OnboardingScene {
     /// once is a property of this list and the length of the files, and both
     /// are known without playing anything.
     static var cues: [(at: Double, sound: Feedback.Sound)] {
-        (0..<4).map { (at: popTime($0), sound: Feedback.Sound.agentPop) }
+        [(at: 0.0, sound: Feedback.Sound.welcomeTyping)]
+            + (0..<4).map { (at: popTime($0), sound: Feedback.Sound.agentPop) }
             + [(at: 8.35, sound: .driftingOff), (at: 10.8, sound: .wakingUp)]
     }
+
+    /// The one cue that is a texture rather than an event. The pops land on
+    /// it on purpose — bubbles rising off a surface — so the no-overlap rule
+    /// treats it separately: it must only be gone before the Mac sighs.
+    static var bed: Feedback.Sound { .welcomeTyping }
 
     /// How late a cue may be and still be worth playing. Past this the moment
     /// it belongs to is off the screen, and a pop with nothing popping is worse
