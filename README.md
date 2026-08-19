@@ -39,7 +39,7 @@ sixty seconds too long costs nothing at all.
 
 <table>
 <tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌&nbsp;<b>Every&nbsp;agent</b></td><td>Codex, Gemini CLI, Cline and Aider ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
+<tr><td>🔌&nbsp;<b>Every&nbsp;agent</b></td><td>Codex, Gemini CLI, Cline, Aider and Pi ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
 <tr><td>🛡&nbsp;<b>Never&nbsp;stuck</b></td><td>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
 <tr><td>🔋&nbsp;<b>Your&nbsp;rails</b></td><td>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
 <tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
