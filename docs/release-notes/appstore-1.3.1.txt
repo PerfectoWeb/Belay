@@ -1,0 +1,51 @@
+App Store "What's New in This Version" — Belay 1.3.1
+(direct-only items are deliberately absent: the lid guards, the helper
+caption and the update-check logging all belong to the direct build)
+
+--- EN ---
+
+The chart now follows your cursor. Hover over a day in Statistics and the bar lifts while the figures above switch to that day. Move away and the totals return.
+
+Pi now has a built-in preset. One click in Settings starts watching its sessions. Added after a request on GitHub.
+
+Also: if an agent stops mid-answer, Belay now marks the run as gone quiet instead of finished. And if you launch Belay while a run is already in progress, it picks it up right away.
+
+--- RU ---
+
+График статистики стал интерактивным. Наведите на день в статистике, и столбик приподнимется, а цифры сверху переключатся на этот день.
+
+Для Pi AI появился встроенный пресет. Один клик в настройках, и Belay начнёт следить за его сессиями.
+
+А также: если агент остановился посреди ответа, Belay теперь отмечает запуск как замолкший, а не завершённый. И если запустить Belay, когда работа уже идёт, он сразу её подхватит.
+
+--- ES ---
+
+El gráfico ahora sigue al cursor. Pasa por encima de un día en Estadísticas y la barra se elevará mientras las cifras de arriba cambian a ese día. Al apartar el cursor, vuelven los totales.
+
+Pi ahora tiene un ajuste predefinido integrado. Un clic en Ajustes basta para que Belay empiece a vigilar sus sesiones. Añadido a petición de un usuario en GitHub.
+
+Además: si un agente se detiene a mitad de una respuesta, Belay ahora marca la ejecución como interrumpida en lugar de terminada. Y si abres Belay cuando una ejecución ya está en marcha, la detecta al instante.
+
+--- FR ---
+
+Le graphique suit désormais votre curseur. Survolez un jour dans les statistiques : la barre se soulève et les chiffres au-dessus affichent les valeurs de ce jour. Éloignez le curseur et les totaux reviennent.
+
+Pi dispose maintenant d’un préréglage intégré. Un clic dans les réglages suffit pour que Belay commence à suivre ses sessions. Ajouté à la demande d’un utilisateur sur GitHub.
+
+Également : si un agent s’arrête au milieu d’une réponse, Belay indique désormais que l’exécution s’est tue au lieu de la considérer comme terminée. Et si vous lancez Belay alors qu’une exécution est déjà en cours, il la détecte immédiatement.
+
+--- IT ---
+
+Il grafico ora segue il cursore. Passa sopra un giorno nelle Statistiche e la barra si solleva mentre i valori in alto mostrano quel giorno. Sposta via il cursore e tornano i totali.
+
+Pi ora ha un preset integrato. Basta un clic nelle Impostazioni perché Belay inizi a seguire le sue sessioni. Aggiunto su richiesta di un utente su GitHub.
+
+Inoltre: se un agente si ferma a metà risposta, Belay ora segnala l’esecuzione come interrotta invece che conclusa. E se avvii Belay mentre un’esecuzione è già in corso, la rileva subito.
+
+--- ZH ---
+
+图表现在会跟随光标。将光标移到“统计”中的某一天，柱形会轻轻抬起，上方的数据也会切换到当天。移开光标后，总计数据会恢复。
+
+Pi 现在有了内置预设。在“设置”中点一下，Belay 就会开始监视它的会话。这个功能来自 GitHub 上的用户请求。
+
+另外：如果智能体在回答途中停止，Belay 现在会将这次运行标记为“没有动静”，而不是“已完成”。如果 Belay 启动时已有智能体在工作，也会立即识别并接手监视。

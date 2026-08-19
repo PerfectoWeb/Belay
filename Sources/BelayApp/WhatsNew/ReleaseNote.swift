@@ -96,6 +96,8 @@ enum ReleaseNotes {
         static let language = "globe"
         static let night = "moon.stars"
         static let lid = "laptopcomputer.and.arrow.down"
+        static let chart = "chart.bar"
+        static let preset = "square.grid.2x2"
     }
 
     static var all: [ReleaseNote] {
@@ -118,37 +120,44 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.3.0",
+                version: "1.3.1",
                 items: [
                     .init(
-                        symbol: Mark.night,
-                        title: "The display dims at night",
+                        symbol: Mark.chart,
+                        title: "The chart is now interactive",
                         body: """
-                            While Belay holds overnight, the display fades to a \
-                            glow when you step away, and comes back the moment \
-                            you return. Off by default.
+                            Hover over a day in Statistics. The bar lifts and the figures above switch to \
+                            that day. Move away and the totals come back.
                             """),
                     .init(
-                        symbol: Mark.lid,
-                        title: "The lid can close now",
+                        symbol: Mark.preset,
+                        title: "Pi is built in",
                         body: """
-                            An optional system helper keeps the run alive with \
-                            the lid shut. A time cap and a heat release are \
-                            always on.
-                            """,
-                        directOnly: true),
+                            One click in Settings starts watching Pi's sessions. Added after a request on \
+                            GitHub.
+                            """),
                     .init(
-                        symbol: Mark.safety,
-                        title: "Held through the retries",
+                        symbol: Mark.quiet,
+                        title: "Quiet doesn't mean finished",
                         body: """
-                            When the model is overloaded and your agent is \
-                            retrying, Belay now knows the run is alive and \
-                            keeps holding.
-                            """)
+                            If an agent stops mid-answer, Belay now says it went quiet instead of calling \
+                            the run finished.
+                            """),
+                    .init(
+                        symbol: Mark.told,
+                        title: "Closed-lid stops tell you why",
+                        body: """
+                            If the time limit or heat protection ends a closed-lid hold, the notification \
+                            tells you why.
+                            """,
+                        directOnly: true)
                 ],
                 asides: [
-                    .init(text: "Little sounds for the welcome scene and this window."),
-                    .init(text: "Diagnostics keep a fuller local log of what Belay did.")
+                    .init(
+                        text: "The helper status updates as soon as you approve it.",
+                        directOnly: true),
+                    .init(text: "Launch Belay mid-run and it picks the run up right away."),
+                    .init(text: "Failed update checks now say why in the log.", directOnly: true)
                 ]
             )
         ]

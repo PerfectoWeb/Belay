@@ -55,7 +55,6 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,"Un agente sta lavorando. Se chiudi Belay, il Mac potrà andare in stop."
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,Un agente è rimasto in silenzio
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","Un agente lavora, Belay tiene il Mac sveglio e, quando il lavoro finisce, il Mac va in stop"
-An optional system helper keeps the run alive with the lid shut. A time cap and a heat release are always on.,App,translated,,An optional system helper keeps the run alive with the lid shut. A time cap and a heat release are always on.,Un helper di sistema opzionale tiene vivo il lavoro a coperchio chiuso. Limite di tempo e protezione dal calore sempre attivi.
 Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,Approva l'helper in «Elementi login» perché possa tenere il coperchio.
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Auto
 Awake %@ so far,Panel,translated,%@,Awake for %@,Sveglio per %@
@@ -115,6 +114,7 @@ Checking…,Settings: General,translated,,Checking…,Controllo…
 Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code non ha ancora aperto un progetto su questo Mac. Belay inizierà da solo quando succederà.
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Fai clic per vedere cosa è cambiato e installarlo quando vuoi.
+Closed-lid stops tell you why,App,translated,,Closed-lid stops tell you why,"Con il coperchio chiuso, Belay dice perché si ferma"
 Copied,Statistics,translated,,Copied,Copiato
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copia insieme la scheda e il riepilogo
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Copia
@@ -122,7 +122,6 @@ Copy card and link,Statistics,translated,,Copy card and link,Copia scheda e link
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Impossibile raggiungere il servizio di aggiornamento.
 Detection health,Settings: Providers,translated,,Detection status,Stato del rilevamento
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnostica
-Diagnostics keep a fuller local log of what Belay did.,App,translated,,Diagnostics keep a fuller local log of what Belay did.,La diagnostica tiene un registro locale più completo di ciò che Belay ha fatto.
 Dim from,Settings,translated,,Dim from,Attenuare dalle
 Dim the display at night,Settings,translated,,Dim the display at night,Attenuare lo schermo di notte
 Dim until,Settings,translated,,Dim until,Attenuare fino alle
@@ -135,6 +134,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Attiva…
 Erase,Statistics,needs_review,,Erase,Cancella
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Cancellare le statistiche?
+Failed update checks now say why in the log.,App,translated,,Failed update checks now say why in the log.,I controlli di aggiornamento falliti ora indicano il motivo nel registro.
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Completato
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Risolvi
 Free,Settings: About,translated,,Free,Gratis
@@ -142,10 +142,12 @@ General,"Settings, Settings: Behaviour, Settings: General",translated,,General,G
 Good to go,App,translated,,Good to go,Tutto pronto
 Got it,App,translated,,Got it,Capito
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Concedi l'accesso a ~/.claude
-Held through the retries,App,translated,,Held through the retries,Tenuto durante i tentativi
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Aspetto un momento in caso arrivi altro lavoro.
+Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,App,translated,,Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,Passa sopra un giorno in Statistiche. La barra si solleva e i valori in alto mostrano quel giorno. Sposta via il cursore e tornano i totali.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Per quanto Belay aspetta dopo che un agente si ferma prima di lasciare andare il Mac in stop. Un piccolo margine evita lo stop tra un'attività e l'altra.
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inattivo
+"If an agent stops mid-answer, Belay now says it went quiet instead of calling the run finished.",App,translated,,"If an agent stops mid-answer, Belay now says it went quiet instead of calling the run finished.","Se un agente si ferma a metà risposta, Belay ora segnala l’esecuzione come silenziosa invece che conclusa."
+"If the time limit or heat protection ends a closed-lid hold, the notification tells you why.",App,translated,,"If the time limit or heat protection ends a closed-lid hold, the notification tells you why.","Se il limite di tempo o la protezione dal calore termina il mantenimento con il coperchio chiuso, la notifica ti dice perché."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Serve una risposta per continuare.
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Conserva i rapporti di errore su questo Mac
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Continuare a lavorare a coperchio chiuso
@@ -155,11 +157,11 @@ Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac 
 Kept awake for %@ since Belay started,Panel,translated,%@,Kept awake for %@ since launch,Tenuto sveglio per %@ dall'avvio
 LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,ULTIMI 14 GIORNI
 Language,Settings: General,translated,,Language,Lingua
+Launch Belay mid-run and it picks the run up right away.,App,translated,,Launch Belay mid-run and it picks the run up right away.,Avvia Belay a metà di un’esecuzione e la rileverà subito.
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,Consenti a Belay di leggere %@ per sapere quando il tuo agente sta lavorando.
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,Consenti accesso a ~/.claude perché Belay sappia quando Claude Code sta lavorando.
 Let's go,App,translated,,Let's go,Andiamo
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",Permette a Claude Code di dire a Belay esattamente quando il lavoro inizia e finisce. Rende affidabili anche le notifiche «un agente ti aspetta».
-Little sounds for the welcome scene and this window.,App,translated,,Little sounds for the welcome scene and this window.,Piccoli suoni per il benvenuto e questa finestra.
 Local only,Settings: About,translated,,Local only,Solo in locale
 Looks good,App,translated,,Looks good,Sembra buono
 Lovely,App,translated,,Lovely,Ottimo
@@ -192,6 +194,7 @@ Off,"App, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, W
 Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.,Settings: Behaviour,translated,,Letting the display sleep saves power and won't interrupt your agent.,Lasciare spegnere lo schermo fa risparmiare energia e non interrompe il tuo agente.
 "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.",Settings: General,translated,,"Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update.","Una volta al giorno, Belay controlla se esiste una versione più recente. Non invia nulla che ti riguardi, e nulla viene scaricato o installato finché non premi Aggiorna."
 "Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.",Settings: Notifications,translated,,"Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.","Una volta per versione, mai due. Il segno nell'angolo dell'icona nella barra dei menu dice la stessa cosa in silenzio, che questo sia attivo o no."
+One click in Settings starts watching Pi's sessions. Added after a request on GitHub.,App,translated,,One click in Settings starts watching Pi's sessions. Added after a request on GitHub.,Un clic nelle Impostazioni basta perché Belay inizi a seguire le sessioni di Pi. Aggiunto su richiesta di un utente su GitHub.
 Only for runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Per esecuzioni più lunghe di %@.
 Open Belay at login,Settings: General,translated,,Open Belay at login,Apri Belay al login
 Open Login Items,"Settings, Settings: General",translated,,Open Login Items,Apri Elementi login
@@ -202,10 +205,12 @@ Open the App Store,Settings: General,translated,,Open the App Store,Apri l'App S
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,Apre il selettore cartelle standard di macOS per consentirti di concedere l'accesso
 Other agents,"App, Settings: Providers",translated,,Other agents,Altri agenti
 Other tools,Settings: Providers,translated,,Other tools,Altri strumenti
+Pi is built in,App,translated,,Pi is built in,Pi è integrato
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Riproduci i suoni dell'interfaccia
 Play sounds,Settings: General,needs_review,,Play sounds,Riproduci suoni
 Precise detection,Settings: Providers,translated,,Precise detection,Rilevamento preciso
 Providers,"App, Detection, Settings, Settings: Providers",translated,,Providers,Provider
+Quiet doesn't mean finished,App,translated,,Quiet doesn't mean finished,Il silenzio non vuol dire che sia finita
 Quit,"Menu bar, Settings: General",translated,,Quit,Esci
 Quit %@,Menu bar,translated,%@,Quit %@,Esci da %@
 Quit %@?,Menu bar,translated,%@,Quit %@?,Uscire da %@?
@@ -248,9 +253,9 @@ The App Store keeps Belay up to date and tells you when a new version is ready. 
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Il Mac si è scaldato troppo a coperchio chiuso, così Belay lo ha lasciato dormire."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,L'agente in %@ si è fermato senza finire. Potrebbe servire un nuovo accesso.
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,L'agente si è fermato senza finire. Potrebbe servire un nuovo accesso.
-The display dims at night,App,translated,,The display dims at night,Lo schermo si attenua di notte
+The chart is now interactive,App,translated,,The chart is now interactive,Il grafico segue il cursore
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Cosa aggiungerà Belay
-The lid can close now,App,translated,,The lid can close now,Il coperchio ora può chiudersi
+The helper status updates as soon as you approve it.,App,translated,,The helper status updates as soon as you approve it.,Lo stato dell’helper si aggiorna appena lo approvi.
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Il mantenimento a coperchio chiuso ha raggiunto il limite di tempo, così Belay ha lasciato dormire il Mac."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,L'esecuzione in %@ è durata %@. Il Mac può tornare ad andare in stop normalmente.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,L'esecuzione è durata %@. Il Mac può tornare ad andare in stop normalmente.
@@ -278,10 +283,8 @@ When a long task finishes,Settings: Notifications,translated,,When a long task f
 When a new version is out,Settings: Notifications,translated,,When a new version is out,Quando esce una nuova versione
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Quando un agente resta in silenzio
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Quando un agente ha bisogno di te
-"When the model is overloaded and your agent is retrying, Belay now knows the run is alive and keeps holding.",App,translated,,"When the model is overloaded and your agent is retrying, Belay now knows the run is alive and keeps holding.","Quando il modello è sovraccarico e il tuo agente riprova, Belay ora sa che il lavoro è vivo e continua a tenere."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Quando il lavoro finisce, il Mac va in stop come sempre. Le tue impostazioni di stop non vengono toccate."
 "When you step away at night, Belay dims the display to this level. It brightens again when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens again when you return.","Di notte, quando ti allontani, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
-"While Belay holds overnight, the display fades to a glow when you step away, and comes back the moment you return. Off by default.",App,translated,,"While Belay holds overnight, the display fades to a glow when you step away, and comes back the moment you return. Off by default.","Se Belay tiene sveglio il Mac di notte, lo schermo si riduce a un bagliore quando ti allontani e torna al tuo ritorno. Disattivato di default."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Mentre mantiene
 Working,Panel,translated,,Working,Al lavoro
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Il Mac resta sveglio finché non lo disattivi.

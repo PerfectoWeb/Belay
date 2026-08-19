@@ -5,6 +5,39 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - Unreleased
+
+### Added
+
+- The statistics chart answers the cursor. Hover a day and its bar lifts while
+  the others step back, the four figures switch to that day's numbers with a
+  digit-roll, and the "Last 14 days" label becomes the date. Empty days do not
+  react, and Reduce Motion turns every part of it into a plain redraw.
+- A Pi preset in Settings, asked for in issue #3: one click watches
+  `~/.pi/agent/sessions`.
+- The lid guards say so out loud (direct builds): when the heat release or the
+  time cap ends a closed-lid hold, a notification names which guard let go.
+- A debug-only Release Flow window replaces three loose workbench menu items:
+  replayable release screens, Sparkle and App Store notes editable in place,
+  and a per-version release checklist. Compiled out of release builds.
+
+### Changed
+
+- A turn that waits out its whole grace without an answer now ends as "went
+  quiet", so the notification reports a stall rather than a finish.
+- Belay launched while an agent is mid-retry adopts the fresh transcript at
+  once instead of waiting for the next write.
+- The lid helper's caption in Settings refreshes when the app becomes active,
+  so approving it in System Settings shows up without reopening the pane.
+
+### Fixed
+
+- Failed update checks now log their reason to Diagnostics instead of
+  vanishing silently.
+- `release.sh` survives Xcode 26.6, whose `-exportArchive` broke: the app is
+  laid out from the archive and re-signed inside out, with fail-closed checks
+  at every step.
+
 ## [1.3.0] - 2026-08-19
 
 ### Added

@@ -1,0 +1,135 @@
+What's New — Belay 1.3.1
+
+The window's text, every language in one place. '# ' starts an item's title,
+the paragraph under it is the body, '* ' lines are the small mentions at the
+bottom. Items must stay in the same order in every language. Edit freely,
+save, then ask for a rebuild: this file gets synced into the code and the
+string catalogue, and the window shows it.
+
+Direct-only (never shown in the App Store build): item 4, mentions 1 and 3.
+
+=== en ===
+
+# The chart is now interactive
+Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.
+
+# Pi is built in
+One click in Settings starts watching Pi's sessions. Added after a request on GitHub.
+
+# Quiet doesn't mean finished
+If an agent stops mid-answer, Belay now says it went quiet instead of calling the run finished.
+
+# Closed-lid stops tell you why
+If the time limit or heat protection ends a closed-lid hold, the notification tells you why.
+
+* The helper status updates as soon as you approve it.
+* Launch Belay mid-run and it picks the run up right away.
+* Failed update checks now say why in the log.
+
+=== ru ===
+
+# Интерактивная статистика
+Наведите на день в статистике, чтобы увидеть статистику за конкретный день.
+
+# Pi уже встроен
+Один клик в настройках, и Belay начнёт следить за сессиями Pi AI.
+
+# Агент молчит, но не закончил?
+Если агент остановился посреди ответа, Belay теперь отмечает запуск как замолкший, а не завершённый.
+
+# С заботой о железе
+Belay сообщит, если при закрытой крышке отключится в целях безопасности: сработал лимит времени или защита от перегрева.
+
+* В некоторых разделах данные начали обновляться моментально.
+* Belay мгновенно начнёт мониторинг, даже если был запущен в момент уже активной сессии.
+* Добавлено логирование неуспешных проверок обновлений (если локальные логи включены).
+
+=== de ===
+
+# Das Diagramm folgt deinem Mauszeiger
+Fahre in den Statistiken über einen Tag. Der Balken hebt sich, und die Zahlen darüber wechseln zu diesem Tag. Bewegst du den Zeiger weg, kommen die Gesamtwerte zurück.
+
+# Pi ist jetzt eingebaut
+Ein Klick in den Einstellungen genügt, und Belay beobachtet Pis Sitzungen. Nach einem Wunsch auf GitHub hinzugefügt.
+
+# Still heißt nicht fertig
+Wenn ein Agent mitten in einer Antwort stoppt, meldet Belay den Lauf jetzt als verstummt statt als beendet.
+
+# Bei geschlossenem Deckel sagt Belay, warum es aufhört
+Wenn das Zeitlimit oder der Hitzeschutz das Wachhalten bei geschlossenem Deckel beendet, sagt die Mitteilung warum.
+
+* Der Status des Hilfsprogramms aktualisiert sich, sobald du es genehmigst.
+* Starte Belay mitten in einem Lauf, und es erkennt ihn sofort.
+* Fehlgeschlagene Update-Prüfungen nennen jetzt den Grund im Protokoll.
+
+=== es ===
+
+# El gráfico sigue al cursor
+Pasa por encima de un día en Estadísticas. La barra se eleva y las cifras de arriba cambian a ese día. Aparta el cursor y vuelven los totales.
+
+# Pi viene integrado
+Un clic en Ajustes basta para que Belay empiece a vigilar las sesiones de Pi. Añadido a petición de un usuario en GitHub.
+
+# El silencio no significa que haya terminado
+Si un agente se detiene a mitad de una respuesta, Belay ahora marca la ejecución como silenciosa en lugar de terminada.
+
+# Con la tapa cerrada, Belay te dice por qué se detiene
+Si el límite de tiempo o la protección térmica termina una retención con la tapa cerrada, la notificación te dice por qué.
+
+* El estado del ayudante se actualiza en cuanto lo apruebas.
+* Abre Belay a mitad de una ejecución y la detectará al instante.
+* Las comprobaciones de actualización fallidas ahora indican el motivo en el registro.
+
+=== fr ===
+
+# Le graphique suit votre curseur
+Survolez un jour dans Statistiques. La barre se soulève et les chiffres au-dessus affichent les valeurs de ce jour. Éloignez le curseur et les totaux reviennent.
+
+# Pi est intégré
+Un clic dans Réglages suffit pour que Belay commence à surveiller les sessions de Pi. Ajouté à la demande d’un utilisateur sur GitHub.
+
+# Le silence ne veut pas dire que c’est terminé
+Si un agent s’arrête au milieu d’une réponse, Belay indique désormais que l’exécution s’est tue au lieu de la considérer comme terminée.
+
+# Capot fermé, Belay vous dit pourquoi il s’arrête
+Si la limite de temps ou la protection thermique met fin au maintien éveillé avec le capot fermé, la notification vous indique pourquoi.
+
+* L’état du service auxiliaire se met à jour dès que vous l’approuvez.
+* Lancez Belay pendant une exécution et il la détecte immédiatement.
+* Les échecs de vérification des mises à jour indiquent désormais leur raison dans le journal.
+
+=== it ===
+
+# Il grafico segue il cursore
+Passa sopra un giorno in Statistiche. La barra si solleva e i valori in alto mostrano quel giorno. Sposta via il cursore e tornano i totali.
+
+# Pi è integrato
+Un clic nelle Impostazioni basta perché Belay inizi a seguire le sessioni di Pi. Aggiunto su richiesta di un utente su GitHub.
+
+# Il silenzio non vuol dire che sia finita
+Se un agente si ferma a metà risposta, Belay ora segnala l’esecuzione come silenziosa invece che conclusa.
+
+# Con il coperchio chiuso, Belay dice perché si ferma
+Se il limite di tempo o la protezione dal calore termina il mantenimento con il coperchio chiuso, la notifica ti dice perché.
+
+* Lo stato dell’helper si aggiorna appena lo approvi.
+* Avvia Belay a metà di un’esecuzione e la rileverà subito.
+* I controlli di aggiornamento falliti ora indicano il motivo nel registro.
+
+=== zh-Hans ===
+
+# 图表会跟随光标
+将光标移到“统计”中的某一天。柱形会轻轻抬起，上方的数据也会切换到当天。移开光标后，总计数据会恢复。
+
+# Pi 已内置
+在“设置”中点一下，Belay 就会开始监视 Pi 的会话。这个功能来自 GitHub 上的用户请求。
+
+# 安静不代表已经完成
+如果智能体在回答途中停止，Belay 现在会将这次运行标记为“没有动静”，而不是已完成。
+
+# 合盖保持唤醒结束时会说明原因
+如果时间上限或过热保护结束了合盖保持唤醒，通知会告诉你原因。
+
+* 批准帮助程序后，它的状态会立即更新。
+* 如果在智能体工作时启动 Belay，它会立即接手监视。
+* 更新检查失败时，日志现在会写明原因。
