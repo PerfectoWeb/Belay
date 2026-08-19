@@ -35,7 +35,14 @@ enum ReleaseFlow {
             backing: .buffered, defer: false)
         made.title = "Release Flow — \(Branding.version)"
         made.isReleasedWhenClosed = false
-        made.center()
+        // Dead centre of the screen, not AppKit's `center()`, which sits a
+        // window deliberately above the middle.
+        if let screen = NSScreen.main {
+            made.setFrameOrigin(
+                NSPoint(
+                    x: screen.visibleFrame.midX - made.frame.width / 2,
+                    y: screen.visibleFrame.midY - made.frame.height / 2))
+        }
         made.contentView = NSHostingView(
             rootView: ReleaseFlowView(
                 showWelcome: showWelcome, showWhatsNew: showWhatsNew,
