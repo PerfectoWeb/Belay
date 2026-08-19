@@ -13,7 +13,7 @@ release that closed the line, and nothing is marked done before it has one.
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.2.0 is out** on GitHub, on Homebrew and on the Mac App Store, and updates in
+**1.3.0 is out** on GitHub and on Homebrew, in review on the Mac App Store, and updates in
 place from here on.
 
 </div>
