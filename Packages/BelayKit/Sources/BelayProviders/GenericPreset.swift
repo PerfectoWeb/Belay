@@ -98,6 +98,15 @@ extension GenericPreset {
                 your Codex install keeps them elsewhere.
                 """,
             folder: .home(".codex/sessions"),
-            processName: "codex")
+            processName: "codex"),
+        // Asked for in issue #3 by somebody already running Pi through the
+        // generic provider with exactly these values, which is better
+        // evidence than any preset above shipped with.
+        GenericPreset(
+            id: "pi",
+            displayName: "Pi",
+            summary: "Watches ~/.pi/agent/sessions, where Pi keeps its session files.",
+            folder: .home(".pi/agent/sessions"),
+            processName: "pi")
     ]
 }
