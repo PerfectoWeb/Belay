@@ -32,8 +32,12 @@ jobs:
           ref: gh-pages
 
       - name: Write the released version into the site
+        env:
+          # Through the environment, not template-expanded into the script:
+          # a dispatch input pasted into `run` would execute as shell.
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          version="${{ inputs.version }}"
+          version="$INPUT_VERSION"
           [ -n "$version" ] || version="${GITHUB_REF_NAME#v}"
           # A manual run from main would otherwise write "main" into the page.
           echo "$version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' \
@@ -49,10 +53,20 @@ jobs:
           python3 build-site.py .
 
       - name: Commit if anything changed
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          version="$INPUT_VERSION"
+          [ -n "$version" ] || version="${GITHUB_REF_NAME#v}"
+          # The site build leaves Python caches behind, and the first run of
+          # this job committed exactly those and nothing else — as the bot,
+          # which the authorship gate then refused. The identity is the
+          # repository owner's: a human wrote this automation, and mechanical
+          # execution of his intent is still his commit.
+          find . -name __pycache__ -type d -prune -exec rm -rf {} +
+          git config user.name "David Build"
+          git config user.email "manager@perfecto-web.com"
           git add -A
           git diff --cached --quiet && { echo "already current"; exit 0; }
-          git commit -m "Site: version ${GITHUB_REF_NAME#v}"
+          git commit -m "Site: version $version"
           git push

@@ -128,7 +128,19 @@ else
     # workflow died on the first time its credentials were good enough to get
     # this far, and it never showed up locally because a plain virtualenv
     # writes a shebang with no flags on it.
-    read -r -a DMGBUILD_PY <<<"$(head -1 "${DMGBUILD[0]}" | sed 's|^#!||')"
+    #
+    # And a shebang cannot hold a space at all. pipx on macOS keeps its venvs
+    # under "Application Support", so pip writes a /bin/sh polyglot trampoline
+    # instead of a python shebang — parsing that line handed this script's
+    # python source to sh, which printed "import: command not found" and cost
+    # the 1.3.1 dry run. When the shebang is not python, the interpreter is
+    # the trampoline's sibling: <venv>/bin/python next to <venv>/bin/dmgbuild.
+    LAUNCHER="$(readlink -f "${DMGBUILD[0]}")"
+    read -r -a DMGBUILD_PY <<<"$(head -1 "$LAUNCHER" | sed 's|^#!||')"
+    case "${DMGBUILD_PY[0]:-}" in
+        *python*) ;;
+        *)  DMGBUILD_PY=("$(dirname "$LAUNCHER")/python") ;;
+    esac
 fi
 [ -n "${DMGBUILD_PY[0]:-}" ] && [ -x "${DMGBUILD_PY[0]}" ] || DMGBUILD_PY=(python3)
 
@@ -186,28 +198,55 @@ xcodebuild archive \
 
 [ -d "$ARCHIVE" ] || die "archive step produced nothing at $ARCHIVE"
 
-# ---------------------------------------------------------------------- export
-cat > "$DIST/ExportOptions.plist" <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>method</key><string>developer-id</string>
-    <key>teamID</key><string>$TEAM_ID</string>
-    <key>signingStyle</key><string>manual</string>
-    <key>destination</key><string>export</string>
-</dict>
-</plist>
-EOF
+# ---------------------------------------------------------- lay out and re-sign
+# This used to be `xcodebuild -exportArchive` with method developer-id, until
+# Xcode 26.6 started refusing it ("expected one {}" against an empty method
+# set) and the 1.3.0 release had to be cut by hand. What export actually did
+# for this app is small and better done explicitly: copy the app out of the
+# archive, then re-sign everything that does not carry our Developer ID with
+# a timestamp — Sparkle ships its nested pieces signed by its own team, and
+# the notary rejects every one of them. Inside out, so no seal is broken
+# after it is made. Deterministic, and indifferent to which Xcode built it.
+echo "==> lay out from the archive"
+rm -rf "$EXPORT_DIR"
+mkdir -p "$EXPORT_DIR"
+cp -R "$ARCHIVE/Products/Applications/Belay.app" "$APP"
 
-echo "==> export"
-xcodebuild -exportArchive \
-    -archivePath "$ARCHIVE" \
-    -exportOptionsPlist "$DIST/ExportOptions.plist" \
-    -exportPath "$EXPORT_DIR" \
-    | (xcbeautify 2>/dev/null || tail -20)
-
-[ -d "$APP" ] || die "export produced no app at $APP"
+echo "==> re-sign, inside out"
+SPARKLE="$APP/Contents/Frameworks/Sparkle.framework"
+SIGNED_INNER=0
+for inner in \
+    "$SPARKLE/Versions/B/XPCServices/Installer.xpc" \
+    "$SPARKLE/Versions/B/XPCServices/Downloader.xpc" \
+    "$SPARKLE/Versions/B/Updater.app" \
+    "$SPARKLE/Versions/B/Autoupdate"; do
+    [ -e "$inner" ] || continue
+    # `--preserve-metadata=entitlements`, per Sparkle's own re-sign recipe:
+    # Downloader.xpc is sandboxed with the network-client entitlement, and a
+    # bare re-sign would strip it silently.
+    codesign --force --options runtime --timestamp --preserve-metadata=entitlements \
+        --sign "$SIGN_IDENTITY" "$inner" \
+        || die "could not sign $(basename "$inner")"
+    SIGNED_INNER=$((SIGNED_INNER + 1))
+done
+if [ -d "$SPARKLE" ]; then
+    # Fails closed: a Sparkle update that moves off Versions/B must break the
+    # build here, not twenty minutes later as a notary rejection of pieces
+    # this loop silently skipped.
+    [ "$SIGNED_INNER" -gt 0 ] \
+        || die "Sparkle.framework is present but none of its nested pieces matched; update the paths above"
+    codesign --force --options runtime --timestamp --sign "$SIGN_IDENTITY" "$SPARKLE" \
+        || die "could not sign Sparkle.framework"
+fi
+if [ -f "$APP/Contents/MacOS/BelayLidHelper" ]; then
+    codesign --force --options runtime --timestamp --sign "$SIGN_IDENTITY" \
+        "$APP/Contents/MacOS/BelayLidHelper" \
+        || die "could not sign the lid helper"
+fi
+codesign --force --options runtime --timestamp \
+    --entitlements "$ROOT/Resources/Entitlements/Belay.entitlements" \
+    --sign "$SIGN_IDENTITY" "$APP" \
+    || die "could not sign the app"
 
 echo "==> verify signature"
 codesign --verify --deep --strict --verbose=2 "$APP"
