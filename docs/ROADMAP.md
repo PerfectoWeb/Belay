@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.3.1 is out** on GitHub and Homebrew, and 1.3.0 is live on the Mac App Store, with in-place updates from here on.
+**1.3.1 is out** everywhere: GitHub, Homebrew and the Mac App Store, with in-place updates from here on.
 
 </div>
 
