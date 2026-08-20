@@ -115,6 +115,7 @@ Claude Code,"App, Detection, Settings: Providers, Welcome",needs_review,,Claude 
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
 Closed-lid stops tell you why,App,translated,,Closed-lid stops tell you why,合盖保持唤醒结束时会说明原因
+Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Codex 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
@@ -142,6 +143,7 @@ General,"Settings, Settings: Behaviour, Settings: General",translated,,General,�
 Good to go,App,translated,,Good to go,准备好了
 Got it,App,translated,,Got it,明白了
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许访问 ~/.claude
+Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访问 ~/.codex
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,App,translated,,Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,将光标移到“统计”中的某一天。柱形会轻轻抬起，上方的数据也会切换到当天。移开光标后，总计数据会恢复。
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。
@@ -160,6 +162,7 @@ Language,Settings: General,translated,,Language,语言
 Launch Belay mid-run and it picks the run up right away.,App,translated,,Launch Belay mid-run and it picks the run up right away.,如果在智能体工作时启动 Belay，它会立即接手监视。
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,允许 Belay 读取 %@，以便判断智能体何时在工作。
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,允许访问 ~/.claude，以便 Belay 判断 Claude Code 何时在工作。
+Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,允许访问 ~/.codex，Belay 才能判断 Codex 何时在工作。
 Let's go,App,translated,,Let's go,开始吧
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.",让 Claude Code 直接告诉 Belay 工作何时开始、何时结束。这也让“等待回应”通知变得可靠。
 Local only,Settings: About,translated,,Local only,仅本地
@@ -274,6 +277,7 @@ Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before le
 Waiting for you,Panel,translated,,Waiting for you,等待回应
 Watch,"App, Detection, Settings: Providers, Welcome",translated,,Watch,监视
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
+Watches Codex's session files to tell when a turn is running.,Settings: Providers,translated,,Watches Codex session files to tell when a turn is running.,监视 Codex 的会话文件，以判断轮次何时在运行。
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。
 Website,Settings: About,translated,,Website,网站
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎

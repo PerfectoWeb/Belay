@@ -2,12 +2,10 @@ import Foundation
 
 /// A pre-filled `GenericTarget`, shipped as data.
 ///
-/// Presets are not code and make no claims: none of the paths below can be
-/// verified on this machine (`docs/DISCOVERY` found no `~/.codex`, no aider and
-/// no gemini install), and a wrong path costs the user one edit and a
-/// "needs setup" badge — never a release. Codex CLI is here rather than in a
-/// module of its own for exactly that reason: `PROJECT_STATE` D4 refuses to ship
-/// speculative parsing of a format nobody has seen.
+/// Presets are not code and make no claims: a wrong path costs the user one
+/// edit and a "needs setup" badge — never a release. `PROJECT_STATE` D4 kept
+/// Codex CLI in this list for a year for exactly that reason; it graduated to
+/// `CodexProvider` the day its rollout format was verified on a real install.
 public struct GenericPreset: Sendable, Equatable, Identifiable {
     /// Where the preset expects the agent's working files to be.
     public enum Folder: Sendable, Equatable {
@@ -64,7 +62,9 @@ extension GenericPreset {
         return all.first { flattened($0.displayName) == wanted || $0.id == wanted }
     }
 
-    /// The menu shows this order: the four big CLIs first, then the rest.
+    /// The menu shows this order: the big CLIs first, then the rest. Codex is
+    /// deliberately absent: it has a first-class provider now, and a preset
+    /// row beside it would report every session twice.
     public static let all: [GenericPreset] = [
         GenericPreset(
             id: "gemini",
@@ -72,15 +72,6 @@ extension GenericPreset {
             summary: "Watches ~/.gemini, where the CLI keeps its session state.",
             folder: .home(".gemini"),
             processName: "gemini"),
-        GenericPreset(
-            id: "codex",
-            displayName: "Codex CLI",
-            summary: """
-                Watches ~/.codex/sessions for rollout files. Adjust the folder if \
-                your Codex install keeps them elsewhere.
-                """,
-            folder: .home(".codex/sessions"),
-            processName: "codex"),
         // Verified on a real install: session-state/<uuid>/events.jsonl is an
         // append-only stream with explicit turn_start/turn_end events, flushed
         // during the turn, not after it. The CLI ships its own hook system,

@@ -98,6 +98,11 @@ struct SettingsSafetyTests {
         let scratch = try BridgeScratch(settings: String(bytes: data, encoding: .utf8) ?? "")
         defer { scratch.remove() }
 
+        // The real file may already carry Belay's own hooks — it does on any
+        // Mac where precise detection is on. Strip them first, so `before` is
+        // the user's content alone and the round trip below measures only
+        // whether foreign entries survive untouched.
+        try scratch.installer.uninstall()
         let before = try scratch.settingsObject()
         try scratch.installer.install(endpoint: BridgeScratch.endpoint)
         #expect(try scratch.installer.isInstalled())

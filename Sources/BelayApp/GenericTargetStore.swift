@@ -28,7 +28,13 @@ struct GenericTargetStore {
     func load() -> [GenericTarget] {
         guard let data = defaults.data(forKey: key) else { return [] }
         do {
-            return try JSONDecoder().decode([GenericTarget].self, from: data)
+            let stored = try JSONDecoder().decode([GenericTarget].self, from: data)
+            // 1.3.2 migration: Codex graduated from a preset to a first-class
+            // provider, and a leftover preset tile would report every session
+            // a second time. Dropped once, saved back, gone.
+            let kept = stored.filter { $0.webhookIdentifier != "codex" }
+            if kept.count != stored.count { save(kept) }
+            return kept
         } catch {
             // A shape change must not wipe detection silently or crash; fall
             // back to none and say so once.

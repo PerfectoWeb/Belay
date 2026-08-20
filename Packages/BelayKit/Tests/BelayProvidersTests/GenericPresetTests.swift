@@ -36,13 +36,14 @@ struct GenericPresetTests {
         #expect(unpicked?.isConfigured == true)
     }
 
-    /// PROJECT_STATE D4: Codex is a configuration, not a parser.
-    @Test("Codex ships as a preset pointing at ~/.codex/sessions")
-    func codexIsAPreset() {
-        let codex = GenericPreset.all.first { $0.id == "codex" }
-        let target = codex?.target(home: URL(fileURLWithPath: "/Users/example"))
-        #expect(target?.watchedFolder?.path == "/Users/example/.codex/sessions")
-        #expect(target?.processName == "codex")
+    /// D4's successor: the day the rollout format was verified on a real
+    /// install, Codex graduated to `CodexProvider`. A preset row beside the
+    /// first-class provider would report every session twice, so the list must
+    /// not grow one back.
+    @Test("Codex is a first-class provider, not a preset")
+    func codexIsNotAPreset() {
+        #expect(GenericPreset.all.allSatisfy { $0.id != "codex" })
+        #expect(GenericPreset.matching(name: "Codex CLI") == nil)
     }
 
     @Test("A quiet period below the measured floor is clamped, not honoured")

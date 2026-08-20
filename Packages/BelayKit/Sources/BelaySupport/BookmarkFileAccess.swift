@@ -69,6 +69,20 @@ public final class BookmarkFileAccess: FileAccessProvider, @unchecked Sendable {
             bookmarks: bookmarks)
     }
 
+    /// `~/.codex`, under its own defaults key: the two grants are separate
+    /// permissions and must never overwrite each other's bookmark.
+    public static func codexHome(
+        home: URL = UserHome.real,
+        store: BookmarkStore = DefaultsBookmarkStore(),
+        bookmarks: SecurityScopedBookmarks = AppScopedBookmarks()
+    ) -> BookmarkFileAccess {
+        BookmarkFileAccess(
+            root: home.appendingPathComponent(".codex", isDirectory: true),
+            key: "BelayCodexFolderBookmark",
+            store: store,
+            bookmarks: bookmarks)
+    }
+
     deinit {
         if let held { bookmarks.stopAccessing(held) }
     }

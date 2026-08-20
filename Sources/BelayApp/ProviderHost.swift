@@ -12,6 +12,7 @@ import Foundation
 final class ProviderHost {
     private let bus = SignalBus()
     private let claudeCode: ClaudeCodeProvider
+    private let codex: CodexProvider
     private let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
@@ -29,11 +30,13 @@ final class ProviderHost {
     init(
         precise: PreciseDetection,
         access: FileAccessProvider = DirectFileAccess(),
+        codexAccess: FileAccessProvider = DirectFileAccess(),
         folders: FileAccessProvider = DirectFileAccess(),
         home: URL = FileManager.default.homeDirectoryForCurrentUser
     ) {
         self.precise = precise
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
+        codex = CodexProvider(configuration: .codexHome(home), access: codexAccess)
         generic = GenericProvider(access: folders)
     }
 
@@ -47,6 +50,9 @@ final class ProviderHost {
 
         await bus.attach(claudeCode.signals)
         await startClaudeCode(first: true)
+
+        await bus.attach(codex.signals)
+        await startCodex(first: true)
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -67,6 +73,7 @@ final class ProviderHost {
     /// not a re-wire; a provider that is already running ignores it.
     func retryStart() async {
         await startClaudeCode(first: false)
+        await startCodex(first: false)
     }
 
     /// Whether the Claude Code provider is still waiting for something.
@@ -77,6 +84,21 @@ final class ProviderHost {
     /// A folder that does not exist yet is not a failure. It was logged as one
     /// every few seconds on a Mac where Claude Code had never opened a project,
     /// which is the state every new user starts in.
+    /// Same shape as the Claude Code start: a Mac where Codex has never run is
+    /// the state every user starts in, not an error worth shouting about.
+    private func startCodex(first: Bool) async {
+        do {
+            try await codex.start()
+            if !first { Log.providers.notice("Codex provider started") }
+        } catch ProviderError.notInUseYet(let path) {
+            guard first else { return }
+            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
+        } catch {
+            guard first else { return }
+            Log.providers.error("Codex provider failed to start: \(error, privacy: .public)")
+        }
+    }
+
     private func startClaudeCode(first: Bool) async {
         do {
             try await claudeCode.start()
@@ -93,6 +115,7 @@ final class ProviderHost {
     func stop() async {
         await precise.stop()
         await generic.stop()
+        await codex.stop()
         await claudeCode.stop()
         await bus.shutdown()
     }
@@ -104,6 +127,12 @@ final class ProviderHost {
                 availability: await claudeCode.availability,
                 isEnabled: true,
                 lastSignal: lastSignal
+            ),
+            ProviderStatus(
+                descriptor: codex.descriptor,
+                availability: await codex.availability,
+                isEnabled: true,
+                lastSignal: nil
             ),
             ProviderStatus(
                 descriptor: generic.descriptor,

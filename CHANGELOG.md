@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Codex graduates to a first-class provider. Its session rollouts persist
+  explicit turn markers, so Belay now reads exact turn edges — including the
+  retry grace and "went quiet" semantics Claude Code already has — instead of
+  guessing from folder activity. The old Codex CLI preset retires, and an
+  existing preset tile migrates away on first launch so nothing reports twice.
 - Background work survives the end of a turn. A Claude Code `Stop` that
   reports live background tasks no longer releases the hold: background
   agents and shell jobs keep the Mac awake until they are done or the

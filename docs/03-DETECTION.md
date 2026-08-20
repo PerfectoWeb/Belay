@@ -77,6 +77,14 @@ Implementation notes that matter:
   `docs/06-DISTRIBUTION.md`. The onboarding flow must make this feel like one
   obvious click, with a plain-language explanation of what we read and don't.
 
+- **Codex rollouts** (shipped in 1.3.2). Codex persists explicit turn markers
+  into `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl` — `task_started` /
+  `task_complete` in `event_msg` records — so `CodexProvider` reads exact turn
+  edges instead of inferring them, with the same open-turn grace and
+  went-quiet ending as Claude Code. Verified on a live install (0.148);
+  compressed `.jsonl.zst` history is skipped, `session_meta.cwd` names the
+  workspace.
+
 Confidence of Tier A signals: `.inferred`.
 
 ### Tier B — Hook bridge (opt-in, exact, ships in M3)

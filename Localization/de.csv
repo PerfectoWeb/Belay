@@ -115,6 +115,7 @@ Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Co
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,"Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
 Closed-lid stops tell you why,App,translated,,Closed-lid stops tell you why,"Bei geschlossenem Deckel sagt Belay, warum es aufhört"
+Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Codex hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
 Copied,Statistics,translated,,Copied,Kopiert
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Kopiert die Karte zusammen mit der Zusammenfassung
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Kopieren
@@ -142,6 +143,7 @@ General,"Settings, Settings: Behaviour, Settings: General",translated,,General,A
 Good to go,App,translated,,Good to go,Alles bereit
 Got it,App,translated,,Got it,Verstanden
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Zugriff auf ~/.claude gewähren
+Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Zugriff auf ~/.codex gewähren
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,"Kurz abwarten, falls noch Arbeit kommt."
 Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,App,translated,,Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.,"Fahre in den Statistiken über einen Tag. Der Balken hebt sich, und die Zahlen darüber wechseln zu diesem Tag. Bewegst du den Zeiger weg, kommen die Gesamtwerte zurück."
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,"Wie lange Belay wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
@@ -160,6 +162,7 @@ Language,Settings: General,translated,,Language,Sprache
 Launch Belay mid-run and it picks the run up right away.,App,translated,,Launch Belay mid-run and it picks the run up right away.,"Starte Belay mitten in einem Lauf, und es erkennt ihn sofort."
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,"Erlaube Belay, %@ zu lesen, damit es erkennt, wann dein Agent arbeitet."
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,"Erlaube den Zugriff auf ~/.claude, damit Belay erkennt, wann Claude Code arbeitet."
+Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,"Erlaube Zugriff auf ~/.codex, damit Belay erkennt, wann Codex arbeitet."
 Let's go,App,translated,,Let's go,Los geht's
 "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.","Claude Code teilt Belay genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
 Local only,Settings: About,translated,,Local only,Nur lokal
@@ -274,6 +277,7 @@ Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before le
 Waiting for you,Panel,translated,,Waiting for you,Wartet auf dich
 Watch,"App, Detection, Settings: Providers, Welcome",translated,,Watch,Beobachten
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,"Beobachtet Claude-Code-Sitzungsdateien, um zu erkennen, wann ein Turn läuft."
+Watches Codex's session files to tell when a turn is running.,Settings: Providers,translated,,Watches Codex session files to tell when a turn is running.,"Beobachtet Codex-Sitzungsdateien, um zu erkennen, wann ein Turn läuft."
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,Beobachte einen Ordner oder nutze einen einzeiligen Webhook für einen weiteren Coding-Agenten. Starte mit einer Vorlage oder füge eine eigene hinzu.
 Website,Settings: About,translated,,Website,Website
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Willkommen

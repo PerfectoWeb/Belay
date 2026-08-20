@@ -10,6 +10,19 @@ import AppKit
 @MainActor
 enum ClaudeFolderPanel {
     static func run(startingAt folder: URL) -> URL? {
+        run(
+            startingAt: folder,
+            message: String(
+                localized:
+                    "Let Belay read your ~/.claude folder so it can tell when Claude Code is working."
+            ),
+            prompt: String(localized: "Grant access to ~/.claude"))
+    }
+
+    /// The same panel pointed at another agent's folder. One implementation:
+    /// the reviewer-recognisable system panel is the whole design, and a copy
+    /// per provider would drift.
+    static func run(startingAt folder: URL, message: String, prompt: String) -> URL? {
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
@@ -19,10 +32,8 @@ enum ClaudeFolderPanel {
         // user cannot see, and the grant looks broken before it is refused.
         panel.showsHiddenFiles = true
         panel.directoryURL = folder
-        panel.message = String(
-            localized: "Let Belay read your ~/.claude folder so it can tell when Claude Code is working."
-        )
-        panel.prompt = String(localized: "Grant access to ~/.claude")
+        panel.message = message
+        panel.prompt = prompt
 
         // LSUIElement: without this the panel can open behind whatever the user
         // was doing, and a modal they cannot see is a hang as far as they know.

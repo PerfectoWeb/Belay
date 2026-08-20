@@ -52,6 +52,7 @@ final class BelayController {
         providers = ProviderHost(
             precise: precise,
             access: ClaudeAccess.provider,
+            codexAccess: CodexAccess.provider,
             folders: WatchedFolderAccess.provider,
             home: ClaudeAccess.home)
         coordinator = ActivityCoordinator(policy: settings.policy)
@@ -146,7 +147,7 @@ final class BelayController {
     /// start for want of access, and without it the grant only takes effect
     /// after a relaunch the user has no reason to guess at.
     func requestProviderAccess(_ provider: ProviderID) {
-        let granted = ClaudeAccess.request()
+        let granted = provider == .codex ? CodexAccess.request() : ClaudeAccess.request()
         Task { [weak self] in
             if granted { await self?.providers.retryStart() }
             await self?.publishProviderStatus()
