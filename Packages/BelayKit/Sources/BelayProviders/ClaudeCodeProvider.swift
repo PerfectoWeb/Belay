@@ -159,7 +159,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
             // the short horizon instead of getting the grace.
             watch.cursor.seed(.tailWindow, snapshot: snapshot)
             watched[id] = watch
-            return ingest(url, now: now) || report(.working, for: id, at: now)
+            return ingest(url, now: now) || reportUnlessClassified(id, at: now)
         }
 
         // A transcript that appears while we are running is news, so pick up the
@@ -168,7 +168,17 @@ public actor ClaudeCodeProvider: ActivityProvider {
         watch.cursor.seed(.tailWindow, snapshot: snapshot)
         watched[id] = watch
         EventLog.note("session start \(id) ws=\(watch.workspace ?? "?")")
-        return ingest(url, now: now) || report(.working, for: id, at: now)
+        return ingest(url, now: now) || reportUnlessClassified(id, at: now)
+    }
+
+    /// The adopt fallback: bytes arrived but the tail carried no verdict, so
+    /// call it working. A tail that was classified — even into a silent first
+    /// idle — already had its say; forcing `.working` over it is how touched
+    /// old transcripts become phantom rows.
+    @discardableResult
+    private func reportUnlessClassified(_ id: SessionID, at now: Date) -> Bool {
+        guard watched[id]?.reported == nil else { return false }
+        return report(.working, for: id, at: now)
     }
 
     func seedExistingTranscripts() {
@@ -187,6 +197,15 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // `.working` repeats deliberately: the coordinator treats it as a
         // heartbeat and needs a fresh timestamp. `.idle` repeating is just noise.
         guard activity == .working || activity != watch.reported else { return false }
+        // A session whose first word is "idle" is not news — it is the app
+        // touching old transcripts (a desktop restart rewrites several at
+        // once), and each one used to appear as a row that never did
+        // anything. Same rule Codex already has: record, follow, say nothing.
+        if activity == .idle, watch.reported == nil {
+            watch.reported = .idle
+            watched[id] = watch
+            return false
+        }
         // A quiet session coming back to life is the transition every panel
         // complaint this week turned on, so it gets its own line.
         if watch.reported == .idle, activity == .working {

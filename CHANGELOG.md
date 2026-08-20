@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Touched old transcripts stop appearing as phantom rows. Restarting the
+  Claude desktop app rewrites several transcripts at once, and each used to
+  show up as an idle session that never did anything — the same suppression
+  Codex already had now covers Claude Code: a session whose first classified
+  state is idle is followed silently until a real turn announces it.
 - Sessions stop flapping after a turn ends. The bookkeeping both CLIs write
   once a turn closes — titles, summaries, token counts — used to flip a quiet
   session back to Working every burst. Unclassifiable bytes now prolong a

@@ -191,11 +191,13 @@ struct ClaudeCodeProviderTests {
         await provider.ingest(one, now: start)
         await provider.ingest(two, now: start)
 
-        let signals = await collector.wait(for: 2)
-        #expect(signals.count == 2)
-        #expect(signals.first { $0.session == SessionID("one") }?.activity == .working)
-        #expect(signals.first { $0.session == SessionID("two") }?.activity == .idle)
-        #expect(signals.first { $0.session == SessionID("one") }?.workspace == "one")
+        let signals = await collector.wait(for: 1)
+        // "one" announces; "two" opens on a finished turn and is followed
+        // silently — an idle first word is not news (see `report`).
+        #expect(signals.map(\.session) == [SessionID("one")])
+        #expect(signals.first?.activity == .working)
+        #expect(signals.first?.workspace == "one")
+        #expect(await provider.watched[SessionID("two")]?.reported == .idle)
         await collector.stop()
     }
 

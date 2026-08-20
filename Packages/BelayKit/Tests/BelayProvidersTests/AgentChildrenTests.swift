@@ -34,14 +34,15 @@ struct AgentChildrenTests {
         let collector = await self.collector(on: provider)
         await provider.ingest(url, now: start)
 
-        // The turn really did end, so Tier A settles on idle and stays there.
+        // The turn really did end: Tier A follows silently — an idle first
+        // word is not news — and stays quiet.
         await provider.sweepForIdle(now: start.addingTimeInterval(600))
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
 
         // The child is the only thing that knows the work continues.
         await provider.sweepForDeadProcesses(
             now: start.addingTimeInterval(610), isAlive: { _ in true }, busyPids: { _, _, _ in [9001] })
-        #expect(await collector.wait(for: 2).map(\.activity) == [.idle, .working])
+        #expect(await collector.wait(for: 1).map(\.activity) == [.working])
         await collector.stop()
     }
 
@@ -57,14 +58,14 @@ struct AgentChildrenTests {
         let collector = await self.collector(on: provider)
         await provider.ingest(url, now: start)
         await provider.sweepForIdle(now: start.addingTimeInterval(600))
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
 
         for tick in 1...6 {
             await provider.sweepForDeadProcesses(
                 now: start.addingTimeInterval(600 + Double(tick) * 15),
                 isAlive: { _ in true }, busyPids: { _, _, _ in [] })
         }
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
         await collector.stop()
     }
 
@@ -79,11 +80,11 @@ struct AgentChildrenTests {
         let collector = await self.collector(on: provider)
         await provider.ingest(url, now: start)
         await provider.sweepForIdle(now: start.addingTimeInterval(600))
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
 
         await provider.sweepForDeadProcesses(
             now: start.addingTimeInterval(615), isAlive: { _ in true }, busyPids: { _, _, _ in nil })
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
         await collector.stop()
     }
 
@@ -122,14 +123,14 @@ struct AgentChildrenTests {
         let collector = await self.collector(on: provider)
         await provider.ingest(url, now: start)
         await provider.sweepForIdle(now: start.addingTimeInterval(600))
-        #expect(await collector.settle().map(\.activity) == [.idle])
+        #expect(await collector.settle().isEmpty)
 
         let swept = start.addingTimeInterval(610)
         let horizon = scratch.configuration.inferredIdleAfter
         await provider.sweepForDeadProcesses(
             now: swept, isAlive: { _ in true },
             busyPids: { pids, maxAge, now in maxAge == horizon && now == swept ? pids : [] })
-        #expect(await collector.wait(for: 2).map(\.activity) == [.idle, .working])
+        #expect(await collector.wait(for: 1).map(\.activity) == [.working])
         await collector.stop()
     }
 }
