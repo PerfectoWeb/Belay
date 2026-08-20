@@ -66,7 +66,7 @@ T["en"] = {
     "policy_1": "If this policy changes, we'll update the date above. Any meaningful privacy change will also be mentioned in the release notes.",
     "contact_head": "Contact",
     "contact_1": 'Questions about this policy: <a href="https://github.com/PerfectoWeb/Belay/issues">the issue tracker</a>, or the address on <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI and Cline are made by other people. Belay works alongside them and is not affiliated with or endorsed by any of them.",
+    "fine": "Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider and Pi are made by other people. Belay works alongside them and is not affiliated with or endorsed by any of them.",
     "authoritative": None,
     "source": "Source on GitHub",
 }
@@ -99,7 +99,7 @@ T["ru"] = {
     "policy_1": "Если политика изменится, мы обновим дату выше. Любое значимое изменение, касающееся приватности, будет упомянуто и в описании выпуска.",
     "contact_head": "Связь",
     "contact_1": 'Вопросы по этой политике: <a href="https://github.com/PerfectoWeb/Belay/issues">трекер задач</a> или адрес на <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Belay не связан с Claude Code, Codex CLI, Gemini CLI и Cline, которые принадлежат своим правообладателям. Belay тихо сидит рядом с ними и мониторит активность агентов локально.",
+    "fine": "Belay не связан с Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider и Pi, которые принадлежат своим правообладателям. Belay тихо сидит рядом с ними и мониторит активность агентов локально.",
     "authoritative": 'Это перевод. Основной текст политики <a href="../">на английском</a>.',
     "source": "Исходный код",
 }
@@ -132,7 +132,7 @@ T["de"] = {
     "policy_1": "Ändert sich diese Erklärung, aktualisieren wir das Datum oben. Jede bedeutsame Änderung beim Datenschutz wird auch in den Versionshinweisen genannt.",
     "contact_head": "Kontakt",
     "contact_1": 'Fragen zu dieser Erklärung: <a href="https://github.com/PerfectoWeb/Belay/issues">der Issue-Tracker</a> oder die Adresse auf <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI und Cline stammen von anderen. Belay arbeitet neben ihnen und steht mit keinem von ihnen in Verbindung und wird von keinem unterstützt.",
+    "fine": "Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider und Pi stammen von anderen. Belay arbeitet neben ihnen und steht mit keinem von ihnen in Verbindung und wird von keinem unterstützt.",
     "authoritative": 'Dies ist eine Übersetzung. Maßgeblich ist die <a href="../">englische Fassung</a>.',
     "source": "Quellcode",
 }
@@ -165,7 +165,7 @@ T["es"] = {
     "policy_1": "Si esta política cambia, actualizaremos la fecha de arriba. Cualquier cambio relevante para la privacidad se mencionará también en las notas de la versión.",
     "contact_head": "Contacto",
     "contact_1": 'Dudas sobre esta política: <a href="https://github.com/PerfectoWeb/Belay/issues">el gestor de incidencias</a> o la dirección que aparece en <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI y Cline son de otras personas. Belay funciona junto a ellos y no está afiliado ni respaldado por ninguno.",
+    "fine": "Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider y Pi son de otras personas. Belay funciona junto a ellos y no está afiliado ni respaldado por ninguno.",
     "authoritative": 'Esto es una traducción. La versión de referencia está <a href="../">en inglés</a>.',
     "source": "Código fuente",
 }
@@ -198,7 +198,7 @@ T["fr"] = {
     "policy_1": "Si cette politique change, nous mettrons à jour la date ci-dessus. Tout changement notable en matière de confidentialité sera également signalé dans les notes de version.",
     "contact_head": "Contact",
     "contact_1": 'Questions sur cette politique : <a href="https://github.com/PerfectoWeb/Belay/issues">le suivi des tickets</a>, ou l\'adresse indiquée sur <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI et Cline sont l'œuvre d'autres personnes. Belay fonctionne à leurs côtés et n'est ni affilié ni approuvé par aucun d'eux.",
+    "fine": "Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider et Pi sont l'œuvre d'autres personnes. Belay fonctionne à leurs côtés et n'est ni affilié ni approuvé par aucun d'eux.",
     "authoritative": 'Ceci est une traduction. La version de référence est <a href="../">en anglais</a>.',
     "source": "Code source",
 }
@@ -231,7 +231,7 @@ T["it"] = {
     "policy_1": "Se questa informativa cambia, aggiorneremo la data qui sopra. Ogni cambiamento rilevante per la privacy sarà indicato anche nelle note di versione.",
     "contact_head": "Contatti",
     "contact_1": 'Domande su questa informativa: <a href="https://github.com/PerfectoWeb/Belay/issues">il tracker delle segnalazioni</a> o l\'indirizzo su <a href="https://perfecto-web.com">perfecto-web.com</a>.',
-    "fine": "Claude Code, Codex CLI, Gemini CLI e Cline sono di altri. Belay funziona accanto a loro e non è affiliato né sostenuto da nessuno di essi.",
+    "fine": "Claude Code, Codex, Gemini CLI, Copilot CLI, OpenCode, Cline, Aider e Pi sono di altri. Belay funziona accanto a loro e non è affiliato né sostenuto da nessuno di essi.",
     "authoritative": 'Questa è una traduzione. La versione di riferimento è <a href="../">in inglese</a>.',
     "source": "Codice sorgente",
 }
@@ -264,7 +264,7 @@ T["zh"] = {
     "policy_1": "如果本政策发生变更，我们会更新上方的日期。任何有实质意义的隐私变更也会写进版本说明。",
     "contact_head": "联系",
     "contact_1": '关于本政策的问题：<a href="https://github.com/PerfectoWeb/Belay/issues">问题追踪器</a>，或 <a href="https://perfecto-web.com">perfecto-web.com</a> 上的地址。',
-    "fine": "Claude Code、Codex CLI、Gemini CLI 和 Cline 由其他人开发。Belay 与它们并行工作，与其中任何一方均无关联，也未获得它们的认可。",
+    "fine": "Claude Code、Codex、Gemini CLI、Copilot CLI、OpenCode、Cline、Aider 和 Pi 由其他人开发。Belay 与它们并行工作，与其中任何一方均无关联，也未获得它们的认可。",
     "authoritative": '这是译文。本政策的正式文本为<a href="../">英文版</a>。',
     "source": "源代码",
 }
