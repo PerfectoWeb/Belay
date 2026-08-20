@@ -5,6 +5,9 @@ struct AboutLink: View {
     let title: LocalizedStringKey
     let symbol: String
     let url: URL
+    /// A catalogue image drawn instead of `symbol`. The one taker is the
+    /// GitHub mark on the App Store build: there is no SF Symbol for it.
+    var asset: String?
     /// Exactly one link on this page gets the accent. Two would be a toolbar.
     var isProminent = false
     /// Plays as the link opens. Only Donate sets one: the browser is about to
@@ -17,7 +20,14 @@ struct AboutLink: View {
     var body: some View {
         Link(destination: url) {
             HStack(spacing: 5) {
-                Image(systemName: symbol).font(.system(size: 11))
+                if let asset {
+                    Image(asset)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 12, height: 12)
+                } else {
+                    Image(systemName: symbol).font(.system(size: 11))
+                }
                 Text(title).font(.system(size: 11, weight: .medium))
             }
             .foregroundStyle(isProminent ? AnyShapeStyle(.white) : AnyShapeStyle(.primary))

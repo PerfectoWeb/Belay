@@ -22,15 +22,22 @@ struct AboutLinks: View {
     var body: some View {
         HStack(spacing: 8) {
             prominent
-            if DistributionChannel.current == .appStore, let review = Branding.appStoreReviewURL {
-                AboutLink(title: "Rate Belay", symbol: "star.bubble", url: review)
+            // On the store build the star belongs to the review button: that
+            // is where a star costs the person something and pays Belay back.
+            // The GitHub link wears the GitHub mark there instead. The direct
+            // build keeps the star on GitHub, where its ask lives.
+            let store = DistributionChannel.current == .appStore
+            if store, let review = Branding.appStoreReviewURL {
+                AboutLink(title: "Rate Belay", symbol: "star", url: review)
             }
             if let repository = Branding.repositoryURL {
                 // "Star" rather than "GitHub": the destination is the same and
                 // the label may as well say what it is for. Anyone who
                 // dismissed the ask in Statistics, or never reached it, can
                 // still find this.
-                AboutLink(title: "Star on GitHub", symbol: "star", url: repository)
+                AboutLink(
+                    title: "Star on GitHub", symbol: "star",
+                    url: repository, asset: store ? "logo-github" : nil)
             }
             if let issues = Branding.issuesURL {
                 AboutLink(title: "Report a bug", symbol: "ladybug", url: issues)
