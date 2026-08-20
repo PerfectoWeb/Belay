@@ -1,0 +1,60 @@
+App Store "What's New in This Version" — Belay 1.3.2
+(direct-only items are deliberately absent: background-task holds and the
+question-as-waiting change ride on precise detection, which the store build
+does not have)
+
+--- EN ---
+
+Codex now has built-in detection. Belay reads Codex's own turn markers, so starts and finishes are exact and retries get the same patience as Claude Code. No setup needed.
+
+Two more agents are built in. Copilot CLI and OpenCode now have ready-made presets, one click each in Settings.
+
+Also: while Belay keeps your Mac awake, it now asks macOS to keep the network active too, so SSH sessions and streaming replies can keep going. And if a preset's folder doesn't exist yet, Belay says so instead of asking for access.
+
+--- RU ---
+
+Для Codex теперь есть встроенное определение активности. Belay читает собственные маркеры Codex, поэтому точно видит начало и конец работы и так же спокойно ждёт повторных попыток, как с Claude Code. Ничего настраивать не нужно.
+
+Добавлены новые агенты: Copilot CLI, OpenCode. Выбрать их можно в готовых пресетах по одному клику в настройках.
+
+А ещё: пока Belay не даёт Mac уснуть, он просит macOS сохранять активной сеть, чтобы SSH-сессии и потоковые ответы могли продолжаться. А если папки пресета ещё нет, Belay теперь просто говорит об этом вместо запроса доступа.
+
+--- DE ---  
+
+Codex hat jetzt eine integrierte Erkennung. Belay liest die eigenen Turn-Markierungen von Codex, erkennt Starts und Abschlüsse dadurch genau und wartet bei Wiederholungsversuchen genauso geduldig wie bei Claude Code. Keine Einrichtung nötig.
+
+Zwei weitere Agents sind jetzt eingebaut. Copilot CLI und OpenCode haben fertige Presets, jeweils mit einem Klick in den Einstellungen.
+
+Außerdem hält Belay jetzt auch das Netzwerk aktiv, während dein Mac wach bleibt, damit SSH-Sitzungen und Streaming-Antworten weiterlaufen können. Und wenn der Ordner eines Presets noch nicht existiert, sagt Belay das einfach, statt nach Zugriff zu fragen.
+
+--- ES ---
+
+Codex ahora tiene detección integrada. Belay lee los propios marcadores de turno de Codex, así que detecta con precisión cuándo empieza y termina el trabajo y espera los reintentos con la misma paciencia que con Claude Code. No hace falta configurar nada.
+
+También se integran dos agentes más. Copilot CLI y OpenCode tienen ahora ajustes predefinidos listos para usar, con un clic cada uno en Ajustes.
+
+Además: mientras Belay mantiene tu Mac despierto, también pide a macOS que mantenga activa la red para que las sesiones SSH y las respuestas en streaming puedan seguir funcionando. Y si la carpeta de un ajuste predefinido todavía no existe, Belay simplemente lo indica en lugar de pedir acceso.
+
+--- FR ---
+
+Codex bénéficie maintenant d’une détection intégrée. Belay lit les propres marqueurs de tour de Codex, ce qui lui permet de détecter précisément les débuts et les fins et d’attendre les nouvelles tentatives avec la même patience que pour Claude Code. Aucune configuration nécessaire.
+
+Deux agents de plus sont désormais intégrés. Copilot CLI et OpenCode disposent de préréglages prêts à l’emploi, chacun accessible en un clic dans Réglages.
+
+Également : pendant que Belay garde votre Mac éveillé, il demande désormais à macOS de maintenir aussi le réseau actif afin que les sessions SSH et les réponses en streaming puissent continuer. Et si le dossier d’un préréglage n’existe pas encore, Belay le dit simplement au lieu de demander l’accès.
+
+--- IT ---
+
+Codex ora ha il rilevamento integrato. Belay legge i marcatori di turno di Codex, così riconosce con precisione quando il lavoro inizia e finisce e aspetta i nuovi tentativi con la stessa pazienza usata per Claude Code. Non serve configurare nulla.
+
+Sono integrati anche altri due agenti. Copilot CLI e OpenCode ora hanno preset già pronti, ciascuno aggiungibile con un clic nelle Impostazioni.
+
+Inoltre: mentre Belay tiene sveglio il Mac, ora chiede a macOS di mantenere attiva anche la rete, così le sessioni SSH e le risposte in streaming possono continuare. E se la cartella di un preset non esiste ancora, Belay lo dice semplicemente invece di chiedere l’accesso.
+
+--- ZH ---
+
+Codex 现在支持内置检测。Belay 会读取 Codex 自己的轮次标记，因此能准确识别任务的开始和结束，并像处理 Claude Code 一样耐心等待重试。无需任何设置。
+
+另外两个智能体也已内置。Copilot CLI 和 OpenCode 现在都有现成的预设，在“设置”中点一下即可添加。
+
+另外：在 Belay 保持 Mac 唤醒期间，它现在也会请求 macOS 保持网络活跃，让 SSH 会话和流式回复能够继续。如果某个预设的文件夹还不存在，Belay 也会直接说明，而不是要求你授予访问权限。

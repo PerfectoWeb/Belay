@@ -98,6 +98,8 @@ enum ReleaseNotes {
         static let lid = "laptopcomputer.and.arrow.down"
         static let chart = "chart.bar"
         static let preset = "square.grid.2x2"
+        static let codex = "curlybraces"
+        static let network = "network"
     }
 
     static var all: [ReleaseNote] {
@@ -120,44 +122,50 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.3.1",
+                version: "1.3.2",
                 items: [
                     .init(
-                        symbol: Mark.chart,
-                        title: "The chart is now interactive",
+                        symbol: Mark.codex,
+                        title: "Codex gets built-in detection",
                         body: """
-                            Hover over a day in Statistics. The bar lifts and the figures above switch to \
-                            that day. Move away and the totals come back.
+                            Belay now reads Codex's own turn markers, so it knows exactly when a turn starts \
+                            and ends and waits through retries just like it does with Claude Code. No setup \
+                            needed.
                             """),
                     .init(
                         symbol: Mark.preset,
-                        title: "Pi is built in",
+                        title: "Two more agents are built in",
                         body: """
-                            One click in Settings starts watching Pi's sessions. Added after a request on \
-                            GitHub.
+                            Copilot CLI and OpenCode now have ready-made presets. One click each in \
+                            Settings.
                             """),
                     .init(
-                        symbol: Mark.quiet,
-                        title: "Quiet doesn't mean finished",
+                        symbol: Mark.safety,
+                        title: "Background work still counts",
                         body: """
-                            If an agent stops mid-answer, Belay now says it went quiet instead of calling \
-                            the run finished.
-                            """),
-                    .init(
-                        symbol: Mark.told,
-                        title: "Closed-lid stops tell you why",
-                        body: """
-                            If the time limit or heat protection ends a closed-lid hold, the notification \
-                            tells you why.
+                            If a turn ends while background agents or shell jobs are still running, Belay \
+                            keeps the Mac awake until they finish.
                             """,
-                        directOnly: true)
+                        directOnly: true),
+                    .init(
+                        symbol: Mark.network,
+                        title: "The network stays awake too",
+                        body: """
+                            While Belay keeps your Mac awake, it also asks macOS to keep the network active, \
+                            so SSH sessions and streaming replies can keep going.
+                            """)
                 ],
                 asides: [
                     .init(
-                        text: "The helper status updates as soon as you approve it.",
+                        text:
+                            "Belay knows you're needed as soon as an agent asks a question.",
                         directOnly: true),
-                    .init(text: "Launch Belay mid-run and it picks the run up right away."),
-                    .init(text: "Failed update checks now say why in the log.", directOnly: true)
+                    .init(
+                        text: """
+                            If a preset's folder doesn't exist yet, Belay says \
+                            so instead of asking for access.
+                            """),
+                    .init(text: "The preset menu now puts the most common CLIs first.")
                 ]
             )
         ]

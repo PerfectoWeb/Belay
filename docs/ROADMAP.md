@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.3.1 is out** everywhere: GitHub, Homebrew and the Mac App Store, with in-place updates from here on.
+**1.3.2 is out** on GitHub and Homebrew and headed to the Mac App Store, with in-place updates from here on.
 
 </div>
 
@@ -44,6 +44,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🌙 | Dim the display at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422) |
 | 📦 | **v1.3.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.0) |
 | 📦 | **v1.3.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.1) |
+| 📦 | **v1.3.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.2) |
 | 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
 | 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |

@@ -14338,523 +14338,6 @@
         }
       }
     },
-    "The chart is now interactive": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The chart is now interactive"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Интерактивная статистика"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Diagramm folgt deinem Mauszeiger"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El gráfico sigue al cursor"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le graphique suit votre curseur"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il grafico segue il cursore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "图表会跟随光标"
-          }
-        }
-      }
-    },
-    "Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hover over a day in Statistics. The bar lifts and the figures above switch to that day. Move away and the totals come back."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Наведите на день в статистике, чтобы увидеть статистику за конкретный день."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fahre in den Statistiken über einen Tag. Der Balken hebt sich, und die Zahlen darüber wechseln zu diesem Tag. Bewegst du den Zeiger weg, kommen die Gesamtwerte zurück."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pasa por encima de un día en Estadísticas. La barra se eleva y las cifras de arriba cambian a ese día. Aparta el cursor y vuelven los totales."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Survolez un jour dans Statistiques. La barre se soulève et les chiffres au-dessus affichent les valeurs de ce jour. Éloignez le curseur et les totaux reviennent."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passa sopra un giorno in Statistiche. La barra si solleva e i valori in alto mostrano quel giorno. Sposta via il cursore e tornano i totali."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "将光标移到“统计”中的某一天。柱形会轻轻抬起，上方的数据也会切换到当天。移开光标后，总计数据会恢复。"
-          }
-        }
-      }
-    },
-    "Pi is built in": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi is built in"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi уже встроен"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi ist jetzt eingebaut"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi viene integrado"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi est intégré"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi è integrato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pi 已内置"
-          }
-        }
-      }
-    },
-    "One click in Settings starts watching Pi's sessions. Added after a request on GitHub.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One click in Settings starts watching Pi's sessions. Added after a request on GitHub."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Один клик в настройках, и Belay начнёт следить за сессиями Pi AI."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein Klick in den Einstellungen genügt, und Belay beobachtet Pis Sitzungen. Nach einem Wunsch auf GitHub hinzugefügt."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un clic en Ajustes basta para que Belay empiece a vigilar las sesiones de Pi. Añadido a petición de un usuario en GitHub."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un clic dans Réglages suffit pour que Belay commence à surveiller les sessions de Pi. Ajouté à la demande d’un utilisateur sur GitHub."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un clic nelle Impostazioni basta perché Belay inizi a seguire le sessioni di Pi. Aggiunto su richiesta di un utente su GitHub."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在“设置”中点一下，Belay 就会开始监视 Pi 的会话。这个功能来自 GitHub 上的用户请求。"
-          }
-        }
-      }
-    },
-    "Quiet doesn't mean finished": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quiet doesn't mean finished"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Агент молчит, но не закончил?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Still heißt nicht fertig"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El silencio no significa que haya terminado"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le silence ne veut pas dire que c’est terminé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il silenzio non vuol dire che sia finita"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "安静不代表已经完成"
-          }
-        }
-      }
-    },
-    "If an agent stops mid-answer, Belay now says it went quiet instead of calling the run finished.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If an agent stops mid-answer, Belay now says it went quiet instead of calling the run finished."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если агент остановился посреди ответа, Belay теперь отмечает запуск как замолкший, а не завершённый."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Agent mitten in einer Antwort stoppt, meldet Belay den Lauf jetzt als verstummt statt als beendet."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si un agente se detiene a mitad de una respuesta, Belay ahora marca la ejecución como silenciosa en lugar de terminada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si un agent s’arrête au milieu d’une réponse, Belay indique désormais que l’exécution s’est tue au lieu de la considérer comme terminée."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se un agente si ferma a metà risposta, Belay ora segnala l’esecuzione come silenziosa invece che conclusa."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果智能体在回答途中停止，Belay 现在会将这次运行标记为“没有动静”，而不是已完成。"
-          }
-        }
-      }
-    },
-    "Closed-lid stops tell you why": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Closed-lid stops tell you why"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "С заботой о железе"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bei geschlossenem Deckel sagt Belay, warum es aufhört"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con la tapa cerrada, Belay te dice por qué se detiene"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Capot fermé, Belay vous dit pourquoi il s’arrête"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con il coperchio chiuso, Belay dice perché si ferma"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖保持唤醒结束时会说明原因"
-          }
-        }
-      }
-    },
-    "If the time limit or heat protection ends a closed-lid hold, the notification tells you why.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If the time limit or heat protection ends a closed-lid hold, the notification tells you why."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay сообщит, если при закрытой крышке отключится в целях безопасности: сработал лимит времени или защита от перегрева."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn das Zeitlimit oder der Hitzeschutz das Wachhalten bei geschlossenem Deckel beendet, sagt die Mitteilung warum."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si el límite de tiempo o la protección térmica termina una retención con la tapa cerrada, la notificación te dice por qué."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si la limite de temps ou la protection thermique met fin au maintien éveillé avec le capot fermé, la notification vous indique pourquoi."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se il limite di tempo o la protezione dal calore termina il mantenimento con il coperchio chiuso, la notifica ti dice perché."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果时间上限或过热保护结束了合盖保持唤醒，通知会告诉你原因。"
-          }
-        }
-      }
-    },
-    "The helper status updates as soon as you approve it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The helper status updates as soon as you approve it."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "В некоторых разделах данные начали обновляться моментально."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Status des Hilfsprogramms aktualisiert sich, sobald du es genehmigst."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El estado del ayudante se actualiza en cuanto lo apruebas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’état du service auxiliaire se met à jour dès que vous l’approuvez."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lo stato dell’helper si aggiorna appena lo approvi."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "批准帮助程序后，它的状态会立即更新。"
-          }
-        }
-      }
-    },
-    "Launch Belay mid-run and it picks the run up right away.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Launch Belay mid-run and it picks the run up right away."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay мгновенно начнёт мониторинг, даже если был запущен в момент уже активной сессии."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Starte Belay mitten in einem Lauf, und es erkennt ihn sofort."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abre Belay a mitad de una ejecución y la detectará al instante."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lancez Belay pendant une exécution et il la détecte immédiatement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avvia Belay a metà di un’esecuzione e la rileverà subito."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果在智能体工作时启动 Belay，它会立即接手监视。"
-          }
-        }
-      }
-    },
-    "Failed update checks now say why in the log.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed update checks now say why in the log."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавлено логирование неуспешных проверок обновлений (если локальные логи включены)."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fehlgeschlagene Update-Prüfungen nennen jetzt den Grund im Protokoll."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las comprobaciones de actualización fallidas ahora indican el motivo en el registro."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les échecs de vérification des mises à jour indiquent désormais leur raison dans le journal."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I controlli di aggiornamento falliti ora indicano il motivo nel registro."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更新检查失败时，日志现在会写明原因。"
-          }
-        }
-      }
-    },
     "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere.": {
       "extractionState": "manual",
       "localizations": {
@@ -15086,6 +14569,523 @@
           "stringUnit": {
             "state": "translated",
             "value": "允许访问 ~/.codex"
+          }
+        }
+      }
+    },
+    "Codex gets built-in detection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex gets built-in detection"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex стал built-in"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex hat jetzt eine integrierte Erkennung"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex ahora tiene detección integrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex bénéficie maintenant d’une détection intégrée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex ora ha il rilevamento integrato"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex 现在支持内置检测"
+          }
+        }
+      }
+    },
+    "Belay now reads Codex's own turn markers, so it knows exactly when a turn starts and ends and waits through retries just like it does with Claude Code. No setup needed.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay now reads Codex's own turn markers, so it knows exactly when a turn starts and ends and waits through retries just like it does with Claude Code. No setup needed."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay читает собственные маркеры Codex, поэтому точно знает, когда начинается и заканчивается работа, и так же спокойно ждёт повторных попыток, как с Claude Code. Ничего настраивать не нужно."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay liest die eigenen Turn-Markierungen von Codex und weiß dadurch genau, wann ein Turn beginnt und endet. Bei Wiederholungsversuchen wartet es genauso geduldig wie bei Claude Code. Keine Einrichtung nötig."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay lee los propios marcadores de turno de Codex, así que sabe exactamente cuándo empieza y termina un turno y espera los reintentos igual que con Claude Code. No hace falta configurar nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay lit les propres marqueurs de tour de Codex et sait ainsi précisément quand un tour commence et se termine. Pour les nouvelles tentatives, il attend avec la même patience que pour Claude Code. Aucune configuration nécessaire."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay legge i marcatori di turno di Codex, così sa con precisione quando un turno inizia e finisce e aspetta i nuovi tentativi proprio come fa con Claude Code. Non serve configurare nulla."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 会读取 Codex 自己的轮次标记，因此能准确知道轮次何时开始、何时结束，并像处理 Claude Code 一样耐心等待重试。无需任何设置。"
+          }
+        }
+      }
+    },
+    "Two more agents are built in": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Two more agents are built in"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавлены новые агенты"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zwei weitere Agents sind eingebaut"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dos agentes más están integrados"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deux agents de plus sont intégrés"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sono integrati altri due agenti"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "又有两个智能体内置了"
+          }
+        }
+      }
+    },
+    "Copilot CLI and OpenCode now have ready-made presets. One click each in Settings.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI and OpenCode now have ready-made presets. One click each in Settings."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для Copilot CLI и OpenCode появились готовые пресеты. Включить их можно в настройках провайдеров в два клика."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI und OpenCode haben jetzt fertige Presets. Jeweils ein Klick in den Einstellungen genügt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI y OpenCode tienen ahora ajustes predefinidos listos para usar. Un clic para cada uno en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI et OpenCode disposent maintenant de préréglages prêts à l’emploi. Un clic chacun dans Réglages."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI e OpenCode ora hanno preset già pronti. Basta un clic per ciascuno nelle Impostazioni."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot CLI 和 OpenCode 现在都有现成的预设。在“设置”中各点一下即可添加。"
+          }
+        }
+      }
+    },
+    "Background work still counts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background work still counts"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Алло, shell? Меня слышно?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hintergrundarbeit zählt weiterhin"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El trabajo en segundo plano también cuenta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le travail en arrière-plan compte aussi"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anche il lavoro in background conta"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台工作也算在内"
+          }
+        }
+      }
+    },
+    "If a turn ends while background agents or shell jobs are still running, Belay keeps the Mac awake until they finish.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If a turn ends while background agents or shell jobs are still running, Belay keeps the Mac awake until they finish."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если основная работа закончилась, а фоновые агенты или shell-задачи ещё работают, Belay также не даст Mac уснуть, пока они не завершатся."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Turn endet, während Hintergrund-Agents oder Shell-Jobs noch laufen, hält Belay den Mac wach, bis sie fertig sind."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si un turno termina mientras aún hay agentes en segundo plano o tareas de shell en ejecución, Belay mantiene el Mac despierto hasta que terminan."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si un tour se termine alors que des agents en arrière-plan ou des tâches shell sont encore en cours, Belay garde le Mac éveillé jusqu’à ce qu’ils aient terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se un turno finisce mentre agenti in background o job di shell sono ancora in esecuzione, Belay tiene sveglio il Mac finché non terminano."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果当前轮次结束时，后台智能体或 shell 任务仍在运行，Belay 会继续保持 Mac 唤醒，直到它们完成。"
+          }
+        }
+      }
+    },
+    "The network stays awake too": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The network stays awake too"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Да будет интернет"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auch das Netzwerk bleibt aktiv"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La red también permanece activa"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le réseau reste actif lui aussi"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anche la rete resta attiva"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "网络也会保持活跃"
+          }
+        }
+      }
+    },
+    "While Belay keeps your Mac awake, it also asks macOS to keep the network active, so SSH sessions and streaming replies can keep going.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While Belay keeps your Mac awake, it also asks macOS to keep the network active, so SSH sessions and streaming replies can keep going."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay научился просить macOS сохранять активной и сеть, чтобы SSH-сессии и потоковые ответы могли продолжаться."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Während Belay deinen Mac wach hält, bittet es macOS auch darum, das Netzwerk aktiv zu halten, damit SSH-Sitzungen und Streaming-Antworten weiterlaufen können."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mientras Belay mantiene tu Mac despierto, también pide a macOS que mantenga activa la red para que las sesiones SSH y las respuestas en streaming puedan continuar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendant que Belay garde votre Mac éveillé, il demande aussi à macOS de maintenir le réseau actif afin que les sessions SSH et les réponses en streaming puissent continuer."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mentre Belay tiene sveglio il Mac, chiede anche a macOS di mantenere attiva la rete, così le sessioni SSH e le risposte in streaming possono continuare."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 Belay 保持 Mac 唤醒期间，它也会请求 macOS 保持网络活跃，让 SSH 会话和流式回复能够继续。"
+          }
+        }
+      }
+    },
+    "Belay knows you're needed as soon as an agent asks a question.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay knows you're needed as soon as an agent asks a question."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay понимает, что вы нужны, сразу после вопроса от агента."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay weiß, dass du gebraucht wirst, sobald ein Agent eine Frage stellt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay sabe que te necesita en cuanto un agente hace una pregunta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay sait que vous êtes attendu dès qu’un agent pose une question."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay sa che servi non appena un agente fa una domanda."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体一提出问题，Belay 就知道需要你回来处理。"
+          }
+        }
+      }
+    },
+    "If a preset's folder doesn't exist yet, Belay says so instead of asking for access.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If a preset's folder doesn't exist yet, Belay says so instead of asking for access."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если папки пресета ещё нет, Belay просто говорит об этом вместо запроса доступа."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn der Ordner eines Presets noch nicht existiert, sagt Belay das einfach, statt nach Zugriff zu fragen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si la carpeta de un ajuste predefinido todavía no existe, Belay simplemente lo indica en lugar de pedir acceso."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si le dossier d’un préréglage n’existe pas encore, Belay le dit simplement au lieu de demander l’accès."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se la cartella di un preset non esiste ancora, Belay lo dice semplicemente invece di chiedere l’accesso."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果某个预设的文件夹还不存在，Belay 会直接说明，而不是请求访问权限。"
+          }
+        }
+      }
+    },
+    "The preset menu now puts the most common CLIs first.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The preset menu now puts the most common CLIs first."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В меню пресетов самые популярные CLI теперь идут первыми."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Preset-Menü stehen die gängigsten CLIs jetzt zuerst."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El menú de ajustes predefinidos ahora muestra primero los CLI más habituales."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le menu des préréglages affiche désormais les CLI les plus courants en premier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il menu dei preset ora mostra per primi i CLI più comuni."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预设菜单现在会把最常用的 CLI 放在前面。"
           }
         }
       }
