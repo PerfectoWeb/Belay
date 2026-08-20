@@ -84,11 +84,34 @@ extension CodexProvider {
             leeway: .milliseconds(Int(configuration.tickInterval * 200)))
         let tick: @Sendable () -> Void = { [weak self] in
             guard let self else { return }
-            Task { await self.sweepForIdle(now: self.clock.now) }
+            Task { await self.tick() }
         }
         timer.setEventHandler(handler: tick)
         timer.resume()
         ticker = timer
+    }
+
+    func tick() {
+        let now = clock.now
+        sweepForIdle(now: now)
+        tickCount += 1
+        guard tickCount.isMultiple(of: 3) else { return }
+        sweepForDeadProcess(now: now)
+    }
+
+    /// Codex has no per-session pid registry the way Claude Code does, but it
+    /// has something almost as good: every live session belongs to some `codex`
+    /// process. When the table has none at all, a "working" session is a crash
+    /// or a quit mid-turn, and fifteen minutes of open-turn grace for a process
+    /// that no longer exists is fifteen minutes of a pinned Mac. `nil` from the
+    /// roster is a transient read failure and must never end anything.
+    func sweepForDeadProcess(now: Date) {
+        guard watched.values.contains(where: { $0.reported == .working }) else { return }
+        guard let processes = roster() else { return }
+        guard !ProcessRoster.contains("codex", in: processes) else { return }
+        for (id, watch) in watched where watch.reported == .working {
+            end(id, at: now, cause: "process-gone")
+        }
     }
 
     func sweepForIdle(now: Date) {

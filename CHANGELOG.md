@@ -5,6 +5,23 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - Unreleased
+
+### Changed
+
+- A crashed Codex ends its sessions within seconds: when no `codex` process
+  remains, a working session is a crash, not a retry, and it no longer earns
+  the fifteen-minute grace.
+- The lid hold's hard cap counts on the monotonic clock, so dragging the date
+  backwards can no longer extend a privileged flag.
+- The lid helper records what `disablesleep` was before it raises the flag —
+  sentinel first, flag second, crash-safe in that order — and restores that
+  value instead of assuming zero. A Mac whose owner runs `disablesleep 1`
+  deliberately keeps their setting, including across reboots: startup now
+  restores only when the sentinel says the flag is Belay's, lowering it never
+  touches a flag that was never ours, and the first start after this update
+  clears any pre-sentinel leftover exactly once.
+
 ## [1.3.2] - 2026-08-20
 
 ### Added

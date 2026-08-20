@@ -151,6 +151,32 @@ struct CodexProviderTests {
         await provider.stop()
     }
 
+    @Test("A working session ends when no codex process remains")
+    func deadProcessSweep() async throws {
+        let url = scratch.rollout("t6-dead", lines: [CodexScratch.line("task_started")])
+        let empty = CodexProvider(
+            configuration: scratch.configuration, access: DirectFileAccess(),
+            roster: { [] })
+        try await empty.start()
+        await empty.ingest(url, now: Date())
+        let id = CodexRollout.sessionID(for: url)
+        #expect(await empty.watched[id]?.reported == .working)
+        await empty.sweepForDeadProcess(now: Date())
+        #expect(await empty.watched[id] == nil)
+        await empty.stop()
+
+        // An unreadable table is "ask again later", never "everything died".
+        let blind = CodexProvider(
+            configuration: scratch.configuration, access: DirectFileAccess(),
+            roster: { nil })
+        try await blind.start()
+        let url2 = scratch.rollout("t7-blind", lines: [CodexScratch.line("task_started")])
+        await blind.ingest(url2, now: Date())
+        await blind.sweepForDeadProcess(now: Date())
+        #expect(await blind.watched[CodexRollout.sessionID(for: url2)] != nil)
+        await blind.stop()
+    }
+
     @Test("Silence idles a closed turn but ends an open one only past the grace")
     func idleSweep() async throws {
         let url = scratch.rollout("t4-grace", lines: [CodexScratch.line("task_started")])

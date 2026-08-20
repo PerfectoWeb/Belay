@@ -27,22 +27,29 @@ public actor CodexProvider: ActivityProvider {
     let configuration: Configuration
     let access: FileAccessProvider
     let clock: any Clock
+    /// Injectable so a test can empty the process table without asking the
+    /// machine's real one to play along. `nil` from the real scan means the
+    /// table could not be read, which is "ask again later", never "gone".
+    let roster: @Sendable () -> Set<String>?
     private let continuation: AsyncStream<ActivitySignal>.Continuation
     let queue = DispatchQueue(label: "com.perfectoweb.belay.providers.codex", qos: .utility)
 
     var watched: [SessionID: CodexWatch] = [:]
     private var events: FileEventStream?
     var ticker: DispatchSourceTimer?
+    var tickCount = 0
     private var isStarted = false
 
     public init(
         configuration: Configuration = .codexHome(),
         access: FileAccessProvider = DirectFileAccess(),
-        clock: any Clock = SystemClock()
+        clock: any Clock = SystemClock(),
+        roster: (@Sendable () -> Set<String>?)? = nil
     ) {
         self.configuration = configuration
         self.access = access
         self.clock = clock
+        self.roster = roster ?? { ProcessRoster.scan() }
         let made = AsyncStream.makeStream(
             of: ActivitySignal.self, bufferingPolicy: .bufferingNewest(256))
         signals = made.stream
@@ -82,6 +89,7 @@ public actor CodexProvider: ActivityProvider {
         ticker?.cancel()
         ticker = nil
         watched.removeAll()
+        tickCount = 0
         isStarted = false
     }
 

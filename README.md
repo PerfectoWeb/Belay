@@ -21,30 +21,25 @@
 
 ## 📚 What is it?
 
-You start a long Claude Code task and walk away. Ten minutes later your Mac
-sleeps, the run dies, and you come back to nothing. So you set sleep to
-**Never**, forget to change it back, and your laptop cooks itself for a week.
+You start a long Claude Code or Codex task and walk away. Ten minutes later your 
+Mac sleeps, the run stops making progress, and you come back to unfinished work.
 
-Belay is a macOS menu bar app that fixes exactly that, and nothing else. It
-watches your local coding agents, holds the Mac awake **only while one is
-genuinely working**, and hands sleep straight back the moment everything goes
-quiet. Your System Settings are never touched — the one switch the opt-in lid
-hold exists to hold is flipped back by itself, every time.
+Belay is a macOS menu bar app that fixes exactly that. It watches your local
+coding agents, keeps the Mac awake while work is still happening, and lets it
+sleep normally again when the work is done.
 
-The trade-off it is tuned around is lopsided on purpose: sleeping sixty seconds
-too early kills a long run silently and wastes an evening, while staying awake
-sixty seconds too long costs nothing at all.
+No timer to start. No sleep setting to remember to change back.
 
 ## ✨ Features
 
 <table>
-<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code is detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌&nbsp;<b>Every&nbsp;agent</b></td><td>Claude Code and Codex are detected precisely, out of the box. Gemini CLI, Copilot CLI, OpenCode, Cline, Aider and Pi ship as presets. Anything else: watch a folder, watch a process, or send a webhook.</td></tr>
-<tr><td>🛡&nbsp;<b>Never&nbsp;stuck</b></td><td>Every hold expires by itself after 120 seconds unless Belay re-arms it. Crash it, force-quit it, kill it, and your Mac is back to normal within two minutes.</td></tr>
-<tr><td>🔋&nbsp;<b>Your&nbsp;rails</b></td><td>A cap on continuous awake time, a battery floor, and release on sleep, quit and mode change.</td></tr>
-<tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents are counted as the one session they belong to, not as noise.</td></tr>
-<tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>It counts the time it held while you were away from the keyboard, which is the only time that was ever at risk.</td></tr>
-<tr><td>🔒&nbsp;<b>Stays&nbsp;local</b></td><td>No account, no telemetry. One daily version check, carrying nothing about you, and one switch turns it off.</td></tr>
+<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code and Codex are detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, Copilot CLI, OpenCode, Cline, Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
+<tr><td>🛡&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
+<tr><td>🔋&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
+<tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents count as part of the session they belong to, not as noise.</td></tr>
+<tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
+<tr><td>🔒&nbsp;<b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
 <tr><td>🌍&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
 
@@ -122,9 +117,9 @@ while an agent is working and lets it sleep when nothing is.
 
 | Mode | What it does |
 |---|---|
-| 🪄 **Auto** *(default)* | Awake if and only if an agent is working |
-| ☀️ **Always On** | A better `caffeinate`, with the same safety rails |
-| 🌙 **Off** | Belay holds nothing |
+| 🪄 **Auto** *(default)* | Keeps your Mac awake while an agent is working |
+| ☀️ **Always On** | Keeps it awake until you turn it off |
+| 🌙 **Off** | Belay stays out of the way |
 
 **3. Left-click the menu bar icon** for the panel: what is running, for how
 long, and, when Belay is *not* holding, the reason in plain language.
@@ -170,7 +165,7 @@ the lid shut. macOS enters clamshell sleep unless the machine is on AC power
 with an external display attached.
 
 Since 1.3 the direct build can, as an opt-in. **Keep working with the lid
-closed** in Settings installs a system helper — macOS asks for your approval —
+closed** in Settings installs a system helper – macOS asks for your approval –
 that holds
 the OS's own sleep switch while an agent is working, and always lets go by
 itself: when the work ends, when Belay stops asking for it, after a hard time
@@ -187,7 +182,7 @@ and a good one), so it does not offer the switch.
 
 That is intentional and saves real power. Belay prevents *system* sleep; the
 machine underneath keeps working. There is a setting to keep the display awake
-too, off by default — and since 1.3, one to dim it to a glow at night while
+too, off by default – and since 1.3, one to dim it to a glow at night while
 it is kept awake, so a screen held for an overnight run does not light an
 empty room. It brightens back the moment you return.
 
@@ -197,11 +192,13 @@ empty room. It brightens back the moment you return.
 <summary><b>Belay does not see my agent</b></summary>
 
 Claude Code and Codex need no setup. Everything else is configured in
-**Settings ▸ Providers**: switch on a preset — Gemini CLI, Copilot CLI,
-OpenCode, Aider, Cline and Pi ship ready-made — or point the folder watcher at
-wherever your tool writes while it works. If your tool can run a shell command, the webhook in
-[`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything) is
-one line.
+**Settings ▸ Providers**: switch on a preset – Gemini CLI, Copilot CLI,
+OpenCode, Aider, Cline and Pi ship ready-made – or point Belay at a folder or
+process your tool uses while it works.
+
+In the direct build, tools that can run a shell command can also talk to Belay
+directly. See
+[`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything).
 
 </details>
 
@@ -232,8 +229,8 @@ run for real.
 
 Belay is free and always will be. The most useful things, in order:
 
-⭐ **[Star it](https://github.com/PerfectoWeb/Belay)**. It costs nothing and it
-is how other people find this.
+⭐ **[Star it](https://github.com/PerfectoWeb/Belay)**. It costs nothing and
+helps other people find it.
 
 🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
@@ -275,8 +272,9 @@ What is forbidden is charging other people for it.
 📛 **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
 
-The **name and the mark** are separate again. [`docs/TRADEMARKS.md`](docs/TRADEMARKS.md)
-says exactly what that does and does not stop you doing.
+The **name and the mark** are covered separately.
+[`docs/TRADEMARKS.md`](docs/TRADEMARKS.md) explains what that does and does not
+stop you doing.
 
 Belay shows each tool's own logo in the sessions list so you can tell at a
 glance which agent is working. All product names, logos and trademarks are the

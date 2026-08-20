@@ -29,15 +29,27 @@ public struct LidHold: Sendable, Equatable {
         /// `ProcessInfo.thermalState` at `serious` or worse.
         public var thermalSerious: Bool
         public var now: Date
+        /// A monotonic reading (`ProcessInfo.systemUptime`), which is what the
+        /// cap is measured on: a privileged flag must not stay up longer
+        /// because somebody moved the date back. The wall clock stays for
+        /// records; this one is for arithmetic. It pauses during system sleep,
+        /// which is correct here — a sleeping Mac is not being held.
+        public var monotonic: TimeInterval
 
         public init(
-            enabled: Bool, holding: Bool, lidClosed: Bool, thermalSerious: Bool, now: Date
+            enabled: Bool,
+            holding: Bool,
+            lidClosed: Bool,
+            thermalSerious: Bool,
+            now: Date,
+            monotonic: TimeInterval
         ) {
             self.enabled = enabled
             self.holding = holding
             self.lidClosed = lidClosed
             self.thermalSerious = thermalSerious
             self.now = now
+            self.monotonic = monotonic
         }
     }
 
@@ -60,6 +72,8 @@ public struct LidHold: Sendable, Equatable {
     public var cap: TimeInterval
 
     public private(set) var engagedSince: Date?
+    /// The monotonic reading at engage; the cap counts from here.
+    private var engagedAtMonotonic: TimeInterval?
     /// Set when the cap or the thermal guard fired; cleared only once the hold
     /// ends. Without this the flag would go straight back up on the next tick,
     /// and the guard would have capped nothing — the same trap
@@ -73,19 +87,19 @@ public struct LidHold: Sendable, Equatable {
     public var isEngaged: Bool { engagedSince != nil }
 
     public mutating func evaluate(_ sample: Sample) -> Command? {
-        if let since = engagedSince {
+        if engagedSince != nil {
             if !sample.enabled || !sample.holding {
-                engagedSince = nil
+                disengage()
                 tripped = false
                 return .release(.done)
             }
             if sample.thermalSerious && sample.lidClosed {
-                engagedSince = nil
+                disengage()
                 tripped = true
                 return .release(.thermal)
             }
-            if sample.now.timeIntervalSince(since) >= cap {
-                engagedSince = nil
+            if let began = engagedAtMonotonic, sample.monotonic - began >= cap {
+                disengage()
                 tripped = true
                 return .release(.capReached)
             }
@@ -104,6 +118,12 @@ public struct LidHold: Sendable, Equatable {
         // with the lid shut.
         guard !(sample.thermalSerious && sample.lidClosed) else { return nil }
         engagedSince = sample.now
+        engagedAtMonotonic = sample.monotonic
         return .engage
+    }
+
+    private mutating func disengage() {
+        engagedSince = nil
+        engagedAtMonotonic = nil
     }
 }

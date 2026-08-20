@@ -77,7 +77,8 @@ final class LidHoldController {
             holding: state.isHolding,
             lidClosed: Clamshell.isClosed() ?? false,
             thermalSerious: thermal == .serious || thermal == .critical,
-            now: Date())
+            now: Date(),
+            monotonic: ProcessInfo.processInfo.systemUptime)
 
         switch machine.evaluate(sample) {
         case .engage:

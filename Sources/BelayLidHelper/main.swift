@@ -8,25 +8,39 @@ import Foundation
 /// - The flag never outlives its deadline. Every `keepSleepDisabled` arms a
 ///   timer, and the timer's only job is to clear the flag when the app stops
 ///   asking. A crashed Belay costs one leash length, nothing more.
-/// - The flag never survives a restart of anything. `pmset disablesleep`
-///   persists in the power-management preferences, so a helper that starts —
-///   at boot via RunAtLoad, or relaunched by launchd — clears it first and
-///   asks questions never.
+/// - The flag never survives a restart of anything *that Belay raised*. A
+///   sentinel file is written before the flag ever goes up, recording what the
+///   flag was beforehand; startup restores that recorded value and a Mac whose
+///   owner runs `disablesleep 1` by their own hand keeps their setting. The
+///   ordering is crash-safe: sentinel first, flag second, so there is no
+///   moment where the flag is ours and the restore value is not on disk.
 /// - Only Belay may speak. The connection requires Belay's code signature;
 ///   anything else on the machine is refused before a byte of protocol runs.
 final class SleepFlag: @unchecked Sendable {
     private let queue = DispatchQueue(label: "com.perfectoweb.belay.lidhelper.flag")
     private var expiry: DispatchSourceTimer?
 
+    /// Root-owned, in root's own territory. Its presence means "the flag is
+    /// Belay's"; its content is the value to put back.
+    private static let sentinel = URL(fileURLWithPath: "/var/db/com.perfectoweb.belay.lidhold")
+
     func keep(until deadline: Date) -> Bool {
         queue.sync {
             let leash = min(
                 deadline.timeIntervalSinceNow, LidDaemon.maximumLeash)
             guard leash > 0 else { return lowerLocked() }
+            if !FileManager.default.fileExists(atPath: Self.sentinel.path) {
+                let prior = Self.currentValue() ?? false
+                try? Data((prior ? "1" : "0").utf8).write(to: Self.sentinel)
+            }
             guard Self.pmset(disabled: true) else { return false }
             expiry?.cancel()
             let timer = DispatchSource.makeTimerSource(queue: queue)
-            timer.schedule(deadline: .now() + leash)
+            // Wall deadline on purpose: if the machine is somehow forced
+            // asleep mid-leash, a suspended monotonic timer would hold the
+            // flag for a stale leash after wake; a wall deadline fires the
+            // moment the Mac is back.
+            timer.schedule(wallDeadline: .now() + leash)
             timer.setEventHandler { [weak self] in _ = self?.lowerLocked() }
             timer.resume()
             expiry = timer
@@ -38,12 +52,46 @@ final class SleepFlag: @unchecked Sendable {
         queue.sync { lowerLocked() }
     }
 
-    /// Returns whether the flag is *down*, which is the caller's question.
+    /// Restores what the sentinel recorded — 0 for everyone who never touched
+    /// pmset themselves — and only forgets the sentinel once the restore
+    /// actually happened. No sentinel means the flag was never Belay's, and a
+    /// flag that is not ours is not ours to lower either. Returns whether the
+    /// flag is *back to its owner's value*, which is the caller's question.
     private func lowerLocked() -> Bool {
         expiry?.cancel()
         expiry = nil
-        return Self.pmset(disabled: false)
+        guard FileManager.default.fileExists(atPath: Self.sentinel.path) else { return true }
+        let restore =
+            (try? String(contentsOf: Self.sentinel, encoding: .utf8))
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) == "1" } ?? false
+        guard Self.pmset(disabled: restore) else { return false }
+        try? FileManager.default.removeItem(at: Self.sentinel)
+        return true
     }
+
+    /// Whether Belay raised the flag in a previous life and never lowered it.
+    var owesARestore: Bool {
+        queue.sync { FileManager.default.fileExists(atPath: Self.sentinel.path) }
+    }
+
+    /// One boot's worth of old-world cleanup. Helpers before the sentinel
+    /// lowered blindly at startup, so their leftover flag carries no sentinel
+    /// and would otherwise read as the owner's deliberate setting. The first
+    /// start of a sentinel-aware helper clears it the old way, leaves a
+    /// marker, and never does so again — from then on, a bare flag at boot is
+    /// respected as the owner's.
+    func migrateFromTheBlindEra() {
+        queue.sync {
+            guard !FileManager.default.fileExists(atPath: Self.migrated.path) else { return }
+            if !FileManager.default.fileExists(atPath: Self.sentinel.path) {
+                _ = Self.pmset(disabled: false)
+            }
+            try? Data("1".utf8).write(to: Self.migrated)
+        }
+    }
+
+    private static let migrated = URL(
+        fileURLWithPath: "/var/db/com.perfectoweb.belay.lidhold.migrated")
 
     private static func pmset(disabled: Bool) -> Bool {
         let process = Process()
@@ -56,6 +104,31 @@ final class SleepFlag: @unchecked Sendable {
         }
         process.waitUntilExit()
         return process.terminationStatus == 0
+    }
+
+    /// Reads `SleepDisabled` out of `pmset -g`, or `nil` when it cannot.
+    private static func currentValue() -> Bool? {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/pmset")
+        process.arguments = ["-g"]
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        do {
+            try process.run()
+        } catch {
+            return nil
+        }
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        process.waitUntilExit()
+        guard process.terminationStatus == 0,
+            let text = String(bytes: data, encoding: .utf8)
+        else { return nil }
+        for line in text.split(separator: "\n") {
+            let lowered = line.lowercased()
+            guard lowered.contains("sleepdisabled") else { continue }
+            return lowered.hasSuffix("1")
+        }
+        return nil
     }
 }
 
@@ -91,8 +164,14 @@ final class SwitchKeeper: NSObject, NSXPCListenerDelegate, LidHelperProtocol {
         reply(LidDaemon.version)
     }
 
-    /// Startup is a cleanup: whatever a previous life left set, unset.
+    /// Startup is a cleanup — but only of Belay's own mess. A sentinel on disk
+    /// means a previous life raised the flag and never restored it, so restore
+    /// it now. No sentinel means the flag, whatever it reads, belongs to the
+    /// machine's owner, and a helper that "cleans" it at every boot would be
+    /// overwriting their deliberate setting.
     func clearStaleFlag() {
+        flag.migrateFromTheBlindEra()
+        guard flag.owesARestore else { return }
         _ = flag.lower()
     }
 }

@@ -12,14 +12,16 @@ struct LidHoldTests {
         holding: Bool = true,
         lidClosed: Bool = false,
         hot: Bool = false,
-        at offset: TimeInterval = 0
+        at offset: TimeInterval = 0,
+        monotonic: TimeInterval? = nil
     ) -> LidHold.Sample {
         LidHold.Sample(
             enabled: enabled,
             holding: holding,
             lidClosed: lidClosed,
             thermalSerious: hot,
-            now: start.addingTimeInterval(offset))
+            now: start.addingTimeInterval(offset),
+            monotonic: monotonic ?? offset)
     }
 
     @Test("The flag rides the hold: up with work, down when it ends")
@@ -77,5 +79,16 @@ struct LidHoldTests {
         var lid = LidHold()
         #expect(lid.evaluate(sample(lidClosed: true, hot: true)) == nil)
         #expect(lid.evaluate(sample(lidClosed: true, at: 60)) == .engage)
+    }
+
+    @Test("The cap counts on the monotonic clock, not the calendar")
+    func capSurvivesAClockStep() {
+        var lid = LidHold(cap: 3_600)
+        #expect(lid.evaluate(sample()) == .engage)
+        // Somebody drags the date a day backwards mid-hold. The wall clock now
+        // reads before the engage; the machine has still been holding for over
+        // an hour, and the flag must come down regardless.
+        let stepped = sample(at: -86_400, monotonic: 3_601)
+        #expect(lid.evaluate(stepped) == .release(.capReached))
     }
 }
