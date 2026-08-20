@@ -119,7 +119,7 @@ public actor PowerAssertionController {
     }
 
     private func reconcile(_ kind: PowerAssertionKind) async throws(PowerError) {
-        let wanted = isActive && (kind == .system || wantsDisplay)
+        let wanted = isActive && (kind != .display || wantsDisplay)
         switch (wanted, live[kind]) {
         case (true, nil):
             let id = try await backend.create(kind: kind, reason: reason, timeout: timeout)

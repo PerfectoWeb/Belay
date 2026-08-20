@@ -12,12 +12,42 @@ struct HookEnvelopeTests {
 
     /// If this ever fails, someone widened the struct that stands between the
     /// user's prompt and the rest of Belay. Read the header of HookEnvelope.swift
-    /// before changing the number.
-    @Test func decodesExactlyFourFields() throws {
+    /// before changing the list: every field must be an identifier, a name or a
+    /// count — never content.
+    @Test func decodesExactlySixFields() throws {
         let envelope = try decode(HookReceiverTests.body(event: "UserPromptSubmit"))
         let fields = Mirror(reflecting: envelope).children.compactMap(\.label)
-        #expect(fields.sorted() == ["cwd", "eventName", "sessionID", "transcriptPath"])
+        #expect(
+            fields.sorted() == [
+                "backgroundTasks", "cwd", "eventName", "sessionID", "toolName", "transcriptPath"
+            ])
         #expect(String(describing: envelope).contains(HookReceiverTests.secret) == false)
+    }
+
+    /// A Stop that reports live background tasks is still work; an empty or
+    /// absent array ends the turn as before. The entries themselves are never
+    /// read — a count survives even entries shaped like nothing we expect.
+    @Test func stopWithBackgroundTasksKeepsWorking() throws {
+        let busy =
+            #"{"session_id":"s","hook_event_name":"Stop","background_tasks":[{"id":"t","secret":"x"}]}"#
+        #expect(try decode(busy).signal(at: Date())?.activity == .working)
+        let idle = #"{"session_id":"s","hook_event_name":"Stop","background_tasks":[]}"#
+        #expect(try decode(idle).signal(at: Date())?.activity == .idle)
+        let absent = #"{"session_id":"s","hook_event_name":"Stop"}"#
+        #expect(try decode(absent).signal(at: Date())?.activity == .idle)
+        let mangled = #"{"session_id":"s","hook_event_name":"Stop","background_tasks":7}"#
+        #expect(try decode(mangled).signal(at: Date())?.activity == .idle)
+    }
+
+    /// Starting a question tool means a person has to answer; starting any
+    /// other tool is plain work.
+    @Test func questionToolsReadAsWaiting() throws {
+        let ask = #"{"session_id":"s","hook_event_name":"PreToolUse","tool_name":"AskUserQuestion"}"#
+        #expect(try decode(ask).signal(at: Date())?.activity == .awaitingUser)
+        let plan = #"{"session_id":"s","hook_event_name":"PreToolUse","tool_name":"ExitPlanMode"}"#
+        #expect(try decode(plan).signal(at: Date())?.activity == .awaitingUser)
+        let bash = #"{"session_id":"s","hook_event_name":"PreToolUse","tool_name":"Bash"}"#
+        #expect(try decode(bash).signal(at: Date())?.activity == .working)
     }
 
     @Test func takesTheWorkspaceNameFromCwd() throws {

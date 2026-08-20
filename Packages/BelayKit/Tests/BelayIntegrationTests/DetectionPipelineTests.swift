@@ -67,8 +67,10 @@ struct DetectionPipelineTests {
             #expect(await pipe.assertions.isHeld, "a pause shorter than grace dropped the hold")
         }
 
-        // One assertion for the whole run, not one per burst of writes.
-        #expect(await pipe.backend.createCount == 1, "the assertion was churned instead of held")
+        // One hold for the whole run, not one per burst of writes. Two
+        // creates, because a hold is a pair now: sleep plus its network
+        // companion.
+        #expect(await pipe.backend.createCount == 2, "the assertion was churned instead of held")
     }
 
     @Test("Transcripts already on disk at startup are not mistaken for live work")

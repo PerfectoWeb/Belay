@@ -64,6 +64,7 @@ extension PowerAssertionKind {
         switch self {
         case .system: kIOPMAssertionTypePreventUserIdleSystemSleep
         case .display: kIOPMAssertionTypePreventUserIdleDisplaySleep
+        case .network: kIOPMAssertNetworkClientActive
         }
     }
 }

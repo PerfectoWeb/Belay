@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Background work survives the end of a turn. A Claude Code `Stop` that
+  reports live background tasks no longer releases the hold: background
+  agents and shell jobs keep the Mac awake until they are done or the
+  session ages out. Only the count of tasks is read, never their content.
+- A question is not work. `AskUserQuestion` and `ExitPlanMode` starting now
+  read as "waiting for you" from the moment the tool fires, not from a later
+  notification.
+- Every hold now carries a network-client assertion beside the sleep one, so
+  a kept-awake Mac keeps its SSH sessions and streaming API calls alive too.
 - Presets for GitHub Copilot CLI and OpenCode. Copilot CLI streams
   `session-state/<uuid>/events.jsonl` during a turn — verified on a real
   install — and OpenCode writes its database WAL at every tool call, so both

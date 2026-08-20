@@ -9,6 +9,11 @@ public enum PowerAssertionKind: String, Sendable, CaseIterable {
     case system
     /// Opt-in second assertion behind "Also keep the display awake".
     case display
+    /// Rides along with `system`, always. An awake Mac whose network clients
+    /// were parked is still a dead agent run: SSH drops, streaming API calls
+    /// stall. This asks macOS to keep network alive too — a request, not a
+    /// promise, and it costs nothing when nothing is held.
+    case network
 }
 
 /// An opaque handle to one live assertion.

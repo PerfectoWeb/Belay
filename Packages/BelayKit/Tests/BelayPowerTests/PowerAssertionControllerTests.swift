@@ -17,6 +17,9 @@ struct PowerAssertionControllerTests {
         #expect(await controller.isHeld)
         #expect(await controller.isDisplayHeld == false)
         #expect(await backend.liveCount(of: .system) == 1)
+        // The network companion rides along with every hold: awake but
+        // unreachable is still a dead run.
+        #expect(await backend.liveCount(of: .network) == 1)
 
         await controller.release()
         #expect(await controller.isHeld == false)
@@ -32,14 +35,16 @@ struct PowerAssertionControllerTests {
         await controller.hold(reason: "first", timeout: inert)
         await controller.hold(reason: "second", timeout: inert)
 
-        #expect(await backend.createCount == 1)
-        #expect(await backend.rearmCount == 1)
+        // Two creates per hold now: system plus its network companion.
+        #expect(await backend.createCount == 2)
+        #expect(await backend.rearmCount == 2)
         #expect(await backend.releaseCount == 0)
         #expect(await controller.heldReason == "second")
         let calls = await backend.calls
-        #expect(calls.count == 2)
+        #expect(calls.count == 4)
         #expect(calls.first == .create(kind: .system, reason: "first", timeout: inert))
-        #expect(calls.last == .rearm(id: PowerAssertionID(rawValue: 1), reason: "second", timeout: inert))
+        #expect(
+            calls[2] == .rearm(id: PowerAssertionID(rawValue: 1), reason: "second", timeout: inert))
 
         await controller.release()
     }
@@ -66,7 +71,7 @@ struct PowerAssertionControllerTests {
         await controller.hold(reason: "work", includeDisplay: true, timeout: inert)
         #expect(await backend.liveCount(of: .system) == 1)
         #expect(await backend.liveCount(of: .display) == 1)
-        #expect(await backend.createCount == 2)
+        #expect(await backend.createCount == 3)
         #expect(await backend.releaseCount == 0)
 
         await controller.hold(reason: "work", includeDisplay: false, timeout: inert)
@@ -144,13 +149,14 @@ struct PowerAssertionControllerTests {
         await backend.fail([.release])
         await controller.release()
 
-        // The kernel-side assertion is now orphaned, but its own timeout reaps
-        // it; what matters is that we never retry a stale ID.
+        // The kernel-side assertions are now orphaned, but their own timeouts
+        // reap them; what matters is that we never retry a stale ID. One
+        // attempt per held kind (system and its network companion).
         #expect(await controller.isHeld == false)
         #expect(await controller.lastError != nil)
-        #expect(await backend.releaseCount == 1)
+        #expect(await backend.releaseCount == 2)
 
         await controller.release()
-        #expect(await backend.releaseCount == 1)
+        #expect(await backend.releaseCount == 2)
     }
 }
