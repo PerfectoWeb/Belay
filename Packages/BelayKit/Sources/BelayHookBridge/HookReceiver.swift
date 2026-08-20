@@ -222,7 +222,11 @@ public actor HookReceiver {
             return
         }
         let envelope = try? JSONDecoder().decode(HookEnvelope.self, from: request.body)
-        if let signal = envelope?.signal(at: clock.now) { continuation.yield(signal) }
+        if let envelope, let signal = envelope.signal(at: clock.now) {
+            let bg = envelope.backgroundTasks ?? -1  // name, activity, count — never the body (R9)
+            EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)")
+            continuation.yield(signal)
+        }
         // Accepted even when the body was unusable. A hook that reports failure
         // is a hook that can put an error in front of the user's agent, and
         // Belay does not get to do that (docs/00-INVARIANTS.md invariant 5).
