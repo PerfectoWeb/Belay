@@ -127,7 +127,10 @@ final class LidHoldController {
             fresh.resume()
             connection = fresh
         }
-        return connection?.remoteObjectProxyWithErrorHandler { error in
+        // `@Sendable`, deliberately: the handler runs on the connection's own
+        // queue, and a closure born in a main-actor method otherwise inherits
+        // that isolation and traps the moment XPC calls it off-main.
+        return connection?.remoteObjectProxyWithErrorHandler { @Sendable error in
             Diagnostics.appendFromAnywhere(
                 "lid xpc error=\"\(error.localizedDescription)\"")
         } as? LidHelperProtocol

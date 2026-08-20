@@ -152,15 +152,15 @@ final class SwitchKeeper: NSObject, NSXPCListenerDelegate, LidHelperProtocol {
         return true
     }
 
-    func keepSleepDisabled(until deadline: Date, reply: @escaping (Bool) -> Void) {
+    func keepSleepDisabled(until deadline: Date, reply: @Sendable @escaping (Bool) -> Void) {
         reply(flag.keep(until: deadline))
     }
 
-    func standDown(reply: @escaping (Bool) -> Void) {
+    func standDown(reply: @Sendable @escaping (Bool) -> Void) {
         reply(flag.lower())
     }
 
-    func version(reply: @escaping (String) -> Void) {
+    func version(reply: @Sendable @escaping (String) -> Void) {
         reply(LidDaemon.version)
     }
 
