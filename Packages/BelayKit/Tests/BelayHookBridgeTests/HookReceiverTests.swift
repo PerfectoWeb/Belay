@@ -83,9 +83,12 @@ struct HookReceiverTests {
                     token: endpoint.token)
                 #expect(status == 204)
             }
-            let signals = await collector.wait(for: HookEvent.allCases.count)
-            #expect(signals.count == HookEvent.allCases.count)
-            for (event, signal) in zip(HookEvent.allCases, signals) {
+            // SubagentStop is accepted and dropped: it trails the turn's own
+            // Stop and must not refresh the exact tier (see HookEnvelope).
+            let expected = HookEvent.allCases.filter { $0 != .subagentStop }
+            let signals = await collector.wait(for: expected.count)
+            #expect(signals.count == expected.count)
+            for (event, signal) in zip(expected, signals) {
                 #expect(signal.activity == event.activity, "\(event.rawValue)")
             }
         }

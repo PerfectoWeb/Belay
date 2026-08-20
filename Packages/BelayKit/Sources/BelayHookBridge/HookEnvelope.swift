@@ -89,6 +89,11 @@ extension HookEnvelope {
     /// CLI firing something unknown must be ignored, never guessed at.
     func signal(at now: Date) -> ActivitySignal? {
         guard let event, !sessionID.isEmpty else { return nil }
+        // SubagentStop trails the turn's own Stop by seconds — cleanup, not
+        // work — and one trailing `.working` pins the Mac for the whole exact
+        // freshness window. Mid-turn it added nothing either: the parent's
+        // heartbeats and the subagents' watched transcripts carry the hold.
+        guard event != .subagentStop else { return nil }
         return ActivitySignal(
             provider: .claudeCode,
             session: SessionID(sessionID),

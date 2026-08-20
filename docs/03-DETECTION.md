@@ -104,7 +104,7 @@ Map events to activity:
 | `PreToolUse` / `PostToolUse` | `.working` (heartbeat — this is what keeps long tool runs alive) |
 | `Notification` | `.awaitingUser` (permission prompt / question) |
 | `Stop` | `.idle` |
-| `SubagentStop` | heartbeat only — the parent turn is usually still running |
+| `SubagentStop` | no signal since 1.3.3: it trails the turn's own `Stop` by seconds, and one trailing heartbeat pinned the Mac for the exact-freshness window. The parent's events and the subagents' watched transcripts carry the hold |
 | `SessionEnd` | `.ended` |
 
 Two delivery mechanisms; implement the HTTP one if supported, keep the command

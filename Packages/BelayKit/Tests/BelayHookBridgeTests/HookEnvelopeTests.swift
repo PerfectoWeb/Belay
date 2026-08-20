@@ -39,6 +39,15 @@ struct HookEnvelopeTests {
         #expect(try decode(mangled).signal(at: Date())?.activity == .idle)
     }
 
+    /// SubagentStop trails the turn's own Stop by seconds and used to pin the
+    /// Mac for the whole exact freshness window. It yields no signal at all.
+    @Test func subagentStopIsSilent() throws {
+        let json = #"{"session_id":"s","hook_event_name":"SubagentStop"}"#
+        #expect(try decode(json).signal(at: Date()) == nil)
+        let start = #"{"session_id":"s","hook_event_name":"SubagentStart"}"#
+        #expect(try decode(start).signal(at: Date())?.activity == .working)
+    }
+
     /// Starting a question tool means a person has to answer; starting any
     /// other tool is plain work.
     @Test func questionToolsReadAsWaiting() throws {

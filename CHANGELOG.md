@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Finished turns release within seconds instead of five minutes. Claude
+  Code's `SubagentStop` hook fires a few seconds after the turn's own `Stop`,
+  and its lone "working" signal kept the exact tier fresh for the whole
+  five-minute window — the cause of every "still Working after it finished"
+  sighting this release chased. It yields no signal now; parents' own events
+  and the subagents' watched transcripts carry the hold mid-turn.
 - Touched old transcripts stop appearing as phantom rows. Restarting the
   Claude desktop app rewrites several transcripts at once, and each used to
   show up as an idle session that never did anything — the same suppression
