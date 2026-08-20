@@ -122,8 +122,13 @@ public actor CodexProvider: ActivityProvider {
         // nothing about whether the turn closed.
         if let verdict { watch.turnOpen = verdict.turnOpen }
         watched[id] = watch
-        // Bytes without a marker are still evidence of work (docs/03, risk R1).
-        return report(verdict?.activity ?? .working, for: id, at: now)
+        if let verdict { return report(verdict.activity, for: id, at: now) }
+        // Bytes without a marker are evidence of work mid-turn (docs/03, risk
+        // R1) — but not a beginning. Housekeeping and token-count records
+        // must not flip a quiet session back to Working; a real turn opens
+        // with a marker.
+        guard watch.reported == .working else { return false }
+        return report(.working, for: id, at: now)
     }
 
     @discardableResult

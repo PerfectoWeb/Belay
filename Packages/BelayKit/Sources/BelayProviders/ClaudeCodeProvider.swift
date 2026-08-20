@@ -119,9 +119,16 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // metadata says nothing about whose move it is.
         if let verdict { watch.awaitingAssistant = verdict.awaitingAssistant }
         watched[id] = watch
-        // No conversational record in the delta still means bytes arrived, and
-        // bytes arriving is itself the signal (docs/03, risk R1).
-        return report(verdict?.activity ?? .working, for: id, at: now)
+        if let verdict { return report(verdict.activity, for: id, at: now) }
+        // No conversational record still means bytes arrived, and mid-turn
+        // that is itself the signal (docs/03, risk R1) — an unknown record
+        // format must never idle a running turn. But the same bytes are not a
+        // beginning: Claude Code writes titles and summaries for a minute or
+        // two after a turn closes, and every burst used to flip the idle
+        // session back to Working. A real new turn opens with a prompt the
+        // classifier can read; until one arrives, quiet sessions stay quiet.
+        guard watch.reported == .working else { return false }
+        return report(.working, for: id, at: now)
     }
 
     @discardableResult

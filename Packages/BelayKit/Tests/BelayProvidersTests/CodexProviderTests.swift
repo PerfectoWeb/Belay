@@ -171,6 +171,28 @@ struct CodexProviderTests {
         await provider.stop()
     }
 
+    @Test("Metadata writes prolong a turn but never resurrect a quiet one")
+    func metadataNeverResurrects() async throws {
+        let url = scratch.rollout(
+            "t9-meta", lines: [CodexScratch.line("task_started"), CodexScratch.line("task_complete")])
+        let provider = provider()
+        try await provider.start()
+        await provider.ingest(url, now: Date())
+        let id = CodexRollout.sessionID(for: url)
+        #expect(await provider.watched[id]?.reported == .idle)
+
+        // Token counts and other unmarked records: still quiet.
+        scratch.append([CodexScratch.line("token_count")], to: url)
+        await provider.ingest(url, now: Date())
+        #expect(await provider.watched[id]?.reported == .idle)
+
+        // A real marker still wakes it.
+        scratch.append([CodexScratch.line("task_started")], to: url)
+        await provider.ingest(url, now: Date())
+        #expect(await provider.watched[id]?.reported == .working)
+        await provider.stop()
+    }
+
     @Test("A working session ends when no codex process remains")
     func deadProcessSweep() async throws {
         let url = scratch.rollout("t6-dead", lines: [CodexScratch.line("task_started")])

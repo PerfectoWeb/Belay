@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Sessions stop flapping after a turn ends. The bookkeeping both CLIs write
+  once a turn closes — titles, summaries, token counts — used to flip a quiet
+  session back to Working every burst. Unclassifiable bytes now prolong a
+  running turn (that rule protects against format changes) but never restart
+  a quiet one: a real turn opens with a record the classifier can read.
 - The panel's elapsed column tells the truth per state: an idle session now
   shows how long it has been quiet, not its age — a session that worked three
   minutes ago no longer reads "Idle · 24m".
