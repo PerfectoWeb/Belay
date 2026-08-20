@@ -197,8 +197,10 @@ public actor CodexProvider: ActivityProvider {
             watched[id] = watch
             return false
         }
-        if watch.reported == .idle, activity == .working {
-            EventLog.note("codex session wake \(id) turnOpen=\(watch.turnOpen ? 1 : 0)")
+        if activity != watch.reported {
+            let was = watch.reported.map(String.init(describing:)) ?? "new"
+            EventLog.note(
+                "codex session \(id) \(was)->\(activity) turnOpen=\(watch.turnOpen ? 1 : 0)")
         }
         watch.reported = activity
         watched[id] = watch

@@ -206,10 +206,12 @@ public actor ClaudeCodeProvider: ActivityProvider {
             watched[id] = watch
             return false
         }
-        // A quiet session coming back to life is the transition every panel
-        // complaint this week turned on, so it gets its own line.
-        if watch.reported == .idle, activity == .working {
-            EventLog.note("session wake \(id) awaiting=\(watch.awaitingAssistant ? 1 : 0)")
+        // Every state change is a line: the week's panel mysteries were all
+        // solved by asking "who said that, and when" — so the log answers it.
+        if activity != watch.reported {
+            let was = watch.reported.map(String.init(describing:)) ?? "new"
+            EventLog.note(
+                "session \(id) \(was)->\(activity) awaiting=\(watch.awaitingAssistant ? 1 : 0)")
         }
         watch.reported = activity
         watched[id] = watch
