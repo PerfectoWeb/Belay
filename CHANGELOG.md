@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.3] - Unreleased
 
+### Fixed
+
+- Opening the Codex app no longer floods the panel. Its housekeeping touches
+  dozens of old rollouts at once, and each used to appear as an idle session
+  that never did anything. A session whose first classified state is idle is
+  now followed silently; the first real turn still announces it.
+
 ### Changed
 
 - A crashed Codex ends its sessions within seconds: when no `codex` process

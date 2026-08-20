@@ -151,6 +151,26 @@ struct CodexProviderTests {
         await provider.stop()
     }
 
+    @Test("Rollouts touched by app housekeeping never become panel rows")
+    func idleFirstStaysSilent() async throws {
+        // The Codex desktop app rewrites old rollouts as it opens. Each ends
+        // in task_complete; none of them is news.
+        let touched = scratch.rollout(
+            "t8-old", lines: [CodexScratch.line("task_started"), CodexScratch.line("task_complete")])
+        let provider = provider()
+        try await provider.start()
+        await provider.ingest(touched, now: Date())
+        let id = CodexRollout.sessionID(for: touched)
+        // Followed and classified, but never announced.
+        #expect(await provider.watched[id]?.reported == .idle)
+
+        // A real turn in the same file still announces normally.
+        scratch.append([CodexScratch.line("task_started")], to: touched)
+        await provider.ingest(touched, now: Date())
+        #expect(await provider.watched[id]?.reported == .working)
+        await provider.stop()
+    }
+
     @Test("A working session ends when no codex process remains")
     func deadProcessSweep() async throws {
         let url = scratch.rollout("t6-dead", lines: [CodexScratch.line("task_started")])

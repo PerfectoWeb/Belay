@@ -78,7 +78,6 @@ milestone table above keeps only the big ones.
 | [macmenubar.com](https://macmenubar.com/belay/) | <img src="badges/done.svg" alt="done" height="24"> | Listed 18 Aug 2026 |
 | [DirHub](https://dirhub.io/sites/belay-awake-for-ai-agents) | <img src="badges/done.svg" alt="done" height="24"> | Published 19 Aug 2026 |
 | [findmacapps.com](https://findmacapps.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
-| [macmenubar.app](https://macmenubar.app) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
 | [jaywcjlove/awesome-mac](https://github.com/jaywcjlove/awesome-mac/pull/2603) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 18 Aug 2026 |
 | [jqueryscript/awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code/pull/601) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 17 Aug 2026 |
 | [awesome-native-macosx-apps](https://github.com/open-saas-directory/awesome-native-macosx-apps/pull/142) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |

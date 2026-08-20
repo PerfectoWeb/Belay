@@ -148,13 +148,24 @@ public actor CodexProvider: ActivityProvider {
             }
             watch.cursor.seed(.tailWindow, snapshot: snapshot)
             watched[id] = watch
-            return ingest(url, now: now) || report(.working, for: id, at: now)
+            return ingest(url, now: now) || reportUnlessClassified(id, at: now)
         }
 
         watch.cursor.seed(.tailWindow, snapshot: snapshot)
         watched[id] = watch
         EventLog.note("codex session start \(id) ws=\(watch.workspace ?? "?")")
-        return ingest(url, now: now) || report(.working, for: id, at: now)
+        return ingest(url, now: now) || reportUnlessClassified(id, at: now)
+    }
+
+    /// The adopt fallback: bytes arrived but the tail carried no marker, so
+    /// call it working. A tail that *was* classified — even into a silent
+    /// first idle — already had its say, and forcing `.working` over it is
+    /// exactly how a housekeeping pass over old rollouts becomes a panel full
+    /// of phantom sessions.
+    @discardableResult
+    private func reportUnlessClassified(_ id: SessionID, at now: Date) -> Bool {
+        guard watched[id]?.reported == nil else { return false }
+        return report(.working, for: id, at: now)
     }
 
     func seedExistingRollouts() {
@@ -171,6 +182,16 @@ public actor CodexProvider: ActivityProvider {
     func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
         guard var watch = watched[id] else { return false }
         guard activity == .working || activity != watch.reported else { return false }
+        // A session whose first word is "idle" is not news — it is the Codex
+        // app touching old rollouts as it opens, dozens at a time, and every
+        // one of them would otherwise appear in the panel as a row that never
+        // did anything. Record the state, follow the file, say nothing; the
+        // first *working* still announces the session normally.
+        if activity == .idle, watch.reported == nil {
+            watch.reported = .idle
+            watched[id] = watch
+            return false
+        }
         watch.reported = activity
         watched[id] = watch
         yield(activity, from: watch, at: now)
