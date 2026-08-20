@@ -100,6 +100,8 @@ enum ReleaseNotes {
         static let preset = "square.grid.2x2"
         static let codex = "curlybraces"
         static let network = "network"
+        static let seal = "checkmark.seal"
+        static let log = "doc.text"
     }
 
     static var all: [ReleaseNote] {
@@ -122,50 +124,51 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.3.2",
+                version: "1.3.3",
                 items: [
                     .init(
-                        symbol: Mark.codex,
-                        title: "Codex gets built-in detection",
+                        symbol: Mark.seal,
+                        title: "Belay stays in sync",
                         body: """
-                            Belay now reads Codex's own turn markers, so it knows exactly when a turn starts \
-                            and ends and waits through retries just like it does with Claude Code. No setup \
-                            needed.
+                            Finished turns now go quiet within seconds and stay that way. No stale rows \
+                            after restarts, no jumping back to Working, and the idle timer starts when the \
+                            session actually goes quiet.
                             """),
                     .init(
-                        symbol: Mark.preset,
-                        title: "Two more agents are built in",
+                        symbol: Mark.speed,
+                        title: "Codex crashes no longer linger",
                         body: """
-                            Copilot CLI and OpenCode now have ready-made presets. One click each in \
-                            Settings.
+                            If Codex quits or crashes mid-turn, Belay notices the process is gone and lets \
+                            go within seconds instead of waiting through the retry grace period.
                             """),
                     .init(
                         symbol: Mark.safety,
-                        title: "Background work still counts",
+                        title: "The lid helper restores what it changed",
                         body: """
-                            If a turn ends while background agents or shell jobs are still running, Belay \
-                            keeps the Mac awake until they finish.
+                            It now remembers your previous sleep setting and puts exactly that back. If you \
+                            enabled disablesleep yourself, Belay leaves it alone.
                             """,
                         directOnly: true),
                     .init(
-                        symbol: Mark.network,
-                        title: "The network stays awake too",
+                        symbol: Mark.log,
+                        title: "Diagnostics record every change",
                         body: """
-                            While Belay keeps your Mac awake, it also asks macOS to keep the network active, \
-                            so SSH sessions and streaming replies can keep going.
+                            Every session transition and hook signal now gets one line in the local \
+                            diagnostics log. Nothing is sent off your Mac.
                             """)
                 ],
                 asides: [
                     .init(
-                        text:
-                            "Belay knows you're needed as soon as an agent asks a question.",
-                        directOnly: true),
-                    .init(
                         text: """
-                            If a preset's folder doesn't exist yet, Belay says \
-                            so instead of asking for access.
-                            """),
-                    .init(text: "The preset menu now puts the most common CLIs first.")
+                            Late signals after a turn ends no longer keep the Mac awake for five extra \
+                            minutes.
+                            """,
+                        directOnly: true),
+                    .init(text: "Opening Codex no longer floods the panel with sessions."),
+                    .init(
+                        text:
+                            "The closed-lid time limit is no longer affected by changes to the system clock.",
+                        directOnly: true)
                 ]
             )
         ]

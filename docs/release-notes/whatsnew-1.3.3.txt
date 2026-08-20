@@ -1,0 +1,131 @@
+What's New — Belay 1.3.3
+
+The window's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body, '* ' lines are the small mentions at the bottom. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the window shows it.
+
+Direct-only (never shown in the App Store build): item 3, mentions 1 and 3.
+
+=== en ===
+
+# Belay stays in sync
+Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.
+
+# Codex crashes no longer linger
+If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.
+
+# The lid helper restores what it changed
+It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.
+
+# Diagnostics record every change
+Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.
+
+* Late signals after a turn ends no longer keep the Mac awake for five extra minutes.
+* Opening Codex no longer floods the panel with sessions.
+* The closed-lid time limit is no longer affected by changes to the system clock.
+
+=== ru ===
+
+# Belay быстрее начал определять процессы
+Завершённые сессии затихают за несколько секунд и больше не появляются снова. После перезапуска больше не остаются idle сессии от Codex, а время простоя считается с момента, когда сессия действительно затихла.
+
+# Сбой Codex больше не задерживает Mac
+Если Codex закрывается или падает посреди работы, Belay замечает, что процесса больше нет, и отпускает Mac через несколько секунд вместо ожидания периода повторных попыток.
+
+# Помощник Belay актуализирует состояния
+Теперь он запоминает прежнюю настройку сна и восстанавливает именно её. Если вы включили disablesleep сами, Belay его не трогает.
+
+# Полезная диагностика
+Каждый переход сессии и каждый сигнал хука теперь записываются одной строкой в локальный журнал диагностики. С вашего Mac ничего не отправляется.
+
+* Запоздалые сигналы после завершения работы больше не держат Mac лишние пять минут.
+* Открытие Codex больше не заполняет панель лишними сессиями.
+* Лимит времени при закрытой крышке больше не зависит от изменений системных часов.
+
+=== de ===
+
+# Das Panel bleibt auf dem aktuellen Stand
+Beendete Sitzungen werden jetzt innerhalb weniger Sekunden still und bleiben es auch. Nach Neustarts bleiben keine alten Zeilen zurück, der Status springt nicht wieder auf Working, und die Leerlaufzeit beginnt dort, wo die Sitzung tatsächlich still geworden ist.
+
+# Codex-Abstürze halten Belay nicht mehr auf
+Wenn Codex mitten in einem Turn beendet wird oder abstürzt, erkennt Belay, dass der Prozess nicht mehr läuft, und lässt den Mac innerhalb weniger Sekunden wieder los, statt die Wiederholungsfrist abzuwarten.
+
+# Der Deckel-Helfer stellt den vorherigen Zustand wieder her
+Er merkt sich jetzt deine vorherige Einstellung für den Ruhezustand und stellt genau sie wieder her. Wenn du disablesleep selbst aktiviert hast, lässt Belay es unverändert.
+
+# Die Diagnose protokolliert jede Änderung
+Jeder Sitzungswechsel und jedes Hook-Signal erhält jetzt eine Zeile im lokalen Diagnoseprotokoll. Nichts wird von deinem Mac gesendet.
+
+* Verspätete Signale nach dem Ende eines Turns halten den Mac nicht mehr fünf Minuten länger wach.
+* Das Öffnen von Codex füllt das Panel nicht mehr mit unnötigen Sitzungen.
+* Das Zeitlimit bei geschlossenem Deckel wird nicht mehr von Änderungen an der Systemuhr beeinflusst.
+
+=== es ===
+
+# El panel se mantiene al día
+Las sesiones terminadas quedan inactivas en pocos segundos y permanecen así. Ya no quedan filas antiguas después de reiniciar, el estado no vuelve solo a Working y el tiempo de inactividad empieza cuando la sesión realmente queda en silencio.
+
+# Los fallos de Codex ya no hacen esperar
+Si Codex se cierra o falla a mitad de un turno, Belay detecta que el proceso ya no está activo y deja de mantener el Mac despierto en pocos segundos, en lugar de esperar todo el periodo de reintento.
+
+# El ayudante de la tapa restaura lo que cambió
+Ahora recuerda tu ajuste de reposo anterior y restaura exactamente ese valor. Si activaste disablesleep por tu cuenta, Belay no lo modifica.
+
+# El diagnóstico registra cada cambio
+Cada cambio de estado de una sesión y cada señal de hook añaden ahora una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac.
+
+* Las señales tardías después de terminar un turno ya no mantienen el Mac despierto cinco minutos de más.
+* Abrir Codex ya no llena el panel de sesiones innecesarias.
+* El límite de tiempo con la tapa cerrada ya no se ve afectado por cambios en el reloj del sistema.
+
+=== fr ===
+
+# Le panneau reste bien synchronisé
+Les sessions terminées deviennent silencieuses en quelques secondes et le restent. Plus de lignes obsolètes après un redémarrage, plus de retour inattendu à Working, et le temps d’inactivité commence au moment où la session devient réellement silencieuse.
+
+# Les plantages de Codex ne font plus attendre Belay
+Si Codex quitte ou plante en plein tour, Belay détecte que le processus n’est plus actif et relâche le Mac en quelques secondes au lieu d’attendre toute la période de nouvelle tentative.
+
+# Le service du capot restaure ce qu’il a modifié
+Il mémorise désormais votre réglage de veille précédent et le rétablit exactement. Si vous avez activé disablesleep vous-même, Belay n’y touche pas.
+
+# Le diagnostic enregistre chaque changement
+Chaque changement d’état d’une session et chaque signal de hook ajoutent désormais une ligne au journal de diagnostic local. Rien n’est envoyé depuis votre Mac.
+
+* Les signaux tardifs après la fin d’un tour ne gardent plus le Mac éveillé cinq minutes de trop.
+* Ouvrir Codex ne remplit plus le panneau de sessions inutiles.
+* La limite de temps avec le capot fermé n’est plus affectée par les changements de l’horloge système.
+
+=== it ===
+
+# Il pannello resta aggiornato
+Le sessioni concluse diventano inattive in pochi secondi e restano così. Dopo un riavvio non rimangono righe obsolete, lo stato non torna da solo su Working e il tempo di inattività parte dal momento in cui la sessione si ferma davvero.
+
+# I crash di Codex non fanno più aspettare Belay
+Se Codex si chiude o va in crash a metà turno, Belay rileva che il processo non è più attivo e lascia andare il Mac in pochi secondi invece di attendere tutto il periodo di tentativo.
+
+# L’helper del coperchio ripristina ciò che ha cambiato
+Ora ricorda l’impostazione di stop precedente e ripristina esattamente quella. Se hai attivato disablesleep tu stesso, Belay non lo modifica.
+
+# La diagnostica registra ogni cambiamento
+Ogni cambio di stato di una sessione e ogni segnale di hook aggiungono ora una riga al registro diagnostico locale. Nulla viene inviato dal tuo Mac.
+
+* I segnali in ritardo dopo la fine di un turno non tengono più sveglio il Mac per cinque minuti in più.
+* Aprire Codex non riempie più il pannello di sessioni inutili.
+* Il limite di tempo con il coperchio chiuso non risente più delle modifiche all’orologio di sistema.
+
+=== zh-Hans ===
+
+# 面板现在会保持同步
+已结束的会话会在几秒内安静下来，并保持这一状态。重启后不会再留下过期的条目，状态也不会无故跳回 Working，空闲时间会从会话真正安静下来的那一刻开始计算。
+
+# Codex 崩溃后不会再多等
+如果 Codex 在轮次中途退出或崩溃，Belay 会发现进程已经结束，并在几秒内放开 Mac，而不是继续等待整个重试宽限期。
+
+# 合盖帮助程序会恢复原来的设置
+它现在会记住之前的睡眠设置，并准确恢复。如果 disablesleep 是你自己启用的，Belay 不会改动它。
+
+# 诊断会记录每次变化
+每次会话状态变化和每个钩子信号现在都会在本地诊断日志中记录一行。不会从你的 Mac 发送任何内容。
+
+* 轮次结束后的延迟信号不会再让 Mac 多保持唤醒五分钟。
+* 打开 Codex 不会再让面板出现大量无关会话。
+* 合盖保持唤醒的时间上限不再受系统时钟变化影响。

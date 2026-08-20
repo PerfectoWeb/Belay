@@ -1,0 +1,59 @@
+App Store "What's New in This Version" — Belay 1.3.3
+(direct-only items are deliberately absent: the lid helper changes and the
+late-hook-signal fix belong to the direct build)
+
+--- EN ---
+
+The panel now stays in sync. Finished turns go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.
+
+Codex crashes no longer linger. If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.
+
+Also: opening Codex no longer floods the panel with sessions, and every session transition now gets a line in the local diagnostics log. Nothing is sent off your Mac.
+
+--- RU ---
+
+Более точное определение процессов. Завершённые сессии начали затихать за несколько секунд. Пофикшен баг с зависшими сессиями Codex после перезагрузки, а время простоя считается с момента, когда сессия действительно затихла.
+
+Сбой Codex больше не заставляет Belay ждать. Belay замечает, когда Codex закрывается или падает посреди работы. Вместо повторного ожидания проложение отпускает Mac.
+
+А также: открытие Codex больше не заполняет панель лишними сессиями в статусе idle, даже при пересчете токенов от AI агента, а каждый переход состояния теперь записывается одной строкой в локальный журнал диагностики. С вашего Mac ничего не отправляется.
+
+--- DE ---
+
+Das Panel bleibt jetzt zuverlässig auf dem aktuellen Stand. Beendete Sitzungen werden innerhalb weniger Sekunden still und bleiben es auch. Nach Neustarts bleiben keine alten Zeilen zurück, der Status springt nicht wieder auf Working, und die Leerlaufzeit beginnt dort, wo die Sitzung tatsächlich still geworden ist.
+
+Codex-Abstürze halten Belay nicht mehr unnötig auf. Wenn Codex mitten in einem Turn beendet wird oder abstürzt, erkennt Belay, dass der Prozess nicht mehr läuft, und lässt den Mac innerhalb weniger Sekunden wieder los, statt die Wiederholungsfrist abzuwarten.
+
+Außerdem: Das Öffnen von Codex füllt das Panel nicht mehr mit unnötigen Sitzungen, und jeder Sitzungswechsel erhält jetzt eine Zeile im lokalen Diagnoseprotokoll. Nichts wird von deinem Mac gesendet.
+
+--- ES ---
+
+El panel ahora se mantiene al día. Las sesiones terminadas quedan inactivas en pocos segundos y permanecen así. Ya no quedan filas antiguas después de reiniciar, el estado no vuelve solo a Working y el tiempo de inactividad empieza cuando la sesión realmente queda en silencio.
+
+Los fallos de Codex ya no hacen esperar de más. Si Codex se cierra o falla a mitad de un turno, Belay detecta que el proceso ya no está activo y deja de mantener el Mac despierto en pocos segundos, en lugar de esperar todo el periodo de reintento.
+
+Además: abrir Codex ya no llena el panel de sesiones innecesarias, y cada cambio de estado de una sesión ahora añade una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac.
+
+--- FR ---
+
+Le panneau reste désormais bien synchronisé. Les sessions terminées deviennent silencieuses en quelques secondes et le restent. Plus de lignes obsolètes après un redémarrage, plus de retour inattendu à Working, et le temps d’inactivité commence au moment où la session devient réellement silencieuse.
+
+Les plantages de Codex ne font plus attendre Belay inutilement. Si Codex quitte ou plante en plein tour, Belay détecte que le processus n’est plus actif et relâche le Mac en quelques secondes au lieu d’attendre toute la période de nouvelle tentative.
+
+Également : ouvrir Codex ne remplit plus le panneau de sessions inutiles, et chaque changement d’état d’une session ajoute désormais une ligne au journal de diagnostic local. Rien n’est envoyé depuis votre Mac.
+
+--- IT ---
+
+Il pannello ora resta sempre aggiornato. Le sessioni concluse diventano inattive in pochi secondi e restano così. Dopo un riavvio non rimangono righe obsolete, lo stato non torna da solo su Working e il tempo di inattività parte dal momento in cui la sessione si ferma davvero.
+
+I crash di Codex non fanno più aspettare Belay inutilmente. Se Codex si chiude o va in crash a metà turno, Belay rileva che il processo non è più attivo e lascia andare il Mac in pochi secondi invece di attendere tutto il periodo di tentativo.
+
+Inoltre: aprire Codex non riempie più il pannello di sessioni inutili, e ogni cambio di stato di una sessione ora aggiunge una riga al registro diagnostico locale. Nulla viene inviato dal tuo Mac.
+
+--- ZH ---
+
+面板现在会更准确地保持同步。已结束的会话会在几秒内安静下来，并保持这一状态。重启后不会再留下过期的条目，状态也不会无故跳回 Working，空闲时间会从会话真正安静下来的那一刻开始计算。
+
+Codex 崩溃后，Belay 不会再多等一段时间。如果 Codex 在轮次中途退出或崩溃，Belay 会发现进程已经结束，并在几秒内放开 Mac，而不是继续等待整个重试宽限期。
+
+另外：打开 Codex 不会再让面板出现大量无关会话；每次会话状态变化现在也会在本地诊断日志中记录一行。不会从你的 Mac 发送任何内容。

@@ -14573,519 +14573,519 @@
         }
       }
     },
-    "Codex gets built-in detection": {
+    "Belay stays in sync": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex gets built-in detection"
+            "value": "Belay stays in sync"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex стал built-in"
+            "value": "Belay быстрее начал определять процессы"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex hat jetzt eine integrierte Erkennung"
+            "value": "Das Panel bleibt auf dem aktuellen Stand"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex ahora tiene detección integrada"
+            "value": "El panel se mantiene al día"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex bénéficie maintenant d’une détection intégrée"
+            "value": "Le panneau reste bien synchronisé"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex ora ha il rilevamento integrato"
+            "value": "Il pannello resta aggiornato"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Codex 现在支持内置检测"
+            "value": "面板现在会保持同步"
           }
         }
       }
     },
-    "Belay now reads Codex's own turn markers, so it knows exactly when a turn starts and ends and waits through retries just like it does with Claude Code. No setup needed.": {
+    "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay now reads Codex's own turn markers, so it knows exactly when a turn starts and ends and waits through retries just like it does with Claude Code. No setup needed."
+            "value": "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay читает собственные маркеры Codex, поэтому точно знает, когда начинается и заканчивается работа, и так же спокойно ждёт повторных попыток, как с Claude Code. Ничего настраивать не нужно."
+            "value": "Завершённые сессии затихают за несколько секунд и больше не появляются снова. После перезапуска больше не остаются idle сессии от Codex, а время простоя считается с момента, когда сессия действительно затихла."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay liest die eigenen Turn-Markierungen von Codex und weiß dadurch genau, wann ein Turn beginnt und endet. Bei Wiederholungsversuchen wartet es genauso geduldig wie bei Claude Code. Keine Einrichtung nötig."
+            "value": "Beendete Sitzungen werden jetzt innerhalb weniger Sekunden still und bleiben es auch. Nach Neustarts bleiben keine alten Zeilen zurück, der Status springt nicht wieder auf Working, und die Leerlaufzeit beginnt dort, wo die Sitzung tatsächlich still geworden ist."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay lee los propios marcadores de turno de Codex, así que sabe exactamente cuándo empieza y termina un turno y espera los reintentos igual que con Claude Code. No hace falta configurar nada."
+            "value": "Las sesiones terminadas quedan inactivas en pocos segundos y permanecen así. Ya no quedan filas antiguas después de reiniciar, el estado no vuelve solo a Working y el tiempo de inactividad empieza cuando la sesión realmente queda en silencio."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay lit les propres marqueurs de tour de Codex et sait ainsi précisément quand un tour commence et se termine. Pour les nouvelles tentatives, il attend avec la même patience que pour Claude Code. Aucune configuration nécessaire."
+            "value": "Les sessions terminées deviennent silencieuses en quelques secondes et le restent. Plus de lignes obsolètes après un redémarrage, plus de retour inattendu à Working, et le temps d’inactivité commence au moment où la session devient réellement silencieuse."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay legge i marcatori di turno di Codex, così sa con precisione quando un turno inizia e finisce e aspetta i nuovi tentativi proprio come fa con Claude Code. Non serve configurare nulla."
+            "value": "Le sessioni concluse diventano inattive in pochi secondi e restano così. Dopo un riavvio non rimangono righe obsolete, lo stato non torna da solo su Working e il tempo di inattività parte dal momento in cui la sessione si ferma davvero."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 会读取 Codex 自己的轮次标记，因此能准确知道轮次何时开始、何时结束，并像处理 Claude Code 一样耐心等待重试。无需任何设置。"
+            "value": "已结束的会话会在几秒内安静下来，并保持这一状态。重启后不会再留下过期的条目，状态也不会无故跳回 Working，空闲时间会从会话真正安静下来的那一刻开始计算。"
           }
         }
       }
     },
-    "Two more agents are built in": {
+    "Codex crashes no longer linger": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Two more agents are built in"
+            "value": "Codex crashes no longer linger"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Добавлены новые агенты"
+            "value": "Сбой Codex больше не задерживает Mac"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zwei weitere Agents sind eingebaut"
+            "value": "Codex-Abstürze halten Belay nicht mehr auf"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dos agentes más están integrados"
+            "value": "Los fallos de Codex ya no hacen esperar"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deux agents de plus sont intégrés"
+            "value": "Les plantages de Codex ne font plus attendre Belay"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sono integrati altri due agenti"
+            "value": "I crash di Codex non fanno più aspettare Belay"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "又有两个智能体内置了"
+            "value": "Codex 崩溃后不会再多等"
           }
         }
       }
     },
-    "Copilot CLI and OpenCode now have ready-made presets. One click each in Settings.": {
+    "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI and OpenCode now have ready-made presets. One click each in Settings."
+            "value": "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Для Copilot CLI и OpenCode появились готовые пресеты. Включить их можно в настройках провайдеров в два клика."
+            "value": "Если Codex закрывается или падает посреди работы, Belay замечает, что процесса больше нет, и отпускает Mac через несколько секунд вместо ожидания периода повторных попыток."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI und OpenCode haben jetzt fertige Presets. Jeweils ein Klick in den Einstellungen genügt."
+            "value": "Wenn Codex mitten in einem Turn beendet wird oder abstürzt, erkennt Belay, dass der Prozess nicht mehr läuft, und lässt den Mac innerhalb weniger Sekunden wieder los, statt die Wiederholungsfrist abzuwarten."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI y OpenCode tienen ahora ajustes predefinidos listos para usar. Un clic para cada uno en Ajustes."
+            "value": "Si Codex se cierra o falla a mitad de un turno, Belay detecta que el proceso ya no está activo y deja de mantener el Mac despierto en pocos segundos, en lugar de esperar todo el periodo de reintento."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI et OpenCode disposent maintenant de préréglages prêts à l’emploi. Un clic chacun dans Réglages."
+            "value": "Si Codex quitte ou plante en plein tour, Belay détecte que le processus n’est plus actif et relâche le Mac en quelques secondes au lieu d’attendre toute la période de nouvelle tentative."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI e OpenCode ora hanno preset già pronti. Basta un clic per ciascuno nelle Impostazioni."
+            "value": "Se Codex si chiude o va in crash a metà turno, Belay rileva che il processo non è più attivo e lascia andare il Mac in pochi secondi invece di attendere tutto il periodo di tentativo."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copilot CLI 和 OpenCode 现在都有现成的预设。在“设置”中各点一下即可添加。"
+            "value": "如果 Codex 在轮次中途退出或崩溃，Belay 会发现进程已经结束，并在几秒内放开 Mac，而不是继续等待整个重试宽限期。"
           }
         }
       }
     },
-    "Background work still counts": {
+    "The lid helper restores what it changed": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Background work still counts"
+            "value": "The lid helper restores what it changed"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Алло, shell? Меня слышно?"
+            "value": "Помощник Belay актуализирует состояния"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hintergrundarbeit zählt weiterhin"
+            "value": "Der Deckel-Helfer stellt den vorherigen Zustand wieder her"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El trabajo en segundo plano también cuenta"
+            "value": "El ayudante de la tapa restaura lo que cambió"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le travail en arrière-plan compte aussi"
+            "value": "Le service du capot restaure ce qu’il a modifié"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anche il lavoro in background conta"
+            "value": "L’helper del coperchio ripristina ciò che ha cambiato"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "后台工作也算在内"
+            "value": "合盖帮助程序会恢复原来的设置"
           }
         }
       }
     },
-    "If a turn ends while background agents or shell jobs are still running, Belay keeps the Mac awake until they finish.": {
+    "It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If a turn ends while background agents or shell jobs are still running, Belay keeps the Mac awake until they finish."
+            "value": "It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Если основная работа закончилась, а фоновые агенты или shell-задачи ещё работают, Belay также не даст Mac уснуть, пока они не завершатся."
+            "value": "Теперь он запоминает прежнюю настройку сна и восстанавливает именно её. Если вы включили disablesleep сами, Belay его не трогает."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn ein Turn endet, während Hintergrund-Agents oder Shell-Jobs noch laufen, hält Belay den Mac wach, bis sie fertig sind."
+            "value": "Er merkt sich jetzt deine vorherige Einstellung für den Ruhezustand und stellt genau sie wieder her. Wenn du disablesleep selbst aktiviert hast, lässt Belay es unverändert."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si un turno termina mientras aún hay agentes en segundo plano o tareas de shell en ejecución, Belay mantiene el Mac despierto hasta que terminan."
+            "value": "Ahora recuerda tu ajuste de reposo anterior y restaura exactamente ese valor. Si activaste disablesleep por tu cuenta, Belay no lo modifica."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si un tour se termine alors que des agents en arrière-plan ou des tâches shell sont encore en cours, Belay garde le Mac éveillé jusqu’à ce qu’ils aient terminé."
+            "value": "Il mémorise désormais votre réglage de veille précédent et le rétablit exactement. Si vous avez activé disablesleep vous-même, Belay n’y touche pas."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se un turno finisce mentre agenti in background o job di shell sono ancora in esecuzione, Belay tiene sveglio il Mac finché non terminano."
+            "value": "Ora ricorda l’impostazione di stop precedente e ripristina esattamente quella. Se hai attivato disablesleep tu stesso, Belay non lo modifica."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果当前轮次结束时，后台智能体或 shell 任务仍在运行，Belay 会继续保持 Mac 唤醒，直到它们完成。"
+            "value": "它现在会记住之前的睡眠设置，并准确恢复。如果 disablesleep 是你自己启用的，Belay 不会改动它。"
           }
         }
       }
     },
-    "The network stays awake too": {
+    "Diagnostics record every change": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The network stays awake too"
+            "value": "Diagnostics record every change"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Да будет интернет"
+            "value": "Полезная диагностика"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Auch das Netzwerk bleibt aktiv"
+            "value": "Die Diagnose protokolliert jede Änderung"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La red también permanece activa"
+            "value": "El diagnóstico registra cada cambio"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le réseau reste actif lui aussi"
+            "value": "Le diagnostic enregistre chaque changement"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anche la rete resta attiva"
+            "value": "La diagnostica registra ogni cambiamento"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "网络也会保持活跃"
+            "value": "诊断会记录每次变化"
           }
         }
       }
     },
-    "While Belay keeps your Mac awake, it also asks macOS to keep the network active, so SSH sessions and streaming replies can keep going.": {
+    "Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "While Belay keeps your Mac awake, it also asks macOS to keep the network active, so SSH sessions and streaming replies can keep going."
+            "value": "Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay научился просить macOS сохранять активной и сеть, чтобы SSH-сессии и потоковые ответы могли продолжаться."
+            "value": "Каждый переход сессии и каждый сигнал хука теперь записываются одной строкой в локальный журнал диагностики. С вашего Mac ничего не отправляется."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Während Belay deinen Mac wach hält, bittet es macOS auch darum, das Netzwerk aktiv zu halten, damit SSH-Sitzungen und Streaming-Antworten weiterlaufen können."
+            "value": "Jeder Sitzungswechsel und jedes Hook-Signal erhält jetzt eine Zeile im lokalen Diagnoseprotokoll. Nichts wird von deinem Mac gesendet."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mientras Belay mantiene tu Mac despierto, también pide a macOS que mantenga activa la red para que las sesiones SSH y las respuestas en streaming puedan continuar."
+            "value": "Cada cambio de estado de una sesión y cada señal de hook añaden ahora una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pendant que Belay garde votre Mac éveillé, il demande aussi à macOS de maintenir le réseau actif afin que les sessions SSH et les réponses en streaming puissent continuer."
+            "value": "Chaque changement d’état d’une session et chaque signal de hook ajoutent désormais une ligne au journal de diagnostic local. Rien n’est envoyé depuis votre Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mentre Belay tiene sveglio il Mac, chiede anche a macOS di mantenere attiva la rete, così le sessioni SSH e le risposte in streaming possono continuare."
+            "value": "Ogni cambio di stato di una sessione e ogni segnale di hook aggiungono ora una riga al registro diagnostico locale. Nulla viene inviato dal tuo Mac."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在 Belay 保持 Mac 唤醒期间，它也会请求 macOS 保持网络活跃，让 SSH 会话和流式回复能够继续。"
+            "value": "每次会话状态变化和每个钩子信号现在都会在本地诊断日志中记录一行。不会从你的 Mac 发送任何内容。"
           }
         }
       }
     },
-    "Belay knows you're needed as soon as an agent asks a question.": {
+    "Late signals after a turn ends no longer keep the Mac awake for five extra minutes.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay knows you're needed as soon as an agent asks a question."
+            "value": "Late signals after a turn ends no longer keep the Mac awake for five extra minutes."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay понимает, что вы нужны, сразу после вопроса от агента."
+            "value": "Запоздалые сигналы после завершения работы больше не держат Mac лишние пять минут."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay weiß, dass du gebraucht wirst, sobald ein Agent eine Frage stellt."
+            "value": "Verspätete Signale nach dem Ende eines Turns halten den Mac nicht mehr fünf Minuten länger wach."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay sabe que te necesita en cuanto un agente hace una pregunta."
+            "value": "Las señales tardías después de terminar un turno ya no mantienen el Mac despierto cinco minutos de más."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay sait que vous êtes attendu dès qu’un agent pose une question."
+            "value": "Les signaux tardifs après la fin d’un tour ne gardent plus le Mac éveillé cinq minutes de trop."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay sa che servi non appena un agente fa una domanda."
+            "value": "I segnali in ritardo dopo la fine di un turno non tengono più sveglio il Mac per cinque minuti in più."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "智能体一提出问题，Belay 就知道需要你回来处理。"
+            "value": "轮次结束后的延迟信号不会再让 Mac 多保持唤醒五分钟。"
           }
         }
       }
     },
-    "If a preset's folder doesn't exist yet, Belay says so instead of asking for access.": {
+    "Opening Codex no longer floods the panel with sessions.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If a preset's folder doesn't exist yet, Belay says so instead of asking for access."
+            "value": "Opening Codex no longer floods the panel with sessions."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Если папки пресета ещё нет, Belay просто говорит об этом вместо запроса доступа."
+            "value": "Открытие Codex больше не заполняет панель лишними сессиями."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn der Ordner eines Presets noch nicht existiert, sagt Belay das einfach, statt nach Zugriff zu fragen."
+            "value": "Das Öffnen von Codex füllt das Panel nicht mehr mit unnötigen Sitzungen."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si la carpeta de un ajuste predefinido todavía no existe, Belay simplemente lo indica en lugar de pedir acceso."
+            "value": "Abrir Codex ya no llena el panel de sesiones innecesarias."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si le dossier d’un préréglage n’existe pas encore, Belay le dit simplement au lieu de demander l’accès."
+            "value": "Ouvrir Codex ne remplit plus le panneau de sessions inutiles."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se la cartella di un preset non esiste ancora, Belay lo dice semplicemente invece di chiedere l’accesso."
+            "value": "Aprire Codex non riempie più il pannello di sessioni inutili."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果某个预设的文件夹还不存在，Belay 会直接说明，而不是请求访问权限。"
+            "value": "打开 Codex 不会再让面板出现大量无关会话。"
           }
         }
       }
     },
-    "The preset menu now puts the most common CLIs first.": {
+    "The closed-lid time limit is no longer affected by changes to the system clock.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The preset menu now puts the most common CLIs first."
+            "value": "The closed-lid time limit is no longer affected by changes to the system clock."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "В меню пресетов самые популярные CLI теперь идут первыми."
+            "value": "Лимит времени при закрытой крышке больше не зависит от изменений системных часов."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Im Preset-Menü stehen die gängigsten CLIs jetzt zuerst."
+            "value": "Das Zeitlimit bei geschlossenem Deckel wird nicht mehr von Änderungen an der Systemuhr beeinflusst."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El menú de ajustes predefinidos ahora muestra primero los CLI más habituales."
+            "value": "El límite de tiempo con la tapa cerrada ya no se ve afectado por cambios en el reloj del sistema."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le menu des préréglages affiche désormais les CLI les plus courants en premier."
+            "value": "La limite de temps avec le capot fermé n’est plus affectée par les changements de l’horloge système."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il menu dei preset ora mostra per primi i CLI più comuni."
+            "value": "Il limite di tempo con il coperchio chiuso non risente più delle modifiche all’orologio di sistema."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "预设菜单现在会把最常用的 CLI 放在前面。"
+            "value": "合盖保持唤醒的时间上限不再受系统时钟变化影响。"
           }
         }
       }
