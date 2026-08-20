@@ -77,7 +77,6 @@ milestone table above keeps only the big ones.
 | [AlternativeTo](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) | <img src="badges/done.svg" alt="done" height="24"> | Listed 17 Aug 2026 |
 | [macmenubar.com](https://macmenubar.com/belay/) | <img src="badges/done.svg" alt="done" height="24"> | Listed 18 Aug 2026 |
 | [DirHub](https://dirhub.io/sites/belay-awake-for-ai-agents) | <img src="badges/done.svg" alt="done" height="24"> | Published 19 Aug 2026 |
-| [Product Hunt](https://www.producthunt.com/products/belay-awake-for-ai-agents) | <img src="badges/in-review.svg" alt="in review" height="24"> | Launch scheduled for 20 Aug 2026 |
 | [findmacapps.com](https://findmacapps.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
 | [macmenubar.app](https://macmenubar.app) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 19 Aug 2026 |
 | [jaywcjlove/awesome-mac](https://github.com/jaywcjlove/awesome-mac/pull/2603) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 18 Aug 2026 |
