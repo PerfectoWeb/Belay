@@ -118,6 +118,10 @@ extension CodexProvider {
         for (id, watch) in watched where watch.reported == .working {
             let silence = now.timeIntervalSince(watch.lastWriteAt)
             guard silence > configuration.inferredIdleAfter else { continue }
+            // Same re-read Claude Code's sweep does: a closing marker written
+            // just after the last delta, coalesced into the handled event,
+            // must not leave the turn looking open for the whole grace.
+            if ingest(watch.url, now: now) { continue }
             // An open turn is silent by nature while the model retries, so it
             // gets the longer horizon, with heartbeats so the coordinator's
             // session TTL does not evict it mid-retry. Past the grace the

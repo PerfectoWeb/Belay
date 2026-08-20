@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- The panel's elapsed column tells the truth per state: an idle session now
+  shows how long it has been quiet, not its age — a session that worked three
+  minutes ago no longer reads "Idle · 24m".
+- A finished turn can no longer ride the retry grace: the idle sweep re-reads
+  the transcript before judging silence, so closing records that landed just
+  after the last delta are seen instead of aging toward a false "went quiet".
 - Opening the Codex app no longer floods the panel. Its housekeeping touches
   dozens of old rollouts at once, and each used to appear as an idle session
   that never did anything. A session whose first classified state is idle is

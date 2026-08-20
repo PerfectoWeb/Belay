@@ -39,12 +39,23 @@ final class AppState {
     /// the session that actually started it off the end of a five-row panel.
     var sessions: [SessionRow] {
         let rows = snapshot.sessions.map { session in
-            SessionRow(
+            let activity = snapshot.activities[session.id] ?? .idle
+            // The elapsed column answers a different question per state.
+            // Working and waiting measure from when that state began; idle
+            // measures from the last signal — "quiet for four minutes" — and
+            // never from `firstSeen`, which read as a 24-minute idle for a
+            // session that had been working three minutes ago.
+            let since: Date =
+                switch activity {
+                case .idle, .ended: session.lastSignal
+                default: session.workingSince ?? session.awaitingSince ?? session.firstSeen
+                }
+            return SessionRow(
                 id: session.id,
                 provider: session.provider,
                 workspace: session.workspace ?? String(localized: "Untitled project"),
-                activity: snapshot.activities[session.id] ?? .idle,
-                since: session.workingSince ?? session.awaitingSince ?? session.firstSeen,
+                activity: activity,
+                since: since,
                 parent: session.parent,
                 kind: session.kind,
                 name: session.name

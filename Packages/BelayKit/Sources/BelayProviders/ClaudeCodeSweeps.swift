@@ -38,6 +38,13 @@ extension ClaudeCodeProvider {
             // undoes it five seconds later.
             let silence = now.timeIntervalSince(watch.lastEvidenceAt)
             guard silence > configuration.inferredIdleAfter else { continue }
+            // One more look at the file before any verdict on the silence.
+            // The closing records can land right after a delta was read, and
+            // FSEvents coalesces that tail into the event already handled —
+            // leaving a finished turn looking open and riding the fifteen-
+            // minute grace toward a false "went quiet". A no-change read
+            // costs a stat; an unread ending costs a wrong sentence.
+            if ingest(watch.url, now: now) { continue }
             // A turn waiting on the API is silent by nature — a retry loop
             // writes nothing for minutes — so it gets the longer horizon. The
             // repeated `.working` is deliberate: the coordinator's session TTL
