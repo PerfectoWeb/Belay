@@ -197,6 +197,9 @@ public actor CodexProvider: ActivityProvider {
             watched[id] = watch
             return false
         }
+        if watch.reported == .idle, activity == .working {
+            EventLog.note("codex session wake \(id) turnOpen=\(watch.turnOpen ? 1 : 0)")
+        }
         watch.reported = activity
         watched[id] = watch
         yield(activity, from: watch, at: now)

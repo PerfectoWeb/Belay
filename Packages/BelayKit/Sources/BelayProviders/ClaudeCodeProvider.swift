@@ -187,6 +187,11 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // `.working` repeats deliberately: the coordinator treats it as a
         // heartbeat and needs a fresh timestamp. `.idle` repeating is just noise.
         guard activity == .working || activity != watch.reported else { return false }
+        // A quiet session coming back to life is the transition every panel
+        // complaint this week turned on, so it gets its own line.
+        if watch.reported == .idle, activity == .working {
+            EventLog.note("session wake \(id) awaiting=\(watch.awaitingAssistant ? 1 : 0)")
+        }
         watch.reported = activity
         watched[id] = watch
         yield(activity, from: watch, at: now)
