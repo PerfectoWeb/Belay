@@ -64,32 +64,14 @@ extension GenericPreset {
         return all.first { flattened($0.displayName) == wanted || $0.id == wanted }
     }
 
+    /// The menu shows this order: the four big CLIs first, then the rest.
     public static let all: [GenericPreset] = [
-        GenericPreset(
-            id: "aider",
-            displayName: "Aider",
-            summary: """
-                Aider writes its chat and input history into the project it is \
-                running in, so point Belay at that folder.
-                """,
-            folder: .userPicked("Choose the project folder you run Aider in"),
-            processName: "aider"),
         GenericPreset(
             id: "gemini",
             displayName: "Gemini CLI",
             summary: "Watches ~/.gemini, where the CLI keeps its session state.",
             folder: .home(".gemini"),
             processName: "gemini"),
-        GenericPreset(
-            id: "cline",
-            displayName: "Cline",
-            summary: """
-                Watches Cline's task storage inside VS Code. No process name: the \
-                editor stays open long after the agent has stopped working.
-                """,
-            folder: .home(
-                "Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/tasks"),
-            processName: nil),
         GenericPreset(
             id: "codex",
             displayName: "Codex CLI",
@@ -123,6 +105,25 @@ extension GenericPreset {
             summary: "Watches ~/.local/share/opencode, where OpenCode keeps its sessions.",
             folder: .home(".local/share/opencode"),
             processName: "opencode"),
+        GenericPreset(
+            id: "aider",
+            displayName: "Aider",
+            summary: """
+                Aider writes its chat and input history into the project it is \
+                running in, so point Belay at that folder.
+                """,
+            folder: .userPicked("Choose the project folder you run Aider in"),
+            processName: "aider"),
+        GenericPreset(
+            id: "cline",
+            displayName: "Cline",
+            summary: """
+                Watches Cline's task storage inside VS Code. No process name: the \
+                editor stays open long after the agent has stopped working.
+                """,
+            folder: .home(
+                "Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/tasks"),
+            processName: nil),
         // Asked for in issue #3 by somebody already running Pi through the
         // generic provider with exactly these values, which is better
         // evidence than any preset above shipped with.

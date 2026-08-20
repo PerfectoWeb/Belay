@@ -14854,6 +14854,53 @@
           }
         }
       }
+    },
+    "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папки %@ пока нет. Она появится после первого запуска инструмента. Если у вас путь другой, поправьте его."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ gibt es noch nicht. Der Ordner erscheint, sobald das Tool einmal gelaufen ist. Liegt er bei dir woanders, passe den Pfad an."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aún no existe %@. Aparece cuando la herramienta se ejecuta por primera vez. Si el tuyo está en otro sitio, ajusta la carpeta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ n'existe pas encore. Il apparaît après la première exécution de l'outil. Si le vôtre est ailleurs, ajustez le dossier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ non esiste ancora. Compare dopo la prima esecuzione dello strumento. Se il tuo è altrove, correggi la cartella."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有 %@。该文件夹会在工具首次运行后出现。如果你的位于其他位置，请调整路径。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

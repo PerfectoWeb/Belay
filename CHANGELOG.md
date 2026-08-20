@@ -26,9 +26,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The preset menu leads with the big four CLIs: Gemini, Codex, Copilot,
+  OpenCode, then Aider, Cline and Pi.
 - The App Store build's About pane rearranges its icons: the star now sits on
   "Rate Belay", where a star actually pays Belay back, and "Star on GitHub"
   wears the GitHub mark. The direct build keeps the star on GitHub.
+
+### Fixed
+
+- A preset whose folder does not exist yet is described honestly: "No
+  ~/.codex/sessions yet. It appears once the tool has run." The badge used to
+  ask for a read permission that would have fixed nothing, and named the
+  folder by its bare last component.
 
 ## [1.3.1] - 2026-08-19
 

@@ -112,7 +112,9 @@ final class GenericTargetGridTests: XCTestCase {
         XCTAssertEqual(tile.detail, String(localized: "process \(ownProcess)"))
 
         // Same box as a preset tile: both rows are there, neither collapsed.
-        let preset = GenericPreset.all[1].target()
+        // Found by id, not by index: the menu order is a product decision and
+        // must be free to change without this test noticing.
+        let preset = GenericPreset.matching(name: "gemini")!.target()
         XCTAssertEqual(tileSize(handRolled).height, tileSize(preset).height, accuracy: 0.5)
         let presetProcess = "gemini"
         XCTAssertEqual(

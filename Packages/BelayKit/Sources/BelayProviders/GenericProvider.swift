@@ -84,11 +84,33 @@ public actor GenericProvider: ActivityProvider {
         }
         let unreachable = configured.compactMap(\.watchedFolder).first { !access.hasAccess(to: $0) }
         guard let unreachable else { return .ready }
+        // Two different problems wear the same badge, and the words must not
+        // lie about which one it is. A folder that does not exist is not a
+        // permission problem: the tool has never run here (or lives
+        // elsewhere), and asking the user to "allow" it would send them
+        // hunting for a grant that fixes nothing.
+        let shown = Self.abbreviated(unreachable)
+        guard FileManager.default.fileExists(atPath: unreachable.path) else {
+            return .needsSetup(
+                String(
+                    localized: """
+                        No \(shown) yet. It appears once the tool has run. \
+                        Adjust the folder if yours is elsewhere.
+                        """,
+                    bundle: .main))
+        }
         return .needsSetup(
             String(
-                localized:
-                    "Let Belay read \(unreachable.lastPathComponent) so it can see that agent work.",
+                localized: "Let Belay read \(shown) so it can see that agent work.",
                 bundle: .main))
+    }
+
+    /// "~/.codex/sessions" rather than "sessions": the bare last component
+    /// told the user nothing about which tool the badge was even about.
+    static func abbreviated(_ url: URL) -> String {
+        let home = FileManager.default.homeDirectoryForCurrentUser.path
+        let path = url.path
+        return path.hasPrefix(home) ? "~" + path.dropFirst(home.count) : path
     }
 
     /// Never throws on a bad target. One misconfigured folder must not take the

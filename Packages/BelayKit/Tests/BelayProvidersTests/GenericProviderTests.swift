@@ -182,11 +182,25 @@ struct GenericProviderTests {
 
         let missing = scratch.root.appendingPathComponent("gone-\(UUID().uuidString)")
         let blind = GenericProvider(targets: [target("Missing", folder: missing)])
-        guard case .needsSetup = await blind.availability else {
+        guard case .needsSetup(let text) = await blind.availability else {
             Issue.record("expected needsSetup for an unreadable folder")
             return
         }
+        // A folder that does not exist is described as absent, never as a
+        // permission to grant: the words send the user to the actual fix.
+        #expect(text.contains("yet"), "missing folder read as a permission problem: \(text)")
         let ready = GenericProvider(targets: [target("Fine", folder: scratch.folder("fine"))])
         #expect(await ready.availability == .ready)
+    }
+
+    /// "~/.codex/sessions", not "sessions": the badge has to say which tool
+    /// it is even talking about.
+    @Test("The badge names the folder by its abbreviated path")
+    func badgeAbbreviatesTheHomePath() {
+        let home = FileManager.default.homeDirectoryForCurrentUser
+        let inside = home.appendingPathComponent(".codex/sessions", isDirectory: true)
+        #expect(GenericProvider.abbreviated(inside) == "~/.codex/sessions")
+        let outside = URL(fileURLWithPath: "/Library/Caches/agent")
+        #expect(GenericProvider.abbreviated(outside) == "/Library/Caches/agent")
     }
 }
