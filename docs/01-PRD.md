@@ -81,11 +81,12 @@ enters an `awaitingUser` state that keeps the Mac awake for a bounded window
 than everything else combined; it turns a utility into a product.
 
 ### R8 — Multi-provider, extensible
-Claude Code is P0 and must be excellent. Codex CLI is P1. A generic provider
-(watch a folder / watch a process name / accept a local webhook) is P1 and
-covers DeepSeek, Gemini CLI, Aider, Cursor and anything future without a code
-change. A new first-class provider must be addable by writing one file that
-conforms to one protocol.
+Claude Code is P0 and must be excellent. Codex was P1 and shipped first-class
+in 1.3.2, the day its rollout format was verified on a real install. A generic
+provider (watch a folder / watch a process name / accept a local webhook)
+covers Gemini CLI, Copilot CLI, OpenCode, Aider, Cline, Pi and anything future
+without a code change. A new first-class provider must be addable by writing
+one file that conforms to one protocol — `CodexProvider` is the proof.
 
 > On DeepSeek specifically: there is no first-party DeepSeek CLI to hook into.
 > DeepSeek is consumed through other tools (Cline, Aider, OpenRouter-backed

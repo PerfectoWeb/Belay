@@ -25,6 +25,7 @@ let properties: [String: Any] = [
 |---|---|
 | `kIOPMAssertionTypePreventUserIdleSystemSleep` | **Primary.** System stays up; display may sleep. This is what the user actually wants overnight. |
 | `kIOPMAssertionTypePreventUserIdleDisplaySleep` | Optional, off by default, exposed as "Also keep the display awake". |
+| `kIOPMAssertNetworkClientActive` | Rides along with every hold since 1.3.2. Awake but with parked network clients is still a dead run: SSH drops, streaming replies stall. A request, not a promise. |
 
 Do not use `kIOPMAssertionTypeNoIdleSleep`/`NoDisplaySleep` (legacy aliases) or
 `PreventSystemSleep` (that one is for kernel-level/driver scenarios and is not

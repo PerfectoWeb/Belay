@@ -34,15 +34,16 @@ An agent waiting ninety seconds on a network response uses no CPU but is very
 much working. A language server in the same project can peg a core while
 absolutely nothing is happening.
 
-### What about Codex, Aider, Gemini CLI, Cline, DeepSeek?
+### What about Codex, Aider, Gemini CLI, Copilot, OpenCode, Cline, DeepSeek?
 
-Claude Code is first-class and needs no setup. Everything else goes through the
-generic provider in **Settings ▸ Providers**: watch a folder, watch a process,
-or send Belay a webhook.
+Claude Code and Codex are first-class and need no setup — since 1.3.2 Belay
+reads Codex's own turn markers, so its starts and finishes are exact. Everything
+else goes through the generic provider in **Settings ▸ Providers**: watch a
+folder, watch a process, or send Belay a webhook.
 
-Aider, Gemini CLI, Cline and Codex CLI ship as **presets**, which are
-pre-filled configurations rather than code. That is deliberate: a wrong path in
-a preset costs you one edit, never a release.
+Gemini CLI, Copilot CLI, OpenCode, Aider, Cline and Pi ship as **presets**,
+which are pre-filled configurations rather than code. That is deliberate: a
+wrong path in a preset costs you one edit, never a release.
 
 On DeepSeek specifically: there is no first-party DeepSeek CLI to hook into. It
 is consumed through other tools, and those tools are what Belay watches.

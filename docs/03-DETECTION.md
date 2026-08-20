@@ -184,11 +184,14 @@ override an `.exact` `.idle`. This prevents the classic bug where a hook says
 
 ## Other providers
 
-**Codex CLI (P1).** Same two-tier shape: it has a `notify` program hook in
-`~/.codex/config.toml` and writes session rollout files under `~/.codex/`.
-Verify both empirically before implementing; if the notify hook only fires on
-turn completion, use it purely as an idle signal and let the file watcher carry
-the busy signal.
+**Codex (shipped first-class in 1.3.2).** `CodexProvider` follows the session
+rollouts — see "Codex rollouts" above. The `notify` hook in
+`~/.codex/config.toml` was verified empirically and rejected as Belay's
+channel: on a machine running the Codex desktop app it is already taken by
+their own client, and it is a single global value we must not clobber. Codex's
+Claude-style hook system (stable since 0.125, `~/.codex/hooks.json`) is the
+future exact tier; it sits behind a per-hook trust review in the Codex TUI,
+which is why the rollout watcher ships first.
 
 **Generic provider (P1).** Configurable by the user, covers everything else
 including DeepSeek-backed tools:

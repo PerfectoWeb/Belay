@@ -30,9 +30,17 @@ On top of that, a classifier scans the new bytes backwards for the last
 ignored, because on a real machine the literal last line of a finished
 transcript is metadata far more often than not.
 
-No growth for 45 seconds infers idle. Transcripts untouched for more than ten
-minutes at launch are not followed at all, so starting Belay on a machine with
-dozens of old projects does not resurrect them.
+No growth for 45 seconds infers idle — unless the turn is still waiting on an
+answer, in which case a retrying model gets a longer, bounded grace instead of
+a wrong "finished". Transcripts untouched for more than ten minutes at launch
+are not followed at all, so starting Belay on a machine with dozens of old
+projects does not resurrect them.
+
+Codex gets the same treatment with less guessing: its session rollouts under
+`~/.codex/sessions` carry explicit turn markers, so starts and finishes are
+read, not inferred. No setup there either. Other tools — Gemini CLI, Copilot
+CLI, OpenCode, Aider, Cline, Pi — ship as one-click presets that watch the
+folder each tool writes while it works.
 
 ### Hook bridge, optional and exact
 
@@ -49,7 +57,10 @@ agent, and no way for it to slow a turn down.
 
 Signals from both layers feed a single decision. An exact signal outranks an
 inferred one while it is fresh, so a trailing disk write cannot resurrect a turn
-the hook has already reported as finished.
+the hook has already reported as finished. A turn that ends while background
+agents or shell jobs are still running keeps the hold until they finish, and a
+question from the agent counts as "waiting for you" from the moment it is
+asked.
 
 ## The safety rails
 
@@ -58,7 +69,9 @@ sleep"*. It is *"it kept my Mac awake for nine hours and I did not notice"*.
 So the design assumes Belay itself will fail:
 
 - **Every assertion is created with a 120-second timeout** and re-armed while
-  work continues. If Belay crashes, hangs, is force-quit, or is killed by the
+  work continues. Since 1.3.2 the hold is a pair: the sleep assertion and a
+  network-client one beside it, so an awake Mac does not drop its SSH sessions
+  or stall a streaming reply. If Belay crashes, hangs, is force-quit, or is killed by the
   OS, the Mac returns to normal sleep behaviour within two minutes. There is no
   such thing as a zombie caffeination, because there is nothing to clean up.
 - **Every tracked session has a TTL.** A session that goes silent is presumed

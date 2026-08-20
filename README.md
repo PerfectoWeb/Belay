@@ -196,9 +196,10 @@ empty room. It brightens back the moment you return.
 <details>
 <summary><b>Belay does not see my agent</b></summary>
 
-Claude Code needs no setup. Everything else is configured in **Settings ▸
-Providers**: switch on a preset, or point the folder watcher at wherever your
-tool writes while it works. If your tool can run a shell command, the webhook in
+Claude Code and Codex need no setup. Everything else is configured in
+**Settings ▸ Providers**: switch on a preset — Gemini CLI, Copilot CLI,
+OpenCode, Aider, Cline and Pi ship ready-made — or point the folder watcher at
+wherever your tool writes while it works. If your tool can run a shell command, the webhook in
 [`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md#talking-to-belay-from-anything) is
 one line.
 
@@ -207,9 +208,12 @@ one line.
 <details>
 <summary><b>It says "needs setup"</b></summary>
 
-A preset's path did not exist on your machine. Presets are configuration, not
-code, so open Settings ▸ Providers and correct the path. A wrong preset costs one
-edit, never a release.
+Since 1.3.2 the badge says which case you are in: a folder that does not exist
+yet simply has not been created by the tool (it appears after the first run),
+and only a folder that exists but cannot be read is an access question.
+Presets are configuration, not code, so open Settings ▸ Providers and correct
+the path if yours lives elsewhere. A wrong preset costs one edit, never a
+release.
 
 </details>
 

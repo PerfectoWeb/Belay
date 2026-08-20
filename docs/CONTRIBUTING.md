@@ -130,12 +130,12 @@ change breaks by accident. A pull request that touches power, detection or
 ## Adding a provider preset
 
 This is the most likely first contribution and it is the easiest one, because a
-preset is **data**. Claude Code is the only agent with bespoke code. Everything
+preset is **data**. Claude Code and Codex are the only agents with bespoke code. Everything
 else is the generic provider, which can watch a folder, require a named process
 to be alive, or accept a routed local webhook, and treats any one of the three as
 enough.
 
-Adding Continue, Goose, OpenCode or whatever you use means one element in
+Adding Continue, Goose or whatever you use means one element in
 `GenericPreset.all`, in
 [`Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift`](../Packages/BelayKit/Sources/BelayProviders/GenericPreset.swift):
 

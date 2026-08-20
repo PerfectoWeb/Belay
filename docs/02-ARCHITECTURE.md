@@ -18,7 +18,7 @@ Belay/
 │   └── Sources/
 │       ├── BelayCore/          domain types, SignalBus, ActivityCoordinator, Clock
 │       ├── BelayPower/         IOKit assertions, power source, sleep/wake events
-│       ├── BelayProviders/     ClaudeCode + Generic (Codex is a Generic preset, D4)
+│       ├── BelayProviders/     ClaudeCode + Codex + Generic (presets ride on Generic)
 │       ├── BelayHookBridge/    loopback receiver + hook installer + backup/restore
 │       ├── BelaySettings/      typed preferences, migration, defaults
 │       ├── BelayChannel/       DistributionChannel, UpdateChannel
