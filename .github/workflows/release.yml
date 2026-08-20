@@ -5,12 +5,12 @@ name: Release
 #
 # Honest notes, because this file automates steps nobody has run yet:
 #
-#   - Notarization has never been executed against this account (docs/BLOCKERS.md B6).
-#     The credentials exist, scripts/notarize.sh knows how to use them, and this
-#     workflow wires them up, but the first tag push is a debugging session.
-#     Run it once with workflow_dispatch and no tag input first: that path builds,
-#     notarizes and verifies without creating a Release, so a failure costs
-#     nothing public.
+#   - The CI route is proven: the v1.3.1 through v1.3.3 tag pushes each built,
+#     signed and notarized successfully on the runner. They still ended red,
+#     because the local ritual had already created the Release — the publish
+#     step now yields in that case instead of failing. When both routes run,
+#     the local artefacts are canonical: the appcast and the cask pin their
+#     hashes. A dry run is still available via workflow_dispatch with no tag.
 #   - Sparkle is not wired into the build (docs/BLOCKERS.md B3). There is no appcast
 #     step here on purpose. scripts/sign-update.sh must keep running on the
 #     maintainer's machine because the EdDSA private key lives in their login
@@ -368,6 +368,27 @@ jobs:
           VERSION='${{ steps.facts.outputs.version }}'
           DMG_NAME="Belay-$VERSION.dmg"
 
+          # The local release ritual pushes the tag and creates the Release in
+          # the same breath, so on an ordinary release day this run loses the
+          # race on purpose. It must yield, not clobber: the appcast and the
+          # Homebrew cask both pin the SHA of the locally built DMG, and
+          # replacing the assets with this run's build would break every
+          # Sparkle update and `brew install` until someone noticed. Every tag
+          # from v1.3.1 through v1.3.3 failed red on exactly this line before
+          # the check existed.
+          if gh release view "$TAG" --json tagName --jq .tagName > /dev/null 2>&1; then
+            echo "Release $TAG already exists — published by the local ritual."
+            {
+              echo "### Release $TAG already published"
+              echo
+              echo "The local ritual won the race; its artefacts are canonical because"
+              echo "the appcast and the cask carry their hashes. This run built,"
+              echo "notarized and verified Belay $VERSION as proof the CI route works,"
+              echo "and published nothing."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
           {
             cat "$RUNNER_TEMP/notes.md"
             echo
@@ -416,14 +437,22 @@ jobs:
 
           # Rewritten by line, not by pattern: a loose s/1\.0\.0/ would also hit
           # the release-notes URLs that are deliberately pinned to old versions.
+          #
+          # "Already says" is success, not failure: version.yml runs on the
+          # release-published event and usually gets here first when the local
+          # ritual cut the release. A missing VERSION line is still fatal —
+          # that means nobody is going to write it.
           python3 - "$VERSION" <<'PY'
           import io, re, sys
           version = sys.argv[1]
           path = "landing.py"
           text = io.open(path, encoding="utf-8").read()
+          if re.search(r'^VERSION = "' + re.escape(version) + '"$', text, flags=re.M):
+              print("landing.py already says " + version + "; nothing to do")
+              raise SystemExit(0)
           updated = re.sub(r'^VERSION = "[^"]*"$', f'VERSION = "{version}"', text, count=1, flags=re.M)
           if updated == text:
-              raise SystemExit("landing.py already says " + version + ", or its VERSION line moved")
+              raise SystemExit("landing.py has no VERSION line to rewrite")
           io.open(path, "w", encoding="utf-8").write(updated)
           PY
 
@@ -432,8 +461,14 @@ jobs:
           git config user.name  "$(git log -1 --format=%an)"
           git config user.email "$(git log -1 --format=%ae)"
           git add -A
-          git commit -m "Site says $VERSION"
-          git push
+          # No diff is the yielded case above: version.yml got here first and
+          # the regenerated site matches what it pushed.
+          if git diff --cached --quiet; then
+            echo "site already current; nothing to push"
+          else
+            git commit -m "Site says $VERSION"
+            git push
+          fi
 
       - name: Dry run summary
         if: steps.facts.outputs.publish != '1'
