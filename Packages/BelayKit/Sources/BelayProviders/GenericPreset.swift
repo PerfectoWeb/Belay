@@ -99,6 +99,30 @@ extension GenericPreset {
                 """,
             folder: .home(".codex/sessions"),
             processName: "codex"),
+        // Verified on a real install: session-state/<uuid>/events.jsonl is an
+        // append-only stream with explicit turn_start/turn_end events, flushed
+        // during the turn, not after it. The CLI ships its own hook system,
+        // so an exact integration has somewhere to grow from this preset.
+        GenericPreset(
+            id: "copilot",
+            displayName: "Copilot CLI",
+            summary: """
+                Watches ~/.copilot/session-state, where Copilot CLI streams \
+                its session events.
+                """,
+            folder: .home(".copilot/session-state"),
+            processName: "copilot"),
+        // OpenCode keeps everything in one SQLite database whose WAL sits at
+        // the root of this folder; writes land there at every tool call and
+        // message boundary while a turn runs. The log/ subfolder also churns
+        // while the app is merely open, which the process filter and the
+        // idle window absorb.
+        GenericPreset(
+            id: "opencode",
+            displayName: "OpenCode",
+            summary: "Watches ~/.local/share/opencode, where OpenCode keeps its sessions.",
+            folder: .home(".local/share/opencode"),
+            processName: "opencode"),
         // Asked for in issue #3 by somebody already running Pi through the
         // generic provider with exactly these values, which is better
         // evidence than any preset above shipped with.

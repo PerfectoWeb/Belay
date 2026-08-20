@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.2] - Unreleased
 
+### Added
+
+- Presets for GitHub Copilot CLI and OpenCode. Copilot CLI streams
+  `session-state/<uuid>/events.jsonl` during a turn — verified on a real
+  install — and OpenCode writes its database WAL at every tool call, so both
+  give the folder watcher a live signal. Both tools also ship hook systems,
+  which leaves the road to exact detection open.
+
 ### Changed
 
 - The App Store build's About pane rearranges its icons: the star now sits on
