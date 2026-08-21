@@ -19,9 +19,12 @@ struct PanelView: View {
         // once per body rather than once per use.
         let sessions = state.sessions
         return VStack(alignment: .leading, spacing: 12) {
-            PanelStatusLine(status: PanelStatus.derive(from: state.snapshot.state))
+            PanelStatusLine(
+                status: PanelStatus.derive(from: state.snapshot.state, timer: state.snapshot.timer))
 
             PanelModePicker(state: state)
+
+            PanelTimerRow(state: state)
 
             if let warning = state.warning {
                 PanelNoticeRow(symbolName: "exclamationmark.triangle", message: warning)

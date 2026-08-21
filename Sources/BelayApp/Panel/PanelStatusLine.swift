@@ -54,10 +54,11 @@ extension PanelStatus {
     var title: LocalizedStringResource {
         switch self {
         case .off, .armed: return "Your Mac will sleep normally"
-        case .alwaysOn, .working, .coolingDown: return "Keeping your Mac awake"
+        case .alwaysOn, .alwaysOnTimed, .working, .coolingDown: return "Keeping your Mac awake"
         case .awaitingUser: return "An agent is waiting for you"
         case .batteryLow: return "Belay let your Mac sleep"
         case .maxDurationReached: return "Belay let your Mac sleep"
+        case .timerEnded: return "Belay let your Mac sleep"
         }
     }
 
@@ -69,6 +70,8 @@ extension PanelStatus {
             return "Belay is watching. Nothing is running right now."
         case .alwaysOn:
             return "You asked Belay to stay on until you switch it off."
+        case .alwaysOnTimed:
+            return "Staying awake until the timer below runs out."
         case .working:
             return "An agent is working, so sleep is on hold."
         case .awaitingUser:
@@ -79,6 +82,8 @@ extension PanelStatus {
             return "Your battery is down to \(percent)%, so Belay stopped holding to save power."
         case .maxDurationReached:
             return "Belay reached the longest stretch you allow it to hold, so it stopped."
+        case .timerEnded:
+            return "The timer you set ran out, so Belay let go."
         }
     }
 
@@ -86,10 +91,11 @@ extension PanelStatus {
         switch self {
         case .off: return "moon.slash"
         case .armed: return "moon"
-        case .alwaysOn, .working, .coolingDown: return "moon.fill"
+        case .alwaysOn, .alwaysOnTimed, .working, .coolingDown: return "moon.fill"
         case .awaitingUser: return "moon.stars.fill"
         case .batteryLow: return "battery.25"
         case .maxDurationReached: return "clock.badge.exclamationmark"
+        case .timerEnded: return "timer"
         }
     }
 }

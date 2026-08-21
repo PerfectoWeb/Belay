@@ -180,6 +180,8 @@ final class StatusItemController {
                     label = String(localized: "Belay stopped holding: battery is at \(percent)%.")
                 case .maxDurationReached:
                     label = String(localized: "Belay stopped holding: the maximum awake time was reached.")
+                case .timerEnded:
+                    label = String(localized: "Belay stopped holding: the timer ran out.")
                 }
             }
         }

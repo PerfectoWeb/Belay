@@ -91,8 +91,8 @@ final class LocalizationTests: XCTestCase {
     /// fit the detail column on one line, everywhere.
     func testEveryPanelStatusFitsOneLine() throws {
         let statuses: [PanelStatus] = [
-            .off, .armed, .alwaysOn, .working, .awaitingUser, .coolingDown,
-            .batteryLow(percent: 18), .maxDurationReached
+            .off, .armed, .alwaysOn, .alwaysOnTimed, .working, .awaitingUser, .coolingDown,
+            .batteryLow(percent: 18), .maxDurationReached, .timerEnded
         ]
         var measured = 0
         for code in languages {

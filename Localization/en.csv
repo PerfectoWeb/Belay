@@ -19,18 +19,19 @@
 %lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lldd %@h
 %lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lldh %@m
 %lldm,Panel,translated,%lld,%lldm,%lldm
-%llds,"Detection, Panel, Settings, Settings: Notifications, Settings: Providers",translated,%lld,%llds,%llds
+%llds,"App, Detection, Panel, Settings, Settings: Notifications, Settings: Providers",translated,%lld,%llds,%llds
 1 hour,Settings,translated,,1 hour,1 hour
 1 min,"Detection, Settings",translated,,1 min,1 min
 10 hours,Settings,translated,,10 hours,10 hours
 10 min,Settings,translated,,10 min,10 min
 12 hours,"Settings, Statistics",translated,,12 hours,12 hours
+15 min,"Panel, Settings",translated,,15 min,15 min
 2 hours,"Settings, Statistics",translated,,2 hours,2 hours
 3 min,Settings,translated,,3 min,3 min
 30 min,Settings,translated,,30 min,30 min
 30 sec,Settings,translated,,30 sec,30 sec
 4 hours,Settings,translated,,4 hours,4 hours
-5 min,Settings,translated,,5 min,5 min
+5 min,"Panel, Settings",translated,,5 min,5 min
 8 hours,Settings,translated,,8 hours,8 hours
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,Belay stops keeping your Mac awake after this time and lets you know.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,Folder activity counts as work. A running process only tells Belay when the session ends.
@@ -48,7 +49,7 @@ All product names and logos are trademarks of their respective owners.,Settings:
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Allow access to ~/.claude
 Also,"App, Detection, Settings, Settings: Behaviour, Settings: Providers",translated,,Also,Also
 Also keep the display awake,"Detection, Settings: Behaviour",translated,,Also keep the display awake,Also keep the display awake
-Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,Always On
+Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,Always On
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,An agent is waiting for you
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,An agent is waiting for you. Belay is keeping your Mac awake.
 "An agent is working, so sleep is on hold.",Panel,needs_review,,"An agent is working, so your Mac stays awake.","An agent is working, so your Mac stays awake."
@@ -101,6 +102,7 @@ Belay still works in Always on and Off modes,Welcome,translated,,You can still u
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay stopped holding
 Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay stopped keeping your Mac awake at %lld%% battery.
 Belay stopped holding: the maximum awake time was reached.,Menu bar,translated,,Belay stopped keeping your Mac awake: maximum awake time reached.,Belay stopped keeping your Mac awake: maximum awake time reached.
+Belay stopped holding: the timer ran out.,Menu bar,translated,,Belay stopped holding: the timer ran out.,Belay stopped holding: the timer ran out.
 Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ to:,Belay will update %@ to:
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay will keep your Mac awake even on low battery.
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:
@@ -147,8 +149,10 @@ Good to go,App,translated,,Good to go,Good to go
 Got it,App,translated,,Got it,Got it
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Grant access to ~/.claude
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Grant access to ~/.codex
+Hold again,"App, Detection, Panel",translated,,Hold again,Hold again
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Waiting a moment in case more work starts.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.
+How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,How long to keep the Mac awake
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Idle
 "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",App,translated,,"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.","If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,It needs an answer before it can continue.
@@ -211,6 +215,7 @@ Opening Codex no longer floods the panel with sessions.,App,translated,,Opening 
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,Opens a standard macOS folder picker so you can grant access
 Other agents,"App, Settings: Providers",translated,,Other agents,Other agents
 Other tools,Settings: Providers,translated,,Other tools,Other tools
+Paused at your time limit.,Panel,translated,,Paused at your time limit.,Paused at your time limit.
 Play interface sounds,Settings: General,translated,,Play interface sounds,Play interface sounds
 Play sounds,Settings: General,translated,,Play sounds,Play sounds
 Precise detection,Settings: Providers,translated,,Precise detection,Precise detection
@@ -237,6 +242,7 @@ Show Reports,Settings,translated,,Show Reports,Show Reports
 Show all sessions,Panel,translated,,Show all sessions,Show all sessions
 Show fewer,Panel,translated,,Show fewer,Show fewer
 Show fewer sessions,Panel,translated,,Show fewer sessions,Show fewer sessions
+Show the timer on the dimmed screen,Settings,translated,,Show the timer on the dimmed screen,Show the timer on the dimmed screen
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,Previews exactly what Belay will add before it writes anything
 Since %@,Statistics,translated,%@,Since %@,Since %@
 Skip for now,Welcome,translated,,Skip now,Skip now
@@ -248,6 +254,7 @@ Star on GitHub,Settings: About,translated,,Star on GitHub,Star on GitHub
 Start watching,Welcome,translated,,Start Magic,Start Magic
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Startup
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistics
+Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,Staying awake until the timer below runs out.
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Stop keeping your Mac awake on low battery
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Stop on low battery
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Stops watching this tool
@@ -264,9 +271,12 @@ The lid helper restores what it changed,App,translated,,The lid helper restores 
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,The run in %@ took %@. Your Mac can sleep normally again.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,The run took %@. Your Mac can sleep normally again.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,The server answered %lld.
+The timer ran out.,Panel,translated,,The timer ran out.,The timer ran out.
+"The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.","The timer you set ran out, so Belay let go."
+"The timer you set ran out, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,,"The timer you set ran out, so Belay stopped keeping your Mac awake.","The timer you set ran out, so Belay stopped keeping your Mac awake."
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,The update service sent something Belay could not read.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,This cannot be undone. Belay keeps no copy anywhere else.
-Until turned off,Settings,translated,,Until turned off,Until turned off
+Until turned off,"Panel, Settings",translated,,Until turned off,Until turned off
 Untitled project,App,translated,,Untitled project,Untitled project
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Update Now
 Update Now (v%@),App,translated,%@,Update Now (v%@),Update Now (v%@)
@@ -290,6 +300,7 @@ When an agent goes quiet,Settings: Notifications,translated,,When an agent goes 
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,When an agent needs you
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed."
 "When you step away at night, Belay dims the display to this level. It brightens again when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens again when you return.","When you step away at night, Belay dims the display to this level. It brightens again when you return."
+"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.","While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,While holding
 Working,"App, Panel, Settings: Providers",translated,,Working,Working
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Your Mac stays awake until you turn it off.

@@ -24,6 +24,10 @@ final class AppState {
     private(set) var totalAwake: TimeInterval = 0
 
     var onModeChange: (AwakeMode) -> Void = { _ in }
+    /// The Always-on timer picked in the panel; nil means "until turned off".
+    var onTimerChange: (TimeInterval?) -> Void = { _ in }
+    /// The pause row's one-click exit.
+    var onHoldAgain: () -> Void = {}
     /// SwiftUI views track this object automatically; the AppKit status item
     /// cannot, so it gets an explicit nudge.
     var onChange: () -> Void = {}

@@ -17,7 +17,8 @@ final class PanelStatusTests: XCTestCase {
         .awaitingUser,
         .coolingDown,
         .suspended(.batteryLow(charge: 0.1)),
-        .suspended(.maxDurationReached(3600))
+        .suspended(.maxDurationReached(3600)),
+        .suspended(.timerEnded(900))
     ]
 
     func testHoldingAgreesWithTheAssertionForEveryState() {
@@ -53,6 +54,17 @@ final class PanelStatusTests: XCTestCase {
         else {
             return XCTFail("expected a maxDurationReached status")
         }
+    }
+
+    /// A running timer changes the sentence, and only the sentence: the same
+    /// Always-on look must keep holding.
+    func testTimerVariantsOfAlwaysOn() {
+        let timer = AlwaysOnTimer(duration: 900, deadline: Date().addingTimeInterval(900))
+        XCTAssertEqual(PanelStatus.derive(from: .alwaysOn, timer: timer), .alwaysOnTimed)
+        XCTAssertEqual(PanelStatus.derive(from: .alwaysOn, timer: nil), .alwaysOn)
+        XCTAssertTrue(PanelStatus.alwaysOnTimed.isHolding)
+        XCTAssertEqual(PanelStatus.derive(from: .suspended(.timerEnded(900))), .timerEnded)
+        XCTAssertTrue(PanelStatus.timerEnded.isInterrupted)
     }
 }
 
@@ -100,7 +112,10 @@ final class AppStateCallbackTests: XCTestCase {
             .map { try String(contentsOf: root.appendingPathComponent($0), encoding: .utf8) }
             .joined()
 
-        for callback in ["onModeChange", "onOpenSettings", "onGrantAccess", "onChange"] {
+        for callback in [
+            "onModeChange", "onOpenSettings", "onGrantAccess", "onChange",
+            "onTimerChange", "onHoldAgain"
+        ] {
             XCTAssertTrue(
                 wiring.contains("\(callback) ="),
                 "AppState.\(callback) is never assigned — whatever calls it does nothing")
@@ -112,11 +127,15 @@ final class AppStateCallbackTests: XCTestCase {
 /// change height, the whole panel jumps under the cursor mid-click.
 @MainActor
 final class PanelHeightStabilityTests: XCTestCase {
-    private func height(_ state: BelayState) -> CGFloat {
+    private func height(
+        _ state: BelayState, mode: AwakeMode = .auto, timer: AlwaysOnTimer? = nil
+    ) -> CGFloat {
         let app = AppState()
+        app.mode = mode
         app.apply(
             CoordinatorSnapshot(
-                state: state, sessions: [], activities: [:], holdReason: nil, holdingSince: nil),
+                state: state, sessions: [], activities: [:], holdReason: nil, holdingSince: nil,
+                timer: timer),
             totalAwake: 0)
         let host = NSHostingView(rootView: PanelView(state: app).frame(width: PanelView.width))
         host.layoutSubtreeIfNeeded()
@@ -124,14 +143,41 @@ final class PanelHeightStabilityTests: XCTestCase {
     }
 
     func testEveryStateGivesThePanelTheSameHeight() {
+        // The battery pause belongs here: it offers no button, so it adds no
+        // row and the panel holds one height through it.
         let states: [BelayState] = [
             .off, .armed, .alwaysOn, .working, .awaitingUser, .coolingDown,
-            .suspended(.batteryLow(charge: 0.18)), .suspended(.maxDurationReached(4 * 3600))
+            .suspended(.batteryLow(charge: 0.18))
         ]
-        let heights = states.map(height)
+        let heights = states.map { height($0) }
         let spread = (heights.max() ?? 0) - (heights.min() ?? 0)
         XCTAssertLessThan(
             spread, 1,
             "the panel changes height between states by \(spread) pt — it will jump as you switch mode")
+    }
+
+    /// The pause row is the one deliberate exception to the rule above. It
+    /// appears under the mode picker — below every control the cursor could be
+    /// on, so nothing the user is about to click moves — and both pauses that
+    /// carry the button must land on the same height, so one becoming the
+    /// other cannot jump either.
+    func testTheTwoActionablePausesShareOneHeight() {
+        let base = height(.armed)
+        let cap = height(.suspended(.maxDurationReached(4 * 3600)))
+        let timer = height(.suspended(.timerEnded(900)))
+        XCTAssertEqual(cap, timer, accuracy: 0.5, "the two pause rows must not differ")
+        XCTAssertGreaterThan(cap, base, "the pause row should actually be there")
+    }
+
+    /// In Always on the slot is always filled — the duration chip when holding,
+    /// the pause row when a bound fired — so within the mode the panel never
+    /// changes height at all, countdown or not.
+    func testAlwaysOnKeepsOneHeightThroughChipAndPause() {
+        let deadline = AlwaysOnTimer(duration: 900, deadline: Date().addingTimeInterval(900))
+        let chip = height(.alwaysOn, mode: .alwaysOn)
+        let counting = height(.alwaysOn, mode: .alwaysOn, timer: deadline)
+        let paused = height(.suspended(.timerEnded(900)), mode: .alwaysOn)
+        XCTAssertEqual(chip, counting, accuracy: 0.5, "the countdown must not resize the chip")
+        XCTAssertEqual(chip, paused, accuracy: 0.5, "chip and pause must share the slot's height")
     }
 }

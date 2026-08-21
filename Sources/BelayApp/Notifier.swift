@@ -62,6 +62,7 @@ final class Notifier {
         switch reason {
         case .batteryLow(let charge): return "battery charge=\(Int((charge * 100).rounded()))"
         case .maxDurationReached(let cap): return "cap after=\(Int(cap))s"
+        case .timerEnded(let duration): return "timer after=\(Int(duration))s"
         }
     }
 
@@ -151,6 +152,8 @@ final class Notifier {
                 String(
                     localized: "Belay reached its maximum awake time and stopped keeping your Mac awake."
                 )
+            case .timerEnded:
+                String(localized: "The timer you set ran out, so Belay stopped keeping your Mac awake.")
             }
         await post(category: .safetyRelease, title: String(localized: "Belay stopped holding"), body: body)
     }

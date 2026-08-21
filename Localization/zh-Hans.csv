@@ -19,18 +19,19 @@
 %lldd %@h,Panel,translated,%lld %@,%lldd %@h,%lld 天 %@ 时
 %lldh %@m,Panel,translated,%lld %@,%lldh %@m,%lld 时 %@ 分
 %lldm,Panel,translated,%lld,%lldm,%lld 分
-%llds,"Detection, Panel, Settings, Settings: Notifications, Settings: Providers",translated,%lld,%llds,%lld 秒
+%llds,"App, Detection, Panel, Settings, Settings: Notifications, Settings: Providers",translated,%lld,%llds,%lld 秒
 1 hour,Settings,translated,,1 hour,1 小时
 1 min,"Detection, Settings",translated,,1 min,1 分钟
 10 hours,Settings,translated,,10 hours,10 小时
 10 min,Settings,translated,,10 min,10 分钟
 12 hours,"Settings, Statistics",translated,,12 hours,12 小时
+15 min,"Panel, Settings",translated,,15 min,15 分钟
 2 hours,"Settings, Statistics",translated,,2 hours,2 小时
 3 min,Settings,translated,,3 min,3 分钟
 30 min,Settings,translated,,30 min,30 分钟
 30 sec,Settings,translated,,30 sec,30 秒
 4 hours,Settings,translated,,4 hours,4 小时
-5 min,Settings,translated,,5 min,5 分钟
+5 min,"Panel, Settings",translated,,5 min,5 分钟
 8 hours,Settings,translated,,8 hours,8 小时
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,超过这段时间后，Belay 会让 Mac 进入睡眠并通知你。
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,文件夹活动算作工作。正在运行的进程只用于告诉 Belay 会话何时结束。
@@ -48,7 +49,7 @@ All product names and logos are trademarks of their respective owners.,Settings:
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,允许访问 ~/.claude
 Also,"App, Detection, Settings, Settings: Behaviour, Settings: Providers",translated,,Also,此外
 Also keep the display awake,"Detection, Settings: Behaviour",translated,,Also keep the display awake,同时让显示器保持唤醒
-Always on,"App, Detection, Menu bar, Panel, Welcome",translated,,Always On,常开
+Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,常开
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,智能体在等你回应
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,智能体在等你回应。Belay 正在让 Mac 保持唤醒。
 "An agent is working, so sleep is on hold.",Panel,translated,,"An agent is working, so your Mac stays awake.",智能体正在工作，Mac 保持唤醒。
@@ -101,6 +102,7 @@ Belay still works in Always on and Off modes,Welcome,translated,,You can still u
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay 已停止保持唤醒
 Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,电量降至 %lld%%，Belay 已停止保持唤醒。
 Belay stopped holding: the maximum awake time was reached.,Menu bar,translated,,Belay stopped keeping your Mac awake: maximum awake time reached.,已达到最长唤醒时间，Belay 已停止保持唤醒。
+Belay stopped holding: the timer ran out.,Menu bar,translated,,Belay stopped holding: the timer ran out.,计时器已结束，Belay 已停止保持唤醒。
 Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ to:,Belay 会将 %@ 更新为：
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,即使电量低，Belay 也会让 Mac 保持唤醒。
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容：
@@ -147,8 +149,10 @@ Good to go,App,translated,,Good to go,准备好了
 Got it,App,translated,,Got it,明白了
 Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许访问 ~/.claude
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访问 ~/.codex
+Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。
+How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,让 Mac 保持唤醒多久
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
 "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",App,translated,,"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",如果 Codex 在轮次中途退出或崩溃，Belay 会发现进程已经结束，并在几秒内放开 Mac，而不是继续等待整个重试宽限期。
 It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer before it can continue.,需要你回应后才能继续。
@@ -211,6 +215,7 @@ Opening Codex no longer floods the panel with sessions.,App,translated,,Opening 
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,打开标准的 macOS 文件夹选择面板，供你允许访问
 Other agents,"App, Settings: Providers",translated,,Other agents,其他智能体
 Other tools,Settings: Providers,translated,,Other tools,其他工具
+Paused at your time limit.,Panel,translated,,Paused at your time limit.,已暂停：达到时间上限。
 Play interface sounds,Settings: General,translated,,Play interface sounds,播放界面声音
 Play sounds,Settings: General,translated,,Play sounds,播放声音
 Precise detection,Settings: Providers,translated,,Precise detection,精确检测
@@ -237,6 +242,7 @@ Show Reports,Settings,translated,,Show Reports,显示报告
 Show all sessions,Panel,translated,,Show all sessions,显示全部会话
 Show fewer,Panel,translated,,Show fewer,收起
 Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
+Show the timer on the dimmed screen,Settings,translated,,Show the timer on the dimmed screen,在调暗的屏幕上显示计时器
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
@@ -248,6 +254,7 @@ Star on GitHub,Settings: About,translated,,Star on GitHub,在 GitHub 上加星�
 Start watching,Welcome,translated,,Start Magic,开始监视
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,启动
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,统计
+Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,在下方计时器结束前，Mac 将保持唤醒。
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,电量低时停止让 Mac 保持唤醒
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,电量低时停止
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,停止监视此工具
@@ -264,9 +271,12 @@ The lid helper restores what it changed,App,translated,,The lid helper restores 
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,%@ 中的运行用时 %@。Mac 现在可以正常进入睡眠。
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,本次运行用时 %@。Mac 现在可以正常进入睡眠。
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,服务器返回 %lld。
+The timer ran out.,Panel,translated,,The timer ran out.,计时器已结束。
+"The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",你设置的计时器已结束。
+"The timer you set ran out, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,,"The timer you set ran out, so Belay stopped keeping your Mac awake.",你设置的计时器已结束，Belay 已让 Mac 进入睡眠。
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,更新服务返回了 Belay 无法读取的内容。
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,此操作无法撤销。Belay 不会在其他任何地方保留副本。
-Until turned off,Settings,translated,,Until turned off,直到手动关闭
+Until turned off,"Panel, Settings",translated,,Until turned off,直到手动关闭
 Untitled project,App,translated,,Untitled project,未命名项目
 Update Now,"App, Settings, Settings: General",translated,,Update Now,立即更新
 Update Now (v%@),App,translated,%@,Update Now (v%@),立即更新到 v%@
@@ -290,6 +300,7 @@ When an agent goes quiet,Settings: Notifications,translated,,When an agent goes 
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,智能体需要你时
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
 "When you step away at night, Belay dims the display to this level. It brightens again when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens again when you return.",夜间离开时，Belay 会把显示器调暗到这一亮度。你回来时它会重新变亮。
+"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",常开计时器运行时，剩余时间会在暗屏上轻轻发光，就像床头钟一样。
 While holding,"Settings, Settings: Behaviour",translated,,While holding,保持唤醒期间
 Working,"App, Panel, Settings: Providers",translated,,Working,工作中
 You asked Belay to stay on until you switch it off.,Panel,translated,,Your Mac stays awake until you turn it off.,Mac 将保持唤醒，直到你关闭为止。

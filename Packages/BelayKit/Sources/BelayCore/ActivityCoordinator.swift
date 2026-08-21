@@ -8,7 +8,10 @@ import Foundation
 /// is what lets the suite drive hours of behaviour in milliseconds. Something
 /// has to call it as time passes — that is `CoordinatorDriver`'s only job.
 public actor ActivityCoordinator {
-    private let clock: Clock
+    // `internal` where `private` reads truer: the timer half of this actor
+    // lives in `ActivityCoordinatorTimer.swift` for the file-length rule, and
+    // Swift's `private` stops at the file. Isolation still guards them all.
+    let clock: Clock
     private var policy: AwakePolicy
     private var power: PowerConditions = .unknown
     private var ledger = SessionLedger()
@@ -19,7 +22,10 @@ public actor ActivityCoordinator {
     private var holdingSince: Date?
     /// Set when the max-duration cap fires; cleared only once work actually
     /// stops, otherwise we would release and immediately re-hold forever.
-    private var capTripped = false
+    var capTripped = false
+    /// The user's "stay on this long". Needs no tripped latch of its own: a
+    /// deadline in the past stays in the past until `holdAgain` moves it.
+    var timer: AlwaysOnTimer?
 
     /// The reason survives the grace period unchanged. Swapping it to
     /// "cooling down" the moment a turn ends would re-emit a decision on every
@@ -55,6 +61,10 @@ public actor ActivityCoordinator {
     }
 
     public func setPolicy(_ policy: AwakePolicy) {
+        // The timer is a property of one stay in Always on, not of the mode
+        // switch itself: leaving the mode ends it, and coming back starts
+        // plain "until turned off" rather than resuming a stale countdown.
+        if policy.mode != .alwaysOn { timer = nil }
         self.policy = policy
         evaluate()
     }
@@ -83,6 +93,9 @@ public actor ActivityCoordinator {
         }
         if let holdingSince, let cap = policy.maxContinuousAwake {
             candidates.append(holdingSince + cap)
+        }
+        if policy.mode == .alwaysOn, let timer {
+            candidates.append(timer.deadline)
         }
         candidates.append(contentsOf: ledger.deadlines(policy: policy))
         return candidates.filter { $0 > now }.min()
@@ -157,10 +170,15 @@ public actor ActivityCoordinator {
         return (lastHoldReason ?? .coolingDown, .coolingDown)
     }
 
-    /// Safety gates that override any desire to hold. Both are user-visible.
+    /// Safety gates that override any desire to hold. All are user-visible.
     private func suspension(now: Date) -> SuspensionReason? {
         if power.trips(policy.batteryFloor) {
             return .batteryLow(charge: power.charge ?? 0)
+        }
+        // Before the cap: when both bounds have passed, the one the user chose
+        // by hand is the honest answer to "why did Belay let go".
+        if policy.mode == .alwaysOn, let timer, now >= timer.deadline {
+            return .timerEnded(timer.duration)
         }
         guard let cap = policy.maxContinuousAwake else { return nil }
         // Checked before `holdingSince`, which the release this gate caused has
@@ -196,7 +214,8 @@ public actor ActivityCoordinator {
             sessions: ledger.ordered,
             activities: activities,
             holdReason: reason,
-            holdingSince: holdingSince
+            holdingSince: holdingSince,
+            timer: policy.mode == .alwaysOn ? timer : nil
         )
 
         if emitted.holding != holding || emitted.reason != reason {

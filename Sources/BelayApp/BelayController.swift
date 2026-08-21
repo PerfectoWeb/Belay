@@ -29,6 +29,8 @@ final class BelayController {
     var tasks: [Task<Void, Never>] = []
     private var refresh: Task<Void, Never>?
     var sleepObservers: [NSObjectProtocol] = []
+    /// Registered on the distributed centre, so it cannot ride in the list above.
+    var unlockObserver: NSObjectProtocol?
     private var awakeTally = AwakeTally()
     let usage = UsageRecorder()
     private var trigger = AnnouncementTrigger()
@@ -69,7 +71,10 @@ final class BelayController {
 
     func start() {
         state.onModeChange = { [weak self] mode in self?.setMode(mode) }
+        state.onTimerChange = { [weak self] duration in self?.setAlwaysOnTimer(duration) }
+        state.onHoldAgain = { [weak self] in self?.holdAgain() }
         observeDecisions()
+        observeHumanReturn()
         observePowerSource()
         observeSleepWake()
         startProviders()
@@ -114,6 +119,8 @@ final class BelayController {
         #endif
         for observer in sleepObservers { NSWorkspace.shared.notificationCenter.removeObserver(observer) }
         sleepObservers.removeAll()
+        if let unlockObserver { DistributedNotificationCenter.default().removeObserver(unlockObserver) }
+        unlockObserver = nil
 
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.

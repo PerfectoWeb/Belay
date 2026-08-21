@@ -32,6 +32,7 @@ enum DurationChoice {
         180: "3 min",
         300: "5 min",
         600: "10 min",
+        900: "15 min",
         1800: "30 min",
         3600: "1 hour",
         7200: "2 hours",

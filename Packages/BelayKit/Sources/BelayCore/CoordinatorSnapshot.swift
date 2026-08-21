@@ -28,12 +28,31 @@ public enum HoldReason: Sendable, Equatable {
     }
 }
 
-/// Why Belay has stopped holding despite work being present. Both cases are
+/// Why Belay has stopped holding despite work being present. Every case is
 /// user-visible: silently letting the Mac sleep mid-task is the failure mode
 /// docs/01 says we must never produce without saying so.
 public enum SuspensionReason: Sendable, Equatable {
     case batteryLow(charge: Double)
     case maxDurationReached(TimeInterval)
+    /// The Always-on timer the user chose ran its course. Separate from
+    /// `maxDurationReached` because the two end differently: the cap is a
+    /// safety limit and re-arms when the user comes back to the machine; a
+    /// timer is a fulfilled request and waits to be asked again.
+    case timerEnded(TimeInterval)
+}
+
+/// A user-chosen bound on Always on: "stay awake this long, then let go".
+///
+/// The duration is kept beside the deadline so "Hold again" can start a fresh
+/// round of the same length without the UI having to remember what was picked.
+public struct AlwaysOnTimer: Sendable, Equatable {
+    public let duration: TimeInterval
+    public let deadline: Date
+
+    public init(duration: TimeInterval, deadline: Date) {
+        self.duration = duration
+        self.deadline = deadline
+    }
 }
 
 public enum BelayState: Sendable, Equatable {
@@ -65,6 +84,9 @@ public struct CoordinatorSnapshot: Sendable, Equatable {
     public var holdReason: HoldReason?
     /// When the current continuous hold began, for the footer's total.
     public var holdingSince: Date?
+    /// The Always-on timer, while one is set — expired or not, so the panel
+    /// can keep naming the choice while the pause it caused is on screen.
+    public var timer: AlwaysOnTimer?
 
     public static let idle = CoordinatorSnapshot(
         state: .armed,
@@ -79,12 +101,14 @@ public struct CoordinatorSnapshot: Sendable, Equatable {
         sessions: [SessionState],
         activities: [SessionID: SessionActivity],
         holdReason: HoldReason?,
-        holdingSince: Date?
+        holdingSince: Date?,
+        timer: AlwaysOnTimer? = nil
     ) {
         self.state = state
         self.sessions = sessions
         self.activities = activities
         self.holdReason = holdReason
         self.holdingSince = holdingSince
+        self.timer = timer
     }
 }
