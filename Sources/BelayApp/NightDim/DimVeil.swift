@@ -17,6 +17,14 @@ final class DimVeil {
     /// The clock sits one step above this; both live above full-screen apps.
     static let level = NSWindow.Level.screenSaver
 
+    /// How much of the frost shows. The blur radius itself is the system
+    /// material's and cannot be set without private filters, so strength is
+    /// the panel's opacity: at 1 only the blurred picture is visible, and
+    /// below that the sharp one shows through in proportion — which reads as
+    /// a lighter blur and a lighter tint together. Halved from full after a
+    /// first look at full strength, 2026-08-21.
+    static let strength: CGFloat = 0.5
+
     func show() {
         guard panels.isEmpty else { return }
         for screen in NSScreen.screens {
@@ -46,7 +54,7 @@ final class DimVeil {
             panel.orderFrontRegardless()
             NSAnimationContext.runAnimationGroup { context in
                 context.duration = 1.0
-                panel.animator().alphaValue = 1
+                panel.animator().alphaValue = Self.strength
             }
             panels.append(panel)
         }
