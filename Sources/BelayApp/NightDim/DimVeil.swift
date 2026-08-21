@@ -21,9 +21,9 @@ final class DimVeil {
     /// material's and cannot be set without private filters, so strength is
     /// the panel's opacity: at 1 only the blurred picture is visible, and
     /// below that the sharp one shows through in proportion — which reads as
-    /// a lighter blur and a lighter tint together. Halved from full after a
-    /// first look at full strength, 2026-08-21.
-    static let strength: CGFloat = 0.5
+    /// a lighter blur and a lighter tint together. Three-quarters: at a half the
+    /// text behind showed through readable, at full it was heavier than needed.
+    static let strength: CGFloat = 0.75
 
     func show() {
         guard panels.isEmpty else { return }
