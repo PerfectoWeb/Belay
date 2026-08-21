@@ -285,7 +285,7 @@ Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,版本 %@ 已可用。
 Wait before letting the Mac sleep,Settings: Behaviour,translated,,Wait before letting your Mac sleep,让 Mac 进入睡眠前的等待时间
 Waiting for you,Panel,translated,,Waiting for you,等待回应
-Watch,"App, Detection, Settings: Providers, Welcome",translated,,Watch,监视
+Watch,"App, Detection, Panel, Settings: Providers, Welcome",translated,,Watch,监视
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
 Watches Codex's session files to tell when a turn is running.,Settings: Providers,translated,,Watches Codex session files to tell when a turn is running.,监视 Codex 的会话文件，以判断轮次何时在运行。
 "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.",Settings: Providers,translated,,Watch a folder or use a one-line webhook to support another coding agent. Start with a preset or add your own.,监视一个文件夹，或使用一行 Webhook，即可支持另一个编程智能体。可以从预设开始，也可以自行添加。
@@ -299,13 +299,16 @@ When a new version is out,Settings: Notifications,translated,,When a new version
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,当智能体没有动静时
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,智能体需要你时
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
-"When you step away at night, Belay dims the display to this level. It brightens again when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens again when you return.",夜间离开时，Belay 会把显示器调暗到这一亮度。你回来时它会重新变亮。
+"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",Settings,translated,,"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",夜间你离开时，如果 macOS 本会关闭显示器，Belay 会改为将其调暗到此亮度。你回来时会恢复亮度。
+"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电池时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。
+"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return.",夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电源时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",常开计时器运行时，剩余时间会在暗屏上轻轻发光，就像床头钟一样。
 While holding,"Settings, Settings: Behaviour",translated,,While holding,保持唤醒期间
 Working,"App, Panel, Settings: Providers",translated,,Working,工作中
 You asked Belay to stay on until you switch it off.,Panel,translated,,Your Mac stays awake until you turn it off.,Mac 将保持唤醒，直到你关闭为止。
 "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.",Belay 在 Claude Code 设置中发现无法识别的 hooks 条目，因此未做任何更改。
 "Your Claude Code settings file is not plain JSON, so Belay will not modify it.",Detection,translated,,"Your Claude Code settings file isn't plain JSON, so Belay won't modify it.",Claude Code 设置文件不是纯 JSON，因此 Belay 不会修改它。
+"Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first.",Settings,translated,,"Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first.",你的 Mac 设置为从不关闭显示器，Belay 也就没有调暗的时机。请先在系统设置中选择一个关闭显示器的时间。
 Your Mac will go back to its normal sleep schedule.,Menu bar,translated,,Your Mac can return to its normal sleep schedule.,Mac 可以恢复正常的睡眠计划。
 Your Mac will sleep normally,"Menu bar, Panel, Settings: Notifications",translated,,Your Mac can sleep normally,Mac 可以正常进入睡眠
 Your agent finished,Settings: Notifications,translated,,Your agent finished,智能体已完成

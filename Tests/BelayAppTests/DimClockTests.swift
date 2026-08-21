@@ -1,4 +1,5 @@
 import AppKit
+import BelaySettings
 import BelayCore
 import SwiftUI
 import XCTest
@@ -48,5 +49,27 @@ final class DimClockTests: XCTestCase {
             return XCTFail("no png")
         }
         try png.write(to: out.appendingPathComponent("dim-clock.png"))
+    }
+}
+
+/// The dimming rows as they read on this machine, for eye checks: the
+/// explanation quotes the live display-off delay.
+@MainActor
+final class NightDimmingGroupFrameTests: XCTestCase {
+    func testWriteGroupFrame() throws {
+        guard let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"] else {
+            throw XCTSkip("set BELAY_FRAMES to a directory to write the frames")
+        }
+        let view = VStack(alignment: .leading) { NightDimmingGroup(settings: SettingsStore()) }
+            .frame(width: 520)
+            .padding(20)
+            .background(Color(nsColor: .windowBackgroundColor))
+        let host = NSHostingView(rootView: view)
+        host.frame = NSRect(origin: .zero, size: host.fittingSize)
+        host.layoutSubtreeIfNeeded()
+        let rep = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
+        host.cacheDisplay(in: host.bounds, to: rep)
+        let png = try XCTUnwrap(rep.representation(using: .png, properties: [:]))
+        try png.write(to: URL(fileURLWithPath: folder).appendingPathComponent("dim-group.png"))
     }
 }

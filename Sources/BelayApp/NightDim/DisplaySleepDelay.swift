@@ -1,5 +1,6 @@
 import BelaySupport
 import Foundation
+import IOKit.ps
 
 /// The system's own display-sleep delay: the moment that would have darkened
 /// the screen if Belay had not held it awake. Dimming keys off it so the
@@ -21,6 +22,19 @@ enum DisplaySleepDelay {
         guard minutes > 0 else { return nil }
         return minutes * 60
     }
+
+    /// Whether the Mac is drawing from the adapter right now — so the settings
+    /// text can name the delay that actually applies, not the other one.
+    static var isOnACNow: Bool {
+        guard let type = IOPSGetProvidingPowerSourceType(nil)?.takeUnretainedValue() else {
+            return true
+        }
+        return (type as String) == kIOPSACPowerValue
+    }
+
+    /// True when the number is the system's own rather than the fallback, so
+    /// the text can quote it. The sandboxed build never knows and says so.
+    static var isKnown: Bool { preferredMinutes(onAC: isOnACNow) != nil }
 
     #if BELAY_MAS
     private static func preferredMinutes(onAC: Bool) -> Double? { nil }

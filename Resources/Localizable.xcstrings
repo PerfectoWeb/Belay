@@ -13962,53 +13962,6 @@
         }
       }
     },
-    "When you step away at night, Belay dims the display to this level. It brightens again when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gehst du nachts weg, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, Belay dims the display to this level. It brightens again when you return."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si te alejas por la noche, Belay atenúa la pantalla hasta este nivel. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La nuit, quand vous vous éloignez, Belay atténue l'écran à ce niveau. Il retrouve sa luminosité à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Di notte, quando ti allontani, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ночью, когда вы отходите, Belay приглушает экран до этого уровня. Когда возвращаетесь, яркость восстанавливается."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间离开时，Belay 会把显示器调暗到这一亮度。你回来时它会重新变亮。"
-          }
-        }
-      }
-    },
     "Keep working with the lid closed": {
       "extractionState": "manual",
       "localizations": {
@@ -15603,6 +15556,194 @@
           "stringUnit": {
             "state": "translated",
             "value": "常开计时器运行时，剩余时间会在暗屏上轻轻发光，就像床头钟一样。"
+          }
+        }
+      }
+    },
+    "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда вы отходите ночью и macOS выключила бы дисплей, Belay вместо этого приглушает его до этого уровня. При возвращении яркость восстанавливается."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du nachts weggehst und macOS das Display ausgeschaltet hätte, dunkelt Belay es stattdessen auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando te alejas de noche y macOS habría apagado la pantalla, Belay la atenúa a este nivel en su lugar. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous vous éloignez la nuit et que macOS aurait éteint l'écran, Belay l'assombrit à ce niveau à la place. Il se rallume à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti allontani di notte e macOS avrebbe spento lo schermo, Belay lo attenua invece a questo livello. Torna luminoso al tuo ritorno."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间你离开时，如果 macOS 本会关闭显示器，Belay 会改为将其调暗到此亮度。你回来时会恢复亮度。"
+          }
+        }
+      }
+    },
+    "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На вашем Mac дисплей настроен никогда не выключаться, поэтому Belay нечего приглушать. Сначала задайте время выключения дисплея в Системных настройках."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Mac ist so eingestellt, dass das Display nie ausgeschaltet wird, also gibt es für Belay keinen Moment zum Abdunkeln. Lege zuerst in den Systemeinstellungen eine Zeit zum Ausschalten des Displays fest."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu Mac está configurado para no apagar nunca la pantalla, así que Belay no tiene cuándo atenuarla. Elige primero un tiempo de apagado de pantalla en Ajustes del Sistema."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre Mac est réglé pour ne jamais éteindre l'écran, Belay n'a donc aucun moment pour l'assombrir. Choisissez d'abord un délai d'extinction de l'écran dans Réglages Système."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il Mac è impostato per non spegnere mai lo schermo, quindi Belay non ha un momento in cui attenuarlo. Scegli prima un tempo di spegnimento dello schermo nelle Impostazioni di Sistema."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的 Mac 设置为从不关闭显示器，Belay 也就没有调暗的时机。请先在系统设置中选择一个关闭显示器的时间。"
+          }
+        }
+      }
+    },
+    "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда вы отходите ночью, Belay приглушает дисплей до этого уровня вместо того, чтобы дать macOS его выключить, а это сейчас происходит через %lld мин от сети. При возвращении яркость восстанавливается."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab, statt macOS es ausschalten zu lassen, was am Netzteil derzeit nach %lld Min. passiert. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel en lugar de dejar que macOS la apague, lo que ahora ocurre tras %lld min con corriente. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau au lieu de laisser macOS l'éteindre, ce qui survient actuellement après %lld min sur secteur. Il se rallume à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello invece di lasciare che macOS lo spenga, cosa che ora avviene dopo %lld min con l'alimentatore. Torna luminoso al tuo ritorno."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电源时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。"
+          }
+        }
+      }
+    },
+    "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда вы отходите ночью, Belay приглушает дисплей до этого уровня вместо того, чтобы дать macOS его выключить, а это сейчас происходит через %lld мин от батареи. При возвращении яркость восстанавливается."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab, statt macOS es ausschalten zu lassen, was im Akkubetrieb derzeit nach %lld Min. passiert. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel en lugar de dejar que macOS la apague, lo que ahora ocurre tras %lld min con batería. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau au lieu de laisser macOS l'éteindre, ce qui survient actuellement après %lld min sur batterie. Il se rallume à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello invece di lasciare che macOS lo spenga, cosa che ora avviene dopo %lld min a batteria. Torna luminoso al tuo ritorno."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电池时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。"
           }
         }
       }
