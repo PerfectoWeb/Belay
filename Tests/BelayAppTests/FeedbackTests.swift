@@ -66,3 +66,35 @@ final class FeedbackTests: XCTestCase {
         XCTAssertEqual(Set(notes).count, AwakeMode.allCases.count, "two modes sound the same")
     }
 }
+
+/// The chart's run of notes: fourteen files, pitched by bar height.
+@MainActor
+final class BarNoteTests: XCTestCase {
+    private func url(step: Int) -> URL? {
+        let name = String(format: "bar-%02d", step + 1)
+        for bundle in [Bundle(for: Self.self), Bundle.main] {
+            if let found = bundle.url(forResource: name, withExtension: "wav") { return found }
+        }
+        return nil
+    }
+
+    func testEveryStepHasANoteAndNoneRingsOn() throws {
+        for step in 0..<Feedback.barSteps {
+            let file = try XCTUnwrap(url(step: step), "bar \(step + 1) is silent")
+            let note = try XCTUnwrap(NSSound(contentsOf: file, byReference: false))
+            XCTAssertLessThan(note.duration, 0.8, "bar \(step + 1) runs on")
+            XCTAssertGreaterThan(note.duration, 0.05, "bar \(step + 1) is a click")
+        }
+    }
+
+    /// The tallest bar plays the top of the run, the shortest non-empty bar
+    /// plays near the bottom, and a bar just under the peak does not round up
+    /// past it.
+    func testHeightPicksTheNote() {
+        XCTAssertEqual(Feedback.barStep(held: 100, peak: 100), Feedback.barSteps - 1)
+        XCTAssertEqual(Feedback.barStep(held: 1, peak: 100), 0)
+        XCTAssertEqual(Feedback.barStep(held: 50, peak: 100), (Feedback.barSteps - 1) / 2 + 1)
+        XCTAssertEqual(Feedback.barStep(held: 0, peak: 100), 0)
+        XCTAssertEqual(Feedback.barStep(held: 5, peak: 0), 0)
+    }
+}

@@ -229,9 +229,34 @@ let sounds: [String: [Double]] = [
         ], length: 0.62),
 ]
 
+/// The statistics chart, one note per step of bar height. Pentatonic, so any
+/// order the cursor sweeps the bars in is consonant, and it is the *height*
+/// that picks the note rather than the day's position: dragging across the
+/// week plays the shape of the week. Fourteen steps of a major pentatonic
+/// from C3 to G5, which keeps the top of the run under the 800 Hz ceiling the
+/// rules above set for the whole set. The one exception to "one note" that
+/// is not a phrase: the notes are the user's, struck one at a time, and the
+/// melody is whatever their fortnight happens to be.
+///
+/// Quieter than the mode notes and shorter in decay, because a sound that
+/// fires on every hover has to be closer to a texture than an event.
+let pentatonic = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 26, 28, 31]
+var barNotes: [String: [Double]] = [:]
+for (step, semitone) in pentatonic.enumerated() {
+    let frequency = 130.81 * pow(2, Double(semitone) / 12)
+    // Higher notes ring a touch shorter, as a struck bar does.
+    let decay = 0.11 - 0.003 * Double(step)
+    barNotes[String(format: "bar-%02d", step + 1)] = render(
+        [
+            Note(
+                frequency: frequency, at: 0, decay: decay, level: 0.07,
+                partials: [(2.0, 0.06), (3.17, 0.02)], bend: 0.015)
+        ], length: 0.36)
+}
+
 try FileManager.default.createDirectory(
     atPath: output, withIntermediateDirectories: true)
-for (name, samples) in sounds.sorted(by: { $0.key < $1.key }) {
+for (name, samples) in sounds.merging(barNotes, uniquingKeysWith: { a, _ in a }).sorted(by: { $0.key < $1.key }) {
     let url = URL(fileURLWithPath: "\(output)/\(name).wav")
     try wav(samples).write(to: url)
     print("wrote \(url.path) — \(String(format: "%.2f", Double(samples.count) / rate))s")

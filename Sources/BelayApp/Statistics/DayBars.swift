@@ -60,6 +60,12 @@ struct DayBars: View {
                 .animation(reduceMotion ? nil : .spring(duration: 0.25), value: hovered?.id)
                 .onHover { inside in
                     if inside {
+                        // A note per bar, pitched by height, only on arrival
+                        // at a new bar: the hover fires again on every
+                        // re-render while the cursor rests.
+                        if day.heldSeconds > 0, hovered?.id != day.id {
+                            Feedback.playBar(step: Feedback.barStep(held: day.heldSeconds, peak: peak))
+                        }
                         onHover(day.heldSeconds > 0 ? day : nil)
                     } else {
                         onLeave(day)

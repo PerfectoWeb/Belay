@@ -73,6 +73,35 @@ enum Feedback {
         effect.play()
     }
 
+    /// How many notes the statistics chart has to choose from: the bar files
+    /// `make-sounds.swift` renders, one per step of a pentatonic run.
+    static let barSteps = 14
+
+    /// Which note a bar plays, from its height against the tallest bar. The
+    /// tallest gets the top of the run, an empty bar is never asked (the chart
+    /// does not react to empty days), and everything between is quantised onto
+    /// the scale — so a sweep across the chart plays its outline.
+    static func barStep(held: Double, peak: Double) -> Int {
+        guard peak > 0, held > 0 else { return 0 }
+        return min(barSteps - 1, Int((held / peak * Double(barSteps - 1)).rounded()))
+    }
+
+    /// The statistics chart under the cursor: one struck note, pitched by
+    /// `barStep`. Cached like the others, looked up by file name because a
+    /// run of fourteen would swamp `Sound`.
+    static func playBar(step: Int) {
+        guard isEnabled(), systemPlaysInterfaceSounds else { return }
+        let name = String(format: "bar-%02d", min(max(step, 0), barSteps - 1) + 1)
+        if bars[name] == nil, let url = Bundle.main.url(forResource: name, withExtension: "wav") {
+            bars[name] = NSSound(contentsOf: url, byReference: false)
+        }
+        guard let note = bars[name] else { return }
+        note.stop()
+        note.play()
+    }
+
+    private static var bars: [String: NSSound] = [:]
+
     /// Silences a sound mid-flight. Exists for the two long welcome
     /// recordings: a window closed at second three of a fifteen-second piece
     /// must not leave twelve seconds of soundtrack playing over nothing.
