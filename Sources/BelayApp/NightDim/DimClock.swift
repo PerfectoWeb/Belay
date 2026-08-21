@@ -109,14 +109,12 @@ final class DimClock {
         panel = nil
     }
 
-    /// Room for the moon and "12:00:00" at 28 pt light, with air around it.
-    private static let size = NSSize(width: 200, height: 48)
+    /// Room for the moon and "12:00:00" at 72 pt thin, with air around it.
+    private static let size = NSSize(width: 480, height: 110)
 
-    /// Top-right of the main screen, inset from both edges and kept under the
-    /// menu bar by using the visible frame — where a glance lands on a dark
-    /// display, and away from the centre where a window's content would be.
-    private static let inset: CGFloat = 36
-
+    /// Dead centre of the main screen: a dark display is looked at from
+    /// across a room, and the middle is where the eye goes first. Tried in a
+    /// corner at 28 pt; it was easy to miss.
     private func place(_ panel: NSPanel) {
         guard let screen = NSScreen.main else { return }
         let offset = Self.driftOffsets[driftStep % Self.driftOffsets.count]
@@ -124,8 +122,8 @@ final class DimClock {
         let area = screen.visibleFrame
         panel.setFrameOrigin(
             NSPoint(
-                x: area.maxX - Self.inset - size.width + offset.x,
-                y: area.maxY - Self.inset - size.height + offset.y))
+                x: area.midX - size.width / 2 + offset.x,
+                y: area.midY - size.height / 2 + offset.y))
     }
 
     private func driftOnce() {
@@ -143,20 +141,20 @@ struct DimClockView: View {
     var body: some View {
         // The moon says what the digits are for — the screen is dimmed, not
         // broken — in the same ink and the same light weight.
-        HStack(spacing: 10) {
+        HStack(spacing: 22) {
             Image(systemName: "moon.fill")
-                .font(.system(size: 20, weight: .regular))
+                .font(.system(size: 48, weight: .thin))
                 .accessibilityHidden(true)
             Text(timerInterval: min(Date.now, deadline)...deadline, countsDown: true)
-                .font(.system(size: 28, weight: .regular))
+                .font(.system(size: 72, weight: .thin))
                 .monospacedDigit()
         }
-        // Full white, regular weight: under the gamma ramp this is as bright
-        // as the clock can be — the ramp caps everything at the dim level —
-        // so "brighter" can only come from weight and opacity, both at their
-        // top here.
+        // Full white: under the gamma ramp this is as bright as the clock can
+        // be — the ramp caps everything at the dim level — so size is what
+        // carries legibility, and the thin weight keeps that size from
+        // turning into a billboard.
         .foregroundStyle(.white)
         .padding(4)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
