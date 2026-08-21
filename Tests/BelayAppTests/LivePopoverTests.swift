@@ -59,3 +59,19 @@ final class LivePopoverTests: XCTestCase {
         RunLoop.main.run(until: Date().addingTimeInterval(seconds))
     }
 }
+
+/// Puts the dim clock on the real screen for a few seconds so it can be
+/// photographed. Same contract as the popover run: opt-in, asserts nothing.
+@MainActor
+final class LiveDimClockTests: XCTestCase {
+    func testClockOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the clock")
+        }
+        let clock = DimClock()
+        let timer = AlwaysOnTimer(duration: 3600, deadline: Date() + 1234)
+        clock.sync(dimmed: true, enabled: true, timer: timer)
+        RunLoop.main.run(until: Date().addingTimeInterval(4))
+        clock.hide()
+    }
+}

@@ -55,17 +55,23 @@ final class DimClock {
         shownDeadline = deadline
 
         let host = NSHostingView(rootView: DimClockView(deadline: deadline))
-        host.frame.size = host.fittingSize
+        // No sizing options: left to itself the hosting view pins the window
+        // to its intrinsic size with constraints, and with the digits
+        // re-measuring every second that became an endless "needs another
+        // update constraints pass" loop — AppKit gave up and the panel never
+        // appeared on screen at all. The frame is set once, by hand, wide
+        // enough for the longest reading the digits can reach.
+        host.sizingOptions = []
+        host.frame = NSRect(origin: .zero, size: Self.size)
 
         if let panel {
             panel.contentView = host
-            panel.setContentSize(host.frame.size)
             place(panel)
             return
         }
 
         let panel = NSPanel(
-            contentRect: NSRect(origin: .zero, size: host.frame.size),
+            contentRect: NSRect(origin: .zero, size: Self.size),
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
             defer: false
@@ -102,6 +108,9 @@ final class DimClock {
         panel?.orderOut(nil)
         panel = nil
     }
+
+    /// Room for the moon and "12:00:00" at 28 pt light, with air around it.
+    private static let size = NSSize(width: 200, height: 48)
 
     /// Top-right of the main screen, inset from both edges and kept under the
     /// menu bar by using the visible frame — where a glance lands on a dark
@@ -144,5 +153,6 @@ struct DimClockView: View {
         }
         .foregroundStyle(.white.opacity(0.9))
         .padding(4)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
     }
 }
