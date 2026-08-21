@@ -39,6 +39,7 @@ enum SettingsKey: String, CaseIterable {
     case nightDimmingStart
     case nightDimmingEnd
     case nightDimmingLevel
+    case nightDimmingShowsTimer
     case lidHold
 
     static var settingKeys: [SettingsKey] { allCases.filter { $0 != .schemaVersion } }
@@ -155,6 +156,8 @@ extension SettingsValues {
             .nightDimmingEnd, in: SettingsBounds.minuteOfDay, or: fallback.nightDimmingEnd)
         nightDimmingLevel = defaults.fraction(
             .nightDimmingLevel, in: SettingsBounds.nightDimmingLevel, or: fallback.nightDimmingLevel)
+        nightDimmingShowsTimer =
+            defaults.flag(.nightDimmingShowsTimer) ?? fallback.nightDimmingShowsTimer
         lidHold = defaults.flag(.lidHold) ?? fallback.lidHold
     }
 
@@ -191,6 +194,7 @@ extension SettingsValues {
         defaults.store(nightDimmingStart, .nightDimmingStart)
         defaults.store(nightDimmingEnd, .nightDimmingEnd)
         defaults.store(nightDimmingLevel, .nightDimmingLevel)
+        defaults.store(nightDimmingShowsTimer, .nightDimmingShowsTimer)
         defaults.store(lidHold, .lidHold)
     }
 

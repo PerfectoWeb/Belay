@@ -18,6 +18,7 @@ import os
             #expect(store.notifyOnAgentNeedsInput)
             #expect(store.notifyOnTaskFinished)
             #expect(store.notifyOnSafetyRelease)
+            #expect(store.nightDimmingShowsTimer, "the dim clock ships on")
             #expect(store.taskFinishedThreshold == 300)
             #expect(store.enabledProviders == [.claudeCode])
             #expect(store.isEnabled(.claudeCode))
@@ -45,6 +46,7 @@ import os
             store.notifyOnSafetyRelease = false
             store.taskFinishedThreshold = 900
             store.enabledProviders = [.claudeCode, .codex]
+            store.nightDimmingShowsTimer = false
 
             let reopened = SettingsStore(defaults: try scratch.reopened())
 
@@ -62,6 +64,7 @@ import os
             #expect(reopened.launchAtLogin)
             #expect(reopened.hasCompletedOnboarding)
             #expect(reopened.notifyOnAgentNeedsInput == false)
+            #expect(reopened.nightDimmingShowsTimer == false)
             #expect(reopened.notifyOnTaskFinished == false)
             #expect(reopened.notifyOnSafetyRelease == false)
             #expect(reopened.taskFinishedThreshold == 900)

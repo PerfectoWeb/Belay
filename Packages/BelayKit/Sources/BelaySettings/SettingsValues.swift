@@ -44,6 +44,10 @@ struct SettingsValues: Equatable, Sendable {
     /// The white point the ramp lands on, 1.0 being untouched. Floored well
     /// above black so a glance at the room still shows the Mac is awake.
     var nightDimmingLevel: Double
+    /// Show the Always-on countdown on the dimmed screen, StandBy-style. On
+    /// by default: dimming is already opt-in, and the digits are the answer
+    /// to the one question a dark held screen raises — "how much longer".
+    var nightDimmingShowsTimer: Bool
     /// Hold through a closed lid. Off by default, direct builds only; the
     /// stored choice waits for the privileged helper that does the holding.
     var lidHold: Bool
@@ -87,6 +91,7 @@ extension SettingsValues {
         nightDimmingStart = 22 * 60
         nightDimmingEnd = 7 * 60
         nightDimmingLevel = 0.25
+        nightDimmingShowsTimer = true
         lidHold = false
     }
 

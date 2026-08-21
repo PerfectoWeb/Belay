@@ -18,6 +18,7 @@ final class NightDimmingController {
     private let settings: SettingsStore
     private let state: AppState
     private let fade = GammaFade()
+    private let clock = DimClock()
     private var machine = NightDimming()
     private var ticker: Timer?
     /// Where the pointer stood when the screen went down; travel is measured
@@ -53,6 +54,7 @@ final class NightDimmingController {
     func stop() {
         ticker?.invalidate()
         ticker = nil
+        clock.hide()
         if machine.isDimmed { fade.restore() }
     }
 
@@ -94,6 +96,13 @@ final class NightDimmingController {
         case nil:
             break
         }
+        // After the decision, not inside it: the countdown can appear, move
+        // or go away mid-dim — the user re-picks a duration, the timer runs
+        // out — and the dimmed tick already runs four times a second.
+        clock.sync(
+            dimmed: machine.isDimmed,
+            enabled: settings.nightDimmingShowsTimer,
+            timer: state.snapshot.timer)
     }
 
     /// Which leave-rule fired, in `NightDimming`'s own precedence, so the log

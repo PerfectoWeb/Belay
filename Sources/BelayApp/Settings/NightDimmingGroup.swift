@@ -49,6 +49,15 @@ struct NightDimmingGroup: View {
                 .frame(width: 34, alignment: .leading)
             }
             .font(.callout)
+
+            GroupedCheckbox(
+                title: "Show the timer on the dimmed screen",
+                explanation: """
+                    While an Always on timer runs, the remaining time glows \
+                    quietly on the dark display, the way a bedside clock would.
+                    """,
+                isOn: $settings.nightDimmingShowsTimer
+            )
         }
     }
 }

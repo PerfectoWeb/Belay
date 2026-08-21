@@ -197,6 +197,12 @@ public final class SettingsStore {
         set { update { $0.nightDimmingLevel = newValue } }
     }
 
+    /// Show the Always-on countdown on the dimmed screen.
+    public var nightDimmingShowsTimer: Bool {
+        get { values.nightDimmingShowsTimer }
+        set { update { $0.nightDimmingShowsTimer = newValue } }
+    }
+
     /// Hold through a closed lid. Direct builds only; waits on the helper.
     public var lidHold: Bool {
         get { values.lidHold }
