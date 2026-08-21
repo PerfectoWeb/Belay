@@ -15,8 +15,7 @@ import XCTest
 /// picture of the window and a picture of half of it.
 @MainActor
 final class WhatsNewFrameTests: XCTestCase {
-    /// Three shapes, because three are what break differently: one version with
-    /// four items, two versions at once, and a single item.
+    /// Two shapes: the real card, and a one-line one to see the short case.
     func testWriteWhatsNewScreens() throws {
         guard let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"] else {
             throw XCTSkip("set BELAY_FRAMES to a directory to write the frames")
@@ -24,19 +23,21 @@ final class WhatsNewFrameTests: XCTestCase {
         let out = URL(fileURLWithPath: folder)
         try? FileManager.default.createDirectory(at: out, withIntermediateDirectories: true)
 
-        let extra = ReleaseNote(
+        let short = ReleaseNote(
             version: "1.2.0",
-            items: [
-                .init(symbol: "bell", title: "Quieter notifications", body: "One line, to see a short row."),
-                .init(
-                    symbol: "chart.bar", title: "Statistics",
-                    body: "A second line here, long enough to wrap onto two of them in English.")
-            ])
+            title: "Quieter notifications",
+            paragraphs: [.init("One line, to see a short card.")])
+
+        // With a stand-in picture, so the full shape of the card can be seen
+        // before real artwork exists; `NSImage.Name` lookups fall back to any
+        // catalogue image, and the app icon is always there.
+        var pictured = ReleaseNotes.all
+        if !pictured.isEmpty { pictured[0].image = "AppIcon" }
 
         for (name, notes) in [
             ("whatsnew", ReleaseNotes.all),
-            ("whatsnew-two-versions", ReleaseNotes.all + [extra]),
-            ("whatsnew-one-item", [ReleaseNote(version: "1.2.0", items: [ReleaseNotes.all[0].items[0]])])
+            ("whatsnew-pictured", pictured),
+            ("whatsnew-short", [short])
         ] {
             for appearance in [NSAppearance.Name.darkAqua, .aqua] {
                 try write(notes, to: out, name: "\(name)-\(appearance == .aqua ? "light" : "dark")",

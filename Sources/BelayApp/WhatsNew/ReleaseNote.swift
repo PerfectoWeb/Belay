@@ -5,54 +5,41 @@ import SwiftUI
 /// shape a changelog is written in.
 ///
 /// `CHANGELOG.md` is the record: every fix, in English, at whatever length the
-/// fix deserved. This is the announcement: a few lines, translated, about things
-/// somebody would notice. They are deliberately not generated from each other. A
-/// changelog entry that has to double as interface copy ends up serving neither,
-/// and the moment they share a source the screen inherits the changelog's length
-/// and its vocabulary.
+/// fix deserved. This is the announcement: one headline, a paragraph or two,
+/// and a picture — the card a product shows once after an update. They are
+/// deliberately not generated from each other. A changelog entry that has to
+/// double as interface copy ends up serving neither.
 struct ReleaseNote: Equatable {
     /// The marketing version these notes belong to, exactly as
     /// `CFBundleShortVersionString` spells it.
     let version: String
 
-    /// The three to five things worth an icon and a sentence.
-    var items: [Item]
+    /// The one thing this release is about.
+    let title: LocalizedStringKey
 
-    /// Everything else, one short line each, under a quiet heading. The release
-    /// where four things are worth a row and six more are worth a mention is the
-    /// ordinary release; without this the choice was between a wall of icons and
-    /// leaving real work unannounced.
-    var asides: [Aside] = []
+    /// A paragraph or two under the title. Whole thoughts, centred, short:
+    /// the card is read standing up.
+    var paragraphs: [Paragraph]
 
-    /// One line of news: what it is, what it means, and a symbol so the eye can
-    /// find its way down the list without reading every word.
-    struct Item: Equatable, Identifiable {
-        /// An SF Symbol name. Checked by `ReleaseNotesTests`, because a symbol
-        /// that does not exist on the running system draws nothing at all and
-        /// leaves a hole where the icon should be.
-        let symbol: String
-        let title: LocalizedStringKey
-        let body: LocalizedStringKey
+    /// An image from the asset catalogue, drawn full width under the text and
+    /// bleeding to the card's bottom edge. 400 by 220 points; supplied at 2x.
+    var image: String?
 
-        /// True for anything the App Store build does not have. It updates
-        /// itself through the store and has no Homebrew, so telling somebody
-        /// there about either is the same inaccuracy that took Precise Detection
-        /// out of the store listing.
-        var directOnly = false
-
-        /// Stable within a version: the symbol is what distinguishes one row
-        /// from another, and no version repeats one.
-        var id: String { symbol }
-    }
-
-    /// A one-line mention. No icon, because an icon is a promise that the line
-    /// is worth stopping at.
-    struct Aside: Equatable, Identifiable {
+    struct Paragraph: Equatable, Identifiable {
         let text: LocalizedStringKey
+        /// True for anything the App Store build does not have. It updates
+        /// itself through the store and has no Homebrew or lid helper, so
+        /// telling somebody there about either is the same inaccuracy that
+        /// took Precise Detection out of the store listing.
         var directOnly = false
         let id = UUID()
 
-        static func == (lhs: Aside, rhs: Aside) -> Bool {
+        init(_ text: LocalizedStringKey, directOnly: Bool = false) {
+            self.text = text
+            self.directOnly = directOnly
+        }
+
+        static func == (lhs: Paragraph, rhs: Paragraph) -> Bool {
             lhs.text == rhs.text && lhs.directOnly == rhs.directOnly
         }
     }
@@ -63,112 +50,47 @@ struct ReleaseNote: Equatable {
 /// **Adding a release.** Replace the entry — the window shows the update that
 /// just happened and nothing else, and every skipped version's story lives in
 /// `CHANGELOG.md`. Retire the old entry's strings from the catalogue when it
-/// goes. Three to five items, each earning its icon, and everything else as an
-/// aside. Each `title`, `body` and aside is a new key in
-/// `Resources/Localizable.xcstrings` and has to be translated into every
+/// goes. The title and each paragraph are keys in
+/// `Resources/Localizable.xcstrings` and have to be translated into every
 /// language before the gate goes green: `LocalizationTests` counts the tables
-/// and fails when they differ. That cost is the feature working. An
-/// announcement screen that shows English to a German user is worse than no
-/// announcement.
+/// and fails when they differ. That cost is the feature working.
 ///
 /// A version with no entry here shows nothing and is recorded silently, which is
 /// the right behaviour for a hotfix. Omission is a decision, not an oversight.
 enum ReleaseNotes {
-    /// Computed rather than stored, for two reasons. `LocalizedStringKey` is not
-    /// `Sendable`, and it should not be: it is a key SwiftUI resolves against the
-    /// environment's locale as it draws, which is what lets the language picker
-    /// change a window that is already open. And the channel filter below has to
-    /// run per read rather than once at first touch.
-    /// The symbols these notes draw from, kept as a set so a release can be
-    /// written by picking one rather than by inventing one. The wording is
-    /// rewritten every time; the vocabulary should not be.
-    enum Mark {
-        static let update = "arrow.triangle.2.circlepath"
-        static let told = "bell.badge"
-        static let quiet = "speaker.slash"
-        static let polish = "wand.and.sparkles"
-        static let installer = "arrow.down.circle"
-        static let folder = "folder"
-        static let paused = "pause"
-        static let welcome = "sparkles"
-        static let safety = "shield"
-        static let speed = "bolt"
-        static let language = "globe"
-        static let night = "moon.stars"
-        static let lid = "laptopcomputer.and.arrow.down"
-        static let chart = "chart.bar"
-        static let preset = "square.grid.2x2"
-        static let codex = "curlybraces"
-        static let network = "network"
-        static let seal = "checkmark.seal"
-        static let log = "doc.text"
-    }
-
+    /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
+    /// it should not be — SwiftUI resolves it against the environment's locale
+    /// as it draws, which is what lets the language picker change a window
+    /// that is already open. And the channel filter below has to run per read.
     static var all: [ReleaseNote] {
-        // The channel is read from the bundle rather than from
-        // `ReleaseChecker.isSupported`, which says the same thing but is bound to
-        // the main actor; these notes are read from tests and from a decision
-        // that is deliberately not.
         let direct = DistributionChannel.current == .direct
         return
             written
             .map { note in
                 var note = note
-                note.items = note.items.filter { direct || !$0.directOnly }
-                note.asides = note.asides.filter { direct || !$0.directOnly }
+                note.paragraphs = note.paragraphs.filter { direct || !$0.directOnly }
                 return note
             }
-            .filter { !$0.items.isEmpty }
+            .filter { !$0.paragraphs.isEmpty }
     }
 
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
                 version: "1.3.3",
-                items: [
+                title: "Belay stays in sync",
+                paragraphs: [
                     .init(
-                        symbol: Mark.seal,
-                        title: "Belay stays in sync",
-                        body: """
-                            Finished turns now go quiet within seconds and stay that way. No stale rows \
-                            after restarts, no jumping back to Working, and the idle timer starts when the \
-                            session actually goes quiet.
-                            """),
+                        """
+                        Finished turns now go quiet within seconds and stay that way. No stale rows \
+                        after restarts, no jumping back to Working, and the idle timer starts when the \
+                        session actually goes quiet.
+                        """),
                     .init(
-                        symbol: Mark.speed,
-                        title: "Codex crashes no longer linger",
-                        body: """
-                            If Codex quits or crashes mid-turn, Belay notices the process is gone and lets \
-                            go within seconds instead of waiting through the retry grace period.
-                            """),
-                    .init(
-                        symbol: Mark.safety,
-                        title: "The lid helper restores what it changed",
-                        body: """
-                            It now remembers your previous sleep setting and puts exactly that back. If you \
-                            enabled disablesleep yourself, Belay leaves it alone.
-                            """,
-                        directOnly: true),
-                    .init(
-                        symbol: Mark.log,
-                        title: "Diagnostics record every change",
-                        body: """
-                            Every session transition and hook signal now gets one line in the local \
-                            diagnostics log. Nothing is sent off your Mac.
-                            """)
-                ],
-                asides: [
-                    .init(
-                        text: """
-                            Late signals after a turn ends no longer keep the Mac awake for five extra \
-                            minutes.
-                            """,
-                        directOnly: true),
-                    .init(text: "Opening Codex no longer floods the panel with sessions."),
-                    .init(
-                        text:
-                            "The closed-lid time limit is no longer affected by changes to the system clock.",
-                        directOnly: true)
+                        """
+                        If Codex quits or crashes mid-turn, Belay notices the process is gone and lets \
+                        go within seconds instead of waiting through the retry grace period.
+                        """)
                 ]
             )
         ]

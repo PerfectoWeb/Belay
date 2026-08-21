@@ -59,6 +59,11 @@ final class WhatsNewWindow: NSObject {
         let window = PanelWindow.make(
             WhatsNewView(notes: notes, onDismiss: { [weak self] in self?.dismiss() }),
             delegate: self)
+        // The card draws its own close mark; the traffic lights would be a
+        // second set of controls for one action, in the wrong corner.
+        for button in [NSWindow.ButtonType.closeButton, .miniaturizeButton, .zoomButton] {
+            window.standardWindowButton(button)?.isHidden = true
+        }
         self.window = window
         NSApp.activate(ignoringOtherApps: true)
         switchOn(window)

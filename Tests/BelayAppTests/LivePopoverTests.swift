@@ -1,4 +1,5 @@
 import AppKit
+import BelaySettings
 import BelayCore
 import XCTest
 
@@ -91,5 +92,19 @@ final class LiveDimVeilTests: XCTestCase {
         clock.hide()
         veil.hide()
         RunLoop.main.run(until: Date().addingTimeInterval(0.5))
+    }
+}
+
+/// The real What's New window on the real screen, for a photograph.
+@MainActor
+final class LiveWhatsNewTests: XCTestCase {
+    func testCardOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the card")
+        }
+        let window = WhatsNewWindow(settings: SettingsStore())
+        window.present()
+        RunLoop.main.run(until: Date().addingTimeInterval(4))
+        window.dismiss()
     }
 }
