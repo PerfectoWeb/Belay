@@ -5,6 +5,31 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Always on can now hold for a chosen while. A quiet row under the mode
+  picker — the Control Center Focus pattern — offers 15 minutes through 12
+  hours or the usual "until turned off", and counts the remaining time down
+  in place. When the timer runs out Belay lets go, says so, and the same row
+  offers "Hold again" for another round of the same length.
+- The pause has a one-click exit. When the maximum-awake limit or a timer
+  ends a hold, the row under the picker names the pause and "Hold again"
+  starts a fresh cycle — in Auto as well as Always on. The battery guard
+  keeps no button: it clears by itself when power arrives.
+- The dimmed screen shows the countdown. While an Always on timer runs and
+  the night dimmer has the display down, the remaining time sits in white
+  monospaced digits near the bottom of the screen, StandBy-style. The gamma
+  ramp dims the digits with everything else, so they read as softly cut out
+  of the dark rather than glowing over it; they drift a few points a minute
+  for OLED panels, take no clicks, and can be turned off next to the
+  dimming controls.
+- A tripped maximum-awake limit also re-arms when you come back to the
+  machine — unlocking the screen or waking the display starts a fresh cycle,
+  the same sanction a wake from sleep always gave. A finished timer stays
+  finished: an explicit "this long" is not renewed by walking past the desk.
+
 ## [1.3.3] - 2026-08-20
 
 ### Fixed
