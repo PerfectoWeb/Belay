@@ -109,8 +109,8 @@ final class DimClock {
         panel = nil
     }
 
-    /// Room for the moon and "12:00:00" at 72 pt thin, with air around it.
-    private static let size = NSSize(width: 480, height: 110)
+    /// Room for "12:00:00" at 58 pt thin, with air around it.
+    private static let size = NSSize(width: 400, height: 90)
 
     /// Dead centre of the main screen: a dark display is looked at from
     /// across a room, and the middle is where the eye goes first. Tried in a
@@ -133,28 +133,20 @@ final class DimClock {
     }
 }
 
-/// The digits themselves. `Text(timerInterval:)` ticks on its own, so no timer
-/// of ours runs for the seconds — only the once-a-minute drift above.
+/// The digits themselves, and nothing else. A moon was tried beside them and
+/// taken out again: it was decoration, and the digits explain themselves.
 struct DimClockView: View {
     let deadline: Date
 
     var body: some View {
-        // The moon says what the digits are for — the screen is dimmed, not
-        // broken — in the same ink and the same light weight.
-        HStack(spacing: 22) {
-            Image(systemName: "moon.fill")
-                .font(.system(size: 48, weight: .thin))
-                .accessibilityHidden(true)
-            Text(timerInterval: min(Date.now, deadline)...deadline, countsDown: true)
-                .font(.system(size: 72, weight: .thin))
-                .monospacedDigit()
-        }
-        // Full white: under the gamma ramp this is as bright as the clock can
-        // be — the ramp caps everything at the dim level — so size is what
-        // carries legibility, and the thin weight keeps that size from
-        // turning into a billboard.
-        .foregroundStyle(.white)
-        .padding(4)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        Countdown(deadline: deadline)
+            .font(.system(size: 58, weight: .thin))
+            // Full white: under the gamma ramp this is as bright as the clock
+            // can be — the ramp caps everything at the dim level — so size is
+            // what carries legibility, and the thin weight keeps that size
+            // from turning into a billboard.
+            .foregroundStyle(.white)
+            .padding(4)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }

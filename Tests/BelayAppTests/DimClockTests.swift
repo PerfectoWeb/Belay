@@ -73,3 +73,14 @@ final class NightDimmingGroupFrameTests: XCTestCase {
         try png.write(to: URL(fileURLWithPath: folder).appendingPathComponent("dim-group.png"))
     }
 }
+
+/// Two digits per unit, always.
+final class CountdownFormatTests: XCTestCase {
+    func testPadsEveryUnit() {
+        XCTAssertEqual(Countdown.string(remaining: 2 * 3600 + 30 * 60), "02:30:00")
+        XCTAssertEqual(Countdown.string(remaining: 119), "01:59")
+        XCTAssertEqual(Countdown.string(remaining: 5), "00:05")
+        XCTAssertEqual(Countdown.string(remaining: 12 * 3600), "12:00:00")
+        XCTAssertEqual(Countdown.string(remaining: -3), "00:00", "never counts below zero")
+    }
+}

@@ -74,13 +74,9 @@ struct PanelTimerRow: View {
                 .labelsHidden()
             } label: {
                 if let timer = state.snapshot.timer {
-                    // `Text(timerInterval:)` ticks by itself; no timer of ours
-                    // runs while the panel is closed.
-                    Text(
-                        timerInterval: min(Date.now, timer.deadline)...timer.deadline,
-                        countsDown: true
-                    )
-                    .monospacedDigit()
+                    // Redraws once a second only while the panel is open; the
+                    // popover's view is torn down on close.
+                    Countdown(deadline: timer.deadline)
                 } else {
                     Text("Until turned off")
                 }
