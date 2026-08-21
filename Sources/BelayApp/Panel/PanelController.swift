@@ -14,6 +14,16 @@ import SwiftUI
 final class PanelController: NSObject {
     private let state: AppState
     private var popover: NSPopover?
+    /// Watches clicks in other applications while the panel is up.
+    ///
+    /// `.transient` is supposed to do this, and does — until another window
+    /// of ours becomes key while the popover is open. The duration menu is
+    /// one such window, the Settings window another; after either, AppKit
+    /// stops treating the popover as transient and a click on the desktop or
+    /// in another app leaves the panel hanging. A global monitor sees exactly
+    /// those clicks (events bound for other apps) and nothing of ours, so the
+    /// status item's own toggle and the menu's items are unaffected.
+    private var outsideClicks: Any?
 
     init(state: AppState) {
         self.state = state
@@ -43,11 +53,21 @@ final class PanelController: NSObject {
         NSApp.activate(ignoringOtherApps: true)
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
         popover.contentViewController?.view.window?.makeKey()
+        watchOutsideClicks()
     }
 
     func hide() {
         popover?.close()
         teardown()
+    }
+
+    private func watchOutsideClicks() {
+        guard outsideClicks == nil else { return }
+        outsideClicks = NSEvent.addGlobalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]
+        ) { [weak self] _ in
+            Task { @MainActor in self?.hide() }
+        }
     }
 
     func toggle(relativeTo button: NSStatusBarButton) {
@@ -88,6 +108,8 @@ final class PanelController: NSObject {
 
     /// Drops the hosting controller so nothing SwiftUI-shaped survives a close.
     private func teardown() {
+        if let outsideClicks { NSEvent.removeMonitor(outsideClicks) }
+        outsideClicks = nil
         guard let popover else { return }
         popover.delegate = nil
         popover.contentViewController = nil

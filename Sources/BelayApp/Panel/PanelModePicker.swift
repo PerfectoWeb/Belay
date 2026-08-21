@@ -19,10 +19,12 @@ import SwiftUI
 struct PanelModePicker: View {
     let state: AppState
 
-    @Namespace private var pill
     /// Which unselected tab the pointer is over. One piece of state for three
     /// tabs, so two can never be lit at once.
     @State private var hovered: AwakeMode?
+    /// Where the pill is drawn. Follows `state.mode` one run-loop turn behind,
+    /// which is the whole trick — see `onChange` below.
+    @State private var pillMode: AwakeMode?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     private static let corner: CGFloat = 7
@@ -48,6 +50,39 @@ struct PanelModePicker: View {
             }
         }
         .padding(2)
+        // One pill, drawn once under the three tabs and moved by offset. It
+        // was a matched-geometry background inside each tab, animated from
+        // the mode change; that put the tabs' own layout into the animated
+        // transaction, and when the timer row below made the popover resize
+        // at the same moment, labels and glyphs slid apart mid-flight. Here
+        // the only animatable thing is this shape's offset and colour; the
+        // tabs never move.
+        .background(alignment: .topLeading) {
+            GeometryReader { geometry in
+                let tab = (geometry.size.width - 4 - 4) / 3
+                let shown = pillMode ?? state.mode
+                let index = CGFloat(AwakeMode.allCases.firstIndex(of: shown) ?? 0)
+                RoundedRectangle(cornerRadius: Self.corner)
+                    .fill(shown.pillColor)
+                    .frame(width: tab, height: geometry.size.height - 4)
+                    .offset(x: 2 + index * (tab + 2), y: 2)
+            }
+        }
+        .onAppear { pillMode = state.mode }
+        .onChange(of: state.mode) { _, mode in
+            // One turn of the run loop later, on purpose. The mode change also
+            // inserts or removes the timer row under this picker, and the
+            // popover resizes to fit in the same update; filmed frame by frame,
+            // a pill animated in that update inherited the resize's transient
+            // shift and flew a row's height down before springing back. Moved
+            // on the next turn, the pill's animation contains nothing but the
+            // pill's own slide.
+            DispatchQueue.main.async {
+                withAnimation(reduceMotion ? nil : .spring(response: 0.28, dampingFraction: 0.78)) {
+                    pillMode = mode
+                }
+            }
+        }
         .background(
             RoundedRectangle(cornerRadius: Self.corner + 2)
                 .fill(Color.primary.opacity(0.06))
@@ -78,15 +113,6 @@ struct PanelModePicker: View {
             .animation(.easeInOut(duration: 0.18), value: hovered)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 6)
-            .background {
-                // One pill, moved — not three pills faded in and out. The
-                // geometry match is what makes it read as a single control.
-                if isSelected {
-                    RoundedRectangle(cornerRadius: Self.corner)
-                        .fill(mode.pillColor)
-                        .matchedGeometryEffect(id: "pill", in: pill)
-                }
-            }
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
@@ -111,12 +137,9 @@ struct PanelModePicker: View {
 
     private func select(_ mode: AwakeMode) {
         guard mode != state.mode else { return }
-        // Only the pill animates. The row's height never changes, so nothing
-        // above or below it can move — see `PanelController.grow(to:)` for why
-        // that matters in a popover.
-        withAnimation(reduceMotion ? nil : .spring(response: 0.28, dampingFraction: 0.78)) {
-            state.mode = mode
-        }
+        // Plain assignment, no `withAnimation`: the only thing allowed to
+        // animate is the pill, and that animation is attached to the tab.
+        state.mode = mode
         state.onModeChange(mode)
         // Each mode has its own note, so the three are told apart without
         // looking; the haptic is what a Force Touch trackpad gives a control
