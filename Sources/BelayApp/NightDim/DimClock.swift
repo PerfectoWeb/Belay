@@ -145,13 +145,17 @@ struct DimClockView: View {
         // broken — in the same ink and the same light weight.
         HStack(spacing: 10) {
             Image(systemName: "moon.fill")
-                .font(.system(size: 20, weight: .light))
+                .font(.system(size: 20, weight: .regular))
                 .accessibilityHidden(true)
             Text(timerInterval: min(Date.now, deadline)...deadline, countsDown: true)
-                .font(.system(size: 28, weight: .light))
+                .font(.system(size: 28, weight: .regular))
                 .monospacedDigit()
         }
-        .foregroundStyle(.white.opacity(0.9))
+        // Full white, regular weight: under the gamma ramp this is as bright
+        // as the clock can be — the ramp caps everything at the dim level —
+        // so "brighter" can only come from weight and opacity, both at their
+        // top here.
+        .foregroundStyle(.white)
         .padding(4)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
     }
