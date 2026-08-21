@@ -89,11 +89,13 @@ extension SettingsValues {
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]
         nightDimming = false
-        // Ten in the evening to seven in the morning: wide enough to cover
-        // every overnight run, and both ends are a picker away.
+        // Ten in the evening to ten in the morning: wide enough to cover
+        // every overnight run and a late start, and both ends are a picker
+        // away. Twenty percent: dark, with the frosted veil on top of it,
+        // yet a glance at the room still shows the Mac is awake.
         nightDimmingStart = 22 * 60
-        nightDimmingEnd = 7 * 60
-        nightDimmingLevel = 0.15
+        nightDimmingEnd = 10 * 60
+        nightDimmingLevel = 0.20
         nightDimmingShowsTimer = true
         nightDimmingBlurs = true
         lidHold = false

@@ -109,7 +109,7 @@ final class DimClock {
         panel = nil
     }
 
-    /// Room for "12:00:00" at 58 pt thin, with air around it.
+    /// Room for "12:00:00" at 52 pt thin, with air around it.
     private static let size = NSSize(width: 400, height: 90)
 
     /// Dead centre of the main screen: a dark display is looked at from
@@ -140,7 +140,7 @@ struct DimClockView: View {
 
     var body: some View {
         Countdown(deadline: deadline)
-            .font(.system(size: 58, weight: .thin))
+            .font(.system(size: 52, weight: .thin))
             // Full white: under the gamma ramp this is as bright as the clock
             // can be — the ramp caps everything at the dim level — so size is
             // what carries legibility, and the thin weight keeps that size
