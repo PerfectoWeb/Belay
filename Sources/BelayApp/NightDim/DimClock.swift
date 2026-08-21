@@ -103,16 +103,20 @@ final class DimClock {
         panel = nil
     }
 
-    /// Bottom centre of the main screen, a tenth of the height up — where a
-    /// screensaver clock sits, far from the menu bar and any window chrome.
+    /// Top-right of the main screen, inset from both edges and kept under the
+    /// menu bar by using the visible frame — where a glance lands on a dark
+    /// display, and away from the centre where a window's content would be.
+    private static let inset: CGFloat = 36
+
     private func place(_ panel: NSPanel) {
         guard let screen = NSScreen.main else { return }
         let offset = Self.driftOffsets[driftStep % Self.driftOffsets.count]
         let size = panel.frame.size
+        let area = screen.visibleFrame
         panel.setFrameOrigin(
             NSPoint(
-                x: screen.frame.midX - size.width / 2 + offset.x,
-                y: screen.frame.minY + screen.frame.height * 0.1 + offset.y))
+                x: area.maxX - Self.inset - size.width + offset.x,
+                y: area.maxY - Self.inset - size.height + offset.y))
     }
 
     private func driftOnce() {
@@ -128,10 +132,17 @@ struct DimClockView: View {
     let deadline: Date
 
     var body: some View {
-        Text(timerInterval: min(Date.now, deadline)...deadline, countsDown: true)
-            .font(.system(size: 28, weight: .light))
-            .monospacedDigit()
-            .foregroundStyle(.white.opacity(0.9))
-            .padding(4)
+        // The moon says what the digits are for — the screen is dimmed, not
+        // broken — in the same ink and the same light weight.
+        HStack(spacing: 10) {
+            Image(systemName: "moon.fill")
+                .font(.system(size: 20, weight: .light))
+                .accessibilityHidden(true)
+            Text(timerInterval: min(Date.now, deadline)...deadline, countsDown: true)
+                .font(.system(size: 28, weight: .light))
+                .monospacedDigit()
+        }
+        .foregroundStyle(.white.opacity(0.9))
+        .padding(4)
     }
 }

@@ -90,7 +90,7 @@ extension SettingsValues {
         // every overnight run, and both ends are a picker away.
         nightDimmingStart = 22 * 60
         nightDimmingEnd = 7 * 60
-        nightDimmingLevel = 0.25
+        nightDimmingLevel = 0.15
         nightDimmingShowsTimer = true
         lidHold = false
     }
