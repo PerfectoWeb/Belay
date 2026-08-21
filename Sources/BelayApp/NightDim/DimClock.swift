@@ -82,9 +82,9 @@ final class DimClock {
         panel.ignoresMouseEvents = true
         panel.hidesOnDeactivate = false
         panel.isFloatingPanel = true
-        // Above the dim, below nothing that matters: the screen saver level
-        // keeps the digits over full-screen apps without ever taking focus.
-        panel.level = .screenSaver
+        // One step above the veil, so the digits sit on the frost and not
+        // under it; both are over full-screen apps and never take focus.
+        panel.level = NSWindow.Level(rawValue: DimVeil.level.rawValue + 1)
         panel.collectionBehavior = [.canJoinAllSpaces, .stationary, .fullScreenAuxiliary]
         panel.contentView = host
         self.panel = panel

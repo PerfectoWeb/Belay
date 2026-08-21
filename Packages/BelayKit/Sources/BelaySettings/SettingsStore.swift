@@ -203,6 +203,12 @@ public final class SettingsStore {
         set { update { $0.nightDimmingShowsTimer = newValue } }
     }
 
+    /// Blur the screen behind the dim.
+    public var nightDimmingBlurs: Bool {
+        get { values.nightDimmingBlurs }
+        set { update { $0.nightDimmingBlurs = newValue } }
+    }
+
     /// Hold through a closed lid. Direct builds only; waits on the helper.
     public var lidHold: Bool {
         get { values.lidHold }

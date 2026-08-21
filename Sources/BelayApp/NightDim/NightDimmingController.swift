@@ -19,6 +19,7 @@ final class NightDimmingController {
     private let state: AppState
     private let fade = GammaFade()
     private let clock = DimClock()
+    private let veil = DimVeil()
     private var machine = NightDimming()
     private var ticker: Timer?
     /// Where the pointer stood when the screen went down; travel is measured
@@ -55,6 +56,7 @@ final class NightDimmingController {
         ticker?.invalidate()
         ticker = nil
         clock.hide()
+        veil.hide()
         if machine.isDimmed { fade.restore() }
     }
 
@@ -87,11 +89,13 @@ final class NightDimmingController {
                     + "delay=\(Int(sample.displaySleepDelay)) "
                     + "window=\(window.start)-\(window.end) level=\(settings.nightDimmingLevel)")
             fade.dim(to: settings.nightDimmingLevel)
+            if settings.nightDimmingBlurs { veil.show() }
             schedule(every: Self.dimmedTickInterval)
         case .restore:
             pointerAtDim = nil
             Diagnostics.note("dim off cause=\(Self.restoreCause(sample, window: window))")
             fade.restore()
+            veil.hide()
             schedule(every: Self.tickInterval)
         case nil:
             break

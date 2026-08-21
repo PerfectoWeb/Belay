@@ -108,6 +108,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay ne peut pas modifier ce fichier en toute sécurité car il ne s'agit pas de JSON pur. Ajoutez ceci manuellement :
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,L'autorisation enregistrée par Belay pour %@ n'est plus valide.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","Sur batterie, Belay s'arrête à %lld%%."
+Blur the screen while dimmed,Settings,translated,,Blur the screen while dimmed,Flouter l'écran pendant l'assombrissement
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Offrez-moi un café
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Annuler
 Check Now,Settings: General,translated,,Check Now,Vérifier
@@ -293,6 +294,7 @@ Website,Settings: About,translated,,Website,Site web
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Bienvenue
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
 What's New,"App, Menu bar",translated,,What's New,Nouveautés
+"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.",Settings,translated,,"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.","Ce qui était à l'écran devient des formes plutôt que des mots, et un regard depuis l'autre bout de la pièce ne voit rien."
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Quand Belay s'arrête par sécurité
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Quand une longue tâche se termine
 When a new version is out,Settings: Notifications,translated,,When a new version is out,Quand une nouvelle version sort

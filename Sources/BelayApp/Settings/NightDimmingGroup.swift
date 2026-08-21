@@ -81,6 +81,15 @@ struct NightDimmingGroup: View {
             .font(.callout)
 
             GroupedCheckbox(
+                title: "Blur the screen while dimmed",
+                explanation: """
+                    Whatever was on screen becomes shapes rather than words, so a glance \
+                    from across the room shows nothing.
+                    """,
+                isOn: $settings.nightDimmingBlurs
+            )
+
+            GroupedCheckbox(
                 title: "Show the timer on the dimmed screen",
                 explanation: """
                     While an Always on timer runs, the remaining time glows \

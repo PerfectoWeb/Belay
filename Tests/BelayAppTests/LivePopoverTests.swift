@@ -75,3 +75,21 @@ final class LiveDimClockTests: XCTestCase {
         clock.hide()
     }
 }
+
+/// The veil and the clock together on the real screen, to be photographed.
+@MainActor
+final class LiveDimVeilTests: XCTestCase {
+    func testVeilOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the veil")
+        }
+        let veil = DimVeil()
+        let clock = DimClock()
+        veil.show()
+        clock.sync(dimmed: true, enabled: true, timer: AlwaysOnTimer(duration: 3600, deadline: Date() + 1234))
+        RunLoop.main.run(until: Date().addingTimeInterval(4))
+        clock.hide()
+        veil.hide()
+        RunLoop.main.run(until: Date().addingTimeInterval(0.5))
+    }
+}

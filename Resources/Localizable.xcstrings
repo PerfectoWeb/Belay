@@ -15747,6 +15747,100 @@
           }
         }
       }
+    },
+    "Blur the screen while dimmed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blur the screen while dimmed"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размывать экран при затемнении"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildschirm beim Abdunkeln weichzeichnen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desenfocar la pantalla al atenuarla"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flouter l'écran pendant l'assombrissement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sfoca lo schermo durante l'attenuazione"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗时模糊屏幕"
+          }
+        }
+      }
+    },
+    "Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всё, что было на экране, превращается в пятна, а не в слова, и взгляд с другого конца комнаты ничего не разберёт."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was auf dem Bildschirm war, wird zu Formen statt Wörtern, sodass ein Blick von der anderen Seite des Raums nichts verrät."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo que había en pantalla se vuelve formas en lugar de palabras, así que una mirada desde el otro lado de la habitación no ve nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce qui était à l'écran devient des formes plutôt que des mots, et un regard depuis l'autre bout de la pièce ne voit rien."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quello che era sullo schermo diventa forme invece di parole, così uno sguardo dall'altra parte della stanza non vede nulla."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕上的内容会变成模糊的形状而非文字，从房间另一头看过来什么也看不清。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -108,6 +108,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容：
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay 保存的 %@ 访问权限已失效。
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",使用电池时，Belay 会在电量降至 %lld%% 时停止。
+Blur the screen while dimmed,Settings,translated,,Blur the screen while dimmed,调暗时模糊屏幕
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
 Check Now,Settings: General,translated,,Check Now,立即检查
@@ -293,6 +294,7 @@ Website,Settings: About,translated,,Website,网站
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
 What's New,"App, Menu bar",translated,,What's New,新功能
+"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.",Settings,translated,,"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.",屏幕上的内容会变成模糊的形状而非文字，从房间另一头看过来什么也看不清。
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Belay 因安全原因停止时
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,长任务完成时
 When a new version is out,Settings: Notifications,translated,,When a new version is out,当有新版本时
