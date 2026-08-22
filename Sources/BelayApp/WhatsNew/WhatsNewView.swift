@@ -48,10 +48,10 @@ struct WhatsNewView: View {
                     .modifier(WhatsNewEntrance(shown: entered, delay: 0, animated: !reduceMotion))
                 ForEach(notes, id: \.version) { note in
                     Text("New in v\(note.version)")
-                        .font(.system(size: 13, weight: .semibold))
+                        .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 6)
+                        .padding(.horizontal, 13)
+                        .padding(.vertical, 5)
                         .background(Capsule(style: .continuous).fill(Self.pill))
                         .padding(.top, 16)
                         .modifier(WhatsNewEntrance(shown: entered, delay: 0.07, animated: !reduceMotion))
@@ -161,7 +161,7 @@ struct WhatsNewView: View {
     private var footer: some View {
         HStack(spacing: 22) {
             Button("Sounds Good!", action: onDismiss)
-                .buttonStyle(MagicButtonStyle(scale: 1.2, textSize: 13.6))
+                .buttonStyle(MagicButtonStyle(scale: 1.2, textSize: 12.6, heightDelta: -2))
                 .keyboardShortcut(.defaultAction)
             Button {
                 if let url = Branding.repositoryURL?.appendingPathComponent("blob/main/CHANGELOG.md") {

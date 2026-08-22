@@ -18,6 +18,9 @@ struct MagicButtonStyle: ButtonStyle {
     /// The label's size when it should not simply follow `scale`; the
     /// padding grows to keep the button's height where the scale put it.
     var textSize: CGFloat?
+    /// Points added to (or, negative, taken off) the button's height, for a
+    /// card that wants the label and the button tuned separately.
+    var heightDelta: CGFloat = 0
 
     /// Somebody who has asked macOS for less motion gets the same button,
     /// standing still. It is still the coloured one, so it is still the answer.
@@ -26,7 +29,7 @@ struct MagicButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         Face(
             label: configuration.label, pressed: configuration.isPressed, animated: !reduceMotion,
-            scale: scale, textSize: textSize ?? 13 * scale)
+            scale: scale, textSize: textSize ?? 13 * scale, heightDelta: heightDelta)
     }
 }
 
@@ -38,6 +41,7 @@ private struct Face<Label: View>: View {
     let animated: Bool
     var scale: CGFloat = 1
     var textSize: CGFloat = 13
+    var heightDelta: CGFloat = 0
 
     /// 30 a second. The breathing is slow and the sparks are small; the
     /// difference against the display's own rate is not visible at this size,
@@ -84,7 +88,7 @@ private struct Face<Label: View>: View {
         .padding(.horizontal, 16 * scale)
         // Half the text's shortfall on each side, so a smaller label does not
         // shrink the button.
-        .padding(.vertical, 7.5 * scale + (13 * scale - textSize) / 2)
+        .padding(.vertical, 7.5 * scale + (13 * scale - textSize) / 2 + heightDelta / 2)
         .background {
             Capsule(style: .continuous)
                 .fill(Color.accentColor)
