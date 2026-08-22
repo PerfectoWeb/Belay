@@ -48,9 +48,6 @@ struct SettingsValues: Equatable, Sendable {
     /// by default: dimming is already opt-in, and the digits are the answer
     /// to the one question a dark held screen raises — "how much longer".
     var nightDimmingShowsTimer: Bool
-    /// Frost the screen behind the dim so the work is shapes, not words. On
-    /// by default, for the same reason: the dim itself is the opt-in.
-    var nightDimmingBlurs: Bool
     /// Hold through a closed lid. Off by default, direct builds only; the
     /// stored choice waits for the privileged helper that does the holding.
     var lidHold: Bool
@@ -97,7 +94,6 @@ extension SettingsValues {
         nightDimmingEnd = 10 * 60
         nightDimmingLevel = 0.20
         nightDimmingShowsTimer = true
-        nightDimmingBlurs = true
         lidHold = false
     }
 

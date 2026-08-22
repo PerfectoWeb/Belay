@@ -13,6 +13,17 @@ struct WhatsNewView: View {
 
     @State private var entered = false
     @State private var closeHovered = false
+    @State private var notesHovered = false
+
+    /// One counter per icon. Bumping a row's counter is what makes its symbol
+    /// bounce, because `symbolEffect` fires on a change of value rather than
+    /// on a flag being true.
+    @State private var beats: [Int] = []
+    /// Whose turn it is. Counts past the last row on purpose: those extra
+    /// ticks are the rest between waves, and without them the wave reads as
+    /// a loop that never lets go.
+    @State private var turn = 0
+    @State private var ticker: Timer?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.openURL) private var openURL
 
@@ -70,7 +81,14 @@ struct WhatsNewView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: Self.cornerRadius, style: .continuous))
         .preferredColorScheme(.dark)
-        .onAppear { entered = true }
+        .onAppear {
+            entered = true
+            startTheWave()
+        }
+        .onDisappear {
+            ticker?.invalidate()
+            ticker = nil
+        }
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("What's New"))
     }
@@ -95,11 +113,41 @@ struct WhatsNewView: View {
 
     private func list(_ note: ReleaseNote) -> some View {
         VStack(alignment: .leading, spacing: 28) {
-            ForEach(note.items) { item in
-                WhatsNewRow(item: item)
+            ForEach(Array(note.items.enumerated()), id: \.element.id) { row, item in
+                WhatsNewRow(item: item, beat: beat(forVersion: note, item: row))
             }
         }
         .padding(.horizontal, Self.margin)
+    }
+
+    /// Every icon in reading order, one at a time, then a pause.
+    ///
+    /// The whole point is the waiting. Bouncing all four at once is a jingle;
+    /// bouncing them in turn is the eye being walked down the list, which is
+    /// what the icons are for. `rest` is four ticks of nothing at the end, so
+    /// the wave finishes rather than churns. One state write every half
+    /// second, and only the symbol whose counter changed is redrawn. Nothing
+    /// runs under Reduce Motion, and nothing runs after the window closes.
+    private func startTheWave() {
+        let count = notes.reduce(0) { $0 + $1.items.count }
+        beats = Array(repeating: 0, count: count)
+        guard !reduceMotion, count > 0 else { return }
+
+        let rest = 4
+        ticker = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            Task { @MainActor in
+                if turn < beats.count { beats[turn] += 1 }
+                turn = (turn + 1) % (beats.count + rest)
+            }
+        }
+    }
+
+    /// Where a row sits in the flattened list, which is what its counter is
+    /// indexed by.
+    private func beat(forVersion note: ReleaseNote, item: Int) -> Int {
+        let before = notes.prefix { $0.version != note.version }.reduce(0) { $0 + $1.items.count }
+        let index = before + item
+        return index < beats.count ? beats[index] : 0
     }
 
     /// The button in the text column, and the changelog beside it for anyone
@@ -107,7 +155,7 @@ struct WhatsNewView: View {
     private var footer: some View {
         HStack(spacing: 22) {
             Button("Sounds Good!", action: onDismiss)
-                .buttonStyle(MagicButtonStyle(scale: 1.2))
+                .buttonStyle(MagicButtonStyle(scale: 1.2, textSize: 13.6))
                 .keyboardShortcut(.defaultAction)
             Button {
                 if let url = Branding.repositoryURL?.appendingPathComponent("blob/main/CHANGELOG.md") {
@@ -120,9 +168,11 @@ struct WhatsNewView: View {
                         .font(.system(size: 11, weight: .medium))
                 }
                 .font(.system(size: 13))
-                .foregroundStyle(Color(white: 0.55))
+                .foregroundStyle(notesHovered ? Color.white : Color(white: 0.55))
             }
             .buttonStyle(.plain)
+            .onHover { notesHovered = $0 }
+            .animation(.easeInOut(duration: 0.2), value: notesHovered)
             Spacer(minLength: 0)
         }
         .padding(.leading, Self.margin + Self.iconColumn + Self.iconGap)
@@ -133,12 +183,15 @@ struct WhatsNewView: View {
 /// One line of news: outline, title, sentence.
 private struct WhatsNewRow: View {
     let item: ReleaseNote.Item
+    /// Changes when it is this row's turn to bounce, and at no other time.
+    let beat: Int
 
     var body: some View {
         HStack(alignment: .top, spacing: WhatsNewView.iconGap) {
             Image(systemName: item.symbol)
                 .font(.system(size: 22, weight: .light))
                 .foregroundStyle(WhatsNewView.icon)
+                .symbolEffect(.bounce, options: .nonRepeating, value: beat)
                 .frame(width: WhatsNewView.iconColumn, height: 26, alignment: .center)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 6) {

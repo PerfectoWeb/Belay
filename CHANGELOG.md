@@ -19,8 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   starts a fresh cycle — in Auto as well as Always on. The battery guard
   keeps no button: it clears by itself when power arrives.
 - The dimmed screen shows the countdown. While an Always on timer runs and
-  the night dimmer has the display down, the remaining time sits in white
-  monospaced digits near the bottom of the screen, StandBy-style. The gamma
+  the night dimmer has the display down, the remaining time sits in large
+  thin white digits in the middle of the screen, StandBy-style. The gamma
   ramp dims the digits with everything else, so they read as softly cut out
   of the dark rather than glowing over it; they drift a few points a minute
   for OLED panels, take no clicks, and can be turned off next to the

@@ -15231,100 +15231,6 @@
         }
       }
     },
-    "Blur the screen while dimmed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blur the screen while dimmed"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Размывать экран при затемнении"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bildschirm beim Abdunkeln weichzeichnen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Desenfocar la pantalla al atenuarla"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Flouter l'écran pendant l'assombrissement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sfoca lo schermo durante l'attenuazione"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗时模糊屏幕"
-          }
-        }
-      }
-    },
-    "Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Всё, что было на экране, превращается в пятна, а не в слова, и взгляд с другого конца комнаты ничего не разберёт."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Was auf dem Bildschirm war, wird zu Formen statt Wörtern, sodass ein Blick von der anderen Seite des Raums nichts verrät."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lo que había en pantalla se vuelve formas en lugar de palabras, así que una mirada desde el otro lado de la habitación no ve nada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce qui était à l'écran devient des formes plutôt que des mots, et un regard depuis l'autre bout de la pièce ne voit rien."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quello che era sullo schermo diventa forme invece di parole, così uno sguardo dall'altra parte della stanza non vede nulla."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "屏幕上的内容会变成模糊的形状而非文字，从房间另一头看过来什么也看不清。"
-          }
-        }
-      }
-    },
     "New in v%@": {
       "extractionState": "manual",
       "localizations": {
@@ -15560,147 +15466,6 @@
         }
       }
     },
-    "Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выберите от 15 минут до 12 часов под переключателем режимов и смотрите обратный отсчёт. Когда время выйдет или лимит поставит удержание на паузу, один клик возобновит его."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh dem Countdown zu. Läuft er ab oder pausiert das Zeitlimit, hält ein Klick wieder wach."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elige de 15 minutos a 12 horas bajo el selector de modo y mira la cuenta atrás. Cuando termine, o el límite de tiempo pause la retención, un clic vuelve a mantener."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choisissez de 15 minutes à 12 heures sous le sélecteur de mode et suivez le compte à rebours. Quand il se termine, ou que la limite de temps met en pause, un clic reprend."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scegli da 15 minuti a 12 ore sotto il selettore di modalità e guarda il conto alla rovescia. Quando finisce, o il limite di tempo mette in pausa, un clic riprende."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在模式选择器下方选择 15 分钟到 12 小时，看着倒计时走完。时间用尽或时间上限暂停保持时，点一下即可继续。"
-          }
-        }
-      }
-    },
-    "A quieter night screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A quieter night screen"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Спокойный ночной экран"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein ruhigerer Nachtbildschirm"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una pantalla nocturna más tranquila"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un écran de nuit plus discret"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uno schermo notturno più tranquillo"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更安静的夜间屏幕"
-          }
-        }
-      }
-    },
-    "When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда диммер приглушает дисплей, экран покрывается матовой дымкой, а посередине светится обратный отсчёт. Оба переключателя рядом с настройками затемнения."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn der Dimmer das Display abdunkelt, wird der Bildschirm mattiert und der Countdown leuchtet in der Mitte. Beides sind Schalter neben den Dimm-Einstellungen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando el atenuador baja la pantalla, esta se vuelve esmerilada y la cuenta atrás brilla en el centro. Ambos son interruptores junto a los controles de atenuación."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand l'assombrissement baisse l'écran, celui-ci se givre et le compte à rebours luit au milieu. Les deux sont des interrupteurs à côté des réglages d'assombrissement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando l'attenuazione abbassa lo schermo, questo si smeriglia e il conto alla rovescia brilla al centro. Entrambi sono interruttori accanto ai controlli di attenuazione."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗器降低显示器亮度时，屏幕会蒙上磨砂效果，倒计时在中央发光。这两项都是调暗设置旁的开关。"
-          }
-        }
-      }
-    },
     "The chart plays its outline": {
       "extractionState": "manual",
       "localizations": {
@@ -15795,96 +15560,237 @@
         }
       }
     },
-    "A steadier panel": {
+    "Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A steadier panel"
+            "value": "Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Панель стоит ровно"
+            "value": "Выберите от 15 минут до 12 часов прямо под переключателем режимов и следите за обратным отсчётом. На нуле Belay отпускает Mac."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ein ruhigeres Panel"
+            "value": "Wähle direkt unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh der Zeit beim Ablaufen zu. Bei null lässt Belay los."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un panel más estable"
+            "value": "Elige de 15 minutos a 12 horas justo bajo el selector de modo y mira la cuenta atrás. Al llegar a cero, Belay suelta el Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un panneau plus stable"
+            "value": "Choisissez de 15 minutes à 12 heures juste sous le sélecteur de mode et suivez le compte à rebours. À zéro, Belay relâche le Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un pannello più stabile"
+            "value": "Scegli da 15 minuti a 12 ore proprio sotto il selettore di modalità e guarda il conto alla rovescia. A zero, Belay lascia andare il Mac."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "更稳的面板"
+            "value": "在模式选择器正下方选择 15 分钟到 12 小时，看着时间倒数。归零时 Belay 会放开 Mac。"
           }
         }
       }
     },
-    "The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.": {
+    "A pause you can end with one click": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel."
+            "value": "A pause you can end with one click"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пилюля режима скользит сама по себе, ничего не дёргается при появлении строки таймера, а клик в любом другом месте закрывает панель."
+            "value": "Пауза, которую снимает один клик"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Modus-Pille gleitet für sich, nichts springt, wenn die Timer-Zeile erscheint, und ein Klick irgendwo sonst schließt das Panel."
+            "value": "Eine Pause, die ein Klick beendet"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La píldora de modo se desliza sola, nada salta cuando aparece la fila del temporizador y un clic en cualquier otro sitio cierra el panel."
+            "value": "Una pausa que termina con un clic"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La pastille de mode glisse seule, rien ne saute quand la ligne du minuteur apparaît, et un clic ailleurs ferme le panneau."
+            "value": "Une pause qu'un clic suffit à lever"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "La pillola della modalità scorre da sola, nulla salta quando compare la riga del timer e un clic altrove chiude il pannello."
+            "value": "Una pausa che un clic fa finire"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "模式胶囊自行滑动，计时器行出现时不会跳动，点击其他任意位置即可关闭面板。"
+            "value": "一次点击即可结束的暂停"
+          }
+        }
+      }
+    },
+    "When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда таймер или лимит времени останавливает удержание, панель говорит об этом и предлагает «Держать снова». Разблокировка Mac сама начинает новый цикл."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stoppt ein Timer oder die maximale Wachzeit das Wachhalten, sagt das Panel es und bietet „Erneut wachhalten“ an. Das Entsperren des Macs beginnt von selbst einen neuen Zyklus."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando un temporizador o el tiempo máximo despierto detiene la retención, el panel lo dice y ofrece Mantener otra vez. Desbloquear el Mac inicia un ciclo nuevo por sí solo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand un minuteur ou la durée d'éveil maximale arrête le maintien, le panneau le dit et propose Maintenir encore. Déverrouiller le Mac relance un cycle tout seul."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando un timer o il tempo massimo di veglia ferma il mantenimento, il pannello lo dice e propone Mantieni ancora. Sbloccare il Mac avvia da solo un nuovo ciclo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "计时器或最长唤醒时间停止保持时，面板会说明并提供「继续保持」。解锁 Mac 会自动开始新的一轮。"
+          }
+        }
+      }
+    },
+    "The countdown on the dimmed screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The countdown on the dimmed screen"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обратный отсчёт на затемнённом экране"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Countdown auf dem abgedunkelten Bildschirm"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La cuenta atrás en la pantalla atenuada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le compte à rebours sur l'écran assombri"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il conto alla rovescia sullo schermo oscurato"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗屏幕上的倒计时"
+          }
+        }
+      }
+    },
+    "When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда ночной диммер приглушает дисплей, оставшееся время светится крупными тонкими цифрами посередине экрана, как прикроватные часы."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn der Nachtdimmer das Display abdunkelt, leuchtet die verbleibende Zeit in großen dünnen Ziffern in seiner Mitte, wie eine Nachttischuhr."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando el atenuador nocturno baja la pantalla, el tiempo restante brilla en dígitos grandes y finos en el centro, como un reloj de mesita."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand l'assombrissement nocturne baisse l'écran, le temps restant luit en grands chiffres fins en son milieu, comme un réveil de chevet."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando l'attenuazione notturna abbassa lo schermo, il tempo rimanente brilla in grandi cifre sottili al centro, come una sveglia da comodino."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间调暗器降低显示器亮度时，剩余时间会以纤细的大号数字在屏幕中央发光，就像床头钟。"
           }
         }
       }

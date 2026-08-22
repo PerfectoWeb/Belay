@@ -94,15 +94,22 @@ enum ReleaseNotes {
                         symbol: Mark.timer,
                         title: "Always On, for as long as you say",
                         body: """
-                            Pick fifteen minutes to twelve hours under the mode picker and watch it count \
-                            down. When it runs out, or the time limit pauses a hold, one click holds again.
+                            Pick fifteen minutes to twelve hours right under the mode picker and watch \
+                            the time count down. Belay lets go when it reaches zero.
+                            """),
+                    .init(
+                        symbol: Mark.safety,
+                        title: "A pause you can end with one click",
+                        body: """
+                            When a timer or the maximum awake time stops a hold, the panel says so and \
+                            offers Hold again. Unlocking your Mac starts a fresh cycle on its own.
                             """),
                     .init(
                         symbol: Mark.night,
-                        title: "A quieter night screen",
+                        title: "The countdown on the dimmed screen",
                         body: """
-                            When the dimmer takes the display down, the screen frosts over and the countdown \
-                            glows in the middle of it. Both are switches beside the dimming controls.
+                            When the night dimmer takes the display down, the remaining time glows in \
+                            large thin digits in the middle of it, like a bedside clock.
                             """),
                     .init(
                         symbol: Mark.chart,
@@ -110,13 +117,6 @@ enum ReleaseNotes {
                         body: """
                             Sweep the cursor across the last fourteen days and every bar strikes a note \
                             pitched by its height.
-                            """),
-                    .init(
-                        symbol: Mark.toggle,
-                        title: "A steadier panel",
-                        body: """
-                            The mode pill slides on its own, nothing jumps when the timer row appears, and a \
-                            click anywhere else closes the panel.
                             """)
                 ]
             )

@@ -16,6 +16,9 @@ import SwiftUI
 @MainActor
 enum ReleaseFlow {
     private static var window: NSWindow?
+    /// The dimmed screen on demand, from the Screens tab.
+    static let dimPreview = DimPreview()
+    private static var closing: NSObjectProtocol?
 
     static func present(
         showWelcome: @escaping () -> Void,
@@ -48,6 +51,14 @@ enum ReleaseFlow {
                 showWelcome: showWelcome, showWhatsNew: showWhatsNew,
                 pretendChanged: pretendChanged))
         window = made
+        // Closing the workbench lets go of the dim preview, whatever it was
+        // doing: the one thing this window must not leave behind is a dark
+        // display.
+        closing = NotificationCenter.default.addObserver(
+            forName: NSWindow.willCloseNotification, object: made, queue: .main
+        ) { _ in
+            Task { @MainActor in dimPreview.stop() }
+        }
         made.makeKeyAndOrderFront(nil)
     }
 
@@ -100,6 +111,7 @@ private struct ScreensTab: View {
     let showWhatsNew: () -> Void
     let pretendChanged: () -> Void
     @State private var pretending = ReleaseChecker.isPretending
+    @State private var dimming = ReleaseFlow.dimPreview.isOn
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -115,6 +127,16 @@ private struct ScreensTab: View {
                     showWhatsNew()
                 } label: {
                     Text(verbatim: "What's New")
+                }
+                // The night screen: the ramp at the set level and the
+                // countdown at an hour, until pressed again or the window
+                // closes. The real thing needs the night, the idle delay and
+                // a running timer to line up; this needs a click.
+                Button {
+                    ReleaseFlow.dimPreview.toggle()
+                    dimming = ReleaseFlow.dimPreview.isOn
+                } label: {
+                    Text(verbatim: dimming ? "Dimmer off" : "Dimmer")
                 }
             }
             Toggle(isOn: $pretending) {

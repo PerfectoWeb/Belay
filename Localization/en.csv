@@ -35,10 +35,9 @@
 8 hours,Settings,translated,,8 hours,8 hours
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,Belay stops keeping your Mac awake after this time and lets you know.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,Folder activity counts as work. A running process only tells Belay when the session ends.
-A quieter night screen,App,translated,,A quieter night screen,A quieter night screen
+A pause you can end with one click,App,translated,,A pause you can end with one click,A pause you can end with one click
 "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.
-A steadier panel,App,translated,,A steadier panel,A steadier panel
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.","Belay makes a timestamped backup first. ""Remove"" restores the original file."
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,About
 About %@,Menu bar,translated,%@,About %@,About %@
@@ -110,7 +109,6 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay's saved permission for %@ is no longer valid.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","On battery, Belay stops at %lld%%."
-Blur the screen while dimmed,Settings,translated,,Blur the screen while dimmed,Blur the screen while dimmed
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Buy me a coffee
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Cancel
 Check Now,Settings: General,translated,,Check Now,Check Now
@@ -213,7 +211,7 @@ Opens a standard macOS panel so you can approve the folder,Welcome,translated,,O
 Other agents,"App, Settings: Providers",translated,,Other agents,Other agents
 Other tools,Settings: Providers,translated,,Other tools,Other tools
 Paused at your time limit.,Panel,translated,,Paused at your time limit.,Paused at your time limit.
-"Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.",App,translated,,"Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.","Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again."
+Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.,App,translated,,Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.,Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.
 Play interface sounds,Settings: General,translated,,Play interface sounds,Play interface sounds
 Play sounds,Settings: General,translated,,Play sounds,Play sounds
 Precise detection,Settings: Providers,translated,,Precise detection,Precise detection
@@ -266,9 +264,9 @@ The App Store keeps Belay up to date and tells you when a new version is ready. 
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,The agent in %@ stopped without finishing. It may need signing in again.
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,The agent stopped without finishing. It may need signing in again.
 The chart plays its outline,App,translated,,The chart plays its outline,The chart plays its outline
+The countdown on the dimmed screen,App,translated,,The countdown on the dimmed screen,The countdown on the dimmed screen
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,What Belay will add
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","The lid hold reached its time limit, so Belay let the Mac sleep."
-"The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.",App,translated,,"The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.","The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,The run in %@ took %@. Your Mac can sleep normally again.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,The run took %@. Your Mac can sleep normally again.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,The server answered %lld.
@@ -294,13 +292,13 @@ Website,Settings: About,translated,,Website,Website
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Welcome
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Welcome to %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,What's New
-"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.",Settings,translated,,"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.","Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing."
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,When Belay stops for safety
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,When a long task finishes
 When a new version is out,Settings: Notifications,translated,,When a new version is out,When a new version is out
+"When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own.",App,translated,,"When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own.","When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own."
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,When an agent goes quiet
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,When an agent needs you
-"When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.",App,translated,,"When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.","When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls."
+"When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock.",App,translated,,"When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock.","When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed."
 "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",Settings,translated,,"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.","When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return."
 "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.","When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return."

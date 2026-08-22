@@ -15,6 +15,9 @@ struct MagicButtonStyle: ButtonStyle {
     /// asks for 1.2: on a card with no second button to match, the one
     /// button gets to be the size of a button.
     var scale: CGFloat = 1
+    /// The label's size when it should not simply follow `scale`; the
+    /// padding grows to keep the button's height where the scale put it.
+    var textSize: CGFloat?
 
     /// Somebody who has asked macOS for less motion gets the same button,
     /// standing still. It is still the coloured one, so it is still the answer.
@@ -23,7 +26,7 @@ struct MagicButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         Face(
             label: configuration.label, pressed: configuration.isPressed, animated: !reduceMotion,
-            scale: scale)
+            scale: scale, textSize: textSize ?? 13 * scale)
     }
 }
 
@@ -34,6 +37,7 @@ private struct Face<Label: View>: View {
     let pressed: Bool
     let animated: Bool
     var scale: CGFloat = 1
+    var textSize: CGFloat = 13
 
     /// 30 a second. The breathing is slow and the sparks are small; the
     /// difference against the display's own rate is not visible at this size,
@@ -75,10 +79,12 @@ private struct Face<Label: View>: View {
         // Sized to the button beside it, not to itself. A primary action that
         // is also physically larger than the secondary one reads as a different
         // kind of control, and the row stops looking like a row.
-        .font(.system(size: 13 * scale, weight: .semibold))
+        .font(.system(size: textSize, weight: .semibold))
         .foregroundStyle(.white)
         .padding(.horizontal, 16 * scale)
-        .padding(.vertical, 7.5 * scale)
+        // Half the text's shortfall on each side, so a smaller label does not
+        // shrink the button.
+        .padding(.vertical, 7.5 * scale + (13 * scale - textSize) / 2)
         .background {
             Capsule(style: .continuous)
                 .fill(Color.accentColor)

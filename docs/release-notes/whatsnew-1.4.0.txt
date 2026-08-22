@@ -7,97 +7,97 @@ Direct-only (never shown in the App Store build): none.
 === en ===
 
 # Always On, for as long as you say
-Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.
+Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.
 
-# A quieter night screen
-When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.
+# A pause you can end with one click
+When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own.
+
+# The countdown on the dimmed screen
+When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock.
 
 # The chart plays its outline
 Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height.
 
-# A steadier panel
-The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.
-
 === ru ===
 
 # «Всегда» ровно столько, сколько скажете
-Выберите от 15 минут до 12 часов под переключателем режимов и смотрите обратный отсчёт. Когда время выйдет или лимит поставит удержание на паузу, один клик возобновит его.
+Выберите от 15 минут до 12 часов прямо под переключателем режимов и следите за обратным отсчётом. На нуле Belay отпускает Mac.
 
-# Спокойный ночной экран
-Когда диммер приглушает дисплей, экран покрывается матовой дымкой, а посередине светится обратный отсчёт. Оба переключателя рядом с настройками затемнения.
+# Пауза, которую снимает один клик
+Когда таймер или лимит времени останавливает удержание, панель говорит об этом и предлагает «Держать снова». Разблокировка Mac сама начинает новый цикл.
+
+# Обратный отсчёт на затемнённом экране
+Когда ночной диммер приглушает дисплей, оставшееся время светится крупными тонкими цифрами посередине экрана, как прикроватные часы.
 
 # График звучит
 Проведите курсором по последним четырнадцати дням: каждый столбик берёт ноту, высота которой зависит от его высоты.
 
-# Панель стоит ровно
-Пилюля режима скользит сама по себе, ничего не дёргается при появлении строки таймера, а клик в любом другом месте закрывает панель.
-
 === de ===
 
 # „Immer an“, so lange du willst
-Wähle unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh dem Countdown zu. Läuft er ab oder pausiert das Zeitlimit, hält ein Klick wieder wach.
+Wähle direkt unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh der Zeit beim Ablaufen zu. Bei null lässt Belay los.
 
-# Ein ruhigerer Nachtbildschirm
-Wenn der Dimmer das Display abdunkelt, wird der Bildschirm mattiert und der Countdown leuchtet in der Mitte. Beides sind Schalter neben den Dimm-Einstellungen.
+# Eine Pause, die ein Klick beendet
+Stoppt ein Timer oder die maximale Wachzeit das Wachhalten, sagt das Panel es und bietet „Erneut wachhalten“ an. Das Entsperren des Macs beginnt von selbst einen neuen Zyklus.
+
+# Der Countdown auf dem abgedunkelten Bildschirm
+Wenn der Nachtdimmer das Display abdunkelt, leuchtet die verbleibende Zeit in großen dünnen Ziffern in seiner Mitte, wie eine Nachttischuhr.
 
 # Das Diagramm spielt seine Silhouette
 Fahre mit dem Zeiger über die letzten vierzehn Tage, und jeder Balken schlägt eine Note an, deren Höhe seiner Höhe folgt.
 
-# Ein ruhigeres Panel
-Die Modus-Pille gleitet für sich, nichts springt, wenn die Timer-Zeile erscheint, und ein Klick irgendwo sonst schließt das Panel.
-
 === es ===
 
 # Siempre, el tiempo que tú digas
-Elige de 15 minutos a 12 horas bajo el selector de modo y mira la cuenta atrás. Cuando termine, o el límite de tiempo pause la retención, un clic vuelve a mantener.
+Elige de 15 minutos a 12 horas justo bajo el selector de modo y mira la cuenta atrás. Al llegar a cero, Belay suelta el Mac.
 
-# Una pantalla nocturna más tranquila
-Cuando el atenuador baja la pantalla, esta se vuelve esmerilada y la cuenta atrás brilla en el centro. Ambos son interruptores junto a los controles de atenuación.
+# Una pausa que termina con un clic
+Cuando un temporizador o el tiempo máximo despierto detiene la retención, el panel lo dice y ofrece Mantener otra vez. Desbloquear el Mac inicia un ciclo nuevo por sí solo.
+
+# La cuenta atrás en la pantalla atenuada
+Cuando el atenuador nocturno baja la pantalla, el tiempo restante brilla en dígitos grandes y finos en el centro, como un reloj de mesita.
 
 # El gráfico toca su silueta
 Pasa el cursor por los últimos catorce días y cada barra toca una nota según su altura.
 
-# Un panel más estable
-La píldora de modo se desliza sola, nada salta cuando aparece la fila del temporizador y un clic en cualquier otro sitio cierra el panel.
-
 === fr ===
 
 # Toujours, aussi longtemps que vous voulez
-Choisissez de 15 minutes à 12 heures sous le sélecteur de mode et suivez le compte à rebours. Quand il se termine, ou que la limite de temps met en pause, un clic reprend.
+Choisissez de 15 minutes à 12 heures juste sous le sélecteur de mode et suivez le compte à rebours. À zéro, Belay relâche le Mac.
 
-# Un écran de nuit plus discret
-Quand l'assombrissement baisse l'écran, celui-ci se givre et le compte à rebours luit au milieu. Les deux sont des interrupteurs à côté des réglages d'assombrissement.
+# Une pause qu'un clic suffit à lever
+Quand un minuteur ou la durée d'éveil maximale arrête le maintien, le panneau le dit et propose Maintenir encore. Déverrouiller le Mac relance un cycle tout seul.
+
+# Le compte à rebours sur l'écran assombri
+Quand l'assombrissement nocturne baisse l'écran, le temps restant luit en grands chiffres fins en son milieu, comme un réveil de chevet.
 
 # Le graphique joue sa silhouette
 Passez le curseur sur les quatorze derniers jours et chaque barre joue une note à la hauteur de sa taille.
 
-# Un panneau plus stable
-La pastille de mode glisse seule, rien ne saute quand la ligne du minuteur apparaît, et un clic ailleurs ferme le panneau.
-
 === it ===
 
 # Sempre, per il tempo che decidi tu
-Scegli da 15 minuti a 12 ore sotto il selettore di modalità e guarda il conto alla rovescia. Quando finisce, o il limite di tempo mette in pausa, un clic riprende.
+Scegli da 15 minuti a 12 ore proprio sotto il selettore di modalità e guarda il conto alla rovescia. A zero, Belay lascia andare il Mac.
 
-# Uno schermo notturno più tranquillo
-Quando l'attenuazione abbassa lo schermo, questo si smeriglia e il conto alla rovescia brilla al centro. Entrambi sono interruttori accanto ai controlli di attenuazione.
+# Una pausa che un clic fa finire
+Quando un timer o il tempo massimo di veglia ferma il mantenimento, il pannello lo dice e propone Mantieni ancora. Sbloccare il Mac avvia da solo un nuovo ciclo.
+
+# Il conto alla rovescia sullo schermo oscurato
+Quando l'attenuazione notturna abbassa lo schermo, il tempo rimanente brilla in grandi cifre sottili al centro, come una sveglia da comodino.
 
 # Il grafico suona il suo profilo
 Passa il cursore sugli ultimi quattordici giorni e ogni barra suona una nota intonata alla sua altezza.
 
-# Un pannello più stabile
-La pillola della modalità scorre da sola, nulla salta quando compare la riga del timer e un clic altrove chiude il pannello.
-
 === zh-Hans ===
 
 # 常开，时长由你决定
-在模式选择器下方选择 15 分钟到 12 小时，看着倒计时走完。时间用尽或时间上限暂停保持时，点一下即可继续。
+在模式选择器正下方选择 15 分钟到 12 小时，看着时间倒数。归零时 Belay 会放开 Mac。
 
-# 更安静的夜间屏幕
-调暗器降低显示器亮度时，屏幕会蒙上磨砂效果，倒计时在中央发光。这两项都是调暗设置旁的开关。
+# 一次点击即可结束的暂停
+计时器或最长唤醒时间停止保持时，面板会说明并提供「继续保持」。解锁 Mac 会自动开始新的一轮。
+
+# 调暗屏幕上的倒计时
+夜间调暗器降低显示器亮度时，剩余时间会以纤细的大号数字在屏幕中央发光，就像床头钟。
 
 # 图表会奏出它的轮廓
 把光标划过最近十四天，每根柱子都会按自己的高度奏出一个音。
-
-# 更稳的面板
-模式胶囊自行滑动，计时器行出现时不会跳动，点击其他任意位置即可关闭面板。
