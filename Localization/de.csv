@@ -109,6 +109,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,"Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr.
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",Im Akkubetrieb stoppt Belay bei %lld%%.
+Built in,Settings: Providers,translated,,Built in,Integriert
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Spendier mir einen Kaffee
 Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Abbrechen
 Check Now,Settings: General,translated,,Check Now,Jetzt prüfen
@@ -116,6 +117,7 @@ Check for Updates,App,translated,,Check for Updates,Nach Updates suchen
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Automatisch nach Updates suchen
 Checking…,Settings: General,translated,,Checking…,Suche…
 Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
+Claude Code and Codex are understood natively: Belay reads their own session files and needs nothing configured.,Settings: Providers,translated,,Claude Code and Codex are understood natively: Belay reads their own session files and needs nothing configured.,"Claude Code und Codex werden nativ verstanden: Belay liest ihre eigenen Sitzungsdateien, nichts muss eingerichtet werden."
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,"Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Schließen
@@ -125,7 +127,7 @@ Copies the card image and the summary text together,Statistics,translated,,Copie
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Kopieren
 Copy card and link,Statistics,translated,,Copy card and link,Karte und Link kopieren
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Der Update-Dienst war nicht erreichbar.
-Detection health,Settings: Providers,translated,,Detection status,Erkennungsstatus
+Detection health,(unused),translated,,Detection status,Erkennungsstatus
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnose
 Dim from,Settings,translated,,Dim from,Abdunkeln von
 Dim the display at night,Settings,translated,,Dim the display at night,Display nachts abdunkeln
@@ -136,7 +138,7 @@ Donate,"Detection, Settings: About",translated,,Donate,Spenden
 Done,Settings: Providers,translated,,Done,Fertig
 Download…,Settings: General,translated,,Download…,Laden…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Präzise Erkennung aktivieren
-Enable…,Settings: Providers,translated,,Enable…,Aktivieren…
+Enable…,Settings,translated,,Enable…,Aktivieren…
 Erase,Statistics,needs_review,,Erase,Löschen
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik löschen?
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
@@ -165,7 +167,6 @@ Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,"Erlaube den Zugriff auf ~/.claude, damit Belay erkennt, wann Claude Code arbeitet."
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,"Erlaube Zugriff auf ~/.codex, damit Belay erkennt, wann Codex arbeitet."
 Let's go,(unused),translated,,Let's go,Los geht's
-"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when work starts and stops. It also makes ""waiting for you"" notifications reliable.","Claude Code teilt Belay genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
 Local only,Settings: About,translated,,Local only,Nur lokal
 Looks good,(unused),translated,,Looks good,Sieht gut aus
 Lovely,(unused),translated,,Lovely,Wunderbar
@@ -214,7 +215,10 @@ Paused at your time limit.,Panel,translated,,Paused at your time limit.,Pausiert
 Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.,App,translated,,Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.,Wähle direkt unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh der Zeit beim Ablaufen zu. Bei null lässt Belay los.
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Oberflächentöne abspielen
 Play sounds,Settings: General,needs_review,,Play sounds,Töne abspielen
-Precise detection,Settings: Providers,translated,,Precise detection,Präzise Erkennung
+Precise detection,"Settings, Settings: Providers",translated,,Precise detection,Präzise Erkennung
+Precise detection is off,Settings,translated,,Precise detection is off,Präzise Erkennung ist aus
+Precise detection is on,Settings,translated,,Precise detection is on,Präzise Erkennung ist an
+"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.","Mit präziser Erkennung teilt Claude Code Belay genau mit, wann Arbeit beginnt und endet, statt dass Belay es aus Dateien ableitet. Das macht auch „ein Agent wartet auf dich“ zuverlässig."
 Providers,"App, Detection, Settings, Settings: Providers",translated,,Providers,Anbieter
 Quit,"Menu bar, Settings: General",translated,,Quit,Beenden
 Quit %@,Menu bar,translated,%@,Quit %@,%@ beenden
@@ -222,11 +226,11 @@ Quit %@?,Menu bar,translated,%@,Quit %@?,%@ beenden?
 Quit Belay and open it again to change language.,Settings: General,translated,,Reopen Belay to apply the language change.,"Öffne Belay erneut, um die Sprachänderung anzuwenden."
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Beenden und neu öffnen
 Rate Belay,Settings: About,translated,,Rate Belay,Belay bewerten
-Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Bereit
+Ready,"App, Detection, Settings, Welcome",translated,,Ready,Bereit
 Release notes,App,translated,,Release notes,Versionshinweise
-Remove,Settings: Providers,translated,,Remove,Entfernen
+Remove,"Settings, Settings: Providers",translated,,Remove,Entfernen
 Remove %@,Settings: Providers,translated,%@,Remove %@,%@ entfernen
-Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,"Entfernt nur die Einträge, die Belay zu deinen Claude-Code-Einstellungen hinzugefügt hat"
+Removes Belay's entries from your Claude Code settings,(unused),translated,,Removes only the entries Belay added to your Claude Code settings,"Entfernt nur die Einträge, die Belay zu deinen Claude-Code-Einstellungen hinzugefügt hat"
 Report a bug,Settings: About,translated,,Report a bug,Fehler melden
 Report an Issue,Settings,translated,,Report an Issue,Problem melden
 Reset…,Statistics,needs_review,,Reset…,Zurücksetzen…
@@ -240,7 +244,7 @@ Show all sessions,Panel,translated,,Show all sessions,Alle Sitzungen zeigen
 Show fewer,Panel,translated,,Show fewer,Weniger anzeigen
 Show fewer sessions,Panel,translated,,Show fewer sessions,Weniger Sitzungen zeigen
 Show the timer on the dimmed screen,Settings,translated,,Show the timer on the dimmed screen,Timer auf dem abgedunkelten Bildschirm zeigen
-Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,"Zeigt genau, was Belay hinzufügen wird, bevor etwas geschrieben wird"
+Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,"Zeigt genau, was Belay hinzufügen wird, bevor etwas geschrieben wird"
 Since %@,Statistics,needs_review,%@,Since %@,Seit %@
 Skip for now,Welcome,translated,,Skip now,Überspringen
 Software updates,Settings: General,translated,,Software updates,Software-Updates
@@ -320,7 +324,7 @@ Your agent still finishes; Belay just lets go sooner afterwards.,Settings: Behav
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Akku bei %lld%%, Belay ließ den Mac schlafen."
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,Der erste Agentenlauf füllt das hier.
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,"weitergearbeitet, während du weg warst"
-last signal %@ ago,Settings: Providers,translated,%@,last signal %@ ago,letztes Signal vor %@
+last signal %@ ago,Settings,translated,%@,last signal %@ ago,letztes Signal vor %@
 longest run,Statistics,translated,,longest run,längster Lauf
 macOS cannot find the helper in this build.,Settings,translated,,macOS cannot find the helper in this build.,macOS findet den Helfer in diesem Build nicht.
 macOS denied Belay access to %@.,Detection,needs_review,%@,macOS denied Belay access to %@.,macOS hat Belay den Zugriff auf %@ verweigert.

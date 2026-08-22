@@ -6864,53 +6864,6 @@
         }
       }
     },
-    "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code teilt Belay genau mit, wann Arbeit beginnt und endet. So funktionieren auch Hinweise wie „Wartet auf dich“ zuverlässig."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lets Claude Code tell Belay exactly when work starts and stops. It also makes \"waiting for you\" notifications reliable."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permite que Claude Code le indique a Belay exactamente cuándo empieza y termina el trabajo. También hace fiables los avisos de «un agente te espera»."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permet à Claude Code d'indiquer précisément à Belay quand le travail commence et se termine. Cela rend aussi fiables les notifications « un agent vous attend »."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permette a Claude Code di dire a Belay esattamente quando il lavoro inizia e finisce. Rende affidabili anche le notifiche «un agente ti aspetta»."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code сможет точно сообщать Belay, когда работа начинается и заканчивается. Благодаря этому уведомления «Агент ждёт вас» будут надёжными."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "让 Claude Code 直接告诉 Belay 工作何时开始、何时结束。这也让“等待回应”通知变得可靠。"
-          }
-        }
-      }
-    },
     "Local only": {
       "extractionState": "manual",
       "localizations": {
@@ -15791,6 +15744,241 @@
           "stringUnit": {
             "state": "translated",
             "value": "夜间调暗器降低显示器亮度时，剩余时间会以纤细的大号数字在屏幕中央发光，就像床头钟。"
+          }
+        }
+      }
+    },
+    "Built in": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Built in"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Встроенные"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integriert"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrados"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intégrés"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrati"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内置"
+          }
+        }
+      }
+    },
+    "Claude Code and Codex are understood natively: Belay reads their own session files and needs nothing configured.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code and Codex are understood natively: Belay reads their own session files and needs nothing configured."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code и Codex понимаются нативно: Belay читает их собственные файлы сессий, ничего настраивать не нужно."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code und Codex werden nativ verstanden: Belay liest ihre eigenen Sitzungsdateien, nichts muss eingerichtet werden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code y Codex se entienden de forma nativa: Belay lee sus propios archivos de sesión y no hay nada que configurar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code et Codex sont compris nativement : Belay lit leurs propres fichiers de session, rien à configurer."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code e Codex sono compresi in modo nativo: Belay legge i loro file di sessione, niente da configurare."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code 与 Codex 为原生支持：Belay 直接读取它们自己的会话文件，无需任何配置。"
+          }
+        }
+      }
+    },
+    "Precise detection is on": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise detection is on"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точная детекция включена"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präzise Erkennung ist an"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La detección precisa está activada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La détection précise est activée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il rilevamento preciso è attivo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测已开启"
+          }
+        }
+      }
+    },
+    "Precise detection is off": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise detection is off"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точная детекция выключена"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präzise Erkennung ist aus"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La detección precisa está desactivada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La détection précise est désactivée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il rilevamento preciso è disattivato"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测已关闭"
+          }
+        }
+      }
+    },
+    "Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точная детекция позволяет Claude Code самому сообщать Belay, когда работа начинается и заканчивается, вместо того чтобы Belay угадывал это по файлам. Она же делает надёжным уведомление «агент ждёт вас»."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit präziser Erkennung teilt Claude Code Belay genau mit, wann Arbeit beginnt und endet, statt dass Belay es aus Dateien ableitet. Das macht auch „ein Agent wartet auf dich“ zuverlässig."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La détection précise permet à Claude Code d'indiquer exactement à Belay quand le travail commence et s'arrête, au lieu que Belay le déduise des fichiers. C'est aussi ce qui rend « un agent vous attend » fiable."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay esattamente quando inizia e finisce, invece di lasciare che Belay lo deduca dai file. È anche ciò che rende affidabile «un agente ti aspetta»."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。"
           }
         }
       }

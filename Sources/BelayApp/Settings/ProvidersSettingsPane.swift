@@ -24,15 +24,21 @@ struct ProvidersSettingsPane: View {
 
     var body: some View {
         Group {
-            ForEach(state.providers) { provider in
-                providerGroup(provider)
-                Divider()
+            SettingsGroup {
+                SettingRow(
+                    title: "Built in",
+                    explanation: """
+                        Claude Code and Codex are understood natively: Belay reads their own \
+                        session files and needs nothing configured.
+                        """
+                ) {
+                    builtIn
+                }
+                if showsPreciseNote {
+                    preciseNote
+                }
             }
-
-            if state.providers.isEmpty {
-                SettingNote(text: "No providers available.")
-                Divider()
-            }
+            Divider()
 
             GenericTargetsSection(targets: $targets)
         }
@@ -43,77 +49,50 @@ struct ProvidersSettingsPane: View {
         .id(refreshToken)
     }
 
-    @ViewBuilder
-    private func providerGroup(_ provider: ProviderStatus) -> some View {
-        SettingsGroup {
-            SettingRow(
-                title: LocalizedStringKey(provider.descriptor.displayName),
-                explanation: LocalizedStringKey(provider.descriptor.summary)
-            ) {
-                AvailabilityBadge(availability: provider.availability)
-            }
+    /// Only when the hooks could actually be installed: a sentence about a
+    /// control that is not there is a sentence about nothing.
+    private var showsPreciseNote: Bool {
+        guard PreciseDetection.isSupported,
+            let claude = state.providers.first(where: { $0.descriptor.supportsPreciseDetection })
+        else { return false }
+        if case .ready = claude.availability { return true }
+        return false
+    }
 
-            if let last = provider.lastSignal {
-                // Risk R1: a silent detection regression is the failure users
-                // cannot report. Make health visible.
-                SettingRow(title: "Detection health") {
-                    Text("last signal \(ElapsedTime.compact(-last.timeIntervalSinceNow)) ago")
-                        .foregroundStyle(.secondary)
-                }
+    /// Two tiles side by side, the grid the tools below use.
+    private var builtIn: some View {
+        HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
+            ForEach(state.providers) { provider in
+                BuiltInProviderTile(
+                    provider: provider,
+                    precise: provider.descriptor.supportsPreciseDetection ? precise : nil,
+                    onEnablePrecise: { showingPreview = true },
+                    onRemovePrecise: {
+                        precise.uninstall()
+                        refreshToken += 1
+                    },
+                    onFix: { state.onGrantAccess(provider.id) })
             }
-
-            // The provider can take hooks, but this build may have nowhere to
-            // put them: a control that cannot do its job is worse than no
-            // control, and this one would have written into a sandbox container
-            // and said it had worked.
-            if provider.descriptor.supportsPreciseDetection, PreciseDetection.isSupported {
-                preciseDetectionRow
+            if state.providers.isEmpty {
+                SettingNote(text: "No providers available.")
             }
         }
     }
 
+    /// The sentence that used to sit on the precise-detection row, now under
+    /// the tiles: the control moved into Claude Code's tile, the reason for
+    /// it should not vanish with it.
     @ViewBuilder
-    private var preciseDetectionRow: some View {
-        SettingRow(
-            title: "Precise detection",
-            explanation: """
-                Lets Claude Code tell Belay exactly when it starts and stops, \
+    private var preciseNote: some View {
+        SettingNote(
+            text: """
+                Precise detection lets Claude Code tell Belay exactly when it starts and stops, \
                 instead of Belay inferring it from files. This is also what makes \
                 "an agent is waiting for you" reliable.
-                """
-        ) {
-            if precise.isInstalled {
-                Button("Remove") {
-                    precise.uninstall()
-                    refreshToken += 1
-                }
-                .accessibilityHint("Removes Belay's entries from your Claude Code settings")
-            } else {
-                Button("Enable…") { showingPreview = true }
-                    .accessibilityHint("Shows exactly what will be added before anything is written")
-            }
-        }
-
+                """)
         if let problem = precise.lastError {
             SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
         }
     }
-}
 
-private struct AvailabilityBadge: View {
-    let availability: ProviderAvailability
-
-    var body: some View {
-        switch availability {
-        case .ready:
-            Label("Ready", systemImage: "checkmark.circle")
-                .foregroundStyle(.secondary)
-        case .needsSetup(let what):
-            Label(what, systemImage: "exclamationmark.circle")
-                .foregroundStyle(.orange)
-        case .unavailable(let why):
-            Label(why, systemImage: "minus.circle")
-                .foregroundStyle(.secondary)
-        }
-    }
 }

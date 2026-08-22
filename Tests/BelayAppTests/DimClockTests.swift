@@ -1,6 +1,7 @@
 import AppKit
 import BelaySettings
 import BelayCore
+import BelayProviders
 import SwiftUI
 import XCTest
 
@@ -84,5 +85,41 @@ final class CountdownFormatTests: XCTestCase {
         XCTAssertEqual(Countdown.string(remaining: 3600), "01:00:00")
         XCTAssertEqual(Countdown.string(remaining: 3599), "00:59:59", "no unit is dropped on the way down")
         XCTAssertEqual(Countdown.string(remaining: -3), "00:00:00", "never counts below zero")
+    }
+}
+
+/// The Providers pane with the two built-in tiles, for eye checks.
+@MainActor
+final class ProvidersPaneFrameTests: XCTestCase {
+    func testWritePaneFrame() throws {
+        guard let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"] else {
+            throw XCTSkip("set BELAY_FRAMES to a directory to write the frames")
+        }
+        let app = AppState()
+        app.apply(providers: [
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .claudeCode, displayName: "Claude Code", summary: "", symbolName: "sparkles",
+                    supportsPreciseDetection: true),
+                availability: .ready, isEnabled: true, lastSignal: Date() - 140),
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
+                    supportsPreciseDetection: false),
+                availability: .needsSetup("Grant access to ~/.codex"), isEnabled: true, lastSignal: nil),
+        ])
+        let view = VStack(alignment: .leading) {
+            ProvidersSettingsPane(state: app, precise: PreciseDetection(), targets: [], onTargetsChanged: { _ in })
+        }
+        .frame(width: SettingsPane.width)
+        .padding(20)
+        .background(Color(nsColor: .windowBackgroundColor))
+        let host = NSHostingView(rootView: view)
+        host.frame = NSRect(origin: .zero, size: host.fittingSize)
+        host.layoutSubtreeIfNeeded()
+        let rep = try XCTUnwrap(host.bitmapImageRepForCachingDisplay(in: host.bounds))
+        host.cacheDisplay(in: host.bounds, to: rep)
+        let png = try XCTUnwrap(rep.representation(using: .png, properties: [:]))
+        try png.write(to: URL(fileURLWithPath: folder).appendingPathComponent("providers.png"))
     }
 }
