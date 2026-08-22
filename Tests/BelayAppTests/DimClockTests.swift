@@ -78,9 +78,11 @@ final class NightDimmingGroupFrameTests: XCTestCase {
 final class CountdownFormatTests: XCTestCase {
     func testPadsEveryUnit() {
         XCTAssertEqual(Countdown.string(remaining: 2 * 3600 + 30 * 60), "02:30:00")
-        XCTAssertEqual(Countdown.string(remaining: 119), "01:59")
-        XCTAssertEqual(Countdown.string(remaining: 5), "00:05")
+        XCTAssertEqual(Countdown.string(remaining: 119), "00:01:59")
+        XCTAssertEqual(Countdown.string(remaining: 5), "00:00:05")
         XCTAssertEqual(Countdown.string(remaining: 12 * 3600), "12:00:00")
-        XCTAssertEqual(Countdown.string(remaining: -3), "00:00", "never counts below zero")
+        XCTAssertEqual(Countdown.string(remaining: 3600), "01:00:00")
+        XCTAssertEqual(Countdown.string(remaining: 3599), "00:59:59", "no unit is dropped on the way down")
+        XCTAssertEqual(Countdown.string(remaining: -3), "00:00:00", "never counts below zero")
     }
 }

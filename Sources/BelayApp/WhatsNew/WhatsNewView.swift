@@ -45,6 +45,7 @@ struct WhatsNewView: View {
             VStack(spacing: 0) {
                 BelayWordmark(size: 28, word: .white, animated: true)
                     .padding(.top, 52)
+                    .modifier(WhatsNewEntrance(shown: entered, delay: 0, animated: !reduceMotion))
                 ForEach(notes, id: \.version) { note in
                     Text("New in v\(note.version)")
                         .font(.system(size: 13, weight: .semibold))
@@ -53,19 +54,19 @@ struct WhatsNewView: View {
                         .padding(.vertical, 6)
                         .background(Capsule(style: .continuous).fill(Self.pill))
                         .padding(.top, 16)
+                        .modifier(WhatsNewEntrance(shown: entered, delay: 0.07, animated: !reduceMotion))
                     list(note)
                         .padding(.top, 22)
                 }
                 footer
                     .padding(.top, 36)
                     .padding(.bottom, Self.margin)
+                    .modifier(WhatsNewEntrance(shown: entered, delay: 0.42, animated: !reduceMotion))
             }
             .frame(width: Self.width)
             // One background, built as one picture: the solid card with the
             // glow — violet-blue rising into the last rows, the one piece of
             // colour the card has besides its marks — painted on top of it.
-            // Two separate `background` modifiers were tried both ways round;
-            // one hid the glow, the other left the card see-through.
             .background {
                 ZStack(alignment: .bottom) {
                     Self.background
@@ -75,7 +76,6 @@ struct WhatsNewView: View {
                     .frame(height: 280)
                 }
             }
-            .modifier(WhatsNewEntrance(shown: entered, delay: 0.05, animated: !reduceMotion))
 
             closeButton
         }
@@ -113,8 +113,14 @@ struct WhatsNewView: View {
 
     private func list(_ note: ReleaseNote) -> some View {
         VStack(alignment: .leading, spacing: 28) {
+            // Each row a whole: icon, title and sentence arrive together, one
+            // row after the one above it — the welcome screen's arrival, read
+            // down a list.
             ForEach(Array(note.items.enumerated()), id: \.element.id) { row, item in
                 WhatsNewRow(item: item, beat: beat(forVersion: note, item: row))
+                    .modifier(
+                        WhatsNewEntrance(
+                            shown: entered, delay: 0.14 + Double(row) * 0.07, animated: !reduceMotion))
             }
         }
         .padding(.horizontal, Self.margin)
@@ -221,6 +227,6 @@ private struct WhatsNewEntrance: ViewModifier {
         content
             .opacity(shown ? 1 : 0)
             .offset(y: shown ? 0 : 8)
-            .animation(animated ? .smooth(duration: 0.5).delay(delay) : nil, value: shown)
+            .animation(animated ? .smooth(duration: 0.45).delay(delay) : nil, value: shown)
     }
 }
