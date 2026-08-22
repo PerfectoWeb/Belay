@@ -104,7 +104,9 @@ final class LiveWhatsNewTests: XCTestCase {
         }
         let window = WhatsNewWindow(settings: SettingsStore())
         window.present()
-        RunLoop.main.run(until: Date().addingTimeInterval(4))
+        // Long enough to be looked at when a person asked to see it.
+        let seconds = Double(ProcessInfo.processInfo.environment["BELAY_LIVE_SECONDS"] ?? "4") ?? 4
+        RunLoop.main.run(until: Date().addingTimeInterval(seconds))
         window.dismiss()
     }
 }

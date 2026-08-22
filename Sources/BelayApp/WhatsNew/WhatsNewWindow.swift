@@ -56,14 +56,28 @@ final class WhatsNewWindow: NSObject {
         // Nothing to say is not a window. The hero reads `notes.first`.
         guard !notes.isEmpty else { return }
         dismiss()
-        let window = PanelWindow.make(
-            WhatsNewView(notes: notes, onDismiss: { [weak self] in self?.dismiss() }),
-            delegate: self)
-        // The card draws its own close mark; the traffic lights would be a
-        // second set of controls for one action, in the wrong corner.
-        for button in [NSWindow.ButtonType.closeButton, .miniaturizeButton, .zoomButton] {
-            window.standardWindowButton(button)?.isHidden = true
-        }
+        // A borderless card, not a titled window. A titled window with a
+        // clear background gets the system's glass material on macOS 26 and
+        // the whole card showed through; an opaque one keeps its own corner
+        // radius. Borderless draws nothing of its own, so the card's 24-point
+        // clip is the window's edge, and `CardWindow` lets it take key so
+        // Escape and Return still reach the buttons.
+        let window = CardWindow(
+            contentRect: .zero,
+            styleMask: [.borderless, .fullSizeContentView],
+            backing: .buffered,
+            defer: false)
+        let host = NSHostingController(
+            rootView: WhatsNewView(notes: notes, onDismiss: { [weak self] in self?.dismiss() }))
+        window.contentViewController = host
+        window.setContentSize(host.view.fittingSize)
+        window.isOpaque = false
+        window.backgroundColor = .clear
+        window.hasShadow = true
+        window.isMovableByWindowBackground = true
+        window.isReleasedWhenClosed = false
+        window.delegate = self
+        PanelWindow.centre(window)
         self.window = window
         NSApp.activate(ignoringOtherApps: true)
         switchOn(window)
@@ -112,4 +126,12 @@ extension WhatsNewWindow: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         window = nil
     }
+}
+
+/// A borderless window that can still take key: AppKit refuses that for
+/// `.borderless` by default, and a card whose Escape key goes nowhere is a
+/// card somebody has to reach for the mouse to close.
+private final class CardWindow: NSWindow {
+    override var canBecomeKey: Bool { true }
+    override var canBecomeMain: Bool { true }
 }

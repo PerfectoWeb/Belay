@@ -25,24 +25,13 @@ final class WhatsNewFrameTests: XCTestCase {
 
         let short = ReleaseNote(
             version: "1.2.0",
-            title: "Quieter notifications",
-            paragraphs: [.init("One line, to see a short card.")])
-
-        // With a stand-in picture, so the full shape of the card can be seen
-        // before real artwork exists; `NSImage.Name` lookups fall back to any
-        // catalogue image, and the app icon is always there.
-        var pictured = ReleaseNotes.all
-        if !pictured.isEmpty { pictured[0].image = "AppIcon" }
+            items: [.init(symbol: "bell", title: "Quieter notifications", body: "One line, to see a short card.")])
 
         for (name, notes) in [
             ("whatsnew", ReleaseNotes.all),
-            ("whatsnew-pictured", pictured),
             ("whatsnew-short", [short])
         ] {
-            for appearance in [NSAppearance.Name.darkAqua, .aqua] {
-                try write(notes, to: out, name: "\(name)-\(appearance == .aqua ? "light" : "dark")",
-                    appearance: appearance)
-            }
+            try write(notes, to: out, name: name, appearance: .darkAqua)
         }
     }
 

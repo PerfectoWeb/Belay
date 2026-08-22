@@ -119,7 +119,7 @@ Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Co
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code aún no ha abierto ningún proyecto en este Mac. Belay empezará solo cuando ocurra.
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Haz clic para ver qué ha cambiado e instalarlo cuando quieras.
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Cerrar
-Codex crashes no longer linger,(unused),translated,,Codex crashes no longer linger,Los fallos de Codex ya no hacen esperar
+Codex crashes no longer linger,App,translated,,Codex crashes no longer linger,Los fallos de Codex ya no hacen esperar
 Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Codex aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra.
 Copied,Statistics,translated,,Copied,Copiado
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copia juntos la tarjeta y el resumen
@@ -128,10 +128,10 @@ Copy card and link,Statistics,translated,,Copy card and link,Copiar tarjeta y en
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,No se pudo contactar con el servicio de actualizaciones.
 Detection health,Settings: Providers,translated,,Detection status,Estado de detección
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnóstico
-Diagnostics record every change,(unused),translated,,Diagnostics record every change,El diagnóstico registra cada cambio
+Diagnostics record every change,App,translated,,Diagnostics record every change,El diagnóstico registra cada cambio
 Dim from,Settings,translated,,Dim from,Atenuar desde
 Dim the display at night,Settings,translated,,Dim the display at night,Atenuar la pantalla por la noche
-Dim until,Settings,translated,,Dim until,Atenuar hasta
+Dim until,"App, Settings",translated,,Dim until,Atenuar hasta
 Dimmed brightness,Settings,translated,,Dimmed brightness,Brillo atenuado
 Direct download,"Settings, Settings: About",translated,,Direct download,Descarga directa
 Donate,"Detection, Settings: About",translated,,Donate,Donar
@@ -141,7 +141,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Activar…
 Erase,Statistics,needs_review,,Erase,Borrar
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,¿Borrar tus estadísticas?
-Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,(unused),translated,,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,Cada cambio de estado de una sesión y cada señal de hook añaden ahora una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac.
+Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,App,translated,,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,Cada cambio de estado de una sesión y cada señal de hook añaden ahora una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac.
 Finished,"App, Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Terminado
 "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.",App,translated,,"Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.","Las sesiones terminadas quedan inactivas en pocos segundos y permanecen así. Ya no quedan filas antiguas después de reiniciar, el estado no vuelve solo a Working y el tiempo de inactividad empieza cuando la sesión realmente queda en silencio."
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corregir
@@ -158,7 +158,7 @@ How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
 "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",App,translated,,"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.","Si Codex se cierra o falla a mitad de un turno, Belay detecta que el proceso ya no está activo y deja de mantener el Mac despierto en pocos segundos, en lugar de esperar todo el periodo de reintento."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Necesita una respuesta para continuar.
-"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.",(unused),translated,,"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.","Ahora recuerda tu ajuste de reposo anterior y restaura exactamente ese valor. Si activaste disablesleep por tu cuenta, Belay no lo modifica."
+"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.",App,translated,,"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.","Ahora recuerda tu ajuste de reposo anterior y restaura exactamente ese valor. Si activaste disablesleep por tu cuenta, Belay no lo modifica."
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Guardar informes de errores en este Mac
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Seguir trabajando con la tapa cerrada
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Manteniendo el Mac despierto
@@ -230,6 +230,7 @@ Quit Belay and open it again to change language.,Settings: General,translated,,R
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Salir y volver a abrir
 Rate Belay,Settings: About,translated,,Rate Belay,Valorar Belay
 Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Listo
+Release notes,App,translated,,Release notes,Notas de la versión
 Remove,Settings: Providers,translated,,Remove,Quitar
 Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
 Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,Elimina solo las entradas que Belay añadió a tus ajustes de Claude Code
@@ -251,6 +252,7 @@ Since %@,Statistics,needs_review,%@,Since %@,Desde el %@
 Skip for now,Welcome,translated,,Skip now,Omitir
 Software updates,Settings: General,translated,,Software updates,Actualizaciones
 Sound,"App, Settings: About, Settings: General, Welcome",needs_review,,Sound,Sonido
+Sounds Good!,App,translated,,Sounds Good!,¡Suena bien!
 Sounds good,(unused),translated,,Sounds good,Suena bien
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Dar estrella
 Star on GitHub,Settings: About,translated,,Star on GitHub,Estrella en GitHub
@@ -269,7 +271,7 @@ The agent in %@ stopped without finishing. It may need signing in again.,Setting
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,El agente se detuvo sin terminar. Puede que necesite iniciar sesión de nuevo.
 The closed-lid time limit is no longer affected by changes to the system clock.,(unused),translated,,The closed-lid time limit is no longer affected by changes to the system clock.,El límite de tiempo con la tapa cerrada ya no se ve afectado por cambios en el reloj del sistema.
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Lo que añadirá Belay
-The lid helper restores what it changed,(unused),translated,,The lid helper restores what it changed,El ayudante de la tapa restaura lo que cambió
+The lid helper restores what it changed,App,translated,,The lid helper restores what it changed,El ayudante de la tapa restaura lo que cambió
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","La retención con la tapa cerrada alcanzó su límite de tiempo, así que Belay dejó dormir el Mac."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,La ejecución en %@ duró %@. El Mac puede volver a dormir con normalidad.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,La ejecución duró %@. El Mac puede volver a dormir con normalidad.

@@ -12,8 +12,8 @@ import XCTest
 /// updated.
 final class WhatsNewDecisionTests: XCTestCase {
     private let notes = [
-        ReleaseNote(version: "1.2.0", title: "a", paragraphs: [.init("b")]),
-        ReleaseNote(version: "1.1.0", title: "c", paragraphs: [.init("d")])
+        ReleaseNote(version: "1.2.0", items: [.init(symbol: "gift", title: "a", body: "b")]),
+        ReleaseNote(version: "1.1.0", items: [.init(symbol: "bell", title: "c", body: "d")])
     ]
 
     private func outcome(_ current: String, _ lastSeen: String?, onboarded: Bool = true)
@@ -44,7 +44,7 @@ final class WhatsNewDecisionTests: XCTestCase {
     /// String comparison says "1.10.0" < "1.9.0". This is the test that earns
     /// `AppVersion`.
     func testATwoDigitVersionIsNewerThanASingleDigitOne() {
-        let big = [ReleaseNote(version: "1.10.0", title: "a", paragraphs: notes[0].paragraphs)]
+        let big = [ReleaseNote(version: "1.10.0", items: notes[0].items)]
         XCTAssertEqual(
             WhatsNewDecision.outcome(
                 current: "1.10.0", lastSeen: "1.9.0", onboarded: true, catalogue: big),
@@ -88,7 +88,7 @@ final class WhatsNewDecisionTests: XCTestCase {
         let many = (1...5).map { index in
             ReleaseNote(
                 version: "1.\(index).0",
-                title: "t", paragraphs: (1...3).map { _ in .init("b") })
+                items: (1...3).map { .init(symbol: "gift\($0)", title: "t", body: "b") })
         }.reversed()
 
         guard
@@ -123,19 +123,15 @@ final class ReleaseNotesTests: XCTestCase {
             "no release notes written for \(Branding.version)")
     }
 
-    /// A card is read standing up: one or two paragraphs, never a changelog.
-    func testACardStaysShort() {
+    /// A symbol name that does not resolve draws nothing at all, which leaves a
+    /// hole in the row where the icon should be and no error anywhere.
+    func testEverySymbolExists() {
         for note in ReleaseNotes.all {
-            XCTAssertLessThanOrEqual(note.paragraphs.count, 3, "\(note.version) is a list, not a card")
-        }
-    }
-
-    /// A named picture that is not in the asset catalogue draws nothing and
-    /// leaves a 220-point hole where it should be.
-    func testEveryPictureExists() {
-        for note in ReleaseNotes.all {
-            guard let image = note.image else { continue }
-            XCTAssertNotNil(NSImage(named: image), "\(note.version) names a missing picture: \(image)")
+            for item in note.items {
+                XCTAssertNotNil(
+                    NSImage(systemSymbolName: item.symbol, accessibilityDescription: nil),
+                    "\(note.version) names a symbol that does not exist: \(item.symbol)")
+            }
         }
     }
 
@@ -148,8 +144,7 @@ final class ReleaseNotesTests: XCTestCase {
         guard DistributionChannel.current == .appStore else { return }
         for note in ReleaseNotes.all {
             XCTAssertFalse(
-                note.paragraphs.contains(where: \.directOnly),
-                "\(note.version) leaked a direct-only paragraph")
+                note.items.contains(where: \.directOnly), "\(note.version) leaked a direct-only item")
         }
     }
 }

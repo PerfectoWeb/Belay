@@ -2,129 +2,158 @@ import SwiftUI
 
 /// What changed, shown once, on the first launch after an update.
 ///
-/// A card, not a page: a version pill, one headline, a paragraph or two, and
-/// a picture running off the bottom edge. Everything is centred because the
-/// card is glanced at, not studied, and the only control is the close mark in
-/// the corner — there is nothing here to decide.
-///
-/// It replaced a list of icon rows under a starfield masthead. That window
-/// was a small changelog, and a changelog is what `CHANGELOG.md` is for; this
-/// one says the single thing the release is about, the way the apps people
-/// actually read these cards in do.
+/// Drawn to the designer's card: the wordmark on top, a green version pill
+/// under it, a list of outlined icons with a title and a sentence each, a
+/// violet glow rising from the bottom, and one blue button that is the
+/// answer. Dark in both appearances, like the welcome screen it shares a
+/// wordmark with — the card is a small piece of night, not a settings sheet.
 struct WhatsNewView: View {
     let notes: [ReleaseNote]
     let onDismiss: () -> Void
 
     @State private var entered = false
+    @State private var closeHovered = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.openURL) private var openURL
 
-    static let width: CGFloat = 400
-    static let margin: CGFloat = 32
-    /// The picture's box, at the card's full width. Artwork is supplied to
-    /// exactly this shape at 2x (800 by 440 pixels).
-    static let imageHeight: CGFloat = 220
+    static let width: CGFloat = 600
+    static let margin: CGFloat = 50
+    /// The icon column and the gap after it: every title starts at x = 97.
+    static let iconColumn: CGFloat = 30
+    static let iconGap: CGFloat = 17
+    static let cornerRadius: CGFloat = 24
+
+    static let background = Color(red: 0.118, green: 0.118, blue: 0.125)
+    static let glow = Color(red: 0.26, green: 0.24, blue: 0.47)
+    static let pill = Color(red: 0.20, green: 0.68, blue: 0.36)
+    static let icon = Color(red: 0.24, green: 0.52, blue: 0.98)
+    static let body = Color(white: 0.62)
 
     var body: some View {
-        VStack(spacing: 0) {
-            closeRow
-            ForEach(Array(notes.enumerated()), id: \.element.version) { position, note in
-                card(note)
-                    .modifier(
-                        WhatsNewEntrance(
-                            shown: entered, delay: 0.08 + Double(position) * 0.1,
-                            animated: !reduceMotion))
+        ZStack(alignment: .topTrailing) {
+            VStack(spacing: 0) {
+                BelayWordmark(size: 28, word: .white, animated: true)
+                    .padding(.top, 52)
+                ForEach(notes, id: \.version) { note in
+                    Text("New in v\(note.version)")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 6)
+                        .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(Self.pill))
+                        .padding(.top, 16)
+                    list(note)
+                        .padding(.top, 22)
+                }
+                footer
+                    .padding(.top, 36)
+                    .padding(.bottom, Self.margin)
             }
+            .frame(width: Self.width)
+            // One background, built as one picture: the solid card with the
+            // glow — violet-blue rising into the last rows, the one piece of
+            // colour the card has besides its marks — painted on top of it.
+            // Two separate `background` modifiers were tried both ways round;
+            // one hid the glow, the other left the card see-through.
+            .background {
+                ZStack(alignment: .bottom) {
+                    Self.background
+                    LinearGradient(
+                        colors: [.clear, Self.glow.opacity(0.6)], startPoint: .top, endPoint: .bottom
+                    )
+                    .frame(height: 280)
+                }
+            }
+            .modifier(WhatsNewEntrance(shown: entered, delay: 0.05, animated: !reduceMotion))
+
+            closeButton
         }
-        .frame(width: Self.width)
-        .background(Color(nsColor: .windowBackgroundColor))
+        .clipShape(RoundedRectangle(cornerRadius: Self.cornerRadius, style: .continuous))
+        .preferredColorScheme(.dark)
         .onAppear { entered = true }
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("What's New"))
     }
 
-    /// The close mark alone on its line, top right, where the reference puts
-    /// it. Escape and Return both close, so the card never traps a keyboard.
-    private var closeRow: some View {
-        HStack {
-            Spacer()
-            Button(action: onDismiss) {
-                Image(systemName: "xmark")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.secondary)
-                    .frame(width: 28, height: 28)
-                    .contentShape(.rect)
-            }
-            .buttonStyle(.plain)
-            .keyboardShortcut(.cancelAction)
-            .accessibilityLabel(Text("Close"))
-            Button(action: onDismiss) { EmptyView() }
-                .keyboardShortcut(.defaultAction)
-                .frame(width: 0, height: 0)
-                .opacity(0)
-                .accessibilityHidden(true)
+    /// Dim until the pointer arrives, white under it. Escape closes too.
+    private var closeButton: some View {
+        Button(action: onDismiss) {
+            Image(systemName: "xmark")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(closeHovered ? Color.white : Color(white: 0.45))
+                .frame(width: 30, height: 30)
+                .contentShape(.rect)
         }
-        // The content already sits under a transparent titlebar, which is
-        // the top inset; this only keeps the mark off the corner radius.
-        .padding(.top, 4)
+        .buttonStyle(.plain)
+        .onHover { closeHovered = $0 }
+        .animation(.easeInOut(duration: 0.15), value: closeHovered)
+        .keyboardShortcut(.cancelAction)
+        .accessibilityLabel(Text("Close"))
+        .padding(.top, 14)
         .padding(.trailing, 14)
     }
 
-    private func card(_ note: ReleaseNote) -> some View {
-        VStack(spacing: 0) {
-            Text("New in v\(note.version)")
-                .font(.system(size: 13, weight: .medium))
-                .foregroundStyle(.white)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 5)
-                .background(Capsule().fill(Color.accentColor))
-                .padding(.top, 6)
-
-            Text(note.title)
-                .font(.system(size: 24, weight: .bold))
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.top, 18)
-                .padding(.horizontal, Self.margin)
-
-            VStack(spacing: 14) {
-                ForEach(note.paragraphs) { paragraph in
-                    Text(paragraph.text)
-                        .font(.system(size: 15))
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(3)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-            .padding(.top, 14)
-            .padding(.horizontal, Self.margin)
-
-            if let image = note.image {
-                picture(image)
-                    .padding(.top, 26)
-            } else {
-                Color.clear.frame(height: Self.margin)
+    private func list(_ note: ReleaseNote) -> some View {
+        VStack(alignment: .leading, spacing: 28) {
+            ForEach(note.items) { item in
+                WhatsNewRow(item: item)
             }
         }
+        .padding(.horizontal, Self.margin)
     }
 
-    /// Full width, off the bottom edge, and faded in from the card's own
-    /// background across its top so any artwork sits on the card rather than
-    /// being pasted onto it.
-    private func picture(_ name: String) -> some View {
-        Image(name)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: Self.width, height: Self.imageHeight)
-            .clipped()
-            .overlay(alignment: .top) {
-                LinearGradient(
-                    colors: [Color(nsColor: .windowBackgroundColor), .clear],
-                    startPoint: .top, endPoint: .bottom
-                )
-                .frame(height: 70)
+    /// The button in the text column, and the changelog beside it for anyone
+    /// who wants the whole story.
+    private var footer: some View {
+        HStack(spacing: 22) {
+            Button("Sounds Good!", action: onDismiss)
+                .buttonStyle(MagicButtonStyle())
+                .keyboardShortcut(.defaultAction)
+            Button {
+                if let url = Branding.repositoryURL?.appendingPathComponent("blob/main/CHANGELOG.md") {
+                    openURL(url)
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Text("Release notes")
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 11, weight: .medium))
+                }
+                .font(.system(size: 13))
+                .foregroundStyle(Color(white: 0.55))
             }
-            .accessibilityHidden(true)
+            .buttonStyle(.plain)
+            Spacer(minLength: 0)
+        }
+        .padding(.leading, Self.margin + Self.iconColumn + Self.iconGap)
+        .padding(.trailing, Self.margin)
+    }
+}
+
+/// One line of news: outline, title, sentence.
+private struct WhatsNewRow: View {
+    let item: ReleaseNote.Item
+
+    var body: some View {
+        HStack(alignment: .top, spacing: WhatsNewView.iconGap) {
+            Image(systemName: item.symbol)
+                .font(.system(size: 22, weight: .light))
+                .foregroundStyle(WhatsNewView.icon)
+                .frame(width: WhatsNewView.iconColumn, height: 26, alignment: .center)
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(item.title)
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundStyle(.white)
+                Text(item.body)
+                    .font(.system(size: 13))
+                    .foregroundStyle(WhatsNewView.body)
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
+        }
+        .accessibilityElement(children: .combine)
     }
 }
 

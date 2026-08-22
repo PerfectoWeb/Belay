@@ -86,7 +86,12 @@ for folder in "$HOME/Library/Preferences" \
     while IFS= read -r plist; do
         rm -f "$plist"
         swept=$((swept + 1))
-    done < <(find "$folder" -maxdepth 1 -name '*belay*.plist' 2>/dev/null \
+    # Under a 20 s alarm: on the sandbox container this find has hung on a
+    # TCC prompt nobody could see, twice, and held an otherwise green gate
+    # for half an hour. A sweep that did not finish is a few stray plists,
+    # not a failed gate. `timeout` is not on a stock Mac; perl's alarm is.
+    done < <(perl -e 'alarm 20; exec @ARGV' \
+        find "$folder" -maxdepth 1 -name '*belay*.plist' 2>/dev/null \
         | grep -Ei '\.[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}\.plist$')
 done
 echo "removed $swept"

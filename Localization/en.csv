@@ -119,7 +119,7 @@ Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Co
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Click to see what changed and install it whenever you like.
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Close
-Codex crashes no longer linger,(unused),translated,,Codex crashes no longer linger,Codex crashes no longer linger
+Codex crashes no longer linger,App,translated,,Codex crashes no longer linger,Codex crashes no longer linger
 Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.
 Copied,Statistics,translated,,Copied,Copied
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copies the card and summary together
@@ -128,10 +128,10 @@ Copy card and link,Statistics,translated,,Copy card and link,Copy card and link
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Could not reach the update service.
 Detection health,Settings: Providers,translated,,Detection status,Detection status
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnostics
-Diagnostics record every change,(unused),translated,,Diagnostics record every change,Diagnostics record every change
+Diagnostics record every change,App,translated,,Diagnostics record every change,Diagnostics record every change
 Dim from,Settings,translated,,Dim from,Dim from
 Dim the display at night,Settings,translated,,Dim the display at night,Dim the display at night
-Dim until,Settings,translated,,Dim until,Dim until
+Dim until,"App, Settings",translated,,Dim until,Dim until
 Dimmed brightness,Settings,translated,,Dimmed brightness,Dimmed brightness
 Direct download,"Settings, Settings: About",translated,,Direct download,Direct download
 Donate,"Detection, Settings: About",translated,,Donate,Donate
@@ -141,7 +141,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Enable…
 Erase,Statistics,translated,,Erase,Erase
 Erase your statistics?,Statistics,translated,,Erase your statistics?,Erase your statistics?
-Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,(unused),translated,,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.
+Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,App,translated,,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.
 Finished,"App, Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Finished
 "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.",App,translated,,"Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.","Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet."
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Fix
@@ -158,7 +158,7 @@ How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Idle
 "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",App,translated,,"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.","If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,It needs an answer before it can continue.
-"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.",(unused),translated,,"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.","It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone."
+"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.",App,translated,,"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.","It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone."
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Keep crash reports on this Mac
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Keep working with the lid closed
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Keeping your Mac awake
@@ -230,6 +230,7 @@ Quit Belay and open it again to change language.,Settings: General,translated,,R
 Quit and Reopen,Settings: General,translated,,Quit and Reopen,Quit and Reopen
 Rate Belay,Settings: About,translated,,Rate Belay,Rate Belay
 Ready,"App, Detection, Settings: Providers, Welcome",translated,,Ready,Ready
+Release notes,App,translated,,Release notes,Release notes
 Remove,Settings: Providers,translated,,Remove,Remove
 Remove %@,Settings: Providers,translated,%@,Remove %@,Remove %@
 Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,Removes only the entries Belay added to your Claude Code settings
@@ -251,6 +252,7 @@ Since %@,Statistics,translated,%@,Since %@,Since %@
 Skip for now,Welcome,translated,,Skip now,Skip now
 Software updates,Settings: General,translated,,Software updates,Software updates
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,Sound
+Sounds Good!,App,translated,,Sounds Good!,Sounds Good!
 Sounds good,(unused),translated,,Sounds good,Sounds good
 Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Star
 Star on GitHub,Settings: About,translated,,Star on GitHub,Star on GitHub
@@ -269,7 +271,7 @@ The agent in %@ stopped without finishing. It may need signing in again.,Setting
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,The agent stopped without finishing. It may need signing in again.
 The closed-lid time limit is no longer affected by changes to the system clock.,(unused),translated,,The closed-lid time limit is no longer affected by changes to the system clock.,The closed-lid time limit is no longer affected by changes to the system clock.
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,What Belay will add
-The lid helper restores what it changed,(unused),translated,,The lid helper restores what it changed,The lid helper restores what it changed
+The lid helper restores what it changed,App,translated,,The lid helper restores what it changed,The lid helper restores what it changed
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","The lid hold reached its time limit, so Belay let the Mac sleep."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,The run in %@ took %@. Your Mac can sleep normally again.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,The run took %@. Your Mac can sleep normally again.

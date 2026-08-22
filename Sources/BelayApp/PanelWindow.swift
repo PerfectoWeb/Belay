@@ -49,7 +49,7 @@ enum PanelWindow {
     /// and works from the screen the window happens to be on, which for a window
     /// still at `.zero` is whichever one contains the origin. On a second
     /// display that is the wrong screen and the wrong height.
-    private static func centre(_ window: NSWindow) {
+    static func centre(_ window: NSWindow) {
         window.layoutIfNeeded()
         // Belt and braces. The size is set from the content above; this is the
         // second chance to notice it is still nothing, rather than to place the
