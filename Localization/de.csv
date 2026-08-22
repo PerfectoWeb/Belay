@@ -35,8 +35,10 @@
 8 hours,Settings,needs_review,,8 hours,8 Stunden
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,Nach dieser Zeit hält Belay deinen Mac nicht mehr wach und sagt dir Bescheid.
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,"Ordneraktivität zählt als Arbeit. Ein laufender Prozess zeigt Belay nur, wann die Sitzung endet."
+A quieter night screen,App,translated,,A quieter night screen,Ein ruhigerer Nachtbildschirm
 "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.",Settings: Notifications,translated,,"A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.","Eine Sitzung, die nichts mehr sendet und nie gemeldet hat, dass sie fertig ist. Meist eine CLI, die sich neu anmelden muss, oder ein geschlossenes Terminal."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,needs_review,,A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,"Ein kurzer Ton, wenn Sie den Modus von Hand ändern. Sind Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese."
+A steadier panel,App,translated,,A steadier panel,Ein ruhigeres Panel
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay legt zuerst eine Sicherung mit Zeitstempel an. „Entfernen“ stellt die ursprüngliche Datei wieder her.
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,Über
 About %@,Menu bar,translated,%@,About %@,Über %@
@@ -49,6 +51,7 @@ All product names and logos are trademarks of their respective owners.,Settings:
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Zugriff auf ~/.claude erlauben
 Also,"App, Detection, Settings, Settings: Behaviour, Settings: Providers",translated,,Also,Außerdem
 Also keep the display awake,"Detection, Settings: Behaviour",translated,,Also keep the display awake,Auch das Display wach halten
+"Always On, for as long as you say",App,translated,,"Always On, for as long as you say","„Immer an“, so lange du willst"
 Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,Immer an
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Ein Agent wartet auf dich
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,Ein Agent wartet auf dich. Belay hält deinen Mac wach.
@@ -97,7 +100,6 @@ Belay reached its maximum awake time and stopped keeping your Mac awake.,Setting
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,"Belay liest nur die Sitzungsdaten, die es braucht, um zu erkennen, ob ein Agent arbeitet. Deine Prompts und deinen Code liest es nie. Alles bleibt auf diesem Mac."
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Settings,translated,,"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.","Belay liest von den Sitzungsdateien deines Agenten nur so viel, wie nötig ist, um zu wissen, ob er arbeitet. Nie deine Prompts, nie deinen Code, und nichts über dich verlässt diesen Mac. Das Netzwerk nutzt Belay zweimal: für die tägliche Prüfung auf eine neue Version, die du abschalten kannst, und für den Download selbst, wenn du darum bittest."
 "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings,translated,,"Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.","Belay speichert Berichte zu Abstürzen, Einfrierern und Fehlern lokal. Es wird nichts automatisch gesendet. Was du beim Melden teilst, entscheidest du."
-Belay stays in sync,App,translated,,Belay stays in sync,Das Panel bleibt auf dem aktuellen Stand
 Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,„Immer an“ und „Aus“ kannst du weiterhin verwenden.
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay hält nicht mehr
 Belay stopped holding: battery is at %lld%%.,Menu bar,translated,%lld,Belay stopped keeping your Mac awake at %lld%% battery.,Belay hält deinen Mac bei %lld%% Akkustand nicht mehr wach.
@@ -119,7 +121,6 @@ Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Co
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,"Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Schließen
-Codex crashes no longer linger,App,translated,,Codex crashes no longer linger,Codex-Abstürze halten Belay nicht mehr auf
 Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Codex hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
 Copied,Statistics,translated,,Copied,Kopiert
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Kopiert die Karte zusammen mit der Zusammenfassung
@@ -128,7 +129,6 @@ Copy card and link,Statistics,translated,,Copy card and link,Karte und Link kopi
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Der Update-Dienst war nicht erreichbar.
 Detection health,Settings: Providers,translated,,Detection status,Erkennungsstatus
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnose
-Diagnostics record every change,App,translated,,Diagnostics record every change,Die Diagnose protokolliert jede Änderung
 Dim from,Settings,translated,,Dim from,Abdunkeln von
 Dim the display at night,Settings,translated,,Dim the display at night,Display nachts abdunkeln
 Dim until,"App, Settings",translated,,Dim until,Abdunkeln bis
@@ -141,9 +141,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,Settings: Providers,translated,,Enable…,Aktivieren…
 Erase,Statistics,needs_review,,Erase,Löschen
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik löschen?
-Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,App,translated,,Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.,Jeder Sitzungswechsel und jedes Hook-Signal erhält jetzt eine Zeile im lokalen Diagnoseprotokoll. Nichts wird von deinem Mac gesendet.
-Finished,"App, Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
-"Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.",App,translated,,"Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.","Beendete Sitzungen werden jetzt innerhalb weniger Sekunden still und bleiben es auch. Nach Neustarts bleiben keine alten Zeilen zurück, der Status springt nicht wieder auf Working, und die Leerlaufzeit beginnt dort, wo die Sitzung tatsächlich still geworden ist."
+Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
 Free,Settings: About,translated,,Free,Kostenlos
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,Allgemein
@@ -156,9 +154,7 @@ Holding on a little longer in case more work arrives.,Panel,needs_review,,Waitin
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,"Wie lange Belay wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Wie lange der Mac wach bleibt
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Untätig
-"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.",App,translated,,"If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.","Wenn Codex mitten in einem Turn beendet wird oder abstürzt, erkennt Belay, dass der Prozess nicht mehr läuft, und lässt den Mac innerhalb weniger Sekunden wieder los, statt die Wiederholungsfrist abzuwarten."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,"Er braucht eine Antwort, um weiterzumachen."
-"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.",App,translated,,"It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.","Er merkt sich jetzt deine vorherige Einstellung für den Ruhezustand und stellt genau sie wieder her. Wenn du disablesleep selbst aktiviert hast, lässt Belay es unverändert."
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Absturzberichte auf diesem Mac behalten
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Mit geschlossenem Deckel weiterarbeiten
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Hält deinen Mac wach
@@ -167,7 +163,6 @@ Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac 
 Kept awake for %@ since Belay started,Panel,translated,%@,Kept awake for %@ since launch,Seit dem Start für %@ wach gehalten
 LAST 14 DAYS,Statistics,translated,,LAST 14 DAYS,LETZTE 14 TAGE
 Language,Settings: General,translated,,Language,Sprache
-Late signals after a turn ends no longer keep the Mac awake for five extra minutes.,(unused),translated,,Late signals after a turn ends no longer keep the Mac awake for five extra minutes.,Verspätete Signale nach dem Ende eines Turns halten den Mac nicht mehr fünf Minuten länger wach.
 Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,%@,Allow Belay to read %@ so it can tell when your agent is working.,"Erlaube Belay, %@ zu lesen, damit es erkennt, wann dein Agent arbeitet."
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,"Erlaube den Zugriff auf ~/.claude, damit Belay erkennt, wann Claude Code arbeitet."
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,"Erlaube Zugriff auf ~/.codex, damit Belay erkennt, wann Codex arbeitet."
@@ -214,11 +209,11 @@ Open Login Items…,Settings: General,translated,,Open Login Items…,Anmeldeobj
 Open Settings,Panel,translated,,Open Settings,Einstellungen öffnen
 Open at login,"Settings, Settings: General",translated,,Open at login,Beim Anmelden öffnen
 Open the App Store,Settings: General,translated,,Open the App Store,App Store öffnen
-Opening Codex no longer floods the panel with sessions.,(unused),translated,,Opening Codex no longer floods the panel with sessions.,Das Öffnen von Codex füllt das Panel nicht mehr mit unnötigen Sitzungen.
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,"Öffnet die macOS-Ordnerauswahl, damit du Zugriff erlauben kannst"
 Other agents,"App, Settings: Providers",translated,,Other agents,Weitere Agenten
 Other tools,Settings: Providers,translated,,Other tools,Weitere Werkzeuge
 Paused at your time limit.,Panel,translated,,Paused at your time limit.,Pausiert: Zeitlimit erreicht.
+"Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.",App,translated,,"Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.","Wähle unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh dem Countdown zu. Läuft er ab oder pausiert das Zeitlimit, hält ein Klick wieder wach."
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Oberflächentöne abspielen
 Play sounds,Settings: General,needs_review,,Play sounds,Töne abspielen
 Precise detection,Settings: Providers,translated,,Precise detection,Präzise Erkennung
@@ -264,15 +259,16 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Bei niedrigem Akku stoppen
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Beendet die Überwachung dieses Tools
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagent
+Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height.,App,translated,,Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height.,"Fahre mit dem Zeiger über die letzten vierzehn Tage, und jeder Balken schlägt eine Note an, deren Höhe seiner Höhe folgt."
 System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,System
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,"Der App Store hält Belay aktuell und sagt dir, wenn eine neue Version bereit ist. Belay selbst verbindet sich nie ins Internet."
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Der Mac wurde mit geschlossenem Deckel zu warm, also hat Belay ihn schlafen lassen."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Der Agent in %@ hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Der Agent hat aufgehört, ohne fertig zu werden. Möglicherweise ist eine erneute Anmeldung nötig."
-The closed-lid time limit is no longer affected by changes to the system clock.,(unused),translated,,The closed-lid time limit is no longer affected by changes to the system clock.,Das Zeitlimit bei geschlossenem Deckel wird nicht mehr von Änderungen an der Systemuhr beeinflusst.
+The chart plays its outline,App,translated,,The chart plays its outline,Das Diagramm spielt seine Silhouette
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Was Belay hinzufügen wird
-The lid helper restores what it changed,App,translated,,The lid helper restores what it changed,Der Deckel-Helfer stellt den vorherigen Zustand wieder her
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Das Halten bei geschlossenem Deckel hat sein Zeitlimit erreicht, also hat Belay den Mac schlafen lassen."
+"The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.",App,translated,,"The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.","Die Modus-Pille gleitet für sich, nichts springt, wenn die Timer-Zeile erscheint, und ein Klick irgendwo sonst schließt das Panel."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,Der Lauf in %@ hat %@ gedauert. Dein Mac kann wieder normal schlafen.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,Der Lauf hat %@ gedauert. Dein Mac kann wieder normal schlafen.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Der Server hat %lld zurückgegeben.
@@ -297,13 +293,14 @@ Watches Codex's session files to tell when a turn is running.,Settings: Provider
 Website,Settings: About,translated,,Website,Website
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Willkommen
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Willkommen bei %@
-What's New,"App, Menu bar",translated,,What's New,Neuerungen
+What's New,"App, Menu bar, Welcome",translated,,What's New,Neuerungen
 "Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.",Settings,translated,,"Whatever was on screen becomes shapes rather than words, so a glance from across the room shows nothing.","Was auf dem Bildschirm war, wird zu Formen statt Wörtern, sodass ein Blick von der anderen Seite des Raums nichts verrät."
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Wenn Belay aus Sicherheitsgründen stoppt
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Wenn eine lange Aufgabe fertig ist
 When a new version is out,Settings: Notifications,translated,,When a new version is out,Wenn eine neue Version da ist
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Wenn ein Agent verstummt
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Wenn ein Agent dich braucht
+"When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.",App,translated,,"When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.","Wenn der Dimmer das Display abdunkelt, wird der Bildschirm mattiert und der Countdown leuchtet in der Mitte. Beides sind Schalter neben den Dimm-Einstellungen."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Wenn die Arbeit endet, schläft dein Mac wie immer. Deine Energieeinstellungen bleiben unangetastet."
 "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",Settings,translated,,"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.","Wenn du nachts weggehst und macOS das Display ausgeschaltet hätte, dunkelt Belay es stattdessen auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
 "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.","Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab, statt macOS es ausschalten zu lassen, was im Akkubetrieb derzeit nach %lld Min. passiert. Kommst du zurück, wird es wieder hell."

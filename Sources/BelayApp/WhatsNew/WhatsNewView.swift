@@ -16,8 +16,8 @@ struct WhatsNewView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.openURL) private var openURL
 
-    static let width: CGFloat = 600
-    static let margin: CGFloat = 50
+    static let width: CGFloat = 500
+    static let margin: CGFloat = 40
     /// The icon column and the gap after it: every title starts at x = 97.
     static let iconColumn: CGFloat = 30
     static let iconGap: CGFloat = 17
@@ -40,7 +40,7 @@ struct WhatsNewView: View {
                         .foregroundStyle(.white)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 6)
-                        .background(RoundedRectangle(cornerRadius: 8, style: .continuous).fill(Self.pill))
+                        .background(Capsule(style: .continuous).fill(Self.pill))
                         .padding(.top, 16)
                     list(note)
                         .padding(.top, 22)
@@ -107,7 +107,7 @@ struct WhatsNewView: View {
     private var footer: some View {
         HStack(spacing: 22) {
             Button("Sounds Good!", action: onDismiss)
-                .buttonStyle(MagicButtonStyle())
+                .buttonStyle(MagicButtonStyle(scale: 1.2))
                 .keyboardShortcut(.defaultAction)
             Button {
                 if let url = Branding.repositoryURL?.appendingPathComponent("blob/main/CHANGELOG.md") {
@@ -143,7 +143,7 @@ private struct WhatsNewRow: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
-                    .font(.system(size: 17, weight: .semibold))
+                    .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(.white)
                 Text(item.body)
                     .font(.system(size: 13))

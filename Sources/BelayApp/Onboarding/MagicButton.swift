@@ -11,12 +11,19 @@ import SwiftUI
 /// The wand lives here rather than in the string, so every language gets it
 /// without six translations having to agree about where an icon goes.
 struct MagicButtonStyle: ButtonStyle {
+    /// How much bigger than the welcome screen's button. The What's New card
+    /// asks for 1.2: on a card with no second button to match, the one
+    /// button gets to be the size of a button.
+    var scale: CGFloat = 1
+
     /// Somebody who has asked macOS for less motion gets the same button,
     /// standing still. It is still the coloured one, so it is still the answer.
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     func makeBody(configuration: Configuration) -> some View {
-        Face(label: configuration.label, pressed: configuration.isPressed, animated: !reduceMotion)
+        Face(
+            label: configuration.label, pressed: configuration.isPressed, animated: !reduceMotion,
+            scale: scale)
     }
 }
 
@@ -26,6 +33,7 @@ private struct Face<Label: View>: View {
     let label: Label
     let pressed: Bool
     let animated: Bool
+    var scale: CGFloat = 1
 
     /// 30 a second. The breathing is slow and the sparks are small; the
     /// difference against the display's own rate is not visible at this size,
@@ -59,18 +67,18 @@ private struct Face<Label: View>: View {
     private func face(at time: Double?) -> some View {
         let swell = time.map { (sin($0 * 2 * .pi / Self.breath) + 1) / 2 } ?? 1
 
-        return HStack(spacing: 7) {
+        return HStack(spacing: 7 * scale) {
             Image(systemName: "wand.and.stars")
-                .font(.system(size: 12, weight: .semibold))
+                .font(.system(size: 12 * scale, weight: .semibold))
             label
         }
         // Sized to the button beside it, not to itself. A primary action that
         // is also physically larger than the secondary one reads as a different
         // kind of control, and the row stops looking like a row.
-        .font(.system(size: 13, weight: .semibold))
+        .font(.system(size: 13 * scale, weight: .semibold))
         .foregroundStyle(.white)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 7.5)
+        .padding(.horizontal, 16 * scale)
+        .padding(.vertical, 7.5 * scale)
         .background {
             Capsule(style: .continuous)
                 .fill(Color.accentColor)

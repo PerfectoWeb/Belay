@@ -14526,523 +14526,6 @@
         }
       }
     },
-    "Belay stays in sync": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay stays in sync"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay быстрее начал определять процессы"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Panel bleibt auf dem aktuellen Stand"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El panel se mantiene al día"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le panneau reste bien synchronisé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il pannello resta aggiornato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "面板现在会保持同步"
-          }
-        }
-      }
-    },
-    "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finished turns now go quiet within seconds and stay that way. No stale rows after restarts, no jumping back to Working, and the idle timer starts when the session actually goes quiet."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Завершённые сессии затихают за несколько секунд и больше не появляются снова. После перезапуска больше не остаются idle сессии от Codex, а время простоя считается с момента, когда сессия действительно затихла."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beendete Sitzungen werden jetzt innerhalb weniger Sekunden still und bleiben es auch. Nach Neustarts bleiben keine alten Zeilen zurück, der Status springt nicht wieder auf Working, und die Leerlaufzeit beginnt dort, wo die Sitzung tatsächlich still geworden ist."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las sesiones terminadas quedan inactivas en pocos segundos y permanecen así. Ya no quedan filas antiguas después de reiniciar, el estado no vuelve solo a Working y el tiempo de inactividad empieza cuando la sesión realmente queda en silencio."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les sessions terminées deviennent silencieuses en quelques secondes et le restent. Plus de lignes obsolètes après un redémarrage, plus de retour inattendu à Working, et le temps d’inactivité commence au moment où la session devient réellement silencieuse."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le sessioni concluse diventano inattive in pochi secondi e restano così. Dopo un riavvio non rimangono righe obsolete, lo stato non torna da solo su Working e il tempo di inattività parte dal momento in cui la sessione si ferma davvero."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已结束的会话会在几秒内安静下来，并保持这一状态。重启后不会再留下过期的条目，状态也不会无故跳回 Working，空闲时间会从会话真正安静下来的那一刻开始计算。"
-          }
-        }
-      }
-    },
-    "Codex crashes no longer linger": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex crashes no longer linger"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сбой Codex больше не задерживает Mac"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex-Abstürze halten Belay nicht mehr auf"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Los fallos de Codex ya no hacen esperar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les plantages de Codex ne font plus attendre Belay"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I crash di Codex non fanno più aspettare Belay"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex 崩溃后不会再多等"
-          }
-        }
-      }
-    },
-    "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If Codex quits or crashes mid-turn, Belay notices the process is gone and lets go within seconds instead of waiting through the retry grace period."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если Codex закрывается или падает посреди работы, Belay замечает, что процесса больше нет, и отпускает Mac через несколько секунд вместо ожидания периода повторных попыток."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Codex mitten in einem Turn beendet wird oder abstürzt, erkennt Belay, dass der Prozess nicht mehr läuft, und lässt den Mac innerhalb weniger Sekunden wieder los, statt die Wiederholungsfrist abzuwarten."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Codex se cierra o falla a mitad de un turno, Belay detecta que el proceso ya no está activo y deja de mantener el Mac despierto en pocos segundos, en lugar de esperar todo el periodo de reintento."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Codex quitte ou plante en plein tour, Belay détecte que le processus n’est plus actif et relâche le Mac en quelques secondes au lieu d’attendre toute la période de nouvelle tentative."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se Codex si chiude o va in crash a metà turno, Belay rileva che il processo non è più attivo e lascia andare il Mac in pochi secondi invece di attendere tutto il periodo di tentativo."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果 Codex 在轮次中途退出或崩溃，Belay 会发现进程已经结束，并在几秒内放开 Mac，而不是继续等待整个重试宽限期。"
-          }
-        }
-      }
-    },
-    "The lid helper restores what it changed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The lid helper restores what it changed"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Помощник Belay актуализирует состояния"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Deckel-Helfer stellt den vorherigen Zustand wieder her"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El ayudante de la tapa restaura lo que cambió"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le service du capot restaure ce qu’il a modifié"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’helper del coperchio ripristina ciò che ha cambiato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖帮助程序会恢复原来的设置"
-          }
-        }
-      }
-    },
-    "It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "It now remembers your previous sleep setting and puts exactly that back. If you enabled disablesleep yourself, Belay leaves it alone."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Теперь он запоминает прежнюю настройку сна и восстанавливает именно её. Если вы включили disablesleep сами, Belay его не трогает."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Er merkt sich jetzt deine vorherige Einstellung für den Ruhezustand und stellt genau sie wieder her. Wenn du disablesleep selbst aktiviert hast, lässt Belay es unverändert."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ahora recuerda tu ajuste de reposo anterior y restaura exactamente ese valor. Si activaste disablesleep por tu cuenta, Belay no lo modifica."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il mémorise désormais votre réglage de veille précédent et le rétablit exactement. Si vous avez activé disablesleep vous-même, Belay n’y touche pas."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ora ricorda l’impostazione di stop precedente e ripristina esattamente quella. Se hai attivato disablesleep tu stesso, Belay non lo modifica."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "它现在会记住之前的睡眠设置，并准确恢复。如果 disablesleep 是你自己启用的，Belay 不会改动它。"
-          }
-        }
-      }
-    },
-    "Diagnostics record every change": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diagnostics record every change"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Полезная диагностика"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Diagnose protokolliert jede Änderung"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El diagnóstico registra cada cambio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le diagnostic enregistre chaque changement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La diagnostica registra ogni cambiamento"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "诊断会记录每次变化"
-          }
-        }
-      }
-    },
-    "Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every session transition and hook signal now gets one line in the local diagnostics log. Nothing is sent off your Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Каждый переход сессии и каждый сигнал хука теперь записываются одной строкой в локальный журнал диагностики. С вашего Mac ничего не отправляется."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jeder Sitzungswechsel und jedes Hook-Signal erhält jetzt eine Zeile im lokalen Diagnoseprotokoll. Nichts wird von deinem Mac gesendet."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cada cambio de estado de una sesión y cada señal de hook añaden ahora una línea al registro local de diagnóstico. No se envía nada fuera de tu Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chaque changement d’état d’une session et chaque signal de hook ajoutent désormais une ligne au journal de diagnostic local. Rien n’est envoyé depuis votre Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ogni cambio di stato di una sessione e ogni segnale di hook aggiungono ora una riga al registro diagnostico locale. Nulla viene inviato dal tuo Mac."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每次会话状态变化和每个钩子信号现在都会在本地诊断日志中记录一行。不会从你的 Mac 发送任何内容。"
-          }
-        }
-      }
-    },
-    "Late signals after a turn ends no longer keep the Mac awake for five extra minutes.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Late signals after a turn ends no longer keep the Mac awake for five extra minutes."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Запоздалые сигналы после завершения работы больше не держат Mac лишние пять минут."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verspätete Signale nach dem Ende eines Turns halten den Mac nicht mehr fünf Minuten länger wach."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las señales tardías después de terminar un turno ya no mantienen el Mac despierto cinco minutos de más."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les signaux tardifs après la fin d’un tour ne gardent plus le Mac éveillé cinq minutes de trop."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I segnali in ritardo dopo la fine di un turno non tengono più sveglio il Mac per cinque minuti in più."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "轮次结束后的延迟信号不会再让 Mac 多保持唤醒五分钟。"
-          }
-        }
-      }
-    },
-    "Opening Codex no longer floods the panel with sessions.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opening Codex no longer floods the panel with sessions."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Открытие Codex больше не заполняет панель лишними сессиями."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Öffnen von Codex füllt das Panel nicht mehr mit unnötigen Sitzungen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir Codex ya no llena el panel de sesiones innecesarias."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir Codex ne remplit plus le panneau de sessions inutiles."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aprire Codex non riempie più il pannello di sessioni inutili."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "打开 Codex 不会再让面板出现大量无关会话。"
-          }
-        }
-      }
-    },
-    "The closed-lid time limit is no longer affected by changes to the system clock.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The closed-lid time limit is no longer affected by changes to the system clock."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Лимит времени при закрытой крышке больше не зависит от изменений системных часов."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Zeitlimit bei geschlossenem Deckel wird nicht mehr von Änderungen an der Systemuhr beeinflusst."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El límite de tiempo con la tapa cerrada ya no se ve afectado por cambios en el reloj del sistema."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La limite de temps avec le capot fermé n’est plus affectée par les changements de l’horloge système."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il limite di tempo con il coperchio chiuso non risente più delle modifiche all’orologio di sistema."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖保持唤醒的时间上限不再受系统时钟变化影响。"
-          }
-        }
-      }
-    },
     "Staying awake until the timer below runs out.": {
       "extractionState": "manual",
       "localizations": {
@@ -16026,6 +15509,382 @@
           "stringUnit": {
             "state": "translated",
             "value": "更新说明"
+          }
+        }
+      }
+    },
+    "Always On, for as long as you say": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always On, for as long as you say"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Всегда» ровно столько, сколько скажете"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„Immer an“, so lange du willst"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siempre, el tiempo que tú digas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toujours, aussi longtemps que vous voulez"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sempre, per il tempo che decidi tu"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常开，时长由你决定"
+          }
+        }
+      }
+    },
+    "Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick fifteen minutes to twelve hours under the mode picker and watch it count down. When it runs out, or the time limit pauses a hold, one click holds again."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите от 15 минут до 12 часов под переключателем режимов и смотрите обратный отсчёт. Когда время выйдет или лимит поставит удержание на паузу, один клик возобновит его."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh dem Countdown zu. Läuft er ab oder pausiert das Zeitlimit, hält ein Klick wieder wach."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige de 15 minutos a 12 horas bajo el selector de modo y mira la cuenta atrás. Cuando termine, o el límite de tiempo pause la retención, un clic vuelve a mantener."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisissez de 15 minutes à 12 heures sous le sélecteur de mode et suivez le compte à rebours. Quand il se termine, ou que la limite de temps met en pause, un clic reprend."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scegli da 15 minuti a 12 ore sotto il selettore di modalità e guarda il conto alla rovescia. Quando finisce, o il limite di tempo mette in pausa, un clic riprende."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在模式选择器下方选择 15 分钟到 12 小时，看着倒计时走完。时间用尽或时间上限暂停保持时，点一下即可继续。"
+          }
+        }
+      }
+    },
+    "A quieter night screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A quieter night screen"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спокойный ночной экран"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein ruhigerer Nachtbildschirm"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una pantalla nocturna más tranquila"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un écran de nuit plus discret"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uno schermo notturno più tranquillo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更安静的夜间屏幕"
+          }
+        }
+      }
+    },
+    "When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the dimmer takes the display down, the screen frosts over and the countdown glows in the middle of it. Both are switches beside the dimming controls."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда диммер приглушает дисплей, экран покрывается матовой дымкой, а посередине светится обратный отсчёт. Оба переключателя рядом с настройками затемнения."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn der Dimmer das Display abdunkelt, wird der Bildschirm mattiert und der Countdown leuchtet in der Mitte. Beides sind Schalter neben den Dimm-Einstellungen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando el atenuador baja la pantalla, esta se vuelve esmerilada y la cuenta atrás brilla en el centro. Ambos son interruptores junto a los controles de atenuación."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand l'assombrissement baisse l'écran, celui-ci se givre et le compte à rebours luit au milieu. Les deux sont des interrupteurs à côté des réglages d'assombrissement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando l'attenuazione abbassa lo schermo, questo si smeriglia e il conto alla rovescia brilla al centro. Entrambi sono interruttori accanto ai controlli di attenuazione."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗器降低显示器亮度时，屏幕会蒙上磨砂效果，倒计时在中央发光。这两项都是调暗设置旁的开关。"
+          }
+        }
+      }
+    },
+    "The chart plays its outline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The chart plays its outline"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "График звучит"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Diagramm spielt seine Silhouette"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El gráfico toca su silueta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le graphique joue sa silhouette"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il grafico suona il suo profilo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图表会奏出它的轮廓"
+          }
+        }
+      }
+    },
+    "Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проведите курсором по последним четырнадцати дням: каждый столбик берёт ноту, высота которой зависит от его высоты."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fahre mit dem Zeiger über die letzten vierzehn Tage, und jeder Balken schlägt eine Note an, deren Höhe seiner Höhe folgt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasa el cursor por los últimos catorce días y cada barra toca una nota según su altura."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passez le curseur sur les quatorze derniers jours et chaque barre joue une note à la hauteur de sa taille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passa il cursore sugli ultimi quattordici giorni e ogni barra suona una nota intonata alla sua altezza."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把光标划过最近十四天，每根柱子都会按自己的高度奏出一个音。"
+          }
+        }
+      }
+    },
+    "A steadier panel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A steadier panel"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Панель стоит ровно"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein ruhigeres Panel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un panel más estable"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un panneau plus stable"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un pannello più stabile"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更稳的面板"
+          }
+        }
+      }
+    },
+    "The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The mode pill slides on its own, nothing jumps when the timer row appears, and a click anywhere else closes the panel."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пилюля режима скользит сама по себе, ничего не дёргается при появлении строки таймера, а клик в любом другом месте закрывает панель."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Modus-Pille gleitet für sich, nichts springt, wenn die Timer-Zeile erscheint, und ein Klick irgendwo sonst schließt das Panel."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La píldora de modo se desliza sola, nada salta cuando aparece la fila del temporizador y un clic en cualquier otro sitio cierra el panel."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pastille de mode glisse seule, rien ne saute quand la ligne du minuteur apparaît, et un clic ailleurs ferme le panneau."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pillola della modalità scorre da sola, nulla salta quando compare la riga del timer e un clic altrove chiude il pannello."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模式胶囊自行滑动，计时器行出现时不会跳动，点击其他任意位置即可关闭面板。"
           }
         }
       }

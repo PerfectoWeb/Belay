@@ -88,37 +88,35 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.3.3",
+                version: "1.4.0",
                 items: [
                     .init(
+                        symbol: Mark.timer,
+                        title: "Always On, for as long as you say",
+                        body: """
+                            Pick fifteen minutes to twelve hours under the mode picker and watch it count \
+                            down. When it runs out, or the time limit pauses a hold, one click holds again.
+                            """),
+                    .init(
+                        symbol: Mark.night,
+                        title: "A quieter night screen",
+                        body: """
+                            When the dimmer takes the display down, the screen frosts over and the countdown \
+                            glows in the middle of it. Both are switches beside the dimming controls.
+                            """),
+                    .init(
+                        symbol: Mark.chart,
+                        title: "The chart plays its outline",
+                        body: """
+                            Sweep the cursor across the last fourteen days and every bar strikes a note \
+                            pitched by its height.
+                            """),
+                    .init(
                         symbol: Mark.toggle,
-                        title: "Belay stays in sync",
+                        title: "A steadier panel",
                         body: """
-                            Finished turns now go quiet within seconds and stay that way. No stale rows \
-                            after restarts, no jumping back to Working, and the idle timer starts when the \
-                            session actually goes quiet.
-                            """),
-                    .init(
-                        symbol: Mark.code,
-                        title: "Codex crashes no longer linger",
-                        body: """
-                            If Codex quits or crashes mid-turn, Belay notices the process is gone and lets \
-                            go within seconds instead of waiting through the retry grace period.
-                            """),
-                    .init(
-                        symbol: Mark.laptop,
-                        title: "The lid helper restores what it changed",
-                        body: """
-                            It now remembers your previous sleep setting and puts exactly that back. If you \
-                            enabled disablesleep yourself, Belay leaves it alone.
-                            """,
-                        directOnly: true),
-                    .init(
-                        symbol: Mark.trace,
-                        title: "Diagnostics record every change",
-                        body: """
-                            Every session transition and hook signal now gets one line in the local \
-                            diagnostics log. Nothing is sent off your Mac.
+                            The mode pill slides on its own, nothing jumps when the timer row appears, and a \
+                            click anywhere else closes the panel.
                             """)
                 ]
             )
