@@ -65,7 +65,7 @@ public actor CodexProvider: ActivityProvider {
         switch reach {
         case .ready:
             break
-        case .noSessionsYet:
+        case .noSessionsYet, .notInstalled:
             throw ProviderError.notInUseYet(path: configuration.sessionsDirectory.path)
         case .noAccess:
             throw ProviderError.accessNotGranted(path: configuration.sessionsDirectory.path)

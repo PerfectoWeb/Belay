@@ -114,7 +114,7 @@ final class AppStateCallbackTests: XCTestCase {
 
         for callback in [
             "onModeChange", "onOpenSettings", "onGrantAccess", "onChange",
-            "onTimerChange", "onHoldAgain"
+            "onTimerChange", "onHoldAgain", "onToggleProvider"
         ] {
             XCTAssertTrue(
                 wiring.contains("\(callback) ="),

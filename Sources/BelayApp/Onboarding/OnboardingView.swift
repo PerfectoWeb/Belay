@@ -18,6 +18,10 @@ struct OnboardingView: View {
     let providerReady: Bool
     let onGrantAccess: () -> Void
     let onDismiss: () -> Void
+    /// "Start Magic": the screen closes and Settings opens on Providers, so
+    /// the first thing after the welcome is the two switches that decide what
+    /// gets watched. Skip closes and opens nothing.
+    var onStart: () -> Void = {}
 
     /// Whether the screen has arrived. False for exactly one frame.
     ///
@@ -118,7 +122,7 @@ struct OnboardingView: View {
                 // "Start Magic". A key here is not the text it displays, and
                 // renaming one would rename it in five other languages that
                 // still say "start watching" and mean it.
-                Button("Start watching", action: onDismiss)
+                Button("Start watching", action: onStart)
                     .buttonStyle(MagicButtonStyle())
                     .keyboardShortcut(.defaultAction)
             } else {

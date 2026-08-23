@@ -1,0 +1,46 @@
+import BelayCore
+import BelayProviders
+import BelaySettings
+import Foundation
+
+/// The built-in agents' switches: what starts on, and what a toggle does.
+/// Beside `BelayController` for the file-length rule.
+extension BelayController {
+    /// A built-in agent switched on or off from Settings. Switching one on
+    /// is also the moment to ask for its folder, if this build has to ask:
+    /// the person just said they want it watched.
+    func setProviderEnabled(_ provider: ProviderID, _ on: Bool) {
+        var set = settings.enabledProviders
+        if on { set.insert(provider) } else { set.remove(provider) }
+        settings.enabledProviders = set
+        Task { [providers, weak self] in
+            await providers.setEnabled(set)
+            await self?.publishProviderStatus()
+            guard on, let status = self?.state.providers.first(where: { $0.id == provider }),
+                case .needsSetup = status.availability
+            else { return }
+            self?.requestProviderAccess(provider)
+        }
+    }
+
+    static func detectBuiltIns(settings: SettingsStore) {
+        guard !settings.builtInsDetected else { return }
+        settings.builtInsDetected = true
+        #if !BELAY_MAS
+        let home = FileManager.default.homeDirectoryForCurrentUser
+        var set: Set<ProviderID> = []
+        if FileManager.default.fileExists(atPath: home.appendingPathComponent(".claude").path) {
+            set.insert(.claudeCode)
+        }
+        if FileManager.default.fileExists(atPath: home.appendingPathComponent(".codex").path) {
+            set.insert(.codex)
+        }
+        settings.enabledProviders = set
+        #endif
+    }
+
+    func updateGenericTargets(_ targets: [GenericTarget]) {
+        Task { [providers] in await providers.updateTargets(targets) }
+    }
+
+}

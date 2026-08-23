@@ -61,7 +61,9 @@ public actor ClaudeCodeProvider: ActivityProvider {
         switch reach {
         case .ready:
             break
-        case .noProjectsYet:
+        // Not installed is "not in use yet" for the purposes of starting:
+        // nothing to watch, nothing to grant, try again when asked.
+        case .noProjectsYet, .notInstalled:
             throw ProviderError.notInUseYet(path: configuration.projectsDirectory.path)
         case .noAccess:
             throw ProviderError.accessNotGranted(path: configuration.projectsDirectory.path)

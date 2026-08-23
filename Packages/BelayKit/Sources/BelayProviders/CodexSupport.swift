@@ -42,11 +42,15 @@ extension CodexProvider {
     /// Code split: "not used yet" must never be told to grant a folder again.
     enum Reach {
         case ready
+        case notInstalled
         case noSessionsYet
         case noAccess
     }
 
     var reach: Reach {
+        if access.isKnownMissing(configuration.sessionsDirectory.deletingLastPathComponent()) {
+            return .notInstalled
+        }
         if access.hasAccess(to: configuration.sessionsDirectory) { return .ready }
         if access.hasAccess(to: configuration.sessionsDirectory.deletingLastPathComponent()) {
             return .noSessionsYet
@@ -58,6 +62,9 @@ extension CodexProvider {
         switch reach {
         case .ready:
             return .ready
+        case .notInstalled:
+            return .unavailable(
+                String(localized: "Codex is not installed on this Mac.", bundle: .main))
         case .noSessionsYet:
             return .unavailable(
                 String(

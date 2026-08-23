@@ -158,6 +158,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem: StatusItemController, controller: BelayController
     ) {
         let onboarding = OnboardingWindow(settings: settings)
+        onboarding.onStart = { [weak settingsWindow] in settingsWindow?.show(pane: .providers) }
         onboarding.presentIfNeeded(providerReady: true) { [weak controller] in
             controller?.requestProviderAccess(.claudeCode)
         }

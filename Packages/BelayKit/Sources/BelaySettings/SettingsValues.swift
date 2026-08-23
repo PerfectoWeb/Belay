@@ -34,6 +34,10 @@ struct SettingsValues: Equatable, Sendable {
     var notifyOnSafetyRelease: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
+    /// Whether the built-in agents have been switched on from what is
+    /// actually installed. Done once, on the first launch that can look; the
+    /// user's own toggling is never overridden afterwards.
+    var builtInsDetected: Bool
 
     /// Dim the screen at night while holding. Off by default: nobody expects
     /// their utility to touch the display until they ask it to.
@@ -85,6 +89,7 @@ extension SettingsValues {
         notifyOnSafetyRelease = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]
+        builtInsDetected = false
         nightDimming = false
         // Ten in the evening to ten in the morning: wide enough to cover
         // every overnight run and a late start, and both ends are a picker

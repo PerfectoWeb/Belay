@@ -23,18 +23,26 @@ struct ClaudeCodeProviderTests {
     func availability() async throws {
         #expect(await provider().availability == .ready)
 
-        // Nested, so the *parent* is unreachable too. A path whose parent is
-        // readable now means "Claude Code has not opened a project yet", which
-        // is a different answer and has its own suite.
-        let absent = ClaudeCodeProvider.Configuration(
-            projectsDirectory: URL(fileURLWithPath: "/nope-\(UUID().uuidString)/projects"),
-            sessionsDirectory: scratch.sessions)
-        let blind = ClaudeCodeProvider(configuration: absent)
+        // A folder the build cannot read — the sandbox before a grant — is
+        // a permission problem and says so.
+        let blind = ClaudeCodeProvider(configuration: scratch.configuration, access: DeniedFileAccess())
         guard case .needsSetup = await blind.availability else {
             Issue.record("expected needsSetup when the folder is unreadable")
             return
         }
         await #expect(throws: ProviderError.self) { try await blind.start() }
+
+        // A folder that is simply not there, seen by a build that can tell,
+        // is "not installed": a fact to report, not a grant to ask for. The
+        // first tester without Codex was asked for ~/.codex by the old rule.
+        let absent = ClaudeCodeProvider.Configuration(
+            projectsDirectory: URL(fileURLWithPath: "/nope-\(UUID().uuidString)/projects"),
+            sessionsDirectory: scratch.sessions)
+        let missing = ClaudeCodeProvider(configuration: absent)
+        guard case .unavailable = await missing.availability else {
+            Issue.record("expected unavailable when the folder does not exist")
+            return
+        }
     }
 
     @Test("Old transcripts are seeded at EOF and stay silent at launch")

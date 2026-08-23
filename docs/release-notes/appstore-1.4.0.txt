@@ -1,0 +1,85 @@
+App Store "What's New in This Version" — Belay 1.4.0
+
+--- EN ---
+
+Keep your Mac awake for a set time. Choose 15 minutes to 12 hours under the mode picker. Belay shows the time left and lets your Mac sleep when it runs out.
+
+Resume with one click. When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.
+
+See the countdown on a dimmed screen. When the display dims at night, the time remaining appears in the centre of the screen.
+
+Hear your week. Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.
+
+Also: Claude Code and Codex each have a switch in Settings, the dimming setting says when it actually dims, and the What's New window is a card.
+
+--- RU ---
+
+Не давайте Mac уснуть заданное время. Выберите от 15 минут до 12 часов под переключателем режимов. Belay показывает оставшееся время и даёт Mac уснуть, когда оно выйдет.
+
+Возобновляйте одним кликом. Когда таймер или ваш лимит бодрствования завершает удержание, панель сообщает об этом и предлагает «Держать снова». Разблокировка Mac возобновляет его автоматически.
+
+Обратный отсчёт на затемнённом экране. Когда дисплей приглушается ночью, оставшееся время появляется в центре экрана.
+
+Послушайте свою неделю. Проведите указателем по графику в Статистике, и каждый день сыграет ноту. Чем загруженнее день, тем выше звук.
+
+А также: у Claude Code и Codex появились переключатели в настройках, описание затемнения говорит, когда оно на самом деле срабатывает, а окно «Что нового» стало карточкой.
+
+--- DE ---
+
+Den Mac eine bestimmte Zeit wach halten. Wähle unter dem Modusschalter 15 Minuten bis 12 Stunden. Belay zeigt die verbleibende Zeit und lässt den Mac schlafen, wenn sie abgelaufen ist.
+
+Mit einem Klick fortsetzen. Beendet ein Timer oder dein Wachlimit das Wachhalten, sagt das Panel Bescheid und bietet „Erneut wachhalten“ an. Das Entsperren des Macs setzt es automatisch fort.
+
+Den Countdown auf dem abgedunkelten Bildschirm sehen. Wenn sich das Display nachts abdunkelt, erscheint die verbleibende Zeit in der Mitte des Bildschirms.
+
+Hör dir deine Woche an. Bewege den Zeiger über das Diagramm in der Statistik, und jeder Tag spielt eine Note. Vollere Tage klingen höher.
+
+Außerdem: Claude Code und Codex haben jetzt je einen Schalter in den Einstellungen, die Dimm-Einstellung sagt, wann sie wirklich abdunkelt, und das „Neu“-Fenster ist eine Karte.
+
+--- ES ---
+
+Mantén tu Mac despierto un tiempo fijo. Elige de 15 minutos a 12 horas bajo el selector de modo. Belay muestra el tiempo restante y deja dormir el Mac cuando se acaba.
+
+Reanuda con un clic. Cuando un temporizador o tu límite despierto termina una retención, el panel te avisa y ofrece Mantener otra vez. Desbloquear el Mac la reanuda automáticamente.
+
+Mira la cuenta atrás en la pantalla atenuada. Cuando la pantalla se atenúa por la noche, el tiempo restante aparece en el centro de la pantalla.
+
+Escucha tu semana. Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días más llenos suenan más agudos.
+
+Además: Claude Code y Codex tienen cada uno un interruptor en Ajustes, el ajuste de atenuación dice cuándo atenúa de verdad y la ventana de novedades es una tarjeta.
+
+--- FR ---
+
+Gardez votre Mac éveillé pendant une durée définie. Choisissez de 15 minutes à 12 heures sous le sélecteur de mode. Belay affiche le temps restant et laisse le Mac se mettre en veille quand il est écoulé.
+
+Reprenez d'un clic. Quand un minuteur ou votre limite d'éveil met fin au maintien, le panneau vous prévient et propose Maintenir encore. Déverrouiller le Mac le reprend automatiquement.
+
+Voyez le compte à rebours sur l'écran assombri. Quand l'écran s'assombrit la nuit, le temps restant apparaît au centre de l'écran.
+
+Écoutez votre semaine. Passez le pointeur sur le graphique des Statistiques et chaque jour joue une note. Les jours chargés sonnent plus haut.
+
+Également : Claude Code et Codex ont chacun un interrupteur dans les Réglages, le réglage d'assombrissement indique quand il agit réellement, et la fenêtre des nouveautés est une carte.
+
+--- IT ---
+
+Tieni sveglio il Mac per un tempo stabilito. Scegli da 15 minuti a 12 ore sotto il selettore di modalità. Belay mostra il tempo rimanente e lascia che il Mac vada in stop quando finisce.
+
+Riprendi con un clic. Quando un timer o il tuo limite di veglia termina il mantenimento, il pannello te lo dice e propone Mantieni ancora. Sbloccare il Mac lo riprende automaticamente.
+
+Vedi il conto alla rovescia sullo schermo oscurato. Quando lo schermo si attenua di notte, il tempo rimanente appare al centro dello schermo.
+
+Ascolta la tua settimana. Passa il puntatore sul grafico nelle Statistiche e ogni giorno suona una nota. I giorni più pieni suonano più acuti.
+
+Inoltre: Claude Code e Codex hanno ciascuno un interruttore nelle Impostazioni, l'impostazione di attenuazione dice quando attenua davvero, e la finestra delle novità è una scheda.
+
+--- ZH ---
+
+让 Mac 保持唤醒一段设定的时间。在模式选择器下方选择 15 分钟到 12 小时。Belay 会显示剩余时间，时间用完后让 Mac 进入睡眠。
+
+一键继续。计时器或唤醒上限结束保持时，面板会提示并提供「继续保持」。解锁 Mac 会自动继续。
+
+在调暗的屏幕上查看倒计时。夜间显示器调暗时，剩余时间会显示在屏幕中央。
+
+听听你的一周。把指针划过「统计」中的图表，每一天都会奏出一个音。越忙的日子音越高。
+
+另外：Claude Code 与 Codex 在设置中各有一个开关，调暗设置会说明何时真正调暗，「新功能」窗口变成了卡片。

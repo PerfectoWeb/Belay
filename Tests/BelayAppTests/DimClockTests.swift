@@ -106,7 +106,13 @@ final class ProvidersPaneFrameTests: XCTestCase {
                 descriptor: ProviderDescriptor(
                     id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
                     supportsPreciseDetection: false),
-                availability: .needsSetup("Grant access to ~/.codex"), isEnabled: true, lastSignal: nil),
+                availability: .needsSetup("Let Belay read your ~/.codex folder so it can tell when Codex is working."),
+                isEnabled: true, lastSignal: nil),
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .generic, displayName: "Other agents", summary: "", symbolName: "folder",
+                    supportsPreciseDetection: false),
+                availability: .needsSetup("Add a folder"), isEnabled: false, lastSignal: nil),
         ])
         let view = VStack(alignment: .leading) {
             ProvidersSettingsPane(state: app, precise: PreciseDetection(), targets: [], onTargetsChanged: { _ in })

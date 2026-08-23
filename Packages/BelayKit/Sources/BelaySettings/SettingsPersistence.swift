@@ -24,6 +24,7 @@ enum SettingsKey: String, CaseIterable {
     case launchAtLogin
     case soundEffects
     case hasCompletedOnboarding
+    case builtInsDetected
     /// The version whose release notes have been shown. Absent means nobody has
     /// ever been told, which is not the same as "has seen nothing new".
     case lastSeenVersion
@@ -129,6 +130,7 @@ extension SettingsValues {
         launchAtLogin = defaults.flag(.launchAtLogin) ?? fallback.launchAtLogin
         soundEffects = defaults.flag(.soundEffects) ?? fallback.soundEffects
         hasCompletedOnboarding = defaults.flag(.hasCompletedOnboarding) ?? fallback.hasCompletedOnboarding
+        builtInsDetected = defaults.flag(.builtInsDetected) ?? fallback.builtInsDetected
         // No fallback on purpose. `nil` is a state the caller has to handle:
         // an install that predates this key is not a new install.
         lastSeenVersion = defaults.text(.lastSeenVersion)
@@ -179,6 +181,7 @@ extension SettingsValues {
         defaults.store(launchAtLogin, .launchAtLogin)
         defaults.store(soundEffects, .soundEffects)
         defaults.store(hasCompletedOnboarding, .hasCompletedOnboarding)
+        defaults.store(builtInsDetected, .builtInsDetected)
         // Written only when there is one, so "never told" stays distinguishable
         // from "told about nothing".
         if let lastSeenVersion { defaults.store(lastSeenVersion, .lastSeenVersion) }

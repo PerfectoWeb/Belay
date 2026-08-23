@@ -92,31 +92,31 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.timer,
-                        title: "Always On, for as long as you say",
+                        title: "Keep your Mac awake for a set time",
                         body: """
-                            Pick fifteen minutes to twelve hours right under the mode picker and watch \
-                            the time count down. Belay lets go when it reaches zero.
+                            Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and \
+                            lets your Mac sleep when it runs out.
                             """),
                     .init(
                         symbol: Mark.safety,
-                        title: "A pause you can end with one click",
+                        title: "Resume with one click",
                         body: """
-                            When a timer or the maximum awake time stops a hold, the panel says so and \
-                            offers Hold again. Unlocking your Mac starts a fresh cycle on its own.
+                            When a timer or your awake limit ends a hold, the panel tells you and offers \
+                            Hold Again. Unlocking your Mac resumes it automatically.
                             """),
                     .init(
                         symbol: Mark.night,
-                        title: "The countdown on the dimmed screen",
+                        title: "See the countdown on a dimmed screen",
                         body: """
-                            When the night dimmer takes the display down, the remaining time glows in \
-                            large thin digits in the middle of it, like a bedside clock.
+                            When the display dims at night, the time remaining appears in the centre of \
+                            the screen.
                             """),
                     .init(
                         symbol: Mark.chart,
-                        title: "The chart plays its outline",
+                        title: "Hear your week",
                         body: """
-                            Sweep the cursor across the last fourteen days and every bar strikes a note \
-                            pitched by its height.
+                            Move the pointer across the chart in Statistics and each day plays a note. \
+                            Busier days sound higher.
                             """)
                 ]
             )

@@ -11,6 +11,9 @@ import SwiftUI
 final class OnboardingWindow: NSObject {
     private var window: NSWindow?
     private let settings: SettingsStore
+    /// Where "Start Magic" leads after the window closes: Settings, on the
+    /// Providers pane. Set by the app, which owns the Settings window.
+    var onStart: () -> Void = {}
 
     init(settings: SettingsStore) {
         self.settings = settings
@@ -42,7 +45,11 @@ final class OnboardingWindow: NSObject {
                 onGrantAccess()
                 self?.dismiss()
             },
-            onDismiss: { [weak self] in self?.dismiss() }
+            onDismiss: { [weak self] in self?.dismiss() },
+            onStart: { [weak self] in
+                self?.dismiss()
+                self?.onStart()
+            }
         )
 
         let window = PanelWindow.make(view, delegate: self)

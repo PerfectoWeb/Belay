@@ -28,8 +28,8 @@ struct ProvidersSettingsPane: View {
                 SettingRow(
                     title: "Built in",
                     explanation: """
-                        Claude Code and Codex are understood natively: Belay reads their own \
-                        session files and needs nothing configured.
+                        Belay reads these agents' own session files. Switch on the ones you use; \
+                        a switched-off agent is never watched and never asked about.
                         """
                 ) {
                     builtIn
@@ -53,28 +53,30 @@ struct ProvidersSettingsPane: View {
     /// control that is not there is a sentence about nothing.
     private var showsPreciseNote: Bool {
         guard PreciseDetection.isSupported,
-            let claude = state.providers.first(where: { $0.descriptor.supportsPreciseDetection })
+            let claude = state.providers.first(where: { $0.descriptor.supportsPreciseDetection }),
+            claude.isEnabled
         else { return false }
         if case .ready = claude.availability { return true }
         return false
     }
 
-    /// Two tiles side by side, the grid the tools below use.
+    /// The two agents Belay understands natively, stacked, each with its
+    /// switch. Only those two: the "other agents" provider that backs the
+    /// tools below is not a tile here — it was for a day, with a "Fix"
+    /// button that asked people to add a folder nobody had mentioned.
     private var builtIn: some View {
-        HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
-            ForEach(state.providers) { provider in
+        VStack(spacing: TargetTileMetrics.spacing) {
+            ForEach(state.providers.filter { $0.id == .claudeCode || $0.id == .codex }) { provider in
                 BuiltInProviderTile(
                     provider: provider,
+                    onToggle: { state.onToggleProvider(provider.id, $0) },
+                    onFix: { state.onGrantAccess(provider.id) },
                     precise: provider.descriptor.supportsPreciseDetection ? precise : nil,
                     onEnablePrecise: { showingPreview = true },
                     onRemovePrecise: {
                         precise.uninstall()
                         refreshToken += 1
-                    },
-                    onFix: { state.onGrantAccess(provider.id) })
-            }
-            if state.providers.isEmpty {
-                SettingNote(text: "No providers available.")
+                    })
             }
         }
     }

@@ -13,7 +13,9 @@ import BelaySupport
 @MainActor
 final class BelayController {
     let state: AppState
-    private let settings: SettingsStore
+    // Internal, not private: the provider-toggling half of this controller
+    // lives in `BelayControllerProviders.swift` for the file-length rule.
+    let settings: SettingsStore
     // Internal, like the four below, so the power and sleep observers can live
     // in their own file (this one is at the linter's limit).
     let coordinator: ActivityCoordinator
@@ -51,8 +53,14 @@ final class BelayController {
         // build reads folders outright, the sandboxed one reads them through
         // security-scoped bookmarks (docs/06, BLOCKERS B8). Two grants, because
         // `~/.claude` and a folder the user picked are not the same permission.
+        // Which built-ins start switched on. Once, from what is installed:
+        // a Mac without Codex must never be asked to grant ~/.codex, and the
+        // first tester without it was. The sandboxed build cannot look, so
+        // it keeps the stored default and the user switches Codex on by hand.
+        Self.detectBuiltIns(settings: settings)
         providers = ProviderHost(
             precise: precise,
+            enabled: settings.enabledProviders,
             access: ClaudeAccess.provider,
             codexAccess: CodexAccess.provider,
             folders: WatchedFolderAccess.provider,
@@ -73,6 +81,7 @@ final class BelayController {
         state.onModeChange = { [weak self] mode in self?.setMode(mode) }
         state.onTimerChange = { [weak self] duration in self?.setAlwaysOnTimer(duration) }
         state.onHoldAgain = { [weak self] in self?.holdAgain() }
+        state.onToggleProvider = { [weak self] provider, on in self?.setProviderEnabled(provider, on) }
         observeDecisions()
         observeHumanReturn()
         observePowerSource()
@@ -162,10 +171,6 @@ final class BelayController {
     }
 
     var genericTargets: [GenericTarget] { providers.targets }
-
-    func updateGenericTargets(_ targets: [GenericTarget]) {
-        Task { [providers] in await providers.updateTargets(targets) }
-    }
 
     func setMode(_ mode: AwakeMode) {
         settings.mode = mode

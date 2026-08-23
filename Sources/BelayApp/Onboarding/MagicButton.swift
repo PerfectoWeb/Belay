@@ -102,7 +102,11 @@ private struct Face<Label: View>: View {
                 .padding(-Self.halo)
                 .allowsHitTesting(false)
         }
-        .scaleEffect(pressed ? 0.97 : 1)
+        // The breath, as size too: the glow alone read as a light behind the
+        // button, and a button that is asking to be pressed should move.
+        // Two percent at the top of the breath — enough to be alive, not
+        // enough to be a notification.
+        .scaleEffect(pressed ? 0.97 : 1 + 0.02 * swell)
         .opacity(pressed ? 0.85 : 1)
         .animation(.easeOut(duration: 0.12), value: pressed)
     }

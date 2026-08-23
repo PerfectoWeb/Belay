@@ -6,98 +6,98 @@ Direct-only (never shown in the App Store build): none.
 
 === en ===
 
-# Always On, for as long as you say
-Pick fifteen minutes to twelve hours right under the mode picker and watch the time count down. Belay lets go when it reaches zero.
+# Keep your Mac awake for a set time
+Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and lets your Mac sleep when it runs out.
 
-# A pause you can end with one click
-When a timer or the maximum awake time stops a hold, the panel says so and offers Hold again. Unlocking your Mac starts a fresh cycle on its own.
+# Resume with one click
+When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.
 
-# The countdown on the dimmed screen
-When the night dimmer takes the display down, the remaining time glows in large thin digits in the middle of it, like a bedside clock.
+# See the countdown on a dimmed screen
+When the display dims at night, the time remaining appears in the centre of the screen.
 
-# The chart plays its outline
-Sweep the cursor across the last fourteen days and every bar strikes a note pitched by its height.
+# Hear your week
+Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.
 
 === ru ===
 
-# «Всегда» ровно столько, сколько скажете
-Выберите от 15 минут до 12 часов прямо под переключателем режимов и следите за обратным отсчётом. На нуле Belay отпускает Mac.
+# Не давайте Mac уснуть заданное время
+Выберите от 15 минут до 12 часов в строке меню. Belay показывает оставшееся время и даёт Mac уснуть, когда оно выйдет.
 
-# Пауза, которую снимает один клик
-Когда таймер или лимит времени останавливает удержание, панель говорит об этом и предлагает «Держать снова». Разблокировка Mac сама начинает новый цикл.
+# Возобновить одним кликом
+Когда таймер или ваш лимит бодрствования завершает удержание, панель сообщает об этом и предлагает «Держать снова». Разблокировка Mac возобновляет его автоматически.
 
 # Обратный отсчёт на затемнённом экране
-Когда ночной диммер приглушает дисплей, оставшееся время светится крупными тонкими цифрами посередине экрана, как прикроватные часы.
+Когда дисплей приглушается ночью, оставшееся время появляется в центре экрана.
 
-# График звучит
-Проведите курсором по последним четырнадцати дням: каждый столбик берёт ноту, высота которой зависит от его высоты.
+# Послушайте свою неделю
+Проведите указателем по графику в Статистике, и каждый день сыграет ноту. Чем загруженнее день, тем выше звук.
 
 === de ===
 
-# „Immer an“, so lange du willst
-Wähle direkt unter dem Modusschalter 15 Minuten bis 12 Stunden und sieh der Zeit beim Ablaufen zu. Bei null lässt Belay los.
+# Den Mac eine bestimmte Zeit wach halten
+Wähle in der Menüleiste 15 Minuten bis 12 Stunden. Belay zeigt die verbleibende Zeit und lässt den Mac schlafen, wenn sie abgelaufen ist.
 
-# Eine Pause, die ein Klick beendet
-Stoppt ein Timer oder die maximale Wachzeit das Wachhalten, sagt das Panel es und bietet „Erneut wachhalten“ an. Das Entsperren des Macs beginnt von selbst einen neuen Zyklus.
+# Mit einem Klick fortsetzen
+Beendet ein Timer oder dein Wachlimit das Wachhalten, sagt das Panel Bescheid und bietet „Erneut wachhalten“ an. Das Entsperren des Macs setzt es automatisch fort.
 
-# Der Countdown auf dem abgedunkelten Bildschirm
-Wenn der Nachtdimmer das Display abdunkelt, leuchtet die verbleibende Zeit in großen dünnen Ziffern in seiner Mitte, wie eine Nachttischuhr.
+# Den Countdown auf dem abgedunkelten Bildschirm sehen
+Wenn sich das Display nachts abdunkelt, erscheint die verbleibende Zeit in der Mitte des Bildschirms.
 
-# Das Diagramm spielt seine Silhouette
-Fahre mit dem Zeiger über die letzten vierzehn Tage, und jeder Balken schlägt eine Note an, deren Höhe seiner Höhe folgt.
+# Hör dir deine Woche an
+Bewege den Zeiger über das Diagramm in der Statistik, und jeder Tag spielt eine Note. Vollere Tage klingen höher.
 
 === es ===
 
-# Siempre, el tiempo que tú digas
-Elige de 15 minutos a 12 horas justo bajo el selector de modo y mira la cuenta atrás. Al llegar a cero, Belay suelta el Mac.
+# Mantén tu Mac despierto un tiempo fijo
+Elige de 15 minutos a 12 horas en la barra de menús. Belay muestra el tiempo restante y deja dormir el Mac cuando se acaba.
 
-# Una pausa que termina con un clic
-Cuando un temporizador o el tiempo máximo despierto detiene la retención, el panel lo dice y ofrece Mantener otra vez. Desbloquear el Mac inicia un ciclo nuevo por sí solo.
+# Reanuda con un clic
+Cuando un temporizador o tu límite despierto termina una retención, el panel te avisa y ofrece Mantener otra vez. Desbloquear el Mac la reanuda automáticamente.
 
-# La cuenta atrás en la pantalla atenuada
-Cuando el atenuador nocturno baja la pantalla, el tiempo restante brilla en dígitos grandes y finos en el centro, como un reloj de mesita.
+# Mira la cuenta atrás en la pantalla atenuada
+Cuando la pantalla se atenúa por la noche, el tiempo restante aparece en el centro de la pantalla.
 
-# El gráfico toca su silueta
-Pasa el cursor por los últimos catorce días y cada barra toca una nota según su altura.
+# Escucha tu semana
+Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días más llenos suenan más agudos.
 
 === fr ===
 
-# Toujours, aussi longtemps que vous voulez
-Choisissez de 15 minutes à 12 heures juste sous le sélecteur de mode et suivez le compte à rebours. À zéro, Belay relâche le Mac.
+# Gardez votre Mac éveillé pendant une durée définie
+Choisissez de 15 minutes à 12 heures dans la barre des menus. Belay affiche le temps restant et laisse le Mac se mettre en veille quand il est écoulé.
 
-# Une pause qu'un clic suffit à lever
-Quand un minuteur ou la durée d'éveil maximale arrête le maintien, le panneau le dit et propose Maintenir encore. Déverrouiller le Mac relance un cycle tout seul.
+# Reprenez d'un clic
+Quand un minuteur ou votre limite d'éveil met fin au maintien, le panneau vous prévient et propose Maintenir encore. Déverrouiller le Mac le reprend automatiquement.
 
-# Le compte à rebours sur l'écran assombri
-Quand l'assombrissement nocturne baisse l'écran, le temps restant luit en grands chiffres fins en son milieu, comme un réveil de chevet.
+# Voyez le compte à rebours sur l'écran assombri
+Quand l'écran s'assombrit la nuit, le temps restant apparaît au centre de l'écran.
 
-# Le graphique joue sa silhouette
-Passez le curseur sur les quatorze derniers jours et chaque barre joue une note à la hauteur de sa taille.
+# Écoutez votre semaine
+Passez le pointeur sur le graphique des Statistiques et chaque jour joue une note. Les jours chargés sonnent plus haut.
 
 === it ===
 
-# Sempre, per il tempo che decidi tu
-Scegli da 15 minuti a 12 ore proprio sotto il selettore di modalità e guarda il conto alla rovescia. A zero, Belay lascia andare il Mac.
+# Tieni sveglio il Mac per un tempo stabilito
+Scegli da 15 minuti a 12 ore nella barra dei menu. Belay mostra il tempo rimanente e lascia che il Mac vada in stop quando finisce.
 
-# Una pausa che un clic fa finire
-Quando un timer o il tempo massimo di veglia ferma il mantenimento, il pannello lo dice e propone Mantieni ancora. Sbloccare il Mac avvia da solo un nuovo ciclo.
+# Riprendi con un clic
+Quando un timer o il tuo limite di veglia termina il mantenimento, il pannello te lo dice e propone Mantieni ancora. Sbloccare il Mac lo riprende automaticamente.
 
-# Il conto alla rovescia sullo schermo oscurato
-Quando l'attenuazione notturna abbassa lo schermo, il tempo rimanente brilla in grandi cifre sottili al centro, come una sveglia da comodino.
+# Vedi il conto alla rovescia sullo schermo oscurato
+Quando lo schermo si attenua di notte, il tempo rimanente appare al centro dello schermo.
 
-# Il grafico suona il suo profilo
-Passa il cursore sugli ultimi quattordici giorni e ogni barra suona una nota intonata alla sua altezza.
+# Ascolta la tua settimana
+Passa il puntatore sul grafico nelle Statistiche e ogni giorno suona una nota. I giorni più pieni suonano più acuti.
 
 === zh-Hans ===
 
-# 常开，时长由你决定
-在模式选择器正下方选择 15 分钟到 12 小时，看着时间倒数。归零时 Belay 会放开 Mac。
+# 让 Mac 保持唤醒一段设定的时间
+在菜单栏中选择 15 分钟到 12 小时。Belay 会显示剩余时间，时间用完后让 Mac 进入睡眠。
 
-# 一次点击即可结束的暂停
-计时器或最长唤醒时间停止保持时，面板会说明并提供「继续保持」。解锁 Mac 会自动开始新的一轮。
+# 一键继续
+计时器或唤醒上限结束保持时，面板会提示并提供「继续保持」。解锁 Mac 会自动继续。
 
-# 调暗屏幕上的倒计时
-夜间调暗器降低显示器亮度时，剩余时间会以纤细的大号数字在屏幕中央发光，就像床头钟。
+# 在调暗的屏幕上查看倒计时
+夜间显示器调暗时，剩余时间会显示在屏幕中央。
 
-# 图表会奏出它的轮廓
-把光标划过最近十四天，每根柱子都会按自己的高度奏出一个音。
+# 听听你的一周
+把指针划过「统计」中的图表，每一天都会奏出一个音。越忙的日子音越高。

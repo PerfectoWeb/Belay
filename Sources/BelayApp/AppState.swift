@@ -32,6 +32,8 @@ final class AppState {
     /// cannot, so it gets an explicit nudge.
     var onChange: () -> Void = {}
     var onGrantAccess: (ProviderID) -> Void = { _ in }
+    /// A built-in agent's switch in Settings.
+    var onToggleProvider: (ProviderID, Bool) -> Void = { _, _ in }
     var onOpenSettings: () -> Void = {}
 
     var isHolding: Bool { snapshot.state.holdsAssertion }

@@ -106,13 +106,12 @@ struct CodexProviderTests {
             return
         }
 
-        let blind = CodexProvider(
-            configuration: .init(
-                sessionsDirectory: URL(fileURLWithPath: "/nope-\(UUID().uuidString)/sessions")))
+        let blind = CodexProvider(configuration: noSessions, access: DeniedFileAccess())
         guard case .needsSetup = await blind.availability else {
             Issue.record("expected needsSetup when nothing is readable")
             return
         }
+
     }
 
     @Test("A live rollout is adopted, classified, and idles on its marker")

@@ -16,6 +16,9 @@ final class ProviderHost {
     private let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
+    /// Which built-in agents are switched on. A switched-off agent is not
+    /// started, not asked about, and never nags for a folder it would read.
+    private(set) var enabled: Set<ProviderID>
 
     /// `access`, `folders` and `home` come from the app layer because only it
     /// knows which channel this is (`ClaudeAccess`, `WatchedFolderAccess`,
@@ -29,12 +32,14 @@ final class ProviderHost {
     /// inside `~/.claude`.
     init(
         precise: PreciseDetection,
+        enabled: Set<ProviderID> = [.claudeCode, .codex],
         access: FileAccessProvider = DirectFileAccess(),
         codexAccess: FileAccessProvider = DirectFileAccess(),
         folders: FileAccessProvider = DirectFileAccess(),
         home: URL = FileManager.default.homeDirectoryForCurrentUser
     ) {
         self.precise = precise
+        self.enabled = enabled
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
         codex = CodexProvider(configuration: .codexHome(home), access: codexAccess)
         generic = GenericProvider(access: folders)
@@ -49,10 +54,10 @@ final class ProviderHost {
         let signals = await bus.subscribe()
 
         await bus.attach(claudeCode.signals)
-        await startClaudeCode(first: true)
+        if enabled.contains(.claudeCode) { await startClaudeCode(first: true) }
 
         await bus.attach(codex.signals)
-        await startCodex(first: true)
+        if enabled.contains(.codex) { await startCodex(first: true) }
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -72,8 +77,26 @@ final class ProviderHost {
     /// access. The bus is already attached to its stream, so this is a start and
     /// not a re-wire; a provider that is already running ignores it.
     func retryStart() async {
-        await startClaudeCode(first: false)
-        await startCodex(first: false)
+        if enabled.contains(.claudeCode) { await startClaudeCode(first: false) }
+        if enabled.contains(.codex) { await startCodex(first: false) }
+    }
+
+    /// Switches a built-in agent on or off at runtime: the provider starts or
+    /// stops, and the streams stay attached so turning it back on is a start
+    /// and not a re-wire.
+    func setEnabled(_ set: Set<ProviderID>) async {
+        let was = enabled
+        enabled = set
+        if set.contains(.claudeCode) != was.contains(.claudeCode) {
+            if set.contains(.claudeCode) {
+                await startClaudeCode(first: false)
+            } else {
+                await claudeCode.stop()
+            }
+        }
+        if set.contains(.codex) != was.contains(.codex) {
+            if set.contains(.codex) { await startCodex(first: false) } else { await codex.stop() }
+        }
     }
 
     /// Whether the Claude Code provider is still waiting for something.
@@ -125,13 +148,13 @@ final class ProviderHost {
             ProviderStatus(
                 descriptor: claudeCode.descriptor,
                 availability: await claudeCode.availability,
-                isEnabled: true,
+                isEnabled: enabled.contains(.claudeCode),
                 lastSignal: lastSignal
             ),
             ProviderStatus(
                 descriptor: codex.descriptor,
                 availability: await codex.availability,
-                isEnabled: true,
+                isEnabled: enabled.contains(.codex),
                 lastSignal: nil
             ),
             ProviderStatus(

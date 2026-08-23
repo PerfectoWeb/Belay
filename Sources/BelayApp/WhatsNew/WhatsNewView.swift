@@ -44,6 +44,10 @@ struct WhatsNewView: View {
         ZStack(alignment: .topTrailing) {
             VStack(spacing: 0) {
                 BelayWordmark(size: 28, word: .white, animated: true)
+                    // Five points left of true centre: the mark on the
+                    // lockup's left makes the optical centre sit right of
+                    // the geometric one.
+                    .offset(x: -5)
                     .padding(.top, 52)
                     .modifier(WhatsNewEntrance(shown: entered, delay: 0, animated: !reduceMotion))
                 ForEach(notes, id: \.version) { note in

@@ -8,6 +8,11 @@ extension ClaudeCodeProvider {
         switch reach {
         case .ready:
             return .ready
+        case .notInstalled:
+            // Not a permission problem either, and the worst thing to say
+            // about it is "allow access": there is nothing to allow.
+            return .unavailable(
+                String(localized: "Claude Code is not installed on this Mac.", bundle: .main))
         case .noProjectsYet:
             // Not a permission problem, and offering a grant button here is
             // what sent people round the loop: they grant `~/.claude`, the
@@ -36,11 +41,15 @@ extension ClaudeCodeProvider {
     /// user is in.
     enum Reach {
         case ready
+        case notInstalled
         case noProjectsYet
         case noAccess
     }
 
     var reach: Reach {
+        if access.isKnownMissing(configuration.projectsDirectory.deletingLastPathComponent()) {
+            return .notInstalled
+        }
         if access.hasAccess(to: configuration.projectsDirectory) { return .ready }
         // The parent is reachable, so nothing is being withheld: the folder
         // simply is not there yet.

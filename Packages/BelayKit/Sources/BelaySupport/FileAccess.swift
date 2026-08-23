@@ -12,6 +12,17 @@ public protocol FileAccessProvider: Sendable {
 
     /// Runs `body` with access held, releasing it afterwards even on throw.
     func withAccess<T>(to url: URL, _ body: (URL) throws -> T) throws -> T
+
+    /// True only when this access can see that `url` does not exist at all.
+    /// Unreadable and absent look the same to a sandboxed build, which is
+    /// why the default says nothing; the direct build can tell them apart,
+    /// and the difference is "grant the folder" versus "the tool is not
+    /// installed", two very different things to tell a person.
+    func isKnownMissing(_ url: URL) -> Bool
+}
+
+extension FileAccessProvider {
+    public func isKnownMissing(_ url: URL) -> Bool { false }
 }
 
 /// Unsandboxed access. Reads are plain `FileManager` calls.
@@ -20,6 +31,10 @@ public struct DirectFileAccess: FileAccessProvider {
 
     public func hasAccess(to url: URL) -> Bool {
         FileManager.default.isReadableFile(atPath: url.path)
+    }
+
+    public func isKnownMissing(_ url: URL) -> Bool {
+        !FileManager.default.fileExists(atPath: url.path)
     }
 
     public func withAccess<T>(to url: URL, _ body: (URL) throws -> T) throws -> T {

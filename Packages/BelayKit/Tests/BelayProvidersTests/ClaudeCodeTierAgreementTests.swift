@@ -85,11 +85,11 @@ struct ClaudeCodeFirstRunTests {
         }
     }
 
-    @Test("An unreachable folder is still reported as a permission problem")
+    @Test("An unreadable folder is still reported as a permission problem")
     func unreachableRootStillAsksForAccess() async {
-        var configuration = scratch.configuration
-        configuration.projectsDirectory = URL(fileURLWithPath: "/no/such/root/projects")
-        let provider = ClaudeCodeProvider(configuration: configuration, access: DirectFileAccess())
+        // Unreadable, not absent: a direct build can see an absent folder for
+        // what it is, and reports "not installed" instead.
+        let provider = ClaudeCodeProvider(configuration: scratch.configuration, access: DeniedFileAccess())
 
         guard case .needsSetup = await provider.availability else {
             Issue.record("expected needsSetup, got \(await provider.availability)")

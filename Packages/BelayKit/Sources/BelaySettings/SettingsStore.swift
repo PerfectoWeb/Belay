@@ -174,6 +174,12 @@ public final class SettingsStore {
         set { update { $0.enabledProviders = newValue } }
     }
 
+    /// See `SettingsValues.builtInsDetected`.
+    public var builtInsDetected: Bool {
+        get { values.builtInsDetected }
+        set { update { $0.builtInsDetected = newValue } }
+    }
+
     /// Dim the screen at night while holding. Off by default.
     public var nightDimming: Bool {
         get { values.nightDimming }
