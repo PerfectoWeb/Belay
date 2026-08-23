@@ -25,13 +25,19 @@
 10 hours,Settings,translated,,10 hours,10 小时
 10 min,Settings,translated,,10 min,10 分钟
 12 hours,"App, Settings, Statistics",translated,,12 hours,12 小时
+14 hours,Settings,translated,,14 hours,14 小时
 15 min,"App, Panel, Settings",translated,,15 min,15 分钟
 2 hours,"App, Settings, Statistics",translated,,2 hours,2 小时
+3 hours,Settings,translated,,3 hours,3 小时
 3 min,Settings,translated,,3 min,3 分钟
 30 min,Settings,translated,,30 min,30 分钟
 30 sec,Settings,translated,,30 sec,30 秒
 4 hours,Settings,translated,,4 hours,4 小时
+45 min,Settings,translated,,45 min,45 分钟
+5 hours,Settings,translated,,5 hours,5 小时
 5 min,"App, Panel, Settings",translated,,5 min,5 分钟
+6 hours,Settings,translated,,6 hours,6 小时
+7 hours,Settings,translated,,7 hours,7 小时
 8 hours,Settings,translated,,8 hours,8 小时
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,超过这段时间后，Belay 会让 Mac 进入睡眠并通知你。
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,文件夹活动算作工作。正在运行的进程只用于告诉 Belay 会话何时结束。
@@ -115,7 +121,7 @@ Check Now,Settings: General,translated,,Check Now,立即检查
 Check for Updates,App,translated,,Check for Updates,检查更新
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,自动检查更新
 Checking…,Settings: General,translated,,Checking…,正在检查…
-Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and lets your Mac sleep when it runs out.,App,translated,,Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and lets your Mac sleep when it runs out.,在菜单栏中选择 15 分钟到 12 小时。Belay 会显示剩余时间，时间用完后让 Mac 进入睡眠。
+Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,App,translated,,Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,在菜单栏中选择 15 分钟到 12 小时。Belay 会显示倒计时，时间结束后让 Mac 恢复正常睡眠。
 Claude Code,"App, Detection, Settings: Providers, Welcome",needs_review,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,此 Mac 上未安装 Claude Code。
@@ -128,6 +134,7 @@ Copies the card image and the summary text together,Statistics,translated,,Copie
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
+Countdown on the dimmed screen,App,translated,,Countdown on the dimmed screen,调暗屏幕上的倒计时
 Detection health,(unused),translated,,Detection status,检测状态
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,诊断
 Dim from,Settings,translated,,Dim from,调暗开始时间
@@ -152,14 +159,16 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许�
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访问 ~/.codex
 Hear your week,App,translated,,Hear your week,听听你的一周
 Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
+Hold again with one click,App,translated,,Hold again with one click,一键再次保持唤醒
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,让 Mac 保持唤醒多久
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
+"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.",如果计时器或最长唤醒时间结束了保持唤醒，面板会说明原因，并提供「继续保持」。解锁 Mac 后会自动恢复。
 It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer before it can continue.,需要你回应后才能继续。
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,在这台 Mac 上保留崩溃报告
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,合盖后继续工作
-Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,让 Mac 保持唤醒一段设定的时间
+Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,让 Mac 按设定时间保持唤醒
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,正在让 Mac 保持唤醒
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
@@ -177,7 +186,7 @@ Lovely,(unused),translated,,Lovely,很好
 Mac App Store,"App, Detection, Settings, Settings: About",needs_review,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,最长唤醒时间
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,模式
-Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.,App,translated,,Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.,把指针划过「统计」中的图表，每一天都会奏出一个音。越忙的日子音越高。
+Move across the chart in Statistics and each day plays a note. Busier days sound higher.,App,translated,,Move across the chart in Statistics and each day plays a note. Busier days sound higher.,将指针移过「统计」中的图表，每一天都会奏出一个音。越忙碌的日子，音调越高。
 Never checked.,Settings: General,translated,,Never checked.,从未检查过。
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,从不让 Mac 保持唤醒。
 New in v%@,App,translated,%@,New in v%@,v%@ 新增
@@ -237,8 +246,6 @@ Removes Belay's entries from your Claude Code settings,(unused),translated,,Remo
 Report a bug,Settings: About,translated,,Report a bug,报告问题
 Report an Issue,Settings,translated,,Report an Issue,报告问题
 Reset…,Statistics,translated,,Reset…,重置…
-Resume with one click,App,translated,,Resume with one click,一键继续
-See the countdown on a dimmed screen,App,translated,,See the countdown on a dimmed screen,在调暗的屏幕上查看倒计时
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
 Settings…,Menu bar,translated,,Settings…,设置…
 Share,"App, Statistics",translated,,Share,共享
@@ -298,13 +305,12 @@ Website,Settings: About,translated,,Website,网站
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,新功能
+"When Belay dims the display at night, the time left appears in the center.",App,translated,,"When Belay dims the display at night, the time left appears in the center.",Belay 在夜间调暗显示器时，剩余时间会显示在屏幕中央。
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Belay 因安全原因停止时
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,长任务完成时
 When a new version is out,Settings: Notifications,translated,,When a new version is out,当有新版本时
-"When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.",计时器或唤醒上限结束保持时，面板会提示并提供「继续保持」。解锁 Mac 会自动继续。
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,当智能体没有动静时
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,智能体需要你时
-"When the display dims at night, the time remaining appears in the centre of the screen.",App,translated,,"When the display dims at night, the time remaining appears in the centre of the screen.",夜间显示器调暗时，剩余时间会显示在屏幕中央。
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
 "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",Settings,translated,,"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",夜间你离开时，如果 macOS 本会关闭显示器，Belay 会改为将其调暗到此亮度。你回来时会恢复亮度。
 "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电池时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。

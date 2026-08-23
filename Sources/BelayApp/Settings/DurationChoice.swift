@@ -34,12 +34,18 @@ enum DurationChoice {
         600: "10 min",
         900: "15 min",
         1800: "30 min",
+        2700: "45 min",
         3600: "1 hour",
         7200: "2 hours",
+        10800: "3 hours",
         14400: "4 hours",
+        18000: "5 hours",
+        21600: "6 hours",
+        25200: "7 hours",
         28800: "8 hours",
         36000: "10 hours",
-        43200: "12 hours"
+        43200: "12 hours",
+        50400: "14 hours"
     ]
 
     /// True when the value has a written label rather than the fallback.

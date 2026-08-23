@@ -94,29 +94,28 @@ enum ReleaseNotes {
                         symbol: Mark.timer,
                         title: "Keep your Mac awake for a set time",
                         body: """
-                            Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and \
-                            lets your Mac sleep when it runs out.
+                            Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and \
+                            lets your Mac sleep when time's up.
                             """),
                     .init(
                         symbol: Mark.safety,
-                        title: "Resume with one click",
+                        title: "Hold again with one click",
                         body: """
-                            When a timer or your awake limit ends a hold, the panel tells you and offers \
-                            Hold Again. Unlocking your Mac resumes it automatically.
+                            If a timer or awake limit ends the hold, the panel tells you why and offers Hold \
+                            Again. Unlocking your Mac resumes it automatically.
                             """),
                     .init(
                         symbol: Mark.night,
-                        title: "See the countdown on a dimmed screen",
+                        title: "Countdown on the dimmed screen",
                         body: """
-                            When the display dims at night, the time remaining appears in the centre of \
-                            the screen.
+                            When Belay dims the display at night, the time left appears in the center.
                             """),
                     .init(
                         symbol: Mark.chart,
                         title: "Hear your week",
                         body: """
-                            Move the pointer across the chart in Statistics and each day plays a note. \
-                            Busier days sound higher.
+                            Move across the chart in Statistics and each day plays a note. Busier days sound \
+                            higher.
                             """)
                 ]
             )

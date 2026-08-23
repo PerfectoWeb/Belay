@@ -92,3 +92,30 @@ final class LiveWhatsNewTests: XCTestCase {
         window.dismiss()
     }
 }
+
+/// The duration menu on the real screen, plain and with Shift, for a photo.
+@MainActor
+final class LiveDurationMenuTests: XCTestCase {
+    func testMenuOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the menu")
+        }
+        guard let screen = NSScreen.main else { throw XCTSkip("no screen") }
+        let anchor = NSWindow(
+            contentRect: NSRect(x: screen.frame.minX + 60, y: screen.frame.maxY - 80, width: 120, height: 20),
+            styleMask: [.borderless], backing: .buffered, defer: false)
+        anchor.level = .floating
+        anchor.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        let view = NSView(frame: NSRect(x: 0, y: 0, width: 120, height: 20))
+        anchor.contentView?.addSubview(view)
+
+        for shift in [false, true] {
+            let menu = DurationMenu(choose: { _ in })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { menu.dismissForTesting() }
+            menu.show(from: view, current: 3600, shiftHeld: shift)
+            RunLoop.main.run(until: Date().addingTimeInterval(0.3))
+        }
+        anchor.orderOut(nil)
+    }
+}

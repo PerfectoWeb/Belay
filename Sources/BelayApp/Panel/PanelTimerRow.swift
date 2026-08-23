@@ -14,11 +14,6 @@ import SwiftUI
 struct PanelTimerRow: View {
     let state: AppState
 
-    /// What the menu offers, mirrored from `SettingsPresets.maxContinuousAwake`
-    /// so the two pop-ups speak the same vocabulary, plus the quarter hour a
-    /// coffee-timer is actually asked for.
-    static let durations: [TimeInterval] = [900, 1800, 3600, 7200, 14400, 28800, 43200]
-
     var body: some View {
         if let pause {
             // The battery guard is deliberately absent: it clears on its own
@@ -58,36 +53,24 @@ struct PanelTimerRow: View {
                 .foregroundStyle(.secondary)
                 .accessibilityHidden(true)
 
-            Menu {
-                // A label-less Picker, spelled without the string initialiser:
-                // a literal "" would register as a catalogue key and trip the
-                // completeness check.
-                Picker(selection: selection) {
-                    Text("Until turned off").tag(TimeInterval?.none)
-                    ForEach(Self.durations, id: \.self) { duration in
-                        Text(DurationChoice.label(duration)).tag(TimeInterval?.some(duration))
+            // An AppKit menu behind a SwiftUI face: see `DurationMenu` for
+            // why — the Shift-extended list has to change while open.
+            DurationMenuButton(current: state.snapshot.timer?.duration, choose: state.onTimerChange) {
+                HStack(spacing: 4) {
+                    if let timer = state.snapshot.timer {
+                        // Redraws once a second only while the panel is open;
+                        // the popover's view is torn down on close.
+                        Countdown(deadline: timer.deadline)
+                    } else {
+                        Text("Until turned off")
                     }
-                } label: {
-                    EmptyView()
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 8, weight: .semibold))
+                        .foregroundStyle(.secondary)
                 }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            } label: {
-                if let timer = state.snapshot.timer {
-                    // Redraws once a second only while the panel is open; the
-                    // popover's view is torn down on close.
-                    Countdown(deadline: timer.deadline)
-                } else {
-                    Text("Until turned off")
-                }
+                .font(.system(size: 11))
             }
-            .font(.system(size: 11))
-            .menuStyle(.borderlessButton)
             .fixedSize()
-            // Pinned to the text's own line height: the menu control brings
-            // a little chrome of its own, just enough to make this row taller
-            // than the pause row it swaps with. 14 is what an 11pt text line
-            // actually measures in the notice row.
             .frame(height: 14)
             .accessibilityLabel("How long to keep the Mac awake")
 

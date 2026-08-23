@@ -25,13 +25,19 @@
 10 hours,Settings,needs_review,,10 hours,10 horas
 10 min,Settings,needs_review,,10 min,10 min
 12 hours,"App, Settings, Statistics",needs_review,,12 hours,12 horas
+14 hours,Settings,translated,,14 hours,14 horas
 15 min,"App, Panel, Settings",translated,,15 min,15 min
 2 hours,"App, Settings, Statistics",needs_review,,2 hours,2 horas
+3 hours,Settings,translated,,3 hours,3 horas
 3 min,Settings,needs_review,,3 min,3 min
 30 min,Settings,needs_review,,30 min,30 min
 30 sec,Settings,needs_review,,30 sec,30 s
 4 hours,Settings,needs_review,,4 hours,4 horas
+45 min,Settings,translated,,45 min,45 min
+5 hours,Settings,translated,,5 hours,5 horas
 5 min,"App, Panel, Settings",needs_review,,5 min,5 min
+6 hours,Settings,translated,,6 hours,6 horas
+7 hours,Settings,translated,,7 hours,7 horas
 8 hours,Settings,needs_review,,8 hours,8 horas
 A backstop. Belay stops holding after this and tells you why.,Settings: Behaviour,translated,,Belay stops keeping your Mac awake after this time and lets you know.,"Al llegar a este tiempo, Belay deja de mantener el Mac despierto y te avisa."
 A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.,Settings: Providers,translated,,Folder activity counts as work. A running process only tells Belay when the session ends.,La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Belay cuándo termina la sesión.
@@ -115,7 +121,7 @@ Check Now,Settings: General,translated,,Check Now,Comprobar ahora
 Check for Updates,App,translated,,Check for Updates,Buscar actualizaciones
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Buscar actualizaciones automáticamente
 Checking…,Settings: General,translated,,Checking…,Comprobando…
-Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and lets your Mac sleep when it runs out.,App,translated,,Choose 15 minutes to 12 hours in the menu bar. Belay shows the time left and lets your Mac sleep when it runs out.,Elige de 15 minutos a 12 horas en la barra de menús. Belay muestra el tiempo restante y deja dormir el Mac cuando se acaba.
+Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,App,translated,,Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,Elige entre 15 minutos y 12 horas en la barra de menús. Belay muestra la cuenta atrás y deja que tu Mac vuelva a dormir cuando termina.
 Claude Code,"App, Detection, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code aún no ha abierto ningún proyecto en este Mac. Belay empezará solo cuando ocurra.
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,Claude Code no está instalado en este Mac.
@@ -128,6 +134,7 @@ Copies the card image and the summary text together,Statistics,translated,,Copie
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Copiar
 Copy card and link,Statistics,translated,,Copy card and link,Copiar tarjeta y enlace
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,No se pudo contactar con el servicio de actualizaciones.
+Countdown on the dimmed screen,App,translated,,Countdown on the dimmed screen,Cuenta atrás en la pantalla atenuada
 Detection health,(unused),translated,,Detection status,Estado de detección
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnóstico
 Dim from,Settings,translated,,Dim from,Atenuar desde
@@ -152,14 +159,16 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Conceder
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Conceder acceso a ~/.codex
 Hear your week,App,translated,,Hear your week,Escucha tu semana
 Hold again,"App, Detection, Panel",translated,,Hold again,Mantener otra vez
+Hold again with one click,App,translated,,Hold again with one click,Manténlo otra vez con un clic
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Esperando un momento por si llega más trabajo.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Cuánto espera Belay después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas.
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Cuánto tiempo mantener despierto el Mac
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
+"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.","Si un temporizador o tu límite de tiempo despierto termina la retención, el panel te explica por qué y ofrece Mantener otra vez. Al desbloquear el Mac, se reanuda automáticamente."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Necesita una respuesta para continuar.
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Guardar informes de errores en este Mac
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Seguir trabajando con la tapa cerrada
-Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,Mantén tu Mac despierto un tiempo fijo
+Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,Mantén tu Mac despierto durante un tiempo
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Manteniendo el Mac despierto
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Mantiene el Mac despierto mientras trabaja tu agente.
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,Mantiene tu Mac despierto mientras tu agente trabaja.
@@ -177,7 +186,7 @@ Lovely,(unused),translated,,Lovely,Estupendo
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,Tiempo máximo despierto
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Modo
-Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.,App,translated,,Move the pointer across the chart in Statistics and each day plays a note. Busier days sound higher.,Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días más llenos suenan más agudos.
+Move across the chart in Statistics and each day plays a note. Busier days sound higher.,App,translated,,Move across the chart in Statistics and each day plays a note. Busier days sound higher.,Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días con más actividad suenan más agudos.
 Never checked.,Settings: General,translated,,Never checked.,Nunca comprobado.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,No mantener nunca el Mac despierto.
 New in v%@,App,translated,%@,New in v%@,Novedades en v%@
@@ -237,8 +246,6 @@ Removes Belay's entries from your Claude Code settings,(unused),translated,,Remo
 Report a bug,Settings: About,translated,,Report a bug,Informar de un error
 Report an Issue,Settings,translated,,Report an Issue,Informar de un problema
 Reset…,Statistics,needs_review,,Reset…,Restablecer…
-Resume with one click,App,translated,,Resume with one click,Reanuda con un clic
-See the countdown on a dimmed screen,App,translated,,See the countdown on a dimmed screen,Mira la cuenta atrás en la pantalla atenuada
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Ajustes
 Settings…,Menu bar,translated,,Settings…,Ajustes…
 Share,"App, Statistics",translated,,Share,Compartir
@@ -298,13 +305,12 @@ Website,Settings: About,translated,,Website,Sitio web
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Bienvenido
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Te damos la bienvenida a %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,Novedades
+"When Belay dims the display at night, the time left appears in the center.",App,translated,,"When Belay dims the display at night, the time left appears in the center.","Cuando Belay atenúa la pantalla por la noche, el tiempo restante aparece en el centro."
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Cuando Belay se detiene por seguridad
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Cuando termina una tarea larga
 When a new version is out,Settings: Notifications,translated,,When a new version is out,Cuando sale una versión nueva
-"When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"When a timer or your awake limit ends a hold, the panel tells you and offers Hold Again. Unlocking your Mac resumes it automatically.","Cuando un temporizador o tu límite despierto termina una retención, el panel te avisa y ofrece Mantener otra vez. Desbloquear el Mac la reanuda automáticamente."
 When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Cuando un agente se queda en silencio
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Cuando un agente te necesita
-"When the display dims at night, the time remaining appears in the centre of the screen.",App,translated,,"When the display dims at night, the time remaining appears in the centre of the screen.","Cuando la pantalla se atenúa por la noche, el tiempo restante aparece en el centro de la pantalla."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Cuando el trabajo termina, tu Mac duerme como siempre. Tus ajustes de suspensión no se tocan."
 "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.",Settings,translated,,"When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.","Cuando te alejas de noche y macOS habría apagado la pantalla, Belay la atenúa a este nivel en su lugar. Vuelve a iluminarse cuando regresas."
 "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.",Settings,translated,%lld,"When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.","Cuando te alejas de noche, Belay atenúa la pantalla a este nivel en lugar de dejar que macOS la apague, lo que ahora ocurre tras %lld min con batería. Vuelve a iluminarse cuando regresas."
