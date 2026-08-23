@@ -15419,147 +15419,6 @@
         }
       }
     },
-    "Precise detection is on": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise detection is on"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точная детекция включена"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung ist an"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa está activada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise est activée"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso è attivo"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测已开启"
-          }
-        }
-      }
-    },
-    "Precise detection is off": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise detection is off"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точная детекция выключена"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung ist aus"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa está desactivada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise est désactivée"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso è disattivato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测已关闭"
-          }
-        }
-      }
-    },
-    "Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точная детекция позволяет Claude Code самому сообщать Belay, когда работа начинается и заканчивается, вместо того чтобы Belay угадывал это по файлам. Она же делает надёжным уведомление «агент ждёт вас»."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mit präziser Erkennung teilt Claude Code Belay genau mit, wann Arbeit beginnt und endet, statt dass Belay es aus Dateien ableitet. Das macht auch „ein Agent wartet auf dich“ zuverlässig."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise permet à Claude Code d'indiquer exactement à Belay quand le travail commence et s'arrête, au lieu que Belay le déduise des fichiers. C'est aussi ce qui rend « un agent vous attend » fiable."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay esattamente quando inizia e finisce, invece di lasciare che Belay lo deduca dai file. È anche ciò che rende affidabile «un agente ti aspetta»."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。"
-          }
-        }
-      }
-    },
     "Belay reads these agents' own session files. Switch on the ones you use; a switched-off agent is never watched and never asked about.": {
       "extractionState": "manual",
       "localizations": {
@@ -16355,6 +16214,241 @@
           "stringUnit": {
             "state": "translated",
             "value": "14 小时"
+          }
+        }
+      }
+    },
+    "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точная детекция позволяет Claude Code самому сообщать Belay, когда работа начинается и заканчивается, вместо того чтобы Belay угадывал это по файлам. Она же делает надёжным уведомление «агент ждёт вас»."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit präziser Erkennung teilt Claude Code Belay genau mit, wann Arbeit beginnt und endet, statt dass Belay es aus Dateien ableitet. Das macht auch „ein Agent wartet auf dich“ zuverlässig."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La détection précise permet à Claude Code d'indiquer exactement à Belay quand le travail commence et s'arrête, au lieu que Belay le déduise des fichiers. C'est aussi ce qui rend « un agent vous attend » fiable."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay esattamente quando inizia e finisce, invece di lasciare che Belay lo deduca dai file. È anche ciò che rende affidabile «un agente ti aspetta»."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。"
+          }
+        }
+      }
+    },
+    "Custom…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Другое…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eigene…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizado…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personnalisé…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizzato…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义…"
+          }
+        }
+      }
+    },
+    "Keep your Mac awake for": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your Mac awake for"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не давать Mac уснуть на"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac wach halten für"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener el Mac despierto durante"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder le Mac éveillé pendant"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni sveglio il Mac per"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Mac 保持唤醒"
+          }
+        }
+      }
+    },
+    "Hours and minutes, like 1:30 or 90 min.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hours and minutes, like 1:30 or 90 min."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Часы и минуты, например 1:30 или 90 мин."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunden und Minuten, etwa 1:30 oder 90 min."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horas y minutos, como 1:30 o 90 min."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heures et minutes, par exemple 1:30 ou 90 min."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ore e minuti, ad esempio 1:30 o 90 min."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小时和分钟，例如 1:30 或 90 min。"
+          }
+        }
+      }
+    },
+    "Start": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начать"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starten"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empezar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Démarrer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvia"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始"
           }
         }
       }

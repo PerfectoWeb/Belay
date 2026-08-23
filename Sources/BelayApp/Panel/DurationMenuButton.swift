@@ -31,6 +31,9 @@ final class MenuAnchor {
     func show(current: TimeInterval?, choose: @escaping (TimeInterval?) -> Void) {
         guard let view else { return }
         let menu = DurationMenu(choose: choose)
+        menu.askCustom = { current in
+            if let seconds = CustomDuration.ask(current: current) { choose(seconds) }
+        }
         self.menu = menu
         menu.show(from: view, current: current)
     }

@@ -11,8 +11,20 @@ import SwiftUI
 /// and rejected — it makes a click on the active segment change behaviour,
 /// and a stray click that silently turns "always" into "15 minutes" is the
 /// kind of surprise this app exists to prevent.
+///
+/// Animates nothing that can change the panel's height. The row's slot
+/// appears and goes with the mode, instantly; what animates is the row's
+/// *content* inside that slot — it fades and slides in from the left on the
+/// way in, and fades out before the slot is given up on the way out.
 struct PanelTimerRow: View {
     let state: AppState
+
+    /// Whether the chip is drawn, one step behind `state.mode`: true a beat
+    /// after Always on arrives, false a beat before the slot goes.
+    @State private var shown = false
+    /// Keeps the slot while the chip fades out.
+    @State private var leaving = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         if let pause {
@@ -25,8 +37,26 @@ struct PanelTimerRow: View {
                 actionTitle: "Hold again",
                 action: { state.onHoldAgain() }
             )
-        } else if state.mode == .alwaysOn {
+        } else if state.mode == .alwaysOn || leaving {
             chip
+                .opacity(shown ? 1 : 0)
+                .offset(x: shown ? 0 : -10)
+                .animation(reduceMotion ? nil : .easeOut(duration: 0.22), value: shown)
+                .onAppear { shown = true }
+                .onChange(of: state.mode) { _, mode in
+                    guard mode != .alwaysOn else {
+                        shown = true
+                        return
+                    }
+                    // Out: fade first, then let the slot go. The height
+                    // change happens after the content has gone, so nothing
+                    // visible is mid-motion when the layout moves.
+                    shown = false
+                    leaving = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (reduceMotion ? 0 : 0.2)) {
+                        leaving = false
+                    }
+                }
         }
     }
 

@@ -35,7 +35,7 @@ struct ProvidersSettingsPane: View {
                     builtIn
                 }
                 if showsPreciseNote {
-                    preciseNote
+                    preciseRow
                 }
             }
             Divider()
@@ -60,38 +60,44 @@ struct ProvidersSettingsPane: View {
         return false
     }
 
-    /// The two agents Belay understands natively, stacked, each with its
-    /// switch. Only those two: the "other agents" provider that backs the
-    /// tools below is not a tile here — it was for a day, with a "Fix"
-    /// button that asked people to add a folder nobody had mentioned.
+    /// The two agents Belay understands natively, side by side, each with
+    /// its switch. Only those two: the "other agents" provider that backs
+    /// the tools below is not a tile here.
     private var builtIn: some View {
-        VStack(spacing: TargetTileMetrics.spacing) {
+        HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
             ForEach(state.providers.filter { $0.id == .claudeCode || $0.id == .codex }) { provider in
                 BuiltInProviderTile(
                     provider: provider,
                     onToggle: { state.onToggleProvider(provider.id, $0) },
-                    onFix: { state.onGrantAccess(provider.id) },
-                    precise: provider.descriptor.supportsPreciseDetection ? precise : nil,
-                    onEnablePrecise: { showingPreview = true },
-                    onRemovePrecise: {
-                        precise.uninstall()
-                        refreshToken += 1
-                    })
+                    onFix: { state.onGrantAccess(provider.id) })
             }
         }
     }
 
-    /// The sentence that used to sit on the precise-detection row, now under
-    /// the tiles: the control moved into Claude Code's tile, the reason for
-    /// it should not vanish with it.
+    /// Precise detection as its own row again, under the tiles: a crosshair
+    /// menu inside the Claude Code tile was tried and read as nothing at
+    /// all. The row is only there when it could do something.
     @ViewBuilder
-    private var preciseNote: some View {
-        SettingNote(
-            text: """
-                Precise detection lets Claude Code tell Belay exactly when it starts and stops, \
+    private var preciseRow: some View {
+        SettingRow(
+            title: "Precise detection",
+            explanation: """
+                Lets Claude Code tell Belay exactly when it starts and stops, \
                 instead of Belay inferring it from files. This is also what makes \
                 "an agent is waiting for you" reliable.
-                """)
+                """
+        ) {
+            if precise.isInstalled {
+                Button("Remove") {
+                    precise.uninstall()
+                    refreshToken += 1
+                }
+                .accessibilityHint("Removes Belay's entries from your Claude Code settings")
+            } else {
+                Button("Enable…") { showingPreview = true }
+                    .accessibilityHint("Shows exactly what will be added before anything is written")
+            }
+        }
         if let problem = precise.lastError {
             SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
         }

@@ -33,7 +33,7 @@
 30 min,Settings,translated,,30 min,30 分钟
 30 sec,Settings,translated,,30 sec,30 秒
 4 hours,Settings,translated,,4 hours,4 小时
-45 min,Settings,translated,,45 min,45 分钟
+45 min,"Panel, Settings",translated,,45 min,45 分钟
 5 hours,Settings,translated,,5 hours,5 小时
 5 min,"App, Panel, Settings",translated,,5 min,5 分钟
 6 hours,Settings,translated,,6 hours,6 小时
@@ -116,7 +116,7 @@ Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Bela
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.",使用电池时，Belay 会在电量降至 %lld%% 时停止。
 Built in,Settings: Providers,translated,,Built in,内置
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
+Cancel,"App, Detection, Menu bar, Panel, Settings: Providers, Statistics, Welcome",translated,,Cancel,取消
 Check Now,Settings: General,translated,,Check Now,立即检查
 Check for Updates,App,translated,,Check for Updates,检查更新
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,自动检查更新
@@ -135,6 +135,7 @@ Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
 Countdown on the dimmed screen,App,translated,,Countdown on the dimmed screen,调暗屏幕上的倒计时
+Custom…,Panel,translated,,Custom…,自定义…
 Detection health,(unused),translated,,Detection status,检测状态
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,诊断
 Dim from,Settings,translated,,Dim from,调暗开始时间
@@ -146,7 +147,7 @@ Donate,"Detection, Settings: About",translated,,Donate,捐赠
 Done,"Settings, Settings: Providers",translated,,Done,完成
 Download…,Settings: General,translated,,Download…,下载…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,开启精确检测
-Enable…,Settings,translated,,Enable…,开启…
+Enable…,Settings: Providers,translated,,Enable…,开启…
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
@@ -161,6 +162,7 @@ Hear your week,App,translated,,Hear your week,听听你的一周
 Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
 Hold again with one click,App,translated,,Hold again with one click,一键再次保持唤醒
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
+"Hours and minutes, like 1:30 or 90 min.",Panel,translated,,"Hours and minutes, like 1:30 or 90 min.",小时和分钟，例如 1:30 或 90 min。
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,让 Mac 保持唤醒多久
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
@@ -168,6 +170,7 @@ Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
 It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer before it can continue.,需要你回应后才能继续。
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,在这台 Mac 上保留崩溃报告
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,合盖后继续工作
+Keep your Mac awake for,"App, Panel",translated,,Keep your Mac awake for,让 Mac 保持唤醒
 Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,让 Mac 按设定时间保持唤醒
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,正在让 Mac 保持唤醒
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
@@ -179,6 +182,7 @@ Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,允许访问 ~/.claude，以便 Belay 判断 Claude Code 何时在工作。
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,允许访问 ~/.codex，Belay 才能判断 Codex 何时在工作。
 Let's go,(unused),translated,,Let's go,开始吧
+"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。
 Local only,Settings: About,translated,,Local only,仅本地
 Looks good,(unused),translated,,Looks good,看起来不错
 Lovely,(unused),translated,,Lovely,很好
@@ -227,10 +231,7 @@ Other tools,Settings: Providers,translated,,Other tools,其他工具
 Paused at your time limit.,Panel,translated,,Paused at your time limit.,已暂停：达到时间上限。
 Play interface sounds,Settings: General,translated,,Play interface sounds,播放界面声音
 Play sounds,Settings: General,translated,,Play sounds,播放声音
-Precise detection,"Settings, Settings: Providers",translated,,Precise detection,精确检测
-Precise detection is off,Settings,translated,,Precise detection is off,精确检测已关闭
-Precise detection is on,Settings,translated,,Precise detection is on,精确检测已开启
-"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。
+Precise detection,Settings: Providers,translated,,Precise detection,精确检测
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Providers,来源
 Quit,"Menu bar, Settings: General",translated,,Quit,退出
 Quit %@,Menu bar,translated,%@,Quit %@,退出 %@
@@ -240,9 +241,9 @@ Quit and Reopen,Settings: General,translated,,Quit and Reopen,退出并重新打
 Rate Belay,Settings: About,translated,,Rate Belay,为 Belay 评分
 Ready,"App, Detection, Settings, Welcome",translated,,Ready,就绪
 Release notes,App,translated,,Release notes,更新说明
-Remove,"Settings, Settings: Providers",translated,,Remove,移除
+Remove,Settings: Providers,translated,,Remove,移除
 Remove %@,Settings: Providers,translated,%@,Remove %@,移除 %@
-Removes Belay's entries from your Claude Code settings,(unused),translated,,Removes only the entries Belay added to your Claude Code settings,仅移除 Belay 添加到 Claude Code 设置中的条目
+Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,仅移除 Belay 添加到 Claude Code 设置中的条目
 Report a bug,Settings: About,translated,,Report a bug,报告问题
 Report an Issue,Settings,translated,,Report an Issue,报告问题
 Reset…,Statistics,translated,,Reset…,重置…
@@ -256,15 +257,16 @@ Show all sessions,Panel,translated,,Show all sessions,显示全部会话
 Show fewer,Panel,translated,,Show fewer,收起
 Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
 Show the timer on the dimmed screen,Settings,translated,,Show the timer on the dimmed screen,在调暗的屏幕上显示计时器
-Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
+Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
 Software updates,Settings: General,translated,,Software updates,软件更新
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sound,声音
 Sounds Good!,App,translated,,Sounds Good!,好的！
 Sounds good,(unused),translated,,Sounds good,挺好
-Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,加星标
+Star,"App, Detection, Panel, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,加星标
 Star on GitHub,Settings: About,translated,,Star on GitHub,在 GitHub 上加星标
+Start,"App, Detection, Panel, Settings, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Start,开始
 Start watching,Welcome,translated,,Start Magic,开始监视
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,启动
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,统计

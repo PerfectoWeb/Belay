@@ -8,8 +8,14 @@ import BelayCore
 /// the extra rows appear in place.
 ///
 /// AppKit, not SwiftUI's `Menu`, because only `NSMenu` lets a menu change
-/// while it is being tracked. The extra rows are ordinary items kept hidden,
-/// and a local `flagsChanged` monitor unhides them while Shift is down.
+/// while it is being tracked. The extra rows are ordinary items kept hidden
+/// and unhidden as Shift goes down and up. Watched by a timer, not an event
+/// monitor: a menu tracks on its own event loop and a local monitor never
+/// hears the key while it is open, which is how the first version looked
+/// right and did nothing. A timer in the common run-loop modes ticks
+/// through menu tracking.
+///
+/// The last row is "Custom…", for the length none of the presets are.
 @MainActor
 final class DurationMenu: NSObject, NSMenuDelegate {
     /// Always offered.
@@ -18,9 +24,12 @@ final class DurationMenu: NSObject, NSMenuDelegate {
     static let extra: [TimeInterval] = [2700, 10800, 18000, 21600, 25200, 36000, 50400]
 
     private let menu = NSMenu()
-    private var monitor: Any?
+    private var watcher: Timer?
+    private var shiftShown = false
     private var current: TimeInterval?
     private let choose: (TimeInterval?) -> Void
+    /// Asked to put up the custom-length dialog, after the menu has closed.
+    var askCustom: (TimeInterval?) -> Void = { _ in }
 
     init(choose: @escaping (TimeInterval?) -> Void) {
         self.choose = choose
@@ -62,15 +71,28 @@ final class DurationMenu: NSObject, NSMenuDelegate {
             item.isHidden = Self.extra.contains(seconds)
             menu.addItem(item)
         }
+        menu.addItem(.separator())
+        let custom = NSMenuItem(
+            title: String(localized: "Custom…"), action: #selector(pickCustom), keyEquivalent: "")
+        custom.target = self
+        menu.addItem(custom)
     }
 
     private func reveal(shiftHeld: Bool) {
+        shiftShown = shiftHeld
         for item in menu.items {
             guard let value = item.representedObject as? TimeInterval?, let seconds = value,
                 Self.extra.contains(seconds)
             else { continue }
             item.isHidden = !shiftHeld
         }
+    }
+
+    @objc private func pickCustom() {
+        // After the menu has gone, so the dialog is not fighting it for the
+        // event loop.
+        let current = current
+        DispatchQueue.main.async { [weak self] in self?.askCustom(current) }
     }
 
     @objc private func pick(_ sender: NSMenuItem) {
@@ -83,15 +105,19 @@ final class DurationMenu: NSObject, NSMenuDelegate {
     // MARK: NSMenuDelegate
 
     func menuWillOpen(_ menu: NSMenu) {
-        monitor = NSEvent.addLocalMonitorForEvents(matching: .flagsChanged) { [weak self] event in
-            let shift = event.modifierFlags.contains(.shift)
-            MainActor.assumeIsolated { self?.reveal(shiftHeld: shift) }
-            return event
+        let timer = Timer(timeInterval: 0.05, repeats: true) { [weak self] _ in
+            MainActor.assumeIsolated {
+                guard let self else { return }
+                let shift = NSEvent.modifierFlags.contains(.shift)
+                if shift != self.shiftShown { self.reveal(shiftHeld: shift) }
+            }
         }
+        RunLoop.main.add(timer, forMode: .common)
+        watcher = timer
     }
 
     func menuDidClose(_ menu: NSMenu) {
-        if let monitor { NSEvent.removeMonitor(monitor) }
-        monitor = nil
+        watcher?.invalidate()
+        watcher = nil
     }
 }

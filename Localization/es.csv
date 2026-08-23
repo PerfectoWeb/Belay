@@ -33,7 +33,7 @@
 30 min,Settings,needs_review,,30 min,30 min
 30 sec,Settings,needs_review,,30 sec,30 s
 4 hours,Settings,needs_review,,4 hours,4 horas
-45 min,Settings,translated,,45 min,45 min
+45 min,"Panel, Settings",translated,,45 min,45 min
 5 hours,Settings,translated,,5 hours,5 horas
 5 min,"App, Panel, Settings",needs_review,,5 min,5 min
 6 hours,Settings,translated,,6 hours,6 horas
@@ -116,7 +116,7 @@ Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Be
 "Below %lld%% on battery, Belay stops holding.",Settings: Behaviour,translated,%lld,"On battery, Belay stops at %lld%%.","Con batería, Belay se detiene al llegar al %lld%%."
 Built in,Settings: Providers,translated,,Built in,Integrados
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Invítame un café
-Cancel,"App, Detection, Menu bar, Settings: Providers, Statistics, Welcome",translated,,Cancel,Cancelar
+Cancel,"App, Detection, Menu bar, Panel, Settings: Providers, Statistics, Welcome",translated,,Cancel,Cancelar
 Check Now,Settings: General,translated,,Check Now,Comprobar ahora
 Check for Updates,App,translated,,Check for Updates,Buscar actualizaciones
 Check for updates automatically,Settings: General,translated,,Check for updates automatically,Buscar actualizaciones automáticamente
@@ -135,6 +135,7 @@ Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Copiar
 Copy card and link,Statistics,translated,,Copy card and link,Copiar tarjeta y enlace
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,No se pudo contactar con el servicio de actualizaciones.
 Countdown on the dimmed screen,App,translated,,Countdown on the dimmed screen,Cuenta atrás en la pantalla atenuada
+Custom…,Panel,translated,,Custom…,Personalizado…
 Detection health,(unused),translated,,Detection status,Estado de detección
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnóstico
 Dim from,Settings,translated,,Dim from,Atenuar desde
@@ -146,7 +147,7 @@ Donate,"Detection, Settings: About",translated,,Donate,Donar
 Done,"Settings, Settings: Providers",translated,,Done,Listo
 Download…,Settings: General,translated,,Download…,Descargar…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activar detección precisa
-Enable…,Settings,translated,,Enable…,Activar…
+Enable…,Settings: Providers,translated,,Enable…,Activar…
 Erase,Statistics,needs_review,,Erase,Borrar
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,¿Borrar tus estadísticas?
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Terminado
@@ -161,6 +162,7 @@ Hear your week,App,translated,,Hear your week,Escucha tu semana
 Hold again,"App, Detection, Panel",translated,,Hold again,Mantener otra vez
 Hold again with one click,App,translated,,Hold again with one click,Manténlo otra vez con un clic
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Esperando un momento por si llega más trabajo.
+"Hours and minutes, like 1:30 or 90 min.",Panel,translated,,"Hours and minutes, like 1:30 or 90 min.","Horas y minutos, como 1:30 o 90 min."
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,Cuánto espera Belay después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas.
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Cuánto tiempo mantener despierto el Mac
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
@@ -168,6 +170,7 @@ Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactivo
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Necesita una respuesta para continuar.
 Keep crash reports on this Mac,Settings,translated,,Keep crash reports on this Mac,Guardar informes de errores en este Mac
 Keep working with the lid closed,Settings,translated,,Keep working with the lid closed,Seguir trabajando con la tapa cerrada
+Keep your Mac awake for,"App, Panel",translated,,Keep your Mac awake for,Mantener el Mac despierto durante
 Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,Mantén tu Mac despierto durante un tiempo
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Manteniendo el Mac despierto
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Mantiene el Mac despierto mientras trabaja tu agente.
@@ -179,6 +182,7 @@ Let Belay read %@ so it can see that agent work.,Settings: Providers,translated,
 Let Belay read your ~/.claude folder so it can tell when Claude Code is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.claude so Belay can tell when Claude Code is working.,Permite acceso a ~/.claude para que Belay sepa cuándo trabaja Claude Code.
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,Permite el acceso a ~/.codex para que Belay sepa cuándo Codex está trabajando.
 Let's go,(unused),translated,,Let's go,Vamos
+"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.","La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
 Local only,Settings: About,translated,,Local only,Solo local
 Looks good,(unused),translated,,Looks good,Se ve bien
 Lovely,(unused),translated,,Lovely,Estupendo
@@ -227,10 +231,7 @@ Other tools,Settings: Providers,translated,,Other tools,Otras herramientas
 Paused at your time limit.,Panel,translated,,Paused at your time limit.,En pausa: límite de tiempo alcanzado.
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Reproducir sonidos de la interfaz
 Play sounds,Settings: General,needs_review,,Play sounds,Reproducir sonidos
-Precise detection,"Settings, Settings: Providers",translated,,Precise detection,Detección precisa
-Precise detection is off,Settings,translated,,Precise detection is off,La detección precisa está desactivada
-Precise detection is on,Settings,translated,,Precise detection is on,La detección precisa está activada
-"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.",Settings: Providers,translated,,"Precise detection lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes ""an agent is waiting for you"" reliable.","La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
+Precise detection,Settings: Providers,translated,,Precise detection,Detección precisa
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Providers,Proveedores
 Quit,"Menu bar, Settings: General",translated,,Quit,Salir
 Quit %@,Menu bar,translated,%@,Quit %@,Salir de %@
@@ -240,9 +241,9 @@ Quit and Reopen,Settings: General,translated,,Quit and Reopen,Salir y volver a a
 Rate Belay,Settings: About,translated,,Rate Belay,Valorar Belay
 Ready,"App, Detection, Settings, Welcome",translated,,Ready,Listo
 Release notes,App,translated,,Release notes,Notas de la versión
-Remove,"Settings, Settings: Providers",translated,,Remove,Quitar
+Remove,Settings: Providers,translated,,Remove,Quitar
 Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
-Removes Belay's entries from your Claude Code settings,(unused),translated,,Removes only the entries Belay added to your Claude Code settings,Elimina solo las entradas que Belay añadió a tus ajustes de Claude Code
+Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,Elimina solo las entradas que Belay añadió a tus ajustes de Claude Code
 Report a bug,Settings: About,translated,,Report a bug,Informar de un error
 Report an Issue,Settings,translated,,Report an Issue,Informar de un problema
 Reset…,Statistics,needs_review,,Reset…,Restablecer…
@@ -256,15 +257,16 @@ Show all sessions,Panel,translated,,Show all sessions,Mostrar todas las sesiones
 Show fewer,Panel,translated,,Show fewer,Mostrar menos
 Show fewer sessions,Panel,translated,,Show fewer sessions,Mostrar menos sesiones
 Show the timer on the dimmed screen,Settings,translated,,Show the timer on the dimmed screen,Mostrar el temporizador en la pantalla atenuada
-Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,Muestra exactamente qué añadirá Belay antes de escribir nada
+Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,Muestra exactamente qué añadirá Belay antes de escribir nada
 Since %@,Statistics,needs_review,%@,Since %@,Desde el %@
 Skip for now,Welcome,translated,,Skip now,Omitir
 Software updates,Settings: General,translated,,Software updates,Actualizaciones
 Sound,"App, Settings: About, Settings: General, Welcome",needs_review,,Sound,Sonido
 Sounds Good!,App,translated,,Sounds Good!,¡Suena bien!
 Sounds good,(unused),translated,,Sounds good,Suena bien
-Star,"App, Detection, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Dar estrella
+Star,"App, Detection, Panel, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Star,Dar estrella
 Star on GitHub,Settings: About,translated,,Star on GitHub,Estrella en GitHub
+Start,"App, Detection, Panel, Settings, Settings: General, Settings: Providers, Statistics, Welcome",translated,,Start,Empezar
 Start watching,Welcome,translated,,Start Magic,Empezar a observar
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Inicio
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Estadísticas

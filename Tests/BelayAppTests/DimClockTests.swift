@@ -129,3 +129,24 @@ final class ProvidersPaneFrameTests: XCTestCase {
         try png.write(to: URL(fileURLWithPath: folder).appendingPathComponent("providers.png"))
     }
 }
+
+/// "Custom…" accepts a length the way people type one.
+final class CustomDurationTests: XCTestCase {
+    func testParsesTheUsualShapes() {
+        XCTAssertEqual(CustomDuration.parse("1:30"), 5400)
+        XCTAssertEqual(CustomDuration.parse("90"), 5400, "a bare number is minutes")
+        XCTAssertEqual(CustomDuration.parse("90m"), 5400)
+        XCTAssertEqual(CustomDuration.parse("1h 30m"), 5400)
+        XCTAssertEqual(CustomDuration.parse("2h"), 7200)
+        XCTAssertEqual(CustomDuration.parse("45 min"), 2700)
+        XCTAssertEqual(CustomDuration.parse("0:20"), 1200)
+    }
+
+    func testRefusesWhatIsNotALength() {
+        XCTAssertNil(CustomDuration.parse(""))
+        XCTAssertNil(CustomDuration.parse("soon"))
+        XCTAssertNil(CustomDuration.parse("0"), "under a minute is not a timer")
+        XCTAssertNil(CustomDuration.parse("25h"), "over a day is what until turned off is for")
+        XCTAssertNil(CustomDuration.parse("1:xx"))
+    }
+}
