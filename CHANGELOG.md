@@ -9,26 +9,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Always on can now hold for a chosen while. A quiet row under the mode
-  picker — the Control Center Focus pattern — offers 15 minutes through 12
-  hours or the usual "until turned off", and counts the remaining time down
-  in place. When the timer runs out Belay lets go, says so, and the same row
-  offers "Hold again" for another round of the same length.
+- Always on can hold for a chosen while. A quiet row under the mode picker
+  offers 15 minutes to 12 hours, or the usual "until turned off", and counts
+  the remaining time down as `HH:MM:SS`. Hold Shift — before opening the
+  menu or while it is open — and the list doubles to fourteen steps, from
+  45 minutes to 14 hours. When the timer runs out Belay lets go, says so,
+  and the same row offers "Hold again" for another round.
 - The pause has a one-click exit. When the maximum-awake limit or a timer
   ends a hold, the row under the picker names the pause and "Hold again"
-  starts a fresh cycle — in Auto as well as Always on. The battery guard
-  keeps no button: it clears by itself when power arrives.
+  starts a fresh cycle, in Auto as well as Always on. A tripped limit also
+  re-arms on its own when you unlock the screen or wake the display; a
+  finished timer does not, because "this long" was a deliberate choice.
 - The dimmed screen shows the countdown. While an Always on timer runs and
   the night dimmer has the display down, the remaining time sits in large
-  thin white digits in the middle of the screen, StandBy-style. The gamma
-  ramp dims the digits with everything else, so they read as softly cut out
-  of the dark rather than glowing over it; they drift a few points a minute
-  for OLED panels, take no clicks, and can be turned off next to the
-  dimming controls.
-- A tripped maximum-awake limit also re-arms when you come back to the
-  machine — unlocking the screen or waking the display starts a fresh cycle,
-  the same sanction a wake from sleep always gave. A finished timer stays
-  finished: an explicit "this long" is not renewed by walking past the desk.
+  thin white digits in the middle of the screen. The gamma ramp dims the
+  digits with everything else, so they read as cut out of the dark; they
+  drift a few points a minute for OLED panels, take no clicks, and can be
+  turned off beside the dimming controls.
+- The statistics chart plays its outline: sweep the cursor across the last
+  fourteen days and every bar strikes a note from a pentatonic run, pitched
+  by its height. Empty days stay silent.
+- Claude Code and Codex each have a switch in Settings. A switched-off agent
+  is not started, not watched, and never asks for a folder; switching one on
+  is the moment Belay asks, if this build has to. On first launch the direct
+  build switches on the agents whose folders exist. "Start Magic" on the
+  welcome screen now opens Settings on Providers.
+- What's New is a card: the wordmark, a version pill, four rows with
+  outlined icons, and one button. Blocks arrive one after another from the
+  top; the television switch-on is gone.
+
+### Changed
+
+- The dimmer explains when it actually dims: the sentence in Settings now
+  quotes the system's display-off delay — "after 10 min on power right now"
+  — and says so when the display is set never to turn off. Defaults for new
+  installs: 20 percent, 22:00 to 10:00.
+- A Mac without Codex is told "Codex is not installed", never "allow access
+  to ~/.codex": the direct build can tell an absent folder from an
+  unreadable one and no longer mistakes the first for a missing grant.
+- The panel stays put: the mode pill slides on its own, nothing jumps when
+  the timer row appears, and a click anywhere outside closes the panel
+  even after its menu has been used.
+
+### Fixed
+
+- The CI release job yields when the tag already has a release instead of
+  failing red; the local ritual's artefacts stay canonical.
+- The test gate no longer hangs on a TCC prompt while sweeping scratch
+  preferences out of the sandbox container.
 
 ## [1.3.3] - 2026-08-20
 
