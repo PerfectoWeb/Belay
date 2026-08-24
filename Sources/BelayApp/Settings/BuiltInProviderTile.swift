@@ -71,13 +71,15 @@ struct BuiltInProviderTile: View {
         )
     }
 
-    /// The compact elapsed form, with whole minutes written out: the copy
-    /// pass asked for "20 min", and only the lone-minutes shape changes —
-    /// seconds and mixed hours keep the compact spelling.
+    /// One unit, in the interface's own language: "20 min" in English,
+    /// "20 мин" in Russian — `Duration`'s formatter carries the units, so
+    /// no catalogue key has to.
     static func activity(_ seconds: TimeInterval) -> String {
-        let compact = ElapsedTime.compact(seconds)
-        guard !compact.contains("h"), compact.hasSuffix("m") else { return compact }
-        return compact.dropLast() + " min"
+        Duration.seconds(max(0, seconds)).formatted(
+            .units(
+                allowed: [.hours, .minutes, .seconds],
+                width: .abbreviated,
+                maximumUnitCount: 1))
     }
 
     /// Off says off. On says ready (and when it was last heard from), or what
