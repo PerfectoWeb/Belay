@@ -54,6 +54,9 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
 | 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
+| ⏱ | The Always On timer survives an app relaunch | <img src="badges/waiting.svg" alt="waiting" height="24"> | Next feature release |
+| 🕓 | Last activity on every agent's tile | <img src="badges/waiting.svg" alt="waiting" height="24"> | Next feature release |
+| 🧭 | Copilot, Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.5.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
 | ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |

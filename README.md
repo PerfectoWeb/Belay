@@ -39,7 +39,9 @@ No timer to start. No sleep setting to remember to change back.
 <tr><td>🛡&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
 <tr><td>⏱&nbsp;<b>Timed&nbsp;holds</b></td><td>Always On can run for a chosen time — 15 minutes to 12 hours, or your own — with the countdown in the panel and on the dimmed screen.</td></tr>
 <tr><td>🔋&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
-<tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents count as part of the session they belong to, not as noise.</td></tr>
+<tr><td>👀&nbsp;<b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
+<tr><td>🌙&nbsp;<b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
+<tr><td>💤&nbsp;<b>Closed-lid&nbsp;hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
 <tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
 <tr><td>🔒&nbsp;<b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
 <tr><td>🌍&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
