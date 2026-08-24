@@ -41,10 +41,11 @@ private struct Refused: LocalizedError {
 
 @MainActor
 final class LoginItemTests: XCTestCase {
-    func testTurningItOffStaysOffEvenWhileMacOSStillSaysOn() {
+    func testTurningItOffStaysOffEvenWhileMacOSStillSaysOn() async {
         let service = FakeService()
         service.registered = true
         let item = LoginItem(service: service)
+        await item.refreshNow()
         XCTAssertTrue(item.isEnabled)
 
         service.reportsStaleStatus = true
@@ -78,14 +79,15 @@ final class LoginItemTests: XCTestCase {
         XCTAssertEqual(item.problem, .refused("Operation not permitted"))
     }
 
-    func testApprovalPendingIsItsOwnCase() {
+    func testApprovalPendingIsItsOwnCase() async {
         let service = FakeService()
         service.approvalPending = true
         let item = LoginItem(service: service)
+        await item.refreshNow()
         XCTAssertEqual(item.problem, .needsApproval)
 
         service.approvalPending = false
-        item.refresh()
+        await item.refreshNow()
         XCTAssertNil(item.problem, "the note outlived the condition")
     }
 
@@ -94,7 +96,7 @@ final class LoginItemTests: XCTestCase {
     /// and it trusted the daemon unconditionally. Untick, reopen Settings, tick
     /// is back — and the second time it looks worse, because the user believes
     /// they already fixed it.
-    func testReopeningSettingsDoesNotUndoTheChange() {
+    func testReopeningSettingsDoesNotUndoTheChange() async {
         let service = FakeService()
         service.registered = true
         var now = Date(timeIntervalSince1970: 1_760_000_000)
@@ -103,14 +105,14 @@ final class LoginItemTests: XCTestCase {
         service.reportsStaleStatus = true
         item.set(false)
         now += 1
-        item.refresh()
+        await item.refreshNow()
 
         XCTAssertFalse(item.isEnabled, "the daemon lagging must not read as the user changing it back")
     }
 
     /// The trust window is bounded: once it lapses the service is believed
     /// again, so a real outside change is never ignored for good.
-    func testTheDaemonIsBelievedOnceItHasHadTimeToCatchUp() {
+    func testTheDaemonIsBelievedOnceItHasHadTimeToCatchUp() async {
         let service = FakeService()
         var now = Date(timeIntervalSince1970: 1_760_000_000)
         let item = LoginItem(service: service, clock: { now })
@@ -118,20 +120,21 @@ final class LoginItemTests: XCTestCase {
         item.set(true)
         service.registered = false
         now += LoginItem.settlingPeriod + 1
-        item.refresh()
+        await item.refreshNow()
 
         XCTAssertFalse(item.isEnabled)
     }
 
     /// The user can revoke this in System Settings while the window is open.
-    func testRefreshPicksUpAnOutsideChange() {
+    func testRefreshPicksUpAnOutsideChange() async {
         let service = FakeService()
         service.registered = true
         let item = LoginItem(service: service)
+        await item.refreshNow()
         XCTAssertTrue(item.isEnabled)
 
         service.registered = false
-        item.refresh()
+        await item.refreshNow()
         XCTAssertFalse(item.isEnabled)
     }
 

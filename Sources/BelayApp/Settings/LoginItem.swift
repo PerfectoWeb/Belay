@@ -39,8 +39,14 @@ final class LoginItem {
     init(service: any LoginItemService = SystemLoginItem(), clock: @escaping () -> Date = Date.init) {
         self.service = service
         self.clock = clock
-        isEnabled = service.isRegistered
-        problem = service.needsApproval ? .needsApproval : nil
+        // Not read here: the status lives in `backgroundtaskmanagementd`, and
+        // asking it is an XPC round trip that has been clocked at one to
+        // three seconds on a cold daemon. Construction happens on the main
+        // thread while the Settings window is opening, so the first answer
+        // arrives through `refresh()` a beat later instead.
+        isEnabled = false
+        problem = nil
+        refresh()
     }
 
     /// Re-reads the service, so the checkbox follows a change the user made in
@@ -53,13 +59,32 @@ final class LoginItem {
     /// this whole type exists to fix, reintroduced through the back door. So a
     /// disagreement inside the settling period is treated as the daemon lagging,
     /// not as news.
+    ///
+    /// The reads happen off the main thread. They are XPC round trips to
+    /// `backgroundtaskmanagementd`, and doing them synchronously froze the
+    /// whole Settings window for one to three seconds every time it became
+    /// key — the built-in agents' switches hung mid-animation as solid pills,
+    /// which is how the stall was finally noticed.
     func refresh() {
+        Task { await refreshNow() }
+    }
+
+    /// The same read, awaitable — for tests, which otherwise race the task.
+    func refreshNow() async {
+        let service = self.service
+        let (registered, approval) = await Task.detached(priority: .userInitiated) {
+            (service.isRegistered, service.needsApproval)
+        }.value
+        apply(registered: registered, approval: approval)
+    }
+
+    private func apply(registered: Bool, approval: Bool) {
         let settling = changedAt.map { clock().timeIntervalSince($0) < Self.settlingPeriod } ?? false
-        if !(settling && service.isRegistered != isEnabled) {
-            isEnabled = service.isRegistered
+        if !(settling && registered != isEnabled) {
+            isEnabled = registered
             changedAt = nil
         }
-        if service.needsApproval {
+        if approval {
             problem = .needsApproval
         } else if problem == .needsApproval {
             problem = nil
