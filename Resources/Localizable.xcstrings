@@ -1882,53 +1882,6 @@
         }
       }
     },
-    "A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ordneraktivität zählt als Arbeit. Prozessprüfungen helfen Belay zu erkennen, wann eine Sitzung endet."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Folder activity counts as work. Process checks help Belay know when a session ends."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La actividad en la carpeta cuenta como trabajo. Comprobar el proceso ayuda a Belay a saber cuándo termina una sesión."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'activité du dossier compte comme du travail. La vérification du processus aide Belay à savoir quand une session se termine."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'attività nella cartella conta come lavoro. Il controllo del processo aiuta Belay a capire quando una sessione finisce."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Активность в папке считается работой. Проверка процесса помогает понять, когда сессия завершилась."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "文件夹活动计为工作。进程检查帮助 Belay 判断会话何时结束。"
-          }
-        }
-      }
-    },
     "A session stopped responding without finishing, usually because the CLI needs input or was closed.": {
       "localizations": {
         "de": {
@@ -2340,7 +2293,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Добавить"
+            "value": "Добавить…"
           }
         },
         "zh-Hans": {
@@ -4973,53 +4926,6 @@
         }
       }
     },
-    "Belay reads these agents' own session files. Switch on the ones you use; a switched-off agent is never watched and never asked about.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay liest lokale Sitzungsaktivität der eingeschalteten Agenten. Ausgeschaltete Agenten werden nicht beobachtet."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reads local session activity for the agents you turn on. Disabled agents aren't watched."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lee la actividad local de sesión de los agentes que actives. Los agentes desactivados no se vigilan."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lit l'activité de session locale des agents que vous activez. Les agents désactivés ne sont pas surveillés."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay legge l'attività di sessione locale degli agenti che attivi. Gli agenti disattivati non vengono osservati."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay отслеживает локальную активность только у включённых агентов. Отключённые агенты не отслеживаются."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 读取你开启的智能体的本地会话活动。关闭的智能体不会被监视。"
-          }
-        }
-      }
-    },
     "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
       "extractionState": "manual",
       "localizations": {
@@ -5298,6 +5204,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "计时器已结束，Belay 已停止保持唤醒。"
+          }
+        }
+      }
+    },
+    "Belay watches only the agents you turn on. Precise Detection gives Belay exact start, finish, and needs-you signals. Control-click an agent to remove it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay beobachtet nur die Agenten, die du einschaltest. Präzise Erkennung liefert Belay exakte Signale für Start, Abschluss und Wartet-auf-dich. Zum Entfernen einen Agenten bei gedrückter Ctrl-Taste anklicken."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay watches only the agents you turn on. Precise Detection gives Belay exact start, finish, and needs-you signals. Control-click an agent to remove it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay solo observa los agentes que actives. La detección precisa da a Belay señales exactas de inicio, fin y de cuándo te necesita. Haz clic con Control en un agente para quitarla."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ne surveille que les agents que vous activez. La détection précise fournit à Belay des signaux exacts de début, de fin et d'attente. Cliquez sur un agent en maintenant Ctrl pour la retirer."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay osserva solo gli agenti che attivi. Il rilevamento preciso fornisce a Belay segnali esatti di inizio, fine e attesa. Fai clic su un agente tenendo premuto Ctrl per rimuoverlo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay следит только за включёнными агентами. Точное определение сообщает Belay, когда работа начинается, заканчивается или требует вашего внимания. Правый клик по агенту дает возможность отключить точный режим."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 只监视你开启的智能体。精确检测为 Belay 提供准确的开始、结束和需要你的信号。按住 Control 点击智能体可将其移除。"
           }
         }
       }
@@ -6697,7 +6649,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Базовый ·"
+            "value": "Обычное ·"
           }
         },
         "zh-Hans": {
@@ -9235,52 +9187,6 @@
         }
       }
     },
-    "Lets an agent tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung lässt einen Agenten Belay genau mitteilen, wann Arbeit beginnt, endet oder dich braucht."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise Detection lets an agent tell Belay exactly when work starts, stops, or needs you."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa permite que un agente le diga a Belay exactamente cuándo el trabajo empieza, termina o te necesita."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise permet à un agent d'indiquer à Belay quand le travail commence, s'arrête ou a besoin de vous."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso permette a un agente di dire a Belay quando il lavoro inizia, finisce o ha bisogno di te."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точное определение позволяет агенту сообщать Belay, когда работа начинается, заканчивается или требует вашего внимания."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测让智能体准确告诉 Belay 工作何时开始、结束或需要你。"
-          }
-        }
-      }
-    },
     "Local only": {
       "extractionState": "manual",
       "localizations": {
@@ -9468,36 +9374,36 @@
         }
       }
     },
-    "Low battery or awake limit reached.": {
+    "Low battery, overheating, or awake limit reached.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Niedriger Akkustand oder Wachlimit erreicht."
+            "value": "Niedriger Akkustand, Überhitzung oder Wachlimit erreicht."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Low battery or awake limit reached."
+            "value": "Low battery, overheating, or awake limit reached."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batería baja o límite de vigilia alcanzado."
+            "value": "Batería baja, sobrecalentamiento o límite de vigilia alcanzado."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batterie faible ou limite d'éveil atteinte."
+            "value": "Batterie faible, surchauffe ou limite d'éveil atteinte."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batteria scarica o limite di veglia raggiunto."
+            "value": "Batteria scarica, surriscaldamento o limite di veglia raggiunto."
           }
         },
         "ru": {
@@ -9509,7 +9415,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "电量低或已达到唤醒上限。"
+            "value": "电量低、过热或已达到唤醒上限。"
           }
         }
       }
@@ -10076,6 +9982,52 @@
         }
       }
     },
+    "No other tools added. Other tools use folder activity and process checks to detect work.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine weiteren Tools hinzugefügt. Weitere Tools erkennen Arbeit über Ordneraktivität und Prozessprüfungen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No other tools added. Other tools use folder activity and process checks to detect work."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No hay otras herramientas añadidas. Las demás herramientas detectan el trabajo por la actividad de carpetas y comprobaciones de procesos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun autre outil ajouté. Les autres outils détectent le travail via l'activité des dossiers et des vérifications de processus."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nessun altro strumento aggiunto. Gli altri strumenti rilevano il lavoro dall'attività delle cartelle e dai controlli dei processi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Других инструментов пока нет. Для них Belay определяет работу по активности папки и процессу."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未添加其他工具。其他工具通过文件夹活动和进程检查来检测工作。"
+          }
+        }
+      }
+    },
     "No providers available.": {
       "extractionState": "manual",
       "localizations": {
@@ -10307,53 +10259,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "暂不"
-          }
-        }
-      }
-    },
-    "Nothing configured. Belay is watching Claude Code only.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine weiteren Tools hinzugefügt. Belay beobachtet Claude Code."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No other tools added. Belay is watching Claude Code."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No has añadido otras herramientas. Belay está vigilando Claude Code."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aucun autre outil ajouté. Belay surveille Claude Code."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nessun altro strumento aggiunto. Belay sta monitorando Claude Code."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Других инструментов пока нет. Belay следит за Claude Code."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "未添加其他工具。Belay 正在监视 Claude Code。"
           }
         }
       }
@@ -11378,13 +11283,59 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Другие инструменты"
+            "value": "Другие агенты"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "其他工具"
+          }
+        }
+      }
+    },
+    "Other tools use folder activity and process checks to detect work.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weitere Tools erkennen Arbeit über Ordneraktivität und Prozessprüfungen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other tools use folder activity and process checks to detect work."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las demás herramientas detectan el trabajo por la actividad de carpetas y comprobaciones de procesos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les autres outils détectent le travail via l'activité des dossiers et des vérifications de processus."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gli altri strumenti rilevano il lavoro dall'attività delle cartelle e dai controlli dei processi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для других инструментов Belay определяет работу по активности папки и процессу."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他工具通过文件夹活动和进程检查来检测工作。"
           }
         }
       }
@@ -11565,7 +11516,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Точно"
+            "value": "Точное"
           }
         },
         "zh-Hans": {
@@ -11611,7 +11562,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Точно · активность %@ назад"
+            "value": "Точное · активность %@ назад"
           }
         },
         "zh-Hans": {
@@ -12174,7 +12125,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Отключить точное определение"
+            "value": "Удалить точное определение"
           }
         },
         "zh-Hans": {

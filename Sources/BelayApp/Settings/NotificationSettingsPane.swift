@@ -64,7 +64,7 @@ struct NotificationSettingsPane: View {
 
                 GroupedCheckbox(
                     title: "Safety stop",
-                    explanation: "Low battery or awake limit reached.",
+                    explanation: "Low battery, overheating, or awake limit reached.",
                     spokenLabel: "Notify when Belay stops for safety",
                     isOn: $settings.notifyOnSafetyRelease
                 )

@@ -38,20 +38,18 @@ struct GenericTargetsSection: View {
             }
 
             if targets.isEmpty {
-                SettingNote(text: "Nothing configured. Belay is watching Claude Code only.")
+                SettingNote(
+                    text: """
+                        No other tools added. Other tools use folder activity and \
+                        process checks to detect work.
+                        """)
             } else {
                 SettingRow {
                     GenericTargetGrid(targets: targets, remove: remove)
                 }
+                SettingNote(
+                    text: "Other tools use folder activity and process checks to detect work.")
             }
-
-            SettingNote(
-                text: """
-                    A folder changing means work is happening. A process being alive \
-                    never counts as work on its own. It only tells Belay the session \
-                    has ended when it disappears.
-                    """
-            )
         }
     }
 

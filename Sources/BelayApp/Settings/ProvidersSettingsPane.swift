@@ -37,32 +37,15 @@ struct ProvidersSettingsPane: View {
                 SettingRow(
                     title: "Built in",
                     explanation: """
-                        Belay reads these agents' own session files. Switch on the ones you use; \
-                        a switched-off agent is never watched and never asked about.
+                        Belay watches only the agents you turn on. Precise Detection \
+                        gives Belay exact start, finish, and needs-you signals. \
+                        Control-click an agent to remove it.
                         """
                 ) {
                     builtIn
                 }
-                if showsPreciseNote {
-                    SettingNote(
-                        text: """
-                            Lets an agent tell Belay exactly when it starts and stops, \
-                            instead of Belay inferring it from files. This is also what \
-                            makes "an agent is waiting for you" reliable.
-                            """
-                    )
-                    .transition(TargetTileMetrics.transition)
-                }
                 errorNotes
             }
-            // The same arrival and departure the tiles below use, so the row
-            // appears the way everything else on this pane does — and the
-            // window's own refit is already easing to the same clock.
-            .animation(
-                reduceMotion
-                    ? nil
-                    : (showsPreciseNote ? TargetTileMetrics.arrival : TargetTileMetrics.departure),
-                value: showsPreciseNote)
             Divider()
 
             GenericTargetsSection(targets: $targets)
@@ -76,20 +59,6 @@ struct ProvidersSettingsPane: View {
             HookPreviewSheet(precise: precise, provider: target.id) { refreshToken += 1 }
         }
         .id(refreshToken)
-    }
-
-    /// The agents whose hooks could actually be installed right now: precise
-    /// is per-agent, and a control for an agent that is off or missing is a
-    /// control about nothing.
-    private var preciseAgents: [ProviderStatus] {
-        guard PreciseDetection.isSupported else { return [] }
-        return state.providers.filter { provider in
-            guard provider.descriptor.supportsPreciseDetection, provider.isEnabled else {
-                return false
-            }
-            if case .ready = provider.availability { return true }
-            return false
-        }
     }
 
     /// The agents Belay understands natively, two to a row, each with its
@@ -125,11 +94,6 @@ struct ProvidersSettingsPane: View {
             }
         }
     }
-
-    /// The rest of the status line's sentence, once per pane rather than
-    /// once per tile: what "Precise" buys. Shown only while some tile is
-    /// actually offering or wearing it.
-    private var showsPreciseNote: Bool { !preciseAgents.isEmpty }
 
     @ViewBuilder
     private var errorNotes: some View {
