@@ -57,46 +57,6 @@ public final class BookmarkFileAccess: FileAccessProvider, @unchecked Sendable {
         restore()
     }
 
-    /// `~/.claude`, from the account's real home rather than the container.
-    public static func claudeHome(
-        home: URL = UserHome.real,
-        store: BookmarkStore = DefaultsBookmarkStore(),
-        bookmarks: SecurityScopedBookmarks = AppScopedBookmarks()
-    ) -> BookmarkFileAccess {
-        BookmarkFileAccess(
-            root: home.appendingPathComponent(".claude", isDirectory: true),
-            store: store,
-            bookmarks: bookmarks)
-    }
-
-    /// `~/.codex`, under its own defaults key: the two grants are separate
-    /// permissions and must never overwrite each other's bookmark.
-    public static func codexHome(
-        home: URL = UserHome.real,
-        store: BookmarkStore = DefaultsBookmarkStore(),
-        bookmarks: SecurityScopedBookmarks = AppScopedBookmarks()
-    ) -> BookmarkFileAccess {
-        BookmarkFileAccess(
-            root: home.appendingPathComponent(".codex", isDirectory: true),
-            key: "BelayCodexFolderBookmark",
-            store: store,
-            bookmarks: bookmarks)
-    }
-
-    /// `~/.cline`, under its own defaults key, for the same reason `~/.codex`
-    /// has one: three grants, three bookmarks, no overwriting.
-    public static func clineHome(
-        home: URL = UserHome.real,
-        store: BookmarkStore = DefaultsBookmarkStore(),
-        bookmarks: SecurityScopedBookmarks = AppScopedBookmarks()
-    ) -> BookmarkFileAccess {
-        BookmarkFileAccess(
-            root: home.appendingPathComponent(".cline", isDirectory: true),
-            key: "BelayClineFolderBookmark",
-            store: store,
-            bookmarks: bookmarks)
-    }
-
     deinit {
         if let held { bookmarks.stopAccessing(held) }
     }

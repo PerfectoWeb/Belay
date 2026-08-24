@@ -29,10 +29,13 @@ struct GenericTargetStore {
         guard let data = defaults.data(forKey: key) else { return [] }
         do {
             let stored = try JSONDecoder().decode([GenericTarget].self, from: data)
-            // 1.3.2 migration: Codex graduated from a preset to a first-class
-            // provider, and a leftover preset tile would report every session
-            // a second time. Dropped once, saved back, gone.
-            let kept = stored.filter { $0.webhookIdentifier != "codex" }
+            // Migrations: Codex (1.3.2) and Copilot (1.6.0) graduated from
+            // presets to first-class providers, and a leftover preset tile
+            // would report every session a second time. Dropped once, saved
+            // back, gone.
+            let kept = stored.filter {
+                $0.webhookIdentifier != "codex" && $0.webhookIdentifier != "copilot"
+            }
             if kept.count != stored.count { save(kept) }
             return kept
         } catch {

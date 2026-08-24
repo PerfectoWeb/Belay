@@ -17336,6 +17336,236 @@
           }
         }
       }
+    },
+    "Watches Copilot's session events to tell when a turn is running.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beobachtet Copilot-Sitzungsereignisse, um zu erkennen, wann ein Turn läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watches Copilot session events to tell when a turn is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observa los eventos de sesión de Copilot para saber cuándo hay un turno en marcha."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surveille les événements de session de Copilot pour savoir quand un tour est en cours."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitora gli eventi di sessione di Copilot per sapere quando è in corso un turno."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следит за событиями сессий Copilot, чтобы понимать, когда агент работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视 Copilot 的会话事件，以判断轮次何时在运行。"
+          }
+        }
+      }
+    },
+    "Copilot is not installed on this Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot ist auf diesem Mac nicht installiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot is not installed on this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot no está instalado en este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot n'est pas installé sur ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot non è installato su questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot не установлен на этом Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 上未安装 Copilot。"
+          }
+        }
+      }
+    },
+    "Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot non ha ancora avviato una sessione su questo Mac. Belay inizierà da solo quando succederà."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copilot 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。"
+          }
+        }
+      }
+    },
+    "Let Belay read your ~/.copilot folder so it can tell when Copilot is working.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaube Zugriff auf ~/.copilot, damit Belay erkennt, wann Copilot arbeitet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to ~/.copilot so Belay can tell when Copilot is working."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite el acceso a ~/.copilot para que Belay sepa cuándo Copilot está trabajando."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez l'accès à ~/.copilot pour que Belay sache quand Copilot travaille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti l'accesso a ~/.copilot perché Belay sappia quando Copilot sta lavorando."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите доступ к ~/.copilot, чтобы Belay видел, когда Copilot работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.copilot，Belay 才能判断 Copilot 何时在工作。"
+          }
+        }
+      }
+    },
+    "Grant access to ~/.copilot": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf ~/.copilot gewähren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access to ~/.copilot"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conceder acceso a ~/.copilot"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accorder l'accès à ~/.copilot"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concedi l'accesso a ~/.copilot"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дать доступ к ~/.copilot"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.copilot"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -11,10 +11,13 @@ import Foundation
 @MainActor
 final class ProviderHost {
     private let bus = SignalBus()
-    private let claudeCode: ClaudeCodeProvider
-    private let codex: CodexProvider
-    private let cline: ClineProvider
-    private let generic: GenericProvider
+    // Internal, not private: the per-provider start helpers live in
+    // `ProviderHostStarts.swift` for the file-length rule.
+    let claudeCode: ClaudeCodeProvider
+    let codex: CodexProvider
+    let cline: ClineProvider
+    let copilot: CopilotProvider
+    let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
     /// Which built-in agents are switched on. A switched-off agent is not
@@ -37,6 +40,7 @@ final class ProviderHost {
         access: FileAccessProvider = DirectFileAccess(),
         codexAccess: FileAccessProvider = DirectFileAccess(),
         clineAccess: FileAccessProvider = DirectFileAccess(),
+        copilotAccess: FileAccessProvider = DirectFileAccess(),
         folders: FileAccessProvider = DirectFileAccess(),
         home: URL = FileManager.default.homeDirectoryForCurrentUser
     ) {
@@ -45,6 +49,7 @@ final class ProviderHost {
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
         codex = CodexProvider(configuration: .codexHome(home), access: codexAccess)
         cline = ClineProvider(configuration: .clineHome(home), access: clineAccess)
+        copilot = CopilotProvider(configuration: .copilotHome(home), access: copilotAccess)
         generic = GenericProvider(access: folders)
     }
 
@@ -65,6 +70,9 @@ final class ProviderHost {
 
         await bus.attach(cline.signals)
         if enabled.contains(.cline) { await startCline(first: true) }
+
+        await bus.attach(copilot.signals)
+        if enabled.contains(.copilot) { await startCopilot(first: true) }
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -107,6 +115,7 @@ final class ProviderHost {
         if enabled.contains(.claudeCode) { await startClaudeCode(first: false) }
         if enabled.contains(.codex) { await startCodex(first: false) }
         if enabled.contains(.cline) { await startCline(first: false) }
+        if enabled.contains(.copilot) { await startCopilot(first: false) }
     }
 
     /// Switches a built-in agent on or off at runtime: the provider starts or
@@ -128,6 +137,13 @@ final class ProviderHost {
         if set.contains(.cline) != was.contains(.cline) {
             if set.contains(.cline) { await startCline(first: false) } else { await cline.stop() }
         }
+        if set.contains(.copilot) != was.contains(.copilot) {
+            if set.contains(.copilot) {
+                await startCopilot(first: false)
+            } else {
+                await copilot.stop()
+            }
+        }
     }
 
     /// Whether the Claude Code provider is still waiting for something.
@@ -135,51 +151,10 @@ final class ProviderHost {
         get async { await claudeCode.availability.isReady == false }
     }
 
-    /// A folder that does not exist yet is not a failure. It was logged as one
-    /// every few seconds on a Mac where Claude Code had never opened a project,
-    /// which is the state every new user starts in.
-    /// Same shape as the Claude Code start: a Mac where Codex has never run is
-    /// the state every user starts in, not an error worth shouting about.
-    private func startCodex(first: Bool) async {
-        do {
-            try await codex.start()
-            if !first { Log.providers.notice("Codex provider started") }
-        } catch ProviderError.notInUseYet(let path) {
-            guard first else { return }
-            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
-        } catch {
-            guard first else { return }
-            Log.providers.error("Codex provider failed to start: \(error, privacy: .public)")
-        }
-    }
-
-    private func startCline(first: Bool) async {
-        do {
-            try await cline.start()
-            EventLog.note("cline provider started")
-        } catch ProviderError.notInUseYet(let path) {
-            EventLog.note("cline not in use yet \(path)")
-        } catch {
-            EventLog.note("cline start failed \(error)")
-        }
-    }
-
-    private func startClaudeCode(first: Bool) async {
-        do {
-            try await claudeCode.start()
-            if !first { Log.providers.notice("Claude Code provider started") }
-        } catch ProviderError.notInUseYet(let path) {
-            guard first else { return }
-            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
-        } catch {
-            guard first else { return }
-            Log.providers.error("Claude Code provider failed to start: \(error, privacy: .public)")
-        }
-    }
-
     func stop() async {
         await precise.stop()
         await generic.stop()
+        await copilot.stop()
         await cline.stop()
         await codex.stop()
         await claudeCode.stop()
@@ -205,6 +180,12 @@ final class ProviderHost {
                 availability: await cline.availability,
                 isEnabled: enabled.contains(.cline),
                 lastSignal: lastSignals[.cline]
+            ),
+            ProviderStatus(
+                descriptor: copilot.descriptor,
+                availability: await copilot.availability,
+                isEnabled: enabled.contains(.copilot),
+                lastSignal: lastSignals[.copilot]
             ),
             ProviderStatus(
                 descriptor: generic.descriptor,

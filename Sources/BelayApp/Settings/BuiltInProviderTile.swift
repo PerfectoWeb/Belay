@@ -147,6 +147,7 @@ struct BuiltInProviderTile: View {
         switch provider.id {
         case .codex: return "~/.codex"
         case .cline: return "~/.cline"
+        case .copilot: return "~/.copilot"
         default: return "~/.claude"
         }
     }

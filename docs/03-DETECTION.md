@@ -197,6 +197,18 @@ in `~/.cline/hooks` (`TaskStart.sh` … `SessionShutdown.sh`), payload on
 stdin; the event name rides in the URL because the payload's `hookName`
 speaks internal names. Verified live 2026-08-24 against cline 3.0.57.
 
+**Copilot CLI (first-class in 1.6.0).** `CopilotProvider` follows
+`~/.copilot/session-state/<uuid>/events.jsonl`: an append-per-event stream
+with explicit `assistant.turn_start` / `assistant.turn_end` markers and a
+`session.shutdown` on a clean exit — the Codex shape with even less guessing.
+A Ctrl-C mid-turn writes no closing marker, so the idle and dead-process
+sweeps have the last word there, same as Cline. Copilot ships hooks of its own
+(`.github/hooks/*.json`) but no turn-end event, so the event log beats them
+and there is no exact tier. One overlap to know about: Copilot has its own
+`keepAlive` setting (off/on/busy) that pins the Mac from inside the CLI;
+harmless beside Belay, just redundant. Verified live 2026-08-24 against
+copilot-cli 1.0.80.
+
 **Codex (shipped first-class in 1.3.2).** `CodexProvider` follows the session
 rollouts — see "Codex rollouts" above. The `notify` hook in
 `~/.codex/config.toml` was verified empirically and rejected as Belay's

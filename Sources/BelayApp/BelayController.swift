@@ -64,6 +64,7 @@ final class BelayController {
             access: ClaudeAccess.provider,
             codexAccess: CodexAccess.provider,
             clineAccess: ClineAccess.provider,
+            copilotAccess: CopilotAccess.provider,
             folders: WatchedFolderAccess.provider,
             home: ClaudeAccess.home)
         coordinator = ActivityCoordinator(policy: settings.policy)

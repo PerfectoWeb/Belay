@@ -62,9 +62,9 @@ extension GenericPreset {
         return all.first { flattened($0.displayName) == wanted || $0.id == wanted }
     }
 
-    /// The menu shows this order: the big CLIs first, then the rest. Codex is
-    /// deliberately absent: it has a first-class provider now, and a preset
-    /// row beside it would report every session twice.
+    /// The menu shows this order: the big CLIs first, then the rest. Codex and
+    /// Copilot are deliberately absent: each has a first-class provider now,
+    /// and a preset row beside one would report every session twice.
     public static let all: [GenericPreset] = [
         GenericPreset(
             id: "gemini",
@@ -72,19 +72,6 @@ extension GenericPreset {
             summary: "Watches ~/.gemini, where the CLI keeps its session state.",
             folder: .home(".gemini"),
             processName: "gemini"),
-        // Verified on a real install: session-state/<uuid>/events.jsonl is an
-        // append-only stream with explicit turn_start/turn_end events, flushed
-        // during the turn, not after it. The CLI ships its own hook system,
-        // so an exact integration has somewhere to grow from this preset.
-        GenericPreset(
-            id: "copilot",
-            displayName: "Copilot CLI",
-            summary: """
-                Watches ~/.copilot/session-state, where Copilot CLI streams \
-                its session events.
-                """,
-            folder: .home(".copilot/session-state"),
-            processName: "copilot"),
         // OpenCode keeps everything in one SQLite database whose WAL sits at
         // the root of this folder; writes land there at every tool call and
         // message boundary while a turn runs. The log/ subfolder also churns

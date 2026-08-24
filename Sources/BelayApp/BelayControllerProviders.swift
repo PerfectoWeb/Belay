@@ -38,6 +38,9 @@ extension BelayController {
         if FileManager.default.fileExists(atPath: home.appendingPathComponent(".cline").path) {
             set.insert(.cline)
         }
+        if FileManager.default.fileExists(atPath: home.appendingPathComponent(".copilot").path) {
+            set.insert(.copilot)
+        }
         settings.enabledProviders = set
         #endif
     }
@@ -47,6 +50,7 @@ extension BelayController {
         switch provider {
         case .codex: granted = CodexAccess.request()
         case .cline: granted = ClineAccess.request()
+        case .copilot: granted = CopilotAccess.request()
         default: granted = ClaudeAccess.request()
         }
         Task { [weak self] in
