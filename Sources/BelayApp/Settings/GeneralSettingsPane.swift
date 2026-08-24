@@ -46,7 +46,6 @@ struct GeneralSettingsPane: View {
             SettingCheckboxGroup(title: "Startup") {
                 GroupedCheckbox(
                     title: "Open at login",
-                    explanation: "Belay is only useful when it is already running.",
                     spokenLabel: "Open Belay at login",
                     isOn: loginItem.binding
                 )

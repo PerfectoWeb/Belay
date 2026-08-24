@@ -8,36 +8,20 @@ import SwiftUI
 struct NightDimmingGroup: View {
     @Bindable var settings: SettingsStore
 
-    /// Says when the dim actually happens, with the live number. The dimmer
-    /// keys off the system's own display-off delay — ten minutes on power by
-    /// default — and a sentence that only said "when you step away" sent the
-    /// first tester away for two minutes to wait for nothing. Four shapes,
-    /// whole sentences each, never a fragment interpolated into another.
+    /// One sentence, or the special case: a display set never to turn off
+    /// gives the dimmer no moment to act, and saying so beats dimming
+    /// nothing. The live delay figure was quoted here for a while and
+    /// retired in the copy pass: the sentence reads better without it.
     static var explanation: LocalizedStringKey {
-        let onAC = DisplaySleepDelay.isOnACNow
-        guard DisplaySleepDelay.isKnown else {
-            return """
-                When you step away at night and macOS would have turned the display off, \
-                Belay dims it to this level instead. It brightens again when you return.
-                """
-        }
-        guard let delay = DisplaySleepDelay.current(onAC: onAC) else {
+        guard DisplaySleepDelay.current(onAC: DisplaySleepDelay.isOnACNow) != nil else {
             return """
                 Your Mac is set never to turn the display off, so there is no moment for \
                 Belay to dim it. Choose a display-off time in System Settings first.
                 """
         }
-        let minutes = Int((delay / 60).rounded())
-        return onAC
-            ? """
-            When you step away at night, Belay dims the display to this level instead of \
-            letting macOS turn it off, which happens after \(minutes) min on power right now. \
-            It brightens again when you return.
-            """
-            : """
-            When you step away at night, Belay dims the display to this level instead of \
-            letting macOS turn it off, which happens after \(minutes) min on battery right now. \
-            It brightens again when you return.
+        return """
+            When you step away at night, Belay dims the display to this level. \
+            It brightens when you return.
             """
     }
 

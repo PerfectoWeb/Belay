@@ -1559,43 +1559,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nach dieser Zeit hält Belay deinen Mac nicht mehr wach und sagt dir Bescheid."
+            "value": "Hält den Mac nach dieser Zeit nicht mehr wach und benachrichtigt dich."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay stops keeping your Mac awake after this time and lets you know."
+            "value": "Stops keeping your Mac awake after this time and notifies you."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Al llegar a este tiempo, Belay deja de mantener el Mac despierto y te avisa."
+            "value": "Deja de mantener el Mac despierto tras este tiempo y te avisa."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Après ce délai, Belay cesse de garder votre Mac éveillé et vous prévient."
+            "value": "Cesse de garder le Mac éveillé après ce délai et vous prévient."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dopo questo intervallo, Belay smette di tenere sveglio il Mac e ti avvisa."
+            "value": "Smette di tenere sveglio il Mac dopo questo tempo e ti avvisa."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "После этого времени Belay разрешит Mac уснуть и сообщит об этом."
+            "value": "После этого времени перестаёт держать Mac и сообщает вам."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "超过这段时间后，Belay 会让 Mac 进入睡眠并通知你。"
+            "value": "超过此时间后停止保持唤醒并通知你。"
           }
         }
       }
@@ -1606,43 +1606,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ordneraktivität zählt als Arbeit. Ein laufender Prozess zeigt Belay nur, wann die Sitzung endet."
+            "value": "Ordneraktivität zählt als Arbeit. Prozessprüfungen helfen Belay zu erkennen, wann eine Sitzung endet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Folder activity counts as work. A running process only tells Belay when the session ends."
+            "value": "Folder activity counts as work. Process checks help Belay know when a session ends."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La actividad de la carpeta cuenta como trabajo. Un proceso en ejecución solo le indica a Belay cuándo termina la sesión."
+            "value": "La actividad en la carpeta cuenta como trabajo. Comprobar el proceso ayuda a Belay a saber cuándo termina una sesión."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'activité du dossier compte comme du travail. Un processus en cours indique seulement à Belay quand la session se termine."
+            "value": "L'activité du dossier compte comme du travail. La vérification du processus aide Belay à savoir quand une session se termine."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "L'attività della cartella conta come lavoro. Un processo in esecuzione indica a Belay solo quando termina la sessione."
+            "value": "L'attività nella cartella conta come lavoro. Il controllo del processo aiuta Belay a capire quando una sessione finisce."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Изменения в папке считаются работой. Запущенный процесс лишь помогает Belay понять, когда сессия завершилась."
+            "value": "Активность в папке считается работой. Проверка процесса помогает Belay понять, когда сессия закончилась."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "文件夹活动算作工作。正在运行的进程只用于告诉 Belay 会话何时结束。"
+            "value": "文件夹活动计为工作。进程检查帮助 Belay 判断会话何时结束。"
           }
         }
       }
@@ -1699,44 +1699,44 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Ein kurzer Ton, wenn Sie den Modus von Hand ändern. Sind Oberflächentöne in den Systemeinstellungen aus, verstummen auch diese."
+            "state": "translated",
+            "value": "Spielt einen kurzen Ton, wenn du den Modus manuell wechselst. Beachtet deine Systemeinstellungen für Töne."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too."
+            "value": "Plays a short sound when you change modes manually. Respects your system sound settings."
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Un tono breve cuando cambias de modo a mano. Si desactivas los sonidos de la interfaz en Ajustes del Sistema, estos también callan."
+            "state": "translated",
+            "value": "Reproduce un sonido corto al cambiar de modo manualmente. Respeta los ajustes de sonido del sistema."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Une note brève quand vous changez de mode à la main. Si les sons de l'interface sont coupés dans Réglages Système, ceux-ci se taisent aussi."
+            "state": "translated",
+            "value": "Joue un son bref quand vous changez de mode manuellement. Respecte les réglages sonores du système."
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Una nota breve quando cambi modo a mano. Se i suoni dell'interfaccia sono disattivati in Impostazioni di Sistema, anche questi tacciono."
+            "state": "translated",
+            "value": "Riproduce un breve suono quando cambi modalità manualmente. Rispetta le impostazioni audio di sistema."
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Звуковое сопровождение интерфейса Belay. Если выключить звуки интерфейса в Системных настройках, эти тоже замолчат."
+            "state": "translated",
+            "value": "Короткий звук при смене режима вручную. Учитывает системные настройки звука."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "手动切换模式时的一声轻响。在“系统设置”中关闭界面声音后，这些声音也会静音。"
+            "value": "手动切换模式时播放短促提示音。遵循系统声音设置。"
           }
         }
       }
@@ -2264,43 +2264,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Auch das Display wach halten"
+            "value": "Display wach halten"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Also keep the display awake"
+            "value": "Keep the display awake"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mantener también la pantalla encendida"
+            "value": "Mantener la pantalla despierta"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Garder aussi l'écran allumé"
+            "value": "Garder l'écran éveillé"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tieni sveglio anche lo schermo"
+            "value": "Tieni sveglio lo schermo"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не гасить экран"
+            "value": "Не гасить дисплей"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "同时让显示器保持唤醒"
+            "value": "保持显示器唤醒"
           }
         }
       }
@@ -3715,53 +3715,6 @@
         }
       }
     },
-    "Belay is only useful when it is already running.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Öffne Belay bei der Anmeldung, damit es bereit ist, bevor ein Agent startet."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Belay at login so it's ready before an agent starts."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abre Belay al iniciar sesión para que esté listo antes de que empiece un agente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrez Belay à l'ouverture de session pour qu'il soit prêt avant le démarrage d'un agent."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri Belay all'accesso così sarà pronto prima che inizi un agente."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Включите запуск Belay при входе, чтобы он был готов до старта агента."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "登录时打开 Belay，让它在智能体启动前就准备就绪。"
-          }
-        }
-      }
-    },
     "Belay is switched off, so it will not hold sleep at all.": {
       "extractionState": "manual",
       "localizations": {
@@ -4285,43 +4238,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay speichert Berichte zu Abstürzen, Einfrierern und Fehlern lokal. Es wird nichts automatisch gesendet. Was du beim Melden teilst, entscheidest du."
+            "value": "Sichert Absturz-, Hänger- und Fehlerberichte lokal. Nichts wird automatisch gesendet."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem."
+            "value": "Saves crash, freeze, and error reports locally. Nothing is sent automatically."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay guarda los informes de fallos, bloqueos y errores en local. No se envía nada automáticamente. Tú decides qué compartir al informar de un problema."
+            "value": "Guarda localmente los informes de fallos, bloqueos y errores. No se envía nada automáticamente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay enregistre les rapports de plantage, de blocage et d'erreur en local. Rien n'est envoyé automatiquement. Vous décidez de ce que vous partagez en signalant un problème."
+            "value": "Enregistre localement les rapports de plantage, blocage et erreur. Rien n'est envoyé automatiquement."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay salva in locale i rapporti di crash, blocchi ed errori. Non viene inviato nulla automaticamente. Sei tu a decidere cosa condividere quando segnali un problema."
+            "value": "Salva localmente i rapporti di crash, blocchi ed errori. Nulla viene inviato automaticamente."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay сохраняет отчёты о падениях, зависаниях и ошибках локально. Ничего не отправляется автоматически. Что показать при обращении, решаете вы."
+            "value": "Сохраняет отчёты о сбоях, зависаниях и ошибках локально. Ничего не отправляется автоматически."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 会把崩溃、卡死和错误报告保存在本机。不会自动发送任何内容。反馈问题时分享什么，由你决定。"
+            "value": "在本地保存崩溃、卡死和错误报告。不会自动发送任何内容。"
           }
         }
       }
@@ -4949,7 +4902,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Check for updates automatically"
+            "value": "Automatically check for updates"
           }
         },
         "es": {
@@ -4961,7 +4914,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rechercher les mises à jour automatiquement"
+            "value": "Rechercher automatiquement les mises à jour"
           }
         },
         "it": {
@@ -4973,7 +4926,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Проверять обновления автоматически"
+            "value": "Автоматически проверять обновления"
           }
         },
         "zh-Hans": {
@@ -6259,43 +6212,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wie lange Belay wartet, nachdem dein Agent still geworden ist, bevor dein Mac schlafen darf. Ein wenig Puffer verhindert, dass der Mac zwischen Aufgaben einschläft."
+            "value": "Wie lange Belay wartet, nachdem ein Agent still geworden ist. Vermeidet Schlaf zwischen Aufgaben."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks."
+            "value": "How long Belay waits after an agent goes quiet. Helps avoid sleep between tasks."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuánto espera Belay después de que un agente quede inactivo antes de dejar dormir el Mac. Un pequeño margen evita que se duerma entre tareas."
+            "value": "Cuánto espera Belay después de que un agente queda en silencio. Evita el reposo entre tareas."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Durée pendant laquelle Belay attend après l'arrêt d'un agent avant de laisser votre Mac se mettre en veille. Un petit délai évite la veille entre deux tâches."
+            "value": "Combien de temps Belay attend après qu'un agent s'est tu. Évite la veille entre les tâches."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Per quanto Belay aspetta dopo che un agente si ferma prima di lasciare andare il Mac in stop. Un piccolo margine evita lo stop tra un'attività e l'altra."
+            "value": "Quanto attende Belay dopo che un agente tace. Evita lo stop tra un compito e l'altro."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть. Небольшой запас помогает не уснуть между задачами."
+            "value": "Сколько Belay ждёт после того, как агент затих. Помогает избежать сна между задачами."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "智能体停止活动后，Belay 在让 Mac 进入睡眠前等待的时间。稍长一些有助于避免在任务之间进入睡眠。"
+            "value": "智能体安静后 Belay 等待多久。有助于避免任务之间进入睡眠。"
           }
         }
       }
@@ -6400,43 +6353,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Absturzberichte auf diesem Mac behalten"
+            "value": "Diagnoseberichte auf diesem Mac sichern"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keep crash reports on this Mac"
+            "value": "Save diagnostic reports on this Mac"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guardar informes de errores en este Mac"
+            "value": "Guardar informes de diagnóstico en este Mac"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conserver les rapports d'erreur sur ce Mac"
+            "value": "Enregistrer les rapports de diagnostic sur ce Mac"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Conserva i rapporti di errore su questo Mac"
+            "value": "Salva i rapporti di diagnostica su questo Mac"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Хранить отчёты об ошибках на этом Mac"
+            "value": "Сохранять отчёты диагностики на этом Mac"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在这台 Mac 上保留崩溃报告"
+            "value": "在此 Mac 上保存诊断报告"
           }
         }
       }
@@ -8280,43 +8233,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Einmal am Tag prüft Belay, ob es eine neuere Version gibt. Es sendet nichts über dich, und es wird nichts geladen oder installiert, bevor du auf Aktualisieren drückst."
+            "value": "Prüft einmal am Tag. Es werden keine persönlichen Daten gesendet. Nichts wird geladen oder installiert, bis du dich für das Update entscheidest."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Once a day, Belay checks whether a newer version exists. It sends nothing about you, and nothing is downloaded or installed until you press Update."
+            "value": "Checks once a day. No personal data is sent. Nothing is downloaded or installed until you choose to update."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una vez al día, Belay comprueba si existe una versión más reciente. No envía nada sobre ti, y no se descarga ni se instala nada hasta que pulsas Actualizar."
+            "value": "Comprueba una vez al día. No se envían datos personales. No se descarga ni instala nada hasta que decidas actualizar."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Une fois par jour, Belay vérifie s’il existe une version plus récente. Il n’envoie rien vous concernant, et rien n’est téléchargé ni installé tant que vous n’appuyez pas sur Mettre à jour."
+            "value": "Vérifie une fois par jour. Aucune donnée personnelle n'est envoyée. Rien n'est téléchargé ni installé tant que vous ne choisissez pas de mettre à jour."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una volta al giorno, Belay controlla se esiste una versione più recente. Non invia nulla che ti riguardi, e nulla viene scaricato o installato finché non premi Aggiorna."
+            "value": "Controlla una volta al giorno. Nessun dato personale viene inviato. Nulla viene scaricato o installato finché non scegli di aggiornare."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay периодически проверяет, есть ли новая версия. Скачивание и установка производятся исключительно после нажатия «Обновить»."
+            "value": "Проверка раз в день. Личные данные не отправляются. Ничего не загружается и не устанавливается, пока вы сами не решите обновиться."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 每天检查一次是否有新版本。它不会发送任何关于你的信息，在你按下“更新”之前也不会下载或安装任何东西。"
+            "value": "每天检查一次。不发送任何个人数据。在你选择更新之前，不会下载或安装任何内容。"
           }
         }
       }
@@ -9737,43 +9690,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wartezeit im Energiesparmodus verkürzen"
+            "value": "Kürzere Wartezeit im Stromsparmodus"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shorten the wait in Low Power Mode"
+            "value": "Shorter wait in Low Power Mode"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acortar la espera en Modo de bajo consumo"
+            "value": "Espera más corta en modo de bajo consumo"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Réduire l'attente en mode économie d'énergie"
+            "value": "Attente plus courte en mode économie d'énergie"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Riduci l'attesa in Risparmio energetico"
+            "value": "Attesa più breve in modalità risparmio"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сокращать ожидание в режиме энергосбережения"
+            "value": "Короче ожидание в режиме энергосбережения"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "低电量模式下缩短等待时间"
+            "value": "低电量模式下等待更短"
           }
         }
       }
@@ -10066,13 +10019,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Software-Updates"
+            "value": "Updates"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Software updates"
+            "value": "Updates"
           }
         },
         "es": {
@@ -10102,7 +10055,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "软件更新"
+            "value": "更新"
           }
         }
       }
@@ -10112,38 +10065,38 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Ton"
+            "state": "translated",
+            "value": "Töne"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sound"
+            "value": "Sounds"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Sonido"
+            "state": "translated",
+            "value": "Sonidos"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Son"
+            "state": "translated",
+            "value": "Sons"
           }
         },
         "it": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Suono"
+            "state": "translated",
+            "value": "Suoni"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Звук"
+            "state": "translated",
+            "value": "Звуки"
           }
         },
         "zh-Hans": {
@@ -11429,43 +11382,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Warten, bevor dein Mac schlafen darf"
+            "value": "Vor dem Ruhezustand warten"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wait before letting your Mac sleep"
+            "value": "Wait before sleep"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Esperar antes de dejar dormir el Mac"
+            "value": "Esperar antes de dormir"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Attendre avant de laisser votre Mac se mettre en veille"
+            "value": "Attendre avant la veille"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Attendi prima di lasciare andare il Mac in stop"
+            "value": "Attendi prima dello stop"
           }
         },
         "ru": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Переход в сон через"
+            "state": "translated",
+            "value": "Ждать перед сном"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "让 Mac 进入睡眠前的等待时间"
+            "value": "睡眠前等待"
           }
         }
       }
@@ -12793,43 +12746,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "letztes Signal vor %@"
+            "value": "Letzte Aktivität vor %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "last signal %@ ago"
+            "value": "Last activity %@ ago"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "última señal hace %@"
+            "value": "Última actividad hace %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "dernier signal il y a %@"
+            "value": "Dernière activité il y a %@"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "ultimo segnale %@ fa"
+            "value": "Ultima attività %@ fa"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "последний сигнал %@ назад"
+            "value": "Активность %@ назад"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "上次信号在 %@ 前"
+            "value": "最近活动于 %@ 前"
           }
         }
       }
@@ -13968,43 +13921,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay hält den Mac mit geschlossenem Deckel wach und lässt von selbst los: am Zeitlimit oder wenn der Mac zu warm wird."
+            "value": "Hält den Mac bei geschlossenem Deckel wach und lässt am Zeitlimit los, oder wenn er zu warm wird."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm."
+            "value": "Keeps your Mac awake with the lid closed, then lets go at the time limit or if it gets too warm."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay mantiene despierto el Mac con la tapa cerrada y lo suelta solo: al llegar al límite de tiempo o si el Mac se calienta demasiado."
+            "value": "Mantiene el Mac despierto con la tapa cerrada y lo suelta al llegar al límite de tiempo o si se calienta demasiado."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay garde le Mac éveillé capot fermé, puis relâche de lui-même : au plafond de temps ou si le Mac chauffe trop."
+            "value": "Garde le Mac éveillé capot fermé, puis relâche à la limite de temps ou s'il chauffe trop."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay tiene sveglio il Mac a coperchio chiuso e lascia da solo: al limite di tempo o se il Mac scalda troppo."
+            "value": "Tiene sveglio il Mac con il coperchio chiuso e lascia andare al limite di tempo o se si scalda troppo."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay держит Mac с закрытой крышкой и отпускает сам: по лимиту времени или если Mac слишком нагрелся."
+            "value": "Держит Mac бодрствующим с закрытой крышкой, а отпускает по лимиту времени или если Mac перегревается."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "合上盖子后 Belay 让 Mac 保持唤醒，到达时间上限或 Mac 过热时会自行松开。"
+            "value": "合盖时保持 Mac 唤醒，到达时间上限或过热时松开。"
           }
         }
       }
@@ -14908,7 +14861,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show the timer on the dimmed screen"
+            "value": "Show timer on the dimmed screen"
           }
         },
         "ru": {
@@ -14955,90 +14908,43 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would."
+            "value": "Shows the time left while an Always On timer is running."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пока идёт таймер режима «Всегда», оставшееся время тихо светится на тёмном экране, как прикроватные часы."
+            "value": "Показывает оставшееся время, пока идёт таймер режима «Всегда»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Läuft ein Timer im Modus „Immer an“, leuchtet die verbleibende Zeit ruhig auf dem dunklen Bildschirm, wie eine Nachttischuhr."
+            "value": "Zeigt die verbleibende Zeit, während ein „Immer an“-Timer läuft."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mientras corre un temporizador del modo Siempre, el tiempo restante brilla suavemente en la pantalla oscura, como un reloj de mesita."
+            "value": "Muestra el tiempo restante mientras corre un temporizador de Siempre."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pendant qu'un minuteur du mode Toujours tourne, le temps restant luit doucement sur l'écran sombre, comme un réveil de chevet."
+            "value": "Affiche le temps restant pendant qu'un minuteur Toujours est en cours."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mentre un timer della modalità Sempre è attivo, il tempo rimanente brilla piano sullo schermo scuro, come una sveglia da comodino."
+            "value": "Mostra il tempo rimanente mentre è attivo un timer di Sempre."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "常开计时器运行时，剩余时间会在暗屏上轻轻发光，就像床头钟一样。"
-          }
-        }
-      }
-    },
-    "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night and macOS would have turned the display off, Belay dims it to this level instead. It brightens again when you return."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда вы отходите ночью и macOS выключила бы дисплей, Belay вместо этого приглушает его до этого уровня. При возвращении яркость восстанавливается."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn du nachts weggehst und macOS das Display ausgeschaltet hätte, dunkelt Belay es stattdessen auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando te alejas de noche y macOS habría apagado la pantalla, Belay la atenúa a este nivel en su lugar. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand vous vous éloignez la nuit et que macOS aurait éteint l'écran, Belay l'assombrit à ce niveau à la place. Il se rallume à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando ti allontani di notte e macOS avrebbe spento lo schermo, Belay lo attenua invece a questo livello. Torna luminoso al tuo ritorno."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间你离开时，如果 macOS 本会关闭显示器，Belay 会改为将其调暗到此亮度。你回来时会恢复亮度。"
+            "value": "常开计时器运行时显示剩余时间。"
           }
         }
       }
@@ -15086,100 +14992,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "你的 Mac 设置为从不关闭显示器，Belay 也就没有调暗的时机。请先在系统设置中选择一个关闭显示器的时间。"
-          }
-        }
-      }
-    },
-    "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on power right now. It brightens again when you return."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда вы отходите ночью, Belay приглушает дисплей до этого уровня вместо того, чтобы дать macOS его выключить, а это сейчас происходит через %lld мин от сети. При возвращении яркость восстанавливается."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab, statt macOS es ausschalten zu lassen, was am Netzteil derzeit nach %lld Min. passiert. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel en lugar de dejar que macOS la apague, lo que ahora ocurre tras %lld min con corriente. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau au lieu de laisser macOS l'éteindre, ce qui survient actuellement après %lld min sur secteur. Il se rallume à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello invece di lasciare che macOS lo spenga, cosa che ora avviene dopo %lld min con l'alimentatore. Torna luminoso al tuo ritorno."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电源时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。"
-          }
-        }
-      }
-    },
-    "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, Belay dims the display to this level instead of letting macOS turn it off, which happens after %lld min on battery right now. It brightens again when you return."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда вы отходите ночью, Belay приглушает дисплей до этого уровня вместо того, чтобы дать macOS его выключить, а это сейчас происходит через %lld мин от батареи. При возвращении яркость восстанавливается."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab, statt macOS es ausschalten zu lassen, was im Akkubetrieb derzeit nach %lld Min. passiert. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel en lugar de dejar que macOS la apague, lo que ahora ocurre tras %lld min con batería. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau au lieu de laisser macOS l'éteindre, ce qui survient actuellement après %lld min sur batterie. Il se rallume à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello invece di lasciare che macOS lo spenga, cosa che ora avviene dopo %lld min a batteria. Torna luminoso al tuo ritorno."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度，而不是让 macOS 关闭它；使用电池时目前会在 %lld 分钟后关闭。你回来时会恢复亮度。"
           }
         }
       }
@@ -15378,7 +15190,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Built in"
+            "value": "Built-in"
           }
         },
         "ru": {
@@ -15425,43 +15237,43 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay reads these agents' own session files. Switch on the ones you use; a switched-off agent is never watched and never asked about."
+            "value": "Belay reads local session activity for the agents you turn on. Disabled agents aren't watched."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay читает собственные файлы сессий этих агентов. Включите те, которыми пользуетесь: выключенный агент не отслеживается, и о нём никогда не спрашивают."
+            "value": "Belay читает локальную активность сессий включённых агентов. Выключенные агенты не отслеживаются."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay liest die eigenen Sitzungsdateien dieser Agenten. Schalte die ein, die du nutzt; ein ausgeschalteter Agent wird nie beobachtet und nie abgefragt."
+            "value": "Belay liest lokale Sitzungsaktivität der eingeschalteten Agenten. Ausgeschaltete Agenten werden nicht beobachtet."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay lee los archivos de sesión propios de estos agentes. Activa los que uses; un agente desactivado nunca se vigila ni se pregunta por él."
+            "value": "Belay lee la actividad local de sesión de los agentes que actives. Los agentes desactivados no se vigilan."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay lit les fichiers de session de ces agents. Activez ceux que vous utilisez ; un agent désactivé n'est jamais surveillé ni demandé."
+            "value": "Belay lit l'activité de session locale des agents que vous activez. Les agents désactivés ne sont pas surveillés."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay legge i file di sessione di questi agenti. Attiva quelli che usi; un agente disattivato non viene mai osservato né richiesto."
+            "value": "Belay legge l'attività di sessione locale degli agenti che attivi. Gli agenti disattivati non vengono osservati."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 读取这些智能体自己的会话文件。打开你在用的那些；关闭的智能体不会被监视，也不会被询问。"
+            "value": "Belay 读取你开启的智能体的本地会话活动。关闭的智能体不会被监视。"
           }
         }
       }
@@ -16224,43 +16036,43 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable."
+            "value": "Precise Detection lets Claude Code tell Belay exactly when work starts, stops, or needs you."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Точная детекция позволяет Claude Code самому сообщать Belay, когда работа начинается и заканчивается, вместо того чтобы Belay угадывал это по файлам. Она же делает надёжным уведомление «агент ждёт вас»."
+            "value": "Точная детекция позволяет Claude Code сообщать Belay, когда работа начинается, заканчивается или ждёт вас."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit präziser Erkennung teilt Claude Code Belay genau mit, wann Arbeit beginnt und endet, statt dass Belay es aus Dateien ableitet. Das macht auch „ein Agent wartet auf dich“ zuverlässig."
+            "value": "Präzise Erkennung lässt Claude Code Belay genau mitteilen, wann Arbeit beginnt, endet oder dich braucht."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La detección precisa permite que Claude Code le indique a Belay exactamente cuándo empieza y termina, en lugar de que Belay lo deduzca de los archivos. También es lo que hace fiable «un agente te espera»."
+            "value": "La detección precisa permite que Claude Code le diga a Belay exactamente cuándo el trabajo empieza, termina o te necesita."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La détection précise permet à Claude Code d'indiquer exactement à Belay quand le travail commence et s'arrête, au lieu que Belay le déduise des fichiers. C'est aussi ce qui rend « un agent vous attend » fiable."
+            "value": "La détection précise permet à Claude Code d'indiquer à Belay quand le travail commence, s'arrête ou a besoin de vous."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay esattamente quando inizia e finisce, invece di lasciare che Belay lo deduca dai file. È anche ciò che rende affidabile «un agente ti aspetta»."
+            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay quando il lavoro inizia, finisce o ha bisogno di te."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "精确检测让 Claude Code 直接告诉 Belay 工作何时开始、何时结束，而不是由 Belay 从文件推断。这也让“智能体在等你”通知变得可靠。"
+            "value": "精确检测让 Claude Code 准确告诉 Belay 工作何时开始、结束或需要你。"
           }
         }
       }
@@ -16449,6 +16261,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "小时和分钟。"
+          }
+        }
+      }
+    },
+    "When you step away at night, Belay dims the display to this level. It brightens when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night, Belay dims the display to this level. It brightens when you return."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда вы отходите ночью, Belay приглушает дисплей до этого уровня. При возвращении яркость восстанавливается."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau. Il se rallume à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度。你回来时会恢复亮度。"
           }
         }
       }

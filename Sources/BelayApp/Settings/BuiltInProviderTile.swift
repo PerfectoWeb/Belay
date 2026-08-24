@@ -71,6 +71,15 @@ struct BuiltInProviderTile: View {
         )
     }
 
+    /// The compact elapsed form, with whole minutes written out: the copy
+    /// pass asked for "20 min", and only the lone-minutes shape changes —
+    /// seconds and mixed hours keep the compact spelling.
+    static func activity(_ seconds: TimeInterval) -> String {
+        let compact = ElapsedTime.compact(seconds)
+        guard !compact.contains("h"), compact.hasSuffix("m") else { return compact }
+        return compact.dropLast() + " min"
+    }
+
     /// Off says off. On says ready (and when it was last heard from), or what
     /// is in the way — "not installed" is a fact, in grey; "needs the folder"
     /// is a request, in orange, and only ever for an agent that is on.
@@ -82,7 +91,7 @@ struct BuiltInProviderTile: View {
             switch provider.availability {
             case .ready:
                 if let last = provider.lastSignal {
-                    Text("last signal \(ElapsedTime.compact(-last.timeIntervalSinceNow)) ago")
+                    Text("last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
                         .foregroundStyle(.secondary)
                 } else {
                     Text("Ready").foregroundStyle(.secondary)
