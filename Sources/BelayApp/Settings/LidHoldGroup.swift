@@ -19,7 +19,7 @@ struct LidHoldGroup: View {
 
     var body: some View {
         GroupedCheckbox(
-            title: "Keep working with the lid closed",
+            title: "Closed-lid hold",
             explanation: """
                 Belay keeps the Mac awake with the lid closed, then lets go \
                 automatically at the time limit or if the Mac gets too warm.

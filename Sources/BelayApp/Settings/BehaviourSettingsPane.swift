@@ -80,7 +80,7 @@ struct BehaviourSettingsPane: View {
                 }
 
                 SettingCheckbox(
-                    title: "Stop on low battery",
+                    title: "Battery Guard",
                     explanation: batteryExplanation,
                     spokenLabel: "Stop keeping the Mac awake on low battery",
                     isOn: batteryGuard

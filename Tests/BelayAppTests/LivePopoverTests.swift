@@ -123,7 +123,10 @@ final class LiveAgentsPaneTests: XCTestCase {
         let window = SettingsWindow(
             settings: settings, state: app, precise: PreciseDetection(),
             targets: { [] }, statistics: { UsageStatistics() }, onTargetsChanged: { _ in })
-        window.show(pane: .providers)
+        // Reused for other panes by name: BELAY_LIVE_PANE=behaviour films
+        // that pane instead of the agents default.
+        let requested = ProcessInfo.processInfo.environment["BELAY_LIVE_PANE"]
+        window.show(pane: requested == "behaviour" ? .behaviour : .providers)
         window.window?.setFrameOrigin(NSPoint(x: 60, y: 200))
         // The window number lets the film be taken per-window from outside
         // (`screencapture -l`), which survives the user's own windows sitting

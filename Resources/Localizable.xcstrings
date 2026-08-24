@@ -1224,6 +1224,100 @@
         }
       }
     },
+    "14 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 hours"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 часов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "14 小时"
+          }
+        }
+      }
+    },
+    "15 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 Min."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 min"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 分钟"
+          }
+        }
+      }
+    },
     "2 hours": {
       "extractionState": "manual",
       "localizations": {
@@ -1267,6 +1361,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "2 小时"
+          }
+        }
+      }
+    },
+    "3 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 hours"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 часа"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 小时"
           }
         }
       }
@@ -1459,6 +1600,100 @@
         }
       }
     },
+    "45 min": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 Min."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 min"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 min"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 мин"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "45 分钟"
+          }
+        }
+      }
+    },
+    "5 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 hours"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 часов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 小时"
+          }
+        }
+      }
+    },
     "5 min": {
       "extractionState": "manual",
       "localizations": {
@@ -1502,6 +1737,100 @@
           "stringUnit": {
             "state": "translated",
             "value": "5 分钟"
+          }
+        }
+      }
+    },
+    "6 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 hours"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 часов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6 小时"
+          }
+        }
+      }
+    },
+    "7 hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 Stunden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 hours"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 heures"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 ore"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 часов"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 小时"
           }
         }
       }
@@ -2164,6 +2493,53 @@
         }
       }
     },
+    "Allow access to %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf %@ erlauben"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite el acceso a %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez l'accès à %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti l'accesso a %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дайте доступ к %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 %@"
+          }
+        }
+      }
+    },
     "Allow access to ~/.claude": {
       "extractionState": "manual",
       "localizations": {
@@ -2634,6 +3010,53 @@
         }
       }
     },
+    "Approve the helper in Login Items so it can hold the lid.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Genehmige den Helfer unter „Anmeldeobjekte“, damit er den Deckel halten kann."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approve the helper in Login Items so it can hold the lid."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aprueba el ayudante en «Ítems de inicio» para que pueda sujetar la tapa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approuvez l'assistant dans « Ouverture » pour qu'il puisse tenir le capot."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approva l'helper in «Elementi login» perché possa tenere il coperchio."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одобрите помощника в «Объектах входа», чтобы он мог держать крышку."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在“登录项”中批准帮助程序，它才能在合盖时保持唤醒。"
+          }
+        }
+      }
+    },
     "Auto": {
       "extractionState": "manual",
       "localizations": {
@@ -2865,6 +3288,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "直到你关闭为止。"
+          }
+        }
+      }
+    },
+    "Battery Guard": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akkuschutz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Battery Guard"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protección de batería"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protection de la batterie"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protezione batteria"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Защита батареи"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池保护"
           }
         }
       }
@@ -3903,6 +4372,53 @@
         }
       }
     },
+    "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hält den Mac bei geschlossenem Deckel wach und lässt am Zeitlimit los, oder wenn er zu warm wird."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeps your Mac awake with the lid closed, then lets go at the time limit or if it gets too warm."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantiene el Mac despierto con la tapa cerrada y lo suelta al llegar al límite de tiempo o si se calienta demasiado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garde le Mac éveillé capot fermé, puis relâche à la limite de temps ou s'il chauffe trop."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiene sveglio il Mac con il coperchio chiuso e lascia andare al limite di tempo o se si scalda troppo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не даёт Mac уснуть с закрытой крышкой и прекращает удержание по лимиту времени или при перегреве."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖时保持 Mac 唤醒，到达时间上限或过热时松开。"
+          }
+        }
+      }
+    },
     "Belay let your Mac sleep": {
       "extractionState": "manual",
       "localizations": {
@@ -4232,6 +4748,53 @@
         }
       }
     },
+    "Belay reads these agents' own session files. Switch on the ones you use; a switched-off agent is never watched and never asked about.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay liest lokale Sitzungsaktivität der eingeschalteten Agenten. Ausgeschaltete Agenten werden nicht beobachtet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay reads local session activity for the agents you turn on. Disabled agents aren't watched."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay lee la actividad local de sesión de los agentes que actives. Los agentes desactivados no se vigilan."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay lit l'activité de session locale des agents que vous activez. Les agents désactivés ne sont pas surveillés."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay legge l'attività di sessione locale degli agenti che attivi. Gli agenti disattivati non vengono osservati."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay отслеживает локальную активность только у включённых агентов. Отключённые агенты не отслеживаются."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 读取你开启的智能体的本地会话活动。关闭的智能体不会被监视。"
+          }
+        }
+      }
+    },
     "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
       "extractionState": "manual",
       "localizations": {
@@ -4467,6 +5030,53 @@
         }
       }
     },
+    "Belay stopped holding: the timer ran out.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hält deinen Mac nicht mehr wach: Der Timer ist abgelaufen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay stopped holding: the timer ran out."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay dejó de mantener el Mac despierto: el temporizador terminó."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a cessé de garder votre Mac éveillé : le minuteur est terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha smesso di tenere sveglio il Mac: il timer è scaduto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay разрешил Mac уснуть: таймер истёк."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "计时器已结束，Belay 已停止保持唤醒。"
+          }
+        }
+      }
+    },
     "Belay will change %@ to:": {
       "extractionState": "manual",
       "localizations": {
@@ -4698,6 +5308,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "使用电池时，Belay 会在电量降至 %lld%% 时停止。"
+          }
+        }
+      }
+    },
+    "Built in": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integriert"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Built-in"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrados"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intégrés"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrati"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Встроенные"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内置"
           }
         }
       }
@@ -4984,6 +5641,53 @@
         }
       }
     },
+    "Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle in der Menüleiste 15 Minuten bis 12 Stunden. Belay zeigt den Countdown und lässt deinen Mac wieder schlafen, wenn die Zeit abgelaufen ist."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige entre 15 minutos y 12 horas en la barra de menús. Belay muestra la cuenta atrás y deja que tu Mac vuelva a dormir cuando termina."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisissez de 15 minutes à 12 heures dans la barre des menus. Belay affiche le compte à rebours et laisse votre Mac se mettre en veille une fois le temps écoulé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scegli da 15 minuti a 12 ore nella barra dei menu. Belay mostra il conto alla rovescia e lascia che il Mac torni in stop quando il tempo scade."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите от 15 минут до 12 часов в строке меню. Belay показывает обратный отсчёт и разрешает Mac уснуть, когда время выйдет."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在菜单栏中选择 15 分钟到 12 小时。Belay 会显示倒计时，时间结束后让 Mac 恢复正常睡眠。"
+          }
+        }
+      }
+    },
     "Claude Code": {
       "extractionState": "manual",
       "localizations": {
@@ -5078,6 +5782,53 @@
         }
       }
     },
+    "Claude Code is not installed on this Mac.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code ist auf diesem Mac nicht installiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code is not installed on this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code no está instalado en este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code n'est pas installé sur ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code non è installato su questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code не установлен на этом Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 上未安装 Claude Code。"
+          }
+        }
+      }
+    },
     "Click to see what changed and install it whenever you like.": {
       "extractionState": "manual",
       "localizations": {
@@ -5121,6 +5872,193 @@
           "stringUnit": {
             "state": "translated",
             "value": "点击查看更新内容，随时安装。"
+          }
+        }
+      }
+    },
+    "Close": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fermer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chiudi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрыть"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
+          }
+        }
+      }
+    },
+    "Closed-lid hold": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbeiten bei geschlossenem Deckel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Closed-lid hold"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trabajo con la tapa cerrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Travail capot fermé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavoro a coperchio chiuso"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работа с закрытой крышкой"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖工作"
+          }
+        }
+      }
+    },
+    "Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex has not started a session on this Mac yet. Belay starts watching by itself when it does."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex non ha ancora avviato una sessione su questo Mac. Belay inizierà da solo quando succederà."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。"
+          }
+        }
+      }
+    },
+    "Codex is not installed on this Mac.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex ist auf diesem Mac nicht installiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex is not installed on this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex no está instalado en este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex n'est pas installé sur ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex non è installato su questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Codex не установлен на этом Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 上未安装 Codex。"
           }
         }
       }
@@ -5360,6 +6298,100 @@
         }
       }
     },
+    "Countdown on the dimmed screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countdown auf dem abgedunkelten Bildschirm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countdown on the dimmed screen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuenta atrás en la pantalla atenuada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compte à rebours sur l’écran assombri"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conto alla rovescia sullo schermo attenuato"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обратный отсчёт на затемнённом экране"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗屏幕上的倒计时"
+          }
+        }
+      }
+    },
+    "Custom…": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eigene…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizado…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personnalisé…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizzato…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Другое…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义…"
+          }
+        }
+      }
+    },
     "Detection health": {
       "extractionState": "manual",
       "localizations": {
@@ -5450,6 +6482,194 @@
           "stringUnit": {
             "state": "translated",
             "value": "诊断"
+          }
+        }
+      }
+    },
+    "Dim from": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abdunkeln von"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dim from"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenuar desde"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténuer à partir de"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenuare dalle"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушать с"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗开始时间"
+          }
+        }
+      }
+    },
+    "Dim the display at night": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display nachts abdunkeln"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dim the display at night"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenuar la pantalla por la noche"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténuer l'écran la nuit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenuare lo schermo di notte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушать дисплей"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间调暗显示器"
+          }
+        }
+      }
+    },
+    "Dim until": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abdunkeln bis"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dim until"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenuar hasta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténuer jusqu'à"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenuare fino alle"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушать до"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗结束时间"
+          }
+        }
+      }
+    },
+    "Dimmed brightness": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gedimmte Helligkeit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dimmed brightness"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brillo atenuado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luminosité atténuée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luminosità attenuata"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушённая яркость"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗后的亮度"
           }
         }
       }
@@ -6159,6 +7379,194 @@
         }
       }
     },
+    "Grant access to ~/.codex": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf ~/.codex gewähren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access to ~/.codex"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conceder acceso a ~/.codex"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accorder l'accès à ~/.codex"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concedi l'accesso a ~/.codex"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дать доступ к ~/.codex"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.codex"
+          }
+        }
+      }
+    },
+    "Hear your week": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hör dir deine Woche an"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hear your week"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escucha tu semana"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Écoutez votre semaine"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ascolta la tua settimana"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Послушайте свою неделю"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "听听你的一周"
+          }
+        }
+      }
+    },
+    "Hold again": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut wachhalten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold again"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener otra vez"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenir encore"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantieni ancora"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Держать снова"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续保持"
+          }
+        }
+      }
+    },
+    "Hold again with one click": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit einem Klick erneut wachhalten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold again with one click"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manténlo otra vez con un clic"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reprenez en un clic"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantienilo ancora con un clic"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Держать снова одним кликом"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一键再次保持唤醒"
+          }
+        }
+      }
+    },
     "Holding on a little longer in case more work arrives.": {
       "extractionState": "manual",
       "localizations": {
@@ -6202,6 +7610,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "会再等片刻，以防还有新工作开始。"
+          }
+        }
+      }
+    },
+    "Hours and minutes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stunden und Minuten."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hours and minutes."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horas y minutos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heures et minutes."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ore e minuti."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Часы и минуты."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小时和分钟。"
           }
         }
       }
@@ -6253,6 +7708,53 @@
         }
       }
     },
+    "How long to keep the Mac awake": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie lange der Mac wach bleibt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How long to keep the Mac awake"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuánto tiempo mantener despierto el Mac"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durée d'éveil du Mac"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per quanto tempo tenere sveglio il Mac"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Как долго не давать Mac уснуть"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Mac 保持唤醒多久"
+          }
+        }
+      }
+    },
     "Idle": {
       "extractionState": "manual",
       "localizations": {
@@ -6296,6 +7798,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "空闲"
+          }
+        }
+      }
+    },
+    "If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Timer oder dein Wachzeitlimit das Wachhalten beendet, erklärt das Panel warum und bietet „Erneut wachhalten“ an. Beim Entsperren des Macs wird es automatisch fortgesetzt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si un temporizador o tu límite de tiempo despierto termina la retención, el panel te explica por qué y ofrece Mantener otra vez. Al desbloquear el Mac, se reanuda automáticamente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si un minuteur ou votre limite d’éveil met fin au maintien, le panneau vous explique pourquoi et propose Maintenir encore. Le déverrouillage du Mac reprend automatiquement le maintien."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se un timer o il limite massimo di veglia termina il mantenimento, il pannello ti spiega perché e propone Mantieni ancora. Quando sblocchi il Mac, il mantenimento riprende automaticamente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если таймер или лимит бодрствования завершает удержание, панель объясняет почему и предлагает «Держать снова». После разблокировки Mac удержание возобновляется автоматически."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果计时器或最长唤醒时间结束了保持唤醒，面板会说明原因，并提供「继续保持」。解锁 Mac 后会自动恢复。"
           }
         }
       }
@@ -6390,6 +7939,100 @@
           "stringUnit": {
             "state": "translated",
             "value": "在此 Mac 上保存诊断报告"
+          }
+        }
+      }
+    },
+    "Keep your Mac awake for": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac wach halten für"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your Mac awake for"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener el Mac despierto durante"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder le Mac éveillé pendant"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni sveglio il Mac per"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не давать Mac уснуть на"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Mac 保持唤醒"
+          }
+        }
+      }
+    },
+    "Keep your Mac awake for a set time": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halte deinen Mac für eine feste Zeit wach"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your Mac awake for a set time"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantén tu Mac despierto durante un tiempo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gardez votre Mac éveillé pendant une durée définie"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni sveglio il Mac per un tempo stabilito"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не давайте Mac уснуть заданное время"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让 Mac 按设定时间保持唤醒"
           }
         }
       }
@@ -6770,6 +8413,53 @@
         }
       }
     },
+    "Let Belay read your ~/.codex folder so it can tell when Codex is working.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaube Zugriff auf ~/.codex, damit Belay erkennt, wann Codex arbeitet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to ~/.codex so Belay can tell when Codex is working."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite el acceso a ~/.codex para que Belay sepa cuándo Codex está trabajando."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez l'accès à ~/.codex pour que Belay sache quand Codex travaille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti l'accesso a ~/.codex perché Belay sappia quando Codex sta lavorando."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите доступ к ~/.codex, чтобы Belay видел, когда Codex работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.codex，Belay 才能判断 Codex 何时在工作。"
+          }
+        }
+      }
+    },
     "Let's go": {
       "extractionState": "manual",
       "localizations": {
@@ -6813,6 +8503,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "开始吧"
+          }
+        }
+      }
+    },
+    "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präzise Erkennung lässt Claude Code Belay genau mitteilen, wann Arbeit beginnt, endet oder dich braucht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise Detection lets Claude Code tell Belay exactly when work starts, stops, or needs you."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La detección precisa permite que Claude Code le diga a Belay exactamente cuándo el trabajo empieza, termina o te necesita."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La détection précise permet à Claude Code d'indiquer à Belay quand le travail commence, s'arrête ou a besoin de vous."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay quando il lavoro inizia, finisce o ha bisogno di te."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точное определение позволяет Claude Code сообщать Belay, когда работа начинается, заканчивается или требует вашего внимания."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "精确检测让 Claude Code 准确告诉 Belay 工作何时开始、结束或需要你。"
           }
         }
       }
@@ -7146,6 +8883,53 @@
         }
       }
     },
+    "Move across the chart in Statistics and each day plays a note. Busier days sound higher.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bewege den Zeiger über das Diagramm in der Statistik, und jeder Tag spielt eine Note. An aktiveren Tagen ist der Ton höher."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move across the chart in Statistics and each day plays a note. Busier days sound higher."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días con más actividad suenan más agudos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passez le pointeur sur le graphique des Statistiques et chaque jour joue une note. Plus la journée est active, plus la note est aiguë."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passa il puntatore sul grafico nelle Statistiche e ogni giorno suona una nota. Nei giorni più intensi, la nota è più alta."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проведите указателем по графику в Статистике, и каждый день сыграет ноту. Чем насыщеннее день, тем выше звук."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将指针移过「统计」中的图表，每一天都会奏出一个音。越忙碌的日子，音调越高。"
+          }
+        }
+      }
+    },
     "Never checked.": {
       "extractionState": "manual",
       "localizations": {
@@ -7240,6 +9024,53 @@
         }
       }
     },
+    "New in v%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neu in v%@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New in v%@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novedades en v%@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nouveau dans v%@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novità nella v%@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новое в v%@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "v%@ 新增"
+          }
+        }
+      }
+    },
     "Nice one": {
       "extractionState": "manual",
       "localizations": {
@@ -7283,6 +9114,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "不错"
+          }
+        }
+      }
+    },
+    "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ gibt es noch nicht. Der Ordner erscheint, sobald das Tool einmal gelaufen ist. Liegt er bei dir woanders, passe den Pfad an."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aún no existe %@. Aparece cuando la herramienta se ejecuta por primera vez. Si el tuyo está en otro sitio, ajusta la carpeta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ n'existe pas encore. Il apparaît après la première exécution de l'outil. Si le vôtre est ailleurs, ajustez le dossier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ non esiste ancora. Compare dopo la prima esecuzione dello strumento. Se il tuo è altrove, correggi la cartella."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папки %@ пока нет. Она появится после первого запуска инструмента. Если у вас путь другой, поправьте его."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有 %@。该文件夹会在工具首次运行后出现。如果你的位于其他位置，请调整路径。"
           }
         }
       }
@@ -8415,6 +10293,53 @@
         }
       }
     },
+    "Open Login Items": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldeobjekte öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Login Items"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir ítems de inicio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir « Ouverture »"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri Elementi login"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть «Объекты входа»"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开“登录项”"
+          }
+        }
+      }
+    },
     "Open Login Items…": {
       "extractionState": "manual",
       "localizations": {
@@ -8740,6 +10665,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "其他工具"
+          }
+        }
+      }
+    },
+    "Paused at your time limit.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pausiert: Zeitlimit erreicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paused at your time limit."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En pausa: límite de tiempo alcanzado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En pause : limite de temps atteinte."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In pausa: limite di tempo raggiunto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза: достигнут предел времени."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已暂停：达到时间上限。"
           }
         }
       }
@@ -9261,6 +11233,53 @@
         }
       }
     },
+    "Release notes": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versionshinweise"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Release notes"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notas de la versión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notes de version"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note di versione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что изменилось"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新说明"
+          }
+        }
+      }
+    },
     "Remove": {
       "extractionState": "manual",
       "localizations": {
@@ -9439,6 +11458,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "Сообщить об ошибке"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "报告问题"
+          }
+        }
+      }
+    },
+    "Report an Issue": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem melden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report an Issue"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informar de un problema"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signaler un problème"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Segnala un problema"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сообщить о проблеме"
           }
         },
         "zh-Hans": {
@@ -9731,6 +11797,53 @@
         }
       }
     },
+    "Show Reports": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berichte anzeigen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show Reports"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar informes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les rapports"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra i rapporti"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать отчёты"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示报告"
+          }
+        }
+      }
+    },
     "Show all sessions": {
       "extractionState": "manual",
       "localizations": {
@@ -9868,6 +11981,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "收起会话"
+          }
+        }
+      }
+    },
+    "Show the timer on the dimmed screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer auf dem abgedunkelten Bildschirm zeigen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show timer on the dimmed screen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar el temporizador en la pantalla atenuada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher le minuteur sur l'écran assombri"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra il timer sullo schermo oscurato"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймер на приглушённом экране"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在调暗的屏幕上显示计时器"
           }
         }
       }
@@ -10107,6 +12267,53 @@
         }
       }
     },
+    "Sounds Good!": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klingt gut!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sounds Good!"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Suena bien!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ça marche !"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ottimo!"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отлично!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好的！"
+          }
+        }
+      }
+    },
     "Sounds good": {
       "extractionState": "manual",
       "localizations": {
@@ -10244,6 +12451,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "在 GitHub 上加星标"
+          }
+        }
+      }
+    },
+    "Start": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empezar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Démarrer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avvia"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начать"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始"
           }
         }
       }
@@ -10389,6 +12643,53 @@
         }
       }
     },
+    "Staying awake until the timer below runs out.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Mac bleibt wach, bis der Timer unten abläuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Staying awake until the timer below runs out."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Despierto hasta que acabe el temporizador."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le Mac reste éveillé jusqu'à la fin du minuteur."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il Mac resta sveglio finché il timer non scade."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac не уснёт, пока не истечёт таймер ниже."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在下方计时器结束前，Mac 将保持唤醒。"
+          }
+        }
+      }
+    },
     "Stop keeping the Mac awake on low battery": {
       "extractionState": "manual",
       "localizations": {
@@ -10432,53 +12733,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "电量低时停止让 Mac 保持唤醒"
-          }
-        }
-      }
-    },
-    "Stop on low battery": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bei niedrigem Akku stoppen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stop on low battery"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Detener con batería baja"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrêter si la batterie est faible"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Interrompi con batteria scarica"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Останавливать при низком заряде"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "电量低时停止"
           }
         }
       }
@@ -10671,6 +12925,53 @@
         }
       }
     },
+    "The Mac ran hot with the lid closed, so Belay let it sleep.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Mac wurde mit geschlossenem Deckel zu warm, also hat Belay ihn schlafen lassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Mac ran hot with the lid closed, so Belay let it sleep."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El Mac se calentó demasiado con la tapa cerrada, así que Belay lo dejó dormir."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le Mac a trop chauffé capot fermé, alors Belay l'a laissé dormir."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il Mac si è scaldato troppo a coperchio chiuso, così Belay lo ha lasciato dormire."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖后 Mac 过热，Belay 已让它进入睡眠。"
+          }
+        }
+      }
+    },
     "The agent in %@ stopped without finishing. It may need signing in again.": {
       "extractionState": "manual",
       "localizations": {
@@ -10812,6 +13113,53 @@
         }
       }
     },
+    "The lid hold reached its time limit, so Belay let the Mac sleep.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Halten bei geschlossenem Deckel hat sein Zeitlimit erreicht, also hat Belay den Mac schlafen lassen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The lid hold reached its time limit, so Belay let the Mac sleep."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La retención con la tapa cerrada alcanzó su límite de tiempo, así que Belay dejó dormir el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le maintien capot fermé a atteint sa limite de temps, alors Belay a laissé le Mac dormir."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il mantenimento a coperchio chiuso ha raggiunto il limite di tempo, così Belay ha lasciato dormire il Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖保持唤醒已到达时间上限，Belay 已让 Mac 进入睡眠。"
+          }
+        }
+      }
+    },
     "The run in %@ took %@. Your Mac will sleep normally again.": {
       "extractionState": "manual",
       "localizations": {
@@ -10949,6 +13297,147 @@
           "stringUnit": {
             "state": "translated",
             "value": "服务器返回 %lld。"
+          }
+        }
+      }
+    },
+    "The timer ran out.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Timer ist abgelaufen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The timer ran out."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El temporizador terminó."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le minuteur est terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il timer è scaduto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймер истёк."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "计时器已结束。"
+          }
+        }
+      }
+    },
+    "The timer you set ran out, so Belay let go.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der gestellte Timer ist abgelaufen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The timer you set ran out, so Belay let go."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El temporizador que pusiste terminó."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le minuteur que vous avez réglé est terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il timer che hai impostato è scaduto."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Установленный вами таймер истёк."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你设置的计时器已结束。"
+          }
+        }
+      }
+    },
+    "The timer you set ran out, so Belay stopped keeping your Mac awake.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der gestellte Timer ist abgelaufen, Belay lässt deinen Mac wieder schlafen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The timer you set ran out, so Belay stopped keeping your Mac awake."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El temporizador que pusiste terminó y Belay dejó dormir el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le minuteur que vous avez réglé est terminé, Belay a laissé votre Mac se mettre en veille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il timer che hai impostato è scaduto e Belay ha lasciato andare il Mac in stop."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Установленный вами таймер истёк, и Belay разрешил Mac уснуть."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你设置的计时器已结束，Belay 已让 Mac 进入睡眠。"
           }
         }
       }
@@ -11564,6 +14053,53 @@
         }
       }
     },
+    "Watches Codex's session files to tell when a turn is running.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beobachtet Codex-Sitzungsdateien, um zu erkennen, wann ein Turn läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watches Codex session files to tell when a turn is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observa los archivos de sesión de Codex para saber cuándo hay un turno en marcha."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surveille les fichiers de session de Codex pour savoir quand un tour est en cours."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitora i file di sessione di Codex per sapere quando è in corso un turno."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следит за файлами сессий Codex, чтобы понимать, когда агент работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视 Codex 的会话文件，以判断轮次何时在运行。"
+          }
+        }
+      }
+    },
     "Watches a folder you choose, or listens for a one-line webhook, so any coding agent can hold the Mac awake. Start from a preset or add your own.": {
       "extractionState": "manual",
       "localizations": {
@@ -11800,6 +14336,53 @@
         }
       }
     },
+    "When Belay dims the display at night, the time left appears in the center.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Belay das Display nachts dimmt, erscheint die verbleibende Zeit in der Mitte des Bildschirms."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When Belay dims the display at night, the time left appears in the center."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando Belay atenúa la pantalla por la noche, el tiempo restante aparece en el centro."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque Belay assombrit l’écran la nuit, le temps restant apparaît au centre."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando Belay attenua il display di notte, il tempo rimanente appare al centro."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда Belay приглушает дисплей ночью, оставшееся время появляется в центре экрана."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 在夜间调暗显示器时，剩余时间会显示在屏幕中央。"
+          }
+        }
+      }
+    },
     "When Belay stops for safety": {
       "extractionState": "manual",
       "localizations": {
@@ -11941,6 +14524,53 @@
         }
       }
     },
+    "When an agent goes quiet": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn ein Agent verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When an agent goes quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando un agente se queda en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand un agent se tait"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando un agente resta in silenzio"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда агент затих"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当智能体没有动静时"
+          }
+        }
+      }
+    },
     "When an agent needs you": {
       "extractionState": "manual",
       "localizations": {
@@ -12031,6 +14661,100 @@
           "stringUnit": {
             "state": "translated",
             "value": "工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。"
+          }
+        }
+      }
+    },
+    "When you step away at night, Belay dims the display to this level. It brightens when you return.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you step away at night, Belay dims the display to this level. It brightens when you return."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel. Vuelve a iluminarse cuando regresas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau. Il se rallume à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Приглушает дисплей по расписанию. Помогает сохранить срок службы диодов на матрице дисплея."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度。你回来时会恢复亮度。"
+          }
+        }
+      }
+    },
+    "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeigt die verbleibende Zeit, während ein „Immer an“-Timer läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shows the time left while an Always On timer is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muestra el tiempo restante mientras corre un temporizador de Siempre."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Affiche le temps restant pendant qu'un minuteur Toujours est en cours."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra il tempo rimanente mentre è attivo un timer di Sempre."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "常开计时器运行时显示剩余时间。"
           }
         }
       }
@@ -12266,6 +14990,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code 设置文件不是纯 JSON，因此 Belay 不会修改它。"
+          }
+        }
+      }
+    },
+    "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Mac ist so eingestellt, dass das Display nie ausgeschaltet wird, also gibt es für Belay keinen Moment zum Abdunkeln. Lege zuerst in den Systemeinstellungen eine Zeit zum Ausschalten des Displays fest."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu Mac está configurado para no apagar nunca la pantalla, así que Belay no tiene cuándo atenuarla. Elige primero un tiempo de apagado de pantalla en Ajustes del Sistema."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre Mac est réglé pour ne jamais éteindre l'écran, Belay n'a donc aucun moment pour l'assombrir. Choisissez d'abord un délai d'extinction de l'écran dans Réglages Système."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il Mac è impostato per non spegnere mai lo schermo, quindi Belay non ha un momento in cui attenuarlo. Scegli prima un tempo di spegnimento dello schermo nelle Impostazioni di Sistema."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На вашем Mac дисплей настроен никогда не выключаться, поэтому Belay нечего приглушать. Сначала задайте время выключения дисплея в Системных настройках."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的 Mac 设置为从不关闭显示器，Belay 也就没有调暗的时机。请先在系统设置中选择一个关闭显示器的时间。"
           }
         }
       }
@@ -12830,6 +15601,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "最长运行"
+          }
+        }
+      }
+    },
+    "macOS cannot find the helper in this build.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS findet den Helfer in diesem Build nicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS cannot find the helper in this build."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS no encuentra el ayudante en esta compilación."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS ne trouve pas l'assistant dans cette version."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS non trova l'helper in questa build."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS не находит помощника в этой сборке."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 在此构建中找不到帮助程序。"
           }
         }
       }
@@ -13535,2826 +16353,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "✨ Belay %@ 发布了"
-          }
-        }
-      }
-    },
-    "Dim from": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abdunkeln von"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dim from"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atenuar desde"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atténuer à partir de"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenuare dalle"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушать с"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗开始时间"
-          }
-        }
-      }
-    },
-    "Dim until": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abdunkeln bis"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dim until"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atenuar hasta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atténuer jusqu'à"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenuare fino alle"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушать до"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗结束时间"
-          }
-        }
-      }
-    },
-    "Dimmed brightness": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gedimmte Helligkeit"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dimmed brightness"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brillo atenuado"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Luminosité atténuée"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Luminosità attenuata"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушённая яркость"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗后的亮度"
-          }
-        }
-      }
-    },
-    "Approve the helper in Login Items so it can hold the lid.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Genehmige den Helfer unter „Anmeldeobjekte“, damit er den Deckel halten kann."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Approve the helper in Login Items so it can hold the lid."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aprueba el ayudante en «Ítems de inicio» para que pueda sujetar la tapa."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Approuvez l'assistant dans « Ouverture » pour qu'il puisse tenir le capot."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Approva l'helper in «Elementi login» perché possa tenere il coperchio."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Одобрите помощника в «Объектах входа», чтобы он мог держать крышку."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "请在“登录项”中批准帮助程序，它才能在合盖时保持唤醒。"
-          }
-        }
-      }
-    },
-    "Open Login Items": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anmeldeobjekte öffnen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Login Items"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abrir ítems de inicio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir « Ouverture »"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apri Elementi login"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Открыть «Объекты входа»"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "打开“登录项”"
-          }
-        }
-      }
-    },
-    "macOS cannot find the helper in this build.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS findet den Helfer in diesem Build nicht."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS cannot find the helper in this build."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS no encuentra el ayudante en esta compilación."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS ne trouve pas l'assistant dans cette version."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS non trova l'helper in questa build."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS не находит помощника в этой сборке."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS 在此构建中找不到帮助程序。"
-          }
-        }
-      }
-    },
-    "Dim the display at night": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Display nachts abdunkeln"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dim the display at night"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atenuar la pantalla por la noche"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atténuer l'écran la nuit"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenuare lo schermo di notte"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушать дисплей"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间调暗显示器"
-          }
-        }
-      }
-    },
-    "Keep working with the lid closed": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mit geschlossenem Deckel weiterarbeiten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep working with the lid closed"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seguir trabajando con la tapa cerrada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continuer à travailler capot fermé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continuare a lavorare a coperchio chiuso"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Продолжать работу с закрытой крышкой"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖后继续工作"
-          }
-        }
-      }
-    },
-    "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hält den Mac bei geschlossenem Deckel wach und lässt am Zeitlimit los, oder wenn er zu warm wird."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keeps your Mac awake with the lid closed, then lets go at the time limit or if it gets too warm."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantiene el Mac despierto con la tapa cerrada y lo suelta al llegar al límite de tiempo o si se calienta demasiado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garde le Mac éveillé capot fermé, puis relâche à la limite de temps ou s'il chauffe trop."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiene sveglio il Mac con il coperchio chiuso e lascia andare al limite di tempo o se si scalda troppo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не даёт Mac уснуть с закрытой крышкой и прекращает удержание по лимиту времени или при перегреве."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖时保持 Mac 唤醒，到达时间上限或过热时松开。"
-          }
-        }
-      }
-    },
-    "When an agent goes quiet": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Agent verstummt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an agent goes quiet"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando un agente se queda en silencio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand un agent se tait"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando un agente resta in silenzio"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда агент затих"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当智能体没有动静时"
-          }
-        }
-      }
-    },
-    "Show Reports": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Berichte anzeigen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Reports"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar informes"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher les rapports"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra i rapporti"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показать отчёты"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示报告"
-          }
-        }
-      }
-    },
-    "Report an Issue": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problem melden"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report an Issue"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Informar de un problema"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Signaler un problème"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Segnala un problema"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сообщить о проблеме"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "报告问题"
-          }
-        }
-      }
-    },
-    "The Mac ran hot with the lid closed, so Belay let it sleep.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Mac wurde mit geschlossenem Deckel zu warm, also hat Belay ihn schlafen lassen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Mac ran hot with the lid closed, so Belay let it sleep."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El Mac se calentó demasiado con la tapa cerrada, así que Belay lo dejó dormir."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le Mac a trop chauffé capot fermé, alors Belay l'a laissé dormir."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il Mac si è scaldato troppo a coperchio chiuso, così Belay lo ha lasciato dormire."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖后 Mac 过热，Belay 已让它进入睡眠。"
-          }
-        }
-      }
-    },
-    "The lid hold reached its time limit, so Belay let the Mac sleep.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Halten bei geschlossenem Deckel hat sein Zeitlimit erreicht, also hat Belay den Mac schlafen lassen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The lid hold reached its time limit, so Belay let the Mac sleep."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La retención con la tapa cerrada alcanzó su límite de tiempo, así que Belay dejó dormir el Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le maintien capot fermé a atteint sa limite de temps, alors Belay a laissé le Mac dormir."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il mantenimento a coperchio chiuso ha raggiunto il limite di tempo, così Belay ha lasciato dormire il Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖保持唤醒已到达时间上限，Belay 已让 Mac 进入睡眠。"
-          }
-        }
-      }
-    },
-    "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No %@ yet. It appears once the tool has run. Adjust the folder if yours is elsewhere."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папки %@ пока нет. Она появится после первого запуска инструмента. Если у вас путь другой, поправьте его."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ gibt es noch nicht. Der Ordner erscheint, sobald das Tool einmal gelaufen ist. Liegt er bei dir woanders, passe den Pfad an."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aún no existe %@. Aparece cuando la herramienta se ejecuta por primera vez. Si el tuyo está en otro sitio, ajusta la carpeta."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ n'existe pas encore. Il apparaît après la première exécution de l'outil. Si le vôtre est ailleurs, ajustez le dossier."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ non esiste ancora. Compare dopo la prima esecuzione dello strumento. Se il tuo è altrove, correggi la cartella."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还没有 %@。该文件夹会在工具首次运行后出现。如果你的位于其他位置，请调整路径。"
-          }
-        }
-      }
-    },
-    "Watches Codex's session files to tell when a turn is running.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watches Codex session files to tell when a turn is running."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beobachtet Codex-Sitzungsdateien, um zu erkennen, wann ein Turn läuft."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Observa los archivos de sesión de Codex para saber cuándo hay un turno en marcha."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Surveille les fichiers de session de Codex pour savoir quand un tour est en cours."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monitora i file di sessione di Codex per sapere quando è in corso un turno."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Следит за файлами сессий Codex, чтобы понимать, когда агент работает."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "监视 Codex 的会话文件，以判断轮次何时在运行。"
-          }
-        }
-      }
-    },
-    "Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex has not started a session on this Mac yet. Belay starts watching by itself when it does."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex non ha ancora avviato una sessione su questo Mac. Belay inizierà da solo quando succederà."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。"
-          }
-        }
-      }
-    },
-    "Let Belay read your ~/.codex folder so it can tell when Codex is working.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow access to ~/.codex so Belay can tell when Codex is working."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erlaube Zugriff auf ~/.codex, damit Belay erkennt, wann Codex arbeitet."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permite el acceso a ~/.codex para que Belay sepa cuándo Codex está trabajando."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Autorisez l'accès à ~/.codex pour que Belay sache quand Codex travaille."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Consenti l'accesso a ~/.codex perché Belay sappia quando Codex sta lavorando."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Разрешите доступ к ~/.codex, чтобы Belay видел, когда Codex работает."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "允许访问 ~/.codex，Belay 才能判断 Codex 何时在工作。"
-          }
-        }
-      }
-    },
-    "Grant access to ~/.codex": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grant access to ~/.codex"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zugriff auf ~/.codex gewähren"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conceder acceso a ~/.codex"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Accorder l'accès à ~/.codex"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Concedi l'accesso a ~/.codex"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Дать доступ к ~/.codex"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "允许访问 ~/.codex"
-          }
-        }
-      }
-    },
-    "Staying awake until the timer below runs out.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Staying awake until the timer below runs out."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac не уснёт, пока не истечёт таймер ниже."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Mac bleibt wach, bis der Timer unten abläuft."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Despierto hasta que acabe el temporizador."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le Mac reste éveillé jusqu'à la fin du minuteur."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il Mac resta sveglio finché il timer non scade."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在下方计时器结束前，Mac 将保持唤醒。"
-          }
-        }
-      }
-    },
-    "The timer you set ran out, so Belay let go.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The timer you set ran out, so Belay let go."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Установленный вами таймер истёк."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der gestellte Timer ist abgelaufen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El temporizador que pusiste terminó."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le minuteur que vous avez réglé est terminé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il timer che hai impostato è scaduto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你设置的计时器已结束。"
-          }
-        }
-      }
-    },
-    "Belay stopped holding: the timer ran out.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay stopped holding: the timer ran out."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay разрешил Mac уснуть: таймер истёк."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay hält deinen Mac nicht mehr wach: Der Timer ist abgelaufen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay dejó de mantener el Mac despierto: el temporizador terminó."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay a cessé de garder votre Mac éveillé : le minuteur est terminé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ha smesso di tenere sveglio il Mac: il timer è scaduto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "计时器已结束，Belay 已停止保持唤醒。"
-          }
-        }
-      }
-    },
-    "The timer you set ran out, so Belay stopped keeping your Mac awake.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The timer you set ran out, so Belay stopped keeping your Mac awake."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Установленный вами таймер истёк, и Belay разрешил Mac уснуть."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der gestellte Timer ist abgelaufen, Belay lässt deinen Mac wieder schlafen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El temporizador que pusiste terminó y Belay dejó dormir el Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le minuteur que vous avez réglé est terminé, Belay a laissé votre Mac se mettre en veille."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il timer che hai impostato è scaduto e Belay ha lasciato andare il Mac in stop."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你设置的计时器已结束，Belay 已让 Mac 进入睡眠。"
-          }
-        }
-      }
-    },
-    "15 min": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 min"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 分钟"
-          }
-        }
-      }
-    },
-    "Hold again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold again"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Держать снова"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erneut wachhalten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantener otra vez"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maintenir encore"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantieni ancora"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "继续保持"
-          }
-        }
-      }
-    },
-    "The timer ran out.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The timer ran out."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Таймер истёк."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Timer ist abgelaufen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El temporizador terminó."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le minuteur est terminé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il timer è scaduto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "计时器已结束。"
-          }
-        }
-      }
-    },
-    "Paused at your time limit.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paused at your time limit."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пауза: достигнут предел времени."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pausiert: Zeitlimit erreicht."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En pausa: límite de tiempo alcanzado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En pause : limite de temps atteinte."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In pausa: limite di tempo raggiunto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已暂停：达到时间上限。"
-          }
-        }
-      }
-    },
-    "How long to keep the Mac awake": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How long to keep the Mac awake"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Как долго не давать Mac уснуть"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wie lange der Mac wach bleibt"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuánto tiempo mantener despierto el Mac"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Durée d'éveil du Mac"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Per quanto tempo tenere sveglio il Mac"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "让 Mac 保持唤醒多久"
-          }
-        }
-      }
-    },
-    "Show the timer on the dimmed screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show timer on the dimmed screen"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Таймер на приглушённом экране"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Timer auf dem abgedunkelten Bildschirm zeigen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar el temporizador en la pantalla atenuada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher le minuteur sur l'écran assombri"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra il timer sullo schermo oscurato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在调暗的屏幕上显示计时器"
-          }
-        }
-      }
-    },
-    "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows the time left while an Always On timer is running."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeigt die verbleibende Zeit, während ein „Immer an“-Timer läuft."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Muestra el tiempo restante mientras corre un temporizador de Siempre."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Affiche le temps restant pendant qu'un minuteur Toujours est en cours."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra il tempo rimanente mentre è attivo un timer di Sempre."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "常开计时器运行时显示剩余时间。"
-          }
-        }
-      }
-    },
-    "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your Mac is set never to turn the display off, so there is no moment for Belay to dim it. Choose a display-off time in System Settings first."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "На вашем Mac дисплей настроен никогда не выключаться, поэтому Belay нечего приглушать. Сначала задайте время выключения дисплея в Системных настройках."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Mac ist so eingestellt, dass das Display nie ausgeschaltet wird, also gibt es für Belay keinen Moment zum Abdunkeln. Lege zuerst in den Systemeinstellungen eine Zeit zum Ausschalten des Displays fest."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu Mac está configurado para no apagar nunca la pantalla, así que Belay no tiene cuándo atenuarla. Elige primero un tiempo de apagado de pantalla en Ajustes del Sistema."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre Mac est réglé pour ne jamais éteindre l'écran, Belay n'a donc aucun moment pour l'assombrir. Choisissez d'abord un délai d'extinction de l'écran dans Réglages Système."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il Mac è impostato per non spegnere mai lo schermo, quindi Belay non ha un momento in cui attenuarlo. Scegli prima un tempo di spegnimento dello schermo nelle Impostazioni di Sistema."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你的 Mac 设置为从不关闭显示器，Belay 也就没有调暗的时机。请先在系统设置中选择一个关闭显示器的时间。"
-          }
-        }
-      }
-    },
-    "New in v%@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New in v%@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Новое в v%@"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neu in v%@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Novedades en v%@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nouveau dans v%@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Novità nella v%@"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "v%@ 新增"
-          }
-        }
-      }
-    },
-    "Close": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Закрыть"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schließen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cerrar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fermer"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chiudi"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关闭"
-          }
-        }
-      }
-    },
-    "Sounds Good!": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sounds Good!"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отлично!"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klingt gut!"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¡Suena bien!"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ça marche !"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ottimo!"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "好的！"
-          }
-        }
-      }
-    },
-    "Release notes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Release notes"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Что изменилось"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Versionshinweise"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notas de la versión"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notes de version"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note di versione"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更新说明"
-          }
-        }
-      }
-    },
-    "Built in": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Built-in"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Встроенные"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Integriert"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Integrados"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Intégrés"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Integrati"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "内置"
-          }
-        }
-      }
-    },
-    "Belay reads these agents' own session files. Switch on the ones you use; a switched-off agent is never watched and never asked about.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay reads local session activity for the agents you turn on. Disabled agents aren't watched."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay отслеживает локальную активность только у включённых агентов. Отключённые агенты не отслеживаются."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay liest lokale Sitzungsaktivität der eingeschalteten Agenten. Ausgeschaltete Agenten werden nicht beobachtet."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lee la actividad local de sesión de los agentes que actives. Los agentes desactivados no se vigilan."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay lit l'activité de session locale des agents que vous activez. Les agents désactivés ne sont pas surveillés."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay legge l'attività di sessione locale degli agenti che attivi. Gli agenti disattivati non vengono osservati."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 读取你开启的智能体的本地会话活动。关闭的智能体不会被监视。"
-          }
-        }
-      }
-    },
-    "Claude Code is not installed on this Mac.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code is not installed on this Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code не установлен на этом Mac."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code ist auf diesem Mac nicht installiert."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code no está instalado en este Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code n'est pas installé sur ce Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code non è installato su questo Mac."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "此 Mac 上未安装 Claude Code。"
-          }
-        }
-      }
-    },
-    "Codex is not installed on this Mac.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex is not installed on this Mac."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex не установлен на этом Mac."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex ist auf diesem Mac nicht installiert."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex no está instalado en este Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex n'est pas installé sur ce Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex non è installato su questo Mac."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "此 Mac 上未安装 Codex。"
-          }
-        }
-      }
-    },
-    "Keep your Mac awake for a set time": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep your Mac awake for a set time"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не давайте Mac уснуть заданное время"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Halte deinen Mac für eine feste Zeit wach"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantén tu Mac despierto durante un tiempo"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gardez votre Mac éveillé pendant une durée définie"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tieni sveglio il Mac per un tempo stabilito"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "让 Mac 按设定时间保持唤醒"
-          }
-        }
-      }
-    },
-    "Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выберите от 15 минут до 12 часов в строке меню. Belay показывает обратный отсчёт и разрешает Mac уснуть, когда время выйдет."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle in der Menüleiste 15 Minuten bis 12 Stunden. Belay zeigt den Countdown und lässt deinen Mac wieder schlafen, wenn die Zeit abgelaufen ist."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elige entre 15 minutos y 12 horas en la barra de menús. Belay muestra la cuenta atrás y deja que tu Mac vuelva a dormir cuando termina."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choisissez de 15 minutes à 12 heures dans la barre des menus. Belay affiche le compte à rebours et laisse votre Mac se mettre en veille une fois le temps écoulé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scegli da 15 minuti a 12 ore nella barra dei menu. Belay mostra il conto alla rovescia e lascia che il Mac torni in stop quando il tempo scade."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在菜单栏中选择 15 分钟到 12 小时。Belay 会显示倒计时，时间结束后让 Mac 恢复正常睡眠。"
-          }
-        }
-      }
-    },
-    "Hold again with one click": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold again with one click"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Держать снова одним кликом"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mit einem Klick erneut wachhalten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Manténlo otra vez con un clic"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reprenez en un clic"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantienilo ancora con un clic"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一键再次保持唤醒"
-          }
-        }
-      }
-    },
-    "If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если таймер или лимит бодрствования завершает удержание, панель объясняет почему и предлагает «Держать снова». После разблокировки Mac удержание возобновляется автоматически."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Timer oder dein Wachzeitlimit das Wachhalten beendet, erklärt das Panel warum und bietet „Erneut wachhalten“ an. Beim Entsperren des Macs wird es automatisch fortgesetzt."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si un temporizador o tu límite de tiempo despierto termina la retención, el panel te explica por qué y ofrece Mantener otra vez. Al desbloquear el Mac, se reanuda automáticamente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si un minuteur ou votre limite d’éveil met fin au maintien, le panneau vous explique pourquoi et propose Maintenir encore. Le déverrouillage du Mac reprend automatiquement le maintien."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se un timer o il limite massimo di veglia termina il mantenimento, il pannello ti spiega perché e propone Mantieni ancora. Quando sblocchi il Mac, il mantenimento riprende automaticamente."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果计时器或最长唤醒时间结束了保持唤醒，面板会说明原因，并提供「继续保持」。解锁 Mac 后会自动恢复。"
-          }
-        }
-      }
-    },
-    "Countdown on the dimmed screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Countdown on the dimmed screen"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обратный отсчёт на затемнённом экране"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Countdown auf dem abgedunkelten Bildschirm"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuenta atrás en la pantalla atenuada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compte à rebours sur l’écran assombri"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conto alla rovescia sullo schermo attenuato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "调暗屏幕上的倒计时"
-          }
-        }
-      }
-    },
-    "When Belay dims the display at night, the time left appears in the center.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When Belay dims the display at night, the time left appears in the center."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда Belay приглушает дисплей ночью, оставшееся время появляется в центре экрана."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Belay das Display nachts dimmt, erscheint die verbleibende Zeit in der Mitte des Bildschirms."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando Belay atenúa la pantalla por la noche, el tiempo restante aparece en el centro."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lorsque Belay assombrit l’écran la nuit, le temps restant apparaît au centre."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando Belay attenua il display di notte, il tempo rimanente appare al centro."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 在夜间调暗显示器时，剩余时间会显示在屏幕中央。"
-          }
-        }
-      }
-    },
-    "Hear your week": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hear your week"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Послушайте свою неделю"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hör dir deine Woche an"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Escucha tu semana"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Écoutez votre semaine"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ascolta la tua settimana"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "听听你的一周"
-          }
-        }
-      }
-    },
-    "Move across the chart in Statistics and each day plays a note. Busier days sound higher.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Move across the chart in Statistics and each day plays a note. Busier days sound higher."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Проведите указателем по графику в Статистике, и каждый день сыграет ноту. Чем насыщеннее день, тем выше звук."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bewege den Zeiger über das Diagramm in der Statistik, und jeder Tag spielt eine Note. An aktiveren Tagen ist der Ton höher."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pasa el puntero por el gráfico de Estadísticas y cada día toca una nota. Los días con más actividad suenan más agudos."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passez le pointeur sur le graphique des Statistiques et chaque jour joue une note. Plus la journée est active, plus la note est aiguë."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passa il puntatore sul grafico nelle Statistiche e ogni giorno suona una nota. Nei giorni più intensi, la nota è più alta."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "将指针移过「统计」中的图表，每一天都会奏出一个音。越忙碌的日子，音调越高。"
-          }
-        }
-      }
-    },
-    "45 min": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 min"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 мин"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 Min."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 min"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 min"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "45 分钟"
-          }
-        }
-      }
-    },
-    "3 hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 часа"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 Stunden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 heures"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 ore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3 小时"
-          }
-        }
-      }
-    },
-    "5 hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 часов"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 Stunden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 heures"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 ore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 小时"
-          }
-        }
-      }
-    },
-    "6 hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 часов"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 Stunden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 heures"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 ore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "6 小时"
-          }
-        }
-      }
-    },
-    "7 hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 часов"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 Stunden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 heures"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 ore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 小时"
-          }
-        }
-      }
-    },
-    "14 hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 hours"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 часов"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 Stunden"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 heures"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 ore"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "14 小时"
-          }
-        }
-      }
-    },
-    "Lets Claude Code tell Belay exactly when it starts and stops, instead of Belay inferring it from files. This is also what makes \"an agent is waiting for you\" reliable.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise Detection lets Claude Code tell Belay exactly when work starts, stops, or needs you."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точное определение позволяет Claude Code сообщать Belay, когда работа начинается, заканчивается или требует вашего внимания."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung lässt Claude Code Belay genau mitteilen, wann Arbeit beginnt, endet oder dich braucht."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa permite que Claude Code le diga a Belay exactamente cuándo el trabajo empieza, termina o te necesita."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise permet à Claude Code d'indiquer à Belay quand le travail commence, s'arrête ou a besoin de vous."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso permette a Claude Code di dire a Belay quando il lavoro inizia, finisce o ha bisogno di te."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测让 Claude Code 准确告诉 Belay 工作何时开始、结束或需要你。"
-          }
-        }
-      }
-    },
-    "Custom…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom…"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Другое…"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eigene…"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personalizado…"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personnalisé…"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Personalizzato…"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "自定义…"
-          }
-        }
-      }
-    },
-    "Keep your Mac awake for": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep your Mac awake for"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не давать Mac уснуть на"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac wach halten für"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantener el Mac despierto durante"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garder le Mac éveillé pendant"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tieni sveglio il Mac per"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "让 Mac 保持唤醒"
-          }
-        }
-      }
-    },
-    "Start": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Начать"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Starten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Empezar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Démarrer"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avvia"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "开始"
-          }
-        }
-      }
-    },
-    "Hours and minutes.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hours and minutes."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Часы и минуты."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stunden und Minuten."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horas y minutos."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heures et minutes."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ore e minuti."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "小时和分钟。"
-          }
-        }
-      }
-    },
-    "When you step away at night, Belay dims the display to this level. It brightens when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, Belay dims the display to this level. It brightens when you return."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушает дисплей по расписанию. Помогает сохранить срок службы диодов на матрице дисплея."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau. Il se rallume à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度。你回来时会恢复亮度。"
-          }
-        }
-      }
-    },
-    "Allow access to %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow access to %@"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Дайте доступ к %@"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zugriff auf %@ erlauben"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permite el acceso a %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Autorisez l'accès à %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Consenti l'accesso a %@"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "允许访问 %@"
           }
         }
       }
