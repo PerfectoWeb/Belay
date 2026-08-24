@@ -13,12 +13,6 @@ struct BuiltInProviderTile: View {
     let provider: ProviderStatus
     var onToggle: (Bool) -> Void = { _ in }
     var onFix: () -> Void = {}
-    /// False for the tile's first frames. A switch created "on" animates its
-    /// knob into place, and with the window busy measuring the pane, that
-    /// animation froze mid-slide: a solid blue capsule with no knob for a
-    /// second or two. Until the view has settled, the switch draws its state
-    /// directly; the slide stays for real clicks.
-    @State private var settled = false
 
     var body: some View {
         // Centred like the generic tiles' marks, and dimmed rather than
@@ -40,28 +34,14 @@ struct BuiltInProviderTile: View {
                     Spacer(minLength: 6)
                     // On the name's own line, and small: the switch is a
                     // detail of the row, not a second landmark.
-                    Toggle(isOn: Binding(get: { provider.isEnabled }, set: onToggle)) {
-                        EmptyView()
-                    }
-                    .toggleStyle(.switch)
-                    .controlSize(.mini)
-                    // Below mini there is nothing to ask AppKit for, so the
-                    // last step down is drawn: 85%, hugging the right edge.
-                    .scaleEffect(0.85, anchor: .trailing)
-                    .offset(x: 3)
-                    .labelsHidden()
-                    .transaction { transaction in
-                        if !settled { transaction.disablesAnimations = true }
-                    }
-                    .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
+                    MiniSwitch(isOn: provider.isEnabled, toggle: onToggle)
+                        .offset(x: 3)
+                        .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
                 status
                     .font(.system(size: 10))
                     .lineLimit(1)
             }
-        }
-        .onAppear {
-            DispatchQueue.main.async { settled = true }
         }
         .padding(.vertical, 9)
         .padding(.horizontal, 12)
@@ -128,5 +108,37 @@ struct BuiltInProviderTile: View {
     /// The folder the ask is about, spelled the way the grant panel shows it.
     private var home: String {
         provider.id == .codex ? "~/.codex" : "~/.claude"
+    }
+}
+
+/// A switch drawn in SwiftUI instead of hosted from AppKit.
+///
+/// `NSSwitch` animates its knob into place when it is created already on,
+/// and a Settings window busy with its first layout freezes that entrance:
+/// a solid blue capsule with no knob for a second or two, on every open of
+/// this pane. Two rounds of animation-suppression did not cure it, because
+/// the slide belongs to AppKit, not to SwiftUI. A drawn switch has no
+/// entrance to freeze — the first frame is the true state — and the only
+/// thing that ever animates is a real click.
+struct MiniSwitch: View {
+    let isOn: Bool
+    let toggle: (Bool) -> Void
+
+    var body: some View {
+        ZStack(alignment: isOn ? .trailing : .leading) {
+            Capsule(style: .circular)
+                .fill(isOn ? Color.accentColor : Color.primary.opacity(0.18))
+            Circle()
+                .fill(.white)
+                .shadow(color: .black.opacity(0.25), radius: 0.7, y: 0.5)
+                .padding(1)
+        }
+        .frame(width: 22, height: 13)
+        .animation(.easeOut(duration: 0.16), value: isOn)
+        .contentShape(Rectangle())
+        .onTapGesture { toggle(!isOn) }
+        .accessibilityRepresentation {
+            Toggle(isOn: Binding(get: { isOn }, set: toggle)) { EmptyView() }
+        }
     }
 }

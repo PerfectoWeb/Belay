@@ -93,6 +93,54 @@ final class LiveWhatsNewTests: XCTestCase {
     }
 }
 
+/// The real Settings window opened straight onto Agents, for filming the
+/// first seconds of the switches. Uses the real `SettingsWindow` — the lazy
+/// `LoginItem`, the delegate callbacks, all of it — because the stall being
+/// hunted lives in that wiring, not in the tile alone.
+@MainActor
+final class LiveAgentsPaneTests: XCTestCase {
+    func testAgentsPaneOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the pane")
+        }
+        let settings = SettingsStore(suiteName: "live-agents-\(UUID().uuidString)")
+        // One on, one off: the report is that off switches read as on for the
+        // first seconds, so the stand needs an off switch to catch lying.
+        settings.enabledProviders = [.claudeCode]
+        let app = AppState()
+        app.apply(providers: [
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .claudeCode, displayName: "Claude Code", summary: "", symbolName: "sparkles",
+                    supportsPreciseDetection: true),
+                availability: .ready, isEnabled: true, lastSignal: Date().addingTimeInterval(-300)),
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
+                    supportsPreciseDetection: false),
+                availability: .ready, isEnabled: false, lastSignal: nil),
+        ])
+        let window = SettingsWindow(
+            settings: settings, state: app, precise: PreciseDetection(),
+            targets: { [] }, statistics: { UsageStatistics() }, onTargetsChanged: { _ in })
+        window.show(pane: .providers)
+        window.window?.setFrameOrigin(NSPoint(x: 60, y: 200))
+        // The window number lets the film be taken per-window from outside
+        // (`screencapture -l`), which survives the user's own windows sitting
+        // on top of the stand.
+        if let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"],
+            let number = window.window?.windowNumber
+        {
+            try? "\(number)".write(
+                to: URL(fileURLWithPath: folder).appendingPathComponent("wid.txt"),
+                atomically: true, encoding: .utf8)
+        }
+        let seconds = Double(ProcessInfo.processInfo.environment["BELAY_LIVE_SECONDS"] ?? "4") ?? 4
+        RunLoop.main.run(until: Date().addingTimeInterval(seconds))
+        window.close()
+    }
+}
+
 /// The duration menu on the real screen, plain and with Shift, for a photo.
 @MainActor
 final class LiveDurationMenuTests: XCTestCase {
