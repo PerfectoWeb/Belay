@@ -197,7 +197,8 @@ final class SettingsWindow: NSObject {
             onResetStatistics: { [weak self] in
                 self?.onResetStatistics()
                 self?.refreshContent()
-            }
+            },
+            onProvidersReshaped: { [weak self] in self?.refitProviders() }
         )
     }
 }

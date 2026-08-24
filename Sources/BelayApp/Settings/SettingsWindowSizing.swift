@@ -44,6 +44,21 @@ extension SettingsWindow {
         (target ?? window).setFrame(frame, display: true, animate: animated)
     }
 
+    /// The built-in switches change the Providers pane's height the same way
+    /// the tiles below do: status lines grow, the precise-detection row comes
+    /// and goes. Same growth, same animation.
+    func refitProviders() {
+        guard let window, pane == .providers else { return }
+        let wanted = height(for: pane)
+        guard abs(window.contentMinSize.height - wanted) > 1 else { return }
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.3
+            context.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            context.allowsImplicitAnimation = true
+            resize(window, to: wanted, animated: false, through: window.animator())
+        }
+    }
+
     /// Adding a watched tool makes the pane taller, and a preferences window that
     /// answers that with a scroller is one where the thing you just added is
     /// below the fold. The window grows instead, the way a Finder window does.

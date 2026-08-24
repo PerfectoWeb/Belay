@@ -22,6 +22,10 @@ struct SettingsView: View {
     var updates: ReleaseChecker
     var onTargetsChanged: ([GenericTarget]) -> Void
     var onResetStatistics: () -> Void = {}
+    /// The Providers pane changed shape for a reason other than the targets —
+    /// a built-in switch toggled, the precise-detection row came or went —
+    /// and the window should re-measure itself.
+    var onProvidersReshaped: () -> Void = {}
 
     var body: some View {
         ScrollView(.vertical) { content }
@@ -44,7 +48,8 @@ struct SettingsView: View {
                     state: state,
                     precise: precise,
                     targets: targets,
-                    onTargetsChanged: onTargetsChanged
+                    onTargetsChanged: onTargetsChanged,
+                    onReshaped: onProvidersReshaped
                 )
             }
         case .behaviour:

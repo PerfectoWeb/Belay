@@ -15,7 +15,7 @@ struct BuiltInProviderTile: View {
     var onFix: () -> Void = {}
 
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
             Image(nsImage: ProviderMark.image(for: provider.id, size: 22))
                 .resizable()
                 .interpolation(.high)
@@ -23,29 +23,32 @@ struct BuiltInProviderTile: View {
                 .foregroundStyle(provider.isEnabled ? .primary : .secondary)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: provider.descriptor.displayName)
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(provider.isEnabled ? .primary : .secondary)
-                    .lineLimit(1)
-                status
-                    .font(.system(size: 11))
-                    .lineLimit(3)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-
-            Spacer(minLength: 6)
-
-            VStack(alignment: .trailing, spacing: 6) {
-                Toggle(isOn: Binding(get: { provider.isEnabled }, set: onToggle)) {
-                    EmptyView()
+                HStack(spacing: 6) {
+                    Text(verbatim: provider.descriptor.displayName)
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(provider.isEnabled ? .primary : .secondary)
+                        .lineLimit(1)
+                    Spacer(minLength: 6)
+                    // On the name's own line, and small: the switch is a
+                    // detail of the row, not a second landmark.
+                    Toggle(isOn: Binding(get: { provider.isEnabled }, set: onToggle)) {
+                        EmptyView()
+                    }
+                    .toggleStyle(.switch)
+                    .controlSize(.mini)
+                    .labelsHidden()
+                    .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
-                .toggleStyle(.switch)
-                .controlSize(.small)
-                .labelsHidden()
-                .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
-                if provider.isEnabled, case .needsSetup = provider.availability {
-                    Button("Fix", action: onFix)
-                        .controlSize(.small)
+                HStack(alignment: .top, spacing: 6) {
+                    status
+                        .font(.system(size: 11))
+                        .lineLimit(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 0)
+                    if provider.isEnabled, case .needsSetup = provider.availability {
+                        Button("Fix", action: onFix)
+                            .controlSize(.small)
+                    }
                 }
             }
         }

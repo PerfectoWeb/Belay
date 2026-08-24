@@ -6,6 +6,7 @@ struct ProvidersSettingsPane: View {
     var state: AppState
     var precise: PreciseDetection
     var onTargetsChanged: ([GenericTarget]) -> Void
+    var onReshaped: () -> Void = {}
     @State private var showingPreview = false
     @State private var refreshToken = 0
     @State private var targets: [GenericTarget]
@@ -14,11 +15,13 @@ struct ProvidersSettingsPane: View {
         state: AppState,
         precise: PreciseDetection,
         targets: [GenericTarget],
-        onTargetsChanged: @escaping ([GenericTarget]) -> Void
+        onTargetsChanged: @escaping ([GenericTarget]) -> Void,
+        onReshaped: @escaping () -> Void = {}
     ) {
         self.state = state
         self.precise = precise
         self.onTargetsChanged = onTargetsChanged
+        self.onReshaped = onReshaped
         _targets = State(initialValue: targets)
     }
 
@@ -43,6 +46,10 @@ struct ProvidersSettingsPane: View {
             GenericTargetsSection(targets: $targets)
         }
         .onChange(of: targets) { _, new in onTargetsChanged(new) }
+        // The built-in switches change what the pane holds — the status
+        // lines, the precise-detection row — and the window has to follow,
+        // the way it already follows the tiles below.
+        .onChange(of: state.providers) { _, _ in onReshaped() }
         .sheet(isPresented: $showingPreview) {
             HookPreviewSheet(precise: precise) { refreshToken += 1 }
         }
