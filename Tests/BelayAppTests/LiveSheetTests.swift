@@ -29,7 +29,7 @@ final class LiveSheetTests: XCTestCase {
         let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"]
         let providers: [ProviderID] =
             ProcessInfo.processInfo.environment["BELAY_LIVE_SHEET"] == "cline"
-            ? [.cline] : [.claudeCode, .cline]
+            ? [.cline] : [.claudeCode, .codex, .cline]
         for provider in providers {
             let sheet = HookPreviewSheet(precise: precise, provider: provider) {}
             let window = NSWindow(

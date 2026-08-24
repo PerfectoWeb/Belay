@@ -2011,7 +2011,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сначала Belay создаёт резервную копию с отметкой времени. «Убрать» восстановит исходный файл."
+            "value": "Belay создаёт резервную копию вашей конфигурации при включении и возвращает её при отключении точного определения."
           }
         },
         "zh-Hans": {
@@ -2571,7 +2571,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Все названия продуктов и логотипы являются товарными знаками их владельцев."
+            "value": "Все названия и логотипы продуктов являются товарными знаками их владельцев."
           }
         },
         "zh-Hans": {
@@ -3228,7 +3228,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не спит уже %@"
+            "value": "Mac не спит %@"
           }
         },
         "zh-Hans": {
@@ -3601,7 +3601,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay также помечает эти хуки как одобренные в config.toml, потому что Codex молча пропускает неодобренные хуки."
+            "value": "Хуки помечаются как одобренные в config.toml, потому что Codex молча пропускает неодобренные хуки."
           }
         },
         "zh-Hans": {
@@ -5243,7 +5243,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay следит только за включёнными агентами. Точное определение сообщает Belay, когда работа начинается, заканчивается или требует вашего внимания. Правый клик по агенту дает возможность отключить точный режим."
+            "value": "Belay следит только за включёнными агентами. Точное определение позволяет Belay понимать, когда работа начинается, заканчивается или требует вашего внимания. Правый клик по агенту дает возможность настроить точный режим."
           }
         },
         "zh-Hans": {
@@ -6614,52 +6614,6 @@
         }
       }
     },
-    "Default ·": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standard ·"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default ·"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Básico ·"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standard ·"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Standard ·"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обычное ·"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "默认 ·"
-          }
-        }
-      }
-    },
     "Detection health": {
       "extractionState": "manual",
       "localizations": {
@@ -6976,7 +6930,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Затемняет дисплей до этого уровня в указанные ниже часы, пока вас нет. Возвращает яркость, когда вы вернулись."
+            "value": "Затемняет дисплей до указанного уровня по расписанию. Возвращает яркость, когда вы начинаете взаимодействовать с компьютером."
           }
         },
         "zh-Hans": {
@@ -7303,7 +7257,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Включить точную детекцию"
+            "value": "Включить точное определение"
           }
         },
         "zh-Hans": {
@@ -9222,8 +9176,8 @@
         },
         "ru": {
           "stringUnit": {
-            "state": "needs_review",
-            "value": "Работает локально"
+            "state": "translated",
+            "value": "Локально"
           }
         },
         "zh-Hans": {
@@ -9830,7 +9784,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ночное затемнение"
+            "value": "Приглушать экран"
           }
         },
         "zh-Hans": {
@@ -10017,7 +9971,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Других инструментов пока нет. Для них Belay определяет работу по активности папки и процессу."
+            "value": "Другие агенты не добавлены. Для них Belay определяет работу по активности папки и системному процессу."
           }
         },
         "zh-Hans": {
@@ -10767,7 +10721,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "При питании от батареи Belay разрешает Mac уснуть на %lld%%."
+            "value": "При работе от батареи Belay разрешает Mac заснуть, когда заряд менее %lld%%."
           }
         },
         "zh-Hans": {
@@ -11329,7 +11283,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Для других инструментов Belay определяет работу по активности папки и процессу."
+            "value": "Для других агентов Belay определяет работу по активности папки и системному процессу."
           }
         },
         "zh-Hans": {
@@ -11376,7 +11330,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пауза: достигнут предел времени."
+            "value": "Достигнут лимит времени."
           }
         },
         "zh-Hans": {
@@ -12172,7 +12126,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сообщить об ошибке"
+            "value": "Нашёл ошибку"
           }
         },
         "zh-Hans": {
@@ -13212,6 +13166,52 @@
         }
       }
     },
+    "Standard ·": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estándar ·"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обычное ·"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标准 ·"
+          }
+        }
+      }
+    },
     "Star": {
       "extractionState": "manual",
       "localizations": {
@@ -14092,7 +14092,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Максимум времени, которое Belay продержит Mac бодрым, прежде чем отпустить. Когда лимит достигнут, придёт уведомление."
+            "value": "Максимальное время удержания Mac бодрым. При достижении лимита Belay отправит вам уведомление."
           }
         },
         "zh-Hans": {
@@ -16911,7 +16911,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Бесплатно и не продаётся. Сделано гиками для гиков."
+            "value": "© 2026 PerfectoWeb. Бесплатно, с открытым исходным кодом. От гиков - гикам."
           }
         },
         "zh-Hans": {
