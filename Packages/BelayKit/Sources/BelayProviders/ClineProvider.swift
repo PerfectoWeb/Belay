@@ -90,11 +90,19 @@ public actor ClineProvider: ActivityProvider {
 
     func handle(changedPaths paths: [String]) {
         let now = clock.now
-        let ids = Set(
-            paths.compactMap {
-                ClineSessions.sessionID(of: $0, under: configuration.sessionsDirectory)
-            })
-        for id in ids { ingest(id, now: now) }
+        var roots: Set<String> = []
+        var teammates: Set<[String]> = []
+        for path in paths {
+            guard let id = ClineSessions.sessionID(of: path, under: configuration.sessionsDirectory)
+            else { continue }
+            if let mate = ClineSessions.teammate(of: path, sessionID: id) {
+                teammates.insert([id, mate.stem, mate.agent])
+            } else {
+                roots.insert(id)
+            }
+        }
+        for id in roots { ingest(id, now: now) }
+        for mate in teammates { ingestTeammate(session: mate[0], stem: mate[1], agent: mate[2], now: now) }
     }
 
     @discardableResult
@@ -102,7 +110,10 @@ public actor ClineProvider: ActivityProvider {
         let stateURL = ClineSessions.stateURL(id: id, under: configuration.sessionsDirectory)
         guard let state = ClineSessionState.load(from: stateURL, access: access) else {
             // The state file going away is the session going away.
-            if watched[SessionID(id)] != nil { end(SessionID(id), at: now, cause: "state-gone") }
+            if watched[SessionID(id)] != nil {
+                endTeammates(of: SessionID(id), at: now, cause: "state-gone")
+                end(SessionID(id), at: now, cause: "state-gone")
+            }
             return false
         }
         guard var watch = watched[SessionID(id)] else {
@@ -117,6 +128,7 @@ public actor ClineProvider: ActivityProvider {
         watched[watch.id] = watch
         guard let status = state.knownStatus else { return false }
         if status.activity == .ended {
+            endTeammates(of: watch.id, at: now, cause: state.status)
             end(watch.id, at: now, cause: state.status)
             return true
         }
@@ -143,6 +155,7 @@ public actor ClineProvider: ActivityProvider {
             let age = now.timeIntervalSince(snapshot.modified)
             guard age <= configuration.staleAtStartupAfter else { return false }
             watched[watch.id] = watch
+            seedTeammates(of: state.sessionID, now: now, atStartup: true)
             // Announce only a live turn; a merely-followed session speaks
             // when it next moves. A stuck `running` from a Ctrl-C is old by
             // now and stays silent until the sweep or a real write.
@@ -152,6 +165,7 @@ public actor ClineProvider: ActivityProvider {
         }
 
         watched[watch.id] = watch
+        seedTeammates(of: state.sessionID, now: now, atStartup: false)
         EventLog.note("cline session start \(watch.id) ws=\(watch.workspace ?? "?")")
         return report(status.activity, for: watch.id, at: now)
     }
@@ -198,13 +212,16 @@ public actor ClineProvider: ActivityProvider {
         yield(.ended, from: watch, at: now)
     }
 
-    private func yield(_ activity: SessionActivity, from watch: ClineWatch, at now: Date) {
+    func yield(_ activity: SessionActivity, from watch: ClineWatch, at now: Date) {
         continuation.yield(
             ActivitySignal(
                 provider: .cline,
                 session: watch.id,
                 activity: activity,
                 workspace: watch.workspace,
+                parent: watch.parent,
+                kind: watch.kind,
+                name: watch.parent == nil ? nil : watch.id.rawValue,
                 timestamp: now,
                 confidence: .inferred))
     }

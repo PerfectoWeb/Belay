@@ -61,10 +61,18 @@ struct ClineSessionState: Decodable, Equatable {
     }
 }
 
-/// One followed session: where its two files live and what was last believed.
+/// One followed session — a root with its state file, or a teammate, whose
+/// whole record is a growing messages file inside its parent's directory.
 struct ClineWatch {
     let id: SessionID
+    /// The root's own state file; a teammate carries its *parent's*, because
+    /// a teammate has no status of its own — its lifecycle rides the parent.
     let stateURL: URL
+    let messagesURL: URL
+    /// Set for a teammate; the UI nests it under this session.
+    var parent: SessionID?
+    /// The teammate's agent name ("hardening-agent"), for display.
+    var kind: String?
     var workspace: String?
     var lastWriteAt: Date
     /// The messages file's last seen size; growth while running is the
@@ -75,8 +83,28 @@ struct ClineWatch {
     /// session gets an announced ending.
     var announced = false
 
-    var messagesURL: URL {
-        stateURL.deletingLastPathComponent()
+    init(
+        id: SessionID,
+        stateURL: URL,
+        parent: SessionID? = nil,
+        kind: String? = nil,
+        workspace: String?,
+        lastWriteAt: Date,
+        messagesBytes: UInt64,
+        reported: SessionActivity?,
+        messagesURL: URL? = nil
+    ) {
+        self.id = id
+        self.stateURL = stateURL
+        self.parent = parent
+        self.kind = kind
+        self.workspace = workspace
+        self.lastWriteAt = lastWriteAt
+        self.messagesBytes = messagesBytes
+        self.reported = reported
+        self.messagesURL =
+            messagesURL
+            ?? stateURL.deletingLastPathComponent()
             .appendingPathComponent(stateURL.deletingPathExtension().lastPathComponent)
             .appendingPathExtension("messages.json")
     }
@@ -100,6 +128,39 @@ enum ClineSessions {
         let below = path.dropFirst(rootPath.count)
         guard let id = below.split(separator: "/").first, !id.isEmpty else { return nil }
         return String(id)
+    }
+
+    /// A teammate's file inside a session directory: `<agent>__<suffix>.messages.json`
+    /// where the stem is not the session's own. Returns the stem and the
+    /// agent name in front of the `__`.
+    static func teammate(of path: String, sessionID: String) -> (stem: String, agent: String)? {
+        let name = (path as NSString).lastPathComponent
+        let suffix = ".messages.json"
+        guard name.hasSuffix(suffix) else { return nil }
+        let stem = String(name.dropLast(suffix.count))
+        guard stem != sessionID, !stem.isEmpty else { return nil }
+        let agent = stem.range(of: "__").map { String(stem[..<$0.lowerBound]) } ?? stem
+        return (stem, agent.isEmpty ? stem : agent)
+    }
+
+    struct TeammateFile {
+        let stem: String
+        let agent: String
+        let url: URL
+    }
+
+    static func teammateFiles(
+        inSession sessionID: String, under root: URL, access: FileAccessProvider
+    ) -> [TeammateFile] {
+        let directory = root.appendingPathComponent(sessionID, isDirectory: true)
+        let contents: [URL]? = try? access.withAccess(to: directory) { url in
+            (try? FileManager.default.contentsOfDirectory(
+                at: url, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles])) ?? []
+        }
+        return (contents ?? []).compactMap { url in
+            guard let mate = teammate(of: url.path, sessionID: sessionID) else { return nil }
+            return TeammateFile(stem: mate.stem, agent: mate.agent, url: url)
+        }
     }
 
     static func sessionIDs(under root: URL, access: FileAccessProvider) -> [String] {
