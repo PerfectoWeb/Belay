@@ -67,6 +67,7 @@ enum ReleaseNotes {
         static let night = "moon.stars"
         static let chart = "chart.bar"
         static let timer = "timer"
+        static let team = "person.2"
     }
 
     /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
@@ -87,6 +88,40 @@ enum ReleaseNotes {
 
     private static var written: [ReleaseNote] {
         [
+            ReleaseNote(
+                version: "1.5.0",
+                items: [
+                    .init(
+                        symbol: Mark.code,
+                        title: "Cline is now built in",
+                        body: """
+                            Turn it on in Settings and Belay follows Cline sessions on \
+                            its own. No folders to pick.
+                            """),
+                    .init(
+                        symbol: Mark.speed,
+                        title: "Precise Detection for every agent",
+                        body: """
+                            Claude Code, Codex, and Cline can tell Belay the exact moment \
+                            work starts, finishes, or waits for you. One click in Settings.
+                            """,
+                        directOnly: true),
+                    .init(
+                        symbol: Mark.team,
+                        title: "Agent teams in the panel",
+                        body: """
+                            When Cline spawns teammate agents, they appear under their \
+                            session, just like Claude Code subagents.
+                            """),
+                    .init(
+                        symbol: Mark.toggle,
+                        title: "Settings, sharpened",
+                        body: """
+                            Each agent's detection now lives in its own tile, and every \
+                            pane reads cleaner.
+                            """)
+                ]
+            ),
             ReleaseNote(
                 version: "1.4.0",
                 items: [

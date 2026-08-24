@@ -38,18 +38,28 @@ projects does not resurrect them.
 
 Codex gets the same treatment with less guessing: its session rollouts under
 `~/.codex/sessions` carry explicit turn markers, so starts and finishes are
-read, not inferred. No setup there either. Other tools — Gemini CLI, Copilot
-CLI, OpenCode, Aider, Cline, Pi — ship as one-click presets that watch the
-folder each tool writes while it works.
+read, not inferred. Cline is plainer still: every session keeps a small state
+file under `~/.cline/data/sessions` whose `status` field says running or
+finished outright, and Cline's team mode writes one messages file per teammate
+agent inside the session's folder — Belay shows those teammates in the panel
+under their session, the way Claude Code subagents appear. No setup for any of
+the three. Other tools — Gemini CLI, Copilot CLI, OpenCode, Aider, Cline
+(VS Code), Pi — ship as one-click presets that watch the folder each tool
+writes while it works.
 
 ### Hook bridge, optional and exact
 
-Claude Code can POST lifecycle events to a listener Belay runs on `127.0.0.1`:
-prompt submitted, tool starting, turn finished, permission needed. This gives
-sub-second detection and is what makes *"an agent is waiting for you"* reliable
-rather than a guess.
+All three built-in agents can tell Belay directly, through a listener on
+`127.0.0.1`: prompt submitted, tool starting, turn finished, permission
+needed. This gives sub-second detection and is what makes *"an agent is
+waiting for you"* reliable rather than a guess. Claude Code POSTs from HTTP
+hooks in `settings.json`; Codex runs command hooks from `hooks.json`, whose
+approval Belay records in `config.toml` because Codex silently skips
+unapproved hooks; Cline runs one small script per lifecycle event from
+`~/.cline/hooks`. Each install shows a full preview first, is backed up, and
+can be removed from the agent's tile.
 
-The hooks are registered as `"async": true`, so Claude Code never waits on Belay
+The hooks are registered fire-and-forget, so no agent ever waits on Belay
 for anything. There is no exit code Belay could return that would block your
 agent, and no way for it to slow a turn down.
 

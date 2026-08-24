@@ -74,7 +74,9 @@ final class ShareCardTests: XCTestCase {
         let caption = ShareCardContent(statistics, now: day).caption
         // Spelled, in whatever language: a numeral here reads as a second
         // statistic beside the headline rather than as the end of a sentence.
-        XCTAssertFalse(caption.contains(where: \.isNumber), caption)
+        // ASCII digits only: Chinese spells one as 一, which *is* the spelled
+        // form, yet `isNumber` counts it.
+        XCTAssertFalse(caption.contains(where: { $0.isNumber && $0.isASCII }), caption)
     }
 
     /// An injected pasteboard, because a test has no business clearing the

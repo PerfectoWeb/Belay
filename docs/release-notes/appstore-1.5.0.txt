@@ -1,0 +1,71 @@
+App Store "What’s New in This Version" — Belay 1.5.0
+
+--- EN ---
+
+Cline is now built in. Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.
+
+Agent teams in the panel. When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.
+
+Settings, sharpened. Each agent's detection now lives in its own tile, and every pane reads cleaner.
+
+Also: sessions touched by other apps' importers no longer wake the panel, and the agent switches draw honestly from the very first frame.
+
+--- RU ---
+
+Cline теперь встроен. Включите его в настройках, и Belay сам следит за сессиями Cline. Никаких папок выбирать не нужно.
+
+Команды агентов в панели. Когда Cline запускает агентов-помощников, они появляются под своей сессией, как сабагенты Claude Code.
+
+Настройки стали яснее. Определение каждого агента теперь в его плитке, а тексты всех разделов переписаны проще.
+
+А ещё: сессии, задетые импортёрами других приложений, больше не будят панель, а переключатели агентов честно отрисовываются с первого кадра.
+
+--- DE ---
+
+Cline ist jetzt eingebaut. In den Einstellungen einschalten, und Belay folgt Cline-Sitzungen von selbst. Keine Ordner auswählen.
+
+Agenten-Teams im Panel. Wenn Cline Teammitglieder startet, erscheinen sie unter ihrer Sitzung, genau wie Claude-Code-Subagenten.
+
+Einstellungen, geschärft. Die Erkennung jedes Agenten sitzt jetzt in seiner eigenen Kachel, und jeder Bereich liest sich klarer.
+
+Außerdem: Von Importern anderer Apps berührte Sitzungen wecken das Panel nicht mehr, und die Agenten-Schalter zeichnen vom ersten Frame an ehrlich.
+
+--- ES ---
+
+Cline ya viene integrado. Actívalo en Ajustes y Belay sigue las sesiones de Cline por sí solo. Sin elegir carpetas.
+
+Equipos de agentes en el panel. Cuando Cline lanza agentes de equipo, aparecen bajo su sesión, igual que los subagentes de Claude Code.
+
+Ajustes más claros. La detección de cada agente vive ahora en su propia tarjeta, y cada panel se lee mejor.
+
+Además: las sesiones tocadas por importadores de otras apps ya no despiertan el panel, y los interruptores de agentes se dibujan con honestidad desde el primer fotograma.
+
+--- FR ---
+
+Cline est désormais intégré. Activez-le dans les réglages et Belay suit les sessions Cline tout seul. Aucun dossier à choisir.
+
+Équipes d'agents dans le panneau. Quand Cline lance des agents équipiers, ils apparaissent sous leur session, comme les sous-agents Claude Code.
+
+Réglages, affinés. La détection de chaque agent vit maintenant dans sa propre tuile, et chaque panneau se lit mieux.
+
+Aussi : les sessions touchées par les importateurs d'autres apps ne réveillent plus le panneau, et les interrupteurs d'agents s'affichent honnêtement dès la première image.
+
+--- IT ---
+
+Cline ora è integrato. Attivalo nelle impostazioni e Belay segue le sessioni di Cline da solo. Nessuna cartella da scegliere.
+
+Team di agenti nel pannello. Quando Cline avvia agenti compagni, appaiono sotto la loro sessione, come i subagenti di Claude Code.
+
+Impostazioni più chiare. Il rilevamento di ogni agente ora vive nella sua scheda, e ogni pannello si legge meglio.
+
+Inoltre: le sessioni toccate dagli importatori di altre app non svegliano più il pannello, e gli interruttori degli agenti si disegnano onestamente dal primo fotogramma.
+
+--- ZH ---
+
+Cline 现已内置。在设置中开启，Belay 就会自动跟踪 Cline 的会话。无需选择文件夹。
+
+面板中的智能体团队。当 Cline 启动队友智能体时，它们会出现在所属会话下，就像 Claude Code 的子智能体一样。
+
+更清晰的设置。每个智能体的检测方式现在都在自己的卡片中，各个面板的文字也更易读。
+
+另外：被其他应用的导入器碰过的会话不再唤醒面板，智能体开关从第一帧起就如实显示。

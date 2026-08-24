@@ -138,6 +138,11 @@ none of them mentioned Chinese.
 Two edits, applied to every language on 2026-08-20, on top of whatever the
 store held that day:
 
+**What changed for 1.5.0.** The agents sentence in every language now names
+three built-in agents — Claude Code, Codex and Cline — and Cline left the
+preset list accordingly. Nothing else moved; the privacy claims are untouched
+and still true.
+
 **The agents paragraph tells the 1.3.2 truth.** Claude Code and Codex are both
 detected precisely now — Codex graduated from a preset to a first-class
 provider — and the preset list grew to six: Copilot CLI, Gemini CLI, OpenCode,
@@ -175,7 +180,7 @@ While Belay holds, it also asks macOS to keep the network active, so SSH session
 
 WORKS WITH
 
-Claude Code and Codex are detected precisely, out of the box: Belay reads their own session files, so it knows exactly when a turn starts and ends. Copilot CLI, Gemini CLI, OpenCode, Cline, Aider and Pi have ready-made presets.
+Claude Code, Codex and Cline are detected precisely, out of the box: Belay reads their own session files, so it knows exactly when a turn starts and ends. Copilot CLI, Gemini CLI, OpenCode, Aider and Pi have ready-made presets.
 
 For anything else, point Belay at a folder your tool writes to and it will use activity in that folder as the signal. The folders you choose are remembered, so you pick them once.
 
@@ -238,7 +243,7 @@ Belay не даёт вашему Mac уснуть, пока работают AI 
 
 ПОДДЕРЖИВАЕМЫЕ АГЕНТЫ
 
-Claude Code и Codex определяются точно и сразу: Belay читает их собственные файлы сессий и точно знает, когда работа началась и закончилась. Для Copilot CLI, Gemini CLI, OpenCode, Cline, Aider и Pi есть готовые пресеты.
+Claude Code, Codex и Cline определяются точно и сразу: Belay читает их собственные файлы сессий и точно знает, когда работа началась и закончилась. Для Copilot CLI, Gemini CLI, OpenCode, Aider и Pi есть готовые пресеты.
 
 Для остальных инструментов можно выбрать папку, и Belay будет определять работу по активности в ней. Выбранные папки запоминаются, так что указать их достаточно один раз.
 
@@ -303,7 +308,7 @@ Während Belay den Mac wach hält, bittet es macOS auch, das Netzwerk aktiv zu l
 
 UNTERSTÜTZTE AGENTS
 
-Claude Code und Codex werden präzise erkannt, direkt ab Werk: Belay liest ihre eigenen Sitzungsdateien und weiß genau, wann ein Turn beginnt und endet. Für Copilot CLI, Gemini CLI, OpenCode, Cline, Aider und Pi gibt es fertige Presets.
+Claude Code, Codex und Cline werden präzise erkannt, direkt ab Werk: Belay liest ihre eigenen Sitzungsdateien und weiß genau, wann ein Turn beginnt und endet. Für Copilot CLI, Gemini CLI, OpenCode, Aider und Pi gibt es fertige Presets.
 
 Für alles andere kannst du einen Ordner auswählen. Belay erkennt dann anhand der Aktivität in diesem Ordner, ob gerade gearbeitet wird. Die gewählten Ordner werden gemerkt, du wählst sie also nur einmal aus.
 
@@ -372,7 +377,7 @@ Mientras Belay mantiene tu Mac despierto, también pide a macOS que mantenga act
 
 AGENTES COMPATIBLES
 
-Claude Code y Codex se detectan con precisión desde el primer momento: Belay lee sus propios archivos de sesión y sabe exactamente cuándo empieza y termina un turno. Copilot CLI, Gemini CLI, OpenCode, Cline, Aider y Pi cuentan con ajustes predefinidos.
+Claude Code, Codex y Cline se detectan con precisión desde el primer momento: Belay lee sus propios archivos de sesión y sabe exactamente cuándo empieza y termina un turno. Copilot CLI, Gemini CLI, OpenCode, Aider y Pi cuentan con ajustes predefinidos.
 
 Para cualquier otra herramienta, puedes elegir una carpeta y Belay usará la actividad de esa carpeta para saber si hay trabajo en curso. Las carpetas que elijas se recuerdan, así que solo las eliges una vez.
 
@@ -441,7 +446,7 @@ Pendant que Belay garde votre Mac éveillé, il demande aussi à macOS de mainte
 
 AGENTS PRIS EN CHARGE
 
-Claude Code et Codex sont détectés avec précision, sans aucune configuration : Belay lit leurs propres fichiers de session et sait exactement quand un tour commence et se termine. Copilot CLI, Gemini CLI, OpenCode, Cline, Aider et Pi disposent de préréglages prêts à l’emploi.
+Claude Code, Codex et Cline sont détectés avec précision, sans aucune configuration : Belay lit leurs propres fichiers de session et sait exactement quand un tour commence et se termine. Copilot CLI, Gemini CLI, OpenCode, Aider et Pi disposent de préréglages prêts à l’emploi.
 
 Pour les autres outils, choisissez simplement un dossier. Belay utilisera son activité pour savoir si un travail est en cours. Les dossiers choisis sont mémorisés, vous ne les indiquez donc qu’une fois.
 
@@ -510,7 +515,7 @@ Mentre Belay tiene sveglio il Mac, chiede a macOS di mantenere attiva anche la r
 
 AGENTI SUPPORTATI
 
-Claude Code e Codex vengono rilevati con precisione, senza alcuna configurazione: Belay legge i loro file di sessione e sa esattamente quando un turno inizia e finisce. Copilot CLI, Gemini CLI, OpenCode, Cline, Aider e Pi hanno preset già pronti.
+Claude Code, Codex e Cline vengono rilevati con precisione, senza alcuna configurazione: Belay legge i loro file di sessione e sa esattamente quando un turno inizia e finisce. Copilot CLI, Gemini CLI, OpenCode, Aider e Pi hanno preset già pronti.
 
 Per qualsiasi altro strumento puoi scegliere una cartella. Belay userà l’attività di quella cartella per capire se c’è del lavoro in corso. Le cartelle scelte vengono ricordate, quindi le indichi una volta sola.
 
@@ -595,7 +600,7 @@ Mac 进入了睡眠。你留着继续跑的编程智能体也就停在了那里�
 
 支持的智能体
 
-Claude Code 和 Codex 开箱即可精确检测：Belay 读取它们自己的会话文件，准确知道轮次何时开始、何时结束。Copilot CLI、Gemini CLI、OpenCode、Cline、Aider 和 Pi 都有现成的预设。
+Claude Code、Codex 和 Cline 开箱即可精确检测：Belay 读取它们自己的会话文件，准确知道轮次何时开始、何时结束。Copilot CLI、Gemini CLI、OpenCode、Aider 和 Pi 都有现成的预设。
 
 其他工具可以指定一个文件夹，Belay 会用该文件夹的活动来判断是否有工作在进行。你选择的文件夹会被记住，只需指定一次。
 

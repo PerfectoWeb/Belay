@@ -184,6 +184,19 @@ override an `.exact` `.idle`. This prevents the classic bug where a hook says
 
 ## Other providers
 
+**Cline (shipped first-class in 1.5.0).** `ClineProvider` reads the per-session
+state files under `~/.cline/data/sessions/<id>/<id>.json`: the `status` field
+says `running`/`idle`/`completed`/`cancelled`/`failed` outright, and the
+sibling `messages.json`'s growth is the heartbeat. One caveat is load-bearing:
+a Ctrl-C leaves `status` stuck on `running` forever, so the idle sweep — not
+the status — has the last word on silence. Team mode writes
+`<agent>__<suffix>.messages.json` files inside the parent session's folder;
+those become child sessions with `parent`/`kind` set, presented under their
+session like Claude Code subagents. The exact tier is per-event hook scripts
+in `~/.cline/hooks` (`TaskStart.sh` … `SessionShutdown.sh`), payload on
+stdin; the event name rides in the URL because the payload's `hookName`
+speaks internal names. Verified live 2026-08-24 against cline 3.0.57.
+
 **Codex (shipped first-class in 1.3.2).** `CodexProvider` follows the session
 rollouts — see "Codex rollouts" above. The `notify` hook in
 `~/.codex/config.toml` was verified empirically and rejected as Belay's

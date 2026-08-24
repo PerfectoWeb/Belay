@@ -5,6 +5,44 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-08-24
+
+### Added
+
+- Cline is a built-in agent. Switch it on in Settings and Belay follows
+  Cline's sessions by their own state files — including team mode: teammate
+  agents appear in the panel under their session, the way Claude Code
+  subagents do.
+- Precise Detection for every agent, in the direct build. Codex gets command
+  hooks in `~/.codex/hooks.json` (Belay also records their approval in
+  `config.toml`, because Codex silently skips unapproved hooks); Cline gets
+  one small script per event in `~/.cline/hooks`. Each agent's tile offers
+  Enable Precise with a full preview of what will be written, and
+  Control-click removes it. Every install is backed up first and self-heals
+  when the receiver's port changes.
+- The consent sheet shows the agent's own mark, opens with a plain sentence
+  about what precise detection buys, and keeps one height for every agent.
+
+### Changed
+
+- The Agents pane is built around the agents themselves: each tile carries
+  its switch, its detection status (Standard or Precise, with the last
+  activity), and its precise controls. The separate precise-detection row is
+  gone.
+- A copy pass across Settings: Behavior, Notifications and Agents read
+  shorter and plainer, in all seven languages.
+- The agent switches are drawn by Belay, so their first frame always shows
+  the true state.
+
+### Fixed
+
+- Sessions touched by other apps' importers no longer wake the panel: both
+  transcript watchers now trust the records' own clocks over file
+  modification times.
+- Running the test suite can no longer disturb a running Belay: the test
+  host stays inert instead of launching the full app.
+- The Russian pause line no longer wraps and jumps the panel's height.
+
 ## [1.4.0] - 2026-08-24
 
 ### Added

@@ -51,6 +51,7 @@ in milliseconds with zero I/O.
  │ ClaudeCodeProvider│──┐
  ├───────────────────┤  │   ActivitySignal
  │ CodexProvider     │──┼──────────────▶ SignalBus ──▶ ActivityCoordinator
+ │ ClineProvider     │──┤
  ├───────────────────┤  │                                     │
  │ GenericProvider   │──┘                                      │ AwakeDecision
  └───────────────────┘                                         ▼
