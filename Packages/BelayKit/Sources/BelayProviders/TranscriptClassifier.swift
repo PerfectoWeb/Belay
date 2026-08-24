@@ -29,6 +29,23 @@ enum TranscriptClassifier {
         verdict(in: lines)?.activity
     }
 
+    /// The newest record clock in the delta, or nil when no record carries one.
+    ///
+    /// What "this file just appeared" gets checked against. A file's mtime is
+    /// the file system's word and third parties bump it — Codex's session
+    /// importer swept `~/.claude` once and thirty month-old subagents rose as
+    /// Working rows in a second — but the records' own timestamps cannot be
+    /// touched from outside.
+    static func newestTimestamp(in lines: [String]) -> Date? {
+        lines.compactMap { TranscriptRecord(jsonLine: $0)?.timestamp }.max()
+    }
+
+    /// RFC 3339 with or without fractional seconds — the clock format both
+    /// CLIs write. Here so the Codex rollout reader can parse the same way.
+    static func date(from string: String) -> Date? {
+        TranscriptRecord.date(from: string)
+    }
+
     static func verdict(in lines: [String]) -> Verdict? {
         for line in lines.reversed() {
             guard let record = TranscriptRecord(jsonLine: line) else { continue }
@@ -87,6 +104,8 @@ private struct TranscriptRecord {
     /// Top-level flag on the CLI's synthetic error records. A boolean beside
     /// the message, so reading it stays inside the R9 boundary.
     let isAPIError: Bool
+    /// When the record was written, by the CLI's own clock.
+    let timestamp: Date?
 
     init?(jsonLine: String) {
         guard let data = jsonLine.data(using: .utf8),
@@ -99,6 +118,18 @@ private struct TranscriptRecord {
         }
         stopReason = wire.message?.stopReason
         isAPIError = wire.isApiErrorMessage ?? false
+        timestamp = wire.timestamp.flatMap(TranscriptRecord.date(from:))
+    }
+
+    /// The CLI writes RFC 3339 with milliseconds; be liberal about both
+    /// forms. Formatters are made per call because `ISO8601DateFormatter` is
+    /// not `Sendable`; the adopt path parses a handful of lines, not a feed.
+    /// Internal because Codex stamps its rollout lines the same way.
+    static func date(from string: String) -> Date? {
+        let fractional = ISO8601DateFormatter()
+        fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = fractional.date(from: string) { return date }
+        return ISO8601DateFormatter().date(from: string)
     }
 }
 
@@ -119,6 +150,7 @@ private struct Wire: Decodable {
     let type: String
     let message: Message?
     let isApiErrorMessage: Bool?
+    let timestamp: String?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -128,11 +160,13 @@ private struct Wire: Decodable {
         // record, or an unknown shape becomes a missing signal.
         message = try? container.decodeIfPresent(Message.self, forKey: .message)
         isApiErrorMessage = try? container.decodeIfPresent(Bool.self, forKey: .isApiErrorMessage)
+        timestamp = try? container.decodeIfPresent(String.self, forKey: .timestamp)
     }
 
     private enum CodingKeys: String, CodingKey {
         case type
         case message
         case isApiErrorMessage
+        case timestamp
     }
 }

@@ -114,7 +114,15 @@ public actor CodexProvider: ActivityProvider {
         }
         let delta = watch.cursor.read(using: access)
         watched[id] = watch
-        guard delta.indicatesWrite else { return false }
+        return absorb(delta, id: id, now: now)
+    }
+
+    /// Reads a delta into a verdict and a report; shared between the watch
+    /// loop and the adopt path, which reads its delta up front to check the
+    /// record clocks.
+    @discardableResult
+    func absorb(_ delta: TranscriptDelta, id: SessionID, now: Date) -> Bool {
+        guard var watch = watched[id], delta.indicatesWrite else { return false }
         watch.lastWriteAt = now
         if watch.workspace == nil { watch.workspace = CodexRollout.workspace(in: delta.lines) }
         let verdict = CodexRollout.verdict(in: delta.lines)
@@ -128,48 +136,6 @@ public actor CodexProvider: ActivityProvider {
         // must not flip a quiet session back to Working; a real turn opens
         // with a marker.
         guard watch.reported == .working else { return false }
-        return report(.working, for: id, at: now)
-    }
-
-    @discardableResult
-    private func adopt(_ url: URL, id: SessionID, now: Date, atStartup: Bool) -> Bool {
-        guard let snapshot = FileSnapshot(url: url) else { return false }
-        var watch = CodexWatch(
-            id: id,
-            url: url,
-            lastWriteAt: atStartup ? snapshot.modified : now,
-            workspace: CodexRollout.workspace(atHeadOf: url, access: access))
-
-        guard !atStartup else {
-            // Same launch discipline as Claude Code: history is not followed,
-            // the merely old is followed but silent, and only a rollout fresh
-            // enough to be a live turn gets its tail classified.
-            let age = now.timeIntervalSince(snapshot.modified)
-            guard age <= configuration.staleAtStartupAfter else { return false }
-            guard age <= configuration.inferredIdleAfter else {
-                watch.cursor.seed(.endOfFile, snapshot: snapshot)
-                watched[id] = watch
-                return false
-            }
-            watch.cursor.seed(.tailWindow, snapshot: snapshot)
-            watched[id] = watch
-            return ingest(url, now: now) || reportUnlessClassified(id, at: now)
-        }
-
-        watch.cursor.seed(.tailWindow, snapshot: snapshot)
-        watched[id] = watch
-        EventLog.note("codex session start \(id) ws=\(watch.workspace ?? "?")")
-        return ingest(url, now: now) || reportUnlessClassified(id, at: now)
-    }
-
-    /// The adopt fallback: bytes arrived but the tail carried no marker, so
-    /// call it working. A tail that *was* classified — even into a silent
-    /// first idle — already had its say, and forcing `.working` over it is
-    /// exactly how a housekeeping pass over old rollouts becomes a panel full
-    /// of phantom sessions.
-    @discardableResult
-    private func reportUnlessClassified(_ id: SessionID, at now: Date) -> Bool {
-        guard watched[id]?.reported == nil else { return false }
         return report(.working, for: id, at: now)
     }
 

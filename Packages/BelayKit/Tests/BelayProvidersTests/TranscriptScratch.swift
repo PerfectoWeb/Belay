@@ -96,7 +96,13 @@ final class TranscriptScratch {
         try? Data(json.utf8).write(to: sessions.appendingPathComponent("\(pid).json"))
     }
 
-    static let sampleTime = "2026-08-10T14:28:21.000Z"
+    /// "Just now", because the adopt path now checks record clocks: a fixed
+    /// date quietly aged until every fixture read as a stale touch.
+    static var sampleTime: String {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter.string(from: Date())
+    }
 
     static func record(_ type: String, stop: String? = nil, at time: String = sampleTime) -> String {
         var message = ""

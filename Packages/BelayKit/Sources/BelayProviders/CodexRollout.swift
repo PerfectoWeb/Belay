@@ -69,6 +69,21 @@ enum CodexRollout {
         return last
     }
 
+    /// The newest record clock in a delta. Every rollout line carries a
+    /// top-level `timestamp` from the CLI's own clock — the truth about
+    /// freshness where the file's mtime is any toucher's to bump. Codex
+    /// Desktop's session importer, for one, writes rollouts for other agents'
+    /// old conversations.
+    static func newestTimestamp(in lines: [String]) -> Date? {
+        struct Stamp: Decodable { let timestamp: String? }
+        return lines.compactMap { line -> Date? in
+            guard let stamp = try? JSONDecoder().decode(Stamp.self, from: Data(line.utf8)) else {
+                return nil
+            }
+            return stamp.timestamp.flatMap { TranscriptClassifier.date(from: $0) }
+        }.max()
+    }
+
     /// The project folder name from a delta's `session_meta`, if one passed by.
     static func workspace(in lines: [String]) -> String? {
         for line in lines {

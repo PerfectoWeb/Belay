@@ -114,7 +114,14 @@ public actor ClaudeCodeProvider: ActivityProvider {
         }
         let delta = watch.cursor.read(using: access)
         watched[id] = watch
-        guard delta.indicatesWrite else { return false }
+        return absorb(delta, id: id, now: now)
+    }
+
+    /// What a freshly read delta means, shared by the steady path above and
+    /// the adoption of a newly seen file.
+    @discardableResult
+    func absorb(_ delta: TranscriptDelta, id: SessionID, now: Date) -> Bool {
+        guard delta.indicatesWrite, var watch = watched[id] else { return false }
         watch.lastWriteAt = now
         let verdict = TranscriptClassifier.verdict(in: delta.lines)
         // A delta with no conversational record keeps the flag as it was: the
@@ -131,64 +138,6 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // classifier can read; until one arrives, quiet sessions stay quiet.
         guard watch.reported == .working else { return false }
         return report(.working, for: id, at: now)
-    }
-
-    @discardableResult
-    private func adopt(_ url: URL, id: SessionID, now: Date, atStartup: Bool) -> Bool {
-        guard TranscriptLocation.isAgentTranscript(url), let snapshot = FileSnapshot(url: url) else {
-            return false
-        }
-        var watch = TranscriptWatch(
-            adopting: url, id: id, at: atStartup ? snapshot.modified : now, access: access)
-
-        guard !atStartup else {
-            // 45 transcripts live on this machine (docs/DISCOVERY §1), so launch
-            // is where "Belay discovered forty sessions and pinned the Mac awake"
-            // happens. Anything stale is not followed; anything merely old is
-            // followed but silent until it actually moves.
-            let age = now.timeIntervalSince(snapshot.modified)
-            guard age <= configuration.staleAtStartupAfter else { return false }
-            guard age <= configuration.inferredIdleAfter else {
-                watch.cursor.seed(.endOfFile, snapshot: snapshot)
-                watched[id] = watch
-                return false
-            }
-            // Fresh enough to be a live turn — so classify its tail rather
-            // than assume one. Assuming reported `.working` blind, which was
-            // almost right and wrong twice over: a turn that had just
-            // finished was held for nothing, and a session Belay opened onto
-            // mid-retry started with its awaiting flag down and decayed at
-            // the short horizon instead of getting the grace.
-            watch.cursor.seed(.tailWindow, snapshot: snapshot)
-            watched[id] = watch
-            return ingest(url, now: now) || reportUnlessClassified(id, at: now)
-        }
-
-        // A transcript that appears while we are running is news, so pick up the
-        // tail rather than EOF — that classifies the turn immediately instead of
-        // waiting for the next append.
-        watch.cursor.seed(.tailWindow, snapshot: snapshot)
-        watched[id] = watch
-        EventLog.note("session start \(id) ws=\(watch.workspace ?? "?")")
-        return ingest(url, now: now) || reportUnlessClassified(id, at: now)
-    }
-
-    /// The adopt fallback: bytes arrived but the tail carried no verdict, so
-    /// call it working. A tail that was classified — even into a silent first
-    /// idle — already had its say; forcing `.working` over it is how touched
-    /// old transcripts become phantom rows.
-    @discardableResult
-    private func reportUnlessClassified(_ id: SessionID, at now: Date) -> Bool {
-        guard watched[id]?.reported == nil else { return false }
-        return report(.working, for: id, at: now)
-    }
-
-    func seedExistingTranscripts() {
-        let now = clock.now
-        let found = TranscriptWatch.transcripts(under: configuration.projectsDirectory, access: access)
-        for transcript in found {
-            adopt(transcript, id: TranscriptWatch.sessionID(for: transcript), now: now, atStartup: true)
-        }
     }
 
     // MARK: - Emitting
