@@ -3,8 +3,49 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.5.0</title>
+            <pubDate>Mon, 24 Aug 2026 21:53:44 +0300</pubDate>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.5.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.5.0</h2>
+<ul>
+  <li><b>Cline is now built in.</b> Turn it on in Settings and Belay
+      follows Cline sessions on its own. No folders to pick.</li>
+  <li><b>Precise Detection for every agent.</b> Claude Code, Codex, and
+      Cline can tell Belay the exact moment work starts, finishes, or
+      waits for you. One click in Settings; Belay shows exactly what it
+      will write before touching anything, and Remove puts it back.</li>
+  <li><b>Agent teams in the panel.</b> When Cline spawns teammate agents,
+      they appear under their session, just like Claude Code
+      subagents.</li>
+  <li><b>Settings, sharpened.</b> Each agent&#8217;s detection now lives in
+      its own tile, and every pane reads cleaner.</li>
+</ul>
+<p class="quiet">Also: sessions touched by other apps&#8217; importers no
+longer wake the panel, the agent switches draw honestly from the first
+frame, and running the test suite can no longer disturb a running
+Belay.</p>
+]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.5.0/Belay-1.5.0.dmg" length="6878589" type="application/octet-stream" sparkle:edSignature="bvotHC0vN8sYIkfX8pisteKMJ8HJ2U0HMO8OjELi7b7KK+i8dqggPEb9UDNvOsTkR+J00hXdDqz41DDUT98GDQ=="/>
+        </item>
+        <item>
             <title>1.4.0</title>
-            <pubDate>Mon, 24 Aug 2026 12:59:41 +0300</pubDate>
+            <pubDate>Mon, 24 Aug 2026 21:53:46 +0300</pubDate>
             <sparkle:version>10</sparkle:version>
             <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -45,7 +86,7 @@ modes.</p>]]></description>
         </item>
         <item>
             <title>1.3.3</title>
-            <pubDate>Mon, 24 Aug 2026 12:59:43 +0300</pubDate>
+            <pubDate>Mon, 24 Aug 2026 21:53:48 +0300</pubDate>
             <sparkle:version>9</sparkle:version>
             <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -87,7 +128,7 @@ system clock.</p>]]></description>
         </item>
         <item>
             <title>1.3.2</title>
-            <pubDate>Mon, 24 Aug 2026 12:59:45 +0300</pubDate>
+            <pubDate>Mon, 24 Aug 2026 21:53:51 +0300</pubDate>
             <sparkle:version>8</sparkle:version>
             <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -125,7 +166,7 @@ a question, and presets now say clearly when their folder is missing.</p>]]></de
         </item>
         <item>
             <title>1.3.1</title>
-            <pubDate>Mon, 24 Aug 2026 12:59:48 +0300</pubDate>
+            <pubDate>Mon, 24 Aug 2026 21:53:53 +0300</pubDate>
             <sparkle:version>7</sparkle:version>
             <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -157,43 +198,6 @@ a question, and presets now say clearly when their folder is missing.</p>]]></de
 <p class="quiet">Also: the helper status updates as soon as you approve it,
 and failed update checks now say why in the log.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.1/Belay-1.3.1.dmg" length="6218715" type="application/octet-stream" sparkle:edSignature="n8c6NUSNibSKyw682n0BCCG0pLXUQ9eQaHiBPXUwYVs3Xi1847Wz8OunyMMVHuRIxlMxLC2NZ359YUAlRAueDQ=="/>
-        </item>
-        <item>
-            <title>1.3.0</title>
-            <pubDate>Mon, 24 Aug 2026 12:59:50 +0300</pubDate>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle's update dialog shows for 1.3.0. generate_appcast embeds any
-     Belay-<version>.html it finds beside the matching DMG; publish-appcast.sh
-     copies these files there. One file per version, English only: Sparkle's
-     dialog has no locale negotiation, and half-translated notes read worse
-     than plainly-written English ones. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.3</h2>
-<ul>
-  <li><b>The display dims at night.</b> Step away and it fades to a glow;
-      come back and it brightens. Off by default, in
-      Settings&nbsp;&#9656;&nbsp;Behavior.</li>
-  <li><b>The lid can close now.</b> An optional helper keeps the run alive
-      with the lid shut, and always lets go by itself: at the time limit, or
-      if the Mac gets too warm.</li>
-  <li><b>Held through the retries.</b> An agent waiting out an overloaded
-      model no longer reads as idle. Belay keeps holding.</li>
-</ul>
-<p class="quiet">Also: small sounds for the welcome and What&#8217;s New
-screens, and a fuller local log. Nothing leaves your Mac, as ever.</p>
-]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.0/Belay-1.3.0.dmg" length="6163496" type="application/octet-stream" sparkle:edSignature="TOdccsugfbWk4Jcnmjq5tcja5ERjun62yW+xToICUI/mhkfgyBqeXi3HMwT+Rt0Y+qzwLeDIVkG/99RsgwTBBw=="/>
         </item>
     </channel>
 </rss>
