@@ -7138,6 +7138,98 @@
         }
       }
     },
+    "Enable Precise Detection…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präzise Erkennung aktivieren…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Precise Detection…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activar la detección precisa…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activer la détection précise…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attiva il rilevamento preciso…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить точное определение…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用精确检测…"
+          }
+        }
+      }
+    },
+    "Enable Precise…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Präzise aktivieren…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Precise…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activar precisa…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activer Précis…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attiva preciso…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить точное…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用精确…"
+          }
+        }
+      }
+    },
     "Enable precise detection": {
       "extractionState": "manual",
       "localizations": {
@@ -11269,53 +11361,6 @@
         }
       }
     },
-    "Precise detection": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise detection"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Detección precisa"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Détection précise"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rilevamento preciso"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точная детекция"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测"
-          }
-        }
-      }
-    },
     "Precise · last signal %@ ago": {
       "localizations": {
         "de": {
@@ -11879,48 +11924,48 @@
         }
       }
     },
-    "Removes Belay's entries from this agent's settings": {
+    "Remove Precise Detection": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Entfernt nur die Einträge, die Belay zu den Einstellungen dieses Agenten hinzugefügt hat"
+            "value": "Präzise Erkennung entfernen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Removes only the entries Belay added to this agent's settings"
+            "value": "Remove Precise Detection"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elimina solo las entradas que Belay añadió a los ajustes de este agente"
+            "value": "Quitar la detección precisa"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Supprime uniquement les entrées ajoutées par Belay aux réglages de cet agent"
+            "value": "Supprimer la détection précise"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rimuove solo le voci aggiunte da Belay alle impostazioni di questo agente"
+            "value": "Rimuovi il rilevamento preciso"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Удаляет только записи, которые Belay добавил в настройки агента"
+            "value": "Отключить точное определение"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "仅移除 Belay 添加到该智能体设置中的条目"
+            "value": "移除精确检测"
           }
         }
       }
@@ -12907,6 +12952,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "挺好"
+          }
+        }
+      }
+    },
+    "Standard ·": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estándar ·"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standard ·"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стандартно ·"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "标准 ·"
           }
         }
       }

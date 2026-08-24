@@ -44,9 +44,16 @@ struct ProvidersSettingsPane: View {
                     builtIn
                 }
                 if showsPreciseNote {
-                    preciseRow
-                        .transition(TargetTileMetrics.transition)
+                    SettingNote(
+                        text: """
+                            Lets an agent tell Belay exactly when it starts and stops, \
+                            instead of Belay inferring it from files. This is also what \
+                            makes "an agent is waiting for you" reliable.
+                            """
+                    )
+                    .transition(TargetTileMetrics.transition)
                 }
+                errorNotes
             }
             // The same arrival and departure the tiles below use, so the row
             // appears the way everything else on this pane does — and the
@@ -85,8 +92,6 @@ struct ProvidersSettingsPane: View {
         }
     }
 
-    private var showsPreciseNote: Bool { !preciseAgents.isEmpty }
-
     /// The agents Belay understands natively, two to a row, each with its
     /// switch. Rows of `HStack` rather than a grid because `SettingRow`
     /// aligns its label to the first text baseline, and a `LazyVGrid` answers
@@ -105,8 +110,11 @@ struct ProvidersSettingsPane: View {
                             provider: provider,
                             precise: installed(provider.id)
                                 && provider.descriptor.supportsPreciseDetection,
+                            offersPrecise: offersPrecise(provider),
                             onToggle: { state.onToggleProvider(provider.id, $0) },
-                            onFix: { state.onGrantAccess(provider.id) })
+                            onFix: { state.onGrantAccess(provider.id) },
+                            onEnablePrecise: { previewing = PreviewTarget(id: provider.id) },
+                            onRemovePrecise: { removePrecise(provider.id) })
                     }
                     if rows[index].count == 1 {
                         // Holds the lone tile to column width instead of
@@ -118,26 +126,13 @@ struct ProvidersSettingsPane: View {
         }
     }
 
-    /// Precise detection as its own row again, under the tiles: a crosshair
-    /// menu inside the Claude Code tile was tried and read as nothing at
-    /// all. The row is only there when it could do something, and it names
-    /// each agent it could do it for.
+    /// The rest of the status line's sentence, once per pane rather than
+    /// once per tile: what "Precise" buys. Shown only while some tile is
+    /// actually offering or wearing it.
+    private var showsPreciseNote: Bool { !preciseAgents.isEmpty }
+
     @ViewBuilder
-    private var preciseRow: some View {
-        SettingRow(
-            title: "Precise detection",
-            explanation: """
-                Lets an agent tell Belay exactly when it starts and stops, \
-                instead of Belay inferring it from files. This is also what makes \
-                "an agent is waiting for you" reliable.
-                """
-        ) {
-            VStack(alignment: .leading, spacing: 6) {
-                ForEach(preciseAgents) { provider in
-                    preciseLine(for: provider)
-                }
-            }
-        }
+    private var errorNotes: some View {
         if let problem = precise.lastError {
             SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
         }
@@ -149,27 +144,25 @@ struct ProvidersSettingsPane: View {
         }
     }
 
-    private func preciseLine(for provider: ProviderStatus) -> some View {
-        HStack(spacing: 10) {
-            Text(verbatim: provider.descriptor.displayName)
-                .font(.callout)
-                .frame(width: 110, alignment: .leading)
-            if installed(provider.id) {
-                Button("Remove") {
-                    Task {
-                        switch provider.id {
-                        case .codex: await precise.uninstallCodex()
-                        case .cline: precise.uninstallCline()
-                        default: precise.uninstall()
-                        }
-                        refreshToken += 1
-                    }
-                }
-                .accessibilityHint("Removes Belay's entries from this agent's settings")
-            } else {
-                Button("Enable…") { previewing = PreviewTarget(id: provider.id) }
-                    .accessibilityHint("Shows exactly what will be added before anything is written")
+    /// The tile shows the Enable link exactly when clicking it could work:
+    /// the build has a bridge, the agent is on and readable, and the hooks
+    /// are not already in place.
+    private func offersPrecise(_ provider: ProviderStatus) -> Bool {
+        guard PreciseDetection.isSupported, provider.descriptor.supportsPreciseDetection,
+            provider.isEnabled, !installed(provider.id)
+        else { return false }
+        if case .ready = provider.availability { return true }
+        return false
+    }
+
+    private func removePrecise(_ id: ProviderID) {
+        Task {
+            switch id {
+            case .codex: await precise.uninstallCodex()
+            case .cline: precise.uninstallCline()
+            default: precise.uninstall()
             }
+            refreshToken += 1
         }
     }
 

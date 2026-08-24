@@ -168,14 +168,25 @@ final class LivePreciseTileTests: XCTestCase {
                 id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
                 supportsPreciseDetection: true),
             availability: .ready, isEnabled: true, lastSignal: nil)
-        let row = HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
-            BuiltInProviderTile(provider: claude, precise: true)
-            BuiltInProviderTile(provider: codex, precise: true)
+        let cline = ProviderStatus(
+            descriptor: ProviderDescriptor(
+                id: .cline, displayName: "Cline", summary: "", symbolName: "terminal",
+                supportsPreciseDetection: true),
+            availability: .ready, isEnabled: true, lastSignal: nil)
+        let row = VStack(spacing: TargetTileMetrics.spacing) {
+            HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
+                BuiltInProviderTile(provider: claude, precise: true)
+                BuiltInProviderTile(provider: codex, precise: true)
+            }
+            HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
+                BuiltInProviderTile(provider: cline, offersPrecise: true)
+                Color.clear.frame(maxWidth: .infinity, maxHeight: 0)
+            }
         }
         .padding(20)
         .frame(width: SettingsPane.width)
         let window = NSWindow(
-            contentRect: NSRect(x: 60, y: 300, width: SettingsPane.width, height: 140),
+            contentRect: NSRect(x: 60, y: 300, width: SettingsPane.width, height: 200),
             styleMask: [.titled], backing: .buffered, defer: false)
         window.contentView = NSHostingView(rootView: row)
         window.makeKeyAndOrderFront(nil)

@@ -15,8 +15,15 @@ struct BuiltInProviderTile: View {
     /// because "precise" versus "inferred" is the one fact about detection
     /// worth a word in the tile.
     var precise = false
+    /// Whether the hooks *could* be installed right now: the status line
+    /// offers the link, the way a needsSetup tile offers "Fix". The row of
+    /// agent names this used to be lived below the tiles and said everything
+    /// twice; the tile is the one place about an agent.
+    var offersPrecise = false
     var onToggle: (Bool) -> Void = { _ in }
     var onFix: () -> Void = {}
+    var onEnablePrecise: () -> Void = {}
+    var onRemovePrecise: () -> Void = {}
 
     var body: some View {
         // Centred like the generic tiles' marks, and dimmed rather than
@@ -57,6 +64,15 @@ struct BuiltInProviderTile: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.primary.opacity(provider.isEnabled ? 0.045 : 0.022))
         )
+        // Removal is rare and deliberate, so it lives one click deeper than
+        // the offer: the tile's own menu.
+        .contextMenu {
+            if precise {
+                Button("Remove Precise Detection") { onRemovePrecise() }
+            } else if offersPrecise {
+                Button("Enable Precise Detection…") { onEnablePrecise() }
+            }
+        }
     }
 
     /// One unit, in the interface's own language: "20 min" in English,
@@ -86,6 +102,18 @@ struct BuiltInProviderTile: View {
                         .foregroundStyle(.tertiary)
                 } else if precise {
                     Text("Precise").foregroundStyle(.tertiary)
+                } else if offersPrecise {
+                    // The Fix pattern: the fact, then the one action that
+                    // changes it, level in the same line.
+                    HStack(spacing: 4) {
+                        Text("Standard ·").foregroundStyle(.tertiary)
+                        Button(action: onEnablePrecise) {
+                            Text("Enable Precise…")
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.accentColor)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 } else if let last = provider.lastSignal {
                     Text("last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
                         .foregroundStyle(.tertiary)
