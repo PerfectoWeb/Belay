@@ -50,6 +50,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var settingsWindow: SettingsWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        // Hosting tests must not run the app. The test host is a full Belay
+        // launch, and its controller wrote to the real machine: every gate
+        // re-bound the hook receiver, recorded the doomed port in bridge.json
+        // and repointed ~/.claude/settings.json at it (found 2026-08-24, when
+        // a gate run left the user's hooks aimed at a dead port). Tests build
+        // their own objects; the host process stays inert.
+        guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil,
+            NSClassFromString("XCTestCase") == nil
+        else { return }
         guard SingleInstance.claim() else {
             NSApp.terminate(nil)
             return
