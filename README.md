@@ -36,6 +36,7 @@ No timer to start. No sleep setting to remember to change back.
 <tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code and Codex are detected automatically. Nothing to configure, no key to paste.</td></tr>
 <tr><td>🔌&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, Copilot CLI, OpenCode, Cline, Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
 <tr><td>🛡&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
+<tr><td>⏱&nbsp;<b>Timed&nbsp;holds</b></td><td>Always On can run for a chosen time — 15 minutes to 12 hours, or your own — with the countdown in the panel and on the dimmed screen.</td></tr>
 <tr><td>🔋&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
 <tr><td>👀&nbsp;<b>Subagents&nbsp;too</b></td><td>Parallel subagents count as part of the session they belong to, not as noise.</td></tr>
 <tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
@@ -143,7 +144,7 @@ You will see the assertion, a plain-English reason, and how long it has left.
 
 ## 🖼 Screenshots
 
-<picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Providers, Statistics, Behaviour and a multilingual interface" width="100%"></picture>
+<picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Agents, Statistics, Behaviour and a multilingual interface" width="100%"></picture>
 
 ## 🧯 Troubleshooting
 
@@ -192,7 +193,7 @@ empty room. It brightens back the moment you return.
 <summary><b>Belay does not see my agent</b></summary>
 
 Claude Code and Codex need no setup. Everything else is configured in
-**Settings ▸ Providers**: switch on a preset – Gemini CLI, Copilot CLI,
+**Settings ▸ Agents**: switch on a preset – Gemini CLI, Copilot CLI,
 OpenCode, Aider, Cline and Pi ship ready-made – or point Belay at a folder or
 process your tool uses while it works.
 
@@ -208,7 +209,7 @@ directly. See
 Since 1.3.2 the badge says which case you are in: a folder that does not exist
 yet simply has not been created by the tool (it appears after the first run),
 and only a folder that exists but cannot be read is an access question.
-Presets are configuration, not code, so open Settings ▸ Providers and correct
+Presets are configuration, not code, so open Settings ▸ Agents and correct
 the path if yours lives elsewhere. A wrong preset costs one edit, never a
 release.
 
