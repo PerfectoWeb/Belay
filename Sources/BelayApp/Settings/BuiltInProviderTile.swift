@@ -96,12 +96,16 @@ struct BuiltInProviderTile: View {
                     Text("Allow access to \(home)")
                         .foregroundStyle(.orange)
                         .truncationMode(.tail)
+                    Spacer(minLength: 4)
                     Button(action: onFix) {
                         Text("Fix")
                             .fontWeight(.semibold)
                             .foregroundStyle(Color.accentColor)
                     }
                     .buttonStyle(.plain)
+                    // Level with the switch's right edge, which sits three
+                    // points past the content edge from its own trim.
+                    .offset(x: 3)
                 }
             case .unavailable(let why):
                 Text(why).foregroundStyle(.tertiary).truncationMode(.tail)
