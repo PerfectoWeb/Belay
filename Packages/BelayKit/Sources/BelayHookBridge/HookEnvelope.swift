@@ -87,7 +87,11 @@ extension HookEnvelope {
 
     /// `nil` for an event Belay does not register or does not recognise: a newer
     /// CLI firing something unknown must be ignored, never guessed at.
-    func signal(at now: Date) -> ActivitySignal? {
+    ///
+    /// The provider comes from the caller because the body cannot carry it:
+    /// Codex copied Claude Code's hook payload down to the field names, so the
+    /// only thing that knows who is posting is the URL the installer wrote.
+    func signal(at now: Date, provider: ProviderID = .claudeCode) -> ActivitySignal? {
         guard let event, !sessionID.isEmpty else { return nil }
         // SubagentStop trails the turn's own Stop by seconds — cleanup, not
         // work — and one trailing `.working` pins the Mac for the whole exact
@@ -95,7 +99,7 @@ extension HookEnvelope {
         // heartbeats and the subagents' watched transcripts carry the hold.
         guard event != .subagentStop else { return nil }
         return ActivitySignal(
-            provider: .claudeCode,
+            provider: provider,
             session: SessionID(sessionID),
             activity: activity(for: event),
             workspace: workspace,

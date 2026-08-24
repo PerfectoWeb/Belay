@@ -68,9 +68,29 @@ final class ProviderHost {
         }
 
         if let exact = await precise.start() {
-            await bus.attach(exact)
+            await bus.attach(gatedByEnabled(exact))
         }
         return signals
+    }
+
+    /// Hook posts arrive whether or not the agent's switch is on — the
+    /// CLI-side install knows nothing about Belay's toggles — so the exact
+    /// stream is where the switch is enforced on the way in. Generic webhook
+    /// signals ride the same stream and pass untouched: their enablement is
+    /// the target list, not this set.
+    private func gatedByEnabled(_ stream: AsyncStream<ActivitySignal>) -> AsyncStream<ActivitySignal> {
+        AsyncStream { continuation in
+            let task = Task { [weak self] in
+                for await signal in stream {
+                    guard let self else { break }
+                    let gated = signal.provider == .claudeCode || signal.provider == .codex
+                    if gated, !enabled.contains(signal.provider) { continue }
+                    continuation.yield(signal)
+                }
+                continuation.finish()
+            }
+            continuation.onTermination = { _ in task.cancel() }
+        }
     }
 
     /// Second chance for a provider that refused to start for want of folder

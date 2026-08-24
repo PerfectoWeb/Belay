@@ -16,6 +16,9 @@ struct SettingsDocument: Sendable {
 
     let url: URL
     let backups: URL
+    /// Names this document's backups; sibling documents in the same backups
+    /// folder pick their own so nothing collides.
+    var prefix: String = "settings"
 
     /// Empty for a file that is not there yet: creating `settings.json` for a
     /// user who has none is safe, and it is the common path on a fresh machine.
@@ -60,7 +63,8 @@ struct SettingsDocument: Sendable {
         guard manager.fileExists(atPath: url.path) else { return nil }
         do {
             try manager.createDirectory(at: backups, withIntermediateDirectories: true)
-            let destination = backups.appendingPathComponent(Self.backupName(at: now))
+            let destination = backups.appendingPathComponent(
+                "\(prefix)-\(BackupStamp.text(for: now)).json")
             try Data(contentsOf: url).write(to: destination)
             return destination
         } catch {
@@ -91,6 +95,12 @@ struct SettingsDocument: Sendable {
 
     static func backupName(at now: Date) -> String {
         "settings-\(BackupStamp.text(for: now)).json"
+    }
+
+    /// The same stamp for sibling documents' backups, so one folder of
+    /// backups sorts by time whatever the file was.
+    static func backupStamp(at now: Date) -> String {
+        BackupStamp.text(for: now)
     }
 }
 

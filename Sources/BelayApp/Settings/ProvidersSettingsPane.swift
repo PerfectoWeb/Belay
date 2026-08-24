@@ -7,10 +7,15 @@ struct ProvidersSettingsPane: View {
     var precise: PreciseDetection
     var onTargetsChanged: ([GenericTarget]) -> Void
     var onReshaped: () -> Void = {}
-    @State private var showingPreview = false
+    @State private var previewing: PreviewTarget?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var refreshToken = 0
     @State private var targets: [GenericTarget]
+
+    /// `sheet(item:)` wants an identity; the provider is one.
+    struct PreviewTarget: Identifiable {
+        let id: ProviderID
+    }
 
     init(
         state: AppState,
@@ -60,22 +65,27 @@ struct ProvidersSettingsPane: View {
         // lines, the precise-detection row — and the window has to follow,
         // the way it already follows the tiles below.
         .onChange(of: state.providers) { _, _ in onReshaped() }
-        .sheet(isPresented: $showingPreview) {
-            HookPreviewSheet(precise: precise) { refreshToken += 1 }
+        .sheet(item: $previewing) { target in
+            HookPreviewSheet(precise: precise, provider: target.id) { refreshToken += 1 }
         }
         .id(refreshToken)
     }
 
-    /// Only when the hooks could actually be installed: a sentence about a
-    /// control that is not there is a sentence about nothing.
-    private var showsPreciseNote: Bool {
-        guard PreciseDetection.isSupported,
-            let claude = state.providers.first(where: { $0.descriptor.supportsPreciseDetection }),
-            claude.isEnabled
-        else { return false }
-        if case .ready = claude.availability { return true }
-        return false
+    /// The agents whose hooks could actually be installed right now: precise
+    /// is per-agent, and a control for an agent that is off or missing is a
+    /// control about nothing.
+    private var preciseAgents: [ProviderStatus] {
+        guard PreciseDetection.isSupported else { return [] }
+        return state.providers.filter { provider in
+            guard provider.descriptor.supportsPreciseDetection, provider.isEnabled else {
+                return false
+            }
+            if case .ready = provider.availability { return true }
+            return false
+        }
     }
+
+    private var showsPreciseNote: Bool { !preciseAgents.isEmpty }
 
     /// The two agents Belay understands natively, side by side, each with
     /// its switch. Only those two: the "other agents" provider that backs
@@ -93,31 +103,58 @@ struct ProvidersSettingsPane: View {
 
     /// Precise detection as its own row again, under the tiles: a crosshair
     /// menu inside the Claude Code tile was tried and read as nothing at
-    /// all. The row is only there when it could do something.
+    /// all. The row is only there when it could do something, and it names
+    /// each agent it could do it for.
     @ViewBuilder
     private var preciseRow: some View {
         SettingRow(
             title: "Precise detection",
             explanation: """
-                Lets Claude Code tell Belay exactly when it starts and stops, \
+                Lets an agent tell Belay exactly when it starts and stops, \
                 instead of Belay inferring it from files. This is also what makes \
                 "an agent is waiting for you" reliable.
                 """
         ) {
-            if precise.isInstalled {
-                Button("Remove") {
-                    precise.uninstall()
-                    refreshToken += 1
+            VStack(alignment: .leading, spacing: 6) {
+                ForEach(preciseAgents) { provider in
+                    preciseLine(for: provider)
                 }
-                .accessibilityHint("Removes Belay's entries from your Claude Code settings")
-            } else {
-                Button("Enable…") { showingPreview = true }
-                    .accessibilityHint("Shows exactly what will be added before anything is written")
             }
         }
         if let problem = precise.lastError {
             SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
         }
+        if let problem = precise.codexLastError {
+            SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
+        }
+    }
+
+    private func preciseLine(for provider: ProviderStatus) -> some View {
+        HStack(spacing: 10) {
+            Text(verbatim: provider.descriptor.displayName)
+                .font(.callout)
+                .frame(width: 110, alignment: .leading)
+            if installed(provider.id) {
+                Button("Remove") {
+                    Task {
+                        if provider.id == .codex {
+                            await precise.uninstallCodex()
+                        } else {
+                            precise.uninstall()
+                        }
+                        refreshToken += 1
+                    }
+                }
+                .accessibilityHint("Removes Belay's entries from this agent's settings")
+            } else {
+                Button("Enable…") { previewing = PreviewTarget(id: provider.id) }
+                    .accessibilityHint("Shows exactly what will be added before anything is written")
+            }
+        }
+    }
+
+    private func installed(_ id: ProviderID) -> Bool {
+        id == .codex ? precise.isCodexInstalled : precise.isInstalled
     }
 
 }

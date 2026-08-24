@@ -9,6 +9,9 @@ public enum BridgeError: LocalizedError, Equatable {
     /// how to merge into. Refusing beats guessing at the user's file (risk R2).
     case hooksNotAnObject
     case backupFailed(String)
+    /// The codex binary was missing, or its app-server did not answer: hooks
+    /// cannot be trusted without it, and untrusted hooks are silently skipped.
+    case codexUnavailable(String)
 
     public var errorDescription: String? {
         switch self {
@@ -40,6 +43,10 @@ public enum BridgeError: LocalizedError, Equatable {
                     Belay could not back up your Claude Code settings, so it made no \
                     changes: \(reason)
                     """, bundle: .main)
+        case .codexUnavailable(let reason):
+            return String(
+                localized: "Belay could not ask Codex to trust its hooks: \(reason)",
+                bundle: .main)
         }
     }
 }

@@ -1,3 +1,4 @@
+import BelayCore
 import Foundation
 
 /// Just enough HTTP/1.1 to accept one POST from Claude Code.
@@ -85,5 +86,18 @@ enum HookRequestParser {
                 path: String(requestLine[1]),
                 authorization: authorization,
                 body: Data(buffer[bodyStart..<bodyEnd])))
+    }
+}
+
+extension HookReceiver {
+    /// Who is posting, read off the URL the installer wrote. Claude Code's
+    /// hooks carry no `agent` item — theirs predate the idea — so its absence
+    /// means Claude, and an unknown value falls back the same way rather than
+    /// inventing a provider.
+    static func provider(inPath path: String) -> ProviderID {
+        guard let components = URLComponents(string: path),
+            let agent = components.queryItems?.first(where: { $0.name == "agent" })?.value
+        else { return .claudeCode }
+        return agent == "codex" ? .codex : .claudeCode
     }
 }

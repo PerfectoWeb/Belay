@@ -20,7 +20,7 @@ public actor CodexProvider: ActivityProvider {
             localized: "Watches Codex's session files to tell when a turn is running.",
             bundle: .main),
         symbolName: "terminal",
-        supportsPreciseDetection: false)
+        supportsPreciseDetection: true)
 
     public let signals: AsyncStream<ActivitySignal>
 

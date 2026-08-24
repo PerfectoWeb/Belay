@@ -43,11 +43,15 @@ final class PreciseDetection {
 
     private let receiver = HookReceiver()
     private let installer = HookInstaller()
+    private let codexInstaller = CodexHookInstaller()
     private(set) var endpoint: BridgeEndpoint?
     private(set) var isInstalled = false
+    private(set) var isCodexInstalled = false
     private(set) var lastError: String?
+    private(set) var codexLastError: String?
 
     var settingsPath: String { installer.settingsURL.path }
+    var codexHooksPath: String { codexInstaller.hooksURL.path }
 
     /// Starts the receiver. Deliberately does **not** install hooks: the
     /// listener is harmless on its own, and the user has not agreed to anything.
@@ -63,6 +67,7 @@ final class PreciseDetection {
         do {
             endpoint = try await receiver.start()
             isInstalled = (try? installer.isInstalled()) ?? false
+            isCodexInstalled = (try? codexInstaller.isInstalled()) ?? false
             await selfHeal()
             return await receiver.signals
         } catch {
@@ -86,13 +91,75 @@ final class PreciseDetection {
     /// to prevent. Without it, moving the app or a new port silently breaks
     /// detection with no visible cause (docs/03).
     private func selfHeal() async {
-        guard isInstalled, let endpoint else { return }
-        do {
-            if case .written = try installer.reconcile(endpoint: endpoint) {
-                Log.bridge.notice("repointed existing hooks at the current port")
+        if isInstalled, let endpoint {
+            do {
+                if case .written = try installer.reconcile(endpoint: endpoint) {
+                    Log.bridge.notice("repointed existing hooks at the current port")
+                }
+            } catch {
+                lastError = error.localizedDescription
             }
-        } catch {
-            lastError = error.localizedDescription
+        }
+        // Off the main thread because a codex rewrite must re-trust, and that
+        // spawns `codex app-server`. Only runs when installed and drifted.
+        if isCodexInstalled, let endpoint {
+            let installer = codexInstaller
+            let outcome = await Task.detached {
+                Result { try installer.reconcile(endpoint: endpoint) }
+            }.value
+            switch outcome {
+            case .success(.written):
+                Log.bridge.notice("repointed existing Codex hooks at the current port")
+            case .success(.unchanged):
+                break
+            case .failure(let error):
+                codexLastError = error.localizedDescription
+            }
+        }
+    }
+
+    // MARK: - Codex
+
+    func codexPreview() -> HookInstaller.Preview? {
+        guard let endpoint else { return nil }
+        return try? codexInstaller.preview(endpoint: endpoint)
+    }
+
+    /// Async because trusting the hooks spawns `codex app-server`; the button
+    /// that calls this shows its own progress and nothing else blocks on it.
+    func installCodex() async -> Bool {
+        guard let endpoint else { return false }
+        let installer = codexInstaller
+        let outcome = await Task.detached {
+            Result { try installer.install(endpoint: endpoint) }
+        }.value
+        switch outcome {
+        case .success:
+            isCodexInstalled = true
+            codexLastError = nil
+            return true
+        case .failure(let error):
+            // The file may have been written before the trust step failed, so
+            // read the truth back rather than assuming nothing happened.
+            isCodexInstalled = (try? codexInstaller.isInstalled()) ?? false
+            codexLastError = error.localizedDescription
+            return false
+        }
+    }
+
+    func uninstallCodex() async -> Bool {
+        let installer = codexInstaller
+        let outcome = await Task.detached {
+            Result { try installer.uninstall() }
+        }.value
+        switch outcome {
+        case .success:
+            isCodexInstalled = false
+            codexLastError = nil
+            return true
+        case .failure(let error):
+            codexLastError = error.localizedDescription
+            return false
         }
     }
 

@@ -1,6 +1,7 @@
+import BelayCore
 import SwiftUI
 
-/// Shows exactly what will be written to `~/.claude/settings.json`, before
+/// Shows exactly what will be written to the agent's settings file, before
 /// anything is written.
 ///
 /// This sheet *is* the consent required by `docs/00-INVARIANTS.md` invariant 6. If the file
@@ -9,16 +10,23 @@ import SwiftUI
 /// told "no" with no alternative is worse than being handed the text.
 struct HookPreviewSheet: View {
     var precise: PreciseDetection
+    var provider: ProviderID = .claudeCode
     var onFinish: () -> Void
     @Environment(\.dismiss) private var dismiss
+    /// True while the codex install runs: writing the file is instant, but
+    /// recording the approval spawns `codex app-server` and takes a moment.
+    @State private var installing = false
+
+    private var isCodex: Bool { provider == .codex }
+    private var path: String { isCodex ? precise.codexHooksPath : precise.settingsPath }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Enable precise detection")
                 .font(.title3).bold()
 
-            if let preview = precise.preview() {
-                Text("Belay will change \(precise.settingsPath) to:")
+            if let preview = isCodex ? precise.codexPreview() : precise.preview() {
+                Text("Belay will change \(path) to:")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -32,16 +40,40 @@ struct HookPreviewSheet: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+                if isCodex {
+                    Text(
+                        """
+                        Belay also records these hooks as approved in Codex's \
+                        config.toml, because Codex quietly skips hooks nobody has \
+                        approved.
+                        """
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                }
 
                 HStack {
                     Button("Cancel") { dismiss() }
                         .keyboardShortcut(.cancelAction)
                     Spacer()
-                    Button("Add to Claude Code") {
-                        precise.install()
-                        onFinish()
-                        dismiss()
+                    if installing { ProgressView().controlSize(.small).padding(.trailing, 6) }
+                    Button(isCodex ? "Add to Codex" : "Add to Claude Code") {
+                        if isCodex {
+                            installing = true
+                            Task {
+                                _ = await precise.installCodex()
+                                installing = false
+                                onFinish()
+                                dismiss()
+                            }
+                        } else {
+                            precise.install()
+                            onFinish()
+                            dismiss()
+                        }
                     }
+                    .disabled(installing)
                     .keyboardShortcut(.defaultAction)
                 }
             } else {
@@ -64,7 +96,7 @@ struct HookPreviewSheet: View {
         .font(.callout)
         .fixedSize(horizontal: false, vertical: true)
 
-        if let snippet = precise.manualSnippet() {
+        if !isCodex, let snippet = precise.manualSnippet() {
             codeBlock(snippet)
             HStack {
                 Button("Copy") {

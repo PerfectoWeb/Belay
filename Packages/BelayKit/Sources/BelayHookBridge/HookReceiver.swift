@@ -213,16 +213,16 @@ public actor HookReceiver {
             respond(.notFound, on: connection)
             return
         }
-        // A generic webhook says everything it has to say in the query, so it
-        // is answered before the body is even looked at — the caller may be a
-        // one-line curl with no payload at all.
+        // A generic webhook says everything in the query, so it is answered
+        // before the body is even looked at.
         if let signal = GenericWebhook.signal(path: request.path, now: clock.now) {
             continuation.yield(signal)
             respond(.accepted, on: connection)
             return
         }
         let envelope = try? JSONDecoder().decode(HookEnvelope.self, from: request.body)
-        if let envelope, let signal = envelope.signal(at: clock.now) {
+        let provider = Self.provider(inPath: request.path)
+        if let envelope, let signal = envelope.signal(at: clock.now, provider: provider) {
             let bg = envelope.backgroundTasks ?? -1  // name, activity, count — never the body (R9)
             EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)")
             continuation.yield(signal)

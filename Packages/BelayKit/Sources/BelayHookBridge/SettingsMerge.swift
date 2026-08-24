@@ -1,5 +1,31 @@
 import Foundation
 
+/// One agent's spelling of a hooks file: which events Belay registers, what an
+/// entry looks like, and how Belay recognises its own entries again later.
+/// Claude Code's `settings.json` and Codex's `hooks.json` share the section
+/// shape — `{event: [group{hooks: [entry]}]}` — and differ in exactly these
+/// three answers.
+protocol HookVocabulary {
+    static var eventNames: [String] { get }
+    static func group(for event: String, endpoint: BridgeEndpoint) -> [String: Any]
+    /// The URL inside an entry this vocabulary owns, `nil` for anyone else's.
+    static func ownURL(_ entry: Any) -> String?
+}
+
+/// Claude Code's spelling: HTTP entries in `settings.json`.
+enum ClaudeHookVocabulary: HookVocabulary {
+    static let eventNames = HookEvent.allCases.map(\.rawValue)
+
+    static func group(for event: String, endpoint: BridgeEndpoint) -> [String: Any] {
+        guard let event = HookEvent(rawValue: event) else { return [:] }
+        return HookConfiguration.group(for: event, endpoint: endpoint)
+    }
+
+    static func ownURL(_ entry: Any) -> String? {
+        HookConfiguration.belayURL(entry)
+    }
+}
+
 /// Pure merge of Belay's hooks into a parsed `settings.json`, and back out again.
 ///
 /// No file touches anything here, which is what lets the dangerous cases — a
@@ -8,16 +34,23 @@ import Foundation
 /// across untouched, including values of the wrong shape.
 enum SettingsMerge {
     /// `endpoint: nil` uninstalls.
-    static func merged(_ settings: [String: Any], endpoint: BridgeEndpoint?) throws -> [String: Any] {
+    static func merged(
+        _ settings: [String: Any],
+        endpoint: BridgeEndpoint?,
+        vocabulary: any HookVocabulary.Type = ClaudeHookVocabulary.self
+    ) throws -> [String: Any] {
         var result = settings
         let original = try existingSection(in: settings)
-        var section = strip(original ?? [:])
+        var section = strip(original ?? [:], vocabulary: vocabulary)
 
         if let endpoint {
-            for event in HookEvent.allCases {
-                var groups = section[event.rawValue] as? [Any] ?? []
-                groups.append(HookConfiguration.group(for: event, endpoint: endpoint))
-                section[event.rawValue] = groups
+            // Appended after whatever the user has, never inserted: Codex
+            // records hook trust by position in these arrays, so an insert
+            // would break the trust of every hook behind it.
+            for event in vocabulary.eventNames {
+                var groups = section[event] as? [Any] ?? []
+                groups.append(vocabulary.group(for: event, endpoint: endpoint))
+                section[event] = groups
             }
         }
 
@@ -35,7 +68,10 @@ enum SettingsMerge {
         return result
     }
 
-    static func installedURLs(in settings: [String: Any]) -> [String] {
+    static func installedURLs(
+        in settings: [String: Any],
+        vocabulary: any HookVocabulary.Type = ClaudeHookVocabulary.self
+    ) -> [String] {
         guard let section = settings["hooks"] as? [String: Any] else { return [] }
         return section.values
             .compactMap { $0 as? [Any] }
@@ -43,7 +79,7 @@ enum SettingsMerge {
             .compactMap { $0 as? [String: Any] }
             .compactMap { $0["hooks"] as? [Any] }
             .flatMap { $0 }
-            .compactMap(HookConfiguration.belayURL)
+            .compactMap(vocabulary.ownURL)
     }
 
     private static func existingSection(in settings: [String: Any]) throws -> [String: Any]? {
@@ -52,7 +88,9 @@ enum SettingsMerge {
         return section
     }
 
-    private static func strip(_ section: [String: Any]) -> [String: Any] {
+    private static func strip(
+        _ section: [String: Any], vocabulary: any HookVocabulary.Type
+    ) -> [String: Any] {
         var result: [String: Any] = [:]
         for (event, value) in section {
             guard let groups = value as? [Any] else {
@@ -62,7 +100,10 @@ enum SettingsMerge {
             var kept: [Any] = []
             var removedAny = false
             for group in groups {
-                guard let survivor = strip(group: group, removedAny: &removedAny) else { continue }
+                guard
+                    let survivor = strip(
+                        group: group, removedAny: &removedAny, vocabulary: vocabulary)
+                else { continue }
                 kept.append(survivor)
             }
             // An event left with no groups had nothing but ours in it, so the key
@@ -73,12 +114,14 @@ enum SettingsMerge {
     }
 
     /// `nil` means the whole group was Belay's and should disappear.
-    private static func strip(group: Any, removedAny: inout Bool) -> Any? {
+    private static func strip(
+        group: Any, removedAny: inout Bool, vocabulary: any HookVocabulary.Type
+    ) -> Any? {
         guard var dictionary = group as? [String: Any],
             let entries = dictionary["hooks"] as? [Any]
         else { return group }
 
-        let kept = entries.filter { !HookConfiguration.isBelayEntry($0) }
+        let kept = entries.filter { vocabulary.ownURL($0) == nil }
         guard kept.count != entries.count else { return group }
         removedAny = true
         guard !kept.isEmpty else { return nil }
