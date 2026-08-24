@@ -1882,53 +1882,6 @@
         }
       }
     },
-    "A backstop. Belay stops holding after this and tells you why.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hält den Mac nach dieser Zeit nicht mehr wach und benachrichtigt dich."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stops keeping your Mac awake after this time and notifies you."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deja de mantener el Mac despierto tras este tiempo y te avisa."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cesse de garder le Mac éveillé après ce délai et vous prévient."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Smette di tenere sveglio il Mac dopo questo tempo e ti avvisa."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "После этого времени Belay разрешает Mac уснуть и уведомляет вас."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "超过此时间后停止保持唤醒并通知你。"
-          }
-        }
-      }
-    },
     "A folder changing means work is happening. A process being alive never counts as work on its own. It only tells Belay the session has ended when it disappears.": {
       "extractionState": "manual",
       "localizations": {
@@ -2726,53 +2679,6 @@
         }
       }
     },
-    "Also keep the display awake": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Display wach halten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep the display awake"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantener la pantalla despierta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garder l'écran éveillé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tieni sveglio lo schermo"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не выключать дисплей"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保持显示器唤醒"
-          }
-        }
-      }
-    },
     "Always on": {
       "extractionState": "manual",
       "localizations": {
@@ -3239,6 +3145,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "已保持唤醒 %@"
+          }
+        }
+      }
+    },
+    "Awake limit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wachlimit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awake limit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Límite de vigilia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limite d'éveil"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limite di veglia"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лимит бодрствования"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "唤醒上限"
           }
         }
       }
@@ -4556,53 +4508,6 @@
         }
       }
     },
-    "Belay keeps the Mac awake with the lid closed, then lets go automatically at the time limit or if the Mac gets too warm.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hält den Mac bei geschlossenem Deckel wach und lässt am Zeitlimit los, oder wenn er zu warm wird."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keeps your Mac awake with the lid closed, then lets go at the time limit or if it gets too warm."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantiene el Mac despierto con la tapa cerrada y lo suelta al llegar al límite de tiempo o si se calienta demasiado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garde le Mac éveillé capot fermé, puis relâche à la limite de temps ou s'il chauffe trop."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiene sveglio il Mac con il coperchio chiuso e lascia andare al limite di tempo o se si scalda troppo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay не даёт Mac уснуть с закрытой крышкой и прекращает удержание по лимиту времени или при перегреве."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合盖时保持 Mac 唤醒，到达时间上限或过热时松开。"
-          }
-        }
-      }
-    },
     "Belay let your Mac sleep": {
       "extractionState": "manual",
       "localizations": {
@@ -5445,53 +5350,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 保存的 %@ 访问权限已失效。"
-          }
-        }
-      }
-    },
-    "Below %lld%% on battery, Belay stops holding.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Im Akkubetrieb stoppt Belay bei %lld%%."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On battery, Belay stops at %lld%%."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con batería, Belay se detiene al llegar al %lld%%."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sur batterie, Belay s'arrête à %lld%%."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A batteria, Belay si ferma al %lld%%."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "При %lld%% заряда Belay разрешает Mac уснуть."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用电池时，Belay 会在电量降至 %lld%% 时停止。"
           }
         }
       }
@@ -6809,53 +6667,6 @@
         }
       }
     },
-    "Dim the display at night": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Display nachts abdunkeln"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dim the display at night"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atenuar la pantalla por la noche"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atténuer l'écran la nuit"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attenuare lo schermo di notte"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушать дисплей"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间调暗显示器"
-          }
-        }
-      }
-    },
     "Dim until": {
       "extractionState": "manual",
       "localizations": {
@@ -6946,6 +6757,98 @@
           "stringUnit": {
             "state": "translated",
             "value": "调暗后的亮度"
+          }
+        }
+      }
+    },
+    "Dimmed-screen countdown": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countdown auf dem gedimmten Display"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dimmed-screen countdown"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuenta atrás en pantalla atenuada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compte à rebours sur écran atténué"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conto alla rovescia a schermo attenuato"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймер на затемнённом экране"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调暗屏幕上的倒计时"
+          }
+        }
+      }
+    },
+    "Dims the display to this level during the hours below while you're away. Restores brightness when you return.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dunkelt das Display in den unten angegebenen Stunden auf diese Stufe ab, während du weg bist. Stellt die Helligkeit wieder her, wenn du zurückkommst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dims the display to this level during the hours below while you're away. Restores brightness when you return."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenúa la pantalla a este nivel durante las horas indicadas abajo mientras no estás. Restaura el brillo cuando vuelves."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténue l'écran à ce niveau pendant les heures ci-dessous en votre absence. Rétablit la luminosité à votre retour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenua lo schermo a questo livello nelle ore indicate sotto mentre sei via. Ripristina la luminosità al tuo ritorno."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затемняет дисплей до этого уровня в указанные ниже часы, пока вас нет. Возвращает яркость, когда вы вернулись."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在你离开时，于下方设置的时段将显示器调暗到此亮度。你回来后恢复亮度。"
           }
         }
       }
@@ -8075,49 +7978,48 @@
         }
       }
     },
-    "How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.": {
-      "extractionState": "manual",
+    "How long Belay waits after an agent goes quiet before letting your Mac sleep.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wie lange Belay wartet, nachdem ein Agent still geworden ist. Vermeidet Schlaf zwischen Aufgaben."
+            "value": "Wie lange Belay wartet, nachdem ein Agent verstummt ist, bevor der Mac schlafen darf."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "How long Belay waits after an agent goes quiet. Helps avoid sleep between tasks."
+            "value": "How long Belay waits after an agent goes quiet before letting your Mac sleep."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cuánto espera Belay después de que un agente queda en silencio. Evita el reposo entre tareas."
+            "value": "Cuánto espera Belay después de que un agente quede en silencio antes de dejar dormir el Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Combien de temps Belay attend après qu'un agent s'est tu. Évite la veille entre les tâches."
+            "value": "Combien de temps Belay attend après qu'un agent s'est tu avant de laisser le Mac se mettre en veille."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quanto attende Belay dopo che un agente tace. Evita lo stop tra un compito e l'altro."
+            "value": "Quanto attende Belay dopo che un agente tace prima di lasciare che il Mac vada in stop."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сколько Belay ждёт после того, как агент затих. Пауза помогает не уводить Mac в сон между задачами."
+            "value": "Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "智能体安静后 Belay 等待多久。有助于避免任务之间进入睡眠。"
+            "value": "智能体安静后，Belay 等待多久才允许 Mac 进入睡眠。"
           }
         }
       }
@@ -8357,6 +8259,52 @@
         }
       }
     },
+    "Keep display awake": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display wach halten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep display awake"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener la pantalla activa"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder l'écran allumé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni lo schermo attivo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не гасить дисплей"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持显示器唤醒"
+          }
+        }
+      }
+    },
     "Keep your Mac awake for": {
       "extractionState": "manual",
       "localizations": {
@@ -8447,6 +8395,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "让 Mac 按设定时间保持唤醒"
+          }
+        }
+      }
+    },
+    "Keeping the display off saves power and won't interrupt your agent.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein ausgeschaltetes Display spart Strom und unterbricht deinen Agenten nicht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeping the display off saves power and won't interrupt your agent."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantener la pantalla apagada ahorra energía y no interrumpe a tu agente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garder l'écran éteint économise l'énergie et n'interrompt pas votre agent."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tenere lo schermo spento risparmia energia e non interrompe il tuo agente."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выключенный дисплей экономит энергию и не мешает работе агента."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭显示器可以省电，也不会打断智能体。"
           }
         }
       }
@@ -8588,6 +8582,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "在智能体工作时让 Mac 保持唤醒。"
+          }
+        }
+      }
+    },
+    "Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hält den Mac mit geschlossenem Deckel wach. Endet am Wachlimit oder wenn der Mac zu warm wird."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantiene el Mac despierto con la tapa cerrada. Termina al llegar al límite de vigilia o si el Mac se calienta demasiado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Garde le Mac éveillé capot fermé. S'arrête à la limite d'éveil ou si le Mac chauffe trop."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiene sveglio il Mac a coperchio chiuso. Termina al limite di veglia o se il Mac si scalda troppo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не даёт Mac уснуть с закрытой крышкой. Завершается при достижении лимита бодрствования или если Mac перегревается."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖时保持 Mac 唤醒。达到唤醒上限或 Mac 过热时结束。"
           }
         }
       }
@@ -9154,6 +9194,52 @@
         }
       }
     },
+    "Low Power Mode": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stromsparmodus"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low Power Mode"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modo de bajo consumo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mode économie d'énergie"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modalità basso consumo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Режим энергосбережения"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "低电量模式"
+          }
+        }
+      }
+    },
     "Low battery, or the maximum awake time was reached.": {
       "extractionState": "manual",
       "localizations": {
@@ -9244,53 +9330,6 @@
           "stringUnit": {
             "state": "needs_review",
             "value": "Mac App Store"
-          }
-        }
-      }
-    },
-    "Maximum time awake": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maximale Wachzeit"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maximum awake time"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiempo máximo despierto"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Durée d'éveil maximale"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tempo massimo di veglia"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Максимальное время бодрствования"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "最长唤醒时间"
           }
         }
       }
@@ -9573,6 +9612,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "不错"
+          }
+        }
+      }
+    },
+    "Night dimming": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachtdimmung"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night dimming"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenuación nocturna"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atténuation nocturne"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attenuazione notturna"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ночное затемнение"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间调暗"
           }
         }
       }
@@ -10517,49 +10602,48 @@
         }
       }
     },
-    "Off by default. Belay keeps the Mac running while your agent works; letting the screen sleep saves real power and changes nothing else.": {
-      "extractionState": "manual",
+    "On battery, Belay lets your Mac sleep at %lld%%.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn der Bildschirm schläft, sparst du Energie, ohne deinen Agenten zu unterbrechen."
+            "value": "Im Akkubetrieb lässt Belay den Mac bei %lld%% schlafen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Letting the display sleep saves power and won't interrupt your agent."
+            "value": "On battery, Belay lets your Mac sleep at %lld%%."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dejar que la pantalla se apague ahorra energía y no interrumpe al agente."
+            "value": "Con batería, Belay deja dormir el Mac al %lld%%."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laisser l'écran s'éteindre économise de l'énergie sans interrompre votre agent."
+            "value": "Sur batterie, Belay laisse le Mac se mettre en veille à %lld%%."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lasciare spegnere lo schermo fa risparmiare energia e non interrompe il tuo agente."
+            "value": "A batteria, Belay lascia che il Mac vada in stop al %lld%%."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Выключение дисплея экономит заряд и не мешает работе агента."
+            "value": "При питании от батареи Belay разрешает Mac уснуть на %lld%%."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "让显示器进入睡眠可以节省电量，且不会打断智能体。"
+            "value": "使用电池时，电量降至 %lld%% 后 Belay 会让 Mac 进入睡眠。"
           }
         }
       }
@@ -12299,49 +12383,48 @@
         }
       }
     },
-    "Shorten the wait in Low Power Mode": {
-      "extractionState": "manual",
+    "Shortens the sleep delay after your agent finishes.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kürzere Wartezeit im Stromsparmodus"
+            "value": "Verkürzt die Schlafverzögerung, nachdem dein Agent fertig ist."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shorter wait in Low Power Mode"
+            "value": "Shortens the sleep delay after your agent finishes."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Espera más corta en modo de bajo consumo"
+            "value": "Acorta el retraso de reposo cuando tu agente termina."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Attente plus courte en mode économie d'énergie"
+            "value": "Raccourcit le délai de mise en veille une fois votre agent terminé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Attesa più breve in modalità risparmio"
+            "value": "Riduce il ritardo dello stop quando il tuo agente ha finito."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Меньше ждать в режиме энергосбережения"
+            "value": "Сокращает задержку сна после завершения работы агента."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "低电量模式下等待更短"
+            "value": "智能体完成后缩短睡眠延迟。"
           }
         }
       }
@@ -12534,53 +12617,6 @@
         }
       }
     },
-    "Show the timer on the dimmed screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Timer auf dem abgedunkelten Bildschirm zeigen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show timer on the dimmed screen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostrar el temporizador en la pantalla atenuada"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher le minuteur sur l'écran assombri"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra il timer sullo schermo oscurato"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Таймер на приглушённом экране"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在调暗的屏幕上显示计时器"
-          }
-        }
-      }
-    },
     "Shows exactly what will be added before anything is written": {
       "extractionState": "manual",
       "localizations": {
@@ -12764,6 +12800,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "已跳过，文件名已被你自己的脚本占用：%@"
+          }
+        }
+      }
+    },
+    "Sleep delay": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafverzögerung"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep delay"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retraso de reposo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Délai de mise en veille"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritardo dello stop"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Задержка сна"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠延迟"
           }
         }
       }
@@ -13801,6 +13883,52 @@
         }
       }
     },
+    "The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die längste Zeit, die Belay den Mac wach hält, bevor er loslässt. Bei Erreichen des Limits wirst du benachrichtigt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El tiempo máximo que Belay mantendrá el Mac despierto antes de soltarlo. Se te notificará al alcanzar el límite."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La durée maximale pendant laquelle Belay garde le Mac éveillé avant de lâcher prise. Vous serez averti quand la limite est atteinte."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il tempo massimo per cui Belay terrà sveglio il Mac prima di lasciare andare. Riceverai una notifica al raggiungimento del limite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Максимум времени, которое Belay продержит Mac бодрым, прежде чем отпустить. Когда лимит достигнут, придёт уведомление."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 保持 Mac 唤醒的最长时间，超过后就会放手。达到上限时会通知你。"
+          }
+        }
+      }
+    },
     "The run in %@ took %@. Your Mac will sleep normally again.": {
       "extractionState": "manual",
       "localizations": {
@@ -14502,53 +14630,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "版本 %@ 已可用。"
-          }
-        }
-      }
-    },
-    "Wait before letting the Mac sleep": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vor dem Ruhezustand warten"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wait before sleep"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esperar antes de dormir"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attendre avant la veille"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attendi prima dello stop"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пауза перед сном"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "睡眠前等待"
           }
         }
       }
@@ -15352,53 +15433,6 @@
         }
       }
     },
-    "When you step away at night, Belay dims the display to this level. It brightens when you return.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn du nachts weggehst, dunkelt Belay das Display auf diese Stufe ab. Kommst du zurück, wird es wieder hell."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When you step away at night, Belay dims the display to this level. It brightens when you return."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando te alejas de noche, Belay atenúa la pantalla a este nivel. Vuelve a iluminarse cuando regresas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand vous vous éloignez la nuit, Belay assombrit l'écran à ce niveau. Il se rallume à votre retour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando ti allontani di notte, Belay attenua lo schermo a questo livello. Torna luminoso al tuo ritorno."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Приглушает дисплей по расписанию. Помогает сохранить срок службы диодов на матрице дисплея."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "夜间你离开时，Belay 会将显示器调暗到此亮度。你回来时会恢复亮度。"
-          }
-        }
-      }
-    },
     "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.": {
       "extractionState": "manual",
       "localizations": {
@@ -16006,53 +16040,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ 中的智能体需要你的输入才能继续。"
-          }
-        }
-      }
-    },
-    "Your agent still finishes; Belay just lets go sooner afterwards.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent wird trotzdem fertig. Belay lässt deinen Mac danach nur früher schlafen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent still finishes. Belay just lets your Mac sleep sooner afterward."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente termina igualmente. Después, Belay deja que el Mac duerma un poco antes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent termine quand même. Ensuite, Belay laisse simplement votre Mac se mettre en veille plus tôt."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente termina comunque. Belay lascia semplicemente andare il Mac in stop prima, una volta finito."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Как только агент завершит работу, Belay сразу же разрешит Mac заснуть."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智能体仍会完成工作。Belay 只是会更早让 Mac 进入睡眠。"
           }
         }
       }

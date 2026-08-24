@@ -35,11 +35,10 @@ struct BehaviourSettingsPane: View {
         Group {
             SettingsGroup {
                 SettingRow(
-                    title: "Wait before letting the Mac sleep",
+                    title: "Sleep delay",
                     explanation: """
-                        How long Belay keeps holding after your agent goes quiet. \
-                        Longer is safer: sleeping mid-task costs far more than staying \
-                        awake a minute too long.
+                        How long Belay waits after an agent goes quiet before letting \
+                        your Mac sleep.
                         """
                 ) {
                     // An empty label, not a label that happens to be an
@@ -53,7 +52,7 @@ struct BehaviourSettingsPane: View {
                     }
                     .labelsHidden()
                     .frame(maxWidth: SettingsMetrics.controlWidth, alignment: .leading)
-                    .accessibilityLabel("Wait before letting the Mac sleep")
+                    .accessibilityLabel("Sleep delay")
                 }
             }
 
@@ -61,8 +60,11 @@ struct BehaviourSettingsPane: View {
 
             SettingsGroup {
                 SettingRow(
-                    title: "Maximum time awake",
-                    explanation: "A backstop. Belay stops holding after this and tells you why."
+                    title: "Awake limit",
+                    explanation: """
+                        The longest Belay will keep your Mac awake before letting go. \
+                        You'll be notified when the limit is reached.
+                        """
                 ) {
                     Picker(
                         selection: offered(
@@ -76,7 +78,7 @@ struct BehaviourSettingsPane: View {
                     }
                     .labelsHidden()
                     .frame(maxWidth: SettingsMetrics.controlWidth, alignment: .leading)
-                    .accessibilityLabel("Maximum time awake")
+                    .accessibilityLabel("Awake limit")
                 }
 
                 SettingCheckbox(
@@ -87,8 +89,8 @@ struct BehaviourSettingsPane: View {
                 )
 
                 SettingCheckbox(
-                    title: "Shorten the wait in Low Power Mode",
-                    explanation: "Your agent still finishes; Belay just lets go sooner afterwards.",
+                    title: "Low Power Mode",
+                    explanation: "Shortens the sleep delay after your agent finishes.",
                     isOn: $settings.shortenGraceInLowPower
                 )
             }
@@ -100,10 +102,9 @@ struct BehaviourSettingsPane: View {
             // holding behaviour, and General was becoming everything's drawer.
             SettingCheckboxGroup(title: "While holding") {
                 GroupedCheckbox(
-                    title: "Also keep the display awake",
+                    title: "Keep display awake",
                     explanation: """
-                        Off by default. Belay keeps the Mac running while your agent works; \
-                        letting the screen sleep saves real power and changes nothing else.
+                        Keeping the display off saves power and won't interrupt your agent.
                         """,
                     isOn: $settings.keepDisplayAwake
                 )
@@ -117,7 +118,7 @@ struct BehaviourSettingsPane: View {
         guard let floor = settings.batteryFloor else {
             return "Belay will keep holding no matter how low the battery gets."
         }
-        return "Below \(Int((floor * 100).rounded()))% on battery, Belay stops holding."
+        return "On battery, Belay lets your Mac sleep at \(Int((floor * 100).rounded()))%."
     }
 
     /// Modelled as on/off rather than exposing the raw optional: `nil` means the

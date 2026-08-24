@@ -20,14 +20,14 @@ struct NightDimmingGroup: View {
                 """
         }
         return """
-            When you step away at night, Belay dims the display to this level. \
-            It brightens when you return.
+            Dims the display to this level during the hours below while you're \
+            away. Restores brightness when you return.
             """
     }
 
     var body: some View {
         GroupedCheckbox(
-            title: "Dim the display at night",
+            title: "Night dimming",
             explanation: Self.explanation,
             isOn: $settings.nightDimming
         )
@@ -65,7 +65,7 @@ struct NightDimmingGroup: View {
             .font(.callout)
 
             GroupedCheckbox(
-                title: "Show the timer on the dimmed screen",
+                title: "Dimmed-screen countdown",
                 explanation: """
                     While an Always on timer runs, the remaining time glows \
                     quietly on the dark display, the way a bedside clock would.
