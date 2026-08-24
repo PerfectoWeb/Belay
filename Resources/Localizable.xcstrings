@@ -1929,49 +1929,48 @@
         }
       }
     },
-    "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal.": {
-      "extractionState": "manual",
+    "A session stopped responding without finishing, usually because the CLI needs input or was closed.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eine Sitzung, die nichts mehr sendet und nie gemeldet hat, dass sie fertig ist. Meist eine CLI, die sich neu anmelden muss, oder ein geschlossenes Terminal."
+            "value": "Eine Sitzung antwortet nicht mehr, ohne fertig zu sein. Meist wartet die CLI auf Eingabe oder wurde geschlossen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A session that stopped sending anything and never said it had finished. Usually a CLI that needs signing in again, or a closed terminal."
+            "value": "A session stopped responding without finishing, usually because the CLI needs input or was closed."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una sesión que dejó de enviar nada y nunca dijo que había terminado. Suele ser una CLI que necesita iniciar sesión de nuevo, o un terminal cerrado."
+            "value": "Una sesión dejó de responder sin terminar, normalmente porque la CLI espera una entrada o se cerró."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Une session qui n'envoie plus rien et n'a jamais dit qu'elle avait fini. En général une CLI à reconnecter, ou un terminal fermé."
+            "value": "Une session a cessé de répondre sans terminer, généralement parce que la CLI attend une saisie ou a été fermée."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Una sessione che ha smesso di inviare qualsiasi cosa e non ha mai detto di aver finito. Di solito una CLI da riautenticare, o un terminale chiuso."
+            "value": "Una sessione ha smesso di rispondere senza finire, di solito perché la CLI attende un input o è stata chiusa."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сессия перестала что-либо присылать и не сообщила, что закончила. Обычно это CLI, которому нужен повторный вход, или закрытый терминал."
+            "value": "Сессия перестала отвечать, не завершившись. Обычно CLI ждёт ввода или был закрыт."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "会话不再发送任何内容，也从未说过已经完成。通常是需要重新登录的 CLI，或者被关掉的终端。"
+            "value": "会话尚未完成就停止了响应，通常是 CLI 在等待输入或已被关闭。"
           }
         }
       }
@@ -2491,6 +2490,98 @@
         }
       }
     },
+    "Agent needs you": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent braucht dich"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent needs you"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El agente te necesita"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agent a besoin de vous"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agente ha bisogno di te"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нужно ваше внимание"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体需要你"
+          }
+        }
+      }
+    },
+    "Agent went quiet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent verstummt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent went quiet"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agente en silencio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agent s'est tu"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'agente tace"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент затих"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体没有动静"
+          }
+        }
+      }
+    },
     "All product names and logos are trademarks of their respective owners.": {
       "extractionState": "manual",
       "localizations": {
@@ -2722,6 +2813,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "常开"
+          }
+        }
+      }
+    },
+    "An agent is waiting for permission or an answer. Requires Precise Detection.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Agent wartet auf eine Erlaubnis oder eine Antwort. Erfordert präzise Erkennung."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An agent is waiting for permission or an answer. Requires Precise Detection."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente espera un permiso o una respuesta. Requiere la detección precisa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agent attend une autorisation ou une réponse. Nécessite la détection précise."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un agente attende un permesso o una risposta. Richiede il rilevamento preciso."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент ждёт разрешения или ответа. Требуется точное определение."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体正在等待授权或回答。需要精确检测。"
           }
         }
       }
@@ -3522,49 +3659,48 @@
         }
       }
     },
-    "Belay asks macOS for permission the first time it actually needs to notify you.": {
-      "extractionState": "manual",
+    "Belay asks for permission the first time it needs to send a notification.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay fragt beim ersten Senden einer Mitteilung nach der Erlaubnis für Mitteilungen."
+            "value": "Belay bittet beim ersten Mal um Erlaubnis, wenn eine Mitteilung gesendet werden muss."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay asks for notification permission the first time it needs to send one."
+            "value": "Belay asks for permission the first time it needs to send a notification."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay pide permiso para enviar notificaciones la primera vez que necesita enviar una."
+            "value": "Belay pide permiso la primera vez que necesita enviar una notificación."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay demande l'autorisation d'envoyer des notifications la première fois qu'il doit en envoyer une."
+            "value": "Belay demande l'autorisation la première fois qu'il doit envoyer une notification."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay chiede il permesso per le notifiche la prima volta che deve inviarne una."
+            "value": "Belay chiede il permesso la prima volta che deve inviare una notifica."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay запросит разрешение на уведомления, когда впервые понадобится отправить уведомление."
+            "value": "Belay запросит разрешение, когда впервые понадобится отправить уведомление."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Belay 会在首次需要发送通知时请求通知权限。"
+            "value": "Belay 会在首次需要发送通知时请求权限。"
           }
         }
       }
@@ -7461,6 +7597,52 @@
         }
       }
     },
+    "For runs longer than %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für Läufe länger als %@."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For runs longer than %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para ejecuciones de más de %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour les exécutions de plus de %@."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per esecuzioni più lunghe di %@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для запусков дольше %@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅限时长超过 %@ 的运行。"
+          }
+        }
+      }
+    },
     "Free": {
       "extractionState": "manual",
       "localizations": {
@@ -9286,49 +9468,48 @@
         }
       }
     },
-    "Low battery, or the maximum awake time was reached.": {
-      "extractionState": "manual",
+    "Low battery or awake limit reached.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Niedriger Akkustand oder maximale Wachzeit."
+            "value": "Niedriger Akkustand oder Wachlimit erreicht."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Low battery or maximum awake time."
+            "value": "Low battery or awake limit reached."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batería baja o tiempo máximo despierto."
+            "value": "Batería baja o límite de vigilia alcanzado."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batterie faible ou durée d'éveil maximale."
+            "value": "Batterie faible ou limite d'éveil atteinte."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Batteria scarica o tempo massimo di veglia."
+            "value": "Batteria scarica o limite di veglia raggiunto."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Низкий заряд, перегрев процессора или исчерпан лимит времени без сна."
+            "value": "Низкий заряд, перегрев или достигнут лимит бодрствования."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "电量低或达到最长唤醒时间。"
+            "value": "电量低或已达到唤醒上限。"
           }
         }
       }
@@ -9611,6 +9792,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "v%@ 新增"
+          }
+        }
+      }
+    },
+    "New version": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Version"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New version"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nueva versión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nouvelle version"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuova versione"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая версия"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新版本"
           }
         }
       }
@@ -10226,7 +10453,6 @@
       }
     },
     "Notifications": {
-      "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
@@ -10268,53 +10494,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "通知"
-          }
-        }
-      }
-    },
-    "Notify me": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benachrichtigen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notify me"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avisarme"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "M'avertir"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avvisami"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Уведомлять"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "通知我"
           }
         }
       }
@@ -10741,53 +10920,6 @@
         }
       }
     },
-    "Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einmal pro Version, nie zweimal. Das Zeichen in der Ecke des Menüleistensymbols sagt dasselbe leise, egal ob das hier an ist."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Once per version, never twice. The mark in the corner of the menu bar icon says the same thing quietly, whether this is on or off."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una vez por versión, nunca dos. La marca en la esquina del icono de la barra de menús dice lo mismo en silencio, esté esto activado o no."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une fois par version, jamais deux. La marque dans le coin de l'icône de la barre de menus dit la même chose en silence, que ceci soit activé ou non."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una volta per versione, mai due. Il segno nell'angolo dell'icona nella barra dei menu dice la stessa cosa in silenzio, che questo sia attivo o no."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Один раз на версию, не больше. Значок в углу иконки в меню-баре говорит то же самое тихо, независимо от этой настройки."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每个版本只提醒一次。无论此项是否开启，菜单栏图标角上的标记都会安静地说明同样的事。"
-          }
-        }
-      }
-    },
     "One file per event: %@.": {
       "localizations": {
         "de": {
@@ -10830,53 +10962,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "每个事件一个文件：%@。"
-          }
-        }
-      }
-    },
-    "Only for runs longer than %@.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Für Läufe länger als %@."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "For runs longer than %@."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Para ejecuciones de más de %@."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pour les exécutions de plus de %@."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Per esecuzioni più lunghe di %@."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Для запусков дольше %@."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "仅针对时长超过 %@ 的运行。"
           }
         }
       }
@@ -12241,6 +12326,98 @@
         }
       }
     },
+    "Safety stop": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sicherheitsstopp"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safety stop"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parada de seguridad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrêt de sécurité"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arresto di sicurezza"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безопасная остановка"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安全停止"
+          }
+        }
+      }
+    },
+    "Sent once per version. The menu bar icon still shows the update badge when this is off.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmal pro Version. Das Update-Zeichen am Menüleistensymbol bleibt auch sichtbar, wenn dies aus ist."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sent once per version. The menu bar icon still shows the update badge when this is off."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se envía una vez por versión. El icono de la barra de menús sigue mostrando la insignia de actualización aunque esté desactivado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoyée une fois par version. L'icône de la barre des menus continue d'afficher le badge de mise à jour même si cette option est désactivée."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inviata una volta per versione. L'icona nella barra dei menu mostra comunque il badge di aggiornamento anche se disattivato."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уведомление приходит один раз для каждой версии. Значок обновления в строке меню остаётся виден, даже если этот пункт выключен."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。"
+          }
+        }
+      }
+    },
     "Settings": {
       "extractionState": "manual",
       "localizations": {
@@ -13597,6 +13774,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "系统"
+          }
+        }
+      }
+    },
+    "Task finished": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe beendet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Task finished"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarea terminada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tâche terminée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attività completata"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Задача завершена"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "任务完成"
           }
         }
       }
@@ -15151,241 +15374,6 @@
         }
       }
     },
-    "When Belay stops for safety": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Belay aus Sicherheitsgründen stoppt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When Belay stops for safety"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando Belay se detiene por seguridad"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand Belay s'arrête par sécurité"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando Belay si ferma per sicurezza"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда Belay останавливается ради безопасности"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 因安全原因停止时"
-          }
-        }
-      }
-    },
-    "When a long task finishes": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn eine lange Aufgabe fertig ist"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When a long task finishes"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando termina una tarea larga"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand une longue tâche se termine"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando finisce un'attività lunga"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда завершается долгая задача"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "长任务完成时"
-          }
-        }
-      }
-    },
-    "When a new version is out": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn eine neue Version da ist"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When a new version is out"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando sale una versión nueva"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand une nouvelle version sort"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando esce una nuova versione"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда выходит новая версия"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当有新版本时"
-          }
-        }
-      }
-    },
-    "When an agent goes quiet": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Agent verstummt"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an agent goes quiet"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando un agente se queda en silencio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand un agent se tait"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando un agente resta in silenzio"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда агент затих"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "当智能体没有动静时"
-          }
-        }
-      }
-    },
-    "When an agent needs you": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn ein Agent dich braucht"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When an agent needs you"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cuando un agente te necesita"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand un agent a besoin de vous"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quando un agente ha bisogno di te"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Когда агенту нужны вы"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智能体需要你时"
-          }
-        }
-      }
-    },
     "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.": {
       "extractionState": "manual",
       "localizations": {
@@ -15945,53 +15933,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "智能体已完成"
-          }
-        }
-      }
-    },
-    "Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Agent wartet auf eine Berechtigungsabfrage oder eine Antwort. Für zuverlässige Mitteilungen ist die präzise Erkennung erforderlich."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu agente está esperando una solicitud de permiso o una respuesta. La detección precisa es necesaria para recibir avisos fiables."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre agent attend une autorisation ou une réponse. La détection précise est nécessaire pour recevoir des notifications fiables."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il tuo agente sta aspettando un permesso o una risposta. Il rilevamento preciso è necessario per notifiche affidabili."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "needs_review",
-            "value": "Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция»."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智能体正在等待你回应权限询问或问题。要让通知可靠，需要开启精确检测。"
           }
         }
       }

@@ -5,12 +5,15 @@ struct NotificationSettingsPane: View {
     @Bindable var settings: SettingsStore
 
     private var longRunExplanation: LocalizedStringKey {
-        "Only for runs longer than \(ElapsedTime.compact(settings.taskFinishedThreshold))."
+        // Spelled units ("5 minutes"), localized by the formatter itself.
+        let spelled = Duration.seconds(settings.taskFinishedThreshold)
+            .formatted(.units(allowed: [.hours, .minutes], width: .wide, maximumUnitCount: 2))
+        return "For runs longer than \(spelled)."
     }
 
     var body: some View {
         Group {
-            SettingCheckboxGroup(title: "Notify me") {
+            SettingCheckboxGroup(title: "Notifications") {
                 // Only where there is something that can raise it. "An agent is
                 // waiting for you" is not something a transcript can say: the
                 // classifier reads a file growing and a stop reason, which give
@@ -22,10 +25,10 @@ struct NotificationSettingsPane: View {
                 // after work, and a safety stop comes from the power layer.
                 if PreciseDetection.isSupported {
                     GroupedCheckbox(
-                        title: "When an agent needs you",
+                        title: "Agent needs you",
                         explanation: """
-                            Your agent is blocked on a permission prompt or a question. \
-                            This one needs precise detection turned on to be reliable.
+                            An agent is waiting for permission or an answer. Requires \
+                            Precise Detection.
                             """,
                         spokenLabel: "Notify when an agent needs you",
                         isOn: $settings.notifyOnAgentNeedsInput
@@ -33,35 +36,35 @@ struct NotificationSettingsPane: View {
                 }
 
                 GroupedCheckbox(
-                    title: "When a long task finishes",
+                    title: "Task finished",
                     explanation: longRunExplanation,
                     spokenLabel: "Notify when a long task finishes",
                     isOn: $settings.notifyOnTaskFinished
                 )
 
                 GroupedCheckbox(
-                    title: "When an agent goes quiet",
+                    title: "Agent went quiet",
                     explanation: """
-                        A session that stopped sending anything and never said it had finished. \
-                        Usually a CLI that needs signing in again, or a closed terminal.
+                        A session stopped responding without finishing, usually because \
+                        the CLI needs input or was closed.
                         """,
                     spokenLabel: "Notify when an agent goes quiet",
                     isOn: $settings.notifyOnAgentWentQuiet
                 )
 
                 GroupedCheckbox(
-                    title: "When a new version is out",
+                    title: "New version",
                     explanation: """
-                        Once per version, never twice. The mark in the corner of the menu bar \
-                        icon says the same thing quietly, whether this is on or off.
+                        Sent once per version. The menu bar icon still shows the update \
+                        badge when this is off.
                         """,
                     spokenLabel: "Notify when a new version is out",
                     isOn: $settings.notifyOnUpdateAvailable
                 )
 
                 GroupedCheckbox(
-                    title: "When Belay stops for safety",
-                    explanation: "Low battery, or the maximum awake time was reached.",
+                    title: "Safety stop",
+                    explanation: "Low battery or awake limit reached.",
                     spokenLabel: "Notify when Belay stops for safety",
                     isOn: $settings.notifyOnSafetyRelease
                 )
@@ -70,7 +73,7 @@ struct NotificationSettingsPane: View {
             Divider()
 
             SettingNote(
-                text: "Belay asks macOS for permission the first time it actually needs to notify you."
+                text: "Belay asks for permission the first time it needs to send a notification."
             )
         }
     }
