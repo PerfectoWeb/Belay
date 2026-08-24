@@ -1,6 +1,7 @@
 import AppKit
 import BelaySettings
 import BelayCore
+import SwiftUI
 import XCTest
 
 @testable import Belay
@@ -146,6 +147,46 @@ final class LiveAgentsPaneTests: XCTestCase {
         let seconds = Double(ProcessInfo.processInfo.environment["BELAY_LIVE_SECONDS"] ?? "4") ?? 4
         RunLoop.main.run(until: Date().addingTimeInterval(seconds))
         window.close()
+    }
+}
+
+/// The built-in tiles with the precise badge, for a photo of the status line
+/// at its longest.
+@MainActor
+final class LivePreciseTileTests: XCTestCase {
+    func testTilesOnScreen() throws {
+        guard ProcessInfo.processInfo.environment["BELAY_LIVE_POPOVER"] != nil else {
+            throw XCTSkip("set BELAY_LIVE_POPOVER to film the tiles")
+        }
+        let claude = ProviderStatus(
+            descriptor: ProviderDescriptor(
+                id: .claudeCode, displayName: "Claude Code", summary: "", symbolName: "sparkles",
+                supportsPreciseDetection: true),
+            availability: .ready, isEnabled: true, lastSignal: Date().addingTimeInterval(-300))
+        let codex = ProviderStatus(
+            descriptor: ProviderDescriptor(
+                id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
+                supportsPreciseDetection: true),
+            availability: .ready, isEnabled: true, lastSignal: nil)
+        let row = HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
+            BuiltInProviderTile(provider: claude, precise: true)
+            BuiltInProviderTile(provider: codex, precise: true)
+        }
+        .padding(20)
+        .frame(width: SettingsPane.width)
+        let window = NSWindow(
+            contentRect: NSRect(x: 60, y: 300, width: SettingsPane.width, height: 140),
+            styleMask: [.titled], backing: .buffered, defer: false)
+        window.contentView = NSHostingView(rootView: row)
+        window.makeKeyAndOrderFront(nil)
+        if let folder = ProcessInfo.processInfo.environment["BELAY_FRAMES"] {
+            try? "\(window.windowNumber)".write(
+                to: URL(fileURLWithPath: folder).appendingPathComponent("wid.txt"),
+                atomically: true, encoding: .utf8)
+        }
+        let seconds = Double(ProcessInfo.processInfo.environment["BELAY_LIVE_SECONDS"] ?? "4") ?? 4
+        RunLoop.main.run(until: Date().addingTimeInterval(seconds))
+        window.orderOut(nil)
     }
 }
 

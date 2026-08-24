@@ -1,4 +1,5 @@
 import BelayCore
+import BelaySupport
 import Foundation
 
 /// Just enough HTTP/1.1 to accept one POST from Claude Code.
@@ -98,6 +99,30 @@ extension HookReceiver {
         guard let components = URLComponents(string: path),
             let agent = components.queryItems?.first(where: { $0.name == "agent" })?.value
         else { return .claudeCode }
-        return agent == "codex" ? .codex : .claudeCode
+        switch agent {
+        case "codex": return .codex
+        case "cline": return .cline
+        default: return .claudeCode
+        }
+    }
+
+    /// One posted body, decoded by whoever's vocabulary the URL names, into
+    /// at most one signal. Logging happens here so the receiver stays under
+    /// its own roof: names, activities and counts — never the body (R9).
+    static func agentSignal(path: String, body: Data, at now: Date) -> ActivitySignal? {
+        let provider = provider(inPath: path)
+        if provider == .cline {
+            guard let signal = ClineHookEnvelope.signal(path: path, body: body, at: now) else {
+                return nil
+            }
+            EventLog.note("hook cline \(signal.session) -> \(signal.activity)")
+            return signal
+        }
+        guard let envelope = try? JSONDecoder().decode(HookEnvelope.self, from: body),
+            let signal = envelope.signal(at: now, provider: provider)
+        else { return nil }
+        let bg = envelope.backgroundTasks ?? -1
+        EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)")
+        return signal
     }
 }

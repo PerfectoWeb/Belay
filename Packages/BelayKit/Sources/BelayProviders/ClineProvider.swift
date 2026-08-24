@@ -21,7 +21,7 @@ public actor ClineProvider: ActivityProvider {
             localized: "Watches Cline's session files to tell when a task is running.",
             bundle: .main),
         symbolName: "terminal",
-        supportsPreciseDetection: false)
+        supportsPreciseDetection: true)
 
     public let signals: AsyncStream<ActivitySignal>
 

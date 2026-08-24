@@ -9,11 +9,13 @@ public struct BridgePaths: Sendable, Equatable {
     public let support: URL
     public let claudeSettings: URL
     public let codexHome: URL
+    public let clineHome: URL
 
-    public init(support: URL, claudeSettings: URL, codexHome: URL) {
+    public init(support: URL, claudeSettings: URL, codexHome: URL, clineHome: URL) {
         self.support = support
         self.claudeSettings = claudeSettings
         self.codexHome = codexHome
+        self.clineHome = clineHome
     }
 
     public static func real(
@@ -23,11 +25,13 @@ public struct BridgePaths: Sendable, Equatable {
             support: home.appendingPathComponent(
                 "Library/Application Support/Belay", isDirectory: true),
             claudeSettings: home.appendingPathComponent(".claude/settings.json"),
-            codexHome: home.appendingPathComponent(".codex", isDirectory: true))
+            codexHome: home.appendingPathComponent(".codex", isDirectory: true),
+            clineHome: home.appendingPathComponent(".cline", isDirectory: true))
     }
 
     public var backups: URL { support.appendingPathComponent("backups", isDirectory: true) }
     public var bridgeRecord: URL { support.appendingPathComponent("bridge.json") }
     public var codexHooks: URL { codexHome.appendingPathComponent("hooks.json") }
     public var codexConfig: URL { codexHome.appendingPathComponent("config.toml") }
+    public var clineHooks: URL { clineHome.appendingPathComponent("hooks", isDirectory: true) }
 }

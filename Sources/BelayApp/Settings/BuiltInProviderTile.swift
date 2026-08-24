@@ -11,6 +11,10 @@ import SwiftUI
 /// watched.
 struct BuiltInProviderTile: View {
     let provider: ProviderStatus
+    /// Whether this agent's hooks are installed: the status line says so,
+    /// because "precise" versus "inferred" is the one fact about detection
+    /// worth a word in the tile.
+    var precise = false
     var onToggle: (Bool) -> Void = { _ in }
     var onFix: () -> Void = {}
 
@@ -77,7 +81,12 @@ struct BuiltInProviderTile: View {
         } else {
             switch provider.availability {
             case .ready:
-                if let last = provider.lastSignal {
+                if precise, let last = provider.lastSignal {
+                    Text("Precise · last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
+                        .foregroundStyle(.tertiary)
+                } else if precise {
+                    Text("Precise").foregroundStyle(.tertiary)
+                } else if let last = provider.lastSignal {
                     Text("last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
                         .foregroundStyle(.tertiary)
                 } else {

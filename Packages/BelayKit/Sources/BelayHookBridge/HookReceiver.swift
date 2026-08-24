@@ -220,11 +220,7 @@ public actor HookReceiver {
             respond(.accepted, on: connection)
             return
         }
-        let envelope = try? JSONDecoder().decode(HookEnvelope.self, from: request.body)
-        let provider = Self.provider(inPath: request.path)
-        if let envelope, let signal = envelope.signal(at: clock.now, provider: provider) {
-            let bg = envelope.backgroundTasks ?? -1  // name, activity, count — never the body (R9)
-            EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)")
+        if let signal = Self.agentSignal(path: request.path, body: request.body, at: clock.now) {
             continuation.yield(signal)
         }
         // Accepted even when the body was unusable. A hook that reports failure

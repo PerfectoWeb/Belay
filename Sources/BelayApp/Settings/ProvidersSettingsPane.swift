@@ -103,6 +103,8 @@ struct ProvidersSettingsPane: View {
                     ForEach(rows[index]) { provider in
                         BuiltInProviderTile(
                             provider: provider,
+                            precise: installed(provider.id)
+                                && provider.descriptor.supportsPreciseDetection,
                             onToggle: { state.onToggleProvider(provider.id, $0) },
                             onFix: { state.onGrantAccess(provider.id) })
                     }
@@ -142,6 +144,9 @@ struct ProvidersSettingsPane: View {
         if let problem = precise.codexLastError {
             SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
         }
+        if let problem = precise.clineLastError {
+            SettingNote(text: LocalizedStringKey(stringLiteral: problem), isProblem: true)
+        }
     }
 
     private func preciseLine(for provider: ProviderStatus) -> some View {
@@ -152,10 +157,10 @@ struct ProvidersSettingsPane: View {
             if installed(provider.id) {
                 Button("Remove") {
                     Task {
-                        if provider.id == .codex {
-                            await precise.uninstallCodex()
-                        } else {
-                            precise.uninstall()
+                        switch provider.id {
+                        case .codex: await precise.uninstallCodex()
+                        case .cline: precise.uninstallCline()
+                        default: precise.uninstall()
                         }
                         refreshToken += 1
                     }
@@ -169,7 +174,12 @@ struct ProvidersSettingsPane: View {
     }
 
     private func installed(_ id: ProviderID) -> Bool {
-        id == .codex ? precise.isCodexInstalled : precise.isInstalled
+        switch id {
+        case .claudeCode: return precise.isInstalled
+        case .codex: return precise.isCodexInstalled
+        case .cline: return precise.isClineInstalled
+        default: return false
+        }
     }
 
 }

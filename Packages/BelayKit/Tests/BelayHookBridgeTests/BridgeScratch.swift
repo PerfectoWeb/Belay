@@ -15,7 +15,8 @@ struct BridgeScratch {
         paths = BridgePaths(
             support: root.appendingPathComponent("Application Support/Belay", isDirectory: true),
             claudeSettings: root.appendingPathComponent(".claude/settings.json"),
-            codexHome: root.appendingPathComponent(".codex", isDirectory: true))
+            codexHome: root.appendingPathComponent(".codex", isDirectory: true),
+            clineHome: root.appendingPathComponent(".cline", isDirectory: true))
         try FileManager.default.createDirectory(
             at: claudeDirectory, withIntermediateDirectories: true)
         if let settings { try Data(settings.utf8).write(to: paths.claudeSettings) }

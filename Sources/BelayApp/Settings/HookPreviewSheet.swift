@@ -18,19 +18,36 @@ struct HookPreviewSheet: View {
     @State private var installing = false
 
     private var isCodex: Bool { provider == .codex }
-    private var path: String { isCodex ? precise.codexHooksPath : precise.settingsPath }
+    private var isCline: Bool { provider == .cline }
+    private var path: String {
+        switch provider {
+        case .codex: return precise.codexHooksPath
+        case .cline: return precise.clineHooksPath
+        default: return precise.settingsPath
+        }
+    }
+
+    /// What the sheet shows as "will be written": Cline's is one script that
+    /// lands under six event names, the other two are the merged JSON.
+    private var proposed: String? {
+        switch provider {
+        case .codex: return precise.codexPreview()?.proposed
+        case .cline: return precise.clinePreview()
+        default: return precise.preview()?.proposed
+        }
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Enable precise detection")
                 .font(.title3).bold()
 
-            if let preview = isCodex ? precise.codexPreview() : precise.preview() {
+            if let preview = proposed {
                 Text("Belay will change \(path) to:")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                codeBlock(preview.proposed)
+                codeBlock(preview)
                 Text(
                     """
                     A timestamped backup is made first. Everything already in the \
@@ -52,13 +69,26 @@ struct HookPreviewSheet: View {
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
                 }
+                if isCline {
+                    Text("One file per event: \(clineFiles).")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if !precise.clineOccupied().isEmpty {
+                        let occupied = precise.clineOccupied().joined(separator: ", ")
+                        Text("Skipped, already taken by your own scripts: \(occupied)")
+                            .font(.caption)
+                            .foregroundStyle(.orange)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
 
                 HStack {
                     Button("Cancel") { dismiss() }
                         .keyboardShortcut(.cancelAction)
                     Spacer()
                     if installing { ProgressView().controlSize(.small).padding(.trailing, 6) }
-                    Button(isCodex ? "Add to Codex" : "Add to Claude Code") {
+                    Button(addTitle) {
                         if isCodex {
                             installing = true
                             Task {
@@ -68,7 +98,7 @@ struct HookPreviewSheet: View {
                                 dismiss()
                             }
                         } else {
-                            precise.install()
+                            if isCline { precise.installCline() } else { precise.install() }
                             onFinish()
                             dismiss()
                         }
@@ -82,6 +112,20 @@ struct HookPreviewSheet: View {
         }
         .padding(22)
         .frame(width: 560)
+    }
+
+    private var addTitle: LocalizedStringKey {
+        switch provider {
+        case .codex: return "Add to Codex"
+        case .cline: return "Add to Cline"
+        default: return "Add to Claude Code"
+        }
+    }
+
+    /// The six names, spelled out so the person can find them again.
+    private var clineFiles: String {
+        ["TaskStart", "TaskResume", "TaskCancel", "TaskComplete", "TaskError", "SessionShutdown"]
+            .map { $0 + ".sh" }.joined(separator: ", ")
     }
 
     @ViewBuilder
