@@ -110,6 +110,7 @@ final class BelayController {
                     )
                 )
                 self?.nightDimming.isOnAC = snapshot.isOnAC
+                self?.restoreAlwaysOnTimer()
                 self?.refreshSnapshot()
             }
         )
@@ -168,6 +169,10 @@ final class BelayController {
     func setMode(_ mode: AwakeMode) {
         settings.mode = mode
         state.mode = mode
+        // The coordinator drops the timer when the mode leaves Always on;
+        // the persisted copy goes with it, or a relaunch would resurrect a
+        // bound the user had already walked away from.
+        if mode != .alwaysOn { settings.alwaysOnTimer = nil }
         let policy = settings.policy
         Task { [coordinator, driver, weak self] in
             await coordinator.setPolicy(policy)

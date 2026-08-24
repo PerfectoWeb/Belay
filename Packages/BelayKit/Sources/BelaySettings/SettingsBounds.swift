@@ -26,6 +26,10 @@ public enum SettingsBounds {
     public static let hookFreshnessWindow: ClosedRange<TimeInterval> = 30...3600
     /// Charge fraction. `nil` disables the guard; anything else is 0…1.
     public static let batteryFloor: ClosedRange<Double> = 0...1
+
+    /// The duration menu's own range: a minute to a day. Same bounds as the
+    /// Custom dialog enforces.
+    public static let alwaysOnTimerDuration: ClosedRange<TimeInterval> = 60...86_400
     /// Invariant 2: every assertion self-releases. This is the longest a wedged
     /// or crashed Belay can keep the Mac awake after it stops refreshing.
     public static let assertionTimeout: ClosedRange<TimeInterval> = 30...600

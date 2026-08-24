@@ -126,3 +126,38 @@ import os
         )
     }
 }
+
+/// The Always-on timer's pair survives a store round trip, or vanishes as one.
+@Suite("Always-on timer persistence")
+@MainActor
+struct AlwaysOnTimerPersistenceTests {
+    @Test("The pair persists and comes back together")
+    func roundTrip() throws {
+        let suite = "belay.tests.timer-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+
+        let store = SettingsStore(defaults: defaults)
+        let deadline = Date().addingTimeInterval(3600)
+        store.alwaysOnTimer = (7200, deadline)
+
+        let fresh = SettingsStore(defaults: defaults)
+        let restored = try #require(fresh.alwaysOnTimer)
+        #expect(restored.duration == 7200)
+        #expect(abs(restored.deadline.timeIntervalSince(deadline)) < 0.001)
+
+        fresh.alwaysOnTimer = nil
+        #expect(SettingsStore(defaults: defaults).alwaysOnTimer == nil)
+    }
+
+    @Test("A duration outside the menu's range is not restored")
+    func boundsGuard() throws {
+        let suite = "belay.tests.timer-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+
+        defaults.set(5.0, forKey: "alwaysOnTimerDuration")
+        defaults.set(Date().timeIntervalSince1970, forKey: "alwaysOnTimerDeadline")
+        #expect(SettingsStore(defaults: defaults).alwaysOnTimer == nil)
+    }
+}

@@ -17,6 +17,8 @@ enum SettingsKey: String, CaseIterable {
     case sessionTTL
     case hookFreshnessWindow
     case batteryFloor
+    case alwaysOnTimerDuration
+    case alwaysOnTimerDeadline
     case batteryGuardEnabled
     case shortenGraceInLowPower
     case keepDisplayAwake
@@ -122,6 +124,7 @@ extension SettingsValues {
         hookFreshnessWindow = defaults.seconds(
             .hookFreshnessWindow, in: SettingsBounds.hookFreshnessWindow, or: fallback.hookFreshnessWindow)
         batteryFloor = Self.readBatteryFloor(defaults, fallback: fallback.batteryFloor)
+        (alwaysOnTimerDuration, alwaysOnTimerDeadline) = Self.readAlwaysOnTimer(defaults)
         shortenGraceInLowPower = defaults.flag(.shortenGraceInLowPower) ?? fallback.shortenGraceInLowPower
         keepDisplayAwake = defaults.flag(.keepDisplayAwake) ?? fallback.keepDisplayAwake
         assertionTimeout = defaults.seconds(
@@ -173,6 +176,13 @@ extension SettingsValues {
         defaults.store(awaitingUserBudget, .awaitingUserBudget)
         defaults.store(sessionTTL, .sessionTTL)
         defaults.store(hookFreshnessWindow, .hookFreshnessWindow)
+        if let alwaysOnTimerDuration, let alwaysOnTimerDeadline {
+            defaults.store(alwaysOnTimerDuration, .alwaysOnTimerDuration)
+            defaults.store(alwaysOnTimerDeadline.timeIntervalSince1970, .alwaysOnTimerDeadline)
+        } else {
+            defaults.removeObject(forKey: SettingsKey.alwaysOnTimerDuration.rawValue)
+            defaults.removeObject(forKey: SettingsKey.alwaysOnTimerDeadline.rawValue)
+        }
         defaults.store(batteryFloor != nil, .batteryGuardEnabled)
         if let batteryFloor { defaults.store(batteryFloor, .batteryFloor) }
         defaults.store(shortenGraceInLowPower, .shortenGraceInLowPower)
@@ -206,6 +216,21 @@ extension SettingsValues {
         guard let stored = defaults.number(.maxContinuousAwake) else { return fallback }
         return SettingsBounds.maxContinuousAwake.clamping(
             stored, fallback: fallback ?? SettingsBounds.maxContinuousAwake.upperBound)
+    }
+
+    /// Restored as a pair or not at all: a duration without its deadline is
+    /// not a timer.
+    private static func readAlwaysOnTimer(
+        _ defaults: UserDefaults
+    ) -> (TimeInterval?, Date?) {
+        guard
+            let duration = defaults.object(forKey: SettingsKey.alwaysOnTimerDuration.rawValue)
+                as? Double,
+            let deadline = defaults.object(forKey: SettingsKey.alwaysOnTimerDeadline.rawValue)
+                as? Double,
+            SettingsBounds.alwaysOnTimerDuration.contains(duration)
+        else { return (nil, nil) }
+        return (duration, Date(timeIntervalSince1970: deadline))
     }
 
     private static func readBatteryFloor(_ defaults: UserDefaults, fallback: Double?) -> Double? {

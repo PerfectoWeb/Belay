@@ -169,6 +169,22 @@ public final class SettingsStore {
         set { update { $0.taskFinishedThreshold = newValue } }
     }
 
+    /// The pair or nothing: setting one half is not representable.
+    public var alwaysOnTimer: (duration: TimeInterval, deadline: Date)? {
+        get {
+            guard let duration = values.alwaysOnTimerDuration,
+                let deadline = values.alwaysOnTimerDeadline
+            else { return nil }
+            return (duration, deadline)
+        }
+        set {
+            update {
+                $0.alwaysOnTimerDuration = newValue?.duration
+                $0.alwaysOnTimerDeadline = newValue?.deadline
+            }
+        }
+    }
+
     public var enabledProviders: Set<ProviderID> {
         get { values.enabledProviders }
         set { update { $0.enabledProviders = newValue } }

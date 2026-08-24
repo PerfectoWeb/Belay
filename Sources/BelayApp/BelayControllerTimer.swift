@@ -8,8 +8,27 @@ import BelaySupport
 extension BelayController {
     func setAlwaysOnTimer(_ duration: TimeInterval?) {
         Diagnostics.note(duration.map { "timer set \(Int($0))s" } ?? "timer off")
+        settings.alwaysOnTimer = duration.map { ($0, Date().addingTimeInterval($0)) }
         Task { [coordinator, driver, weak self] in
             await coordinator.setAlwaysOnTimer(duration)
+            await driver.nudge()
+            self?.refreshSnapshot()
+        }
+    }
+
+    /// Puts a persisted timer back after a relaunch — or clears the record
+    /// when the mode moved on while it sat there.
+    func restoreAlwaysOnTimer() {
+        guard let stored = settings.alwaysOnTimer else { return }
+        guard settings.mode == .alwaysOn else {
+            settings.alwaysOnTimer = nil
+            return
+        }
+        let left = Int(stored.deadline.timeIntervalSinceNow)
+        Diagnostics.note("timer restored \(Int(stored.duration))s deadline in \(left)s")
+        Task { [coordinator, driver, weak self] in
+            await coordinator.restoreAlwaysOnTimer(
+                duration: stored.duration, deadline: stored.deadline)
             await driver.nudge()
             self?.refreshSnapshot()
         }
@@ -18,6 +37,10 @@ extension BelayController {
     /// The pause's one-click exit, from the panel's "Hold again" button.
     func holdAgain() {
         Diagnostics.note("hold again")
+        // The re-armed timer's fresh deadline must outlive a relaunch too.
+        if let stored = settings.alwaysOnTimer {
+            settings.alwaysOnTimer = (stored.duration, Date().addingTimeInterval(stored.duration))
+        }
         Task { [coordinator, driver, weak self] in
             await coordinator.holdAgain()
             await driver.nudge()

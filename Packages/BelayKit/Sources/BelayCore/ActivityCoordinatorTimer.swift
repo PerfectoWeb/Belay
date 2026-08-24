@@ -10,6 +10,16 @@ extension ActivityCoordinator {
         evaluate()
     }
 
+    /// A timer carried across a relaunch, deadline and all. Restored
+    /// verbatim on purpose: a live deadline keeps counting from where it
+    /// was, and one that passed while Belay was not running lands in the
+    /// timer-ended pause with its "Hold again" — the same honest answer the
+    /// running app would have given.
+    public func restoreAlwaysOnTimer(duration: TimeInterval, deadline: Date) {
+        timer = AlwaysOnTimer(duration: duration, deadline: deadline)
+        evaluate()
+    }
+
     /// The pause's one-click exit. Re-arms whichever bound fired: a tripped
     /// cap is forgiven, and a finished timer starts a fresh round of the same
     /// length. Harmless when nothing is paused.

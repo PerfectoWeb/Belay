@@ -16,6 +16,11 @@ struct SettingsValues: Equatable, Sendable {
     var hookFreshnessWindow: TimeInterval
     /// `nil` disables the battery guard.
     var batteryFloor: Double?
+    /// The Always-on timer, so a relaunch does not quietly turn "for two
+    /// hours" into "until turned off". Both or neither; the store's accessor
+    /// keeps the pair honest.
+    var alwaysOnTimerDuration: TimeInterval?
+    var alwaysOnTimerDeadline: Date?
     var shortenGraceInLowPower: Bool
     var keepDisplayAwake: Bool
     var assertionTimeout: TimeInterval

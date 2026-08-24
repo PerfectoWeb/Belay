@@ -186,25 +186,25 @@ final class ProviderHost {
         await bus.shutdown()
     }
 
-    func statuses(lastSignal: Date?) async -> [ProviderStatus] {
+    func statuses(lastSignals: [ProviderID: Date] = [:]) async -> [ProviderStatus] {
         [
             ProviderStatus(
                 descriptor: claudeCode.descriptor,
                 availability: await claudeCode.availability,
                 isEnabled: enabled.contains(.claudeCode),
-                lastSignal: lastSignal
+                lastSignal: lastSignals[.claudeCode]
             ),
             ProviderStatus(
                 descriptor: codex.descriptor,
                 availability: await codex.availability,
                 isEnabled: enabled.contains(.codex),
-                lastSignal: nil
+                lastSignal: lastSignals[.codex]
             ),
             ProviderStatus(
                 descriptor: cline.descriptor,
                 availability: await cline.availability,
                 isEnabled: enabled.contains(.cline),
-                lastSignal: nil
+                lastSignal: lastSignals[.cline]
             ),
             ProviderStatus(
                 descriptor: generic.descriptor,

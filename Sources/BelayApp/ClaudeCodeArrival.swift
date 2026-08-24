@@ -23,7 +23,10 @@ extension BelayController {
     }
 
     func publishProviderStatus() async {
-        let last = state.snapshot.sessions.map(\.lastSignal).max()
-        state.apply(providers: await providers.statuses(lastSignal: last))
+        // Per agent, not one shared maximum: the Claude tile used to wear
+        // whatever agent had spoken last.
+        let last = Dictionary(grouping: state.snapshot.sessions, by: \.provider)
+            .compactMapValues { $0.map(\.lastSignal).max() }
+        state.apply(providers: await providers.statuses(lastSignals: last))
     }
 }

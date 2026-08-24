@@ -27,6 +27,35 @@ struct AlwaysOnTimerTests {
         #expect(await coordinator.snapshot.timer?.duration == 900)
     }
 
+    @Test("A restored live deadline keeps counting from where it was")
+    func restoredTimerKeepsItsDeadline() async {
+        let clock = TestClock()
+        let coordinator = ActivityCoordinator(clock: clock, policy: alwaysOn())
+
+        // Two minutes were left when the app died; two minutes stay left.
+        await coordinator.restoreAlwaysOnTimer(duration: 900, deadline: clock.now + 120)
+        #expect(await coordinator.evaluate().isHold)
+        #expect(await coordinator.snapshot.timer?.duration == 900)
+
+        clock.advance(121)
+        #expect(await coordinator.evaluate() == .release)
+        #expect(await coordinator.snapshot.state == .suspended(.timerEnded(900)))
+    }
+
+    @Test("A deadline that passed while the app was gone lands in the pause")
+    func restoredExpiredTimerIsTheHonestPause() async {
+        let clock = TestClock()
+        let coordinator = ActivityCoordinator(clock: clock, policy: alwaysOn())
+
+        await coordinator.restoreAlwaysOnTimer(duration: 900, deadline: clock.now - 60)
+        #expect(await coordinator.evaluate() == .release)
+        #expect(await coordinator.snapshot.state == .suspended(.timerEnded(900)))
+
+        // And the pause keeps its one-click exit.
+        await coordinator.holdAgain()
+        #expect(await coordinator.evaluate().isHold)
+    }
+
     @Test("Hold again starts a fresh round of the same length")
     func holdAgainRenewsTheTimer() async {
         let clock = TestClock()
