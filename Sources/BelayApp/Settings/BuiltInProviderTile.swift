@@ -16,10 +16,10 @@ struct BuiltInProviderTile: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image(nsImage: ProviderMark.image(for: provider.id, size: 24))
+            Image(nsImage: ProviderMark.image(for: provider.id, size: 22))
                 .resizable()
                 .interpolation(.high)
-                .frame(width: 24, height: 24)
+                .frame(width: 22, height: 22)
                 .foregroundStyle(provider.isEnabled ? .primary : .secondary)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -49,11 +49,15 @@ struct BuiltInProviderTile: View {
                 }
             }
         }
-        .padding(12)
-        .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+        .padding(.vertical, 9)
+        .padding(.horizontal, 12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        // The generic tiles' own grey, at two strengths — borderless is the
+        // whole difference from the tools below. A blue wash was tried and
+        // asked for the eye more than a resting pane should.
         .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(Color.accentColor.opacity(provider.isEnabled ? 0.10 : 0.05))
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .fill(Color.primary.opacity(provider.isEnabled ? 0.045 : 0.022))
         )
     }
 

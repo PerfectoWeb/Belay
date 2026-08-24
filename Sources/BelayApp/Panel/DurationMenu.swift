@@ -24,6 +24,7 @@ final class DurationMenu: NSObject, NSMenuDelegate {
     static let extra: [TimeInterval] = [2700, 10800, 18000, 21600, 25200, 36000, 50400]
 
     private let menu = NSMenu()
+    private var customItem: NSMenuItem?
     private var watcher: Timer?
     private var shiftShown = false
     private var current: TimeInterval?
@@ -44,9 +45,16 @@ final class DurationMenu: NSObject, NSMenuDelegate {
     func show(from view: NSView, current: TimeInterval?, shiftHeld: Bool? = nil) {
         self.current = current
         for item in menu.items {
-            guard let value = item.representedObject as? TimeInterval? else { continue }
+            guard item.representedObject is TimeInterval? || item.representedObject == nil,
+                item !== customItem, item.action != nil
+            else { continue }
+            let value = (item.representedObject as? TimeInterval?).flatMap { $0 }
             item.state = value == current ? .on : .off
         }
+        // The check lands on Custom… exactly when the running length is one
+        // no preset row owns.
+        let presets = Self.base + Self.extra
+        customItem?.state = current.map { !presets.contains($0) } == true ? .on : .off
         reveal(shiftHeld: shiftHeld ?? NSEvent.modifierFlags.contains(.shift))
         menu.popUp(positioning: nil, at: NSPoint(x: 0, y: view.bounds.minY - 4), in: view)
     }
@@ -75,7 +83,11 @@ final class DurationMenu: NSObject, NSMenuDelegate {
         let custom = NSMenuItem(
             title: String(localized: "Custom…"), action: #selector(pickCustom), keyEquivalent: "")
         custom.target = self
+        // A marker, not a duration: without it the row cast as a nil duration
+        // and wore a second checkmark whenever "until turned off" did.
+        custom.representedObject = "custom"
         menu.addItem(custom)
+        customItem = custom
     }
 
     private func reveal(shiftHeld: Bool) {

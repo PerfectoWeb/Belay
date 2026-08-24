@@ -130,23 +130,21 @@ final class ProvidersPaneFrameTests: XCTestCase {
     }
 }
 
-/// "Custom…" accepts a length the way people type one.
+/// "Custom…" builds a length from its two fields, digits only.
 final class CustomDurationTests: XCTestCase {
-    func testParsesTheUsualShapes() {
-        XCTAssertEqual(CustomDuration.parse("1:30"), 5400)
-        XCTAssertEqual(CustomDuration.parse("90"), 5400, "a bare number is minutes")
-        XCTAssertEqual(CustomDuration.parse("90m"), 5400)
-        XCTAssertEqual(CustomDuration.parse("1h 30m"), 5400)
-        XCTAssertEqual(CustomDuration.parse("2h"), 7200)
-        XCTAssertEqual(CustomDuration.parse("45 min"), 2700)
-        XCTAssertEqual(CustomDuration.parse("0:20"), 1200)
+    func testMakesSecondsFromTheTwoFields() {
+        XCTAssertEqual(CustomDuration.seconds(hours: "1", minutes: "30"), 5400)
+        XCTAssertEqual(CustomDuration.seconds(hours: "", minutes: "45"), 2700)
+        XCTAssertEqual(CustomDuration.seconds(hours: "2", minutes: ""), 7200)
+        XCTAssertEqual(CustomDuration.seconds(hours: "0", minutes: "01"), 60)
+        XCTAssertEqual(CustomDuration.seconds(hours: "24", minutes: ""), 24 * 3600)
     }
 
     func testRefusesWhatIsNotALength() {
-        XCTAssertNil(CustomDuration.parse(""))
-        XCTAssertNil(CustomDuration.parse("soon"))
-        XCTAssertNil(CustomDuration.parse("0"), "under a minute is not a timer")
-        XCTAssertNil(CustomDuration.parse("25h"), "over a day is what until turned off is for")
-        XCTAssertNil(CustomDuration.parse("1:xx"))
+        XCTAssertNil(CustomDuration.seconds(hours: "", minutes: ""), "empty is not a timer")
+        XCTAssertNil(CustomDuration.seconds(hours: "0", minutes: "0"), "under a minute is not a timer")
+        XCTAssertNil(CustomDuration.seconds(hours: "", minutes: "75"), "minutes wear two digits, 0-59")
+        XCTAssertNil(CustomDuration.seconds(hours: "25", minutes: "0"), "over a day is until turned off")
+        XCTAssertNil(CustomDuration.seconds(hours: "1", minutes: "xx"))
     }
 }

@@ -33,7 +33,7 @@
 30 min,Settings,translated,,30 min,30 min
 30 sec,Settings,translated,,30 sec,30 sec
 4 hours,Settings,translated,,4 hours,4 hours
-45 min,"Panel, Settings",translated,,45 min,45 min
+45 min,Settings,translated,,45 min,45 min
 5 hours,Settings,translated,,5 hours,5 hours
 5 min,"App, Panel, Settings",translated,,5 min,5 min
 6 hours,Settings,translated,,6 hours,6 hours
@@ -162,7 +162,7 @@ Hear your week,App,translated,,Hear your week,Hear your week
 Hold again,"App, Detection, Panel",translated,,Hold again,Hold again
 Hold again with one click,App,translated,,Hold again with one click,Hold again with one click
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Waiting a moment in case more work starts.
-"Hours and minutes, like 1:30 or 90 min.",Panel,translated,,"Hours and minutes, like 1:30 or 90 min.","Hours and minutes, like 1:30 or 90 min."
+Hours and minutes.,Panel,translated,,Hours and minutes.,Hours and minutes.
 How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.,How long Belay waits after an agent goes quiet before letting your Mac sleep. A little extra time helps avoid sleep between tasks.
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,How long to keep the Mac awake
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Idle
@@ -275,7 +275,7 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 Stop on low battery,Settings: Behaviour,translated,,Stop on low battery,Stop on low battery
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Stops watching this tool
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagent
-System,"App, Detection, Settings, Settings: General, Settings: Providers",translated,,System,System
+System,"App, Detection, Panel, Settings, Settings: General, Settings: Providers",translated,,System,System
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","The Mac ran hot with the lid closed, so Belay let it sleep."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,The agent in %@ stopped without finishing. It may need signing in again.
