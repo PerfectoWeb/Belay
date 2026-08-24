@@ -55,6 +55,7 @@ final class ProviderHost {
     /// useful in manual modes even with no detection at all.
     func start() async -> AsyncStream<ActivitySignal> {
         let signals = await bus.subscribe()
+        EventLog.note("providers start enabled=\(enabled.map(\.rawValue).sorted().joined(separator: ","))")
 
         await bus.attach(claudeCode.signals)
         if enabled.contains(.claudeCode) { await startClaudeCode(first: true) }
@@ -155,13 +156,11 @@ final class ProviderHost {
     private func startCline(first: Bool) async {
         do {
             try await cline.start()
-            if !first { Log.providers.notice("Cline provider started") }
+            EventLog.note("cline provider started")
         } catch ProviderError.notInUseYet(let path) {
-            guard first else { return }
-            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
+            EventLog.note("cline not in use yet \(path)")
         } catch {
-            guard first else { return }
-            Log.providers.error("Cline provider failed to start: \(error, privacy: .public)")
+            EventLog.note("cline start failed \(error)")
         }
     }
 
