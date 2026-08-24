@@ -8,6 +8,7 @@ struct ProvidersSettingsPane: View {
     var onTargetsChanged: ([GenericTarget]) -> Void
     var onReshaped: () -> Void = {}
     @State private var showingPreview = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var refreshToken = 0
     @State private var targets: [GenericTarget]
 
@@ -39,8 +40,17 @@ struct ProvidersSettingsPane: View {
                 }
                 if showsPreciseNote {
                     preciseRow
+                        .transition(TargetTileMetrics.transition)
                 }
             }
+            // The same arrival and departure the tiles below use, so the row
+            // appears the way everything else on this pane does — and the
+            // window's own refit is already easing to the same clock.
+            .animation(
+                reduceMotion
+                    ? nil
+                    : (showsPreciseNote ? TargetTileMetrics.arrival : TargetTileMetrics.departure),
+                value: showsPreciseNote)
             Divider()
 
             GenericTargetsSection(targets: $targets)

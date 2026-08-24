@@ -15,12 +15,15 @@ struct BuiltInProviderTile: View {
     var onFix: () -> Void = {}
 
     var body: some View {
-        HStack(alignment: .top, spacing: 10) {
-            Image(nsImage: ProviderMark.image(for: provider.id, size: 22))
+        // Centred like the generic tiles' marks, and dimmed rather than
+        // recoloured when the agent is off: the logos are pictures, not
+        // template glyphs, so opacity is the honest way to grey them.
+        HStack(alignment: .center, spacing: 10) {
+            Image(nsImage: ProviderMark.image(for: provider.id, size: 20))
                 .resizable()
                 .interpolation(.high)
-                .frame(width: 22, height: 22)
-                .foregroundStyle(provider.isEnabled ? .primary : .secondary)
+                .frame(width: 20, height: 20)
+                .opacity(provider.isEnabled ? 1 : 0.35)
 
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: 6) {
