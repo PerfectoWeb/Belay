@@ -13,6 +13,12 @@ struct BuiltInProviderTile: View {
     let provider: ProviderStatus
     var onToggle: (Bool) -> Void = { _ in }
     var onFix: () -> Void = {}
+    /// False for the tile's first frames. A switch created "on" animates its
+    /// knob into place, and with the window busy measuring the pane, that
+    /// animation froze mid-slide: a solid blue capsule with no knob for a
+    /// second or two. Until the view has settled, the switch draws its state
+    /// directly; the slide stays for real clicks.
+    @State private var settled = false
 
     var body: some View {
         // Centred like the generic tiles' marks, and dimmed rather than
@@ -44,12 +50,18 @@ struct BuiltInProviderTile: View {
                     .scaleEffect(0.85, anchor: .trailing)
                     .offset(x: 3)
                     .labelsHidden()
+                    .transaction { transaction in
+                        if !settled { transaction.disablesAnimations = true }
+                    }
                     .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
                 status
                     .font(.system(size: 10))
                     .lineLimit(1)
             }
+        }
+        .onAppear {
+            DispatchQueue.main.async { settled = true }
         }
         .padding(.vertical, 9)
         .padding(.horizontal, 12)
