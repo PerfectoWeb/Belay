@@ -46,17 +46,9 @@ struct BuiltInProviderTile: View {
                     .labelsHidden()
                     .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
-                HStack(alignment: .top, spacing: 6) {
-                    status
-                        .font(.system(size: 10))
-                        .lineLimit(3)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 0)
-                    if provider.isEnabled, case .needsSetup = provider.availability {
-                        Button("Fix", action: onFix)
-                            .controlSize(.small)
-                    }
-                }
+                status
+                    .font(.system(size: 10))
+                    .lineLimit(1)
             }
         }
         .padding(.vertical, 9)
@@ -83,8 +75,9 @@ struct BuiltInProviderTile: View {
     }
 
     /// Off says off. On says ready (and when it was last heard from), or what
-    /// is in the way — "not installed" is a fact, in grey; "needs the folder"
-    /// is a request, in orange, and only ever for an agent that is on.
+    /// is in the way — one line, never wrapping: the tile is small and a
+    /// paragraph with a bordered button in it wore the pane out. The ask is
+    /// the path and a Fix link, nothing more.
     @ViewBuilder
     private var status: some View {
         if !provider.isEnabled {
@@ -98,11 +91,26 @@ struct BuiltInProviderTile: View {
                 } else {
                     Text("Ready").foregroundStyle(.tertiary)
                 }
-            case .needsSetup(let what):
-                Text(what).foregroundStyle(.orange)
+            case .needsSetup:
+                HStack(spacing: 5) {
+                    Text("Allow access to \(home)")
+                        .foregroundStyle(.orange)
+                        .truncationMode(.tail)
+                    Button(action: onFix) {
+                        Text("Fix")
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.accentColor)
+                    }
+                    .buttonStyle(.plain)
+                }
             case .unavailable(let why):
-                Text(why).foregroundStyle(.tertiary)
+                Text(why).foregroundStyle(.tertiary).truncationMode(.tail)
             }
         }
+    }
+
+    /// The folder the ask is about, spelled the way the grant panel shows it.
+    private var home: String {
+        provider.id == .codex ? "~/.codex" : "~/.claude"
     }
 }

@@ -101,7 +101,8 @@ final class ProvidersPaneFrameTests: XCTestCase {
                 descriptor: ProviderDescriptor(
                     id: .claudeCode, displayName: "Claude Code", summary: "", symbolName: "sparkles",
                     supportsPreciseDetection: true),
-                availability: .ready, isEnabled: true, lastSignal: Date() - 140),
+                availability: .needsSetup("Let Belay read your ~/.claude folder so it can tell when Claude Code is working."),
+                isEnabled: true, lastSignal: nil),
             ProviderStatus(
                 descriptor: ProviderDescriptor(
                     id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
