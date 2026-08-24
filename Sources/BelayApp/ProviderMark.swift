@@ -30,6 +30,8 @@ enum ProviderMark {
             return logo("logo-claude", size: size) ?? draw(size: size, burst)
         case .codex:
             return logo("logo-codex", size: size) ?? draw(size: size, braces)
+        case .cline:
+            return logo("logo-cline", size: size) ?? draw(size: size, brackets)
         case .generic:
             // A generic session names the preset it came from, so "Other agents"
             // still shows Gemini's mark when it is Gemini that is running.

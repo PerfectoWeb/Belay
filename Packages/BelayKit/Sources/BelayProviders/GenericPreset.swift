@@ -107,10 +107,11 @@ extension GenericPreset {
             processName: "aider"),
         GenericPreset(
             id: "cline",
-            displayName: "Cline",
+            displayName: "Cline (VS Code)",
             summary: """
                 Watches Cline's task storage inside VS Code. No process name: the \
-                editor stays open long after the agent has stopped working.
+                editor stays open long after the agent has stopped working. The \
+                Cline CLI needs no tile: it is built in above.
                 """,
             folder: .home(
                 "Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/tasks"),

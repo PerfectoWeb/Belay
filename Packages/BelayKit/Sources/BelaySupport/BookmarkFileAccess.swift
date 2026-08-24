@@ -83,6 +83,20 @@ public final class BookmarkFileAccess: FileAccessProvider, @unchecked Sendable {
             bookmarks: bookmarks)
     }
 
+    /// `~/.cline`, under its own defaults key, for the same reason `~/.codex`
+    /// has one: three grants, three bookmarks, no overwriting.
+    public static func clineHome(
+        home: URL = UserHome.real,
+        store: BookmarkStore = DefaultsBookmarkStore(),
+        bookmarks: SecurityScopedBookmarks = AppScopedBookmarks()
+    ) -> BookmarkFileAccess {
+        BookmarkFileAccess(
+            root: home.appendingPathComponent(".cline", isDirectory: true),
+            key: "BelayClineFolderBookmark",
+            store: store,
+            bookmarks: bookmarks)
+    }
+
     deinit {
         if let held { bookmarks.stopAccessing(held) }
     }

@@ -119,6 +119,11 @@ final class LiveAgentsPaneTests: XCTestCase {
                     id: .codex, displayName: "Codex", summary: "", symbolName: "curlybraces",
                     supportsPreciseDetection: true),
                 availability: .ready, isEnabled: true, lastSignal: nil),
+            ProviderStatus(
+                descriptor: ProviderDescriptor(
+                    id: .cline, displayName: "Cline", summary: "", symbolName: "terminal",
+                    supportsPreciseDetection: false),
+                availability: .ready, isEnabled: false, lastSignal: nil),
         ])
         let window = SettingsWindow(
             settings: settings, state: app, precise: PreciseDetection(),

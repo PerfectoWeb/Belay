@@ -13,6 +13,7 @@ final class ProviderHost {
     private let bus = SignalBus()
     private let claudeCode: ClaudeCodeProvider
     private let codex: CodexProvider
+    private let cline: ClineProvider
     private let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
@@ -35,6 +36,7 @@ final class ProviderHost {
         enabled: Set<ProviderID> = [.claudeCode, .codex],
         access: FileAccessProvider = DirectFileAccess(),
         codexAccess: FileAccessProvider = DirectFileAccess(),
+        clineAccess: FileAccessProvider = DirectFileAccess(),
         folders: FileAccessProvider = DirectFileAccess(),
         home: URL = FileManager.default.homeDirectoryForCurrentUser
     ) {
@@ -42,6 +44,7 @@ final class ProviderHost {
         self.enabled = enabled
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
         codex = CodexProvider(configuration: .codexHome(home), access: codexAccess)
+        cline = ClineProvider(configuration: .clineHome(home), access: clineAccess)
         generic = GenericProvider(access: folders)
     }
 
@@ -58,6 +61,9 @@ final class ProviderHost {
 
         await bus.attach(codex.signals)
         if enabled.contains(.codex) { await startCodex(first: true) }
+
+        await bus.attach(cline.signals)
+        if enabled.contains(.cline) { await startCline(first: true) }
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -83,7 +89,7 @@ final class ProviderHost {
             let task = Task { [weak self] in
                 for await signal in stream {
                     guard let self else { break }
-                    let gated = signal.provider == .claudeCode || signal.provider == .codex
+                    let gated = signal.provider != .generic
                     if gated, !enabled.contains(signal.provider) { continue }
                     continuation.yield(signal)
                 }
@@ -99,6 +105,7 @@ final class ProviderHost {
     func retryStart() async {
         if enabled.contains(.claudeCode) { await startClaudeCode(first: false) }
         if enabled.contains(.codex) { await startCodex(first: false) }
+        if enabled.contains(.cline) { await startCline(first: false) }
     }
 
     /// Switches a built-in agent on or off at runtime: the provider starts or
@@ -116,6 +123,9 @@ final class ProviderHost {
         }
         if set.contains(.codex) != was.contains(.codex) {
             if set.contains(.codex) { await startCodex(first: false) } else { await codex.stop() }
+        }
+        if set.contains(.cline) != was.contains(.cline) {
+            if set.contains(.cline) { await startCline(first: false) } else { await cline.stop() }
         }
     }
 
@@ -142,6 +152,19 @@ final class ProviderHost {
         }
     }
 
+    private func startCline(first: Bool) async {
+        do {
+            try await cline.start()
+            if !first { Log.providers.notice("Cline provider started") }
+        } catch ProviderError.notInUseYet(let path) {
+            guard first else { return }
+            Log.providers.notice("nothing to watch yet at \(path, privacy: .public)")
+        } catch {
+            guard first else { return }
+            Log.providers.error("Cline provider failed to start: \(error, privacy: .public)")
+        }
+    }
+
     private func startClaudeCode(first: Bool) async {
         do {
             try await claudeCode.start()
@@ -158,6 +181,7 @@ final class ProviderHost {
     func stop() async {
         await precise.stop()
         await generic.stop()
+        await cline.stop()
         await codex.stop()
         await claudeCode.stop()
         await bus.shutdown()
@@ -175,6 +199,12 @@ final class ProviderHost {
                 descriptor: codex.descriptor,
                 availability: await codex.availability,
                 isEnabled: enabled.contains(.codex),
+                lastSignal: nil
+            ),
+            ProviderStatus(
+                descriptor: cline.descriptor,
+                availability: await cline.availability,
+                isEnabled: enabled.contains(.cline),
                 lastSignal: nil
             ),
             ProviderStatus(

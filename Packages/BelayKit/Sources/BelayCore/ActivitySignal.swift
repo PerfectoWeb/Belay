@@ -14,6 +14,7 @@ public struct SessionID: Hashable, Sendable, CustomStringConvertible {
 public enum ProviderID: String, Sendable, CaseIterable, Codable {
     case claudeCode
     case codex
+    case cline
     case generic
 }
 

@@ -87,16 +87,31 @@ struct ProvidersSettingsPane: View {
 
     private var showsPreciseNote: Bool { !preciseAgents.isEmpty }
 
-    /// The two agents Belay understands natively, side by side, each with
-    /// its switch. Only those two: the "other agents" provider that backs
-    /// the tools below is not a tile here.
+    /// The agents Belay understands natively, two to a row, each with its
+    /// switch. Rows of `HStack` rather than a grid because `SettingRow`
+    /// aligns its label to the first text baseline, and a `LazyVGrid` answers
+    /// that question with the wrong row. The "other agents" provider that
+    /// backs the tools below is not a tile here.
     private var builtIn: some View {
-        HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
-            ForEach(state.providers.filter { $0.id == .claudeCode || $0.id == .codex }) { provider in
-                BuiltInProviderTile(
-                    provider: provider,
-                    onToggle: { state.onToggleProvider(provider.id, $0) },
-                    onFix: { state.onGrantAccess(provider.id) })
+        let tiles = state.providers.filter { $0.id != .generic }
+        let rows: [[ProviderStatus]] = stride(from: 0, to: tiles.count, by: 2).map {
+            Array(tiles[$0..<min($0 + 2, tiles.count)])
+        }
+        return VStack(alignment: .leading, spacing: TargetTileMetrics.spacing) {
+            ForEach(rows.indices, id: \.self) { index in
+                HStack(alignment: .top, spacing: TargetTileMetrics.spacing) {
+                    ForEach(rows[index]) { provider in
+                        BuiltInProviderTile(
+                            provider: provider,
+                            onToggle: { state.onToggleProvider(provider.id, $0) },
+                            onFix: { state.onGrantAccess(provider.id) })
+                    }
+                    if rows[index].count == 1 {
+                        // Holds the lone tile to column width instead of
+                        // letting it sprawl across both.
+                        Color.clear.frame(maxWidth: .infinity, maxHeight: 0)
+                    }
+                }
             }
         }
     }

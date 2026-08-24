@@ -6014,6 +6014,98 @@
         }
       }
     },
+    "Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline has not started a session on this Mac yet. Belay starts watching by itself when it does."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline non ha ancora avviato una sessione su questo Mac. Belay inizierà da solo quando succederà."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。"
+          }
+        }
+      }
+    },
+    "Cline is not installed on this Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline ist auf diesem Mac nicht installiert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline is not installed on this Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline no está instalado en este Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline n'est pas installé sur ce Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline non è installato su questo Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cline не установлен на этом Mac."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 上未安装 Cline。"
+          }
+        }
+      }
+    },
     "Close": {
       "extractionState": "manual",
       "localizations": {
@@ -7517,6 +7609,52 @@
         }
       }
     },
+    "Grant access to ~/.cline": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf ~/.cline gewähren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant access to ~/.cline"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conceder acceso a ~/.cline"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accorder l'accès à ~/.cline"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concedi l'accesso a ~/.cline"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дать доступ к ~/.cline"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.cline"
+          }
+        }
+      }
+    },
     "Grant access to ~/.codex": {
       "extractionState": "manual",
       "localizations": {
@@ -8547,6 +8685,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "允许访问 ~/.claude，以便 Belay 判断 Claude Code 何时在工作。"
+          }
+        }
+      }
+    },
+    "Let Belay read your ~/.cline folder so it can tell when Cline is working.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaube Zugriff auf ~/.cline, damit Belay erkennt, wann Cline arbeitet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow access to ~/.cline so Belay can tell when Cline is working."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permite el acceso a ~/.cline para que Belay sepa cuándo Cline está trabajando."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez l'accès à ~/.cline pour que Belay sache quand Cline travaille."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti l'accesso a ~/.cline perché Belay sappia quando Cline sta lavorando."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите доступ к ~/.cline, чтобы Belay видел, когда Cline работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许访问 ~/.cline，Belay 才能判断 Cline 何时在工作。"
           }
         }
       }
@@ -14185,6 +14369,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "监视 Claude Code 的会话文件，以判断轮次何时在运行。"
+          }
+        }
+      }
+    },
+    "Watches Cline's session files to tell when a task is running.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beobachtet Cline-Sitzungsdateien, um zu erkennen, wann eine Aufgabe läuft."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watches Cline session files to tell when a task is running."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observa los archivos de sesión de Cline para saber cuándo hay una tarea en marcha."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surveille les fichiers de session de Cline pour savoir quand une tâche est en cours."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monitora i file di sessione di Cline per sapere quando è in corso un'attività."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следит за файлами сессий Cline, чтобы понимать, когда агент работает."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "监视 Cline 的会话文件，以判断任务何时在运行。"
           }
         }
       }

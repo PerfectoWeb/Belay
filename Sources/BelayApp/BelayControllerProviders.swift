@@ -35,8 +35,24 @@ extension BelayController {
         if FileManager.default.fileExists(atPath: home.appendingPathComponent(".codex").path) {
             set.insert(.codex)
         }
+        if FileManager.default.fileExists(atPath: home.appendingPathComponent(".cline").path) {
+            set.insert(.cline)
+        }
         settings.enabledProviders = set
         #endif
+    }
+
+    func requestProviderAccess(_ provider: ProviderID) {
+        let granted: Bool
+        switch provider {
+        case .codex: granted = CodexAccess.request()
+        case .cline: granted = ClineAccess.request()
+        default: granted = ClaudeAccess.request()
+        }
+        Task { [weak self] in
+            if granted { await self?.providers.retryStart() }
+            await self?.publishProviderStatus()
+        }
     }
 
     func updateGenericTargets(_ targets: [GenericTarget]) {

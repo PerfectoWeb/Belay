@@ -63,6 +63,7 @@ final class BelayController {
             enabled: settings.enabledProviders,
             access: ClaudeAccess.provider,
             codexAccess: CodexAccess.provider,
+            clineAccess: ClineAccess.provider,
             folders: WatchedFolderAccess.provider,
             home: ClaudeAccess.home)
         coordinator = ActivityCoordinator(policy: settings.policy)
@@ -162,14 +163,6 @@ final class BelayController {
     /// bookmark. The retry is not optional: the Claude Code provider refused to
     /// start for want of access, and without it the grant only takes effect
     /// after a relaunch the user has no reason to guess at.
-    func requestProviderAccess(_ provider: ProviderID) {
-        let granted = provider == .codex ? CodexAccess.request() : ClaudeAccess.request()
-        Task { [weak self] in
-            if granted { await self?.providers.retryStart() }
-            await self?.publishProviderStatus()
-        }
-    }
-
     var genericTargets: [GenericTarget] { providers.targets }
 
     func setMode(_ mode: AwakeMode) {

@@ -107,7 +107,11 @@ struct BuiltInProviderTile: View {
 
     /// The folder the ask is about, spelled the way the grant panel shows it.
     private var home: String {
-        provider.id == .codex ? "~/.codex" : "~/.claude"
+        switch provider.id {
+        case .codex: return "~/.codex"
+        case .cline: return "~/.cline"
+        default: return "~/.claude"
+        }
     }
 }
 
