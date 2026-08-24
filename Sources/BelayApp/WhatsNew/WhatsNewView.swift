@@ -15,6 +15,15 @@ struct WhatsNewView: View {
     @State private var closeHovered = false
     @State private var notesHovered = false
 
+    /// One counter per icon. Bumping a row's counter is what makes its symbol
+    /// bounce, because `symbolEffect` fires on a change of value rather than
+    /// on a flag being true.
+    @State private var beats: [Int] = []
+    /// Whose turn it is. Counts past the last row on purpose: those extra
+    /// ticks are the rest between waves, and without them the wave reads as
+    /// a loop that never lets go.
+    @State private var turn = 0
+    @State private var ticker: Timer?
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.openURL) private var openURL
 
@@ -76,7 +85,14 @@ struct WhatsNewView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: Self.cornerRadius, style: .continuous))
         .preferredColorScheme(.dark)
-        .onAppear { entered = true }
+        .onAppear {
+            entered = true
+            startTheWave()
+        }
+        .onDisappear {
+            ticker?.invalidate()
+            ticker = nil
+        }
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("What's New"))
     }
@@ -103,18 +119,45 @@ struct WhatsNewView: View {
         VStack(alignment: .leading, spacing: 28) {
             // Each row a whole: icon, title and sentence arrive together, one
             // row after the one above it — the welcome screen's arrival, read
-            // down a list. The icon draws itself as its row lands.
+            // down a list.
             ForEach(Array(note.items.enumerated()), id: \.element.id) { row, item in
-                WhatsNewRow(
-                    item: item, shown: entered, delay: 0.14 + Double(row) * 0.07,
-                    animated: !reduceMotion
-                )
-                .modifier(
-                    WhatsNewEntrance(
-                        shown: entered, delay: 0.14 + Double(row) * 0.07, animated: !reduceMotion))
+                WhatsNewRow(item: item, beat: beat(forVersion: note, item: row))
+                    .modifier(
+                        WhatsNewEntrance(
+                            shown: entered, delay: 0.14 + Double(row) * 0.07, animated: !reduceMotion))
             }
         }
         .padding(.horizontal, Self.margin)
+    }
+
+    /// Every icon in reading order, one at a time, then a pause.
+    ///
+    /// The whole point is the waiting. Bouncing all four at once is a jingle;
+    /// bouncing them in turn is the eye being walked down the list, which is
+    /// what the icons are for. `rest` is four ticks of nothing at the end, so
+    /// the wave finishes rather than churns. One state write every half
+    /// second, and only the symbol whose counter changed is redrawn. Nothing
+    /// runs under Reduce Motion, and nothing runs after the window closes.
+    private func startTheWave() {
+        let count = notes.reduce(0) { $0 + $1.items.count }
+        beats = Array(repeating: 0, count: count)
+        guard !reduceMotion, count > 0 else { return }
+
+        let rest = 4
+        ticker = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            Task { @MainActor in
+                if turn < beats.count { beats[turn] += 1 }
+                turn = (turn + 1) % (beats.count + rest)
+            }
+        }
+    }
+
+    /// Where a row sits in the flattened list, which is what its counter is
+    /// indexed by.
+    private func beat(forVersion note: ReleaseNote, item: Int) -> Int {
+        let before = notes.prefix { $0.version != note.version }.reduce(0) { $0 + $1.items.count }
+        let index = before + item
+        return index < beats.count ? beats[index] : 0
     }
 
     /// The button in the text column, and the changelog beside it for anyone
@@ -148,44 +191,19 @@ struct WhatsNewView: View {
 }
 
 /// One line of news: outline, title, sentence.
-///
-/// On macOS 26 the outline is not faded in with its row: it *draws* itself,
-/// stroke by stroke, a beat after the row lands — SF Symbols 7's draw-on,
-/// which is the house animation from here on where a symbol appears. Older
-/// systems get the row's own arrival and a finished glyph.
 private struct WhatsNewRow: View {
     let item: ReleaseNote.Item
-    var shown = true
-    var delay: Double = 0
-    var animated = true
-
-    /// Flipped a beat after the row lands, never in the card's first frame:
-    /// SwiftUI does not run transitions on a container's initial content, so
-    /// an icon inserted at frame zero simply never appeared.
-    @State private var drawn = false
+    /// Changes when it is this row's turn to bounce, and at no other time.
+    let beat: Int
 
     var body: some View {
         HStack(alignment: .top, spacing: WhatsNewView.iconGap) {
-            ZStack {
-                if #available(macOS 26.0, *) {
-                    if drawn {
-                        icon.transition(.symbolEffect(.drawOn.individually))
-                    }
-                } else {
-                    icon
-                }
-            }
-            .onAppear {
-                guard animated else {
-                    drawn = true
-                    return
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay + 0.25) {
-                    withAnimation(.easeOut(duration: 0.7)) { drawn = true }
-                }
-            }
-            .frame(width: WhatsNewView.iconColumn, height: 26, alignment: .center)
-            .accessibilityHidden(true)
+            Image(systemName: item.symbol)
+                .font(.system(size: 22, weight: .light))
+                .foregroundStyle(WhatsNewView.icon)
+                .symbolEffect(.bounce, options: .nonRepeating, value: beat)
+                .frame(width: WhatsNewView.iconColumn, height: 26, alignment: .center)
+                .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
                     .font(.system(size: 15, weight: .semibold))
@@ -199,12 +217,6 @@ private struct WhatsNewRow: View {
             Spacer(minLength: 0)
         }
         .accessibilityElement(children: .combine)
-    }
-
-    private var icon: some View {
-        Image(systemName: item.symbol)
-            .font(.system(size: 22, weight: .light))
-            .foregroundStyle(WhatsNewView.icon)
     }
 }
 
