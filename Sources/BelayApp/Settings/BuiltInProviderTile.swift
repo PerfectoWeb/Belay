@@ -39,12 +39,16 @@ struct BuiltInProviderTile: View {
                     }
                     .toggleStyle(.switch)
                     .controlSize(.mini)
+                    // Below mini there is nothing to ask AppKit for, so the
+                    // last step down is drawn: 85%, hugging the right edge.
+                    .scaleEffect(0.85, anchor: .trailing)
+                    .offset(x: 3)
                     .labelsHidden()
                     .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
                 HStack(alignment: .top, spacing: 6) {
                     status
-                        .font(.system(size: 11))
+                        .font(.system(size: 10))
                         .lineLimit(3)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer(minLength: 0)

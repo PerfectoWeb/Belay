@@ -129,10 +129,6 @@ struct GenericTargetTile: View {
             RoundedRectangle(cornerRadius: TargetTileMetrics.corner)
                 .fill(Color.primary.opacity(0.045))
         )
-        .overlay(
-            RoundedRectangle(cornerRadius: TargetTileMetrics.corner)
-                .strokeBorder(Color(nsColor: .separatorColor))
-        )
         .overlay(alignment: .topTrailing) { removeButton }
         .onHover { isHovering = $0 }
     }
