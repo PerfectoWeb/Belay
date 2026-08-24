@@ -94,9 +94,9 @@ struct BuiltInProviderTile: View {
             case .ready:
                 if let last = provider.lastSignal {
                     Text("last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.tertiary)
                 } else {
-                    Text("Ready").foregroundStyle(.secondary)
+                    Text("Ready").foregroundStyle(.tertiary)
                 }
             case .needsSetup(let what):
                 Text(what).foregroundStyle(.orange)

@@ -8891,43 +8891,43 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anbieter"
+            "value": "Agenten"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Providers"
+            "value": "Agents"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Proveedores"
+            "value": "Agentes"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fournisseurs"
+            "value": "Agents"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Provider"
+            "value": "Agenti"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Провайдеры"
+            "value": "Агенты"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "来源"
+            "value": "智能体"
           }
         }
       }

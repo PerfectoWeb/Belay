@@ -12,7 +12,7 @@ import SwiftUI
 /// column with the detail line still readable.
 enum TargetTileMetrics {
     static let spacing: CGFloat = 6
-    static let corner: CGFloat = 8
+    static let corner: CGFloat = 10
     static let markSize: CGFloat = 22
     static let padding: CGFloat = 8
 
@@ -123,7 +123,8 @@ struct GenericTargetTile: View {
 
             Spacer(minLength: 18)
         }
-        .padding(TargetTileMetrics.padding)
+        .padding(.vertical, 9)
+        .padding(.horizontal, 12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: TargetTileMetrics.corner)
