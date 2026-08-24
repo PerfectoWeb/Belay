@@ -49,7 +49,7 @@ About %@,Menu bar,translated,%@,About %@,О %@
 Active sessions,Panel,translated,,Active sessions,Активные сессии
 "Add a folder to watch, or pick a preset, to cover another agent.",Settings: Providers,translated,,Add a folder or choose a preset to watch another agent.,"Добавьте папку или выберите пресет, чтобы следить ещё за одним агентом."
 Add a tool to watch,Settings: Providers,needs_review,,Add a tool to watch,Добавить инструмент для наблюдения
-Add a tool…,Settings: Providers,translated,,Add a tool…,Добавить инструмент…
+Add a tool…,Settings: Providers,translated,,Add a tool…,Добавить
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Добавить в Claude Code
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,Все названия продуктов и логотипы являются товарными знаками их владельцев.
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Разрешить доступ к ~/.claude
@@ -138,7 +138,7 @@ Custom…,Panel,translated,,Custom…,Другое…
 Detection health,(unused),translated,,Detection status,Статус детекции
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Диагностика
 Dim from,Settings,translated,,Dim from,Приглушать с
-Dim the display at night,Settings,translated,,Dim the display at night,Приглушать дисплей ночью
+Dim the display at night,Settings,translated,,Dim the display at night,Приглушать дисплей
 Dim until,"App, Settings",translated,,Dim until,Приглушать до
 Dimmed brightness,Settings,translated,,Dimmed brightness,Приглушённая яркость
 Direct download,"Settings, Settings: About",translated,,Direct download,Прямая загрузка
@@ -162,7 +162,7 @@ Hold again,"App, Detection, Panel",translated,,Hold again,Держать сно�
 Hold again with one click,App,translated,,Hold again with one click,Держать снова одним кликом
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Ждём немного на случай новой работы.
 Hours and minutes.,Panel,translated,,Hours and minutes.,Часы и минуты.
-How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet. Helps avoid sleep between tasks.,"Сколько Belay ждёт после того, как агент затих. Помогает не усыплять Mac между задачами."
+How long Belay keeps holding after your agent goes quiet. Longer is safer: sleeping mid-task costs far more than staying awake a minute too long.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet. Helps avoid sleep between tasks.,"Сколько Belay ждёт после того, как агент затих. Пауза помогает не уводить Mac в сон между задачами."
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Как долго не давать Mac уснуть
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Простой
 "If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.","Если таймер или лимит бодрствования завершает удержание, панель объясняет почему и предлагает «Держать снова». После разблокировки Mac удержание возобновляется автоматически."
@@ -185,7 +185,7 @@ Let's go,(unused),translated,,Let's go,Поехали
 Local only,Settings: About,needs_review,,Local only,Работает локально
 Looks good,(unused),translated,,Looks good,Выглядит хорошо
 Lovely,(unused),translated,,Lovely,Прекрасно
-"Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,Низкий заряд или предел времени без сна.
+"Low battery, or the maximum awake time was reached.",Settings: Notifications,translated,,Low battery or maximum awake time.,"Низкий заряд, перегрев процессора или исчерпан лимит времени без сна."
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Maximum time awake,Settings: Behaviour,translated,,Maximum awake time,Максимальное время бодрствования
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Режим
@@ -240,7 +240,7 @@ Quit and Reopen,Settings: General,translated,,Quit and Reopen,Выйти и от
 Rate Belay,Settings: About,translated,,Rate Belay,Оценить Belay
 Ready,"App, Detection, Settings, Welcome",translated,,Ready,Готов
 Release notes,App,translated,,Release notes,Что изменилось
-Remove,Settings: Providers,translated,,Remove,Убрать
+Remove,Settings: Providers,translated,,Remove,Отключить
 Remove %@,Settings: Providers,translated,%@,Remove %@,Убрать %@
 Removes Belay's entries from your Claude Code settings,Settings: Providers,translated,,Removes only the entries Belay added to your Claude Code settings,"Удаляет только записи, которые Belay добавил в настройки Claude Code"
 Report a bug,Settings: About,translated,,Report a bug,Сообщить об ошибке
@@ -255,7 +255,7 @@ Show Reports,Settings,translated,,Show Reports,Показать отчёты
 Show all sessions,Panel,translated,,Show all sessions,Показать все сессии
 Show fewer,Panel,translated,,Show fewer,Свернуть
 Show fewer sessions,Panel,translated,,Show fewer sessions,Показать меньше сессий
-Show the timer on the dimmed screen,Settings,translated,,Show timer on the dimmed screen,Показывать таймер на приглушённом экране
+Show the timer on the dimmed screen,Settings,translated,,Show timer on the dimmed screen,Таймер на приглушённом экране
 Shows exactly what will be added before anything is written,Settings: Providers,translated,,Previews exactly what Belay will add before it writes anything,"Показывает, что именно Belay добавит, прежде чем что-либо записывать"
 Since %@,Statistics,needs_review,%@,Since %@,С %@
 Skip for now,Welcome,translated,,Skip now,Пропустить
@@ -310,11 +310,11 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,Что нового
 When Belay stops for safety,Settings: Notifications,translated,,When Belay stops for safety,Когда Belay останавливается ради безопасности
 When a long task finishes,Settings: Notifications,translated,,When a long task finishes,Когда завершается долгая задача
 When a new version is out,Settings: Notifications,translated,,When a new version is out,Когда выходит новая версия
-When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Когда агент замолкает
+When an agent goes quiet,Settings: Notifications,translated,,When an agent goes quiet,Когда агент затих
 When an agent needs you,Settings: Notifications,translated,,When an agent needs you,Когда агенту нужны вы
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
-"When you step away at night, Belay dims the display to this level. It brightens when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens when you return.","Когда вы отходите ночью, Belay приглушает дисплей до этого уровня. Когда вы возвращаетесь, яркость восстанавливается."
-"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Показывает оставшееся время, пока работает таймер Always On."
+"When you step away at night, Belay dims the display to this level. It brightens when you return.",Settings,translated,,"When you step away at night, Belay dims the display to this level. It brightens when you return.",Приглушает дисплей по расписанию. Помогает сохранить срок службы диодов на матрице дисплея.
+"While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Пока удерживает
 Working,"App, Panel, Settings: Providers",translated,,Working,Работает
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,"Mac не уснёт, пока вы не выключите режим."
@@ -327,7 +327,7 @@ Your agent finished,Settings: Notifications,translated,,Your agent finished,Аг
 Your agent is blocked on a permission prompt or a question. This one needs precise detection turned on to be reliable.,Settings: Notifications,needs_review,,Your agent is waiting on a permission prompt or question. Precise detection is required for reliable notifications.,Агент ожидает вашего действия. Для надёжных уведомлений нужна «Точная детекция».
 Your agent needs input before it can continue.,Settings: Notifications,translated,,Your agent needs input before it can continue.,"Агенту нужен ваш ответ, чтобы продолжить."
 Your agent needs input in %@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input in %@ before it can continue.,"Агенту нужен ваш ответ в %@, чтобы продолжить."
-Your agent still finishes; Belay just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Belay just lets your Mac sleep sooner afterward.,Агент успеет закончить. После этого Belay просто раньше разрешит Mac уснуть.
+Your agent still finishes; Belay just lets go sooner afterwards.,Settings: Behaviour,translated,,Your agent still finishes. Belay just lets your Mac sleep sooner afterward.,"Как только агент завершит работу, Belay сразу же разрешит Mac заснуть."
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Батарея на %lld%%, Belay дал Mac уснуть."
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,Первый же запуск агента это заполнит.
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,"продолжал работать, пока вас не было"

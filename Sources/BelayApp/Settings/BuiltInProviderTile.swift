@@ -25,7 +25,7 @@ struct BuiltInProviderTile: View {
                 .frame(width: 20, height: 20)
                 .opacity(provider.isEnabled ? 1 : 0.35)
 
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 6) {
                     Text(verbatim: provider.descriptor.displayName)
                         .font(.system(size: 13, weight: .semibold))
