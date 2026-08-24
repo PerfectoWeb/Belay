@@ -39,10 +39,31 @@ struct HookPreviewSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Enable precise detection")
-                .font(.title3).bold()
+            // The agent's own mark, so whose settings these are is clear
+            // before a word is read.
+            HStack(spacing: 8) {
+                Image(nsImage: ProviderMark.image(for: provider, size: 20))
+                    .resizable()
+                    .interpolation(.high)
+                    .frame(width: 20, height: 20)
+                Text("Enable precise detection")
+                    .font(.title3).bold()
+            }
 
             if let preview = proposed {
+                // Why anyone would want this, before the machinery: the diff
+                // below reads scary on its own, and the point of the feature
+                // deserves the first sentence.
+                Text(
+                    """
+                    With precise detection, \(agentName) tells Belay the exact moment \
+                    work starts, stops, or waits for you. Detection becomes instant \
+                    and reliable.
+                    """
+                )
+                .font(.callout)
+                .fixedSize(horizontal: false, vertical: true)
+
                 Text("Belay will change \(path) to:")
                     .font(.callout)
                     .foregroundStyle(.secondary)
@@ -88,21 +109,16 @@ struct HookPreviewSheet: View {
                         .keyboardShortcut(.cancelAction)
                     Spacer()
                     if installing { ProgressView().controlSize(.small).padding(.trailing, 6) }
-                    Button(addTitle) {
-                        if isCodex {
-                            installing = true
-                            Task {
-                                _ = await precise.installCodex()
-                                installing = false
-                                onFinish()
-                                dismiss()
-                            }
-                        } else {
-                            if isCline { precise.installCline() } else { precise.install() }
-                            onFinish()
-                            dismiss()
+                    Button(action: add) {
+                        HStack(spacing: 5) {
+                            Image(nsImage: ProviderMark.image(for: provider, size: 13))
+                                .resizable()
+                                .interpolation(.high)
+                                .frame(width: 13, height: 13)
+                            Text(addTitle)
                         }
                     }
+                    .buttonStyle(.borderedProminent)
                     .disabled(installing)
                     .keyboardShortcut(.defaultAction)
                 }
@@ -112,6 +128,30 @@ struct HookPreviewSheet: View {
         }
         .padding(22)
         .frame(width: 560)
+    }
+
+    private func add() {
+        if isCodex {
+            installing = true
+            Task {
+                _ = await precise.installCodex()
+                installing = false
+                onFinish()
+                dismiss()
+            }
+        } else {
+            if isCline { precise.installCline() } else { precise.install() }
+            onFinish()
+            dismiss()
+        }
+    }
+
+    private var agentName: String {
+        switch provider {
+        case .codex: return "Codex"
+        case .cline: return "Cline"
+        default: return "Claude Code"
+        }
     }
 
     private var addTitle: LocalizedStringKey {
@@ -140,7 +180,7 @@ struct HookPreviewSheet: View {
         .font(.callout)
         .fixedSize(horizontal: false, vertical: true)
 
-        if !isCodex, let snippet = precise.manualSnippet() {
+        if !isCodex, !isCline, let snippet = precise.manualSnippet() {
             codeBlock(snippet)
             HStack {
                 Button("Copy") {
@@ -165,7 +205,10 @@ struct HookPreviewSheet: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(8)
         }
-        .frame(maxHeight: 260)
+        // Fixed, not a cap: Claude's JSON fills any height and Cline's short
+        // script filled almost none, so the three sheets read as three sizes.
+        // One height makes them one sheet.
+        .frame(height: 280)
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 6))
         .accessibilityLabel("The exact configuration Belay will add")
     }

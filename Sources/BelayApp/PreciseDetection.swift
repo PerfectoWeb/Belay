@@ -41,12 +41,21 @@ final class PreciseDetection {
         #endif
     }
 
-    private let receiver = HookReceiver()
-    private let installer = HookInstaller()
+    private let receiver: HookReceiver
+    private let installer: HookInstaller
     // Internal, with their flags: the Codex and Cline halves live in
     // `PreciseDetectionAgents.swift` for the file-length rule.
-    let codexInstaller = CodexHookInstaller()
-    let clineInstaller = ClineHookInstaller()
+    let codexInstaller: CodexHookInstaller
+    let clineInstaller: ClineHookInstaller
+
+    /// Injectable so a stand or a test can point the whole tier at a scratch
+    /// tree; the app takes the default and never notices.
+    init(paths: BridgePaths = .real()) {
+        receiver = HookReceiver(store: BridgeEndpointStore(paths: paths))
+        installer = HookInstaller(paths: paths)
+        codexInstaller = CodexHookInstaller(paths: paths)
+        clineInstaller = ClineHookInstaller(paths: paths)
+    }
     private(set) var endpoint: BridgeEndpoint?
     private(set) var isInstalled = false
     var isCodexInstalled = false

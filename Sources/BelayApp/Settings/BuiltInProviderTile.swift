@@ -106,7 +106,7 @@ struct BuiltInProviderTile: View {
                     // The Fix pattern: the fact, then the one action that
                     // changes it, level in the same line.
                     HStack(spacing: 4) {
-                        Text("Standard ·").foregroundStyle(.tertiary)
+                        Text("Default ·").foregroundStyle(.tertiary)
                         Button(action: onEnablePrecise) {
                             Text("Enable Precise…")
                                 .fontWeight(.semibold)
