@@ -3,8 +3,48 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.6.0</title>
+            <pubDate>Tue, 25 Aug 2026 15:05:08 +0300</pubDate>
+            <sparkle:version>12</sparkle:version>
+            <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.6.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.0</h2>
+<ul>
+  <li><b>Copilot CLI is now built in.</b> Turn it on in Settings and Belay
+      watches its sessions automatically. No folders to choose.</li>
+  <li><b>Watch built-in agents wherever they work.</b> If an agent uses a
+      custom config directory such as <code>CLAUDE_CONFIG_DIR</code>, or you
+      keep multiple profiles, open its settings and add the folders it uses.
+      Precise Detection works across them too.</li>
+  <li><b>Your timer survives a relaunch.</b> An Always On timer resumes with
+      the same time remaining after Belay restarts.</li>
+  <li><b>More reliable throughout.</b> A reliability pass fixed dozens of
+      small issues, including launch stalls and sessions that stayed active
+      longer than they should.</li>
+</ul>
+<p class="quiet">Also: agent tiles now show live last activity, disabled tiles
+dim consistently, and there&#8217;s a little more polish throughout the
+interface.</p>
+]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.0/Belay-1.6.0.dmg" length="7076093" type="application/octet-stream" sparkle:edSignature="odscx6+zv0Mfz9MtapFZ1u22DvVo86Pd8bSuxZyMQmdbuz3QDN0xBUyWMw/85TZjdBfXuhdFprb1Q9jGAf7gCQ=="/>
+        </item>
+        <item>
             <title>1.5.0</title>
-            <pubDate>Mon, 24 Aug 2026 21:53:44 +0300</pubDate>
+            <pubDate>Tue, 25 Aug 2026 15:05:10 +0300</pubDate>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -45,7 +85,7 @@ Belay.</p>
         </item>
         <item>
             <title>1.4.0</title>
-            <pubDate>Mon, 24 Aug 2026 21:53:46 +0300</pubDate>
+            <pubDate>Tue, 25 Aug 2026 15:05:12 +0300</pubDate>
             <sparkle:version>10</sparkle:version>
             <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -86,7 +126,7 @@ modes.</p>]]></description>
         </item>
         <item>
             <title>1.3.3</title>
-            <pubDate>Mon, 24 Aug 2026 21:53:48 +0300</pubDate>
+            <pubDate>Tue, 25 Aug 2026 15:05:14 +0300</pubDate>
             <sparkle:version>9</sparkle:version>
             <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -128,7 +168,7 @@ system clock.</p>]]></description>
         </item>
         <item>
             <title>1.3.2</title>
-            <pubDate>Mon, 24 Aug 2026 21:53:51 +0300</pubDate>
+            <pubDate>Tue, 25 Aug 2026 15:05:16 +0300</pubDate>
             <sparkle:version>8</sparkle:version>
             <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -163,41 +203,6 @@ system clock.</p>]]></description>
 <p class="quiet">Also: Belay knows you&#8217;re needed as soon as an agent asks
 a question, and presets now say clearly when their folder is missing.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.2/Belay-1.3.2.dmg" length="6274552" type="application/octet-stream" sparkle:edSignature="58YpYLc7I9RsABMaIamRK0JPBZuvs/Mw3Icv8vjxoj9cEmoF4qBGyX/1tjqKYnp9qYmImSMh72MSGgfsn1NSAg=="/>
-        </item>
-        <item>
-            <title>1.3.1</title>
-            <pubDate>Mon, 24 Aug 2026 21:53:53 +0300</pubDate>
-            <sparkle:version>7</sparkle:version>
-            <sparkle:shortVersionString>1.3.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.3.1. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.3.1</h2>
-<ul>
-  <li><b>The chart follows your cursor.</b> Hover over a day in Statistics and
-      the numbers switch to that day. Move away and the totals come back.</li>
-  <li><b>Pi is built in.</b> One click adds Pi with the same local session
-      watching that already worked through manual setup. Asked for on GitHub.</li>
-  <li><b>Quiet sessions stay quiet.</b> If an agent stops mid-answer, Belay now
-      says it went quiet instead of calling the run finished.</li>
-  <li><b>Closed-lid stops explain themselves.</b> If the time limit or heat
-      protection ends a closed-lid hold, the notification tells you why.</li>
-</ul>
-<p class="quiet">Also: the helper status updates as soon as you approve it,
-and failed update checks now say why in the log.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.1/Belay-1.3.1.dmg" length="6218715" type="application/octet-stream" sparkle:edSignature="n8c6NUSNibSKyw682n0BCCG0pLXUQ9eQaHiBPXUwYVs3Xi1847Wz8OunyMMVHuRIxlMxLC2NZ359YUAlRAueDQ=="/>
         </item>
     </channel>
 </rss>
