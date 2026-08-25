@@ -115,7 +115,7 @@ struct PanelModePicker: View {
             .padding(.vertical, 6)
             .contentShape(.rect)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.steady)
         .onHover { inside in hovered = inside ? mode : (hovered == mode ? nil : hovered) }
         .accessibilityLabel(mode.pickerTitle)
         .accessibilityValue(Text(mode.pickerExplanation))
@@ -221,4 +221,18 @@ extension NSAppearance {
     fileprivate var plainDark: Bool {
         bestMatch(from: [.aqua, .darkAqua, .accessibilityHighContrastDarkAqua]) == .darkAqua
     }
+}
+
+/// A button whose label stays exactly as drawn while pressed. `.plain` dims
+/// its content on press, which read as the hover-brightened tab flashing
+/// grey at the exact moment of choosing it; these tabs carry their own
+/// feedback — the hover step and the pill's slide — and need no third.
+struct SteadyButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+    }
+}
+
+extension ButtonStyle where Self == SteadyButtonStyle {
+    static var steady: SteadyButtonStyle { SteadyButtonStyle() }
 }

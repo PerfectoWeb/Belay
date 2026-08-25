@@ -130,7 +130,7 @@ private struct ModeSwitch: View {
             .padding(.vertical, 5)
             .contentShape(.rect)
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.steady)
         .onHover { inside in hovered = inside ? target : (hovered == target ? nil : hovered) }
         .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
