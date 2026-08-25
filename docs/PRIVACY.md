@@ -14,18 +14,20 @@ speaks, all generated from one source; the English is the authoritative text.
 
 Belay needs to know one thing: is an agent working right now?
 
-For Claude Code, Belay watches the session files Claude Code already writes on
-your Mac. It looks at how large a file is, whether it grew, when it was last
-written, and, in the part that grew, two fields of each record: what kind of
-record it is, and whether the turn ended. Your prompts, your replies and your
-code are not read out of those files and no copy of them is kept.
+For the built-in agents — Claude Code, Codex, Cline and Copilot CLI — Belay
+watches the session files each one already writes on your Mac. It looks at how
+large a file is, whether it grew, when it was last written, and, in the part
+that grew, only structural markers: what kind of record it is, whether a turn
+started or ended, and the name of the project folder. Your prompts, your replies
+and your code are not read out of those files and no copy of them is kept.
 
-For other agents, Belay can watch a folder you choose. macOS tells Belay which
+For any other tool, Belay can watch a folder you choose. macOS tells Belay which
 files changed and when, and that is all Belay uses: it does not open those files
 or read what is in them. The folder stays yours, and nothing in it is uploaded.
 
-Which folders Belay looks at is up to you. `~/.claude` for Claude Code, and for
-anything else only what you point it at.
+Which folders Belay looks at is up to you. `~/.claude`, `~/.codex`, `~/.cline`
+and `~/.copilot` for the built-in agents, and for anything else only what you
+point it at.
 
 ## What leaves your Mac
 
@@ -55,10 +57,10 @@ To keep your Mac awake, Belay uses the power assertion API macOS provides for
 it. It doesn't rewrite your Energy Saver settings, and it can't: an assertion
 sits alongside those settings rather than editing them.
 
-If you turn on precise detection for Claude Code, Belay shows you the exact
-configuration it would add before anything is written, and only writes after you
-confirm. It takes a timestamped backup first, adds only its own entry, and
-"Remove" on the same screen puts the file back.
+If you turn on precise detection for an agent (Claude Code, Codex or Cline),
+Belay shows you the exact configuration it would add before anything is written,
+and only writes after you confirm. It takes a timestamped backup first, adds only
+its own entry, and "Remove" on the same screen puts the file back.
 
 ## Sharing
 
@@ -80,5 +82,6 @@ the address on <https://perfecto-web.com>.
 
 ---
 
-Claude Code, Codex CLI, Gemini CLI and Cline are made by other people. Belay
-works alongside them and is not affiliated with or endorsed by any of them.
+Claude Code, Codex, Cline, GitHub Copilot CLI, Gemini CLI and the other tools
+Belay can watch are made by other people. Belay works alongside them and is not
+affiliated with or endorsed by any of them.

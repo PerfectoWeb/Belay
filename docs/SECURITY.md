@@ -18,7 +18,8 @@ it reads, what it never reads, and how you can check for yourself.
   file grew, and a record's `type` and `stop_reason`.
 - It **never reads your prompts, your model's responses, or your code**.
 - It listens on **`127.0.0.1` only**, on an ephemeral port, and only to receive
-  lifecycle events from Claude Code on your own machine.
+  lifecycle events from your local agents — Claude Code, Codex and Cline hooks,
+  and any tool you point at the generic webhook — on your own machine.
 
 ## What Belay reads, precisely
 
@@ -43,28 +44,45 @@ Belay reads `pid`, `sessionId` and `cwd` to know which agent processes are alive
 and which project each belongs to. The project folder's **name** is shown in the
 UI ("an agent is working in *acme-api*"). The path is not transmitted anywhere.
 
+### Other built-in agents (Codex, Cline, Copilot CLI)
+
+The same structural discipline covers the three other built-in agents. Belay
+reads only turn markers and status fields — `~/.codex/sessions` rollouts (record
+`type` and `timestamp`), `~/.cline/data/sessions/<id>/<id>.json` (the `status`
+field and whether the messages file grew), and `~/.copilot/session-state/<uuid>/
+events.jsonl` (the `assistant.turn_start` / `assistant.turn_end` / `session.shutdown`
+markers and the session's `cwd`). Prompts, responses and code are never decoded
+from any of them; a folder that grew is the primary signal, the markers a
+refinement on top.
+
 ### Hook events (optional, off by default)
 
-If you turn on precise detection, Claude Code POSTs lifecycle events to Belay's
+If you turn on precise detection, the agent POSTs lifecycle events to Belay's
 loopback listener. Those payloads include a `prompt` field containing **your full
 prompt text**.
 
-Belay's decoder declares keys for exactly four fields, `session_id`,
-`hook_event_name`, `cwd` and `transcript_path`, and has no property for `prompt`.
-It is never decoded, never logged, never stored. A test sends a distinctive
-string in the `prompt` field and asserts it appears in neither the emitted signal
-nor any file Belay writes.
+Belay's decoder declares keys for only structural fields — `session_id`,
+`hook_event_name`, `cwd`, `transcript_path`, the tool `name`, and a `count` of
+background tasks — and has **no property for `prompt`**. It is never decoded,
+never logged, never stored. A test sends a distinctive string in the `prompt`
+field and asserts it appears in neither the emitted signal nor any file Belay
+writes.
 
 ## What Belay writes
 
 - `~/Library/Application Support/Belay/bridge.json`, the loopback port and a
   random per-install token, created `0600`.
-- `~/Library/Application Support/Belay/backups/`, timestamped copies of your
-  `~/.claude/settings.json`, taken before any change.
-- `~/.claude/settings.json`, **only** when you explicitly enable precise
-  detection, and only after showing you the exact JSON that will be added.
+- `~/Library/Application Support/Belay/backups/`, timestamped copies of any hook
+  config it is about to change, taken before the change.
+- **Hook config, only when you explicitly enable precise detection for an agent,
+  and only after showing you the exact change:**
+  - `~/.claude/settings.json` (Claude Code),
+  - `~/.codex/hooks.json` and the trust entries in `~/.codex/config.toml` (Codex),
+  - hook scripts in `~/.cline/hooks` (Cline).
 
-On that last one, the rules the code enforces:
+  Copilot CLI has no precise tier, so nothing is written for it.
+
+On those, the rules the code enforces:
 
 1. A timestamped backup is taken first. If the backup fails, nothing is written.
 2. If the file is not plain JSON, Belay **refuses to write it** and offers you a

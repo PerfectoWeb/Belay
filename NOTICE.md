@@ -23,6 +23,9 @@ Belay in any way.
 | ChatGPT, Codex, OpenAI | OpenAI, Inc. |
 | Gemini | Google LLC |
 | Cline | Cline Bot Inc. |
+| GitHub, GitHub Copilot | GitHub, Inc. (Microsoft Corporation) |
+| OpenCode | The OpenCode authors |
+| Pi | Inflection AI, Inc. |
 
 The artwork is rendered as a monochrome template image so it takes the colour of
 the surrounding interface. That is a deliberate interface choice, because a row of

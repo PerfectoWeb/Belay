@@ -138,7 +138,7 @@ curl -s -X POST -H "Authorization: Bearer $TOKEN" \
 An unrecognised state is **dropped rather than guessed**. Add `&workspace=name`
 to control what the panel shows.
 
-For tools that only write files, the folder watcher in **Settings ▸ Providers**
+For tools that only write files, the folder watcher in **Settings ▸ Agents**
 needs no code at all: point it at wherever the tool writes while it is working.
 
 ## Requirements
@@ -146,6 +146,6 @@ needs no code at all: point it at wherever the tool writes while it is working.
 macOS 14 or later. Nothing else: no Apple Developer account, no agent account,
 no network.
 
-macOS 26 and macOS 15 have been exercised on Apple silicon, 14 has not;
+macOS 14, 15 and 26 have all been run for real on Apple silicon;
 [`QA-CHECKLIST.md`](QA-CHECKLIST.md) is the honest list of what has and has not
 been verified.

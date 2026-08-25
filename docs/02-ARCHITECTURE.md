@@ -18,7 +18,7 @@ Belay/
 │   └── Sources/
 │       ├── BelayCore/          domain types, SignalBus, ActivityCoordinator, Clock
 │       ├── BelayPower/         IOKit assertions, power source, sleep/wake events
-│       ├── BelayProviders/     ClaudeCode + Codex + Generic (presets ride on Generic)
+│       ├── BelayProviders/     ClaudeCode + Codex + Cline + Copilot + Generic (presets ride on Generic)
 │       ├── BelayHookBridge/    loopback receiver + hook installer + backup/restore
 │       ├── BelaySettings/      typed preferences, migration, defaults
 │       ├── BelayChannel/       DistributionChannel, UpdateChannel
@@ -49,15 +49,18 @@ in milliseconds with zero I/O.
 ```
  ┌───────────────────┐
  │ ClaudeCodeProvider│──┐
+ ├───────────────────┤  │
+ │ CodexProvider     │──┤
  ├───────────────────┤  │   ActivitySignal
- │ CodexProvider     │──┼──────────────▶ SignalBus ──▶ ActivityCoordinator
- │ ClineProvider     │──┤
- ├───────────────────┤  │                                     │
- │ GenericProvider   │──┘                                      │ AwakeDecision
- └───────────────────┘                                         ▼
-                                                    PowerAssertionController
-                                                               │
- UI (StatusItem, Panel, Settings) ◀── @Observable AppState ◀────┘
+ │ ClineProvider     │──┼──────────────▶ SignalBus ──▶ ActivityCoordinator
+ ├───────────────────┤  │
+ │ CopilotProvider   │──┤                                     │
+ ├───────────────────┤  │                                     │ AwakeDecision
+ │ GenericProvider   │──┤                                      ▼
+ ├───────────────────┤  │                          PowerAssertionController
+ │ hook bridge .exact│──┘                                     │
+ └───────────────────┘                                        │
+ UI (StatusItem, Panel, Settings) ◀── @Observable AppState ◀───┘
 ```
 
 ## Core types
@@ -65,8 +68,8 @@ in milliseconds with zero I/O.
 ```swift
 public struct SessionID: Hashable, Sendable { public let rawValue: String }
 
-public enum ProviderID: String, Sendable, CaseIterable {
-    case claudeCode, codex, generic
+public enum ProviderID: String, Sendable, CaseIterable, Codable {
+    case claudeCode, codex, cline, copilot, generic
 }
 
 public enum SessionActivity: Sendable, Equatable {

@@ -4,17 +4,25 @@ Where activity signals come from when nobody has configured anything. This is
 Tier A (transcript watching) and Tier C (process presence) — everything here is
 `.inferred`; `.exact` comes from `BelayHookBridge`.
 
-`ClaudeCodeProvider` is the first-class one. `FileEventStream` wraps FSEvents,
-`TranscriptCursor` reads only what was appended, `TranscriptClassifier` decides
-what the appended bytes mean, and `ProcessPresence` reads
-`~/.claude/sessions/<pid>.json` to notice a session whose process is gone.
+Four providers are first-class: `ClaudeCodeProvider`, `CodexProvider`,
+`ClineProvider` and `CopilotProvider`. Each reads its agent's own session files
+for explicit turn markers. Claude Code is the template — `FileEventStream` wraps
+FSEvents, `TranscriptCursor` reads only what was appended, `TranscriptClassifier`
+decides what the appended bytes mean, and `ProcessPresence` reads
+`~/.claude/sessions/<pid>.json` to notice a session whose process is gone —
+and the others (`CodexRollout`, `ClineSessionFile`, `CopilotEvents`) follow the
+same shape against `~/.codex/sessions`, `~/.cline/data/sessions` and
+`~/.copilot/session-state`. Claude, Codex and Cline additionally have an exact
+tier through `BelayHookBridge`; Copilot's event log has no turn-end hook, so it
+is inferred-only.
 
 `GenericProvider` covers every agent with no bespoke support: one actor hosting
 any number of `GenericTarget`s, each watching a folder, requiring a named process
 to be alive, or accepting a routed webhook. `GenericPreset.all` is the shipped
-list (Aider, Gemini CLI, Cline, Codex CLI) and adding to it is one array element,
-no new type and no UI change. `ProcessRoster` enumerates the user's processes with
-`sysctl(KERN_PROC_UID)` for the liveness half of that.
+list (Gemini CLI, OpenCode, Aider, Cline (VS Code), Pi) — Codex and Copilot are
+deliberately absent, each having a first-class provider — and adding to it is one
+array element, no new type and no UI change. `ProcessRoster` enumerates the
+user's processes with `sysctl(KERN_PROC_UID)` for the liveness half of that.
 
 **Depends on:** `BelaySupport` and `BelayCore`. Filesystem access goes through
 `FileAccessProvider`, so nothing here knows whether it is sandboxed.
