@@ -13,10 +13,12 @@ struct StatisticsPane: View {
     /// it asks first and the pane does not own the data it would be discarding.
     var onReset: () -> Void = {}
 
-    @State private var isConfirmingReset = false
     /// The day under the cursor, if it has anything to say. While set, the
     /// figure row speaks for that day and the chart label names its date.
     @State private var hovered: UsageStatistics.Day?
+    /// Cursor on the headline's caption: the figure flips to the time Belay
+    /// held while you were at the Mac.
+    @State private var hoveringPresence = false
     /// True one pass after the reveal lands. Gating the figure morph on this
     /// rather than on `reveal >= 1` keeps the count-up's final tick a hard
     /// redraw instead of a lone animated digit-roll.
@@ -56,7 +58,7 @@ struct StatisticsPane: View {
                 Divider()
                 chart
                 StarAsk(rescued: statistics.totalRescued)
-                shareRow
+                StatisticsFooter(statistics: statistics, onReset: onReset)
             }
         }
         .padding(20)
@@ -86,17 +88,31 @@ struct StatisticsPane: View {
     private var empty: some View { EmptyStatistics() }
 
     private var headline: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(ElapsedTime.compact(statistics.totalAway * reveal))
+        // The headline's flip side: held minus away is the part that ran with
+        // you right there. Hovering the caption shows it, same rolling morph
+        // as the figures.
+        let withYou = max(0, statistics.totalHeld - statistics.totalAway)
+        let present = hoveringPresence && settled
+        return VStack(alignment: .leading, spacing: 4) {
+            Text(ElapsedTime.compact(present ? withYou : statistics.totalAway * reveal))
                 .font(.system(size: 40, weight: .semibold, design: .rounded))
                 .monospacedDigit()
-                // No implicit animation. SwiftUI's default for a Text whose
-                // content changed is a cross-fade, and a cross-fade running
-                // sixty times a second over a counter is a smear, not a count.
-                .transaction { $0.animation = nil }
-            Text("kept working while you were away from the keyboard")
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
+                .contentTransition(.numericText())
+                // No implicit animation while counting up. SwiftUI's default
+                // for a Text whose content changed is a cross-fade, and a
+                // cross-fade running sixty times a second over a counter is a
+                // smear, not a count. The morph switches on once settled.
+                .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
+            Text(
+                present
+                    ? "kept working while you were right here"
+                    : "kept working while you were away from the keyboard"
+            )
+            .font(.system(size: 12))
+            .foregroundStyle(.secondary)
+            .contentTransition(.numericText())
+            .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
+            .onHover { hoveringPresence = $0 }
         }
     }
 
@@ -180,31 +196,6 @@ struct StatisticsPane: View {
     private var since: String? {
         statistics.firstRun.map {
             $0.formatted(.dateTime.day().month(.wide).year())
-        }
-    }
-
-    private var shareRow: some View {
-        HStack(alignment: .center, spacing: 8) {
-            VStack(alignment: .leading, spacing: 4) {
-                // Away from the two it must not be mistaken for, and quiet:
-                // a bordered button beside two bordered buttons is a button you
-                // click by aiming badly.
-                Button("Reset…") { isConfirmingReset = true }
-                    .buttonStyle(.link)
-                    .font(.system(size: 12))
-                Text("Numbers stay on this Mac unless you share them.")
-                    .font(.system(size: 10))
-                    .foregroundStyle(.tertiary)
-            }
-            Spacer(minLength: 8)
-            CopyStatisticsCardButton(statistics: statistics)
-            ShareStatisticsButton(statistics: statistics)
-        }
-        .alert("Erase your statistics?", isPresented: $isConfirmingReset) {
-            Button("Erase", role: .destructive, action: onReset)
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This cannot be undone. Belay keeps no copy anywhere else.")
         }
     }
 

@@ -168,6 +168,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,(unused),translated,,Enable…,开启…
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
+Export…,Statistics,translated,,Export…,导出…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,仅限时长超过 %@ 的运行。
@@ -368,6 +369,7 @@ Your agent needs input in %@ before it can continue.,Settings: Notifications,tra
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,第一次智能体运行后，这里就会有内容。
 Your timer survives a relaunch,App,translated,,Your timer survives a relaunch,计时器可以跨重启继续
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,在你离开时继续工作
+kept working while you were right here,Statistics,translated,,kept working while you were right here,在你在场时继续工作
 last signal %@ ago,Settings,translated,%@,Last activity %@ ago,最近活动于 %@ 前
 longest run,Statistics,translated,,longest run,最长运行
 macOS cannot find the helper in this build.,Settings,translated,,macOS cannot find the helper in this build.,macOS 在此构建中找不到帮助程序。

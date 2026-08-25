@@ -168,6 +168,7 @@ Enable precise detection,Settings: Providers,translated,,Enable precise detectio
 Enable…,(unused),translated,,Enable…,Включить…
 Erase,Statistics,needs_review,,Erase,Стереть
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Стереть статистику?
+Export…,Statistics,translated,,Export…,Экспорт…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Завершено
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Исправить
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Для запусков дольше %@.
@@ -368,6 +369,7 @@ Your agent needs input in %@ before it can continue.,Settings: Notifications,tra
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,Первый же запуск агента это заполнит.
 Your timer survives a relaunch,App,translated,,Your timer survives a relaunch,Таймер переживает перезапуск
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,"продолжал работать, пока вас не было"
+kept working while you were right here,Statistics,translated,,kept working while you were right here,"продолжал работать, пока вы были рядом"
 last signal %@ ago,Settings,translated,%@,Last activity %@ ago,Посл. активность %@ назад
 longest run,Statistics,translated,,longest run,самый долгий запуск
 macOS cannot find the helper in this build.,Settings,translated,,macOS cannot find the helper in this build.,macOS не находит помощника в этой сборке.

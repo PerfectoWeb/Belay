@@ -168,4 +168,24 @@ final class UsageResetTests: XCTestCase {
         recorder.update(holdingSince: nil, now: later.addingTimeInterval(1200))
         XCTAssertFalse(recorder.statistics.isEmpty, "a fresh hold after the reset must still count")
     }
+
+    /// The erase dialog's export: whole seconds, oldest day first, one row
+    /// per day, and a header a spreadsheet can name columns from.
+    func testExportedCSVIsSortedWholeSecondsWithHeader() {
+        let day = Date(timeIntervalSince1970: 1_760_000_000)
+        let later = UsageStatistics.Day(
+            date: day.addingTimeInterval(86_400), heldSeconds: 120.9, holds: 2,
+            longestHold: 90.5, awaySeconds: 60.2, rescued: 1)
+        let earlier = UsageStatistics.Day(
+            date: day, heldSeconds: 10, holds: 1, longestHold: 10, awaySeconds: 0, rescued: 0)
+
+        let lines = StatisticsFooter.csv(for: [later, earlier])
+            .split(separator: "\n").map(String.init)
+
+        XCTAssertEqual(
+            lines[0], "date,held_seconds,away_seconds,holds,longest_hold_seconds,runs_rescued")
+        XCTAssertEqual(lines.count, 3)
+        XCTAssertTrue(lines[1].hasSuffix(",10,0,1,10,0"), "oldest day first, got \(lines[1])")
+        XCTAssertTrue(lines[2].hasSuffix(",120,60,2,90,1"), "fractions truncated, got \(lines[2])")
+    }
 }
