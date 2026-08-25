@@ -49,7 +49,7 @@ No timer to start. No sleep setting to remember to change back.
 
 ## 📦 Install
 
-**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><sup><a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle" hspace="8"></a></sup> macOS 14 or later, Apple silicon and Intel, about 4 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><sup><a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle" hspace="8"></a></sup> macOS 14 or later, Apple silicon and Intel, under 15 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
