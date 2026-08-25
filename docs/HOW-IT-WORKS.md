@@ -42,16 +42,24 @@ read, not inferred. Cline is plainer still: every session keeps a small state
 file under `~/.cline/data/sessions` whose `status` field says running or
 finished outright, and Cline's team mode writes one messages file per teammate
 agent inside the session's folder — Belay shows those teammates in the panel
-under their session, the way Claude Code subagents appear. No setup for any of
-the three. Other tools — Gemini CLI, Copilot CLI, OpenCode, Aider, Cline
-(VS Code), Pi — ship as one-click presets that watch the folder each tool
-writes while it works.
+under their session, the way Claude Code subagents appear. Copilot CLI keeps
+one event log per session under `~/.copilot/session-state`, with explicit turn
+markers and a shutdown record, so its starts and finishes are read exactly
+without any hooks. No setup for any of the four. Other tools — Gemini CLI,
+OpenCode, Aider, Cline (VS Code), Pi — ship as one-click presets that watch
+the folder each tool writes while it works.
+
+An agent that lives somewhere else — `CLAUDE_CONFIG_DIR`, `CODEX_HOME`, a
+second profile — is added from its tile: open **Watched Folders** in the
+agent's menu and pick the folder. Belay watches every added folder alongside
+the default home, one watcher per folder.
 
 ### Hook bridge, optional and exact
 
-All three built-in agents can tell Belay directly, through a listener on
+Claude Code, Codex and Cline can tell Belay directly, through a listener on
 `127.0.0.1`: prompt submitted, tool starting, turn finished, permission
-needed. This gives sub-second detection and is what makes *"an agent is
+needed. (Copilot's own log already carries exact markers, so it has nothing
+to install.) This gives sub-second detection and is what makes *"an agent is
 waiting for you"* reliable rather than a guess. Claude Code POSTs from HTTP
 hooks in `settings.json`; Codex runs command hooks from `hooks.json`, whose
 approval Belay records in `config.toml` because Codex silently skips

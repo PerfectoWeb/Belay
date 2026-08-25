@@ -36,12 +36,13 @@ absolutely nothing is happening.
 
 ### What about Codex, Aider, Gemini CLI, Copilot, OpenCode, Cline, DeepSeek?
 
-Claude Code, Codex and Cline are first-class and need no setup — Belay reads
-each one's own turn markers, so their starts and finishes are exact. Everything
-else goes through the generic provider in **Settings ▸ Agents**: watch a folder,
-watch a process, or send Belay a webhook.
+Claude Code, Codex, Cline and Copilot CLI are first-class and need no setup —
+Belay reads each one's own turn markers, so their starts and finishes are
+exact. Everything else goes through the generic provider in
+**Settings ▸ Agents**: watch a folder, watch a process, or send Belay a
+webhook.
 
-Gemini CLI, Copilot CLI, OpenCode, Aider, Cline (the VS Code extension) and Pi
+Gemini CLI, OpenCode, Aider, Cline (the VS Code extension) and Pi
 ship as **presets**, which are pre-filled configurations rather than code. That
 is deliberate: a wrong path in a preset costs you one edit, never a release.
 
