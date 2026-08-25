@@ -5254,52 +5254,6 @@
         }
       }
     },
-    "Belay watches only the agents you turn on. Precise Detection gives Belay exact start, finish, and needs-you signals. Control-click an agent to remove it.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay beobachtet nur die Agenten, die du einschaltest. Präzise Erkennung liefert Belay exakte Signale für Start, Abschluss und Wartet-auf-dich. Zum Entfernen einen Agenten bei gedrückter Ctrl-Taste anklicken."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay watches only the agents you turn on. Precise Detection gives Belay exact start, finish, and needs-you signals. Control-click an agent to remove it."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay solo observa los agentes que actives. La detección precisa da a Belay señales exactas de inicio, fin y de cuándo te necesita. Haz clic con Control en un agente para quitarla."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ne surveille que les agents que vous activez. La détection précise fournit à Belay des signaux exacts de début, de fin et d'attente. Cliquez sur un agent en maintenant Ctrl pour la retirer."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay osserva solo gli agenti che attivi. Il rilevamento preciso fornisce a Belay segnali esatti di inizio, fine e attesa. Fai clic su un agente tenendo premuto Ctrl per rimuoverlo."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay следит только за включёнными агентами. Точное определение позволяет Belay понимать, когда работа начинается, заканчивается или требует вашего внимания. Правый клик по агенту дает возможность настроить точный режим."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 只监视你开启的智能体。精确检测为 Belay 提供准确的开始、结束和需要你的信号。按住 Control 点击智能体可将其移除。"
-          }
-        }
-      }
-    },
     "Belay will change %@ to:": {
       "extractionState": "manual",
       "localizations": {
@@ -18345,6 +18299,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 将停止为 %@ 监视此文件夹。其中的 Belay 钩子也会被移除。文件夹本身不会改动。"
+          }
+        }
+      }
+    },
+    "Belay watches only enabled agents. Precise Detection gives Belay exact start, finish, and needs-you signals. Open an agent’s settings to manage detection or add folders to watch.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay watches only enabled agents. Precise Detection gives Belay exact start, finish, and needs-you signals. Open an agent’s settings to manage detection or add folders to watch."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay следит только за включёнными агентами. Точное определение позволяет Belay понимать, когда работа начинается, заканчивается или требует вашего внимания. В настройках агента можно изменить режим определения или добавить другие папки для отслеживания."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay beobachtet nur aktivierte Agents. Die präzise Erkennung meldet Belay genau, wann Arbeit beginnt, endet oder deine Aufmerksamkeit nötig ist. In den Einstellungen eines Agents kannst du die Erkennung verwalten oder weitere Ordner überwachen lassen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay solo supervisa los agentes activados. La detección precisa le indica exactamente cuándo empieza o termina el trabajo, o cuándo un agente te necesita. Abre los ajustes de un agente para gestionar la detección o añadir carpetas que quieras supervisar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ne surveille que les agents activés. La détection précise lui indique exactement quand le travail commence, se termine ou nécessite votre attention. Ouvrez les réglages d’un agent pour gérer la détection ou ajouter des dossiers à surveiller."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay monitora solo gli agenti attivati. Il rilevamento preciso indica a Belay esattamente quando il lavoro inizia, termina o richiede la tua attenzione. Apri le impostazioni di un agente per gestire il rilevamento o aggiungere cartelle da monitorare."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 只会监控已启用的智能体。精确检测会让 Belay 准确知道工作何时开始、结束，以及何时需要你。打开智能体设置即可管理检测方式或添加要监控的文件夹。"
           }
         }
       }

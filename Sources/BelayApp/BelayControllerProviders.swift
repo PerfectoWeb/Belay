@@ -131,6 +131,12 @@ extension BelayController {
         alert.addButton(withTitle: String(localized: "Remove Folder"))
         alert.addButton(withTitle: String(localized: "Cancel"))
         alert.buttons.first?.hasDestructiveAction = true
+        // The folder-with-minus in the same red as the destructive title, so
+        // the button says what it does before the words are read.
+        alert.buttons.first?.image = NSImage(
+            systemSymbolName: "folder.badge.minus", accessibilityDescription: nil)?
+            .withSymbolConfiguration(.init(paletteColors: [.systemRed]))
+        alert.buttons.first?.imagePosition = .imageLeading
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         Task { [providers, weak self] in
             let root = URL(fileURLWithPath: path, isDirectory: true)

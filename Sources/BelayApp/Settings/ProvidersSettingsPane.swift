@@ -37,9 +37,9 @@ struct ProvidersSettingsPane: View {
                 SettingRow(
                     title: "Built in",
                     explanation: """
-                        Belay watches only the agents you turn on. Precise Detection \
-                        gives Belay exact start, finish, and needs-you signals. \
-                        Control-click an agent to remove it.
+                        Belay watches only enabled agents. Precise Detection gives \
+                        Belay exact start, finish, and needs-you signals. Open an \
+                        agent’s settings to manage detection or add folders to watch.
                         """
                 ) {
                     builtIn

@@ -53,7 +53,7 @@ struct BuiltInProviderTile: View {
                     Spacer(minLength: 6)
                     // Their own tight pair: the options button belongs to the
                     // switch, not floating between it and the name.
-                    HStack(spacing: 3) {
+                    HStack(spacing: 1) {
                         // The same menu the tile answers right-click with, one
                         // click away for whoever never right-clicks a tile.
                         // `.opacity`, not a foreground style: the menu label
@@ -70,6 +70,7 @@ struct BuiltInProviderTile: View {
                         .menuIndicator(.hidden)
                         .fixedSize()
                         .opacity(hoveringOptions ? 1 : 0.45)
+                        .animation(.easeOut(duration: 0.18), value: hoveringOptions)
                         .onHover { hoveringOptions = $0 }
                         .accessibilityLabel(Text("Options"))
                         // On the name's own line, and small: the switch is a
@@ -94,14 +95,12 @@ struct BuiltInProviderTile: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.primary.opacity(provider.isEnabled ? 0.045 : 0.022))
         )
-        // A soft spotlight riding the cursor, so the tile reads as alive
-        // before anything is clicked. Position tracks raw (a light following
-        // the hand must not lag); only appearing and fading animate. Under
-        // Reduce Motion the whole tile brightens evenly instead.
+        // A soft spotlight riding the cursor. Position tracks raw (no lag);
+        // only appearing and fading animate. Reduce Motion brightens evenly.
         .overlay {
             if let cursor, !reduceMotion {
                 RadialGradient(
-                    colors: [Color.primary.opacity(0.13), .clear],
+                    colors: [Color.primary.opacity(0.07), .clear],
                     center: .center, startRadius: 0, endRadius: 80
                 )
                 .frame(width: 160, height: 160)
