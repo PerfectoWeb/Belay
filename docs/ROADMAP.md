@@ -65,7 +65,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
 | 💫 | **256 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
 | 📈 | **1 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
-| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | [First try auto-closed](https://github.com/hesreallyhim/awesome-claude-code/issues/2629): their bot counts 14 days from the first commit. Resubmit late 25 Aug |
+| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | [First try auto-closed](https://github.com/hesreallyhim/awesome-claude-code/issues/2634): their bot counts 14 days from the first commit. Resubmit late 25 Aug |
 | 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 17 Aug 2026](https://github.com/jqueryscript/awesome-claude-code/pull/601) |
 | 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source; Belay is source available |
 | 📰 | First independent write-up | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something worth writing about |
@@ -96,7 +96,7 @@ milestone table above keeps only the big ones.
 | [SoloUnity/macos-apps-and-enhancements](https://github.com/SoloUnity/macos-apps-and-enhancements/pull/31) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
 | [phmullins/awesome-macos](https://github.com/phmullins/awesome-macos/pull/251) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026. The list is barely maintained |
 | [Mac-Menubar-Megalist](https://github.com/SKaplanOfficial/Mac-Menubar-Megalist/issues/54) | <img src="badges/in-review.svg" alt="in review" height="24"> | Issue opened 19 Aug 2026, their preferred channel |
-| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2629) | <img src="badges/waiting.svg" alt="waiting" height="24"> | First try auto-closed by their age bot; resubmit late 25 Aug 2026 |
+| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/waiting.svg" alt="waiting" height="24"> | First try auto-closed by their age bot; resubmit late 25 Aug 2026 |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
 
