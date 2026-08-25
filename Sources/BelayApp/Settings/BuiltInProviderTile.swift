@@ -1,14 +1,10 @@
 import BelayCore
 import SwiftUI
 
-/// One of the two agents Belay understands natively, as a tile with a switch.
-///
-/// Tinted and borderless, where the tools the user adds below are bordered
-/// and grey: the eye should tell at once that these two come with the app.
-/// The switch is the whole story of the tile. An agent that is off is not
-/// watched, not started, and never asks for a folder; switching it on is
-/// the moment Belay may ask, because the person just said they want it
-/// watched.
+/// One built-in agent, as a tile with a switch. Borderless where the tools
+/// below are bordered, so the eye tells at once these come with the app. An
+/// agent that is off is not watched, not started, and never asks for a
+/// folder; switching it on is the moment Belay may ask.
 struct BuiltInProviderTile: View {
     let provider: ProviderStatus
     /// Whether this agent's hooks are installed: the status line says so,
@@ -42,23 +38,23 @@ struct BuiltInProviderTile: View {
                 .resizable()
                 .interpolation(.high)
                 .frame(width: 20, height: 20)
-                .opacity(provider.isEnabled ? 1 : 0.35)
+                // 0.3 lands on the "Off" line's grey: the tile dims as one.
+                .opacity(provider.isEnabled ? 1 : 0.3)
 
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 6) {
                     Text(verbatim: provider.descriptor.displayName)
                         .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(provider.isEnabled ? .primary : .secondary)
+                        // Off: the name takes the same grey as its "Off" line.
+                        .foregroundStyle(provider.isEnabled ? .primary : .tertiary)
                         .lineLimit(1)
                     Spacer(minLength: 6)
                     // Their own tight pair: the options button belongs to the
                     // switch, not floating between it and the name.
                     HStack(spacing: 1) {
-                        // The same menu the tile answers right-click with, one
-                        // click away for whoever never right-clicks a tile.
+                        // The tile's right-click menu, one click away.
                         // `.opacity`, not a foreground style: the menu label
-                        // repaints its content and ignored the style, which is
-                        // why the icon sat fully white at rest.
+                        // repaints its content and ignores the style.
                         Menu {
                             agentMenu
                         } label: {
@@ -97,6 +93,7 @@ struct BuiltInProviderTile: View {
         )
         // A soft spotlight riding the cursor. Position tracks raw (no lag);
         // only appearing and fading animate. Reduce Motion brightens evenly.
+        // Enabled tiles only: a sleeping tile must not light up.
         .overlay {
             if let cursor, !reduceMotion {
                 RadialGradient(
@@ -118,14 +115,16 @@ struct BuiltInProviderTile: View {
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .onContinuousHover { phase in
             switch phase {
-            case .active(let location):
+            case .active(let location) where provider.isEnabled:
                 if cursor == nil {
                     withAnimation(.easeOut(duration: 0.18)) { cursor = location }
                 } else {
                     cursor = location
                 }
-            case .ended:
-                withAnimation(.easeOut(duration: 0.25)) { cursor = nil }
+            default:
+                if cursor != nil {
+                    withAnimation(.easeOut(duration: 0.25)) { cursor = nil }
+                }
             }
         }
         // Removal is rare and deliberate, so it lives one click deeper than
