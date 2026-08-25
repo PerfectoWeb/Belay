@@ -122,6 +122,7 @@ Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ 
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,即使电量低，Belay 也会让 Mac 保持唤醒。
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Belay 不会更改 %@，因为它的格式无法安全写回。请修正其格式后再次打开，Belay 会向你展示要审阅的具体更改。
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容：
+Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay 将停止为 %@ 监视此文件夹。其中的 Belay 钩子也会被移除。文件夹本身不会改动。
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay 保存的 %@ 访问权限已失效。
 Built in,Settings: Providers,translated,,Built-in,内置
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
@@ -136,7 +137,6 @@ Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",needs_revie
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,此 Mac 上未安装 Claude Code。
 "Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",Claude Code、Codex 和 Cline 都能把工作开始、结束或等待你的确切时刻告诉 Belay。在设置中一键开启。
-Click a folder to stop watching it,Settings,translated,,Click a folder to stop watching it,点按文件夹即可停止监视
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,此 Mac 上未安装 Cline。
@@ -276,6 +276,7 @@ Ready,"App, Detection, Settings, Welcome",translated,,Ready,就绪
 Release notes,App,translated,,Release notes,更新说明
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,移除
 Remove %@,Settings: Providers,translated,%@,Remove %@,移除 %@
+Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,移除文件夹
 Remove Precise Detection,Settings,translated,,Remove Precise Detection,移除精确检测
 Report a bug,Settings: About,translated,,Report a bug,报告问题
 Report an Issue,Settings,translated,,Report an Issue,报告问题
@@ -292,6 +293,7 @@ Show Reports,Settings,translated,,Show Reports,显示报告
 Show all sessions,Panel,translated,,Show all sessions,显示全部会话
 Show fewer,Panel,translated,,Show fewer,收起
 Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
+Show in Finder,Settings,translated,,Show in Finder,在访达中显示
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
@@ -310,6 +312,7 @@ Startup,"App, Settings: General, Settings: Providers",translated,,Startup,启动
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,统计
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,在下方计时器结束前，Mac 将保持唤醒。
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,电量低时停止让 Mac 保持唤醒
+"Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","停止监视""%@""？"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,停止监视此工具
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,子智能体
 System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,系统

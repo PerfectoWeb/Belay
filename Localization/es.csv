@@ -122,6 +122,7 @@ Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ 
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay mantendrá el Mac despierto incluso con poca batería.
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.","Belay no cambiará %@ porque no está en un formato que pueda editar con seguridad. Corrige su formato y vuelve a abrir esto, y Belay te mostrará el cambio exacto para revisar."
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay no puede editar este archivo con seguridad porque no es JSON puro. Añádelo manualmente:
+Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay dejará de vigilar esta carpeta para %@. Los hooks de Belay en su interior también se eliminan. La carpeta en sí no se toca.
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,El permiso guardado de Belay para %@ ya no es válido.
 Built in,Settings: Providers,translated,,Built-in,Integrados
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Invítame un café
@@ -136,7 +137,6 @@ Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",translated,
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code aún no ha abierto ningún proyecto en este Mac. Belay empezará solo cuando ocurra.
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,Claude Code no está instalado en este Mac.
 "Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.","Claude Code, Codex y Cline pueden decirle a Belay el momento exacto en que el trabajo empieza, termina o te espera. Un clic en Ajustes."
-Click a folder to stop watching it,Settings,translated,,Click a folder to stop watching it,Haz clic en una carpeta para dejar de vigilarla
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Haz clic para ver qué ha cambiado e instalarlo cuando quieras.
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline aún no ha iniciado ninguna sesión en este Mac. Belay empezará solo cuando ocurra.
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline no está instalado en este Mac.
@@ -276,6 +276,7 @@ Ready,"App, Detection, Settings, Welcome",translated,,Ready,Listo
 Release notes,App,translated,,Release notes,Notas de la versión
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,Quitar
 Remove %@,Settings: Providers,translated,%@,Remove %@,Quitar %@
+Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,Quitar carpeta
 Remove Precise Detection,Settings,translated,,Remove Precise Detection,Quitar la detección precisa
 Report a bug,Settings: About,translated,,Report a bug,Informar de un error
 Report an Issue,Settings,translated,,Report an Issue,Informar de un problema
@@ -292,6 +293,7 @@ Show Reports,Settings,translated,,Show Reports,Mostrar informes
 Show all sessions,Panel,translated,,Show all sessions,Mostrar todas las sesiones
 Show fewer,Panel,translated,,Show fewer,Mostrar menos
 Show fewer sessions,Panel,translated,,Show fewer sessions,Mostrar menos sesiones
+Show in Finder,Settings,translated,,Show in Finder,Mostrar en Finder
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,Muestra exactamente qué añadirá Belay antes de escribir nada
 Since %@,Statistics,needs_review,%@,Since %@,Desde el %@
 Skip for now,Welcome,translated,,Skip now,Omitir
@@ -310,6 +312,7 @@ Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Inicio
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Estadísticas
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,Despierto hasta que acabe el temporizador.
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Dejar de mantener el Mac despierto con poca batería
+"Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","¿Dejar de vigilar ""%@""?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Deja de belayar esta herramienta
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagente
 System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Sistema

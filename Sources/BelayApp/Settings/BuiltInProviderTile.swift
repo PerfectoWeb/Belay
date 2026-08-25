@@ -28,6 +28,10 @@ struct BuiltInProviderTile: View {
     var onRemoveRoot: (String) -> Void = { _ in }
     var onAddSuggested: (String) -> Void = { _ in }
     @State private var hoveringOptions = false
+    /// Where the cursor is over the tile, in its own coordinates, for the
+    /// spotlight. `nil` when the cursor is elsewhere.
+    @State private var cursor: CGPoint?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         // Centred like the generic tiles' marks, and dimmed rather than
@@ -47,25 +51,33 @@ struct BuiltInProviderTile: View {
                         .foregroundStyle(provider.isEnabled ? .primary : .secondary)
                         .lineLimit(1)
                     Spacer(minLength: 6)
-                    // The same menu the tile answers right-click with, one
-                    // click away for whoever never right-clicks a tile.
-                    Menu {
-                        agentMenu
-                    } label: {
-                        Image(systemName: "slider.horizontal.3")
-                            .font(.system(size: 10, weight: .semibold))
-                            .foregroundStyle(Color.primary.opacity(hoveringOptions ? 0.95 : 0.4))
+                    // Their own tight pair: the options button belongs to the
+                    // switch, not floating between it and the name.
+                    HStack(spacing: 3) {
+                        // The same menu the tile answers right-click with, one
+                        // click away for whoever never right-clicks a tile.
+                        // `.opacity`, not a foreground style: the menu label
+                        // repaints its content and ignored the style, which is
+                        // why the icon sat fully white at rest.
+                        Menu {
+                            agentMenu
+                        } label: {
+                            Image(systemName: "slider.horizontal.3")
+                                .font(.system(size: 9, weight: .semibold))
+                                .foregroundStyle(.primary)
+                        }
+                        .menuStyle(.borderlessButton)
+                        .menuIndicator(.hidden)
+                        .fixedSize()
+                        .opacity(hoveringOptions ? 1 : 0.45)
+                        .onHover { hoveringOptions = $0 }
+                        .accessibilityLabel(Text("Options"))
+                        // On the name's own line, and small: the switch is a
+                        // detail of the row, not a second landmark.
+                        MiniSwitch(isOn: provider.isEnabled, toggle: onToggle)
+                            .offset(x: 3)
+                            .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                     }
-                    .menuStyle(.borderlessButton)
-                    .menuIndicator(.hidden)
-                    .fixedSize()
-                    .onHover { hoveringOptions = $0 }
-                    .accessibilityLabel(Text("Options"))
-                    // On the name's own line, and small: the switch is a
-                    // detail of the row, not a second landmark.
-                    MiniSwitch(isOn: provider.isEnabled, toggle: onToggle)
-                        .offset(x: 3)
-                        .accessibilityLabel(Text(verbatim: provider.descriptor.displayName))
                 }
                 status
                     .font(.system(size: 10))
@@ -82,6 +94,41 @@ struct BuiltInProviderTile: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.primary.opacity(provider.isEnabled ? 0.045 : 0.022))
         )
+        // A soft spotlight riding the cursor, so the tile reads as alive
+        // before anything is clicked. Position tracks raw (a light following
+        // the hand must not lag); only appearing and fading animate. Under
+        // Reduce Motion the whole tile brightens evenly instead.
+        .overlay {
+            if let cursor, !reduceMotion {
+                RadialGradient(
+                    colors: [Color.primary.opacity(0.13), .clear],
+                    center: .center, startRadius: 0, endRadius: 80
+                )
+                .frame(width: 160, height: 160)
+                .position(cursor)
+                .transition(.opacity)
+                .allowsHitTesting(false)
+            }
+            if cursor != nil, reduceMotion {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(Color.primary.opacity(0.03))
+                    .transition(.opacity)
+                    .allowsHitTesting(false)
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .onContinuousHover { phase in
+            switch phase {
+            case .active(let location):
+                if cursor == nil {
+                    withAnimation(.easeOut(duration: 0.18)) { cursor = location }
+                } else {
+                    cursor = location
+                }
+            case .ended:
+                withAnimation(.easeOut(duration: 0.25)) { cursor = nil }
+            }
+        }
         // Removal is rare and deliberate, so it lives one click deeper than
         // the offer: the tile's own menu.
         .contextMenu {

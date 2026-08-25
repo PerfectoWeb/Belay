@@ -122,6 +122,7 @@ Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ 
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay hält deinen Mac auch bei niedrigem Akkustand wach.
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.","Belay ändert %@ nicht, weil das Format nicht sicher zurückgeschrieben werden kann. Bringe das Format in Ordnung und öffne dies erneut, dann zeigt Belay dir die genaue Änderung zur Prüfung."
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,"Belay kann diese Datei nicht sicher bearbeiten, weil sie kein reines JSON ist. Füge dies stattdessen manuell hinzu:"
+Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay beobachtet diesen Ordner für %@ nicht mehr. Auch die Belay-Hooks darin werden entfernt. Der Ordner selbst bleibt unberührt.
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Die gespeicherte Berechtigung von Belay für %@ gilt nicht mehr.
 Built in,Settings: Providers,translated,,Built-in,Integriert
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Spendier mir einen Kaffee
@@ -136,7 +137,6 @@ Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",translated,
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,"Claude Code hat auf diesem Mac noch kein Projekt geöffnet. Belay beginnt von selbst, sobald es passiert."
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,Claude Code ist auf diesem Mac nicht installiert.
 "Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.","Claude Code, Codex und Cline können Belay den genauen Moment melden, in dem Arbeit beginnt, endet oder auf dich wartet. Ein Klick in den Einstellungen."
-Click a folder to stop watching it,Settings,translated,,Click a folder to stop watching it,"Klicke auf einen Ordner, um ihn nicht mehr zu beobachten"
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Cline hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline ist auf diesem Mac nicht installiert.
@@ -276,6 +276,7 @@ Ready,"App, Detection, Settings, Welcome",translated,,Ready,Bereit
 Release notes,App,translated,,Release notes,Versionshinweise
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,Entfernen
 Remove %@,Settings: Providers,translated,%@,Remove %@,%@ entfernen
+Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,Ordner entfernen
 Remove Precise Detection,Settings,translated,,Remove Precise Detection,Präzise Erkennung entfernen
 Report a bug,Settings: About,translated,,Report a bug,Fehler melden
 Report an Issue,Settings,translated,,Report an Issue,Problem melden
@@ -292,6 +293,7 @@ Show Reports,Settings,translated,,Show Reports,Berichte anzeigen
 Show all sessions,Panel,translated,,Show all sessions,Alle Sitzungen zeigen
 Show fewer,Panel,translated,,Show fewer,Weniger anzeigen
 Show fewer sessions,Panel,translated,,Show fewer sessions,Weniger Sitzungen zeigen
+Show in Finder,Settings,translated,,Show in Finder,Im Finder zeigen
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,"Zeigt genau, was Belay hinzufügen wird, bevor etwas geschrieben wird"
 Since %@,Statistics,needs_review,%@,Since %@,Seit %@
 Skip for now,Welcome,translated,,Skip now,Überspringen
@@ -310,6 +312,7 @@ Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Start
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistik
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,"Der Mac bleibt wach, bis der Timer unten abläuft."
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Mac bei niedrigem Akkustand nicht wach halten
+"Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","""%@"" nicht mehr beobachten?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Beendet die Überwachung dieses Tools
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagent
 System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,System

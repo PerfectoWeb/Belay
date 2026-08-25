@@ -119,6 +119,19 @@ extension BelayController {
     }
 
     func removeProviderRoot(_ id: ProviderID, path: String) {
+        let name = state.providers.first { $0.id == id }?.descriptor.displayName ?? ""
+        let shown = (path as NSString).abbreviatingWithTildeInPath
+        let alert = NSAlert()
+        alert.messageText = String(localized: "Stop watching \"\(shown)\"?")
+        alert.informativeText = String(
+            localized: """
+                Belay will stop watching this folder for \(name). Any Belay hooks \
+                inside it are removed as well. The folder itself is not touched.
+                """)
+        alert.addButton(withTitle: String(localized: "Remove Folder"))
+        alert.addButton(withTitle: String(localized: "Cancel"))
+        alert.buttons.first?.hasDestructiveAction = true
+        guard alert.runModal() == .alertFirstButtonReturn else { return }
         Task { [providers, weak self] in
             let root = URL(fileURLWithPath: path, isDirectory: true)
             await providers.precise.uninstallHooks(for: id, at: root)

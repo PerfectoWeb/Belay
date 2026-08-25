@@ -122,6 +122,7 @@ Belay will change %@ to:,Settings: Providers,translated,%@,Belay will update %@ 
 Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,translated,,Belay will keep your Mac awake even on low battery.,Belay terrà sveglio il Mac anche con batteria scarica.
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.","Belay non modificherà %@ perché non è in un formato che può scrivere in sicurezza. Correggi il formato e riapri questa finestra, e Belay ti mostrerà la modifica esatta da controllare."
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,Belay non può modificare questo file in sicurezza perché non è JSON puro. Aggiungilo manualmente:
+Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay smetterà di osservare questa cartella per %@. Anche gli hook di Belay al suo interno vengono rimossi. La cartella in sé non viene toccata.
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Il permesso salvato di Belay per %@ non è più valido.
 Built in,Settings: Providers,translated,,Built-in,Integrati
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Offrimi un caffè
@@ -136,7 +137,6 @@ Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",translated,
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code non ha ancora aperto un progetto su questo Mac. Belay inizierà da solo quando succederà.
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,Claude Code non è installato su questo Mac.
 "Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.","Claude Code, Codex e Cline possono dire a Belay il momento esatto in cui il lavoro inizia, finisce o ti aspetta. Un clic nelle impostazioni."
-Click a folder to stop watching it,Settings,translated,,Click a folder to stop watching it,Fai clic su una cartella per smettere di osservarla
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Fai clic per vedere cosa è cambiato e installarlo quando vuoi.
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline non ha ancora avviato una sessione su questo Mac. Belay inizierà da solo quando succederà.
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline non è installato su questo Mac.
@@ -276,6 +276,7 @@ Ready,"App, Detection, Settings, Welcome",translated,,Ready,Pronto
 Release notes,App,translated,,Release notes,Note di versione
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,Rimuovi
 Remove %@,Settings: Providers,translated,%@,Remove %@,Rimuovi %@
+Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,Rimuovi cartella
 Remove Precise Detection,Settings,translated,,Remove Precise Detection,Rimuovi il rilevamento preciso
 Report a bug,Settings: About,translated,,Report a bug,Segnala un bug
 Report an Issue,Settings,translated,,Report an Issue,Segnala un problema
@@ -292,6 +293,7 @@ Show Reports,Settings,translated,,Show Reports,Mostra i rapporti
 Show all sessions,Panel,translated,,Show all sessions,Mostra tutte le sessioni
 Show fewer,Panel,translated,,Show fewer,Mostra meno
 Show fewer sessions,Panel,translated,,Show fewer sessions,Mostra meno sessioni
+Show in Finder,Settings,translated,,Show in Finder,Mostra nel Finder
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,Mostra esattamente cosa aggiungerà Belay prima di scrivere qualsiasi cosa
 Since %@,Statistics,needs_review,%@,Since %@,Dal %@
 Skip for now,Welcome,translated,,Skip now,Salta
@@ -310,6 +312,7 @@ Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Avvio
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistiche
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,Il Mac resta sveglio finché il timer non scade.
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Smetti di tenere sveglio il Mac con batteria scarica
+"Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","Smettere di osservare ""%@""?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Smette di monitorare questo strumento
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Subagente
 System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Sistema

@@ -1,3 +1,4 @@
+import AppKit
 import BelayCore
 import SwiftUI
 
@@ -21,22 +22,29 @@ extension BuiltInProviderTile {
         }
         Menu {
             // The default home rides along for context; only the added
-            // folders are removable, and removal is the click itself.
+            // folders are removable, each through its own submenu so a stray
+            // click cannot remove anything.
             Button {
             } label: {
                 Label(home, systemImage: "house")
             }
             .disabled(true)
-            if !provider.customRoots.isEmpty {
-                Text("Click a folder to stop watching it")
-                ForEach(provider.customRoots, id: \.self) { path in
+            ForEach(provider.customRoots, id: \.self) { path in
+                Menu {
                     Button {
+                        NSWorkspace.shared.activateFileViewerSelecting(
+                            [URL(fileURLWithPath: path, isDirectory: true)])
+                    } label: {
+                        Label("Show in Finder", systemImage: "magnifyingglass")
+                    }
+                    Divider()
+                    Button(role: .destructive) {
                         onRemoveRoot(path)
                     } label: {
-                        Label(
-                            (path as NSString).abbreviatingWithTildeInPath,
-                            systemImage: "folder")
+                        Label("Remove Folder", systemImage: "trash")
                     }
+                } label: {
+                    Label((path as NSString).abbreviatingWithTildeInPath, systemImage: "folder")
                 }
             }
             if !provider.suggestedRoots.isEmpty {
