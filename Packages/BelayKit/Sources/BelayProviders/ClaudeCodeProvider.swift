@@ -82,7 +82,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
     }
 
     /// Both halves of the machinery are live. Teardown has to clear both.
-    var isWatching: Bool { events != nil && ticker != nil }
+    public var isWatching: Bool { events != nil && ticker != nil }
 
     public func stop() async {
         events?.stop()

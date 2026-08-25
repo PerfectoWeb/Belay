@@ -65,6 +65,17 @@ enum CodexAppServer {
 
         // Read until the id:2 answer arrives or the clock runs out. The
         // stream interleaves notifications; only the numbered replies count.
+        //
+        // `availableData` blocks until data or EOF, and the `Date() < deadline`
+        // check only runs between reads — so a codex build that answers
+        // `initialize` then stalls with the pipe open would hang this call
+        // forever, never reaching the `defer` terminate. The watchdog forces
+        // the timeout: terminating the process shuts its end of the pipe, and
+        // the next `availableData` returns empty (EOF) instead of blocking.
+        let watchdog = DispatchWorkItem { process.terminate() }
+        DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + timeout, execute: watchdog)
+        defer { watchdog.cancel() }
+
         let deadline = Date().addingTimeInterval(timeout)
         var buffer = Data()
         while Date() < deadline {

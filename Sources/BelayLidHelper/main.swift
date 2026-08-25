@@ -31,7 +31,17 @@ final class SleepFlag: @unchecked Sendable {
             guard leash > 0 else { return lowerLocked() }
             if !FileManager.default.fileExists(atPath: Self.sentinel.path) {
                 let prior = Self.currentValue() ?? false
-                try? Data((prior ? "1" : "0").utf8).write(to: Self.sentinel)
+                do {
+                    try Data((prior ? "1" : "0").utf8).write(to: Self.sentinel)
+                } catch {
+                    // The sentinel must exist before the flag is raised, and not
+                    // just for crash-safety: without it, `lowerLocked` sees no
+                    // sentinel, returns early, and never runs `pmset 0` — so a
+                    // swallowed write failure here would leave `SleepDisabled=1`
+                    // stuck across leash expiry and reboots. If we cannot record
+                    // it, we do not raise the flag.
+                    return false
+                }
             }
             guard Self.pmset(disabled: true) else { return false }
             expiry?.cancel()

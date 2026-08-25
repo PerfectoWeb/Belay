@@ -80,6 +80,12 @@ public actor ActivityCoordinator {
         ledger.removeAll()
         lastActiveAt = nil
         capTripped = false
+        // `holdingSince` too: without this it survives the sleep, so in Always
+        // on the awake-limit counts the hours the Mac spent asleep and trips the
+        // moment it wakes (hold 09:00, sleep 10:00, wake 14:30, cap 4h →
+        // suspended after one real hour). Clearing it lets the same evaluate()
+        // re-stamp it in `commit` — the fresh cap cycle a wake is meant to give.
+        holdingSince = nil
         evaluate()
     }
 

@@ -39,6 +39,9 @@ public actor CodexProvider: ActivityProvider {
     var ticker: DispatchSourceTimer?
     var tickCount = 0
     private var isStarted = false
+    /// Whether the provider is currently running, so the app layer can log a
+    /// start only when one genuinely happens (a re-`start()` is a silent no-op).
+    public var isWatching: Bool { isStarted }
 
     public init(
         configuration: Configuration = .codexHome(),

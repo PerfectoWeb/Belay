@@ -147,4 +147,39 @@ struct HookInstallerTests {
         #expect(section.count == HookEvent.allCases.count)
         #expect(snippet.contains("http://127.0.0.1:51234/hook?src=belay"))
     }
+
+    /// A user value of the wrong shape under a registered event key must be
+    /// refused, not overwritten: the merge is pure, so throwing leaves the file
+    /// untouched rather than silently destroying `"Stop": "my-own-note"`.
+    @Test func refusesToOverwriteAWrongShapedForeignEventValue() {
+        let settings: [String: Any] = ["hooks": ["Stop": "my-own-note"]]
+        #expect(throws: BridgeError.hooksNotAnObject) {
+            _ = try SettingsMerge.merged(settings, endpoint: BridgeScratch.endpoint)
+        }
+    }
+}
+
+@Suite("Bridge endpoint store")
+struct BridgeEndpointStoreTests {
+    /// The save used to remove-then-create, leaving a window with no file: a
+    /// concurrent load landing in it saw nothing and `endpoint(port:)` minted a
+    /// fresh token, rotating the credential under every consented hook. An
+    /// atomic replace closes the window — the token never changes under load.
+    @Test func concurrentSavesNeverRotateTheToken() async throws {
+        let scratch = try BridgeScratch()
+        defer { scratch.remove() }
+        let store = scratch.store
+        let token = try store.endpoint(port: 5000).token
+
+        await withTaskGroup(of: String?.self) { group in
+            for offset in 0..<40 {
+                group.addTask { try? store.endpoint(port: UInt16(6000 + offset)).token }
+                group.addTask { store.load()?.token }
+            }
+            for await seen in group where seen != nil {
+                #expect(seen == token, "the token must never rotate under concurrent access")
+            }
+        }
+        #expect(store.load()?.token == token)
+    }
 }

@@ -21,6 +21,37 @@ struct SafetyGateTests {
         #expect(await coordinator.snapshot.state == .suspended(.maxDurationReached(600)))
     }
 
+    /// A wake from sleep must not count the hours the Mac spent asleep toward
+    /// the awake limit. `resync` restarts the cap clock, so Always on holds
+    /// fresh after a wake instead of suspending the instant it comes back.
+    @Test("A wake from sleep gives Always on a fresh cap cycle, not an instant suspend")
+    func resyncRestartsTheCapClock() async {
+        let clock = TestClock()
+        var policy = AwakePolicy.default
+        policy.mode = .alwaysOn
+        policy.maxContinuousAwake = 600
+        let coordinator = ActivityCoordinator(clock: clock, policy: policy)
+
+        #expect(await coordinator.evaluate().isHold)
+
+        // The Mac sleeps for well past the cap; no evaluate runs while asleep.
+        clock.advance(3600)
+        await coordinator.resync()
+
+        // It must not suspend on the accumulated sleep time.
+        #expect(await coordinator.snapshot.state == .alwaysOn)
+        #expect(await coordinator.evaluate().isHold)
+
+        // Still inside the fresh post-wake cap: holding.
+        clock.advance(599)
+        #expect(await coordinator.evaluate().isHold)
+
+        // Past the fresh cap: now it caps, honestly.
+        clock.advance(2)
+        #expect(await coordinator.evaluate() == .release)
+        #expect(await coordinator.snapshot.state == .suspended(.maxDurationReached(600)))
+    }
+
     @Test("After the cap fires it stays released while the same work continues")
     func capDoesNotReArmWhileWorkContinues() async {
         let clock = TestClock()

@@ -70,6 +70,35 @@ struct ClineTeammateTests {
         await provider.stop()
     }
 
+    /// Growth is a teammate's only signal, so a truncation (context compaction,
+    /// checkpoint restore) must count as a write too — otherwise a working
+    /// teammate whose file shrank goes dark until it re-exceeds its old peak,
+    /// which may be never.
+    @Test("A teammate whose file is truncated is not left dark")
+    func truncationStillCountsAsAWrite() async throws {
+        let provider = provider()
+        try await provider.start()
+        scratch.session("s4", status: "running")
+        await provider.ingest("s4", now: Date())
+        let start = Date()
+        teammateFile("s4", stem: "builder__z9", bytes: 800)
+        await provider.ingestTeammate(
+            session: "s4", stem: "builder__z9", agent: "builder", now: start)
+        #expect(await provider.watched[SessionID("builder__z9")]?.reported == .working)
+
+        await provider.sweepForIdle(now: start.addingTimeInterval(90))
+        #expect(await provider.watched[SessionID("builder__z9")]?.reported == .idle)
+
+        // Compacted to a smaller size: the shrink wakes it rather than being
+        // swallowed as "not bigger than the old maximum".
+        teammateFile("s4", stem: "builder__z9", bytes: 100)
+        await provider.ingestTeammate(
+            session: "s4", stem: "builder__z9", agent: "builder",
+            now: start.addingTimeInterval(100))
+        #expect(await provider.watched[SessionID("builder__z9")]?.reported == .working)
+        await provider.stop()
+    }
+
     @Test("Existing teammates are seeded when their session is adopted")
     func seededWithParent() async throws {
         scratch.session("s3", status: "running")

@@ -35,6 +35,9 @@ public actor ClineProvider: ActivityProvider {
     private var events: FileEventStream?
     var ticker: DispatchSourceTimer?
     private var isStarted = false
+    /// Whether the provider is currently running, so the app layer can log a
+    /// start only when one genuinely happens (a re-`start()` is a silent no-op).
+    public var isWatching: Bool { isStarted }
 
     public init(
         configuration: Configuration = .clineHome(),
@@ -124,7 +127,12 @@ public actor ClineProvider: ActivityProvider {
             return adopt(state, stateURL: stateURL, now: now, atStartup: false)
         }
         let messages = FileSnapshot(url: watch.messagesURL)
-        if let messages, messages.size > watch.messagesBytes {
+        // Any change in size is a write: a shrink means the file was truncated
+        // or replaced (compaction, checkpoint restore), and the high-water mark
+        // has to reset or later growth below the old peak is invisible. The
+        // root's activity comes from its `status` field regardless, so this only
+        // keeps the growth-based heartbeat honest.
+        if let messages, messages.size != watch.messagesBytes {
             watch.messagesBytes = messages.size
             watch.lastWriteAt = now
         }

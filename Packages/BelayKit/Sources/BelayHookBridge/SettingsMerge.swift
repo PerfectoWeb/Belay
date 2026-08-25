@@ -48,6 +48,16 @@ enum SettingsMerge {
             // records hook trust by position in these arrays, so an insert
             // would break the trust of every hook behind it.
             for event in vocabulary.eventNames {
+                // A registered event key already holding something that is not a
+                // group array is the user's own, of a shape Belay cannot merge
+                // into. `strip` deliberately copies such values through untouched
+                // — but this loop would then overwrite it with Belay's array,
+                // silently destroying it. Refuse instead, the same stance a
+                // non-object `hooks` section gets: the merge is pure, so throwing
+                // means nothing is ever written.
+                if let existing = section[event], !(existing is [Any]) {
+                    throw BridgeError.hooksNotAnObject
+                }
                 var groups = section[event] as? [Any] ?? []
                 groups.append(vocabulary.group(for: event, endpoint: endpoint))
                 section[event] = groups

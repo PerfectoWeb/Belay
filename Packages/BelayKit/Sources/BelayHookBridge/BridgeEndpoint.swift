@@ -46,14 +46,29 @@ public struct BridgeEndpointStore: Sendable {
                 withIntermediateDirectories: true,
                 attributes: [.posixPermissions: 0o700])
             let data = try JSONEncoder().encode(endpoint)
-            try? manager.removeItem(at: url)
-            // Created with the mode already set rather than chmod-ed afterwards:
-            // no window in which the token is world readable.
+            // Atomic replace, not remove-then-create. The old sequence left a
+            // window with no file at all: a concurrent `load()` landing in it
+            // (a second Belay instance, or the receiver re-binding) saw nothing
+            // and `endpoint(port:)` then minted a fresh token, rotating the
+            // credential under every hook the user had already consented to. The
+            // temp carries 0600 from birth — no window where the token is
+            // world-readable — and `rename(2)` swaps it in atomically.
+            let temp = directory.appendingPathComponent(
+                ".\(url.lastPathComponent).\(UUID().uuidString)")
             guard
                 manager.createFile(
-                    atPath: url.path, contents: data, attributes: [.posixPermissions: 0o600])
+                    atPath: temp.path, contents: data, attributes: [.posixPermissions: 0o600])
             else {
                 throw BridgeError.settingsWriteFailed("could not create \(url.lastPathComponent)")
+            }
+            let renamed = temp.withUnsafeFileSystemRepresentation { source in
+                url.withUnsafeFileSystemRepresentation { destination in
+                    rename(source, destination)
+                }
+            }
+            guard renamed == 0 else {
+                try? manager.removeItem(at: temp)
+                throw BridgeError.settingsWriteFailed("could not replace \(url.lastPathComponent)")
             }
         } catch let error as BridgeError {
             throw error

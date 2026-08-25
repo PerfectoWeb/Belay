@@ -23,7 +23,13 @@ extension ClineProvider {
             return false
         }
         if var watch = watched[id] {
-            guard snapshot.size > watch.messagesBytes else { return false }
+            // Any change in size is a write, not just growth: a shrink means the
+            // file was truncated or replaced (context compaction, a checkpoint
+            // restore). Resetting the high-water mark on a shrink is essential —
+            // growth is a teammate's *only* signal, so without this a working
+            // teammate whose file shrank goes dark until it re-exceeds its old
+            // maximum, which may be never.
+            guard snapshot.size != watch.messagesBytes else { return false }
             watch.messagesBytes = snapshot.size
             watch.lastWriteAt = now
             watched[id] = watch

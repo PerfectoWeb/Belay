@@ -97,6 +97,35 @@ struct AgentChildrenTests {
             "its subagent went with it, not left pinning the Mac for the full grace")
     }
 
+    /// A crash leaves `sessions/<oldpid>.json` behind; resuming the same session
+    /// writes `sessions/<newpid>.json` beside it. The dead sidecar must not end
+    /// the session the live pid is keeping.
+    @Test("A resumed session survives its crashed pid's leftover sidecar")
+    func staleSidecarDoesNotEndALiveSession() async {
+        let start = Date()
+        let url = scratch.transcript(
+            "resumed", lines: [TranscriptScratch.record("assistant", stop: "tool_use")])
+        scratch.processFile(pid: 9200, session: "resumed", cwd: "/Volumes/Work/App")
+        scratch.processFile(pid: 9300, session: "resumed", cwd: "/Volumes/Work/App")
+        let provider = self.provider()
+        await provider.ingest(url, now: start)
+        #expect(await provider.watched[SessionID("resumed")] != nil)
+
+        // Old pid dead, new pid alive: the session lives.
+        await provider.sweepForDeadProcesses(
+            now: start.addingTimeInterval(30),
+            isAlive: { $0 == 9300 }, busyPids: { _, _, _ in [] })
+        #expect(
+            await provider.watched[SessionID("resumed")] != nil,
+            "the live pid keeps the session; the crashed pid's leftover must not end it")
+
+        // Both sidecars dead: now it genuinely ends.
+        await provider.sweepForDeadProcesses(
+            now: start.addingTimeInterval(60),
+            isAlive: { _ in false }, busyPids: { _, _, _ in [] })
+        #expect(await provider.watched[SessionID("resumed")] == nil)
+    }
+
     /// A failed `sysctl` must mean "ask again later", never "nothing is running".
     @Test("An unreadable process table does not resurrect or end anything")
     func unreadableProcessTableIsIgnored() async {

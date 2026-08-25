@@ -91,10 +91,20 @@ extension ClaudeCodeProvider {
         // `AgentChildren` for why an unbounded "has a child" pins the Mac awake.
         let busy = busyPids(
             Set(tracked.filter(\.isAlive).map(\.pid)), configuration.inferredIdleAfter, now)
+        // A session can have more than one sidecar: a crash leaves
+        // `sessions/<oldpid>.json` behind, and resuming the same session writes
+        // `sessions/<newpid>.json` beside it. Ending on the dead record would
+        // kill the live session the new pid is keeping — and during an
+        // awaiting-assistant silence (a 529 retry loop) there is no transcript
+        // write to re-adopt from, so the Mac would sleep mid-retry. A session is
+        // dead only when no sidecar for it is alive.
+        let aliveSessions = Set(tracked.filter(\.isAlive).map(\.session))
 
         for record in tracked {
             guard record.isAlive else {
-                end(record.session, at: now, cause: "process-dead")
+                if !aliveSessions.contains(record.session) {
+                    end(record.session, at: now, cause: "process-dead")
+                }
                 continue
             }
             if let workspace = record.workspace {
