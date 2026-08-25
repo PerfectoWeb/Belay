@@ -17243,53 +17243,6 @@
         }
       }
     },
-    "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Kostenlos und unverkäuflich. Von Geeks für Geeks gebaut."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratis y nunca a la venta. Hecho por frikis para frikis."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratuit, jamais à vendre. Fait par des geeks, pour des geeks."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratuito e mai in vendita. Fatto da smanettoni per smanettoni."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb. Бесплатно, с открытым исходным кодом. От гиков - гикам."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。"
-          }
-        }
-      }
-    },
     "✨ Belay %@ is out": {
       "extractionState": "manual",
       "localizations": {
@@ -17609,6 +17562,53 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 不会更改 %@，因为它的格式无法安全写回。请修正其格式后再次打开，Belay 会向你展示要审阅的具体更改。"
+          }
+        }
+      }
+    },
+    "© 2026 PerfectoWeb. Free & source-available. Built by geeks, for geeks.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Kostenlos, Quelltext offen einsehbar. Von Geeks für Geeks gebaut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Free & source-available. Built by geeks, for geeks."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Gratis, código fuente disponible. Hecho por frikis para frikis."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Gratuit, code source disponible. Fait par des geeks, pour des geeks."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Gratuito, codice sorgente disponibile. Fatto da smanettoni per smanettoni."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb. Бесплатно, исходный код открыт для всех. От гиков - гикам."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026 PerfectoWeb。免费，源代码公开。由极客打造，为极客而作。"
           }
         }
       }
