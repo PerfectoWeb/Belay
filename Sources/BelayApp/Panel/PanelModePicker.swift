@@ -176,17 +176,34 @@ extension AwakeMode {
         switch self {
         case .auto: return Color(nsColor: .controlAccentColor)
         case .alwaysOn: return Color(red: 0.95, green: 0.62, blue: 0.16)
-        case .off: return Color(nsColor: .systemGray)
+        // In dark mode Off sits back instead of glowing: a bright pill said
+        // "look here" about the one mode that does nothing. Light mode and
+        // Increase Contrast keep the loud grey, which stays readable.
+        case .off:
+            return Color(
+                nsColor: NSColor(name: nil) { appearance in
+                    appearance.plainDark
+                        ? NSColor(srgbRed: 0x44 / 255, green: 0x44 / 255, blue: 0x4A / 255, alpha: 1)
+                        : .systemGray
+                })
         }
     }
 
     /// The selected-label colour on this mode's pill. White reads on the blue
     /// accent, but amber and grey are light enough that white on them falls
     /// under the WCAG contrast floor — those take a near-black label instead.
+    /// Off's muted dark pill takes a muted label to match.
     var pillForeground: Color {
         switch self {
         case .auto: return .white
-        case .alwaysOn, .off: return Color(red: 0.12, green: 0.10, blue: 0.05)
+        case .alwaysOn: return Color(red: 0.12, green: 0.10, blue: 0.05)
+        case .off:
+            return Color(
+                nsColor: NSColor(name: nil) { appearance in
+                    appearance.plainDark
+                        ? NSColor(srgbRed: 0x96 / 255, green: 0x96 / 255, blue: 0x96 / 255, alpha: 1)
+                        : NSColor(srgbRed: 0.12, green: 0.10, blue: 0.05, alpha: 1)
+                })
         }
     }
 
@@ -196,5 +213,12 @@ extension AwakeMode {
         case .alwaysOn: return "sun.max.fill"
         case .off: return "moon"
         }
+    }
+}
+
+extension NSAppearance {
+    /// Dark mode without Increase Contrast: the one place the Off pill mutes.
+    fileprivate var plainDark: Bool {
+        bestMatch(from: [.aqua, .darkAqua, .accessibilityHighContrastDarkAqua]) == .darkAqua
     }
 }
