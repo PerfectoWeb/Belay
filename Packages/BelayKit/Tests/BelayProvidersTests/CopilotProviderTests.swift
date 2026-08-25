@@ -184,10 +184,14 @@ struct CopilotProviderTests {
         let now = Date()
         await provider.ingest(url, now: now)
 
-        await provider.sweepForIdle(now: now.addingTimeInterval(120))
+        // Inside the 5-minute open-turn grace: an open turn keeps holding.
+        await provider.sweepForIdle(now: now.addingTimeInterval(4 * 60))
         #expect(await provider.watched[SessionID("s7")]?.reported == .working)
 
-        await provider.sweepForIdle(now: now.addingTimeInterval(16 * 60))
+        // Past it: a corpse (never a real Copilot turn, which streams) ends —
+        // sooner than Codex's 15-minute grace, because Copilot never goes that
+        // silent mid-turn and the process-name sweep can't spot the corpse.
+        await provider.sweepForIdle(now: now.addingTimeInterval(6 * 60))
         #expect(await provider.watched[SessionID("s7")] == nil)
 
         let done = scratch.events(

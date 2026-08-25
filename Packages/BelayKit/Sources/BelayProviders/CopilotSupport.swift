@@ -5,11 +5,18 @@ import Foundation
 extension CopilotProvider {
     public struct Configuration: Sendable {
         public var sessionsDirectory: URL
-        /// Same horizons as the other two watchers, for the same reasons: a
-        /// tool call can be silent for ten seconds, and a turn waiting out a
-        /// retry can be silent for minutes at exactly the moment the Mac must
-        /// stay awake.
         public var inferredIdleAfter: TimeInterval
+        /// Shorter than the 15-minute grace Codex and Claude get, on purpose.
+        /// Those two can fall silent for minutes mid-turn while the model waits
+        /// out a network retry, so an open turn that stops writing is given the
+        /// benefit of the doubt. Copilot instead streams events continuously
+        /// through a turn (verified live: events.jsonl grew steadily mid-turn),
+        /// so an open turn silent for minutes is a corpse, not a retry — and the
+        /// dead-process sweep cannot help here, because a machine running the
+        /// Copilot IDE extension has persistent `copilot --server` daemons that
+        /// share the process name, so `copilot` is always in the roster. Five
+        /// minutes still covers a slow tool call while bounding a hard-killed
+        /// corpse (SIGKILL leaves no `session.shutdown`) to a third of the pin.
         public var openTurnGrace: TimeInterval
         public var staleAtStartupAfter: TimeInterval
         public var latency: TimeInterval
@@ -18,7 +25,7 @@ extension CopilotProvider {
         public init(
             sessionsDirectory: URL,
             inferredIdleAfter: TimeInterval = 45,
-            openTurnGrace: TimeInterval = 15 * 60,
+            openTurnGrace: TimeInterval = 5 * 60,
             staleAtStartupAfter: TimeInterval = 600,
             latency: TimeInterval = 1.0,
             tickInterval: TimeInterval = 5

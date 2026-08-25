@@ -348,5 +348,5 @@ process %@,Settings: Providers,translated,%@,process %@,processus %@
 runs rescued,Statistics,translated,,runs saved,exécutions sauvées
 runs watched,Statistics,translated,,runs watched,exécutions surveillées
 total held,Statistics,translated,,awake time,temps d'éveil
-"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.","© 2026 PerfectoWeb. Gratuit, jamais à vendre. Fait par des geeks, pour des geeks."
+"© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.","© 2026 PerfectoWeb. Gratuit, code ouvert. Fait par des geeks, pour des geeks."
 ✨ Belay %@ is out,(unused),translated,%@,✨ Belay %@ is out,✨ Belay %@ est sorti

@@ -348,5 +348,5 @@ process %@,Settings: Providers,translated,%@,process %@,进程 %@
 runs rescued,Statistics,translated,,runs saved,保住的运行
 runs watched,Statistics,translated,,runs watched,监视的运行
 total held,Statistics,translated,,awake time,唤醒时长
-"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free, never for sale. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，永不出售。由极客打造，为极客而作。
+"© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.",Settings: About,translated,,"© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.",© 2026 PerfectoWeb。免费，代码公开。由极客打造，为极客而作。
 ✨ Belay %@ is out,(unused),translated,%@,✨ Belay %@ is out,✨ Belay %@ 发布了
