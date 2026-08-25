@@ -5,24 +5,19 @@
 <img src="Promo/Social/spacer.png" height="12" alt="">
 
 [![Latest release](https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=release&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases/latest)
-[![CI](https://img.shields.io/github/actions/workflow/status/PerfectoWeb/Belay/ci.yml?style=flat&label=CI)](https://github.com/PerfectoWeb/Belay/actions)
+[![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
+[![CI](https://img.shields.io/github/actions/workflow/status/PerfectoWeb/Belay/ci.yml?style=flat&label=CI)](https://github.com/PerfectoWeb/Belay/actions)<br>
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
-![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)
+![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)<br>
+[![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
+[![Mac App Store](https://img.shields.io/badge/Mac%20App%20Store-Belay-1f6bff?style=flat&logo=apple&logoColor=white)](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644)
+[![Notarized](https://img.shields.io/badge/notarized-by%20Apple-111?style=flat&logo=apple&logoColor=white)](#-verify-what-you-downloaded)
 
 <img src="Promo/Social/spacer.png" height="12" alt="">
 
 <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a><picture><source media="(max-width: 500px)" srcset="Promo/Social/spacer.png"><img src="Promo/Social/spacer-16.png" alt=""></picture><a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
 </div>
-
-**Keep your Mac awake *only* while your coding agents are working.**
-
-Claude Code, Codex, Cline and Copilot CLI are detected locally, without reading
-your prompts or code. Belay holds macOS awake while work is active, then lets
-your Mac sleep normally the moment the agent stops or waits for you.
-Free for macOS · DMG · Homebrew · Mac App Store · Source available.
-
-<!-- The 15-second demo lands here once the montage is done. -->
 
 ## 📚 What is it?
 
@@ -34,14 +29,6 @@ coding agents, keeps the Mac awake while work is still happening, and lets it
 sleep normally again when the work is done.
 
 No timer to start. No sleep setting to remember to change back.
-
-### Why not just `caffeinate`?
-
-`caffeinate` is great when you know exactly what command should keep the Mac
-awake, for how long. Belay is for the opposite workflow: coding agents start,
-wait for you, resume and finish on their own schedule. Belay follows that work
-state and releases the Mac automatically — no terminal flag to remember, no
-hold left running overnight.
 
 ## ✨ Features
 
@@ -75,7 +62,10 @@ The app and the disk image are both signed with a Developer ID and **notarized
 by Apple**, and both carry a stapled ticket, so the first launch works with no
 network and without the right-click-Open dance.
 
-#### 🍺 Prefer the terminal?
+<details>
+<summary><b>Other ways to install</b></summary>
+
+#### 🍺 Homebrew
 
 ```bash
 brew install --cask perfectoweb/tap/belay
@@ -83,12 +73,13 @@ brew install --cask perfectoweb/tap/belay
 
 `brew upgrade` keeps it current afterwards. It installs the same signed,
 notarized disk image the button above gives you, and Homebrew checks its
-SHA-256 before it opens it. The cask lives in
-[our own tap](https://github.com/PerfectoWeb/homebrew-tap) until Belay clears
-homebrew-cask's notability bar — same command shape, one extra word.
+SHA-256 before it opens it.
 
-<details>
-<summary><b>Other ways to install</b></summary>
+The cask lives in [our own tap](https://github.com/PerfectoWeb/homebrew-tap)
+rather than in homebrew-cask itself. Homebrew's main cask repository has a
+notability bar. A project needs a certain number of stars, forks or watchers
+before it is accepted, and Belay has not cleared it yet. Same command shape,
+one extra word.
 
 #### 🍎 From the Mac App Store
 
@@ -245,9 +236,8 @@ run for real.
 
 Belay is free and always will be. The most useful things, in order:
 
-⭐ **Belay helped?** If it saved one of your long agent runs from a sleeping
-Mac, a [star](https://github.com/PerfectoWeb/Belay) helps other Mac users
-find it.
+⭐ **[Star it](https://github.com/PerfectoWeb/Belay)**. It costs nothing and
+helps other people find it.
 
 🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
@@ -288,8 +278,6 @@ What is forbidden is charging other people for it.
 
 📛 **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
-
-Ten common questions, answered plainly: [`docs/LICENSE-FAQ.md`](docs/LICENSE-FAQ.md).
 
 The **name and the mark** are covered separately.
 [`docs/TRADEMARKS.md`](docs/TRADEMARKS.md) explains what that does and does not
