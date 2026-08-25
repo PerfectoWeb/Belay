@@ -17566,49 +17566,49 @@
         }
       }
     },
-    "© 2026 PerfectoWeb. Free & source-available. Built by geeks, for geeks.": {
+    "© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Kostenlos, Quelltext offen einsehbar. Von Geeks für Geeks gebaut."
+            "value": "© 2026 PerfectoWeb. Kostenlos, offener Code. Von Geeks für Geeks gebaut."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Free & source-available. Built by geeks, for geeks."
+            "value": "© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratis, código fuente disponible. Hecho por frikis para frikis."
+            "value": "© 2026 PerfectoWeb. Gratis, código abierto. Hecho por frikis para frikis."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratuit, code source disponible. Fait par des geeks, pour des geeks."
+            "value": "© 2026 PerfectoWeb. Gratuit, code ouvert. Fait par des geeks, pour des geeks."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Gratuito, codice sorgente disponibile. Fatto da smanettoni per smanettoni."
+            "value": "© 2026 PerfectoWeb. Gratuito, codice aperto. Fatto da smanettoni per smanettoni."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb. Бесплатно, исходный код открыт для всех. От гиков - гикам."
+            "value": "© 2026 PerfectoWeb. Бесплатно, код открыт. От гиков - гикам."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "© 2026 PerfectoWeb。免费，源代码公开。由极客打造，为极客而作。"
+            "value": "© 2026 PerfectoWeb。免费，代码公开。由极客打造，为极客而作。"
           }
         }
       }

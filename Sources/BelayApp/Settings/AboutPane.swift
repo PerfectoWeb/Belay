@@ -74,7 +74,7 @@ struct AboutPane: View {
     /// translation unchanged.
     @ViewBuilder private var copyright: some View {
         let sentence = String(
-            localized: "© 2026 PerfectoWeb. Free & source-available. Built by geeks, for geeks.")
+            localized: "© 2026 PerfectoWeb. Free & open code. Built by geeks, for geeks.")
         let parts = sentence.components(separatedBy: Self.owner)
         if parts.count == 2, let url = Branding.homepageURL {
             HStack(spacing: 0) {
