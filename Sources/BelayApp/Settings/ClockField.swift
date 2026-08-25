@@ -19,16 +19,23 @@ struct ClockField: View {
     var body: some View {
         HStack(spacing: 3) {
             ZStack {
+                // `primary`, not hardcoded white: a white-at-8% bezel is
+                // invisible against the light-mode Settings background, so the
+                // digits floated with no field. `primary` adapts to both themes.
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
-                    .fill(.white.opacity(0.08))
+                    .fill(Color.primary.opacity(0.06))
                     .overlay(
                         RoundedRectangle(cornerRadius: 5, style: .continuous)
-                            .strokeBorder(.white.opacity(0.07), lineWidth: 1)
+                            .strokeBorder(Color.primary.opacity(0.12), lineWidth: 1)
                     )
                 BareClock(minutes: $minutes)
                     .fixedSize()
+                    .padding(.horizontal, 6)
             }
-            .frame(width: Self.bezel.width, height: Self.bezel.height)
+            // `minWidth`, not a fixed width: a 12-hour locale adds an AM/PM
+            // segment that overflows a rigid 56 pt and spills past the bezel.
+            .frame(minWidth: Self.bezel.width, minHeight: Self.bezel.height)
+            .fixedSize()
             Stepper {
                 EmptyView()
             } onIncrement: {

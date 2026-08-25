@@ -140,6 +140,10 @@ struct CopilotWatch: Sendable {
     var workspace: String?
     var reported: SessionActivity?
     var turnOpen = false
+    /// Whether the UI has ever heard of this session: only an announced session
+    /// gets an announced ending, so a burst of deleted old sessions cannot
+    /// become a burst of phantom `.ended` rows.
+    var announced = false
 
     init(id: SessionID, url: URL, lastWriteAt: Date, workspace: String?) {
         self.id = id

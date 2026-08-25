@@ -38,6 +38,10 @@ public actor CopilotProvider: ActivityProvider {
     private var events: FileEventStream?
     var ticker: DispatchSourceTimer?
     var tickCount = 0
+    /// Whether a real `copilot` process has ever been seen. Until it has, the
+    /// dead-process sweep does not trust the absence of one (npm installs can
+    /// run under a different binary name). See `sweepForDeadProcess`.
+    var sawCopilotProcess = false
     private var isStarted = false
     /// Whether the provider is currently running, so the app layer can log a
     /// start only when one genuinely happens (a re-`start()` is a silent no-op).
@@ -174,6 +178,7 @@ public actor CopilotProvider: ActivityProvider {
                 "copilot session \(id) \(was)->\(activity) turnOpen=\(watch.turnOpen ? 1 : 0)")
         }
         watch.reported = activity
+        watch.announced = true
         watched[id] = watch
         yield(activity, from: watch, at: now)
         return true
@@ -182,7 +187,9 @@ public actor CopilotProvider: ActivityProvider {
     func end(_ id: SessionID, at now: Date, cause: String) {
         guard let watch = watched.removeValue(forKey: id) else { return }
         EventLog.note("copilot session end \(id) cause=\(cause)")
-        guard watch.reported != nil else { return }
+        // `announced`, not `reported != nil`: a silent first idle sets `reported`
+        // to `.idle` without ever yielding, and that must still end unannounced.
+        guard watch.announced else { return }
         yield(.ended, from: watch, at: now)
     }
 

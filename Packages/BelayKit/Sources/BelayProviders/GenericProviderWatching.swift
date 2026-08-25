@@ -155,6 +155,16 @@ extension GenericProvider {
             guard now.timeIntervalSince(watch.lastActivityAt) > watch.quietPeriod else { continue }
             report(.idle, for: id, at: now)
         }
+        // A target-less webhook watch never returns through `configure()` and
+        // has no process to sweep, so a hook posting per-run identifiers
+        // (`session=aider-$$`) would grow this dict — and this very loop — for
+        // the life of the app. Retire one that has been quiet well past its
+        // idle window; a real integration keeps a stable identifier.
+        for (id, watch) in watches where watch.target == nil {
+            guard now.timeIntervalSince(watch.lastActivityAt) > Self.targetlessRetireAfter
+            else { continue }
+            end(id, at: now)
+        }
     }
 
     /// The safety net: a target whose process has exited ends its session now

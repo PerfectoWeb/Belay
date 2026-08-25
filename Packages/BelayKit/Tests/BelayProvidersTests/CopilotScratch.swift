@@ -54,3 +54,13 @@ final class CopilotScratch: @unchecked Sendable {
             [.modificationDate: Date().addingTimeInterval(-secondsAgo)], ofItemAtPath: url.path)
     }
 }
+
+/// A process roster a test can mutate between sweeps, to model a process that
+/// was present and then exited.
+final class MutableRoster: @unchecked Sendable {
+    private let lock = NSLock()
+    private var processes: Set<String>
+    init(_ processes: Set<String>) { self.processes = processes }
+    var snapshot: Set<String> { lock.withLock { processes } }
+    func set(_ processes: Set<String>) { lock.withLock { self.processes = processes } }
+}

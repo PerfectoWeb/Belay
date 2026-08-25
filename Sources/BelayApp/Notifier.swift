@@ -197,13 +197,21 @@ final class Notifier {
     }
 
     private func isAuthorized() async -> Bool {
-        if let authorization { return authorization }
-        let granted =
-            (try? await centre.requestAuthorization(options: [.alert, .sound])) ?? false
-        authorization = granted
-        if !granted {
+        // Only a positive answer is cached. Caching a "no" for the process
+        // lifetime meant a user who denied the first prompt and later allowed
+        // notifications in System Settings stayed silent until relaunch.
+        if authorization == true { return true }
+        if authorization == nil {
+            // The first ask: this is the call that shows the system prompt.
+            authorization = (try? await centre.requestAuthorization(options: [.alert, .sound])) ?? false
+            if authorization == true { return true }
             Log.app.notice("notification authorization denied; Belay stays silent")
         }
+        // Previously denied: re-read the live status (which never re-prompts) so
+        // a later "allow" in System Settings takes effect without a relaunch.
+        let status = await centre.notificationSettings().authorizationStatus
+        let granted = status == .authorized || status == .provisional
+        if granted { authorization = true }
         return granted
     }
 }

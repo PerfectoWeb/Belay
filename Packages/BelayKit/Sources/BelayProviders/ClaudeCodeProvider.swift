@@ -170,6 +170,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
                 "session \(id) \(was)->\(activity) awaiting=\(watch.awaitingAssistant ? 1 : 0)")
         }
         watch.reported = activity
+        watch.announced = true
         watched[id] = watch
         yield(activity, from: watch, at: now)
         return true
@@ -178,7 +179,10 @@ public actor ClaudeCodeProvider: ActivityProvider {
     func end(_ id: SessionID, at now: Date, cause: String) {
         guard let watch = watched.removeValue(forKey: id) else { return }
         EventLog.note("session end \(id) cause=\(cause)")
-        yield(.ended, from: watch, at: now)
+        // Only a session the UI heard of gets an announced ending — a deleted
+        // never-announced transcript leaves no phantom row behind. The cascade
+        // still runs regardless, since a child may have been announced.
+        if watch.announced { yield(.ended, from: watch, at: now) }
         // A subagent belongs to its parent's process: when Tier C reaps a dead
         // main session, its subagents are dead too, but they never appear in
         // the pid sidecars Tier C reads, so nothing else would ever end them —

@@ -63,6 +63,12 @@ extension BelayController {
         Task { [providers] in await providers.updateTargets(targets) }
     }
 
+    /// Banks the in-progress hold to statistics from the termination-signal
+    /// path, which calls `exit(0)` before `applicationWillTerminate` can run
+    /// the graceful `shutdown()` flush. A no-op when nothing is held, and
+    /// idempotent with the graceful flush (`flush` clears the run it banks).
+    func bankUsageOnTermination() { usage.flush() }
+
     /// Closes every sandboxed access scope on the way out — all five, or the
     /// ones left open are the per-process scope leak docs/06 warns about (the
     /// count left behind must be zero). No-ops in the direct build.

@@ -114,10 +114,20 @@ extension CopilotProvider {
     /// at all, a "working" session is a corpse, and fifteen minutes of
     /// open-turn grace for it is fifteen minutes of a pinned Mac. `nil` from
     /// the roster is a transient read failure and must never end anything.
+    ///
+    /// The Homebrew cask ships a native `copilot` binary, but the npm
+    /// distribution can run under `node` or another name — where the absence of
+    /// a "copilot" process proves nothing. So the sweep only trusts that
+    /// absence once it has actually seen a "copilot" process on this machine;
+    /// until then the idle sweep and the shutdown marker do the reaping.
     func sweepForDeadProcess(now: Date) {
         guard watched.values.contains(where: { $0.reported == .working }) else { return }
         guard let processes = roster() else { return }
-        guard !ProcessRoster.contains("copilot", in: processes) else { return }
+        if ProcessRoster.contains("copilot", in: processes) {
+            sawCopilotProcess = true
+            return
+        }
+        guard sawCopilotProcess else { return }
         for (id, watch) in watched where watch.reported == .working {
             end(id, at: now, cause: "process-gone")
         }

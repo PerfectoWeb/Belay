@@ -21,7 +21,10 @@ extension OnboardingView {
                 startPoint: .top, endPoint: .bottom)
 
             if skyUp || reduceMotion {
-                Starfield(animated: true)
+                // Static under Reduce Motion: the stars still fill the sky, they
+                // just stop drifting and twinkling. Every other animated view in
+                // the app honours this setting; the first-launch hero had not.
+                Starfield(animated: !reduceMotion)
                     .transition(.opacity)
             }
 

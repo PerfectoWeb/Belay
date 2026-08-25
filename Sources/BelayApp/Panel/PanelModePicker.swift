@@ -127,7 +127,7 @@ struct PanelModePicker: View {
     /// between them: it swapped the view instead, which read as a flash to dim
     /// followed by a slow fade up. An opacity is a number, and numbers animate.
     private func tint(_ mode: AwakeMode, isSelected: Bool) -> Color {
-        if isSelected { return .white }
+        if isSelected { return mode.pillForeground }
         return .primary.opacity(hovered == mode ? 1 : 0.6)
     }
 
@@ -177,6 +177,16 @@ extension AwakeMode {
         case .auto: return Color(nsColor: .controlAccentColor)
         case .alwaysOn: return Color(red: 0.95, green: 0.62, blue: 0.16)
         case .off: return Color(nsColor: .systemGray)
+        }
+    }
+
+    /// The selected-label colour on this mode's pill. White reads on the blue
+    /// accent, but amber and grey are light enough that white on them falls
+    /// under the WCAG contrast floor — those take a near-black label instead.
+    var pillForeground: Color {
+        switch self {
+        case .auto: return .white
+        case .alwaysOn, .off: return Color(red: 0.12, green: 0.10, blue: 0.05)
         }
     }
 

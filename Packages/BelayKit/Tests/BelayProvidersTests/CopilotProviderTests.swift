@@ -5,38 +5,6 @@ import Testing
 
 @testable import BelayProviders
 
-@Suite("Copilot events")
-struct CopilotEventsTests {
-    @Test("Turn markers map to edges, last one wins, noise maps to nothing")
-    func markers() {
-        let open = CopilotEvents.verdict(in: [CopilotScratch.line("assistant.turn_start")])
-        #expect(open == .init(activity: .working, turnOpen: true))
-        let closed = CopilotEvents.verdict(
-            in: [
-                CopilotScratch.line("assistant.turn_start"),
-                CopilotScratch.line("assistant.turn_end")
-            ])
-        #expect(closed == .init(activity: .idle, turnOpen: false))
-        #expect(CopilotEvents.verdict(in: [CopilotScratch.line("session.usage_checkpoint")]) == nil)
-        #expect(CopilotEvents.verdict(in: ["not json at all"]) == nil)
-    }
-
-    @Test("The workspace is the last path component of session.start's cwd")
-    func workspace() {
-        let lines = [CopilotScratch.start(cwd: "/Users/x/Work/MyProject")]
-        #expect(CopilotEvents.workspace(in: lines) == "MyProject")
-        #expect(CopilotEvents.workspace(in: [CopilotScratch.line("assistant.turn_start")]) == nil)
-    }
-
-    @Test("Only events.jsonl counts, and the session id is its directory")
-    func naming() {
-        let url = URL(fileURLWithPath: "/a/session-state/uuid-1/events.jsonl")
-        #expect(CopilotEvents.isEventsFile(url))
-        #expect(!CopilotEvents.isEventsFile(URL(fileURLWithPath: "/a/uuid-1/plan.md")))
-        #expect(CopilotEvents.sessionID(for: url) == SessionID("uuid-1"))
-    }
-}
-
 @Suite("CopilotProvider")
 struct CopilotProviderTests {
     private let scratch = CopilotScratch()
@@ -163,18 +131,24 @@ struct CopilotProviderTests {
         await provider.stop()
     }
 
-    @Test("A working session ends when no copilot process remains")
+    @Test("A working session ends when a copilot process was seen and then went")
     func deadProcessSweep() async throws {
         let url = scratch.events("s5", lines: [CopilotScratch.line("assistant.turn_start")])
-        let empty = CopilotProvider(
+        let roster = MutableRoster(["copilot"])
+        let provider = CopilotProvider(
             configuration: scratch.configuration, access: DirectFileAccess(),
-            roster: { [] })
-        try await empty.start()
-        await empty.ingest(url, now: Date())
-        #expect(await empty.watched[SessionID("s5")]?.reported == .working)
-        await empty.sweepForDeadProcess(now: Date())
-        #expect(await empty.watched[SessionID("s5")] == nil)
-        await empty.stop()
+            roster: { roster.snapshot })
+        try await provider.start()
+        await provider.ingest(url, now: Date())
+        #expect(await provider.watched[SessionID("s5")]?.reported == .working)
+        // Present: nothing reaped, but the name is now confirmed real here.
+        await provider.sweepForDeadProcess(now: Date())
+        #expect(await provider.watched[SessionID("s5")] != nil)
+        // Gone: the corpse is reaped.
+        roster.set([])
+        await provider.sweepForDeadProcess(now: Date())
+        #expect(await provider.watched[SessionID("s5")] == nil)
+        await provider.stop()
 
         // An unreadable table is "ask again later", never "everything died".
         let blind = CopilotProvider(
@@ -186,6 +160,20 @@ struct CopilotProviderTests {
         await blind.sweepForDeadProcess(now: Date())
         #expect(await blind.watched[SessionID("s6")] != nil)
         await blind.stop()
+    }
+
+    /// The npm distribution can run under another name; the absence of a
+    /// "copilot" process it never had proves nothing and must not reap.
+    @Test("A never-seen copilot name is not reaped on its absence")
+    func npmNameIsNotReaped() async throws {
+        let url = scratch.events("s8", lines: [CopilotScratch.line("assistant.turn_start")])
+        let provider = CopilotProvider(
+            configuration: scratch.configuration, access: DirectFileAccess(), roster: { ["node"] })
+        try await provider.start()
+        await provider.ingest(url, now: Date())
+        await provider.sweepForDeadProcess(now: Date())
+        #expect(await provider.watched[SessionID("s8")] != nil)
+        await provider.stop()
     }
 
     @Test("Silence idles a closed turn but ends an open one only past the grace")

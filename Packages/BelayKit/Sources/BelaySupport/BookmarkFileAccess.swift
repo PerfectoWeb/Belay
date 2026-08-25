@@ -168,7 +168,18 @@ public final class BookmarkFileAccess: FileAccessProvider, @unchecked Sendable {
             Log.app.error("the granted folder resolved but its scope would not open")
             return
         }
-        lock.withLock { held = url }
+        // Claim atomically: two concurrent grants (a `grant()` racing a
+        // `restore()`) can both pass the fast-path guard above and both open the
+        // scope. Only the winner records `held`; the loser stops its own access,
+        // or that one scope leaks until the process exits.
+        let won = lock.withLock {
+            if held == nil {
+                held = url
+                return true
+            }
+            return false
+        }
+        if !won { bookmarks.stopAccessing(url) }
     }
 
     /// Drops the sustained hold. Called on teardown, so a relaunch of the object

@@ -11,6 +11,10 @@ struct CodexWatch: Sendable {
     /// The last activity yielded, so `.idle` is not repeated every sweep while
     /// `.working` stays a heartbeat.
     var reported: SessionActivity?
+    /// Whether the UI has ever heard of this session: only an announced session
+    /// gets an announced ending, or a burst of deleted old rollouts becomes a
+    /// burst of phantom `.ended` rows.
+    var announced = false
     /// The last marker seen was `task_started` with no `task_complete` after
     /// it: the model owes an answer, and silence gets the longer horizon.
     var turnOpen = false

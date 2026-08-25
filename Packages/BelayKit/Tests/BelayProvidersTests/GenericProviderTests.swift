@@ -134,6 +134,29 @@ struct GenericProviderTests {
         await collector.stop()
     }
 
+    @Test("A target-less webhook watch is retired once it has been quiet too long")
+    func targetlessWebhookIsRetired() async throws {
+        let clock = SteppedClock()
+        let provider = GenericProvider(targets: [], clock: clock)
+        let collector = await self.collector(on: provider)
+        try await provider.start()
+
+        // A hook posting a per-run identifier that matches no configured target.
+        await provider.ingest(
+            GenericWebhookReport(identifier: "aider-1234", activity: .working), at: clock.now)
+        #expect(await collector.wait(for: 1).first?.activity == .working)
+
+        // Long past the retire horizon with nothing more from it.
+        clock.advance(11 * 60)
+        await provider.sweepForIdle(now: clock.now)
+        // It idled and then was retired, not left in the dict forever.
+        let activities = await collector.wait(for: 3).map(\.activity)
+        #expect(activities.contains(.ended))
+
+        await provider.stop()
+        await collector.stop()
+    }
+
     @Test("Targets share one timer, and one stream per distinct folder")
     func watchersShareTimers() async throws {
         let shared = scratch.folder("shared")

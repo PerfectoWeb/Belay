@@ -35,6 +35,16 @@ struct AgentOrbit: View {
 
     /// The logos the app already ships, in the order they take the ring.
     private static let agents = ["claude", "codex", "gemini", "cline"]
+    /// Built once, not every timeline frame: the scene redraws at 30 fps, and
+    /// rebuilding these `NSImage`s each frame is the same per-frame allocation
+    /// `AboutAnimation` had to cache away as an 8.3 % CPU cost.
+    @MainActor private static let marks: [String: NSImage] = Dictionary(
+        uniqueKeysWithValues: agents.map { ($0, ProviderMark.image(preset: $0, size: 13)) })
+    @MainActor private static let glyph: NSImage = BelayGlyph.image(.alwaysOn, size: 26)
+
+    private static func mark(for name: String) -> NSImage {
+        marks[name] ?? ProviderMark.image(preset: name, size: 13)
+    }
     /// Whole turns each agent makes while it is on the ring. Whole, because a
     /// fraction of a turn is the seam: the agent pops at one angle and comes
     /// back at another, and the loop visibly cuts. Different for each, and none
@@ -125,7 +135,7 @@ struct AgentOrbit: View {
         }
         .frame(width: 42, height: 42)
         .overlay {
-            Image(nsImage: BelayGlyph.image(.alwaysOn, size: 26))
+            Image(nsImage: Self.glyph)
                 .renderingMode(.template)
                 .foregroundStyle(.white)
         }
@@ -153,7 +163,7 @@ struct AgentOrbit: View {
                     // Drawn as a template so every agent arrives the same weight
                     // of white. Their own artwork is six different colours, and
                     // at this size that reads as confetti rather than as a set.
-                    Image(nsImage: ProviderMark.image(preset: name, size: 13))
+                    Image(nsImage: Self.mark(for: name))
                         .renderingMode(.template)
                         .foregroundStyle(.white)
                 }

@@ -94,7 +94,10 @@ final class NightDimmingController {
             fade.restore()
             schedule(every: Self.tickInterval)
         case nil:
-            break
+            // Already dimmed and nothing changed by the rules — but a display
+            // reconfiguration resets gamma out from under us, so re-assert the
+            // level each dimmed tick or the screen snaps bright for the night.
+            if machine.isDimmed { fade.reassert() }
         }
         // After the decision, not inside it: the countdown can appear, move
         // or go away mid-dim — the user re-picks a duration, the timer runs

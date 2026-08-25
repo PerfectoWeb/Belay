@@ -178,6 +178,12 @@ public actor ClineProvider: ActivityProvider {
 
         watched[watch.id] = watch
         seedTeammates(of: state.sessionID, now: now, atStartup: false)
+        // No runtime record-clock guard here, unlike the other three providers:
+        // Cline's state file carries no per-activity timestamp, and a
+        // messages-file-mtime guard would suppress a genuine session that shows
+        // `running` before it has written any messages (the common case). The
+        // stale-touch scenario needs a tool that rewrites old Cline state files,
+        // and no known one does; the idle sweep bounds any false hold at 45 s.
         EventLog.note("cline session start \(watch.id) ws=\(watch.workspace ?? "?")")
         return report(status.activity, for: watch.id, at: now)
     }

@@ -36,6 +36,21 @@ final class GammaFade: @unchecked Sendable {
         }
     }
 
+    /// Re-applies the current white point immediately, without animating.
+    ///
+    /// A display reconfiguration — a monitor power-cycling, a resolution change,
+    /// a display connected or disconnected — resets the gamma tables, which
+    /// would strand the screen bright for the rest of the night while we still
+    /// believe it is dimmed. The dimmed tick calls this to put the level back;
+    /// it re-queries the active displays, so a newly attached one is covered
+    /// too. A no-op when not dimmed, so it costs nothing the rest of the time.
+    func reassert() {
+        queue.async { [weak self] in
+            guard let self, self.current < 1.0, self.ramp == nil else { return }
+            Self.apply(whitePoint: self.current, to: Self.activeDisplays())
+        }
+    }
+
     /// Back up quickly but smoothly: a person who moved the mouse is waiting,
     /// and a flash-cut reads as a glitch. The final hand-off goes through
     /// `CGDisplayRestoreColorSyncSettings`, the same restore a process exit

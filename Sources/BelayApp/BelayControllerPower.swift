@@ -6,6 +6,20 @@ import BelayPower
 /// sleep/wake. Beside `BelayController` rather than inside it for one dull
 /// reason: that file is at the length the linter allows.
 extension BelayController {
+    /// SIGTERM/SIGINT: drop the assertion (invariant 4) and bank the run in
+    /// progress. The signal handler calls `exit(0)` before the graceful
+    /// `shutdown()` flush can run, so `killall Belay` would otherwise lose an
+    /// overnight hold from the statistics.
+    func installTerminationHandler() {
+        tasks.append(
+            Task { [signals, assertions, weak self] in
+                await signals.install { [weak self] in
+                    await assertions.release()
+                    await self?.bankUsageOnTermination()
+                }
+            })
+    }
+
     func observePowerSource() {
         tasks.append(
             Task { [powerSource, coordinator, driver, weak self] in

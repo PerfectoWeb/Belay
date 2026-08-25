@@ -123,7 +123,11 @@ enum ClineSessions {
     /// root. FSEvents hands over anything under the tree; the id is the first
     /// component below the root.
     static func sessionID(of path: String, under root: URL) -> String? {
-        let rootPath = root.standardizedFileURL.path + "/"
+        // `resolvingSymlinksInPath`, not just `standardizedFileURL`: FSEvents
+        // hands back symlink-resolved paths (`/tmp` → `/private/tmp`, a
+        // symlinked home), so a root that only standardized would fail every
+        // prefix match at runtime and the provider would see nothing.
+        let rootPath = root.resolvingSymlinksInPath().path + "/"
         guard path.hasPrefix(rootPath) else { return nil }
         let below = path.dropFirst(rootPath.count)
         guard let id = below.split(separator: "/").first, !id.isEmpty else { return nil }

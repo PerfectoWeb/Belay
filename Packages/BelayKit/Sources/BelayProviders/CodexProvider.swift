@@ -176,6 +176,7 @@ public actor CodexProvider: ActivityProvider {
                 "codex session \(id) \(was)->\(activity) turnOpen=\(watch.turnOpen ? 1 : 0)")
         }
         watch.reported = activity
+        watch.announced = true
         watched[id] = watch
         yield(activity, from: watch, at: now)
         return true
@@ -183,6 +184,9 @@ public actor CodexProvider: ActivityProvider {
 
     func end(_ id: SessionID, at now: Date, cause: String) {
         guard let watch = watched.removeValue(forKey: id) else { return }
+        // Only an announced session gets an announced ending: a burst of deleted
+        // old rollouts must not become a burst of phantom `.ended` rows.
+        guard watch.announced else { return }
         EventLog.note("codex session end \(id) cause=\(cause)")
         yield(.ended, from: watch, at: now)
     }

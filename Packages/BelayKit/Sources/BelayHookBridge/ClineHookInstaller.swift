@@ -72,6 +72,12 @@ public struct ClineHookInstaller: Sendable {
             }
             do {
                 try Data(text.utf8).write(to: url(for: event))
+                // Executable, in case Cline ever runs the hook file directly
+                // rather than through a shell. Harmless if it uses a shell (the
+                // shebang wins either way), and cheap insurance against a silent
+                // "hook never fires" if it does not.
+                try? FileManager.default.setAttributes(
+                    [.posixPermissions: 0o755], ofItemAtPath: url(for: event).path)
             } catch {
                 throw BridgeError.settingsWriteFailed(error.localizedDescription)
             }

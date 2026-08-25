@@ -143,4 +143,29 @@ final class UsageResetTests: XCTestCase {
         recorder.update(holdingSince: nil, now: start.addingTimeInterval(1300))
         XCTAssertTrue(recorder.statistics.isEmpty, "the interrupted run came back after the reset")
     }
+
+    /// The reset happens while a hold continues, and the coordinator keeps
+    /// reporting that hold's *original* start. Re-adopting it would bank the
+    /// whole pre-reset run into the freshly zeroed record when it ends.
+    func testResetMidHoldDoesNotBankTheRunWhenItLaterEnds() {
+        let suite = "com.perfectoweb.belay.tests.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let recorder = UsageRecorder(store: UsageStatisticsStore(defaults: defaults))
+        let start = Date(timeIntervalSince1970: 1_780_000_000)
+
+        recorder.update(holdingSince: start, now: start.addingTimeInterval(60))
+        recorder.reset()
+        // The same hold runs on for hours (same original start), then ends.
+        recorder.update(holdingSince: start, now: start.addingTimeInterval(3600))
+        recorder.update(holdingSince: nil, now: start.addingTimeInterval(7200))
+        XCTAssertTrue(
+            recorder.statistics.isEmpty, "the pre-reset run was banked into the zeroed record")
+
+        // A genuinely new hold after the reset still counts.
+        let later = start.addingTimeInterval(8000)
+        recorder.update(holdingSince: later, now: later)
+        recorder.update(holdingSince: nil, now: later.addingTimeInterval(1200))
+        XCTAssertFalse(recorder.statistics.isEmpty, "a fresh hold after the reset must still count")
+    }
 }

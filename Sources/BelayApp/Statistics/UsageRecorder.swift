@@ -14,6 +14,9 @@ final class UsageRecorder {
     private var awayInCurrentHold: TimeInterval = 0
     private var lastSample: Date?
     private var sampler: Timer?
+    /// The hold that was in progress at the last `reset`, kept so `update` does
+    /// not re-adopt it from its original start and bank the pre-reset run.
+    private var suppressedHold: Date?
 
     /// Frequent enough that a coffee break is measured to the minute, rare
     /// enough to be free.
@@ -31,15 +34,27 @@ final class UsageRecorder {
     /// in the middle of is not a reset, and the run was already counted in what
     /// was just discarded.
     func reset(now: Date = Date()) {
+        // Remember the run in progress so `update` will not re-begin from its
+        // original start: that start predates the reset, and finishing it would
+        // write the whole already-discarded run back into the empty record.
+        suppressedHold = holdStarted
         holdStarted = nil
         awayInCurrentHold = 0
         lastSample = nil
+        sampler?.invalidate()
+        sampler = nil
         statistics = UsageStatistics()
         store.save(statistics)
     }
 
     /// Called with the coordinator's `holdingSince` on every snapshot.
     func update(holdingSince: Date?, now: Date = Date()) {
+        // A run reset mid-hold stays dropped until it ends or a different hold
+        // replaces it — re-adopting the same start would bank the pre-reset run.
+        if let suppressedHold {
+            if holdingSince == suppressedHold { return }
+            self.suppressedHold = nil
+        }
         switch (holdStarted, holdingSince) {
         case (nil, let started?):
             begin(at: started, now: now)

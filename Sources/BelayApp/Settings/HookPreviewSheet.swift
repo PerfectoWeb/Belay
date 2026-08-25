@@ -12,14 +12,22 @@ struct HookPreviewSheet: View {
     var precise: PreciseDetection
     var provider: ProviderID = .claudeCode
     var onFinish: () -> Void
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     /// True while the codex install runs: writing the file is instant, but
     /// recording the approval spawns `codex app-server` and takes a moment.
     @State private var installing = false
+    /// The preview and its neighbours are read from disk once, on appear, rather
+    /// than recomputed on every body evaluation — the old computed properties
+    /// re-parsed the agent's settings file each render, which stalls on a slow
+    /// or network home volume.
+    @State private var loaded = false
+    @State private var proposed: String?
+    @State private var occupied: [String] = []
+    @State var manualSnippet: String?
 
     private var isCodex: Bool { provider == .codex }
     private var isCline: Bool { provider == .cline }
-    private var path: String {
+    var path: String {
         switch provider {
         case .codex: return precise.codexHooksPath
         case .cline: return precise.clineHooksPath
@@ -29,12 +37,18 @@ struct HookPreviewSheet: View {
 
     /// What the sheet shows as "will be written": Cline's is one script that
     /// lands under six event names, the other two are the merged JSON.
-    private var proposed: String? {
+    private func loadPreview() {
+        guard !loaded else { return }
         switch provider {
-        case .codex: return precise.codexPreview()?.proposed
-        case .cline: return precise.clinePreview()
-        default: return precise.preview()?.proposed
+        case .codex: proposed = precise.codexPreview()?.proposed
+        case .cline:
+            proposed = precise.clinePreview()
+            occupied = precise.clineOccupied()
+        default:
+            proposed = precise.preview()?.proposed
+            manualSnippet = precise.manualSnippet()
         }
+        loaded = true
     }
 
     var body: some View {
@@ -50,7 +64,12 @@ struct HookPreviewSheet: View {
                     .font(.title3).bold()
             }
 
-            if let preview = proposed {
+            if !loaded {
+                ProgressView()
+                    .controlSize(.small)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical, 8)
+            } else if let preview = proposed {
                 // Why anyone would want this, before the machinery: the diff
                 // below reads scary on its own, and the point of the feature
                 // deserves the first sentence.
@@ -95,12 +114,14 @@ struct HookPreviewSheet: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
-                    if !precise.clineOccupied().isEmpty {
-                        let occupied = precise.clineOccupied().joined(separator: ", ")
-                        Text("Skipped, already taken by your own scripts: \(occupied)")
-                            .font(.caption)
-                            .foregroundStyle(.orange)
-                            .fixedSize(horizontal: false, vertical: true)
+                    if !occupied.isEmpty {
+                        Text(
+                            "Skipped, already taken by your own scripts: "
+                                + "\(occupied.joined(separator: ", "))"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                        .fixedSize(horizontal: false, vertical: true)
                     }
                 }
 
@@ -128,6 +149,7 @@ struct HookPreviewSheet: View {
         }
         .padding(22)
         .frame(width: 560)
+        .task { loadPreview() }
     }
 
     private func add() {
@@ -166,50 +188,5 @@ struct HookPreviewSheet: View {
     private var clineFiles: String {
         ["TaskStart", "TaskResume", "TaskCancel", "TaskComplete", "TaskError", "SessionShutdown"]
             .map { $0 + ".sh" }.joined(separator: ", ")
-    }
-
-    @ViewBuilder
-    private var unsafeToEdit: some View {
-        Text(
-            """
-            Belay will not edit this file, because it is not plain JSON. It may \
-            have comments or a format Belay cannot write back safely. Add this \
-            yourself instead:
-            """
-        )
-        .font(.callout)
-        .fixedSize(horizontal: false, vertical: true)
-
-        if !isCodex, !isCline, let snippet = precise.manualSnippet() {
-            codeBlock(snippet)
-            HStack {
-                Button("Copy") {
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(snippet, forType: .string)
-                }
-                Spacer()
-                Button("Done") { dismiss() }
-                    .keyboardShortcut(.defaultAction)
-            }
-        } else {
-            Button("Done") { dismiss() }
-                .keyboardShortcut(.defaultAction)
-        }
-    }
-
-    private func codeBlock(_ text: String) -> some View {
-        ScrollView {
-            Text(text)
-                .font(.system(.caption, design: .monospaced))
-                .textSelection(.enabled)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(8)
-        }
-        // Fixed, not a cap: Claude's JSON fills any height and Cline's short
-        // script filled almost none, so the three sheets read as three sizes.
-        // One height makes them one sheet.
-        .frame(height: 280)
-        .background(.quaternary, in: RoundedRectangle(cornerRadius: 6))
-        .accessibilityLabel("The exact configuration Belay will add")
     }
 }

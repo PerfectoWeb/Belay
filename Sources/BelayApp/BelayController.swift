@@ -24,7 +24,9 @@ final class BelayController {
     let powerSource: PowerSourceMonitor
     let providers: ProviderHost
     let sleepObserver = SystemSleepObserver()
-    private let signals = TerminationSignalWatch()
+    // Internal, not private: the termination-handler wiring lives in
+    // `BelayControllerPower.swift` for the file-length rule.
+    let signals = TerminationSignalWatch()
 
     /// Long-lived stream pumps only. One-shot work uses a detached task that
     /// finishes on its own; keeping those here would grow without bound.
@@ -91,7 +93,7 @@ final class BelayController {
         startProviders()
         tasks.append(Task { [driver] in await driver.start() })
         tasks.append(Task { [powerSource] in await powerSource.start() })
-        tasks.append(Task { [signals, assertions] in await signals.install(releasing: assertions) })
+        installTerminationHandler()
         nightDimming.start()
         #if !BELAY_MAS
         lidHold.start()

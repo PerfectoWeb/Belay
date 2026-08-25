@@ -64,7 +64,13 @@ public actor ActivityCoordinator {
         // The timer is a property of one stay in Always on, not of the mode
         // switch itself: leaving the mode ends it, and coming back starts
         // plain "until turned off" rather than resuming a stale countdown.
+        let leftAlwaysOn = self.policy.mode == .alwaysOn && policy.mode != .alwaysOn
         if policy.mode != .alwaysOn { timer = nil }
+        if leftAlwaysOn {
+            // Or Auto would hold a full grace with the stale "Always on" reason.
+            lastActiveAt = nil
+            lastHoldReason = nil
+        }
         self.policy = policy
         evaluate()
     }
@@ -74,17 +80,12 @@ public actor ActivityCoordinator {
         evaluate()
     }
 
-    /// Forgets everything and re-derives from scratch. Called after a wake from
-    /// sleep, where every timestamp we hold is meaningless (docs/04).
+    /// Forgets everything — `holdingSince` included, or the awake-limit counts
+    /// the sleep and trips on wake — and re-derives after a wake (docs/04).
     public func resync() {
         ledger.removeAll()
         lastActiveAt = nil
         capTripped = false
-        // `holdingSince` too: without this it survives the sleep, so in Always
-        // on the awake-limit counts the hours the Mac spent asleep and trips the
-        // moment it wakes (hold 09:00, sleep 10:00, wake 14:30, cap 4h →
-        // suspended after one real hour). Clearing it lets the same evaluate()
-        // re-stamp it in `commit` — the fresh cap cycle a wake is meant to give.
         holdingSince = nil
         evaluate()
     }

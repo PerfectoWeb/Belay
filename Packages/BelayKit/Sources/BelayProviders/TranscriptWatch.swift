@@ -27,6 +27,10 @@ struct TranscriptWatch: Sendable {
     /// The last activity yielded for this session, so `.idle` is not repeated
     /// every sweep while `.working` stays a heartbeat.
     var reported: SessionActivity?
+    /// Whether the UI has ever heard of this session: only an announced session
+    /// gets an announced ending, or a burst of deleted old transcripts becomes
+    /// a burst of phantom `.ended` rows.
+    var announced = false
     /// The tail record left the model owing the next one — a prompt or tool
     /// result went out, or the CLI wrote an API-error record. Grants the idle
     /// sweep its longer horizon; see `TranscriptClassifier.Verdict`.

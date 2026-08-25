@@ -17566,6 +17566,52 @@
           }
         }
       }
+    },
+    "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay не станет менять %@, потому что не может безопасно записать этот формат. Исправьте формат и откройте это снова, и Belay покажет точное изменение для проверки."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ändert %@ nicht, weil das Format nicht sicher zurückgeschrieben werden kann. Bringe das Format in Ordnung und öffne dies erneut, dann zeigt Belay dir die genaue Änderung zur Prüfung."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay no cambiará %@ porque no está en un formato que pueda editar con seguridad. Corrige su formato y vuelve a abrir esto, y Belay te mostrará el cambio exacto para revisar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ne modifiera pas %@, car son format ne peut pas être réécrit en toute sécurité. Corrigez son format et rouvrez ceci, et Belay vous montrera la modification exacte à vérifier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay non modificherà %@ perché non è in un formato che può scrivere in sicurezza. Correggi il formato e riapri questa finestra, e Belay ti mostrerà la modifica esatta da controllare."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 不会更改 %@，因为它的格式无法安全写回。请修正其格式后再次打开，Belay 会向你展示要审阅的具体更改。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -30,7 +30,12 @@ final class SleepFlag: @unchecked Sendable {
                 deadline.timeIntervalSinceNow, LidDaemon.maximumLeash)
             guard leash > 0 else { return lowerLocked() }
             if !FileManager.default.fileExists(atPath: Self.sentinel.path) {
-                let prior = Self.currentValue() ?? false
+                // The value to put back on release. If `pmset -g` cannot be
+                // read, guessing "0" here would, on a machine whose owner set
+                // `disablesleep 1` by hand, restore 0 and silently revert their
+                // setting. We don't guess: if we can't record the true prior
+                // value, we don't raise the flag (the next tick retries).
+                guard let prior = Self.currentValue() else { return false }
                 do {
                     try Data((prior ? "1" : "0").utf8).write(to: Self.sentinel)
                 } catch {

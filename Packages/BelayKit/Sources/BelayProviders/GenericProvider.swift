@@ -21,6 +21,9 @@ import Foundation
 public actor GenericProvider: ActivityProvider {
     /// Idle resolution. Process liveness is refreshed every third tick, i.e. 15 s.
     static let tickInterval: TimeInterval = 5
+    /// How long a target-less webhook watch may sit idle before it is retired,
+    /// so a hook using per-run identifiers cannot grow the watch set forever.
+    static let targetlessRetireAfter: TimeInterval = 10 * 60
 
     nonisolated public let descriptor = ProviderDescriptor(
         id: .generic,
