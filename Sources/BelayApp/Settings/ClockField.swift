@@ -27,6 +27,9 @@ struct ClockField: View {
                 BareClock(minutes: $minutes)
                     .fixedSize()
                     .padding(.horizontal, 6)
+                    // The bezel-less NSDatePicker draws its digits a hair above
+                    // its own centre; one point puts them level in the capsule.
+                    .offset(y: 1)
             }
             // `minWidth`, not a fixed width: a 12-hour locale adds an AM/PM
             // segment that overflows a rigid 56 pt and spills past the bezel.
