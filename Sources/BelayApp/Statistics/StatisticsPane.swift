@@ -184,21 +184,21 @@ struct StatisticsPane: View {
     }
 
     private var shareRow: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Numbers stay on this Mac unless you share them.")
-                .font(.system(size: 10))
-                .foregroundStyle(.tertiary)
-            HStack(spacing: 8) {
+        HStack(alignment: .center, spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
                 // Away from the two it must not be mistaken for, and quiet:
                 // a bordered button beside two bordered buttons is a button you
                 // click by aiming badly.
                 Button("Reset…") { isConfirmingReset = true }
                     .buttonStyle(.link)
                     .font(.system(size: 12))
-                Spacer(minLength: 8)
-                CopyStatisticsCardButton(statistics: statistics)
-                ShareStatisticsButton(statistics: statistics)
+                Text("Numbers stay on this Mac unless you share them.")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.tertiary)
             }
+            Spacer(minLength: 8)
+            CopyStatisticsCardButton(statistics: statistics)
+            ShareStatisticsButton(statistics: statistics)
         }
         .alert("Erase your statistics?", isPresented: $isConfirmingReset) {
             Button("Erase", role: .destructive, action: onReset)

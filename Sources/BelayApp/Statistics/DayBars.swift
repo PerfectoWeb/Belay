@@ -53,9 +53,12 @@ struct DayBars: View {
                         )
                         .opacity(dimmed ? 0.55 : 1)
                     }
-                    Text(Self.weekday(day.date))
+                    // The hovered bar trades its weekday for the date, rolling
+                    // over like the figures above do.
+                    Text(lit ? Self.dayDate(day.date) : Self.weekday(day.date))
                         .font(.system(size: 8, weight: lit ? .semibold : .regular))
                         .foregroundStyle(lit ? AnyShapeStyle(.secondary) : AnyShapeStyle(.tertiary))
+                        .contentTransition(.numericText())
                 }
                 .animation(reduceMotion ? nil : .spring(duration: 0.25), value: hovered?.id)
                 .onHover { inside in
@@ -86,6 +89,18 @@ struct DayBars: View {
 
     private static func weekday(_ date: Date) -> String {
         weekdayFormatter.string(from: date)
+    }
+
+    private static let dayDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        // Day first in every language: the label answers "which day",
+        // and the bar's slot is too narrow for locale-order surprises.
+        formatter.dateFormat = "d MMM"
+        return formatter
+    }()
+
+    private static func dayDate(_ date: Date) -> String {
+        dayDateFormatter.string(from: date)
     }
 
     private static func spoken(_ day: UsageStatistics.Day) -> String {
