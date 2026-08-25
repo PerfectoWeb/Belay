@@ -39,11 +39,15 @@ struct NightDimmingGroup: View {
             // that took three failed widenings to learn: only the AppKit
             // control underneath can actually grow its bezel.
             HStack(spacing: 8) {
-                ClockField(minutes: $settings.nightDimmingStart)
-                    .accessibilityLabel("Dim from")
-                Text(verbatim: "–").foregroundStyle(.secondary)
-                ClockField(minutes: $settings.nightDimmingEnd)
-                    .accessibilityLabel("Dim until")
+                // The window is one phrase, so the dash hugs its fields
+                // tighter than the row's own spacing.
+                HStack(spacing: 4) {
+                    ClockField(minutes: $settings.nightDimmingStart)
+                        .accessibilityLabel("Dim from")
+                    Text(verbatim: "–").foregroundStyle(.secondary)
+                    ClockField(minutes: $settings.nightDimmingEnd)
+                        .accessibilityLabel("Dim until")
+                }
 
                 // No step: continuous under the thumb, and stepped sliders
                 // draw their ticks — at half-percent steps a hundred of them
