@@ -8,7 +8,9 @@ about how to build, test and style the thing.
 
 Two contributions are wanted more than any other, and neither needs you to learn
 the codebase: a **translation fix** and a **provider preset**. Both are data, not
-code, and both have their own section below.
+code, and both have their own section below. Ready-made starting points sit under
+the [`good first issue`](https://github.com/PerfectoWeb/Belay/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+label — each one fits in an evening.
 
 By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
