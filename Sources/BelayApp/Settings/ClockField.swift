@@ -19,15 +19,11 @@ struct ClockField: View {
     var body: some View {
         HStack(spacing: 3) {
             ZStack {
-                // `primary`, not hardcoded white: a white-at-8% bezel is
-                // invisible against the light-mode Settings background, so the
-                // digits floated with no field. `primary` adapts to both themes.
+                // Fill only, no border, so the field reads like the pop-up
+                // buttons beside it. `primary`, not hardcoded white: it adapts
+                // to both themes (white-at-8% vanished in light mode).
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
-                    .fill(Color.primary.opacity(0.06))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5, style: .continuous)
-                            .strokeBorder(Color.primary.opacity(0.12), lineWidth: 1)
-                    )
+                    .fill(Color.primary.opacity(0.07))
                 BareClock(minutes: $minutes)
                     .fixedSize()
                     .padding(.horizontal, 6)
