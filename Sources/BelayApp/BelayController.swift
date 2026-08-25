@@ -241,6 +241,8 @@ final class BelayController {
             let awake = self.awakeTally.update(holdingSince: snapshot.holdingSince)
             self.state.apply(snapshot, totalAwake: awake)
             self.state.apply(warning: error?.errorDescription)
+            // Keeps the Agents tiles' "last activity" current (frozen otherwise).
+            await self.publishProviderStatus()
             await self.notifier.handle(self.trigger.diff(snapshot))
         }
     }
