@@ -111,4 +111,14 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     public func isExpired(now: Date, ttl: TimeInterval) -> Bool {
         now.timeIntervalSince(lastSignal) > ttl
     }
+
+    /// The moment an exact reading stops outranking the inferred one, which is
+    /// the earliest time `effectiveActivity` can flip with no new input at all.
+    /// `nil` when there is nothing to flip to, or the two already agree — the
+    /// crossing changes nothing then. Lets the driver wake exactly at the flip
+    /// instead of noticing it up to a safety tick late.
+    public func exactFreshnessDeadline(window: TimeInterval) -> Date? {
+        guard let exact, let inferred, exact.activity != inferred.activity else { return nil }
+        return exact.at + window
+    }
 }

@@ -11,21 +11,30 @@ public actor ActivityCoordinator {
     // `internal` where `private` reads truer: the timer half of this actor
     // lives in `ActivityCoordinatorTimer.swift` for the file-length rule, and
     // Swift's `private` stops at the file. Isolation still guards them all.
+    // `internal` where `private` reads truer: `nextDeadline` lives in
+    // `ActivityCoordinatorDeadline.swift` for the file-length rule.
     let clock: Clock
-    private var policy: AwakePolicy
-    private var power: PowerConditions = .unknown
-    private var ledger = SessionLedger()
+    var policy: AwakePolicy
+    var power: PowerConditions = .unknown
+    var ledger = SessionLedger()
 
     /// Last moment any session was working or awaiting. The grace period is
     /// measured from here, so it survives sessions being evicted underneath it.
-    private var lastActiveAt: Date?
-    private var holdingSince: Date?
+    var lastActiveAt: Date?
+    var holdingSince: Date?
     /// Set when the max-duration cap fires; cleared only once work actually
     /// stops, otherwise we would release and immediately re-hold forever.
     var capTripped = false
     /// The user's "stay on this long". Needs no tripped latch of its own: a
     /// deadline in the past stays in the past until `holdAgain` moves it.
     var timer: AlwaysOnTimer?
+
+    /// The `clock.now` from the previous `evaluate`, to spot a backwards clock
+    /// step. `nil` until the first evaluate.
+    private var lastEvaluatedAt: Date?
+    /// How far back the clock must jump before it reads as a correction rather
+    /// than jitter.
+    private static let clockStepBack: TimeInterval = 3
 
     /// The reason survives the grace period unchanged. Swapping it to
     /// "cooling down" the moment a turn ends would re-emit a decision on every
@@ -80,37 +89,20 @@ public actor ActivityCoordinator {
         evaluate()
     }
 
-    /// Forgets everything — `holdingSince` included, or the awake-limit counts
-    /// the sleep and trips on wake — and re-derives after a wake (docs/04).
-    public func resync() {
-        ledger.removeAll()
-        lastActiveAt = nil
-        capTripped = false
-        holdingSince = nil
-        evaluate()
-    }
-
-    /// The earliest time the decision could change with no further input, so the
-    /// driver can sleep exactly that long instead of polling.
-    public var nextDeadline: Date? {
-        let now = clock.now
-        var candidates: [Date] = []
-        if let lastActiveAt {
-            candidates.append(lastActiveAt + policy.effectiveGrace(lowPower: power.isLowPowerMode))
-        }
-        if let holdingSince, let cap = policy.maxContinuousAwake {
-            candidates.append(holdingSince + cap)
-        }
-        if policy.mode == .alwaysOn, let timer {
-            candidates.append(timer.deadline)
-        }
-        candidates.append(contentsOf: ledger.deadlines(policy: policy))
-        return candidates.filter { $0 > now }.min()
-    }
-
     @discardableResult
     public func evaluate() -> AwakeDecision {
         let now = clock.now
+        // A wall clock stepped backwards (an NTP correction) makes every
+        // timestamp we hold look like the future: a fresh reading never ages
+        // out and a hold outlasts its cause by the size of the step. Treat a
+        // jump back like a wake from sleep — the timestamps are meaningless, so
+        // forget them and re-derive from `now`. A small threshold keeps ordinary
+        // clock jitter from triggering it; a forward step is harmless (readings
+        // just age faster) and left alone.
+        if let last = lastEvaluatedAt, now < last.addingTimeInterval(-Self.clockStepBack) {
+            forgetTimestamps()
+        }
+        lastEvaluatedAt = now
         ledger.prune(now: now, policy: policy)
         let activities = ledger.refreshDerived(now: now, policy: policy)
 

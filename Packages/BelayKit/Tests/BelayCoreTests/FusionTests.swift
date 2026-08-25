@@ -40,6 +40,28 @@ struct FusionTests {
         #expect(await coordinator.snapshot.activities[SessionID("s1")] == .working)
     }
 
+    /// The freshness crossing feeds `nextDeadline` so the driver wakes exactly
+    /// when the fused activity flips, instead of at its 60 s safety tick.
+    @Test("The exact-freshness deadline marks where the fused activity flips")
+    func exactFreshnessDeadlineMarksTheCrossing() {
+        let base = Date(timeIntervalSince1970: 1000)
+        var session = SessionState(
+            id: SessionID("s1"), provider: .claudeCode, workspace: nil, firstSeen: base)
+        session.record(.make(.working, at: base, confidence: .exact))
+        session.record(.make(.idle, at: base, confidence: .inferred))
+        #expect(session.exactFreshnessDeadline(window: 300) == base.addingTimeInterval(300))
+
+        // Agreeing readings: the crossing changes nothing, so there is none.
+        session.record(.make(.working, at: base, confidence: .inferred))
+        #expect(session.exactFreshnessDeadline(window: 300) == nil)
+
+        // Only an exact reading: nothing to fall back to when it goes stale.
+        var lone = SessionState(
+            id: SessionID("s2"), provider: .claudeCode, workspace: nil, firstSeen: base)
+        lone.record(.make(.working, at: base, confidence: .exact))
+        #expect(lone.exactFreshnessDeadline(window: 300) == nil)
+    }
+
     @Test("ended wins over everything, from either tier")
     func endedAlwaysWins() {
         let now = Date()

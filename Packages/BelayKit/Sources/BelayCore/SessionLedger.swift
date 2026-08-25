@@ -62,6 +62,12 @@ struct SessionLedger {
             if let awaitingSince = session.awaitingSince {
                 dates.append(awaitingSince + policy.awaitingUserBudget)
             }
+            // The exact-reading freshness crossing: when a hook goes quiet the
+            // fused activity flips with no new signal, and without this the
+            // driver only noticed it at its 60 s safety tick.
+            if let freshness = session.exactFreshnessDeadline(window: policy.hookFreshnessWindow) {
+                dates.append(freshness)
+            }
             return dates
         }
     }

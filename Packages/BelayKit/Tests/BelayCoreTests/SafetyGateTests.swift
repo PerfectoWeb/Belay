@@ -21,6 +21,37 @@ struct SafetyGateTests {
         #expect(await coordinator.snapshot.state == .suspended(.maxDurationReached(600)))
     }
 
+    /// A backwards wall-clock step (an NTP correction) makes a fresh reading
+    /// look like the future, so it never ages out and the hold outlasts its
+    /// cause. The coordinator treats a jump back like a wake: it forgets the
+    /// meaningless timestamps and re-derives, rather than over-holding.
+    @Test("A backwards clock step forgets stale future timestamps, not over-holds")
+    func backwardsClockStepResyncs() async {
+        let clock = TestClock()
+        var policy = AwakePolicy.default
+        policy.sessionTTL = 600
+        let coordinator = ActivityCoordinator(clock: clock, policy: policy)
+
+        #expect(await coordinator.ingest(.make(.working, at: clock.now)).isHold)
+
+        // The clock jumps back five minutes with no new signal.
+        clock.advance(-300)
+        #expect(await coordinator.evaluate() == .release)
+        #expect(await coordinator.snapshot.sessions.isEmpty)
+    }
+
+    /// A jitter under the threshold is not a correction and must not wipe live
+    /// state — the working session keeps holding.
+    @Test("A sub-threshold backwards jitter does not wipe state")
+    func subThresholdJitterHolds() async {
+        let clock = TestClock()
+        let coordinator = ActivityCoordinator(clock: clock, policy: .default)
+        #expect(await coordinator.ingest(.make(.working, at: clock.now)).isHold)
+        clock.advance(-1)
+        #expect(await coordinator.evaluate().isHold)
+        #expect(await coordinator.snapshot.sessions.isEmpty == false)
+    }
+
     /// A wake from sleep must not count the hours the Mac spent asleep toward
     /// the awake limit. `resync` restarts the cap clock, so Always on holds
     /// fresh after a wake instead of suspending the instant it comes back.
