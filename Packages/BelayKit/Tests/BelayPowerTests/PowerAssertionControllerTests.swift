@@ -49,6 +49,35 @@ struct PowerAssertionControllerTests {
         await controller.release()
     }
 
+    /// The kernel's timeout action is release, so a stalled refresh can let an
+    /// assertion be reaped out from under the controller. A rearm on that dead
+    /// handle must not loop forever while the UI says "holding" and the Mac
+    /// idle-sleeps mid-run: the controller re-creates instead.
+    @Test func aRearmFailureRecreatesTheAssertionInsteadOfLoopingOnADeadHandle() async {
+        let backend = MockPowerAssertionBackend()
+        let controller = PowerAssertionController(backend: backend)
+
+        await controller.hold(reason: "working", timeout: inert)
+        #expect(await controller.isHeld)
+        let createdFirst = await backend.createCount
+
+        // The handles are reaped; the next rearm fails on a dead id.
+        await backend.fail([.rearm])
+        await controller.hold(reason: "still working", timeout: inert)
+
+        // Not stuck on the corpse: it created fresh assertions (system plus its
+        // network companion) rather than looping on the dead rearm, and reports
+        // held with no surfaced error. (The mock leaves the stale ids in place
+        // because only the real kernel reaps them, so liveCount is not the tell
+        // here — the fresh creates are.)
+        #expect(await controller.isHeld)
+        #expect(await backend.createCount == createdFirst + 2)
+        #expect(await controller.lastError == nil)
+
+        await backend.stopFailing()
+        await controller.release()
+    }
+
     @Test func releaseWithNothingHeldIsASilentNoOp() async {
         let backend = MockPowerAssertionBackend()
         let controller = PowerAssertionController(backend: backend)

@@ -128,7 +128,19 @@ public actor PowerAssertionController {
             Log.power.info("Holding \(kind.rawValue, privacy: .public) assertion")
             EventLog.note("assertion up kind=\(kind.rawValue) timeout=\(Int(timeout))s")
         case (true, let id?):
-            try await backend.rearm(id, reason: reason, timeout: timeout)
+            do {
+                try await backend.rearm(id, reason: reason, timeout: timeout)
+            } catch {
+                // The kernel timeout action is release, so a stalled refresh
+                // can let this id be reaped out from under us; rearm then fails
+                // on a dead handle every tick, forever, while the UI still says
+                // "holding" and the Mac idle-sleeps mid-run. Forget the corpse
+                // and create a fresh assertion now.
+                live[kind] = nil
+                let fresh = try await backend.create(kind: kind, reason: reason, timeout: timeout)
+                live[kind] = fresh
+                EventLog.note("assertion re-created kind=\(kind.rawValue) after rearm failed")
+            }
         case (false, let id?):
             // Forget the handle first: if the release throws, the assertion's
             // own timeout reaps it, and we must not retry a stale ID forever.
