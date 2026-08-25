@@ -1,4 +1,5 @@
 import BelayCore
+import BelayProviders
 import XCTest
 
 @testable import Belay
@@ -82,6 +83,74 @@ final class BuiltInRootsTests: XCTestCase {
         await fulfillment(of: [seen], timeout: 8)
         pump.cancel()
         await host.stop()
+    }
+
+    /// The same relaunch path for Cline, whose layout nests one level deeper
+    /// (`data/sessions`): a session written into the custom root must reach
+    /// the bus. Caught live: the demo root detected for every agent but Cline.
+    func testStoredClineRootIsAdoptedAtStartAndDetects() async throws {
+        let clineRoot = home.appendingPathComponent("elsewhere/cline-work", isDirectory: true)
+        try FileManager.default.createDirectory(
+            at: clineRoot.appendingPathComponent("data/sessions"), withIntermediateDirectories: true)
+        BuiltInRootsStore().add(clineRoot, for: .cline)
+        let host = ProviderHost(
+            precise: PreciseDetection(),
+            enabled: [.cline],
+            home: home)
+        let signals = await host.start()
+        try await Task.sleep(nanoseconds: 400_000_000)
+
+        let session = clineRoot.appendingPathComponent("data/sessions/demo-1", isDirectory: true)
+        try FileManager.default.createDirectory(at: session, withIntermediateDirectories: true)
+        let state = """
+            {"version":1,"session_id":"demo-1","status":"running",\
+            "cwd":"/tmp/demo","workspace_root":"/tmp/demo","prompt":""}
+            """
+        try Data(state.utf8).write(to: session.appendingPathComponent("demo-1.json"))
+        try Data("xxxxxxxxxx".utf8).write(
+            to: session.appendingPathComponent("demo-1.messages.json"))
+
+        let seen = expectation(description: "signal from the custom Cline root")
+        let pump = Task {
+            for await signal in signals where signal.provider == .cline {
+                if signal.activity == .working { seen.fulfill() }
+                break
+            }
+        }
+        await fulfillment(of: [seen], timeout: 8)
+        pump.cancel()
+        await host.stop()
+    }
+
+    /// The same instance ProviderHost builds, without the host around it.
+    func testDirectClineInstanceAtCustomRootDetects() async throws {
+        let clineRoot = home.appendingPathComponent("elsewhere/cline-solo", isDirectory: true)
+        try FileManager.default.createDirectory(
+            at: clineRoot.appendingPathComponent("data/sessions"), withIntermediateDirectories: true)
+        let provider = ClineProvider(
+            configuration: .at(clineRoot), access: WatchedFolderAccess.provider)
+        let signals = await provider.signals
+        try await provider.start()
+        try await Task.sleep(nanoseconds: 300_000_000)
+
+        let session = clineRoot.appendingPathComponent("data/sessions/demo-2", isDirectory: true)
+        try FileManager.default.createDirectory(at: session, withIntermediateDirectories: true)
+        let state = """
+            {"version":1,"session_id":"demo-2","status":"running",\
+            "cwd":"/tmp/demo","workspace_root":"/tmp/demo","prompt":""}
+            """
+        try Data(state.utf8).write(to: session.appendingPathComponent("demo-2.json"))
+
+        let seen = expectation(description: "direct instance signal")
+        let pump = Task {
+            for await signal in signals where signal.provider == .cline {
+                if signal.activity == .working { seen.fulfill() }
+                break
+            }
+        }
+        await fulfillment(of: [seen], timeout: 8)
+        pump.cancel()
+        await provider.stop()
     }
 
     func testStoreRoundTripsAndDeduplicates() {

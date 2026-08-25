@@ -123,13 +123,16 @@ enum ClineSessions {
     /// root. FSEvents hands over anything under the tree; the id is the first
     /// component below the root.
     static func sessionID(of path: String, under root: URL) -> String? {
-        // `resolvingSymlinksInPath`, not just `standardizedFileURL`: FSEvents
-        // hands back symlink-resolved paths (`/tmp` → `/private/tmp`, a
-        // symlinked home), so a root that only standardized would fail every
-        // prefix match at runtime and the provider would see nothing.
+        // Both sides through the same resolver, not only the root. FSEvents
+        // hands back `/private`-resolved paths while Foundation's resolver
+        // strips `/private` back off (`/private/var/…` → `/var/…`), so a
+        // custom root under /tmp or /var matched raw-against-resolved failed
+        // every prefix check and the provider saw nothing (caught live on a
+        // watched-folder demo root; the default `~/.cline` hid it).
         let rootPath = root.resolvingSymlinksInPath().path + "/"
-        guard path.hasPrefix(rootPath) else { return nil }
-        let below = path.dropFirst(rootPath.count)
+        let changed = URL(fileURLWithPath: path).resolvingSymlinksInPath().path
+        guard changed.hasPrefix(rootPath) else { return nil }
+        let below = changed.dropFirst(rootPath.count)
         guard let id = below.split(separator: "/").first, !id.isEmpty else { return nil }
         return String(id)
     }
