@@ -49,4 +49,10 @@ copyright. -->
 - [ ] Added or changed, and `Resources/Localizable.xcstrings` has all six
       languages filled in
 
+## Contributor terms
+
+- [ ] I have read and agree to the [Contributor Terms](../docs/CONTRIBUTING.md#contributor-terms).
+      This keeps Belay legally maintainable while you keep the copyright in
+      your work.
+
 <!-- Screenshots for anything visible, light and dark. -->
