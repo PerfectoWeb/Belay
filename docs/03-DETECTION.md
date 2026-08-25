@@ -214,9 +214,11 @@ rollouts — see "Codex rollouts" above. The `notify` hook in
 `~/.codex/config.toml` was verified empirically and rejected as Belay's
 channel: on a machine running the Codex desktop app it is already taken by
 their own client, and it is a single global value we must not clobber. Codex's
-Claude-style hook system (stable since 0.125, `~/.codex/hooks.json`) is the
-future exact tier; it sits behind a per-hook trust review in the Codex TUI,
-which is why the rollout watcher ships first.
+Claude-style hook system (stable, `~/.codex/hooks.json`) is the exact tier and
+shipped in 1.5.0 (`CodexHookInstaller`, `CodexTrust`, `CodexConfigDocument`); it
+sits behind a per-hook trust review, which Belay satisfies by reading the trust
+hashes from `codex app-server hooks/list` and writing them into `config.toml`.
+The rollout watcher remains the always-on Tier A beneath it.
 
 **Generic provider (P1).** Configurable by the user, covers everything else
 including DeepSeek-backed tools:

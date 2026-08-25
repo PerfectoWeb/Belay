@@ -38,9 +38,9 @@ for our bundle ID, which is not ours. Match on the pid.
 - [x] Quit while holding → assertion count drops to 0
 - [x] Off mode → nothing held
 - [x] Idle CPU 0.0% over a 200 s sample
-- [ ] Force-quit (`kill -9`) while holding → assertion self-releases within the
+- [x] Force-quit (`kill -9`) while holding → assertion self-releases within the
       timeout window. **This is invariant 2 and the single most important check
-      in this document.**
+      in this document.** Observed 2026-08-12 (see the invariant-2 row above).
 - [ ] `SIGTERM` → releases and exits
 - [ ] Sleep the Mac manually, wake it → state resyncs, no stale hold
 - [ ] Battery guard: unplug below the floor → releases, panel says why; plug back
@@ -91,8 +91,8 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Full keyboard navigation through the panel
 - [ ] VoiceOver reads the status item state and every panel control
 - [ ] Settings window opens (Cmd+, with Belay active, or the panel footer link)
-      and all five panes render (General, Providers, Behaviour,
-      Notifications, About)
+      and all six panes render (General, Agents, Behaviour,
+      Notifications, Statistics, About)
 - [ ] "Open at login" toggle actually registers with `SMAppService`, survives a
       restart, and reflects the truth after being revoked in System Settings
 - [ ] Turning the battery guard off and on again restores the previous

@@ -133,20 +133,25 @@ none of them mentioned Chinese.
 
 ---
 
+## What changed in the descriptions for 1.5.0
+
+One edit, applied to every language, on top of whatever the store held that day:
+
+**Three built-in agents.** The agents sentence in every language now names
+Claude Code, Codex and Cline as detected-precisely built-ins. The Cline CLI
+graduated from a preset to a first-class provider, so it left the preset list —
+which is now Copilot CLI, Gemini CLI, OpenCode, Aider, Cline (the VS Code
+extension) and Pi. Nothing else moved; the privacy claims are untouched and
+still true.
+
 ## What changed in the descriptions for 1.3.2
 
-Two edits, applied to every language on 2026-08-20, on top of whatever the
-store held that day:
+Two edits, applied to every language on 2026-08-20:
 
-**What changed for 1.5.0.** The agents sentence in every language now names
-three built-in agents — Claude Code, Codex and Cline — and Cline left the
-preset list accordingly. Nothing else moved; the privacy claims are untouched
-and still true.
-
-**The agents paragraph tells the 1.3.2 truth.** Claude Code and Codex are both
-detected precisely now — Codex graduated from a preset to a first-class
-provider — and the preset list grew to six: Copilot CLI, Gemini CLI, OpenCode,
-Cline, Aider and Pi.
+**The agents paragraph.** Codex graduated from a preset to a first-class
+provider, so Claude Code and Codex were both detected precisely, and the preset
+list grew to include Copilot CLI, Gemini CLI, OpenCode, Cline, Aider and Pi.
+(Superseded by the 1.5.0 change above, which moved the Cline CLI to built-in.)
 
 **One sentence about the network.** Every hold now carries a network-client
 assertion, so the copy says remote sessions survive. The privacy section's

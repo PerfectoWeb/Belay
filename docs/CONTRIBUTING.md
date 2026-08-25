@@ -130,7 +130,7 @@ change breaks by accident. A pull request that touches power, detection or
 ## Adding a provider preset
 
 This is the most likely first contribution and it is the easiest one, because a
-preset is **data**. Claude Code and Codex are the only agents with bespoke code. Everything
+preset is **data**. Claude Code, Codex, Cline and Copilot CLI are the agents with bespoke code. Everything
 else is the generic provider, which can watch a folder, require a named process
 to be alive, or accept a routed local webhook, and treats any one of the three as
 enough.
@@ -186,7 +186,7 @@ genuinely wanted contribution, including a one-string one.
 
 The app reads
 [`Resources/Localizable.xcstrings`](../Resources/Localizable.xcstrings), a String
-Catalog with 290 keys, and that is not the file to edit. Translations are
+Catalog, and that is not the file to edit. Translations are
 written in [`Localization/`](../Localization/), one CSV per language, and the
 catalogue is generated from them:
 
@@ -378,8 +378,8 @@ In the description, say:
 - What you actually ran. `scripts/test.sh` output at minimum, plus the manual
   check if the change is one unit tests cannot prove. Detection and power changes
   come with a `pmset -g assertions` reading before and after.
-- Which macOS version you are on. macOS 14 and 15 have never been exercised on
-  real hardware here, so a report from one of those is useful on its own.
+- Which macOS version you are on. macOS 14, 15 and 26 have been run for real
+  here, but the next major (macOS 27) has not, so a report from it is useful.
 
 Then re-read the diff as if it were a colleague's. The things that come up most
 often: a `Task { }` with no cancellation story, a magic number that should be a
