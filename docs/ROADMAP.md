@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.5.0 is out** on GitHub and Homebrew and in review for the Mac App Store, which carries 1.4.0 today.
+**1.6.0 is out** on GitHub and Homebrew. The Mac App Store carries 1.4.0, with 1.5.0 in review.
 
 </div>
 
@@ -54,9 +54,12 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
 | 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
-| ⏱ | The Always On timer survives an app relaunch | <img src="badges/waiting.svg" alt="waiting" height="24"> | Next feature release |
-| 🕓 | Last activity on every agent's tile | <img src="badges/waiting.svg" alt="waiting" height="24"> | Next feature release |
-| 🧭 | Copilot, Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.5.x settles |
+| ✈️ | Copilot CLI built in, the fourth agent | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 🗃 | Built-in agents watchable in any folder ([#4](https://github.com/PerfectoWeb/Belay/issues/4)) | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| ⏱ | The Always On timer survives an app relaunch | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 🕓 | Last activity on every agent's tile | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 📦 | **v1.6.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
 | ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |

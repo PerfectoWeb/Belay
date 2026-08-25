@@ -21,7 +21,7 @@
 
 ## 📚 What is it?
 
-You start a long Claude Code, Codex, or Cline task and walk away. Ten minutes later your 
+You start a long Claude Code, Codex, Cline, or Copilot CLI task and walk away. Ten minutes later your 
 Mac sleeps, the run stops making progress, and you come back to unfinished work.
 
 Belay is a macOS menu bar app that fixes exactly that. It watches your local
@@ -33,11 +33,12 @@ No timer to start. No sleep setting to remember to change back.
 ## ✨ Features
 
 <table>
-<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code, Codex and Cline are detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, Copilot CLI, OpenCode, Cline (VS&nbsp;Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
-<tr><td>⚡&nbsp;<b>Precise&nbsp;detection</b></td><td>In the direct build, all three built-in agents can report the exact moment work starts, finishes or waits for you — one click in Settings, with a full preview before anything is written.</td></tr>
+<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code, Codex, Cline and Copilot CLI are detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, OpenCode, Cline (VS&nbsp;Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
+<tr><td>🗂&nbsp;<b>Any&nbsp;folder&nbsp;home</b></td><td>Agents using custom config folders (<code>CLAUDE_CONFIG_DIR</code> and friends) or several profiles: add each folder in the agent's settings and Belay watches them all.</td></tr>
+<tr><td>⚡&nbsp;<b>Precise&nbsp;detection</b></td><td>In the direct build, every built-in agent can report the exact moment work starts, finishes or waits for you — Copilot does it out of the box, the rest with one click in Settings and a full preview before anything is written.</td></tr>
 <tr><td>🛡&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
-<tr><td>⏱&nbsp;<b>Timed&nbsp;holds</b></td><td>Always On can run for a chosen time — 15 minutes to 12 hours, or your own — with the countdown in the panel and on the dimmed screen.</td></tr>
+<tr><td>⏱&nbsp;<b>Timed&nbsp;holds</b></td><td>Always On can run for a chosen time — 15 minutes to 12 hours, or your own — with the countdown in the panel and on the dimmed screen. The timer survives a relaunch.</td></tr>
 <tr><td>🔋&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
 <tr><td>👀&nbsp;<b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
 <tr><td>🌙&nbsp;<b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
@@ -195,10 +196,12 @@ empty room. It brightens back the moment you return.
 <details>
 <summary><b>Belay does not see my agent</b></summary>
 
-Claude Code, Codex and Cline need no setup. Everything else is configured in
-**Settings ▸ Agents**: switch on a preset – Gemini CLI, Copilot CLI,
-OpenCode, Aider, Cline (VS Code) and Pi ship ready-made – or point Belay at a folder or
-process your tool uses while it works.
+Claude Code, Codex, Cline and Copilot CLI need no setup, and if yours runs
+from a custom config folder or a second profile, add that folder from the
+agent's own settings. Everything else is configured in **Settings ▸ Agents**:
+switch on a preset – Gemini CLI, OpenCode, Aider, Cline (VS Code) and Pi ship
+ready-made – or point Belay at a folder or process your tool uses while it
+works.
 
 In the direct build, tools that can run a shell command can also talk to Belay
 directly. See
