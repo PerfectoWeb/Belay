@@ -39,7 +39,7 @@
 6 hours,Settings,translated,,6 hours,6 heures
 7 hours,Settings,translated,,7 hours,7 heures
 8 hours,Settings,needs_review,,8 hours,8 heures
-"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.",App,translated,,"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.","Un audit complet a corrigé des dizaines de petits défauts, des lenteurs au lancement aux sessions qui s'attardaient trop."
+"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.",App,translated,,"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.","Une révision approfondie a corrigé des dizaines de petits problèmes, notamment des blocages au lancement et des sessions qui restaient actives plus longtemps que prévu."
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Une session a cessé de répondre sans terminer, généralement parce que la CLI attend une saisie ou a été fermée."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,Joue un son bref quand vous changez de mode manuellement. Respecte les réglages sonores du système.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay crée d'abord une sauvegarde horodatée. « Retirer » restaure le fichier d'origine.
@@ -54,14 +54,12 @@ Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Ajouter à
 Add to Cline,Settings: Providers,translated,,Add to Cline,Ajouter à Cline
 Add to Codex,Settings: Providers,translated,,Add to Codex,Ajouter à Codex
 Agent needs you,Settings: Notifications,translated,,Agent needs you,L'agent a besoin de vous
-Agent teams in the panel,App,translated,,Agent teams in the panel,Équipes d'agents dans le panneau
 Agent went quiet,Settings: Notifications,translated,,Agent went quiet,L'agent s'est tu
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,Tous les noms de produits et logos sont des marques de leurs propriétaires.
 Allow access to %@,Settings,translated,%@,Allow access to %@,Autorisez l'accès à %@
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Autoriser l'accès à ~/.claude
 Also,"App, Detection, Settings, Settings: Providers",translated,,Also,Aussi
 Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,Toujours
-An Always On timer picks up exactly where it was when Belay restarts.,App,translated,,An Always On timer picks up exactly where it was when Belay restarts.,Un minuteur Always On reprend exactement où il en était quand Belay redémarre.
 An agent is waiting for permission or an answer. Requires Precise Detection.,Settings: Notifications,translated,,An agent is waiting for permission or an answer. Requires Precise Detection.,Un agent attend une autorisation ou une réponse. Nécessite la détection précise.
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Un agent vous attend
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,Un agent vous attend. Belay garde votre Mac éveillé.
@@ -137,24 +135,21 @@ Choose another folder %@ keeps its sessions in.,Settings: Providers,translated,%
 Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code n'a encore ouvert aucun projet sur ce Mac. Belay s'y mettra tout seul le moment venu.
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,Claude Code n'est pas installé sur ce Mac.
-"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.","Claude Code, Codex et Cline peuvent indiquer à Belay le moment exact où le travail commence, se termine ou vous attend. Un clic dans les réglages."
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Cliquez pour voir ce qui a changé et l'installer quand vous voulez.
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu.
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline n'est pas installé sur ce Mac.
-Cline is now built in,App,translated,,Cline is now built in,Cline est désormais intégré
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Fermer
 Closed-lid hold,Settings,translated,,Closed-lid hold,Travail capot fermé
 Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Codex n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu.
 Codex is not installed on this Mac.,Settings: Providers,translated,,Codex is not installed on this Mac.,Codex n'est pas installé sur ce Mac.
 Copied,Statistics,translated,,Copied,Copié
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Copie la carte et le résumé ensemble
-Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI est désormais intégré
+Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI est maintenant intégré
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Copilot n'a encore lancé aucune session sur ce Mac. Belay s'y mettra tout seul le moment venu.
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,Copilot n'est pas installé sur ce Mac.
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Copier
 Copy card and link,Statistics,translated,,Copy card and link,Copier la carte et le lien
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Impossible de joindre le service de mise à jour.
-"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.",App,translated,,"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.","Dossiers de config personnalisés et multi-profils : ajoutez chaque dossier où travaille votre agent, depuis sa tuile."
 Custom…,Panel,translated,,Custom…,Personnalisé…
 Detection health,(unused),translated,,Detection status,État de la détection
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Diagnostic
@@ -167,7 +162,6 @@ Direct download,"Settings, Settings: About",translated,,Direct download,Téléch
 Donate,"Detection, Settings: About",translated,,Donate,Faire un don
 Done,"Settings, Settings: Providers",translated,,Done,Terminé
 Download…,Settings: General,translated,,Download…,Télécharger…
-"Each agent's detection now lives in its own tile, and every pane reads cleaner.",App,translated,,"Each agent's detection now lives in its own tile, and every pane reads cleaner.","La détection de chaque agent vit maintenant dans sa propre tuile, et chaque panneau se lit mieux."
 Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,Activer la détection précise…
 Enable Precise…,Settings,translated,,Enable Precise…,Activer Précis…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activer la détection précise
@@ -217,6 +211,7 @@ Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,Mode 
 "Low battery, overheating, or awake limit reached.",Settings: Notifications,translated,,"Low battery, overheating, or awake limit reached.","Batterie faible, surchauffe ou limite d'éveil atteinte."
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Mode
+More reliable throughout,App,translated,,More reliable throughout,Belay est plus fiable
 Never checked.,Settings: General,translated,,Never checked.,Jamais vérifié.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,Ne jamais garder le Mac éveillé.
 New in v%@,App,translated,%@,New in v%@,Nouveau dans v%@
@@ -260,7 +255,6 @@ Paused at your time limit.,Panel,translated,,Paused at your time limit.,En pause
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Jouer les sons de l'interface
 Play sounds,Settings: General,needs_review,,Play sounds,Jouer des sons
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,Précis
-Precise Detection for every agent,App,translated,,Precise Detection for every agent,Détection précise pour chaque agent
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,Précis · activité il y a %@
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,Agents
 Quit,"Menu bar, Settings: General",translated,,Quit,Quitter
@@ -278,10 +272,10 @@ Remove Precise Detection,Settings,translated,,Remove Precise Detection,Supprimer
 Report a bug,Settings: About,translated,,Report a bug,Signaler un bug
 Report an Issue,Settings,translated,,Report an Issue,Signaler un problème
 Reset…,Statistics,needs_review,,Reset…,Réinitialiser…
+Restart Belay and an Always On timer resumes with the same time remaining.,App,translated,,Restart Belay and an Always On timer resumes with the same time remaining.,Redémarrez Belay et un minuteur Always On reprend avec le même temps restant.
 Safety stop,Settings: Notifications,translated,,Safety stop,Arrêt de sécurité
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,Envoyée une fois par version. L'icône de la barre des menus continue d'afficher le badge de mise à jour même si cette option est désactivée.
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Réglages
-"Settings, sharpened",App,translated,,"Settings, sharpened","Réglages, affinés"
 Settings…,Menu bar,translated,,Settings…,Réglages…
 Share,"App, Statistics",translated,,Share,Partager
 "Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay","Partage la carte, le résumé et un lien vers Belay"
@@ -308,7 +302,6 @@ Start watching,Welcome,translated,,Start Magic,Commencer la surveillance
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Démarrage
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Statistiques
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,Le Mac reste éveillé jusqu'à la fin du minuteur.
-Steadier everywhere,App,translated,,Steadier everywhere,Plus stable partout
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Cesser de garder votre Mac éveillé si la batterie est faible
 "Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","Cesser de surveiller ""%@"" ?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Cesse de surveiller cet outil
@@ -327,18 +320,17 @@ The run took %@. Your Mac will sleep normally again.,Settings: Notifications,tra
 The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,La même modification est appliquée dans chaque dossier que Belay surveille pour cet agent.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Le serveur a renvoyé %lld.
 The timer ran out.,Panel,translated,,The timer ran out.,Le minuteur est terminé.
-The timer survives a relaunch,App,translated,,The timer survives a relaunch,Le minuteur survit au redémarrage
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",Le minuteur que vous avez réglé est terminé.
 "The timer you set ran out, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,,"The timer you set ran out, so Belay stopped keeping your Mac awake.","Le minuteur que vous avez réglé est terminé, Belay a laissé votre Mac se mettre en veille."
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,Le service de mise à jour a renvoyé une réponse que Belay n'a pas pu lire.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,C'est irréversible. Belay n'en garde aucune copie ailleurs.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Ce dossier ne ressemble pas à un dossier de %@.
-Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,App,translated,,Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,Activez-le dans les réglages et Belay suit les sessions Cline tout seul. Aucun dossier à choisir.
-"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.",App,translated,,"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.","Activez-le dans les réglages et Belay suit les sessions Copilot tout seul. Quatre agents, zéro configuration."
+Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,App,translated,,Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,Activez-le dans Réglages et Belay suivra automatiquement ses sessions. Aucun dossier à choisir.
 Until turned off,"Panel, Settings",translated,,Until turned off,Jusqu'à désactivation
 Untitled project,App,translated,,Untitled project,Projet sans titre
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Mettre à jour
 Update Now (v%@),App,translated,%@,Update Now (v%@),Mettre à jour (v%@)
+Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,App,translated,,Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,Vous utilisez des dossiers de configuration personnalisés ou plusieurs profils ? Ajoutez-les dans les réglages de l’agent et Belay les surveillera également.
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Version %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,La version %@ est disponible.
@@ -346,7 +338,7 @@ Waiting for you,Panel,translated,,Waiting for you,Vous attend
 Watch,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Watch,Surveiller
 Watch Anyway,Settings: Providers,translated,,Watch Anyway,Surveiller quand même
 Watch Folder,Settings: Providers,translated,,Watch Folder,Surveiller le dossier
-Watch an agent in any folder,App,translated,,Watch an agent in any folder,Surveillez un agent dans n'importe quel dossier
+Watch built-in agents anywhere,App,translated,,Watch built-in agents anywhere,Les agents peuvent travailler depuis n’importe quel dossier
 Watched Folders,Settings,translated,,Watched Folders,Dossiers surveillés
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,Surveille les fichiers de session de Claude Code pour savoir quand un tour est en cours.
 Watches Cline's session files to tell when a task is running.,Settings: Providers,translated,,Watches Cline session files to tell when a task is running.,Surveille les fichiers de session de Cline pour savoir quand une tâche est en cours.
@@ -358,7 +350,6 @@ Website,Settings: About,translated,,Website,Site web
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Bienvenue
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Bienvenue dans %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,Nouveautés
-"When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.",App,translated,,"When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.","Quand Cline lance des agents équipiers, ils apparaissent sous leur session, comme les sous-agents Claude Code."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Quand le travail s'arrête, votre Mac se met en veille comme d'habitude. Vos réglages de veille ne sont jamais modifiés."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,Affiche le temps restant pendant qu'un minuteur Toujours est en cours.
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Pendant le maintien
@@ -375,6 +366,7 @@ Your agent needs input before it can continue.,Settings: Notifications,translate
 Your agent needs input in %@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input in %@ before it can continue.,Votre agent a besoin d'une réponse dans %@ pour continuer.
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Batterie à %lld%%, Belay a laissé le Mac dormir."
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,La première exécution d'un agent remplira cette page.
+Your timer survives a relaunch,App,translated,,Your timer survives a relaunch,Votre minuteur résiste à un redémarrage
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,a continué à travailler pendant votre absence
 last signal %@ ago,Settings,translated,%@,Last activity %@ ago,Dernière activité il y a %@
 longest run,Statistics,translated,,longest run,exécution la plus longue

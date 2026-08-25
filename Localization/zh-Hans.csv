@@ -39,7 +39,7 @@
 6 hours,Settings,translated,,6 hours,6 小时
 7 hours,Settings,translated,,7 hours,7 小时
 8 hours,Settings,translated,,8 hours,8 小时
-"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.",App,translated,,"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.",一次全面审计修复了数十个小问题，从启动卡顿到迟迟不结束的会话。
+"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.",App,translated,,"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.",一次全面的稳定性检查修复了数十个小问题，包括启动卡顿，以及会话保持活跃时间过长的问题。
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.",会话尚未完成就停止了响应，通常是 CLI 在等待输入或已被关闭。
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,手动切换模式时播放短促提示音。遵循系统声音设置。
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay 会先创建带时间戳的备份。“移除”会还原原始文件。
@@ -54,14 +54,12 @@ Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,添加到 
 Add to Cline,Settings: Providers,translated,,Add to Cline,添加到 Cline
 Add to Codex,Settings: Providers,translated,,Add to Codex,添加到 Codex
 Agent needs you,Settings: Notifications,translated,,Agent needs you,智能体需要你
-Agent teams in the panel,App,translated,,Agent teams in the panel,面板中的智能体团队
 Agent went quiet,Settings: Notifications,translated,,Agent went quiet,智能体没有动静
 All product names and logos are trademarks of their respective owners.,Settings: About,translated,,All product names and logos are trademarks of their respective owners.,所有产品名称和标志均为其各自所有者的商标。
 Allow access to %@,Settings,translated,%@,Allow access to %@,允许访问 %@
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,允许访问 ~/.claude
 Also,"App, Detection, Settings, Settings: Providers",translated,,Also,此外
 Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,常开
-An Always On timer picks up exactly where it was when Belay restarts.,App,translated,,An Always On timer picks up exactly where it was when Belay restarts.,重新启动 Belay 后，Always On 计时器会从原处继续。
 An agent is waiting for permission or an answer. Requires Precise Detection.,Settings: Notifications,translated,,An agent is waiting for permission or an answer. Requires Precise Detection.,智能体正在等待授权或回答。需要精确检测。
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,智能体在等你回应
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,智能体在等你回应。Belay 正在让 Mac 保持唤醒。
@@ -137,24 +135,21 @@ Choose another folder %@ keeps its sessions in.,Settings: Providers,translated,%
 Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",needs_review,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Claude Code 尚未在这台 Mac 上打开过项目。一旦打开，Belay 会自动开始监视。
 Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude Code is not installed on this Mac.,此 Mac 上未安装 Claude Code。
-"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",App,translated,,"Claude Code, Codex, and Cline can tell Belay the exact moment work starts, finishes, or waits for you. One click in Settings.",Claude Code、Codex 和 Cline 都能把工作开始、结束或等待你的确切时刻告诉 Belay。在设置中一键开启。
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,此 Mac 上未安装 Cline。
-Cline is now built in,App,translated,,Cline is now built in,Cline 现已内置
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,关闭
 Closed-lid hold,Settings,translated,,Closed-lid hold,合盖工作
 Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Codex has not started a session on this Mac yet. Belay starts watching by itself when it does.,Codex 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Codex is not installed on this Mac.,Settings: Providers,translated,,Codex is not installed on this Mac.,此 Mac 上未安装 Codex。
 Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
-Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI 现已内置
+Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI 现在已内置
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Copilot 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,此 Mac 上未安装 Copilot。
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
-"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.",App,translated,,"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.",自定义配置目录和多配置文件：直接在智能体卡片中添加它工作的每个文件夹。
 Custom…,Panel,translated,,Custom…,自定义…
 Detection health,(unused),translated,,Detection status,检测状态
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,诊断
@@ -167,7 +162,6 @@ Direct download,"Settings, Settings: About",translated,,Direct download,直接�
 Donate,"Detection, Settings: About",translated,,Donate,捐赠
 Done,"Settings, Settings: Providers",translated,,Done,完成
 Download…,Settings: General,translated,,Download…,下载…
-"Each agent's detection now lives in its own tile, and every pane reads cleaner.",App,translated,,"Each agent's detection now lives in its own tile, and every pane reads cleaner.",每个智能体的检测方式现在都在自己的卡片中，各个面板的文字也更易读。
 Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,启用精确检测…
 Enable Precise…,Settings,translated,,Enable Precise…,启用精确…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,开启精确检测
@@ -217,6 +211,7 @@ Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,低�
 "Low battery, overheating, or awake limit reached.",Settings: Notifications,translated,,"Low battery, overheating, or awake limit reached.",电量低、过热或已达到唤醒上限。
 Mac App Store,"App, Detection, Settings, Settings: About",needs_review,,Mac App Store,Mac App Store
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,模式
+More reliable throughout,App,translated,,More reliable throughout,Belay 更加可靠
 Never checked.,Settings: General,translated,,Never checked.,从未检查过。
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,从不让 Mac 保持唤醒。
 New in v%@,App,translated,%@,New in v%@,v%@ 新增
@@ -260,7 +255,6 @@ Paused at your time limit.,Panel,translated,,Paused at your time limit.,已暂�
 Play interface sounds,Settings: General,translated,,Play interface sounds,播放界面声音
 Play sounds,Settings: General,translated,,Play sounds,播放声音
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,精确
-Precise Detection for every agent,App,translated,,Precise Detection for every agent,每个智能体都支持精确检测
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,精确 · 最近活动于 %@ 前
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,智能体
 Quit,"Menu bar, Settings: General",translated,,Quit,退出
@@ -278,10 +272,10 @@ Remove Precise Detection,Settings,translated,,Remove Precise Detection,移除精
 Report a bug,Settings: About,translated,,Report a bug,报告问题
 Report an Issue,Settings,translated,,Report an Issue,报告问题
 Reset…,Statistics,translated,,Reset…,重置…
+Restart Belay and an Always On timer resumes with the same time remaining.,App,translated,,Restart Belay and an Always On timer resumes with the same time remaining.,重新启动 Belay 后，Always On 计时器会按照之前剩余的时间继续倒计时。
 Safety stop,Settings: Notifications,translated,,Safety stop,安全停止
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
-"Settings, sharpened",App,translated,,"Settings, sharpened",更清晰的设置
 Settings…,Menu bar,translated,,Settings…,设置…
 Share,"App, Statistics",translated,,Share,共享
 "Shares a card, a summary and a link to Belay",Statistics,translated,,"Shares the card, summary, and a link to Belay",共享卡片、摘要和 Belay 的链接
@@ -308,7 +302,6 @@ Start watching,Welcome,translated,,Start Magic,开始监视
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,启动
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,统计
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,在下方计时器结束前，Mac 将保持唤醒。
-Steadier everywhere,App,translated,,Steadier everywhere,处处更稳定
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,电量低时停止让 Mac 保持唤醒
 "Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","停止监视""%@""？"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,停止监视此工具
@@ -327,18 +320,17 @@ The run took %@. Your Mac will sleep normally again.,Settings: Notifications,tra
 The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,Belay 会在为此智能体监视的每个文件夹中做同样的更改。
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,服务器返回 %lld。
 The timer ran out.,Panel,translated,,The timer ran out.,计时器已结束。
-The timer survives a relaunch,App,translated,,The timer survives a relaunch,计时器在重新启动后继续
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",你设置的计时器已结束。
 "The timer you set ran out, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,,"The timer you set ran out, so Belay stopped keeping your Mac awake.",你设置的计时器已结束，Belay 已让 Mac 进入睡眠。
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,更新服务返回了 Belay 无法读取的内容。
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,此操作无法撤销。Belay 不会在其他任何地方保留副本。
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,此文件夹看起来不像 %@ 的文件夹。
-Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,App,translated,,Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,在设置中开启，Belay 就会自动跟踪 Cline 的会话。无需选择文件夹。
-"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.",App,translated,,"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.",在设置中开启，Belay 就会自动跟踪 Copilot 的会话。四个智能体，零配置。
+Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,App,translated,,Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,在“设置”中将它打开，Belay 就会自动监控它的会话，无需选择任何文件夹。
 Until turned off,"Panel, Settings",translated,,Until turned off,直到手动关闭
 Untitled project,App,translated,,Untitled project,未命名项目
 Update Now,"App, Settings, Settings: General",translated,,Update Now,立即更新
 Update Now (v%@),App,translated,%@,Update Now (v%@),立即更新到 v%@
+Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,App,translated,,Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,使用自定义配置文件夹或多个配置文件？在智能体设置中添加它们，Belay 也会一起监控。
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),版本 %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,版本 %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,版本 %@ 已可用。
@@ -346,7 +338,7 @@ Waiting for you,Panel,translated,,Waiting for you,等待回应
 Watch,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Watch,监视
 Watch Anyway,Settings: Providers,translated,,Watch Anyway,仍要监视
 Watch Folder,Settings: Providers,translated,,Watch Folder,监视文件夹
-Watch an agent in any folder,App,translated,,Watch an agent in any folder,在任意文件夹监视智能体
+Watch built-in agents anywhere,App,translated,,Watch built-in agents anywhere,智能体可以使用任意文件夹
 Watched Folders,Settings,translated,,Watched Folders,监视的文件夹
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,监视 Claude Code 的会话文件，以判断轮次何时在运行。
 Watches Cline's session files to tell when a task is running.,Settings: Providers,translated,,Watches Cline session files to tell when a task is running.,监视 Cline 的会话文件，以判断任务何时在运行。
@@ -358,7 +350,6 @@ Website,Settings: About,translated,,Website,网站
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,欢迎
 Welcome to %@,Welcome,translated,%@,Welcome to %@,欢迎使用 %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,新功能
-"When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.",App,translated,,"When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.",当 Cline 启动队友智能体时，它们会出现在所属会话下，就像 Claude Code 的子智能体一样。
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,常开计时器运行时显示剩余时间。
 While holding,"Settings, Settings: Behaviour",translated,,While holding,保持唤醒期间
@@ -375,6 +366,7 @@ Your agent needs input before it can continue.,Settings: Notifications,translate
 Your agent needs input in %@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input in %@ before it can continue.,%@ 中的智能体需要你的输入才能继续。
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,translated,%lld,"Battery is at %lld%%, so Belay let it sleep.",电量为 %lld%%，Belay 已让 Mac 进入睡眠。
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,第一次智能体运行后，这里就会有内容。
+Your timer survives a relaunch,App,translated,,Your timer survives a relaunch,计时器可以跨重启继续
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,在你离开时继续工作
 last signal %@ ago,Settings,translated,%@,Last activity %@ ago,最近活动于 %@ 前
 longest run,Statistics,translated,,longest run,最长运行

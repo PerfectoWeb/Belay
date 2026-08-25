@@ -96,63 +96,30 @@ enum ReleaseNotes {
                         symbol: Mark.code,
                         title: "Copilot CLI is now built in",
                         body: """
-                            Turn it on in Settings and Belay follows Copilot sessions on \
-                            its own. Four agents, zero setup.
+                            Turn it on in Settings and Belay watches its sessions \
+                            automatically. No folders to choose.
                             """),
                     .init(
                         symbol: Mark.folder,
-                        title: "Watch an agent in any folder",
+                        title: "Watch built-in agents anywhere",
                         body: """
-                            Custom config dirs and multi-profile setups: add every folder \
-                            your agent works in, right from its tile.
+                            Using custom config folders or multiple profiles? Add them \
+                            from the agent’s settings and Belay watches them too.
                             """),
                     .init(
                         symbol: Mark.timer,
-                        title: "The timer survives a relaunch",
+                        title: "Your timer survives a relaunch",
                         body: """
-                            An Always On timer picks up exactly where it was when Belay \
-                            restarts.
+                            Restart Belay and an Always On timer resumes with the same \
+                            time remaining.
                             """),
                     .init(
                         symbol: Mark.safety,
-                        title: "Steadier everywhere",
+                        title: "More reliable throughout",
                         body: """
-                            A full audit fixed dozens of small faults, from launch stalls \
-                            to sessions that overstayed their welcome.
-                            """)
-                ]
-            ),
-            ReleaseNote(
-                version: "1.5.0",
-                items: [
-                    .init(
-                        symbol: Mark.code,
-                        title: "Cline is now built in",
-                        body: """
-                            Turn it on in Settings and Belay follows Cline sessions on \
-                            its own. No folders to pick.
-                            """),
-                    .init(
-                        symbol: Mark.speed,
-                        title: "Precise Detection for every agent",
-                        body: """
-                            Claude Code, Codex, and Cline can tell Belay the exact moment \
-                            work starts, finishes, or waits for you. One click in Settings.
-                            """,
-                        directOnly: true),
-                    .init(
-                        symbol: Mark.team,
-                        title: "Agent teams in the panel",
-                        body: """
-                            When Cline spawns teammate agents, they appear under their \
-                            session, just like Claude Code subagents.
-                            """),
-                    .init(
-                        symbol: Mark.toggle,
-                        title: "Settings, sharpened",
-                        body: """
-                            Each agent's detection now lives in its own tile, and every \
-                            pane reads cleaner.
+                            A broad reliability pass fixed dozens of small issues, \
+                            including launch stalls and sessions that stayed active \
+                            longer than they should.
                             """)
                 ]
             )
