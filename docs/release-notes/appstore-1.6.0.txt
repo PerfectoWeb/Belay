@@ -1,0 +1,71 @@
+App Store "What’s New in This Version" — Belay 1.6.0
+
+--- EN ---
+
+Copilot CLI is now built in. Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.
+
+Watch an agent in any folder. Custom config dirs and multi-profile setups: open an agent's settings and add every folder it works in.
+
+The timer survives a relaunch. An Always On timer picks up exactly where it was when Belay restarts.
+
+Steadier everywhere. A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.
+
+--- RU ---
+
+Copilot CLI теперь встроен. Включите его в настройках, и Belay сам следит за сессиями Copilot. Четыре агента, ноль настройки.
+
+Агент в любой папке. Кастомные конфиги и мультипрофили: откройте настройки агента и добавьте каждую папку, где он работает.
+
+Таймер переживает перезапуск. Таймер Always On продолжает ровно с того места после перезапуска Belay.
+
+Стабильнее во всём. Полный аудит закрыл десятки мелких огрехов: от задержек при запуске до сессий, которые засиживались дольше положенного.
+
+--- DE ---
+
+Copilot CLI ist jetzt eingebaut. In den Einstellungen einschalten, und Belay folgt Copilot-Sitzungen von selbst. Vier Agents, null Einrichtung.
+
+Agenten in jedem Ordner beobachten. Eigene Config-Ordner und Multi-Profil-Setups: öffne die Einstellungen eines Agents und füge jeden Ordner hinzu, in dem er arbeitet.
+
+Der Timer übersteht einen Neustart. Ein Always-On-Timer macht nach einem Neustart von Belay genau dort weiter, wo er war.
+
+Überall stabiler. Ein vollständiges Audit hat Dutzende kleiner Fehler behoben, von Startverzögerungen bis zu Sitzungen, die zu lange blieben.
+
+--- ES ---
+
+Copilot CLI ya viene integrado. Actívalo en Ajustes y Belay sigue las sesiones de Copilot por sí solo. Cuatro agentes, cero configuración.
+
+Vigila un agente en cualquier carpeta. Configuraciones personalizadas y multiperfil: abre los ajustes de un agente y añade cada carpeta donde trabaja.
+
+El temporizador sobrevive al reinicio. Un temporizador Always On continúa exactamente donde estaba cuando Belay se reinicia.
+
+Más estable en todo. Una auditoría completa corrigió decenas de pequeños fallos, desde demoras al iniciar hasta sesiones que se quedaban de más.
+
+--- FR ---
+
+Copilot CLI est désormais intégré. Activez-le dans les réglages et Belay suit les sessions Copilot tout seul. Quatre agents, zéro configuration.
+
+Surveillez un agent dans n'importe quel dossier. Dossiers de config personnalisés et multi-profils : ouvrez les réglages d'un agent et ajoutez chaque dossier où il travaille.
+
+Le minuteur survit au redémarrage. Un minuteur Always On reprend exactement où il en était quand Belay redémarre.
+
+Plus stable partout. Un audit complet a corrigé des dizaines de petits défauts, des lenteurs au lancement aux sessions qui s'attardaient trop.
+
+--- IT ---
+
+Copilot CLI ora è integrato. Attivalo nelle impostazioni e Belay segue le sessioni di Copilot da solo. Quattro agenti, zero configurazione.
+
+Osserva un agente in qualsiasi cartella. Config personalizzate e multi-profilo: apri le impostazioni di un agente e aggiungi ogni cartella in cui lavora.
+
+Il timer sopravvive al riavvio. Un timer Always On riprende esattamente da dove era quando Belay si riavvia.
+
+Più stabile ovunque. Un audit completo ha corretto decine di piccoli difetti, dai rallentamenti all'avvio alle sessioni che restavano troppo a lungo.
+
+--- ZH ---
+
+Copilot CLI 现已内置。在设置中开启，Belay 就会自动跟踪 Copilot 的会话。四个智能体，零配置。
+
+在任意文件夹监视智能体。自定义配置目录和多配置文件：打开智能体的设置，添加它工作的每个文件夹。
+
+计时器在重新启动后继续。重新启动 Belay 后，Always On 计时器会从原处继续。
+
+处处更稳定。一次全面审计修复了数十个小问题，从启动卡顿到迟迟不结束的会话。

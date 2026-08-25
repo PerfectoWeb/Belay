@@ -1,0 +1,31 @@
+<!-- What Sparkle shows for 1.6.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.0</h2>
+<ul>
+  <li><b>Copilot CLI is now built in.</b> Turn it on in Settings and Belay
+      follows Copilot sessions on its own. Four agents, zero setup.</li>
+  <li><b>Watch an agent in any folder.</b> Custom config dirs
+      (<code>CLAUDE_CONFIG_DIR</code> and friends) and multi-profile setups:
+      open an agent&#8217;s settings and add every folder it works in. Precise
+      Detection covers each of them.</li>
+  <li><b>The timer survives a relaunch.</b> An Always On timer picks up
+      exactly where it was when Belay restarts.</li>
+  <li><b>Steadier everywhere.</b> A full audit fixed dozens of small
+      faults, from launch stalls to sessions that overstayed their
+      welcome.</li>
+</ul>
+<p class="quiet">Also: agent tiles show live last-activity, switched-off
+tiles dim as one piece, and the whole interface picked up a round of small
+polish.</p>

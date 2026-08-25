@@ -24,10 +24,10 @@
 1 min,"Detection, Settings",needs_review,,1 min,1 мин
 10 hours,Settings,needs_review,,10 hours,10 часов
 10 min,Settings,needs_review,,10 min,10 мин
-12 hours,"App, Settings, Statistics",needs_review,,12 hours,12 часов
+12 hours,"Settings, Statistics",needs_review,,12 hours,12 часов
 14 hours,Settings,translated,,14 hours,14 часов
-15 min,"App, Panel, Settings",translated,,15 min,15 мин
-2 hours,"App, Settings, Statistics",needs_review,,2 hours,2 часа
+15 min,"Panel, Settings",translated,,15 min,15 мин
+2 hours,"Settings, Statistics",needs_review,,2 hours,2 часа
 3 hours,Settings,translated,,3 hours,3 часа
 3 min,Settings,needs_review,,3 min,3 мин
 30 min,Settings,needs_review,,30 min,30 мин
@@ -35,10 +35,11 @@
 4 hours,Settings,needs_review,,4 hours,4 часа
 45 min,Settings,translated,,45 min,45 мин
 5 hours,Settings,translated,,5 hours,5 часов
-5 min,"App, Panel, Settings, Settings: Notifications",needs_review,,5 min,5 мин
+5 min,"Panel, Settings, Settings: Notifications",needs_review,,5 min,5 мин
 6 hours,Settings,translated,,6 hours,6 часов
 7 hours,Settings,translated,,7 hours,7 часов
 8 hours,Settings,needs_review,,8 hours,8 часов
+"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.",App,translated,,"A full audit fixed dozens of small faults, from launch stalls to sessions that overstayed their welcome.","Полный аудит закрыл десятки мелких огрехов: от задержек при запуске до сессий, которые засиживались дольше положенного."
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Сессия перестала отвечать, не завершившись. Обычно CLI ждёт ввода или был закрыт."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,Нейтральное звуковое сопровождение по интерфейсу. Учитывает настройки системных звуков.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay создаёт резервную копию вашей конфигурации при включении и возвращает её при отключении точного определения.
@@ -60,6 +61,7 @@ Allow access to %@,Settings,translated,%@,Allow access to %@,Дайте дост
 Allow access to ~/.claude,Welcome,translated,,Allow access to ~/.claude,Разрешить доступ к ~/.claude
 Also,"App, Detection, Settings, Settings: Providers",translated,,Also,Ещё
 Always on,"App, Detection, Menu bar, Panel, Settings, Welcome",translated,,Always On,Всегда
+An Always On timer picks up exactly where it was when Belay restarts.,App,translated,,An Always On timer picks up exactly where it was when Belay restarts.,Таймер Always On продолжает ровно с того места после перезапуска Belay.
 An agent is waiting for permission or an answer. Requires Precise Detection.,Settings: Notifications,translated,,An agent is waiting for permission or an answer. Requires Precise Detection.,Агент ждёт разрешения или ответа. Требуется точное определение.
 An agent is waiting for you,"Detection, Menu bar, Panel, Settings: Notifications",translated,,An agent is waiting for you,Агент ждёт вас
 An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translated,,An agent is waiting for you. Belay is keeping your Mac awake.,Агент ждёт вас. Belay не даёт Mac уснуть.
@@ -131,7 +133,6 @@ Check Now,Settings: General,translated,,Check Now,Проверить сейча�
 Check for Updates,App,translated,,Check for Updates,Проверить обновления
 Check for updates automatically,Settings: General,translated,,Automatically check for updates,Авто проверка обновлений
 Checking…,Settings: General,translated,,Checking…,Проверяю…
-Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,App,translated,,Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and lets your Mac sleep when time's up.,"Выберите от 15 минут до 12 часов в строке меню. Belay показывает обратный отсчёт и разрешает Mac уснуть, когда время выйдет."
 Choose another folder %@ keeps its sessions in.,Settings: Providers,translated,%@,Choose another folder %@ keeps its sessions in.,"Выберите ещё одну папку, в которой %@ хранит свои сессии."
 Claude Code,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Claude Code,Claude Code
 Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,needs_review,,Claude Code has not opened a project on this Mac yet. Belay starts watching by itself when it does.,"Claude Code ещё не открывал здесь ни одного проекта. Belay начнёт следить сам, как только это произойдёт."
@@ -147,12 +148,13 @@ Codex has not started a session on this Mac yet. Belay starts watching by itself
 Codex is not installed on this Mac.,Settings: Providers,translated,,Codex is not installed on this Mac.,Codex не установлен на этом Mac.
 Copied,Statistics,translated,,Copied,Скопировано
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Копирует карточку вместе со сводкой
+Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI теперь встроен
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Copilot ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,Copilot не установлен на этом Mac.
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Копировать
 Copy card and link,Statistics,needs_review,,Copy card and link,Скопировать
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Не удалось связаться со службой обновлений.
-Countdown on the dimmed screen,App,translated,,Countdown on the dimmed screen,Обратный отсчёт на затемнённом экране
+"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.",App,translated,,"Custom config dirs and multi-profile setups: add every folder your agent works in, right from its tile.","Кастомные конфиги и мультипрофили: добавьте каждую папку, где работает агент, прямо из его плитки."
 Custom…,Panel,translated,,Custom…,Другое…
 Detection health,(unused),translated,,Detection status,Статус детекции
 Diagnostics,"App, Detection, Settings, Settings: Notifications",translated,,Diagnostics,Диагностика
@@ -184,20 +186,16 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Дать
 Grant access to ~/.cline,Welcome,translated,,Grant access to ~/.cline,Дать доступ к ~/.cline
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Дать доступ к ~/.codex
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,Дать доступ к ~/.copilot
-Hear your week,App,translated,,Hear your week,Послушайте свою неделю
 Hold again,"App, Detection, Panel",translated,,Hold again,Держать снова
-Hold again with one click,App,translated,,Hold again with one click,Держать снова одним кликом
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Ждём немного на случай новой работы.
 Hours and minutes.,Panel,translated,,Hours and minutes.,Часы и минуты.
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,"Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть."
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Как долго не давать Mac уснуть
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Простой
-"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.",App,translated,,"If a timer or awake limit ends the hold, the panel tells you why and offers Hold Again. Unlocking your Mac resumes it automatically.","Если таймер или лимит бодрствования завершает удержание, панель объясняет почему и предлагает «Держать снова». После разблокировки Mac удержание возобновляется автоматически."
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,"Ему нужен ваш ответ, чтобы продолжить."
 Keep crash reports on this Mac,Settings,translated,,Save diagnostic reports on this Mac,Сохранять логи на этом Mac
 Keep display awake,Settings: Behaviour,translated,,Keep display awake,Не гасить дисплей
-Keep your Mac awake for,"App, Panel",translated,,Keep your Mac awake for,Не давать Mac уснуть на
-Keep your Mac awake for a set time,App,translated,,Keep your Mac awake for a set time,Не давайте Mac уснуть заданное время
+Keep your Mac awake for,Panel,translated,,Keep your Mac awake for,Не давать Mac уснуть на
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,Выключенный дисплей экономит энергию и не мешает работе агента.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Не даём Mac уснуть
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,needs_review,,Keeps your Mac awake while your agent works.,"Belay не даст вашему Mac заснуть, пока работают AI-агенты."
@@ -219,7 +217,6 @@ Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,Ре�
 "Low battery, overheating, or awake limit reached.",Settings: Notifications,translated,,"Low battery, overheating, or awake limit reached.","Низкий заряд, перегрев или достигнут лимит бодрствования."
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Режим
-Move across the chart in Statistics and each day plays a note. Busier days sound higher.,App,translated,,Move across the chart in Statistics and each day plays a note. Busier days sound higher.,"Проведите указателем по графику в Статистике, и каждый день сыграет ноту. Чем насыщеннее день, тем выше звук."
 Never checked.,Settings: General,translated,,Never checked.,Ещё не проверялось.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,Никогда не мешать Mac уснуть.
 New in v%@,App,translated,%@,New in v%@,Новое в v%@
@@ -311,6 +308,7 @@ Start watching,Welcome,translated,,Start Magic,Начать наблюдение
 Startup,"App, Settings: General, Settings: Providers",translated,,Startup,Запуск
 Statistics,"App, Detection, Menu bar, Panel, Settings, Settings: About, Statistics",translated,,Statistics,Статистика
 Staying awake until the timer below runs out.,Panel,translated,,Staying awake until the timer below runs out.,"Mac не уснёт, пока не истечёт таймер ниже."
+Steadier everywhere,App,translated,,Steadier everywhere,Стабильнее во всём
 Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop keeping your Mac awake on low battery,Не давать Mac уснуть при низком заряде
 "Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","Перестать следить за ""%@""?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Больше не следит за этим инструментом
@@ -329,12 +327,14 @@ The run took %@. Your Mac will sleep normally again.,Settings: Notifications,tra
 The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,"То же изменение вносится в каждую папку, за которой Belay следит для этого агента."
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Сервер вернул %lld.
 The timer ran out.,Panel,translated,,The timer ran out.,Таймер истёк.
+The timer survives a relaunch,App,translated,,The timer survives a relaunch,Таймер переживает перезапуск
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",Установленный вами таймер истёк.
 "The timer you set ran out, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,,"The timer you set ran out, so Belay stopped keeping your Mac awake.","Установленный вами таймер истёк, и Belay разрешил Mac уснуть."
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,"Служба обновлений прислала ответ, который Belay не смог прочитать."
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Это нельзя отменить. Копии нигде больше нет.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Эта папка не похожа на папку %@.
 Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,App,translated,,Turn it on in Settings and Belay follows Cline sessions on its own. No folders to pick.,"Включите его в настройках, и Belay сам следит за сессиями Cline. Никаких папок выбирать не нужно."
+"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.",App,translated,,"Turn it on in Settings and Belay follows Copilot sessions on its own. Four agents, zero setup.","Включите его в настройках, и Belay сам следит за сессиями Copilot. Четыре агента, ноль настройки."
 Until turned off,"Panel, Settings",translated,,Until turned off,Пока не выключу
 Untitled project,App,translated,,Untitled project,Проект без названия
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Обновить
@@ -346,6 +346,7 @@ Waiting for you,Panel,translated,,Waiting for you,Ждёт вас
 Watch,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Watch,Следить
 Watch Anyway,Settings: Providers,translated,,Watch Anyway,Всё равно следить
 Watch Folder,Settings: Providers,translated,,Watch Folder,Следить за папкой
+Watch an agent in any folder,App,translated,,Watch an agent in any folder,Агент в любой папке
 Watched Folders,Settings,translated,,Watched Folders,Отслеживаемые папки
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,"Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
 Watches Cline's session files to tell when a task is running.,Settings: Providers,translated,,Watches Cline session files to tell when a task is running.,"Следит за файлами сессий Cline, чтобы понимать, когда агент работает."
@@ -357,7 +358,6 @@ Website,Settings: About,translated,,Website,Сайт
 Welcome,"App, Menu bar, Welcome",translated,,Welcome,Добро пожаловать
 Welcome to %@,Welcome,translated,%@,Welcome to %@,Добро пожаловать в %@
 What's New,"App, Menu bar, Welcome",translated,,What's New,Что нового
-"When Belay dims the display at night, the time left appears in the center.",App,translated,,"When Belay dims the display at night, the time left appears in the center.","Когда Belay приглушает дисплей ночью, оставшееся время появляется в центре экрана."
 "When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.",App,translated,,"When Cline spawns teammate agents, they appear under their session, just like Claude Code subagents.","Когда Cline запускает агентов-помощников, они появляются под своей сессией, как сабагенты Claude Code."
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."

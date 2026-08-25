@@ -68,6 +68,7 @@ enum ReleaseNotes {
         static let chart = "chart.bar"
         static let timer = "timer"
         static let team = "person.2"
+        static let folder = "folder"
     }
 
     /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
@@ -88,6 +89,39 @@ enum ReleaseNotes {
 
     private static var written: [ReleaseNote] {
         [
+            ReleaseNote(
+                version: "1.6.0",
+                items: [
+                    .init(
+                        symbol: Mark.code,
+                        title: "Copilot CLI is now built in",
+                        body: """
+                            Turn it on in Settings and Belay follows Copilot sessions on \
+                            its own. Four agents, zero setup.
+                            """),
+                    .init(
+                        symbol: Mark.folder,
+                        title: "Watch an agent in any folder",
+                        body: """
+                            Custom config dirs and multi-profile setups: add every folder \
+                            your agent works in, right from its tile.
+                            """),
+                    .init(
+                        symbol: Mark.timer,
+                        title: "The timer survives a relaunch",
+                        body: """
+                            An Always On timer picks up exactly where it was when Belay \
+                            restarts.
+                            """),
+                    .init(
+                        symbol: Mark.safety,
+                        title: "Steadier everywhere",
+                        body: """
+                            A full audit fixed dozens of small faults, from launch stalls \
+                            to sessions that overstayed their welcome.
+                            """)
+                ]
+            ),
             ReleaseNote(
                 version: "1.5.0",
                 items: [
@@ -119,38 +153,6 @@ enum ReleaseNotes {
                         body: """
                             Each agent's detection now lives in its own tile, and every \
                             pane reads cleaner.
-                            """)
-                ]
-            ),
-            ReleaseNote(
-                version: "1.4.0",
-                items: [
-                    .init(
-                        symbol: Mark.timer,
-                        title: "Keep your Mac awake for a set time",
-                        body: """
-                            Choose 15 minutes to 12 hours from the menu bar. Belay shows the countdown and \
-                            lets your Mac sleep when time's up.
-                            """),
-                    .init(
-                        symbol: Mark.safety,
-                        title: "Hold again with one click",
-                        body: """
-                            If a timer or awake limit ends the hold, the panel tells you why and offers Hold \
-                            Again. Unlocking your Mac resumes it automatically.
-                            """),
-                    .init(
-                        symbol: Mark.night,
-                        title: "Countdown on the dimmed screen",
-                        body: """
-                            When Belay dims the display at night, the time left appears in the center.
-                            """),
-                    .init(
-                        symbol: Mark.chart,
-                        title: "Hear your week",
-                        body: """
-                            Move across the chart in Statistics and each day plays a note. Busier days sound \
-                            higher.
                             """)
                 ]
             )

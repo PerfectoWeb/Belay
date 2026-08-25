@@ -33,7 +33,9 @@ enum ReleaseFlow {
             return
         }
         let made = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 680, height: 520),
+            // Six tabs live in the title bar; anything narrower folds them
+            // into an overflow chevron.
+            contentRect: NSRect(x: 0, y: 0, width: 880, height: 520),
             styleMask: [.titled, .closable, .resizable],
             backing: .buffered, defer: false)
         made.title = "Release Flow — \(Branding.version)"
@@ -94,6 +96,13 @@ private struct ReleaseFlowView: View {
                     .appendingPathComponent("docs/release-notes/appstore-\(Branding.version).txt")
             )
             .tabItem { Text(verbatim: "App Store") }
+            // What `gh release create` publishes, reviewable and editable here
+            // before anything goes public.
+            StoreTab(
+                file: ReleaseFlow.repo
+                    .appendingPathComponent("docs/release-notes/github-\(Branding.version).md")
+            )
+            .tabItem { Text(verbatim: "GitHub") }
             NoteSourceTab(
                 file: ReleaseFlow.repo
                     .appendingPathComponent("docs/release-notes/whatsnew-\(Branding.version).txt")
@@ -163,6 +172,7 @@ private struct ChecklistTab: View {
         ("whatsnew", "ReleaseNote.swift: entry replaced, strings translated x7"),
         ("sparkle", "docs/release-notes/Belay-<version>.html written"),
         ("appstore", "docs/release-notes/appstore-<version>.txt written"),
+        ("github", "docs/release-notes/github-<version>.md approved"),
         ("roadmap", "ROADMAP rows and header updated"),
         ("readme", "README claims still true for this version"),
         ("gate", "scripts/test.sh green on the release tree"),

@@ -5,6 +5,70 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - Unreleased
+
+### Added
+
+- Copilot CLI is a built-in agent. Switch it on in Settings and Belay follows
+  its sessions by their own event log — explicit turn markers, no hooks to
+  install. The dead-process sweep only trusts the absence of a `copilot`
+  process it has actually seen, so npm installs running under another name are
+  never reaped by mistake.
+- Watched folders for every built-in agent (#4). Agents that relocate
+  (`CLAUDE_CONFIG_DIR`, `CODEX_HOME`, `CLINE_DIR`, `COPILOT_HOME`) and
+  multi-profile setups are covered by adding each folder from the agent's tile
+  menu: one provider instance per folder, the open panel doubling as the
+  sandbox grant in the App Store build. The direct build also suggests sibling
+  profiles found next to the default home. Precise Detection covers every
+  watched folder — enabling installs hooks into each, a folder added later is
+  installed into automatically, and a removed folder takes its hooks with it
+  behind a confirmation.
+- The Always On timer survives a relaunch: it resumes exactly where it was,
+  and one that expired while Belay was closed lands in the pause with Hold
+  Again.
+- Agent tiles show live last activity for every agent, updating as sessions
+  come and go.
+- The Release Flow workbench gained a GitHub tab: the release announcement is
+  reviewed and edited there before anything goes public.
+
+### Changed
+
+- The tile's options button (and right-click) opens one menu: Precise
+  Detection controls and Watched Folders, each added folder with Show in
+  Finder and a destructive Remove behind a confirmation dialog.
+- Built-in tiles glow softly under the cursor while enabled; switched-off
+  tiles dim as one piece and stay unlit.
+- The About footer reads "Free & open code", matching the licence's no-selling
+  terms; docs/TRADEMARKS.md no longer contradicts them.
+- Night dimming's time fields lost their border, centred their digits, and the
+  dash hugs its fields.
+
+### Fixed
+
+- A full audit of the codebase, every fix with a regression test:
+  - A malformed local request could crash the receiver and drop the sleep
+    assertion with it.
+  - Synchronous helper-status reads froze the main thread at launch and in
+    Settings (the third time this class of bug shipped; all paths are off-main
+    now).
+  - Claude Code subagents no longer pin the Mac after their CLI dies: reaping
+    the main session takes its subagents with it.
+  - A power assertion the kernel reaped is re-created instead of being
+    re-armed on a dead handle forever.
+  - The awake limit no longer counts time the Mac spent asleep, and a
+    backwards clock step (an NTP correction) resyncs instead of over-holding.
+  - A resumed session survives its crashed predecessor's leftover pid file.
+  - Cline teammates survive file truncation; per-run webhook watches retire
+    instead of accumulating; phantom "ended" rows are gone for every provider.
+  - The hook installers refuse to overwrite foreign config of any shape, the
+    bridge record is written atomically, and the lid helper never raises the
+    sleep flag it could not record how to lower.
+  - Notification permission granted after a first refusal is noticed without a
+    relaunch; `killall Belay` banks the running hold into Statistics.
+  - Reduce Motion is honoured by the onboarding starfield; the night-dimming
+    clock fields render correctly in light mode; the mode picker's selected
+    label meets contrast on every pill.
+
 ## [1.5.0] - 2026-08-24
 
 ### Added
