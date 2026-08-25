@@ -49,31 +49,31 @@ final class LoginItemTests: XCTestCase {
         XCTAssertTrue(item.isEnabled)
 
         service.reportsStaleStatus = true
-        item.set(false)
+        await item.setNow(false)
 
         XCTAssertFalse(service.registered, "unregister was not called")
         XCTAssertFalse(item.isEnabled, "the checkbox put itself back on — this is the reported bug")
         XCTAssertNil(item.problem)
     }
 
-    func testTurningItOnSticks() {
+    func testTurningItOnSticks() async {
         let service = FakeService()
         let item = LoginItem(service: service)
         service.reportsStaleStatus = true
-        item.set(true)
+        await item.setNow(true)
         XCTAssertTrue(service.registered)
         XCTAssertTrue(item.isEnabled)
     }
 
     /// A control that claims success it did not have is worse than one that
     /// refuses, so a throw snaps the state back to what macOS really thinks.
-    func testARefusalShowsTheReasonAndDoesNotLie() {
+    func testARefusalShowsTheReasonAndDoesNotLie() async {
         let service = FakeService()
         service.registered = true
         service.failure = Refused()
         let item = LoginItem(service: service)
 
-        item.set(false)
+        await item.setNow(false)
 
         XCTAssertTrue(item.isEnabled, "the tick must reflect macOS, not the click")
         XCTAssertEqual(item.problem, .refused("Operation not permitted"))
@@ -103,7 +103,7 @@ final class LoginItemTests: XCTestCase {
         let item = LoginItem(service: service, clock: { now })
 
         service.reportsStaleStatus = true
-        item.set(false)
+        await item.setNow(false)
         now += 1
         await item.refreshNow()
 
@@ -117,7 +117,7 @@ final class LoginItemTests: XCTestCase {
         var now = Date(timeIntervalSince1970: 1_760_000_000)
         let item = LoginItem(service: service, clock: { now })
 
-        item.set(true)
+        await item.setNow(true)
         service.registered = false
         now += LoginItem.settlingPeriod + 1
         await item.refreshNow()
@@ -138,10 +138,13 @@ final class LoginItemTests: XCTestCase {
         XCTAssertFalse(item.isEnabled)
     }
 
-    func testTheBindingWritesThrough() {
+    func testTheBindingWritesThrough() async {
         let service = FakeService()
         let item = LoginItem(service: service)
         item.binding.wrappedValue = true
+        // The binding's setter fires set(), which registers off the main
+        // thread; give that a bounded moment to land before asserting.
+        for _ in 0..<200 where !service.registered { try? await Task.sleep(nanoseconds: 5_000_000) }
         XCTAssertTrue(service.registered)
         XCTAssertTrue(item.binding.wrappedValue)
     }

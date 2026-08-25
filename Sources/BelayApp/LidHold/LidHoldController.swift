@@ -33,27 +33,44 @@ final class LidHoldController {
         self.notifier = notifier
     }
 
-    private var service: SMAppService {
-        SMAppService.daemon(plistName: LidDaemon.plistName)
-    }
-
     func start() {
-        serviceStatus = service.status
-        // The settings row registers on the flip, but a flip is not the only
-        // way the setting arrives: restored preferences, a rebuilt app, a
-        // helper unregistered behind our back. The opt-in standing while the
-        // helper is not registered is a promise nobody is keeping, so keep it.
-        if settings.lidHold, serviceStatus == .notRegistered {
-            try? service.register()
-            serviceStatus = service.status
-            Diagnostics.note("lid helper register-at-start status=\(serviceStatus.rawValue)")
-        }
+        // The status lives in `backgroundtaskmanagementd`, and asking for it
+        // is an XPC round trip clocked at one to three seconds on a cold
+        // daemon (see `LoginItem`). `start()` runs inside
+        // applicationDidFinishLaunching, so the read — and any register — go
+        // off the main thread and the first answer lands a beat later.
+        Task { await self.registerAtStartIfNeeded() }
         let timer = Timer(timeInterval: Self.tickInterval, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.tick() }
         }
         timer.tolerance = 2
         RunLoop.main.add(timer, forMode: .common)
         ticker = timer
+    }
+
+    /// Reads the helper's status off the main thread and, if the opt-in stands
+    /// while the helper is unregistered, registers it. The flip in the settings
+    /// row is not the only way the setting arrives: restored preferences, a
+    /// rebuilt app, a helper unregistered behind our back — the opt-in standing
+    /// while nothing is registered is a promise nobody is keeping.
+    private func registerAtStartIfNeeded() async {
+        var status = await Self.readStatus()
+        if settings.lidHold, status == .notRegistered {
+            await Task.detached(priority: .userInitiated) {
+                try? SMAppService.daemon(plistName: LidDaemon.plistName).register()
+            }.value
+            status = await Self.readStatus()
+            Diagnostics.note("lid helper register-at-start status=\(status.rawValue)")
+        }
+        serviceStatus = status
+    }
+
+    /// The XPC status read, hopped off the main thread. `SMAppService.Status`
+    /// is a plain enum, so it crosses back cleanly.
+    private static func readStatus() async -> SMAppService.Status {
+        await Task.detached(priority: .userInitiated) {
+            SMAppService.daemon(plistName: LidDaemon.plistName).status
+        }.value
     }
 
     func stop() {
@@ -64,12 +81,11 @@ final class LidHoldController {
 
     private func tick() {
         guard settings.lidHold || machine.isEngaged else { return }
-        let previous = serviceStatus
-        serviceStatus = service.status
-        if serviceStatus != previous {
-            Diagnostics.note(
-                "lid helper status=\(previous.rawValue)->\(serviceStatus.rawValue)")
-        }
+        // Refresh the cached status off the main thread for the next beat;
+        // this beat uses the last known value. One stale tick changes nothing
+        // — each heartbeat asks for three leashes of slack — and it keeps the
+        // 15 s cadence from ever hitching the main thread on a slow daemon.
+        Task { await self.refreshStatus() }
 
         let thermal = ProcessInfo.processInfo.thermalState
         let sample = LidHold.Sample(
@@ -101,6 +117,13 @@ final class LidHoldController {
         case nil:
             if machine.isEngaged { heartbeat() }
         }
+    }
+
+    private func refreshStatus() async {
+        let status = await Self.readStatus()
+        guard status != serviceStatus else { return }
+        Diagnostics.note("lid helper status=\(serviceStatus.rawValue)->\(status.rawValue)")
+        serviceStatus = status
     }
 
     private func heartbeat() {

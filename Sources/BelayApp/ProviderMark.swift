@@ -22,7 +22,9 @@ enum ProviderMark {
     /// Tested by name because the failure mode is silent: rename an imageset and
     /// `NSImage(named:)` returns nil, the drawn fallback appears, and the app
     /// keeps working while looking wrong.
-    static let bundledLogos = ["chatgpt", "claude", "cline", "codex", "copilot", "gemini"]
+    static let bundledLogos = [
+        "chatgpt", "claude", "cline", "codex", "copilot", "gemini", "github", "opencode", "pi"
+    ]
 
     static func image(for provider: ProviderID, preset: String? = nil, size: CGFloat = 15) -> NSImage {
         switch provider {

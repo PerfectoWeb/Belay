@@ -56,7 +56,12 @@ enum CodexAppServer {
             #"{"method":"initialized"}"#,
             #"{"id":2,"method":"hooks/list","params":{}}"#
         ].map { $0 + "\n" }.joined()
-        input.fileHandleForWriting.write(Data(requests.utf8))
+        // `write(contentsOf:)`, not the older `write(_:)`: if the spawned
+        // binary has already exited the pipe is broken, and the legacy call
+        // raises an uncatchable NSFileHandleOperationException. The throwing
+        // variant turns that EPIPE into a Swift error the read loop's timeout
+        // then reports as "did not answer".
+        try? input.fileHandleForWriting.write(contentsOf: Data(requests.utf8))
 
         // Read until the id:2 answer arrives or the clock runs out. The
         // stream interleaves notifications; only the numbered replies count.

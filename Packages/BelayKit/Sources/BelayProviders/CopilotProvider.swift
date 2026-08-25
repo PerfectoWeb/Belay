@@ -96,6 +96,10 @@ public actor CopilotProvider: ActivityProvider {
     // MARK: - Watching
 
     func handle(changedPaths paths: [String]) {
+        // A coalesced FSEvents batch can be dispatched as a Task that lands
+        // after stop(): guard against re-adopting a session into a swept watch
+        // set with no ticker left to idle it.
+        guard isStarted else { return }
         let now = clock.now
         for path in Set(paths) {
             let url = URL(fileURLWithPath: path)

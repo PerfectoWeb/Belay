@@ -50,7 +50,8 @@ public actor GenericProvider: ActivityProvider {
     var liveProcesses: Set<String> = []
     var ticker: DispatchSourceTimer?
     var tickCount = 0
-    private var isStarted = false
+    // Internal, not private: `handle` reads it from GenericProviderWatching.swift.
+    var isStarted = false
 
     public init(
         targets: [GenericTarget] = [],

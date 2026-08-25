@@ -27,7 +27,11 @@ extension BelayController {
     }
 
     func observeSleepWake() {
-        sleepObservers = SleepWakeForwarding.install(into: sleepObserver)
+        // Append, not assign: `observeHumanReturn()` runs first and has already
+        // put the screensDidWake token in here. Assigning over the array
+        // dropped that token, so `shutdown()` could never remove the observer
+        // and it kept firing renewCapOnReturn after teardown.
+        sleepObservers.append(contentsOf: SleepWakeForwarding.install(into: sleepObserver))
 
         tasks.append(
             Task { [sleepObserver, assertions, coordinator, weak self] in

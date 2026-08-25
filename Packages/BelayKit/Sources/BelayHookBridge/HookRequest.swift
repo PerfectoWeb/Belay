@@ -51,18 +51,11 @@ enum HookRequestParser {
 
     private static let separator = Data("\r\n\r\n".utf8)
 
-    static func parse(_ buffer: Data) -> Outcome {
-        guard let headEnd = buffer.range(of: separator) else { return .incomplete }
-        guard
-            let head = String(
-                bytes: buffer[buffer.startIndex..<headEnd.lowerBound], encoding: .utf8)
-        else { return .malformed }
-        var lines = head.components(separatedBy: "\r\n")
-        guard !lines.isEmpty else { return .malformed }
-
-        let requestLine = lines.removeFirst().split(separator: " ")
-        guard requestLine.count >= 2 else { return .malformed }
-
+    /// The two header fields the receiver reads, pulled out so `parse` stays
+    /// inside the complexity rule.
+    private static func parseHeaders(
+        _ lines: [String]
+    ) -> (authorization: String?, declaredLength: Int) {
         var authorization: String?
         var declaredLength = 0
         for line in lines {
@@ -75,6 +68,29 @@ enum HookRequestParser {
             default: break
             }
         }
+        return (authorization, declaredLength)
+    }
+
+    static func parse(_ buffer: Data) -> Outcome {
+        guard let headEnd = buffer.range(of: separator) else { return .incomplete }
+        guard
+            let head = String(
+                bytes: buffer[buffer.startIndex..<headEnd.lowerBound], encoding: .utf8)
+        else { return .malformed }
+        var lines = head.components(separatedBy: "\r\n")
+        guard !lines.isEmpty else { return .malformed }
+
+        let requestLine = lines.removeFirst().split(separator: " ")
+        guard requestLine.count >= 2 else { return .malformed }
+
+        let headers = parseHeaders(lines)
+        // A negative length is a malformed header, not a short read: without
+        // this guard `offsetBy: -1` below lands bodyEnd before bodyStart and
+        // the body slice traps — a crash any unauthenticated local POST could
+        // trigger, taking the sleep assertion down with the process.
+        guard headers.declaredLength >= 0 else { return .malformed }
+        let authorization = headers.authorization
+        let declaredLength = headers.declaredLength
 
         let bodyStart = headEnd.upperBound
         let available = buffer.distance(from: bodyStart, to: buffer.endIndex)

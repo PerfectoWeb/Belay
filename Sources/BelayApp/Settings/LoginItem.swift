@@ -25,6 +25,14 @@ final class LoginItem {
         case refused(String)
     }
 
+    /// One `setNow` result, carried back from the detached XPC call. A struct,
+    /// not a tuple, so it stays inside the linter's tuple-size rule.
+    private struct SetOutcome: Sendable {
+        var registered: Bool
+        var approval: Bool
+        var error: String?
+    }
+
     private(set) var isEnabled: Bool
     private(set) var problem: Problem?
 
@@ -92,22 +100,42 @@ final class LoginItem {
     }
 
     func set(_ wanted: Bool) {
-        do {
-            if wanted {
-                try service.register()
-            } else {
-                try service.unregister()
+        Task { await setNow(wanted) }
+    }
+
+    /// The same change, awaitable — for tests, which otherwise race the task.
+    func setNow(_ wanted: Bool) async {
+        // Optimistic: reflect the intent now so the checkbox does not lag the
+        // click; `changedAt` opens the settling window so a racing `refresh()`
+        // will not flip it back before the daemon agrees.
+        isEnabled = wanted
+        changedAt = clock()
+        problem = nil
+        // The register/unregister call and the follow-up status reads are XPC
+        // round trips to backgroundtaskmanagementd, clocked at one to three
+        // seconds on a cold daemon — off the main thread, or the whole Settings
+        // window freezes mid-switch-animation (the bug the read path already
+        // fixed; the write path had kept it).
+        let service = self.service
+        let result = await Task.detached(priority: .userInitiated) { () -> SetOutcome in
+            do {
+                if wanted { try service.register() } else { try service.unregister() }
+                return SetOutcome(registered: service.isRegistered, approval: service.needsApproval)
+            } catch {
+                return SetOutcome(
+                    registered: service.isRegistered, approval: service.needsApproval,
+                    error: error.localizedDescription)
             }
-            isEnabled = wanted
-            changedAt = clock()
-            problem = service.needsApproval ? .needsApproval : nil
-        } catch {
-            Log.app.error("login item change failed: \(error.localizedDescription, privacy: .public)")
+        }.value
+        if let error = result.error {
+            Log.app.error("login item change failed: \(error, privacy: .public)")
             // Show what macOS actually thinks, not what was asked for: a control
             // that lies about having worked is worse than one that refuses.
-            isEnabled = service.isRegistered
+            isEnabled = result.registered
             changedAt = nil
-            problem = .refused(error.localizedDescription)
+            problem = .refused(error)
+        } else {
+            problem = result.approval ? .needsApproval : nil
         }
     }
 

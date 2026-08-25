@@ -63,4 +63,15 @@ extension BelayController {
         Task { [providers] in await providers.updateTargets(targets) }
     }
 
+    /// Closes every sandboxed access scope on the way out — all five, or the
+    /// ones left open are the per-process scope leak docs/06 warns about (the
+    /// count left behind must be zero). No-ops in the direct build.
+    func relinquishAllScopes() {
+        ClaudeAccess.relinquish()
+        CodexAccess.relinquish()
+        ClineAccess.relinquish()
+        CopilotAccess.relinquish()
+        WatchedFolderAccess.relinquish()
+    }
+
 }

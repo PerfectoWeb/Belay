@@ -69,6 +69,34 @@ struct AgentChildrenTests {
         await collector.stop()
     }
 
+    /// A subagent belongs to its parent's process, but never appears in the pid
+    /// sidecars Tier C reads — so when the main session is reaped, nothing else
+    /// would ever end the child, and it heartbeats `.working` for the whole
+    /// awaiting-assistant grace on a process that is already gone. Reaping the
+    /// parent has to take its subagents with it.
+    @Test("Reaping a dead main session ends its subagents too")
+    func deadMainCascadesToSubagents() async {
+        let start = Date()
+        let main = scratch.transcript(
+            "s1", lines: [TranscriptScratch.record("assistant", stop: "tool_use")])
+        scratch.processFile(pid: 9100, session: "s1", cwd: "/Volumes/Work/App")
+        let sub = scratch.subagent(
+            "agent-a1", of: "s1", lines: [TranscriptScratch.record("assistant", stop: "tool_use")])
+        let provider = self.provider()
+        await provider.ingest(main, now: start)
+        await provider.ingest(sub, now: start)
+        #expect(await provider.watched[SessionID("s1")] != nil)
+        #expect(await provider.watched[SessionID("agent-a1")]?.parent == SessionID("s1"))
+
+        // The CLI dies: its pid reads as gone in the sidecar scan.
+        await provider.sweepForDeadProcesses(
+            now: start.addingTimeInterval(30), isAlive: { _ in false }, busyPids: { _, _, _ in [] })
+        #expect(await provider.watched[SessionID("s1")] == nil, "the dead main was reaped")
+        #expect(
+            await provider.watched[SessionID("agent-a1")] == nil,
+            "its subagent went with it, not left pinning the Mac for the full grace")
+    }
+
     /// A failed `sysctl` must mean "ask again later", never "nothing is running".
     @Test("An unreadable process table does not resurrect or end anything")
     func unreadableProcessTableIsIgnored() async {

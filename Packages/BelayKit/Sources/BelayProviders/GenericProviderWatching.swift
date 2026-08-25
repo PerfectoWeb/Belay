@@ -44,6 +44,10 @@ extension GenericProvider {
     }
 
     func handle(changedPaths paths: [String]) {
+        // A coalesced FSEvents batch can be dispatched as a Task that lands
+        // after stop(): guard so it cannot revive a watch the sweep has ended
+        // with no ticker left to idle it.
+        guard isStarted else { return }
         let now = clock.now
         var touched: Set<GenericTarget.ID> = []
         // Strictly *under* the folder: FSEvents also reports the watched root

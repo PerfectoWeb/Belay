@@ -34,6 +34,14 @@ public struct ClineHookInstaller: Sendable {
     /// in the consent sheet; those events are skipped, not clobbered.
     public func occupied() -> [String] {
         ClineHookEvent.allCases.compactMap { event in
+            // A file that exists but will not decode is somebody else's (a
+            // Latin-1 script, a binary) and must count as taken: `content`
+            // returns nil for both "absent" and "unreadable", so the disk is
+            // the tiebreaker.
+            let unreadable =
+                FileManager.default.fileExists(atPath: url(for: event).path)
+                && content(for: event) == nil
+            if unreadable { return ClineHookConfiguration.fileName(for: event) }
             guard let existing = content(for: event),
                 !ClineHookConfiguration.isBelayScript(existing)
             else { return nil }
@@ -56,6 +64,11 @@ public struct ClineHookInstaller: Sendable {
             if let existing = content(for: event) {
                 guard ClineHookConfiguration.isBelayScript(existing) else { continue }
                 guard existing != text else { continue }
+            } else if FileManager.default.fileExists(atPath: url(for: event).path) {
+                // Exists but did not decode: a foreign file we must not
+                // clobber. `content` cannot tell it from "absent", so this is
+                // the one place the two are distinguished before a write.
+                continue
             }
             do {
                 try Data(text.utf8).write(to: url(for: event))

@@ -137,9 +137,7 @@ final class BelayController {
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.
         usage.flush()
-        // Closes the sandboxed build's scopes. None in the direct build.
-        ClaudeAccess.relinquish()
-        WatchedFolderAccess.relinquish()
+        relinquishAllScopes()
 
         let done = DispatchSemaphore(value: 0)
         // Nothing here may touch the main actor: the wait below blocks the main

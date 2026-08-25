@@ -224,10 +224,8 @@ extension SettingsValues {
         _ defaults: UserDefaults
     ) -> (TimeInterval?, Date?) {
         guard
-            let duration = defaults.object(forKey: SettingsKey.alwaysOnTimerDuration.rawValue)
-                as? Double,
-            let deadline = defaults.object(forKey: SettingsKey.alwaysOnTimerDeadline.rawValue)
-                as? Double,
+            let duration = defaults.number(.alwaysOnTimerDuration),
+            let deadline = defaults.number(.alwaysOnTimerDeadline),
             SettingsBounds.alwaysOnTimerDuration.contains(duration)
         else { return (nil, nil) }
         return (duration, Date(timeIntervalSince1970: deadline))

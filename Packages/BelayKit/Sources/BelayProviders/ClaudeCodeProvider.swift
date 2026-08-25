@@ -97,6 +97,11 @@ public actor ClaudeCodeProvider: ActivityProvider {
     // MARK: - Watching
 
     func handle(changedPaths paths: [String]) {
+        // A coalesced FSEvents batch can be dispatched as a Task that lands
+        // after stop(): without this it would re-adopt a transcript into the
+        // just-cleared watch set and yield .working with no ticker left to
+        // ever idle it, pinning the Mac until the coordinator's TTL.
+        guard isStarted else { return }
         let now = clock.now
         for path in Set(paths) where path.hasSuffix(".jsonl") {
             ingest(URL(fileURLWithPath: path), now: now)
@@ -174,6 +179,17 @@ public actor ClaudeCodeProvider: ActivityProvider {
         guard let watch = watched.removeValue(forKey: id) else { return }
         EventLog.note("session end \(id) cause=\(cause)")
         yield(.ended, from: watch, at: now)
+        // A subagent belongs to its parent's process: when Tier C reaps a dead
+        // main session, its subagents are dead too, but they never appear in
+        // the pid sidecars Tier C reads, so nothing else would ever end them —
+        // they would heartbeat `.working` for the full awaiting-assistant grace
+        // on a process that is gone. Cline's teammates learned this; Claude's
+        // subagents had not. A subagent has no children, so this does not
+        // recurse. (`watched` is a value type; removing from `self.watched`
+        // inside this loop copies-on-write and leaves the iteration intact.)
+        for (childID, child) in watched where child.parent == id {
+            end(childID, at: now, cause: "parent-\(cause)")
+        }
     }
 
     private func yield(_ activity: SessionActivity, from watch: TranscriptWatch, at now: Date) {

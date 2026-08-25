@@ -64,6 +64,19 @@ struct HookReceiverTests {
         }
     }
 
+    /// A negative Content-Length used to send the body slice's end before its
+    /// start and trap — a crash any unauthenticated local POST could trigger,
+    /// dropping the sleep assertion with the process. It must read as malformed.
+    @Test func aNegativeContentLengthIsRejectedNotCrashed() {
+        for header in ["Content-Length: -1", "Content-Length: -999999"] {
+            let raw = "POST /hook HTTP/1.1\r\n\(header)\r\n\r\n"
+            guard case .malformed = HookRequestParser.parse(Data(raw.utf8)) else {
+                Issue.record("a negative Content-Length must parse as malformed, not trap")
+                return
+            }
+        }
+    }
+
     @Test func ignoresEventsItDoesNotRegister() async throws {
         try await withReceiver { endpoint, collector in
             let status = try await post(
