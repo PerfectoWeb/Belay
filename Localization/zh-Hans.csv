@@ -175,6 +175,7 @@ Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除�
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,仅限时长超过 %@ 的运行。
+Found nearby,Settings,translated,,Found nearby,在附近找到
 Free,Settings: About,translated,,Free,免费
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,通用
 Good to go,(unused),translated,,Good to go,准备好了
@@ -322,6 +323,7 @@ The exact configuration Belay will add,Settings: Providers,translated,,What Bela
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Belay 保持 Mac 唤醒的最长时间，超过后就会放手。达到上限时会通知你。
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,%@ 中的运行用时 %@。Mac 现在可以正常进入睡眠。
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,本次运行用时 %@。Mac 现在可以正常进入睡眠。
+The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,Belay 会在为此智能体监视的每个文件夹中做同样的更改。
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,服务器返回 %lld。
 The timer ran out.,Panel,translated,,The timer ran out.,计时器已结束。
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",你设置的计时器已结束。

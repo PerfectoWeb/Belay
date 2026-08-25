@@ -26,6 +26,7 @@ struct BuiltInProviderTile: View {
     var onRemovePrecise: () -> Void = {}
     var onAddRoot: () -> Void = {}
     var onRemoveRoot: (String) -> Void = { _ in }
+    var onAddSuggested: (String) -> Void = { _ in }
     @State private var hoveringOptions = false
 
     var body: some View {
@@ -85,53 +86,6 @@ struct BuiltInProviderTile: View {
         // the offer: the tile's own menu.
         .contextMenu {
             agentMenu
-        }
-    }
-
-    /// One menu, three entrances: the slider button, right-click, Control-click.
-    @ViewBuilder
-    private var agentMenu: some View {
-        if precise {
-            Button {
-                onRemovePrecise()
-            } label: {
-                Label("Remove Precise Detection", systemImage: "bolt.slash")
-            }
-        } else if offersPrecise {
-            Button {
-                onEnablePrecise()
-            } label: {
-                Label("Enable Precise Detection…", systemImage: "bolt")
-            }
-        }
-        Menu {
-            // The default home rides along for context; only the added
-            // folders are removable, and removal is the click itself.
-            Button {
-            } label: {
-                Label(home, systemImage: "house")
-            }
-            .disabled(true)
-            if !provider.customRoots.isEmpty {
-                Text("Click a folder to stop watching it")
-                ForEach(provider.customRoots, id: \.self) { path in
-                    Button {
-                        onRemoveRoot(path)
-                    } label: {
-                        Label(
-                            (path as NSString).abbreviatingWithTildeInPath,
-                            systemImage: "folder")
-                    }
-                }
-            }
-            Divider()
-            Button {
-                onAddRoot()
-            } label: {
-                Label("Add Folder…", systemImage: "folder.badge.plus")
-            }
-        } label: {
-            Label("Watched Folders", systemImage: "folder")
         }
     }
 
@@ -206,7 +160,7 @@ struct BuiltInProviderTile: View {
     }
 
     /// The folder the ask is about, spelled the way the grant panel shows it.
-    private var home: String {
+    var home: String {
         switch provider.id {
         case .codex: return "~/.codex"
         case .cline: return "~/.cline"

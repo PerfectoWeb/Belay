@@ -175,6 +175,7 @@ Erase your statistics?,Statistics,translated,,Erase your statistics?,Erase your 
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Finished
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Fix
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,For runs longer than %@.
+Found nearby,Settings,translated,,Found nearby,Found nearby
 Free,Settings: About,translated,,Free,Free
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,General
 Good to go,(unused),translated,,Good to go,Good to go
@@ -322,6 +323,7 @@ The exact configuration Belay will add,Settings: Providers,translated,,What Bela
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,The run in %@ took %@. Your Mac can sleep normally again.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,The run took %@. Your Mac can sleep normally again.
+The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,The same change is made in every folder Belay watches for this agent.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,The server answered %lld.
 The timer ran out.,Panel,translated,,The timer ran out.,The timer ran out.
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.","The timer you set ran out, so Belay let go."

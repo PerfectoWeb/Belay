@@ -42,25 +42,32 @@ final class PreciseDetection {
     }
 
     private let receiver: HookReceiver
-    private let installer: HookInstaller
+    let installer: HookInstaller
     // Internal, with their flags: the Codex and Cline halves live in
     // `PreciseDetectionAgents.swift` for the file-length rule.
     let codexInstaller: CodexHookInstaller
     let clineInstaller: ClineHookInstaller
+    let paths: BridgePaths
+    /// The extra watched folders per agent, injected so a stand or test with
+    /// scratch paths never reaches the user's real roots. Hooks live inside
+    /// each root, so "Precise" for an agent means every folder it is watched in.
+    let roots: (ProviderID) -> [URL]
 
     /// Injectable so a stand or a test can point the whole tier at a scratch
     /// tree; the app takes the default and never notices.
-    init(paths: BridgePaths = .real()) {
+    init(paths: BridgePaths = .real(), roots: @escaping (ProviderID) -> [URL] = { _ in [] }) {
         receiver = HookReceiver(store: BridgeEndpointStore(paths: paths))
         installer = HookInstaller(paths: paths)
         codexInstaller = CodexHookInstaller(paths: paths)
         clineInstaller = ClineHookInstaller(paths: paths)
+        self.paths = paths
+        self.roots = roots
     }
     private(set) var endpoint: BridgeEndpoint?
     private(set) var isInstalled = false
     var isCodexInstalled = false
     var isClineInstalled = false
-    private(set) var lastError: String?
+    var lastError: String?
     var codexLastError: String?
     var clineLastError: String?
 
@@ -107,7 +114,14 @@ final class PreciseDetection {
     /// to prevent. Without it, moving the app or a new port silently breaks
     /// detection with no visible cause (docs/03).
     private func selfHeal() async {
-        if isInstalled, let endpoint {
+        guard let endpoint else { return }
+        if isInstalled { healClaude(endpoint) }
+        if isClineInstalled { healCline(endpoint) }
+        if isCodexInstalled { await healCodex(endpoint) }
+    }
+
+    private func healClaude(_ endpoint: BridgeEndpoint) {
+        for installer in claudeInstallers {
             do {
                 if case .written = try installer.reconcile(endpoint: endpoint) {
                     Log.bridge.notice("repointed existing hooks at the current port")
@@ -116,30 +130,35 @@ final class PreciseDetection {
                 lastError = error.localizedDescription
             }
         }
-        if isClineInstalled, let endpoint {
+    }
+
+    private func healCline(_ endpoint: BridgeEndpoint) {
+        for installer in clineInstallers {
             do {
-                if case .written = try clineInstaller.reconcile(endpoint: endpoint) {
+                if case .written = try installer.reconcile(endpoint: endpoint) {
                     Log.bridge.notice("repointed existing Cline hooks at the current port")
                 }
             } catch {
                 clineLastError = error.localizedDescription
             }
         }
-        // Off the main thread because a codex rewrite must re-trust, and that
-        // spawns `codex app-server`. Only runs when installed and drifted.
-        if isCodexInstalled, let endpoint {
-            let installer = codexInstaller
-            let outcome = await Task.detached {
-                Result { try installer.reconcile(endpoint: endpoint) }
-            }.value
-            switch outcome {
-            case .success(.written):
-                Log.bridge.notice("repointed existing Codex hooks at the current port")
-            case .success(.unchanged):
-                break
-            case .failure(let error):
-                codexLastError = error.localizedDescription
+    }
+
+    /// Off the main thread because a codex rewrite must re-trust, and that
+    /// spawns `codex app-server`. Only runs when installed and drifted.
+    private func healCodex(_ endpoint: BridgeEndpoint) async {
+        let installers = codexInstallers
+        let outcome = await Task.detached {
+            Result {
+                for installer in installers {
+                    if case .written = try installer.reconcile(endpoint: endpoint) {
+                        Log.bridge.notice("repointed existing Codex hooks at the current port")
+                    }
+                }
             }
+        }.value
+        if case .failure(let error) = outcome {
+            codexLastError = error.localizedDescription
         }
     }
 
@@ -158,27 +177,31 @@ final class PreciseDetection {
     @discardableResult
     func install() -> Bool {
         guard let endpoint else { return false }
-        do {
-            _ = try installer.install(endpoint: endpoint)
-            isInstalled = true
-            lastError = nil
-            return true
-        } catch {
-            lastError = error.localizedDescription
-            return false
+        lastError = nil
+        // Every watched folder, not only ~/.claude: hooks live inside the
+        // root, and the sheet's consent names them all.
+        for installer in claudeInstallers {
+            do {
+                _ = try installer.install(endpoint: endpoint)
+            } catch {
+                lastError = error.localizedDescription
+            }
         }
+        isInstalled = (try? installer.isInstalled()) ?? false
+        return lastError == nil
     }
 
     @discardableResult
     func uninstall() -> Bool {
-        do {
-            _ = try installer.uninstall()
-            isInstalled = false
-            lastError = nil
-            return true
-        } catch {
-            lastError = error.localizedDescription
-            return false
+        lastError = nil
+        for installer in claudeInstallers {
+            do {
+                _ = try installer.uninstall()
+            } catch {
+                lastError = error.localizedDescription
+            }
         }
+        isInstalled = false
+        return lastError == nil
     }
 }

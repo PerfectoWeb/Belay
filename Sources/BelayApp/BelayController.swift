@@ -47,7 +47,7 @@ final class BelayController {
     init(
         settings: SettingsStore = SettingsStore(),
         state: AppState = AppState(),
-        precise: PreciseDetection = PreciseDetection()
+        precise: PreciseDetection = PreciseDetection(roots: { BuiltInRootsStore().roots(for: $0) })
     ) {
         self.settings = settings
         self.state = state

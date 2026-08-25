@@ -48,6 +48,16 @@ is deliberate: a wrong path in a preset costs you one edit, never a release.
 On DeepSeek specifically: there is no first-party DeepSeek CLI to hook into. It
 is consumed through other tools, and those tools are what Belay watches.
 
+### My agent keeps its files somewhere else (CLAUDE_CONFIG_DIR, profiles)
+
+Point Belay at it. Every built-in agent can relocate its home — Claude Code
+with `CLAUDE_CONFIG_DIR`, Codex with `CODEX_HOME`, and so on — and Belay cannot
+read your shell's environment to find out. Click the slider button on the
+agent's tile (or right-click the tile), open **Watched Folders**, and add the
+folder. Belay watches it alongside the default, so multi-profile setups work
+too: add each profile's folder and every one of them is detected. Removing a
+folder is one click on it in the same menu.
+
 ### Will the hooks slow Claude Code down?
 
 They cannot. They are registered `"async": true`, so Claude Code does not wait

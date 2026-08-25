@@ -175,6 +175,7 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Für Läufe länger als %@.
+Found nearby,Settings,translated,,Found nearby,In der Nähe gefunden
 Free,Settings: About,translated,,Free,Kostenlos
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,Allgemein
 Good to go,(unused),translated,,Good to go,Alles bereit
@@ -322,6 +323,7 @@ The exact configuration Belay will add,Settings: Providers,translated,,What Bela
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,"Die längste Zeit, die Belay den Mac wach hält, bevor er loslässt. Bei Erreichen des Limits wirst du benachrichtigt."
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,Der Lauf in %@ hat %@ gedauert. Dein Mac kann wieder normal schlafen.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,Der Lauf hat %@ gedauert. Dein Mac kann wieder normal schlafen.
+The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,"Dieselbe Änderung wird in jedem Ordner vorgenommen, den Belay für diesen Agenten beobachtet."
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Der Server hat %lld zurückgegeben.
 The timer ran out.,Panel,translated,,The timer ran out.,Der Timer ist abgelaufen.
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",Der gestellte Timer ist abgelaufen.

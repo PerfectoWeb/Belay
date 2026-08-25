@@ -16,6 +16,22 @@ extension BelayController {
         state.onRemoveProviderRoot = { [weak self] provider, path in
             self?.removeProviderRoot(provider, path: path)
         }
+        state.onAddSuggestedRoot = { [weak self] provider, path in
+            self?.addSuggestedRoot(provider, path: path)
+        }
+    }
+
+    /// A suggested sibling profile, adopted with one click: it was found by
+    /// scanning, so it already looks like the agent's home and needs no panel
+    /// (direct build only; the sandbox never suggests).
+    func addSuggestedRoot(_ id: ProviderID, path: String) {
+        Task { [providers, weak self] in
+            let root = URL(fileURLWithPath: path, isDirectory: true)
+            if await providers.addRoot(root, for: id) == .added {
+                await providers.precise.installIfEnabled(for: id, at: root)
+            }
+            await self?.publishProviderStatus()
+        }
     }
 
     /// A built-in agent switched on or off from Settings. Switching one on
@@ -93,6 +109,10 @@ extension BelayController {
             if await providers.addRoot(picked, for: id) == .overlaps {
                 WatchedFolderAccess.forget(picked)
                 self?.showOverlapNote(agent: name)
+            } else {
+                // Precise Detection already on for this agent covers every
+                // watched folder; the new one gets its hooks too.
+                await providers.precise.installIfEnabled(for: id, at: picked)
             }
             await self?.publishProviderStatus()
         }
@@ -100,6 +120,8 @@ extension BelayController {
 
     func removeProviderRoot(_ id: ProviderID, path: String) {
         Task { [providers, weak self] in
+            let root = URL(fileURLWithPath: path, isDirectory: true)
+            await providers.precise.uninstallHooks(for: id, at: root)
             await providers.removeRoot(path: path, for: id)
             await self?.publishProviderStatus()
         }

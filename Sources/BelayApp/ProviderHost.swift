@@ -25,6 +25,8 @@ final class ProviderHost {
     let home: URL
     let folders: FileAccessProvider
     var extras: [ProviderID: [(root: URL, instance: any ActivityProvider)]] = [:]
+    var suggestionsScannedAt: Date?
+    var suggestionsCache: [ProviderID: [String]] = [:]
     /// Which built-in agents are switched on. A switched-off agent is not
     /// started, not asked about, and never nags for a folder it would read.
     private(set) var enabled: Set<ProviderID>

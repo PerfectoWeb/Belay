@@ -85,7 +85,8 @@ struct ProvidersSettingsPane: View {
                             onEnablePrecise: { previewing = PreviewTarget(id: provider.id) },
                             onRemovePrecise: { removePrecise(provider.id) },
                             onAddRoot: { state.onAddProviderRoot(provider.id) },
-                            onRemoveRoot: { state.onRemoveProviderRoot(provider.id, $0) })
+                            onRemoveRoot: { state.onRemoveProviderRoot(provider.id, $0) },
+                            onAddSuggested: { state.onAddSuggestedRoot(provider.id, $0) })
                     }
                     if rows[index].count == 1 {
                         // Holds the lone tile to column width instead of

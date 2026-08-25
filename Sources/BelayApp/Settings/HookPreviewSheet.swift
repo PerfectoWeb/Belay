@@ -97,6 +97,12 @@ struct HookPreviewSheet: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
+                if precise.extraRootsCount(for: provider) > 0 {
+                    Text("The same change is made in every folder Belay watches for this agent.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
                 if isCodex {
                     Text(
                         """

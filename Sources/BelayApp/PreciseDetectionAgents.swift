@@ -20,20 +20,21 @@ extension PreciseDetection {
     @discardableResult
     func installCline() -> Bool {
         guard let endpoint else { return false }
-        do {
-            _ = try clineInstaller.install(endpoint: endpoint)
-            isClineInstalled = clineInstaller.isInstalled()
-            clineLastError = nil
-            return true
-        } catch {
-            clineLastError = error.localizedDescription
-            return false
+        clineLastError = nil
+        for installer in clineInstallers {
+            do {
+                _ = try installer.install(endpoint: endpoint)
+            } catch {
+                clineLastError = error.localizedDescription
+            }
         }
+        isClineInstalled = clineInstaller.isInstalled()
+        return clineLastError == nil
     }
 
     @discardableResult
     func uninstallCline() -> Bool {
-        _ = clineInstaller.uninstall()
+        for installer in clineInstallers { _ = installer.uninstall() }
         isClineInstalled = false
         clineLastError = nil
         return true
@@ -50,9 +51,11 @@ extension PreciseDetection {
     /// that calls this shows its own progress and nothing else blocks on it.
     func installCodex() async -> Bool {
         guard let endpoint else { return false }
-        let installer = codexInstaller
+        let installers = codexInstallers
         let outcome = await Task.detached {
-            Result { try installer.install(endpoint: endpoint) }
+            Result {
+                for installer in installers { _ = try installer.install(endpoint: endpoint) }
+            }
         }.value
         switch outcome {
         case .success:
@@ -69,9 +72,11 @@ extension PreciseDetection {
     }
 
     func uninstallCodex() async -> Bool {
-        let installer = codexInstaller
+        let installers = codexInstallers
         let outcome = await Task.detached {
-            Result { try installer.uninstall() }
+            Result {
+                for installer in installers { _ = try installer.uninstall() }
+            }
         }.value
         switch outcome {
         case .success:

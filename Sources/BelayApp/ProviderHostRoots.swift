@@ -127,8 +127,40 @@ extension ProviderHost {
             availability: availability,
             isEnabled: enabled.contains(id),
             lastSignal: lastSignals[id],
-            customRoots: (extras[id] ?? []).map { $0.root.path }
+            customRoots: (extras[id] ?? []).map { $0.root.path },
+            suggestedRoots: suggestions(for: id)
         )
     }
 
+    /// Sibling profiles worth offering with one click: `~/.claude-work` beside
+    /// `~/.claude`, and the like. Direct build only — the sandbox cannot
+    /// enumerate the home folder — and cached for a minute, because statuses
+    /// republish on every snapshot.
+    private func suggestions(for id: ProviderID) -> [String] {
+        #if BELAY_MAS
+        return []
+        #else
+        if suggestionsScannedAt.map({ Date().timeIntervalSince($0) > 60 }) ?? true {
+            suggestionsCache = scanForSiblingRoots()
+            suggestionsScannedAt = Date()
+        }
+        let watched = Set((extras[id] ?? []).map { $0.root.path })
+        return (suggestionsCache[id] ?? []).filter { !watched.contains($0) }
+        #endif
+    }
+
+    private func scanForSiblingRoots() -> [ProviderID: [String]] {
+        let names =
+            (try? FileManager.default.contentsOfDirectory(atPath: home.path)) ?? []
+        var found: [ProviderID: [String]] = [:]
+        for id in [ProviderID.claudeCode, .codex, .cline, .copilot] {
+            let prefix = defaultRoot(for: id).lastPathComponent
+            for name in names where name.hasPrefix(prefix) && name != prefix {
+                let candidate = home.appendingPathComponent(name, isDirectory: true)
+                guard BuiltInRoots.looksLikeHome(for: id, root: candidate) else { continue }
+                found[id, default: []].append(candidate.path)
+            }
+        }
+        return found.mapValues { $0.sorted() }
+    }
 }

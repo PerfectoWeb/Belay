@@ -182,6 +182,23 @@ downgrades to a heartbeat-only role — it can keep `.working` alive but cannot
 override an `.exact` `.idle`. This prevents the classic bug where a hook says
 "done", a trailing disk flush says "still writing", and the two fight forever.
 
+## Watched folders beyond the default home
+
+Every built-in agent can relocate — `CLAUDE_CONFIG_DIR`, `CODEX_HOME`,
+`CLINE_DIR`, `COPILOT_HOME` — and multi-profile setups run several at once
+(issue #4). A GUI app cannot read another shell's environment, so the folders
+arrive by being picked: each tile's menu (the slider button, or right-click)
+carries "Watched Folders" with the default home, any added folders, and "Add
+Folder". One provider instance runs per (agent, folder); nothing below the app
+layer changes. Extras read through the picked-folder grants, so the open panel
+that chose the folder is the sandbox grant in the MAS build. Precise Detection
+covers every watched folder — hooks live inside a root, so enabling installs
+into each, an added folder is installed into when already enabled, and a
+removed folder takes its Belay-marked hooks with it. The direct build also
+suggests sibling profiles it finds next to the default home (`~/.claude-work`
+beside `~/.claude`); the sandboxed build cannot enumerate the home folder, so
+it never suggests.
+
 ## Other providers
 
 **Cline (shipped first-class in 1.5.0).** `ClineProvider` reads the per-session

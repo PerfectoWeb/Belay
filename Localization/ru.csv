@@ -175,6 +175,7 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Стер�
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Завершено
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Исправить
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Для запусков дольше %@.
+Found nearby,Settings,translated,,Found nearby,Найдено рядом
 Free,Settings: About,translated,,Free,Бесплатно
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,Основные
 Good to go,(unused),translated,,Good to go,Готово
@@ -322,6 +323,7 @@ The exact configuration Belay will add,Settings: Providers,translated,,What Bela
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Максимальное время удержания Mac бодрым. При достижении лимита Belay отправит вам уведомление.
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,В проекте %@ это заняло %@. Mac снова может засыпать как обычно.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,Это заняло %@. Mac снова может засыпать как обычно.
+The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,"То же изменение вносится в каждую папку, за которой Belay следит для этого агента."
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Сервер вернул %lld.
 The timer ran out.,Panel,translated,,The timer ran out.,Таймер истёк.
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",Установленный вами таймер истёк.

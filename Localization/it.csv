@@ -175,6 +175,7 @@ Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Cancellar
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Completato
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Risolvi
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Per esecuzioni più lunghe di %@.
+Found nearby,Settings,translated,,Found nearby,Trovate accanto
 Free,Settings: About,translated,,Free,Gratis
 General,"Settings, Settings: Behaviour, Settings: General",translated,,General,Generali
 Good to go,(unused),translated,,Good to go,Tutto pronto
@@ -322,6 +323,7 @@ The exact configuration Belay will add,Settings: Providers,translated,,What Bela
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Il tempo massimo per cui Belay terrà sveglio il Mac prima di lasciare andare. Riceverai una notifica al raggiungimento del limite.
 The run in %@ took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@ %@,The run in %@ took %@. Your Mac can sleep normally again.,L'esecuzione in %@ è durata %@. Il Mac può tornare ad andare in stop normalmente.
 The run took %@. Your Mac will sleep normally again.,Settings: Notifications,translated,%@,The run took %@. Your Mac can sleep normally again.,L'esecuzione è durata %@. Il Mac può tornare ad andare in stop normalmente.
+The same change is made in every folder Belay watches for this agent.,Settings: Providers,translated,,The same change is made in every folder Belay watches for this agent.,La stessa modifica viene applicata in ogni cartella che Belay osserva per questo agente.
 The server answered %lld.,Settings: General,translated,%lld,The server answered %lld.,Il server ha restituito %lld.
 The timer ran out.,Panel,translated,,The timer ran out.,Il timer è scaduto.
 "The timer you set ran out, so Belay let go.",Panel,translated,,"The timer you set ran out, so Belay let go.",Il timer che hai impostato è scaduto.

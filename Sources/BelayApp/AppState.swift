@@ -34,9 +34,11 @@ final class AppState {
     var onGrantAccess: (ProviderID) -> Void = { _ in }
     /// A built-in agent's switch in Settings.
     var onToggleProvider: (ProviderID, Bool) -> Void = { _, _ in }
-    /// The tile menu's folder management: add via the open panel, remove by path.
+    /// The tile menu's folder management: add via the open panel, remove by
+    /// path, or adopt a suggested sibling profile in one click.
     var onAddProviderRoot: (ProviderID) -> Void = { _ in }
     var onRemoveProviderRoot: (ProviderID, String) -> Void = { _, _ in }
+    var onAddSuggestedRoot: (ProviderID, String) -> Void = { _, _ in }
     var onOpenSettings: () -> Void = {}
 
     var isHolding: Bool { snapshot.state.holdsAssertion }
@@ -240,6 +242,8 @@ struct ProviderStatus: Identifiable, Equatable {
     let lastSignal: Date?
     /// Extra watched folders beyond the default home, for the tile's menu.
     var customRoots: [String] = []
+    /// Sibling profiles found next to the default home, offered in the menu.
+    var suggestedRoots: [String] = []
 
     var id: ProviderID { descriptor.id }
 }
