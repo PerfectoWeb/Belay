@@ -148,4 +148,26 @@ final class CustomDurationTests: XCTestCase {
         XCTAssertNil(CustomDuration.seconds(hours: "25", minutes: "0"), "over a day is until turned off")
         XCTAssertNil(CustomDuration.seconds(hours: "1", minutes: "xx"))
     }
+
+    /// "Until": the next occurrence of the clock time, never the past one.
+    func testUntilCountsToTheNextOccurrence() {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        // 10:00 sharp.
+        let now = calendar.date(from: DateComponents(year: 2026, month: 8, day: 25, hour: 10))!
+
+        XCTAssertEqual(
+            CustomDuration.untilSeconds(minutesOfDay: 11 * 60 + 30, now: now, calendar: calendar),
+            5400, "11:30 is an hour and a half away")
+        XCTAssertEqual(
+            CustomDuration.untilSeconds(minutesOfDay: 9 * 60, now: now, calendar: calendar),
+            23 * 3600, "9:00 already passed, so tomorrow's")
+        XCTAssertEqual(
+            CustomDuration.untilSeconds(minutesOfDay: 10 * 60, now: now, calendar: calendar),
+            24 * 3600, "the same minute means a full day, not zero")
+        XCTAssertNil(
+            CustomDuration.untilSeconds(minutesOfDay: -1, now: now, calendar: calendar))
+        XCTAssertNil(
+            CustomDuration.untilSeconds(minutesOfDay: 24 * 60, now: now, calendar: calendar))
+    }
 }

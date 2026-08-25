@@ -1,4 +1,5 @@
 ﻿key,screen,status,placeholders,source,translation
+%@ from now,Panel,translated,%@,%@ from now,Dans %@
 %@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,Statistics,translated,%@ %lld %@,%@ watched %lld agent runs on my Mac and kept it awake for %@.,%@ a suivi %lld exécutions d'agents sur mon Mac et l'a gardé éveillé pendant %@.
 "%@ held, %@ away",Statistics,translated,%@ %@,"%@ awake, %@ away","%@ éveillé, %@ absent"
 "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep.,%@ a gardé mon Mac éveillé pendant %@ en mon absence et a évité que la veille n'interrompe %lld exécutions d'agent.
@@ -166,11 +167,13 @@ Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,Act
 Enable Precise…,Settings,translated,,Enable Precise…,Activer Précis…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activer la détection précise
 Enable…,(unused),translated,,Enable…,Activer…
+Ends at %@,Panel,translated,%@,Ends at %@,Se termine à %@
 Erase,Statistics,needs_review,,Erase,Effacer
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Effacer vos statistiques ?
 Export…,Statistics,translated,,Export…,Exporter…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Terminé
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corriger
+For,"App, Detection, Menu bar, Panel, Settings, Settings: About, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,For,Durée
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,Pour les exécutions de plus de %@.
 Found nearby,Settings,translated,,Found nearby,Trouvés à proximité
 Free,Settings: About,translated,,Free,Gratuit
@@ -183,14 +186,13 @@ Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Accorder l
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,Accorder l'accès à ~/.copilot
 Hold again,"App, Detection, Panel",translated,,Hold again,Maintenir encore
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,On attend un instant au cas où.
-Hours and minutes.,Panel,translated,,Hours and minutes.,Heures et minutes.
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,Combien de temps Belay attend après qu'un agent s'est tu avant de laisser le Mac se mettre en veille.
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,Durée d'éveil du Mac
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,Inactif
 It needs an answer from you before it can carry on.,Panel,needs_review,,It needs an answer before it can continue.,Il attend une réponse pour continuer.
 Keep crash reports on this Mac,Settings,translated,,Save diagnostic reports on this Mac,Enregistrer les rapports de diagnostic sur ce Mac
 Keep display awake,Settings: Behaviour,translated,,Keep display awake,Garder l'écran allumé
-Keep your Mac awake for,Panel,translated,,Keep your Mac awake for,Garder le Mac éveillé pendant
+Keep your Mac awake,Panel,translated,,Keep your Mac awake,Garder le Mac éveillé
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,Garder l'écran éteint économise l'énergie et n'interrompt pas votre agent.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Votre Mac reste éveillé
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Garde votre Mac éveillé pendant que votre agent travaille.
@@ -307,7 +309,7 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 "Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","Cesser de surveiller ""%@"" ?"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Cesse de surveiller cet outil
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Sous-agent
-System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Système
+System,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Système
 Task finished,Settings: Notifications,translated,,Task finished,Tâche terminée
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,L'App Store garde Belay à jour et vous prévient quand une nouvelle version est prête. Belay ne se connecte jamais à internet.
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Le Mac a trop chauffé capot fermé, alors Belay l'a laissé dormir."
@@ -327,6 +329,7 @@ The update service sent something Belay could not read.,Settings: General,transl
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,C'est irréversible. Belay n'en garde aucune copie ailleurs.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Ce dossier ne ressemble pas à un dossier de %@.
 Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,App,translated,,Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,Activez-le dans Réglages et Belay suivra automatiquement ses sessions. Aucun dossier à choisir.
+Until,"App, Panel, Settings, Settings: Providers",translated,,Until,Jusqu'à
 Until turned off,"Panel, Settings",translated,,Until turned off,Jusqu'à désactivation
 Untitled project,App,translated,,Untitled project,Projet sans titre
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Mettre à jour

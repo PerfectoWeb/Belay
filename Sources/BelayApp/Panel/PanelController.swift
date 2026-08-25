@@ -24,10 +24,41 @@ final class PanelController: NSObject {
     /// those clicks (events bound for other apps) and nothing of ours, so the
     /// status item's own toggle and the menu's items are unaffected.
     private var outsideClicks: Any?
+    /// The sheet notifications, held for removal.
+    private var sheetWatch: [NSObjectProtocol] = []
 
     init(state: AppState) {
         self.state = state
         super.init()
+        // While a dialog rides the panel as a sheet, nothing may close the
+        // popover: not the transient behaviour (the sheet taking key reads
+        // as "clicked elsewhere"), not the outside-click monitor. Both come
+        // back the moment the sheet is gone.
+        let center = NotificationCenter.default
+        sheetWatch = [
+            center.addObserver(
+                forName: .panelSheetWillOpen, object: nil, queue: .main
+            ) { [weak self] _ in
+                Task { @MainActor in self?.holdOpenForSheet() }
+            },
+            center.addObserver(
+                forName: .panelSheetDidClose, object: nil, queue: .main
+            ) { [weak self] _ in
+                Task { @MainActor in self?.releaseAfterSheet() }
+            }
+        ]
+    }
+
+    private func holdOpenForSheet() {
+        popover?.behavior = .applicationDefined
+        if let outsideClicks { NSEvent.removeMonitor(outsideClicks) }
+        outsideClicks = nil
+    }
+
+    private func releaseAfterSheet() {
+        guard let popover, popover.isShown else { return }
+        popover.behavior = .transient
+        watchOutsideClicks()
     }
 
     var isVisible: Bool { popover?.isShown ?? false }
@@ -118,6 +149,7 @@ final class PanelController: NSObject {
 
     deinit {
         MainActor.assumeIsolated {
+            for token in sheetWatch { NotificationCenter.default.removeObserver(token) }
             popover?.close()
             popover?.contentViewController = nil
             popover = nil

@@ -1,4 +1,5 @@
 ﻿key,screen,status,placeholders,source,translation
+%@ from now,Panel,translated,%@,%@ from now,距现在 %@
 %@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,Statistics,translated,%@ %lld %@,%@ watched %lld agent runs on my Mac and kept it awake for %@.,%@ 在我的 Mac 上监视了 %lld 次智能体运行，并让它保持唤醒 %@。
 "%@ held, %@ away",Statistics,translated,%@ %@,"%@ awake, %@ away",唤醒 %@，离开 %@
 "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep.,%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 %lld 次智能体运行，使它们不被睡眠打断。
@@ -166,11 +167,13 @@ Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,启
 Enable Precise…,Settings,translated,,Enable Precise…,启用精确…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,开启精确检测
 Enable…,(unused),translated,,Enable…,开启…
+Ends at %@,Panel,translated,%@,Ends at %@,将于 %@ 结束
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
 Export…,Statistics,translated,,Export…,导出…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
+For,"App, Detection, Menu bar, Panel, Settings, Settings: About, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,For,时长
 For runs longer than %@.,Settings: Notifications,translated,%@,For runs longer than %@.,仅限时长超过 %@ 的运行。
 Found nearby,Settings,translated,,Found nearby,在附近找到
 Free,Settings: About,translated,,Free,免费
@@ -183,14 +186,13 @@ Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访�
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,允许访问 ~/.copilot
 Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
-Hours and minutes.,Panel,translated,,Hours and minutes.,小时和分钟。
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,智能体安静后，Belay 等待多久才允许 Mac 进入睡眠。
 How long to keep the Mac awake,Panel,translated,,How long to keep the Mac awake,让 Mac 保持唤醒多久
 Idle,"App, Detection, Panel, Settings: Providers",translated,,Idle,空闲
 It needs an answer from you before it can carry on.,Panel,translated,,It needs an answer before it can continue.,需要你回应后才能继续。
 Keep crash reports on this Mac,Settings,translated,,Save diagnostic reports on this Mac,在此 Mac 上保存诊断报告
 Keep display awake,Settings: Behaviour,translated,,Keep display awake,保持显示器唤醒
-Keep your Mac awake for,Panel,translated,,Keep your Mac awake for,让 Mac 保持唤醒
+Keep your Mac awake,Panel,translated,,Keep your Mac awake,让 Mac 保持唤醒
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,关闭显示器可以省电，也不会打断智能体。
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,正在让 Mac 保持唤醒
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
@@ -307,7 +309,7 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 "Stop watching ""%@""?",(unused),translated,%@,"Stop watching ""%@""?","停止监视""%@""？"
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,停止监视此工具
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,子智能体
-System,"App, Detection, Panel, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,系统
+System,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,系统
 Task finished,Settings: Notifications,translated,,Task finished,任务完成
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,App Store 会让 Belay 保持最新，并在新版本就绪时通知你。Belay 自身从不连接互联网。
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.",合盖后 Mac 过热，Belay 已让它进入睡眠。
@@ -327,6 +329,7 @@ The update service sent something Belay could not read.,Settings: General,transl
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,translated,,This cannot be undone. Belay keeps no copy anywhere else.,此操作无法撤销。Belay 不会在其他任何地方保留副本。
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,此文件夹看起来不像 %@ 的文件夹。
 Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,App,translated,,Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,在“设置”中将它打开，Belay 就会自动监控它的会话，无需选择任何文件夹。
+Until,"App, Panel, Settings, Settings: Providers",translated,,Until,截止
 Until turned off,"Panel, Settings",translated,,Until turned off,直到手动关闭
 Untitled project,App,translated,,Untitled project,未命名项目
 Update Now,"App, Settings, Settings: General",translated,,Update Now,立即更新

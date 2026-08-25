@@ -1,9 +1,12 @@
 import AppKit
-import Foundation
+import SwiftUI
 
-/// The dialog behind "Custom…": two small fields around a colon, hours and
-/// minutes, digits only. The caret hops to the minutes by itself once the
-/// hours are two digits — the way a date field behaves anywhere on a Mac.
+/// The dialog behind "Custom…": a length, asked for either way round.
+///
+/// "For" takes hours and minutes; "Until" takes a wall-clock time and the
+/// length is worked out from now. One footnote under the fields always shows
+/// the other reading — set a duration and it names the end time, set an end
+/// time and it names the duration — so both tabs answer both questions.
 enum CustomDuration {
     /// Seconds from the two fields, or nil when they do not make a length.
     /// Bounded to a minute through a day: below a minute the hold is not
@@ -18,64 +21,108 @@ enum CustomDuration {
         return TimeInterval(total)
     }
 
-    /// Puts the dialog up and hands back the length, or nil on cancel or on
-    /// fields that do not make one.
+    /// Seconds from `now` to the next wall-clock `minutesOfDay`. A time
+    /// already past means tomorrow, so "until 8:00" set at night does what
+    /// it says; under a minute away falls below the timer's floor and is nil.
+    static func untilSeconds(
+        minutesOfDay: Int, now: Date = Date(), calendar: Calendar = .current
+    ) -> TimeInterval? {
+        guard (0..<24 * 60).contains(minutesOfDay) else { return nil }
+        let start = calendar.startOfDay(for: now)
+        guard var target = calendar.date(byAdding: .minute, value: minutesOfDay, to: start)
+        else { return nil }
+        if target <= now {
+            guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: target)
+            else { return nil }
+            target = tomorrow
+        }
+        let seconds = target.timeIntervalSince(now)
+        guard seconds >= 60 else { return nil }
+        return seconds
+    }
+
+    /// Puts the dialog up and hands the length to `completion`, or nil on
+    /// cancel. Start stays disabled while the fields do not make a length.
+    ///
+    /// Given the panel's window it rides it as a sheet: the popover stays
+    /// put underneath and the dialog reads as part of it, not as a stray
+    /// window over whatever was behind. The panel is told first, because a
+    /// transient popover would otherwise close the moment the sheet takes
+    /// key and take the sheet down with it.
     @MainActor
-    static func ask(current: TimeInterval?) -> TimeInterval? {
+    static func ask(
+        current: TimeInterval?,
+        over window: NSWindow?,
+        completion: @escaping (TimeInterval?) -> Void
+    ) {
         let alert = NSAlert()
-        alert.messageText = String(localized: "Keep your Mac awake for")
-        alert.informativeText = String(localized: "Hours and minutes.")
+        alert.messageText = String(localized: "Keep your Mac awake")
         alert.addButton(withTitle: String(localized: "Start"))
         alert.addButton(withTitle: String(localized: "Cancel"))
-        let fields = DurationFields(current: current)
-        alert.accessoryView = fields
-        alert.window.initialFirstResponder = fields.hours
-        NSApp.activate(ignoringOtherApps: true)
-        guard alert.runModal() == .alertFirstButtonReturn else { return nil }
-        return seconds(hours: fields.hours.stringValue, minutes: fields.minutes.stringValue)
+        let model = CustomDurationModel(current: current)
+        let host = NSHostingView(rootView: CustomDurationView(model: model))
+        host.frame = NSRect(x: 0, y: 0, width: 230, height: 92)
+        alert.accessoryView = host
+        let start = alert.buttons[0]
+        model.onValidity = { start.isEnabled = $0 }
+        start.isEnabled = model.result() != nil
+        guard let window else {
+            NSApp.activate(ignoringOtherApps: true)
+            let response = alert.runModal()
+            completion(response == .alertFirstButtonReturn ? model.result() : nil)
+            return
+        }
+        NotificationCenter.default.post(name: .panelSheetWillOpen, object: nil)
+        alert.beginSheetModal(for: window) { response in
+            NotificationCenter.default.post(name: .panelSheetDidClose, object: nil)
+            completion(response == .alertFirstButtonReturn ? model.result() : nil)
+        }
     }
 }
 
-/// `[HH] : [MM]`. Each field takes at most two digits and nothing else; two
-/// digits in the hours hand focus to the minutes.
-final class DurationFields: NSView, NSTextFieldDelegate {
-    let hours = NSTextField(frame: NSRect(x: 0, y: 0, width: 44, height: 24))
-    let minutes = NSTextField(frame: NSRect(x: 64, y: 0, width: 44, height: 24))
+extension Notification.Name {
+    /// A dialog is about to ride the panel as a sheet: hold the popover open.
+    static let panelSheetWillOpen = Notification.Name("belay.panelSheetWillOpen")
+    /// The sheet is gone; the popover may go back to closing itself.
+    static let panelSheetDidClose = Notification.Name("belay.panelSheetDidClose")
+}
 
-    init(current: TimeInterval?) {
-        super.init(frame: NSRect(x: 0, y: 0, width: 108, height: 24))
-        let colon = NSTextField(labelWithString: ":")
-        colon.frame = NSRect(x: 47, y: 2, width: 14, height: 20)
-        colon.alignment = .center
-        for field in [hours, minutes] {
-            field.alignment = .center
-            field.font = .monospacedDigitSystemFont(ofSize: 13, weight: .regular)
-            field.delegate = self
-        }
-        hours.placeholderString = "1"
-        minutes.placeholderString = "30"
-        if let current {
-            let total = Int(current / 60)
-            hours.stringValue = String(total / 60)
-            minutes.stringValue = String(format: "%02d", total % 60)
-        }
-        addSubview(hours)
-        addSubview(colon)
-        addSubview(minutes)
+/// The dialog's state, shared between the SwiftUI accessory and the AppKit
+/// alert around it: every edit re-answers "do the fields make a length" so
+/// the alert can keep Start honest.
+@MainActor
+final class CustomDurationModel: ObservableObject {
+    enum Mode { case duration, until }
+
+    @Published var mode: Mode = .duration { didSet { revalidate() } }
+    @Published var hours: String { didSet { revalidate() } }
+    @Published var minutes: String { didSet { revalidate() } }
+    @Published var untilMinutes: Int { didSet { revalidate() } }
+
+    var onValidity: (Bool) -> Void = { _ in }
+
+    init(current: TimeInterval?, now: Date = Date(), calendar: Calendar = .current) {
+        // Both tabs open ready to start: the running length if there is one,
+        // an hour otherwise. A dialog of empty fields makes the user do the
+        // typing before it does anything; a filled one is one Return away.
+        let total = Int((current ?? 3600) / 60)
+        hours = String(total / 60)
+        minutes = String(format: "%02d", total % 60)
+        // The clock opens on "now plus the length" rounded up to a quarter
+        // hour: the number a person would have picked, one nudge from most
+        // others they might want.
+        let offset = Int((current ?? 3600) / 60)
+        let nowMinutes =
+            calendar.component(.hour, from: now) * 60 + calendar.component(.minute, from: now)
+        untilMinutes = (nowMinutes + offset + 14) / 15 * 15 % (24 * 60)
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) { fatalError("DurationFields is built in code, never decoded") }
-
-    func controlTextDidChange(_ notification: Notification) {
-        guard let field = notification.object as? NSTextField else { return }
-        // Digits only, two at most. Anything else never lands in the field —
-        // the first version took a plain string and cheerfully accepted
-        // "1:30cac".
-        let digits = String(field.stringValue.filter(\.isNumber).prefix(2))
-        if digits != field.stringValue { field.stringValue = digits }
-        if field === hours, digits.count == 2 {
-            window?.makeFirstResponder(minutes)
+    func result(now: Date = Date()) -> TimeInterval? {
+        switch mode {
+        case .duration: return CustomDuration.seconds(hours: hours, minutes: minutes)
+        case .until: return CustomDuration.untilSeconds(minutesOfDay: untilMinutes, now: now)
         }
     }
+
+    private func revalidate() { onValidity(result() != nil) }
 }

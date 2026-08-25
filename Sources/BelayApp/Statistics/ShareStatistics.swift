@@ -72,10 +72,31 @@ enum ShareStatistics {
     }
 
     /// The card in front, then whatever `items` carries.
+    ///
+    /// The card travels as a PNG on disk, not as an `NSImage`: Messages and
+    /// Mail take either, but the third-party extensions people actually
+    /// share to — Telegram, WhatsApp, Signal — accept files and quietly
+    /// drop in-memory images, which turned the card into text-only there.
     @MainActor
     static func sharingItems(from statistics: UsageStatistics) -> [Any] {
-        guard let card = ShareCardRenderer.image(for: statistics) else { return items(from: statistics) }
+        guard let card = cardFile(for: statistics) ?? ShareCardRenderer.image(for: statistics)
+        else { return items(from: statistics) }
         return [card] + items(from: statistics)
+    }
+
+    /// The rendered card written into the temporary folder, one stable name
+    /// so repeated shares overwrite instead of piling up.
+    @MainActor
+    private static func cardFile(for statistics: UsageStatistics) -> Any? {
+        guard let data = ShareCardRenderer.pngData(for: statistics) else { return nil }
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("Belay-Statistics.png")
+        do {
+            try data.write(to: url, options: .atomic)
+            return url
+        } catch {
+            return nil
+        }
     }
 
     @MainActor

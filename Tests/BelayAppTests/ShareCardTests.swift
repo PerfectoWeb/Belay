@@ -94,11 +94,17 @@ final class ShareCardTests: XCTestCase {
         XCTAssertEqual(pasteboard.pasteboardItems?.count, 1, "one item, not two pastes")
     }
 
-    func testSharingItemsCarryTheCardTheTextAndTheLink() {
+    /// The card must be a file on disk, not an `NSImage`: Telegram-style
+    /// share extensions accept files and quietly drop in-memory images.
+    func testSharingItemsCarryTheCardFileTheTextAndTheLink() throws {
         let items = ShareStatistics.sharingItems(from: fortnight())
-        XCTAssertTrue(items.contains { $0 is NSImage })
+        let cardFile = try XCTUnwrap(
+            items.compactMap { $0 as? URL }.first { $0.isFileURL },
+            "the card should travel as a PNG file")
+        XCTAssertTrue(FileManager.default.fileExists(atPath: cardFile.path))
+        XCTAssertEqual(cardFile.pathExtension, "png")
         XCTAssertTrue(items.contains { $0 is String })
-        XCTAssertTrue(items.contains { $0 is URL })
+        XCTAssertTrue(items.contains { ($0 as? URL)?.isFileURL == false }, "the repo link rides along")
     }
 
     // MARK: - pixels
