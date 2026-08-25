@@ -65,7 +65,9 @@ struct BuiltInProviderTile: View {
                         .menuStyle(.borderlessButton)
                         .menuIndicator(.hidden)
                         .fixedSize()
-                        .opacity(hoveringOptions ? 1 : 0.45)
+                        // 0.3 lands on the "Off" grey, so a switched-off
+                        // tile dims this icon with everything else.
+                        .opacity(hoveringOptions ? 1 : (provider.isEnabled ? 0.45 : 0.3))
                         .animation(.easeOut(duration: 0.18), value: hoveringOptions)
                         .onHover { hoveringOptions = $0 }
                         .accessibilityLabel(Text("Options"))

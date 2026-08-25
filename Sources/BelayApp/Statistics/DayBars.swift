@@ -80,7 +80,7 @@ struct DayBars: View {
     /// Foundation and this ran fourteen times per body pass.
     private static let weekdayFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEEE"
+        formatter.dateFormat = "EEE"
         return formatter
     }()
 
