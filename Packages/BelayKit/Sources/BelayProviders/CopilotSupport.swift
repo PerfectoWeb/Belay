@@ -41,9 +41,13 @@ extension CopilotProvider {
         public static func copilotHome(
             _ home: URL = FileManager.default.homeDirectoryForCurrentUser
         ) -> Configuration {
+            at(home.appendingPathComponent(".copilot", isDirectory: true))
+        }
+
+        /// The same layout rooted anywhere — a custom `COPILOT_HOME`.
+        public static func at(_ root: URL) -> Configuration {
             Configuration(
-                sessionsDirectory: home.appendingPathComponent(
-                    ".copilot/session-state", isDirectory: true))
+                sessionsDirectory: root.appendingPathComponent("session-state", isDirectory: true))
         }
     }
 

@@ -108,13 +108,17 @@ final class AppStateCallbackTests: XCTestCase {
             .deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent()
             .appendingPathComponent("Sources/BelayApp")
-        let wiring = try ["BelayApp.swift", "BelayController.swift", "AppState.swift"]
-            .map { try String(contentsOf: root.appendingPathComponent($0), encoding: .utf8) }
-            .joined()
+        let wiring = try [
+            "BelayApp.swift", "BelayController.swift", "BelayControllerProviders.swift",
+            "AppState.swift"
+        ]
+        .map { try String(contentsOf: root.appendingPathComponent($0), encoding: .utf8) }
+        .joined()
 
         for callback in [
             "onModeChange", "onOpenSettings", "onGrantAccess", "onChange",
-            "onTimerChange", "onHoldAgain", "onToggleProvider"
+            "onTimerChange", "onHoldAgain", "onToggleProvider",
+            "onAddProviderRoot", "onRemoveProviderRoot"
         ] {
             XCTAssertTrue(
                 wiring.contains("\(callback) ="),

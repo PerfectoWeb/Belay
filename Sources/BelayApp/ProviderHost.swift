@@ -20,6 +20,11 @@ final class ProviderHost {
     let generic: GenericProvider
     private let targetStore = GenericTargetStore()
     let precise: PreciseDetection
+    // The extra watched folders per agent; managed in `ProviderHostRoots.swift`.
+    let rootsStore = BuiltInRootsStore()
+    let home: URL
+    let folders: FileAccessProvider
+    var extras: [ProviderID: [(root: URL, instance: any ActivityProvider)]] = [:]
     /// Which built-in agents are switched on. A switched-off agent is not
     /// started, not asked about, and never nags for a folder it would read.
     private(set) var enabled: Set<ProviderID>
@@ -46,6 +51,8 @@ final class ProviderHost {
     ) {
         self.precise = precise
         self.enabled = enabled
+        self.home = home
+        self.folders = folders
         claudeCode = ClaudeCodeProvider(configuration: .claudeHome(home), access: access)
         codex = CodexProvider(configuration: .codexHome(home), access: codexAccess)
         cline = ClineProvider(configuration: .clineHome(home), access: clineAccess)
@@ -73,6 +80,8 @@ final class ProviderHost {
 
         await bus.attach(copilot.signals)
         if enabled.contains(.copilot) { await startCopilot(first: true) }
+
+        await adoptStoredRoots()
 
         await bus.attach(generic.signals)
         await generic.configure(targetStore.load())
@@ -116,6 +125,7 @@ final class ProviderHost {
         if enabled.contains(.codex) { await startCodex(first: false) }
         if enabled.contains(.cline) { await startCline(first: false) }
         if enabled.contains(.copilot) { await startCopilot(first: false) }
+        await retryExtras()
     }
 
     /// Switches a built-in agent on or off at runtime: the provider starts or
@@ -144,6 +154,9 @@ final class ProviderHost {
                 await copilot.stop()
             }
         }
+        for id in was.symmetricDifference(set) {
+            await setExtrasEnabled(set.contains(id), for: id)
+        }
     }
 
     /// Whether the Claude Code provider is still waiting for something.
@@ -154,6 +167,9 @@ final class ProviderHost {
     func stop() async {
         await precise.stop()
         await generic.stop()
+        for instances in extras.values {
+            for entry in instances { await entry.instance.stop() }
+        }
         await copilot.stop()
         await cline.stop()
         await codex.stop()
@@ -163,30 +179,10 @@ final class ProviderHost {
 
     func statuses(lastSignals: [ProviderID: Date] = [:]) async -> [ProviderStatus] {
         [
-            ProviderStatus(
-                descriptor: claudeCode.descriptor,
-                availability: await claudeCode.availability,
-                isEnabled: enabled.contains(.claudeCode),
-                lastSignal: lastSignals[.claudeCode]
-            ),
-            ProviderStatus(
-                descriptor: codex.descriptor,
-                availability: await codex.availability,
-                isEnabled: enabled.contains(.codex),
-                lastSignal: lastSignals[.codex]
-            ),
-            ProviderStatus(
-                descriptor: cline.descriptor,
-                availability: await cline.availability,
-                isEnabled: enabled.contains(.cline),
-                lastSignal: lastSignals[.cline]
-            ),
-            ProviderStatus(
-                descriptor: copilot.descriptor,
-                availability: await copilot.availability,
-                isEnabled: enabled.contains(.copilot),
-                lastSignal: lastSignals[.copilot]
-            ),
+            await status(of: claudeCode, lastSignals: lastSignals),
+            await status(of: codex, lastSignals: lastSignals),
+            await status(of: cline, lastSignals: lastSignals),
+            await status(of: copilot, lastSignals: lastSignals),
             ProviderStatus(
                 descriptor: generic.descriptor,
                 availability: await generic.availability,
@@ -194,6 +190,11 @@ final class ProviderHost {
                 lastSignal: nil
             )
         ]
+    }
+
+    /// For `ProviderHostRoots`, which attaches instances after start.
+    func attachToBus(_ stream: AsyncStream<ActivitySignal>) async {
+        await bus.attach(stream)
     }
 
     var targets: [GenericTarget] { targetStore.load() }

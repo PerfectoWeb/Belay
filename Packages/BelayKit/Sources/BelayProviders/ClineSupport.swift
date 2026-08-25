@@ -31,9 +31,13 @@ extension ClineProvider {
         public static func clineHome(
             _ home: URL = FileManager.default.homeDirectoryForCurrentUser
         ) -> Configuration {
+            at(home.appendingPathComponent(".cline", isDirectory: true))
+        }
+
+        /// The same layout rooted anywhere — a custom `CLINE_DIR`.
+        public static func at(_ root: URL) -> Configuration {
             Configuration(
-                sessionsDirectory: home.appendingPathComponent(
-                    ".cline/data/sessions", isDirectory: true))
+                sessionsDirectory: root.appendingPathComponent("data/sessions", isDirectory: true))
         }
 
         /// `~/.cline` itself, for the is-it-installed question: the sessions

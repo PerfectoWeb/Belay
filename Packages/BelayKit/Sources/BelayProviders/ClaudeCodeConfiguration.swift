@@ -44,8 +44,13 @@ extension ClaudeCodeProvider {
         public static func claudeHome(
             _ home: URL = FileManager.default.homeDirectoryForCurrentUser
         ) -> Configuration {
-            let root = home.appendingPathComponent(".claude", isDirectory: true)
-            return Configuration(
+            at(home.appendingPathComponent(".claude", isDirectory: true))
+        }
+
+        /// The same layout rooted anywhere — a `CLAUDE_CONFIG_DIR` the user
+        /// pointed Belay at, not only `~/.claude`.
+        public static func at(_ root: URL) -> Configuration {
+            Configuration(
                 projectsDirectory: root.appendingPathComponent("projects", isDirectory: true),
                 sessionsDirectory: root.appendingPathComponent("sessions", isDirectory: true))
         }

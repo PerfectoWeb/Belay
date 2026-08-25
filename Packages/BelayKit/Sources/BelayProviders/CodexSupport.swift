@@ -33,8 +33,13 @@ extension CodexProvider {
         public static func codexHome(
             _ home: URL = FileManager.default.homeDirectoryForCurrentUser
         ) -> Configuration {
+            at(home.appendingPathComponent(".codex", isDirectory: true))
+        }
+
+        /// The same layout rooted anywhere — a custom `CODEX_HOME`.
+        public static func at(_ root: URL) -> Configuration {
             Configuration(
-                sessionsDirectory: home.appendingPathComponent(".codex/sessions", isDirectory: true))
+                sessionsDirectory: root.appendingPathComponent("sessions", isDirectory: true))
         }
     }
 

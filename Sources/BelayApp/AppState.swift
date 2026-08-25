@@ -34,6 +34,9 @@ final class AppState {
     var onGrantAccess: (ProviderID) -> Void = { _ in }
     /// A built-in agent's switch in Settings.
     var onToggleProvider: (ProviderID, Bool) -> Void = { _, _ in }
+    /// The tile menu's folder management: add via the open panel, remove by path.
+    var onAddProviderRoot: (ProviderID) -> Void = { _ in }
+    var onRemoveProviderRoot: (ProviderID, String) -> Void = { _, _ in }
     var onOpenSettings: () -> Void = {}
 
     var isHolding: Bool { snapshot.state.holdsAssertion }
@@ -235,6 +238,8 @@ struct ProviderStatus: Identifiable, Equatable {
     /// When the provider last produced a signal, for the detection-health row
     /// that risk R1 asks for.
     let lastSignal: Date?
+    /// Extra watched folders beyond the default home, for the tile's menu.
+    var customRoots: [String] = []
 
     var id: ProviderID { descriptor.id }
 }

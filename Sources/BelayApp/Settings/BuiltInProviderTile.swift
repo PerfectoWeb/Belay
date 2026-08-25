@@ -24,6 +24,9 @@ struct BuiltInProviderTile: View {
     var onFix: () -> Void = {}
     var onEnablePrecise: () -> Void = {}
     var onRemovePrecise: () -> Void = {}
+    var onAddRoot: () -> Void = {}
+    var onRemoveRoot: (String) -> Void = { _ in }
+    @State private var hoveringOptions = false
 
     var body: some View {
         // Centred like the generic tiles' marks, and dimmed rather than
@@ -43,6 +46,20 @@ struct BuiltInProviderTile: View {
                         .foregroundStyle(provider.isEnabled ? .primary : .secondary)
                         .lineLimit(1)
                     Spacer(minLength: 6)
+                    // The same menu the tile answers right-click with, one
+                    // click away for whoever never right-clicks a tile.
+                    Menu {
+                        agentMenu
+                    } label: {
+                        Image(systemName: "slider.horizontal.3")
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundStyle(Color.primary.opacity(hoveringOptions ? 0.95 : 0.4))
+                    }
+                    .menuStyle(.borderlessButton)
+                    .menuIndicator(.hidden)
+                    .fixedSize()
+                    .onHover { hoveringOptions = $0 }
+                    .accessibilityLabel(Text("Options"))
                     // On the name's own line, and small: the switch is a
                     // detail of the row, not a second landmark.
                     MiniSwitch(isOn: provider.isEnabled, toggle: onToggle)
@@ -67,11 +84,54 @@ struct BuiltInProviderTile: View {
         // Removal is rare and deliberate, so it lives one click deeper than
         // the offer: the tile's own menu.
         .contextMenu {
-            if precise {
-                Button("Remove Precise Detection") { onRemovePrecise() }
-            } else if offersPrecise {
-                Button("Enable Precise Detection…") { onEnablePrecise() }
+            agentMenu
+        }
+    }
+
+    /// One menu, three entrances: the slider button, right-click, Control-click.
+    @ViewBuilder
+    private var agentMenu: some View {
+        if precise {
+            Button {
+                onRemovePrecise()
+            } label: {
+                Label("Remove Precise Detection", systemImage: "bolt.slash")
             }
+        } else if offersPrecise {
+            Button {
+                onEnablePrecise()
+            } label: {
+                Label("Enable Precise Detection…", systemImage: "bolt")
+            }
+        }
+        Menu {
+            // The default home rides along for context; only the added
+            // folders are removable, and removal is the click itself.
+            Button {
+            } label: {
+                Label(home, systemImage: "house")
+            }
+            .disabled(true)
+            if !provider.customRoots.isEmpty {
+                Text("Click a folder to stop watching it")
+                ForEach(provider.customRoots, id: \.self) { path in
+                    Button {
+                        onRemoveRoot(path)
+                    } label: {
+                        Label(
+                            (path as NSString).abbreviatingWithTildeInPath,
+                            systemImage: "folder")
+                    }
+                }
+            }
+            Divider()
+            Button {
+                onAddRoot()
+            } label: {
+                Label("Add Folder…", systemImage: "folder.badge.plus")
+            }
+        } label: {
+            Label("Watched Folders", systemImage: "folder")
         }
     }
 
@@ -116,6 +176,9 @@ struct BuiltInProviderTile: View {
                     }
                 } else if let last = provider.lastSignal {
                     Text("last signal \(Self.activity(-last.timeIntervalSinceNow)) ago")
+                        .foregroundStyle(.tertiary)
+                } else if !provider.customRoots.isEmpty {
+                    Text("Watching \(provider.customRoots.count + 1) folders")
                         .foregroundStyle(.tertiary)
                 } else {
                     Text("Ready").foregroundStyle(.tertiary)

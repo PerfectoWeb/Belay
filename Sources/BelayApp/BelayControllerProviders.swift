@@ -1,3 +1,4 @@
+import AppKit
 import BelayCore
 import BelayProviders
 import BelaySettings
@@ -6,6 +7,17 @@ import Foundation
 /// The built-in agents' switches: what starts on, and what a toggle does.
 /// Beside `BelayController` for the file-length rule.
 extension BelayController {
+    /// The pane's provider callbacks, wired here so `start()` stays one line.
+    func wireProviderCallbacks() {
+        state.onToggleProvider = { [weak self] provider, on in
+            self?.setProviderEnabled(provider, on)
+        }
+        state.onAddProviderRoot = { [weak self] provider in self?.addProviderRoot(provider) }
+        state.onRemoveProviderRoot = { [weak self] provider, path in
+            self?.removeProviderRoot(provider, path: path)
+        }
+    }
+
     /// A built-in agent switched on or off from Settings. Switching one on
     /// is also the moment to ask for its folder, if this build has to ask:
     /// the person just said they want it watched.
@@ -61,6 +73,56 @@ extension BelayController {
 
     func updateGenericTargets(_ targets: [GenericTarget]) {
         Task { [providers] in await providers.updateTargets(targets) }
+    }
+
+    /// "Add Folder" in a tile's menu: the open panel doubles as the sandbox
+    /// grant, a folder that does not look like the agent's home gets a soft
+    /// warning, and an overlap with something already watched is refused.
+    func addProviderRoot(_ id: ProviderID) {
+        let name = state.providers.first { $0.id == id }?.descriptor.displayName ?? ""
+        let picked = ClaudeFolderPanel.run(
+            startingAt: FileManager.default.homeDirectoryForCurrentUser,
+            message: String(localized: "Choose another folder \(name) keeps its sessions in."),
+            prompt: String(localized: "Watch Folder"))
+        guard let picked else { return }
+        let plausible = BuiltInRoots.looksLikeHome(for: id, root: picked)
+        let expected = BuiltInRoots.expectedSubpath(for: id)
+        if !plausible, !confirmUnlikelyRoot(agent: name, expected: expected) { return }
+        WatchedFolderAccess.remember(picked)
+        Task { [providers, weak self] in
+            if await providers.addRoot(picked, for: id) == .overlaps {
+                WatchedFolderAccess.forget(picked)
+                self?.showOverlapNote(agent: name)
+            }
+            await self?.publishProviderStatus()
+        }
+    }
+
+    func removeProviderRoot(_ id: ProviderID, path: String) {
+        Task { [providers, weak self] in
+            await providers.removeRoot(path: path, for: id)
+            await self?.publishProviderStatus()
+        }
+    }
+
+    private func confirmUnlikelyRoot(agent: String, expected: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = String(localized: "This folder does not look like a \(agent) folder.")
+        alert.informativeText = String(
+            localized: """
+                Belay expected to find "\(expected)" inside. You can watch it anyway, and it \
+                will simply stay quiet until \(agent) writes there.
+                """)
+        alert.addButton(withTitle: String(localized: "Watch Anyway"))
+        alert.addButton(withTitle: String(localized: "Cancel"))
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+
+    private func showOverlapNote(agent: String) {
+        let alert = NSAlert()
+        alert.messageText = String(
+            localized: "Belay already watches this folder for \(agent), or one that contains it.")
+        alert.runModal()
     }
 
     /// Banks the in-progress hold to statistics from the termination-signal

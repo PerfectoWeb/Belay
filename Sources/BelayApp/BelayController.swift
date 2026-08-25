@@ -85,7 +85,7 @@ final class BelayController {
         state.onModeChange = { [weak self] mode in self?.setMode(mode) }
         state.onTimerChange = { [weak self] duration in self?.setAlwaysOnTimer(duration) }
         state.onHoldAgain = { [weak self] in self?.holdAgain() }
-        state.onToggleProvider = { [weak self] provider, on in self?.setProviderEnabled(provider, on) }
+        wireProviderCallbacks()
         observeDecisions()
         observeHumanReturn()
         observePowerSource()
