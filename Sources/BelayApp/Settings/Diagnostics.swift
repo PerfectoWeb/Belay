@@ -39,6 +39,12 @@ enum Diagnostics {
         guard watchdog == nil else { return }
         try? FileManager.default.createDirectory(
             at: folder, withIntermediateDirectories: true)
+        // A SIGKILL leaves no crash report and no goodbye, so the only place
+        // it can ever be seen is here, on the next launch. Caught in the
+        // field: an overnight death that looked like nothing at all.
+        if endedDirty(tail: logTail()) {
+            write("previous run ended without a shutdown mark: killed, crashed, or forced off")
+        }
         write("collection on, Belay \(Branding.version)")
         // From here the kit modules write too — sessions appearing and dying,
         // assertions going up and down. Same file, same shape.
@@ -67,10 +73,32 @@ enum Diagnostics {
     }
 
     private static func stop() {
+        write("collection off")
         EventLog.install(nil)
         watchdog?.invalidate()
         watchdog = nil
         NSSetUncaughtExceptionHandler(nil)
+    }
+
+    /// Whether the log's previous session never said goodbye: a
+    /// `collection on` with no `collection off` after it. The one line each
+    /// graceful exit writes is what makes the silent kind visible.
+    static func endedDirty(tail: String) -> Bool {
+        guard let lastOn = tail.range(of: "collection on", options: .backwards) else { return false }
+        guard let lastOff = tail.range(of: "collection off", options: .backwards) else { return true }
+        return lastOff.lowerBound < lastOn.lowerBound
+    }
+
+    /// The last stretch of the log, enough to hold the previous session's
+    /// markers without reading a multi-day file whole.
+    private static func logTail() -> String {
+        guard let handle = try? FileHandle(forReadingFrom: file) else { return "" }
+        defer { try? handle.close() }
+        let size = (try? handle.seekToEnd()) ?? 0
+        let start = size > 65_536 ? size - 65_536 : 0
+        try? handle.seek(toOffset: start)
+        let data = (try? handle.readToEnd()) ?? Data()
+        return String(bytes: data, encoding: .utf8) ?? ""
     }
 
     /// Called on wake from system sleep. The watchdog measures gaps between

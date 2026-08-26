@@ -191,6 +191,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ notification: Notification) {
+        // First, before any teardown can hang: this one line is how the next
+        // launch tells a graceful exit from a kill.
+        Diagnostics.note("collection off")
         updateTimer?.invalidate()
         updateTimer = nil
         settingsWindow?.close()

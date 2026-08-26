@@ -2,39 +2,40 @@ import XCTest
 
 @testable import Belay
 
-/// The switch is off by default and writes nothing until it is on, which is the
-/// whole promise printed next to it.
+/// The dirty-shutdown breadcrumb: a SIGKILL writes nothing, so the next
+/// launch has to read the absence. Born from a field report — Belay gone in
+/// the morning, no crash report, log simply stopping mid-hold.
 @MainActor
 final class DiagnosticsTests: XCTestCase {
-    func testTheFileLivesWhereConsoleLooks() {
-        let path = Diagnostics.file.path
-        XCTAssertTrue(path.hasSuffix("Library/Logs/Belay/belay.log"), path)
+    func testAGoodbyeAfterTheLastHelloIsClean() {
+        let tail = """
+            2026-08-25T10:00:00Z  collection on, Belay 1.6.0
+            2026-08-25T12:00:00Z  hold on reason="x" display=1
+            2026-08-25T12:34:00Z  collection off
+            """
+        XCTAssertFalse(Diagnostics.endedDirty(tail: tail))
     }
 
-    func testWritingAppendsRatherThanReplaces() throws {
-        let file = Diagnostics.file
-        try? FileManager.default.createDirectory(
-            at: Diagnostics.folder, withIntermediateDirectories: true)
-        try? FileManager.default.removeItem(at: file)
-
-        Diagnostics.write("first")
-        Diagnostics.write("second")
-
-        let text = try String(contentsOf: file, encoding: .utf8)
-        XCTAssertTrue(text.contains("first"), "the first line was lost")
-        XCTAssertTrue(text.contains("second"), "the second line replaced the first")
-        XCTAssertEqual(text.split(separator: "\n").count, 2)
-        try? FileManager.default.removeItem(at: file)
+    func testAHelloWithNoGoodbyeIsDirty() {
+        let tail = """
+            2026-08-25T10:00:00Z  collection off
+            2026-08-25T11:00:00Z  collection on, Belay 1.6.0
+            2026-08-25T12:00:00Z  hold on reason="x" display=1
+            """
+        XCTAssertTrue(Diagnostics.endedDirty(tail: tail))
     }
 
-    func testEveryLineIsStamped() throws {
-        let file = Diagnostics.file
-        try? FileManager.default.removeItem(at: file)
-        Diagnostics.write("something happened")
-        let text = try String(contentsOf: file, encoding: .utf8)
-        // An ISO stamp, so a report can be lined up against anything else.
-        XCTAssertTrue(text.hasPrefix("20"), text)
-        XCTAssertTrue(text.contains("T"), text)
-        try? FileManager.default.removeItem(at: file)
+    func testALogWithNoMarkersSaysNothing() {
+        XCTAssertFalse(Diagnostics.endedDirty(tail: ""))
+        XCTAssertFalse(Diagnostics.endedDirty(tail: "2026-08-25T10:00:00Z  hold on"))
+    }
+
+    func testOnlyTheLatestSessionCounts() {
+        let tail = """
+            2026-08-24T10:00:00Z  collection on, Belay 1.5.0
+            2026-08-24T22:00:00Z  collection off
+            2026-08-25T09:00:00Z  collection on, Belay 1.6.0
+            """
+        XCTAssertTrue(Diagnostics.endedDirty(tail: tail))
     }
 }
