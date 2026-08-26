@@ -9,17 +9,30 @@ import os
 /// one line, greppable. They exist so that a problem report plus this file
 /// can say what happened without a debugger; see `Diagnostics`.
 public enum EventLog {
-    private static let sink = OSAllocatedUnfairLock<(@Sendable (String) -> Void)?>(
-        initialState: nil)
+    /// The handler boxed in a class on purpose, and the box is the fix for a
+    /// field crash. A bare closure stored in the lock's generic `State` gets
+    /// reabstracted on every `withLock` read, and inout copy-out writes the
+    /// wrapped copy back — so each `note` left the stored closure one thunk
+    /// deeper, ~13 000 frames after a night of hooks, and the next write blew
+    /// the cooperative pool's stack guard (SIGBUS, reported 2026-08-26). A
+    /// class reference passes through unwrapped; the closure inside never
+    /// crosses the generic boundary.
+    private final class Sink: Sendable {
+        let handler: @Sendable (String) -> Void
+        init(_ handler: @escaping @Sendable (String) -> Void) { self.handler = handler }
+    }
+
+    private static let sink = OSAllocatedUnfairLock<Sink?>(initialState: nil)
 
     /// The app installs its writer here when collection turns on, and clears
     /// it when collection turns off. Kit code never checks a setting.
     public static func install(_ handler: (@Sendable (String) -> Void)?) {
-        sink.withLock { $0 = handler }
+        let boxed = handler.map(Sink.init)
+        sink.withLock { $0 = boxed }
     }
 
     public static func note(_ line: @autoclosure () -> String) {
-        guard let handler = sink.withLock({ $0 }) else { return }
-        handler(line())
+        guard let box = sink.withLock({ $0 }) else { return }
+        box.handler(line())
     }
 }
