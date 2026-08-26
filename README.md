@@ -116,15 +116,15 @@ Belay ships in two builds that share the same app and the same detection. The Ma
 
 | Capability | App Store | Direct |
 | :--- | :---: | :---: |
-| Claude Code, Codex, Cline and Copilot CLI detection | ✓ | ✓ |
-| Idle sleep protection with fail-safe holds | ✓ | ✓ |
-| Presets and generic folder / process detection | ✓ | ✓ |
-| Watched folders for custom config dirs (`CLAUDE_CONFIG_DIR` and friends) | ✓ | ✓ |
-| Always On timer, by duration or end time | ✓ | ✓ |
-| Night dimming, statistics, CSV export | ✓ | ✓ |
-| Precise Detection (agent hooks) | – | ✓ |
-| Local webhook for connecting any tool | – | ✓ |
-| Closed-lid hold (privileged helper) | – | ✓ |
+| Claude Code, Codex, Cline and Copilot CLI detection | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Idle sleep protection with fail-safe holds | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Presets and generic folder / process detection | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Watched folders for custom config dirs (`CLAUDE_CONFIG_DIR` and friends) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Always On timer, by duration or end time | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Night dimming, statistics, CSV export | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Precise Detection (agent hooks) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Local webhook for connecting any tool | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Closed-lid hold (privileged helper) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 
 </details>
 
@@ -133,19 +133,19 @@ Caffeinate is great when you know exactly what process or command should keep th
 
 **Belay is for the opposite workflow:** coding agents start, wait, resume and finish on their own. Belay follows that work state and releases the Mac automatically.
 
-| ✨ Features | caffeinate | Amphetamine | Belay |
+| Features | caffeinate | Amphetamine | Belay |
 | :--- | :---: | :---: | :---: |
-| Keeps the Mac awake | ✅ | ✅ | ✅ |
-| Free | ✅ | ✅ | ✅ |
-| Timed sessions | ✅ | ✅ | ✅ |
-| Keeps awake while a given app or process runs | ✅ | ✅ | ✅ |
-| Lives in the menu bar | – | ✅ | ✅ |
-| Battery safety limits | – | ✅ | ✅ |
-| Knows when a coding agent is actually working | – | – | ✅ |
-| Lets go when the agent finishes or waits for you | – | – | ✅ |
-| Shows agent sessions and subagents live | – | – | ✅ |
-| Exact start / finish signals from agent hooks | – | – | ✅ |
-| Source available | – | – | ✅ |
+| Keeps the Mac awake | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Free | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Timed sessions | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Keeps awake while a given app or process runs | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Lives in the menu bar | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Battery safety limits | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Knows when a coding agent is actually working | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Lets go when the agent finishes or waits for you | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Shows agent sessions and subagents live | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Exact start / finish signals from agent hooks | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Source available | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 
 ## 🚀 How to Use
 
