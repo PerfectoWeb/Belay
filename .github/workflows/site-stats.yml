@@ -1,0 +1,72 @@
+# Keeps the numbers under the hero close to true.
+#
+# The site is static on purpose: the page must not wait on api.github.com,
+# because a counter that appears only when a request succeeds is worse than
+# one that is simply true when it is served. So the count is fetched here,
+# written into `stats.py`, and baked by the same build the release workflow
+# runs. A visitor gets a file, not a promise.
+#
+# Half-hourly is as fine-grained as it is worth being: GitHub's own counters
+# are not live either, and the job commits only when a number actually moved.
+name: Site figures
+
+on:
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-figures
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Count what the releases have served
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # Every DMG on every release. Both assets of a release are the same
+          # disk image under two names — the versioned one and the stable
+          # `Belay.dmg` the site links to — so a download of either counts once
+          # towards the same thing: somebody took the app.
+          direct=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '[.[] | .assets[] | select(.name | endswith(".dmg")) | .download_count] | add // 0')
+          releases=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq 'length')
+          echo "direct=$direct releases=$releases"
+          python3 - "$direct" "$releases" <<'PY'
+          import io, re, sys
+          direct, releases = int(sys.argv[1]), int(sys.argv[2])
+          # A zero here would mean the API answered with nothing useful, and
+          # writing that would erase a true number with a lie.
+          if direct <= 0:
+              raise SystemExit("refusing to write a zero download count")
+          path = "stats.py"
+          text = io.open(path, encoding="utf-8").read()
+          text = re.sub(r"^DIRECT = .*$", f"DIRECT = {direct}", text, count=1, flags=re.M)
+          text = re.sub(r"^RELEASES = .*$", f"RELEASES = {releases}", text, count=1, flags=re.M)
+          io.open(path, "w", encoding="utf-8").write(text)
+          PY
+
+      - name: Rebuild the site
+        run: python3 build-site.py .
+
+      - name: Commit if anything changed
+        run: |
+          set -euo pipefail
+          find . -name __pycache__ -type d -prune -exec rm -rf {} +
+          git config user.name "David Build"
+          git config user.email "manager@perfecto-web.com"
+          git add -A
+          git diff --cached --quiet && { echo "figures already current"; exit 0; }
+          git commit -m "Site: refresh the figures"
+          git push
