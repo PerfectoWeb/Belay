@@ -40,7 +40,7 @@
 6 hours,Settings,translated,,6 hours,6 часов
 7 hours,Settings,translated,,7 hours,7 часов
 8 hours,Settings,needs_review,,8 hours,8 часов
-"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.",App,translated,,"A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.","Большая проверка исправила десятки мелких проблем, включая задержки при запуске и сессии, которые оставались активными дольше, чем нужно."
+A rare overnight crash is fixed,App,translated,,A rare overnight crash is fixed,Исправлен редкий ночной сбой
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Сессия перестала отвечать, не завершившись. Обычно CLI ждёт ввода или был закрыт."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,Нейтральное звуковое сопровождение по интерфейсу. Учитывает настройки системных звуков.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay создаёт резервную копию вашей конфигурации при включении и возвращает её при отключении точного определения.
@@ -145,7 +145,6 @@ Codex has not started a session on this Mac yet. Belay starts watching by itself
 Codex is not installed on this Mac.,Settings: Providers,translated,,Codex is not installed on this Mac.,Codex не установлен на этом Mac.
 Copied,Statistics,translated,,Copied,Скопировано
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Копирует карточку вместе со сводкой
-Copilot CLI is now built in,App,translated,,Copilot CLI is now built in,Copilot CLI теперь встроен
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Copilot ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,Copilot не установлен на этом Mac.
 Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Копировать
@@ -214,7 +213,6 @@ Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,Ре�
 "Low battery, overheating, or awake limit reached.",Settings: Notifications,translated,,"Low battery, overheating, or awake limit reached.","Низкий заряд, перегрев или достигнут лимит бодрствования."
 Mac App Store,"App, Detection, Settings, Settings: About",translated,,Mac App Store,Mac App Store
 Mode,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: Providers, Statistics, Welcome",translated,,Mode,Режим
-More reliable throughout,App,translated,,More reliable throughout,Belay стал надёжнее
 Never checked.,Settings: General,translated,,Never checked.,Ещё не проверялось.
 Never hold sleep.,Panel,translated,,Never keep the Mac awake.,Никогда не мешать Mac уснуть.
 New in v%@,App,translated,%@,New in v%@,Новое в v%@
@@ -275,9 +273,9 @@ Remove Precise Detection,Settings,translated,,Remove Precise Detection,Удал�
 Report a bug,Settings: About,translated,,Report a bug,Нашёл ошибку
 Report an Issue,Settings,translated,,Report an Issue,Сообщить о проблеме
 Reset…,Statistics,needs_review,,Reset…,Сбросить…
-Restart Belay and an Always On timer resumes with the same time remaining.,App,translated,,Restart Belay and an Always On timer resumes with the same time remaining.,"Перезапустите Belay, и таймер Always On продолжит отсчёт с того же оставшегося времени."
 Safety stop,Settings: Notifications,translated,,Safety stop,Безопасная остановка
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,"Уведомление приходит один раз для каждой версии. Значок обновления в строке меню остаётся виден, даже если этот пункт выключен."
+Set the timer by end time,App,translated,,Set the timer by end time,Таймер по времени окончания
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Настройки
 Settings…,Menu bar,translated,,Settings…,Настройки…
 Share,"App, Statistics",translated,,Share,Поделиться
@@ -310,11 +308,15 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Больше не следит за этим инструментом
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Подагент
 System,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Системный
+Take your statistics with you,App,translated,,Take your statistics with you,Статистику можно забрать с собой
 Task finished,Settings: Notifications,translated,,Task finished,Задача завершена
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,"App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
+"The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.",App,translated,,"The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.","Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение."
+"The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.",App,translated,,"The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.","Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту."
+"The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.",App,translated,,"The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.","Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом."
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Что добавит Belay
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Максимальное время удержания Mac бодрым. При достижении лимита Belay отправит вам уведомление.
@@ -328,13 +330,11 @@ The timer ran out.,Panel,translated,,The timer ran out.,Таймер истёк.
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,"Служба обновлений прислала ответ, который Belay не смог прочитать."
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Это нельзя отменить. Копии нигде больше нет.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Эта папка не похожа на папку %@.
-Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,App,translated,,Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.,"Включите его в настройках, и Belay будет автоматически следить за его сессиями. Никаких папок выбирать не нужно."
 Until,"App, Panel, Settings, Settings: Providers",translated,,Until,До времени
 Until turned off,"Panel, Settings",translated,,Until turned off,Пока не выключу
 Untitled project,App,translated,,Untitled project,Проект без названия
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Обновить
 Update Now (v%@),App,translated,%@,Update Now (v%@),Обновить до v%@
-Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,App,translated,,Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.,"Используете свои папки конфигурации или несколько профилей? Добавьте их в настройках агента, и Belay будет следить и за ними."
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Версия %@ (%@)
 Version %@ (%@) · %@,Settings: About,translated,%@ %@ %@,Version %@ (%@) · %@,Версия %@ (%@) · %@
 Version %@ is available.,Settings: General,translated,%@,Version %@ is available.,Доступна версия %@.
@@ -342,7 +342,6 @@ Waiting for you,Panel,translated,,Waiting for you,Ждёт вас
 Watch,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Watch,Следить
 Watch Anyway,Settings: Providers,translated,,Watch Anyway,Всё равно следить
 Watch Folder,Settings: Providers,translated,,Watch Folder,Следить за папкой
-Watch built-in agents anywhere,App,translated,,Watch built-in agents anywhere,Агенты могут работать из любых папок
 Watched Folders,Settings,translated,,Watched Folders,Отслеживаемые папки
 Watches Claude Code's session transcripts to tell when a turn is running.,Settings: Providers,translated,,Watches Claude Code session files to tell when a turn is running.,"Следит за файлами сессий Claude Code, чтобы понимать, когда агент работает."
 Watches Cline's session files to tell when a task is running.,Settings: Providers,translated,,Watches Cline session files to tell when a task is running.,"Следит за файлами сессий Cline, чтобы понимать, когда агент работает."
@@ -370,7 +369,6 @@ Your agent needs input before it can continue.,Settings: Notifications,translate
 Your agent needs input in %@ before it can continue.,Settings: Notifications,translated,%@,Your agent needs input in %@ before it can continue.,"Агенту нужен ваш ответ в %@, чтобы продолжить."
 "Your battery is down to %lld%%, so Belay stopped holding to save power.",Panel,needs_review,%lld,"Battery is at %lld%%, so Belay let it sleep.","Батарея на %lld%%, Belay дал Mac уснуть."
 Your first agent run fills this in.,Statistics,translated,,Your first agent run fills this in.,Первый же запуск агента это заполнит.
-Your timer survives a relaunch,App,translated,,Your timer survives a relaunch,Таймер переживает перезапуск
 kept working while you were away from the keyboard,Statistics,translated,,kept working while you were away,"продолжал работать, пока вас не было"
 kept working while you were right here,Statistics,translated,,kept working while you were right here,"продолжал работать, пока вы были рядом"
 last signal %@ ago,Settings,translated,%@,Last activity %@ ago,Посл. активность %@ назад

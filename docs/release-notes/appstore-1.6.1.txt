@@ -1,0 +1,57 @@
+App Store "What’s New in This Version" — Belay 1.6.1
+
+--- EN ---
+
+A rare overnight crash is fixed. The diagnostics log grew heavier with every line until a long night could crash Belay. Found thanks to one precise bug report.
+
+Set the timer by end time. The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.
+
+Take your statistics with you. The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.
+
+--- RU ---
+
+Исправлен редкий ночной сбой. Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Найдено благодаря одному точному баг-репорту.
+
+Таймер по времени окончания. Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение.
+
+Статистику можно забрать с собой. Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом.
+
+--- DE ---
+
+Ein seltener nächtlicher Absturz ist behoben. Das Diagnoseprotokoll wurde mit jeder Zeile schwerer, bis eine lange Nacht Belay zum Absturz bringen konnte. Gefunden dank eines präzisen Fehlerberichts.
+
+Timer nach Endzeit stellen. Der eigene Timer nimmt jetzt eine Dauer oder eine Uhrzeit, je nachdem, wie du denkst, und zeigt beim Tippen das jeweils andere an.
+
+Nimm deine Statistik mit. Der Löschen-Dialog kann vorher jeden erfassten Tag als CSV exportieren, und die Überschrift zeigt beim Überfahren deine Seite der Geschichte.
+
+--- ES ---
+
+Corregido un cierre nocturno poco frecuente. El registro de diagnóstico se volvía más pesado con cada línea, hasta que una noche larga podía cerrar Belay. Encontrado gracias a un informe de error preciso.
+
+Temporizador por hora de fin. El temporizador personalizado ahora acepta una duración o una hora, como prefieras, y muestra la otra mientras escribes.
+
+Llévate tus estadísticas. El diálogo de borrado puede exportar antes cada día registrado a CSV, y el titular muestra tu parte de la historia al pasar el cursor.
+
+--- FR ---
+
+Un plantage nocturne rare est corrigé. Le journal de diagnostic s'alourdissait à chaque ligne, au point qu'une longue nuit pouvait faire planter Belay. Trouvé grâce à un rapport de bug précis.
+
+Minuteur par heure de fin. Le minuteur personnalisé accepte désormais une durée ou une heure, à votre convenance, et affiche l'autre pendant la saisie.
+
+Emportez vos statistiques. La boîte d'effacement peut d'abord exporter chaque journée en CSV, et le titre montre votre part de l'histoire au survol.
+
+--- IT ---
+
+Risolto un raro arresto notturno. Il registro diagnostico si appesantiva a ogni riga, finché una lunga notte poteva far crollare Belay. Trovato grazie a una segnalazione precisa.
+
+Timer per ora di fine. Il timer personalizzato ora accetta una durata o un orario, come preferisci, e mostra l'altro mentre digiti.
+
+Porta con te le statistiche. La finestra di eliminazione può prima esportare ogni giorno registrato in CSV, e il titolo mostra la tua parte della storia al passaggio.
+
+--- ZH ---
+
+修复了一个罕见的夜间崩溃。诊断日志随每一行越来越重，长夜之后可能导致 Belay 崩溃。感谢一份精确的问题报告帮助定位。
+
+按结束时间设置计时器。自定义计时器现在既可以输入时长，也可以输入时刻，另一种会随输入实时显示。
+
+统计数据可以带走。抹掉对话框现在可以先把每天的记录导出为 CSV，标题悬停时还会显示你在场的那部分时间。

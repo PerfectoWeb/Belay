@@ -5,6 +5,48 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] - 2026-08-26
+
+### Fixed
+
+- A rare overnight crash. With Keep local reports on, every log line left the
+  diagnostics sink one closure wrapper deeper (a generic-inout reabstraction
+  writing the wrapped copy back), so a night of steady agent traffic built a
+  stored callback thousands of frames deep and the next write overflowed the
+  cooperative pool's stack — SIGBUS, no crash dialog. The sink now lives in a
+  class box that reabstraction cannot touch, with a regression test that calls
+  it ten thousand times and measures the depth.
+- A killed Belay is visible now: every graceful exit writes `collection off`
+  (including the `killall` path, which exits before
+  `applicationWillTerminate`), and the next launch names a session that never
+  said goodbye.
+- Cline sessions in custom watched folders under `/tmp`- and `/var`-style
+  paths were invisible: FSEvents hands back `/private`-resolved paths while
+  Foundation's resolver strips the prefix, so the root prefix check failed.
+  Both sides now go through the same resolver.
+- Sharing the statistics card to Telegram and friends attaches the image
+  again: the card ships as a file URL, which share extensions accept where a
+  raw image object was dropped.
+
+### Added
+
+- The custom timer dialog takes a length ("For") or a wall-clock end time
+  ("Until") — a time already past means tomorrow — with a footnote showing
+  the other reading live, a mode switch that slides like the main picker, and
+  the dialog rides the panel as a sheet instead of opening behind it.
+- The erase-statistics dialog offers a CSV export of every recorded day
+  before anything is deleted.
+- The Statistics headline flips to held-while-you-were-here on hover, and
+  chart bars trade their weekday for the date under the cursor.
+
+### Changed
+
+- Switched-off agent tiles dim as one piece, options icon included; the Off
+  pill sits back in dark mode (plain grey, full contrast kept under Increase
+  Contrast); mode-picker and timer-dialog tabs hold their colour while
+  pressed; the statistics footer aligns Reset and its privacy line with the
+  share buttons.
+
 ## [1.6.0] - 2026-08-25
 
 ### Added

@@ -1,0 +1,82 @@
+What's New — Belay 1.6.1
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): none.
+
+=== en ===
+
+# Set the timer by end time
+The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.
+
+# Take your statistics with you
+The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.
+
+# A rare overnight crash is fixed
+The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.
+
+=== ru ===
+
+# Таймер по времени окончания
+Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение.
+
+# Статистику можно забрать с собой
+Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом.
+
+# Исправлен редкий ночной сбой
+Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту.
+
+=== de ===
+
+# Timer nach Endzeit stellen
+Der eigene Timer nimmt jetzt eine Dauer oder eine Uhrzeit, je nachdem, wie du denkst, und zeigt beim Tippen das jeweils andere an.
+
+# Nimm deine Statistik mit
+Der Löschen-Dialog kann vorher jeden erfassten Tag als CSV exportieren, und die Überschrift zeigt beim Überfahren deine Seite der Geschichte.
+
+# Ein seltener nächtlicher Absturz ist behoben
+Das Diagnoseprotokoll wurde mit jeder Zeile schwerer, bis eine lange Nacht Belay zum Absturz bringen konnte. Behoben, dank eines präzisen Fehlerberichts.
+
+=== es ===
+
+# Temporizador por hora de fin
+El temporizador personalizado ahora acepta una duración o una hora, como prefieras, y muestra la otra mientras escribes.
+
+# Llévate tus estadísticas
+El diálogo de borrado puede exportar antes cada día registrado a CSV, y el titular muestra tu parte de la historia al pasar el cursor.
+
+# Corregido un cierre nocturno poco frecuente
+El registro de diagnóstico se volvía más pesado con cada línea, hasta que una noche larga podía cerrar Belay. Corregido gracias a un informe de error preciso.
+
+=== fr ===
+
+# Minuteur par heure de fin
+Le minuteur personnalisé accepte désormais une durée ou une heure, à votre convenance, et affiche l'autre pendant la saisie.
+
+# Emportez vos statistiques
+La boîte d'effacement peut d'abord exporter chaque journée en CSV, et le titre montre votre part de l'histoire au survol.
+
+# Un plantage nocturne rare est corrigé
+Le journal de diagnostic s'alourdissait à chaque ligne, au point qu'une longue nuit pouvait faire planter Belay. Corrigé grâce à un rapport de bug précis.
+
+=== it ===
+
+# Timer per ora di fine
+Il timer personalizzato ora accetta una durata o un orario, come preferisci, e mostra l'altro mentre digiti.
+
+# Porta con te le statistiche
+La finestra di eliminazione può prima esportare ogni giorno registrato in CSV, e il titolo mostra la tua parte della storia al passaggio.
+
+# Risolto un raro arresto notturno
+Il registro diagnostico si appesantiva a ogni riga, finché una lunga notte poteva far crollare Belay. Risolto grazie a una segnalazione precisa.
+
+=== zh-Hans ===
+
+# 按结束时间设置计时器
+自定义计时器现在既可以输入时长，也可以输入时刻，另一种会随输入实时显示。
+
+# 统计数据可以带走
+抹掉对话框现在可以先把每天的记录导出为 CSV，标题悬停时还会显示你在场的那部分时间。
+
+# 修复了一个罕见的夜间崩溃
+诊断日志随每一行越来越重，长夜之后可能导致 Belay 崩溃。已修复，感谢一份精确的问题报告。

@@ -17511,374 +17511,6 @@
         }
       }
     },
-    "Copilot CLI is now built in": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI is now built in"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI теперь встроен"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI ist jetzt integriert"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI ahora viene integrado"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI est maintenant intégré"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI ora è integrato"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Copilot CLI 现在已内置"
-          }
-        }
-      }
-    },
-    "Turn it on in Settings and Belay watches its sessions automatically. No folders to choose.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turn it on in Settings and Belay watches its sessions automatically. No folders to choose."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Включите его в настройках, и Belay будет автоматически следить за его сессиями. Никаких папок выбирать не нужно."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktiviere es in den Einstellungen, und Belay überwacht seine Sitzungen automatisch. Du musst keine Ordner auswählen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Actívalo en Ajustes y Belay supervisará sus sesiones automáticamente. No hace falta elegir ninguna carpeta."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activez-le dans Réglages et Belay suivra automatiquement ses sessions. Aucun dossier à choisir."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Attivalo nelle Impostazioni e Belay seguirà automaticamente le sue sessioni. Non serve scegliere alcuna cartella."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在“设置”中将它打开，Belay 就会自动监控它的会话，无需选择任何文件夹。"
-          }
-        }
-      }
-    },
-    "Watch built-in agents anywhere": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Watch built-in agents anywhere"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Агенты могут работать из любых папок"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Agents können überall arbeiten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Los agentes pueden trabajar desde cualquier carpeta"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les agents peuvent travailler depuis n’importe quel dossier"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gli agenti possono lavorare da qualsiasi cartella"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智能体可以使用任意文件夹"
-          }
-        }
-      }
-    },
-    "Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Using custom config folders or multiple profiles? Add them from the agent’s settings and Belay watches them too."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Используете свои папки конфигурации или несколько профилей? Добавьте их в настройках агента, и Belay будет следить и за ними."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verwendest du eigene Konfigurationsordner oder mehrere Profile? Füge sie in den Agent-Einstellungen hinzu, und Belay überwacht sie ebenfalls."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¿Usas carpetas de configuración propias o varios perfiles? Añádelos en los ajustes del agente y Belay también los supervisará."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous utilisez des dossiers de configuration personnalisés ou plusieurs profils ? Ajoutez-les dans les réglages de l’agent et Belay les surveillera également."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Usi cartelle di configurazione personalizzate o più profili? Aggiungile nelle impostazioni dell’agente e Belay monitorerà anche quelle."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用自定义配置文件夹或多个配置文件？在智能体设置中添加它们，Belay 也会一起监控。"
-          }
-        }
-      }
-    },
-    "Your timer survives a relaunch": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your timer survives a relaunch"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Таймер переживает перезапуск"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dein Timer übersteht einen Neustart"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tu temporizador sobrevive a un reinicio"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre minuteur résiste à un redémarrage"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il timer resiste a un riavvio"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "计时器可以跨重启继续"
-          }
-        }
-      }
-    },
-    "Restart Belay and an Always On timer resumes with the same time remaining.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restart Belay and an Always On timer resumes with the same time remaining."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Перезапустите Belay, и таймер Always On продолжит отсчёт с того же оставшегося времени."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Starte Belay neu, und ein Always-On-Timer läuft mit der gleichen verbleibenden Zeit weiter."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reinicia Belay y un temporizador Always On continuará con el mismo tiempo restante."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Redémarrez Belay et un minuteur Always On reprend avec le même temps restant."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Riavvia Belay e un timer Always On riprenderà con lo stesso tempo rimanente."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "重新启动 Belay 后，Always On 计时器会按照之前剩余的时间继续倒计时。"
-          }
-        }
-      }
-    },
-    "More reliable throughout": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "More reliable throughout"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay стал надёжнее"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ist zuverlässiger"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay es más fiable"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay est plus fiable"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay è più affidabile"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 更加可靠"
-          }
-        }
-      }
-    },
-    "A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A broad reliability pass fixed dozens of small issues, including launch stalls and sessions that stayed active longer than they should."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Большая проверка исправила десятки мелких проблем, включая задержки при запуске и сессии, которые оставались активными дольше, чем нужно."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine umfassende Überarbeitung hat Dutzende kleiner Probleme behoben, darunter Verzögerungen beim Start und Sitzungen, die länger aktiv blieben als vorgesehen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una revisión a fondo corrigió decenas de pequeños problemas, entre ellos bloqueos al iniciar y sesiones que permanecían activas más tiempo del debido."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une révision approfondie a corrigé des dizaines de petits problèmes, notamment des blocages au lancement et des sessions qui restaient actives plus longtemps que prévu."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Una revisione approfondita ha corretto decine di piccoli problemi, tra cui blocchi all’avvio e sessioni che rimanevano attive più a lungo del dovuto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一次全面的稳定性检查修复了数十个小问题，包括启动卡顿，以及会话保持活跃时间过长的问题。"
-          }
-        }
-      }
-    },
     "kept working while you were right here": {
       "localizations": {
         "en": {
@@ -18197,6 +17829,282 @@
           "stringUnit": {
             "state": "translated",
             "value": "距现在 %@"
+          }
+        }
+      }
+    },
+    "Set the timer by end time": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set the timer by end time"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймер по времени окончания"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer nach Endzeit stellen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temporizador por hora de fin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minuteur par heure de fin"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer per ora di fine"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按结束时间设置计时器"
+          }
+        }
+      }
+    },
+    "The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der eigene Timer nimmt jetzt eine Dauer oder eine Uhrzeit, je nachdem, wie du denkst, und zeigt beim Tippen das jeweils andere an."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El temporizador personalizado ahora acepta una duración o una hora, como prefieras, y muestra la otra mientras escribes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le minuteur personnalisé accepte désormais une durée ou une heure, à votre convenance, et affiche l'autre pendant la saisie."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il timer personalizzato ora accetta una durata o un orario, come preferisci, e mostra l'altro mentre digiti."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义计时器现在既可以输入时长，也可以输入时刻，另一种会随输入实时显示。"
+          }
+        }
+      }
+    },
+    "Take your statistics with you": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Take your statistics with you"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статистику можно забрать с собой"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nimm deine Statistik mit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Llévate tus estadísticas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emportez vos statistiques"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Porta con te le statistiche"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计数据可以带走"
+          }
+        }
+      }
+    },
+    "The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Löschen-Dialog kann vorher jeden erfassten Tag als CSV exportieren, und die Überschrift zeigt beim Überfahren deine Seite der Geschichte."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El diálogo de borrado puede exportar antes cada día registrado a CSV, y el titular muestra tu parte de la historia al pasar el cursor."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La boîte d'effacement peut d'abord exporter chaque journée en CSV, et le titre montre votre part de l'histoire au survol."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La finestra di eliminazione può prima esportare ogni giorno registrato in CSV, e il titolo mostra la tua parte della storia al passaggio."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抹掉对话框现在可以先把每天的记录导出为 CSV，标题悬停时还会显示你在场的那部分时间。"
+          }
+        }
+      }
+    },
+    "A rare overnight crash is fixed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A rare overnight crash is fixed"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исправлен редкий ночной сбой"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein seltener nächtlicher Absturz ist behoben"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Corregido un cierre nocturno poco frecuente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un plantage nocturne rare est corrigé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Risolto un raro arresto notturno"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "修复了一个罕见的夜间崩溃"
+          }
+        }
+      }
+    },
+    "The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Diagnoseprotokoll wurde mit jeder Zeile schwerer, bis eine lange Nacht Belay zum Absturz bringen konnte. Behoben, dank eines präzisen Fehlerberichts."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El registro de diagnóstico se volvía más pesado con cada línea, hasta que una noche larga podía cerrar Belay. Corregido gracias a un informe de error preciso."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le journal de diagnostic s'alourdissait à chaque ligne, au point qu'une longue nuit pouvait faire planter Belay. Corrigé grâce à un rapport de bug précis."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il registro diagnostico si appesantiva a ogni riga, finché una lunga notte poteva far crollare Belay. Risolto grazie a una segnalazione precisa."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断日志随每一行越来越重，长夜之后可能导致 Belay 崩溃。已修复，感谢一份精确的问题报告。"
           }
         }
       }

@@ -90,36 +90,30 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.6.0",
+                version: "1.6.1",
                 items: [
                     .init(
-                        symbol: Mark.code,
-                        title: "Copilot CLI is now built in",
-                        body: """
-                            Turn it on in Settings and Belay watches its sessions \
-                            automatically. No folders to choose.
-                            """),
-                    .init(
-                        symbol: Mark.folder,
-                        title: "Watch built-in agents anywhere",
-                        body: """
-                            Using custom config folders or multiple profiles? Add them \
-                            from the agent’s settings and Belay watches them too.
-                            """),
-                    .init(
                         symbol: Mark.timer,
-                        title: "Your timer survives a relaunch",
+                        title: "Set the timer by end time",
                         body: """
-                            Restart Belay and an Always On timer resumes with the same \
-                            time remaining.
+                            The custom timer now takes a length or a clock time, \
+                            whichever you think in, and shows the other as you type.
+                            """),
+                    .init(
+                        symbol: Mark.chart,
+                        title: "Take your statistics with you",
+                        body: """
+                            The erase dialog can export every recorded day to CSV \
+                            first, and the headline shows your side of the story on \
+                            hover.
                             """),
                     .init(
                         symbol: Mark.safety,
-                        title: "More reliable throughout",
+                        title: "A rare overnight crash is fixed",
                         body: """
-                            A broad reliability pass fixed dozens of small issues, \
-                            including launch stalls and sessions that stayed active \
-                            longer than they should.
+                            The diagnostics log grew heavier with every line until a \
+                            long night could crash Belay. Fixed, thanks to one precise \
+                            bug report.
                             """)
                 ]
             )
