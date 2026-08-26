@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.3598 2.35998L21.6398 3.63998C21.7547 3.7518 21.846 3.88552 21.9084 4.03323C21.9708 4.18094 22.0029 4.33965 22.0029 4.49998C22.0029 4.66032 21.9708 4.81903 21.9084 4.96674C21.846 5.11445 21.7547 5.24816 21.6398 5.35998L5.3598 21.64C5.24798 21.7549 5.11427 21.8462 4.96656 21.9086C4.81885 21.971 4.66014 22.0031 4.4998 22.0031C4.33947 22.0031 4.18076 21.971 4.03305 21.9086C3.88534 21.8462 3.75162 21.7549 3.6398 21.64L2.3598 20.36C2.24612 20.2475 2.15587 20.1135 2.09428 19.9659C2.03269 19.8183 2.00098 19.6599 2.00098 19.5C2.00098 19.34 2.03269 19.1817 2.09428 19.0341C2.15587 18.8864 2.24612 18.7525 2.3598 18.64L18.6398 2.35998C18.7523 2.2463 18.8863 2.15605 19.0339 2.09446C19.1815 2.03287 19.3399 2.00116 19.4998 2.00116C19.6598 2.00116 19.8181 2.03287 19.9657 2.09446C20.1133 2.15605 20.2473 2.2463 20.3598 2.35998Z" stroke="#6E5DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14 7L17 10" stroke="#6E5DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M5 6V10" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19 14V18" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 2V4" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 8H3" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 16H17" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11 3H9" stroke="#DEDEDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
