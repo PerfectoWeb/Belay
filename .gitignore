@@ -23,7 +23,7 @@ Package.resolved
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon?
+Icon[\r]
 ._*
 
 # Release artefacts
