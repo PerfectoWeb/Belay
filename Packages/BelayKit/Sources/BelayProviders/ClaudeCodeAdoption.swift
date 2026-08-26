@@ -50,6 +50,14 @@ extension ClaudeCodeProvider {
         // silently from its end, exactly like the stale case at startup.
         watch.cursor.seed(.tailWindow, snapshot: snapshot)
         let delta = watch.cursor.read(using: access)
+        // Seen between `creat` and its first write: an empty transcript is no
+        // evidence of a turn, and carries none of the record clocks that
+        // expose a toucher either. Follow it in silence and let its bytes
+        // arrive as their own change.
+        guard !delta.lines.isEmpty else {
+            watched[id] = watch
+            return false
+        }
         let newest = TranscriptClassifier.newestTimestamp(in: delta.lines)
         if let newest, now.timeIntervalSince(newest) > configuration.staleAtStartupAfter {
             if let current = FileSnapshot(url: url) {
