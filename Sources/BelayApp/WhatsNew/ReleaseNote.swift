@@ -69,6 +69,7 @@ enum ReleaseNotes {
         static let timer = "timer"
         static let team = "person.2"
         static let folder = "folder"
+        static let bug = "ladybug"
     }
 
     /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
@@ -108,7 +109,7 @@ enum ReleaseNotes {
                             your time at the keyboard.
                             """),
                     .init(
-                        symbol: Mark.safety,
+                        symbol: Mark.bug,
                         title: "A rare overnight crash is fixed",
                         body: """
                             With local diagnostics enabled, the log could grow too \
