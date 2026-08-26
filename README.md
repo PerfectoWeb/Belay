@@ -305,11 +305,11 @@ Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go thr
 **[Belay Source-Available License 1.0](LICENSE)**. Use it anywhere, fork it,
 build on it. Two conditions:
 
-🚫 **You may not sell it.** Not the app, not a derivative, not access to it. Use
+<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/nosell-dark.svg"><img src="docs/icons/nosell-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **You may not sell it.** Not the app, not a derivative, not access to it. Use
 is free and stays free for everyone, including at work and for commercial work.
 What is forbidden is charging other people for it.
 
-📛 **Credit the original.** Anything built on Belay has to say so where its users
+<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/copyright-dark.svg"><img src="docs/icons/copyright-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
 
 The **name and the mark** are covered separately.
