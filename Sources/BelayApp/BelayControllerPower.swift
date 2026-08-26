@@ -16,6 +16,9 @@ extension BelayController {
                 await signals.install { [weak self] in
                     await assertions.release()
                     await self?.bankUsageOnTermination()
+                    // The goodbye the next launch reads a kill by: this path
+                    // exits before `applicationWillTerminate` can write it.
+                    Diagnostics.appendFromAnywhere("collection off")
                 }
             })
     }
