@@ -96,24 +96,24 @@ enum ReleaseNotes {
                         symbol: Mark.timer,
                         title: "Set the timer by end time",
                         body: """
-                            The custom timer now takes a length or a clock time, \
-                            whichever you think in, and shows the other as you type.
+                            Enter a duration or an end time. Belay shows the other \
+                            as you type.
                             """),
                     .init(
                         symbol: Mark.chart,
-                        title: "Take your statistics with you",
+                        title: "Export your statistics",
                         body: """
-                            The erase dialog can export every recorded day to CSV \
-                            first, and the headline shows your side of the story on \
-                            hover.
+                            Before clearing your history, you can export every \
+                            recorded day to CSV. Hover over the headline to see \
+                            your time at the keyboard.
                             """),
                     .init(
                         symbol: Mark.safety,
                         title: "A rare overnight crash is fixed",
                         body: """
-                            The diagnostics log grew heavier with every line until a \
-                            long night could crash Belay. Fixed, thanks to one precise \
-                            bug report.
+                            With local diagnostics enabled, the log could grow too \
+                            large during a long night of agent activity and crash \
+                            Belay. A detailed bug report helped track it down.
                             """)
                 ]
             )

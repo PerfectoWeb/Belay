@@ -14,19 +14,16 @@
 </style>
 <h2>Belay 1.6.1</h2>
 <ul>
-  <li><b>A rare overnight crash is fixed.</b> With local reports switched on,
-      the diagnostics log grew heavier with every line until a long night of
-      agent traffic could crash Belay. Found from one precise bug report and
-      fixed for good.</li>
-  <li><b>Set the timer by end time.</b> The custom timer now takes a length
-      or a clock time &#8212; whichever you think in &#8212; and shows the
-      other as you type.</li>
-  <li><b>Take your statistics with you.</b> The erase dialog can export every
-      recorded day to CSV first, and the headline flips to your
-      at-the-keyboard time on hover.</li>
+  <li><b>A rare overnight crash is fixed.</b> With local diagnostics enabled,
+      the log could grow heavier over time until a long night of agent activity
+      caused Belay to crash. A detailed bug report helped track it down.</li>
+  <li><b>Set the timer by duration or end time.</b> The custom timer now accepts
+      either one and shows the other as you type.</li>
+  <li><b>Take your statistics with you.</b> Before erasing your history, you can
+      export every recorded day to CSV. Hover over the headline to see your
+      time at the keyboard instead.</li>
 </ul>
-<p class="quiet">Also: the chart labels bars with real dates on hover,
-switched-off agent tiles dim as one piece, the Off pill sits back in dark
-mode, sharing the statistics card now attaches properly in Telegram and
-friends, and a killed Belay names its own death in the log on the next
-launch.</p>
+<p class="quiet">Also: chart bars now show their date on hover, disabled agent
+tiles dim consistently, the Off pill looks better in dark mode, shared
+statistics cards now attach correctly in more apps, and after an unexpected
+exit Belay records what happened in the log on the next launch.</p>

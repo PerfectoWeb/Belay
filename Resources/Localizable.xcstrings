@@ -17850,169 +17850,31 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Timer nach Endzeit stellen"
+            "value": "Timer nach Endzeit einstellen"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Temporizador por hora de fin"
+            "value": "Ajusta el temporizador por hora de fin"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Minuteur par heure de fin"
+            "value": "Réglez le minuteur par heure de fin"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Timer per ora di fine"
+            "value": "Imposta il timer con l’ora di fine"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "按结束时间设置计时器"
-          }
-        }
-      }
-    },
-    "The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der eigene Timer nimmt jetzt eine Dauer oder eine Uhrzeit, je nachdem, wie du denkst, und zeigt beim Tippen das jeweils andere an."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El temporizador personalizado ahora acepta una duración o una hora, como prefieras, y muestra la otra mientras escribes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le minuteur personnalisé accepte désormais une durée ou une heure, à votre convenance, et affiche l'autre pendant la saisie."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il timer personalizzato ora accetta una durata o un orario, come preferisci, e mostra l'altro mentre digiti."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "自定义计时器现在既可以输入时长，也可以输入时刻，另一种会随输入实时显示。"
-          }
-        }
-      }
-    },
-    "Take your statistics with you": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Take your statistics with you"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Статистику можно забрать с собой"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nimm deine Statistik mit"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Llévate tus estadísticas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emportez vos statistiques"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Porta con te le statistiche"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "统计数据可以带走"
-          }
-        }
-      }
-    },
-    "The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Löschen-Dialog kann vorher jeden erfassten Tag als CSV exportieren, und die Überschrift zeigt beim Überfahren deine Seite der Geschichte."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El diálogo de borrado puede exportar antes cada día registrado a CSV, y el titular muestra tu parte de la historia al pasar el cursor."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La boîte d'effacement peut d'abord exporter chaque journée en CSV, et le titre montre votre part de l'histoire au survol."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La finestra di eliminazione può prima esportare ogni giorno registrato in CSV, e il titolo mostra la tua parte della storia al passaggio."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "抹掉对话框现在可以先把每天的记录导出为 CSV，标题悬停时还会显示你在场的那部分时间。"
           }
         }
       }
@@ -18040,19 +17902,19 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Corregido un cierre nocturno poco frecuente"
+            "value": "Corregido un fallo nocturno poco frecuente"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un plantage nocturne rare est corrigé"
+            "value": "Un rare plantage nocturne est corrigé"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Risolto un raro arresto notturno"
+            "value": "Risolto un raro crash notturno"
           }
         },
         "zh-Hans": {
@@ -18063,48 +17925,186 @@
         }
       }
     },
-    "The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.": {
+    "Enter a duration or an end time. Belay shows the other as you type.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report."
+            "value": "Enter a duration or an end time. Belay shows the other as you type."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту."
+            "value": "Задайте длительность или время окончания. Belay сразу покажет второе значение."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Diagnoseprotokoll wurde mit jeder Zeile schwerer, bis eine lange Nacht Belay zum Absturz bringen konnte. Behoben, dank eines präzisen Fehlerberichts."
+            "value": "Gib eine Dauer oder Endzeit ein. Belay zeigt beim Tippen jeweils den anderen Wert."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El registro de diagnóstico se volvía más pesado con cada línea, hasta que una noche larga podía cerrar Belay. Corregido gracias a un informe de error preciso."
+            "value": "Introduce una duración o una hora de finalización. Belay mostrará la otra mientras escribes."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le journal de diagnostic s'alourdissait à chaque ligne, au point qu'une longue nuit pouvait faire planter Belay. Corrigé grâce à un rapport de bug précis."
+            "value": "Saisissez une durée ou une heure de fin. Belay affiche l’autre valeur pendant la saisie."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il registro diagnostico si appesantiva a ogni riga, finché una lunga notte poteva far crollare Belay. Risolto grazie a una segnalazione precisa."
+            "value": "Inserisci una durata o un’ora di fine. Belay mostra l’altro valore mentre digiti."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "诊断日志随每一行越来越重，长夜之后可能导致 Belay 崩溃。已修复，感谢一份精确的问题报告。"
+            "value": "输入时长或结束时间，Belay 会在你输入时自动显示另一个值。"
+          }
+        }
+      }
+    },
+    "Export your statistics": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export your statistics"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экспорт статистики"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistiken exportieren"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporta tus estadísticas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportez vos statistiques"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esporta le statistiche"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出统计数据"
+          }
+        }
+      }
+    },
+    "Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bevor du den Verlauf löschst, kannst du alle erfassten Tage als CSV exportieren. Fahre über die Überschrift, um deine Zeit an der Tastatur zu sehen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Antes de borrar el historial, puedes exportar todos los días registrados a CSV. Pasa el cursor por el encabezado para ver el tiempo que pasaste frente al teclado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avant d’effacer votre historique, vous pouvez exporter toutes les journées enregistrées en CSV. Survolez le titre pour voir votre temps passé au clavier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima di cancellare la cronologia, puoi esportare tutti i giorni registrati in CSV. Passa sul titolo per vedere il tempo trascorso alla tastiera."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清除历史记录前，可以先将每天的数据导出为 CSV。将指针悬停在标题上即可查看你在键盘前的时间。"
+          }
+        }
+      }
+    },
+    "With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bei aktivierter lokaler Diagnose konnte das Protokoll während einer langen Nacht mit Agent-Aktivität zu groß werden und Belay zum Absturz bringen. Ein detaillierter Fehlerbericht half, die Ursache zu finden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Con el diagnóstico local activado, el registro podía crecer demasiado durante una larga noche de actividad y hacer que Belay se cerrara. Un informe detallado ayudó a encontrar la causa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec les diagnostics locaux activés, le journal pouvait devenir trop volumineux au cours d’une longue nuit d’activité et faire planter Belay. Un rapport détaillé a permis d’en trouver la cause."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Con la diagnostica locale attiva, il registro poteva diventare troppo grande durante una lunga notte di attività e causare un crash di Belay. Una segnalazione dettagliata ha aiutato a trovare la causa."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用本地诊断后，日志可能在长时间的智能体活动中变得过大并导致 Belay 崩溃。一份详细的问题报告帮助找到了原因。"
           }
         }
       }

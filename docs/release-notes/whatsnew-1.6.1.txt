@@ -7,76 +7,76 @@ Direct-only (never shown in the App Store build): none.
 === en ===
 
 # Set the timer by end time
-The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.
+Enter a duration or an end time. Belay shows the other as you type.
 
-# Take your statistics with you
-The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.
+# Export your statistics
+Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.
 
 # A rare overnight crash is fixed
-The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.
+With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.
 
 === ru ===
 
 # Таймер по времени окончания
-Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение.
+Задайте длительность или время окончания. Belay сразу покажет второе значение.
 
-# Статистику можно забрать с собой
-Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом.
+# Экспорт статистики
+Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой.
 
 # Исправлен редкий ночной сбой
-Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту.
+При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину.
 
 === de ===
 
-# Timer nach Endzeit stellen
-Der eigene Timer nimmt jetzt eine Dauer oder eine Uhrzeit, je nachdem, wie du denkst, und zeigt beim Tippen das jeweils andere an.
+# Timer nach Endzeit einstellen
+Gib eine Dauer oder Endzeit ein. Belay zeigt beim Tippen jeweils den anderen Wert.
 
-# Nimm deine Statistik mit
-Der Löschen-Dialog kann vorher jeden erfassten Tag als CSV exportieren, und die Überschrift zeigt beim Überfahren deine Seite der Geschichte.
+# Statistiken exportieren
+Bevor du den Verlauf löschst, kannst du alle erfassten Tage als CSV exportieren. Fahre über die Überschrift, um deine Zeit an der Tastatur zu sehen.
 
 # Ein seltener nächtlicher Absturz ist behoben
-Das Diagnoseprotokoll wurde mit jeder Zeile schwerer, bis eine lange Nacht Belay zum Absturz bringen konnte. Behoben, dank eines präzisen Fehlerberichts.
+Bei aktivierter lokaler Diagnose konnte das Protokoll während einer langen Nacht mit Agent-Aktivität zu groß werden und Belay zum Absturz bringen. Ein detaillierter Fehlerbericht half, die Ursache zu finden.
 
 === es ===
 
-# Temporizador por hora de fin
-El temporizador personalizado ahora acepta una duración o una hora, como prefieras, y muestra la otra mientras escribes.
+# Ajusta el temporizador por hora de fin
+Introduce una duración o una hora de finalización. Belay mostrará la otra mientras escribes.
 
-# Llévate tus estadísticas
-El diálogo de borrado puede exportar antes cada día registrado a CSV, y el titular muestra tu parte de la historia al pasar el cursor.
+# Exporta tus estadísticas
+Antes de borrar el historial, puedes exportar todos los días registrados a CSV. Pasa el cursor por el encabezado para ver el tiempo que pasaste frente al teclado.
 
-# Corregido un cierre nocturno poco frecuente
-El registro de diagnóstico se volvía más pesado con cada línea, hasta que una noche larga podía cerrar Belay. Corregido gracias a un informe de error preciso.
+# Corregido un fallo nocturno poco frecuente
+Con el diagnóstico local activado, el registro podía crecer demasiado durante una larga noche de actividad y hacer que Belay se cerrara. Un informe detallado ayudó a encontrar la causa.
 
 === fr ===
 
-# Minuteur par heure de fin
-Le minuteur personnalisé accepte désormais une durée ou une heure, à votre convenance, et affiche l'autre pendant la saisie.
+# Réglez le minuteur par heure de fin
+Saisissez une durée ou une heure de fin. Belay affiche l’autre valeur pendant la saisie.
 
-# Emportez vos statistiques
-La boîte d'effacement peut d'abord exporter chaque journée en CSV, et le titre montre votre part de l'histoire au survol.
+# Exportez vos statistiques
+Avant d’effacer votre historique, vous pouvez exporter toutes les journées enregistrées en CSV. Survolez le titre pour voir votre temps passé au clavier.
 
-# Un plantage nocturne rare est corrigé
-Le journal de diagnostic s'alourdissait à chaque ligne, au point qu'une longue nuit pouvait faire planter Belay. Corrigé grâce à un rapport de bug précis.
+# Un rare plantage nocturne est corrigé
+Avec les diagnostics locaux activés, le journal pouvait devenir trop volumineux au cours d’une longue nuit d’activité et faire planter Belay. Un rapport détaillé a permis d’en trouver la cause.
 
 === it ===
 
-# Timer per ora di fine
-Il timer personalizzato ora accetta una durata o un orario, come preferisci, e mostra l'altro mentre digiti.
+# Imposta il timer con l’ora di fine
+Inserisci una durata o un’ora di fine. Belay mostra l’altro valore mentre digiti.
 
-# Porta con te le statistiche
-La finestra di eliminazione può prima esportare ogni giorno registrato in CSV, e il titolo mostra la tua parte della storia al passaggio.
+# Esporta le statistiche
+Prima di cancellare la cronologia, puoi esportare tutti i giorni registrati in CSV. Passa sul titolo per vedere il tempo trascorso alla tastiera.
 
-# Risolto un raro arresto notturno
-Il registro diagnostico si appesantiva a ogni riga, finché una lunga notte poteva far crollare Belay. Risolto grazie a una segnalazione precisa.
+# Risolto un raro crash notturno
+Con la diagnostica locale attiva, il registro poteva diventare troppo grande durante una lunga notte di attività e causare un crash di Belay. Una segnalazione dettagliata ha aiutato a trovare la causa.
 
 === zh-Hans ===
 
 # 按结束时间设置计时器
-自定义计时器现在既可以输入时长，也可以输入时刻，另一种会随输入实时显示。
+输入时长或结束时间，Belay 会在你输入时自动显示另一个值。
 
-# 统计数据可以带走
-抹掉对话框现在可以先把每天的记录导出为 CSV，标题悬停时还会显示你在场的那部分时间。
+# 导出统计数据
+清除历史记录前，可以先将每天的数据导出为 CSV。将指针悬停在标题上即可查看你在键盘前的时间。
 
 # 修复了一个罕见的夜间崩溃
-诊断日志随每一行越来越重，长夜之后可能导致 Belay 崩溃。已修复，感谢一份精确的问题报告。
+启用本地诊断后，日志可能在长时间的智能体活动中变得过大并导致 Belay 崩溃。一份详细的问题报告帮助找到了原因。

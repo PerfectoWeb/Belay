@@ -77,6 +77,7 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Пока не выключите.
 Battery Guard,Settings: Behaviour,translated,,Battery Guard,Защита батареи
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Заряд %lld%%. Belay разрешил Mac уснуть.
+"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",(unused),translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой."
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Поведение
 "Belay already watches this folder for %@, or one that contains it.",Settings: Providers,translated,%@,"Belay already watches this folder for %@, or one that contains it.","Belay уже следит за этой папкой для %@ или за папкой, которая её содержит."
 "Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Settings: Providers,translated,,"Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.","Хуки помечаются как одобренные в config.toml, потому что Codex молча пропускает неодобренные хуки."
@@ -167,8 +168,10 @@ Enable Precise…,Settings,translated,,Enable Precise…,Включить точ
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Включить точное определение
 Enable…,(unused),translated,,Enable…,Включить…
 Ends at %@,Panel,translated,%@,Ends at %@,Закончится в %@
+Enter a duration or an end time. Belay shows the other as you type.,(unused),translated,,Enter a duration or an end time. Belay shows the other as you type.,Задайте длительность или время окончания. Belay сразу покажет второе значение.
 Erase,Statistics,needs_review,,Erase,Стереть
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Стереть статистику?
+Export your statistics,(unused),translated,,Export your statistics,Экспорт статистики
 Export…,Statistics,translated,,Export…,Экспорт…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Завершено
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Исправить
@@ -308,15 +311,11 @@ Stop keeping the Mac awake on low battery,Settings: Behaviour,translated,,Stop k
 Stops Belay watching this tool,Settings: Providers,translated,,Stops watching this tool,Больше не следит за этим инструментом
 Subagent,"App, Detection, Panel, Settings: Providers",translated,,Subagent,Подагент
 System,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers",translated,,System,Системный
-Take your statistics with you,App,translated,,Take your statistics with you,Статистику можно забрать с собой
 Task finished,Settings: Notifications,translated,,Task finished,Задача завершена
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,"App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
-"The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.",App,translated,,"The custom timer now takes a length or a clock time, whichever you think in, and shows the other as you type.","Свой таймер теперь принимает длительность или время на часах, как вам удобнее, и сразу показывает второе значение."
-"The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.",App,translated,,"The diagnostics log grew heavier with every line until a long night could crash Belay. Fixed, thanks to one precise bug report.","Журнал диагностики тяжелел с каждой строкой, и за долгую ночь это могло уронить Belay. Исправлено благодаря одному точному баг-репорту."
-"The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.",App,translated,,"The erase dialog can export every recorded day to CSV first, and the headline shows your side of the story on hover.","Диалог удаления сначала может выгрузить все дни в CSV, а заголовок при наведении показывает время, когда вы были рядом."
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Что добавит Belay
 "The lid hold reached its time limit, so Belay let the Mac sleep.",Settings: Notifications,translated,,"The lid hold reached its time limit, so Belay let the Mac sleep.","Удержание с закрытой крышкой достигло лимита времени, и Belay дал Mac уснуть."
 The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Settings: Behaviour,translated,,The longest Belay will keep your Mac awake before letting go. You'll be notified when the limit is reached.,Максимальное время удержания Mac бодрым. При достижении лимита Belay отправит вам уведомление.
@@ -356,6 +355,7 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,Что нового
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Пока удерживает
+"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",(unused),translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину.
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.","С точным определением %@ сам сообщает Belay, когда работа началась, закончилась или ждёт вас. Определение становится мгновенным и надёжным."
 Working,"App, Panel, Settings: Providers",translated,,Working,Работает
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,"Mac не уснёт, пока вы не выключите режим."
