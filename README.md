@@ -33,19 +33,19 @@ No timer required. No sleep setting to remember to change back.
 ## ✨ Features
 
 <table>
-<tr><td width="24%"><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/zero-setup-dark.svg"><img src="docs/icons/zero-setup-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Zero&nbsp;setup</b></td><td>Claude Code, Codex, Cline and Copilot are detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/more-agents-dark.svg"><img src="docs/icons/more-agents-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>More&nbsp;agents</b></td><td>Gemini CLI, OpenCode, Cline (VS Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/custom-folder-dark.svg"><img src="docs/icons/custom-folder-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Custom&nbsp;folders</b></td><td>Using a custom config folder or multiple profiles? Add each folder in the agent's settings and Belay watches them all.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/precise-dark.svg"><img src="docs/icons/precise-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Precise&nbsp;detection</b></td><td>In the direct build, every built-in agent can report the exact moment work starts, finishes or waits for you – Copilot does it out of the box, the rest with one click in Settings and a full preview before anything is written.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/lets-go-dark.svg"><img src="docs/icons/lets-go-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/timer-dark.svg"><img src="docs/icons/timer-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Timed&nbsp;keep</b></td><td>Always On can run for a set duration or until a specific time, with the countdown in the panel and on the dimmed screen. The timer survives a relaunch.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/safety-limits-dark.svg"><img src="docs/icons/safety-limits-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/agent-teams-dark.svg"><img src="docs/icons/agent-teams-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/dimming-dark.svg"><img src="docs/icons/dimming-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/closed-lid-dark.svg"><img src="docs/icons/closed-lid-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Closed‑lid&nbsp;hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/stats-dark.svg"><img src="docs/icons/stats-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/local-dark.svg"><img src="docs/icons/local-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
-<tr><td><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/multilingual-dark.svg"><img src="docs/icons/multilingual-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> <b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
+<tr><td width="24%" nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/zero-setup-dark.svg"><img src="docs/icons/zero-setup-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code, Codex, Cline and Copilot are detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/more-agents-dark.svg"><img src="docs/icons/more-agents-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, OpenCode, Cline (VS Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/custom-folder-dark.svg"><img src="docs/icons/custom-folder-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Custom&nbsp;folders</b></td><td>Using a custom config folder or multiple profiles? Add each folder in the agent's settings and Belay watches them all.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/precise-dark.svg"><img src="docs/icons/precise-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Precise&nbsp;detection</b></td><td>In the direct build, every built-in agent can report the exact moment work starts, finishes or waits for you – Copilot does it out of the box, the rest with one click in Settings and a full preview before anything is written.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/lets-go-dark.svg"><img src="docs/icons/lets-go-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/timer-dark.svg"><img src="docs/icons/timer-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Timed&nbsp;keep</b></td><td>Always On can run for a set duration or until a specific time, with the countdown in the panel and on the dimmed screen. The timer survives a relaunch.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/safety-limits-dark.svg"><img src="docs/icons/safety-limits-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/agent-teams-dark.svg"><img src="docs/icons/agent-teams-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/dimming-dark.svg"><img src="docs/icons/dimming-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/closed-lid-dark.svg"><img src="docs/icons/closed-lid-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Closed‑lid&nbsp;hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/stats-dark.svg"><img src="docs/icons/stats-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/local-dark.svg"><img src="docs/icons/local-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/multilingual-dark.svg"><img src="docs/icons/multilingual-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
 
 ## 📦 Install
@@ -155,11 +155,12 @@ the menu bar. There is no Dock icon and no window.
 **2. Leave it in Auto.** That is the whole product. Belay holds the Mac awake
 while an agent is working and lets it sleep when nothing is.
 
-| Mode | What it does |
-|---|---|
-| <sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/auto-dark.svg"><img src="docs/icons/auto-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **Auto** *(default)* | Keeps your Mac awake while an agent is working |
-| <sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/always-on-dark.svg"><img src="docs/icons/always-on-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **Always On** | Keeps it awake until you turn it off or by timer |
-| <sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/off-dark.svg"><img src="docs/icons/off-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **Off** | Belay stays out of the way |
+<table>
+<tr><th>Mode</th><th>What it does</th></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/auto-dark.svg"><img src="docs/icons/auto-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Auto</b> <i>(default)</i></td><td>Keeps your Mac awake while an agent is working</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/always-on-dark.svg"><img src="docs/icons/always-on-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Always On</b></td><td>Keeps it awake until you turn it off or by timer</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/off-dark.svg"><img src="docs/icons/off-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Off</b></td><td>Belay stays out of the way</td></tr>
+</table>
 
 **3. Left-click the menu bar icon** for the panel: what is running, for how
 long, and, when Belay is *not* holding, the reason in plain language.
@@ -291,13 +292,13 @@ Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go thr
 ### 📖 Documentation
 
 <table>
-<tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
-<tr><td width="24%"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
-<tr><td width="24%"><a href="docs/CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
-<tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
-<tr><td width="24%"><a href="docs/SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
-<tr><td width="24%"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
-<tr><td width="24%"><a href="docs/ROADMAP.md">Roadmap</a></td><td>Where Belay is going, and what has to be true first</td></tr>
+<tr><td width="24%" nowrap><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
+<tr><td width="24%" nowrap><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
+<tr><td width="24%" nowrap><a href="docs/CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
+<tr><td width="24%" nowrap><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
+<tr><td width="24%" nowrap><a href="docs/SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
+<tr><td width="24%" nowrap><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>
+<tr><td width="24%" nowrap><a href="docs/ROADMAP.md">Roadmap</a></td><td>Where Belay is going, and what has to be true first</td></tr>
 </table>
 
 ## 📝 License
@@ -305,11 +306,11 @@ Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go thr
 **[Belay Source-Available License 1.0](LICENSE)**. Use it anywhere, fork it,
 build on it. Two conditions:
 
-<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/nosell-dark.svg"><img src="docs/icons/nosell-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **You may not sell it.** Not the app, not a derivative, not access to it. Use
+<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/nosell-dark.svg"><img src="docs/icons/nosell-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;**You may not sell it.** Not the app, not a derivative, not access to it. Use
 is free and stays free for everyone, including at work and for commercial work.
 What is forbidden is charging other people for it.
 
-<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/copyright-dark.svg"><img src="docs/icons/copyright-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup> **Credit the original.** Anything built on Belay has to say so where its users
+<sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/copyright-dark.svg"><img src="docs/icons/copyright-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;**Credit the original.** Anything built on Belay has to say so where its users
 can see it: *Belay by PerfectoWeb*, with a link back here.
 
 The **name and the mark** are covered separately.
