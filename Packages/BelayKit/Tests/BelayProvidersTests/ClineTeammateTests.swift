@@ -121,4 +121,31 @@ struct ClineTeammateTests {
         #expect(ClineSessions.teammate(of: root.path + "/abc/abc.messages.json", sessionID: "abc") == nil)
         #expect(ClineSessions.teammate(of: root.path + "/abc/abc.json", sessionID: "abc") == nil)
     }
+
+    /// FSEvents owes no ordering: a write to the teammate's file can be
+    /// delivered after the parent completed. That event must not raise the
+    /// teammate from the dead — this is the race that flaked CI twice.
+    @Test("A late file event cannot resurrect a teammate")
+    func lateEventDoesNotResurrect() async throws {
+        let provider = provider()
+        try await provider.start()
+        scratch.session("s6", status: "running")
+        await provider.ingest("s6", now: Date())
+        teammateFile("s6", stem: "tester__q9", bytes: 50)
+        let start = Date()
+        await provider.ingestTeammate(session: "s6", stem: "tester__q9", agent: "tester", now: start)
+        #expect(await provider.watched[SessionID("tester__q9")] != nil)
+
+        scratch.session("s6", status: "completed")
+        await provider.ingest("s6", now: start.addingTimeInterval(10))
+        #expect(await provider.watched[SessionID("tester__q9")] == nil)
+
+        // The straggler: the teammate's write, delivered after the end.
+        teammateFile("s6", stem: "tester__q9", bytes: 500)
+        await provider.ingestTeammate(
+            session: "s6", stem: "tester__q9", agent: "tester",
+            now: start.addingTimeInterval(11))
+        #expect(await provider.watched[SessionID("tester__q9")] == nil, "orphans stay buried")
+        await provider.stop()
+    }
 }

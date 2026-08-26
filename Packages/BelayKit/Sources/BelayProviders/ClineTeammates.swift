@@ -36,6 +36,12 @@ extension ClineProvider {
             return report(.working, for: id, at: now)
         }
 
+        // A teammate is born only under a living parent. Without this, a file
+        // event that lands after the session completed — FSEvents owes no
+        // ordering to anyone — resurrected the teammate as an orphan Working
+        // row under a session that no longer exists. The parent's own adopt
+        // seeds teammates, so a late event loses nothing.
+        guard watched[parent] != nil else { return false }
         var watch = ClineWatch(
             id: id,
             stateURL: ClineSessions.stateURL(id: sessionID, under: configuration.sessionsDirectory),
