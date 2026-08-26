@@ -28,29 +28,29 @@ Belay is a macOS menu bar app that fixes exactly that. It watches your local
 coding agents, keeps the Mac awake while work is still happening, and lets it
 sleep normally again when the work is done.
 
-No timer to start. No sleep setting to remember to change back.
+No timer required. No sleep setting to remember to change back.
 
 ## ✨ Features
 
 <table>
-<tr><td width="21%">🎯&nbsp;<b>Zero&nbsp;setup</b></td><td>Claude Code, Codex, Cline and Copilot CLI are detected automatically. Nothing to configure, no key to paste.</td></tr>
-<tr><td>🔌&nbsp;<b>More&nbsp;agents</b></td><td>Gemini CLI, OpenCode, Cline (VS&nbsp;Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
-<tr><td>🗂&nbsp;<b>Any&nbsp;folder&nbsp;home</b></td><td>Agents using custom config folders (<code>CLAUDE_CONFIG_DIR</code> and friends) or several profiles: add each folder in the agent's settings and Belay watches them all.</td></tr>
-<tr><td>⚡&nbsp;<b>Precise&nbsp;detection</b></td><td>In the direct build, every built-in agent can report the exact moment work starts, finishes or waits for you — Copilot does it out of the box, the rest with one click in Settings and a full preview before anything is written.</td></tr>
-<tr><td>🛡&nbsp;<b>Lets&nbsp;go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
-<tr><td>⏱&nbsp;<b>Timed&nbsp;holds</b></td><td>Always On can run for a chosen time — 15 minutes to 12 hours, or your own — with the countdown in the panel and on the dimmed screen. The timer survives a relaunch.</td></tr>
-<tr><td>🔋&nbsp;<b>Safety&nbsp;limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
-<tr><td>👀&nbsp;<b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
-<tr><td>🌙&nbsp;<b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
-<tr><td>💤&nbsp;<b>Closed-lid&nbsp;hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
-<tr><td>📊&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
-<tr><td>🔒&nbsp;<b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
-<tr><td>🌍&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
+<tr><td width="21%">🎯 <b>Zero setup</b></td><td>Claude Code, Codex, Cline and Copilot are detected automatically. Nothing to configure, no key to paste.</td></tr>
+<tr><td>🔌 <b>More agents</b></td><td>Gemini CLI, OpenCode, Cline (VS Code), Aider and Pi ship as presets. For anything else, watch a folder or process, or connect it yourself in the direct build.</td></tr>
+<tr><td>🗂 <b>Custom folders</b></td><td>Using a custom config folder or multiple profiles? Add each folder in the agent's settings and Belay watches them all.</td></tr>
+<tr><td>⚡ <b>Precise detection</b></td><td>In the direct build, every built-in agent can report the exact moment work starts, finishes or waits for you – Copilot does it out of the box, the rest with one click in Settings and a full preview before anything is written.</td></tr>
+<tr><td>🛡 <b>Lets go</b></td><td>Normal holds expire after 120 seconds unless Belay renews them. If Belay disappears, the Mac goes back to normal by itself.</td></tr>
+<tr><td>⏱ <b>Timed keep</b></td><td>Always On can run for a set duration or until a specific time, with the countdown in the panel and on the dimmed screen. The timer survives a relaunch.</td></tr>
+<tr><td>🔋 <b>Safety limits</b></td><td>Set a maximum awake time and a battery floor. Belay also lets go on sleep, quit and mode changes.</td></tr>
+<tr><td>👀 <b>Agent teams too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
+<tr><td>🌙 <b>Night dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
+<tr><td>💤 <b>Closed-lid hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
+<tr><td>📊 <b>Time saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
+<tr><td>🔒 <b>Stays local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
+<tr><td>🌍 <b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
 
 ## 📦 Install
 
-**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><sup><a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle" hspace="8"></a></sup> macOS 14 or later, Apple silicon and Intel, under 15 MB.
+**1.** <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><b>Download Now</b></a><sup><a href="https://github.com/PerfectoWeb/Belay/releases/latest"><img src="https://img.shields.io/github/v/release/PerfectoWeb/Belay?style=flat&label=&color=1f6bff" alt="latest version" align="middle" hspace="8"></a></sup> macOS 14 or later, Apple silicon and Intel, under 10 MB.
 
 **2.** Open the disk image and drag **Belay** into Applications.
 
@@ -65,7 +65,7 @@ network and without the right-click-Open dance.
 <details>
 <summary><b>Other ways to install</b></summary>
 
-#### 🍺 Homebrew
+### 🍺 Homebrew
 
 ```bash
 brew install --cask perfectoweb/tap/belay
@@ -81,13 +81,13 @@ notability bar. A project needs a certain number of stars, forks or watchers
 before it is accepted, and Belay has not cleared it yet. Same command shape,
 one extra word.
 
-#### 🍎 From the Mac App Store
+### 🍎 Mac App Store
 
 [**Belay - Awake for AI Agents**](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644),
 free, macOS 14 or later. The sandboxed build, so it updates through the store
 rather than through Sparkle and has no network access at all.
 
-#### 🔨 Build it yourself
+### 🔨 Build it yourself
 
 No Apple Developer account needed:
 
@@ -110,7 +110,42 @@ codesign -dv --verbose=2 /Applications/Belay.app
 
 You should see `source=Notarized Developer ID` and team `VSY2EB4Y9E`.
 
+### 📚 What is different between versions?
+
+Belay ships in two builds that share the same app and the same detection. The Mac App Store build runs sandboxed with no network access at all; the direct build adds the few things a sandbox cannot do.
+
+| Capability | App Store | Direct |
+| :--- | :---: | :---: |
+| Claude Code, Codex, Cline and Copilot CLI detection | ✓ | ✓ |
+| Idle sleep protection with fail-safe holds | ✓ | ✓ |
+| Presets and generic folder / process detection | ✓ | ✓ |
+| Watched folders for custom config dirs (`CLAUDE_CONFIG_DIR` and friends) | ✓ | ✓ |
+| Always On timer, by duration or end time | ✓ | ✓ |
+| Night dimming, statistics, CSV export | ✓ | ✓ |
+| Precise Detection (agent hooks) | – | ✓ |
+| Local webhook for connecting any tool | – | ✓ |
+| Closed-lid hold (privileged helper) | – | ✓ |
+
 </details>
+
+## ☕️ Why not just caffeinate?
+Caffeinate is great when you know exactly what process or command should keep the Mac awake.
+
+**Belay is for the opposite workflow:** coding agents start, wait, resume and finish on their own. Belay follows that work state and releases the Mac automatically.
+
+| ✨ Features | caffeinate | Amphetamine | Belay |
+| :--- | :---: | :---: | :---: |
+| Keeps the Mac awake | ✅ | ✅ | ✅ |
+| Free | ✅ | ✅ | ✅ |
+| Timed sessions | ✅ | ✅ | ✅ |
+| Keeps awake while a given app or process runs | ✅ | ✅ | ✅ |
+| Lives in the menu bar | – | ✅ | ✅ |
+| Battery safety limits | – | ✅ | ✅ |
+| Knows when a coding agent is actually working | – | – | ✅ |
+| Lets go when the agent finishes or waits for you | – | – | ✅ |
+| Shows agent sessions and subagents live | – | – | ✅ |
+| Exact start / finish signals from agent hooks | – | – | ✅ |
+| Source available | – | – | ✅ |
 
 ## 🚀 How to Use
 
@@ -123,7 +158,7 @@ while an agent is working and lets it sleep when nothing is.
 | Mode | What it does |
 |---|---|
 | 🪄 **Auto** *(default)* | Keeps your Mac awake while an agent is working |
-| ☀️ **Always On** | Keeps it awake until you turn it off |
+| ☀️ **Always On** | Keeps it awake until you turn it off or by timer |
 | 🌙 **Off** | Belay stays out of the way |
 
 **3. Left-click the menu bar icon** for the panel: what is running, for how
@@ -134,7 +169,7 @@ Right-click for a compact menu.
   <img src="Promo/Social/panel.png" alt="The Belay panel, showing four agents working and the Mac being held awake" width="94%">
 </p>
 
-**4. Check it yourself, any time.** Belay never asks to be trusted:
+**4. Want to verify it?** macOS can show the assertion Belay is holding:
 
 ```bash
 pmset -g assertions | grep "pid $(pgrep -x Belay)("
@@ -150,6 +185,7 @@ You will see the assertion, a plain-English reason, and how long it has left.
 
 <picture><source media="(max-width: 500px)" srcset="Promo/Social/shots/stack.png"><img src="Promo/Social/shots/grid.png" alt="Agents, Statistics, Behaviour and a multilingual interface" width="100%"></picture>
 
+
 ## 🧯 Troubleshooting
 
 <details>
@@ -163,19 +199,18 @@ worth reporting: include the tool and the macOS version.
 </details>
 
 <details>
-<summary><b>It does not work with the lid closed</b></summary>
+<summary><b>Can Belay work with the lid closed?</b></summary>
 
 Out of the box, no: an idle-sleep assertion does not keep a MacBook awake with
 the lid shut. macOS enters clamshell sleep unless the machine is on AC power
 with an external display attached.
 
-Since 1.3 the direct build can, as an opt-in. **Keep working with the lid
-closed** in Settings installs a system helper – macOS asks for your approval –
-that holds
-the OS's own sleep switch while an agent is working, and always lets go by
-itself: when the work ends, when Belay stops asking for it, after a hard time
-cap, or the moment the Mac runs hot with the lid shut. Proven on battery with
-no display attached, and the control run without it slept in seventy seconds.
+Since 1.3, the direct build can keep working with the lid closed as an opt-in.
+Enable **Closed-lid hold** in Settings and approve the system helper when macOS
+asks.
+
+Belay lets go automatically when the work ends, the awake limit is reached,
+or the Mac gets too warm.
 
 The App Store build cannot install a privileged helper (that is Apple's rule,
 and a good one), so it does not offer the switch.
@@ -216,8 +251,7 @@ Since 1.3.2 the badge says which case you are in: a folder that does not exist
 yet simply has not been created by the tool (it appears after the first run),
 and only a folder that exists but cannot be read is an access question.
 Presets are configuration, not code, so open Settings ▸ Agents and correct
-the path if yours lives elsewhere. A wrong preset costs one edit, never a
-release.
+the path if yours lives elsewhere.
 
 </details>
 
@@ -242,8 +276,7 @@ helps other people find it.
 🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
 
-🌍 **[Fix a translation](Localization/)**. Belay is multilingual, and only
-English and Russian have been read by a person who speaks them. One CSV per
+🌍 **[Fix a translation](Localization/)**. One CSV per
 language, and it is data rather than code. This is the most wanted contribution
 here.
 
