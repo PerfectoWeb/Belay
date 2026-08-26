@@ -158,7 +158,7 @@ while an agent is working and lets it sleep when nothing is.
 
 <table>
 <tr><th>Mode</th><th>What it does</th></tr>
-<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/auto-dark.svg"><img src="docs/icons/auto-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Auto</b> <i>(default)</i></td><td>Keeps your Mac awake while an agent is working</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/auto-dark.svg"><img src="docs/icons/auto-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Auto</b> <i>(def)</i></td><td>Keeps your Mac awake while an agent is working</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/always-on-dark.svg"><img src="docs/icons/always-on-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Always On</b></td><td>Keeps it awake until you turn it off or by timer</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/off-dark.svg"><img src="docs/icons/off-light.svg" width="22" align="middle" hspace="3" alt=""></picture></sup>&nbsp;<b>Off</b></td><td>Belay stays out of the way</td></tr>
 </table>
