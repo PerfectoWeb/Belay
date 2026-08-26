@@ -15,8 +15,14 @@ VERSION = "1.6.1"
 L = {}
 
 L["en"] = {
-    "title": "Belay: stays awake while your agents work",
-    "meta": "A small macOS menu bar app that keeps your Mac awake while coding agents work, then lets it sleep when they're done.",
+    "downloads": "Downloads",
+    "releases": "Releases",
+    "days": "Days of Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Direct",
+    "since_note": "since {date}",
+    "title": "Keep your Mac awake while AI coding agents work — Belay",
+    "meta": "A free macOS menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot CLI are working, and lets it sleep once they stop.",
     "h1": "Keeps your Mac awake <br class=\"turn\">while your AI agents work.",
     "lede": "Belay keeps your Mac awake while a coding agent is working. When the work stops, Belay gets out of the way and your Mac can sleep normally again.",
     "body": "Built-in detection for Claude Code, Codex, Cline and Copilot CLI, plus one-click presets for Gemini CLI, OpenCode, Aider and Pi. You can also point Belay at a folder for anything else. Detection stays on your Mac. No account. No telemetry. Belay never sends your prompts or code anywhere.",
@@ -50,8 +56,14 @@ L["en"] = {
 }
 
 L["ru"] = {
-    "title": "Belay: не даёт Mac уснуть, пока агенты работают",
-    "meta": "Небольшое приложение в строке меню macOS: не даёт Mac уснуть, пока работают агенты, и отпускает, когда они закончили.",
+    "downloads": "Скачиваний",
+    "releases": "Релизов",
+    "days": "Дней Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Напрямую",
+    "since_note": "с {date}",
+    "title": "Не даёт Mac уснуть, пока работают AI-агенты — Belay",
+    "meta": "Бесплатное приложение в строке меню macOS: не даёт Mac уснуть, пока работают Claude Code, Codex, Cline и Copilot CLI, и отпускает его, когда они закончили.",
     "h1": "Mac не заснёт, <br class=\"turn\">пока AI-агенты работают.",
     "lede": "Belay не даст вашему Mac уснуть, пока агенты работают. Как только все агенты завершат работу, Belay переведёт Mac в обычный режим засыпания.",
     "body": "Автоматическое определение Claude Code, Codex, Cline и Copilot CLI, а также пресеты в один клик для Gemini CLI, OpenCode, Aider и Pi. Для других агентов можно указать папку работы. Без регистрации, смс и телеметрии. Belay не читает и никуда не отправляет ваши сессии.",
@@ -85,8 +97,14 @@ L["ru"] = {
 }
 
 L["de"] = {
-    "title": "Belay: bleibt wach, solange deine Agenten arbeiten",
-    "meta": "Eine kleine macOS-Menüleisten-App, die deinen Mac wach hält, solange Coding-Agenten arbeiten, und ihn danach schlafen lässt.",
+    "downloads": "Downloads",
+    "releases": "Versionen",
+    "days": "Tage Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Direkt",
+    "since_note": "seit {date}",
+    "title": "Mac wach halten, solange KI-Agenten arbeiten — Belay",
+    "meta": "Eine kostenlose macOS-Menüleisten-App, die den Mac wach hält, solange Claude Code, Codex, Cline und Copilot CLI arbeiten, und ihn danach schlafen lässt.",
     "h1": "Bleibt wach, solange deine Agenten arbeiten.",
     "lede": "Belay hält deinen Mac wach, solange ein Coding-Agent arbeitet. Hört die Arbeit auf, geht Belay aus dem Weg und dein Mac kann wieder normal schlafen.",
     "body": "Eingebaute Erkennung für Claude Code, Codex, Cline und Copilot CLI, dazu Ein-Klick-Vorlagen für Gemini CLI, OpenCode, Aider und Pi. Für alles andere kannst du Belay auf einen Ordner richten. Die Erkennung bleibt auf deinem Mac. Kein Konto. Keine Telemetrie. Belay schickt deine Prompts und deinen Code nirgendwohin.",
@@ -120,8 +138,14 @@ L["de"] = {
 }
 
 L["es"] = {
-    "title": "Belay: se mantiene despierto mientras trabajan tus agentes",
-    "meta": "Una pequeña app de la barra de menús de macOS que mantiene el Mac despierto mientras trabajan los agentes y lo deja dormir cuando terminan.",
+    "downloads": "Descargas",
+    "releases": "Versiones",
+    "days": "Días de Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Directo",
+    "since_note": "desde {date}",
+    "title": "Mantén el Mac despierto mientras trabajan tus agentes IA",
+    "meta": "App gratuita de macOS que mantiene el Mac despierto mientras trabajan Claude Code, Codex, Cline y Copilot CLI, y lo deja dormir al terminar.",
     "h1": "Despierto mientras trabajan tus agentes.",
     "lede": "Belay mantiene tu Mac despierto mientras un agente está trabajando. Cuando el trabajo termina, Belay se aparta y tu Mac vuelve a dormir con normalidad.",
     "body": "Detección integrada para Claude Code, Codex, Cline y Copilot CLI, más ajustes preparados de un clic para Gemini CLI, OpenCode, Aider y Pi. Para lo demás, puedes indicarle una carpeta. La detección se queda en tu Mac. Sin cuenta. Sin telemetría. Belay no envía tus prompts ni tu código a ninguna parte.",
@@ -155,8 +179,14 @@ L["es"] = {
 }
 
 L["fr"] = {
-    "title": "Belay : reste éveillé pendant que vos agents travaillent",
-    "meta": "Une petite app de la barre des menus macOS qui garde votre Mac éveillé pendant que les agents travaillent, puis le laisse dormir une fois terminé.",
+    "downloads": "Téléchargements",
+    "releases": "Versions",
+    "days": "Jours de Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Direct",
+    "since_note": "depuis {date}",
+    "title": "Gardez le Mac éveillé quand vos agents IA travaillent",
+    "meta": "App macOS gratuite qui garde votre Mac éveillé pendant que Claude Code, Codex, Cline et Copilot CLI travaillent, puis le laisse dormir.",
     "h1": "Éveillé pendant que vos agents travaillent.",
     "lede": "Belay garde votre Mac éveillé pendant qu'un agent travaille. Quand le travail s'arrête, Belay s'efface et votre Mac peut de nouveau dormir normalement.",
     "body": "Détection intégrée pour Claude Code, Codex, Cline et Copilot CLI, plus des préréglages en un clic pour Gemini CLI, OpenCode, Aider et Pi. Pour le reste, vous pouvez désigner un dossier. La détection reste sur votre Mac. Pas de compte. Pas de télémétrie. Belay n'envoie vos prompts et votre code nulle part.",
@@ -190,8 +220,14 @@ L["fr"] = {
 }
 
 L["it"] = {
-    "title": "Belay: resta sveglio mentre i tuoi agenti lavorano",
-    "meta": "Una piccola app nella barra dei menu di macOS che tiene sveglio il Mac mentre gli agenti lavorano e lo lascia dormire quando hanno finito.",
+    "downloads": "Download",
+    "releases": "Versioni",
+    "days": "Giorni di Belay",
+    "appstore_count": "App Store",
+    "direct_count": "Diretto",
+    "since_note": "dal {date}",
+    "title": "Tieni sveglio il Mac mentre lavorano gli agenti IA — Belay",
+    "meta": "App gratuita per macOS che tiene sveglio il Mac mentre lavorano Claude Code, Codex, Cline e Copilot CLI, e lo lascia dormire quando finiscono.",
     "h1": "Sveglio mentre i tuoi agenti lavorano.",
     "lede": "Belay tiene sveglio il Mac mentre un agente sta lavorando. Quando il lavoro finisce, Belay si toglie di mezzo e il Mac può tornare a dormire normalmente.",
     "body": "Rilevamento integrato per Claude Code, Codex, Cline e Copilot CLI, più preset con un clic per Gemini CLI, OpenCode, Aider e Pi. Per tutto il resto puoi indicargli una cartella. Il rilevamento resta sul tuo Mac. Nessun account. Nessuna telemetria. Belay non manda da nessuna parte i tuoi prompt o il tuo codice.",
@@ -225,8 +261,14 @@ L["it"] = {
 }
 
 L["zh"] = {
-    "title": "Belay：智能体工作时，让 Mac 保持唤醒",
-    "meta": "一个小巧的 macOS 菜单栏应用：编程智能体工作时让 Mac 保持唤醒，工作结束后让它照常睡眠。",
+    "downloads": "下载量",
+    "releases": "版本",
+    "days": "Belay 天数",
+    "appstore_count": "App Store",
+    "direct_count": "直接下载",
+    "since_note": "自 {date}",
+    "title": "AI 编程智能体工作时让 Mac 保持唤醒 — Belay",
+    "meta": "免费的 macOS 菜单栏应用：Claude Code、Codex、Cline 和 Copilot CLI 工作时让 Mac 保持唤醒，工作结束后让它照常睡眠。",
     "h1": "智能体在工作，Mac 就不会睡。",
     "lede": "编程智能体工作时，Belay 让你的 Mac 保持唤醒。工作一停，Belay 就退到一边，Mac 照常进入睡眠。",
     "body": "内置 Claude Code、Codex、Cline 与 Copilot CLI 检测，另有 Gemini CLI、OpenCode、Aider 和 Pi 的一键预设。其他智能体可以指定一个工作文件夹。检测只在你的 Mac 上进行。无需注册，没有遥测。Belay 不会把你的提示词或代码发送到任何地方。",

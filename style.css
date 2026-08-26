@@ -634,6 +634,48 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 
 .badges .apple { font-size: 13px; line-height: 1; }
 
+/* The three numbers under the hero. Tabular figures so the row does not
+   shuffle sideways when a count gains a digit, and the same rule and panel as
+   everything else on the page rather than a card of their own: they are part
+   of the introduction, not a widget bolted under it. */
+.figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin: 26px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+}
+
+.figures li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.figures .figure {
+    font-size: 30px;
+    font-weight: 640;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+}
+
+/* A title on a number reads as a promise of more, so the cursor says so. */
+.figures .figure[title] { cursor: help; }
+
+.figures .caption {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 460px) {
+    .figures { gap: 18px; }
+    .figures .figure { font-size: 25px; }
+}
+
 /* One thing on the page is alive, and it is the mark rather than the lockup.
    The stars alone, not the lockup: turning is what these stars are drawn doing,
    and moving the whole lockup reads as a card being hovered.

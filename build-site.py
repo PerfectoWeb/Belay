@@ -21,8 +21,10 @@ to /privacy/, and a link somebody saved should not answer 404 because we moved
 some folders.
 """
 
+import datetime
 import hashlib
 import io
+import json
 import os
 import re
 import sys
@@ -30,6 +32,12 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from landing import L, VERSION
+from stats import (
+    APPSTORE as STATS_APPSTORE,
+    DIRECT as STATS_DIRECT,
+    FIRST_COMMIT,
+    RELEASES as STATS_RELEASES,
+)
 from policy_text import LANGUAGES, T
 
 CODES = [code for code, _, _ in LANGUAGES]
@@ -212,12 +220,26 @@ def head(code, title, meta, depth, page):
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         f"<title>{title}</title>",
         f'<meta name="description" content="{meta}">',
+        f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{code}/{page}">',
         f'<link rel="stylesheet" href="{up}style.css{STYLE_STAMP}">',
     ]
-    if page != "privacy/":
-        lines.append(
-            '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"'
-            f" data-cf-beacon='{{\"token\": \"{ANALYTICS_TOKEN}\"}}'></script>")
+    if page != "privacy/" and ANALYTICS_TOKEN:
+        # Loaded rather than declared, so a blocker or a dead network is a
+        # branch we handle instead of an unhandled failure. The browser still
+        # notes the blocked request itself — no page can silence that — but
+        # nothing of ours is left broken behind it.
+        lines += [
+            "<script>",
+            "(function(){",
+            "  var b=document.createElement('script');",
+            "  b.src='https://static.cloudflareinsights.com/beacon.min.js';",
+            "  b.defer=true;",
+            f"  b.setAttribute('data-cf-beacon','{{\"token\":\"{ANALYTICS_TOKEN}\"}}');",
+            "  b.onerror=function(){};",
+            "  document.head.appendChild(b);",
+            "})();",
+            "</script>",
+        ]
     lines += [
         # The icons. Paths are relative on purpose: this site lives under
         # /Belay/, so a root-absolute `/favicon.ico` would point at the domain
@@ -261,8 +283,46 @@ def head(code, title, meta, depth, page):
     lines.append(
         '<link rel="alternate" hreflang="x-default" '
         f'href="https://perfectoweb.github.io/Belay/en/{page}">')
+    if page != "privacy/":
+        lines += structured_data(code, meta)
     lines += ["</head>", "<body>", '<div class="wrap">', ""]
     return lines
+
+
+def structured_data(code, meta):
+    """What the app is, in the vocabulary search engines read.
+
+    Only facts that are already on the page: the name, the platform, the
+    price, the licence and the current version. No rating — the app has no
+    reviews to average, and an invented one is the kind of thing that gets a
+    site's markup ignored entirely.
+    """
+    facts = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Belay",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS 14.0 or later",
+        "description": meta,
+        "url": f"https://perfectoweb.github.io/Belay/{code}/",
+        "downloadUrl": "https://github.com/PerfectoWeb/Belay/releases/latest",
+        "softwareVersion": VERSION,
+        "inLanguage": TAG[code],
+        "isAccessibleForFree": True,
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "author": {
+            "@type": "Organization",
+            "name": "PerfectoWeb",
+            "url": "https://perfecto-web.com",
+        },
+        "license": "https://github.com/PerfectoWeb/Belay/blob/main/LICENSE",
+        "screenshot": f"https://perfectoweb.github.io/Belay/img/og.png{OG_STAMP}",
+    }
+    return [
+        '<script type="application/ld+json">',
+        json.dumps(facts, ensure_ascii=False, separators=(",", ":")),
+        "</script>",
+    ]
 
 
 def header(code, depth):
@@ -470,6 +530,99 @@ def filled_heading(text):
     return " ".join(out)
 
 
+def clean(html):
+    """The markup as a visitor should receive it: no notes to ourselves.
+
+    Everything explaining *why* the page is built this way belongs in this
+    file, where it is read by whoever changes it. Shipping the same notes
+    inside every page in seven languages serves nobody: it is weight on the
+    wire and reading over the reader's shoulder.
+
+    Two passes, both conservative. HTML comments go whole. Script comments go
+    only when the line is nothing but a comment, so a `//` inside a string —
+    every URL, for one — is never touched.
+    """
+    html = re.sub(r"[ \t]*<!--.*?-->\n?", "", html, flags=re.S)
+    kept = [line for line in html.split("\n") if not line.lstrip().startswith("//")]
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(kept))
+
+def figures(code, t):
+    """Three numbers under the hero: downloads, releases, and how long Belay
+    has been going.
+
+    The downloads figure carries its own breakdown, because "307" means little
+    until you can see it is the direct build plus the store. The breakdown is
+    a `title`, which every browser shows on hover and every screen reader
+    reads, and needs no script and no stylesheet to work.
+
+    The day count is the one number that would go stale between builds, so it
+    is worked out in the page from a fixed start date — arithmetic on a
+    constant, not a request. Without JavaScript the figure printed at build
+    time stands, and it is never more than a scheduled rebuild out of date.
+    """
+    total = STATS_DIRECT + (STATS_APPSTORE or 0)
+    parts = [f'{t["direct_count"]}: {STATS_DIRECT}']
+    if STATS_APPSTORE is not None:
+        parts.insert(0, f'{t["appstore_count"]}: {STATS_APPSTORE}')
+    start = datetime.date.fromisoformat(FIRST_COMMIT)
+    days = (datetime.date.today() - start).days
+    since = t["since_note"].format(date=start.strftime("%d.%m.%Y"))
+    return [
+        '<ul class="figures">',
+        f'    <li><span class="figure" title="{" · ".join(parts)}">{total}</span>'
+        f'<span class="caption">{t["downloads"]}</span></li>',
+        f'    <li><span class="figure">{STATS_RELEASES}</span>'
+        f'<span class="caption">{t["releases"]}</span></li>',
+        f'    <li><span class="figure" data-since="{FIRST_COMMIT}">{days}</span>'
+        f'<span class="caption" title="{since}">{t["days"]}</span></li>',
+        "</ul>",
+        "",
+        "<script>",
+        "(function(){",
+        "  var el=document.querySelector('.figure[data-since]');",
+        "  if(!el){return;}",
+        "  var start=new Date(el.dataset.since+'T00:00:00');",
+        "  var days=Math.floor((Date.now()-start.getTime())/86400000);",
+        "  if(days>0){el.textContent=days;}",
+        "})();",
+        "</script>",
+        "",
+    ]
+
+def console_note():
+    """What a developer finds when they open the console on this page.
+
+    A page like this one gets its markup read by exactly the sort of person
+    the app is for, so the console is a place to say hello rather than a place
+    that happens to be empty. It logs once, prints no data about the visitor,
+    and holds no state.
+    """
+    art = [
+        "  ██████  ███████ ██       █████  ██    ██",
+        "  ██   ██ ██      ██      ██   ██  ██  ██ ",
+        "  ██████  █████   ██      ███████   ████  ",
+        "  ██   ██ ██      ██      ██   ██    ██   ",
+        "  ██████  ███████ ███████ ██   ██    ██   ",
+    ]
+    lines = [
+        "<script>",
+        "(function(){",
+        "  var art=[",
+    ]
+    lines += [f"    {json.dumps(row)}," for row in art]
+    lines += [
+        "  ].join('\\n');",
+        "  var brand='color:#1f6bff;font-weight:600';",
+        "  var quiet='color:#8a8f98';",
+        "  console.log('%c'+art, brand);",
+        "  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours.', quiet);",
+        f"  console.log('%cv{VERSION}  ·  source: https://github.com/PerfectoWeb/Belay', quiet);",
+        "})();",
+        "</script>",
+        "",
+    ]
+    return lines
+
 def landing(code):
     t = L[code]
     lines = head(code, t["title"], t["meta"], 1, "")
@@ -524,6 +677,7 @@ def landing(code):
         ' 1.4 1.6v2.7h-1.5V7.8c0-.5-.2-.7-.6-.7s-.6.3-.6.8v2.2H8.4z"/></svg>Intel</li>',
         "</ul>",
         "",
+    ] + figures(code, t) + [
         f'<h2 class="modes-head">{t["modes_head"]}</h2>',
     ] + gallery(code, t) + [
         "",
@@ -835,6 +989,7 @@ def landing(code):
         "  });",
         "</script>",
         "",
+    ] + console_note() + [
         "</div>",
         "</body>",
         "</html>",
@@ -987,22 +1142,22 @@ def main(root):
     for code in CODES:
         folder = os.path.join(root, code)
         os.makedirs(folder, exist_ok=True)
-        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(landing(code))
+        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(clean(landing(code)))
         written.append(f"{code}/")
 
         folder = os.path.join(root, code, "privacy")
         os.makedirs(folder, exist_ok=True)
-        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(privacy(code))
+        io.open(os.path.join(folder, "index.html"), "w", encoding="utf-8").write(clean(privacy(code)))
         written.append(f"{code}/privacy/")
 
-    io.open(os.path.join(root, "index.html"), "w", encoding="utf-8").write(
-        redirect("en/", 0, "The site root. Sends the reader to their own language if we have it."))
+    io.open(os.path.join(root, "index.html"), "w", encoding="utf-8").write(clean(
+        redirect("en/", 0, "The site root. Sends the reader to their own language if we have it.")))
     written.append("/")
 
     # The addresses that already exist in the world.
     os.makedirs(os.path.join(root, "privacy"), exist_ok=True)
-    io.open(os.path.join(root, "privacy", "index.html"), "w", encoding="utf-8").write(
-        redirect("en/privacy/", 1, "Kept: the published 1.0.0 release notes link here."))
+    io.open(os.path.join(root, "privacy", "index.html"), "w", encoding="utf-8").write(clean(
+        redirect("en/privacy/", 1, "Kept: the published 1.0.0 release notes link here.")))
     written.append("privacy/")
     for code in CODES:
         if code == "en":

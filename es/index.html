@@ -3,10 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Belay: se mantiene despierto mientras trabajan tus agentes</title>
-<meta name="description" content="Una pequeña app de la barra de menús de macOS que mantiene el Mac despierto mientras trabajan los agentes y lo deja dormir cuando terminan.">
-<link rel="stylesheet" href="../style.css?v=132c6a502e">
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8999ea5c44b046c19a08dcf09d5b4336"}'></script>
+<title>Mantén el Mac despierto mientras trabajan tus agentes IA</title>
+<meta name="description" content="App gratuita de macOS que mantiene el Mac despierto mientras trabajan Claude Code, Codex, Cline y Copilot CLI, y lo deja dormir al terminar.">
+<link rel="canonical" href="https://perfectoweb.github.io/Belay/es/">
+<link rel="stylesheet" href="../style.css?v=0b6eadd3ad">
+<script>
+(function(){
+  var b=document.createElement('script');
+  b.src='https://static.cloudflareinsights.com/beacon.min.js';
+  b.defer=true;
+  b.setAttribute('data-cf-beacon','{"token":"8999ea5c44b046c19a08dcf09d5b4336"}');
+  b.onerror=function(){};
+  document.head.appendChild(b);
+})();
+</script>
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -14,8 +24,8 @@
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Belay: se mantiene despierto mientras trabajan tus agentes">
-<meta property="og:description" content="Una pequeña app de la barra de menús de macOS que mantiene el Mac despierto mientras trabajan los agentes y lo deja dormir cuando terminan.">
+<meta property="og:title" content="Mantén el Mac despierto mientras trabajan tus agentes IA">
+<meta property="og:description" content="App gratuita de macOS que mantiene el Mac despierto mientras trabajan Claude Code, Codex, Cline y Copilot CLI, y lo deja dormir al terminar.">
 <meta property="og:url" content="https://perfectoweb.github.io/Belay/es/">
 <meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b">
 <meta property="og:image:width" content="1280">
@@ -33,6 +43,9 @@
 <link rel="alternate" hreflang="it" href="https://perfectoweb.github.io/Belay/it/">
 <link rel="alternate" hreflang="zh-Hans" href="https://perfectoweb.github.io/Belay/zh/">
 <link rel="alternate" hreflang="x-default" href="https://perfectoweb.github.io/Belay/en/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Belay","applicationCategory":"DeveloperApplication","operatingSystem":"macOS 14.0 or later","description":"App gratuita de macOS que mantiene el Mac despierto mientras trabajan Claude Code, Codex, Cline y Copilot CLI, y lo deja dormir al terminar.","url":"https://perfectoweb.github.io/Belay/es/","downloadUrl":"https://github.com/PerfectoWeb/Belay/releases/latest","softwareVersion":"1.6.1","inLanguage":"es","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"PerfectoWeb","url":"https://perfecto-web.com"},"license":"https://github.com/PerfectoWeb/Belay/blob/main/LICENSE","screenshot":"https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b"}
+</script>
 </head>
 <body>
 <div class="wrap">
@@ -70,6 +83,22 @@
     <li class="outline"><svg class="chip-glyph" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="currentColor" d="M5.6 5.9h1.5v4.2H5.6zM8.4 5.9h1.1v.7a1.4 1.4 0 0 1 1.2-.8c.9 0 1.4.6 1.4 1.6v2.7h-1.5V7.8c0-.5-.2-.7-.6-.7s-.6.3-.6.8v2.2H8.4z"/></svg>Intel</li>
 </ul>
 
+<ul class="figures">
+    <li><span class="figure" title="Directo: 307">307</span><span class="caption">Descargas</span></li>
+    <li><span class="figure">12</span><span class="caption">Versiones</span></li>
+    <li><span class="figure" data-since="2026-08-11">16</span><span class="caption" title="desde 11.08.2026">Días de Belay</span></li>
+</ul>
+
+<script>
+(function(){
+  var el=document.querySelector('.figure[data-since]');
+  if(!el){return;}
+  var start=new Date(el.dataset.since+'T00:00:00');
+  var days=Math.floor((Date.now()-start.getTime())/86400000);
+  if(days>0){el.textContent=days;}
+})();
+</script>
+
 <h2 class="modes-head">Tus agentes, de un vistazo</h2>
 <div class="gallery" data-gallery>
     <div class="frames">
@@ -91,7 +120,6 @@
         <button class="dot" type="button" role="tab" data-to="5" aria-selected="false" aria-label="Pantalla 6"></button>
     </div>
 </div>
-
 
 <h2 class="typed" data-typed><span class="ch" style="--ch: 0">C</span><span class="ch" style="--ch: 1">ó</span><span class="ch" style="--ch: 2">m</span><span class="ch" style="--ch: 3">o</span><span class="ch" style="--ch: 4">&#160;</span><span class="ch" style="--ch: 5">a</span><span class="ch" style="--ch: 6">y</span><span class="ch" style="--ch: 7">u</span><span class="ch" style="--ch: 8">d</span><span class="ch" style="--ch: 9">a</span><span class="ch" style="--ch: 10">r</span><span class="caret" aria-hidden="true"></span></h2>
 
@@ -119,12 +147,6 @@
 </footer>
 
 <script>
-  // Closes the language picker when the click lands anywhere else.
-  // CSS cannot see a click outside an element, and the alternative was
-  // a hidden checkbox with a full-screen label over the page, which is
-  // more machinery in the markup than this is in script. Without it the
-  // picker still opens, still closes on its own summary, and every link
-  // in it works.
   document.addEventListener('click', function (event) {
     document.querySelectorAll('details.languages[open]').forEach(function (picker) {
       if (!picker.contains(event.target)) { picker.open = false; }
@@ -147,12 +169,8 @@
     var words = Array.prototype.slice.call(head.querySelectorAll('.word'));
     var tints = head.querySelectorAll('.tint');
     if (!tints.length) { return; }
-    // Nothing loops for somebody who asked for less movement. The fill
-    // itself is already guarded in the stylesheet.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
 
-    // Paused whenever the heading is off screen or the tab is in the
-    // background, so an animation nobody is looking at costs nothing.
     var seen = true;
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
@@ -169,9 +187,6 @@
       });
     }
 
-    // Both fills are the stylesheet's, and each one lasts the last
-    // word's delay plus its own duration. The three numbers below live
-    // in two places: change one, change the other.
     var FILL = (words.length - 1) * 150 + 900;
     var GREEN = (tints.length - 1) * 150 + 900;
     var BLINK = 5 * 340;
@@ -181,21 +196,12 @@
       head.classList.remove('is-cooling');
       words.forEach(function (word) {
         word.style.removeProperty('--cool-step');
-        // Restarting a CSS animation takes a reset and a reflow read.
         word.style.animation = 'none';
         void word.offsetWidth;
         word.style.animation = '';
       });
     }
 
-    // Which order the words lose their white in. `Mac` goes first because
-    // it is the word the sentence is about, and the rest follow in a
-    // shuffle that is redrawn every cycle, so the ending never looks
-    // choreographed. Returns how many words are in it, which is what the
-    // wait afterwards is measured from.
-    //
-    // The two green words are left out on purpose: they arrive here
-    // already grey from the blink, and they hold it.
     function coolOrder() {
       var pool = words.filter(function (word) {
         return !word.classList.contains('tint');
@@ -220,15 +226,11 @@
       for (;;) {
         refill();
         await wait(FILL + 2400);
-        // White to green, word after word, the same way grey became
-        // white. One effect, one style, rather than two.
         head.dataset.tint = 'green';
         await wait(GREEN + 3200);
         head.dataset.tint = 'blink';
         await wait(BLINK);
         await wait(400);
-        // Word by word rather than all together: the last one to go out
-        // decides how long this takes, so the wait is measured, not fixed.
         var going = coolOrder();
         head.classList.add('is-cooling');
         await wait(Math.max(0, going - 1) * 138 + 620);
@@ -240,14 +242,9 @@
 </script>
 
 <script>
-  // The support heading types itself when it comes into view, once.
-  // Letters are revealed by a timer rather than by animating `display`,
-  // which Safari accepts and then ignores.
   document.querySelectorAll('[data-typed]').forEach(function (head) {
     var letters = head.querySelectorAll('.ch');
     if (!letters.length) { return; }
-    // Only now are the letters hidden: a page whose script never ran
-    // keeps its heading exactly as it was served.
     head.classList.add('is-armed');
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function type() {
@@ -256,9 +253,6 @@
         setTimeout(function () { letter.classList.add('is-on'); }, index * 55);
       });
     }
-    // Once, whoever gets there first, and the heading is never left
-    // blank: hiding the letters and then failing to reveal them is the
-    // one outcome worse than not animating at all.
     var typed = false;
     function once() { if (!typed) { typed = true; type(); } }
     if (!('IntersectionObserver' in window)) { once(); return; }
@@ -270,9 +264,6 @@
       });
     }, { threshold: 0.6 });
     watch.observe(head);
-    // The watchdog. An observer that never fires leaves eleven hidden
-    // letters and a blinking caret, which is what a browser pane that
-    // does not run its rendering pipeline actually did.
     setTimeout(once, 6000);
   });
 </script>
@@ -285,10 +276,6 @@
     var at = 0;
     gallery.classList.add('is-live');
 
-    // Give a frame its address the first time anything wants to see it,
-    // and warm its two neighbours so a step either way is already there.
-    // Called from `show` and from the lightbox, because the lightbox can
-    // reach a frame the gallery never showed.
     function wake(index) {
       [index, index - 1, index + 1].forEach(function (n) {
         var frame = frames[(n + frames.length) % frames.length];
@@ -297,17 +284,12 @@
         }
       });
     }
-    // Warming the neighbours waits for the page to finish loading: the
-    // point of holding the addresses back is the first paint.
     if (document.readyState === 'complete') { wake(0); }
     else { window.addEventListener('load', function () { wake(0); }); }
     function show(next, back) {
       next = (next + frames.length) % frames.length;
       wake(next);
       if (next === at) { return; }
-      // Which way it is going. Taken from the control that was pressed,
-      // because comparing the indexes gets the two wrapping steps
-      // backwards: last to first is a smaller number and still forward.
       if (back === undefined) { back = next < at; }
       if (back) { gallery.setAttribute('data-back', ''); }
       else { gallery.removeAttribute('data-back'); }
@@ -328,17 +310,10 @@
       zone.addEventListener('click', function () { show(at + step, step < 0); });
     });
 
-    // The middle of the picture, which the two zones deliberately leave
-    // alone, opens it full size.
     var box = document.querySelector('[data-lightbox]');
     if (!box) { return; }
     var big = box.querySelector('img');
     var open = false;
-    // The lightbox keeps its own index. Writing straight into `at` left
-    // the gallery pointing at one frame while `at` said another, so
-    // closing it changed nothing (`show` returns early when the index is
-    // already current) and the next middle-click opened a picture that
-    // was not the one on the page.
     var bigAt = 0;
     function lift(index) {
       index = (index + frames.length) % frames.length;
@@ -347,18 +322,13 @@
       big.src = frames[index].getAttribute('src') || frames[index].dataset.src;
       box.hidden = false;
       open = true;
-      // A frame, so the browser has the element before the class lands
-      // and the fade actually runs.
       requestAnimationFrame(function () { box.classList.add('is-open'); });
       box.focus();
     }
     function drop() {
       open = false;
       box.classList.remove('is-open');
-      // Long enough for the fade out, then really gone.
       setTimeout(function () { if (!open) { box.hidden = true; } }, 260);
-      // Bring the gallery to whatever was last on screen in the
-      // lightbox, so closing it leaves the page where the eye left off.
       show(bigAt, bigAt < at);
     }
     gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });
@@ -375,6 +345,23 @@
       if (event.key === 'ArrowLeft') { lift(bigAt - 1); }
     });
   });
+</script>
+
+<script>
+(function(){
+  var art=[
+    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588       \u2588\u2588\u2588\u2588\u2588  \u2588\u2588    \u2588\u2588",
+    "  \u2588\u2588   \u2588\u2588 \u2588\u2588      \u2588\u2588      \u2588\u2588   \u2588\u2588  \u2588\u2588  \u2588\u2588 ",
+    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588   \u2588\u2588      \u2588\u2588\u2588\u2588\u2588\u2588\u2588   \u2588\u2588\u2588\u2588  ",
+    "  \u2588\u2588   \u2588\u2588 \u2588\u2588      \u2588\u2588      \u2588\u2588   \u2588\u2588    \u2588\u2588   ",
+    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588   \u2588\u2588    \u2588\u2588   ",
+  ].join('\n');
+  var brand='color:#1f6bff;font-weight:600';
+  var quiet='color:#8a8f98';
+  console.log('%c'+art, brand);
+  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours.', quiet);
+  console.log('%cv1.6.1  ·  source: https://github.com/PerfectoWeb/Belay', quiet);
+})();
 </script>
 
 </div>

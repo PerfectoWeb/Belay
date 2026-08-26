@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>隐私政策：Belay</title>
 <meta name="description" content="Belay 没有账户、分析、广告或崩溃报告。它读取什么、存储什么，以及它唯一可能发出的请求。">
-<link rel="stylesheet" href="../../style.css?v=132c6a502e">
+<link rel="canonical" href="https://perfectoweb.github.io/Belay/zh/privacy/">
+<link rel="stylesheet" href="../../style.css?v=0b6eadd3ad">
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
@@ -115,12 +116,6 @@
 </footer>
 
 <script>
-  // Closes the language picker when the click lands anywhere else.
-  // CSS cannot see a click outside an element, and the alternative was
-  // a hidden checkbox with a full-screen label over the page, which is
-  // more machinery in the markup than this is in script. Without it the
-  // picker still opens, still closes on its own summary, and every link
-  // in it works.
   document.addEventListener('click', function (event) {
     document.querySelectorAll('details.languages[open]').forEach(function (picker) {
       if (!picker.contains(event.target)) { picker.open = false; }
