@@ -10,7 +10,7 @@ before that was true, and the site sat on 1.0.0 through the whole of 1.1.0
 because nothing anywhere actually did it.
 """
 
-VERSION = "1.6.0"
+VERSION = "1.6.1"
 
 L = {}
 
