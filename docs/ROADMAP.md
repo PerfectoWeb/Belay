@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.6.0 is out** on GitHub and Homebrew. The Mac App Store carries 1.5.0, with 1.6.0 in review.
+**1.6.1 is out** on GitHub and Homebrew. The Mac App Store carries 1.6.0, with 1.6.1 on the way.
 
 </div>
 
@@ -59,6 +59,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | ⏱ | The Always On timer survives an app relaunch | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 🕓 | Last activity on every agent's tile | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 📦 | **v1.6.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 📦 | **v1.6.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [26 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.1) |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
