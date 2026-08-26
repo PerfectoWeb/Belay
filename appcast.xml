@@ -3,8 +3,45 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.6.1</title>
+            <pubDate>Wed, 26 Aug 2026 12:07:31 +0300</pubDate>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.6.1. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.1</h2>
+<ul>
+  <li><b>A rare overnight crash is fixed.</b> With local diagnostics enabled,
+      the log could grow heavier over time until a long night of agent activity
+      caused Belay to crash. A detailed bug report helped track it down.</li>
+  <li><b>Set the timer by duration or end time.</b> The custom timer now accepts
+      either one and shows the other as you type.</li>
+  <li><b>Take your statistics with you.</b> Before erasing your history, you can
+      export every recorded day to CSV. Hover over the headline to see your
+      time at the keyboard instead.</li>
+</ul>
+<p class="quiet">Also: chart bars now show their date on hover, disabled agent
+tiles dim consistently, the Off pill looks better in dark mode, shared
+statistics cards now attach correctly in more apps, and after an unexpected
+exit Belay records what happened in the log on the next launch.</p>]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.1/Belay-1.6.1.dmg" length="7129146" type="application/octet-stream" sparkle:edSignature="WIW3WwrV22z/jYjhUsWfej5gCa9geMCosWnfWM2BG7MJlPv0BsjAAYCVYjmccWkgMtT2xGGiG56wxp9taRXTCw=="/>
+        </item>
+        <item>
             <title>1.6.0</title>
-            <pubDate>Tue, 25 Aug 2026 15:05:08 +0300</pubDate>
+            <pubDate>Wed, 26 Aug 2026 12:07:33 +0300</pubDate>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -44,7 +81,7 @@ interface.</p>
         </item>
         <item>
             <title>1.5.0</title>
-            <pubDate>Tue, 25 Aug 2026 15:05:10 +0300</pubDate>
+            <pubDate>Wed, 26 Aug 2026 12:07:35 +0300</pubDate>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -85,7 +122,7 @@ Belay.</p>
         </item>
         <item>
             <title>1.4.0</title>
-            <pubDate>Tue, 25 Aug 2026 15:05:12 +0300</pubDate>
+            <pubDate>Wed, 26 Aug 2026 12:07:37 +0300</pubDate>
             <sparkle:version>10</sparkle:version>
             <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -126,7 +163,7 @@ modes.</p>]]></description>
         </item>
         <item>
             <title>1.3.3</title>
-            <pubDate>Tue, 25 Aug 2026 15:05:14 +0300</pubDate>
+            <pubDate>Wed, 26 Aug 2026 12:07:39 +0300</pubDate>
             <sparkle:version>9</sparkle:version>
             <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -165,44 +202,6 @@ awake for five extra minutes, opening the Codex app no longer floods the
 panel, and the lid-hold time limit is no longer affected by changes to the
 system clock.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.3/Belay-1.3.3.dmg" length="6302032" type="application/octet-stream" sparkle:edSignature="zhzw2tOJhRfzN88XcEy7sgAkqJ+82XxleKfh2OOolYIFq4TiROgjD91ibSZPKaGtGLUyfiQETCMAvYPZM8JkAQ=="/>
-        </item>
-        <item>
-            <title>1.3.2</title>
-            <pubDate>Tue, 25 Aug 2026 15:05:16 +0300</pubDate>
-            <sparkle:version>8</sparkle:version>
-            <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.3.2. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.3.2</h2>
-<ul>
-  <li><b>Codex gets precise detection.</b> Belay now reads Codex&#8217;s own
-      turn markers, so starts and finishes are exact and retries get the same
-      patience as Claude Code. No setup needed.</li>
-  <li><b>Two more agents are built in.</b> Copilot CLI and OpenCode now have
-      ready-made presets. One click to add either one.</li>
-  <li><b>Background work still counts.</b> If a turn ends while background
-      agents or shell jobs are still running, Belay keeps the Mac awake until
-      they finish.</li>
-  <li><b>The network stays awake too.</b> While Belay is holding, it also asks
-      macOS to keep the network active, so SSH sessions and streaming replies
-      can keep going.</li>
-</ul>
-<p class="quiet">Also: Belay knows you&#8217;re needed as soon as an agent asks
-a question, and presets now say clearly when their folder is missing.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.2/Belay-1.3.2.dmg" length="6274552" type="application/octet-stream" sparkle:edSignature="58YpYLc7I9RsABMaIamRK0JPBZuvs/Mw3Icv8vjxoj9cEmoF4qBGyX/1tjqKYnp9qYmImSMh72MSGgfsn1NSAg=="/>
         </item>
     </channel>
 </rss>
