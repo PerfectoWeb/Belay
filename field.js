@@ -7,9 +7,16 @@
    a change in colour, the way a printed halftone does.
 
    Belay's mark is a star, so the brightest cells are stars and everything below
-   them is a dot fading into the page. Nothing here is decoration for its own
-   sake: the hero is otherwise a flat rectangle of dark, and the field is what
-   makes moving the pointer across it feel like touching something.
+   them is a dot fading into the page. Grey rather than the brand blue: a
+   coloured ripple under a headline reads as a second thing happening, and the
+   page only has room for one. Nothing here is decoration for its own sake: the
+   page is otherwise a flat rectangle of dark, and the field is what makes
+   moving the pointer across it feel like touching something.
+
+   The canvas is fixed to the viewport rather than sized to the page. That is
+   what lets it sit behind everything without costing more: a page four screens
+   long would be four times the cells to solve and draw every frame, and this
+   way the cost is the same whatever the page's height.
 
    Switched off entirely under `prefers-reduced-motion`, while the tab is
    hidden, and while the hero is scrolled out of view. It draws nothing that
@@ -28,7 +35,9 @@ window.BelayField = function () {
     var canvas = document.createElement("canvas");
     canvas.className = "field";
     canvas.setAttribute("aria-hidden", "true");
-    host.insertBefore(canvas, host.firstChild);
+    /* Behind the whole page, not inside the hero: `[data-field]` is only the
+       switch that says whether to run at all. */
+    document.body.insertBefore(canvas, document.body.firstChild);
     var ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) { return; }
 
@@ -72,19 +81,20 @@ window.BelayField = function () {
     var visible = true;
 
     function measure() {
-        var box = host.getBoundingClientRect();
+        var width = window.innerWidth;
+        var height = window.innerHeight;
         dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = Math.max(1, Math.round(box.width * dpr));
-        canvas.height = Math.max(1, Math.round(box.height * dpr));
-        canvas.style.width = box.width + "px";
-        canvas.style.height = box.height + "px";
+        canvas.width = Math.max(1, Math.round(width * dpr));
+        canvas.height = Math.max(1, Math.round(height * dpr));
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.font = FONT_SIZE + "px ui-monospace, SFMono-Regular, Menlo, monospace";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
-        cols = Math.ceil(box.width / CELL) + 1;
-        rows = Math.ceil(box.height / CELL) + 1;
+        cols = Math.ceil(width / CELL) + 1;
+        rows = Math.ceil(height / CELL) + 1;
         var size = cols * rows;
         cur = new Float32Array(size);
         prev = new Float32Array(size);
@@ -162,16 +172,30 @@ window.BelayField = function () {
                 if (level < 0.06) { continue; }
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
-                /* Rest is a grey barely off the page; energy pulls it towards
-                   the accent, so a ripple arrives as colour and density at once. */
+                /* Rest is a grey barely off the page and energy lifts it to a
+                   brighter grey: the ripple arrives as light and density, not
+                   as colour. The blue it used to reach for competed with the
+                   headline sitting on top of it. */
                 var lift = Math.min(1, Math.max(0, (capped - 0.12) / 0.7));
-                var r = Math.round(64 + (91 - 64) * lift);
-                var g = Math.round(72 + (147 - 72) * lift);
-                var b = Math.round(88 + (255 - 88) * lift);
+                var r = Math.round(58 + (168 - 58) * lift);
+                var g = Math.round(64 + (177 - 64) * lift);
+                var b = Math.round(78 + (192 - 78) * lift);
                 ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (0.16 + capped * 0.72).toFixed(3) + ")";
                 ctx.fillText(glyph, x * CELL + half, y * CELL + half);
             }
         }
+    }
+
+    /* How much movement counts as "still". Below this the field is drawn once
+       more, at rest, and the loop stops until a pointer wakes it: an idle page
+       should not be spending a frame's work sixty times a second on a picture
+       that is not changing. */
+    var STILL = 0.0016;
+
+    function energy() {
+        var total = 0;
+        for (var i = 0; i < cur.length; i += 7) { total += Math.abs(cur[i]); }
+        return total / (cur.length / 7);
     }
 
     function frame() {
@@ -179,6 +203,10 @@ window.BelayField = function () {
         disturb();
         step();
         draw();
+        if (!pointerIn && energy() < STILL) {
+            running = false;
+            return;
+        }
         requestAnimationFrame(frame);
     }
 
@@ -190,10 +218,10 @@ window.BelayField = function () {
 
     function stop() { running = false; }
 
-    host.addEventListener("pointermove", function (event) {
-        var box = host.getBoundingClientRect();
-        pointerX = event.clientX - box.left;
-        pointerY = event.clientY - box.top;
+    window.addEventListener("pointermove", function (event) {
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        start();
         if (!pointerIn) {
             /* Arriving: the ghost starts where the pointer is, or the first
                move drags a ripple in from wherever it was left. */
@@ -205,7 +233,7 @@ window.BelayField = function () {
         }
     }, { passive: true });
 
-    host.addEventListener("pointerleave", function () { pointerIn = false; });
+    document.addEventListener("pointerleave", function () { pointerIn = false; });
 
     var resizing = null;
     window.addEventListener("resize", function () {
@@ -216,13 +244,6 @@ window.BelayField = function () {
     document.addEventListener("visibilitychange", function () {
         if (document.hidden) { stop(); } else { start(); }
     });
-
-    if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (entries) {
-            visible = entries[0].isIntersecting;
-            if (visible) { start(); } else { stop(); }
-        }, { threshold: 0 }).observe(host);
-    }
 
     measure();
     start();

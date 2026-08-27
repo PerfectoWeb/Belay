@@ -1077,20 +1077,21 @@ h2.typed .caret {
    arrived late and can be moved into place above whenever you like.
    ====================================================================== */
 
-/* The character field behind the hero. Behind everything, and deaf to the
-   pointer: the buttons on top of it must stay clickable. */
-.wrap-hero { position: relative; isolation: isolate; }
+/* The character field, behind the whole page and deaf to the pointer: the
+   buttons on top of it must stay clickable. Fixed to the viewport, so it costs
+   the same on a long page as on a short one and has no edge to be cut off at,
+   which is what the hero-sized version had. */
+.wrap-hero, .wrap { position: relative; z-index: 1; }
 
-.wrap-hero > .field {
-    position: absolute;
+body > .field {
+    position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     /* Faded at the edges, so the field has no border of its own and simply
-       stops being there. Full strength in the middle: that is where a hand
-       actually moves, and hiding it there hid the whole effect. */
-    -webkit-mask-image: radial-gradient(130% 115% at 50% 45%, #000 45%, transparent 100%);
-    mask-image: radial-gradient(130% 115% at 50% 45%, #000 45%, transparent 100%);
+       stops being there. */
+    -webkit-mask-image: radial-gradient(125% 105% at 50% 40%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(125% 105% at 50% 40%, #000 40%, transparent 100%);
 }
 
 /* The two buttons that were a single glyph now have the same two-glyph slot
@@ -1119,23 +1120,12 @@ h2.typed .caret {
    between faces, which are alternatives rather than a list. */
 .figures .origin .face + .face::before { content: none; }
 
-/* While a fact is changing. Small enough to be felt rather than watched. */
-.figures .rotates.turning .figure,
-.figures .rotates.turning .caption {
-    color: var(--accent);
-    transition: color 0.12s linear;
-}
-
-.figures .rotates .figure,
-.figures .rotates .caption { transition: color 0.5s ease-out; }
-
 /* One tooltip, moved to whatever is being hovered or focused. */
 .tip {
     position: absolute;
     z-index: 40;
     max-width: 260px;
-    padding: 6px 9px;
-    border: 1px solid var(--rule);
+    padding: 7px 10px;
     border-radius: 8px;
     background: var(--panel);
     color: var(--ink);
@@ -1150,6 +1140,23 @@ h2.typed .caret {
 }
 
 .tip { visibility: hidden; }
+
+/* The arrow. A rotated square rather than a border trick, because the tooltip
+   has no border to fake one out of, and it takes the panel's own colour so the
+   two can never disagree. */
+.tip::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    margin-left: -4.5px;
+    background: var(--panel);
+    transform: rotate(45deg);
+}
+
+.tip::after { bottom: -4px; }
+.tip.below::after { bottom: auto; top: -4px; }
 .tip.is-on { opacity: 1; transform: translateY(0); visibility: visible; }
 .tip.below { transform: translateY(-3px); }
 .tip.below.is-on { transform: translateY(0); }
@@ -1162,4 +1169,86 @@ h2.typed .caret {
    and drawing it would be a battery cost with nothing in return. */
 @media (hover: none) {
     .wrap-hero > .field { display: none; }
+}
+
+/* The Demo link sits in a line of links and has to look like one, but it opens
+   a dialog rather than going anywhere, so it is a button underneath. */
+.version .link.demo {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.version .link.demo:hover { text-decoration-thickness: 2px; }
+
+/* The video, in the browser's own modal. No border and no chrome of its own:
+   the rounded frame and the dark behind it are the whole design. */
+dialog.film {
+    width: min(1040px, 92vw);
+    max-width: none;
+    padding: 0;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    overflow: visible;
+    color: var(--ink);
+}
+
+dialog.film::backdrop {
+    background: rgba(6, 8, 12, 0.82);
+    backdrop-filter: blur(6px);
+}
+
+dialog.film .frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+dialog.film iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+dialog.film .shut {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ink) 12%, transparent);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.18s ease-out;
+}
+
+dialog.film .shut:hover { background: color-mix(in srgb, var(--ink) 22%, transparent); }
+dialog.film .shut svg { width: 17px; height: 17px; }
+
+/* On a phone the close button has nowhere above the video to live, so it moves
+   inside the frame's corner. */
+@media (max-width: 560px) {
+    dialog.film { width: 94vw; }
+    dialog.film .shut {
+        top: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #fff;
+    }
 }

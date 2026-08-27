@@ -581,9 +581,36 @@ def days_since(first):
     return (datetime.date.today() - datetime.date.fromisoformat(first)).days
 
 
-def stamp(iso):
-    """A date the way the rest of the page writes them: 27.08.2026."""
-    return datetime.date.fromisoformat(iso).strftime("%d.%m.%Y")
+# Month names, short, per language. Written out rather than taken from the C
+# library: `strftime` follows the machine's locale, and the machine building
+# this site is one Mac in one country, so every language would have come out
+# in that one's words.
+MONTHS = {
+    "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "ru": ["янв", "фев", "мар", "апр", "мая", "июн",
+           "июл", "авг", "сен", "окт", "ноя", "дек"],
+    "de": ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni",
+           "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."],
+    "es": ["ene", "feb", "mar", "abr", "may", "jun",
+           "jul", "ago", "sept", "oct", "nov", "dic"],
+    "fr": ["janv.", "févr.", "mars", "avr.", "mai", "juin",
+           "juil.", "août", "sept.", "oct.", "nov.", "déc."],
+    "it": ["gen", "feb", "mar", "apr", "mag", "giu",
+           "lug", "ago", "set", "ott", "nov", "dic"],
+}
+
+
+def stamp(iso, code="en"):
+    """A date a person reads rather than parses: 27 Aug 2026.
+
+    Chinese puts the year first and marks each part, which is how dates are
+    written there; everything else is day, month, year.
+    """
+    day = datetime.date.fromisoformat(iso)
+    if code == "zh":
+        return f"{day.year}\u5e74{day.month}\u6708{day.day}\u65e5"
+    return f"{day.day:02d} {MONTHS[code][day.month - 1]} {day.year}"
 
 
 def console_note():
@@ -694,14 +721,14 @@ def landing(code):
         "downloads_total": str(STATS_DIRECT + (STATS_APPSTORE or 0)),
         "appstore_line": f'{t["appstore_count"]} {STATS_APPSTORE}',
         "direct_line": f'{t["direct_count"]} {STATS_DIRECT}',
-        "tip_appstore": t["updated"].format(date=stamp(APPSTORE_UPDATED)),
-        "tip_direct": t["updated"].format(date=stamp(DIRECT_UPDATED)),
+        "tip_appstore": t["updated"].format(date=stamp(APPSTORE_UPDATED, code)),
+        "tip_direct": t["updated"].format(date=stamp(DIRECT_UPDATED, code)),
         "releases_count": str(STATS_RELEASES),
         "changes_count": str(STATS_COMMITS),
         "stars_count": str(STATS_STARS),
         "days_number": str(days_since(FIRST_COMMIT)),
         "first_commit": FIRST_COMMIT,
-        "since_line": t["since_note"].format(date=stamp(FIRST_COMMIT)),
+        "since_line": t["since_note"].format(date=stamp(FIRST_COMMIT, code)),
         "gallery": "\n".join(gallery(code, t)),
         "support_head": typed_heading(t["support_head"]),
         "language_picker": "\n".join(language_picker(code, 1, t["language"], "")),

@@ -211,6 +211,80 @@
         window.addEventListener("scroll", hide, { passive: true });
     }
 
+    /* ---------------------------------------------------------------- film */
+
+    /* The demo video, which is not on the page until somebody asks for it.
+
+       An `<iframe>` in the markup would fetch YouTube for every visitor,
+       including the ones who never press play, and this page tells people it
+       has no telemetry: quietly handing their address to Google on arrival
+       would make that a half-truth. So the player is built on the first click,
+       from `youtube-nocookie.com`, and torn out again when the dialog closes so
+       the sound stops with it.
+
+       `<dialog>` rather than a hand-made overlay: the modal state, the focus
+       trap, the Escape key and the inert page behind it are all the browser's
+       already, and every hand-made version of that misses one of them. */
+    function film() {
+        var dialog = document.querySelector("[data-film]");
+        var slot = dialog && dialog.querySelector("[data-film-slot]");
+        var openers = [].slice.call(document.querySelectorAll("[data-demo]"));
+        if (!dialog || !slot || !openers.length || !dialog.showModal) { return; }
+
+        function open(id) {
+            var frame = document.createElement("iframe");
+            frame.src = "https://www.youtube-nocookie.com/embed/" + id
+                + "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+            frame.title = dialog.getAttribute("aria-label") || "";
+            frame.allow = "autoplay; fullscreen; picture-in-picture";
+            frame.setAttribute("allowfullscreen", "");
+            frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+            slot.replaceChildren(frame);
+            dialog.showModal();
+        }
+
+        /* Emptied first, then closed. Emptying is the part that matters: a
+           player left in the page keeps its connection and, on some builds,
+           keeps making noise behind a dialog nobody can see.
+
+           Not hung off the `close` event, which is where this started: some
+           engines — the one embedded in this project's own tooling among them —
+           toggle `open` without ever dispatching it, and the video played on
+           under a closed dialog. The event is still listened for, because an
+           engine that does fire it can close the dialog by routes this code
+           never sees. */
+        function shut() { slot.replaceChildren(); }
+
+        function dismiss() {
+            shut();
+            if (dialog.open) { dialog.close(); }
+        }
+
+        openers.forEach(function (button) {
+            button.addEventListener("click", function () {
+                open(button.getAttribute("data-demo"));
+            });
+        });
+        dialog.addEventListener("close", shut);
+        dialog.addEventListener("cancel", shut);
+        dialog.querySelectorAll("[data-film-close]").forEach(function (button) {
+            button.addEventListener("click", dismiss);
+        });
+        /* Escape, taken by hand for the same reason. */
+        dialog.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                event.preventDefault();
+                dismiss();
+            }
+        });
+        /* Clicking the darkness closes it. The dialog element covers the whole
+           screen, so a click that lands on the element itself and not on its
+           children is a click outside the video. */
+        dialog.addEventListener("click", function (event) {
+            if (event.target === dialog) { dismiss(); }
+        });
+    }
+
     /* ------------------------------------------------------------- startup */
 
     function begin() {
@@ -218,6 +292,7 @@
         watchTheFigures();
         rotateTheMiddleFigure();
         tooltips();
+        film();
         if (window.BelayField) { window.BelayField(); }
     }
 
