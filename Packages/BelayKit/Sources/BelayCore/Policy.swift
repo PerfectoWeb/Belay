@@ -33,6 +33,16 @@ public struct AwakePolicy: Sendable, Equatable {
     /// Lifetime of each IOKit assertion before it self-releases.
     public var assertionTimeout: TimeInterval
 
+    /// The longest an unclosed tool call may speak for a session.
+    ///
+    /// Not a setting: nobody should have to know what a tool call is to keep
+    /// their Mac awake through a test run. An hour covers the long ones — a
+    /// full build, an integration suite — and bounds the one failure this can
+    /// have, an agent killed between `PreToolUse` and `PostToolUse`, to an hour
+    /// of holding instead of the awake limit's four. See
+    /// `SessionState.openToolCallSince`.
+    public static let openToolCallBudget: TimeInterval = 60 * 60
+
     public static let `default` = AwakePolicy(
         mode: .auto,
         // A round minute, and one of `SettingsPresets.gracePeriods`. It was 90 s,

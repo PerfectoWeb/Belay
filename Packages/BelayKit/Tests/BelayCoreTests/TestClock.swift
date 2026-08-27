@@ -57,7 +57,8 @@ extension ActivitySignal {
         session: String = "s1",
         at: Date,
         confidence: Confidence = .inferred,
-        workspace: String? = "acme-api"
+        workspace: String? = "acme-api",
+        toolCall: ToolCallEdge? = nil
     ) -> ActivitySignal {
         ActivitySignal(
             provider: .claudeCode,
@@ -65,7 +66,8 @@ extension ActivitySignal {
             activity: activity,
             workspace: workspace,
             timestamp: at,
-            confidence: confidence
+            confidence: confidence,
+            toolCall: toolCall
         )
     }
 }

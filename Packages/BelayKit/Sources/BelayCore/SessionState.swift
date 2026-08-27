@@ -35,6 +35,22 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     public var name: String?
     public var exact: Reading?
     public var inferred: Reading?
+    /// When the agent entered a tool call it has not come back from.
+    ///
+    /// This is the answer to R6, and the reason Precise Detection is worth
+    /// turning on. A tool call that runs for half an hour — a test suite, a
+    /// build — writes nothing at all, so every inferred reading says the turn
+    /// is over, and the exact reading that said otherwise goes stale after
+    /// `hookFreshnessWindow`. But a `PreToolUse` with no `PostToolUse` after it
+    /// is not a stale reading: it is an unclosed bracket, and the agent is
+    /// demonstrably still inside it. While the bracket is open the exact
+    /// reading keeps its rank however old it is.
+    ///
+    /// Bounded, because a bracket can be lost: an agent killed mid-tool fires
+    /// nothing. `AwakePolicy.openToolCallBudget` is the ceiling, the process
+    /// sweep ends genuinely dead sessions sooner, and the awake limit sits
+    /// above both.
+    public var openToolCallSince: Date?
 
     /// When this session first became known. Drives the UI's elapsed column.
     public let firstSeen: Date
@@ -79,6 +95,13 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         case .exact:
             if let existing = exact, existing.at > signal.timestamp { return }
             exact = reading
+            // Ordered with the reading, not before it: a hook that arrived out
+            // of order must not close a bracket a newer one opened.
+            switch signal.toolCall {
+            case .opened: openToolCallSince = signal.timestamp
+            case .closed: openToolCallSince = nil
+            case nil: break
+            }
         case .inferred:
             if let existing = inferred, existing.at > signal.timestamp { return }
             inferred = reading
@@ -101,11 +124,25 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// An exact observation outranks any inferred one while it is fresh, which
     /// is what stops a lagging file write from resurrecting a finished turn. Once
     /// hooks go quiet for `freshness`, the file watcher takes over again.
-    public func effectiveActivity(now: Date, freshness: TimeInterval) -> SessionActivity {
+    public func effectiveActivity(
+        now: Date, freshness: TimeInterval, toolCallBudget: TimeInterval = .infinity
+    ) -> SessionActivity {
         if exact?.activity == .ended || inferred?.activity == .ended { return .ended }
-        if let exact, now.timeIntervalSince(exact.at) <= freshness { return exact.activity }
+        if let exact,
+            now.timeIntervalSince(exact.at) <= freshness
+                || isInsideToolCall(now: now, budget: toolCallBudget)
+        {
+            return exact.activity
+        }
         if let inferred { return inferred.activity }
         return exact?.activity ?? .idle
+    }
+
+    /// Whether the agent is still inside a tool call it opened and, if so,
+    /// whether that claim is young enough to be worth believing.
+    public func isInsideToolCall(now: Date, budget: TimeInterval) -> Bool {
+        guard let since = openToolCallSince else { return false }
+        return now.timeIntervalSince(since) <= budget
     }
 
     public func isExpired(now: Date, ttl: TimeInterval) -> Bool {
@@ -117,8 +154,14 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// `nil` when there is nothing to flip to, or the two already agree — the
     /// crossing changes nothing then. Lets the driver wake exactly at the flip
     /// instead of noticing it up to a safety tick late.
-    public func exactFreshnessDeadline(window: TimeInterval) -> Date? {
+    public func exactFreshnessDeadline(window: TimeInterval, toolCallBudget: TimeInterval) -> Date? {
         guard let exact, let inferred, exact.activity != inferred.activity else { return nil }
+        // An open bracket suspends the crossing, so the moment worth waking for
+        // is the bracket's own ceiling instead.
+        if let since = openToolCallSince {
+            let ceiling = since + toolCallBudget
+            return max(ceiling, exact.at + window)
+        }
         return exact.at + window
     }
 }

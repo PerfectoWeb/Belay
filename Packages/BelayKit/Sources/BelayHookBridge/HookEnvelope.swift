@@ -98,13 +98,32 @@ extension HookEnvelope {
         // freshness window. Mid-turn it added nothing either: the parent's
         // heartbeats and the subagents' watched transcripts carry the hold.
         guard event != .subagentStop else { return nil }
+        let reading = activity(for: event)
         return ActivitySignal(
             provider: provider,
             session: SessionID(sessionID),
-            activity: activity(for: event),
+            activity: reading,
             workspace: workspace,
             timestamp: now,
-            confidence: .exact)
+            confidence: .exact,
+            toolCall: edge(for: event, reading: reading))
+    }
+
+    /// Which side of a tool call this event is.
+    ///
+    /// Opening is narrow on purpose: only a `PreToolUse` that means work. The
+    /// question tools (`AskUserQuestion`, `ExitPlanMode`) read as
+    /// `awaitingUser`, and a human being asked something is not a tool call to
+    /// hold the Mac awake for — that state has its own budget.
+    ///
+    /// Everything else closes, and that breadth is the safety. The tool
+    /// returning closes it, and so does the turn stopping, the next prompt
+    /// arriving, or a permission being asked for — an agent cannot be inside
+    /// two tool calls at once, so any later word from it means the previous one
+    /// is over. That is what keeps an interrupted run from holding: whatever
+    /// the person does next fires something.
+    private func edge(for event: HookEvent, reading: SessionActivity) -> ToolCallEdge {
+        event == .preToolUse && reading == .working ? .opened : .closed
     }
 
     /// The payload can overrule the event's default reading, in two cases.

@@ -35,8 +35,16 @@ struct SessionLedger {
 
     mutating func prune(now: Date, policy: AwakePolicy) {
         sessions = sessions.filter { _, session in
-            let activity = session.effectiveActivity(now: now, freshness: policy.hookFreshnessWindow)
+            let activity = session.effectiveActivity(
+                now: now, freshness: policy.hookFreshnessWindow,
+                toolCallBudget: AwakePolicy.openToolCallBudget)
             guard activity != .ended else { return false }
+            // A tool call emits nothing while it runs, so the plain TTL would
+            // evict the very session the bracket exists to protect — ten
+            // minutes into a half-hour test suite, with the hold going with it.
+            if session.isInsideToolCall(now: now, budget: AwakePolicy.openToolCallBudget) {
+                return true
+            }
             return !session.isExpired(now: now, ttl: Self.ttl(for: activity, policy: policy))
         }
     }
@@ -46,7 +54,9 @@ struct SessionLedger {
     mutating func refreshDerived(now: Date, policy: AwakePolicy) -> [SessionID: SessionActivity] {
         var activities: [SessionID: SessionActivity] = [:]
         for (id, var session) in sessions {
-            let activity = session.effectiveActivity(now: now, freshness: policy.hookFreshnessWindow)
+            let activity = session.effectiveActivity(
+                now: now, freshness: policy.hookFreshnessWindow,
+                toolCallBudget: AwakePolicy.openToolCallBudget)
             activities[id] = activity
             session.workingSince = activity == .working ? (session.workingSince ?? now) : nil
             session.awaitingSince = activity == .awaitingUser ? (session.awaitingSince ?? now) : nil
@@ -65,7 +75,10 @@ struct SessionLedger {
             // The exact-reading freshness crossing: when a hook goes quiet the
             // fused activity flips with no new signal, and without this the
             // driver only noticed it at its 60 s safety tick.
-            if let freshness = session.exactFreshnessDeadline(window: policy.hookFreshnessWindow) {
+            if let freshness = session.exactFreshnessDeadline(
+                window: policy.hookFreshnessWindow,
+                toolCallBudget: AwakePolicy.openToolCallBudget)
+            {
                 dates.append(freshness)
             }
             return dates

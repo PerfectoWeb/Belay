@@ -167,6 +167,42 @@ struct AgentChildrenTests {
         #expect(AgentChildren.busy(among: [me], youngerThan: 45, now: now.addingTimeInterval(600)) == [])
     }
 
+    /// The shape that actually occurs. Claude Code runs its Bash tool inside one
+    /// long-lived shell, so the process doing the work is a grandchild and the
+    /// direct-children-only probe saw an old shell and nothing else — the Mac
+    /// slept ninety seconds into a half-hour test run.
+    @Test("Work started deeper than one level still counts")
+    func grandchildrenCount() throws {
+        // A stand-in for the persistent tool shell: started long before the
+        // work, and never restarted.
+        let shell = Process()
+        shell.executableURL = URL(fileURLWithPath: "/bin/sh")
+        // Backgrounded and waited on, so the shell has to fork rather than
+        // exec `sleep` in its own place and leave one level where there
+        // should be two.
+        shell.arguments = ["-c", "/bin/sleep 30 & wait"]
+        try shell.run()
+        defer {
+            shell.terminate()
+            shell.waitUntilExit()
+        }
+        // Proof there is a second level at all: without it this test would
+        // pass on the direct-children probe it exists to catch.
+        var descendants = 0
+        for _ in 0..<50 {
+            descendants = AgentChildren.descendantCount(of: shell.processIdentifier)
+            if descendants > 0 { break }
+            usleep(20_000)
+        }
+        try #require(descendants > 0, "the shell forked; there is a second level to see")
+
+        let me = getpid()
+        let now = Date()
+        // The shell is the only direct child and it is old news by this horizon;
+        // everything young lives one level below it.
+        #expect(AgentChildren.busy(among: [me], youngerThan: 60, now: now)?.contains(me) == true)
+    }
+
     /// The wiring: the sweep has to hand the probe its own idle horizon and its
     /// own clock, or the bound above is computed against the wrong numbers. The
     /// probe answers "busy" only when given both, so a `.working` here is proof.

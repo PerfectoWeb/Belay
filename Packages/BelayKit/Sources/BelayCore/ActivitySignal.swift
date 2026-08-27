@@ -42,6 +42,21 @@ public enum Confidence: Int, Sendable, Comparable {
     }
 }
 
+/// Whether a signal marks the start or the end of a tool call.
+///
+/// Only an agent's own hooks can say this, so only Tier B ever sets it: a file
+/// watcher sees a tool call and a finished turn as the same silence, which is
+/// the whole problem this exists to solve. `nil` means "no opinion", which is
+/// what every inferred signal carries.
+public enum ToolCallEdge: Sendable, Equatable {
+    /// The agent has entered a tool call and is blocked inside it.
+    case opened
+    /// Whatever was running is over: the tool returned, the turn stopped, or a
+    /// new prompt arrived. Anything that is not the start of a tool call ends
+    /// one, because the agent cannot be inside two at once.
+    case closed
+}
+
 public struct ActivitySignal: Sendable, Equatable {
     public let provider: ProviderID
     public let session: SessionID
@@ -61,6 +76,8 @@ public struct ActivitySignal: Sendable, Equatable {
     public let name: String?
     public let timestamp: Date
     public let confidence: Confidence
+    /// Set by the hook bridge only. See `SessionState.openToolCallSince`.
+    public let toolCall: ToolCallEdge?
 
     public init(
         provider: ProviderID,
@@ -71,7 +88,8 @@ public struct ActivitySignal: Sendable, Equatable {
         kind: String? = nil,
         name: String? = nil,
         timestamp: Date,
-        confidence: Confidence
+        confidence: Confidence,
+        toolCall: ToolCallEdge? = nil
     ) {
         self.provider = provider
         self.session = session
@@ -82,6 +100,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.name = name
         self.timestamp = timestamp
         self.confidence = confidence
+        self.toolCall = toolCall
     }
 }
 

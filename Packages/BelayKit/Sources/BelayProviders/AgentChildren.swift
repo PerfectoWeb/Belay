@@ -40,23 +40,94 @@ import Foundation
 /// (the 8m46s `/bin/zsh` build in `docs/DISCOVERY`) stops counting once it ages
 /// out, so Tier C no longer extends the tail indefinitely for it. That is the
 /// intended trade — invariant 4 says the assertion is always released, and an
-/// unbounded hold nobody can explain is the worse of the two failures.
+/// unbounded hold nobody can explain is the worse of the two failures. For a
+/// user who has turned Precise Detection on, the open tool-call bracket in
+/// `SessionState` covers that case exactly instead of approximately.
+///
+/// ## Why the whole tree
+///
+/// Direct children alone missed the common shape. Claude Code runs its Bash
+/// tool inside one shell that lives for the whole session, so the shell is an
+/// old direct child and the thing actually doing the work — `node`, `pytest`,
+/// `swift`, the compiler it forks in turn — is a grandchild or deeper. Every
+/// worker a test runner spawns is evidence of the same tool call, and looking
+/// one level down saw none of them. The descendants are walked from the agent
+/// down rather than by scanning upward from each process, which keeps the cost
+/// proportional to the agent's own tree and not to the machine's.
 enum AgentChildren {
-    /// Pids from `pids` that have at least one child started within `maxAge`.
+    /// How deep the walk goes before it stops looking.
+    ///
+    /// Deep enough for a real tool call — shell, runner, worker, compiler, the
+    /// thing the compiler forks — and shallow enough that a pid table mangled
+    /// by pid reuse into a cycle cannot cost anything. The visited set already
+    /// makes cycles terminate; this bounds the work as well.
+    private static let maxDepth = 8
+
+    /// Pids from `pids` with at least one descendant started within `maxAge`.
     ///
     /// One `sysctl` for the whole table rather than one call per pid: the sweep
     /// runs every 15 s and the process list is read once anyway.
     static func busy(among pids: Set<pid_t>, youngerThan maxAge: TimeInterval, now: Date) -> Set<pid_t>? {
         guard !pids.isEmpty, let children = childTable() else { return nil }
         let cutoff = now.addingTimeInterval(-maxAge)
+        var byParent: [pid_t: [Child]] = [:]
+        for child in children {
+            byParent[child.parent, default: []].append(child)
+        }
         var busy: Set<pid_t> = []
-        for child in children where pids.contains(child.parent) && child.startedAt > cutoff {
-            busy.insert(child.parent)
+        for pid in pids where hasYoungDescendant(of: pid, in: byParent, after: cutoff) {
+            busy.insert(pid)
         }
         return busy
     }
 
+    /// Breadth-first, so the shallow answer — a tool that just started — is
+    /// found without walking a long-lived server's subtree first.
+    private static func hasYoungDescendant(
+        of pid: pid_t, in byParent: [pid_t: [Child]], after cutoff: Date
+    ) -> Bool {
+        var frontier = [pid]
+        var visited: Set<pid_t> = [pid]
+        var depth = 0
+        while !frontier.isEmpty, depth < maxDepth {
+            var next: [pid_t] = []
+            for parent in frontier {
+                for child in byParent[parent] ?? [] {
+                    if child.startedAt > cutoff { return true }
+                    if visited.insert(child.pid).inserted { next.append(child.pid) }
+                }
+            }
+            frontier = next
+            depth += 1
+        }
+        return false
+    }
+
+    /// How many processes sit under `pid`, at any depth. Only the tests use
+    /// this, to tell "the probe found nothing" apart from "there was nothing to
+    /// find" — a shell that execs in place leaves no second level at all.
+    static func descendantCount(of pid: pid_t) -> Int {
+        guard let children = childTable() else { return 0 }
+        var byParent: [pid_t: [Child]] = [:]
+        for child in children { byParent[child.parent, default: []].append(child) }
+        var frontier = [pid]
+        var visited: Set<pid_t> = [pid]
+        var total = 0
+        while !frontier.isEmpty {
+            var next: [pid_t] = []
+            for parent in frontier {
+                for child in byParent[parent] ?? [] where visited.insert(child.pid).inserted {
+                    total += 1
+                    next.append(child.pid)
+                }
+            }
+            frontier = next
+        }
+        return total
+    }
+
     private struct Child {
+        let pid: pid_t
         let parent: pid_t
         let startedAt: Date
     }
@@ -87,7 +158,10 @@ enum AgentChildren {
             let process = buffer[index]
             let parent = process.kp_eproc.e_ppid
             guard process.kp_proc.p_pid > 0, parent > 0 else { continue }
-            children.append(Child(parent: parent, startedAt: startTime(of: process)))
+            children.append(
+                Child(
+                    pid: process.kp_proc.p_pid, parent: parent,
+                    startedAt: startTime(of: process)))
         }
         return children
     }
