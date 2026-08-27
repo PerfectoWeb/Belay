@@ -172,8 +172,11 @@ jobs:
               installs = max(installs, int(found.group(1)))
           io.open(CACHE, "w", encoding="utf-8").write(
               json.dumps(cached, indent=1, sort_keys=True) + "\n")
-          io.open("stats.py", "w", encoding="utf-8").write(
-              re.sub(r"^APPSTORE = .*$", f"APPSTORE = {installs}", text, count=1, flags=re.M))
+          text = re.sub(r"^APPSTORE = .*$", f"APPSTORE = {installs}", text, count=1, flags=re.M)
+          text = re.sub(r'^APPSTORE_UPDATED = .*$',
+                        f'APPSTORE_UPDATED = "{datetime.date.today().isoformat()}"',
+                        text, count=1, flags=re.M)
+          io.open("stats.py", "w", encoding="utf-8").write(text)
           print(f"App Store installs: {installs}")
           PY
 

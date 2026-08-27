@@ -45,10 +45,19 @@ jobs:
           direct=$(printf '%s' "$releases_json" \
             | jq '[.[] | .assets[] | select(.name | endswith(".dmg")) | .download_count] | add // 0')
           releases=$(printf '%s' "$releases_json" | jq 'length')
-          echo "direct=$direct releases=$releases"
-          python3 - "$direct" "$releases" <<'PY'
+          stars=$(gh api "repos/${GITHUB_REPOSITORY}" --jq '.stargazers_count')
+          # The commit count comes from the pagination header rather than the
+          # list: asking for one commit a page makes the number of pages the
+          # answer, and saves fetching four hundred commit objects to count them.
+          commits=$(gh api "repos/${GITHUB_REPOSITORY}/commits?sha=main&per_page=1" -i \
+            | sed -n 's/.*[?&]page=\([0-9]*\)>; rel="last".*/\1/p' | head -1)
+          [ -n "$commits" ] || commits=0
+          echo "direct=$direct releases=$releases commits=$commits stars=$stars"
+          python3 - "$direct" "$releases" "$commits" "$stars" <<'PY'
           import io, re, sys
+          import datetime
           direct, releases = int(sys.argv[1]), int(sys.argv[2])
+          commits, stars = int(sys.argv[3]), int(sys.argv[4])
           # A zero here would mean the API answered with nothing useful, and
           # writing that would erase a true number with a lie.
           if direct <= 0:
@@ -67,8 +76,17 @@ jobs:
           # then edit stats.py by hand and this will pick the number up.
           direct = max(direct, held("DIRECT"))
           releases = max(releases, held("RELEASES"))
-          text = re.sub(r"^DIRECT = .*$", f"DIRECT = {direct}", text, count=1, flags=re.M)
-          text = re.sub(r"^RELEASES = .*$", f"RELEASES = {releases}", text, count=1, flags=re.M)
+          # Commits and stars are the two that can honestly fall: a branch can
+          # be rewritten and a star can be taken back. Only a zero is refused,
+          # which is what an API answering with nothing looks like.
+          commits = commits or held("COMMITS")
+          stars = stars if stars > 0 else held("STARS")
+          today = datetime.date.today().isoformat()
+          for name, value in [("DIRECT", direct), ("RELEASES", releases),
+                              ("COMMITS", commits), ("STARS", stars)]:
+              text = re.sub(rf"^{name} = .*$", f"{name} = {value}", text, count=1, flags=re.M)
+          text = re.sub(r'^DIRECT_UPDATED = .*$', f'DIRECT_UPDATED = "{today}"',
+                        text, count=1, flags=re.M)
           io.open(path, "w", encoding="utf-8").write(text)
           PY
 
