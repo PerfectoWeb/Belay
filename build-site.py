@@ -201,6 +201,7 @@ def wordmark():
 ANALYTICS_TOKEN = "8999ea5c44b046c19a08dcf09d5b4336"
 
 STYLE_STAMP = ""
+TEMPLATE = None
 
 # The same treatment for the social card, and for a sharper reason: Slack,
 # iMessage, X and Facebook each keep their own copy of whatever was at this
@@ -656,380 +657,105 @@ def console_note():
     ]
     return lines
 
-def landing(code):
-    t = L[code]
-    lines = head(code, t["title"], t["meta"], 1, "")
-    lines += header(code, 1)
-    lines += [
-        f'<h1>{filled_heading(t["h1"])}</h1>',
-        "",
-        f'<p class="lede">{t["lede"]}</p>',
-        "",
-        # The second paragraph is the one somebody reads only if the first one
-        # interested them, so it is folded. `details` and not a script: the
-        # page has no JavaScript, and a disclosure that needs some is a
-        # paragraph that disappears when it fails.
-        f'<details class="more"><summary>{t["more"]}</summary>',
-        f'<p>{t["body"]}</p>',
-        "</details>",
-        "",
-        '<div class="actions get">',
-        '    <a class="button stacked primary" href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg">'
-        f'<span class="marks">{DOWNLOAD_MARK}{APPLE_MARK}</span><span class="lines"><span class="lead">{t["download"]}</span>'
-        f'<span class="under">{t["version"].format(version=VERSION)}</span></span>'
-        f'{SPARKLE}{SPARK_BED}</a>',
-    ] + ([
-        # The words inside are hidden on a phone, where the button shrinks to
-        # its glyph, so the name has to live on the link itself.
+def appstore_button(t):
+    """The App Store button, or nothing while the app is not on the store.
+
+    A function rather than an inline conditional so the page's markup can live
+    in `template.html`: a template has no way to express "only when true", and
+    the honest place for that decision is here.
+
+    The words inside are hidden on a phone, where the button shrinks to its
+    glyph, so the name has to live on the link itself.
+    """
+    if not APP_STORE_LIVE:
+        return []
+    return [
         f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}" '
         f'aria-label="{t["appstore_top"]} {t["appstore_name"]}">'
         f'{APPSTORE_MARK}<span class="lines">'
         f'<span class="under">{t["appstore_top"]}</span>'
         f'<span class="lead">{t["appstore_name"]}</span></span></a>',
-    ] if APP_STORE_LIVE else []) + [
-        '    <a class="button stacked secondary" href="https://github.com/PerfectoWeb/Belay">'
-        f'{GITHUB_MARK}<span class="lines"><span class="lead">{t["source"]}</span>'
-        '<span class="under">PerfectoWeb/Belay</span></span></a>',
-        "</div>",
-        "",
-        f'<p class="version">{t["free"]} '
-        f'<a href="https://github.com/PerfectoWeb/Belay/releases/latest">{t["notes"]}</a>'
-        ' <span aria-hidden="true">&#8226;</span> '
-        f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/ROADMAP.md">{t["roadmap"]}</a></p>',
-        "",
-        '<ul class="badges">',
-        '    <li><span class="apple" aria-hidden="true">&#63743;</span>macOS 14+</li>',
-        '    <li class="outline"><svg class="chip-glyph" viewBox="0 0 20 20" aria-hidden="true">'
-        '<rect x="5.2" y="5.2" width="9.6" height="9.6" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/>'
-        '<path stroke="currentColor" stroke-width="1.2" stroke-linecap="round" d="M8 5.2V3M12 5.2V3M8 17v-2.2M12 17v-2.2M5.2 8H3M5.2 12H3M17 8h-2.2M17 12h-2.2"/>'
-        '<text x="10" y="12.6" text-anchor="middle" font-size="6.4" font-weight="700" fill="currentColor">M</text>'
-        '</svg>Apple silicon</li>',
-        '    <li class="outline"><svg class="chip-glyph" viewBox="0 0 16 16" aria-hidden="true">'
-        '<circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/>'
-        '<path fill="currentColor" d="M5.6 5.9h1.5v4.2H5.6zM8.4 5.9h1.1v.7a1.4 1.4 0 0 1 1.2-.8c.9 0 1.4.6'
-        ' 1.4 1.6v2.7h-1.5V7.8c0-.5-.2-.7-.6-.7s-.6.3-.6.8v2.2H8.4z"/></svg>Intel</li>',
-        "</ul>",
-        "",
-    ] + figures(code, t) + [
-        f'<h2 class="modes-head">{t["modes_head"]}</h2>',
-    ] + gallery(code, t) + [
-        "",
-        "",
-        f'<h2 class="typed" data-typed>{typed_heading(t["support_head"])}</h2>',
-        "",
-        f'<p>{t["support_body"]}</p>',
-        "",
-        '<div class="actions give">',
-        f'    <a class="button donate" href="{DONATE_URL}">{HEART}{t["donate"]}</a>',
-    ] + ([
-        f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>',
-    ] if SPONSORS_LIVE else []) + [
-        f'    <a class="button secondary" href="https://github.com/PerfectoWeb/Belay">'
-        f'{STAR}{t["star"]}</a>',
-        "</div>",
-        "",
-        "<footer>",
-        '    <div class="row">',
-        "        <p>",
-        f'            <a href="privacy/">{t["privacy"]}</a> &middot;',
-        f'            <a href="https://github.com/PerfectoWeb/Belay/issues">{t["bug"]}</a> &middot;',
-        '            <a href="https://perfecto-web.com">perfecto-web.com</a>',
-        "        </p>",
     ]
-    lines += language_picker(code, 1, t["language"], "")
-    lines += [
-        "    </div>",
-        f'    <p class="fine">{T[code]["fine"]}</p>',
-        '    <p class="fine copyright">&copy; 2026 '
-        '<a href="https://perfecto-web.com">PerfectoWeb</a>. '
-        f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
-        f'{L[code]["licence"]}</a>. {L[code]["made_by"]}<br>'
-        f'{L[code]["trademarks"]}</p>',
-        "</footer>",
-        "",
-        "<script>",
-        "  // Closes the language picker when the click lands anywhere else.",
-        "  // CSS cannot see a click outside an element, and the alternative was",
-        "  // a hidden checkbox with a full-screen label over the page, which is",
-        "  // more machinery in the markup than this is in script. Without it the",
-        "  // picker still opens, still closes on its own summary, and every link",
-        "  // in it works.",
-        "  document.addEventListener('click', function (event) {",
-        "    document.querySelectorAll('details.languages[open]').forEach(function (picker) {",
-        "      if (!picker.contains(event.target)) { picker.open = false; }",
-        "    });",
-        "  });",
-        "</script>",
-        "",
-        # The gallery. Everything it does is add and remove two class names, and
-        # the movement is the stylesheet's. It marks itself live first, which is
-        # what reveals the dots and the click zones: they are hidden until
-        # something can answer them, because a pointer cursor over a strip that
-        # does nothing is a promise the page cannot keep.
-        # The lightbox lives outside every section so nothing can clip it, and
-        # carries `hidden` so it does not exist for anybody without the script.
-        '<div class="lightbox" data-lightbox hidden tabindex="-1" role="dialog" aria-modal="true">',
-        '    <button class="sheet" type="button" data-close aria-label="Close"></button>',
-        '    <img alt="">',
-        '    <button class="page back" type="button" data-step="-1" aria-label="Previous">'
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
-        ' stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>',
-        '    <button class="page next" type="button" data-step="1" aria-label="Next">'
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
-        ' stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>',
-        '    <button class="shut" type="button" data-close aria-label="Close">'
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"'
-        ' stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>',
-        "</div>",
-        "",
-        # The headline's cycle: fill white, the two closing words turn green,
-        # they blink out, then the white words go grey one at a time and it
-        # starts over. Every colour here is an animation rather than a `color`,
-        # for the reason spelled out in the stylesheet.
-        "<script>",
-        "  (function () {",
-        "    var head = document.querySelector('h1');",
-        "    if (!head) { return; }",
-        "    var words = Array.prototype.slice.call(head.querySelectorAll('.word'));",
-        "    var tints = head.querySelectorAll('.tint');",
-        "    if (!tints.length) { return; }",
-        "    // Nothing loops for somebody who asked for less movement. The fill",
-        "    // itself is already guarded in the stylesheet.",
-        "    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }",
-        "",
-        "    // Paused whenever the heading is off screen or the tab is in the",
-        "    // background, so an animation nobody is looking at costs nothing.",
-        "    var seen = true;",
-        "    if ('IntersectionObserver' in window) {",
-        "      new IntersectionObserver(function (entries) {",
-        "        seen = entries[0].isIntersecting;",
-        "      }, { threshold: 0.2 }).observe(head);",
-        "    }",
-        "    function idle() { return document.hidden || !seen; }",
-        "    function wait(ms) {",
-        "      return new Promise(function (done) {",
-        "        setTimeout(function tick() {",
-        "          if (idle()) { setTimeout(tick, 400); return; }",
-        "          done();",
-        "        }, ms);",
-        "      });",
-        "    }",
-        "",
-        "    // Both fills are the stylesheet's, and each one lasts the last",
-        "    // word's delay plus its own duration. The three numbers below live",
-        "    // in two places: change one, change the other.",
-        "    var FILL = (words.length - 1) * 150 + 900;",
-        "    var GREEN = (tints.length - 1) * 150 + 900;",
-        "    var BLINK = 5 * 340;",
-        "",
-        "    function refill() {",
-        "      head.removeAttribute('data-tint');",
-        "      head.classList.remove('is-cooling');",
-        "      words.forEach(function (word) {",
-        "        word.style.removeProperty('--cool-step');",
-        "        // Restarting a CSS animation takes a reset and a reflow read.",
-        "        word.style.animation = 'none';",
-        "        void word.offsetWidth;",
-        "        word.style.animation = '';",
-        "      });",
-        "    }",
-        "",
-        "    // Which order the words lose their white in. `Mac` goes first because",
-        "    // it is the word the sentence is about, and the rest follow in a",
-        "    // shuffle that is redrawn every cycle, so the ending never looks",
-        "    // choreographed. Returns how many words are in it, which is what the",
-        "    // wait afterwards is measured from.",
-        "    //",
-        "    // The two green words are left out on purpose: they arrive here",
-        "    // already grey from the blink, and they hold it.",
-        "    function coolOrder() {",
-        "      var pool = words.filter(function (word) {",
-        "        return !word.classList.contains('tint');",
-        "      });",
-        "      if (!pool.length) { return 0; }",
-        "      var first = 0;",
-        "      for (var i = 0; i < pool.length; i++) {",
-        "        if (pool[i].textContent.indexOf('Mac') >= 0) { first = i; break; }",
-        "      }",
-        "      var rest = pool.filter(function (word, i) { return i !== first; });",
-        "      for (var j = rest.length - 1; j > 0; j--) {",
-        "        var pick = Math.floor(Math.random() * (j + 1));",
-        "        var held = rest[j]; rest[j] = rest[pick]; rest[pick] = held;",
-        "      }",
-        "      [pool[first]].concat(rest).forEach(function (word, step) {",
-        "        word.style.setProperty('--cool-step', step);",
-        "      });",
-        "      return pool.length;",
-        "    }",
-        "",
-        "    async function cycle() {",
-        "      for (;;) {",
-        "        refill();",
-        "        await wait(FILL + 2400);",
-        "        // White to green, word after word, the same way grey became",
-        "        // white. One effect, one style, rather than two.",
-        "        head.dataset.tint = 'green';",
-        "        await wait(GREEN + 3200);",
-        "        head.dataset.tint = 'blink';",
-        "        await wait(BLINK);",
-        "        await wait(400);",
-        "        // Word by word rather than all together: the last one to go out",
-        "        // decides how long this takes, so the wait is measured, not fixed.",
-        "        var going = coolOrder();",
-        "        head.classList.add('is-cooling');",
-        "        await wait(Math.max(0, going - 1) * 138 + 620);",
-        "        await wait(900);",
-        "      }",
-        "    }",
-        "    cycle();",
-        "  })();",
-        "</script>",
-        "",
-        "<script>",
-        "  // The support heading types itself when it comes into view, once.",
-        "  // Letters are revealed by a timer rather than by animating `display`,",
-        "  // which Safari accepts and then ignores.",
-        "  document.querySelectorAll('[data-typed]').forEach(function (head) {",
-        "    var letters = head.querySelectorAll('.ch');",
-        "    if (!letters.length) { return; }",
-        "    // Only now are the letters hidden: a page whose script never ran",
-        "    // keeps its heading exactly as it was served.",
-        "    head.classList.add('is-armed');",
-        "    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;",
-        "    function type() {",
-        "      letters.forEach(function (letter, index) {",
-        "        if (still) { letter.classList.add('is-on'); return; }",
-        "        setTimeout(function () { letter.classList.add('is-on'); }, index * 55);",
-        "      });",
-        "    }",
-        "    // Once, whoever gets there first, and the heading is never left",
-        "    // blank: hiding the letters and then failing to reveal them is the",
-        "    // one outcome worse than not animating at all.",
-        "    var typed = false;",
-        "    function once() { if (!typed) { typed = true; type(); } }",
-        "    if (!('IntersectionObserver' in window)) { once(); return; }",
-        "    var watch = new IntersectionObserver(function (entries) {",
-        "      entries.forEach(function (entry) {",
-        "        if (!entry.isIntersecting) { return; }",
-        "        watch.unobserve(entry.target);",
-        "        once();",
-        "      });",
-        "    }, { threshold: 0.6 });",
-        "    watch.observe(head);",
-        "    // The watchdog. An observer that never fires leaves eleven hidden",
-        "    // letters and a blinking caret, which is what a browser pane that",
-        "    // does not run its rendering pipeline actually did.",
-        "    setTimeout(once, 6000);",
-        "  });",
-        "</script>",
-        "",
-        "<script>",
-        "  document.querySelectorAll('[data-gallery]').forEach(function (gallery) {",
-        "    var frames = gallery.querySelectorAll('.frame');",
-        "    var dots = gallery.querySelectorAll('.dot');",
-        "    if (frames.length < 2) { return; }",
-        "    var at = 0;",
-        "    gallery.classList.add('is-live');",
-        "",
-        "    // Give a frame its address the first time anything wants to see it,",
-        "    // and warm its two neighbours so a step either way is already there.",
-        "    // Called from `show` and from the lightbox, because the lightbox can",
-        "    // reach a frame the gallery never showed.",
-        "    function wake(index) {",
-        "      [index, index - 1, index + 1].forEach(function (n) {",
-        "        var frame = frames[(n + frames.length) % frames.length];",
-        "        if (frame && !frame.getAttribute('src') && frame.dataset.src) {",
-        "          frame.src = frame.dataset.src;",
-        "        }",
-        "      });",
-        "    }",
-        "    // Warming the neighbours waits for the page to finish loading: the",
-        "    // point of holding the addresses back is the first paint.",
-        "    if (document.readyState === 'complete') { wake(0); }",
-        "    else { window.addEventListener('load', function () { wake(0); }); }",
-        "    function show(next, back) {",
-        "      next = (next + frames.length) % frames.length;",
-        "      wake(next);",
-        "      if (next === at) { return; }",
-        "      // Which way it is going. Taken from the control that was pressed,",
-        "      // because comparing the indexes gets the two wrapping steps",
-        "      // backwards: last to first is a smaller number and still forward.",
-        "      if (back === undefined) { back = next < at; }",
-        "      if (back) { gallery.setAttribute('data-back', ''); }",
-        "      else { gallery.removeAttribute('data-back'); }",
-        "      frames[at].classList.remove('is-on');",
-        "      dots[at].classList.remove('is-on');",
-        "      at = next;",
-        "      frames[at].classList.add('is-on');",
-        "      dots[at].classList.add('is-on');",
-        "      dots.forEach(function (dot, index) {",
-        "        dot.setAttribute('aria-selected', index === at ? 'true' : 'false');",
-        "      });",
-        "    }",
-        "    dots.forEach(function (dot) {",
-        "      dot.addEventListener('click', function () { show(Number(dot.dataset.to)); });",
-        "    });",
-        "    gallery.querySelectorAll('.turn').forEach(function (zone) {",
-        "      var step = Number(zone.dataset.step);",
-        "      zone.addEventListener('click', function () { show(at + step, step < 0); });",
-        "    });",
-        "",
-        "    // The middle of the picture, which the two zones deliberately leave",
-        "    // alone, opens it full size.",
-        "    var box = document.querySelector('[data-lightbox]');",
-        "    if (!box) { return; }",
-        "    var big = box.querySelector('img');",
-        "    var open = false;",
-        "    // The lightbox keeps its own index. Writing straight into `at` left",
-        "    // the gallery pointing at one frame while `at` said another, so",
-        "    // closing it changed nothing (`show` returns early when the index is",
-        "    // already current) and the next middle-click opened a picture that",
-        "    // was not the one on the page.",
-        "    var bigAt = 0;",
-        "    function lift(index) {",
-        "      index = (index + frames.length) % frames.length;",
-        "      bigAt = index;",
-        "      wake(index);",
-        "      big.src = frames[index].getAttribute('src') || frames[index].dataset.src;",
-        "      box.hidden = false;",
-        "      open = true;",
-        "      // A frame, so the browser has the element before the class lands",
-        "      // and the fade actually runs.",
-        "      requestAnimationFrame(function () { box.classList.add('is-open'); });",
-        "      box.focus();",
-        "    }",
-        "    function drop() {",
-        "      open = false;",
-        "      box.classList.remove('is-open');",
-        "      // Long enough for the fade out, then really gone.",
-        "      setTimeout(function () { if (!open) { box.hidden = true; } }, 260);",
-        "      // Bring the gallery to whatever was last on screen in the",
-        "      // lightbox, so closing it leaves the page where the eye left off.",
-        "      show(bigAt, bigAt < at);",
-        "    }",
-        "    gallery.querySelector('.frames').addEventListener('click', function () { lift(at); });",
-        "    box.querySelectorAll('[data-close]').forEach(function (shut) {",
-        "      shut.addEventListener('click', drop);",
-        "    });",
-        "    box.querySelectorAll('.page').forEach(function (page) {",
-        "      page.addEventListener('click', function () { lift(bigAt + Number(page.dataset.step)); });",
-        "    });",
-        "    document.addEventListener('keydown', function (event) {",
-        "      if (!open) { return; }",
-        "      if (event.key === 'Escape') { drop(); }",
-        "      if (event.key === 'ArrowRight') { lift(bigAt + 1); }",
-        "      if (event.key === 'ArrowLeft') { lift(bigAt - 1); }",
-        "    });",
-        "  });",
-        "</script>",
-        "",
-    ] + console_note() + [
-        "</div>",
-        "</body>",
-        "</html>",
-        "",
-    ]
-    return external("\n".join(lines))
+
+
+def sponsor_button(t):
+    """The sponsors link, once there is somewhere for it to point."""
+    if not SPONSORS_LIVE:
+        return []
+    return [f'    <a class="button secondary" href="{SPONSORS_URL}">{t["sponsor"]}</a>']
+
+
+def landing(code):
+    """The landing page, filled in from `template.html`.
+
+    The markup lives in that file rather than in this one, so it can be opened,
+    read and edited as the HTML it is. Everything here is data: the seven
+    languages' words, and the handful of parts a template cannot express — the
+    document head, the figures with their live counts, the gallery, a button
+    that only exists while the app is on the App Store.
+
+    `{{name}}` is the whole syntax. A name that is a text key is filled from
+    the language's table; a name that is a block below is filled by the code
+    that builds it. Anything else is left alone and shows up in the page, which
+    is the loudest way to report a typo.
+    """
+    t = L[code]
+    blocks = {
+        "head": "\n".join(head(code, t["title"], t["meta"], 1, "")),
+        "header": "\n".join(header(code, 1)),
+        "h1": filled_heading(t["h1"]),
+        "version_line": t["version"].format(version=VERSION),
+        "appstore_button": "\n".join(appstore_button(t)),
+        "sponsor_button": "\n".join(sponsor_button(t)),
+        "figures": "\n".join(figures(code, t)),
+        "gallery": "\n".join(gallery(code, t)),
+        "support_head": typed_heading(t["support_head"]),
+        "language_picker": "\n".join(language_picker(code, 1, t["language"], "")),
+        "console": "\n".join(console_note()),
+        "fine": T[code]["fine"],
+    }
+    return external(render(template(), blocks, t))
+
+
+def template():
+    """`template.html`, read once and kept for the other six languages."""
+    global TEMPLATE
+    if TEMPLATE is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "template.html")
+        # Exactly one newline at the end, however many the file was saved
+        # with: an editor that adds a blank line should not add one to the
+        # page, and an editor that strips them should not take the page's.
+        TEMPLATE = io.open(path, encoding="utf-8").read().rstrip("\n") + "\n"
+    return TEMPLATE
+
+
+def render(markup, blocks, texts):
+    """Fills `{{name}}` from the blocks first, then from the language's words.
+
+    Blocks win, because a block named after a text key is the rendered form of
+    that key — the heading with its highlight markup, the version line with a
+    number in it — and the raw string would be the wrong half of the job.
+    """
+    def fill(match):
+        name = match.group(1)
+        if name in blocks:
+            return blocks[name]
+        if name in texts:
+            return texts[name]
+        # Left in place on purpose: a page that prints {{typo}} says where the
+        # problem is, and a page that silently drops it does not.
+        return match.group(0)
+
+    out = []
+    for line in markup.split("\n"):
+        filled = re.sub(r"\{\{([a-z_0-9]+)\}\}", fill, line)
+        # A block that came to nothing takes its line with it. Otherwise the
+        # sponsors button nobody has yet would leave a blank line behind, and
+        # the page would drift a little every time a block is switched off.
+        if not filled.strip() and line.strip():
+            continue
+        out.append(filled)
+    return "\n".join(out)
 
 
 def privacy(code):
