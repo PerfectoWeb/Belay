@@ -3,8 +3,41 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.6.2</title>
+            <pubDate>Thu, 27 Aug 2026 20:10:02 +0300</pubDate>
+            <sparkle:version>14</sparkle:version>
+            <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.6.2. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.2</h2>
+<ul>
+  <li><b>Long-running commands keep your Mac awake.</b> Belay now follows
+      silent tests, builds and other tool calls until they actually finish.</li>
+  <li><b>More sleep-delay options.</b> Hold Shift in the Sleep delay menu to
+      reveal 15 minutes, 30 minutes and 1 hour.</li>
+  <li><b>Review Precise Detection rules anytime.</b> An agent&#8217;s menu now
+      opens Rules&#8230; without making you remove detection first.</li>
+</ul>
+<p class="quiet">Also: repeated diagnostics messages now back off instead of
+flooding the log.</p>]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.2/Belay-1.6.2.dmg" length="7158166" type="application/octet-stream" sparkle:edSignature="oP0misfwy4lQoJmcQSAJWaJkoXuefkJdBDsLH1M4VHa7MzQILDirc7PbW47ozdk2LdWU33ogn6vQOLjQLAOuAw=="/>
+        </item>
+        <item>
             <title>1.6.1</title>
-            <pubDate>Wed, 26 Aug 2026 12:15:10 +0300</pubDate>
+            <pubDate>Thu, 27 Aug 2026 20:10:04 +0300</pubDate>
             <sparkle:version>13</sparkle:version>
             <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -41,7 +74,7 @@ exit Belay records what happened in the log on the next launch.</p>]]></descript
         </item>
         <item>
             <title>1.6.0</title>
-            <pubDate>Wed, 26 Aug 2026 12:15:12 +0300</pubDate>
+            <pubDate>Thu, 27 Aug 2026 20:11:13 +0300</pubDate>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -81,7 +114,7 @@ interface.</p>
         </item>
         <item>
             <title>1.5.0</title>
-            <pubDate>Wed, 26 Aug 2026 12:15:14 +0300</pubDate>
+            <pubDate>Thu, 27 Aug 2026 20:11:15 +0300</pubDate>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -122,7 +155,7 @@ Belay.</p>
         </item>
         <item>
             <title>1.4.0</title>
-            <pubDate>Wed, 26 Aug 2026 12:15:16 +0300</pubDate>
+            <pubDate>Thu, 27 Aug 2026 20:11:17 +0300</pubDate>
             <sparkle:version>10</sparkle:version>
             <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -160,48 +193,6 @@ The dimming setting now says when dimming actually happens, What&#8217;s New
 has a new card layout, and the panel no longer moves when you switch
 modes.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.4.0/Belay-1.4.0.dmg" length="6700717" type="application/octet-stream" sparkle:edSignature="POBOZMBMkhqr8vVqe9Hc35ZAGg5cjFUSxLWlGZN4KljiGLhYrjReJMPAIRjr1ekTpDsDvocJCtNSGBZezULwCQ=="/>
-        </item>
-        <item>
-            <title>1.3.3</title>
-            <pubDate>Wed, 26 Aug 2026 12:15:18 +0300</pubDate>
-            <sparkle:version>9</sparkle:version>
-            <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.3.3. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.3.3</h2>
-<ul>
-  <li><b>The panel stays in sync.</b> Finished turns now go quiet within
-      seconds and stay that way. No stale rows after restarts, no jumping
-      back to Working, and the idle timer starts from when the session
-      actually went quiet.</li>
-  <li><b>Codex crashes no longer linger.</b> If Codex quits or crashes
-      mid-turn, Belay notices the process is gone and lets go within seconds
-      instead of waiting through the retry grace period.</li>
-  <li><b>The lid helper restores what it changed.</b> It remembers your
-      previous sleep setting and puts exactly that back. If you enabled
-      disablesleep yourself, Belay leaves it alone.</li>
-  <li><b>Diagnostics are more useful.</b> Every session transition and hook
-      signal now gets one line in the local diagnostics log. Nothing leaves
-      your Mac.</li>
-</ul>
-<p class="quiet">Also: late signals after a turn ends no longer keep the Mac
-awake for five extra minutes, opening the Codex app no longer floods the
-panel, and the lid-hold time limit is no longer affected by changes to the
-system clock.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.3.3/Belay-1.3.3.dmg" length="6302032" type="application/octet-stream" sparkle:edSignature="zhzw2tOJhRfzN88XcEy7sgAkqJ+82XxleKfh2OOolYIFq4TiROgjD91ibSZPKaGtGLUyfiQETCMAvYPZM8JkAQ=="/>
         </item>
     </channel>
 </rss>
