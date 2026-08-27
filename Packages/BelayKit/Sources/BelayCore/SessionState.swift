@@ -95,13 +95,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         case .exact:
             if let existing = exact, existing.at > signal.timestamp { return }
             exact = reading
-            // Ordered with the reading, not before it: a hook that arrived out
-            // of order must not close a bracket a newer one opened.
-            switch signal.toolCall {
-            case .opened: openToolCallSince = signal.timestamp
-            case .closed: openToolCallSince = nil
-            case nil: break
-            }
+            recordToolCallEdge(signal)
         case .inferred:
             if let existing = inferred, existing.at > signal.timestamp { return }
             inferred = reading
@@ -119,6 +113,16 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         if name == nil { name = signal.name }
     }
 
+    /// Ordered with the reading, not before it: a hook that arrived out of
+    /// order must not close a bracket a newer one opened.
+    private mutating func recordToolCallEdge(_ signal: ActivitySignal) {
+        switch signal.toolCall {
+        case .opened: openToolCallSince = signal.timestamp
+        case .closed: openToolCallSince = nil
+        case nil: break
+        }
+    }
+
     /// The fusion rule from docs/03, evaluated against `now`.
     ///
     /// An exact observation outranks any inferred one while it is fresh, which
@@ -128,11 +132,10 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         now: Date, freshness: TimeInterval, toolCallBudget: TimeInterval = .infinity
     ) -> SessionActivity {
         if exact?.activity == .ended || inferred?.activity == .ended { return .ended }
-        if let exact,
-            now.timeIntervalSince(exact.at) <= freshness
-                || isInsideToolCall(now: now, budget: toolCallBudget)
-        {
-            return exact.activity
+        if let exact {
+            let fresh = now.timeIntervalSince(exact.at) <= freshness
+            let running = isInsideToolCall(now: now, budget: toolCallBudget)
+            if fresh || running { return exact.activity }
         }
         if let inferred { return inferred.activity }
         return exact?.activity ?? .idle

@@ -93,3 +93,29 @@ struct SettingsSnapTests {
         #expect(try migrated(gracePeriod: 45).gracePeriod == 45)
     }
 }
+
+/// The delays behind the Shift key. They are ordinary settings values once
+/// chosen, so everything the visible list has to satisfy, they have to too.
+@Suite("Long sleep delays")
+struct LongGracePeriodTests {
+    @Test("The long delays extend the list rather than replacing it")
+    func extendedListIsTheUnion() {
+        let all = SettingsPresets.allGracePeriods
+        #expect(all == all.sorted())
+        #expect(Set(all) == Set(SettingsPresets.gracePeriods + SettingsPresets.longGracePeriods))
+        // The default has to stay in the always-visible half: a setting whose
+        // own value is behind a modifier key draws as a blank box.
+        #expect(SettingsPresets.gracePeriods.contains(AwakePolicy.default.gracePeriod))
+        #expect(Set(SettingsPresets.gracePeriods).isDisjoint(with: SettingsPresets.longGracePeriods))
+    }
+
+    @Test("Every long delay is one the settings layer will actually keep")
+    func longDelaysSurviveClamping() {
+        for seconds in SettingsPresets.longGracePeriods {
+            #expect(
+                SettingsBounds.gracePeriod.contains(seconds),
+                "\(seconds) is outside the stored bounds and would be clamped away")
+            #expect(SettingsPresets.nearest(seconds, in: SettingsPresets.allGracePeriods) == seconds)
+        }
+    }
+}

@@ -29,6 +29,16 @@ struct BehaviourSettingsPane: View {
             set: { binding.wrappedValue = $0 })
     }
 
+    /// The non-optional twin of `offered`: a stored value from another build's
+    /// list still has to land on a row this one draws.
+    private func snapped(
+        _ binding: Binding<TimeInterval>, to choices: [TimeInterval]
+    ) -> Binding<TimeInterval> {
+        Binding(
+            get: { SettingsPresets.nearest(binding.wrappedValue, in: choices) },
+            set: { binding.wrappedValue = $0 })
+    }
+
     @Bindable var settings: SettingsStore
 
     var body: some View {
@@ -41,18 +51,18 @@ struct BehaviourSettingsPane: View {
                         your Mac sleep.
                         """
                 ) {
-                    // An empty label, not a label that happens to be an
-                    // empty string: the latter asks the catalogue for "".
-                    Picker(selection: offered($settings.gracePeriod, SettingsPresets.gracePeriods)) {
-                        ForEach(SettingsPresets.gracePeriods, id: \.self) { seconds in
-                            Text(verbatim: DurationChoice.label(seconds)).tag(seconds)
-                        }
-                    } label: {
-                        EmptyView()
-                    }
-                    .labelsHidden()
+                    // Shift reveals the long delays. See `RevealingPicker`
+                    // for why they are not simply in the list.
+                    RevealingPicker(
+                        selection: snapped(
+                            $settings.gracePeriod, to: SettingsPresets.allGracePeriods),
+                        base: SettingsPresets.gracePeriods,
+                        extended: SettingsPresets.longGracePeriods,
+                        label: { DurationChoice.label($0) },
+                        accessibilityLabel: String(localized: "Sleep delay"),
+                        width: SettingsMetrics.controlWidth
+                    )
                     .frame(maxWidth: SettingsMetrics.controlWidth, alignment: .leading)
-                    .accessibilityLabel("Sleep delay")
                 }
             }
 

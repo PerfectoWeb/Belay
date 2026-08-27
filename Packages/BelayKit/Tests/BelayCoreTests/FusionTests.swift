@@ -49,7 +49,9 @@ struct FusionTests {
             id: SessionID("s1"), provider: .claudeCode, workspace: nil, firstSeen: base)
         session.record(.make(.working, at: base, confidence: .exact))
         session.record(.make(.idle, at: base, confidence: .inferred))
-        #expect(session.exactFreshnessDeadline(window: 300, toolCallBudget: .infinity) == base.addingTimeInterval(300))
+        #expect(
+            session.exactFreshnessDeadline(window: 300, toolCallBudget: .infinity)
+                == base.addingTimeInterval(300))
 
         // Agreeing readings: the crossing changes nothing, so there is none.
         session.record(.make(.working, at: base, confidence: .inferred))

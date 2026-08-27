@@ -9,6 +9,19 @@ public enum SettingsPresets {
     /// the app's `DurationChoice`, and a test fails if one ever does not.
     public static let gracePeriods: [TimeInterval] = [30, 60, 180, 300, 600]
 
+    /// The long delays, shown only while Shift is held.
+    ///
+    /// Out of the way on purpose. Waiting half an hour after every agent goes
+    /// quiet is the opposite of what Belay is for, and somebody who reaches for
+    /// it usually wants the thing Precise Detection already does — hold for as
+    /// long as a tool call actually runs, then let go. So these stay behind a
+    /// key for the cases that genuinely need a blunt instrument, and the
+    /// ordinary list keeps its five honest choices.
+    public static let longGracePeriods: [TimeInterval] = [900, 1800, 3600]
+
+    /// Every delay a stored value could legitimately be, in order.
+    public static let allGracePeriods: [TimeInterval] = (gracePeriods + longGracePeriods).sorted()
+
     /// 30 min through 12 h, then `nil` for "until turned off".
     /// Must contain `AwakePolicy.default.maxContinuousAwake`. It did not, and
     /// the consequence was not cosmetic: the pop-up had no matching tag, drew
