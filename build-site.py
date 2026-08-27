@@ -567,13 +567,33 @@ def figures(code, t):
     start = datetime.date.fromisoformat(FIRST_COMMIT)
     days = (datetime.date.today() - start).days
     since = t["since_note"].format(date=start.strftime("%d.%m.%Y"))
+    # The glyphs speak the same language as the app's own icon set: a 24-point
+    # canvas, two-point round strokes, the violet accent carrying the main
+    # shape and the ink carrying the detail. `pathLength="1"` lets the
+    # stylesheet draw each stroke from nothing without knowing its true length.
+    def glyph(accent, ink):
+        return (
+            '<svg class="glyph" viewBox="0 0 24 24" width="24" height="24"'
+            ' fill="none" aria-hidden="true">'
+            f'<path d="{accent}" stroke="#6E5DFF" pathLength="1"/>'
+            f'<path d="{ink}" stroke="currentColor" pathLength="1"/>'
+            "</svg>"
+        )
+    art = {
+        "downloads": glyph("M12 4V14M7.5 9.5L12 14L16.5 9.5",
+                           "M4 16.5V18.5C4 19.6 4.9 20.5 6 20.5H18C19.1 20.5 20 19.6 20 18.5V16.5"),
+        "releases": glyph("M12 3L21 8V16L12 21L3 16V8L12 3Z",
+                          "M3 8L12 13L21 8M12 13V21"),
+        "days": glyph("M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z",
+                      "M12 6V12L16 14"),
+    }
     return [
         '<ul class="figures">',
-        f'    <li><span class="figure" title="{" · ".join(parts)}">{total}</span>'
+        f'    <li>{art["downloads"]}<span class="figure" title="{" · ".join(parts)}">{total}</span>'
         f'<span class="caption">{t["downloads"]}</span></li>',
-        f'    <li><span class="figure">{STATS_RELEASES}</span>'
+        f'    <li>{art["releases"]}<span class="figure">{STATS_RELEASES}</span>'
         f'<span class="caption">{t["releases"]}</span></li>',
-        f'    <li><span class="figure" data-since="{FIRST_COMMIT}">{days}</span>'
+        f'    <li>{art["days"]}<span class="figure" data-since="{FIRST_COMMIT}">{days}</span>'
         f'<span class="caption" title="{since}">{t["days"]}</span></li>',
         "</ul>",
         "",
