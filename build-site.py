@@ -740,9 +740,10 @@ def landing(code):
     lines += [
         "    </div>",
         f'    <p class="fine">{T[code]["fine"]}</p>',
-        '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
+        '    <p class="fine copyright">&copy; 2026 '
+        '<a href="https://perfecto-web.com">PerfectoWeb</a>. '
         f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
-        f'{L[code]["licence"]}</a>.<br>'
+        f'{L[code]["licence"]}</a>. {L[code]["made_by"]}<br>'
         f'{L[code]["trademarks"]}</p>',
         "</footer>",
         "",
@@ -1073,9 +1074,10 @@ def privacy(code):
     lines += [
         "    </div>",
         f'    <p class="fine">{t["fine"]}</p>',
-        '    <p class="fine copyright">&copy; 2026 PerfectoWeb. '
+        '    <p class="fine copyright">&copy; 2026 '
+        '<a href="https://perfecto-web.com">PerfectoWeb</a>. '
         f'<a href="https://github.com/PerfectoWeb/Belay/blob/main/LICENSE">'
-        f'{L[code]["licence"]}</a>.<br>'
+        f'{L[code]["licence"]}</a>. {L[code]["made_by"]}<br>'
         f'{L[code]["trademarks"]}</p>',
         "</footer>",
         "",
