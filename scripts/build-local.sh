@@ -46,6 +46,18 @@ cp -R "$APP" "$ROOT/build/Belay.app"
 #   BELAY_SIGN_LOCAL="Developer ID Application" scripts/build-local.sh Debug
 IDENTITY="${BELAY_SIGN_LOCAL:--}"
 
+# Hardened runtime turns on Library Validation, which asks that everything the
+# process maps be signed by the same team. An ad-hoc signature has no team at
+# all, and dyld reads two absent team IDs as two *different* ones: the app died
+# at launch with "Sparkle.framework ... have different Team IDs" even though
+# codesign reported both as ad-hoc with no team. So the hardened runtime goes on
+# only when there is a real identity to make it mean something; an ad-hoc build
+# is a local test build and gains nothing from it.
+HARDENED=(--options runtime)
+[ "$IDENTITY" = "-" ] && HARDENED=()
+# `set -u` and the bash 3.2 that ships with macOS call an empty array's
+# expansion an unbound variable, so every use guards it.
+
 echo "==> re-sign everything inside ($IDENTITY)"
 # Everything, not only the framework bundles. A Debug build keeps most of its
 # code in `Belay.debug.dylib` beside the executable, and Xcode leaves a
@@ -61,17 +73,17 @@ find "$ROOT/build/Belay.app" \
     \( -name "*.app" -o -name "*.xpc" -o -name "*.framework" -o -name "*.dylib" \) \
     -not -path "$ROOT/build/Belay.app" -print0 \
     | sort -rz \
-    | xargs -0 -I{} codesign --force --sign "$IDENTITY" --options runtime --timestamp=none {} \
+    | xargs -0 -I{} codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} --timestamp=none {} \
         >/dev/null 2>&1
 # The lid helper is a bare executable, which the bundle patterns above cannot
 # see, and it must be sealed before the app is: SMAppService checks its
 # signature, and signing it after the app would break the app's own seal.
 HELPER="$ROOT/build/Belay.app/Contents/MacOS/BelayLidHelper"
 if [ -f "$HELPER" ]; then
-    codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
+    codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} --timestamp=none \
         "$HELPER" >/dev/null 2>&1
 fi
-codesign --force --sign "$IDENTITY" --options runtime --timestamp=none \
+codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} --timestamp=none \
     "$ROOT/build/Belay.app" >/dev/null 2>&1
 
 echo "==> verify signature"
