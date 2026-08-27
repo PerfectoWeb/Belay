@@ -50,9 +50,17 @@ for tag in $tags; do
     # older releases on purpose, so a download that fails leaves the previous
     # run's files in place, every check downstream passes, and the appcast that
     # gets published quietly omits the version somebody is waiting for.
-    gh release download "$tag" -R PerfectoWeb/Belay -D "$RELEASES" \
-        --pattern "Belay-*.dmg" --clobber >/dev/null 2>&1 \
-        || die "could not download the assets of $tag"
+    #
+    # Retried, because one flaky download should not throw away twenty good
+    # ones. GitHub hands out a TLS timeout often enough that a single attempt
+    # turned a release into a coin toss.
+    attempt=1
+    until gh release download "$tag" -R PerfectoWeb/Belay -D "$RELEASES" \
+        --pattern "Belay-*.dmg" --clobber >/dev/null 2>&1; do
+        [ "$attempt" -ge 4 ] && die "could not download the assets of $tag"
+        sleep $((attempt * 3))
+        attempt=$((attempt + 1))
+    done
 
     want="$RELEASES/Belay-${tag#v}.dmg"
     [ -f "$want" ] || die "$tag published no Belay-${tag#v}.dmg"
