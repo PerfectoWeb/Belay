@@ -596,27 +596,37 @@ def console_note():
     the app is for, so the console is a place to say hello rather than a place
     that happens to be empty. It logs once, prints no data about the visitor,
     and holds no state.
+
+    The picture is the site's own mark: three four-pointed stars, drawn as
+    astroids in density shading, one colour per line so the light gathers at
+    the core and falls off toward the edges. The drawing is generated, not
+    typed; the generator lives with the session notes.
     """
     art = [
-        "  ██████  ███████ ██       █████  ██    ██",
-        "  ██   ██ ██      ██      ██   ██  ██  ██ ",
-        "  ██████  █████   ██      ███████   ████  ",
-        "  ██   ██ ██      ██      ██   ██    ██   ",
-        "  ██████  ███████ ███████ ██   ██    ██   ",
+        ("                         \u00b7", "#1f5bd6"),
+        ("   \u00b7            \u2591                  \u2592        \u00b7", "#3c72df"),
+        ("           \u00b7   \u2591\u2592\u2591               \u2591\u2592\u2593\u2592\u2591", "#5788e7"),
+        ("             \u2591\u2591\u2592\u2593\u2592\u2591\u2591          \u2591\u2591\u2592\u2593\u2593\u2588\u2593\u2593\u2592\u2591\u2591", "#709cee"),
+        ("           \u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2592\u2592\u2591\u2591            \u2591\u2593\u2591", "#87aff5"),
+        ("     \u00b7  \u2591\u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2588\u2593\u2593\u2593\u2592\u2592\u2591\u2591\u2591          \u2591", "#9bbefb"),
+        ("  \u2591\u2591\u2591\u2592\u2592\u2592\u2593\u2593\u2593\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2593\u2593\u2592\u2592\u2592\u2591\u2591\u2591              \u00b7", "#a8c9ff"),
+        (" \u00b7      \u2591\u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2588\u2593\u2593\u2593\u2592\u2592\u2591\u2591\u2591", "#9bbefb"),
+        ("           \u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2592\u2592\u2591\u2591                 \u2591", "#87aff5"),
+        ("             \u2591\u2591\u2592\u2593\u2592\u2591\u2591                  \u2591\u2593\u2591", "#709cee"),
+        ("        \u00b7      \u2591\u2592\u2591                   \u2591\u2592\u2593\u2592\u2591", "#5788e7"),
+        ("                \u2591           \u00b7          \u2591", "#3c72df"),
+        ("                      \u00b7                    \u00b7", "#1f5bd6"),
     ]
     lines = [
         "<script>",
         "(function(){",
-        "  var art=[",
-    ]
-    lines += [f"    {json.dumps(row)}," for row in art]
-    lines += [
-        "  ].join('\\n');",
-        "  var brand='color:#1f6bff;font-weight:600';",
+        "  var art=" + json.dumps("\n".join("%c" + row for row, _ in art)) + ";",
+        "  var glow=[" + ",".join(
+            f"'color:{col}'" for _, col in art) + "];",
         "  var quiet='color:#8a8f98';",
-        "  console.log('%c'+art, brand);",
-        "  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours.', quiet);",
-        f"  console.log('%cv{VERSION}  ·  source: https://github.com/PerfectoWeb/Belay', quiet);",
+        "  console.log.apply(console,[art].concat(glow));",
+        "  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours. \u00a9 AI', quiet);",
+        f"  console.log('%cv{VERSION}  \u00b7  source: https://github.com/PerfectoWeb/Belay', quiet);",
         "})();",
         "</script>",
         "",

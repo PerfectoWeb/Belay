@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keep your Mac awake while AI coding agents work — Belay</title>
-<meta name="description" content="A free macOS menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot CLI are working, and lets it sleep once they stop.">
+<title>Keep your Mac awake while AI coding agents work – Belay</title>
+<meta name="description" content="A free menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot work – not caffeinate, but a power layer for local AI agents on macOS.">
 <link rel="canonical" href="https://perfectoweb.github.io/Belay/en/">
-<link rel="stylesheet" href="../style.css?v=0b6eadd3ad">
+<link rel="stylesheet" href="../style.css?v=7b7a5a9da2">
 <script>
 (function(){
   var b=document.createElement('script');
@@ -24,8 +24,8 @@
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Keep your Mac awake while AI coding agents work — Belay">
-<meta property="og:description" content="A free macOS menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot CLI are working, and lets it sleep once they stop.">
+<meta property="og:title" content="Keep your Mac awake while AI coding agents work – Belay">
+<meta property="og:description" content="A free menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot work – not caffeinate, but a power layer for local AI agents on macOS.">
 <meta property="og:url" content="https://perfectoweb.github.io/Belay/en/">
 <meta property="og:image" content="https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b">
 <meta property="og:image:width" content="1280">
@@ -44,7 +44,7 @@
 <link rel="alternate" hreflang="zh-Hans" href="https://perfectoweb.github.io/Belay/zh/">
 <link rel="alternate" hreflang="x-default" href="https://perfectoweb.github.io/Belay/en/">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Belay","applicationCategory":"DeveloperApplication","operatingSystem":"macOS 14.0 or later","description":"A free macOS menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot CLI are working, and lets it sleep once they stop.","url":"https://perfectoweb.github.io/Belay/en/","downloadUrl":"https://github.com/PerfectoWeb/Belay/releases/latest","softwareVersion":"1.6.1","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"PerfectoWeb","url":"https://perfecto-web.com"},"license":"https://github.com/PerfectoWeb/Belay/blob/main/LICENSE","screenshot":"https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Belay","applicationCategory":"DeveloperApplication","operatingSystem":"macOS 14.0 or later","description":"A free menu bar app that keeps your Mac awake while Claude Code, Codex, Cline and Copilot work – not caffeinate, but a power layer for local AI agents on macOS.","url":"https://perfectoweb.github.io/Belay/en/","downloadUrl":"https://github.com/PerfectoWeb/Belay/releases/latest","softwareVersion":"1.6.1","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"PerfectoWeb","url":"https://perfecto-web.com"},"license":"https://github.com/PerfectoWeb/Belay/blob/main/LICENSE","screenshot":"https://perfectoweb.github.io/Belay/img/og.png?v=d206c4449b"}
 </script>
 </head>
 <body>
@@ -349,17 +349,11 @@
 
 <script>
 (function(){
-  var art=[
-    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588       \u2588\u2588\u2588\u2588\u2588  \u2588\u2588    \u2588\u2588",
-    "  \u2588\u2588   \u2588\u2588 \u2588\u2588      \u2588\u2588      \u2588\u2588   \u2588\u2588  \u2588\u2588  \u2588\u2588 ",
-    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588   \u2588\u2588      \u2588\u2588\u2588\u2588\u2588\u2588\u2588   \u2588\u2588\u2588\u2588  ",
-    "  \u2588\u2588   \u2588\u2588 \u2588\u2588      \u2588\u2588      \u2588\u2588   \u2588\u2588    \u2588\u2588   ",
-    "  \u2588\u2588\u2588\u2588\u2588\u2588  \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588\u2588\u2588\u2588\u2588\u2588 \u2588\u2588   \u2588\u2588    \u2588\u2588   ",
-  ].join('\n');
-  var brand='color:#1f6bff;font-weight:600';
+  var art="%c                         \u00b7\n%c   \u00b7            \u2591                  \u2592        \u00b7\n%c           \u00b7   \u2591\u2592\u2591               \u2591\u2592\u2593\u2592\u2591\n%c             \u2591\u2591\u2592\u2593\u2592\u2591\u2591          \u2591\u2591\u2592\u2593\u2593\u2588\u2593\u2593\u2592\u2591\u2591\n%c           \u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2592\u2592\u2591\u2591            \u2591\u2593\u2591\n%c     \u00b7  \u2591\u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2588\u2593\u2593\u2593\u2592\u2592\u2591\u2591\u2591          \u2591\n%c  \u2591\u2591\u2591\u2592\u2592\u2592\u2593\u2593\u2593\u2593\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2593\u2593\u2592\u2592\u2592\u2591\u2591\u2591              \u00b7\n%c \u00b7      \u2591\u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2588\u2593\u2593\u2593\u2592\u2592\u2591\u2591\u2591\n%c           \u2591\u2591\u2592\u2592\u2593\u2593\u2593\u2592\u2592\u2591\u2591                 \u2591\n%c             \u2591\u2591\u2592\u2593\u2592\u2591\u2591                  \u2591\u2593\u2591\n%c        \u00b7      \u2591\u2592\u2591                   \u2591\u2592\u2593\u2592\u2591\n%c                \u2591           \u00b7          \u2591\n%c                      \u00b7                    \u00b7";
+  var glow=['color:#1f5bd6','color:#3c72df','color:#5788e7','color:#709cee','color:#87aff5','color:#9bbefb','color:#a8c9ff','color:#9bbefb','color:#87aff5','color:#709cee','color:#5788e7','color:#3c72df','color:#1f5bd6'];
   var quiet='color:#8a8f98';
-  console.log('%c'+art, brand);
-  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours.', quiet);
+  console.log.apply(console,[art].concat(glow));
+  console.log('%cAgents can write the code. Deciding what deserves to exist is still yours. © AI', quiet);
   console.log('%cv1.6.1  ·  source: https://github.com/PerfectoWeb/Belay', quiet);
 })();
 </script>
