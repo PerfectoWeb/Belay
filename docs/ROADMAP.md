@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.6.1 is out** on GitHub and Homebrew. The Mac App Store carries 1.6.0, with 1.6.1 on the way.
+**1.6.1 is out** everywhere: GitHub, Homebrew and the Mac App Store, which took it on 26 Aug. 1.6.2 is prepared and waiting on the word to publish.
 
 </div>
 

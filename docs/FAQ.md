@@ -34,6 +34,18 @@ An agent waiting ninety seconds on a network response uses no CPU but is very
 much working. A language server in the same project can peg a core while
 absolutely nothing is happening.
 
+### My agent runs a half-hour test suite. Does the Mac stay awake?
+
+Yes, since 1.6.2. A command that long prints nothing while it runs, so the
+session file looks finished within a minute, and that used to be enough for the
+Mac to sleep about two minutes in.
+
+With Precise Detection on, the agent tells Belay when a tool call starts and
+when it comes back, and Belay holds for the whole of it. Without it, Belay
+watches the processes your agent started, all the way down: the shell that runs
+the command outlives every turn, so the thing worth seeing is the test runner
+below it.
+
 ### What about Codex, Aider, Gemini CLI, Copilot, OpenCode, Cline, DeepSeek?
 
 Claude Code, Codex, Cline and Copilot CLI are first-class and need no setup —

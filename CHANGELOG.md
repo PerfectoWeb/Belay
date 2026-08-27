@@ -5,6 +5,46 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2026-08-27
+
+### Fixed
+
+- A tool call that runs for a long time no longer reads as a finished turn
+  (risk R6). A `PreToolUse` with no `PostToolUse` after it is not a stale
+  reading but an unclosed bracket, so while one is open the exact reading keeps
+  its rank however old it is, the session is exempt from the ledger's TTL, and
+  the hold survives a half-hour test run. Bounded by
+  `AwakePolicy.openToolCallBudget` (one hour) for the case where an agent is
+  killed between the two hooks, with the process sweep and the awake limit
+  above it.
+- The busy-child sweep walks the agent's whole process tree instead of its
+  direct children. Claude Code runs its Bash tool inside one long-lived shell,
+  so the process doing the work is a grandchild and the old probe saw an old
+  shell and nothing else. Breadth-first, depth-capped, same age bound as
+  before. This is the half of the fix that works without hooks, which is the
+  only half the App Store build has.
+- The diagnostics log stops repeating itself. Consecutive identical lines are
+  counted rather than written, and the count lands on a widening interval, a
+  minute out to an hour. An unreachable lid helper wrote the same sentence
+  every fifteen seconds: 5 760 lines a day, none of them saying anything the
+  first had not.
+- `scripts/build-local.sh` produces a bundle that launches again. It signed
+  everything with `--options runtime`, and the hardened runtime's library
+  validation asks that everything a process maps carry the same team ID; an
+  ad-hoc signature has no team at all, and dyld reads two absent team IDs as
+  two different ones. `codesign --verify` passed while the app died at launch.
+  The hardened runtime is now applied only when a real identity is given.
+
+### Added
+
+- Longer sleep delays, behind Shift: 15 minutes, 30 minutes and an hour join
+  the five ordinary choices while the key is held, the way the Always On timer
+  already works. The chosen value stays visible afterwards, held or not.
+- An agent's tile menu gained a Precise Detection submenu holding Rules… and
+  Turn Off. Rules… opens the preview of what Belay writes into the agent's
+  settings and applies it in place, so reviewing the rules no longer means
+  removing detection and adding it back. Direct build only.
+
 ## [1.6.1] - 2026-08-26
 
 ### Fixed

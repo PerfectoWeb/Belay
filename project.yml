@@ -14,11 +14,11 @@ settings:
     # PRODUCT_NAME belongs to the app target only — setting it project-wide also
     # renames the test bundle's Swift module to Belay and the two collide.
     ORG_IDENTIFIER: com.perfectoweb
-    MARKETING_VERSION: "1.6.1"
+    MARKETING_VERSION: "1.6.2"
     # Build 2. Build 1 was uploaded to App Store Connect and carried a Donate
     # link in the sandboxed build, which is a guideline violation. A build
     # number cannot be reused once uploaded, so the replacement needs its own.
-    CURRENT_PROJECT_VERSION: "13"
+    CURRENT_PROJECT_VERSION: "14"
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
     MACOSX_DEPLOYMENT_TARGET: "14.0"

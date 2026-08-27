@@ -1,0 +1,82 @@
+What's New – Belay 1.6.2
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): "Review detection rules anytime".
+
+=== en ===
+
+# Long-running commands keep your Mac awake
+Tests and builds can stay quiet for minutes at a time. Belay now follows the work your agent starts, so your Mac stays awake until it finishes.
+
+# More sleep-delay options
+Hold Shift while the Sleep delay menu is open to reveal 15 minutes, 30 minutes, and 1 hour.
+
+# Review detection rules anytime
+Open an agent's menu to view or update the rules Belay writes. No need to remove detection first.
+
+=== ru ===
+
+# Долгие команды не дают Mac уснуть
+Тесты и сборки могут долго работать без вывода. Теперь Belay следит за работой, которую запускает агент, и не отпускает Mac до её завершения.
+
+# Больше вариантов задержки сна
+Удерживайте Shift в меню «Пауза перед сном», чтобы появились 15 минут, 30 минут и 1 час.
+
+# Правила определения всегда под рукой
+Откройте меню агента, чтобы посмотреть или обновить правила Belay. Отключать определение для этого больше не нужно.
+
+=== de ===
+
+# Lange Befehle halten deinen Mac wach
+Tests und Builds können minutenlang ohne Ausgabe laufen. Belay verfolgt jetzt auch die Arbeit, die dein Agent startet, und hält den Mac wach, bis sie abgeschlossen ist.
+
+# Mehr Optionen für die Schlafverzögerung
+Halte die Umschalttaste gedrückt, während das Menü „Sleep delay“ geöffnet ist, um 15 Minuten, 30 Minuten und 1 Stunde anzuzeigen.
+
+# Erkennungsregeln jederzeit ansehen
+Öffne das Menü eines Agents, um die von Belay geschriebenen Regeln anzusehen oder zu aktualisieren. Du musst die Erkennung dafür nicht mehr entfernen.
+
+=== es ===
+
+# Los comandos largos mantienen tu Mac despierto
+Las pruebas y compilaciones pueden pasar varios minutos sin mostrar nada. Belay ahora sigue el trabajo que inicia tu agente y mantiene el Mac despierto hasta que termina.
+
+# Más opciones para retrasar el reposo
+Mantén pulsada Mayúsculas mientras está abierto el menú de retraso para mostrar 15 minutos, 30 minutos y 1 hora.
+
+# Consulta las reglas de detección cuando quieras
+Abre el menú de un agente para ver o actualizar las reglas que escribe Belay. Ya no hace falta quitar la detección primero.
+
+=== fr ===
+
+# Les commandes longues gardent votre Mac éveillé
+Les tests et compilations peuvent rester silencieux pendant plusieurs minutes. Belay suit maintenant le travail lancé par votre agent et garde le Mac éveillé jusqu'à ce qu'il soit terminé.
+
+# Plus d'options pour le délai de veille
+Maintenez Maj enfoncée pendant que le menu du délai de veille est ouvert pour afficher 15 minutes, 30 minutes et 1 heure.
+
+# Consultez les règles de détection à tout moment
+Ouvrez le menu d'un agent pour consulter ou mettre à jour les règles écrites par Belay. Plus besoin de retirer la détection auparavant.
+
+=== it ===
+
+# I comandi lunghi tengono sveglio il Mac
+Test e build possono restare senza output per diversi minuti. Belay ora segue anche il lavoro avviato dall'agente e tiene sveglio il Mac finché non termina.
+
+# Più opzioni per il ritardo dello stop
+Tieni premuto Maiuscole mentre il menu è aperto per mostrare 15 minuti, 30 minuti e 1 ora.
+
+# Controlla le regole di rilevamento quando vuoi
+Apri il menu di un agente per vedere o aggiornare le regole scritte da Belay. Non serve più rimuovere prima il rilevamento.
+
+=== zh ===
+
+# 长时间运行的命令会保持 Mac 唤醒
+测试和构建可能连续几分钟没有任何输出。Belay 现在会继续跟踪智能体启动的工作，并让 Mac 保持唤醒直到任务完成。
+
+# 更多睡眠延迟选项
+在“睡眠延迟”菜单打开时按住 Shift，即可显示 15 分钟、30 分钟和 1 小时。
+
+# 随时查看检测规则
+打开智能体菜单即可查看或更新 Belay 写入的规则，无需再先移除检测。

@@ -27,22 +27,22 @@
 10 min,Settings,translated,,10 min,10 分钟
 12 hours,"Settings, Statistics",translated,,12 hours,12 小时
 14 hours,Settings,translated,,14 hours,14 小时
-15 min,"Panel, Settings",translated,,15 min,15 分钟
+15 min,"App, Panel, Settings",translated,,15 min,15 分钟
 2 hours,"Settings, Statistics",translated,,2 hours,2 小时
 3 hours,Settings,translated,,3 hours,3 小时
 3 min,Settings,translated,,3 min,3 分钟
-30 min,Settings,translated,,30 min,30 分钟
+30 min,"App, Settings",translated,,30 min,30 分钟
 30 sec,Settings,translated,,30 sec,30 秒
 4 hours,Settings,translated,,4 hours,4 小时
 45 min,Settings,translated,,45 min,45 分钟
 5 hours,Settings,translated,,5 hours,5 小时
-5 min,"Panel, Settings, Settings: Notifications",translated,,5 min,5 分钟
+5 min,"App, Panel, Settings, Settings: Notifications",translated,,5 min,5 分钟
 6 hours,Settings,translated,,6 hours,6 小时
 7 hours,Settings,translated,,7 hours,7 小时
 8 hours,Settings,translated,,8 hours,8 小时
-A rare overnight crash is fixed,App,translated,,A rare overnight crash is fixed,修复了一个罕见的夜间崩溃
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.",会话尚未完成就停止了响应，通常是 CLI 在等待输入或已被关闭。
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,手动切换模式时播放短促提示音。遵循系统声音设置。
+A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,App,translated,,A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,运行半小时的测试或构建，过去一分钟后就像是已经结束的一轮。现在 Belay 会跟到工作真正结束。
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay 会先创建带时间戳的备份。“移除”会还原原始文件。
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,关于
 About %@,Menu bar,translated,%@,About %@,关于 %@
@@ -68,6 +68,7 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,智能体正在工作。退出 Belay 会让 Mac 进入睡眠。
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,智能体没有动静了
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",智能体工作，Belay 让 Mac 保持唤醒，工作停止后 Mac 进入睡眠
+"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",App,translated,,"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",现在在智能体的菜单里就能打开 Belay 写入的规则，并就地更新。不必再为了查看而移除检测。
 Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,请在“登录项”中批准帮助程序，它才能在合盖时保持唤醒。
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,自动
 Awake %@ so far,Panel,translated,%@,Awake for %@,已保持唤醒 %@
@@ -77,7 +78,6 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,直到你关闭为止。
 Battery Guard,Settings: Behaviour,translated,,Battery Guard,电池保护
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,电量降至 %lld%%。Belay 已停止保持唤醒。
-"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",App,translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",清除历史记录前，可以先将每天的数据导出为 CSV。将指针悬停在标题上即可查看你在键盘前的时间。
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,行为
 "Belay already watches this folder for %@, or one that contains it.",Settings: Providers,translated,%@,"Belay already watches this folder for %@, or one that contains it.",Belay 已经在为 %@ 监视此文件夹，或包含它的文件夹。
 "Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Settings: Providers,translated,,"Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Belay 还会在 config.toml 中将这些钩子标记为已批准，因为 Codex 会静默跳过未批准的钩子。
@@ -167,10 +167,8 @@ Enable Precise…,Settings,translated,,Enable Precise…,启用精确…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,开启精确检测
 Enable…,(unused),translated,,Enable…,开启…
 Ends at %@,Panel,translated,%@,Ends at %@,将于 %@ 结束
-Enter a duration or an end time. Belay shows the other as you type.,App,translated,,Enter a duration or an end time. Belay shows the other as you type.,输入时长或结束时间，Belay 会在你输入时自动显示另一个值。
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
-Export your statistics,App,translated,,Export your statistics,导出统计数据
 Export…,Statistics,translated,,Export…,导出…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
@@ -185,6 +183,7 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许�
 Grant access to ~/.cline,Welcome,translated,,Grant access to ~/.cline,允许访问 ~/.cline
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访问 ~/.codex
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,允许访问 ~/.copilot
+"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",App,translated,,"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",在睡眠延迟菜单中按住 Shift，即可看到 15 分钟、30 分钟和 1 小时。
 Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,智能体安静后，Belay 等待多久才允许 Mac 进入睡眠。
@@ -209,6 +208,8 @@ Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Setti
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,允许访问 ~/.copilot，Belay 才能判断 Copilot 何时在工作。
 Let's go,(unused),translated,,Let's go,开始吧
 Local only,Settings: About,translated,,Local only,仅本地
+Long commands keep your Mac awake,App,translated,,Long commands keep your Mac awake,长命令让 Mac 保持唤醒
+Longer sleep delays,App,translated,,Longer sleep delays,更长的睡眠延迟
 Looks good,(unused),translated,,Looks good,看起来不错
 Lovely,(unused),translated,,Lovely,很好
 Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,低电量模式
@@ -278,8 +279,8 @@ Report an Issue,Settings,translated,,Report an Issue,报告问题
 Reset…,Statistics,translated,,Reset…,重置…
 Rules…,Settings,translated,,Rules…,规则…
 Safety stop,Settings: Notifications,translated,,Safety stop,安全停止
+See the detection rules any time,App,translated,,See the detection rules any time,随时查看检测规则
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。
-Set the timer by end time,App,translated,,Set the timer by end time,按结束时间设置计时器
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
 Settings…,Menu bar,translated,,Settings…,设置…
 Share,"App, Statistics",translated,,Share,共享
@@ -294,7 +295,7 @@ Shows exactly what will be added before anything is written,(unused),translated,
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
 "Skipped, already taken by your own scripts: %@",(unused),translated,%@,"Skipped, already taken by your own scripts: %@",已跳过，文件名已被你自己的脚本占用：%@
-Sleep delay,Settings: Behaviour,translated,,Sleep delay,睡眠延迟
+Sleep delay,"App, Settings: Behaviour",translated,,Sleep delay,睡眠延迟
 Software updates,Settings: General,translated,,Updates,更新
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sounds,声音
 Sounds Good!,App,translated,,Sounds Good!,好的！
@@ -361,7 +362,6 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,新功能
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",工作停止后，Mac 会像以往一样进入睡眠。睡眠设置不会有任何更改。
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,常开计时器运行时显示剩余时间。
 While holding,"Settings, Settings: Behaviour",translated,,While holding,保持唤醒期间
-"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",App,translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",启用本地诊断后，日志可能在长时间的智能体活动中变得过大并导致 Belay 崩溃。一份详细的问题报告帮助找到了原因。
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",启用精确检测后，%@ 会在工作开始、结束或等待你的那一刻直接告诉 Belay。检测变得即时而可靠。
 Working,"App, Panel, Settings: Providers",translated,,Working,工作中
 You asked Belay to stay on until you switch it off.,Panel,translated,,Your Mac stays awake until you turn it off.,Mac 将保持唤醒，直到你关闭为止。

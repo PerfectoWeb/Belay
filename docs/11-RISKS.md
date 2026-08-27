@@ -48,10 +48,25 @@ detection path must have a sandbox test. Never depend on process arguments.
 A long tool call with no output and no hooks looks identical to a finished turn
 under Tier A.
 
-*Mitigation:* generous `inferredIdleAfter` (45 s) plus the coordinator grace
-period (90 s), which stacks to a ~2-minute tail. Process presence keeps the
-session alive. And this is precisely what Tier B fixes — make the value of
-enabling hooks obvious in the UI.
+*Closed in 1.6.2*, and in two halves, because the two builds have different
+evidence available.
+
+With hooks, a `PreToolUse` that has no `PostToolUse` after it is not a stale
+reading but an unclosed bracket: the agent is demonstrably still inside the
+call. While one is open the exact reading keeps its rank however old it is, and
+the session is exempt from the ledger's TTL. Bounded by
+`AwakePolicy.openToolCallBudget` (one hour) for the case where the agent is
+killed between the two events, with the dead-process sweep and the awake limit
+above that.
+
+Without hooks — which is every App Store install — Tier C's busy-child probe
+now walks the agent's whole process tree instead of its direct children. Claude
+Code runs its Bash tool inside one long-lived shell, so the thing doing the work
+is a grandchild and the old probe saw an old shell and nothing else. Same age
+bound as before, breadth-first, depth-capped.
+
+The old mitigation still underlies both: a generous `inferredIdleAfter` (45 s)
+plus the coordinator grace period, which stacks to a ~2-minute tail on its own.
 
 ### R7 — macOS 27 Golden Gate changes menu bar / power behaviour (medium / low)
 Releasing September 2026, Apple-silicon only, with further Liquid Glass changes.

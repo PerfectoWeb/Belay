@@ -1,0 +1,46 @@
+App Store "What’s New in This Version" – Belay 1.6.2
+
+Nothing here may mention Precise Detection or hooks: the App Store build is
+sandboxed and has neither. Both items below are true of this build on its own.
+
+--- EN ---
+
+Long-running commands now keep your Mac awake. Tests and builds can stay quiet for minutes at a time. Belay now follows the work your agent starts, so silent commands still count as work until they finish.
+
+More sleep-delay options. Hold Shift while the Sleep Delay menu is open to reveal 15 minutes, 30 minutes, and 1 hour alongside the usual choices.
+
+--- RU ---
+
+Долгие команды теперь не дают Mac уснуть. Тесты и сборки могут долго работать без какого-либо вывода. Belay теперь следит за работой, которую запускает агент, поэтому даже тихие команды считаются активными до самого завершения.
+
+Больше вариантов задержки сна. Удерживайте Shift в меню «Пауза перед сном», чтобы появились 15 минут, 30 минут и 1 час в дополнение к обычным вариантам.
+
+--- DE ---
+
+Lange laufende Befehle halten deinen Mac jetzt wach. Tests und Builds können minutenlang ohne Ausgabe weiterlaufen. Belay verfolgt jetzt auch die Arbeit, die dein Agent startet, sodass stille Befehle bis zu ihrem Ende als aktiv gelten.
+
+Mehr Optionen für die Schlafverzögerung. Halte die Umschalttaste gedrückt, während das Menü für die Schlafverzögerung geöffnet ist, um zusätzlich 15 Minuten, 30 Minuten und 1 Stunde anzuzeigen.
+
+--- ES ---
+
+Los comandos largos ahora mantienen tu Mac despierto. Las pruebas y compilaciones pueden pasar varios minutos sin mostrar nada. Belay ahora sigue el trabajo que inicia tu agente, así que los comandos silenciosos siguen contando como actividad hasta que terminan.
+
+Más opciones para retrasar el reposo. Mantén pulsada Mayúsculas mientras está abierto el menú de retraso para mostrar también 15 minutos, 30 minutos y 1 hora.
+
+--- FR ---
+
+Les commandes longues gardent désormais votre Mac éveillé. Les tests et compilations peuvent rester silencieux pendant plusieurs minutes. Belay suit maintenant le travail lancé par votre agent, afin que les commandes silencieuses restent considérées comme actives jusqu’à leur fin.
+
+Plus d’options pour le délai de veille. Maintenez Maj enfoncée pendant que le menu du délai est ouvert pour afficher également 15 minutes, 30 minutes et 1 heure.
+
+--- IT ---
+
+I comandi lunghi ora tengono sveglio il Mac. Test e build possono restare senza output per diversi minuti. Belay ora segue anche il lavoro avviato dall’agente, così i comandi silenziosi continuano a essere considerati attivi fino al termine.
+
+Più opzioni per il ritardo dello stop. Tieni premuto Maiuscole mentre il menu è aperto per mostrare anche 15 minuti, 30 minuti e 1 ora.
+
+--- ZH ---
+
+长时间运行的命令现在会继续保持 Mac 唤醒。测试和构建可能连续几分钟没有任何输出，Belay 现在会继续跟踪智能体启动的工作，因此这些安静运行的命令在结束前都会被视为仍在工作。
+
+睡眠延迟有了更多选项。在菜单打开时按住 Shift，即可在原有选项之外显示 15 分钟、30 分钟和 1 小时。

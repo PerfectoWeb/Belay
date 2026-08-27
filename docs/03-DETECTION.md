@@ -62,6 +62,14 @@ Implementation notes that matter:
   like a completed assistant turn, **or** (b) no growth for `inferredIdleAfter`
   (default 45 s). Both paths feed the same coordinator grace period, so the
   effective wake-tail is ~2 minutes worst case. That is the correct trade.
+- **A running tool call is not idle** (shipped in 1.6.2). Neither path above can
+  see one: a command that runs for half an hour writes nothing at all, so the
+  transcript looks finished within the minute. Tier B closes it exactly — an
+  open `PreToolUse` bracket outranks the file watcher until the tool returns
+  (`SessionState.openToolCallSince`, bounded by `openToolCallBudget`). Tier C
+  closes it approximately, for builds with no hooks: the busy-child probe walks
+  the agent's whole descendant tree, because the shell that owns the tool call
+  outlives every turn and the process actually working is below it.
 - **A waiting turn is not idle** (shipped in 1.3). When the tail is an open
   user turn or the CLI's own API-error record, the agent is waiting out a
   retry against an overloaded model, not resting — exactly when the Mac must

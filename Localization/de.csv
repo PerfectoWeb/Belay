@@ -27,22 +27,22 @@
 10 min,Settings,needs_review,,10 min,10 Min.
 12 hours,"Settings, Statistics",needs_review,,12 hours,12 Stunden
 14 hours,Settings,translated,,14 hours,14 Stunden
-15 min,"Panel, Settings",translated,,15 min,15 Min.
+15 min,"App, Panel, Settings",translated,,15 min,15 Min.
 2 hours,"Settings, Statistics",needs_review,,2 hours,2 Stunden
 3 hours,Settings,translated,,3 hours,3 Stunden
 3 min,Settings,needs_review,,3 min,3 Min.
-30 min,Settings,needs_review,,30 min,30 Min.
+30 min,"App, Settings",needs_review,,30 min,30 Min.
 30 sec,Settings,needs_review,,30 sec,30 Sek.
 4 hours,Settings,needs_review,,4 hours,4 Stunden
 45 min,Settings,translated,,45 min,45 Min.
 5 hours,Settings,translated,,5 hours,5 Stunden
-5 min,"Panel, Settings, Settings: Notifications",needs_review,,5 min,5 Min.
+5 min,"App, Panel, Settings, Settings: Notifications",needs_review,,5 min,5 Min.
 6 hours,Settings,translated,,6 hours,6 Stunden
 7 hours,Settings,translated,,7 hours,7 Stunden
 8 hours,Settings,needs_review,,8 hours,8 Stunden
-A rare overnight crash is fixed,App,translated,,A rare overnight crash is fixed,Ein seltener nächtlicher Absturz ist behoben
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Eine Sitzung antwortet nicht mehr, ohne fertig zu sein. Meist wartet die CLI auf Eingabe oder wurde geschlossen."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,"Spielt einen kurzen Ton, wenn du den Modus manuell wechselst. Beachtet deine Systemeinstellungen für Töne."
+A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,App,translated,,A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,"Eine Testsuite oder ein Build, der eine halbe Stunde läuft, sah nach einer Minute wie ein beendeter Durchlauf aus. Belay verfolgt die Arbeit jetzt bis zum Ende."
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay legt zuerst eine Sicherung mit Zeitstempel an. „Entfernen“ stellt die ursprüngliche Datei wieder her.
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,Über
 About %@,Menu bar,translated,%@,About %@,Über %@
@@ -68,6 +68,7 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,"Ein Agent arbeitet. Wenn du Belay beendest, darf dein Mac schlafen."
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,Ein Agent ist verstummt
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","Ein Agent arbeitet, Belay hält den Mac wach, und wenn die Arbeit endet, schläft der Mac"
+"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",App,translated,,"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.","Das Menü eines Agenten öffnet jetzt die Regeln, die Belay schreibt, und aktualisiert sie an Ort und Stelle. Die Erkennung zum Nachlesen zu entfernen, ist nicht mehr nötig."
 Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,"Genehmige den Helfer unter „Anmeldeobjekte“, damit er den Deckel halten kann."
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Automatik
 Awake %@ so far,Panel,translated,%@,Awake for %@,Wach seit %@
@@ -77,7 +78,6 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Bis du es ausschaltest.
 Battery Guard,Settings: Behaviour,translated,,Battery Guard,Akkuschutz
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Akku bei %lld%%. Belay hält deinen Mac nicht mehr wach.
-"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",App,translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Bevor du den Verlauf löschst, kannst du alle erfassten Tage als CSV exportieren. Fahre über die Überschrift, um deine Zeit an der Tastatur zu sehen."
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Verhalten
 "Belay already watches this folder for %@, or one that contains it.",Settings: Providers,translated,%@,"Belay already watches this folder for %@, or one that contains it.","Belay beobachtet diesen Ordner für %@ bereits, oder einen, der ihn enthält."
 "Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Settings: Providers,translated,,"Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.","Belay vermerkt diese Hooks außerdem als genehmigt in der config.toml, denn Codex überspringt nicht genehmigte Hooks stillschweigend."
@@ -167,10 +167,8 @@ Enable Precise…,Settings,translated,,Enable Precise…,Präzise aktivieren…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Präzise Erkennung aktivieren
 Enable…,(unused),translated,,Enable…,Aktivieren…
 Ends at %@,Panel,translated,%@,Ends at %@,Endet um %@
-Enter a duration or an end time. Belay shows the other as you type.,App,translated,,Enter a duration or an end time. Belay shows the other as you type.,Gib eine Dauer oder Endzeit ein. Belay zeigt beim Tippen jeweils den anderen Wert.
 Erase,Statistics,needs_review,,Erase,Löschen
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik löschen?
-Export your statistics,App,translated,,Export your statistics,Statistiken exportieren
 Export…,Statistics,translated,,Export…,Exportieren…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
@@ -185,6 +183,7 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Zugriff 
 Grant access to ~/.cline,Welcome,translated,,Grant access to ~/.cline,Zugriff auf ~/.cline gewähren
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Zugriff auf ~/.codex gewähren
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,Zugriff auf ~/.copilot gewähren
+"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",App,translated,,"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.","Halte Umschalt im Menü der Wartezeit gedrückt: 15 Minuten, 30 Minuten und eine Stunde erscheinen."
 Hold again,"App, Detection, Panel",translated,,Hold again,Erneut wachhalten
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,"Kurz abwarten, falls noch Arbeit kommt."
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,"Wie lange Belay wartet, nachdem ein Agent verstummt ist, bevor der Mac schlafen darf."
@@ -209,6 +208,8 @@ Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Setti
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,"Erlaube Zugriff auf ~/.copilot, damit Belay erkennt, wann Copilot arbeitet."
 Let's go,(unused),translated,,Let's go,Los geht's
 Local only,Settings: About,translated,,Local only,Nur lokal
+Long commands keep your Mac awake,App,translated,,Long commands keep your Mac awake,Lange Befehle halten den Mac wach
+Longer sleep delays,App,translated,,Longer sleep delays,Längere Wartezeiten vor dem Ruhezustand
 Looks good,(unused),translated,,Looks good,Sieht gut aus
 Lovely,(unused),translated,,Lovely,Wunderbar
 Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,Stromsparmodus
@@ -278,8 +279,8 @@ Report an Issue,Settings,translated,,Report an Issue,Problem melden
 Reset…,Statistics,needs_review,,Reset…,Zurücksetzen…
 Rules…,Settings,translated,,Rules…,Regeln…
 Safety stop,Settings: Notifications,translated,,Safety stop,Sicherheitsstopp
+See the detection rules any time,App,translated,,See the detection rules any time,Die Erkennungsregeln jederzeit ansehen
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,"Einmal pro Version. Das Update-Zeichen am Menüleistensymbol bleibt auch sichtbar, wenn dies aus ist."
-Set the timer by end time,App,translated,,Set the timer by end time,Timer nach Endzeit einstellen
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Einstellungen
 Settings…,Menu bar,translated,,Settings…,Einstellungen…
 Share,"App, Statistics",translated,,Share,Teilen
@@ -294,7 +295,7 @@ Shows exactly what will be added before anything is written,(unused),translated,
 Since %@,Statistics,needs_review,%@,Since %@,Seit %@
 Skip for now,Welcome,translated,,Skip now,Überspringen
 "Skipped, already taken by your own scripts: %@",(unused),translated,%@,"Skipped, already taken by your own scripts: %@","Übersprungen, bereits von deinen eigenen Skripten belegt: %@"
-Sleep delay,Settings: Behaviour,translated,,Sleep delay,Schlafverzögerung
+Sleep delay,"App, Settings: Behaviour",translated,,Sleep delay,Schlafverzögerung
 Software updates,Settings: General,translated,,Updates,Updates
 Sound,"App, Settings: About, Settings: General, Welcome",translated,,Sounds,Töne
 Sounds Good!,App,translated,,Sounds Good!,Klingt gut!
@@ -361,7 +362,6 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,Neuerungen
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Wenn die Arbeit endet, schläft dein Mac wie immer. Deine Energieeinstellungen bleiben unangetastet."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Zeigt die verbleibende Zeit, während ein „Immer an“-Timer läuft."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Während des Haltens
-"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",App,translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.","Bei aktivierter lokaler Diagnose konnte das Protokoll während einer langen Nacht mit Agent-Aktivität zu groß werden und Belay zum Absturz bringen. Ein detaillierter Fehlerbericht half, die Ursache zu finden."
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.","Mit präziser Erkennung meldet %@ Belay den genauen Moment, in dem Arbeit beginnt, endet oder auf dich wartet. Die Erkennung wird sofort und zuverlässig."
 Working,"App, Panel, Settings: Providers",translated,,Working,Arbeitet
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,"Ihr Mac bleibt wach, bis Sie es ausschalten."

@@ -1928,52 +1928,6 @@
         }
       }
     },
-    "A rare overnight crash is fixed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A rare overnight crash is fixed"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Исправлен редкий ночной сбой"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein seltener nächtlicher Absturz ist behoben"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Corregido un fallo nocturno poco frecuente"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un rare plantage nocturne est corrigé"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Risolto un raro crash notturno"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "修复了一个罕见的夜间崩溃"
-          }
-        }
-      }
-    },
     "A session stopped responding without finishing, usually because the CLI needs input or was closed.": {
       "localizations": {
         "de": {
@@ -3653,52 +3607,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "电量降至 %lld%%。Belay 已停止保持唤醒。"
-          }
-        }
-      }
-    },
-    "Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bevor du den Verlauf löschst, kannst du alle erfassten Tage als CSV exportieren. Fahre über die Überschrift, um deine Zeit an der Tastatur zu sehen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Antes de borrar el historial, puedes exportar todos los días registrados a CSV. Pasa el cursor por el encabezado para ver el tiempo que pasaste frente al teclado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avant d’effacer votre historique, vous pouvez exporter toutes les journées enregistrées en CSV. Survolez le titre pour voir votre temps passé au clavier."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prima di cancellare la cronologia, puoi esportare tutti i giorni registrati in CSV. Passa sul titolo per vedere il tempo trascorso alla tastiera."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "清除历史记录前，可以先将每天的数据导出为 CSV。将指针悬停在标题上即可查看你在键盘前的时间。"
           }
         }
       }
@@ -7727,52 +7635,6 @@
         }
       }
     },
-    "Enter a duration or an end time. Belay shows the other as you type.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a duration or an end time. Belay shows the other as you type."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Задайте длительность или время окончания. Belay сразу покажет второе значение."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gib eine Dauer oder Endzeit ein. Belay zeigt beim Tippen jeweils den anderen Wert."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Introduce una duración o una hora de finalización. Belay mostrará la otra mientras escribes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saisissez une durée ou une heure de fin. Belay affiche l’autre valeur pendant la saisie."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inserisci una durata o un’ora di fine. Belay mostra l’altro valore mentre digiti."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "输入时长或结束时间，Belay 会在你输入时自动显示另一个值。"
-          }
-        }
-      }
-    },
     "Erase": {
       "extractionState": "manual",
       "localizations": {
@@ -7863,52 +7725,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "要清除统计数据吗？"
-          }
-        }
-      }
-    },
-    "Export your statistics": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Export your statistics"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Экспорт статистики"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistiken exportieren"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exporta tus estadísticas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exportez vos statistiques"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esporta le statistiche"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "导出统计数据"
           }
         }
       }
@@ -8561,6 +8377,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "允许访问 ~/.copilot"
+          }
+        }
+      }
+    },
+    "Hold Shift while the Sleep delay menu is open to reveal 15 minutes, 30 minutes, and 1 hour.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold Shift while the Sleep delay menu is open to reveal 15 minutes, 30 minutes, and 1 hour."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удерживайте Shift в меню «Пауза перед сном», чтобы появились 15 минут, 30 минут и 1 час."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halte die Umschalttaste gedrückt, während das Menü „Sleep delay“ geöffnet ist, um 15 Minuten, 30 Minuten und 1 Stunde anzuzeigen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantén pulsada Mayúsculas mientras está abierto el menú de retraso para mostrar 15 minutos, 30 minutos y 1 hora."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenez Maj enfoncée pendant que le menu du délai de veille est ouvert pour afficher 15 minutes, 30 minutes et 1 heure."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni premuto Maiuscole mentre il menu è aperto per mostrare 15 minuti, 30 minuti e 1 ora."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“睡眠延迟”菜单打开时按住 Shift，即可显示 15 分钟、30 分钟和 1 小时。"
           }
         }
       }
@@ -9686,6 +9548,52 @@
         }
       }
     },
+    "Long-running commands keep your Mac awake": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Long-running commands keep your Mac awake"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Долгие команды не дают Mac уснуть"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lange Befehle halten deinen Mac wach"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los comandos largos mantienen tu Mac despierto"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les commandes longues gardent votre Mac éveillé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I comandi lunghi tengono sveglio il Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "长时间运行的命令会保持 Mac 唤醒"
+          }
+        }
+      }
+    },
     "Looks good": {
       "extractionState": "manual",
       "localizations": {
@@ -9962,6 +9870,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "模式"
+          }
+        }
+      }
+    },
+    "More sleep-delay options": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More sleep-delay options"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Больше вариантов задержки сна"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr Optionen für die Schlafverzögerung"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más opciones para retrasar el reposo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus d'options pour le délai de veille"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Più opzioni per il ritardo dello stop"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多睡眠延迟选项"
           }
         }
       }
@@ -11464,6 +11418,52 @@
         }
       }
     },
+    "Open an agent's menu to view or update the rules Belay writes. No need to remove detection first.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open an agent's menu to view or update the rules Belay writes. No need to remove detection first."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Откройте меню агента, чтобы посмотреть или обновить правила Belay. Отключать определение для этого больше не нужно."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne das Menü eines Agents, um die von Belay geschriebenen Regeln anzusehen oder zu aktualisieren. Du musst die Erkennung dafür nicht mehr entfernen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abre el menú de un agente para ver o actualizar las reglas que escribe Belay. Ya no hace falta quitar la detección primero."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrez le menu d'un agent pour consulter ou mettre à jour les règles écrites par Belay. Plus besoin de retirer la détection auparavant."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri il menu di un agente per vedere o aggiornare le regole scritte da Belay. Non serve più rimuovere prima il rilevamento."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开智能体菜单即可查看或更新 Belay 写入的规则，无需再先移除检测。"
+          }
+        }
+      }
+    },
     "Open at login": {
       "extractionState": "manual",
       "localizations": {
@@ -12820,6 +12820,52 @@
         }
       }
     },
+    "Review detection rules anytime": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review detection rules anytime"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Правила определения всегда под рукой"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkennungsregeln jederzeit ansehen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consulta las reglas de detección cuando quieras"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consultez les règles de détection à tout moment"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controlla le regole di rilevamento quando vuoi"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "随时查看检测规则"
+          }
+        }
+      }
+    },
     "Rules…": {
       "localizations": {
         "de": {
@@ -12954,52 +13000,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。"
-          }
-        }
-      }
-    },
-    "Set the timer by end time": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Set the timer by end time"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Таймер по времени окончания"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Timer nach Endzeit einstellen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajusta el temporizador por hora de fin"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réglez le minuteur par heure de fin"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imposta il timer con l’ora di fine"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "按结束时间设置计时器"
           }
         }
       }
@@ -14544,6 +14544,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "任务完成"
+          }
+        }
+      }
+    },
+    "Tests and builds can stay quiet for minutes at a time. Belay now follows the work your agent starts, so your Mac stays awake until it finishes.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tests and builds can stay quiet for minutes at a time. Belay now follows the work your agent starts, so your Mac stays awake until it finishes."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тесты и сборки могут долго работать без вывода. Теперь Belay следит за работой, которую запускает агент, и не отпускает Mac до её завершения."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tests und Builds können minutenlang ohne Ausgabe laufen. Belay verfolgt jetzt auch die Arbeit, die dein Agent startet, und hält den Mac wach, bis sie abgeschlossen ist."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las pruebas y compilaciones pueden pasar varios minutos sin mostrar nada. Belay ahora sigue el trabajo que inicia tu agente y mantiene el Mac despierto hasta que termina."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les tests et compilations peuvent rester silencieux pendant plusieurs minutes. Belay suit maintenant le travail lancé par votre agent et garde le Mac éveillé jusqu'à ce qu'il soit terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test e build possono restare senza output per diversi minuti. Belay ora segue anche il lavoro avviato dall'agente e tiene sveglio il Mac finché non termina."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "测试和构建可能连续几分钟没有任何输出。Belay 现在会继续跟踪智能体启动的工作，并让 Mac 保持唤醒直到任务完成。"
           }
         }
       }
@@ -16786,52 +16832,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "保持唤醒期间"
-          }
-        }
-      }
-    },
-    "With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bei aktivierter lokaler Diagnose konnte das Protokoll während einer langen Nacht mit Agent-Aktivität zu groß werden und Belay zum Absturz bringen. Ein detaillierter Fehlerbericht half, die Ursache zu finden."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con el diagnóstico local activado, el registro podía crecer demasiado durante una larga noche de actividad y hacer que Belay se cerrara. Un informe detallado ayudó a encontrar la causa."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avec les diagnostics locaux activés, le journal pouvait devenir trop volumineux au cours d’une longue nuit d’activité et faire planter Belay. Un rapport détaillé a permis d’en trouver la cause."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Con la diagnostica locale attiva, il registro poteva diventare troppo grande durante una lunga notte di attività e causare un crash di Belay. Una segnalazione dettagliata ha aiutato a trovare la causa."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "启用本地诊断后，日志可能在长时间的智能体活动中变得过大并导致 Belay 崩溃。一份详细的问题报告帮助找到了原因。"
           }
         }
       }

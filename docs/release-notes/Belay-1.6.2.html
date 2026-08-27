@@ -1,0 +1,25 @@
+<!-- What Sparkle shows for 1.6.2. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.2</h2>
+<ul>
+  <li><b>Long-running commands keep your Mac awake.</b> Belay now follows
+      silent tests, builds and other tool calls until they actually finish.</li>
+  <li><b>More sleep-delay options.</b> Hold Shift in the Sleep delay menu to
+      reveal 15 minutes, 30 minutes and 1 hour.</li>
+  <li><b>Review Precise Detection rules anytime.</b> An agent&#8217;s menu now
+      opens Rules&#8230; without making you remove detection first.</li>
+</ul>
+<p class="quiet">Also: repeated diagnostics messages now back off instead of
+flooding the log.</p>

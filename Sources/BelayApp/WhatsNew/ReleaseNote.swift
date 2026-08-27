@@ -91,31 +91,30 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.6.1",
+                version: "1.6.2",
                 items: [
                     .init(
+                        symbol: Mark.trace,
+                        title: "Long-running commands keep your Mac awake",
+                        body: """
+                            Tests and builds can stay quiet for minutes at a time. Belay \
+                            now follows the work your agent starts, so your Mac stays \
+                            awake until it finishes.
+                            """),
+                    .init(
                         symbol: Mark.timer,
-                        title: "Set the timer by end time",
+                        title: "More sleep-delay options",
                         body: """
-                            Enter a duration or an end time. Belay shows the other \
-                            as you type.
+                            Hold Shift while the Sleep delay menu is open to reveal 15 \
+                            minutes, 30 minutes, and 1 hour.
                             """),
                     .init(
-                        symbol: Mark.chart,
-                        title: "Export your statistics",
+                        symbol: Mark.speed,
+                        title: "Review detection rules anytime",
                         body: """
-                            Before clearing your history, you can export every \
-                            recorded day to CSV. Hover over the headline to see \
-                            your time at the keyboard.
-                            """),
-                    .init(
-                        symbol: Mark.bug,
-                        title: "A rare overnight crash is fixed",
-                        body: """
-                            With local diagnostics enabled, the log could grow too \
-                            large during a long night of agent activity and crash \
-                            Belay. A detailed bug report helped track it down.
-                            """)
+                            Open an agent's menu to view or update the rules Belay \
+                            writes. No need to remove detection first.
+                            """, directOnly: true)
                 ]
             )
         ]
