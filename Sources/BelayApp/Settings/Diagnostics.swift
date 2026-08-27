@@ -1,6 +1,7 @@
 import BelaySupport
 import Foundation
 import OSLog
+import os
 
 /// A file of what went wrong, kept on this Mac and sent nowhere.
 ///
@@ -73,6 +74,7 @@ enum Diagnostics {
     }
 
     private static func stop() {
+        flushRepeats()
         write("collection off")
         EventLog.install(nil)
         watchdog?.invalidate()
@@ -122,11 +124,85 @@ enum Diagnostics {
         write(line)
     }
 
+    /// A line that keeps arriving, and how long it has been arriving for.
+    ///
+    /// Belay's own log was the thing that crashed a user's Mac overnight — not
+    /// through any one line, but through the sheer number of them. A failure
+    /// that repeats on a timer writes the same sentence for as long as it
+    /// lasts: an unreachable lid helper produced one every fifteen seconds,
+    /// which is 5 760 identical lines a day and not one fact more than the
+    /// first one carried.
+    ///
+    /// So consecutive identical lines are counted rather than written, and the
+    /// count is written instead. The summary still lands, because a log that
+    /// swallows a live fault entirely is its own kind of lie — but it lands on
+    /// a widening interval: a minute in, then two, then four, up to an hour.
+    /// The first minutes of a fault are when somebody is reading; the tenth
+    /// hour of the same fault needs one line, not two hundred.
+    private struct Repeats: Sendable {
+        var line = ""
+        var held = 0
+        var since = Date.distantPast
+        var step: TimeInterval = firstWindow
+    }
+
+    nonisolated private static let repeats = OSAllocatedUnfairLock(initialState: Repeats())
+
+    /// How long after a summary the next one may come, at first.
+    nonisolated static let firstWindow: TimeInterval = 60
+    /// And the longest that interval ever grows to.
+    nonisolated static let longestWindow: TimeInterval = 60 * 60
+
+    /// What should actually be written for `line`, given what came before it.
+    ///
+    /// Pure but for the counter it owns, and separated from the file so the
+    /// rule can be tested without a disk: `DiagnosticsTests` drives this.
+    nonisolated static func collapse(_ line: String, now: Date = Date()) -> [String] {
+        repeats.withLock { state in
+            guard line == state.line else {
+                var out: [String] = []
+                if state.held != 0 { out.append(summary(of: state)) }
+                state = Repeats(line: line, held: 0, since: now)
+                out.append(line)
+                return out
+            }
+            state.held += 1
+            let due = now.timeIntervalSince(state.since) >= state.step
+            guard due else { return [] }
+            let out = [summary(of: state)]
+            state.held = 0
+            state.since = now
+            state.step = min(state.step * 2, longestWindow)
+            return out
+        }
+    }
+
+    nonisolated private static func summary(of state: Repeats) -> String {
+        "the line above repeated \(state.held) more time\(state.held == 1 ? "" : "s")"
+    }
+
+    /// Everything held back, written now. Called before the log stops, so a
+    /// run does not end with a count nobody ever sees.
+    nonisolated static func flushRepeats() {
+        let pending: [String] = repeats.withLock { state in
+            guard state.held != 0 else { return [] }
+            let out = [summary(of: state)]
+            state.held = 0
+            return out
+        }
+        for line in pending { rawAppend(line) }
+    }
+
     /// Appends one line, creating the file if it is not there.
     ///
     /// `nonisolated` and free of any state but the path, because the exception
     /// handler runs on whatever thread died.
     nonisolated static func appendFromAnywhere(_ line: String) {
+        for text in collapse(line) { rawAppend(text) }
+    }
+
+    /// One line to the file, with no counting in front of it.
+    nonisolated private static func rawAppend(_ line: String) {
         let stamp = ISO8601DateFormatter().string(from: Date())
         let text = "\(stamp)  \(line)\n"
         let library = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]

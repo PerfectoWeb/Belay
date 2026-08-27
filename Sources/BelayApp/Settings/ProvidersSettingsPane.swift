@@ -56,7 +56,9 @@ struct ProvidersSettingsPane: View {
         // the way it already follows the tiles below.
         .onChange(of: state.providers) { _, _ in onReshaped() }
         .sheet(item: $previewing) { target in
-            HookPreviewSheet(precise: precise, provider: target.id) { refreshToken += 1 }
+            HookPreviewSheet(
+                precise: precise, provider: target.id, installed: installed(target.id)
+            ) { refreshToken += 1 }
         }
         .id(refreshToken)
     }
@@ -83,6 +85,7 @@ struct ProvidersSettingsPane: View {
                             onToggle: { state.onToggleProvider(provider.id, $0) },
                             onFix: { state.onGrantAccess(provider.id) },
                             onEnablePrecise: { previewing = PreviewTarget(id: provider.id) },
+                            onEditPrecise: { previewing = PreviewTarget(id: provider.id) },
                             onRemovePrecise: { removePrecise(provider.id) },
                             onAddRoot: { state.onAddProviderRoot(provider.id) },
                             onRemoveRoot: { state.onRemoveProviderRoot(provider.id, $0) },

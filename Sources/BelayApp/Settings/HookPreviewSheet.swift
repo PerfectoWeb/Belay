@@ -11,6 +11,10 @@ import SwiftUI
 struct HookPreviewSheet: View {
     var precise: PreciseDetection
     var provider: ProviderID = .claudeCode
+    /// True when the hooks are already in the agent's settings, which turns
+    /// this sheet from an offer into a reading of what is there. Applying is
+    /// the same write either way: it merges, and backs the file up first.
+    var installed = false
     var onFinish: () -> Void
     @Environment(\.dismiss) var dismiss
     /// True while the codex install runs: writing the file is instant, but
@@ -60,7 +64,7 @@ struct HookPreviewSheet: View {
                     .resizable()
                     .interpolation(.high)
                     .frame(width: 20, height: 20)
-                Text("Enable precise detection")
+                Text(installed ? "Precise detection rules" : "Enable precise detection")
                     .font(.title3).bold()
             }
 
@@ -183,10 +187,13 @@ struct HookPreviewSheet: View {
     }
 
     private var addTitle: LocalizedStringKey {
-        switch provider {
-        case .codex: return "Add to Codex"
-        case .cline: return "Add to Cline"
-        default: return "Add to Claude Code"
+        switch (provider, installed) {
+        case (.codex, false): return "Add to Codex"
+        case (.cline, false): return "Add to Cline"
+        case (_, false): return "Add to Claude Code"
+        case (.codex, true): return "Update Codex"
+        case (.cline, true): return "Update Cline"
+        case (_, true): return "Update Claude Code"
         }
     }
 

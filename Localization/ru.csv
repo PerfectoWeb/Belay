@@ -13,7 +13,7 @@
 %lld hours,Panel,translated,%lld,%lld hours,%lld ч
 %lld hours %lld minutes,Panel,translated,%lld %lld,%lld hours %lld minutes,%lld ч %lld мин
 %lld minutes,Panel,translated,%lld,%lld minutes,%lld мин
-%lld more,Panel,translated,%lld,%lld more,ещё %lld
+%lld more,"Panel, Settings",translated,%lld,%lld more,ещё %lld
 %lld seconds,Panel,translated,%lld,%lld seconds,%lld с
 "%lld sessions in total, including subagents",Panel,translated,%lld,"%lld sessions in total, including subagents","всего %lld сессий, включая подагентов"
 %lld subagents,Panel,translated,%lld,%lld subagents,подагентов: %lld
@@ -77,7 +77,7 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Пока не выключите.
 Battery Guard,Settings: Behaviour,translated,,Battery Guard,Защита батареи
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Заряд %lld%%. Belay разрешил Mac уснуть.
-"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",(unused),translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой."
+"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",App,translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Перед удалением истории можно выгрузить все записанные дни в CSV. Наведите на заголовок, чтобы увидеть время за клавиатурой."
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Поведение
 "Belay already watches this folder for %@, or one that contains it.",Settings: Providers,translated,%@,"Belay already watches this folder for %@, or one that contains it.","Belay уже следит за этой папкой для %@ или за папкой, которая её содержит."
 "Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Settings: Providers,translated,,"Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.","Хуки помечаются как одобренные в config.toml, потому что Codex молча пропускает неодобренные хуки."
@@ -163,15 +163,14 @@ Direct download,"Settings, Settings: About",translated,,Direct download,Прям
 Donate,"Detection, Settings: About",translated,,Donate,Поддержать
 Done,"Settings, Settings: Providers",translated,,Done,Готово
 Download…,Settings: General,translated,,Download…,Скачать…
-Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,Включить точное определение…
 Enable Precise…,Settings,translated,,Enable Precise…,Включить точное…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Включить точное определение
 Enable…,(unused),translated,,Enable…,Включить…
 Ends at %@,Panel,translated,%@,Ends at %@,Закончится в %@
-Enter a duration or an end time. Belay shows the other as you type.,(unused),translated,,Enter a duration or an end time. Belay shows the other as you type.,Задайте длительность или время окончания. Belay сразу покажет второе значение.
+Enter a duration or an end time. Belay shows the other as you type.,App,translated,,Enter a duration or an end time. Belay shows the other as you type.,Задайте длительность или время окончания. Belay сразу покажет второе значение.
 Erase,Statistics,needs_review,,Erase,Стереть
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Стереть статистику?
-Export your statistics,(unused),translated,,Export your statistics,Экспорт статистики
+Export your statistics,App,translated,,Export your statistics,Экспорт статистики
 Export…,Statistics,translated,,Export…,Экспорт…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Завершено
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Исправить
@@ -259,6 +258,8 @@ Paused at your time limit.,Panel,translated,,Paused at your time limit.,Дост
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Звуки интерфейса
 Play sounds,Settings: General,translated,,Play sounds,Воспроизводить звуки
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,Точное
+Precise Detection,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise Detection,Точное определение
+Precise detection rules,Settings: Providers,translated,,Precise detection rules,Правила точного определения
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,Точное · активность %@ назад
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,Агенты
 Quit,"Menu bar, Settings: General",translated,,Quit,Выйти
@@ -272,10 +273,10 @@ Release notes,App,translated,,Release notes,Что изменилось
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,Отключить
 Remove %@,Settings: Providers,translated,%@,Remove %@,Убрать %@
 Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,Убрать папку
-Remove Precise Detection,Settings,translated,,Remove Precise Detection,Удалить точное определение
 Report a bug,Settings: About,translated,,Report a bug,Нашёл ошибку
 Report an Issue,Settings,translated,,Report an Issue,Сообщить о проблеме
 Reset…,Statistics,needs_review,,Reset…,Сбросить…
+Rules…,Settings,translated,,Rules…,Правила…
 Safety stop,Settings: Notifications,translated,,Safety stop,Безопасная остановка
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,"Уведомление приходит один раз для каждой версии. Значок обновления в строке меню остаётся виден, даже если этот пункт выключен."
 Set the timer by end time,App,translated,,Set the timer by end time,Таймер по времени окончания
@@ -329,9 +330,14 @@ The timer ran out.,Panel,translated,,The timer ran out.,Таймер истёк.
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,"Служба обновлений прислала ответ, который Belay не смог прочитать."
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,Это нельзя отменить. Копии нигде больше нет.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Эта папка не похожа на папку %@.
+Turn Off,Settings,translated,,Turn Off,Выключить
+Turn On…,Settings,translated,,Turn On…,Включить…
 Until,"App, Panel, Settings, Settings: Providers",translated,,Until,До времени
 Until turned off,"Panel, Settings",translated,,Until turned off,Пока не выключу
 Untitled project,App,translated,,Untitled project,Проект без названия
+Update Claude Code,Settings: Providers,translated,,Update Claude Code,Обновить в Claude Code
+Update Cline,Settings: Providers,translated,,Update Cline,Обновить в Cline
+Update Codex,Settings: Providers,translated,,Update Codex,Обновить в Codex
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Обновить
 Update Now (v%@),App,translated,%@,Update Now (v%@),Обновить до v%@
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Версия %@ (%@)
@@ -355,7 +361,7 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,Что нового
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Когда работа заканчивается, Mac засыпает как обычно. Ваши настройки сна не меняются."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,"Показывает оставшееся время, когда включён таймер в режиме Always On (Всегда)."
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Пока удерживает
-"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",(unused),translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину.
+"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",App,translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",При включённой локальной диагностике журнал мог слишком разрастись за долгую ночь работы агентов и привести к сбою Belay. Подробный баг-репорт помог найти причину.
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.","С точным определением %@ сам сообщает Belay, когда работа началась, закончилась или ждёт вас. Определение становится мгновенным и надёжным."
 Working,"App, Panel, Settings: Providers",translated,,Working,Работает
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,"Mac не уснёт, пока вы не выключите режим."

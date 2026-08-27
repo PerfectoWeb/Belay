@@ -13,7 +13,7 @@
 %lld hours,Panel,translated,%lld,%lld hours,%lld heures
 %lld hours %lld minutes,Panel,translated,%lld %lld,%lld hours %lld minutes,%lld heures %lld minutes
 %lld minutes,Panel,translated,%lld,%lld minutes,%lld minutes
-%lld more,Panel,translated,%lld,%lld more,%lld de plus
+%lld more,"Panel, Settings",translated,%lld,%lld more,%lld de plus
 %lld seconds,Panel,translated,%lld,%lld seconds,%lld secondes
 "%lld sessions in total, including subagents",Panel,translated,%lld,"%lld sessions in total, including subagents","%lld sessions au total, sous-agents compris"
 %lld subagents,Panel,translated,%lld,%lld subagents,%lld sous-agents
@@ -77,7 +77,7 @@ Awake only while an agent is working.,Panel,translated,,Only while an agent is w
 Awake until you switch it off.,Panel,translated,,Until you turn it off.,Jusqu'à ce que vous le désactiviez.
 Battery Guard,Settings: Behaviour,translated,,Battery Guard,Protection de la batterie
 "Battery is at %lld%%, so Belay stopped keeping your Mac awake.",Settings: Notifications,translated,%lld,Battery reached %lld%%. Belay stopped keeping your Mac awake.,Batterie à %lld%%. Belay a cessé de garder votre Mac éveillé.
-"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",(unused),translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Avant d’effacer votre historique, vous pouvez exporter toutes les journées enregistrées en CSV. Survolez le titre pour voir votre temps passé au clavier."
+"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.",App,translated,,"Before clearing your history, you can export every recorded day to CSV. Hover over the headline to see your time at the keyboard.","Avant d’effacer votre historique, vous pouvez exporter toutes les journées enregistrées en CSV. Survolez le titre pour voir votre temps passé au clavier."
 Behaviour,"Settings, Settings: Behaviour",translated,,Behavior,Comportement
 "Belay already watches this folder for %@, or one that contains it.",Settings: Providers,translated,%@,"Belay already watches this folder for %@, or one that contains it.","Belay surveille déjà ce dossier pour %@, ou un dossier qui le contient."
 "Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.",Settings: Providers,translated,,"Belay also records these hooks as approved in Codex's config.toml, because Codex quietly skips hooks nobody has approved.","Belay note aussi ces hooks comme approuvés dans config.toml, car Codex ignore en silence les hooks non approuvés."
@@ -163,15 +163,14 @@ Direct download,"Settings, Settings: About",translated,,Direct download,Téléch
 Donate,"Detection, Settings: About",translated,,Donate,Faire un don
 Done,"Settings, Settings: Providers",translated,,Done,Terminé
 Download…,Settings: General,translated,,Download…,Télécharger…
-Enable Precise Detection…,Settings,translated,,Enable Precise Detection…,Activer la détection précise…
 Enable Precise…,Settings,translated,,Enable Precise…,Activer Précis…
 Enable precise detection,Settings: Providers,translated,,Enable precise detection,Activer la détection précise
 Enable…,(unused),translated,,Enable…,Activer…
 Ends at %@,Panel,translated,%@,Ends at %@,Se termine à %@
-Enter a duration or an end time. Belay shows the other as you type.,(unused),translated,,Enter a duration or an end time. Belay shows the other as you type.,Saisissez une durée ou une heure de fin. Belay affiche l’autre valeur pendant la saisie.
+Enter a duration or an end time. Belay shows the other as you type.,App,translated,,Enter a duration or an end time. Belay shows the other as you type.,Saisissez une durée ou une heure de fin. Belay affiche l’autre valeur pendant la saisie.
 Erase,Statistics,needs_review,,Erase,Effacer
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Effacer vos statistiques ?
-Export your statistics,(unused),translated,,Export your statistics,Exportez vos statistiques
+Export your statistics,App,translated,,Export your statistics,Exportez vos statistiques
 Export…,Statistics,translated,,Export…,Exporter…
 Finished,"Panel, Settings, Settings: Notifications, Welcome",translated,,Finished,Terminé
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Corriger
@@ -259,6 +258,8 @@ Paused at your time limit.,Panel,translated,,Paused at your time limit.,En pause
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Jouer les sons de l'interface
 Play sounds,Settings: General,needs_review,,Play sounds,Jouer des sons
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,Précis
+Precise Detection,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise Detection,Détection précise
+Precise detection rules,Settings: Providers,translated,,Precise detection rules,Règles de la détection précise
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,Précis · activité il y a %@
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,Agents
 Quit,"Menu bar, Settings: General",translated,,Quit,Quitter
@@ -272,10 +273,10 @@ Release notes,App,translated,,Release notes,Notes de version
 Remove,"App, Detection, Settings, Settings: Providers",translated,,Remove,Retirer
 Remove %@,Settings: Providers,translated,%@,Remove %@,Retirer %@
 Remove Folder,"Settings, Settings: Providers",translated,,Remove Folder,Retirer le dossier
-Remove Precise Detection,Settings,translated,,Remove Precise Detection,Supprimer la détection précise
 Report a bug,Settings: About,translated,,Report a bug,Signaler un bug
 Report an Issue,Settings,translated,,Report an Issue,Signaler un problème
 Reset…,Statistics,needs_review,,Reset…,Réinitialiser…
+Rules…,Settings,translated,,Rules…,Règles…
 Safety stop,Settings: Notifications,translated,,Safety stop,Arrêt de sécurité
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,Envoyée une fois par version. L'icône de la barre des menus continue d'afficher le badge de mise à jour même si cette option est désactivée.
 Set the timer by end time,App,translated,,Set the timer by end time,Réglez le minuteur par heure de fin
@@ -329,9 +330,14 @@ The timer ran out.,Panel,translated,,The timer ran out.,Le minuteur est terminé
 The update service sent something Belay could not read.,Settings: General,translated,,The update service sent something Belay could not read.,Le service de mise à jour a renvoyé une réponse que Belay n'a pas pu lire.
 This cannot be undone. Belay keeps no copy anywhere else.,Statistics,needs_review,,This cannot be undone. Belay keeps no copy anywhere else.,C'est irréversible. Belay n'en garde aucune copie ailleurs.
 This folder does not look like a %@ folder.,Settings: Providers,translated,%@,This folder does not look like a %@ folder.,Ce dossier ne ressemble pas à un dossier de %@.
+Turn Off,Settings,translated,,Turn Off,Désactiver
+Turn On…,Settings,translated,,Turn On…,Activer…
 Until,"App, Panel, Settings, Settings: Providers",translated,,Until,Jusqu'à
 Until turned off,"Panel, Settings",translated,,Until turned off,Jusqu'à désactivation
 Untitled project,App,translated,,Untitled project,Projet sans titre
+Update Claude Code,Settings: Providers,translated,,Update Claude Code,Mettre à jour Claude Code
+Update Cline,Settings: Providers,translated,,Update Cline,Mettre à jour Cline
+Update Codex,Settings: Providers,translated,,Update Codex,Mettre à jour Codex
 Update Now,"App, Settings, Settings: General",translated,,Update Now,Mettre à jour
 Update Now (v%@),App,translated,%@,Update Now (v%@),Mettre à jour (v%@)
 Version %@ (%@),Settings: About,translated,%@ %@,Version %@ (%@),Version %@ (%@)
@@ -355,7 +361,7 @@ What's New,"App, Menu bar, Welcome",translated,,What's New,Nouveautés
 "When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.",Welcome,translated,,"When the work stops, your Mac sleeps as it always did. Your sleep settings are never changed.","Quand le travail s'arrête, votre Mac se met en veille comme d'habitude. Vos réglages de veille ne sont jamais modifiés."
 "While an Always on timer runs, the remaining time glows quietly on the dark display, the way a bedside clock would.",Settings,translated,,Shows the time left while an Always On timer is running.,Affiche le temps restant pendant qu'un minuteur Toujours est en cours.
 While holding,"Settings, Settings: Behaviour",translated,,While holding,Pendant le maintien
-"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",(unused),translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.","Avec les diagnostics locaux activés, le journal pouvait devenir trop volumineux au cours d’une longue nuit d’activité et faire planter Belay. Un rapport détaillé a permis d’en trouver la cause."
+"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.",App,translated,,"With local diagnostics enabled, the log could grow too large during a long night of agent activity and crash Belay. A detailed bug report helped track it down.","Avec les diagnostics locaux activés, le journal pouvait devenir trop volumineux au cours d’une longue nuit d’activité et faire planter Belay. Un rapport détaillé a permis d’en trouver la cause."
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.","Avec la détection précise, %@ indique à Belay le moment exact où le travail commence, s'arrête ou vous attend. La détection devient instantanée et fiable."
 Working,"App, Panel, Settings: Providers",translated,,Working,En cours
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,Votre Mac reste éveillé tant que c'est activé.
