@@ -1,33 +1,46 @@
-/* One stylesheet for both pages. No fonts are fetched, no scripts run and
-   nothing is loaded from anywhere: a privacy policy that phoned a CDN would be
-   an embarrassing thing to serve. */
+/* 
+   Belay Stylesheet 
+   Light theme disabled.
+   
+   -------------
+   
+   :root {
+      color-scheme: light dark;
+      --ink: #12161d;
+      --ink-soft: #4a5464;
+      --page: #ffffff;
+      --hero: #f4f6fa;
+      --panel: #f4f6fa;
+      --rule: #dfe4ec;
+      --accent: #1f6bff;
+      --donate-green: #1cb85e;
+      --ink-unfilled: #e9edf2;
+      interpolate-size: allow-keywords;
+   }
+*/
+
 
 :root {
-    color-scheme: light dark;
-    --ink: #12161d;
-    --ink-soft: #4a5464;
-    --page: #ffffff;
-    --panel: #f4f6fa;
-    --rule: #dfe4ec;
-    --accent: #1f6bff;
-    /* The Donate button's own green, named so the caret and the heading's green
-       pass can borrow it instead of repeating the hex in three places. */
-    --donate-green: #1cb85e;
-    /* The headline before it fills. Dimmer than the body grey on purpose: that
-       one is tuned for reading a paragraph, and at 42px it sat so close to the
-       ink that the fill was hard to see at all. Still comfortably above the
-       page, so an unfilled word is read rather than guessed at. */
-    --ink-unfilled: #e9edf2;
-    /* Lets a height of `auto` take part in a transition, which is what makes the
-       disclosure below open with any weight at all. */
-    interpolate-size: allow-keywords;
+   color-scheme: light dark;
+   --ink: #eef2f8;
+   --ink-soft: #98a3b4;
+   --page: #0d1016;
+   --hero: #0f131a;
+   --panel: #151a22;
+   --rule: #252c38;
+   --accent: #5b93ff;
+   --ink-unfilled: #232830;
+   --donate-green: #1cb85e;
+   interpolate-size: allow-keywords;
 }
+
 
 @media (prefers-color-scheme: dark) {
     :root {
         --ink: #eef2f8;
         --ink-soft: #98a3b4;
         --page: #0d1016;
+        --hero: #0f131a;
         --panel: #151a22;
         --rule: #252c38;
         --accent: #5b93ff;
@@ -39,20 +52,27 @@
 
 body {
     margin: 0;
-    padding: 0 24px 96px;
+    padding: 0 0 40px;
     background: var(--page);
     color: var(--ink);
     font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-.wrap { max-width: 44rem; margin: 0 auto; }
+.wrap { max-width: 60rem; margin: 0 auto;  padding: 0 30px; }
+.wrap-hero {
+    max-width: 100%;
+    padding-bottom: 40px;
+}
 
 header {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 40px 0 8px;
+}
+.wrap-hero .hero {
+   max-width: 44rem;
 }
 
 header svg { width: 34px; height: 34px; flex: none; }
@@ -66,24 +86,13 @@ header a {
 }
 
 h1 {
-    /* The floor is what a phone gets, and it is deliberately close to the
-       ceiling: the headline is the page, and shrinking it to fit two lines cost
-       more than the extra line does. Below 560px the forced break is dropped
-       (see `h1 .turn`), so the browser takes as many lines as it needs. */
     font-size: clamp(36px, 6vw, 42px);
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 32px 0 8px;
 }
 
-/* The headline arrives grey and fills in, word by word, left to right, and then
-   stays. A gradient sliding across one text node would sweep both lines at once,
-   which reads as a scanner rather than as a sentence being said; each word is
-   therefore its own span with its own delay.
 
-   `--fill-step` is set per word in the markup, in tenths, so a longer
-   translation keeps the same rhythm rather than the same duration. Nothing runs
-   under Reduce Motion: the words are simply white from the first frame. */
 h1 .word {
     color: var(--ink);
 }
@@ -100,52 +109,20 @@ h1 .word {
     to { color: var(--ink); }
 }
 
-/* The two closing words, which turn green once the white fill has finished and
-   blink out again at the end of the cycle.
-
-   Every colour in here is an animation rather than a `color`, and it has to be.
-   `word-fill` ends `forwards`, and a filling animation beats any normal rule in
-   the cascade, so a plain `color` loses to the white it is trying to replace.
-   Swapping the animation *name* is a property cascade instead, which these
-   selectors win outright, and changing the name is also what restarts it.
-
-   The states hang off one attribute rather than off two classes so that they are
-   mutually exclusive by construction. Two equally specific rules would be
-   settled by source order, and a colour that depends on which rule was typed
-   second is a colour waiting to break. */
 
 @media (prefers-reduced-motion: no-preference) {
-    /* White to green, one word after the other, on the same step and the same
-       curve as the fill above. */
     h1[data-tint="green"] .tint {
-        /* `both`, not `forwards`. A delayed animation with no backwards fill
-           leaves the word at its plain declared colour until its turn comes,
-           which here is grey: the second word blinked grey and snapped back to
-           white before it started greening. `both` holds the `from` keyframe
-           through the delay. */
         animation: word-green 0.9s ease-out both;
         animation-delay: calc(var(--tint-step) * 0.15s);
     }
 
-    /* Five half-cycles, alternating, so it finishes on `to`: green, grey, green,
-       grey, green, grey. `forwards` is what holds that last grey while the white
-       words come down to meet it. */
     h1[data-tint="blink"] .tint {
         animation: word-blink 0.34s ease-in-out 5 alternate forwards;
         animation-delay: 0s;
     }
 
-    /* The white words going out at the end, one at a time. The green pair is
-       excluded by name: they are already grey and they stay that way. */
     h1.is-cooling .word:not(.tint) {
-        /* `both` for the same reason as the green above, and here it was
-           impossible to miss: with six words staggered over a second, every one
-           of them dropped to grey the moment cooling started, then jumped back
-           to white when its own turn arrived and faded from there. */
         animation: word-cool 0.62s ease-in both;
-        /* `--cool-step` is written per word by the script, not by the builder,
-           because the order is reshuffled on every cycle and a stylesheet cannot
-           shuffle. */
         animation-delay: calc(var(--cool-step, 0) * 0.138s);
     }
 }
@@ -171,7 +148,6 @@ h2 {
     letter-spacing: -0.015em;
     margin: 44px 0 10px;
     padding-top: 22px;
-    border-top: 1px solid var(--rule);
 }
 
 p, li { color: var(--ink-soft); }
@@ -213,27 +189,14 @@ a { color: var(--accent); }
 
 .button.donate { background: var(--donate-green); color: #fff; }
 
-/* The support pair, rounded to match the hero buttons above them rather than
-   left at the generic 10px. Not fully круглые: these are shorter than the hero
-   pair, and a full pill at this height reads as a tag rather than a button. */
 .actions.give .button { border-radius: 16px; }
 
-/* The two hero buttons, drawn to match the pair at the top of the README:
-   a pill, a mark on the left, and two lines of type that share a left edge.
-   Written in CSS rather than shipped as pictures because a page can do what a
-   README cannot, and a button that is really text stays sharp, stays
-   selectable, and reflows when the words get longer in another language. */
 .button.stacked {
     position: relative;
     display: inline-flex;
     align-items: center;
     gap: 12px;
     padding: 12px 22px;
-    /* 16, not the 46 the drawing says. A border radius is clamped to half the
-       box, and this button is 60 points tall, so anything past 30 draws the
-       same full capsule and the number stops meaning anything. The drawing is
-       180 points tall with a 52 point corner, which is 29 percent of its
-       height; at 60 points that is 17, and 16 is where it sits cleanly. */
     border-radius: 16px;
     line-height: 1.2;
 }
@@ -241,21 +204,14 @@ a { color: var(--accent); }
 .button.stacked .lines { display: inline-flex; flex-direction: column; gap: 1px; }
 .button.stacked .lead { font-size: 17px; font-weight: 700; }
 
-/* Half lit and lighter, so it reads as a detail of the button rather than a
-   second thing to decide about. */
 .button.stacked .under {
     font-size: 12px;
     font-weight: 400;
     opacity: 0.72;
 }
 
-/* Two points up. The apple's glyph is drawn with its optical weight low, so
-   sitting it on the true centre of the row reads as having sagged. */
 .button.stacked .mark { width: 22px; height: 22px; flex: none; transform: translateY(-2px); }
 
-/* The sparks are decoration, so they are lifted out of the row entirely and
-   pinned to the top right corner. Taken out of the flow they no longer widen
-   the button or push the labels off centre. */
 .button.stacked .spark {
     position: absolute;
     bottom: 8px;
@@ -270,11 +226,6 @@ a { color: var(--accent); }
     color: #fff;
 }
 
-/* The same liberty the app takes on its own primary button, and for the same
-   reason: on a dark page beside a second button of nearly the same size, colour
-   alone does not say "this is the answer". Breathing and a glow, nothing that
-   moves the button: no transform, no change of size, colour or position, so the
-   thing you aim at is where it was. */
 @media (prefers-reduced-motion: no-preference) {
     .button.stacked.primary {
         animation: button-breath 3.2s ease-in-out infinite;
@@ -303,8 +254,6 @@ a { color: var(--accent); }
     border: 1px solid var(--rule);
 }
 
-/* The folded paragraph. A summary that looks like the link it behaves as, with
-   a chevron that turns over so the control says which way it is going. */
 .more { margin: 14px 0 0; }
 
 .more summary {
@@ -331,12 +280,6 @@ a { color: var(--accent); }
 .more[open] summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
 .more p { margin-top: 10px; }
 
-/* Opening and closing with some weight to it. `interpolate-size` is what lets a
-   height of `auto` be transitioned at all; `::details-content` is the box that
-   grows. Where either is unsupported the disclosure still works, it just snaps
-   instead of easing, which is why this is a stylesheet enhancement and not a
-   script. The easing overshoots slightly on the way open and settles, which
-   is the inertia. */
 .more::details-content {
     height: 0;
     overflow: hidden;
@@ -360,9 +303,6 @@ footer {
     color: var(--ink-soft);
 }
 
-/* The non-affiliation line under the footer links. Smaller than the links it
-   sits below, because it is a fact people need available rather than a fact
-   they need read. */
 .fine {
     margin: 12px 0 0;
     font-size: 13px;
@@ -373,10 +313,6 @@ footer {
 
 .translated { margin-top: -12px; }
 
-/* The language picker. A disclosure rather than a select: no script, works
-   from the keyboard, and shut until someone wants it. In the footer because
-   choosing a language is something you do once, not something the page is
-   about. */
 .languages {
     margin-top: 14px;
     font-size: 13px;
@@ -402,12 +338,6 @@ footer {
 .languages a:hover { color: var(--accent); text-decoration: underline; }
 .languages .here { color: var(--ink); font-weight: 600; }
 
-/* The real lockup, inline rather than in an <img>: the three stars have to
-   turn on three different centres, and a stylesheet cannot reach inside an
-   image. One copy serves both themes now, because the letters take
-   `currentColor` and the theme sets them the way it sets any other text.
-   The aspect ratio is written down so the masthead does not reflow if the
-   width has to be worked out before the drawing is measured. */
 header { --lockup: 34px; }
 
 header .mark {
@@ -418,26 +348,14 @@ header .mark {
     color: var(--ink);
 }
 
-/* The drawing carries empty space to the left of the star, 16.5% of its own
-   height, and left in it the lockup read as indented against the text below,
-   which starts hard against the column edge. The pull is written against the
-   height rather than in pixels, so the larger masthead below needs one number
-   changed and not two kept in step.
-
-   It is on the link and not on the drawing inside it. Moving the drawing alone
-   left the last few pixels of the star hanging outside the link's own box,
-   where they looked clickable and were not. */
 header a { margin-left: calc(var(--lockup) * -0.165); }
 
-/* The version, under the buttons rather than beside the requirements: it is
-   the line people look for before they click, not after. */
 .version {
     margin: 18px 0 4px;
     font-size: 15px;
     color: var(--ink-soft);
 }
 
-/* The footer's own line: links at one end, the language picker at the other. */
 footer .row {
     display: flex;
     flex-wrap: wrap;
@@ -460,8 +378,6 @@ footer .row p { margin: 0; }
 .languages summary::after { content: " ⌄"; opacity: 0.6; }
 .languages summary:hover { color: var(--accent); }
 
-/* The panel. No border: a shadow and a solid ground are enough to lift it,
-   and a rule around it would be the loudest thing in the footer. */
 .languages nav {
     position: absolute;
     right: 0;
@@ -492,39 +408,23 @@ footer .row p { margin: 0; }
 .modes-head { margin-top: 56px; }
 
 /* The App Store button.
-   ---------------------------------------------------------------------------
-   The shape of a store badge: a small line over a large one, which is the
-   reverse of the two buttons beside it and the reason it reads as a badge rather
-   than as a third download link. The markup carries the small line first, so
-   nothing here has to reorder anything.
-
-   Inverted against the page, so it cannot be mistaken for the source button it
-   sits next to: light ground and dark text on a dark page, dark ground and light
-   text on a light one. The border is the same colour as the ground, which is
-   what stops it looking like an outline that failed to fill. */
+---------------------------------------------------------------------------*/
 .button.stacked.appstore {
     background: var(--ink);
     color: var(--page);
     border: 1px solid var(--ink);
 }
 
-/* Light theme only: the store's own gradient, top to bottom, with the text and
-   the glyph in white. On a white page a near-black button was the heaviest thing
-   in the row and read as the primary action, which it is not. In the dark theme
-   the inversion above is already distinct from everything around it, so it
-   stays. */
+/* Light theme only */
+/*
 @media (prefers-color-scheme: light) {
     .button.stacked.appstore {
         background: linear-gradient(#18bffb, #2072f3);
         border-color: transparent;
         color: #ffffff;
     }
-}
+}*/
 
-/* The small line is a label here, not an afterthought, so it keeps its size but
-   loses most of the dimming the other buttons give it. The two lines are pulled
-   together: they are one lockup, not a heading and a detail, and the default
-   reading leading left a gap between them wide enough to read as two things. */
 .button.appstore .lines {
     gap: 0;
     line-height: 1.28;
@@ -540,9 +440,6 @@ footer .row p { margin: 0; }
     letter-spacing: -0.01em;
 }
 
-/* The supplied drawing is wider than it is tall, so the box follows the artwork
-   rather than the square the other marks sit in. The nudge the others carry is
-   cancelled: it exists for the apple's low optical centre. */
 .button.appstore .mark {
     width: 22px;
     height: 19px;
@@ -562,8 +459,6 @@ header { --lockup: 42px; }
     vertical-align: -2px;
 }
 
-/* A drawn chevron: the character that was here renders as a different glyph,
-   or none, depending on the font the reader happens to have. */
 .languages summary::after { content: none; }
 
 .chevron {
@@ -573,9 +468,6 @@ header { --lockup: 42px; }
     opacity: 0.7;
 }
 
-/* Hover states. Everything that can be clicked says so on the way in, and
-   says it over 150ms rather than instantly, because an instant change reads
-   as a glitch and a slow one reads as lag. */
 .button {
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
         filter 0.15s ease-in-out;
@@ -587,27 +479,18 @@ header { --lockup: 42px; }
 footer a { transition: color 0.15s ease-in-out; }
 footer .row a:hover { text-decoration: underline; }
 
-/* The chevron turns over when the picker is open, so the control says which
-   way it is going rather than only what it is. */
 .chevron { transition: transform 0.18s ease-in-out; }
 .languages[open] .chevron { transform: rotate(180deg); }
 
-/* Air above "Helping out" to match what is below it. */
 .actions + h2, .stamp + h2 { margin-top: 56px; }
 
 .copyright { margin-top: 10px; opacity: 0.75; }
 .copyright a { color: inherit; text-decoration: underline; }
 
-/* The picker's rows: colour rather than a rule, and no second background
-   fighting the one that marks where you are. */
 .languages nav a:hover { background: none; color: var(--accent); text-decoration: none; }
 
-/* A lighter grey than the resting border, not white. White on a dark page is
-   the brightest thing in it, which is a lot to say for "you are hovering". */
 .button.secondary:hover { border-color: rgba(255, 255, 255, 0.38); }
 
-/* Underlined at rest, plain on hover. The link is already marked; what hover
-   has to say is only "this one", and taking the rule away says it. */
 footer .row a, .version a, .stamp a { text-decoration: underline; }
 footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 
@@ -619,6 +502,7 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     margin: 10px 0 0;
     padding: 0;
     list-style: none;
+    display: none;
 }
 
 .badges li {
@@ -634,33 +518,30 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 
 .badges .apple { font-size: 13px; line-height: 1; }
 
-/* The three numbers under the hero, set the way a spec sheet sets them:
-   centred columns, a large figure over a quiet caption, and a hairline
-   between neighbours instead of boxes. Tabular figures so the row does not
-   shuffle sideways when a count gains a digit. */
 .figures {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0 0;
-    padding: 51px 0 6px;
-    border-top: 1px solid var(--rule);
-    list-style: none;
-    text-align: center;
+   display: flex;
+   justify-content: space-between;
+   margin: 0;
+   padding: 34px 0 0;
+   list-style: none;
+   text-align: center;
+   gap: 20px;
 }
 
 .figures li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7px;
-    padding: 2px clamp(22px, 5.5vw, 54px);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 0px;
+   background: linear-gradient(165deg, rgba(21, 26, 34, 0.7) 0%, rgba(21, 26, 34, 0.1) 100%); /* just var(--page) colors with transparents */
+   
+   width: 100%;
+   border-radius: 20px;
+   padding: 20px 15px;
+   position: relative;
 }
 
-/* Each column's small drawing, in the same hand as the app's icon set: the
-   accent stroke carries the shape, the ink stroke the detail. On first paint
-   the strokes draw themselves in, one column after the next; with reduced
-   motion they simply stand there, complete. */
-.figures .glyph { margin-bottom: 4px; color: var(--ink); }
+.figures .glyph { position: absolute; top: 12px; right: 15px; width: 24px; color: var(--ink-soft);}
 
 .figures .glyph path {
     stroke-width: 2;
@@ -688,14 +569,11 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     to { stroke-dashoffset: 0; }
 }
 
-/* The band breathes evenly: the heading below carries a 56px section margin,
-   so the hairline-to-content distance is trimmed here to match the top. */
 .figures + script + h2 { margin-top: 34px; }
 
-.figures li + li { border-left: 1px solid var(--rule); }
 
 .figures .figure {
-    font-size: clamp(34px, 6vw, 46px);
+    font-size: clamp(34px, 6vw, 42px);
     font-weight: 680;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -704,49 +582,37 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
 }
 
 .figures .caption {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    color: var(--ink-soft);
+   font-size: 17px;
+   line-height: 1;
+   font-weight: 400;
+   padding: 12px 0 4px 0;
+   letter-spacing: 0.01em;
+   color: #fff;
 }
 
-/* The line that says where a number comes from. Quiet enough to read second,
-   present enough that a phone never has to guess. */
 .figures .origin {
-    margin-top: 2px;
     font-size: 11.5px;
     letter-spacing: 0.01em;
-    color: color-mix(in srgb, var(--ink-soft) 72%, transparent);
+    color: color-mix(in srgb, var(--ink-soft) 50%, transparent);
+}
+.figures .origin a {
+   color: color-mix(in srgb, var(--ink-soft) 50%, transparent);
+   text-decoration: none;
+    transition: color 0.25s ease-out, width 0.25s ease-out;
+}
+.figures .origin a:hover {
+   text-decoration: underline;
+   color: var(--accent);
 }
 
-/* Each part of a breakdown is one unbreakable thing: on a wide screen they sit
-   in a row divided by a dot, on a narrow one they stack rather than leave a
-   number stranded on a line of its own. */
 .figures .origin span { white-space: nowrap; }
 
 .figures .origin span + span::before {
-    content: " · ";
+    content: " • ";
     white-space: pre;
 }
 
-@media (max-width: 460px) {
-    .figures { padding-top: 45px; }
-    .figures li { padding: 2px 16px; gap: 5px; }
-    .figures .figure { font-size: 27px; }
-    .figures .caption { font-size: 11.5px; }
-    .figures .origin { font-size: 10px; }
-    .figures .origin span { display: block; }
-    .figures .origin span + span::before { content: none; }
-}
 
-/* One thing on the page is alive, and it is the mark rather than the lockup.
-   The stars alone, not the lockup: turning is what these stars are drawn doing,
-   and moving the whole lockup reads as a card being hovered.
-
-   `fill-box` is what lets each one turn on its own centre. Without it the
-   origin is the corner of the viewBox and all three swing around the letters.
-   It is set on the stars alone: the letters carry a transform of their own in
-   the markup, and changing the box it is measured against would move them. */
 @media (prefers-reduced-motion: no-preference) {
     .mark .star-big,
     .mark .star-mid,
@@ -760,22 +626,6 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     .mark .star-small { animation: star-turn-small 8s 0.4s infinite; }
 }
 
-/* One gust turns all three at once, then they stand still until the next one.
-   The turn is at the front of the cycle and the wait is behind it, so somebody
-   who has just opened the page sees the thing move rather than arriving during
-   the silence and being shown a still logo for five seconds. The delay before
-   the first one is there only so the movement starts after the page has
-   settled and not during it.
-
-   The same period for all three is the point: three loops of different lengths
-   would line up only occasionally, and the rest of the time the mark would look
-   like it had something loose in it. What differs is how fast each one goes
-   round, and that goes with the weight — the small ones are up to speed and
-   finished while the big one is still turning, which is the only reason the
-   three read as one impulse rather than three decisions.
-
-   Each does exactly one turn. The stars have four points, so a whole turn ends
-   where it started and nothing snaps back into place at the end. */
 @keyframes star-turn-big {
     0% {
         transform: rotate(0turn);
@@ -800,83 +650,61 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     16%, 100% { transform: rotate(1turn); }
 }
 
-/* The two architecture badges are outlines: the requirement is the filled one,
-   these two are what it runs on, and a row of three identical chips made all
-   three read as equally load-bearing. */
-/* `background: none` alone lost to the shorthand on `.badges li` in some
-   engines, so the fill is set to transparent outright. */
 .badges .outline {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
+/*
 @media (prefers-color-scheme: light) {
     .badges .outline { border-color: rgba(10, 16, 28, 0.16); }
-}
+}*/
 
 .badges .chip-glyph { width: 15px; height: 15px; }
 
-/* The picker's links are inside the footer row and were catching its
-   underline. They are marked by position and by colour on hover, which is
-   enough for a list of six words. */
 footer .row .languages a { text-decoration: none; }
 
-/* The version belongs on the button it describes, not in a line under it.
-   Thinner, smaller and half lit, so it reads as a detail of the button
-   rather than a second thing to decide about. */
-
-/* A break the headline asks for, in the one place there is room to grant it.
-   The Russian headline has a comma where the thought turns, and above the
-   phone width the line is broken there rather than wherever the words happen
-   to run out. Narrower than that, two forced lines become four ragged ones, so
-   the break is dropped and the browser goes back to deciding. */
 h1 .turn { display: inline; }
 
 @media (max-width: 560px) {
-    h1 .turn { display: none; }
+   
+   .wrap { padding: 0 22px; }
+   
+   h1 .turn { display: none; }
+   
+   .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
+   
+   .actions.get .button.stacked { justify-content: flex-start; }
+   .actions.get .button.stacked .lines { text-align: left; }
+   
+   .actions.get .button.stacked { min-height: 62px; }
+   .actions.get .button.stacked.appstore { padding-top: 10px; padding-bottom: 10px; }
+   
+   .figures {
+      display: flex;
+      flex-direction: column; 
+      align-items: stretch; 
+      margin: 0;
+      padding: 34px 0 0;
+      list-style: none;
+      text-align: center;
+      gap: 10px;
+   }
+   
+   .figures .glyph { display: none; }
+   
+   .figures li {
+      background: linear-gradient(135deg, rgba(21, 26, 34, 0.4) 0%, rgba(21, 26, 34, 0.1) 100%);
+   }
 
-    /* Below 375 the three go full width, one per row: half a phone is not
-       enough for "Download for macOS", and a two-line label beside a one-line
-       one is what makes equal halves look unequal. */
-    .actions.get { flex-direction: column; align-items: stretch; gap: 10px; }
-
-    /* Left aligned, all three, with the inset the buttons already carry. Centring
-       each row kept its own icon and words together but left the three icons at
-       three different distances from the edge, because each group is a different
-       width. Against a shared left edge they line up in a column, which is what
-       makes the three read as one control group.
-
-       Never `text-align: center`: that would centre the labels and leave the mark
-       against the edge, splitting the icon from the words it belongs to. */
-    .actions.get .button.stacked { justify-content: flex-start; }
-    .actions.get .button.stacked .lines { text-align: left; }
-
-    /* One height across the group. The store button carries a 19px name where
-       the others carry a 17px one, so in the column below 375 it stands a pixel
-       taller unless its padding gives that pixel back. */
-    .actions.get .button.stacked { min-height: 62px; }
-    .actions.get .button.stacked.appstore { padding-top: 10px; padding-bottom: 10px; }
-
-    /* From 375 up, which is every current iPhone, the download and the store
-       share the first row and the source code takes the second. The store
-       shrinks to its glyph: the download label needs the room, and the store
-       badge is recognisable without its words. Below that the column above
-       stands, because the longest label, "Descargar para macOS", stops
-       fitting beside it and a lone tile on its own row reads as a mistake. */
     @media (min-width: 375px) {
         .actions.get { flex-direction: row; flex-wrap: wrap; }
         .actions.get .button.stacked.primary { flex: 1 1 auto; }
         .actions.get .button.stacked:not(.primary):not(.appstore) { flex: 1 1 100%; }
 
-        /* Tighter than the desktop inset, and the same on all three so the
-           icons still share one left edge. Every pixel taken here is a pixel
-           the square beside the download gets, and the longest label,
-           "Descargar para macOS", is what sets how tight this has to be. */
         .actions.get { gap: 8px; }
         .actions.get .button.stacked { padding-left: 14px; padding-right: 14px; gap: 8px; }
 
-        /* A square: the same 62 across as the height the three of them share.
-           Nothing inside it but the mark, centred. */
         .actions.get .button.stacked.appstore {
             flex: 0 0 auto;
             width: 62px;
@@ -890,8 +718,6 @@ h1 .turn { display: inline; }
         .actions.get .button.stacked.appstore .mark { width: 25px; height: 22px; }
     }
 
-    /* The pair in the footer shares the width instead. Both labels are
-       short enough to fit, and neither of them is the reason anybody is here. */
     .actions.give { flex-wrap: nowrap; gap: 10px; }
     .actions.give .button {
         flex: 1 1 0;
@@ -900,10 +726,6 @@ h1 .turn { display: inline; }
         padding-right: 8px;
     }
 
-    /* The picker opened off the left of the screen. It is anchored to a
-       summary that sits at the left edge of the footer, and `right: 0` on a
-       panel wider than that summary puts its left edge past the viewport. It
-       opens from the left here, and is kept off both edges. */
     .languages nav {
         right: auto;
         left: 0;
@@ -911,20 +733,10 @@ h1 .turn { display: inline; }
     }
 }
 
-/* The copyright sits under the third-party note, with room between them. */
 footer .fine + .copyright { margin-top: 12px; }
 
 /* The gallery under "Your agents, at a glance".
-   ---------------------------------------------------------------------------
-   Enhanced, not required. Without the script at the foot of the page the first
-   frame is the only one shown, the dots are hidden, and what is left is a single
-   picture. The rule the disclosure above follows, applied again: nothing here
-   disappears when the JavaScript does.
-
-   The frames are stacked rather than laid in a row, so the container is as tall
-   as one picture and no width arithmetic is needed for four of them. Crossfade
-   plus a small slide, with an easing that overshoots and settles, which is the
-   weight asked for. */
+---------------------------------------------------------------------------*/
 .gallery {
     position: relative;
     margin: 0;
@@ -951,13 +763,8 @@ footer .fine + .copyright { margin-top: 12px; }
     transform: none;
 }
 
-/* Leaving to the other side, so a step back and a step forward do not both
-   slide the same way. */
 .gallery[data-back] .frame:not(.is-on) { transform: translateX(-14px); }
 
-/* Two transparent strips over the picture, a fifth of its width each. Hidden
-   until the script marks the gallery live: a click zone that does nothing is
-   worse than no click zone, and the cursor would promise something. */
 .gallery .turn {
     display: none;
     position: absolute;
@@ -984,8 +791,6 @@ footer .fine + .copyright { margin-top: 12px; }
     gap: 7px;
     padding: 6px 8px;
     border-radius: 999px;
-    /* Over a picture whose corner could be any colour, so the dots carry their
-       own ground rather than trusting the pixels behind them. */
     background: rgba(10, 12, 16, 0.38);
     backdrop-filter: blur(6px);
 }
@@ -1002,8 +807,6 @@ footer .fine + .copyright { margin-top: 12px; }
 }
 
 .gallery .dot.is-on {
-    /* Wider rather than merely brighter: the current one should be findable
-       without comparing brightness across four small circles. */
     width: 16px;
     border-radius: 999px;
     background: #fff;
@@ -1017,12 +820,7 @@ footer .fine + .copyright { margin-top: 12px; }
 }
 
 /* The spark bed on the download button.
-   ---------------------------------------------------------------------------
-   Six sparks, each with its own size, starting point, distance and timing. CSS has no randomness, so the numbers are written into
-   the markup one spark at a time: six specs chosen by hand read as random and
-   are the same on every page, which a random function would not be.
- */
-
+---------------------------------------------------------------------------*/
 .sparks {
     position: absolute;
     inset: 0;
@@ -1035,8 +833,6 @@ footer .fine + .copyright { margin-top: 12px; }
     top: 8px;
     width: var(--size);
     height: var(--size);
-    /* Round enough to read as a point of light at three pixels and as a small
-       sparkle at seven, which is the whole range in play. */
     border-radius: 1.5px;
     background: #fff;
     opacity: 0;
@@ -1052,29 +848,18 @@ footer .fine + .copyright { margin-top: 12px; }
 @keyframes spark-fly {
     0% { opacity: 0; transform: translateY(0) rotate(45deg) scale(0.5); }
     15% { opacity: 0.95; }
-    /* A spark that vanishes at full brightness reads as a dropped frame, so it
-       goes out before it stops. */
     75% { opacity: 0; }
     100% { opacity: 0; transform: translateY(calc(var(--rise) * -1)) rotate(45deg) scale(1); }
 }
 
 /* Hovering the download button.
-   ---------------------------------------------------------------------------
-   The download arrow comes down from above, pushes the Apple mark out of the
-   slot and takes its place; the Apple mark returns from below when the pointer
-   leaves. Both live in a box the size of one glyph with `overflow: hidden`, so
-   each one starts and ends its journey outside the button entirely and is never
-   seen arriving.
-
-   Nothing here moves the button. The box is the same 22 points the single mark
-   occupied, so the row does not reflow and the click target does not shift. */
+---------------------------------------------------------------------------*/
 .button.stacked .marks {
     position: relative;
     width: 22px;
     height: 22px;
     flex: none;
     overflow: hidden;
-    /* The optical nudge, on the box rather than on either glyph inside it. */
     transform: translateY(-2px);
 }
 
@@ -1083,10 +868,7 @@ footer .fine + .copyright { margin-top: 12px; }
     inset: 0;
     width: 22px;
     height: 22px;
-    /* Overrides the shared -2px, which now belongs to the box above. */
     transform: none;
-    /* y2 past 1 is the overshoot: the arriving mark goes a little too far and
-       settles, which is the weight of something being pushed. */
     transition: transform 0.42s cubic-bezier(0.24, 1.45, 0.4, 1);
 }
 
@@ -1096,11 +878,6 @@ footer .fine + .copyright { margin-top: 12px; }
 .button.stacked.primary:hover .marks .mark.alt { transform: translateY(0); }
 .button.stacked.primary:hover .marks .mark:not(.alt) { transform: translateY(115%); }
 
-/* The two corner sparkles turn opposite ways, which is what makes them read as
-   a pair of gears rather than as one thing spinning. The larger one is slower,
-   as a larger gear is. Each path is rotated about its own centre, which is what
-   `fill-box` is for: the default box is the whole 24-unit canvas, and both
-   sparkles would swing around a point outside themselves. */
 .button.stacked .spark .big,
 .button.stacked .spark .small {
     transform-box: fill-box;
@@ -1129,23 +906,16 @@ footer .fine + .copyright { margin-top: 12px; }
 }
 
 /* Hovering the two support buttons.
-   ---------------------------------------------------------------------------
-   The heart beats and the star turns once and throws off a copy of itself.
-   Both animate the glyph only: the button keeps its box, so neither grows, moves
-   nor nudges the one beside it. */
+---------------------------------------------------------------------------*/
 @media (prefers-reduced-motion: no-preference) {
     .actions.give .button.donate:hover .glyph {
         animation: heartbeat 1.1s ease-in-out infinite;
     }
 
     .actions.give .button.secondary:hover .glyph {
-        /* Ends where it started, so leaving the button mid-turn does not snap. */
         animation: star-spin 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* The copy the star throws. A pseudo-element rather than a second glyph,
-       masked with the same star so there is one drawing: `currentColor` shows
-       through the mask, which keeps it the button's own colour in both themes. */
     .actions.give .button.secondary::after {
         content: "";
         position: absolute;
@@ -1174,8 +944,6 @@ footer .fine + .copyright { margin-top: 12px; }
 
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
-    /* Two beats and a rest, which is what a heart does and what one even pulse
-       does not. */
     14% { transform: scale(1.22); }
     28% { transform: scale(1); }
     42% { transform: scale(1.16); }
@@ -1193,18 +961,7 @@ footer .fine + .copyright { margin-top: 12px; }
 }
 
 /* The support heading, typed.
-   ---------------------------------------------------------------------------
-   No change of typeface: the letters are the same as every other h2, they simply
-   arrive one at a time. A monospace typewriter effect using `ch` widths would
-   have meant swapping the font, which is the one thing not to do here.
-
-   Nothing types until the script marks the heading, and without the script the
-   base rule below leaves every letter in place. */
-/* Hidden only after the script marks the heading, so a page without one keeps
-   its heading whole. The first version animated `display` from a keyframe, and
-   the letters simply never appeared in Safari: the support query said yes and the
-   animation did nothing. Revealing them from the script instead needs no
-   discrete-animation support at all. */
+---------------------------------------------------------------------------*/
 h2.typed.is-armed .ch { display: none; }
 h2.typed.is-armed .ch.is-on { display: inline; }
 
@@ -1213,11 +970,8 @@ h2.typed.is-armed .ch.is-on { display: inline; }
    pixels, so it stays proportional at every heading size. */
 h2.typed .caret {
     display: inline-block;
-    /* Was 0.5em, which at this size is a block rather than a caret. */
     width: 0.36em;
     height: 1em;
-    /* About three pixels of air at the heading's size: a caret touching the
-       last letter reads as part of the word. */
     margin-left: 0.13em;
     background: var(--donate-green);
     vertical-align: -0.12em;
@@ -1234,25 +988,9 @@ h2.typed .caret {
 }
 
 /* The lightbox.
-   ---------------------------------------------------------------------------
-   Opened by clicking the middle of a slide, which is the part the two turning
-   zones deliberately leave alone. Escape closes it, the arrow keys page through
-   it, and the backdrop is a button so a click anywhere off the picture closes it
-   too.
-
-   The ground is the page's own colour at high opacity plus a blur, so it reads
-   as the same room with the lights down rather than as a black hole; that also
-   means it is right in both themes without a second set of colours. */
-/* `display` here beats the `hidden` attribute, which is only the UA stylesheet
-   saying `display: none`. Written as `display: grid` alone, the closed lightbox
-   stayed on top of the whole page: invisible at opacity 0, and its backdrop
-   still swallowing every click and showing a zoom-out cursor everywhere. Any
-   author rule for `display` has to exclude the attribute explicitly. */
+---------------------------------------------------------------------------*/
 .lightbox[hidden] { display: none; }
 
-/* Focus lands here when it opens, so that Escape and the arrows have a home
-   inside the dialog. It is a container, not a control, and a ring around the
-   whole screen is meaningless: the controls inside keep theirs. */
 .lightbox:focus { outline: none; }
 .lightbox .page:focus-visible,
 .lightbox .shut:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -1270,8 +1008,7 @@ h2.typed .caret {
 
 .lightbox.is-open { opacity: 1; }
 
-/* The backdrop, and the click target that closes. A button rather than a div so
-   the keyboard can reach it and so it announces itself. */
+/* The backdrop */
 .lightbox .sheet {
     position: absolute;
     inset: 0;
@@ -1291,7 +1028,6 @@ h2.typed .caret {
     height: auto;
     border-radius: 14px;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-    /* Arrives with the fade rather than snapping to full size inside it. */
     transform: scale(0.985);
     transition: transform 0.28s cubic-bezier(0.22, 1.1, 0.36, 1);
 }
@@ -1334,5 +1070,104 @@ h2.typed .caret {
     .lightbox .page.next { right: 24%; }
 }
 
-/* The middle of a slide is what opens it, so say so. */
 .gallery.is-live .frames { cursor: zoom-in; }
+
+/* ======================================================================
+   Added by the build's own hand, kept in one block so it is obvious what
+   arrived late and can be moved into place above whenever you like.
+   ====================================================================== */
+
+/* The character field behind the hero. Behind everything, and deaf to the
+   pointer: the buttons on top of it must stay clickable. */
+.wrap-hero { position: relative; isolation: isolate; }
+
+.wrap-hero > .field {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    /* Faded at the edges, so the field has no border of its own and simply
+       stops being there. Full strength in the middle: that is where a hand
+       actually moves, and hiding it there hid the whole effect. */
+    -webkit-mask-image: radial-gradient(130% 115% at 50% 45%, #000 45%, transparent 100%);
+    mask-image: radial-gradient(130% 115% at 50% 45%, #000 45%, transparent 100%);
+}
+
+/* The two buttons that were a single glyph now have the same two-glyph slot
+   the download button has, so every button in the row answers a hover. */
+.button.stacked.secondary:hover .marks .mark.alt { transform: translateY(0); }
+.button.stacked.secondary:hover .marks .mark:not(.alt) { transform: translateY(115%); }
+
+/* The version line becomes what you get, while the pointer is on the button. */
+.button.stacked .under .swap { display: none; }
+.button.stacked.primary:hover .under .rest { display: none; }
+.button.stacked.primary:hover .under .swap.wide { display: inline; }
+
+@media (max-width: 560px) {
+    .button.stacked.primary:hover .under .swap.wide { display: none; }
+    .button.stacked.primary:hover .under .swap.narrow { display: inline; }
+}
+
+/* The middle figure shows three facts in turn. Only one glyph and one origin
+   line at a time; the rest wait with no width of their own. */
+.figures .rotates .glyph { opacity: 0; transition: opacity 0.3s ease-out; }
+.figures .rotates .glyph.is-on { opacity: 1; }
+
+.figures .origin .face { display: none; }
+.figures .origin .face.is-on { display: inline; }
+/* The separator between the two halves of the downloads line must not appear
+   between faces, which are alternatives rather than a list. */
+.figures .origin .face + .face::before { content: none; }
+
+/* While a fact is changing. Small enough to be felt rather than watched. */
+.figures .rotates.turning .figure,
+.figures .rotates.turning .caption {
+    color: var(--accent);
+    transition: color 0.12s linear;
+}
+
+.figures .rotates .figure,
+.figures .rotates .caption { transition: color 0.5s ease-out; }
+
+/* One tooltip, moved to whatever is being hovered or focused. */
+.tip {
+    position: absolute;
+    z-index: 40;
+    max-width: 260px;
+    padding: 6px 9px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: var(--panel);
+    color: var(--ink);
+    font-size: 12px;
+    line-height: 1.35;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity 0.16s ease-out, transform 0.16s ease-out;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tip { visibility: hidden; }
+.tip.is-on { opacity: 1; transform: translateY(0); visibility: visible; }
+.tip.below { transform: translateY(-3px); }
+.tip.below.is-on { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .tip { transition: none; }
+}
+
+/* The three figures are a row on a desktop and a column on a phone: side by
+   side they were three narrow slivers with a two-digit number in each. */
+@media (max-width: 640px) {
+    .figures { flex-direction: column; gap: 12px; }
+    .figures li { padding: 18px 16px; }
+    .figures .glyph { top: 16px; right: 16px; }
+}
+
+/* The field is a desktop pleasure: a phone has no pointer to move across it,
+   and drawing it would be a battery cost with nothing in return. */
+@media (hover: none) {
+    .wrap-hero > .field { display: none; }
+}

@@ -34,9 +34,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from landing import L, VERSION
 from stats import (
     APPSTORE as STATS_APPSTORE,
+    APPSTORE_UPDATED,
+    COMMITS as STATS_COMMITS,
     DIRECT as STATS_DIRECT,
+    DIRECT_UPDATED,
     FIRST_COMMIT,
     RELEASES as STATS_RELEASES,
+    STARS as STATS_STARS,
 )
 from policy_text import LANGUAGES, T
 
@@ -201,6 +205,8 @@ def wordmark():
 ANALYTICS_TOKEN = "8999ea5c44b046c19a08dcf09d5b4336"
 
 STYLE_STAMP = ""
+SITE_STAMP = ""
+FIELD_STAMP = ""
 TEMPLATE = None
 
 # The same treatment for the social card, and for a sharper reason: Slack,
@@ -223,6 +229,8 @@ def head(code, title, meta, depth, page):
         f'<meta name="description" content="{meta}">',
         f'<link rel="canonical" href="https://perfectoweb.github.io/Belay/{code}/{page}">',
         f'<link rel="stylesheet" href="{up}style.css{STYLE_STAMP}">',
+        f'<script defer src="{up}field.js{FIELD_STAMP}"></script>' if page == "" else "",
+        f'<script defer src="{up}site.js{SITE_STAMP}"></script>' if page == "" else "",
     ]
     if page != "privacy/" and ANALYTICS_TOKEN:
         # Loaded rather than declared, so a blocker or a dead network is a
@@ -286,7 +294,9 @@ def head(code, title, meta, depth, page):
         f'href="https://perfectoweb.github.io/Belay/en/{page}">')
     if page != "privacy/":
         lines += structured_data(code, meta)
-    lines += ["</head>", "<body>", '<div class="wrap">', ""]
+    # The body's own wrappers live in `template.html`, where they can be moved
+    # and nested by hand. The privacy page, still built from code, opens its own.
+    lines += ["</head>", "<body>"]
     return lines
 
 
@@ -364,9 +374,23 @@ def external(markup):
     and the eleventh is the one somebody forgets. `noopener` is not optional:
     without it the page being opened gets a handle back to this one.
     """
+    def rewrite(match):
+        tag = match.group(0)
+        # A link written by hand in `template.html` may already carry one of
+        # the two attributes; saying either twice is invalid markup that
+        # browsers tolerate and validators do not. `noopener` is added even
+        # when the hand-written link only said `target`, because without it the
+        # page being opened gets a handle back to this one.
+        additions = ""
+        if "target=" not in tag:
+            additions += ' target="_blank"'
+        if "rel=" not in tag:
+            additions += ' rel="noopener"'
+        return tag[:-1] + additions + ">"
+
     return re.sub(
-        r'<a ((?:class="[^"]*" )?href="https?://(?!perfectoweb\.github\.io)[^"]+")',
-        r'<a \1 target="_blank" rel="noopener"', markup)
+        r'<a [^>]*href="https?://(?!perfectoweb\.github\.io)[^"]+"[^>]*>',
+        rewrite, markup)
 
 
 
@@ -547,71 +571,20 @@ def clean(html):
     kept = [line for line in html.split("\n") if not line.lstrip().startswith("//")]
     return re.sub(r"\n{3,}", "\n\n", "\n".join(kept))
 
-def figures(code, t):
-    """Three numbers under the hero: downloads, releases, and how long Belay
-    has been going.
+def days_since(first):
+    """Whole days from the first commit to today, as the page is built.
 
-    Every figure carries a quiet second line: where the downloads came from,
-    which version the releases end at, the date the days count from. It is
-    printed rather than hidden behind a hover, because a phone has no hover
-    and a fact worth knowing should not need a mouse to find.
-
-    The day count is the one number that would go stale between builds, so it
-    is worked out in the page from a fixed start date — arithmetic on a
-    constant, not a request. Without JavaScript the figure printed at build
-    time stands, and it is never more than a scheduled rebuild out of date.
+    The page recomputes this in the browser as well, from `data-since`: a built
+    page can sit on the CDN for hours, and a counter of days that is a day out
+    is worse than no counter.
     """
-    total = STATS_DIRECT + (STATS_APPSTORE or 0)
-    parts = [f'{t["direct_count"]} {STATS_DIRECT}']
-    if STATS_APPSTORE is not None:
-        parts.insert(0, f'{t["appstore_count"]} {STATS_APPSTORE}')
-    start = datetime.date.fromisoformat(FIRST_COMMIT)
-    days = (datetime.date.today() - start).days
-    since = t["since_note"].format(date=start.strftime("%d.%m.%Y"))
-    # The glyphs speak the same language as the app's own icon set: a 24-point
-    # canvas, two-point round strokes, the violet accent carrying the main
-    # shape and the ink carrying the detail. `pathLength="1"` lets the
-    # stylesheet draw each stroke from nothing without knowing its true length.
-    def glyph(accent, ink):
-        return (
-            '<svg class="glyph" viewBox="0 0 24 24" width="30" height="30"'
-            ' fill="none" aria-hidden="true">'
-            f'<path d="{accent}" stroke="#6E5DFF" pathLength="1"/>'
-            f'<path d="{ink}" stroke="currentColor" pathLength="1"/>'
-            "</svg>"
-        )
-    art = {
-        "downloads": glyph("M12 4V14M7.5 9.5L12 14L16.5 9.5",
-                           "M4 16.5V18.5C4 19.6 4.9 20.5 6 20.5H18C19.1 20.5 20 19.6 20 18.5V16.5"),
-        "releases": glyph("M12 3L21 8V16L12 21L3 16V8L12 3Z",
-                          "M3 8L12 13L21 8M12 13V21"),
-        "days": glyph("M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z",
-                      "M12 6V12L16 14"),
-    }
-    return [
-        '<ul class="figures">',
-        f'    <li>{art["downloads"]}<span class="figure">{total}</span>'
-        f'<span class="caption">{t["downloads"]}</span>'
-        f'<span class="origin">{"".join(f"<span>{p}</span>" for p in parts)}</span></li>',
-        f'    <li>{art["releases"]}<span class="figure">{STATS_RELEASES}</span>'
-        f'<span class="caption">{t["releases"]}</span>'
-        f'<span class="origin"><span>{t["version"].format(version=VERSION)}</span></span></li>',
-        f'    <li>{art["days"]}<span class="figure" data-since="{FIRST_COMMIT}">{days}</span>'
-        f'<span class="caption">{t["days"]}</span>'
-        f'<span class="origin"><span>{since}</span></span></li>',
-        "</ul>",
-        "",
-        "<script>",
-        "(function(){",
-        "  var el=document.querySelector('.figure[data-since]');",
-        "  if(!el){return;}",
-        "  var start=new Date(el.dataset.since+'T00:00:00');",
-        "  var days=Math.floor((Date.now()-start.getTime())/86400000);",
-        "  if(days>0){el.textContent=days;}",
-        "})();",
-        "</script>",
-        "",
-    ]
+    return (datetime.date.today() - datetime.date.fromisoformat(first)).days
+
+
+def stamp(iso):
+    """A date the way the rest of the page writes them: 27.08.2026."""
+    return datetime.date.fromisoformat(iso).strftime("%d.%m.%Y")
+
 
 def console_note():
     """What a developer finds when they open the console on this page.
@@ -657,6 +630,17 @@ def console_note():
     ]
     return lines
 
+# A cloud with an arrow coming out of it: what the store itself means by
+# getting an app, drawn in the same stroked hand as the download arrow so the
+# two buttons feel like one family.
+APPSTORE_ALT = (
+    '<svg class="mark alt" viewBox="0 0 24 24" aria-hidden="true" fill="none"'
+    ' stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M6.6 15.6A3.6 3.6 0 0 1 7 8.5a5 5 0 0 1 9.6.9 3.3 3.3 0 0 1 .8 6.2"/>'
+    '<path d="M12 11v7.5"/><path d="M8.9 15.4 12 18.5l3.1-3.1"/></svg>'
+)
+
+
 def appstore_button(t):
     """The App Store button, or nothing while the app is not on the store.
 
@@ -672,7 +656,7 @@ def appstore_button(t):
     return [
         f'    <a class="button stacked secondary appstore" href="{APP_STORE_URL}" '
         f'aria-label="{t["appstore_top"]} {t["appstore_name"]}">'
-        f'{APPSTORE_MARK}<span class="lines">'
+        f'<span class="marks">{APPSTORE_ALT}{APPSTORE_MARK}</span><span class="lines">'
         f'<span class="under">{t["appstore_top"]}</span>'
         f'<span class="lead">{t["appstore_name"]}</span></span></a>',
     ]
@@ -707,7 +691,17 @@ def landing(code):
         "version_line": t["version"].format(version=VERSION),
         "appstore_button": "\n".join(appstore_button(t)),
         "sponsor_button": "\n".join(sponsor_button(t)),
-        "figures": "\n".join(figures(code, t)),
+        "downloads_total": str(STATS_DIRECT + (STATS_APPSTORE or 0)),
+        "appstore_line": f'{t["appstore_count"]} {STATS_APPSTORE}',
+        "direct_line": f'{t["direct_count"]} {STATS_DIRECT}',
+        "tip_appstore": t["updated"].format(date=stamp(APPSTORE_UPDATED)),
+        "tip_direct": t["updated"].format(date=stamp(DIRECT_UPDATED)),
+        "releases_count": str(STATS_RELEASES),
+        "changes_count": str(STATS_COMMITS),
+        "stars_count": str(STATS_STARS),
+        "days_number": str(days_since(FIRST_COMMIT)),
+        "first_commit": FIRST_COMMIT,
+        "since_line": t["since_note"].format(date=stamp(FIRST_COMMIT)),
         "gallery": "\n".join(gallery(code, t)),
         "support_head": typed_heading(t["support_head"]),
         "language_picker": "\n".join(language_picker(code, 1, t["language"], "")),
@@ -761,6 +755,7 @@ def render(markup, blocks, texts):
 def privacy(code):
     t = T[code]
     lines = head(code, t["title"], t["meta"], 2, "privacy/")
+    lines += ['<div class="wrap">', ""]
     lines += header(code, 2)
     lines += [f'<h1>{t["h1"]}</h1>', f'<p class="stamp">{t["stamp"]}</p>', ""]
     if t["authoritative"]:
@@ -886,12 +881,20 @@ def redirect(target, depth, note):
 
 
 def main(root):
-    global STYLE_STAMP, OG_STAMP
-    style = os.path.join(root, "style.css")
-    if os.path.exists(style):
-        digest = hashlib.sha256(io.open(style, "rb").read()).hexdigest()[:10]
-        STYLE_STAMP = f"?v={digest}"
-        print(f"  style.css {STYLE_STAMP}")
+    global STYLE_STAMP, SITE_STAMP, FIELD_STAMP, OG_STAMP
+
+    def stamp_of(name):
+        """`?v=<hash>`, so an edited file is fetched and an unedited one is not."""
+        path = os.path.join(root, name)
+        if not os.path.exists(path):
+            return ""
+        digest = hashlib.sha256(io.open(path, "rb").read()).hexdigest()[:10]
+        print(f"  {name} ?v={digest}")
+        return f"?v={digest}"
+
+    STYLE_STAMP = stamp_of("style.css")
+    SITE_STAMP = stamp_of("site.js")
+    FIELD_STAMP = stamp_of("field.js")
 
     card = os.path.join(root, "img", "og.png")
     if os.path.exists(card):
