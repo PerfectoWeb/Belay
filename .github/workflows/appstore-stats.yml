@@ -1,0 +1,141 @@
+# Adds the App Store side of the download count.
+#
+# GitHub's own counter is public and cheap, so `site-stats.yml` refreshes it
+# every half hour. Apple's is neither: the numbers are published once a day,
+# finalised the day after, and reachable only with a key that carries a
+# reports role. So this job runs once a day, re-reads the whole history rather
+# than trying to add a delta to a number it cannot verify, and writes the
+# total into the same `stats.py` the site is built from.
+#
+# It counts installs: Apple's F1 (first download) and F3 (re-download). F7 is
+# an update, and an update is not somebody getting the app.
+#
+# Without the four secrets below the job stops before it can do harm, and the
+# site keeps whatever number it already had. To turn it on, add:
+#   ASC_KEY_P8         the .p8 file's contents
+#   ASC_KEY_ID         the key id, as in AuthKey_<id>.p8
+#   ASC_ISSUER_ID      the issuer id shown above the key table
+#   ASC_VENDOR_NUMBER  from Payments and Financial Reports
+name: App Store figures
+
+on:
+  schedule:
+    - cron: "40 16 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-figures
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the key is here
+        id: gate
+        env:
+          KEY: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "No App Store Connect key configured; leaving the count alone."
+            echo "ready=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.ready == 'yes'
+        with:
+          ref: gh-pages
+
+      - name: Count what the store has served
+        if: steps.gate.outputs.ready == 'yes'
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_VENDOR_NUMBER: ${{ secrets.ASC_VENDOR_NUMBER }}
+        run: |
+          set -euo pipefail
+          pip install --quiet cryptography
+          python3 - <<'PY'
+          import base64, datetime, gzip, io, json, os, re, sys, time, urllib.error, urllib.request
+          from cryptography.hazmat.primitives import hashes, serialization
+          from cryptography.hazmat.primitives.asymmetric import ec, utils
+
+          APPLE_ID = "6801207644"
+          FIRST_DAY = datetime.date(2026, 8, 16)
+          INSTALLS = {"F1", "F3"}
+
+          key = serialization.load_pem_private_key(os.environ["ASC_KEY_P8"].encode(), password=None)
+
+          def b64(d):
+              if isinstance(d, dict):
+                  d = json.dumps(d, separators=(",", ":")).encode()
+              return base64.urlsafe_b64encode(d).rstrip(b"=")
+
+          now = int(time.time())
+          signing_input = (b64({"alg": "ES256", "kid": os.environ["ASC_KEY_ID"], "typ": "JWT"}) + b"."
+                           + b64({"iss": os.environ["ASC_ISSUER_ID"], "iat": now, "exp": now + 1000,
+                                  "aud": "appstoreconnect-v1"}))
+          r, s = utils.decode_dss_signature(key.sign(signing_input, ec.ECDSA(hashes.SHA256())))
+          token = (signing_input + b"." + b64(r.to_bytes(32, "big") + s.to_bytes(32, "big"))).decode()
+
+          vendor = os.environ["ASC_VENDOR_NUMBER"]
+          installs = 0
+          day, today = FIRST_DAY, datetime.date.today()
+          while day < today:
+              url = ("https://api.appstoreconnect.apple.com/v1/salesReports"
+                     "?filter%5Bfrequency%5D=DAILY&filter%5BreportSubType%5D=SUMMARY"
+                     "&filter%5BreportType%5D=SALES&filter%5Bversion%5D=1_0"
+                     f"&filter%5BvendorNumber%5D={vendor}&filter%5BreportDate%5D={day}")
+              req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}",
+                                                         "Accept": "application/a-gzip"})
+              try:
+                  raw = urllib.request.urlopen(req, timeout=30).read()
+              except urllib.error.HTTPError as e:
+                  # A day Apple has no report for is a quiet zero. Anything else
+                  # means the answer cannot be trusted, so nothing is written.
+                  if e.code == 404:
+                      day += datetime.timedelta(days=1)
+                      continue
+                  raise SystemExit(f"App Store reports returned HTTP {e.code} for {day}")
+              rows = gzip.decompress(raw).decode("utf-8", "replace").splitlines()
+              head = rows[0].split("\t")
+              u_i, id_i, t_i = (head.index("Units"), head.index("Apple Identifier"),
+                                head.index("Product Type Identifier"))
+              for row in rows[1:]:
+                  c = row.split("\t")
+                  if len(c) > max(u_i, id_i, t_i) and c[id_i] == APPLE_ID and c[t_i] in INSTALLS:
+                      installs += int(float(c[u_i]))
+              day += datetime.timedelta(days=1)
+
+          # The store has served the app since before this job existed, so a
+          # zero means the reports stopped answering, not that nobody installed.
+          if installs <= 0:
+              raise SystemExit("refusing to write a zero install count")
+          text = io.open("stats.py", encoding="utf-8").read()
+          io.open("stats.py", "w", encoding="utf-8").write(
+              re.sub(r"^APPSTORE = .*$", f"APPSTORE = {installs}", text, count=1, flags=re.M))
+          print(f"App Store installs: {installs}")
+          PY
+
+      - name: Rebuild the site
+        if: steps.gate.outputs.ready == 'yes'
+        run: python3 build-site.py .
+
+      - name: Commit when a number moved
+        if: steps.gate.outputs.ready == 'yes'
+        run: |
+          set -euo pipefail
+          git config user.name "David Build"
+          git config user.email "manager@perfecto-web.com"
+          if git diff --quiet; then
+            echo "Nothing moved."
+            exit 0
+          fi
+          git commit -am "Site: refresh the App Store figure"
+          git push origin HEAD:gh-pages
