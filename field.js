@@ -72,6 +72,8 @@ window.BelayField = function () {
 
     var pointerX = -1e4;
     var pointerY = -1e4;
+    /* 0 while nothing is moving, 1 while a hand is. */
+    var presence = 0;
     var ghostX = -1e4;
     var ghostY = -1e4;
     var lastX = -1e4;
@@ -110,15 +112,26 @@ window.BelayField = function () {
     }
 
     function disturb() {
-        if (!pointerIn) { return; }
-        ghostX += (pointerX - ghostX) * CHASE;
-        ghostY += (pointerY - ghostY) * CHASE;
         var moved = Math.hypot(pointerX - lastX, pointerY - lastY);
         lastX = pointerX;
         lastY = pointerY;
+
+        /* Presence answers "is a hand moving here", not "is a pointer here".
+           A pointer resting on the page used to keep pushing the same cells
+           and left a bright patch sitting under it; now the field wakes as the
+           hand starts and settles back to nothing as it stops, so there is
+           never a mark left behind. Rising faster than it falls, because
+           arriving should feel immediate and leaving should feel like a wake
+           closing over. */
+        var wants = pointerIn && moved > 0.4 ? 1 : 0;
+        presence += (wants - presence) * (wants ? 0.22 : 0.045);
+
+        if (!pointerIn) { return; }
+        ghostX += (pointerX - ghostX) * CHASE;
+        ghostY += (pointerY - ghostY) * CHASE;
         /* A fast hand leaves a brighter wake, up to a ceiling: without the cap
            a flick across the hero whites the whole thing out. */
-        var strength = PUSH * (1 + Math.min(moved / 18, 2.2));
+        var strength = PUSH * presence * (1 + Math.min(moved / 18, 2.2));
 
         var cx = ghostX / CELL;
         var cy = ghostY / CELL;
@@ -168,7 +181,10 @@ window.BelayField = function () {
         for (var y = 0; y < rows; y++) {
             for (var x = 0; x < cols; x++) {
                 var i = y * cols + x;
-                var level = rest[i] + Math.abs(cur[i]) * 2.6;
+                /* The standing texture is always there; only the ripple
+                   is scaled by presence, so the page keeps its grain and
+                   just the wake fades up and away. */
+                var level = rest[i] + Math.abs(cur[i]) * 2.6 * presence;
                 if (level < 0.06) { continue; }
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
@@ -207,7 +223,7 @@ window.BelayField = function () {
         disturb();
         step();
         draw();
-        if (!pointerIn && energy() < STILL) {
+        if (presence < 0.01 && energy() < STILL) {
             running = false;
             return;
         }
