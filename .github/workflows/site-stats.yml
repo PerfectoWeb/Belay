@@ -39,9 +39,12 @@ jobs:
           # disk image under two names — the versioned one and the stable
           # `Belay.dmg` the site links to — so a download of either counts once
           # towards the same thing: somebody took the app.
-          direct=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
-            --jq '[.[] | .assets[] | select(.name | endswith(".dmg")) | .download_count] | add // 0')
-          releases=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --jq 'length')
+          # One request, two answers: asking twice for the same page doubled
+          # the rate-limit cost for nothing.
+          releases_json=$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100")
+          direct=$(printf '%s' "$releases_json" \
+            | jq '[.[] | .assets[] | select(.name | endswith(".dmg")) | .download_count] | add // 0')
+          releases=$(printf '%s' "$releases_json" | jq 'length')
           echo "direct=$direct releases=$releases"
           python3 - "$direct" "$releases" <<'PY'
           import io, re, sys
@@ -52,6 +55,18 @@ jobs:
               raise SystemExit("refusing to write a zero download count")
           path = "stats.py"
           text = io.open(path, encoding="utf-8").read()
+
+          def held(name):
+              found = re.search(rf"^{name} = (\d+)$", text, flags=re.M)
+              return int(found.group(1)) if found else 0
+
+          # A ratchet, not an assignment. These counts only ever go up in
+          # reality, so a smaller answer is the API being partial — a page of
+          # releases that timed out, a half-filled response — and not news.
+          # The one case where a drop is real is a release deleted on purpose;
+          # then edit stats.py by hand and this will pick the number up.
+          direct = max(direct, held("DIRECT"))
+          releases = max(releases, held("RELEASES"))
           text = re.sub(r"^DIRECT = .*$", f"DIRECT = {direct}", text, count=1, flags=re.M)
           text = re.sub(r"^RELEASES = .*$", f"RELEASES = {releases}", text, count=1, flags=re.M)
           io.open(path, "w", encoding="utf-8").write(text)

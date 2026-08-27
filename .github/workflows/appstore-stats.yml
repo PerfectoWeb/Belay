@@ -10,6 +10,13 @@
 # It counts installs: Apple's F1 (first download) and F3 (re-download). F7 is
 # an update, and an update is not somebody getting the app.
 #
+# Each day is fetched once and kept in `appstore-days.json` beside the site.
+# Only days the cache has never seen, plus the last three, are asked for again:
+# Apple finalises a day's report about two days later, so those three are the
+# only ones whose answer can still change. Without the cache this job would ask
+# Apple for the entire history every night — 365 requests a year in, for 364
+# numbers that cannot move.
+#
 # Without the four secrets below the job stops before it can do harm, and the
 # site keeps whatever number it already had. To turn it on, add:
 #   ASC_KEY_P8         the .p8 file's contents
@@ -85,39 +92,86 @@ jobs:
           token = (signing_input + b"." + b64(r.to_bytes(32, "big") + s.to_bytes(32, "big"))).decode()
 
           vendor = os.environ["ASC_VENDOR_NUMBER"]
-          installs = 0
-          day, today = FIRST_DAY, datetime.date.today()
-          while day < today:
+          CACHE = "appstore-days.json"
+          try:
+              cached = json.load(io.open(CACHE, encoding="utf-8"))
+          except (OSError, ValueError):
+              cached = {}
+
+          def fetch(day):
+              """One day's install count, or None when the answer is unusable.
+
+              A 404 is Apple saying it has no report for that date, which for a
+              quiet day is the truth and is cached as a zero. A 429 or a 5xx is
+              the service, not the data: it is retried, and if it keeps failing
+              the day stays uncached and the run leaves the total alone.
+              """
               url = ("https://api.appstoreconnect.apple.com/v1/salesReports"
                      "?filter%5Bfrequency%5D=DAILY&filter%5BreportSubType%5D=SUMMARY"
                      "&filter%5BreportType%5D=SALES&filter%5Bversion%5D=1_0"
                      f"&filter%5BvendorNumber%5D={vendor}&filter%5BreportDate%5D={day}")
               req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}",
                                                          "Accept": "application/a-gzip"})
-              try:
-                  raw = urllib.request.urlopen(req, timeout=30).read()
-              except urllib.error.HTTPError as e:
-                  # A day Apple has no report for is a quiet zero. Anything else
-                  # means the answer cannot be trusted, so nothing is written.
-                  if e.code == 404:
-                      day += datetime.timedelta(days=1)
-                      continue
-                  raise SystemExit(f"App Store reports returned HTTP {e.code} for {day}")
+              for attempt in range(4):
+                  try:
+                      raw = urllib.request.urlopen(req, timeout=30).read()
+                      break
+                  except urllib.error.HTTPError as e:
+                      if e.code == 404:
+                          return 0
+                      # A key that lost its role is worth waking somebody for;
+                      # a busy service is not.
+                      if e.code in (401, 403):
+                          raise SystemExit(f"App Store reports refused the key (HTTP {e.code})")
+                      if e.code not in (429, 500, 502, 503, 504):
+                          raise SystemExit(f"App Store reports returned HTTP {e.code} for {day}")
+                      time.sleep(5 * (attempt + 1))
+                  except (urllib.error.URLError, TimeoutError):
+                      time.sleep(5 * (attempt + 1))
+              else:
+                  print(f"{day}: still unavailable, leaving it uncached")
+                  return None
               rows = gzip.decompress(raw).decode("utf-8", "replace").splitlines()
               head = rows[0].split("\t")
               u_i, id_i, t_i = (head.index("Units"), head.index("Apple Identifier"),
                                 head.index("Product Type Identifier"))
+              units = 0
               for row in rows[1:]:
                   c = row.split("\t")
                   if len(c) > max(u_i, id_i, t_i) and c[id_i] == APPLE_ID and c[t_i] in INSTALLS:
-                      installs += int(float(c[u_i]))
+                      units += int(float(c[u_i]))
+              return units
+
+          today = datetime.date.today()
+          # Apple finalises a report about two days out, so yesterday and the
+          # two days before it are the only cached answers still worth doubting.
+          unsettled = {str(today - datetime.timedelta(days=n)) for n in range(1, 4)}
+          fetched = 0
+          day = FIRST_DAY
+          while day < today:
+              key = str(day)
+              if key not in cached or key in unsettled:
+                  units = fetch(day)
+                  fetched += 1
+                  if units is not None:
+                      cached[key] = units
               day += datetime.timedelta(days=1)
+
+          installs = sum(cached.values())
+          print(f"asked Apple for {fetched} day(s); {len(cached)} cached")
 
           # The store has served the app since before this job existed, so a
           # zero means the reports stopped answering, not that nobody installed.
           if installs <= 0:
               raise SystemExit("refusing to write a zero install count")
           text = io.open("stats.py", encoding="utf-8").read()
+          found = re.search(r"^APPSTORE = (\d+)$", text, flags=re.M)
+          # A ratchet: installs only accumulate, so a smaller total means a day
+          # answered short, not that somebody uninstalled.
+          if found:
+              installs = max(installs, int(found.group(1)))
+          io.open(CACHE, "w", encoding="utf-8").write(
+              json.dumps(cached, indent=1, sort_keys=True) + "\n")
           io.open("stats.py", "w", encoding="utf-8").write(
               re.sub(r"^APPSTORE = .*$", f"APPSTORE = {installs}", text, count=1, flags=re.M))
           print(f"App Store installs: {installs}")
@@ -133,9 +187,10 @@ jobs:
           set -euo pipefail
           git config user.name "David Build"
           git config user.email "manager@perfecto-web.com"
-          if git diff --quiet; then
+          git add -A
+          if git diff --cached --quiet; then
             echo "Nothing moved."
             exit 0
           fi
-          git commit -am "Site: refresh the App Store figure"
+          git commit -m "Site: refresh the App Store figure"
           git push origin HEAD:gh-pages
