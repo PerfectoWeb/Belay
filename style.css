@@ -1158,14 +1158,6 @@ h2.typed .caret {
     .tip { transition: none; }
 }
 
-/* The three figures are a row on a desktop and a column on a phone: side by
-   side they were three narrow slivers with a two-digit number in each. */
-@media (max-width: 640px) {
-    .figures { flex-direction: column; gap: 12px; }
-    .figures li { padding: 18px 16px; }
-    .figures .glyph { top: 16px; right: 16px; }
-}
-
 /* The field is a desktop pleasure: a phone has no pointer to move across it,
    and drawing it would be a battery cost with nothing in return. */
 @media (hover: none) {
