@@ -173,14 +173,18 @@ window.BelayField = function () {
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
                 /* Rest is a grey barely off the page and energy lifts it to a
-                   brighter grey: the ripple arrives as light and density, not
-                   as colour. The blue it used to reach for competed with the
-                   headline sitting on top of it. */
+                   slightly brighter grey: the ripple arrives as light and
+                   density, not as colour. Both the blue it first reached for
+                   and the near-white after that competed with the words on
+                   top of it, so the whole range now sits close to the page. */
                 var lift = Math.min(1, Math.max(0, (capped - 0.12) / 0.7));
-                var r = Math.round(58 + (168 - 58) * lift);
-                var g = Math.round(64 + (177 - 64) * lift);
-                var b = Math.round(78 + (192 - 78) * lift);
-                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (0.16 + capped * 0.72).toFixed(3) + ")";
+                var r = Math.round(58 + (104 - 58) * lift);
+                var g = Math.round(64 + (112 - 64) * lift);
+                var b = Math.round(78 + (126 - 78) * lift);
+                /* Opacity carries most of the ripple, so it is the other half of
+                   keeping it quiet: at full energy a cell is a little over a
+                   third as solid as it used to be. */
+                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (0.14 + capped * 0.26).toFixed(3) + ")";
                 ctx.fillText(glyph, x * CELL + half, y * CELL + half);
             }
         }

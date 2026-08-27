@@ -533,7 +533,8 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
    flex-direction: column;
    align-items: center;
    gap: 0px;
-   background: linear-gradient(165deg, rgba(21, 26, 34, 0.7) 0%, rgba(21, 26, 34, 0.1) 100%); /* just var(--page) colors with transparents */
+   background: linear-gradient(165deg, rgba(21, 26, 34, 0.7) 0%, rgba(21, 26, 34, 0.1) 100%), var(--page); /* the gradient's own colours, over the page colour so the field
+       behind cannot be seen through them */
    
    width: 100%;
    border-radius: 20px;
@@ -1081,12 +1082,14 @@ h2.typed .caret {
    buttons on top of it must stay clickable. Fixed to the viewport, so it costs
    the same on a long page as on a short one and has no edge to be cut off at,
    which is what the hero-sized version had. */
-.wrap-hero, .wrap { position: relative; z-index: 1; }
-
 body > .field {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    /* Below every element on the page, not merely early in the markup. A
+       positioned element at z-index 0 paints above ordinary static content,
+       which is how the ripple ended up crossing the paragraph and the
+       buttons; -1 puts it under all of it and still above the page colour. */
+    z-index: -1;
     pointer-events: none;
     /* Faded at the edges, so the field has no border of its own and simply
        stops being there. */

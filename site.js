@@ -233,8 +233,15 @@
 
         function open(id) {
             var frame = document.createElement("iframe");
+            /* No controls at all, and looping. The demo is a short cut that
+               joins back to its own beginning, so it plays as a loop rather
+               than as a video somebody has to operate; without `controls=0`
+               YouTube also flashes its bar over the first second before
+               fading it, which is the thing that looked broken. `loop` needs
+               `playlist` naming the same video: on its own it is ignored. */
             frame.src = "https://www.youtube-nocookie.com/embed/" + id
-                + "?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+                + "?autoplay=1&controls=0&loop=1&playlist=" + id
+                + "&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3";
             frame.title = dialog.getAttribute("aria-label") || "";
             frame.allow = "autoplay; fullscreen; picture-in-picture";
             frame.setAttribute("allowfullscreen", "");
