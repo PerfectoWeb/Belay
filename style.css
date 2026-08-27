@@ -703,9 +703,6 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     color: var(--ink);
 }
 
-/* A title on a number reads as a promise of more, so the cursor says so. */
-.figures .figure[title] { cursor: help; }
-
 .figures .caption {
     font-size: 13px;
     font-weight: 500;
@@ -713,11 +710,33 @@ footer .row a:hover, .version a:hover, .stamp a:hover { text-decoration: none; }
     color: var(--ink-soft);
 }
 
+/* The line that says where a number comes from. Quiet enough to read second,
+   present enough that a phone never has to guess. */
+.figures .origin {
+    margin-top: 2px;
+    font-size: 11.5px;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--ink-soft) 72%, transparent);
+}
+
+/* Each part of a breakdown is one unbreakable thing: on a wide screen they sit
+   in a row divided by a dot, on a narrow one they stack rather than leave a
+   number stranded on a line of its own. */
+.figures .origin span { white-space: nowrap; }
+
+.figures .origin span + span::before {
+    content: " · ";
+    white-space: pre;
+}
+
 @media (max-width: 460px) {
     .figures { padding-top: 45px; }
     .figures li { padding: 2px 16px; gap: 5px; }
     .figures .figure { font-size: 27px; }
     .figures .caption { font-size: 11.5px; }
+    .figures .origin { font-size: 10px; }
+    .figures .origin span { display: block; }
+    .figures .origin span + span::before { content: none; }
 }
 
 /* One thing on the page is alive, and it is the mark rather than the lockup.

@@ -550,10 +550,10 @@ def figures(code, t):
     """Three numbers under the hero: downloads, releases, and how long Belay
     has been going.
 
-    The downloads figure carries its own breakdown, because "307" means little
-    until you can see it is the direct build plus the store. The breakdown is
-    a `title`, which every browser shows on hover and every screen reader
-    reads, and needs no script and no stylesheet to work.
+    Every figure carries a quiet second line: where the downloads came from,
+    which version the releases end at, the date the days count from. It is
+    printed rather than hidden behind a hover, because a phone has no hover
+    and a fact worth knowing should not need a mouse to find.
 
     The day count is the one number that would go stale between builds, so it
     is worked out in the page from a fixed start date — arithmetic on a
@@ -561,9 +561,9 @@ def figures(code, t):
     time stands, and it is never more than a scheduled rebuild out of date.
     """
     total = STATS_DIRECT + (STATS_APPSTORE or 0)
-    parts = [f'{t["direct_count"]}: {STATS_DIRECT}']
+    parts = [f'{t["direct_count"]} {STATS_DIRECT}']
     if STATS_APPSTORE is not None:
-        parts.insert(0, f'{t["appstore_count"]}: {STATS_APPSTORE}')
+        parts.insert(0, f'{t["appstore_count"]} {STATS_APPSTORE}')
     start = datetime.date.fromisoformat(FIRST_COMMIT)
     days = (datetime.date.today() - start).days
     since = t["since_note"].format(date=start.strftime("%d.%m.%Y"))
@@ -589,12 +589,15 @@ def figures(code, t):
     }
     return [
         '<ul class="figures">',
-        f'    <li>{art["downloads"]}<span class="figure" title="{" · ".join(parts)}">{total}</span>'
-        f'<span class="caption">{t["downloads"]}</span></li>',
+        f'    <li>{art["downloads"]}<span class="figure">{total}</span>'
+        f'<span class="caption">{t["downloads"]}</span>'
+        f'<span class="origin">{"".join(f"<span>{p}</span>" for p in parts)}</span></li>',
         f'    <li>{art["releases"]}<span class="figure">{STATS_RELEASES}</span>'
-        f'<span class="caption">{t["releases"]}</span></li>',
+        f'<span class="caption">{t["releases"]}</span>'
+        f'<span class="origin"><span>{t["version"].format(version=VERSION)}</span></span></li>',
         f'    <li>{art["days"]}<span class="figure" data-since="{FIRST_COMMIT}">{days}</span>'
-        f'<span class="caption" title="{since}">{t["days"]}</span></li>',
+        f'<span class="caption">{t["days"]}</span>'
+        f'<span class="origin"><span>{since}</span></span></li>',
         "</ul>",
         "",
         "<script>",
