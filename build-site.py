@@ -573,7 +573,7 @@ def figures(code, t):
     # stylesheet draw each stroke from nothing without knowing its true length.
     def glyph(accent, ink):
         return (
-            '<svg class="glyph" viewBox="0 0 24 24" width="24" height="24"'
+            '<svg class="glyph" viewBox="0 0 24 24" width="30" height="30"'
             ' fill="none" aria-hidden="true">'
             f'<path d="{accent}" stroke="#6E5DFF" pathLength="1"/>'
             f'<path d="{ink}" stroke="currentColor" pathLength="1"/>'
