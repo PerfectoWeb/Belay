@@ -119,10 +119,22 @@ Two delivery mechanisms; implement the HTTP one if supported, keep the command
 shim as the fallback.
 
 **B1 — HTTP receiver (preferred).** Belay runs an `NWListener` bound to
-`127.0.0.1` on an ephemeral port, writes the port and a random per-install
-bearer token to `~/Library/Application Support/Belay/bridge.json`, and registers
-hooks pointing at `http://127.0.0.1:<port>/hook`. Requests without the token are
-dropped. Bind to loopback only, never `0.0.0.0`.
+`127.0.0.1`, writes the port and a random per-install bearer token to
+`~/Library/Application Support/Belay/bridge.json`, and registers hooks pointing
+at `http://127.0.0.1:<port>/hook`. Requests without the token are dropped. Bind
+to loopback only, never `0.0.0.0`.
+
+The port is the one thing a running agent cannot follow, because its settings
+file was written once and is read per hook call. So the receiver keeps it: on
+launch it asks for the port already in `bridge.json`, and retries it four times
+a quarter-second apart, which is what an update needs: the outgoing instance
+is still holding the socket when the new one binds. A first run picks from
+41000–42999. Not the ephemeral range: that is where macOS puts outgoing
+connections, so a port recorded there can be taken by anything else on the
+machine while Belay is closed. Only when the quiet band refuses too does it
+settle for whatever is free, because a bridge on an awkward port beats no
+bridge. Every outcome is logged (`bridge up port=N`, `bridge port busy,
+retrying`, `bridge did not start: …`).
 
 **Direct build only.** Under the sandbox this needs
 `com.apple.security.network.server`, and it could not work there in any case:

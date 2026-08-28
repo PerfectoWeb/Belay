@@ -17,7 +17,7 @@ it reads, what it never reads, and how you can check for yourself.
 - It reads **structural fields only** from your agent's session files: whether a
   file grew, and a record's `type` and `stop_reason`.
 - It **never reads your prompts, your model's responses, or your code**.
-- It listens on **`127.0.0.1` only**, on an ephemeral port, and only to receive
+- It listens on **`127.0.0.1` only**, on one local port, and only to receive
   lifecycle events from your local agents — Claude Code, Codex and Cline hooks,
   and any tool you point at the generic webhook — on your own machine.
 

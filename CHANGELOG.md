@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   49680 becoming 49683 on an ordinary restart. The receiver now asks for the
   port recorded in `bridge.json`, retries four times a quarter-second apart
   while the previous instance lets go, and only then settles for a free one.
+  A first run picks from 41000–42999 rather than the ephemeral range, which is
+  where macOS puts outgoing connections and so the one range where a recorded
+  port can be taken by a browser or a build tool while Belay is closed.
 - The diagnostics log finally says something about the bridge: `bridge up
   port=N`, `bridge port busy, retrying`, `bridge did not start: …`, and a line
   for each settings file it repoints. The one subsystem whose failure a person
