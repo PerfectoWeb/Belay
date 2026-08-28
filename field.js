@@ -253,7 +253,13 @@ window.BelayField = function () {
                    them, and then they run ahead of their neighbours: the shape
                    surfaces inside the ripple and sinks again behind it. */
                 var level = rest[i] + wake;
-                if (logo[i] !== 0) { level += marks[(logo[i] - 1) * 3 + 2] * 0.9; }
+                /* A mark gets its own brightness rather than the wake's. The
+                   field was dimmed to a third so it would stop competing with
+                   the words on top of it, and the marks went quiet with it —
+                   found only by somebody already looking. This lifts the mark
+                   alone, so it reads as something discovered. */
+                var glow = logo[i] !== 0 ? marks[(logo[i] - 1) * 3 + 2] : 0;
+                level += glow * 0.9;
                 if (level < 0.06) { continue; }
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
@@ -269,7 +275,15 @@ window.BelayField = function () {
                 /* Opacity carries most of the ripple, so it is the other half of
                    keeping it quiet: at full energy a cell is a little over a
                    third as solid as it used to be. */
-                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (0.14 + capped * 0.26).toFixed(3) + ")";
+                var alpha = 0.14 + capped * 0.26 + glow * 0.34;
+                if (glow > 0) {
+                    /* Brighter as well as denser, so the shape separates from
+                       the grain around it instead of merely thickening it. */
+                    r = Math.round(r + (196 - r) * glow);
+                    g = Math.round(g + (204 - g) * glow);
+                    b = Math.round(b + (218 - b) * glow);
+                }
+                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + Math.min(alpha, 0.85).toFixed(3) + ")";
                 var px = x * CELL + half;
                 var py = y * CELL + half;
                 if (glyph === DOT) {
