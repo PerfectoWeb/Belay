@@ -45,12 +45,36 @@ window.BelayField = function () {
        crest of a ripple lands on; below them it is punctuation thinning out to
        nothing. All monospace-safe: the canvas places every glyph at its own
        cell centre, so a character of a different width cannot shift the grid. */
-    var RAMP = [".", ".", ":", "+", "*", "✦", "✦"];
+    /* The faintest two levels are the resting grain and are drawn as squares;
+       the rest are glyphs, each of which the font centres on its own. */
+    /* Five agent marks, hidden in the grid at 13 cells square and invisible
+       until the wake washes over them. Rasterised from the app's own SVGs by
+       `scratchpad/logo-mask.swift`, which is the only honest way to get a
+       recognisable shape at this size: hand-drawing them would drift from the
+       real marks the moment one changes.
+
+       Codex is not among them. Its knot is a line drawing whose gaps close up
+       below about twenty cells, and a solid blob is worse than no easter egg.
+
+       Order and placement are fixed, not random: somebody who finds one should
+       be able to show it to somebody else. */
+    var LOGOS = [
+        { x: 0.13, y: 0.28, bits: "0001100100000000110011000000001101001100110110101100001111111100000001111110111111111111111000001111111100011111110110011011111100000010101111000011010010000000001000000" },
+        { x: 0.8, y: 0.17, bits: "0000001000000000000110000000000111000000000011110000000011111100000111111111001111111111111011111111111000011111110000000111110000000001110000000000011000000000001000000" },
+        { x: 0.28, y: 0.79, bits: "0000000000000001111111111001111111111100110011100111011001110011101111111111101111110111111111001011011111101101101111110110110111111111001111100111111111100000111111000" },
+        { x: 0.88, y: 0.68, bits: "0000001100000000001110000000011111111000011111111110011111111111001111111111100111001100111111100110011101110011001110111011101110011111111111001111111111100011111111110" },
+        { x: 0.55, y: 0.93, bits: "0000111111000001111111110001111111111100111111111111111100000011111100000001111110000000111111000000011111110000001111111110111111011111001111100111100111100001110011100" }
+    ];
+
+    var DOT = ".";
+    var RAMP = [DOT, DOT, "+", "+", "*", "✦", "✦"];
     var CELL = 15;
     var FONT_SIZE = 12;
     /* How far the pointer reaches, in pixels. Wide enough that the hand feels
-       ahead of the ripple rather than poking it. */
-    var REACH = 150;
+       ahead of the ripple rather than poking it, and no wider: at 150 the
+       disturbance was a third of the hero across and read as a spotlight
+       following the cursor rather than a wake behind it. */
+    var REACH = 88;
     /* How hard a still pointer pushes, per frame. Movement adds to this. */
     var PUSH = 0.055;
     /* The wave: `SPREAD` is how fast a disturbance travels between cells and
@@ -68,6 +92,7 @@ window.BelayField = function () {
     var cur = null;
     var prev = null;
     var rest = null;
+    var logo = null;
     var dpr = 1;
 
     var pointerX = -1e4;
@@ -104,6 +129,22 @@ window.BelayField = function () {
            before anybody touches it. Fixed per cell rather than random per
            frame: a grid that fizzes on its own is noise, not texture. */
         rest = new Float32Array(size);
+        /* Where a mark's ink falls. Rebuilt with the grid, so the marks keep
+           their place on the page rather than their place in an old array. */
+        logo = new Uint8Array(size);
+        var SPAN = 13;
+        for (var m = 0; m < LOGOS.length; m++) {
+            var mark = LOGOS[m];
+            var ox = Math.round(mark.x * (cols - SPAN));
+            var oy = Math.round(mark.y * (rows - SPAN));
+            if (ox < 0 || oy < 0) { continue; }
+            for (var by = 0; by < SPAN; by++) {
+                for (var bx = 0; bx < SPAN; bx++) {
+                    if (mark.bits.charCodeAt(by * SPAN + bx) !== 49) { continue; }
+                    logo[(oy + by) * cols + (ox + bx)] = 1;
+                }
+            }
+        }
         for (var i = 0; i < size; i++) {
             var x = i % cols;
             var y = (i / cols) | 0;
@@ -184,7 +225,11 @@ window.BelayField = function () {
                 /* The standing texture is always there; only the ripple
                    is scaled by presence, so the page keeps its grain and
                    just the wake fades up and away. */
-                var level = rest[i] + Math.abs(cur[i]) * 2.6 * presence;
+                var wake = Math.abs(cur[i]) * 2.6 * presence;
+                /* A mark's cells are ordinary grain until the wake reaches
+                   them, and then they run ahead of their neighbours: the shape
+                   surfaces inside the ripple and sinks again behind it. */
+                var level = rest[i] + wake + (logo[i] === 1 ? wake * 2.4 : 0);
                 if (level < 0.06) { continue; }
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
@@ -201,7 +246,19 @@ window.BelayField = function () {
                    keeping it quiet: at full energy a cell is a little over a
                    third as solid as it used to be. */
                 ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (0.14 + capped * 0.26).toFixed(3) + ")";
-                ctx.fillText(glyph, x * CELL + half, y * CELL + half);
+                var px = x * CELL + half;
+                var py = y * CELL + half;
+                if (glyph === DOT) {
+                    /* The resting grain is drawn, not typed. A period sits on
+                       the baseline, and `textBaseline: middle` centres the em
+                       box rather than the ink, so the dots landed a few pixels
+                       below every other glyph and the wake looked offset from
+                       the grid it was moving through. A square at the cell's
+                       centre cannot be off. */
+                    ctx.fillRect(px - 0.9, py - 0.9, 1.8, 1.8);
+                } else {
+                    ctx.fillText(glyph, px, py);
+                }
             }
         }
     }
