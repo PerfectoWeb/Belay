@@ -42,9 +42,9 @@ public actor HookReceiver {
     var connections: [UInt64: NWConnection] = [:]
     var nextConnectionID: UInt64 = 0
     private var starting: [CheckedContinuation<BridgeEndpoint, Error>] = []
-    /// The port this start is asking for, and how many times it has asked.
-    /// `nil` means it has given up on a particular one and will take any.
-    private var wanted: UInt16?
+    /// The port from `bridge.json`, and how many times this start has asked
+    /// for a port at all.
+    private var remembered: UInt16?
     private var attempts = 0
 
     public private(set) var endpoint: BridgeEndpoint?
@@ -61,11 +61,33 @@ public actor HookReceiver {
         continuation.finish()
     }
 
-    /// How many times to ask for the remembered port before taking any free
-    /// one. An outgoing instance releases its socket in well under a second;
-    /// four tries a quarter-second apart covers that without making a launch
-    /// wait on a port somebody else has taken for good.
+    /// How many times to ask for the remembered port before looking elsewhere.
+    /// An outgoing instance releases its socket in well under a second; four
+    /// tries a quarter-second apart covers that without making a launch wait on
+    /// a port somebody else has taken for good.
     static let portAttempts = 4
+
+    /// Where a first-run port comes from.
+    ///
+    /// Not the ephemeral range. That is the range macOS hands out to outgoing
+    /// connections, so a port recorded there is one any browser or build tool
+    /// can take while Belay is closed — which is the whole problem this record
+    /// exists to avoid. This band sits below it, above the well-known services,
+    /// and clear of the ports development tools reach for: nothing common lives
+    /// between 41000 and 43000.
+    static let quietRange: ClosedRange<UInt16> = 41_000...42_999
+
+    /// The port to try on this attempt.
+    ///
+    /// The recorded one first, several times, because the instance being
+    /// replaced is usually still holding it. Then fresh candidates from the
+    /// quiet band. Then `nil`, meaning any free port at all: a bridge on an
+    /// awkward port beats no bridge.
+    private func candidate() -> UInt16? {
+        if attempts < Self.portAttempts, let remembered { return remembered }
+        if attempts < Self.portAttempts + 4 { return UInt16.random(in: Self.quietRange) }
+        return nil
+    }
 
     /// Binds the port from `bridge.json` if it can, records it with the bearer
     /// token, and returns once the listener is actually accepting.
@@ -80,8 +102,8 @@ public actor HookReceiver {
         // A second caller arriving while the first is still binding waits on the
         // same listener rather than opening a competing one.
         if listener == nil {
-            if attempts == 0 { wanted = store.load()?.port }
-            let made = try LoopbackListener.make(port: wanted)
+            if attempts == 0 { remembered = store.load()?.port }
+            let made = try LoopbackListener.make(port: candidate())
             listener = made
             made.stateUpdateHandler = { [weak self] state in
                 Task { await self?.listenerChanged(state) }
@@ -149,9 +171,8 @@ public actor HookReceiver {
             // The remembered port is usually taken by the instance this one is
             // replacing, which lets go in a moment. Ask again, then settle for
             // any free port rather than leaving the bridge down.
-            if wanted != nil, attempts < Self.portAttempts {
+            if attempts < Self.portAttempts + 4 {
                 attempts += 1
-                if attempts == Self.portAttempts { wanted = nil }
                 EventLog.note("bridge port busy, retrying (\(attempts))")
                 Task { [weak self] in
                     try? await Task.sleep(nanoseconds: 250_000_000)
@@ -170,7 +191,7 @@ public actor HookReceiver {
     private func retryStart() async {
         guard listener == nil, !starting.isEmpty else { return }
         do {
-            let made = try LoopbackListener.make(port: wanted)
+            let made = try LoopbackListener.make(port: candidate())
             listener = made
             made.stateUpdateHandler = { [weak self] state in
                 Task { await self?.listenerChanged(state) }

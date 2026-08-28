@@ -4922,6 +4922,52 @@
         }
       }
     },
+    "Belay now keeps the same local address whenever possible, so agents stay connected across relaunches and updates.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay now keeps the same local address whenever possible, so agents stay connected across relaunches and updates."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay теперь сохраняет прежний локальный адрес, поэтому связь с агентом не теряется после перезапуска или обновления."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay behält jetzt möglichst dieselbe lokale Adresse, damit Agents nach Neustarts und Updates verbunden bleiben."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantiene ahora la misma dirección local siempre que sea posible, para que los agentes sigan conectados tras reinicios y actualizaciones."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay conserve désormais la même adresse locale lorsque c’est possible, afin que les agents restent connectés après un redémarrage ou une mise à jour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ora mantiene lo stesso indirizzo locale quando possibile, così gli agenti restano connessi dopo riavvii e aggiornamenti."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 现在会尽量保持相同的本地地址，让智能体在重启或更新后继续保持连接。"
+          }
+        }
+      }
+    },
     "Belay reached its maximum awake time and stopped keeping your Mac awake.": {
       "extractionState": "manual",
       "localizations": {
@@ -5667,52 +5713,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 将停止为 %@ 监视此文件夹。其中的 Belay 钩子也会被移除。文件夹本身不会改动。"
-          }
-        }
-      }
-    },
-    "Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Связь Belay с агентом раньше переезжала при каждом перезапуске, и после обновления агент обращался по адресу, где никто не отвечал. Теперь адрес остаётся прежним."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Verbindung von Belay zu deinem Agenten wanderte bei jedem Neustart, und nach einem Update sprach der Agent mit einer Adresse, an der niemand antwortete. Sie bleibt jetzt dieselbe."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El enlace de Belay con tu agente cambiaba cada vez que Belay se reiniciaba, y tras una actualización el agente hablaba con una dirección donde no respondía nadie. Ahora se mantiene la misma."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le lien entre Belay et votre agent changeait à chaque redémarrage, et après une mise à jour l'agent s'adressait à un port où personne ne répondait. Il reste désormais le même."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il collegamento di Belay con il tuo agente cambiava a ogni riavvio e, dopo un aggiornamento, l'agente parlava con un indirizzo dove non rispondeva nessuno. Ora resta lo stesso."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 与智能体之间的连接过去每次重启都会更换，更新之后智能体便会去访问一个无人应答的地址。现在它会保持不变。"
           }
         }
       }
@@ -8423,6 +8423,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "允许访问 ~/.copilot"
+          }
+        }
+      }
+    },
+    "Hold Option or Shift in the Sleep delay menu or Always On timer to show the longer durations.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold Option or Shift in the Sleep delay menu or Always On timer to show the longer durations."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удерживайте Option или Shift в меню «Пауза перед сном» или таймере Always On, чтобы показать более длинные интервалы."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halte Option oder Umschalt im Menü für die Schlafverzögerung oder im Always-On-Timer gedrückt, um die längeren Zeiten anzuzeigen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantén pulsada Option o Mayúsculas en el menú de retraso del reposo o en el temporizador Always On para mostrar las duraciones más largas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenez Option ou Maj dans le menu du délai de veille ou le minuteur Always On pour afficher les durées plus longues."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni premuto Option o Maiuscole nel menu del ritardo dello stop o nel timer Always On per mostrare le durate più lunghe."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“睡眠延迟”菜单或 Always On 计时器中按住 Option 或 Shift，即可显示更长的时长选项。"
           }
         }
       }
@@ -11467,48 +11513,48 @@
         }
       }
     },
-    "Option opens the longer lists too": {
+    "Option reveals longer choices too": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option opens the longer lists too"
+            "value": "Option reveals longer choices too"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option тоже раскрывает длинные списки"
+            "value": "Option тоже показывает длинные интервалы"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option öffnet die längeren Listen ebenfalls"
+            "value": "Option zeigt auch die längeren Zeiten"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option también abre las listas largas"
+            "value": "Option también muestra las duraciones más largas"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option ouvre aussi les listes longues"
+            "value": "Option affiche aussi les durées plus longues"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anche Option apre gli elenchi lunghi"
+            "value": "Option mostra anche le durate più lunghe"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Option 同样可以展开更长的列表"
+            "value": "Option 也能显示更长的时长"
           }
         }
       }
@@ -11932,48 +11978,48 @@
         }
       }
     },
-    "Precise Detection survives an update": {
+    "Precise Detection survives restarts and updates": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Precise Detection survives an update"
+            "value": "Precise Detection survives restarts and updates"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Точное определение переживает обновление"
+            "value": "Точное определение переживает перезапуски и обновления"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Präzise Erkennung übersteht ein Update"
+            "value": "Präzise Erkennung übersteht Neustarts und Updates"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La detección precisa sobrevive a una actualización"
+            "value": "La detección precisa sobrevive a reinicios y actualizaciones"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La détection précise survit à une mise à jour"
+            "value": "La détection précise survit aux redémarrages et mises à jour"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il rilevamento preciso sopravvive a un aggiornamento"
+            "value": "Il rilevamento preciso sopravvive a riavvii e aggiornamenti"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "精确检测不再被更新打断"
+            "value": "精确检测不再被重启或更新打断"
           }
         }
       }
@@ -14546,52 +14592,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "合盖后 Mac 过热，Belay 已让它进入睡眠。"
-          }
-        }
-      }
-    },
-    "The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Меню задержки сна и таймер Always On показывали дополнительные значения по Shift. Теперь они отзываются и на Option, как это принято в macOS."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Menü der Wartezeit und der Always-On-Timer zeigten ihre längeren Werte unter Umschalt. Sie reagieren jetzt auch auf Option, wie der Rest von macOS."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El menú de espera y el temporizador Always On ya mostraban sus opciones largas con Mayúsculas. Ahora responden también a Option, como el resto de macOS."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le menu du délai de veille et le minuteur Always On montraient déjà leurs choix longs sous Maj. Ils répondent maintenant à Option également, comme le reste de macOS."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il menu dell'attesa e il timer Always On mostravano le voci lunghe con Maiuscole. Ora rispondono anche a Option, come il resto di macOS."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "睡眠延迟菜单和 Always On 计时器原本只在按住 Shift 时显示更长的选项。现在它们也响应 Option，与 macOS 的其他部分一致。"
           }
         }
       }

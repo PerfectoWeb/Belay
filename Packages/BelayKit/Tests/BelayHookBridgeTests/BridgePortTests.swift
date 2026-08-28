@@ -58,3 +58,36 @@ struct BridgePortTests {
         await holder.stop()
     }
 }
+
+/// Where the first port of all comes from.
+@Suite("The first port")
+struct FirstPortTests {
+    @Test("A fresh install lands outside the ephemeral range")
+    func firstRunAvoidsTheEphemeralRange() async throws {
+        let scratch = try BridgeScratch()
+        let store = BridgeEndpointStore(paths: scratch.paths)
+
+        let receiver = HookReceiver(store: store)
+        let bound = try await receiver.start()
+        await receiver.stop()
+
+        #expect(
+            HookReceiver.quietRange.contains(bound.port),
+            "\(bound.port) is outside the quiet band")
+        // The ephemeral range is where macOS puts outgoing connections, so a
+        // port recorded there can be taken while Belay is closed.
+        #expect(bound.port < 49_152, "inside the ephemeral range")
+    }
+
+    @Test("The port it picked is the port it records")
+    func theRecordMatchesTheSocket() async throws {
+        let scratch = try BridgeScratch()
+        let store = BridgeEndpointStore(paths: scratch.paths)
+
+        let receiver = HookReceiver(store: store)
+        let bound = try await receiver.start()
+        await receiver.stop()
+
+        #expect(store.load()?.port == bound.port)
+    }
+}

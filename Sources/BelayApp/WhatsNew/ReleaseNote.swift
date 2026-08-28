@@ -95,19 +95,17 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.speed,
-                        title: "Precise Detection survives an update",
+                        title: "Precise Detection survives restarts and updates",
                         body: """
-                            Belay's link to your agent used to move every time Belay \
-                            restarted, and an update left the agent talking to an \
-                            address nobody was answering. It now keeps the same one.
+                            Belay now keeps the same local address whenever possible, \
+                            so agents stay connected across relaunches and updates.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.toggle,
-                        title: "Option opens the longer lists too",
+                        title: "Option reveals longer choices too",
                         body: """
-                            The Sleep delay menu and the Always On timer already showed \
-                            their longer choices under Shift. They answer Option as \
-                            well, the way the rest of macOS does.
+                            Hold Option or Shift in the Sleep delay menu or Always On \
+                            timer to show the longer durations.
                             """)
                 ]
             )
