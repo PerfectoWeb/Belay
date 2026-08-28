@@ -103,6 +103,7 @@ window.BelayField = function () {
     var rest = null;
     var logo = null;
     var marks = null;
+    var edge = null;
     var dpr = 1;
 
     var pointerX = -1e4;
@@ -142,6 +143,10 @@ window.BelayField = function () {
         /* Where a mark's ink falls. Rebuilt with the grid, so the marks keep
            their place on the page rather than their place in an old array. */
         logo = new Uint8Array(size);
+        /* The outline of each mark, so it can be drawn in the brand's violet
+           while the inside stays light: a shape with a coloured edge reads as
+           a logo, where an evenly bright blob reads as more field. */
+        edge = new Uint8Array(size);
         var SPAN = 13;
         marks = new Float32Array(LOGOS.length * 3);
         for (var m = 0; m < LOGOS.length; m++) {
@@ -156,6 +161,19 @@ window.BelayField = function () {
                 for (var bx = 0; bx < SPAN; bx++) {
                     if (mark.bits.charCodeAt(by * SPAN + bx) !== 49) { continue; }
                     logo[(oy + by) * cols + (ox + bx)] = m + 1;
+                    /* On the outline when any of the four neighbours is
+                       outside the mark, the mask's own border included. */
+                    var open = false;
+                    for (var n = 0; n < 4; n++) {
+                        var nx = bx + (n === 0 ? -1 : n === 1 ? 1 : 0);
+                        var ny = by + (n === 2 ? -1 : n === 3 ? 1 : 0);
+                        if (nx < 0 || ny < 0 || nx >= SPAN || ny >= SPAN
+                            || mark.bits.charCodeAt(ny * SPAN + nx) !== 49) {
+                            open = true;
+                            break;
+                        }
+                    }
+                    if (open) { edge[(oy + by) * cols + (ox + bx)] = 1; }
                 }
             }
         }
@@ -275,15 +293,23 @@ window.BelayField = function () {
                 /* Opacity carries most of the ripple, so it is the other half of
                    keeping it quiet: at full energy a cell is a little over a
                    third as solid as it used to be. */
-                var alpha = 0.14 + capped * 0.26 + glow * 0.34;
+                var alpha = 0.14 + capped * 0.26 + glow * 0.46;
                 if (glow > 0) {
                     /* Brighter as well as denser, so the shape separates from
-                       the grain around it instead of merely thickening it. */
-                    r = Math.round(r + (196 - r) * glow);
-                    g = Math.round(g + (204 - g) * glow);
-                    b = Math.round(b + (218 - b) * glow);
+                       the grain around it instead of merely thickening it. The
+                       outline takes the violet off the download button, which
+                       is the one strong colour this page already owns. */
+                    if (edge[i] === 1) {
+                        r = Math.round(r + (139 - r) * glow);
+                        g = Math.round(g + (79 - g) * glow);
+                        b = Math.round(b + (246 - b) * glow);
+                    } else {
+                        r = Math.round(r + (222 - r) * glow);
+                        g = Math.round(g + (228 - g) * glow);
+                        b = Math.round(b + (240 - b) * glow);
+                    }
                 }
-                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + Math.min(alpha, 0.85).toFixed(3) + ")";
+                ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + Math.min(alpha, 0.94).toFixed(3) + ")";
                 var px = x * CELL + half;
                 var py = y * CELL + half;
                 if (glyph === DOT) {
