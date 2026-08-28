@@ -84,6 +84,7 @@ final class PreciseDetection {
     func start() async -> AsyncStream<ActivitySignal>? {
         guard Self.isSupported else {
             Log.bridge.notice("no hook bridge in this build; detection is the transcript watcher")
+            EventLog.note("bridge absent in this build")
             return nil
         }
         do {
@@ -95,6 +96,7 @@ final class PreciseDetection {
             return await receiver.signals
         } catch {
             Log.bridge.error("hook receiver failed to start: \(error.localizedDescription, privacy: .public)")
+            EventLog.note("bridge did not start: \(error.localizedDescription)")
             lastError = error.localizedDescription
             return nil
         }
@@ -125,6 +127,7 @@ final class PreciseDetection {
             do {
                 if case .written = try installer.reconcile(endpoint: endpoint) {
                     Log.bridge.notice("repointed existing hooks at the current port")
+                    EventLog.note("bridge repointed claude hooks port=\(endpoint.port)")
                 }
             } catch {
                 lastError = error.localizedDescription
@@ -137,6 +140,7 @@ final class PreciseDetection {
             do {
                 if case .written = try installer.reconcile(endpoint: endpoint) {
                     Log.bridge.notice("repointed existing Cline hooks at the current port")
+                    EventLog.note("bridge repointed cline hooks port=\(endpoint.port)")
                 }
             } catch {
                 clineLastError = error.localizedDescription
@@ -153,6 +157,7 @@ final class PreciseDetection {
                 for installer in installers {
                     if case .written = try installer.reconcile(endpoint: endpoint) {
                         Log.bridge.notice("repointed existing Codex hooks at the current port")
+                        EventLog.note("bridge repointed codex hooks port=\(endpoint.port)")
                     }
                 }
             }
