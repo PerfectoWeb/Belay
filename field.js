@@ -59,6 +59,12 @@ window.BelayField = function () {
        Order and placement are fixed, not random: somebody who finds one should
        be able to show it to somebody else.
 
+       They live in the margins beside the page's text, never behind it: a
+       shape surfacing under a paragraph competes with reading it. On a window
+       too narrow to have margins there is nowhere to put them and they simply
+       do not appear, which is the right answer for a screen that has no room
+       to spare.
+
        A mark surfaces by how close the pointer is to it, not by whether the
        wake happens to be washing over its cells. The wake is a hundred and
        seventy pixels across and a mark is nearly two hundred, so tying the two
@@ -68,11 +74,11 @@ window.BelayField = function () {
     /* How near the pointer has to be, in pixels from a mark's middle. */
     var FIND = 190;
     var LOGOS = [
-        { x: 0.13, y: 0.28, bits: "0001100100000000110011000000001101001100110110101100001111111100000001111110111111111111111000001111111100011111110110011011111100000010101111000011010010000000001000000" },
-        { x: 0.8, y: 0.17, bits: "0000001000000000000110000000000111000000000011110000000011111100000111111111001111111111111011111111111000011111110000000111110000000001110000000000011000000000001000000" },
-        { x: 0.28, y: 0.79, bits: "0000000000000001111111111001111111111100110011100111011001110011101111111111101111110111111111001011011111101101101111110110110111111111001111100111111111100000111111000" },
-        { x: 0.88, y: 0.68, bits: "0000001100000000001110000000011111111000011111111110011111111111001111111111100111001100111111100110011101110011001110111011101110011111111111001111111111100011111111110" },
-        { x: 0.55, y: 0.93, bits: "0000111111000001111111110001111111111100111111111111111100000011111100000001111110000000111111000000011111110000001111111110111111011111001111100111100111100001110011100" }
+        { side: -1, y: 0.3, bits: "0001100100000000110011000000001101001100110110101100001111111100000001111110111111111111111000001111111100011111110110011011111100000010101111000011010010000000001000000" },
+        { side: 1, y: 0.16, bits: "0000001000000000000110000000000111000000000011110000000011111100000111111111001111111111111011111111111000011111110000000111110000000001110000000000011000000000001000000" },
+        { side: -1, y: 0.74, bits: "0000000000000001111111111001111111111100110011100111011001110011101111111111101111110111111111001011011111101101101111110110110111111111001111100111111111100000111111000" },
+        { side: 1, y: 0.52, bits: "0000001100000000001110000000011111111000011111111110011111111111001111111111100111001100111111100110011101110011001110111011101110011111111111001111111111100011111111110" },
+        { side: 1, y: 0.88, bits: "0000111111000001111111110001111111111100111111111111111100000011111100000001111110000000111111000000011111110000001111111110111111011111001111100111100111100001110011100" }
     ];
 
     var DOT = ".";
@@ -144,11 +150,23 @@ window.BelayField = function () {
         logo = new Uint8Array(size);
         var SPAN = 13;
         marks = new Float32Array(LOGOS.length * 3);
+        /* The text column, measured rather than assumed: the stylesheet owns
+           its width and this should follow it rather than keep a copy. */
+        var column = document.querySelector(".wrap");
+        var box = column ? column.getBoundingClientRect() : null;
+        var GAP = 24;
+        var leftRoom = box ? box.left - GAP : 0;
+        var rightRoom = box ? width - box.right - GAP : 0;
         for (var m = 0; m < LOGOS.length; m++) {
             var mark = LOGOS[m];
-            var ox = Math.round(mark.x * (cols - SPAN));
             var oy = Math.round(mark.y * (rows - SPAN));
-            if (ox < 0 || oy < 0) { continue; }
+            var room = mark.side < 0 ? leftRoom : rightRoom;
+            /* Not enough margin on that side: this one sits this visit out. */
+            if (room < SPAN * CELL) { continue; }
+            var ox = mark.side < 0
+                ? Math.round((room - SPAN * CELL) / 2 / CELL)
+                : Math.round((width - rightRoom + (room - SPAN * CELL) / 2) / CELL);
+            if (ox < 0 || oy < 0 || ox + SPAN > cols) { continue; }
             /* Middle of the mark in pixels, and its glow, kept together. */
             marks[m * 3] = (ox + SPAN / 2) * CELL;
             marks[m * 3 + 1] = (oy + SPAN / 2) * CELL;
@@ -239,7 +257,13 @@ window.BelayField = function () {
             var dx = ghostX - marks[m * 3];
             var dy = ghostY - marks[m * 3 + 1];
             var near = Math.max(0, 1 - Math.hypot(dx, dy) / FIND);
-            marks[m * 3 + 2] = near * near * presence;
+            var want = near * near * presence;
+            var has = marks[m * 3 + 2];
+            /* A mark comes up as fast as the wake does and takes about three
+               times as long to go: the wake is weather and a mark is a thing
+               you found, so it should still be there for a moment after the
+               hand has moved on. */
+            marks[m * 3 + 2] = has + (want - has) * (want > has ? 0.25 : 0.015);
         }
         var half = CELL / 2;
         for (var y = 0; y < rows; y++) {
@@ -321,7 +345,11 @@ window.BelayField = function () {
         disturb();
         step();
         draw();
-        if (presence < 0.01 && energy() < STILL) {
+        var lit = 0;
+        for (var m = 0; marks && m < LOGOS.length; m++) {
+            if (marks[m * 3 + 2] > 0.01) { lit = 1; }
+        }
+        if (lit === 0 && presence < 0.01 && energy() < STILL) {
             running = false;
             return;
         }
