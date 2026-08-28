@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.6.2 is out** on GitHub, Sparkle and Homebrew, and is **in review for the Mac App Store** (submitted 27 Aug). The store still serves 1.6.1 until it is approved.
+**1.6.3 is out** on GitHub, Sparkle and Homebrew. 1.6.2 is **in review for the Mac App Store** (submitted 27 Aug), and the store serves 1.6.1 until it is approved.
 
 </div>
 
@@ -59,6 +59,9 @@ Finished work links to the commit or release that closed it. If there is no date
 | ⏱ | The Always On timer survives an app relaunch | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 🕓 | Last activity on every agent's tile | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 📦 | **v1.6.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 🔌 | Precise Detection keeps its port across restarts and updates | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
+| ⌥ | The longer lists open on Option as well as Shift | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
+| 📦 | **v1.6.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
 | 📦 | **v1.6.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [27 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.2) |
 | 📦 | **v1.6.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [26 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.1) |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
