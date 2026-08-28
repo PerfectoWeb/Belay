@@ -3,8 +3,40 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.6.3</title>
+            <pubDate>Fri, 28 Aug 2026 18:45:38 +0300</pubDate>
+            <sparkle:version>15</sparkle:version>
+            <sparkle:shortVersionString>1.6.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.6.3. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.3</h2>
+<ul>
+  <li><b>Precise Detection survives restarts and updates.</b> Belay now keeps
+      the same local address, so agents stay connected when the app restarts
+      or updates.</li>
+  <li><b>Option reveals the longer choices too.</b> In Sleep delay and the
+      Always On timer, hold Option or Shift to show the longer durations.</li>
+</ul>
+<p class="quiet">Also: diagnostics now record when the local bridge starts,
+which port it uses, and which agent settings it updates.</p>]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.3/Belay-1.6.3.dmg" length="7162814" type="application/octet-stream" sparkle:edSignature="uR07j/mnzSDJkVDfVqtpemUPFugSs5zTZeVJq5GvIjpRcLXqgQ/+EX2y+hVGEb1NAsiB/YFd2LA5QhOWxva+AQ=="/>
+        </item>
+        <item>
             <title>1.6.2</title>
-            <pubDate>Thu, 27 Aug 2026 20:10:02 +0300</pubDate>
+            <pubDate>Fri, 28 Aug 2026 18:45:41 +0300</pubDate>
             <sparkle:version>14</sparkle:version>
             <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -37,7 +69,7 @@ flooding the log.</p>]]></description>
         </item>
         <item>
             <title>1.6.1</title>
-            <pubDate>Thu, 27 Aug 2026 20:10:04 +0300</pubDate>
+            <pubDate>Fri, 28 Aug 2026 18:45:43 +0300</pubDate>
             <sparkle:version>13</sparkle:version>
             <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -74,7 +106,7 @@ exit Belay records what happened in the log on the next launch.</p>]]></descript
         </item>
         <item>
             <title>1.6.0</title>
-            <pubDate>Thu, 27 Aug 2026 20:11:13 +0300</pubDate>
+            <pubDate>Fri, 28 Aug 2026 18:45:46 +0300</pubDate>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -114,7 +146,7 @@ interface.</p>
         </item>
         <item>
             <title>1.5.0</title>
-            <pubDate>Thu, 27 Aug 2026 20:11:15 +0300</pubDate>
+            <pubDate>Fri, 28 Aug 2026 18:45:48 +0300</pubDate>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -152,47 +184,6 @@ frame, and running the test suite can no longer disturb a running
 Belay.</p>
 ]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.5.0/Belay-1.5.0.dmg" length="6878589" type="application/octet-stream" sparkle:edSignature="bvotHC0vN8sYIkfX8pisteKMJ8HJ2U0HMO8OjELi7b7KK+i8dqggPEb9UDNvOsTkR+J00hXdDqz41DDUT98GDQ=="/>
-        </item>
-        <item>
-            <title>1.4.0</title>
-            <pubDate>Thu, 27 Aug 2026 20:11:17 +0300</pubDate>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.4.0. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.4.0</h2>
-<ul>
-  <li><b>Keep your Mac awake for a set time.</b> Choose anywhere from
-      15 minutes to 12 hours below the mode picker. Belay shows how much
-      time is left and lets your Mac sleep when the timer runs out.</li>
-  <li><b>Pick up where you left off.</b> If a timer or your awake limit
-      ends a hold, the panel tells you why and gives you a Hold Again
-      button. Unlocking your Mac resumes the hold automatically.</li>
-  <li><b>See the countdown on the dimmed screen.</b> When Belay dims the
-      display at night, the time remaining appears in the centre of the
-      screen.</li>
-  <li><b>Hear your week.</b> Move across the chart in Statistics and each
-      day plays a note. Busier days have a higher pitch.</li>
-</ul>
-<p class="quiet">Also: Claude Code and Codex now each have their own switch
-in Settings. Belay no longer asks for access to folders it will not use.
-The dimming setting now says when dimming actually happens, What&#8217;s New
-has a new card layout, and the panel no longer moves when you switch
-modes.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.4.0/Belay-1.4.0.dmg" length="6700717" type="application/octet-stream" sparkle:edSignature="POBOZMBMkhqr8vVqe9Hc35ZAGg5cjFUSxLWlGZN4KljiGLhYrjReJMPAIRjr1ekTpDsDvocJCtNSGBZezULwCQ=="/>
         </item>
     </channel>
 </rss>
