@@ -57,7 +57,16 @@ window.BelayField = function () {
        below about twenty cells, and a solid blob is worse than no easter egg.
 
        Order and placement are fixed, not random: somebody who finds one should
-       be able to show it to somebody else. */
+       be able to show it to somebody else.
+
+       A mark surfaces by how close the pointer is to it, not by whether the
+       wake happens to be washing over its cells. The wake is a hundred and
+       seventy pixels across and a mark is nearly two hundred, so tying the two
+       together showed a quarter of a shape at a time and read as a few brighter
+       dots rather than as a logo. Proximity lights the whole thing at once,
+       like a torch finding it. */
+    /* How near the pointer has to be, in pixels from a mark's middle. */
+    var FIND = 190;
     var LOGOS = [
         { x: 0.13, y: 0.28, bits: "0001100100000000110011000000001101001100110110101100001111111100000001111110111111111111111000001111111100011111110110011011111100000010101111000011010010000000001000000" },
         { x: 0.8, y: 0.17, bits: "0000001000000000000110000000000111000000000011110000000011111100000111111111001111111111111011111111111000011111110000000111110000000001110000000000011000000000001000000" },
@@ -93,6 +102,7 @@ window.BelayField = function () {
     var prev = null;
     var rest = null;
     var logo = null;
+    var marks = null;
     var dpr = 1;
 
     var pointerX = -1e4;
@@ -133,15 +143,19 @@ window.BelayField = function () {
            their place on the page rather than their place in an old array. */
         logo = new Uint8Array(size);
         var SPAN = 13;
+        marks = new Float32Array(LOGOS.length * 3);
         for (var m = 0; m < LOGOS.length; m++) {
             var mark = LOGOS[m];
             var ox = Math.round(mark.x * (cols - SPAN));
             var oy = Math.round(mark.y * (rows - SPAN));
             if (ox < 0 || oy < 0) { continue; }
+            /* Middle of the mark in pixels, and its glow, kept together. */
+            marks[m * 3] = (ox + SPAN / 2) * CELL;
+            marks[m * 3 + 1] = (oy + SPAN / 2) * CELL;
             for (var by = 0; by < SPAN; by++) {
                 for (var bx = 0; bx < SPAN; bx++) {
                     if (mark.bits.charCodeAt(by * SPAN + bx) !== 49) { continue; }
-                    logo[(oy + by) * cols + (ox + bx)] = 1;
+                    logo[(oy + by) * cols + (ox + bx)] = m + 1;
                 }
             }
         }
@@ -218,6 +232,15 @@ window.BelayField = function () {
 
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        /* How brightly each mark is showing this frame. Eased rather than
+           linear, so a mark comes up softly instead of switching on at the
+           edge of the radius. */
+        for (var m = 0; marks && m < LOGOS.length; m++) {
+            var dx = ghostX - marks[m * 3];
+            var dy = ghostY - marks[m * 3 + 1];
+            var near = Math.max(0, 1 - Math.hypot(dx, dy) / FIND);
+            marks[m * 3 + 2] = near * near * presence;
+        }
         var half = CELL / 2;
         for (var y = 0; y < rows; y++) {
             for (var x = 0; x < cols; x++) {
@@ -229,7 +252,8 @@ window.BelayField = function () {
                 /* A mark's cells are ordinary grain until the wake reaches
                    them, and then they run ahead of their neighbours: the shape
                    surfaces inside the ripple and sinks again behind it. */
-                var level = rest[i] + wake + (logo[i] === 1 ? wake * 2.4 : 0);
+                var level = rest[i] + wake;
+                if (logo[i] !== 0) { level += marks[(logo[i] - 1) * 3 + 2] * 0.9; }
                 if (level < 0.06) { continue; }
                 var capped = Math.min(level, 1);
                 var glyph = RAMP[Math.min(RAMP.length - 1, Math.floor(capped * RAMP.length))];
