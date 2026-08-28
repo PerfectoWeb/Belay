@@ -55,7 +55,7 @@ final class DurationMenu: NSObject, NSMenuDelegate {
         // no preset row owns.
         let presets = Self.base + Self.extra
         customItem?.state = current.map { !presets.contains($0) } == true ? .on : .off
-        reveal(shiftHeld: shiftHeld ?? NSEvent.modifierFlags.contains(.shift))
+        reveal(shiftHeld: shiftHeld ?? RevealKey.isHeld)
         menu.popUp(positioning: nil, at: NSPoint(x: 0, y: view.bounds.minY - 4), in: view)
     }
 
@@ -120,7 +120,7 @@ final class DurationMenu: NSObject, NSMenuDelegate {
         let timer = Timer(timeInterval: 0.05, repeats: true) { [weak self] _ in
             MainActor.assumeIsolated {
                 guard let self else { return }
-                let shift = NSEvent.modifierFlags.contains(.shift)
+                let shift = RevealKey.isHeld
                 if shift != self.shiftShown { self.reveal(shiftHeld: shift) }
             }
         }

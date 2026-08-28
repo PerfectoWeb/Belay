@@ -100,14 +100,14 @@ struct RevealingPicker: NSViewRepresentable {
         // MARK: NSMenuDelegate
 
         func menuWillOpen(_ menu: NSMenu) {
-            reveal(shiftHeld: NSEvent.modifierFlags.contains(.shift))
+            reveal(shiftHeld: RevealKey.isHeld)
             // A timer in the common run-loop modes, not an event monitor: a
             // menu tracks on its own loop and a local monitor never hears the
             // key while it is open.
             let timer = Timer(timeInterval: 0.05, repeats: true) { [weak self] _ in
                 MainActor.assumeIsolated {
                     guard let self else { return }
-                    let shift = NSEvent.modifierFlags.contains(.shift)
+                    let shift = RevealKey.isHeld
                     if shift != self.shiftShown { self.reveal(shiftHeld: shift) }
                 }
             }
