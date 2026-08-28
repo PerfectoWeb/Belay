@@ -27,22 +27,21 @@
 10 min,Settings,translated,,10 min,10 分钟
 12 hours,"Settings, Statistics",translated,,12 hours,12 小时
 14 hours,Settings,translated,,14 hours,14 小时
-15 min,"App, Panel, Settings",translated,,15 min,15 分钟
+15 min,"Panel, Settings",translated,,15 min,15 分钟
 2 hours,"Settings, Statistics",translated,,2 hours,2 小时
 3 hours,Settings,translated,,3 hours,3 小时
 3 min,Settings,translated,,3 min,3 分钟
-30 min,"App, Settings",translated,,30 min,30 分钟
+30 min,Settings,translated,,30 min,30 分钟
 30 sec,Settings,translated,,30 sec,30 秒
 4 hours,Settings,translated,,4 hours,4 小时
 45 min,Settings,translated,,45 min,45 分钟
 5 hours,Settings,translated,,5 hours,5 小时
-5 min,"App, Panel, Settings, Settings: Notifications",translated,,5 min,5 分钟
+5 min,"Panel, Settings, Settings: Notifications",translated,,5 min,5 分钟
 6 hours,Settings,translated,,6 hours,6 小时
 7 hours,Settings,translated,,7 hours,7 小时
 8 hours,Settings,translated,,8 hours,8 小时
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.",会话尚未完成就停止了响应，通常是 CLI 在等待输入或已被关闭。
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,手动切换模式时播放短促提示音。遵循系统声音设置。
-A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,App,translated,,A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,运行半小时的测试或构建，过去一分钟后就像是已经结束的一轮。现在 Belay 会跟到工作真正结束。
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay 会先创建带时间戳的备份。“移除”会还原原始文件。
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,关于
 About %@,Menu bar,translated,%@,About %@,关于 %@
@@ -68,7 +67,6 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,智能体正在工作。退出 Belay 会让 Mac 进入睡眠。
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,智能体没有动静了
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",智能体工作，Belay 让 Mac 保持唤醒，工作停止后 Mac 进入睡眠
-"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",App,translated,,"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",现在在智能体的菜单里就能打开 Belay 写入的规则，并就地更新。不必再为了查看而移除检测。
 Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,请在“登录项”中批准帮助程序，它才能在合盖时保持唤醒。
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,自动
 Awake %@ so far,Panel,translated,%@,Awake for %@,已保持唤醒 %@
@@ -125,6 +123,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Belay 不会更改 %@，因为它的格式无法安全写回。请修正其格式后再次打开，Belay 会向你展示要审阅的具体更改。
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,该文件不是纯 JSON，Belay 无法安全地修改它。请改为手动添加以下内容：
 Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay 将停止为 %@ 监视此文件夹。其中的 Belay 钩子也会被移除。文件夹本身不会改动。
+"Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one.",App,translated,,"Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one.",Belay 与智能体之间的连接过去每次重启都会更换，更新之后智能体便会去访问一个无人应答的地址。现在它会保持不变。
 Belay's saved permission for %@ is no longer valid.,Detection,translated,%@,Belay's saved permission for %@ is no longer valid.,Belay 保存的 %@ 访问权限已失效。
 Built in,Settings: Providers,translated,,Built-in,内置
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,打赏
@@ -148,7 +147,7 @@ Copied,Statistics,translated,,Copied,已复制
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,同时复制卡片和摘要
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Copilot 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,此 Mac 上未安装 Copilot。
-Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,复制
+Copy,"App, Detection, Settings, Settings: Providers, Statistics",translated,,Copy,复制
 Copy card and link,Statistics,translated,,Copy card and link,复制卡片和链接
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,无法连接更新服务。
 Custom…,Panel,translated,,Custom…,自定义…
@@ -183,7 +182,6 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,允许�
 Grant access to ~/.cline,Welcome,translated,,Grant access to ~/.cline,允许访问 ~/.cline
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,允许访问 ~/.codex
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,允许访问 ~/.copilot
-"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",App,translated,,"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",在睡眠延迟菜单中按住 Shift，即可看到 15 分钟、30 分钟和 1 小时。
 Hold again,"App, Detection, Panel",translated,,Hold again,继续保持
 Holding on a little longer in case more work arrives.,Panel,translated,,Waiting a moment in case more work starts.,会再等片刻，以防还有新工作开始。
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,智能体安静后，Belay 等待多久才允许 Mac 进入睡眠。
@@ -208,8 +206,6 @@ Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Setti
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,允许访问 ~/.copilot，Belay 才能判断 Copilot 何时在工作。
 Let's go,(unused),translated,,Let's go,开始吧
 Local only,Settings: About,translated,,Local only,仅本地
-Long commands keep your Mac awake,App,translated,,Long commands keep your Mac awake,长命令让 Mac 保持唤醒
-Longer sleep delays,App,translated,,Longer sleep delays,更长的睡眠延迟
 Looks good,(unused),translated,,Looks good,看起来不错
 Lovely,(unused),translated,,Lovely,很好
 Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,低电量模式
@@ -251,6 +247,7 @@ Open Settings,Panel,translated,,Open Settings,打开设置
 Open at login,"Settings, Settings: General",translated,,Open at login,登录时打开
 Open the App Store,Settings: General,translated,,Open the App Store,打开 App Store
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,打开标准的 macOS 文件夹选择面板，供你允许访问
+Option opens the longer lists too,App,translated,,Option opens the longer lists too,Option 同样可以展开更长的列表
 Options,"App, Detection, Panel, Settings, Settings: Providers",translated,,Options,选项
 Other agents,"App, Settings: Providers",translated,,Other agents,其他智能体
 Other tools,Settings: Providers,translated,,Other tools,其他工具
@@ -260,6 +257,7 @@ Play interface sounds,Settings: General,translated,,Play interface sounds,播放
 Play sounds,Settings: General,translated,,Play sounds,播放声音
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,精确
 Precise Detection,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise Detection,精确检测
+Precise Detection survives an update,App,translated,,Precise Detection survives an update,精确检测不再被更新打断
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,精确检测规则
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,精确 · 最近活动于 %@ 前
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,智能体
@@ -279,7 +277,6 @@ Report an Issue,Settings,translated,,Report an Issue,报告问题
 Reset…,Statistics,translated,,Reset…,重置…
 Rules…,Settings,translated,,Rules…,规则…
 Safety stop,Settings: Notifications,translated,,Safety stop,安全停止
-See the detection rules any time,App,translated,,See the detection rules any time,随时查看检测规则
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
 Settings…,Menu bar,translated,,Settings…,设置…
@@ -316,6 +313,7 @@ System,"App, Detection, Settings, Settings: General, Settings: Notifications, Se
 Task finished,Settings: Notifications,translated,,Task finished,任务完成
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,App Store 会让 Belay 保持最新，并在新版本就绪时通知你。Belay 自身从不连接互联网。
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.",合盖后 Mac 过热，Belay 已让它进入睡眠。
+"The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does.",App,translated,,"The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does.",睡眠延迟菜单和 Always On 计时器原本只在按住 Shift 时显示更长的选项。现在它们也响应 Option，与 macOS 的其他部分一致。
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,%@ 中的智能体没有完成就停了。可能需要重新登录。
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,智能体没有完成就停了。可能需要重新登录。
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Belay 将添加的内容

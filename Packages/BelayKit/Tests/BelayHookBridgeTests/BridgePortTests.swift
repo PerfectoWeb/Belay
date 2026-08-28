@@ -11,20 +11,32 @@ import Testing
 /// with refusals for three hours.
 @Suite("The bridge keeps its port")
 struct BridgePortTests {
-    @Test("A second start comes back on the same port")
-    func portSurvivesARestart() async throws {
+    /// Deliberately not "start, stop, start again and compare": a port just
+    /// released is usually handed straight back, so that test passes whether or
+    /// not the code asks for anything. The first version of this fix did ask,
+    /// through `NWParameters.requiredLocalEndpoint`, which a listener ignores –
+    /// it came up on a different port every time and the round-trip test still
+    /// went green. This one writes a port nobody is near and insists on it.
+    @Test("The recorded port is the one bound")
+    func bindsTheRecordedPort() async throws {
         let scratch = try BridgeScratch()
         let store = BridgeEndpointStore(paths: scratch.paths)
 
-        let first = HookReceiver(store: store)
-        let before = try await first.start()
-        await first.stop()
+        // A port that was free a moment ago, and is free again now.
+        let probe = HookReceiver(store: store)
+        let borrowed = try await probe.start()
+        await probe.stop()
+        let free = borrowed.port
 
-        let second = HookReceiver(store: store)
-        let after = try await second.start()
-        await second.stop()
+        // Record a different one, far from whatever the system would hand out.
+        let asked = free > 40_000 ? free - 7_000 : free + 7_000
+        try store.save(BridgeEndpoint(port: asked, token: borrowed.token))
 
-        #expect(after.port == before.port, "the remembered port is the one asked for")
+        let receiver = HookReceiver(store: store)
+        let bound = try await receiver.start()
+        await receiver.stop()
+
+        #expect(bound.port == asked, "asked for \(asked) and got \(bound.port)")
     }
 
     @Test("A port somebody else holds is given up on rather than waited for forever")

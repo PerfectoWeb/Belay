@@ -1,0 +1,33 @@
+App Store "What’s New in This Version" – Belay 1.6.3
+
+Nothing here may mention Precise Detection or hooks: the App Store build is
+sandboxed and has neither. Only the second item below is true of this build,
+so this release's store text is one item long.
+
+--- EN ---
+
+Option works too now. Hold Option or Shift while the Sleep delay menu or Always On timer is open to reveal the longer durations.
+
+--- RU ---
+
+Теперь работает и Option. Удерживайте Option или Shift в меню «Пауза перед сном» или таймере Always On, чтобы показать более длинные интервалы.
+
+--- DE ---
+
+Jetzt funktioniert auch die Wahltaste. Halte Wahl oder Umschalt gedrückt, während das Menü für die Schlafverzögerung oder der Always-On-Timer geöffnet ist, um die längeren Zeitspannen anzuzeigen.
+
+--- ES ---
+
+Ahora también funciona Opción. Mantén pulsada Opción o Mayúsculas mientras está abierto el menú de retraso del reposo o el temporizador Always On para mostrar las duraciones más largas.
+
+--- FR ---
+
+La touche Option fonctionne désormais aussi. Maintenez Option ou Maj enfoncée pendant que le menu du délai de veille ou le minuteur Always On est ouvert pour afficher les durées plus longues.
+
+--- IT ---
+
+Ora funziona anche Opzione. Tieni premuto Opzione o Maiuscole mentre il menu del ritardo dello stop o il timer Always On è aperto per mostrare le durate più lunghe.
+
+--- ZH ---
+
+现在也可以使用 Option。打开“睡眠延迟”菜单或 Always On 计时器时，按住 Option 或 Shift 即可显示更长的时长选项。

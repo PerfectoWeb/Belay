@@ -22,12 +22,19 @@ enum LoopbackListener {
         let options = NWProtocolTCP.Options()
         options.noDelay = true
         let parameters = NWParameters(tls: nil, tcp: options)
-        let wanted: NWEndpoint.Port = port.flatMap { NWEndpoint.Port(rawValue: $0) } ?? .any
-        parameters.requiredLocalEndpoint = .hostPort(host: .ipv4(.loopback), port: wanted)
+        parameters.requiredLocalEndpoint = .hostPort(host: .ipv4(.loopback), port: .any)
         parameters.requiredInterfaceType = .loopback
         parameters.allowLocalEndpointReuse = true
         do {
-            return try NWListener(using: parameters)
+            // `on:`, not `requiredLocalEndpoint`. A listener ignores the
+            // endpoint in its parameters and binds an ephemeral port anyway:
+            // the first version of this asked through the parameters, never
+            // failed, and quietly came up somewhere else. It only looked right
+            // because a freshly released port is usually handed straight back.
+            guard let wanted = port.flatMap({ NWEndpoint.Port(rawValue: $0) }) else {
+                return try NWListener(using: parameters)
+            }
+            return try NWListener(using: parameters, on: wanted)
         } catch {
             throw BridgeError.listenerFailed(error.localizedDescription)
         }

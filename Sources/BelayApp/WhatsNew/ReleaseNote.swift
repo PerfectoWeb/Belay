@@ -91,30 +91,24 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.6.2",
+                version: "1.6.3",
                 items: [
                     .init(
-                        symbol: Mark.trace,
-                        title: "Long-running commands keep your Mac awake",
-                        body: """
-                            Tests and builds can stay quiet for minutes at a time. Belay \
-                            now follows the work your agent starts, so your Mac stays \
-                            awake until it finishes.
-                            """),
-                    .init(
-                        symbol: Mark.timer,
-                        title: "More sleep-delay options",
-                        body: """
-                            Hold Shift while the Sleep delay menu is open to reveal 15 \
-                            minutes, 30 minutes, and 1 hour.
-                            """),
-                    .init(
                         symbol: Mark.speed,
-                        title: "Review detection rules anytime",
+                        title: "Precise Detection survives an update",
                         body: """
-                            Open an agent's menu to view or update the rules Belay \
-                            writes. No need to remove detection first.
-                            """, directOnly: true)
+                            Belay's link to your agent used to move every time Belay \
+                            restarted, and an update left the agent talking to an \
+                            address nobody was answering. It now keeps the same one.
+                            """, directOnly: true),
+                    .init(
+                        symbol: Mark.toggle,
+                        title: "Option opens the longer lists too",
+                        body: """
+                            The Sleep delay menu and the Always On timer already showed \
+                            their longer choices under Shift. They answer Option as \
+                            well, the way the rest of macOS does.
+                            """)
                 ]
             )
         ]

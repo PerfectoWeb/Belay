@@ -5,6 +5,32 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.3] - 2026-08-28
+
+### Fixed
+
+- Precise Detection survives a restart. The hook receiver took an ephemeral
+  port, so every launch moved it and the agent kept posting to the address its
+  settings file still named. During a Sparkle update the move is certain: the
+  outgoing instance is still holding the socket when the new one binds.
+  Reported from the field on 28 Aug, where 61716 became 61717 and the agent's
+  terminal filled with `ECONNREFUSED` for three hours; reproduced here as
+  49680 becoming 49683 on an ordinary restart. The receiver now asks for the
+  port recorded in `bridge.json`, retries four times a quarter-second apart
+  while the previous instance lets go, and only then settles for a free one.
+- The diagnostics log finally says something about the bridge: `bridge up
+  port=N`, `bridge port busy, retrying`, `bridge did not start: …`, and a line
+  for each settings file it repoints. The one subsystem whose failure a person
+  sees in their own terminal was the one the log they send us said nothing
+  about.
+
+### Changed
+
+- The longer lists behind Shift open on Option as well. Option is what macOS
+  itself uses for alternates, so somebody wondering whether a menu is hiding
+  anything reaches for it without being told; Shift keeps working because it
+  is what 1.6.2's notes describe in seven languages.
+
 ## [1.6.2] - 2026-08-27
 
 ### Fixed

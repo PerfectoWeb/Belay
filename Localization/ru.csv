@@ -27,22 +27,21 @@
 10 min,Settings,needs_review,,10 min,10 мин
 12 hours,"Settings, Statistics",needs_review,,12 hours,12 часов
 14 hours,Settings,translated,,14 hours,14 часов
-15 min,"App, Panel, Settings",translated,,15 min,15 мин
+15 min,"Panel, Settings",translated,,15 min,15 мин
 2 hours,"Settings, Statistics",needs_review,,2 hours,2 часа
 3 hours,Settings,translated,,3 hours,3 часа
 3 min,Settings,needs_review,,3 min,3 мин
-30 min,"App, Settings",needs_review,,30 min,30 мин
+30 min,Settings,needs_review,,30 min,30 мин
 30 sec,Settings,needs_review,,30 sec,30 сек
 4 hours,Settings,needs_review,,4 hours,4 часа
 45 min,Settings,translated,,45 min,45 мин
 5 hours,Settings,translated,,5 hours,5 часов
-5 min,"App, Panel, Settings, Settings: Notifications",needs_review,,5 min,5 мин
+5 min,"Panel, Settings, Settings: Notifications",needs_review,,5 min,5 мин
 6 hours,Settings,translated,,6 hours,6 часов
 7 hours,Settings,translated,,7 hours,7 часов
 8 hours,Settings,needs_review,,8 hours,8 часов
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Сессия перестала отвечать, не завершившись. Обычно CLI ждёт ввода или был закрыт."
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,Нейтральное звуковое сопровождение по интерфейсу. Учитывает настройки системных звуков.
-A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,App,translated,,A test suite or a build that runs for half an hour used to look like a finished turn after a minute. Belay now follows the work to the end.,Тесты или сборка на полчаса раньше уже через минуту выглядели как законченный ход. Теперь Belay следит за работой до самого конца.
 "A timestamped backup is made first. Everything already in the file is preserved, and ""Remove"" puts it back exactly.",Settings: Providers,translated,,"Belay makes a timestamped backup first. ""Remove"" restores the original file.",Belay создаёт резервную копию вашей конфигурации при включении и возвращает её при отключении точного определения.
 About,"App, Menu bar, Settings, Settings: About, Settings: General, Settings: Providers, Statistics, Welcome",translated,,About,О программе
 About %@,Menu bar,translated,%@,About %@,О %@
@@ -68,7 +67,6 @@ An agent is waiting for you. Belay is keeping your Mac awake.,Menu bar,translate
 An agent is working. Your Mac will be free to sleep as soon as Belay quits.,Menu bar,translated,,An agent is working. Quitting Belay will let your Mac sleep.,"Агент работает. Если закрыть Belay, Mac сможет уснуть."
 An agent went quiet,Settings: Notifications,translated,,An agent went quiet,Агент замолчал
 "An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops",Welcome,translated,,"An agent works, Belay holds the Mac awake, and the Mac sleeps once the work stops","Агент работает, Belay не даёт Mac уснуть, а когда работа заканчивается, Mac засыпает"
-"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.",App,translated,,"An agent's menu now opens the rules Belay writes, and updates them in place. Removing detection to read them is no longer the way.","В меню агента теперь открываются правила, которые пишет Belay, и обновляются на месте. Отключать определение ради того, чтобы их прочитать, больше не нужно."
 Approve the helper in Login Items so it can hold the lid.,Settings,translated,,Approve the helper in Login Items so it can hold the lid.,"Одобрите помощника в «Объектах входа», чтобы он мог держать крышку."
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Авто
 Awake %@ so far,Panel,translated,%@,Awake for %@,Mac не спит %@
@@ -125,6 +123,7 @@ Belay will keep holding no matter how low the battery gets.,Settings: Behaviour,
 "Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.",Settings: Providers,translated,%@,"Belay will not change %@, because it is not in a format it can edit safely. Fix its format and open this again, and Belay will show you the exact change to review.","Belay не станет менять %@, потому что не может безопасно записать этот формат. Исправьте формат и откройте это снова, и Belay покажет точное изменение для проверки."
 "Belay will not edit this file, because it is not plain JSON. It may have comments or a format Belay cannot write back safely. Add this yourself instead:",Settings: Providers,translated,,Belay can't safely edit this file because it isn't plain JSON. Add this manually instead:,"Belay не может безопасно изменить этот файл, потому что это не обычный JSON. Добавьте это вручную:"
 Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Settings: Providers,translated,%@,Belay will stop watching this folder for %@. Any Belay hooks inside it are removed as well. The folder itself is not touched.,Belay перестанет следить за этой папкой для %@. Хуки Belay внутри неё тоже будут убраны. Сама папка не изменится.
+"Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one.",App,translated,,"Belay's link to your agent used to move every time Belay restarted, and an update left the agent talking to an address nobody was answering. It now keeps the same one.","Связь Belay с агентом раньше переезжала при каждом перезапуске, и после обновления агент обращался по адресу, где никто не отвечал. Теперь адрес остаётся прежним."
 Belay's saved permission for %@ is no longer valid.,Detection,needs_review,%@,Belay's saved permission for %@ is no longer valid.,Сохранённое разрешение Belay на %@ больше не действует.
 Built in,Settings: Providers,translated,,Built-in,Встроенные
 Buy me a coffee,Settings: About,translated,,Buy me a coffee,Купить мне кофе
@@ -148,7 +147,7 @@ Copied,Statistics,translated,,Copied,Скопировано
 Copies the card image and the summary text together,Statistics,translated,,Copies the card and summary together,Копирует карточку вместе со сводкой
 Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Copilot has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Copilot ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
 Copilot is not installed on this Mac.,Settings: Providers,translated,,Copilot is not installed on this Mac.,Copilot не установлен на этом Mac.
-Copy,"App, Detection, Settings: Providers, Statistics",translated,,Copy,Копировать
+Copy,"App, Detection, Settings, Settings: Providers, Statistics",translated,,Copy,Копировать
 Copy card and link,Statistics,needs_review,,Copy card and link,Скопировать
 Could not reach the update service.,Settings: General,translated,,Could not reach the update service.,Не удалось связаться со службой обновлений.
 Custom…,Panel,translated,,Custom…,Другое…
@@ -183,7 +182,6 @@ Grant access to ~/.claude,Welcome,translated,,Grant access to ~/.claude,Дать
 Grant access to ~/.cline,Welcome,translated,,Grant access to ~/.cline,Дать доступ к ~/.cline
 Grant access to ~/.codex,Welcome,translated,,Grant access to ~/.codex,Дать доступ к ~/.codex
 Grant access to ~/.copilot,Welcome,translated,,Grant access to ~/.copilot,Дать доступ к ~/.copilot
-"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.",App,translated,,"Hold Shift in the Sleep delay menu for 15 minutes, 30 minutes and an hour.","Удерживайте Shift в меню задержки засыпания, чтобы увидеть 15 минут, 30 минут и час."
 Hold again,"App, Detection, Panel",translated,,Hold again,Держать снова
 Holding on a little longer in case more work arrives.,Panel,needs_review,,Waiting a moment in case more work starts.,Ждём немного на случай новой работы.
 How long Belay waits after an agent goes quiet before letting your Mac sleep.,Settings: Behaviour,translated,,How long Belay waits after an agent goes quiet before letting your Mac sleep.,"Сколько Belay ждёт после того, как агент затих, прежде чем разрешить Mac уснуть."
@@ -208,8 +206,6 @@ Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Setti
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,"Разрешите доступ к ~/.copilot, чтобы Belay видел, когда Copilot работает."
 Let's go,(unused),translated,,Let's go,Поехали
 Local only,Settings: About,translated,,Local only,Локально
-Long commands keep your Mac awake,App,translated,,Long commands keep your Mac awake,Долгие команды не дают Mac уснуть
-Longer sleep delays,App,translated,,Longer sleep delays,Более долгая задержка засыпания
 Looks good,(unused),translated,,Looks good,Выглядит хорошо
 Lovely,(unused),translated,,Lovely,Прекрасно
 Low Power Mode,"Detection, Settings: Behaviour",translated,,Low Power Mode,Режим энергосбережения
@@ -251,6 +247,7 @@ Open Settings,Panel,translated,,Open Settings,Открыть настройки
 Open at login,"Settings, Settings: General",translated,,Open at login,Открывать при входе
 Open the App Store,Settings: General,translated,,Open the App Store,Открыть App Store
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,"Откроет стандартный выбор папки macOS, чтобы вы могли разрешить доступ"
+Option opens the longer lists too,App,translated,,Option opens the longer lists too,Option тоже раскрывает длинные списки
 Options,"App, Detection, Panel, Settings, Settings: Providers",translated,,Options,Настройки агента
 Other agents,"App, Settings: Providers",translated,,Other agents,Другие агенты
 Other tools,Settings: Providers,translated,,Other tools,Другие агенты
@@ -260,6 +257,7 @@ Play interface sounds,Settings: General,needs_review,,Play interface sounds,Зв
 Play sounds,Settings: General,translated,,Play sounds,Воспроизводить звуки
 Precise,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise,Точное
 Precise Detection,"App, Detection, Settings, Settings: Notifications, Settings: Providers",translated,,Precise Detection,Точное определение
+Precise Detection survives an update,App,translated,,Precise Detection survives an update,Точное определение переживает обновление
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,Правила точного определения
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,Точное · активность %@ назад
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,Агенты
@@ -279,7 +277,6 @@ Report an Issue,Settings,translated,,Report an Issue,Сообщить о про�
 Reset…,Statistics,needs_review,,Reset…,Сбросить…
 Rules…,Settings,translated,,Rules…,Правила…
 Safety stop,Settings: Notifications,translated,,Safety stop,Безопасная остановка
-See the detection rules any time,App,translated,,See the detection rules any time,Правила определения всегда под рукой
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,"Уведомление приходит один раз для каждой версии. Значок обновления в строке меню остаётся виден, даже если этот пункт выключен."
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Настройки
 Settings…,Menu bar,translated,,Settings…,Настройки…
@@ -316,6 +313,7 @@ System,"App, Detection, Settings, Settings: General, Settings: Notifications, Se
 Task finished,Settings: Notifications,translated,,Task finished,Задача завершена
 The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,Settings: General,translated,,The App Store keeps Belay up to date and tells you when a new version is ready. Belay itself never connects out to the internet.,"App Store обновляет Belay сам и сообщает, когда готова новая версия. Само приложение наружу в интернет не ходит."
 "The Mac ran hot with the lid closed, so Belay let it sleep.",Settings: Notifications,translated,,"The Mac ran hot with the lid closed, so Belay let it sleep.","Mac перегрелся с закрытой крышкой, и Belay дал ему уснуть."
+"The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does.",App,translated,,"The Sleep delay menu and the Always On timer already showed their longer choices under Shift. They answer Option as well, the way the rest of macOS does.","Меню задержки сна и таймер Always On показывали дополнительные значения по Shift. Теперь они отзываются и на Option, как это принято в macOS."
 The agent in %@ stopped without finishing. It may need signing in again.,Settings: Notifications,translated,%@,The agent in %@ stopped without finishing. It may need signing in again.,"Агент в %@ остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The agent stopped without finishing. It may need signing in again.,Settings: Notifications,translated,,The agent stopped without finishing. It may need signing in again.,"Агент остановился, не закончив. Возможно, нужно снова войти в аккаунт."
 The exact configuration Belay will add,Settings: Providers,translated,,What Belay will add,Что добавит Belay

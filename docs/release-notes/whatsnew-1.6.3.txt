@@ -1,0 +1,61 @@
+What's New – Belay 1.6.3
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): "Precise Detection survives restarts and updates".
+
+=== en ===
+
+# Precise Detection survives restarts and updates
+Belay now keeps the same local address whenever possible, so agents stay connected across relaunches and updates.
+
+# Option reveals longer choices too
+Hold Option or Shift in the Sleep delay menu or Always On timer to show the longer durations.
+
+=== ru ===
+
+# Точное определение переживает перезапуски и обновления
+Belay теперь сохраняет прежний локальный адрес, поэтому связь с агентом не теряется после перезапуска или обновления.
+
+# Option тоже показывает длинные интервалы
+Удерживайте Option или Shift в меню «Пауза перед сном» или таймере Always On, чтобы показать более длинные интервалы.
+
+=== de ===
+
+# Präzise Erkennung übersteht Neustarts und Updates
+Belay behält jetzt möglichst dieselbe lokale Adresse, damit Agents nach Neustarts und Updates verbunden bleiben.
+
+# Option zeigt auch die längeren Zeiten
+Halte Option oder Umschalt im Menü für die Schlafverzögerung oder im Always-On-Timer gedrückt, um die längeren Zeiten anzuzeigen.
+
+=== es ===
+
+# La detección precisa sobrevive a reinicios y actualizaciones
+Belay mantiene ahora la misma dirección local siempre que sea posible, para que los agentes sigan conectados tras reinicios y actualizaciones.
+
+# Option también muestra las duraciones más largas
+Mantén pulsada Option o Mayúsculas en el menú de retraso del reposo o en el temporizador Always On para mostrar las duraciones más largas.
+
+=== fr ===
+
+# La détection précise survit aux redémarrages et mises à jour
+Belay conserve désormais la même adresse locale lorsque c’est possible, afin que les agents restent connectés après un redémarrage ou une mise à jour.
+
+# Option affiche aussi les durées plus longues
+Maintenez Option ou Maj dans le menu du délai de veille ou le minuteur Always On pour afficher les durées plus longues.
+
+=== it ===
+
+# Il rilevamento preciso sopravvive a riavvii e aggiornamenti
+Belay ora mantiene lo stesso indirizzo locale quando possibile, così gli agenti restano connessi dopo riavvii e aggiornamenti.
+
+# Option mostra anche le durate più lunghe
+Tieni premuto Option o Maiuscole nel menu del ritardo dello stop o nel timer Always On per mostrare le durate più lunghe.
+
+=== zh-Hans ===
+
+# 精确检测不再被重启或更新打断
+Belay 现在会尽量保持相同的本地地址，让智能体在重启或更新后继续保持连接。
+
+# Option 也能显示更长的时长
+在“睡眠延迟”菜单或 Always On 计时器中按住 Option 或 Shift，即可显示更长的时长选项。
