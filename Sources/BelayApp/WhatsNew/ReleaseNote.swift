@@ -91,21 +91,24 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.6.3",
+                version: "1.6.4",
                 items: [
                     .init(
-                        symbol: Mark.speed,
-                        title: "Precise Detection survives restarts and updates",
+                        symbol: Mark.trace,
+                        title: "Precise Detection heals itself",
                         body: """
-                            Belay now keeps the same local address whenever possible, \
-                            so agents stay connected across relaunches and updates.
+                            If the link to your agents breaks while the Mac sleeps, \
+                            Belay now rebuilds it on wake and repoints the hooks – \
+                            no relaunch needed. Long tool calls also hold on through \
+                            rapid back-to-back activity.
                             """, directOnly: true),
                     .init(
-                        symbol: Mark.toggle,
-                        title: "Option reveals longer choices too",
+                        symbol: Mark.timer,
+                        title: "Small things, straightened",
                         body: """
-                            Hold Option or Shift in the Sleep delay menu or Always On \
-                            timer to show the longer durations.
+                            The statistics caption no longer flickers under the \
+                            cursor, and an Until time that has already passed \
+                            starts nothing instead of booking a day.
                             """)
                 ]
             )

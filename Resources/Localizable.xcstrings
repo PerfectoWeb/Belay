@@ -4922,52 +4922,6 @@
         }
       }
     },
-    "Belay now keeps the same local address whenever possible, so agents stay connected across relaunches and updates.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay now keeps the same local address whenever possible, so agents stay connected across relaunches and updates."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay теперь сохраняет прежний локальный адрес, поэтому связь с агентом не теряется после перезапуска или обновления."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay behält jetzt möglichst dieselbe lokale Adresse, damit Agents nach Neustarts und Updates verbunden bleiben."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay mantiene ahora la misma dirección local siempre que sea posible, para que los agentes sigan conectados tras reinicios y actualizaciones."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay conserve désormais la même adresse locale lorsque c’est possible, afin que les agents restent connectés après un redémarrage ou une mise à jour."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay ora mantiene lo stesso indirizzo locale quando possibile, così gli agenti restano connessi dopo riavvii e aggiornamenti."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 现在会尽量保持相同的本地地址，让智能体在重启或更新后继续保持连接。"
-          }
-        }
-      }
-    },
     "Belay reached its maximum awake time and stopped keeping your Mac awake.": {
       "extractionState": "manual",
       "localizations": {
@@ -8427,52 +8381,6 @@
         }
       }
     },
-    "Hold Option or Shift in the Sleep delay menu or Always On timer to show the longer durations.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hold Option or Shift in the Sleep delay menu or Always On timer to show the longer durations."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Удерживайте Option или Shift в меню «Пауза перед сном» или таймере Always On, чтобы показать более длинные интервалы."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Halte Option oder Umschalt im Menü für die Schlafverzögerung oder im Always-On-Timer gedrückt, um die längeren Zeiten anzuzeigen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mantén pulsada Option o Mayúsculas en el menú de retraso del reposo o en el temporizador Always On para mostrar las duraciones más largas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maintenez Option ou Maj dans le menu du délai de veille ou le minuteur Always On pour afficher les durées plus longues."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tieni premuto Option o Maiuscole nel menu del ritardo dello stop o nel timer Always On per mostrare le durate più lunghe."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在“睡眠延迟”菜单或 Always On 计时器中按住 Option 或 Shift，即可显示更长的时长选项。"
-          }
-        }
-      }
-    },
     "Hold again": {
       "extractionState": "manual",
       "localizations": {
@@ -8703,6 +8611,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "空闲"
+          }
+        }
+      }
+    },
+    "If the link to your agents breaks while the Mac sleeps, Belay now rebuilds it on wake and repoints the hooks – no relaunch needed. Long tool calls also hold on through rapid back-to-back activity.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If the link to your agents breaks while the Mac sleeps, Belay now rebuilds it on wake and repoints the hooks – no relaunch needed. Long tool calls also hold on through rapid back-to-back activity."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если связь с агентами рвётся во время сна Mac, Belay теперь восстанавливает её при пробуждении и перенастраивает хуки – без перезапуска. Долгие вызовы инструментов тоже держатся при быстрой череде событий."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bricht die Verbindung zu den Agents ab, während der Mac schläft, stellt Belay sie beim Aufwachen wieder her und richtet die Hooks neu aus – ohne Neustart. Lange Tool-Aufrufe halten auch bei schnellen Abfolgen durch."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si el enlace con tus agentes se rompe mientras el Mac duerme, Belay ahora lo reconstruye al despertar y reapunta los hooks, sin relanzar. Las llamadas largas a herramientas también aguantan la actividad rápida en cadena."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si le lien avec vos agents se rompt pendant le sommeil du Mac, Belay le reconstruit désormais au réveil et repointe les hooks – sans relancer. Les longs appels d’outils tiennent aussi lors d’activités rapprochées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se il collegamento con gli agenti si interrompe mentre il Mac dorme, Belay ora lo ricostruisce al risveglio e ripunta gli hook – senza riavvio. Anche le chiamate lunghe agli strumenti reggono l’attività ravvicinata."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果 Mac 睡眠期间与智能体的连接中断，Belay 现在会在唤醒时自动重建连接并重新指向钩子，无需重启。长时间的工具调用在快速连续操作中也能保持。"
           }
         }
       }
@@ -11513,52 +11467,6 @@
         }
       }
     },
-    "Option reveals longer choices too": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option reveals longer choices too"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option тоже показывает длинные интервалы"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option zeigt auch die längeren Zeiten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option también muestra las duraciones más largas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option affiche aussi les durées plus longues"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option mostra anche le durate più lunghe"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Option 也能显示更长的时长"
-          }
-        }
-      }
-    },
     "Options": {
       "localizations": {
         "en": {
@@ -11978,48 +11886,48 @@
         }
       }
     },
-    "Precise Detection survives restarts and updates": {
+    "Precise Detection heals itself": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Precise Detection survives restarts and updates"
+            "value": "Precise Detection heals itself"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Точное определение переживает перезапуски и обновления"
+            "value": "Точное определение чинит себя само"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Präzise Erkennung übersteht Neustarts und Updates"
+            "value": "Die präzise Erkennung heilt sich selbst"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La detección precisa sobrevive a reinicios y actualizaciones"
+            "value": "La detección precisa se repara sola"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La détection précise survit aux redémarrages et mises à jour"
+            "value": "La détection précise se répare seule"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il rilevamento preciso sopravvive a riavvii e aggiornamenti"
+            "value": "Il rilevamento preciso si ripara da solo"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "精确检测不再被重启或更新打断"
+            "value": "精确检测能够自我修复"
           }
         }
       }
@@ -13659,6 +13567,52 @@
         }
       }
     },
+    "Small things, straightened": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small things, straightened"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мелочи, доведённые до ума"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kleinigkeiten, geradegerückt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pequeños detalles, en su sitio"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Petites choses remises d’aplomb"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piccole cose, sistemate"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "细节修正"
+          }
+        }
+      }
+    },
     "Software updates": {
       "extractionState": "manual",
       "localizations": {
@@ -15013,6 +14967,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "服务器返回 %lld。"
+          }
+        }
+      }
+    },
+    "The statistics caption no longer flickers under the cursor, and an Until time that has already passed starts nothing instead of booking a day.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The statistics caption no longer flickers under the cursor, and an Until time that has already passed starts nothing instead of booking a day."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подпись в статистике больше не мерцает под курсором, а время «До», которое уже прошло, ничего не запускает вместо брони на сутки."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Beschriftung in der Statistik flackert nicht mehr unter dem Cursor, und eine bereits verstrichene „Bis“-Zeit startet nichts, statt einen Tag zu buchen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La leyenda de las estadísticas ya no parpadea bajo el cursor, y una hora «Hasta» ya pasada no inicia nada en lugar de reservar un día."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La légende des statistiques ne clignote plus sous le curseur, et une heure « Jusqu’à » déjà passée ne lance rien au lieu de réserver une journée."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La didascalia delle statistiche non sfarfalla più sotto il cursore, e un orario «Fino a» già passato non avvia nulla invece di prenotare un giorno."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "统计页的说明文字不再在光标下闪烁；已过去的“截止”时间不会再预定一整天，而是不启动。"
           }
         }
       }

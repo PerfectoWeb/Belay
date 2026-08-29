@@ -5,6 +5,47 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.4] - Unreleased
+
+### Fixed
+
+- The hook bridge heals itself. Its retry machinery only existed while a
+  caller was waiting on startup, so a listener that failed after coming up —
+  sleep and wake being the known way — left the bridge silently dead until
+  relaunch, with `bridge.json` and the installed hooks still naming a port
+  nobody answered. A runtime failure now drops the stale endpoint, retries
+  the same ladder the launch uses, falls back to a slow loop rather than
+  giving up, and each rebind repoints the hooks if the port moved.
+- Back-to-back tool calls no longer lose their bracket. Hooks are
+  fire-and-forget posts stamped on receipt, so the return of tool N could
+  land milliseconds after the start of tool N+1 — with the newer timestamp —
+  and wipe the bracket protecting a half-hour build. A return arriving within
+  two seconds of an open is now read as the previous call's; Stop and every
+  other closing event still close unconditionally.
+- Deleting a Cline session under a watched folder in `/tmp` or `/var` ends
+  its row again. FSEvents reports the deleted file with a `/private` prefix
+  the resolver only strips from paths that still exist, so the deletion never
+  matched the root and the session outlived its own state file.
+- An importer writing a month-old conversation into a freshly created file no
+  longer raises a phantom Working row. The empty-file guard used to store the
+  watch, routing the first real bytes around the stale-record check.
+- The statistics caption no longer flickers under the cursor. Hovering the
+  tail of the long variant shrank the text out from under the pointer, the
+  hover ended, the text grew back, and the two morphs ran in a loop.
+- An "Until" time that passed while the dialog sat open starts nothing,
+  instead of quietly wrapping to tomorrow and booking a day of wakefulness.
+- The custom-duration sheet can no longer be taken down by its own popover:
+  the hold that keeps the panel open now lands in the same runloop turn as
+  the sheet, not one turn late.
+- Off means off: a `killall Belay` no longer writes a goodbye line into
+  `~/Library/Logs/Belay/belay.log` for users who never enabled Local Reports.
+- Housekeeping in the same pass: per-request bridge timeout tasks are
+  cancelled when the request finishes instead of sleeping out their ten
+  seconds; the receiver's `deinit` closes its socket; the dirty-exit marker
+  is searched in the last megabyte of the log, not 64KB; the process-table
+  snapshot keeps a quarter of slack for fork bursts; and the Shift/Option
+  reveal timers survive unpaired menu callbacks.
+
 ## [1.6.3] - 2026-08-28
 
 ### Fixed

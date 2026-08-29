@@ -1,0 +1,33 @@
+App Store "What’s New in This Version" – Belay 1.6.4
+
+Nothing here may mention Precise Detection or hooks: the App Store build is
+sandboxed and has neither. The store-safe fixes are the statistics caption,
+the Until dialog, and the sheet/popover race.
+
+--- EN ---
+
+Small things, straightened. The statistics caption no longer flickers under the cursor, custom-duration dialogs behave, and an Until time that has already passed starts nothing instead of booking a day.
+
+--- RU ---
+
+Мелочи, доведённые до ума. Подпись в статистике больше не мерцает под курсором, диалоги произвольной длительности ведут себя прилично, а уже прошедшее время «До» ничего не запускает вместо брони на сутки.
+
+--- DE ---
+
+Kleinigkeiten, geradegerückt. Die Beschriftung in der Statistik flackert nicht mehr unter dem Cursor, die Dialoge für eigene Zeitspannen benehmen sich, und eine bereits verstrichene „Bis“-Zeit startet nichts, statt einen Tag zu buchen.
+
+--- ES ---
+
+Pequeños detalles, en su sitio. La leyenda de las estadísticas ya no parpadea bajo el cursor, los diálogos de duración personalizada se comportan, y una hora «Hasta» ya pasada no inicia nada en lugar de reservar un día.
+
+--- FR ---
+
+Petites choses remises d’aplomb. La légende des statistiques ne clignote plus sous le curseur, les boîtes de durée personnalisée se tiennent bien, et une heure « Jusqu’à » déjà passée ne lance rien au lieu de réserver une journée.
+
+--- IT ---
+
+Piccole cose, sistemate. La didascalia delle statistiche non sfarfalla più sotto il cursore, le finestre di durata personalizzata si comportano bene, e un orario «Fino a» già passato non avvia nulla invece di prenotare un giorno.
+
+--- ZH ---
+
+细节修正。统计页的说明文字不再在光标下闪烁，自定义时长对话框表现正常，已过去的“截止”时间不会再预定一整天。
