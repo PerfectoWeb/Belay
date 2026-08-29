@@ -57,6 +57,33 @@ struct BridgePortTests {
         await other.stop()
         await holder.stop()
     }
+
+    /// The retry ladder used to keep its spent count across starts, so a
+    /// receiver that had once fallen back never asked for the recorded port
+    /// again — the whole feature, silently skipped on the restart it was
+    /// built for.
+    @Test("A fresh start asks for the recorded port even after a fallback")
+    func theLadderResetsBetweenStarts() async throws {
+        let scratch = try BridgeScratch()
+        let store = BridgeEndpointStore(paths: scratch.paths)
+
+        // Occupy the recorded port so the first receiver has to move.
+        let holder = HookReceiver(store: store)
+        let held = try await holder.start()
+        try store.save(BridgeEndpoint(port: held.port, token: held.token))
+
+        let mover = HookReceiver(store: store)
+        let moved = try await mover.start()
+        #expect(moved.port != held.port)
+        await mover.stop()
+
+        // Free the port. The same receiver's next start must want it again.
+        await holder.stop()
+        try store.save(BridgeEndpoint(port: held.port, token: held.token))
+        let back = try await mover.start()
+        await mover.stop()
+        #expect(back.port == held.port, "asked again and got \(back.port), wanted \(held.port)")
+    }
 }
 
 /// Where the first port of all comes from.

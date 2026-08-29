@@ -22,6 +22,10 @@ public actor HookReceiver {
         @Sendable (Data?, NWConnection.ContentContext?, Bool, NWError?) -> Void
 
     public let signals: AsyncStream<ActivitySignal>
+    /// Fires when the listener comes back up on its own after a runtime
+    /// failure, so the app layer can repoint hooks if the port moved. Nothing
+    /// is emitted for the launch-time bind; `start()` returns that endpoint.
+    public let rebinds: AsyncStream<BridgeEndpoint>
 
     static let readChunk = 64 * 1024
     /// A client that connects and then says nothing does not get to sit there.
@@ -30,24 +34,32 @@ public actor HookReceiver {
     /// cannot open thousands each buffering up to the 4 MB request cap.
     static let maxConnections = 32
 
-    private let store: BridgeEndpointStore
+    let store: BridgeEndpointStore
     let clock: any Clock
     let continuation: AsyncStream<ActivitySignal>.Continuation
+    let rebindContinuation: AsyncStream<BridgeEndpoint>.Continuation
     let queue = DispatchQueue(label: "com.perfectoweb.belay.bridge", qos: .utility)
 
-    private var listener: NWListener?
+    var listener: NWListener?
+    /// True between `start()` and `stop()`. A retry that fires after `stop()`
+    /// must not bring a listener back from the dead.
+    var running = false
     /// Keyed by a monotonic id, not `ObjectIdentifier(connection)`: a reused
     /// address could let one connection's expiry cancel another. A counter never
     /// reuses.
     var connections: [UInt64: NWConnection] = [:]
+    /// The request-timeout task per connection, cancelled the moment the
+    /// request finishes instead of sleeping out its ten seconds.
+    var expiries: [UInt64: Task<Void, Never>] = [:]
     var nextConnectionID: UInt64 = 0
-    private var starting: [CheckedContinuation<BridgeEndpoint, Error>] = []
+    var starting: [CheckedContinuation<BridgeEndpoint, Error>] = []
     /// The port from `bridge.json`, and how many times this start has asked
     /// for a port at all.
-    private var remembered: UInt16?
-    private var attempts = 0
+    var remembered: UInt16?
+    var attempts = 0
 
-    public private(set) var endpoint: BridgeEndpoint?
+    // Setter internal, not private: the port half next door owns it.
+    public internal(set) var endpoint: BridgeEndpoint?
 
     public init(store: BridgeEndpointStore = BridgeEndpointStore(), clock: any Clock = SystemClock()) {
         self.store = store
@@ -55,38 +67,20 @@ public actor HookReceiver {
         let made = AsyncStream.makeStream(of: ActivitySignal.self, bufferingPolicy: .bufferingNewest(256))
         signals = made.stream
         continuation = made.continuation
+        let rebound = AsyncStream.makeStream(of: BridgeEndpoint.self, bufferingPolicy: .bufferingNewest(1))
+        rebinds = rebound.stream
+        rebindContinuation = rebound.continuation
     }
 
     deinit {
+        // Network.framework retains a started listener and its connections
+        // until they are cancelled; a receiver dropped without `stop()` must
+        // not leave a bound socket behind for the life of the process.
+        listener?.cancel()
+        for connection in connections.values { connection.cancel() }
+        for expiry in expiries.values { expiry.cancel() }
         continuation.finish()
-    }
-
-    /// How many times to ask for the remembered port before looking elsewhere.
-    /// An outgoing instance releases its socket in well under a second; four
-    /// tries a quarter-second apart covers that without making a launch wait on
-    /// a port somebody else has taken for good.
-    static let portAttempts = 4
-
-    /// Where a first-run port comes from.
-    ///
-    /// Not the ephemeral range. That is the range macOS hands out to outgoing
-    /// connections, so a port recorded there is one any browser or build tool
-    /// can take while Belay is closed — which is the whole problem this record
-    /// exists to avoid. This band sits below it, above the well-known services,
-    /// and clear of the ports development tools reach for: nothing common lives
-    /// between 41000 and 43000.
-    static let quietRange: ClosedRange<UInt16> = 41_000...42_999
-
-    /// The port to try on this attempt.
-    ///
-    /// The recorded one first, several times, because the instance being
-    /// replaced is usually still holding it. Then fresh candidates from the
-    /// quiet band. Then `nil`, meaning any free port at all: a bridge on an
-    /// awkward port beats no bridge.
-    private func candidate() -> UInt16? {
-        if attempts < Self.portAttempts, let remembered { return remembered }
-        if attempts < Self.portAttempts + 4 { return UInt16.random(in: Self.quietRange) }
-        return nil
+        rebindContinuation.finish()
     }
 
     /// Binds the port from `bridge.json` if it can, records it with the bearer
@@ -99,6 +93,7 @@ public actor HookReceiver {
     @discardableResult
     public func start() async throws -> BridgeEndpoint {
         if let endpoint { return endpoint }
+        running = true
         // A second caller arriving while the first is still binding waits on the
         // same listener rather than opening a competing one.
         if listener == nil {
@@ -124,8 +119,11 @@ public actor HookReceiver {
     /// asked for. Restarting a receiver, or a test asserting the port came back,
     /// would otherwise be racing an asynchronous close.
     public func stop() async {
+        running = false
         for connection in connections.values { connection.cancel() }
         connections.removeAll()
+        for expiry in expiries.values { expiry.cancel() }
+        expiries.removeAll()
         endpoint = nil
         abandonStart(BridgeError.listenerFailed("the receiver was stopped"))
 
@@ -143,71 +141,4 @@ public actor HookReceiver {
         }
     }
 
-    private func listenerChanged(_ state: NWListener.State) {
-        switch state {
-        case .ready:
-            guard let port = listener?.port?.rawValue else {
-                abandonStart(BridgeError.listenerFailed("the listener reported no port"))
-                return
-            }
-            do {
-                let resolved = try store.endpoint(port: port)
-                endpoint = resolved
-                attempts = 0
-                // The one subsystem whose failure a person sees in their own
-                // terminal, and the log said nothing about it until 28 Aug.
-                EventLog.note("bridge up port=\(port)")
-                let waiters = starting
-                starting.removeAll()
-                for waiter in waiters { waiter.resume(returning: resolved) }
-            } catch {
-                abandonStart(error)
-            }
-        case .failed(let error):
-            // Dropped, not kept: a failed listener must not be what a retry
-            // finds and reuses.
-            listener?.cancel()
-            listener = nil
-            // The remembered port is usually taken by the instance this one is
-            // replacing, which lets go in a moment. Ask again, then settle for
-            // any free port rather than leaving the bridge down.
-            if attempts < Self.portAttempts + 4 {
-                attempts += 1
-                EventLog.note("bridge port busy, retrying (\(attempts))")
-                Task { [weak self] in
-                    try? await Task.sleep(nanoseconds: 250_000_000)
-                    await self?.retryStart()
-                }
-                return
-            }
-            EventLog.note("bridge failed: \(error.localizedDescription)")
-            abandonStart(BridgeError.listenerFailed(error.localizedDescription))
-        default:
-            break
-        }
-    }
-
-    /// Another go at the remembered port, from the retry timer.
-    private func retryStart() async {
-        guard listener == nil, !starting.isEmpty else { return }
-        do {
-            let made = try LoopbackListener.make(port: candidate())
-            listener = made
-            made.stateUpdateHandler = { [weak self] state in
-                Task { await self?.listenerChanged(state) }
-            }
-            made.newConnectionHandler = { [weak self] connection in
-                Task { await self?.accept(connection) }
-            }
-            made.start(queue: queue)
-        } catch {
-            abandonStart(error)
-        }
-    }
-
-    private func abandonStart(_ error: Error) {
-        let waiters = starting
-        starting.removeAll()
-        for waiter in waiters { waiter.resume(throwing: error) }
-    }
 }

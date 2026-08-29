@@ -64,6 +64,7 @@ final class PreciseDetection {
         self.roots = roots
     }
     private(set) var endpoint: BridgeEndpoint?
+    private var rebindWatch: Task<Void, Never>?
     private(set) var isInstalled = false
     var isCodexInstalled = false
     var isClineInstalled = false
@@ -93,6 +94,7 @@ final class PreciseDetection {
             isCodexInstalled = (try? codexInstaller.isInstalled()) ?? false
             isClineInstalled = clineInstaller.isInstalled()
             await selfHeal()
+            watchRebinds()
             return await receiver.signals
         } catch {
             Log.bridge.error("hook receiver failed to start: \(error.localizedDescription, privacy: .public)")
@@ -103,8 +105,25 @@ final class PreciseDetection {
     }
 
     func stop() async {
+        rebindWatch?.cancel()
+        rebindWatch = nil
         await receiver.stop()
         endpoint = nil
+    }
+
+    /// The receiver heals itself when its socket dies at runtime — sleep and
+    /// wake being the known way — and may come back on a different port. The
+    /// hooks in the user's settings files name the old one, so each rebind
+    /// runs the same reconciliation a launch does.
+    private func watchRebinds() {
+        rebindWatch?.cancel()
+        rebindWatch = Task { [weak self, receiver] in
+            for await rebound in await receiver.rebinds {
+                guard let self, !Task.isCancelled else { return }
+                self.endpoint = rebound
+                await self.selfHeal()
+            }
+        }
     }
 
     /// Rewrites Belay's own entries when the port has changed since last launch.

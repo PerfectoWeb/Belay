@@ -29,7 +29,10 @@ extension HookReceiver {
             }
         }
         connection.start(queue: queue)
-        Task { [weak self] in
+        // Kept so it can be cancelled the moment the request finishes; a task
+        // left sleeping out its ten seconds per hook POST is pure churn in the
+        // subsystem's hottest path.
+        expiries[id] = Task { [weak self] in
             try? await Task.sleep(nanoseconds: UInt64(Self.requestTimeout * 1_000_000_000))
             await self?.expire(id)
         }
@@ -120,9 +123,11 @@ extension HookReceiver {
 
     func forget(_ id: UInt64) {
         connections.removeValue(forKey: id)
+        expiries.removeValue(forKey: id)?.cancel()
     }
 
     func expire(_ id: UInt64) {
+        expiries.removeValue(forKey: id)
         guard let connection = connections.removeValue(forKey: id) else { return }
         connection.cancel()
     }
