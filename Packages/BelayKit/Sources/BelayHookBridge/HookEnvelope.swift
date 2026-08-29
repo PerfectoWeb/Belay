@@ -123,7 +123,9 @@ extension HookEnvelope {
     /// is over. That is what keeps an interrupted run from holding: whatever
     /// the person does next fires something.
     private func edge(for event: HookEvent, reading: SessionActivity) -> ToolCallEdge {
-        event == .preToolUse && reading == .working ? .opened : .closed
+        if event == .preToolUse, reading == .working { return .opened }
+        if event == .postToolUse || event == .postToolBatch { return .returned }
+        return .closed
     }
 
     /// The payload can overrule the event's default reading, in two cases.

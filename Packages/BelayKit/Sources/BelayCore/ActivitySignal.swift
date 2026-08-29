@@ -51,9 +51,15 @@ public enum Confidence: Int, Sendable, Comparable {
 public enum ToolCallEdge: Sendable, Equatable {
     /// The agent has entered a tool call and is blocked inside it.
     case opened
-    /// Whatever was running is over: the tool returned, the turn stopped, or a
-    /// new prompt arrived. Anything that is not the start of a tool call ends
-    /// one, because the agent cannot be inside two at once.
+    /// The tool itself returned (`PostToolUse`). Kept apart from `closed`
+    /// because hooks are fired asynchronously and can land out of order: the
+    /// return of tool N arriving just after the start of tool N+1 must not
+    /// wipe the newer bracket, and only a return is ever racing an open that
+    /// closely.
+    case returned
+    /// Whatever was running is over: the turn stopped, or a new prompt
+    /// arrived. Anything that is not the start of a tool call ends one,
+    /// because the agent cannot be inside two at once.
     case closed
 }
 

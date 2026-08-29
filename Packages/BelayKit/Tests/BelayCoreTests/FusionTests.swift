@@ -127,9 +127,53 @@ struct ToolCallBracketTests {
 
         await coordinator.ingest(.make(.working, at: clock.now, confidence: .exact, toolCall: .opened))
         clock.advance(30 * 60)
-        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact, toolCall: .closed))
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact, toolCall: .returned))
 
         clock.advance(1)
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
+    }
+
+    /// Hooks are fire-and-forget posts stamped on receipt, so between
+    /// back-to-back tool calls the first call's return can land milliseconds
+    /// *after* the second call's open — with the newer timestamp. That return
+    /// must not wipe the bracket protecting the new call.
+    @Test("A reordered return does not wipe the bracket of the next call")
+    func reorderedReturnSparesTheNewBracket() async {
+        let clock = TestClock()
+        let coordinator = coordinator(clock)
+
+        // Tool 2 opens; tool 1's return arrives just behind it.
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .exact, toolCall: .opened))
+        clock.advance(0.05)
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .exact, toolCall: .returned))
+        clock.advance(60)
+        // Tool 2 is a long build: the transcript goes quiet and the sweep
+        // calls the turn finished.
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .inferred))
+
+        clock.advance(30 * 60)
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .working)
+        #expect(await coordinator.snapshot.state.holdsAssertion)
+    }
+
+    /// The grace is for returns only. A Stop landing right after an open is
+    /// not a race — it is the turn ending — and must still close the bracket.
+    @Test("Stop closes the bracket even inside the grace window")
+    func stopClosesInsideGrace() async {
+        let clock = TestClock()
+        let coordinator = coordinator(clock)
+
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .exact, toolCall: .opened))
+        clock.advance(0.5)
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact, toolCall: .closed))
+        clock.advance(60)
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .inferred))
+
+        // Past the freshness window, short of the session TTL: the bracket is
+        // the only thing that could keep this working, and it must be gone.
+        clock.advance(6 * 60)
         await coordinator.evaluate()
         #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
     }

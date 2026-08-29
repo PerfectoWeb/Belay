@@ -113,13 +113,34 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         if name == nil { name = signal.name }
     }
 
+    /// How close behind an open a tool's *return* may land and still be the
+    /// previous call's, not this one's. Hooks are fire-and-forget curls and
+    /// the bridge stamps receipt time, so between back-to-back tool calls the
+    /// return of the first can arrive milliseconds after the start of the
+    /// second — with the newer timestamp. Two seconds is generous for two
+    /// loopback posts fired together; the cost of guessing wrong is a bracket
+    /// that stays open until the turn's own Stop, which closes unconditionally.
+    public static let returnGrace: TimeInterval = 2
+
     /// Ordered with the reading, not before it: a hook that arrived out of
-    /// order must not close a bracket a newer one opened.
+    /// order must not close a bracket a newer one opened. Receipt timestamps
+    /// arrive in order by construction, so the timestamp guard in `record`
+    /// can never catch that race — the grace below is what does.
     private mutating func recordToolCallEdge(_ signal: ActivitySignal) {
         switch signal.toolCall {
-        case .opened: openToolCallSince = signal.timestamp
-        case .closed: openToolCallSince = nil
-        case nil: break
+        case .opened:
+            openToolCallSince = signal.timestamp
+        case .returned:
+            // A return landing this close behind an open is the *previous*
+            // call's, reordered in flight. Leave the bracket alone; if the
+            // guess is wrong, Stop or the next event closes it anyway.
+            let opened = openToolCallSince ?? .distantPast
+            if signal.timestamp.timeIntervalSince(opened) < Self.returnGrace { return }
+            openToolCallSince = nil
+        case .closed:
+            openToolCallSince = nil
+        case nil:
+            break
         }
     }
 
