@@ -2,60 +2,60 @@ What's New – Belay 1.6.4
 
 The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
 
-Direct-only (never shown in the App Store build): "Precise Detection heals itself".
+Direct-only (never shown in the App Store build): "Precise Detection reconnects automatically".
 
 === en ===
 
-# Precise Detection heals itself
-If the link to your agents breaks while the Mac sleeps, Belay now rebuilds it on wake and repoints the hooks – no relaunch needed. Long tool calls also hold on through rapid back-to-back activity.
+# Precise Detection reconnects automatically
+If the connection breaks during sleep, Belay restores it when your Mac wakes. Long tool calls also keep their hold through rapid back-to-back activity.
 
-# Small things, straightened
-The statistics caption no longer flickers under the cursor, and an Until time that has already passed starts nothing instead of booking a day.
+# A few rough edges are fixed
+Statistics no longer flicker on hover, and a past Until time no longer starts a timer for tomorrow.
 
 === ru ===
 
-# Точное определение чинит себя само
-Если связь с агентами рвётся во время сна Mac, Belay теперь восстанавливает её при пробуждении и перенастраивает хуки – без перезапуска. Долгие вызовы инструментов тоже держатся при быстрой череде событий.
+# Точное определение восстанавливает связь само
+Если связь прерывается во время сна, Belay восстанавливает её после пробуждения Mac. Долгие вызовы инструментов тоже больше не теряют удержание при быстрой череде событий.
 
-# Мелочи, доведённые до ума
-Подпись в статистике больше не мерцает под курсором, а время «До», которое уже прошло, ничего не запускает вместо брони на сутки.
+# Исправили несколько мелочей
+Статистика больше не мерцает при наведении, а уже прошедшее время «До» больше не запускает таймер на завтра.
 
 === de ===
 
-# Die präzise Erkennung heilt sich selbst
-Bricht die Verbindung zu den Agents ab, während der Mac schläft, stellt Belay sie beim Aufwachen wieder her und richtet die Hooks neu aus – ohne Neustart. Lange Tool-Aufrufe halten auch bei schnellen Abfolgen durch.
+# Präzise Erkennung verbindet sich automatisch neu
+Bricht die Verbindung im Ruhezustand ab, stellt Belay sie nach dem Aufwachen des Macs wieder her. Lange Tool-Aufrufe verlieren ihren Hold auch bei schneller Folge nicht mehr.
 
-# Kleinigkeiten, geradegerückt
-Die Beschriftung in der Statistik flackert nicht mehr unter dem Cursor, und eine bereits verstrichene „Bis“-Zeit startet nichts, statt einen Tag zu buchen.
+# Ein paar Ecken sind geglättet
+Die Statistik flackert beim Überfahren nicht mehr, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen.
 
 === es ===
 
-# La detección precisa se repara sola
-Si el enlace con tus agentes se rompe mientras el Mac duerme, Belay ahora lo reconstruye al despertar y reapunta los hooks, sin relanzar. Las llamadas largas a herramientas también aguantan la actividad rápida en cadena.
+# La detección precisa se reconecta automáticamente
+Si la conexión se interrumpe mientras el Mac duerme, Belay la restaura al despertar. Las llamadas largas a herramientas tampoco pierden la retención durante actividad rápida en cadena.
 
-# Pequeños detalles, en su sitio
-La leyenda de las estadísticas ya no parpadea bajo el cursor, y una hora «Hasta» ya pasada no inicia nada en lugar de reservar un día.
+# Hemos pulido algunos detalles
+Las estadísticas ya no parpadean al pasar el cursor y una hora «Hasta» ya pasada no inicia un temporizador para mañana.
 
 === fr ===
 
-# La détection précise se répare seule
-Si le lien avec vos agents se rompt pendant le sommeil du Mac, Belay le reconstruit désormais au réveil et repointe les hooks – sans relancer. Les longs appels d’outils tiennent aussi lors d’activités rapprochées.
+# La détection précise se reconnecte automatiquement
+Si la connexion est interrompue pendant la veille, Belay la rétablit au réveil du Mac. Les longs appels d’outils conservent aussi le maintien lors d’activités rapprochées.
 
-# Petites choses remises d’aplomb
-La légende des statistiques ne clignote plus sous le curseur, et une heure « Jusqu’à » déjà passée ne lance rien au lieu de réserver une journée.
+# Quelques détails ont été corrigés
+Les statistiques ne clignotent plus au survol et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
 
 === it ===
 
-# Il rilevamento preciso si ripara da solo
-Se il collegamento con gli agenti si interrompe mentre il Mac dorme, Belay ora lo ricostruisce al risveglio e ripunta gli hook – senza riavvio. Anche le chiamate lunghe agli strumenti reggono l’attività ravvicinata.
+# Il rilevamento preciso si riconnette automaticamente
+Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono il hold durante attività ravvicinate.
 
-# Piccole cose, sistemate
-La didascalia delle statistiche non sfarfalla più sotto il cursore, e un orario «Fino a» già passato non avvia nulla invece di prenotare un giorno.
+# Sistemati alcuni dettagli
+Le statistiche non sfarfallano più al passaggio del puntatore e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
 
 === zh-Hans ===
 
-# 精确检测能够自我修复
-如果 Mac 睡眠期间与智能体的连接中断，Belay 现在会在唤醒时自动重建连接并重新指向钩子，无需重启。长时间的工具调用在快速连续操作中也能保持。
+# 精确检测会自动重新连接
+如果连接在 Mac 睡眠期间中断，Belay 会在唤醒后自动恢复。长时间的工具调用在快速连续活动中也不会再丢失保持唤醒状态。
 
-# 细节修正
-统计页的说明文字不再在光标下闪烁；已过去的“截止”时间不会再预定一整天，而是不启动。
+# 修复了一些小问题
+统计数据在悬停时不再闪烁，已经过去的“截止”时间也不会再启动明天的计时器。

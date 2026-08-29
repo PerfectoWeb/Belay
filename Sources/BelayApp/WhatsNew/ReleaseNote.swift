@@ -95,20 +95,18 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.trace,
-                        title: "Precise Detection heals itself",
+                        title: "Precise Detection reconnects automatically",
                         body: """
-                            If the link to your agents breaks while the Mac sleeps, \
-                            Belay now rebuilds it on wake and repoints the hooks – \
-                            no relaunch needed. Long tool calls also hold on through \
-                            rapid back-to-back activity.
+                            If the connection breaks during sleep, Belay restores \
+                            it when your Mac wakes. Long tool calls also keep \
+                            their hold through rapid back-to-back activity.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.timer,
-                        title: "Small things, straightened",
+                        title: "A few rough edges are fixed",
                         body: """
-                            The statistics caption no longer flickers under the \
-                            cursor, and an Until time that has already passed \
-                            starts nothing instead of booking a day.
+                            Statistics no longer flicker on hover, and a past \
+                            Until time no longer starts a timer for tomorrow.
                             """)
                 ]
             )

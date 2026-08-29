@@ -6,28 +6,28 @@ the Until dialog, and the sheet/popover race.
 
 --- EN ---
 
-Small things, straightened. The statistics caption no longer flickers under the cursor, custom-duration dialogs behave, and an Until time that has already passed starts nothing instead of booking a day.
+A few rough edges are fixed. Statistics no longer flicker on hover, custom timer dialogs open reliably, and an Until time that has already passed no longer starts a timer for tomorrow.
 
 --- RU ---
 
-Мелочи, доведённые до ума. Подпись в статистике больше не мерцает под курсором, диалоги произвольной длительности ведут себя прилично, а уже прошедшее время «До» ничего не запускает вместо брони на сутки.
+Исправили несколько мелочей. Статистика больше не мерцает при наведении, окна настройки таймера открываются как надо, а уже прошедшее время «До» больше не запускает таймер на завтра.
 
 --- DE ---
 
-Kleinigkeiten, geradegerückt. Die Beschriftung in der Statistik flackert nicht mehr unter dem Cursor, die Dialoge für eigene Zeitspannen benehmen sich, und eine bereits verstrichene „Bis“-Zeit startet nichts, statt einen Tag zu buchen.
+Ein paar Ecken sind geglättet. Die Statistik flackert beim Überfahren nicht mehr, eigene Timer-Dialoge öffnen sich zuverlässig, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen mehr.
 
 --- ES ---
 
-Pequeños detalles, en su sitio. La leyenda de las estadísticas ya no parpadea bajo el cursor, los diálogos de duración personalizada se comportan, y una hora «Hasta» ya pasada no inicia nada en lugar de reservar un día.
+Hemos pulido algunos detalles. Las estadísticas ya no parpadean al pasar el cursor, los diálogos del temporizador se abren correctamente y una hora «Hasta» que ya pasó no inicia un temporizador para mañana.
 
 --- FR ---
 
-Petites choses remises d’aplomb. La légende des statistiques ne clignote plus sous le curseur, les boîtes de durée personnalisée se tiennent bien, et une heure « Jusqu’à » déjà passée ne lance rien au lieu de réserver une journée.
+Quelques détails ont été corrigés. Les statistiques ne clignotent plus au survol, les fenêtres du minuteur s’ouvrent correctement et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
 
 --- IT ---
 
-Piccole cose, sistemate. La didascalia delle statistiche non sfarfalla più sotto il cursore, le finestre di durata personalizzata si comportano bene, e un orario «Fino a» già passato non avvia nulla invece di prenotare un giorno.
+Sistemati alcuni dettagli. Le statistiche non sfarfallano più al passaggio del puntatore, le finestre del timer si aprono correttamente e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
 
 --- ZH ---
 
-细节修正。统计页的说明文字不再在光标下闪烁，自定义时长对话框表现正常，已过去的“截止”时间不会再预定一整天。
+修复了一些小问题。统计数据在悬停时不再闪烁，自定义计时器窗口现在能正常打开，已经过去的“截止”时间也不会再启动一个明天的计时器。
