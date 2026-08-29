@@ -1,4 +1,5 @@
 import BelayCore
+import BelayHookBridge
 import BelayProviders
 import XCTest
 
@@ -27,9 +28,23 @@ final class BuiltInRootsTests: XCTestCase {
         try? FileManager.default.removeItem(at: home)
     }
 
+    /// Precise detection against this test's scratch tree, never the real
+    /// one: a receiver started on `.real()` paths binds a port and *writes
+    /// the user's live bridge.json* — during a gate run on a machine where
+    /// Belay is running, that hijacked the recorded port out from under the
+    /// app (caught 29 Aug: a gate moved a live install from 41413 to 41633).
+    private func scratchPrecise() -> PreciseDetection {
+        PreciseDetection(
+            paths: BridgePaths(
+                support: home.appendingPathComponent("support"),
+                claudeSettings: home.appendingPathComponent(".claude/settings.json"),
+                codexHome: home.appendingPathComponent(".codex"),
+                clineHome: home.appendingPathComponent(".cline")))
+    }
+
     private func makeHost() -> ProviderHost {
         ProviderHost(
-            precise: PreciseDetection(),
+            precise: scratchPrecise(),
             enabled: [.claudeCode],
             home: home)
     }
@@ -94,7 +109,7 @@ final class BuiltInRootsTests: XCTestCase {
             at: clineRoot.appendingPathComponent("data/sessions"), withIntermediateDirectories: true)
         BuiltInRootsStore().add(clineRoot, for: .cline)
         let host = ProviderHost(
-            precise: PreciseDetection(),
+            precise: scratchPrecise(),
             enabled: [.cline],
             home: home)
         let signals = await host.start()
