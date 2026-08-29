@@ -337,8 +337,17 @@ fi
 # next release's version, and /releases/latest/download/Belay.dmg can.
 cp "$DMG" "$DIST/Belay.dmg"
 
+# Checksums a person can read. GitHub's API exposes asset digests, but nobody
+# verifying a download from a terminal wants to spelunk the API for them:
+#   shasum -a 256 -c SHA256SUMS
+# The rolling Belay.dmg is byte-identical to the versioned one, so its line is
+# the same hash under the other name.
+(cd "$DIST" && shasum -a 256 "$(basename "$DMG")" Belay.dmg > SHA256SUMS)
+
 echo
 echo "released: $DMG"
 echo "          $DIST/Belay.dmg — upload this one too, it is what the site links to:"
 echo "          gh release upload <tag> $DIST/Belay.dmg --clobber"
+echo "          $DIST/SHA256SUMS — and this, so downloads can be verified:"
+echo "          gh release upload <tag> $DIST/SHA256SUMS --clobber"
 echo "next:     scripts/sign-update.sh to add it to the appcast"

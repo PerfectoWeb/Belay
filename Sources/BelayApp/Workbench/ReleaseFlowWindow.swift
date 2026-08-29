@@ -178,7 +178,7 @@ private struct ChecklistTab: View {
         ("gate", "scripts/test.sh green on the release tree"),
         ("masverify", "scripts/verify-mas-build.sh clean"),
         ("release", "release.sh run, DMG notarized and stapled"),
-        ("published", "gh release create, both DMGs uploaded"),
+        ("published", "gh release create, both DMGs and SHA256SUMS uploaded"),
         ("appcast", "publish-appcast.sh --publish"),
         ("cask", "bump-cask.sh after the release is public"),
         ("organizer", "MAS archive in Xcode Organizer, store notes handed over")
