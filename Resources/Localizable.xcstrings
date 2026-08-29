@@ -8696,7 +8696,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono il hold durante attività ravvicinate."
+            "value": "Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono l'hold durante attività ravvicinate."
           }
         },
         "zh-Hans": {

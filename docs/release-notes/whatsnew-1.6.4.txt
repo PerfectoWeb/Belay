@@ -47,7 +47,7 @@ Les statistiques ne clignotent plus au survol et une heure « Jusqu’à » déj
 === it ===
 
 # Il rilevamento preciso si riconnette automaticamente
-Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono il hold durante attività ravvicinate.
+Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono l'hold durante attività ravvicinate.
 
 # Sistemati alcuni dettagli
 Le statistiche non sfarfallano più al passaggio del puntatore e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
