@@ -52,12 +52,13 @@ extension ClaudeCodeProvider {
         let delta = watch.cursor.read(using: access)
         // Seen between `creat` and its first write: an empty transcript is no
         // evidence of a turn, and carries none of the record clocks that
-        // expose a toucher either. Follow it in silence and let its bytes
-        // arrive as their own change.
-        guard !delta.lines.isEmpty else {
-            watched[id] = watch
-            return false
-        }
+        // expose a toucher either. Deliberately *not* watched yet: a stored
+        // watch would route the first real bytes through `absorb`, which
+        // never checks record clocks, and an importer writing a month-old
+        // conversation into its fresh file would sail past the stale-touch
+        // defense above. Unwatched, those bytes re-enter this method and meet
+        // the check like any other appearance.
+        guard !delta.lines.isEmpty else { return false }
         let newest = TranscriptClassifier.newestTimestamp(in: delta.lines)
         if let newest, now.timeIntervalSince(newest) > configuration.staleAtStartupAfter {
             if let current = FileSnapshot(url: url) {

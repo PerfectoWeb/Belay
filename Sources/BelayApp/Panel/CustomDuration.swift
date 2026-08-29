@@ -21,21 +21,28 @@ enum CustomDuration {
         return TimeInterval(total)
     }
 
-    /// Seconds from `now` to the next wall-clock `minutesOfDay`. A time
-    /// already past means tomorrow, so "until 8:00" set at night does what
-    /// it says; under a minute away falls below the timer's floor and is nil.
+    /// The next wall-clock moment `minutesOfDay` names. A time already past
+    /// means tomorrow, so "until 8:00" set at night does what it says.
+    static func untilTarget(
+        minutesOfDay: Int, now: Date = Date(), calendar: Calendar = .current
+    ) -> Date? {
+        guard (0..<24 * 60).contains(minutesOfDay) else { return nil }
+        let start = calendar.startOfDay(for: now)
+        guard let target = calendar.date(byAdding: .minute, value: minutesOfDay, to: start)
+        else { return nil }
+        if target <= now {
+            return calendar.date(byAdding: .day, value: 1, to: target)
+        }
+        return target
+    }
+
+    /// Seconds from `now` to the next wall-clock `minutesOfDay`; under a
+    /// minute away falls below the timer's floor and is nil.
     static func untilSeconds(
         minutesOfDay: Int, now: Date = Date(), calendar: Calendar = .current
     ) -> TimeInterval? {
-        guard (0..<24 * 60).contains(minutesOfDay) else { return nil }
-        let start = calendar.startOfDay(for: now)
-        guard var target = calendar.date(byAdding: .minute, value: minutesOfDay, to: start)
+        guard let target = untilTarget(minutesOfDay: minutesOfDay, now: now, calendar: calendar)
         else { return nil }
-        if target <= now {
-            guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: target)
-            else { return nil }
-            target = tomorrow
-        }
         let seconds = target.timeIntervalSince(now)
         guard seconds >= 60 else { return nil }
         return seconds
@@ -98,6 +105,12 @@ final class CustomDurationModel: ObservableObject {
     @Published var hours: String { didSet { revalidate() } }
     @Published var minutes: String { didSet { revalidate() } }
     @Published var untilMinutes: Int { didSet { revalidate() } }
+    /// The absolute moment the clock tab means, fixed at edit time. Start
+    /// recomputed the seconds at *click* time, so a dialog left open past its
+    /// own target quietly wrapped to tomorrow — "until 14:30" clicked at
+    /// 14:31 booked a day of wakefulness. A target that has passed now makes
+    /// the click a no-op instead.
+    private var untilTarget: Date?
 
     var onValidity: (Bool) -> Void = { _ in }
 
@@ -115,14 +128,21 @@ final class CustomDurationModel: ObservableObject {
         let nowMinutes =
             calendar.component(.hour, from: now) * 60 + calendar.component(.minute, from: now)
         untilMinutes = (nowMinutes + offset + 14) / 15 * 15 % (24 * 60)
+        untilTarget = CustomDuration.untilTarget(minutesOfDay: untilMinutes, now: now)
     }
 
     func result(now: Date = Date()) -> TimeInterval? {
         switch mode {
         case .duration: return CustomDuration.seconds(hours: hours, minutes: minutes)
-        case .until: return CustomDuration.untilSeconds(minutesOfDay: untilMinutes, now: now)
+        case .until:
+            guard let untilTarget else { return nil }
+            let seconds = untilTarget.timeIntervalSince(now)
+            return seconds >= 60 ? seconds : nil
         }
     }
 
-    private func revalidate() { onValidity(result() != nil) }
+    private func revalidate() {
+        untilTarget = CustomDuration.untilTarget(minutesOfDay: untilMinutes)
+        onValidity(result() != nil)
+    }
 }

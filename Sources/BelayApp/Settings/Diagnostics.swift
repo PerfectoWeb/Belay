@@ -38,6 +38,7 @@ enum Diagnostics {
 
     private static func start() {
         guard watchdog == nil else { return }
+        collecting.withLock { $0 = true }
         try? FileManager.default.createDirectory(
             at: folder, withIntermediateDirectories: true)
         // A SIGKILL leaves no crash report and no goodbye, so the only place
@@ -76,6 +77,7 @@ enum Diagnostics {
     private static func stop() {
         flushRepeats()
         write("collection off")
+        collecting.withLock { $0 = false }
         EventLog.install(nil)
         watchdog?.invalidate()
         watchdog = nil
@@ -97,7 +99,12 @@ enum Diagnostics {
         guard let handle = try? FileHandle(forReadingFrom: file) else { return "" }
         defer { try? handle.close() }
         let size = (try? handle.seekToEnd()) ?? 0
-        let start = size > 65_536 ? size - 65_536 : 0
+        // A megabyte, not a token 64KB: a busy multi-day session writes more
+        // than 64KB after its "collection on", pushing the marker out of the
+        // window and silently disabling dirty-exit detection. Read once, at
+        // collection start.
+        let window: UInt64 = 1_048_576
+        let start = size > window ? size - window : 0
         try? handle.seek(toOffset: start)
         let data = (try? handle.readToEnd()) ?? Data()
         return String(bytes: data, encoding: .utf8) ?? ""
@@ -147,6 +154,9 @@ enum Diagnostics {
     }
 
     nonisolated private static let repeats = OSAllocatedUnfairLock(initialState: Repeats())
+    /// Readable from any thread, because the paths that write "from anywhere"
+    /// run on whatever thread died — or on the signal source.
+    nonisolated private static let collecting = OSAllocatedUnfairLock(initialState: false)
 
     /// How long after a summary the next one may come, at first.
     nonisolated static let firstWindow: TimeInterval = 60
@@ -198,6 +208,11 @@ enum Diagnostics {
     /// `nonisolated` and free of any state but the path, because the exception
     /// handler runs on whatever thread died.
     nonisolated static func appendFromAnywhere(_ line: String) {
+        // Off means off. The exception handler and the EventLog sink are only
+        // installed while collection is on, but the termination path calls
+        // this unconditionally — and a user who never enabled Local Reports
+        // must not find a log file created by every logout.
+        guard collecting.withLock({ $0 }) else { return }
         for text in collapse(line) { rawAppend(text) }
     }
 

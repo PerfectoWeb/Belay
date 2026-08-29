@@ -51,7 +51,15 @@ struct RevealingPicker: NSViewRepresentable {
     final class Coordinator: NSObject, NSMenuDelegate {
         var parent: RevealingPicker
         weak var button: NSPopUpButton?
-        private var watcher: Timer?
+        // `nonisolated(unsafe)` only so `deinit` may invalidate it; every
+        // other touch is main-actor menu-delegate code.
+        nonisolated(unsafe) private var watcher: Timer?
+
+        deinit {
+            // The timer holds only a weak self, so a coordinator freed
+            // mid-track would otherwise leave it ticking no-ops forever.
+            watcher?.invalidate()
+        }
         private var shiftShown = false
 
         init(_ parent: RevealingPicker) {
@@ -101,6 +109,9 @@ struct RevealingPicker: NSViewRepresentable {
 
         func menuWillOpen(_ menu: NSMenu) {
             reveal(shiftHeld: RevealKey.isHeld)
+            // If an unpaired open ever fires, the old timer must die with it
+            // rather than tick unowned forever.
+            watcher?.invalidate()
             // A timer in the common run-loop modes, not an event monitor: a
             // menu tracks on its own loop and a local monitor never hears the
             // key while it is open.

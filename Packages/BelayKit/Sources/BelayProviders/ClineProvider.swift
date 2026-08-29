@@ -150,12 +150,16 @@ public actor ClineProvider: ActivityProvider {
     @discardableResult
     func adopt(_ state: ClineSessionState, stateURL: URL, now: Date, atStartup: Bool) -> Bool {
         guard let snapshot = FileSnapshot(url: stateURL) else { return false }
-        // A session that is already over is history, not news — at startup or
-        // at runtime, where Codex Desktop's importer materialises other
-        // agents' old conversations wholesale.
+        // A session that is already over is history, not news — at startup
+        // or at runtime, where importers materialise old conversations.
         guard let status = state.knownStatus, status.activity != .ended else { return false }
         var watch = ClineWatch(
-            id: SessionID(state.sessionID.isEmpty ? stateURL.lastPathComponent : state.sessionID),
+            // The fallback drops ".json": lookups key on the directory name,
+            // and "<id>.json" would re-adopt forever and orphan teammates.
+            id: SessionID(
+                state.sessionID.isEmpty
+                    ? stateURL.deletingPathExtension().lastPathComponent
+                    : state.sessionID),
             stateURL: stateURL,
             workspace: state.workspace,
             lastWriteAt: atStartup ? snapshot.modified : now,

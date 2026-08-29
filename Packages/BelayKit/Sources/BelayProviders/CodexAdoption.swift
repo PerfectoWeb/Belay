@@ -41,12 +41,12 @@ extension CodexProvider {
         let delta = watch.cursor.read(using: access)
         // A rollout can be seen between `creat` and its first write, and an
         // empty file is no evidence of a turn: the record clocks that would
-        // expose an importer's work are not there yet either. Follow it in
-        // silence — the bytes arrive as their own change a moment later.
-        guard !delta.lines.isEmpty else {
-            watched[id] = watch
-            return false
-        }
+        // expose an importer's work are not there yet either. Deliberately
+        // *not* watched yet: a stored watch would route the first real bytes
+        // through `absorb`, which never checks record clocks, and the
+        // importer's month-old records would sail past the stale-touch
+        // defense above. Unwatched, they re-enter here and meet the check.
+        guard !delta.lines.isEmpty else { return false }
         let newest = CodexRollout.newestTimestamp(in: delta.lines)
         if let newest, now.timeIntervalSince(newest) > configuration.staleAtStartupAfter {
             if let current = FileSnapshot(url: url) {

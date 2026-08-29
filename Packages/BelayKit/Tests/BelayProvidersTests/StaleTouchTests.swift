@@ -80,8 +80,9 @@ struct StaleTouchTests {
         let url = codex.rollout("t11-empty", lines: [])
         await provider.ingest(url, now: Date())
         let id = CodexRollout.sessionID(for: url)
-        #expect(await provider.watched[id] != nil, "the file is followed")
-        #expect(await provider.watched[id]?.reported == nil, "but an empty file says nothing")
+        // Not watched yet, on purpose: a watch stored here would route the
+        // first bytes around the stale-touch check. They re-enter adopt.
+        #expect(await provider.watched[id] == nil)
 
         // Content arriving a moment later is classified normally.
         let fresh = ISO8601DateFormatter().string(from: Date())
@@ -102,12 +103,34 @@ struct StaleTouchTests {
         let url = claude.transcript("empty", lines: [])
         await provider.ingest(url, now: Date())
         #expect(await collector.settle().isEmpty)
-        #expect(await provider.watched[SessionID("empty")] != nil, "the file is followed")
-        #expect(await provider.watched[SessionID("empty")]?.reported == nil)
+        // Not watched yet, on purpose: a watch stored here would route the
+        // first bytes around the stale-touch check. They re-enter adopt.
+        #expect(await provider.watched[SessionID("empty")] == nil)
 
         claude.append(TranscriptScratch.record("assistant", stop: "tool_use") + "\n", to: url)
         await provider.ingest(url, now: Date())
         #expect(await collector.wait(for: 1).map(\.activity) == [.working])
+        await collector.stop()
+    }
+
+    /// The importer race the empty-file guard used to hand a free pass to: a
+    /// rollout caught at `creat`, whose first real bytes are a month-old
+    /// conversation. They must meet the same stale-touch check any other
+    /// appearance does, not slip through an already-stored watch.
+    @Test("Stale bytes after an empty first sight open nothing")
+    func staleBytesAfterEmptySightOpenNothing() async {
+        let provider = CodexProvider(
+            configuration: codex.configuration, access: DirectFileAccess())
+        let collector = SignalCollector()
+        await collector.attach(to: provider.signals)
+        let url = codex.rollout("imported", lines: [])
+        await provider.ingest(url, now: Date())
+        #expect(await collector.settle().isEmpty)
+
+        let monthOld = ISO8601DateFormatter().string(from: Date(timeIntervalSinceNow: -30 * 86_400))
+        codex.append([CodexScratch.line("task_started", at: monthOld)], to: url)
+        await provider.ingest(url, now: Date())
+        #expect(await collector.settle().isEmpty, "a month-old conversation is history, not news")
         await collector.stop()
     }
 }

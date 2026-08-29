@@ -170,4 +170,22 @@ final class CustomDurationTests: XCTestCase {
         XCTAssertNil(
             CustomDuration.untilSeconds(minutesOfDay: 24 * 60, now: now, calendar: calendar))
     }
+
+    /// The dialog left open past its own target. The seconds used to be
+    /// recomputed at click time, so "until 11:00" clicked at 11:01 wrapped to
+    /// tomorrow and booked a day of wakefulness. The target is fixed when the
+    /// clock is set; a click after it has passed starts nothing.
+    @MainActor
+    func testStaleUntilDialogStartsNothing() {
+        let model = CustomDurationModel(current: 3600)
+        model.mode = .until
+        XCTAssertNotNil(model.result(), "the clock tab opens ready to start")
+
+        // Any stored target is at most a day and a quarter-hour ahead, so a
+        // click a full day later is past it however the clock was rounded.
+        // Recomputing at click time — the old behaviour — would wrap to the
+        // next occurrence and return a fresh near-day instead of nil.
+        let late = Date().addingTimeInterval(25 * 3600)
+        XCTAssertNil(model.result(now: late), "the target has passed; the click starts nothing")
+    }
 }

@@ -36,15 +36,21 @@ final class PanelController: NSObject {
         // back the moment the sheet is gone.
         let center = NotificationCenter.default
         sheetWatch = [
+            // Synchronous on purpose, not `Task { @MainActor }`: the sheet
+            // takes key in the same runloop turn as the post, and a deferred
+            // hold lands one turn late — inside the exact window where the
+            // transient popover reads the key change as "clicked elsewhere"
+            // and takes the sheet down with it. The queue is `.main` and the
+            // posters are all main-thread UI, so the isolation holds.
             center.addObserver(
                 forName: .panelSheetWillOpen, object: nil, queue: .main
             ) { [weak self] _ in
-                Task { @MainActor in self?.holdOpenForSheet() }
+                MainActor.assumeIsolated { self?.holdOpenForSheet() }
             },
             center.addObserver(
                 forName: .panelSheetDidClose, object: nil, queue: .main
             ) { [weak self] _ in
-                Task { @MainActor in self?.releaseAfterSheet() }
+                MainActor.assumeIsolated { self?.releaseAfterSheet() }
             }
         ]
     }

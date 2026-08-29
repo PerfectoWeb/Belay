@@ -103,15 +103,24 @@ struct StatisticsPane: View {
                 // cross-fade running sixty times a second over a counter is a
                 // smear, not a count. The morph switches on once settled.
                 .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
-            Text(
-                present
-                    ? "kept working while you were right here"
-                    : "kept working while you were away from the keyboard"
-            )
+            // Both variants sit hidden underneath so the caption keeps one
+            // size whichever is showing. Without the reservation, hovering
+            // the tail of the long string shrank the text out from under the
+            // cursor, the hover ended, the text grew back — and the two
+            // morphs ran in a loop for as long as the cursor sat there.
+            ZStack(alignment: .leading) {
+                Text("kept working while you were right here").hidden()
+                Text("kept working while you were away from the keyboard").hidden()
+                Text(
+                    present
+                        ? "kept working while you were right here"
+                        : "kept working while you were away from the keyboard"
+                )
+                .contentTransition(.numericText())
+                .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
+            }
             .font(.system(size: 12))
             .foregroundStyle(.secondary)
-            .contentTransition(.numericText())
-            .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
             .onHover { hoveringPresence = $0 }
         }
     }

@@ -25,7 +25,15 @@ final class DurationMenu: NSObject, NSMenuDelegate {
 
     private let menu = NSMenu()
     private var customItem: NSMenuItem?
-    private var watcher: Timer?
+    // `nonisolated(unsafe)` only so `deinit` may invalidate it; every
+    // other touch is main-actor menu-delegate code.
+    nonisolated(unsafe) private var watcher: Timer?
+
+    deinit {
+        // The timer holds only a weak self, so a coordinator freed mid-track
+        // would otherwise leave it ticking no-ops forever.
+        watcher?.invalidate()
+    }
     private var shiftShown = false
     private var current: TimeInterval?
     private let choose: (TimeInterval?) -> Void
@@ -117,6 +125,9 @@ final class DurationMenu: NSObject, NSMenuDelegate {
     // MARK: NSMenuDelegate
 
     func menuWillOpen(_ menu: NSMenu) {
+        // If an unpaired open ever fires, the old timer must die with it
+        // rather than tick unowned forever.
+        watcher?.invalidate()
         let timer = Timer(timeInterval: 0.05, repeats: true) { [weak self] _ in
             MainActor.assumeIsolated {
                 guard let self else { return }

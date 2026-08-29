@@ -131,10 +131,24 @@ enum ClineSessions {
         // watched-folder demo root; the default `~/.cline` hid it).
         let rootPath = root.resolvingSymlinksInPath().path + "/"
         let changed = URL(fileURLWithPath: path).resolvingSymlinksInPath().path
-        guard changed.hasPrefix(rootPath) else { return nil }
-        let below = changed.dropFirst(rootPath.count)
+        guard let below = remainder(of: changed, under: rootPath) else { return nil }
         guard let id = below.split(separator: "/").first, !id.isEmpty else { return nil }
         return String(id)
+    }
+
+    /// The path's tail below the root, matched with the `/private` wrinkle in
+    /// mind. The resolver strips `/private` only from paths that still exist,
+    /// so the *deletion* event for `<id>.json` — the one that ends a session —
+    /// keeps the prefix its living siblings lost, fails the plain check, and
+    /// the row never ends. Stripping it by hand when the rest matches the root
+    /// is exactly what the resolver would have done had the file survived.
+    private static func remainder(of path: String, under root: String) -> Substring? {
+        if path.hasPrefix(root) { return path.dropFirst(root.count) }
+        let prefix = "/private"
+        guard path.hasPrefix(prefix + "/") else { return nil }
+        let stripped = path.dropFirst(prefix.count)
+        guard stripped.hasPrefix(root) else { return nil }
+        return stripped.dropFirst(root.count)
     }
 
     /// A teammate's file inside a session directory: `<agent>__<suffix>.messages.json`

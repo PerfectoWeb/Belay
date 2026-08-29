@@ -141,7 +141,12 @@ enum AgentChildren {
         }
 
         let stride = MemoryLayout<kinfo_proc>.stride
-        let capacity = size / stride + 8
+        // A quarter extra on top of the size query, not a fixed handful: the
+        // table grows between the two calls, and a fork burst — a parallel
+        // build fanning out, the moment this probe matters most — can add
+        // more than a few entries in that window. ENOMEM here costs a whole
+        // 15-second tick of busy information.
+        let capacity = size / stride + max(64, size / stride / 4)
         let buffer = UnsafeMutablePointer<kinfo_proc>.allocate(capacity: capacity)
         defer { buffer.deallocate() }
 

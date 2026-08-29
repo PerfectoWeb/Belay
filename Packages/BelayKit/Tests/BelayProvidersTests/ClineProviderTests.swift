@@ -124,6 +124,21 @@ struct ClineProviderTests {
         #expect(ClineSessions.sessionID(of: "/somewhere/else.json", under: root) == nil)
     }
 
+    /// The deletion event is the one FSEvents delivers for a file the resolver
+    /// can no longer strip `/private` from — reproduced live on a /tmp demo
+    /// root, where every session outlived its own state file.
+    @Test("A deleted file's /private path still resolves to its session")
+    func deletedPathParsing() throws {
+        let base = URL(fileURLWithPath: "/tmp/belay-cline-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: base, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: base) }
+        // The root exists, so it resolves to /tmp/…; the deleted state file
+        // does not, so its event path keeps the /private prefix.
+        let gone = "/private" + base.path + "/abc/abc.json"
+        #expect(ClineSessions.sessionID(of: gone, under: base) == "abc")
+        #expect(ClineSessions.sessionID(of: "/private/somewhere/else.json", under: base) == nil)
+    }
+
     @Test("The state file's prompt is never decoded")
     func promptStaysOut() throws {
         let url = scratch.session("s5", status: "running")
