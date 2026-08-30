@@ -15,6 +15,20 @@ struct SessionRecord: Codable, Equatable, Identifiable {
     var endedAt: Date
 
     var duration: TimeInterval { endedAt.timeIntervalSince(startedAt) }
+
+    /// Sort keys for the table. Computed, so the stored shape and old records
+    /// stay untouched.
+    var agentName: String {
+        switch provider {
+        case .claudeCode: return "Claude Code"
+        case .codex: return "Codex"
+        case .cline: return "Cline"
+        case .copilot: return "Copilot"
+        case .generic: return String(localized: "Agent")
+        }
+    }
+
+    var folder: String { workspace ?? "\u{2014}" }
 }
 
 /// Notices sessions leaving the snapshot and turns them into records.
@@ -63,8 +77,8 @@ struct SessionHistoryTracker: Equatable {
 /// Persists the recent list beside the rest of the statistics.
 @MainActor
 struct SessionHistoryStore {
-    /// Enough to answer "what ran today", few enough to stay a glance.
-    static let capacity = 12
+    /// Enough depth for the sessions table to be worth sorting.
+    static let capacity = 50
 
     private let key = "sessionHistory"
     private let defaults: UserDefaults

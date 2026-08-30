@@ -10,6 +10,11 @@ import SwiftUI
 struct StatisticsPane: View {
     let statistics: UsageStatistics
     var history: [SessionRecord] = []
+
+    /// Which side of the pane is showing. Overview is the default and the
+    /// identity; Sessions is the drill-down.
+    enum Screen { case overview, sessions }
+    @State private var screen: Screen = .overview
     /// Throwing the numbers away is the one destructive thing in Settings, so
     /// it asks first and the pane does not own the data it would be discarding.
     var onReset: () -> Void = {}
@@ -40,30 +45,37 @@ struct StatisticsPane: View {
     // the finished state and never sees it happen.
     static let revealSeconds: Double = 1.8
 
-    /// Ease out, so the numbers sprint and then arrive rather than crawling to
-    /// a stop. Static and internal so a test can walk it: it has to be 0 at 0
-    /// and exactly 1 at the end, and the first version of this was neither.
-    static func eased(_ progress: Double) -> Double {
-        let clamped = min(1, max(0, progress))
-        return 1 - pow(1 - clamped, 3)
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             if statistics.isEmpty {
                 empty
             } else {
-                headline
-                Divider()
-                figures
-                Divider()
-                chart
-                if !history.isEmpty {
-                    Divider()
-                    RecentSessions(records: history)
+                HStack(alignment: .top) {
+                    headline
+                    Spacer()
+                    // The native switcher, where a second toolbar would be
+                    // ceremony: two views of the same numbers, one control.
+                    Picker(selection: $screen) {
+                        Text("Overview").tag(Screen.overview)
+                        Text("Sessions").tag(Screen.sessions)
+                    } label: {
+                        EmptyView()
+                    }
+                    .pickerStyle(.segmented)
+                    .labelsHidden()
+                    .fixedSize()
                 }
-                StarAsk(rescued: statistics.totalRescued)
-                StatisticsFooter(statistics: statistics, onReset: onReset)
+                Divider()
+                switch screen {
+                case .overview:
+                    figures
+                    Divider()
+                    chart
+                    StarAsk(rescued: statistics.totalRescued)
+                    StatisticsFooter(statistics: statistics, onReset: onReset)
+                case .sessions:
+                    SessionsScreen(records: history)
+                }
             }
         }
         .padding(20)
@@ -199,18 +211,6 @@ struct StatisticsPane: View {
     private func counted(_ index: Int) -> Double {
         let start = Double(index) * 0.07
         return min(1, max(0, (reveal - start) / 0.42))
-    }
-
-    /// "FRIDAY, 15 AUGUST" in the user's locale, for the chart label while a
-    /// bar is hovered. Uppercased to sit where LAST 14 DAYS sits.
-    static func named(_ date: Date) -> String {
-        date.formatted(.dateTime.weekday(.wide).day().month(.wide)).uppercased()
-    }
-
-    private var since: String? {
-        statistics.firstRun.map {
-            $0.formatted(.dateTime.day().month(.wide).year())
-        }
     }
 
     /// See the headline: a counting number has to redraw, not dissolve —

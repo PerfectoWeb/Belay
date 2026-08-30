@@ -15,10 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   honesty rule as the statistics — only slices you were away for the whole
   of — and silent under five minutes of held work. Off-switch in Settings →
   Notifications.
-- Recent sessions under the statistics chart: which agent, which folder, how
-  long, how recently — the last twelve finished sessions, folder names only,
-  never a transcript. Blips under a minute and subagents stay out; the
-  statistics reset clears this list too.
+- A Sessions screen behind a switcher in Statistics: a native sortable table
+  of the last fifty finished sessions — agent, folder, duration, when — click
+  a header to sort, click again to flip. Folder names only, never a
+  transcript. Blips under a minute and subagents stay out; the statistics
+  reset clears it too.
 
 ### Fixed
 
