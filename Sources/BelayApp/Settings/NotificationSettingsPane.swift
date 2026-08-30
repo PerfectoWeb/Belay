@@ -43,6 +43,16 @@ struct NotificationSettingsPane: View {
                 )
 
                 GroupedCheckbox(
+                    title: "While you were away",
+                    explanation: """
+                        One summary when you come back: how long Belay held, and \
+                        how many runs finished.
+                        """,
+                    spokenLabel: "Summarize what happened while you were away",
+                    isOn: $settings.notifyOnAwaySummary
+                )
+
+                GroupedCheckbox(
                     title: "Agent went quiet",
                     explanation: """
                         A session stopped responding without finishing, usually because \

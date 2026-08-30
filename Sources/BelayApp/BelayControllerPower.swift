@@ -71,3 +71,30 @@ extension BelayController {
         )
     }
 }
+
+extension BelayController {
+    // Beside the other power plumbing for the file-length rule: this is
+    // the pipe from the coordinator's decisions to actual assertions.
+    func observeDecisions() {
+        tasks.append(
+            Task { [coordinator, assertions, settings, weak self] in
+                for await decision in await coordinator.decisions() {
+                    switch decision {
+                    case .hold(let reason, let until):
+                        let timeout = max(30, until.timeIntervalSinceNow)
+                        Diagnostics.note(
+                            "hold on reason=\"\(reason)\" "
+                                + "display=\(settings.keepDisplayAwake ? 1 : 0)")
+                        await assertions.hold(
+                            reason: reason,
+                            includeDisplay: settings.keepDisplayAwake, timeout: timeout)
+                    case .release:
+                        Diagnostics.note("hold off")
+                        await assertions.release()
+                    }
+                    self?.refreshSnapshot()
+                }
+            }
+        )
+    }
+}

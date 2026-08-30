@@ -9,6 +9,7 @@ import SwiftUI
 /// otherwise have ended in a dead run.
 struct StatisticsPane: View {
     let statistics: UsageStatistics
+    var history: [SessionRecord] = []
     /// Throwing the numbers away is the one destructive thing in Settings, so
     /// it asks first and the pane does not own the data it would be discarding.
     var onReset: () -> Void = {}
@@ -57,6 +58,10 @@ struct StatisticsPane: View {
                 figures
                 Divider()
                 chart
+                if !history.isEmpty {
+                    Divider()
+                    RecentSessions(records: history)
+                }
                 StarAsk(rescued: statistics.totalRescued)
                 StatisticsFooter(statistics: statistics, onReset: onReset)
             }

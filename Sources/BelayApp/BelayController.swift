@@ -38,6 +38,15 @@ final class BelayController {
     private var awakeTally = AwakeTally()
     let usage = UsageRecorder()
     private var trigger = AnnouncementTrigger()
+    private var history = SessionHistoryTracker()
+    let historyStore = SessionHistoryStore()
+    private lazy var awayWatch = AwayReturnWatch { [weak self] report in
+        guard let self else { return }
+        Task { @MainActor in
+            await self.notifier.whileYouWereAway(
+                held: report.heldAway, finishedRuns: report.finishedRuns)
+        }
+    }
     let notifier: Notifier
     let nightDimming: NightDimmingController
     #if !BELAY_MAS
@@ -208,29 +217,6 @@ final class BelayController {
         watchForClaudeCodeAppearing()
     }
 
-    private func observeDecisions() {
-        tasks.append(
-            Task { [coordinator, assertions, settings, weak self] in
-                for await decision in await coordinator.decisions() {
-                    switch decision {
-                    case .hold(let reason, let until):
-                        let timeout = max(30, until.timeIntervalSinceNow)
-                        Diagnostics.note(
-                            "hold on reason=\"\(reason)\" "
-                                + "display=\(settings.keepDisplayAwake ? 1 : 0)")
-                        await assertions.hold(
-                            reason: reason,
-                            includeDisplay: settings.keepDisplayAwake, timeout: timeout)
-                    case .release:
-                        Diagnostics.note("hold off")
-                        await assertions.release()
-                    }
-                    self?.refreshSnapshot()
-                }
-            }
-        )
-    }
-
     func refreshSnapshot() {
         refresh?.cancel()
         refresh = Task { [coordinator, assertions, weak self] in
@@ -243,7 +229,13 @@ final class BelayController {
             self.state.apply(warning: error?.errorDescription)
             // Keeps the Agents tiles' "last activity" current (frozen otherwise).
             await self.publishProviderStatus()
-            await self.notifier.handle(self.trigger.diff(snapshot))
+            self.historyStore.append(self.history.diff(snapshot))
+            let announcements = self.trigger.diff(snapshot)
+            self.awayWatch.update(holdingSince: snapshot.holdingSince)
+            for announcement in announcements {
+                if case .finished = announcement { self.awayWatch.noteFinished() }
+            }
+            await self.notifier.handle(announcements)
         }
     }
 

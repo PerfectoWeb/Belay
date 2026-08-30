@@ -6,4 +6,6 @@
 
 - **Imported conversations stay quiet.** Old conversations touched during an import no longer appear as active sessions.
 
+- **One summary when you come back.** If Belay held the Mac awake while you were away, returning brings a single notification: how long it held and how many runs finished. The statistics pane also gains a recent-sessions list – agent, folder, duration – capped at twelve, folder names only.
+
 - **A few rough edges are fixed.** Statistics no longer flicker on hover, past Until times no longer schedule tomorrow, custom timer sheets stay put, and diagnostics remain fully off when Local Reports is off.

@@ -17,6 +17,7 @@ final class Notifier {
         case safetyRelease = "belay.safety-release"
         case wentQuiet = "belay.went-quiet"
         case updateAvailable = "belay.update-available"
+        case awaySummary = "belay.away-summary"
     }
 
     private let centre: UNUserNotificationCenter
@@ -156,6 +157,28 @@ final class Notifier {
                 String(localized: "The timer you set ran out, so Belay stopped keeping your Mac awake.")
             }
         await post(category: .safetyRelease, title: String(localized: "Belay stopped holding"), body: body)
+    }
+
+    /// The whole absence in one banner, said once, on return.
+    ///
+    /// `AwayReturnWatch` decides the when and guarantees the once; this only
+    /// words it. Zero finishes is still worth saying — the held time is the
+    /// claim, the finishes are the garnish.
+    func whileYouWereAway(held: TimeInterval, finishedRuns: Int) async {
+        guard settings.notifyOnAwaySummary else { return }
+        let kept = ElapsedTime.spoken(held)
+        let body =
+            finishedRuns > 0
+            ? String(
+                localized:
+                    "Belay kept your Mac awake for \(kept) of agent work. \(finishedRuns) runs finished."
+            )
+            : String(localized: "Belay kept your Mac awake for \(kept) of agent work.")
+        await post(
+            category: .awaySummary,
+            title: String(localized: "While you were away"),
+            body: body
+        )
     }
 
     /// Says that a newer version exists, at most once per version.

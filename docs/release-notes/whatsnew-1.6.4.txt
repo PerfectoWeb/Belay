@@ -12,6 +12,9 @@ If the connection breaks during sleep, Belay restores it when your Mac wakes. Lo
 # A few rough edges are fixed
 Statistics no longer flicker on hover, and a past Until time no longer starts a timer for tomorrow.
 
+# One summary when you come back
+If Belay held your Mac awake while you were away, you get a single note on return: how long it held, and how many runs finished. Plus a list of recent sessions under the statistics.
+
 === ru ===
 
 # Точное определение восстанавливает связь само
@@ -19,6 +22,9 @@ Statistics no longer flicker on hover, and a past Until time no longer starts a 
 
 # Исправили несколько мелочей
 Статистика больше не мерцает при наведении, а уже прошедшее время «До» больше не запускает таймер на завтра.
+
+# Одна сводка по возвращении
+Если Belay держал Mac в бодрствовании, пока вас не было, по возвращении придёт одно уведомление: сколько держал и сколько запусков завершилось. Плюс список недавних сессий под статистикой.
 
 === de ===
 
@@ -28,6 +34,9 @@ Bricht die Verbindung im Ruhezustand ab, stellt Belay sie nach dem Aufwachen des
 # Ein paar Ecken sind geglättet
 Die Statistik flackert beim Überfahren nicht mehr, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen.
 
+# Eine Zusammenfassung bei der Rückkehr
+Hat Belay Ihren Mac wach gehalten, während Sie weg waren, kommt bei der Rückkehr eine einzige Mitteilung: wie lange gehalten wurde und wie viele Läufe fertig sind. Dazu eine Liste der letzten Sitzungen unter der Statistik.
+
 === es ===
 
 # La detección precisa se reconecta automáticamente
@@ -35,6 +44,9 @@ Si la conexión se interrumpe mientras el Mac duerme, Belay la restaura al despe
 
 # Hemos pulido algunos detalles
 Las estadísticas ya no parpadean al pasar el cursor y una hora «Hasta» ya pasada no inicia un temporizador para mañana.
+
+# Un resumen al volver
+Si Belay mantuvo tu Mac despierto mientras no estabas, al volver recibes una sola notificación: cuánto tiempo y cuántas ejecuciones terminaron. Además, una lista de sesiones recientes bajo las estadísticas.
 
 === fr ===
 
@@ -44,6 +56,9 @@ Si la connexion est interrompue pendant la veille, Belay la rétablit au réveil
 # Quelques détails ont été corrigés
 Les statistiques ne clignotent plus au survol et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
 
+# Un résumé à votre retour
+Si Belay a maintenu votre Mac éveillé pendant votre absence, une seule notification vous attend au retour : combien de temps et combien d’exécutions terminées. Plus une liste des sessions récentes sous les statistiques.
+
 === it ===
 
 # Il rilevamento preciso si riconnette automaticamente
@@ -52,10 +67,15 @@ Se la connessione si interrompe durante lo stop, Belay la ripristina quando il M
 # Sistemati alcuni dettagli
 Le statistiche non sfarfallano più al passaggio del puntatore e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
 
+# Un riepilogo al tuo ritorno
+Se Belay ha tenuto sveglio il Mac mentre eri via, al ritorno arriva un'unica notifica: per quanto ha tenuto e quante esecuzioni sono finite. In più, un elenco delle sessioni recenti sotto le statistiche.
+
 === zh-Hans ===
 
 # 精确检测会自动重新连接
 如果连接在 Mac 睡眠期间中断，Belay 会在唤醒后自动恢复。长时间的工具调用在快速连续活动中也不会再丢失保持唤醒状态。
 
 # 修复了一些小问题
-统计数据在悬停时不再闪烁，已经过去的“截止”时间也不会再启动明天的计时器。
+统计数据在悬停时不再闪烁，已经过去的“截止”时间也不会再启动明天的计时器。# 返回时的一份小结
+如果 Belay 在您离开期间保持了 Mac 唤醒，返回时会收到一条通知：保持了多久、完成了多少次运行。统计下方还新增了最近会话列表。
+

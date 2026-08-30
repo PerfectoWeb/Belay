@@ -36,6 +36,7 @@ enum SettingsKey: String, CaseIterable {
     case notifyOnUpdateAvailable
     case keepLocalReports
     case notifyOnSafetyRelease
+    case notifyOnAwaySummary
     case taskFinishedThreshold
     case enabledProviders
     case nightDimming
@@ -145,6 +146,7 @@ extension SettingsValues {
             defaults.flag(.notifyOnUpdateAvailable) ?? fallback.notifyOnUpdateAvailable
         keepLocalReports = defaults.flag(.keepLocalReports) ?? fallback.keepLocalReports
         notifyOnSafetyRelease = defaults.flag(.notifyOnSafetyRelease) ?? fallback.notifyOnSafetyRelease
+        notifyOnAwaySummary = defaults.flag(.notifyOnAwaySummary) ?? fallback.notifyOnAwaySummary
         taskFinishedThreshold = defaults.seconds(
             .taskFinishedThreshold,
             in: SettingsBounds.taskFinishedThreshold,
@@ -201,6 +203,7 @@ extension SettingsValues {
         defaults.store(notifyOnUpdateAvailable, .notifyOnUpdateAvailable)
         defaults.store(keepLocalReports, .keepLocalReports)
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)
+        defaults.store(notifyOnAwaySummary, .notifyOnAwaySummary)
         defaults.store(taskFinishedThreshold, .taskFinishedThreshold)
         defaults.store(enabledProviders.map(\.rawValue).sorted(), .enabledProviders)
         defaults.store(nightDimming, .nightDimming)

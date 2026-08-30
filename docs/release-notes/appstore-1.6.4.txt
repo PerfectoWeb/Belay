@@ -6,28 +6,28 @@ the Until dialog, and the sheet/popover race.
 
 --- EN ---
 
-A few rough edges are fixed. Statistics no longer flicker on hover, custom timer dialogs open reliably, and an Until time that has already passed no longer starts a timer for tomorrow.
+New: one summary when you come back – how long Belay held your Mac awake while you were away, and how many runs finished – plus a recent-sessions list in Statistics. A few rough edges are fixed. Statistics no longer flicker on hover, custom timer dialogs open reliably, and an Until time that has already passed no longer starts a timer for tomorrow.
 
 --- RU ---
 
-Исправили несколько мелочей. Статистика больше не мерцает при наведении, окна настройки таймера открываются как надо, а уже прошедшее время «До» больше не запускает таймер на завтра.
+Новое: одна сводка по возвращении – сколько Belay держал Mac в бодрствовании, пока вас не было, и сколько запусков завершилось – плюс список недавних сессий в статистике. Исправили несколько мелочей. Статистика больше не мерцает при наведении, окна настройки таймера открываются как надо, а уже прошедшее время «До» больше не запускает таймер на завтра.
 
 --- DE ---
 
-Ein paar Ecken sind geglättet. Die Statistik flackert beim Überfahren nicht mehr, eigene Timer-Dialoge öffnen sich zuverlässig, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen mehr.
+Neu: eine Zusammenfassung bei der Rückkehr – wie lange Belay Ihren Mac wach hielt und wie viele Läufe fertig wurden – plus eine Liste der letzten Sitzungen in der Statistik. Ein paar Ecken sind geglättet. Die Statistik flackert beim Überfahren nicht mehr, eigene Timer-Dialoge öffnen sich zuverlässig, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen mehr.
 
 --- ES ---
 
-Hemos pulido algunos detalles. Las estadísticas ya no parpadean al pasar el cursor, los diálogos del temporizador se abren correctamente y una hora «Hasta» que ya pasó no inicia un temporizador para mañana.
+Nuevo: un resumen al volver – cuánto tiempo mantuvo Belay tu Mac despierto y cuántas ejecuciones terminaron – más una lista de sesiones recientes en Estadísticas. Hemos pulido algunos detalles. Las estadísticas ya no parpadean al pasar el cursor, los diálogos del temporizador se abren correctamente y una hora «Hasta» que ya pasó no inicia un temporizador para mañana.
 
 --- FR ---
 
-Quelques détails ont été corrigés. Les statistiques ne clignotent plus au survol, les fenêtres du minuteur s’ouvrent correctement et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
+Nouveau : un résumé à votre retour – combien de temps Belay a maintenu votre Mac éveillé et combien d’exécutions terminées – plus une liste des sessions récentes dans les statistiques. Quelques détails ont été corrigés. Les statistiques ne clignotent plus au survol, les fenêtres du minuteur s’ouvrent correctement et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
 
 --- IT ---
 
-Sistemati alcuni dettagli. Le statistiche non sfarfallano più al passaggio del puntatore, le finestre del timer si aprono correttamente e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
+Novità: un riepilogo al ritorno – per quanto Belay ha tenuto sveglio il Mac e quante esecuzioni sono finite – più un elenco delle sessioni recenti nelle Statistiche. Sistemati alcuni dettagli. Le statistiche non sfarfallano più al passaggio del puntatore, le finestre del timer si aprono correttamente e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
 
 --- ZH ---
 
-修复了一些小问题。统计数据在悬停时不再闪烁，自定义计时器窗口现在能正常打开，已经过去的“截止”时间也不会再启动一个明天的计时器。
+新增：返回时的一份小结：Belay 在您离开期间保持了 Mac 唤醒多久、完成了多少次运行，统计中还新增最近会话列表。修复了一些小问题。统计数据在悬停时不再闪烁，自定义计时器窗口现在能正常打开，已经过去的“截止”时间也不会再启动一个明天的计时器。

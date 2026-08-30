@@ -132,6 +132,10 @@ public final class SettingsStore {
         set { update { $0.notifyOnAgentNeedsInput = newValue } }
     }
 
+    public var notifyOnAwaySummary: Bool {
+        get { values.notifyOnAwaySummary }
+        set { update { $0.notifyOnAwaySummary = newValue } }
+    }
     public var notifyOnTaskFinished: Bool {
         get { values.notifyOnTaskFinished }
         set { update { $0.notifyOnTaskFinished = newValue } }

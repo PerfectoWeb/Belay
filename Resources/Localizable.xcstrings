@@ -2581,6 +2581,52 @@
         }
       }
     },
+    "Agent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Агент"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agente"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体"
+          }
+        }
+      }
+    },
     "Agent needs you": {
       "localizations": {
         "de": {
@@ -4823,6 +4869,98 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 正在监视。Mac 可以正常进入睡眠。"
+          }
+        }
+      }
+    },
+    "Belay kept your Mac awake for %@ of agent work.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay kept your Mac awake for %@ of agent work."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay сохранял Mac в бодрствовании %@ ради работы агентов."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hielt Ihren Mac %@ lang für Agentenarbeit wach."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantuvo tu Mac despierto durante %@ de trabajo de agentes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a maintenu votre Mac éveillé pendant %@ de travail d’agents."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha tenuto sveglio il tuo Mac per %@ di lavoro degli agenti."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 为智能体工作让您的 Mac 保持唤醒了 %@。"
+          }
+        }
+      }
+    },
+    "Belay kept your Mac awake for %@ of agent work. %lld runs finished.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay kept your Mac awake for %@ of agent work. %lld runs finished."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay сохранял Mac в бодрствовании %@ ради работы агентов. Завершено запусков: %lld."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hielt Ihren Mac %@ lang für Agentenarbeit wach. %lld Läufe abgeschlossen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantuvo tu Mac despierto durante %@ de trabajo de agentes. %lld ejecuciones terminadas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a maintenu votre Mac éveillé pendant %@ de travail d’agents. %lld exécutions terminées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha tenuto sveglio il tuo Mac per %@ di lavoro degli agenti. %lld esecuzioni completate."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 为智能体工作让您的 Mac 保持唤醒了 %@。%lld 次运行已完成。"
           }
         }
       }
@@ -11184,6 +11322,52 @@
         }
       }
     },
+    "One summary when you come back: how long Belay held, and how many runs finished.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One summary when you come back: how long Belay held, and how many runs finished."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одна сводка по возвращении: сколько Belay держал и сколько запусков завершилось."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Zusammenfassung bei Ihrer Rückkehr: wie lange Belay gehalten hat und wie viele Läufe fertig wurden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un resumen al volver: cuánto tiempo mantuvo Belay y cuántas ejecuciones terminaron."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un résumé à votre retour : combien de temps Belay a tenu et combien d’exécutions se sont terminées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un riepilogo al tuo ritorno: per quanto Belay ha tenuto sveglio e quante esecuzioni sono finite."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回时提供一份小结：Belay 保持唤醒了多久，完成了多少次运行。"
+          }
+        }
+      }
+    },
     "Open Belay at login": {
       "extractionState": "manual",
       "localizations": {
@@ -12348,6 +12532,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "退出并重新打开"
+          }
+        }
+      }
+    },
+    "RECENT SESSIONS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RECENT SESSIONS"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "НЕДАВНИЕ СЕССИИ"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LETZTE SITZUNGEN"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SESIONES RECIENTES"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SESSIONS RÉCENTES"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SESSIONI RECENTI"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近的会话"
           }
         }
       }
@@ -14405,6 +14635,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "子智能体"
+          }
+        }
+      }
+    },
+    "Summarize what happened while you were away": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summarize what happened while you were away"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сводка о том, что произошло, пока вас не было"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zusammenfassen, was während Ihrer Abwesenheit geschah"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumir lo ocurrido mientras no estabas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Résumer ce qui s’est passé pendant votre absence"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riepiloga cosa è successo mentre eri via"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小结您离开期间发生的事情"
           }
         }
       }
@@ -16740,6 +17016,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "保持唤醒期间"
+          }
+        }
+      }
+    },
+    "While you were away": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While you were away"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пока вас не было"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Während Sie weg waren"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mientras no estabas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pendant votre absence"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mentre eri via"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在您离开期间"
           }
         }
       }

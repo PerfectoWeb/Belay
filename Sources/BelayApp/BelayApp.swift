@@ -79,7 +79,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             targets: { [weak controller] in controller?.genericTargets ?? [] },
             statistics: { [weak controller] in controller?.usage.statistics ?? UsageStatistics() },
             onTargetsChanged: { [weak controller] in controller?.updateGenericTargets($0) },
-            onResetStatistics: { [weak controller] in controller?.usage.reset() }
+            onResetStatistics: { [weak controller] in
+                controller?.usage.reset()
+                controller?.historyStore.reset()
+            }
         )
         statusItem.onOpenPane = { [weak settingsWindow] in settingsWindow?.show(pane: $0) }
         wireUpdateRow(statusItem, settingsWindow)

@@ -57,8 +57,11 @@ struct SettingsView: View {
         case .notifications:
             SettingsStack { NotificationSettingsPane(settings: settings) }
         case .statistics:
-            StatisticsPane(statistics: statistics, onReset: onResetStatistics)
-                .frame(width: SettingsPane.width, alignment: .topLeading)
+            StatisticsPane(
+                statistics: statistics, history: SessionHistoryStore().load(),
+                onReset: onResetStatistics
+            )
+            .frame(width: SettingsPane.width, alignment: .topLeading)
         case .about:
             // Owned elsewhere and brings its own padding, so it is not wrapped.
             AboutPane().frame(width: SettingsPane.width, alignment: .topLeading)

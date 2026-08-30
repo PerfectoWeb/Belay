@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.6.4] - Unreleased
 
+### Added
+
+- One summary when you come back. If Belay held the Mac awake while you were
+  away, returning to the keyboard brings a single notification: how long it
+  held, and how many runs finished in the meantime. Counted with the same
+  honesty rule as the statistics — only slices you were away for the whole
+  of — and silent under five minutes of held work. Off-switch in Settings →
+  Notifications.
+- Recent sessions under the statistics chart: which agent, which folder, how
+  long, how recently — the last twelve finished sessions, folder names only,
+  never a transcript. Blips under a minute and subagents stay out; the
+  statistics reset clears this list too.
+
 ### Fixed
 
 - The hook bridge heals itself. Its retry machinery only existed while a

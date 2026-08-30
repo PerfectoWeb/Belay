@@ -37,6 +37,7 @@ struct SettingsValues: Equatable, Sendable {
     var notifyOnUpdateAvailable: Bool
     var keepLocalReports: Bool
     var notifyOnSafetyRelease: Bool
+    var notifyOnAwaySummary: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
     /// Whether the built-in agents have been switched on from what is
@@ -92,6 +93,7 @@ extension SettingsValues {
         // Off: nobody asked to be watched, and most people never need this.
         keepLocalReports = false
         notifyOnSafetyRelease = true
+        notifyOnAwaySummary = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]
         builtInsDetected = false
