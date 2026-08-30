@@ -51,7 +51,11 @@ struct StatisticsPane: View {
                 empty
             } else {
                 HStack(alignment: .top) {
-                    headline
+                    if screen == .overview {
+                        headline
+                    } else {
+                        sessionsHeadline
+                    }
                     Spacer()
                     // The native switcher, where a second toolbar would be
                     // ceremony: two views of the same numbers, one control.

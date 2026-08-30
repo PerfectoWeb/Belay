@@ -15243,52 +15243,6 @@
         }
       }
     },
-    "The last %lld finished sessions, folder names only.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The last %lld finished sessions, folder names only."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Последние %lld завершённых сессий, только имена папок."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die letzten %lld beendeten Sitzungen, nur Ordnernamen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las últimas %lld sesiones terminadas, solo nombres de carpetas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les %lld dernières sessions terminées, noms de dossiers uniquement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le ultime %lld sessioni concluse, solo nomi di cartelle."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "最近 %lld 个已完成的会话，仅显示文件夹名称。"
-          }
-        }
-      }
-    },
     "The lid hold reached its time limit, so Belay let the Mac sleep.": {
       "extractionState": "manual",
       "localizations": {
@@ -17994,6 +17948,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "第一次智能体运行后，这里就会有内容。"
+          }
+        }
+      }
+    },
+    "finished sessions, folder names only": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "finished sessions, folder names only"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "завершённых сессий, только имена папок"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "beendete Sitzungen, nur Ordnernamen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sesiones terminadas, solo nombres de carpetas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sessions terminées, noms de dossiers uniquement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sessioni concluse, solo nomi di cartelle"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "个已完成的会话，仅显示文件夹名称"
           }
         }
       }

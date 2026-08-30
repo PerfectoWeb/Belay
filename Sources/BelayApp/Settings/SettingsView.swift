@@ -28,9 +28,19 @@ struct SettingsView: View {
     var onProvidersReshaped: () -> Void = {}
 
     var body: some View {
-        ScrollView(.vertical) { content }
-            .scrollBounceBehavior(.basedOnSize)
-            .frame(width: SettingsPane.width)
+        Group {
+            if pane == .statistics {
+                // No scroll wrapper here, on purpose: the window is already
+                // sized to this pane, and the Sessions table must be the only
+                // thing on the screen that scrolls — wrapped, the outer
+                // scroller and the table's own fought over every wheel event.
+                content
+            } else {
+                ScrollView(.vertical) { content }
+                    .scrollBounceBehavior(.basedOnSize)
+            }
+        }
+        .frame(width: SettingsPane.width)
     }
 
     /// The pane without the scroll wrapper.

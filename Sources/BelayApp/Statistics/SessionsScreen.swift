@@ -33,40 +33,36 @@ struct SessionsScreen: View {
                             Text(verbatim: record.agentName)
                         }
                     }
-                    .width(min: 110, ideal: 130)
+                    .width(min: 120, ideal: 130, max: 150)
                     TableColumn(Text("Folder"), value: \.folder) { record in
                         Text(verbatim: record.folder)
                             .lineLimit(1)
                             .truncationMode(.middle)
                     }
-                    .width(min: 140, ideal: 220)
+                    .width(min: 120, ideal: 180)
                     TableColumn(Text("Duration"), value: \.duration) { record in
                         Text(verbatim: ElapsedTime.compact(record.duration))
                             .monospacedDigit()
                     }
-                    .width(min: 70, ideal: 84)
+                    .width(min: 64, ideal: 76, max: 96)
                     TableColumn(Text("Tokens"), value: \.tokensSort) { record in
                         Text(verbatim: record.tokensLabel)
                             .monospacedDigit()
                             .foregroundStyle(.secondary)
                     }
-                    .width(min: 64, ideal: 76)
+                    .width(min: 60, ideal: 72, max: 90)
                     TableColumn(Text("Finished"), value: \.endedAt) { record in
                         Text(record.endedAt, format: .relative(presentation: .named))
                             .foregroundStyle(.secondary)
                     }
-                    .width(min: 110, ideal: 140)
+                    .width(min: 104, ideal: 120, max: 140)
                 }
                 .tableStyle(.inset(alternatesRowBackgrounds: true))
-                // Sized to its rows, capped: a table taller than its data is
-                // stripes into the void, and a table taller than the window is
-                // what made the whole pane scroll. Past the cap, the table's
-                // own scroller takes over — the page never moves.
-                .frame(height: min(30 + CGFloat(records.count) * 26, 342))
-                .scrollDisabled(records.count <= 12)
-                Text("The last \(SessionHistoryStore.capacity) finished sessions, folder names only.")
-                    .font(.system(size: 10))
-                    .foregroundStyle(.tertiary)
+                // Fills whatever the window gives it, exactly: the columns'
+                // budget stays under the pane width and the height stops at
+                // the pane's edge, so the one scroller on this screen is the
+                // table's own, vertical, and only when the rows earn it.
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
     }
@@ -81,6 +77,6 @@ struct SessionsScreen: View {
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
         }
-        .frame(maxWidth: .infinity, minHeight: 160)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

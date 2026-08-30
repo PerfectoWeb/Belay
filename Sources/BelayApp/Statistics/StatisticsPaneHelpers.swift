@@ -21,4 +21,18 @@ extension StatisticsPane {
             $0.formatted(.dateTime.day().month(.wide).year())
         }
     }
+
+    /// The Sessions side of the headline: same weight, its own subject.
+    /// The number is the table's row count, and the caption carries the
+    /// privacy sentence that used to sit under the table.
+    var sessionsHeadline: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(verbatim: "\(history.count)")
+                .font(.system(size: 40, weight: .semibold, design: .rounded))
+                .monospacedDigit()
+            Text("finished sessions, folder names only")
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+        }
+    }
 }
