@@ -104,6 +104,7 @@ milestone table above keeps only the big ones.
 | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/waiting.svg" alt="waiting" height="24"> | First try auto-closed by their age bot; resubmit late 25 Aug 2026 |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
+| [jaywcjlove/awesome-swift-macos-apps](https://github.com/jaywcjlove/awesome-swift-macos-apps) | <img src="badges/done.svg" alt="done" height="24"> | Added by the maintainer 19 Aug 2026, found while auditing the list 30 Aug – nobody here submitted it |
 
 <br>
 
