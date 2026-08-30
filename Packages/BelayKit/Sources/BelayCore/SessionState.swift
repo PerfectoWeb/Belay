@@ -51,6 +51,9 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// sweep ends genuinely dead sessions sooner, and the awake limit sits
     /// above both.
     public var openToolCallSince: Date?
+    /// Cumulative tokens the session's own transcript reports. Forward-only:
+    /// signals may arrive out of order, and a total can never shrink.
+    public var tokens: Int = 0
 
     /// When this session first became known. Drives the UI's elapsed column.
     public let firstSeen: Date
@@ -90,6 +93,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// already holds. Out-of-order delivery is normal: the transcript watcher
     /// batches, and hooks are fired asynchronously.
     public mutating func record(_ signal: ActivitySignal) {
+        if let total = signal.tokensTotal, total > tokens { tokens = total }
         let reading = Reading(activity: signal.activity, at: signal.timestamp)
         switch signal.confidence {
         case .exact:

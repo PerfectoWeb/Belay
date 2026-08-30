@@ -29,6 +29,23 @@ enum CodexRollout {
         struct Payload: Decodable {
             let type: String?
             let cwd: String?
+            let info: TokenInfo?
+        }
+    }
+
+    private struct TokenInfo: Decodable {
+        let totalTokenUsage: TokenUsage?
+
+        private enum CodingKeys: String, CodingKey {
+            case totalTokenUsage = "total_token_usage"
+        }
+    }
+
+    private struct TokenUsage: Decodable {
+        let totalTokens: Int?
+
+        private enum CodingKeys: String, CodingKey {
+            case totalTokens = "total_tokens"
         }
     }
 
@@ -50,6 +67,18 @@ enum CodexRollout {
         return SessionID(
             tail.count == 36 && tail.filter { $0 == "-" }.count == 4
                 ? String(tail) : stem)
+    }
+
+    /// The largest cumulative token total in the delta, or nil when no
+    /// `token_count` event is in it. Codex reports running totals, so the
+    /// biggest number in the batch is the session's current truth.
+    static func tokenTotal(in lines: [String]) -> Int? {
+        lines.compactMap { line -> Int? in
+            guard let record = try? JSONDecoder().decode(Record.self, from: Data(line.utf8)),
+                record.type == "event_msg", record.payload?.type == "token_count"
+            else { return nil }
+            return record.payload?.info?.totalTokenUsage?.totalTokens
+        }.max()
     }
 
     /// `nil` when the delta carries no turn marker: bytes without a marker are

@@ -15,7 +15,9 @@ it reads, what it never reads, and how you can check for yourself.
   crash reporter. With the update check off and Update unpressed, Belay opens no
   sockets at all except the loopback listener described below.
 - It reads **structural fields only** from your agent's session files: whether a
-  file grew, and a record's `type` and `stop_reason`.
+  file grew, a record's `type` and `stop_reason`, and the token counters a
+  record already carries (`usage` totals — numbers, never text). The counters
+  exist to be shown to you, locally, in Statistics; they are not sent anywhere.
 - It **never reads your prompts, your model's responses, or your code**.
 - Everything above is about the app. The project **website** is a separate
   surface: it counts visits with Cloudflare Web Analytics and says exactly what

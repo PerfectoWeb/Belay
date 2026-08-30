@@ -7,6 +7,9 @@ struct CodexWatch: Sendable {
     var cursor: TranscriptCursor
     /// When the file was last seen to change. Drives the no-growth idle rule.
     var lastWriteAt: Date
+    /// The largest `token_count` total the rollout has reported. Codex writes
+    /// cumulative totals, so the newest is the truth and it only grows.
+    var tokens = 0
     var workspace: String?
     /// The last activity yielded, so `.idle` is not repeated every sweep while
     /// `.working` stays a heartbeat.

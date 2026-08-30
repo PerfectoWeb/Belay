@@ -29,6 +29,15 @@ enum TranscriptClassifier {
         verdict(in: lines)?.activity
     }
 
+    /// Tokens the delta's records account for: `usage.input_tokens` plus
+    /// `usage.output_tokens`, summed. Cache counters are deliberately left
+    /// out — a cache read is the model rereading its own context, and adding
+    /// it makes an afternoon read as a billion tokens. Numbers only; the R9
+    /// boundary is untouched.
+    static func tokens(in lines: [String]) -> Int {
+        lines.compactMap { TranscriptRecord(jsonLine: $0)?.tokens }.reduce(0, +)
+    }
+
     /// The newest record clock in the delta, or nil when no record carries one.
     ///
     /// What "this file just appeared" gets checked against. A file's mtime is
@@ -101,6 +110,9 @@ private struct TranscriptRecord {
 
     let kind: Kind
     let stopReason: String?
+    /// `usage.input_tokens + usage.output_tokens`, when the record carries a
+    /// usage block. Numbers beside the message, never the message.
+    let tokens: Int?
     /// Top-level flag on the CLI's synthetic error records. A boolean beside
     /// the message, so reading it stays inside the R9 boundary.
     let isAPIError: Bool
@@ -117,6 +129,7 @@ private struct TranscriptRecord {
         default: kind = .metadata
         }
         stopReason = wire.message?.stopReason
+        tokens = wire.message?.usage.map { ($0.inputTokens ?? 0) + ($0.outputTokens ?? 0) }
         isAPIError = wire.isApiErrorMessage ?? false
         timestamp = wire.timestamp.flatMap(TranscriptRecord.date(from:))
     }
@@ -134,16 +147,29 @@ private struct TranscriptRecord {
 }
 
 private struct Wire: Decodable {
+    struct Usage: Decodable {
+        let inputTokens: Int?
+        let outputTokens: Int?
+
+        private enum CodingKeys: String, CodingKey {
+            case inputTokens = "input_tokens"
+            case outputTokens = "output_tokens"
+        }
+    }
+
     struct Message: Decodable {
         let stopReason: String?
+        let usage: Usage?
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             stopReason = try? container.decodeIfPresent(String.self, forKey: .stopReason)
+            usage = try? container.decodeIfPresent(Usage.self, forKey: .usage)
         }
 
         private enum CodingKeys: String, CodingKey {
             case stopReason = "stop_reason"
+            case usage
         }
     }
 

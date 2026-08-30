@@ -132,6 +132,9 @@ public actor CodexProvider: ActivityProvider {
         guard var watch = watched[id], delta.indicatesWrite else { return false }
         watch.lastWriteAt = now
         if watch.workspace == nil { watch.workspace = CodexRollout.workspace(in: delta.lines) }
+        if let total = CodexRollout.tokenTotal(in: delta.lines), total > watch.tokens {
+            watch.tokens = total
+        }
         let verdict = CodexRollout.verdict(in: delta.lines)
         // A delta with no marker keeps the flag as it was: growth mid-turn says
         // nothing about whether the turn closed.
@@ -199,6 +202,7 @@ public actor CodexProvider: ActivityProvider {
                 activity: activity,
                 workspace: watch.workspace,
                 timestamp: now,
-                confidence: .inferred))
+                confidence: .inferred,
+                tokensTotal: watch.tokens > 0 ? watch.tokens : nil))
     }
 }

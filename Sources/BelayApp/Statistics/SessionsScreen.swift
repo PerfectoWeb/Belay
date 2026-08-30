@@ -45,6 +45,12 @@ struct SessionsScreen: View {
                             .monospacedDigit()
                     }
                     .width(min: 70, ideal: 84)
+                    TableColumn(Text("Tokens"), value: \.tokensSort) { record in
+                        Text(verbatim: record.tokensLabel)
+                            .monospacedDigit()
+                            .foregroundStyle(.secondary)
+                    }
+                    .width(min: 64, ideal: 76)
                     TableColumn(Text("Finished"), value: \.endedAt) { record in
                         Text(record.endedAt, format: .relative(presentation: .named))
                             .foregroundStyle(.secondary)
@@ -52,7 +58,12 @@ struct SessionsScreen: View {
                     .width(min: 110, ideal: 140)
                 }
                 .tableStyle(.inset(alternatesRowBackgrounds: true))
-                .frame(height: 302)
+                // Sized to its rows, capped: a table taller than its data is
+                // stripes into the void, and a table taller than the window is
+                // what made the whole pane scroll. Past the cap, the table's
+                // own scroller takes over — the page never moves.
+                .frame(height: min(30 + CGFloat(records.count) * 26, 342))
+                .scrollDisabled(records.count <= 12)
                 Text("The last \(SessionHistoryStore.capacity) finished sessions, folder names only.")
                     .font(.system(size: 10))
                     .foregroundStyle(.tertiary)
@@ -70,6 +81,6 @@ struct SessionsScreen: View {
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
         }
-        .frame(maxWidth: .infinity, minHeight: 302)
+        .frame(maxWidth: .infinity, minHeight: 160)
     }
 }

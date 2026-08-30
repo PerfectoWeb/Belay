@@ -128,6 +128,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
     func absorb(_ delta: TranscriptDelta, id: SessionID, now: Date) -> Bool {
         guard delta.indicatesWrite, var watch = watched[id] else { return false }
         watch.lastWriteAt = now
+        watch.tokens += TranscriptClassifier.tokens(in: delta.lines)
         let verdict = TranscriptClassifier.verdict(in: delta.lines)
         // A delta with no conversational record keeps the flag as it was: the
         // metadata says nothing about whose move it is.
@@ -207,6 +208,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
                 kind: watch.kind,
                 name: watch.name,
                 timestamp: now,
-                confidence: .inferred))
+                confidence: .inferred,
+                tokensTotal: watch.tokens > 0 ? watch.tokens : nil))
     }
 }

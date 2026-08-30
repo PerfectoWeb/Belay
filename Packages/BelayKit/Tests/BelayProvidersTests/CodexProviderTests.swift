@@ -194,3 +194,17 @@ struct CodexProviderTests {
         await provider.stop()
     }
 }
+
+/// Codex reports cumulative totals; the biggest number in a batch is the truth.
+@Suite("Codex token totals")
+struct CodexTokenTests {
+    @Test("The largest token_count total wins; other events say nothing")
+    func totalsAreCumulative() {
+        let head = #"{"type":"event_msg","payload":{"type":"token_count","info":"#
+        let count = head + #"{"total_token_usage":{"total_tokens":8526}}}}"#
+        let bigger = head + #"{"total_token_usage":{"total_tokens":68119}}}}"#
+        let other = #"{"type":"event_msg","payload":{"type":"task_started"}}"#
+        #expect(CodexRollout.tokenTotal(in: [count, bigger, other]) == 68119)
+        #expect(CodexRollout.tokenTotal(in: [other]) == nil)
+    }
+}

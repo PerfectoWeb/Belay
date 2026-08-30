@@ -84,6 +84,11 @@ public struct ActivitySignal: Sendable, Equatable {
     public let confidence: Confidence
     /// Set by the hook bridge only. See `SessionState.openToolCallSince`.
     public let toolCall: ToolCallEdge?
+    /// The session's cumulative token count as its own transcript reports it
+    /// (input + output; never cache reads). Providers normalize to a running
+    /// total so the consumer only ever moves the number forward. Numbers,
+    /// never text: the R9 boundary holds.
+    public let tokensTotal: Int?
 
     public init(
         provider: ProviderID,
@@ -95,7 +100,8 @@ public struct ActivitySignal: Sendable, Equatable {
         name: String? = nil,
         timestamp: Date,
         confidence: Confidence,
-        toolCall: ToolCallEdge? = nil
+        toolCall: ToolCallEdge? = nil,
+        tokensTotal: Int? = nil
     ) {
         self.provider = provider
         self.session = session
@@ -107,6 +113,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.timestamp = timestamp
         self.confidence = confidence
         self.toolCall = toolCall
+        self.tokensTotal = tokensTotal
     }
 }
 

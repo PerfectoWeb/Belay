@@ -131,4 +131,17 @@ struct TranscriptClassifierTests {
     func missingType() {
         #expect(TranscriptClassifier.activity(in: [#"{"sessionId":"s","timestamp":"now"}"#]) == nil)
     }
+
+    @Test("Usage tokens sum across records; cache counters stay out")
+    func tokensAreSummed() {
+        let cached = #","cache_read_input_tokens":12863}}}"#
+        let lines = [
+            #"{"type":"assistant","message":{"usage":{"input_tokens":3,"output_tokens":144"# + cached,
+            #"{"type":"assistant","message":{"usage":{"input_tokens":10,"output_tokens":40}}}"#,
+            #"{"type":"user","message":"hello"}"#,
+            #"{"type":"summary"}"#
+        ]
+        #expect(TranscriptClassifier.tokens(in: lines) == 197)
+        #expect(TranscriptClassifier.tokens(in: [#"{"type":"user","message":"x"}"#]) == 0)
+    }
 }

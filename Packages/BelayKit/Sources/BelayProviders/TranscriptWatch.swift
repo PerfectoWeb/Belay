@@ -16,6 +16,10 @@ struct TranscriptWatch: Sendable {
     /// just reported — the panel flipped working, idle, working every fifteen
     /// seconds for the whole of a long tool call.
     var lastBusyChildAt: Date?
+    /// Cumulative `usage` tokens seen in this session's records, normalized
+    /// here so every signal carries an absolute total the consumer can only
+    /// move forward.
+    var tokens = 0
     var workspace: String?
     /// The session this one was spawned by, when it is a subagent.
     var parent: SessionID?
