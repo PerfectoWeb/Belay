@@ -8,27 +8,50 @@
 [![Downloads](https://img.shields.io/github/downloads/PerfectoWeb/Belay/total?style=flat&color=1f6bff)](https://github.com/PerfectoWeb/Belay/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/PerfectoWeb/Belay/ci.yml?style=flat&label=CI)](https://github.com/PerfectoWeb/Belay/actions)<br>
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
-![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)<br>
+![Universal](https://img.shields.io/badge/universal-Apple%20silicon%20%26%20Intel-111?style=flat)
+[![Notarized](https://img.shields.io/badge/notarized-by%20Apple-111?style=flat&logo=apple&logoColor=white)](#-verify-what-you-downloaded)<br>
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 [![Mac App Store](https://img.shields.io/badge/Mac%20App%20Store-Belay-1f6bff?style=flat&logo=apple&logoColor=white)](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644)
-[![Notarized](https://img.shields.io/badge/notarized-by%20Apple-111?style=flat&logo=apple&logoColor=white)](#-verify-what-you-downloaded)
+
 
 <img src="Promo/Social/spacer.png" height="12" alt="">
 
 <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a><picture><source media="(max-width: 500px)" srcset="Promo/Social/spacer.png"><img src="Promo/Social/spacer-16.png" alt=""></picture><a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
+<a href="#-install">Install</a> • <a href="#-features">Features</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/SECURITY.md">Privacy</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/CHANGELOG.md">Changelog</a>
 </div>
 
 ## 📚 What is it?
 
-You start a long Claude Code, Codex, Cline, or Copilot CLI task and walk away. Ten minutes later your 
-Mac sleeps, the run stops making progress, and you come back to unfinished work.
+You start a long Claude Code, Codex, Cline, or Copilot CLI task and walk away. Ten minutes later your Mac sleeps, the run stops making progress, and you come back to unfinished work.
 
-Belay is a macOS menu bar app that fixes exactly that. It watches your local
-coding agents, keeps the Mac awake while work is still happening, and lets it
-sleep normally again when the work is done.
+Belay is a macOS menu bar app that fixes exactly that: **your Mac stays awake while the agent works – and goes back to sleep when the work stops.** No timer required. No sleep setting to remember to change back. And Belay is built to fail toward normal macOS sleep – never toward a Mac that stays awake forever.
 
-No timer required. No sleep setting to remember to change back.
+<details>
+<summary><b>How Belay knows?</b></summary>
+
+Belay is not a `~/.claude` folder watcher with a power cord. There are two independent detection tiers, and a power layer deliberately separated from both:
+
+- **Passive detection** – follows each agent's local session state: whether a
+  file grew, and a few structural fields. Never your prompts, responses or
+  code. Works out of the box for Claude Code, Codex, Cline and Copilot CLI,
+  in any config folder you point it at.
+- **Precise Detection** – optional, in the direct build: the agent's own hooks
+  report the exact moment a turn starts working, waits for you, or finishes –
+  over a loopback port that never leaves your Mac.
+- **Everything else** – presets for Gemini CLI, OpenCode, Aider and Pi, plus
+  watch-a-folder, watch-a-process, and a local webhook for anything that can
+  send one HTTP request.
+
+Whichever tier speaks, the power layer maps it to the same thing: a temporary
+macOS power assertion that expires after 120 seconds unless Belay renews it.
+If Belay crashes, detection breaks, or you quit it – the Mac just sleeps.
+`~/.claude` is only Claude Code's default location, not Belay's architecture:
+the details live in [docs/03-DETECTION.md](docs/03-DETECTION.md) and
+[docs/SECURITY.md](docs/SECURITY.md).
+
+</details>
+
 
 ## ✨ Features
 
@@ -278,22 +301,21 @@ helps other people find it.
 🐛 **[Report a bug](https://github.com/PerfectoWeb/Belay/issues/new)**. The
 macOS version and the agent you were running are what make a report actionable.
 
-🌍 **[Fix a translation](Localization/)**. One CSV per
-language, and it is data rather than code. This is the most wanted contribution
-here.
+🌍 **[Fix a translation](Localization/)**. One CSV per language, this is the 
+most wanted contribution here.
 
 🔌 **[Add a preset](docs/CONTRIBUTING.md)** for an agent Belay does not know yet.
 Also data, also no need to learn the codebase.
 
 💛 **[Donate](https://perfecto-web.com/d/)**. Last on the list on purpose.
 
-Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go through
+> Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go through
 [`docs/SECURITY.md`](docs/SECURITY.md), not the issue tracker.
 
 ### 📖 Documentation
 
 <table>
-<tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails, privacy, and talking to Belay from anything</td></tr>
+<tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails and talking to Belay from anything</td></tr>
 <tr><td width="24%"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
 <tr><td width="24%"><a href="docs/CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
 <tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
