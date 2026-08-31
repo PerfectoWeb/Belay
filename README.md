@@ -18,7 +18,7 @@
 
 <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a><picture><source media="(max-width: 500px)" srcset="Promo/Social/spacer.png"><img src="Promo/Social/spacer-16.png" alt=""></picture><a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
-<a href="#-install">Install</a> • <a href="#-features">Features</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/SECURITY.md">Privacy</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/CHANGELOG.md">Changelog</a>
+<a href="#-install">Install</a> • <a href="#-features">Features</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/ROADMAP.md">Roadmap</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/SECURITY.md">Privacy</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/CHANGELOG.md">Changelog</a>
 </div>
 
 ## 📚 What is it?

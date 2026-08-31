@@ -37,49 +37,43 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🏪 | **Live on the Mac App Store** | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://apps.apple.com/app/belay-awake-for-ai-agents/id6801207644) |
 | 📦 | **v1.2.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🔔 | Show when an update is waiting | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
-| 🖥 | Verified on macOS 14 | <img src="badges/done.svg" alt="done" height="24"> | 19 Aug 2026, clean install of the 1.3.0 build |
 | 🔇 | Show when an agent goes quiet without finishing | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 🩺 | Local crash and freeze reports | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.2.1) |
 | 💤 | Keep working with the lid closed, as an opt-in | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/da5526b02aeebb8e64087abf78bf6b1289e9e528) |
 | 🌙 | Dim the display at night while holding | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://github.com/PerfectoWeb/Belay/commit/d22634a33771cfb71615fb3cf404c64f88503422) |
+| 🖥 | Verified on macOS 14 | <img src="badges/done.svg" alt="done" height="24"> | 19 Aug 2026, clean install of the 1.3.0 build |
 | 📦 | **v1.3.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.0) |
 | 📦 | **v1.3.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.1) |
+| 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
 | 📦 | **v1.3.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.2) |
 | 📦 | **v1.3.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.3) |
 | 📦 | **v1.4.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.4.0) |
 | 🦾 | Cline built in, Precise Detection for all three agents | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.5.0) |
 | 📦 | **v1.5.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.5.0) |
-| 🔎 | Listed on AlternativeTo | <img src="badges/done.svg" alt="done" height="24"> | [17 Aug 2026](https://alternativeto.net/software/belay--awake-for-ai-agents/about/) |
-| 🗂 | Listed on `macmenubar.com` | <img src="badges/done.svg" alt="done" height="24"> | [18 Aug 2026](https://macmenubar.com/belay/) |
-| 📚 | Listed in `awesome-mac` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 18 Aug 2026](https://github.com/jaywcjlove/awesome-mac/pull/2603) |
-| 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
-| 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | ✈️ | Copilot CLI built in, the fourth agent | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 🗃 | Built-in agents watchable in any folder ([#4](https://github.com/PerfectoWeb/Belay/issues/4)) | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | ⏱ | The Always On timer survives an app relaunch | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 🕓 | Last activity on every agent's tile | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 📦 | **v1.6.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
+| 📦 | **v1.6.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [26 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.1) |
+| 📦 | **v1.6.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [27 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.2) |
 | 🔌 | Precise Detection keeps its port across restarts and updates | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
 | ⌥ | The longer lists open on Option as well as Shift | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
+| 📦 | **v1.6.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
 | 🔔 | One summary of what ran while you were away | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 📋 | A sortable sessions table in Statistics, tokens included | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 🩹 | The bridge heals itself after sleep and wake | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 📦 | **v1.6.4 published** | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
-| 📦 | **v1.6.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
-| 📦 | **v1.6.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [27 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.2) |
-| 📦 | **v1.6.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [26 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.1) |
+| 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
-| ⭐ | **64 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
-| ✨ | **128 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
-| 💫 | **256 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
+| ⭐ | **32 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
+| ✨ | **64 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
+| 💫 | **128 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
 | 📈 | **1 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
-| 🧩 | Listed in `hesreallyhim/awesome-claude-code` | <img src="badges/waiting.svg" alt="waiting" height="24"> | [First try auto-closed](https://github.com/hesreallyhim/awesome-claude-code/issues/2634): their bot counts 14 days from the first commit. Resubmit late 25 Aug |
-| 🧠 | Listed in `jqueryscript/awesome-claude-code` | <img src="badges/in-review.svg" alt="in review" height="24"> | [Pull request opened 17 Aug 2026](https://github.com/jqueryscript/awesome-claude-code/pull/601) |
-| 🍏 | Listed in `serhii-londar/open-source-mac-os-apps` | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source; Belay is source available |
 | 📰 | First independent write-up | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something worth writing about |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, if Sparkle's window starts getting in the way |
-| 🌠 | **512 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something that gives people a reason to look |
+| 🌠 | **256 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something that gives people a reason to look |
 | 🏅 | **10 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing to schedule. It follows from the work above |
 | 📣 | First large outlet | <img src="badges/waiting.svg" alt="waiting" height="24"> | Small ones first |
 
@@ -106,7 +100,7 @@ milestone table above keeps only the big ones.
 | [SoloUnity/macos-apps-and-enhancements](https://github.com/SoloUnity/macos-apps-and-enhancements/pull/31) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
 | [phmullins/awesome-macos](https://github.com/phmullins/awesome-macos/pull/251) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026. The list is barely maintained |
 | [Mac-Menubar-Megalist](https://github.com/SKaplanOfficial/Mac-Menubar-Megalist/issues/54) | <img src="badges/in-review.svg" alt="in review" height="24"> | Issue opened 19 Aug 2026, their preferred channel |
-| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/waiting.svg" alt="waiting" height="24"> | First try auto-closed by their age bot; resubmit late 25 Aug 2026 |
+| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/in-review.svg" alt="in review" height="24"> | Resubmitted; the recommendation issue is open in their queue |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
 | [jaywcjlove/awesome-swift-macos-apps](https://github.com/jaywcjlove/awesome-swift-macos-apps) | <img src="badges/done.svg" alt="done" height="24"> | Added by the maintainer 19 Aug 2026, found while auditing the list 30 Aug – nobody here submitted it |
@@ -143,8 +137,8 @@ Implementation details: [`docs/04-POWER.md`](04-POWER.md).
 
 ## More detail
 
-[`BLOCKERS.md`](BLOCKERS.md) tracks work waiting on an account or a decision.
+`BLOCKERS.md (git history)` (now only in git history) tracks work waiting on an account or a decision.
 
-[`docs/09-MILESTONES.md`](09-MILESTONES.md) keeps the engineering history.
+`docs/09-MILESTONES.md (git history)` (now only in git history) keeps the engineering history.
 
 **Done means there is a date and a link behind it. Everything else is still a plan.**
