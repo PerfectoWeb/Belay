@@ -83,18 +83,28 @@ extension BelayController {
     func observeDecisions() {
         tasks.append(
             Task { [coordinator, assertions, settings, weak self] in
+                var wasHolding = false
                 for await decision in await coordinator.decisions() {
                     switch decision {
                     case .hold(let reason, let until):
                         let timeout = max(30, until.timeIntervalSinceNow)
-                        Diagnostics.note(
-                            "hold on reason=\"\(reason)\" "
-                                + "display=\(settings.keepDisplayAwake ? 1 : 0)")
+                        // Only the off→on edge is news. Two sessions trading
+                        // turns re-emit the decision with a new reason every
+                        // few seconds, and each session transition is already
+                        // its own log line — 24 "hold on"s in eight minutes
+                        // said nothing one did not.
+                        if !wasHolding {
+                            Diagnostics.note(
+                                "hold on reason=\"\(reason)\" "
+                                    + "display=\(settings.keepDisplayAwake ? 1 : 0)")
+                        }
+                        wasHolding = true
                         await assertions.hold(
                             reason: reason,
                             includeDisplay: settings.keepDisplayAwake, timeout: timeout)
                     case .release:
                         Diagnostics.note("hold off")
+                        wasHolding = false
                         await assertions.release()
                     }
                     self?.refreshSnapshot()

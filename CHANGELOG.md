@@ -34,6 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   input event, so the while-you-were-away summary used to fire into a closing
   lid and the real return got nothing. Sleep now suspends the return check;
   opening the lid is the return.
+- Two sessions trading turns no longer write a "hold on" log line every few
+  seconds: only the off-to-on edge is news, and each session's own
+  transitions were already logged.
 - Dark wakes no longer read as main-thread stalls in the diagnostics log: the
   watchdog's beat now runs on `systemUptime`, which stands still with the
   machine, instead of the wall clock, which does not.
