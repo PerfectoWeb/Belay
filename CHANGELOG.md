@@ -5,6 +5,30 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Activity badges in the panel: a working session now says what it is doing —
+  "Working · running a command", "· editing files", "· searching" — from the
+  hook the agent itself fired. Categories, never tool arguments, so a badge
+  cannot leak a prompt or a path. Off-switch in Settings → Behavior; absent
+  from the App Store build with the rest of Precise Detection.
+- Belay's hook entries leave the agents' settings on quit and return on
+  launch, so an agent used while Belay is closed posts to nothing instead of
+  filling its terminal with `ECONNREFUSED`. Only entries Belay owns, only
+  what a quit provably removed; settings backups now keep the newest twenty.
+- The while-you-were-away summary mentions heat: if the Mac reached a serious
+  thermal state during the absence, the banner says so — in `ProcessInfo`'s
+  own words, never a guessed temperature.
+
+### Removed
+
+- Six internal planning documents that had served their purpose left docs/
+  (the pre-launch blocker log, the pre-v1.0 milestone plan, the rename
+  record, the pre-submission App Store checklist, the self-updater plan, and
+  the v1.0 progress journal). Their history stays in git.
+
 ## [1.6.4] - 2026-08-31
 
 ### Added

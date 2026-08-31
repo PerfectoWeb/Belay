@@ -164,16 +164,21 @@ final class Notifier {
     /// `AwayReturnWatch` decides the when and guarantees the once; this only
     /// words it. Zero finishes is still worth saying — the held time is the
     /// claim, the finishes are the garnish.
-    func whileYouWereAway(held: TimeInterval, finishedRuns: Int) async {
+    func whileYouWereAway(held: TimeInterval, finishedRuns: Int, peakThermal: Int = 0) async {
         guard settings.notifyOnAwaySummary else { return }
         let kept = ElapsedTime.spoken(held)
-        let body =
+        var body =
             finishedRuns > 0
             ? String(
                 localized:
                     "Belay kept your Mac awake for \(kept) of agent work. \(finishedRuns) runs finished."
             )
             : String(localized: "Belay kept your Mac awake for \(kept) of agent work.")
+        // Its own sentence, appended: `ProcessInfo`'s word, never a guessed
+        // temperature, and only when there was real heat worth mentioning.
+        if peakThermal >= 2 {
+            body += " " + String(localized: "The Mac ran hot for a while.")
+        }
         await post(
             category: .awaySummary,
             title: String(localized: "While you were away"),

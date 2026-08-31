@@ -74,6 +74,20 @@ final class AwaySummaryTests: XCTestCase {
         XCTAssertEqual(report?.finishedRuns, 0, "a finish they watched needs no retelling")
     }
 
+    func testPeakThermalIsRemembered() {
+        var summary = AwaySummary()
+        var now = start
+        XCTAssertNil(summary.tick(idle: 6 * 60, holding: true, thermal: 0, now: now))
+        for step in 0..<12 {
+            now += 30
+            XCTAssertNil(
+                summary.tick(idle: 10 * 60, holding: true, thermal: step == 5 ? 2 : 0, now: now))
+        }
+        now += 30
+        let report = summary.tick(idle: 1, holding: true, thermal: 0, now: now)
+        XCTAssertEqual(report?.peakThermal, 2, "one hot moment is the peak")
+    }
+
     /// The honesty rule: a slice the user was present for part of is dropped,
     /// exactly as the statistics recorder drops it.
     func testPartiallyAttendedSliceIsDropped() {
