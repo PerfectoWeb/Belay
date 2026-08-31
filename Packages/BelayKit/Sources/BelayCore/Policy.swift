@@ -42,6 +42,11 @@ public struct AwakePolicy: Sendable, Equatable {
     /// of holding instead of the awake limit's four. See
     /// `SessionState.openToolCallSince`.
     public static let openToolCallBudget: TimeInterval = 60 * 60
+    /// How long a Stop's "background tasks still running" claim holds the
+    /// session. Shorter than the tool-call budget on purpose: the count can
+    /// never be re-verified — no further hook fires while the agent idles —
+    /// so this is trust with a timer on it, not evidence.
+    public static let backgroundTasksBudget: TimeInterval = 30 * 60
 
     public static let `default` = AwakePolicy(
         mode: .auto,

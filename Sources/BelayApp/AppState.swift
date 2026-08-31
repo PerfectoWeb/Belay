@@ -71,6 +71,8 @@ final class AppState {
                 activity: activity,
                 since: since,
                 tool: showToolBadges && activity == .working ? session.activeTool : nil,
+                background: activity == .working && session.backgroundSince != nil
+                    && session.activeTool == nil,
                 parent: session.parent,
                 kind: session.kind,
                 name: session.name

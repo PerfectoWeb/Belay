@@ -82,6 +82,12 @@ struct PanelSessionRow: View {
             if session.rollup == .working, let tool = session.tool {
                 return Text(tool.workingLabel)
             }
+            // The turn ended but its background tasks did not; "Working"
+            // alone would look like a stuck row, and "Idle" would be a lie
+            // the IDE's own task list contradicts.
+            if session.rollup == .working, session.background {
+                return Text("Working · background tasks")
+            }
             return Text(session.rollup.panelLabel)
         }
         // Whole sentences, not two halves glued together: a translator handed

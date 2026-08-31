@@ -11,6 +11,9 @@ struct SessionRow: Identifiable, Equatable {
     let since: Date
     /// The category of the tool call the session is inside, when hooks said.
     var tool: ToolCategory?
+    /// Whether a Stop left background tasks running — the turn is over but
+    /// the session is not, and the row should say which kind of alive it is.
+    var background = false
     var parent: SessionID?
     /// The agent's configured type, for subagent rows.
     var kind: String?

@@ -45,6 +45,12 @@ struct SessionLedger {
             if session.isInsideToolCall(now: now, budget: AwakePolicy.openToolCallBudget) {
                 return true
             }
+            // Same exemption for the background bracket: an idle-with-tasks
+            // session emits nothing, and the plain TTL would evict it well
+            // before its thirty minutes were up.
+            if session.isInsideBackground(now: now) {
+                return true
+            }
             return !session.isExpired(now: now, ttl: Self.ttl(for: activity, policy: policy))
         }
     }

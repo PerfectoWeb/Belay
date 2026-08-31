@@ -106,6 +106,9 @@ public struct ActivitySignal: Sendable, Equatable {
     /// The category of the tool call an `.opened` edge is entering. Only ever
     /// set beside `.opened`; every close clears it downstream.
     public let tool: ToolCategory?
+    /// How many background tasks a `Stop` said were still running. Non-nil
+    /// only on signals that actually said — zero clears, positive arms.
+    public let backgroundTasks: Int?
 
     public init(
         provider: ProviderID,
@@ -119,7 +122,8 @@ public struct ActivitySignal: Sendable, Equatable {
         confidence: Confidence,
         toolCall: ToolCallEdge? = nil,
         tokensTotal: Int? = nil,
-        tool: ToolCategory? = nil
+        tool: ToolCategory? = nil,
+        backgroundTasks: Int? = nil
     ) {
         self.provider = provider
         self.session = session
@@ -133,6 +137,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.toolCall = toolCall
         self.tokensTotal = tokensTotal
         self.tool = tool
+        self.backgroundTasks = backgroundTasks
     }
 }
 

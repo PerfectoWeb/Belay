@@ -51,6 +51,11 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// sweep ends genuinely dead sessions sooner, and the awake limit sits
     /// above both.
     public var openToolCallSince: Date?
+    /// When a `Stop` last claimed background tasks were still running. The
+    /// mirror of `openToolCallSince` for work that outlives the turn: bounded
+    /// by `AwakePolicy.backgroundTasksBudget` because no later hook can ever
+    /// confirm the claim — trust with a timer, never an open-ended hold.
+    public var backgroundSince: Date?
     /// What kind of tool the open bracket is inside, for the panel's badge.
     /// Lives and dies with the bracket: every close clears it, and the
     /// reordered-return grace that spares the bracket spares this too.
@@ -98,6 +103,9 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// batches, and hooks are fired asynchronously.
     public mutating func record(_ signal: ActivitySignal) {
         if let total = signal.tokensTotal, total > tokens { tokens = total }
+        if let running = signal.backgroundTasks {
+            backgroundSince = running > 0 ? signal.timestamp : nil
+        }
         let reading = Reading(activity: signal.activity, at: signal.timestamp)
         switch signal.confidence {
         case .exact:
@@ -167,7 +175,8 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         if let exact {
             let fresh = now.timeIntervalSince(exact.at) <= freshness
             let running = isInsideToolCall(now: now, budget: toolCallBudget)
-            if fresh || running { return exact.activity }
+            let backgrounded = isInsideBackground(now: now)
+            if fresh || running || backgrounded { return exact.activity }
         }
         if let inferred { return inferred.activity }
         return exact?.activity ?? .idle
@@ -178,6 +187,12 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     public func isInsideToolCall(now: Date, budget: TimeInterval) -> Bool {
         guard let since = openToolCallSince else { return false }
         return now.timeIntervalSince(since) <= budget
+    }
+
+    /// Whether a Stop's background-task claim is still young enough to hold.
+    public func isInsideBackground(now: Date) -> Bool {
+        guard let since = backgroundSince else { return false }
+        return now.timeIntervalSince(since) <= AwakePolicy.backgroundTasksBudget
     }
 
     public func isExpired(now: Date, ttl: TimeInterval) -> Bool {
@@ -195,6 +210,10 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         // is the bracket's own ceiling instead.
         if let since = openToolCallSince {
             let ceiling = since + toolCallBudget
+            return max(ceiling, exact.at + window)
+        }
+        if let since = backgroundSince {
+            let ceiling = since + AwakePolicy.backgroundTasksBudget
             return max(ceiling, exact.at + window)
         }
         return exact.at + window

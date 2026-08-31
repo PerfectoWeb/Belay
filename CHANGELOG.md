@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   launch, so an agent used while Belay is closed posts to nothing instead of
   filling its terminal with `ECONNREFUSED`. Only entries Belay owns, only
   what a quit provably removed; settings backups now keep the newest twenty.
+- A session whose turn ended with background tasks still running — a
+  monitor, a long shell job — now holds the Mac awake and says so in the
+  panel ("Working · background tasks") instead of drifting to Idle five
+  minutes later. Bounded by its own thirty-minute budget, because no later
+  hook can ever confirm the claim: trust with a timer, never an open-ended
+  hold.
 - The while-you-were-away summary mentions heat: if the Mac reached a serious
   thermal state during the absence, the banner says so — in `ProcessInfo`'s
   own words, never a guessed temperature.

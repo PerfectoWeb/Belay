@@ -108,7 +108,8 @@ extension HookEnvelope {
             confidence: .exact,
             toolCall: edge(for: event, reading: reading),
             tool: event == .preToolUse && reading == .working
-                ? Self.category(of: toolName) : nil)
+                ? Self.category(of: toolName) : nil,
+            backgroundTasks: event == .stop ? backgroundTasks ?? 0 : nil)
     }
 
     /// The badge the panel shows beside "Working". Matched loosely and in
