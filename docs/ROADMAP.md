@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.6.3 is out** on GitHub, Sparkle and Homebrew. 1.6.2 is **in review for the Mac App Store** (submitted 27 Aug), and the store serves 1.6.1 until it is approved.
+**1.6.4 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.6.2; 1.6.3 is on its way to review.
 
 </div>
 
@@ -61,6 +61,10 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📦 | **v1.6.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [25 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.0) |
 | 🔌 | Precise Detection keeps its port across restarts and updates | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
 | ⌥ | The longer lists open on Option as well as Shift | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
+| 🔔 | One summary of what ran while you were away | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
+| 📋 | A sortable sessions table in Statistics, tokens included | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
+| 🩹 | The bridge heals itself after sleep and wake | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
+| 📦 | **v1.6.4 published** | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 📦 | **v1.6.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [28 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.3) |
 | 📦 | **v1.6.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [27 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.2) |
 | 📦 | **v1.6.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [26 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.1) |
