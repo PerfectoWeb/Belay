@@ -70,7 +70,7 @@ struct PanelSessionRow: View {
             }
             .accessibilityHidden(true)
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 1.5)
         .contentShape(.rect)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityLabel)
@@ -83,8 +83,10 @@ struct PanelSessionRow: View {
     /// at most; the rest become "+N".
     @ViewBuilder private var badgeRow: some View {
         let badges = session.badges
-        // Появление и уход — мягкие: меню может быть открыто в момент
-        // смены, и капсула должна вплывать, а не мигать.
+        // Animates nothing that can change the panel's height. Капсула ниже
+        // строки заголовка (9pt + 1.5 внутри 12pt-строки), появление и уход —
+        // только opacity и scale на месте: меню может быть открыто в момент
+        // смены, и капсула должна вплывать, а не мигать высотой панели.
         HStack(spacing: 4) {
             if session.rollup.isLive {
                 ForEach(Array(badges.prefix(2).enumerated()), id: \.offset) { _, badge in
