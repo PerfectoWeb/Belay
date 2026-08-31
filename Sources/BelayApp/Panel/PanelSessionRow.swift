@@ -75,7 +75,15 @@ struct PanelSessionRow: View {
     /// The state, plus how many agents are working under it. The count is what
     /// makes an otherwise quiet-looking session explain why the Mac is awake.
     private var subtitle: Text {
-        guard !session.children.isEmpty else { return Text(session.rollup.panelLabel) }
+        guard !session.children.isEmpty else {
+            // "Working · running a command": the category rides only a plain
+            // working row — the agents count below outranks it, and any state
+            // but working means the bracket is closed anyway.
+            if session.rollup == .working, let tool = session.tool {
+                return Text(tool.workingLabel)
+            }
+            return Text(session.rollup.panelLabel)
+        }
         // Whole sentences, not two halves glued together: a translator handed
         // " · %lld agents" on its own has no way to agree it with what precedes
         // it, and several languages need to.
@@ -144,6 +152,23 @@ struct PanelSubagentRow: View {
     /// prompt, and the panel is on screen during screen shares.
     private var name: String {
         session.kind ?? String(localized: "Subagent")
+    }
+}
+
+extension ToolCategory {
+    /// Whole sentences, one key per category, for the same reason the agent
+    /// count is one key: a translator handed " · %@" cannot make the halves
+    /// agree.
+    var workingLabel: LocalizedStringResource {
+        switch self {
+        case .command: return "Working · running a command"
+        case .edit: return "Working · editing files"
+        case .read: return "Working · reading files"
+        case .search: return "Working · searching"
+        case .web: return "Working · using the web"
+        case .subagent: return "Working · delegating"
+        case .tool: return "Working · using a tool"
+        }
     }
 }
 

@@ -121,6 +121,28 @@ struct BehaviourSettingsPane: View {
                 NightDimmingGroup(settings: settings)
                 LidHoldGroup(settings: settings)
             }
+
+            // Absent in the App Store build with the rest of Tier B: without
+            // hooks no badge can ever appear, and a switch that does nothing
+            // is worse than no switch.
+            if PreciseDetection.isSupported {
+                badgesGroup
+            }
+        }
+    }
+
+    private var badgesGroup: some View {
+        SettingCheckboxGroup(title: "In the panel") {
+            GroupedCheckbox(
+                title: "Activity badges",
+                explanation: """
+                    Show what a working agent is doing – running a command, \
+                    editing files – next to its state. Requires Precise \
+                    Detection.
+                    """,
+                spokenLabel: "Show activity badges on sessions",
+                isOn: $settings.showToolBadges
+            )
         }
     }
 

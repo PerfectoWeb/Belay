@@ -20,7 +20,7 @@ public final class SettingsStore {
     /// What init found on disk. The only evidence a migration ran.
     public let migration: SettingsMigrationOutcome
 
-    private var values: SettingsValues {
+    var values: SettingsValues {
         didSet { values.write(to: defaults) }
     }
 
@@ -132,10 +132,6 @@ public final class SettingsStore {
         set { update { $0.notifyOnAgentNeedsInput = newValue } }
     }
 
-    public var notifyOnAwaySummary: Bool {
-        get { values.notifyOnAwaySummary }
-        set { update { $0.notifyOnAwaySummary = newValue } }
-    }
     public var notifyOnTaskFinished: Bool {
         get { values.notifyOnTaskFinished }
         set { update { $0.notifyOnTaskFinished = newValue } }
@@ -242,7 +238,7 @@ public final class SettingsStore {
     /// Single write path: clamp, then assign, which persists and notifies.
     /// Clamping before assignment is what keeps a caller's bad number out of
     /// both the plist and the policy.
-    private func update(_ change: (inout SettingsValues) -> Void) {
+    func update(_ change: (inout SettingsValues) -> Void) {
         var next = values
         change(&next)
         values = next.clamped()

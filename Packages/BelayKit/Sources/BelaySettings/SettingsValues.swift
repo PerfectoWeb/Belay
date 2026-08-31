@@ -38,6 +38,7 @@ struct SettingsValues: Equatable, Sendable {
     var keepLocalReports: Bool
     var notifyOnSafetyRelease: Bool
     var notifyOnAwaySummary: Bool
+    var showToolBadges: Bool
     var taskFinishedThreshold: TimeInterval
     var enabledProviders: Set<ProviderID>
     /// Whether the built-in agents have been switched on from what is
@@ -94,6 +95,7 @@ extension SettingsValues {
         keepLocalReports = false
         notifyOnSafetyRelease = true
         notifyOnAwaySummary = true
+        showToolBadges = true
         taskFinishedThreshold = 300
         enabledProviders = [.claudeCode]
         builtInsDetected = false

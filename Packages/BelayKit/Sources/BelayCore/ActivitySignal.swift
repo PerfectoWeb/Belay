@@ -48,6 +48,20 @@ public enum Confidence: Int, Sendable, Comparable {
 /// watcher sees a tool call and a finished turn as the same silence, which is
 /// the whole problem this exists to solve. `nil` means "no opinion", which is
 /// what every inferred signal carries.
+/// What kind of work a tool call is, coarse on purpose: the panel shows this
+/// beside "Working", and "Running a command" is an answer where a raw tool
+/// name would be jargon. Never the tool's arguments — a category cannot leak
+/// a prompt or a path.
+public enum ToolCategory: String, Sendable, Equatable, Codable {
+    case command
+    case edit
+    case read
+    case search
+    case web
+    case subagent
+    case tool
+}
+
 public enum ToolCallEdge: Sendable, Equatable {
     /// The agent has entered a tool call and is blocked inside it.
     case opened
@@ -89,6 +103,9 @@ public struct ActivitySignal: Sendable, Equatable {
     /// total so the consumer only ever moves the number forward. Numbers,
     /// never text: the R9 boundary holds.
     public let tokensTotal: Int?
+    /// The category of the tool call an `.opened` edge is entering. Only ever
+    /// set beside `.opened`; every close clears it downstream.
+    public let tool: ToolCategory?
 
     public init(
         provider: ProviderID,
@@ -101,7 +118,8 @@ public struct ActivitySignal: Sendable, Equatable {
         timestamp: Date,
         confidence: Confidence,
         toolCall: ToolCallEdge? = nil,
-        tokensTotal: Int? = nil
+        tokensTotal: Int? = nil,
+        tool: ToolCategory? = nil
     ) {
         self.provider = provider
         self.session = session
@@ -114,6 +132,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.confidence = confidence
         self.toolCall = toolCall
         self.tokensTotal = tokensTotal
+        self.tool = tool
     }
 }
 

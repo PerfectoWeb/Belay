@@ -51,6 +51,10 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// sweep ends genuinely dead sessions sooner, and the awake limit sits
     /// above both.
     public var openToolCallSince: Date?
+    /// What kind of tool the open bracket is inside, for the panel's badge.
+    /// Lives and dies with the bracket: every close clears it, and the
+    /// reordered-return grace that spares the bracket spares this too.
+    public var activeTool: ToolCategory?
     /// Cumulative tokens the session's own transcript reports. Forward-only:
     /// signals may arrive out of order, and a total can never shrink.
     public var tokens: Int = 0
@@ -134,6 +138,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         switch signal.toolCall {
         case .opened:
             openToolCallSince = signal.timestamp
+            activeTool = signal.tool
         case .returned:
             // A return landing this close behind an open is the *previous*
             // call's, reordered in flight. Leave the bracket alone; if the
@@ -141,8 +146,10 @@ public struct SessionState: Sendable, Equatable, Identifiable {
             let opened = openToolCallSince ?? .distantPast
             if signal.timestamp.timeIntervalSince(opened) < Self.returnGrace { return }
             openToolCallSince = nil
+            activeTool = nil
         case .closed:
             openToolCallSince = nil
+            activeTool = nil
         case nil:
             break
         }

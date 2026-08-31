@@ -106,7 +106,33 @@ extension HookEnvelope {
             workspace: workspace,
             timestamp: now,
             confidence: .exact,
-            toolCall: edge(for: event, reading: reading))
+            toolCall: edge(for: event, reading: reading),
+            tool: event == .preToolUse && reading == .working
+                ? Self.category(of: toolName) : nil)
+    }
+
+    /// The badge the panel shows beside "Working". Matched loosely and in
+    /// lowercase, because Codex copied Claude Code's payload but not its tool
+    /// names, and a future CLI will invent more; an unknown name is still a
+    /// tool, never a crash or a blank.
+    static func category(of toolName: String?) -> ToolCategory {
+        guard let toolName else { return .tool }
+        let name = toolName.lowercased()
+        if name.hasPrefix("mcp__") { return .tool }
+        if name.contains("bash") || name.contains("shell") || name.contains("command") {
+            return .command
+        }
+        let editing = ["edit", "write", "patch", "notebook"]
+        if editing.contains(where: name.contains) { return .edit }
+        if name.contains("web") || name.contains("fetch") || name.contains("browser") {
+            return .web
+        }
+        if name.contains("read") { return .read }
+        if name.contains("grep") || name.contains("glob") || name.contains("search") {
+            return .search
+        }
+        if name.contains("task") || name.contains("agent") { return .subagent }
+        return .tool
     }
 
     /// Which side of a tool call this event is.

@@ -37,6 +37,7 @@ enum SettingsKey: String, CaseIterable {
     case keepLocalReports
     case notifyOnSafetyRelease
     case notifyOnAwaySummary
+    case showToolBadges
     case taskFinishedThreshold
     case enabledProviders
     case nightDimming
@@ -140,13 +141,12 @@ extension SettingsValues {
         lastSeenVersion = defaults.text(.lastSeenVersion)
         notifyOnAgentNeedsInput = defaults.flag(.notifyOnAgentNeedsInput) ?? fallback.notifyOnAgentNeedsInput
         notifyOnTaskFinished = defaults.flag(.notifyOnTaskFinished) ?? fallback.notifyOnTaskFinished
-        notifyOnAgentWentQuiet =
-            defaults.flag(.notifyOnAgentWentQuiet) ?? fallback.notifyOnAgentWentQuiet
-        notifyOnUpdateAvailable =
-            defaults.flag(.notifyOnUpdateAvailable) ?? fallback.notifyOnUpdateAvailable
+        notifyOnAgentWentQuiet = defaults.flag(.notifyOnAgentWentQuiet) ?? fallback.notifyOnAgentWentQuiet
+        notifyOnUpdateAvailable = defaults.flag(.notifyOnUpdateAvailable) ?? fallback.notifyOnUpdateAvailable
         keepLocalReports = defaults.flag(.keepLocalReports) ?? fallback.keepLocalReports
         notifyOnSafetyRelease = defaults.flag(.notifyOnSafetyRelease) ?? fallback.notifyOnSafetyRelease
         notifyOnAwaySummary = defaults.flag(.notifyOnAwaySummary) ?? fallback.notifyOnAwaySummary
+        showToolBadges = defaults.flag(.showToolBadges) ?? fallback.showToolBadges
         taskFinishedThreshold = defaults.seconds(
             .taskFinishedThreshold,
             in: SettingsBounds.taskFinishedThreshold,
@@ -204,6 +204,7 @@ extension SettingsValues {
         defaults.store(keepLocalReports, .keepLocalReports)
         defaults.store(notifyOnSafetyRelease, .notifyOnSafetyRelease)
         defaults.store(notifyOnAwaySummary, .notifyOnAwaySummary)
+        defaults.store(showToolBadges, .showToolBadges)
         defaults.store(taskFinishedThreshold, .taskFinishedThreshold)
         defaults.store(enabledProviders.map(\.rawValue).sorted(), .enabledProviders)
         defaults.store(nightDimming, .nightDimming)
