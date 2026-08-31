@@ -46,7 +46,7 @@ struct PanelSessionRow: View {
                         .truncationMode(.middle)
                     badgeRow
                 }
-                HStack(spacing: 3) {
+                HStack(spacing: 4) {
                     subtitle
                         .font(.system(size: 10))
                         .foregroundStyle(contrast == .increased ? .primary : .secondary)
@@ -95,13 +95,14 @@ struct PanelSessionRow: View {
         }
     }
 
+    // 1:1 to David's mock: no fill, a one-pixel border, regular weight.
     private func capsule(_ text: Text) -> some View {
         text
-            .font(.system(size: 8.5, weight: .medium))
+            .font(.system(size: 9))
             .foregroundStyle(.secondary)
-            .padding(.horizontal, 5)
-            .padding(.vertical, 1.5)
-            .background(.quaternary.opacity(0.5), in: Capsule())
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .overlay(Capsule().strokeBorder(.quaternary, lineWidth: 1))
     }
 
     static func label(for badge: SessionRow.Badge) -> Text {
