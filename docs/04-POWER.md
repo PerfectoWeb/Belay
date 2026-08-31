@@ -1,4 +1,4 @@
-# 04 — Power management
+# 04 – Power management
 
 ## The mechanism
 
@@ -36,7 +36,7 @@ appropriate for a user app).
 Every assertion is created with a **short timeout** (default 120 s) and
 `kIOPMAssertionTimeoutActionRelease`. While the coordinator says "hold", a
 refresh task re-arms it before expiry (`IOPMAssertionSetProperty` on the timeout
-key, or release-and-recreate — measure both, prefer whichever is cleaner; a
+key, or release-and-recreate – measure both, prefer whichever is cleaner; a
 recreate every 90 s is negligible).
 
 Consequences, all good:
@@ -69,7 +69,7 @@ Requirements:
   `MockPowerAssertionBackend` for tests. Assert in tests that create/release
   calls are balanced across thousands of randomised state transitions.
 - Check the `IOReturn` from every call. On failure, log once, surface a
-  non-blocking warning in the UI, and re-attempt on the next refresh tick —
+  non-blocking warning in the UI, and re-attempt on the next refresh tick –
   do not spam.
 
 ## Release triggers (all of them must be wired)
@@ -107,7 +107,7 @@ re-enumerate processes, and re-derive state from scratch. Signals that arrived
 
 - **Lid closed:** an idle-sleep assertion does not keep a MacBook awake with the
   lid shut. macOS enters clamshell sleep unless the machine is on AC power with
-  an external display/keyboard attached. No assertion changes this — which is
+  an external display/keyboard attached. No assertion changes this – which is
   why 1.3's opt-in lid hold is not one: a privileged helper (direct builds
   only) holds the kernel's `SleepDisabled` flag on a heartbeat leash, with a
   hard cap and a thermal release. Measured 2026-08-18 on battery, no display:
@@ -116,4 +116,4 @@ re-enumerate processes, and re-derive state from scratch. Signals that arrived
 - **Display sleep is normal.** By default the screen still turns off. That's
   intentional and saves real power; the machine underneath stays awake.
 - **Verify it yourself:** `pmset -g assertions | grep -i belay`. Put this line in
-  the README — it converts skeptics.
+  the README – it converts skeptics.

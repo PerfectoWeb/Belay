@@ -14,7 +14,7 @@ speaks, all generated from one source; the English is the authoritative text.
 
 Belay needs to know one thing: is an agent working right now?
 
-For the built-in agents — Claude Code, Codex, Cline and Copilot CLI — Belay
+For the built-in agents – Claude Code, Codex, Cline and Copilot CLI – Belay
 watches the session files each one already writes on your Mac. It looks at how
 large a file is, whether it grew, when it was last written, and, in the part
 that grew, only structural markers: what kind of record it is, whether a turn

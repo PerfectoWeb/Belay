@@ -1,4 +1,4 @@
-# 07 — Engineering standards
+# 07 – Engineering standards
 
 ## "Written by a senior engineer, not by a model"
 
@@ -24,14 +24,14 @@ This is a real requirement, so here is what it concretely means.
 - No emoji, no decorative box-drawing banners in source.
 - No `Utils`, `Helpers`, `Common`, or `Manager` as a type or file name.
 - No abstraction with exactly one implementation *unless* it exists to enable
-  testing or the two-channel split (both are called out explicitly in the docs —
+  testing or the two-channel split (both are called out explicitly in the docs –
   anything else is speculation).
 - No `print`. `os.Logger` only.
 
 ## Swift specifics
 
 - Swift 6 language mode, `SWIFT_STRICT_CONCURRENCY = complete`, warnings as
-  errors in CI (not in local dev builds — that's just friction).
+  errors in CI (not in local dev builds – that's just friction).
 - `public` only where a package boundary requires it; default to `internal`.
 - Value types by default; reference types when identity or lifecycle matters.
 - `async`/`await` throughout. `AsyncStream` for event flows. No completion
@@ -49,7 +49,7 @@ This is a real requirement, so here is what it concretely means.
   assertion has a symmetric teardown, and there is a test proving it.
 - `deinit` on the FSEvents wrapper must stop and release the stream. Run the
   test suite under the Address Sanitizer once per milestone.
-- No retain cycles between actors and their continuation handlers — a common
+- No retain cycles between actors and their continuation handlers – a common
   trap with `AsyncStream` is holding the continuation forever. Always call
   `continuation.onTermination` and clean up.
 
@@ -68,7 +68,7 @@ This is a real requirement, so here is what it concretely means.
 
 ## Tooling
 
-- `swiftlint` with a checked-in `.swiftlint.yml` — enable `file_length`,
+- `swiftlint` with a checked-in `.swiftlint.yml` – enable `file_length`,
   `type_body_length`, `cyclomatic_complexity`, `force_unwrapping`,
   `implicitly_unwrapped_optional`, and the analyzer rules for unused imports.
 - `swift-format` with a checked-in `.swift-format` config.
@@ -79,7 +79,7 @@ This is a real requirement, so here is what it concretely means.
 ## Review gate
 
 Before declaring a milestone done, re-read the diff as if you were reviewing a
-colleague's PR and ask: would I approve this? Common things to catch — leftover
+colleague's PR and ask: would I approve this? Common things to catch – leftover
 TODOs with no ticket, a protocol with one conformer and no test, a magic number
 that should be a named default in `BelaySettings`, a `Task { }` with no
 cancellation story.

@@ -8,7 +8,7 @@ Two things below no longer describe the tree. The monetisation seam is gone:
 because the account cannot register products and the code was never called from
 anywhere. And `FileAccessProvider` is no longer a single implementation:
 security-scoped bookmarks are resolved for folders the user picks, which is what
-`docs/BLOCKERS.md` B8 was about.
+`docs/BLOCKERS.md (git history)` B8 was about.
 
 ## Context
 
@@ -88,7 +88,7 @@ code.
   M6 and checked for entitlements and the absence of Sparkle, never run against a
   real session, and the bookmark implementation the whole argument rests on was
   never written. R5 landed exactly as described: the failure is silent, and the
-  build audit passes anyway. `docs/BLOCKERS.md` B8.
+  build audit passes anyway. `docs/BLOCKERS.md (git history)` B8.
 - **Nothing in the codebase asks "am I sandboxed?"** Types depend on
   `FileAccessProvider`, which is injectable, which is also why the provider suite
   can point the whole detection path at a temp tree.

@@ -4,7 +4,7 @@ import PackageDescription
 // One package, one target per module. The module boundaries and the dependency
 // rule from docs/02 are enforced by the target graph below rather than by six
 // separate packages: same isolation, one `swift test`, no cross-package
-// resolution on every build. See docs/PROJECT_STATE.md for the rationale.
+// resolution on every build. See docs/PROJECT_STATE.md (git history) for the rationale.
 let package = Package(
     name: "BelayKit",
     platforms: [.macOS(.v14)],

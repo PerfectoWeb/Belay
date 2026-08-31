@@ -31,7 +31,7 @@ for our bundle ID, which is not ours. Match on the pid.
 - [x] **Invariant 2, observed 2026-08-12.** `kill -9` on Belay while it held
       both assertions: `pmset -g assertions | grep "pid <pid>("` listed
       `PreventUserIdleSystemSleep` and `PreventUserIdleDisplaySleep` before, and
-      nothing at all one second after. SIGKILL on purpose — a graceful quit only
+      nothing at all one second after. SIGKILL on purpose – a graceful quit only
       exercises the cleanup code we already test; this is the crash case, where
       no handler of ours runs and the kernel has to be the one that releases.
 - [x] Refresh re-arms before expiry (observed 100→85→70→55→40, then 117)
@@ -83,7 +83,7 @@ for our bundle ID, which is not ours. Match on the pid.
       `NSPopover` cannot present there, and AppleScript's synthetic press is not
       a reliable substitute. Click it yourself.
 - [ ] Right-click opens the compact menu with Mode, Quit
-- [ ] Icon is legible at a glance in **both** appearances — is it obvious
+- [ ] Icon is legible at a glance in **both** appearances – is it obvious
       whether the Mac is being held awake?
 - [ ] Light mode, dark mode, tinted menu bar, Reduce Transparency
 - [ ] Reduce Motion → popover does not animate
@@ -112,7 +112,7 @@ for our bundle ID, which is not ours. Match on the pid.
 > **Do not verify UI with `screencapture`.** It photographs the whole screen,
 > including whatever private windows the user has open, and on this machine it
 > captured a personal chat before anyone noticed. Inspect the app through the
-> accessibility API instead — it can only see our own process:
+> accessibility API instead – it can only see our own process:
 >
 > ```bash
 > osascript -e 'tell application "System Events" to tell process "Belay" \
@@ -121,16 +121,16 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ## 4. Performance (`docs/08` budgets)
 
-- [x] Active CPU < 1.0% during a real run — measured 0.072%
-- [!] Idle CPU < 0.1% — not yet measurable: real Claude Code sessions ran
+- [x] Active CPU < 1.0% during a real run – measured 0.072%
+- [!] Idle CPU < 0.1% – not yet measurable: real Claude Code sessions ran
       throughout every soak, so no interval was idle. Needs a quiet machine.
-- [x] Memory < 40 MB — `footprint` reports **23 MB** `phys_footprint` with every
+- [x] Memory < 40 MB – `footprint` reports **23 MB** `phys_footprint` with every
       provider and the hook receiver running (15 MB at M1, before Tier B and the
       generic provider existed).
       Measure with `footprint -p <pid>`, **not** `ps -o rss=`: RSS counts shared
       framework pages every app maps and reads ~75 MB here, which is misleading.
 - [ ] Footprint flat between the 30-minute and 8-hour marks
-- [!] Wakeups/s < 3 idle — `powermetrics` is root-only and there is no
+- [!] Wakeups/s < 3 idle – `powermetrics` is root-only and there is no
       passwordless sudo here, so `scripts/perf-soak.sh` skips it. Close with
       `sudo scripts/perf-soak.sh`.
 - [ ] Cold launch to menu bar icon < 300 ms
@@ -138,8 +138,8 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ## 4b. Sanitizers
 
-- [x] Address sanitizer clean (`scripts/leak-check.sh`) — 118 results, 0 reports
-- [x] Thread sanitizer clean (`scripts/leak-check.sh --thread`) — 0 reports
+- [x] Address sanitizer clean (`scripts/leak-check.sh`) – 118 results, 0 reports
+- [x] Thread sanitizer clean (`scripts/leak-check.sh --thread`) – 0 reports
 - [ ] Leak check proper. Darwin's ASan ships **without** LeakSanitizer, so the
       clean run above proves no use-after-free or overflow, not no leaks. Use
       Instruments Leaks for the real thing.
@@ -147,20 +147,20 @@ for our bundle ID, which is not ours. Match on the pid.
 ## 5. Platform coverage
 
 - [x] macOS 26.4 (host)
-- [x] macOS 14 (real install, 1.3.0 build) — 2026-08-19
-- [x] macOS 15.0 (24A335, Parallels, Apple silicon) — 2026-08-16
+- [x] macOS 14 (real install, 1.3.0 build) – 2026-08-19
+- [x] macOS 15.0 (24A335, Parallels, Apple silicon) – 2026-08-16
 
 ---
 
 **Last run:** 2026-08-12, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
 **Last VM run:** 2026-08-16, macOS 15.0, `scripts/qa-vm.sh`. Every mode held or
 released what it should, the 60-second cap fired at 60 seconds, no crash, and no
-`shutdown release timed out` line — which is the fix from this round showing up.
+`shutdown release timed out` line – which is the fix from this round showing up.
 The welcome screen and the paused mark were checked by eye and were right.
 
 ---
 
-## 9. The App Store build's sandbox (B8) — run 2026-08-12, passed
+## 9. The App Store build's sandbox (B8) – run 2026-08-12, passed
 
 `Tests/BelaySandboxTests` runs inside the sandbox on every gate and covers
 everything except the click. This is the click.

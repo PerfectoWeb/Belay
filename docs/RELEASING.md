@@ -20,7 +20,7 @@ What has been run, and what still has not:
 | GitHub Release published | v1.0.0, by hand |
 | `.github/workflows/release.yml` | run green as a dry run, 2026-08-14 |
 | Sparkle appcast (`scripts/sign-update.sh`) | never run, and blocked on B3 |
-| Mac App Store submission | live since 2026-08-17 as `Belay - Awake for AI Agents`; see `APP-STORE.md` |
+| Mac App Store submission | live since 2026-08-17 as `Belay - Awake for AI Agents`; see `APP-STORE.md (git history)` |
 | Homebrew cask (`perfectoweb/tap/belay`) | published 2026-08-14; `scripts/bump-cask.sh` moves it |
 
 Two things that cost time on the first real run and will cost it again:
@@ -40,7 +40,7 @@ missing `BelayNotary` profile is not a blocker.
 The five secrets went in on 2026-08-14 and it took three dispatches to go green.
 Both faults were real and neither could have been found by reading:
 
-1. The workflow installed `create-dmg`. Nothing calls it — `release.sh` packages
+1. The workflow installed `create-dmg`. Nothing calls it – `release.sh` packages
    with `dmgbuild`, and `create-dmg` survives only in the comment explaining why
    it was dropped. The install line never followed the change because no run had
    ever got far enough to notice.

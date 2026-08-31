@@ -10,7 +10,7 @@ Two contributions are wanted more than any other, and neither needs you to learn
 the codebase: a **translation fix** and a **provider preset**. Both are data, not
 code, and both have their own section below. Ready-made starting points sit under
 the [`good first issue`](https://github.com/PerfectoWeb/Belay/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-label — each one fits in an evening.
+label – each one fits in an evening.
 
 By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -67,7 +67,7 @@ test targets, so `xcodebuild test` sees only `BelayAppTests`: bundle metadata,
 the string catalogue check, and the handful of app-layer types worth testing.
 Nearly all of the suite lives in `Packages/BelayKit/Tests` and runs under
 `swift test`. Running only one of the two commands and calling it green is the
-mistake this section exists to prevent. See `PROJECT_STATE.md` D2.
+mistake this section exists to prevent. See `PROJECT_STATE.md (git history)` D2.
 
 `BelayIntegrationTests` is the exception to the one-target-per-module rule: it
 spans provider to bus to coordinator to a mock power backend, because no
@@ -306,7 +306,7 @@ review will actually catch.
   So they are not a gate yet, whatever this file used to claim. Four unused
   imports and a dead 33-line view survived a green run before anyone checked.
 - `todo` is deliberately disabled: work in flight is tracked in
-  `PROJECT_STATE.md`, not by the linter.
+  `PROJECT_STATE.md (git history)`, not by the linter.
 
 ### Enforced by `.swift-format`
 
@@ -390,7 +390,7 @@ and a comment that says what the next line already says.
 
 Screenshots for anything visible, in light and dark appearance.
 
-Finally: no AI provider API keys, ever, and `PROJECT_STATE.md` is updated at
+Finally: no AI provider API keys, ever, and `PROJECT_STATE.md (git history)` is updated at
 every milestone.
 
 ## Contributor terms

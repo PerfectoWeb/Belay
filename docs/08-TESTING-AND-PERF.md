@@ -1,4 +1,4 @@
-# 08 — Testing & performance
+# 08 – Testing & performance
 
 ## Budgets (these are pass/fail, not aspirations)
 
@@ -11,7 +11,7 @@
 | Cold launch to menu bar icon | < 300 ms | signpost from `applicationDidFinishLaunching` |
 | Hook handler round trip | < 50 ms p99 | instrumented in the shim |
 
-If a budget is missed, fix the design — do not relax the number. The whole
+If a budget is missed, fix the design – do not relax the number. The whole
 premise of the product is "a power tool that doesn't cost power".
 
 Common causes if you blow the CPU budget: a repeating `Timer` at 1 Hz, SwiftUI
@@ -20,7 +20,7 @@ re-reading transcript files from offset 0, or FSEvents configured with latency 0
 
 ## Test layers
 
-**1. Unit — the state machine (the important ones).**
+**1. Unit – the state machine (the important ones).**
 `ActivityCoordinator` with an injected `TestClock`. Cover:
 - single session working → idle → grace → release
 - two sessions, one idle, one working → still held
@@ -36,19 +36,19 @@ invariant "assertion held ⟺ (mode == always) ∨ (some session working/awaitin
 within grace)" and that create/release calls on the mock backend are always
 balanced.
 
-**2. Unit — transcript parsing.**
+**2. Unit – transcript parsing.**
 Fixture files in `Tests/Fixtures/`: a normal session, a truncated write, a
 partial trailing line, an unknown record type, a 5 MB session, a file with
 CRLF, an empty file. Assert the cursor never re-reads and never crashes.
 
-**3. Integration — the fake agent.**
+**3. Integration – the fake agent.**
 `scripts/fake-agent.sh` writes JSONL at a configurable cadence and can simulate:
 steady work, a 3-minute tool call with no output, an abrupt death, truncation,
 and two concurrent sessions. Wire it into a test target that runs the whole
 pipeline (provider → bus → coordinator → mock power backend) and asserts on the
 resulting hold/release timeline.
 
-**4. Manual E2E — required before calling v1.0 done.**
+**4. Manual E2E – required before calling v1.0 done.**
 Documented as a checklist in `docs/QA-CHECKLIST.md`, run on the host machine:
 - start a real long Claude Code task; confirm via `pmset -g assertions` that the
   assertion appears within ~5 s and persists through the whole run
@@ -65,7 +65,7 @@ Documented as a checklist in `docs/QA-CHECKLIST.md`, run on the host machine:
 
 ## CI
 
-`.github/workflows/ci.yml` — build, test, SwiftLint `--strict`, swift-format
+`.github/workflows/ci.yml` – build, test, SwiftLint `--strict`, swift-format
 lint, and a step that greps the MAS build for Sparkle symbols and fails if
 found. Write the file; do not run or commit it.
 

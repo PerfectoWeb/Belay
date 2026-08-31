@@ -7,7 +7,7 @@ import Foundation
 /// The sibling of `ClaudeAccess`, and it exists for the same reason: the
 /// compile condition cannot live in BelayKit, because
 /// `SWIFT_ACTIVE_COMPILATION_CONDITIONS` set on the app target does not reach a
-/// local SwiftPM target (`docs/PROJECT_STATE.md` D15). The app decides and injects
+/// local SwiftPM target (`docs/PROJECT_STATE.md (git history)` D15). The app decides and injects
 /// the result downwards.
 ///
 /// Separate from `ClaudeAccess` because the two grants are different shapes.

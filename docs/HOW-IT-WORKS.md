@@ -30,7 +30,7 @@ On top of that, a classifier scans the new bytes backwards for the last
 ignored, because on a real machine the literal last line of a finished
 transcript is metadata far more often than not.
 
-No growth for 45 seconds infers idle — unless the turn is still waiting on an
+No growth for 45 seconds infers idle – unless the turn is still waiting on an
 answer, in which case a retrying model gets a longer, bounded grace instead of
 a wrong "finished". Transcripts untouched for more than ten minutes at launch
 are not followed at all, so starting Belay on a machine with dozens of old
@@ -41,16 +41,16 @@ Codex gets the same treatment with less guessing: its session rollouts under
 read, not inferred. Cline is plainer still: every session keeps a small state
 file under `~/.cline/data/sessions` whose `status` field says running or
 finished outright, and Cline's team mode writes one messages file per teammate
-agent inside the session's folder — Belay shows those teammates in the panel
+agent inside the session's folder – Belay shows those teammates in the panel
 under their session, the way Claude Code subagents appear. Copilot CLI keeps
 one event log per session under `~/.copilot/session-state`, with explicit turn
 markers and a shutdown record, so its starts and finishes are read exactly
-without any hooks. No setup for any of the four. Other tools — Gemini CLI,
-OpenCode, Aider, Cline (VS Code), Pi — ship as one-click presets that watch
+without any hooks. No setup for any of the four. Other tools – Gemini CLI,
+OpenCode, Aider, Cline (VS Code), Pi – ship as one-click presets that watch
 the folder each tool writes while it works.
 
-An agent that lives somewhere else — `CLAUDE_CONFIG_DIR`, `CODEX_HOME`, a
-second profile — is added from its tile: open **Watched Folders** in the
+An agent that lives somewhere else – `CLAUDE_CONFIG_DIR`, `CODEX_HOME`, a
+second profile – is added from its tile: open **Watched Folders** in the
 agent's menu and pick the folder. Belay watches every added folder alongside
 the default home, one watcher per folder.
 

@@ -11,7 +11,7 @@ name: Release
 #     step now yields in that case instead of failing. When both routes run,
 #     the local artefacts are canonical: the appcast and the cask pin their
 #     hashes. A dry run is still available via workflow_dispatch with no tag.
-#   - Sparkle is not wired into the build (docs/BLOCKERS.md B3). There is no appcast
+#   - Sparkle is not wired into the build (docs/BLOCKERS.md (git history) B3). There is no appcast
 #     step here on purpose. scripts/sign-update.sh must keep running on the
 #     maintainer's machine because the EdDSA private key lives in their login
 #     Keychain and must never be copied into a repository secret.

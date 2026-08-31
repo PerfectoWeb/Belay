@@ -1,7 +1,7 @@
 import Foundation
 
 /// Single source of truth for the product name and identifiers, so the rename
-/// procedure in docs/NAMING.md stays a two-file change.
+/// procedure in docs/NAMING.md (git history) stays a two-file change.
 enum Branding {
     static let appName = "Belay"
     static let bundleIdentifier = Bundle.main.bundleIdentifier ?? "com.perfectoweb.belay"

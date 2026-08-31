@@ -79,7 +79,7 @@ jobs:
       # Ad-hoc signing throughout, which the script sets itself. CI has no
       # Developer ID and must never need one: scripts/release.sh is run by a
       # human on a machine that holds the identity in its Keychain. See
-      # docs/BLOCKERS.md.
+      # docs/BLOCKERS.md (git history).
       - name: scripts/test.sh
         run: scripts/test.sh
 

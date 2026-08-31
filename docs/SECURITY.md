@@ -16,17 +16,17 @@ it reads, what it never reads, and how you can check for yourself.
   sockets at all except the loopback listener described below.
 - It reads **structural fields only** from your agent's session files: whether a
   file grew, a record's `type` and `stop_reason`, and the token counters a
-  record already carries (`usage` totals — numbers, never text). The counters
+  record already carries (`usage` totals – numbers, never text). The counters
   exist to be shown to you, locally, in Statistics; they are not sent anywhere.
 - It **never reads your prompts, your model's responses, or your code**.
 - Everything above is about the app. The project **website** is a separate
   surface: it counts visits with Cloudflare Web Analytics and says exactly what
   that records in its own
-  [privacy policy](https://perfectoweb.github.io/Belay/en/privacy/) — so "no
+  [privacy policy](https://perfectoweb.github.io/Belay/en/privacy/) – so "no
   analytics" here is a claim about Belay itself, scoped on purpose.
 - It listens on **`127.0.0.1` only**, on one local port, and only to receive
-  lifecycle events from your local agents — Claude Code, Codex and Cline hooks,
-  and any tool you point at the generic webhook — on your own machine.
+  lifecycle events from your local agents – Claude Code, Codex and Cline hooks,
+  and any tool you point at the generic webhook – on your own machine.
 
 ## What Belay reads, precisely
 
@@ -54,7 +54,7 @@ UI ("an agent is working in *acme-api*"). The path is not transmitted anywhere.
 ### Other built-in agents (Codex, Cline, Copilot CLI)
 
 The same structural discipline covers the three other built-in agents. Belay
-reads only turn markers and status fields — `~/.codex/sessions` rollouts (record
+reads only turn markers and status fields – `~/.codex/sessions` rollouts (record
 `type` and `timestamp`), `~/.cline/data/sessions/<id>/<id>.json` (the `status`
 field and whether the messages file grew), and `~/.copilot/session-state/<uuid>/
 events.jsonl` (the `assistant.turn_start` / `assistant.turn_end` / `session.shutdown`
@@ -68,9 +68,9 @@ If you turn on precise detection, the agent POSTs lifecycle events to Belay's
 loopback listener. Those payloads include a `prompt` field containing **your full
 prompt text**.
 
-Belay's decoder declares keys for only structural fields — `session_id`,
+Belay's decoder declares keys for only structural fields – `session_id`,
 `hook_event_name`, `cwd`, `transcript_path`, the tool `name`, and a `count` of
-background tasks — and has **no property for `prompt`**. It is never decoded,
+background tasks – and has **no property for `prompt`**. It is never decoded,
 never logged, never stored. A test sends a distinctive string in the `prompt`
 field and asserts it appears in neither the emitted signal nor any file Belay
 writes.

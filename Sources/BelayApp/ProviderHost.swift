@@ -33,7 +33,7 @@ final class ProviderHost {
 
     /// `access`, `folders` and `home` come from the app layer because only it
     /// knows which channel this is (`ClaudeAccess`, `WatchedFolderAccess`,
-    /// `docs/PROJECT_STATE.md` D15). All three default to the unsandboxed answer so a
+    /// `docs/PROJECT_STATE.md (git history)` D15). All three default to the unsandboxed answer so a
     /// preview or a test constructs one for free.
     ///
     /// Two access objects, not one. `access` is the grant for `~/.claude`;

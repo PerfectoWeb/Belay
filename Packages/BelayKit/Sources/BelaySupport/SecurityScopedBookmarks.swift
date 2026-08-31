@@ -24,7 +24,7 @@ public struct ResolvedBookmark: Sendable, Equatable {
 /// answers `false` for any URL that did not come from a panel. What *is*
 /// testable is everything around those four calls — which one is made, in what
 /// order, and whether every start has its stop — and that is the part that goes
-/// wrong (`docs/BLOCKERS.md` B8).
+/// wrong (`docs/BLOCKERS.md (git history)` B8).
 ///
 /// The protocol predates `Tests/BelaySandboxTests`, which is hosted by the MAS
 /// app and therefore *can* create and resolve a real app-scoped bookmark. The

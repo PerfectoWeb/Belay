@@ -48,7 +48,7 @@ below it.
 
 ### What about Codex, Aider, Gemini CLI, Copilot, OpenCode, Cline, DeepSeek?
 
-Claude Code, Codex, Cline and Copilot CLI are first-class and need no setup —
+Claude Code, Codex, Cline and Copilot CLI are first-class and need no setup –
 Belay reads each one's own turn markers, so their starts and finishes are
 exact. Everything else goes through the generic provider in
 **Settings ▸ Agents**: watch a folder, watch a process, or send Belay a
@@ -63,8 +63,8 @@ is consumed through other tools, and those tools are what Belay watches.
 
 ### My agent keeps its files somewhere else (CLAUDE_CONFIG_DIR, profiles)
 
-Point Belay at it. Every built-in agent can relocate its home — Claude Code
-with `CLAUDE_CONFIG_DIR`, Codex with `CODEX_HOME`, and so on — and Belay cannot
+Point Belay at it. Every built-in agent can relocate its home – Claude Code
+with `CLAUDE_CONFIG_DIR`, Codex with `CODEX_HOME`, and so on – and Belay cannot
 read your shell's environment to find out. Click the slider button on the
 agent's tile (or right-click the tile), open **Watched Folders**, and add the
 folder. Belay watches it alongside the default, so multi-profile setups work

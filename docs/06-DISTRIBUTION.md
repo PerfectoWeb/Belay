@@ -1,4 +1,4 @@
-# 06 — Distribution
+# 06 – Distribution
 
 ## Two channels, one codebase
 
@@ -83,14 +83,14 @@ Four details that are not obvious and are load-bearing:
   panel for a housekeeping detail, and a failed renewal keeps the bytes that
   still work.
 - **The choice is made in the app.** `#if BELAY_MAS` does not reach a local
-  SwiftPM target (`PROJECT_STATE.md` D15), so `ClaudeAccess` picks the
+  SwiftPM target (`PROJECT_STATE.md (git history)` D15), so `ClaudeAccess` picks the
   implementation and `BelayController` injects it into `ProviderHost`. Nothing
   in detection can tell which it got.
 
 > **What is still unproved.** None of this has run inside a real sandbox: a test
 > process cannot create a scoped bookmark, so the suites cover the logic around
-> Foundation's calls rather than the calls. `BLOCKERS.md` B8 lists exactly what
-> one signed, provisioned run on a real machine has to confirm — including the
+> Foundation's calls rather than the calls. `BLOCKERS.md (git history)` B8 lists exactly what
+> one signed, provisioned run on a real machine has to confirm – including the
 > reads BelayProviders performs outside `withAccess`, and the generic provider's
 > folders, which are outside the `~/.claude` grant entirely.
 
@@ -106,7 +106,7 @@ Two things a reviewer will question. Write the answers into the review notes
    used solely to receive local lifecycle events; no outbound network access at
    all (point at the missing `network.client` entitlement as proof).
 
-Provide a **demo video** and a scripted walkthrough — a reviewer without Claude
+Provide a **demo video** and a scripted walkthrough – a reviewer without Claude
 Code installed cannot exercise the core feature. Include a hidden-ish "Demo
 mode" that simulates a session so the reviewer can see the whole flow. That
 single addition is often the difference between approval and a rejection loop.
@@ -124,7 +124,7 @@ flag. Design for this from the start so it's a one-line change, not a refactor.
 - Default to **check** automatically, **do not install** automatically. Users of
   a system utility deserve to choose when it restarts.
 - The entire Sparkle dependency, its entitlements and its UI must be absent from
-  the MAS build — Apple rejects third-party updaters. Verify by grepping the
+  the MAS build – Apple rejects third-party updaters. Verify by grepping the
   built MAS binary for Sparkle symbols in CI.
 
 ## Monetisation
@@ -139,7 +139,7 @@ called: tips need a paid-apps agreement this account cannot sign, so no products
 could be registered and there was nothing to sell.
 
 The code was deleted on 2026-08-16 rather than left as a seam nobody walks
-through. `BLOCKERS.md` B2 records the account decision, and the git history
+through. `BLOCKERS.md (git history)` B2 records the account decision, and the git history
 records the implementation, which is the right place for both. If tips ever
 become possible, that history is a better starting point than an untested module
 that has been rotting in the build.
@@ -153,7 +153,7 @@ that has been rotting in the build.
   `notarytool submit --wait`, `stapler staple`, produce a DMG via
   `create-dmg`. Leave the team ID as a clearly-marked placeholder.
 - Hardened Runtime on for the direct build. No `disable-library-validation`
-  unless something concretely requires it — it isn't likely to here.
+  unless something concretely requires it – it isn't likely to here.
 
 ## Bundle metadata
 

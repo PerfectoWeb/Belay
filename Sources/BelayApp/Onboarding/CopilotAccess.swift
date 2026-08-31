@@ -3,7 +3,7 @@ import BelaySupport
 
 /// Which `FileAccessProvider` this build reads `~/.copilot` through. The
 /// fourth mirror of `ClaudeAccess`, for the reason the second exists: the
-/// channel decision cannot live in BelayKit (`docs/PROJECT_STATE.md` D15), so
+/// channel decision cannot live in BelayKit (`docs/PROJECT_STATE.md (git history)` D15), so
 /// the app makes it and injects the result downwards.
 @MainActor
 enum CopilotAccess {

@@ -4,7 +4,7 @@ import AppKit
 /// into a grant macOS will honour.
 ///
 /// It is deliberately a plain `NSOpenPanel` with no custom accessory view: the
-/// answer `docs/APP-STORE.md` gives App Review is that access arrives through
+/// answer `docs/APP-STORE.md (git history)` gives App Review is that access arrives through
 /// the system panel and by no other means, and the panel a reviewer recognises
 /// is the one that makes that obvious.
 @MainActor

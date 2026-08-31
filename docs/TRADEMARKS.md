@@ -2,7 +2,7 @@
 
 The code in this repository is under the Belay Source-Available License 1.0. `LICENSE` is the whole of what is
 granted, and it grants a great deal: copy it, change it, ship it, give it away.
-The one thing it does not grant is selling it — see the "NO SELLING" clause in
+The one thing it does not grant is selling it – see the "NO SELLING" clause in
 `LICENSE`. Belay is free, and staying free is deliberate.
 
 What that licence does not grant, because a copyright licence never does, is

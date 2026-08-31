@@ -3,7 +3,7 @@ import BelaySupport
 
 /// Which `FileAccessProvider` this build reads `~/.cline` through. The third
 /// mirror of `ClaudeAccess`, for the reason the second exists: the channel
-/// decision cannot live in BelayKit (`docs/PROJECT_STATE.md` D15), so the app
+/// decision cannot live in BelayKit (`docs/PROJECT_STATE.md (git history)` D15), so the app
 /// makes it and injects the result downwards.
 @MainActor
 enum ClineAccess {

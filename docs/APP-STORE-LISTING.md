@@ -139,7 +139,7 @@ One edit, applied to every language, on top of whatever the store held that day:
 
 **Three built-in agents.** The agents sentence in every language now names
 Claude Code, Codex and Cline as detected-precisely built-ins. The Cline CLI
-graduated from a preset to a first-class provider, so it left the preset list —
+graduated from a preset to a first-class provider, so it left the preset list –
 which is now Copilot CLI, Gemini CLI, OpenCode, Aider, Cline (the VS Code
 extension) and Pi. Nothing else moved; the privacy claims are untouched and
 still true.

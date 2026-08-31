@@ -1,4 +1,4 @@
-# 00 — Invariants and ground rules
+# 00 – Invariants and ground rules
 
 Belay is a macOS menu bar app that holds the Mac awake only while a local AI
 coding agent is actively working. This file is the short version of the rules
@@ -21,7 +21,7 @@ scripts/build-local.sh                               # ad-hoc signed .app in bui
 Tests live in two places and that is deliberate: an XcodeGen scheme cannot
 reference a local SwiftPM package's test targets, so `xcodebuild test` runs only
 `BelayAppTests` and the module suites run under `swift test`. `scripts/test.sh`
-runs both plus both linters. See `PROJECT_STATE.md` D2.
+runs both plus both linters. 
 
 Never hand-edit `Belay.xcodeproj`. It is generated. Edit `project.yml`.
 
@@ -63,4 +63,4 @@ macOS engineer who dislikes ceremony. Comments explain *why*, never *what*.
 
 ## State
 
-`PROJECT_STATE.md` is the source of truth for progress. Update it every milestone.
+`docs/ROADMAP.md` is the source of truth for progress. Update it every release.

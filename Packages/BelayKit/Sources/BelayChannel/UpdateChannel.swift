@@ -13,7 +13,7 @@ public protocol UpdateChannel: Sendable {
 }
 
 /// What every build uses today. Sparkle is not wired up: there is no EdDSA
-/// signing key and no appcast to point at (docs/BLOCKERS.md B3), and an updater
+/// signing key and no appcast to point at (docs/BLOCKERS.md (git history) B3), and an updater
 /// aimed at a placeholder URL is worse than no updater.
 public struct NoUpdateChannel: UpdateChannel {
     public init() {}

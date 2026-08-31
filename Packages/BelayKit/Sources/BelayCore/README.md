@@ -47,4 +47,4 @@ gives `awaitingUser` sessions `max(sessionTTL, awaitingUserBudget)`, because a
 blocked session emits nothing by definition and the 10-minute TTL would evict it
 before its 15-minute budget could ever be reached. It is a knowing deviation from
 the literal wording of `docs/00-INVARIANTS.md` invariant 3, bounded by the budget so nothing
-stale can pin the Mac awake. Recorded as D9 in `docs/PROJECT_STATE.md`.
+stale can pin the Mac awake. Recorded as D9 in `docs/PROJECT_STATE.md (git history)`.

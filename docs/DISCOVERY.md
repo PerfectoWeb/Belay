@@ -1,4 +1,4 @@
-# Discovery — what the real machine says
+# Discovery – what the real machine says
 
 Empirical pass run on the host before any implementation code was written.
 **Where this file disagrees with `docs/01`–`docs/11`, this file wins.** Every
@@ -8,10 +8,12 @@ Host: macOS 26.4 (25E246) · Xcode 26.6 (17F113) · Swift 6.3.3 ·
 Claude Code CLI 2.1.170, running sessions report 2.1.222 · date 2026-08-10.
 
 Toolchain installed during this pass: `swiftlint` 0.65.0, `swift-format` 603.0.0
-(`xcodegen` was already present). `create-dmg` is absent — only needed by the
+(`xcodegen` was already present). `create-dmg` is absent – only needed by the
 unrun release script.
 
 ---
+
+> **2026-08-31:** §4's "Codex CLI is not installed" is history – Codex has shipped as a first-class, precisely-detected provider since 1.3.2. The `~/.claude` layout findings below remain the empirical record.
 
 ## 1. `~/.claude` layout
 
@@ -26,18 +28,18 @@ unrun release script.
 ```
 
 **Transcript path scheme confirmed** as the spec guessed: the project directory
-name is the absolute cwd with `/` replaced by `-` (note: *not* URL-encoding —
+name is the absolute cwd with `/` replaced by `-` (note: *not* URL-encoding –
 `/Volumes/BASE/Work/Apps/MacOS/Belay` → `-Volumes-BASE-Work-Apps-MacOS-Belay`).
 Dots in path components are also mapped to `-`. Since this transform is lossy,
-**never try to reverse it** to recover a project path — take `cwd` from the
+**never try to reverse it** to recover a project path – take `cwd` from the
 records or from `sessions/<pid>.json` instead. The workspace display name is the
 last path component.
 
 45 transcripts across 19 project directories on this machine. Sizes ranged from
 93 KB to **82 MB**. This validates the never-read-the-whole-file rule in
-`docs/03` emphatically — a naive re-read would move ~100 MB per FSEvent.
+`docs/03` emphatically – a naive re-read would move ~100 MB per FSEvent.
 
-### 1.1 `~/.claude/sessions/<pid>.json` — undocumented, and better than `KERN_PROCARGS2`
+### 1.1 `~/.claude/sessions/<pid>.json` – undocumented, and better than `KERN_PROCARGS2`
 
 Not mentioned anywhere in the spec, and it materially improves Tier C:
 
@@ -56,11 +58,11 @@ already granted us access to, so liveness is one `kill(pid, 0)` per session.
 
 **Deviation adopted:** Tier C reads `~/.claude/sessions/` and cross-checks each
 `pid` with `kill(pid, 0)`. No `sysctl` enumeration and no argument-vector
-inspection are involved for Claude Code at all — the file already names the pid,
+inspection are involved for Claude Code at all – the file already names the pid,
 so there is nothing to search for. (`sysctl(KERN_PROC_UID)` does appear in
 `ProcessRoster`, which serves the generic provider's watch-a-process-name
 option; that is a different job.)
-Stale files (process gone) are the authoritative "this session is dead" signal —
+Stale files (process gone) are the authoritative "this session is dead" signal –
 much faster and more reliable than waiting out the 10-minute TTL.
 
 Caveat: `kind` can be `interactive` or other values; `entrypoint` distinguishes
@@ -82,10 +84,10 @@ Three consequences, all of which were bugs until this pass:
 
 1. **The parent is in the path.** The component before `subagents` is the
    spawning session's UUID, and it agrees with the `sessionId` field carried in
-   every subagent record — so attribution costs no file read. Subagent records
+   every subagent record – so attribution costs no file read. Subagent records
    also carry `isSidechain: true` and an `agentId`.
 2. **The containing folder is not the project.** Taking the last dash-separated
-   segment of a transcript's parent folder — correct for a session — gave
+   segment of a transcript's parent folder – correct for a session – gave
    `9d2` for every agent under `wf_60f0c106-9d2`, so 54 agents appeared as 54
    separate projects and crowded the real session out of the panel.
 3. **`journal.jsonl` is not a session.** The workflow runner writes it beside
@@ -94,7 +96,7 @@ Three consequences, all of which were bugs until this pass:
 
 A `agent-<id>.meta.json` sits beside each transcript: `agentType`, `spawnDepth`,
 and for Task subagents a `description` of the task. Belay reads **`agentType`
-only** — the description is a summary of the user's prompt, and the panel is on
+only** – the description is a summary of the user's prompt, and the panel is on
 screen during screen shares. Workflow agents carry no description.
 
 Observed nesting is one level (`spawnDepth: 1`), but the format does not promise
@@ -154,7 +156,7 @@ Sampled the current session's transcript at 1 Hz:
 t=1s +306683   t=2s +12314   t=3s..t=12s  +0
 ```
 
-The ten flat seconds were spent inside a single long tool call — the agent was
+The ten flat seconds were spent inside a single long tool call – the agent was
 unambiguously working while the file did not grow by a byte. This is exactly
 risk **R6** and it is real, not theoretical. It confirms the
 `inferredIdleAfter` = 45 s default is the right order of magnitude and must not
@@ -165,7 +167,7 @@ be tightened; combined with the 90 s coordinator grace it gives a ~2 min tail.
 Measured on 2026-08-18 across every transcript on this machine: 110 synthetic
 error records (`isApiErrorMessage: true`), 90 of them with a predecessor to
 measure a gap from, **32 after a silence longer than `inferredIdleAfter`**.
-The 529 pattern is a `user` record — the prompt went out — then nothing for
+The 529 pattern is a `user` record – the prompt went out – then nothing for
 3½–5½ minutes, then one assistant record: "API Error: 529 Overloaded", written
 when the CLI gives up an attempt. A stalled stream ran 20 minutes silent. The
 "retrying (1/10)" counter on screen never touches the transcript, and no hook
@@ -175,30 +177,30 @@ Two consequences, both bugs until 2026-08-18:
 
 - The 45 s no-growth rule read every one of those 32 silences as a finished
   turn, and released the hold at the exact moment the run most needed the Mac
-  awake — the retry resumes work the instant the API answers.
+  awake – the retry resumes work the instant the API answers.
 - The error record itself carries `stop_reason: "stop_sequence"`, which §2.1
   maps to `.idle`. On this machine 103 of the 110 `stop_sequence` records in
   existence are these synthetic errors: the shape that reads "finished
   cleanly" almost always means "failed and still owed an answer". The record
-  is told apart by the **top-level** `isApiErrorMessage` flag — a boolean
+  is told apart by the **top-level** `isApiErrorMessage` flag – a boolean
   beside the message, readable without touching content (R9).
 
 **Deviation adopted:** the classifier reports whose move it is. A trailing
 `user` record or an API-error record means the model owes the next one, and
 that session's silence gets `awaitingAssistantGrace` (15 min) instead of 45 s,
 kept alive with repeated `.working` so the coordinator's 10 min TTL does not
-evict it mid-retry. A trailing `tool_use` deliberately does not qualify — a
+evict it mid-retry. A trailing `tool_use` deliberately does not qualify – a
 running tool is the busy-child sweep's to vouch for (§2.2), and widening the
 grace to it would undo the rule that section fixed. A dead CLI never gets the
 grace: Tier C ends its sessions regardless.
 
-## 3. Hooks — verified against the installed binary, not just the docs
+## 3. Hooks – verified against the installed binary, not just the docs
 
 `~/.claude/settings.json` on this machine is `{"skipWorkflowUsageWarning": true}`
-— it has **no** `hooks` key, so the installer must handle creating the key from
+– it has **no** `hooks` key, so the installer must handle creating the key from
 scratch as well as merging into an existing one.
 
-### 3.1 `type: "http"` is supported — and it works
+### 3.1 `type: "http"` is supported – and it works
 
 The live reference at <https://code.claude.com/docs/en/hooks> lists five hook
 types (`command`, `http`, `mcp_tool`, `prompt`, `agent`). Rather than trust it, I
@@ -219,18 +221,18 @@ Confirmed empirically:
 - `"async": true` is accepted and the turn is not blocked on our response.
 - The POST body is the JSON envelope.
 
-**Deviation adopted — this is the biggest one in this document.** `docs/03` B1/B2
+**Deviation adopted – this is the biggest one in this document.** `docs/03` B1/B2
 plan an HTTP receiver *with a `belay-hook` command shim as fallback*, and
 `docs/02` lists a `Sources/BelayHelperCLI/` target. With `type: "http"` plus
 `async: true` confirmed working, the shim earns nothing: it costs a second
 executable in the bundle, a Unix socket, a 50 ms budget to police, and the
 `exit 0` hazard that `docs/03` calls "the single most important line in this
-document". An async HTTP hook cannot block Claude Code *by construction* — there
+document". An async HTTP hook cannot block Claude Code *by construction* – there
 is no exit code and no wait. **`BelayHelperCLI` is cut.** Invariant 5 is
 satisfied more strongly by deleting the component than by hardening it.
 
-Recorded in `PROJECT_STATE.md`. If a future Claude Code drops `http` hooks, the
-shim can come back — the receiver protocol is plain HTTP POST either way.
+Recorded in `PROJECT_STATE.md (git history)`. If a future Claude Code drops `http` hooks, the
+shim can come back – the receiver protocol is plain HTTP POST either way.
 
 ### 3.2 Envelope fields (observed, not quoted from docs)
 
@@ -267,7 +269,7 @@ additions, and how we map them:
 `Notification` is still mapped to `.awaitingUser` for older CLI versions, but
 `PermissionRequest`/`Elicitation` take precedence when both arrive.
 
-`SessionEnd` hooks share a **1.5 s** total budget across all registered hooks —
+`SessionEnd` hooks share a **1.5 s** total budget across all registered hooks –
 another reason ours must be `async`.
 
 ### 3.4 Hook config structure to write into `settings.json`
@@ -292,7 +294,7 @@ provider (watch `~/.codex/sessions`, detect the binary) rather than as
 unverifiable bespoke code. The generic provider covers it with zero speculative
 parsing. Revisit when a machine with Codex installed is available.
 
-### 4.1 ChatGPT.app — measured, and deliberately not supported
+### 4.1 ChatGPT.app – measured, and deliberately not supported
 
 Installed here (`com.openai.chat` 1.2026.160), data in
 `~/Library/Application Support/com.openai.chat`. Polled every second for 25
@@ -317,7 +319,7 @@ model answers. It is also the folder holding unsent prompt text, which the
 privacy promise in `docs/06` puts out of bounds even at the size-only level.
 
 The 13:38 and 13:41 bursts are foreground sync and a periodic metadata refresh.
-A folder watch would fire on both and hold the Mac awake for nothing — a false
+A folder watch would fire on both and hold the Mac awake for nothing – a false
 hold, which `docs/01` ranks as worse than a missed one.
 
 **Decision:** no ChatGPT preset. Independently of detectability, the plain chat
@@ -345,7 +347,7 @@ pid 1079(nsurlsessiond): [0x00005100000188df] 00:00:01 PreventUserIdleSystemSlee
 system-wide summary and the per-process listing, so `pmset -g assertions | grep
 -i belay` will show our assertion, its human-readable reason, and its remaining
 timeout. Note the system already holds a `powerd` "Prevent sleep while display
-is on" assertion whenever the display is awake — during manual QA the display
+is on" assertion whenever the display is awake – during manual QA the display
 must be asleep (or that assertion accounted for) or every test looks like a pass.
 
 ## 6. Limitations of this pass
@@ -357,7 +359,7 @@ must be asleep (or that assertion accounted for) or every test looks like a pass
   the M3 manual QA pass against an interactive session. Tracked in
   `docs/QA-CHECKLIST.md`.
 - ~~FSEvents on `~/.claude` is unverified.~~ **Resolved in M2: it works.** The
-  throwaway probe that segfaulted here was simply buggy — it crashed against a
+  throwaway probe that segfaulted here was simply buggy – it crashed against a
   scratch directory too. Built properly inside the provider and run against the
   real `~/.claude/projects`, the stream starts in 3 ms across 45 transcripts in
   19 project directories, emits nothing for the 44 stale ones, and tracks a live

@@ -62,7 +62,7 @@ case "${1:-}" in
 esac
 
 case "$DOWNLOAD_PREFIX" in
-    *invalid.example*) die "BELAY_DOWNLOAD_PREFIX is still the placeholder. See docs/BLOCKERS.md B3." ;;
+    *invalid.example*) die "BELAY_DOWNLOAD_PREFIX is still the placeholder. See docs/BLOCKERS.md (git history) B3." ;;
     https://*) ;;
     *) die "the download prefix must be https://" ;;
 esac

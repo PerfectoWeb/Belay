@@ -5,7 +5,7 @@ import Testing
 
 /// What can be proved about a security-scoped grant without a sandbox: the
 /// bookmark round trip, the staleness rule, and the balance of every scope this
-/// class opens. What cannot is written down in `docs/BLOCKERS.md` B8.
+/// class opens. What cannot is written down in `docs/BLOCKERS.md (git history)` B8.
 @Suite final class BookmarkFileAccessTests: Sendable {
     private let bookmarks = FakeBookmarks()
     private let store = MemoryBookmarkStore()

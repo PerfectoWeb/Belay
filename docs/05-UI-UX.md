@@ -1,7 +1,7 @@
-# 05 — UI & UX
+# 05 – UI & UX
 
 Design intent: **a good citizen of the menu bar.** It should feel like something
-Apple could have shipped — quiet, monochrome, instantly legible, never in the
+Apple could have shipped – quiet, monochrome, instantly legible, never in the
 way. Nothing bounces, nothing animates without a reason, nothing asks for
 attention it hasn't earned.
 
@@ -10,7 +10,7 @@ attention it hasn't earned.
 Use `NSStatusItem` + `NSPopover` (AppKit) rather than SwiftUI's `MenuBarExtra`.
 `MenuBarExtra(.window)` still has rough edges around focus, dismissal and
 right-click, and we need precise control over icon rendering on Tahoe's Liquid
-Glass menu bar. Host SwiftUI views inside via `NSHostingView` — you get SwiftUI
+Glass menu bar. Host SwiftUI views inside via `NSHostingView` – you get SwiftUI
 ergonomics and AppKit control.
 
 - `NSStatusItem` with `variableLength`, `button.image` set to a **template**
@@ -41,17 +41,17 @@ normal display scaling, in both appearances.
 
 ## The panel
 
-Width 330 pt — raised from ~300 once the state descriptions were written, and
+Width 330 pt – raised from ~300 once the state descriptions were written, and
 the block that holds them reserves two lines so switching modes cannot change
 the panel's height. Top to bottom:
 
-1. **Status line** — plain language, no jargon: "Keeping your Mac awake" /
+1. **Status line** – plain language, no jargon: "Keeping your Mac awake" /
    "Your Mac will sleep normally" / "Claude Code is waiting for you".
-2. **Mode picker** — segmented: Auto · Always on · Off. One tap.
-3. **Active sessions** — a compact list, each row: provider glyph, workspace
+2. **Mode picker** – segmented: Auto · Always on · Off. One tap.
+3. **Active sessions** – a compact list, each row: provider glyph, workspace
    name, state, elapsed. Empty state: "No active sessions." Cap the visible list
    at 5 with "+N more".
-4. **Footer** — total awake time this session, and a link to Settings.
+4. **Footer** – total awake time this session, and a link to Settings.
 
 If a provider needs setup (e.g. folder access not granted), show a single
 inline row with a one-tap fix, not a modal.
@@ -61,18 +61,18 @@ inline row with a one-tap fix, not a modal.
 Standard `SwiftUI` `Settings` scene with a `TabView`, macOS-native sizing.
 Panes:
 
-- **General** — launch at login (`SMAppService.mainApp`), show elapsed time in
+- **General** – launch at login (`SMAppService.mainApp`), show elapsed time in
   menu bar (off by default), appearance of the icon
-- **Providers** — one section per provider, generated from metadata: enable
+- **Providers** – one section per provider, generated from metadata: enable
   toggle, availability status, "Grant access to ~/.claude" button, "Enable
   precise detection (hooks)" with the diff preview and a Remove button
-- **Behaviour** — grace period (30 s / 90 s / 3 min / custom), keep display
+- **Behaviour** – grace period (30 s / 90 s / 3 min / custom), keep display
   awake, awaiting-user budget, max continuous awake time, battery guard
   threshold, Low Power Mode behaviour
-- **Notifications** — notify when an agent needs input, when a long task
+- **Notifications** – notify when an agent needs input, when a long task
   finishes, when the max-duration cap releases the assertion
-- **Updates** — direct build only; hidden entirely in the App Store build
-- **About** — version, build, links, acknowledgements, Tip Jar
+- **Updates** – direct build only; hidden entirely in the App Store build
+- **About** – version, build, links, acknowledgements, Tip Jar
 
 Every setting needs a sensible default such that a user who never opens this
 window gets the right behaviour. If a setting can't be defaulted well, it
@@ -91,17 +91,17 @@ Exactly one screen, shown on first launch, dismissible:
 4. A "Skip for now" that leaves the app functional in manual mode.
 
 Do not build a five-step wizard. Do not ask for notification permission on
-launch — request it lazily, the first time a notification would actually fire.
+launch – request it lazily, the first time a notification would actually fire.
 
 ## Notifications
 
 `UNUserNotificationCenter`, no more than one per event, never repeated for the
 same session. Categories:
 
-- *Agent needs your input* — with a "Keep awake 15 more minutes" action
-- *Task finished* — only if the run exceeded a threshold (default 5 min), and
+- *Agent needs your input* – with a "Keep awake 15 more minutes" action
+- *Task finished* – only if the run exceeded a threshold (default 5 min), and
   only if the app isn't frontmost
-- *Released for safety* — max duration or battery guard
+- *Released for safety* – max duration or battery guard
 
 Notification fatigue kills utilities. Default the "task finished" one **on**
 (it's the delight moment) and everything else conservative.

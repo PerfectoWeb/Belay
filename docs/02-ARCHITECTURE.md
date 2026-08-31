@@ -1,4 +1,4 @@
-# 02 — Architecture
+# 02 – Architecture
 
 ## Shape
 
@@ -7,7 +7,7 @@ what makes the project testable, parallelisable across agents, and pleasant to
 extend. Nothing but `BelayApp` may import AppKit/SwiftUI.
 
 > **As built.** One SwiftPM package with one target per module, not six packages
-> (PROJECT_STATE D1), and no `BelayHelperCLI` (D3 — the command shim was cut once
+> (PROJECT_STATE D1), and no `BelayHelperCLI` (D3 – the command shim was cut once
 > async HTTP hooks were proven to work).
 
 ```
@@ -115,7 +115,7 @@ Responsibilities:
 - fuse signals of differing confidence (exact beats inferred for the same session)
 - run the grace-period timer after the last session goes idle
 - apply policy: mode (auto/always/off), max duration cap, battery guard
-- emit `AwakeDecision` on change **only** — no repeated emissions
+- emit `AwakeDecision` on change **only** – no repeated emissions
 
 ### State machine
 
@@ -142,8 +142,8 @@ and stacking another grace period on a 15-minute wait contradicts that
 (PROJECT_STATE D8).
 
 `Armed` and `Working` both mean "Belay is running in auto mode"; only `Working`
-and `AwaitingUser` hold an assertion. `CoolingDown` still holds the assertion —
-that *is* the grace period — and is what prevents the Mac dozing off between two
+and `AwaitingUser` hold an assertion. `CoolingDown` still holds the assertion –
+that *is* the grace period – and is what prevents the Mac dozing off between two
 tool calls.
 
 ## Concurrency model
@@ -175,20 +175,20 @@ public protocol ActivityProvider: Actor {
 ```
 
 `id` comes from `descriptor` via an extension. Everything the settings pane needs
-— display name, summary, SF Symbol, whether the provider offers precise
-detection — travels in `ProviderDescriptor`, so the pane is generated rather than
+– display name, summary, SF Symbol, whether the provider offers precise
+detection – travels in `ProviderDescriptor`, so the pane is generated rather than
 hand-written per provider.
 
 There is no `ProviderRegistry`: `Sources/BelayApp/ProviderHost.swift` owns the
 providers and the bus (PROJECT_STATE D13), and is the one app-layer file that a
 new provider touches.
 If adding a provider requires touching more than two files outside its own
-folder, the abstraction is wrong — fix the abstraction.
+folder, the abstraction is wrong – fix the abstraction.
 
 ## Logging
 
 `BelaySupport.Log` wraps `os.Logger` with subsystem `com.<org>.belay` and
 categories per module. Use signposts around detection and assertion changes so
 Instruments traces are readable. **Never log transcript content, prompts, file
-paths inside user projects, or session IDs at default level** — session IDs are
+paths inside user projects, or session IDs at default level** – session IDs are
 `.private` in the format string.
