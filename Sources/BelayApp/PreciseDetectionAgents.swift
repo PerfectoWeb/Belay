@@ -105,7 +105,11 @@ extension PreciseDetection {
         guard Self.isSupported else { return }
         var parked = ParkedHooks()
         if (try? installer.isInstalled()) == true {
-            for installer in claudeInstallers { _ = try? installer.uninstall() }
+            for installer in claudeInstallers {
+                do { _ = try installer.uninstall() } catch {
+                    EventLog.note("bridge park failed: \(error.localizedDescription)")
+                }
+            }
             parked.claude = true
         }
         if clineInstaller.isInstalled() {
@@ -123,7 +127,12 @@ extension PreciseDetection {
         let store = ParkedHooksStore(paths: paths)
         guard let parked = store.load(), let endpoint else { return }
         if parked.claude {
-            for installer in claudeInstallers { _ = try? installer.install(endpoint: endpoint) }
+            for installer in claudeInstallers {
+                do { _ = try installer.install(endpoint: endpoint) } catch {
+                    EventLog.note("bridge restore failed: \(error.localizedDescription)")
+                    lastError = error.localizedDescription
+                }
+            }
         }
         if parked.cline {
             for installer in clineInstallers { _ = try? installer.install(endpoint: endpoint) }

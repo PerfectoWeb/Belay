@@ -38,7 +38,7 @@ final class BelayController {
     private var awakeTally = AwakeTally()
     let usage = UsageRecorder()
     private var trigger = AnnouncementTrigger()
-    private var history = SessionHistoryTracker()
+    var history = SessionHistoryTracker()
     let historyStore = SessionHistoryStore()
     private lazy var awayWatch = AwayReturnWatch { [weak self] report in
         guard let self else { return }
@@ -235,7 +235,7 @@ final class BelayController {
             self.state.apply(warning: error?.errorDescription)
             // Keeps the Agents tiles' "last activity" current (frozen otherwise).
             await self.publishProviderStatus()
-            self.historyStore.append(self.history.diff(snapshot))
+            self.recordHistory(from: snapshot)
             let announcements = self.trigger.diff(snapshot)
             self.awayWatch.update(holdingSince: snapshot.holdingSince)
             for announcement in announcements {

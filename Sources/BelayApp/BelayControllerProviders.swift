@@ -184,3 +184,17 @@ extension BelayController {
     }
 
 }
+
+extension BelayController {
+    /// Sessions leaving the snapshot become table rows, each one a greppable
+    /// line for the soak: what ran, how long, how many tokens it said.
+    func recordHistory(from snapshot: CoordinatorSnapshot) {
+        let recorded = history.diff(snapshot)
+        for record in recorded {
+            Diagnostics.note(
+                "session recorded ws=\(record.workspace ?? "?") "
+                    + "dur=\(Int(record.duration))s tokens=\(record.tokens ?? 0)")
+        }
+        historyStore.append(recorded)
+    }
+}

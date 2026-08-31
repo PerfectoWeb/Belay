@@ -116,10 +116,16 @@ final class AwayReturnWatch {
     private func tick(now: Date) {
         let idle = AwayTime.secondsSinceInput()
         let thermal = Self.severity(ProcessInfo.processInfo.thermalState)
+        let wasObserving = summary.isObserving
         if let report = summary.tick(idle: idle, holding: holding, thermal: thermal, now: now) {
             Diagnostics.note(
-                "away summary held=\(Int(report.heldAway))s finished=\(report.finishedRuns)")
+                "away summary held=\(Int(report.heldAway))s finished=\(report.finishedRuns) "
+                    + "peak=\(report.peakThermal)")
             onReport(report)
+        } else if wasObserving, !summary.isObserving {
+            // A return that earned no banner is still a data point for the
+            // soak: the floor did its job, or the accounting lost something.
+            Diagnostics.note("away summary suppressed (under the floor)")
         }
         // The timer's whole job is catching the return after snapshots have
         // gone quiet; while nobody is away there is nothing to catch.

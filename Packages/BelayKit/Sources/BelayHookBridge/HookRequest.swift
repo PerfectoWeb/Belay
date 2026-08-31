@@ -138,7 +138,8 @@ extension HookReceiver {
             let signal = envelope.signal(at: now, provider: provider)
         else { return nil }
         let bg = envelope.backgroundTasks ?? -1
-        EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)")
+        let tool = signal.tool.map { " tool=\($0.rawValue)" } ?? ""
+        EventLog.note("hook \(envelope.eventName) \(signal.session) -> \(signal.activity) bg=\(bg)\(tool)")
         return signal
     }
 }
