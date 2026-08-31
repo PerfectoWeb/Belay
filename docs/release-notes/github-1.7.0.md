@@ -1,9 +1,9 @@
-- **The panel shows what agents are doing.** Small capsule badges beside each working session – shell, editing, search, bg task – built from the tool names the agent's own hooks report. Two at most, the rest a "+N"; categories only, never arguments, so a badge cannot leak a prompt or a path. Toggle in Settings → Behavior.
+- **See what your agents are doing.** Working sessions now show small activity badges like shell, editing, search, and background work. Only categories are shown, never prompts, paths, or arguments. Toggle it in Settings → Behavior.
 
-- **Background tasks keep the hold.** A turn that ends with monitors or shell jobs still running used to drift to Idle five minutes later while the IDE still showed a running task. It now holds the Mac awake – bounded by a thirty-minute budget, because no later hook can confirm the claim – and the panel says which kind of alive the session is.
+- **Background tasks keep the hold.** If monitors or shell jobs keep running after a turn ends, Belay keeps your Mac awake for up to 30 minutes and shows why in the panel.
 
-- **Hooks tidy up after themselves.** Belay's entries leave `settings.json` on quit and return on launch, so an agent used while Belay is closed posts to nothing instead of filling its terminal with `ECONNREFUSED`. Settings backups now rotate at twenty.
+- **Hooks clean up automatically.** Belay removes its entries from agent settings when it quits and restores them on launch, so closed Belay never leaves agents pointing at a dead connection.
 
-- **Sharper returns.** Closing the lid is an input event, so the while-you-were-away summary used to fire into a closing lid and the real return got nothing – fixed. The summary also mentions when the Mac ran hot, in `ProcessInfo`'s own words.
+- **Return summaries work better.** Closing the lid no longer hides the while-you-were-away summary, and Belay now mentions if your Mac ran hot.
 
-- **Quieter diagnostics.** Dark wakes no longer log as main-thread stalls, two sessions trading turns no longer write a "hold on" line every few seconds, and a chronic helper error is rate-limited to one line in forty.
+- **Quieter diagnostics.** Dark wakes no longer look like stalls, rapid session handoffs no longer flood the log, and repeated helper errors are rate-limited.

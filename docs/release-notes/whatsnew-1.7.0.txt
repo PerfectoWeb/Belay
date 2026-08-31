@@ -2,81 +2,81 @@ What's New – Belay 1.7.0
 
 The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
 
-Direct-only (never shown in the App Store build): "The panel shows what agents are doing" and "Hooks tidy up after themselves".
+Direct-only (never shown in the App Store build): "See what your agents are doing" and "Hooks clean up automatically".
 
 === en ===
 
-# The panel shows what agents are doing
-Small badges beside each working session – shell, editing, search – straight from the agent's own hooks. And a turn that ends with background tasks still running now keeps your Mac awake, with a "bg task" badge saying why.
+# See what your agents are doing
+Working sessions now show activity badges like shell, editing and search. Background tasks also keep your Mac awake and show why in the panel.
 
-# Hooks tidy up after themselves
-Belay's entries leave the agents' settings when it quits and come back on launch, so a closed Belay never leaves an agent talking to a dead port.
+# Hooks clean up automatically
+Belay removes its entries when it quits and restores them on launch, so agents never keep pointing at a closed Belay.
 
-# Sharper returns
-Closing the lid no longer eats the "while you were away" summary, and the summary now mentions if your Mac ran hot.
+# Return summaries work better
+Closing the lid no longer hides the “while you were away” summary, and it now mentions if your Mac ran hot.
 
 === ru ===
 
-# Панель показывает, чем заняты агенты
-Маленькие бейджи рядом с каждой работающей сессией – shell, правка, поиск – прямо из хуков самого агента. А ход, завершившийся с работающими фоновыми задачами, теперь держит Mac в бодрствовании, и бейдж «фон. задача» объясняет почему.
+# Видно, чем заняты агенты
+Работающие сессии теперь показывают метки вроде shell, правки и поиска. Фоновые задачи тоже продолжают удерживать Mac, а панель показывает почему.
 
-# Хуки убирают за собой
-Записи Belay покидают настройки агентов при выходе и возвращаются при запуске, так что закрытый Belay больше не оставляет агента говорить с мёртвым портом.
+# Хуки убираются автоматически
+При выходе Belay удаляет свои записи из настроек агентов и возвращает их при запуске, поэтому закрытый Belay больше не оставляет нерабочую связь.
 
-# Возвращаться стало приятнее
-Закрытие крышки больше не съедает сводку «пока вас не было», а сама сводка теперь сообщает, если Mac нагревался.
+# Сводка по возвращении стала надёжнее
+Закрытие крышки больше не скрывает сводку «пока вас не было», а если Mac нагревался, Belay теперь сообщит об этом.
 
 === de ===
 
-# Das Panel zeigt, was die Agents tun
-Kleine Badges neben jeder arbeitenden Sitzung – Shell, Bearbeiten, Suche – direkt aus den Hooks des Agents. Und ein Zug, der mit laufenden Hintergrundaufgaben endet, hält den Mac jetzt wach; ein „bg task“-Badge sagt warum.
+# Sieh, was deine Agents tun
+Aktive Sitzungen zeigen jetzt kleine Hinweise wie Shell, Bearbeiten und Suche. Hintergrundaufgaben halten den Mac ebenfalls wach und zeigen den Grund im Panel.
 
-# Hooks räumen hinter sich auf
-Belays Einträge verlassen die Agent-Einstellungen beim Beenden und kehren beim Start zurück – ein geschlossenes Belay lässt keinen Agent mehr mit einem toten Port sprechen.
+# Hooks werden automatisch aufgeräumt
+Belay entfernt seine Einträge beim Beenden und stellt sie beim Start wieder her, damit Agents nie auf ein geschlossenes Belay verweisen.
 
-# Bessere Rückkehr
-Das Schließen des Deckels verschluckt die Zusammenfassung „Während Sie weg waren“ nicht mehr, und sie erwähnt jetzt, wenn der Mac heiß lief.
+# Zusammenfassungen bei der Rückkehr sind zuverlässiger
+Das Schließen des Deckels blendet „Während du weg warst“ nicht mehr aus, und Belay weist jetzt darauf hin, wenn dein Mac zu warm wurde.
 
 === es ===
 
-# El panel muestra qué hacen los agentes
-Pequeñas insignias junto a cada sesión activa – shell, edición, búsqueda – directamente de los hooks del propio agente. Y un turno que termina con tareas en segundo plano ahora mantiene el Mac despierto, con una insignia «fondo» que explica por qué.
+# Mira qué están haciendo tus agentes
+Las sesiones activas muestran ahora indicadores como shell, edición y búsqueda. Las tareas en segundo plano también mantienen el Mac despierto y el panel muestra por qué.
 
-# Los hooks recogen al salir
-Las entradas de Belay salen de los ajustes de los agentes al cerrarse y vuelven al arrancar: un Belay cerrado ya no deja a un agente hablando con un puerto muerto.
+# Los hooks se limpian automáticamente
+Belay elimina sus entradas al cerrarse y las restaura al abrirse, para que los agentes nunca sigan apuntando a un Belay cerrado.
 
-# Mejores regresos
-Cerrar la tapa ya no se traga el resumen de «mientras no estabas», y el resumen ahora menciona si el Mac se calentó.
+# Los resúmenes al volver son más fiables
+Cerrar la tapa ya no oculta el resumen de «mientras no estabas», y Belay ahora te avisa si el Mac se calentó.
 
 === fr ===
 
-# Le panneau montre ce que font les agents
-De petits badges à côté de chaque session active – shell, édition, recherche – directement issus des hooks de l'agent. Et un tour qui se termine avec des tâches d'arrière-plan encore actives garde désormais le Mac éveillé, avec un badge « fond » qui explique pourquoi.
+# Voyez ce que font vos agents
+Les sessions actives affichent désormais des indicateurs comme shell, édition et recherche. Les tâches en arrière-plan gardent aussi le Mac éveillé et le panneau indique pourquoi.
 
-# Les hooks rangent derrière eux
-Les entrées de Belay quittent les réglages des agents à la fermeture et reviennent au lancement : un Belay fermé ne laisse plus un agent parler à un port mort.
+# Les hooks se nettoient automatiquement
+Belay retire ses entrées à la fermeture et les rétablit au lancement, afin que les agents ne restent jamais liés à un Belay fermé.
 
-# De meilleurs retours
-Fermer le capot n'avale plus le résumé « pendant votre absence », et le résumé signale désormais si le Mac a chauffé.
+# Les résumés au retour sont plus fiables
+Fermer le capot ne masque plus le résumé « pendant votre absence », et Belay indique maintenant si votre Mac a chauffé.
 
 === it ===
 
-# Il pannello mostra cosa fanno gli agenti
-Piccoli badge accanto a ogni sessione al lavoro – shell, modifica, ricerca – direttamente dagli hook dell'agente. E un turno che finisce con attività in background ancora attive ora tiene sveglio il Mac, con un badge «bg task» che spiega perché.
+# Guarda cosa stanno facendo i tuoi agenti
+Le sessioni attive ora mostrano indicatori come shell, modifica e ricerca. Anche le attività in background tengono sveglio il Mac e il pannello mostra il motivo.
 
-# Gli hook mettono in ordine
-Le voci di Belay lasciano le impostazioni degli agenti alla chiusura e tornano all'avvio: un Belay chiuso non lascia più un agente a parlare con una porta morta.
+# Gli hook si puliscono automaticamente
+Belay rimuove le proprie voci alla chiusura e le ripristina all’avvio, così gli agenti non restano mai collegati a un Belay chiuso.
 
-# Ritorni migliori
-Chiudere il coperchio non inghiotte più il riepilogo «mentre eri via», e il riepilogo ora segnala se il Mac si è scaldato.
+# I riepiloghi al ritorno sono più affidabili
+Chiudere il coperchio non nasconde più il riepilogo «mentre eri via», e Belay ora segnala se il Mac si è scaldato.
 
 === zh-Hans ===
 
-# 面板会显示智能体在做什么
-每个工作中的会话旁边都有小徽章：命令、编辑、搜索，直接来自智能体自己的钩子。回合结束时若仍有后台任务在运行，Mac 现在会保持唤醒，“后台”徽章会说明原因。
+# 看看智能体正在做什么
+工作中的会话现在会显示 shell、编辑、搜索等活动标签。后台任务也会继续保持 Mac 唤醒，面板会说明原因。
 
-# 钩子会自己收尾
-Belay 的条目在退出时离开智能体的设置，在启动时回来。关闭的 Belay 不会再让智能体对着一个无人应答的端口说话。
+# 钩子会自动清理
+Belay 退出时会移除自己的设置项，并在启动时恢复，避免智能体继续连接到已经关闭的 Belay。
 
-# 回来时更省心
-合上盖子不会再吞掉“在您离开期间”小结，小结现在还会提示 Mac 是否温度较高。
+# 返回时的小结更可靠
+合上盖子不会再让“离开期间”小结消失；如果 Mac 温度过高，Belay 现在也会提示。

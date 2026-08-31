@@ -11,18 +11,18 @@
 </style>
 <h2>Belay 1.7.0</h2>
 <ul>
-  <li><b>The panel shows what agents are doing.</b> Small badges beside each
-      working session – shell, editing, search – straight from the agent's
-      own hooks. Categories only, never your prompts or code.</li>
-  <li><b>Background tasks keep the hold.</b> A turn that ends with monitors
-      or shell jobs still running keeps your Mac awake – bounded, and the
-      panel says so with a "bg task" badge.</li>
-  <li><b>Hooks tidy up after themselves.</b> Belay's entries leave the
-      agents' settings when it quits and return on launch, so a closed Belay
-      never leaves an agent talking to a dead port.</li>
-  <li><b>Sharper returns.</b> Closing the lid no longer eats the
-      while-you-were-away summary, and the summary now mentions when the Mac
+  <li><b>See what your agents are doing.</b> Working sessions now show small
+      activity badges like shell, editing and search. Categories only, never
+      your prompts or code.</li>
+  <li><b>Background tasks keep the hold.</b> If agents or shell jobs keep
+      running after a turn ends, Belay keeps your Mac awake and shows a
+      background-task badge.</li>
+  <li><b>Hooks clean up automatically.</b> Belay removes its entries when it
+      quits and restores them on launch, so closed Belay never leaves agents
+      pointing at a dead connection.</li>
+  <li><b>Return summaries are more reliable.</b> Closing the lid no longer
+      hides the while-you-were-away summary, and it now mentions if your Mac
       ran hot.</li>
 </ul>
-<p class="quiet">Also: dark wakes no longer log as stalls, and two sessions
-trading turns no longer flood the diagnostics log.</p>
+<p class="quiet">Also: dark wakes no longer look like stalls in diagnostics,
+and sessions taking turns no longer flood the log.</p>

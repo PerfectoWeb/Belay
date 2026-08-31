@@ -95,29 +95,26 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.trace,
-                        title: "The panel shows what agents are doing",
+                        title: "See what your agents are doing",
                         body: """
-                            Small badges beside each working session – shell, \
-                            editing, search – straight from the agent's own \
-                            hooks. And a turn that ends with background tasks still \
-                            running now keeps your Mac awake, with a "bg task" \
-                            badge saying why.
+                            Working sessions now show activity badges like shell, \
+                            editing and search. Background tasks also keep your Mac \
+                            awake and show why in the panel.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.safety,
-                        title: "Hooks tidy up after themselves",
+                        title: "Hooks clean up automatically",
                         body: """
-                            Belay's entries leave the agents' settings when it \
-                            quits and come back on launch, so a closed Belay never \
-                            leaves an agent talking to a dead port.
+                            Belay removes its entries when it quits and restores them \
+                            on launch, so agents never keep pointing at a closed \
+                            Belay.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.told,
-                        title: "Sharper returns",
+                        title: "Return summaries work better",
                         body: """
-                            Closing the lid no longer eats the "while you were \
-                            away" summary, and the summary now mentions if your \
-                            Mac ran hot.
+                            Closing the lid no longer hides the “while you were away” \
+                            summary, and it now mentions if your Mac ran hot.
                             """)
                 ]
             )

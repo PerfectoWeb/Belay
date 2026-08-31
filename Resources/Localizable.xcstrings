@@ -5340,6 +5340,52 @@
         }
       }
     },
+    "Belay removes its entries when it quits and restores them on launch, so agents never keep pointing at a closed Belay.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay removes its entries when it quits and restores them on launch, so agents never keep pointing at a closed Belay."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "При выходе Belay удаляет свои записи из настроек агентов и возвращает их при запуске, поэтому закрытый Belay больше не оставляет нерабочую связь."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay entfernt seine Einträge beim Beenden und stellt sie beim Start wieder her, damit Agents nie auf ein geschlossenes Belay verweisen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay elimina sus entradas al cerrarse y las restaura al abrirse, para que los agentes nunca sigan apuntando a un Belay cerrado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay retire ses entrées à la fermeture et les rétablit au lancement, afin que les agents ne restent jamais liés à un Belay fermé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay rimuove le proprie voci alla chiusura e le ripristina all’avvio, così gli agenti non restano mai collegati a un Belay chiuso."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 退出时会移除自己的设置项，并在启动时恢复，避免智能体继续连接到已经关闭的 Belay。"
+          }
+        }
+      }
+    },
     "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
       "extractionState": "manual",
       "localizations": {
@@ -5897,52 +5943,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 将停止为 %@ 监视此文件夹。其中的 Belay 钩子也会被移除。文件夹本身不会改动。"
-          }
-        }
-      }
-    },
-    "Belay's entries leave the agents' settings when it quits and come back on launch, so a closed Belay never leaves an agent talking to a dead port.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay's entries leave the agents' settings when it quits and come back on launch, so a closed Belay never leaves an agent talking to a dead port."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Записи Belay покидают настройки агентов при выходе и возвращаются при запуске, так что закрытый Belay больше не оставляет агента говорить с мёртвым портом."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belays Einträge verlassen die Agent-Einstellungen beim Beenden und kehren beim Start zurück – ein geschlossenes Belay lässt keinen Agent mehr mit einem toten Port sprechen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las entradas de Belay salen de los ajustes de los agentes al cerrarse y vuelven al arrancar: un Belay cerrado ya no deja a un agente hablando con un puerto muerto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les entrées de Belay quittent les réglages des agents à la fermeture et reviennent au lancement : un Belay fermé ne laisse plus un agent parler à un port mort."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le voci di Belay lasciano le impostazioni degli agenti alla chiusura e tornano all'avvio: un Belay chiuso non lascia più un agente a parlare con una porta morta."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 的条目在退出时离开智能体的设置，在启动时回来。关闭的 Belay 不会再让智能体对着一个无人应答的端口说话。"
           }
         }
       }
@@ -6742,48 +6742,48 @@
         }
       }
     },
-    "Closing the lid no longer eats the \"while you were away\" summary, and the summary now mentions if your Mac ran hot.": {
+    "Closing the lid no longer hides the “while you were away” summary, and it now mentions if your Mac ran hot.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Closing the lid no longer eats the \"while you were away\" summary, and the summary now mentions if your Mac ran hot."
+            "value": "Closing the lid no longer hides the “while you were away” summary, and it now mentions if your Mac ran hot."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Закрытие крышки больше не съедает сводку «пока вас не было», а сама сводка теперь сообщает, если Mac нагревался."
+            "value": "Закрытие крышки больше не скрывает сводку «пока вас не было», а если Mac нагревался, Belay теперь сообщит об этом."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Schließen des Deckels verschluckt die Zusammenfassung „Während Sie weg waren“ nicht mehr, und sie erwähnt jetzt, wenn der Mac heiß lief."
+            "value": "Das Schließen des Deckels blendet „Während du weg warst“ nicht mehr aus, und Belay weist jetzt darauf hin, wenn dein Mac zu warm wurde."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cerrar la tapa ya no se traga el resumen de «mientras no estabas», y el resumen ahora menciona si el Mac se calentó."
+            "value": "Cerrar la tapa ya no oculta el resumen de «mientras no estabas», y Belay ahora te avisa si el Mac se calentó."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fermer le capot n'avale plus le résumé « pendant votre absence », et le résumé signale désormais si le Mac a chauffé."
+            "value": "Fermer le capot ne masque plus le résumé « pendant votre absence », et Belay indique maintenant si votre Mac a chauffé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Chiudere il coperchio non inghiotte più il riepilogo «mentre eri via», e il riepilogo ora segnala se il Mac si è scaldato."
+            "value": "Chiudere il coperchio non nasconde più il riepilogo «mentre eri via», e Belay ora segnala se il Mac si è scaldato."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "合上盖子不会再吞掉“在您离开期间”小结，小结现在还会提示 Mac 是否温度较高。"
+            "value": "合上盖子不会再让“离开期间”小结消失；如果 Mac 温度过高，Belay 现在也会提示。"
           }
         }
       }
@@ -8889,48 +8889,48 @@
         }
       }
     },
-    "Hooks tidy up after themselves": {
+    "Hooks clean up automatically": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hooks tidy up after themselves"
+            "value": "Hooks clean up automatically"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Хуки убирают за собой"
+            "value": "Хуки убираются автоматически"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hooks räumen hinter sich auf"
+            "value": "Hooks werden automatisch aufgeräumt"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los hooks recogen al salir"
+            "value": "Los hooks se limpian automáticamente"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les hooks rangent derrière eux"
+            "value": "Les hooks se nettoient automatiquement"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gli hook mettono in ordine"
+            "value": "Gli hook si puliscono automaticamente"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "钩子会自己收尾"
+            "value": "钩子会自动清理"
           }
         }
       }
@@ -13280,6 +13280,52 @@
         }
       }
     },
+    "Return summaries work better": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Return summaries work better"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сводка по возвращении стала надёжнее"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zusammenfassungen bei der Rückkehr sind zuverlässiger"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los resúmenes al volver son más fiables"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les résumés au retour sont plus fiables"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I riepiloghi al ritorno sono più affidabili"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回时的小结更可靠"
+          }
+        }
+      }
+    },
     "Rules…": {
       "localizations": {
         "de": {
@@ -13368,6 +13414,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "安全停止"
+          }
+        }
+      }
+    },
+    "See what your agents are doing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what your agents are doing"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видно, чем заняты агенты"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sieh, was deine Agents tun"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mira qué están haciendo tus agentes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voyez ce que font vos agents"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guarda cosa stanno facendo i tuoi agenti"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "看看智能体正在做什么"
           }
         }
       }
@@ -13648,52 +13740,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "共享卡片、摘要和 Belay 的链接"
-          }
-        }
-      }
-    },
-    "Sharper returns": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sharper returns"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Возвращаться стало приятнее"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bessere Rückkehr"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mejores regresos"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De meilleurs retours"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ritorni migliori"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "回来时更省心"
           }
         }
       }
@@ -14299,52 +14345,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "睡眠延迟"
-          }
-        }
-      }
-    },
-    "Small badges beside each working session – shell, editing, search – straight from the agent's own hooks. And a turn that ends with background tasks still running now keeps your Mac awake, with a \"bg task\" badge saying why.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Small badges beside each working session – shell, editing, search – straight from the agent's own hooks. And a turn that ends with background tasks still running now keeps your Mac awake, with a \"bg task\" badge saying why."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Маленькие бейджи рядом с каждой работающей сессией – shell, правка, поиск – прямо из хуков самого агента. А ход, завершившийся с работающими фоновыми задачами, теперь держит Mac в бодрствовании, и бейдж «фон. задача» объясняет почему."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kleine Badges neben jeder arbeitenden Sitzung – Shell, Bearbeiten, Suche – direkt aus den Hooks des Agents. Und ein Zug, der mit laufenden Hintergrundaufgaben endet, hält den Mac jetzt wach; ein „bg task“-Badge sagt warum."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pequeñas insignias junto a cada sesión activa – shell, edición, búsqueda – directamente de los hooks del propio agente. Y un turno que termina con tareas en segundo plano ahora mantiene el Mac despierto, con una insignia «fondo» que explica por qué."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "De petits badges à côté de chaque session active – shell, édition, recherche – directement issus des hooks de l'agent. Et un tour qui se termine avec des tâches d'arrière-plan encore actives garde désormais le Mac éveillé, avec un badge « fond » qui explique pourquoi."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Piccoli badge accanto a ogni sessione al lavoro – shell, modifica, ricerca – direttamente dagli hook dell'agente. E un turno che finisce con attività in background ancora attive ora tiene sveglio il Mac, con un badge «bg task» che spiega perché."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每个工作中的会话旁边都有小徽章：命令、编辑、搜索，直接来自智能体自己的钩子。回合结束时若仍有后台任务在运行，Mac 现在会保持唤醒，“后台”徽章会说明原因。"
           }
         }
       }
@@ -15608,52 +15608,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 保持 Mac 唤醒的最长时间，超过后就会放手。达到上限时会通知你。"
-          }
-        }
-      }
-    },
-    "The panel shows what agents are doing": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The panel shows what agents are doing"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Панель показывает, чем заняты агенты"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Panel zeigt, was die Agents tun"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El panel muestra qué hacen los agentes"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le panneau montre ce que font les agents"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il pannello mostra cosa fanno gli agenti"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "面板会显示智能体在做什么"
           }
         }
       }
@@ -17753,6 +17707,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "工作中"
+          }
+        }
+      }
+    },
+    "Working sessions now show activity badges like shell, editing and search. Background tasks also keep your Mac awake and show why in the panel.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working sessions now show activity badges like shell, editing and search. Background tasks also keep your Mac awake and show why in the panel."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работающие сессии теперь показывают метки вроде shell, правки и поиска. Фоновые задачи тоже продолжают удерживать Mac, а панель показывает почему."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktive Sitzungen zeigen jetzt kleine Hinweise wie Shell, Bearbeiten und Suche. Hintergrundaufgaben halten den Mac ebenfalls wach und zeigen den Grund im Panel."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las sesiones activas muestran ahora indicadores como shell, edición y búsqueda. Las tareas en segundo plano también mantienen el Mac despierto y el panel muestra por qué."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les sessions actives affichent désormais des indicateurs comme shell, édition et recherche. Les tâches en arrière-plan gardent aussi le Mac éveillé et le panneau indique pourquoi."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le sessioni attive ora mostrano indicatori come shell, modifica e ricerca. Anche le attività in background tengono sveglio il Mac e il pannello mostra il motivo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作中的会话现在会显示 shell、编辑、搜索等活动标签。后台任务也会继续保持 Mac 唤醒，面板会说明原因。"
           }
         }
       }
