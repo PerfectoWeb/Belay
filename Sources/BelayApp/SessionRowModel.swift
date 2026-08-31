@@ -14,6 +14,26 @@ struct SessionRow: Identifiable, Equatable {
     /// Whether a Stop left background tasks running — the turn is over but
     /// the session is not, and the row should say which kind of alive it is.
     var background = false
+
+    /// What the capsules beside the name say: the session's own tool call,
+    /// any distinct tools its subagents are inside, and the background flag.
+    /// David's design, verbatim: badges by the title, the state line stays
+    /// the state line — structure and activity are different facts and no
+    /// longer fight over one slot. Two show; the rest are a count.
+    enum Badge: Equatable {
+        case tool(ToolCategory)
+        case background
+    }
+
+    var badges: [Badge] {
+        var seen: [ToolCategory] = []
+        for candidate in [tool] + children.map(\.tool) {
+            if let candidate, !seen.contains(candidate) { seen.append(candidate) }
+        }
+        var all = seen.map(Badge.tool)
+        if background { all.append(.background) }
+        return all
+    }
     var parent: SessionID?
     /// The agent's configured type, for subagent rows.
     var kind: String?

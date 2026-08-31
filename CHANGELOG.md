@@ -9,11 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Activity badges in the panel: a working session now says what it is doing —
-  "Working · running a command", "· editing files", "· searching" — from the
-  hook the agent itself fired. Categories, never tool arguments, so a badge
-  cannot leak a prompt or a path. Off-switch in Settings → Behavior; absent
-  from the App Store build with the rest of Precise Detection.
+- Activity badges in the panel: small capsules beside a working session's
+  name — "shell", "editing", "search", "background" — from the hooks the
+  agent itself fired, two at most and the rest a "+N". Beside the name, not
+  in the state line, so a session with subagents shows both its agent count
+  and what it is doing. Categories, never tool arguments, so a badge cannot
+  leak a prompt or a path. Off-switch in Settings → Behavior; absent from
+  the App Store build with the rest of Precise Detection.
 - Belay's hook entries leave the agents' settings on quit and return on
   launch, so an agent used while Belay is closed posts to nothing instead of
   filling its terminal with `ECONNREFUSED`. Only entries Belay owns, only

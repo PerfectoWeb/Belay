@@ -38,11 +38,14 @@ struct PanelSessionRow: View {
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text(session.title)
-                    .font(.system(size: 12))
-                    .foregroundStyle(.primary)
-                    .lineLimit(1)
-                    .truncationMode(.middle)
+                HStack(spacing: 5) {
+                    Text(session.title)
+                        .font(.system(size: 12))
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                    badgeRow
+                }
                 HStack(spacing: 3) {
                     subtitle
                         .font(.system(size: 10))
@@ -74,20 +77,42 @@ struct PanelSessionRow: View {
 
     /// The state, plus how many agents are working under it. The count is what
     /// makes an otherwise quiet-looking session explain why the Mac is awake.
+    /// The capsules from David's design: activity lives beside the name, so
+    /// the state line below stays free for state and the agents count. Two
+    /// at most; the rest become "+N".
+    @ViewBuilder private var badgeRow: some View {
+        let badges = session.badges
+        if session.rollup.isLive, !badges.isEmpty {
+            HStack(spacing: 3) {
+                ForEach(Array(badges.prefix(2).enumerated()), id: \.offset) { _, badge in
+                    capsule(Self.label(for: badge))
+                }
+                if badges.count > 2 {
+                    capsule(Text(verbatim: "+\(badges.count - 2)"))
+                }
+            }
+            .accessibilityHidden(true)
+        }
+    }
+
+    private func capsule(_ text: Text) -> some View {
+        text
+            .font(.system(size: 8.5, weight: .medium))
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 5)
+            .padding(.vertical, 1.5)
+            .background(.quaternary.opacity(0.5), in: Capsule())
+    }
+
+    static func label(for badge: SessionRow.Badge) -> Text {
+        switch badge {
+        case .tool(let tool): return Text(tool.badgeLabel)
+        case .background: return Text("background")
+        }
+    }
+
     private var subtitle: Text {
         guard !session.children.isEmpty else {
-            // "Working · running a command": the category rides only a plain
-            // working row — the agents count below outranks it, and any state
-            // but working means the bracket is closed anyway.
-            if session.rollup == .working, let tool = session.tool {
-                return Text(tool.workingLabel)
-            }
-            // The turn ended but its background tasks did not; "Working"
-            // alone would look like a stuck row, and "Idle" would be a lie
-            // the IDE's own task list contradicts.
-            if session.rollup == .working, session.background {
-                return Text("Working · background tasks")
-            }
             return Text(session.rollup.panelLabel)
         }
         // Whole sentences, not two halves glued together: a translator handed
@@ -162,18 +187,16 @@ struct PanelSubagentRow: View {
 }
 
 extension ToolCategory {
-    /// Whole sentences, one key per category, for the same reason the agent
-    /// count is one key: a translator handed " · %@" cannot make the halves
-    /// agree.
-    var workingLabel: LocalizedStringResource {
+    /// One short word per capsule — a badge is a glance, not a sentence.
+    var badgeLabel: LocalizedStringResource {
         switch self {
-        case .command: return "Working · running a command"
-        case .edit: return "Working · editing files"
-        case .read: return "Working · reading files"
-        case .search: return "Working · searching"
-        case .web: return "Working · using the web"
-        case .subagent: return "Working · delegating"
-        case .tool: return "Working · using a tool"
+        case .command: return "shell"
+        case .edit: return "editing"
+        case .read: return "reading"
+        case .search: return "search"
+        case .web: return "web"
+        case .subagent: return "agents"
+        case .tool: return "tool"
         }
     }
 }
