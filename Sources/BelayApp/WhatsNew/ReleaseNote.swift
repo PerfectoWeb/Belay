@@ -91,31 +91,33 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.6.4",
+                version: "1.7.0",
                 items: [
                     .init(
                         symbol: Mark.trace,
-                        title: "Precise Detection reconnects automatically",
+                        title: "The panel shows what agents are doing",
                         body: """
-                            If the connection breaks during sleep, Belay restores \
-                            it when your Mac wakes. Long tool calls also keep \
-                            their hold through rapid back-to-back activity.
+                            Small badges beside each working session – shell, \
+                            editing, search – straight from the agent's own \
+                            hooks. And a turn that ends with background tasks still \
+                            running now keeps your Mac awake, with a "bg task" \
+                            badge saying why.
                             """, directOnly: true),
                     .init(
-                        symbol: Mark.timer,
-                        title: "A few rough edges are fixed",
+                        symbol: Mark.safety,
+                        title: "Hooks tidy up after themselves",
                         body: """
-                            Statistics no longer flicker on hover, and a past \
-                            Until time no longer starts a timer for tomorrow.
-                            """),
+                            Belay's entries leave the agents' settings when it \
+                            quits and come back on launch, so a closed Belay never \
+                            leaves an agent talking to a dead port.
+                            """, directOnly: true),
                     .init(
                         symbol: Mark.told,
-                        title: "One summary when you return",
+                        title: "Sharper returns",
                         body: """
-                            If Belay kept your Mac awake while you were away, you \
-                            get one notification when you return: how long it held \
-                            and how many runs finished. Statistics now also shows \
-                            your recent sessions.
+                            Closing the lid no longer eats the "while you were \
+                            away" summary, and the summary now mentions if your \
+                            Mac ran hot.
                             """)
                 ]
             )

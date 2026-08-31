@@ -1,0 +1,28 @@
+<!-- What Sparkle shows for 1.7.0. One file per version, English only. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.7.0</h2>
+<ul>
+  <li><b>The panel shows what agents are doing.</b> Small badges beside each
+      working session – shell, editing, search – straight from the agent's
+      own hooks. Categories only, never your prompts or code.</li>
+  <li><b>Background tasks keep the hold.</b> A turn that ends with monitors
+      or shell jobs still running keeps your Mac awake – bounded, and the
+      panel says so with a "bg task" badge.</li>
+  <li><b>Hooks tidy up after themselves.</b> Belay's entries leave the
+      agents' settings when it quits and return on launch, so a closed Belay
+      never leaves an agent talking to a dead port.</li>
+  <li><b>Sharper returns.</b> Closing the lid no longer eats the
+      while-you-were-away summary, and the summary now mentions when the Mac
+      ran hot.</li>
+</ul>
+<p class="quiet">Also: dark wakes no longer log as stalls, and two sessions
+trading turns no longer flood the diagnostics log.</p>

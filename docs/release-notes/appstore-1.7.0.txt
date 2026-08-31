@@ -1,0 +1,33 @@
+App Store "What’s New in This Version" – Belay 1.7.0
+
+Nothing here may mention Precise Detection, hooks, badges, or the background
+bracket: the App Store build has none of them. The store-true changes are the
+away-summary fixes and the quieter diagnostics.
+
+--- EN ---
+
+Better returns: the "while you were away" summary no longer gets lost when you close the lid, and it now mentions if your Mac ran hot while you were gone. Plus quieter, more accurate diagnostics under the hood.
+
+--- RU ---
+
+Возвращаться стало приятнее: сводка «пока вас не было» больше не теряется при закрытии крышки и теперь сообщает, если Mac нагревался в ваше отсутствие. Плюс более тихая и точная диагностика под капотом.
+
+--- DE ---
+
+Bessere Rückkehr: Die Zusammenfassung „Während Sie weg waren“ geht beim Schließen des Deckels nicht mehr verloren und erwähnt jetzt, wenn der Mac in Ihrer Abwesenheit heiß lief. Dazu leisere, genauere Diagnosen unter der Haube.
+
+--- ES ---
+
+Mejores regresos: el resumen «mientras no estabas» ya no se pierde al cerrar la tapa, y ahora menciona si el Mac se calentó en tu ausencia. Además, diagnósticos más silenciosos y precisos.
+
+--- FR ---
+
+De meilleurs retours : le résumé « pendant votre absence » ne se perd plus à la fermeture du capot et signale désormais si le Mac a chauffé en votre absence. Avec des diagnostics plus discrets et précis.
+
+--- IT ---
+
+Ritorni migliori: il riepilogo «mentre eri via» non si perde più chiudendo il coperchio e ora segnala se il Mac si è scaldato in tua assenza. In più, diagnostica più silenziosa e precisa.
+
+--- ZH ---
+
+回来时更省心：“在您离开期间”小结不会再因合上盖子而丢失，并且现在会提示 Mac 在您离开时是否温度较高。此外，内部诊断更安静、更准确。

@@ -1928,52 +1928,6 @@
         }
       }
     },
-    "A few rough edges are fixed": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A few rough edges are fixed"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Исправили несколько мелочей"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein paar Ecken sind geglättet"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hemos pulido algunos detalles"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quelques détails ont été corrigés"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sistemati alcuni dettagli"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "修复了一些小问题"
-          }
-        }
-      }
-    },
     "A session appears here once it ends, if it ran for at least a minute.": {
       "localizations": {
         "en": {
@@ -5947,6 +5901,52 @@
         }
       }
     },
+    "Belay's entries leave the agents' settings when it quits and come back on launch, so a closed Belay never leaves an agent talking to a dead port.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay's entries leave the agents' settings when it quits and come back on launch, so a closed Belay never leaves an agent talking to a dead port."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Записи Belay покидают настройки агентов при выходе и возвращаются при запуске, так что закрытый Belay больше не оставляет агента говорить с мёртвым портом."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belays Einträge verlassen die Agent-Einstellungen beim Beenden und kehren beim Start zurück – ein geschlossenes Belay lässt keinen Agent mehr mit einem toten Port sprechen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las entradas de Belay salen de los ajustes de los agentes al cerrarse y vuelven al arrancar: un Belay cerrado ya no deja a un agente hablando con un puerto muerto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les entrées de Belay quittent les réglages des agents à la fermeture et reviennent au lancement : un Belay fermé ne laisse plus un agent parler à un port mort."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le voci di Belay lasciano le impostazioni degli agenti alla chiusura e tornano all'avvio: un Belay chiuso non lascia più un agente a parlare con una porta morta."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 的条目在退出时离开智能体的设置，在启动时回来。关闭的 Belay 不会再让智能体对着一个无人应答的端口说话。"
+          }
+        }
+      }
+    },
     "Belay's saved permission for %@ is no longer valid.": {
       "extractionState": "manual",
       "localizations": {
@@ -6738,6 +6738,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "合盖工作"
+          }
+        }
+      }
+    },
+    "Closing the lid no longer eats the \"while you were away\" summary, and the summary now mentions if your Mac ran hot.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Closing the lid no longer eats the \"while you were away\" summary, and the summary now mentions if your Mac ran hot."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрытие крышки больше не съедает сводку «пока вас не было», а сама сводка теперь сообщает, если Mac нагревался."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Schließen des Deckels verschluckt die Zusammenfassung „Während Sie weg waren“ nicht mehr, und sie erwähnt jetzt, wenn der Mac heiß lief."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerrar la tapa ya no se traga el resumen de «mientras no estabas», y el resumen ahora menciona si el Mac se calentó."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fermer le capot n'avale plus le résumé « pendant votre absence », et le résumé signale désormais si le Mac a chauffé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chiudere il coperchio non inghiotte più il riepilogo «mentre eri via», e il riepilogo ora segnala se il Mac si è scaldato."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合上盖子不会再吞掉“在您离开期间”小结，小结现在还会提示 Mac 是否温度较高。"
           }
         }
       }
@@ -8843,6 +8889,52 @@
         }
       }
     },
+    "Hooks tidy up after themselves": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks tidy up after themselves"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хуки убирают за собой"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks räumen hinter sich auf"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los hooks recogen al salir"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hooks rangent derrière eux"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gli hook mettono in ordine"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "钩子会自己收尾"
+          }
+        }
+      }
+    },
     "How long Belay waits after an agent goes quiet before letting your Mac sleep.": {
       "localizations": {
         "de": {
@@ -8979,98 +9071,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "空闲"
-          }
-        }
-      }
-    },
-    "If Belay kept your Mac awake while you were away, you get one notification when you return: how long it held and how many runs finished. Statistics now also shows your recent sessions.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If Belay kept your Mac awake while you were away, you get one notification when you return: how long it held and how many runs finished. Statistics now also shows your recent sessions."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если Belay не давал Mac уснуть, пока вас не было, по возвращении придёт одно уведомление: сколько длилось удержание и сколько запусков завершилось. В статистике теперь видны и недавние сессии."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hat Belay deinen Mac wach gehalten, während du weg warst, bekommst du bei deiner Rückkehr eine Mitteilung: wie lange der Hold lief und wie viele Läufe abgeschlossen wurden. In der Statistik siehst du jetzt auch deine letzten Sitzungen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Belay mantuvo tu Mac despierto mientras estabas fuera, al volver recibes una sola notificación: cuánto tiempo lo mantuvo despierto y cuántas ejecuciones terminaron. Estadísticas ahora también muestra tus sesiones recientes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Belay a gardé votre Mac éveillé pendant votre absence, vous recevez une seule notification à votre retour : la durée du maintien et le nombre d’exécutions terminées. Les Statistiques affichent désormais aussi vos sessions récentes."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se Belay ha tenuto sveglio il Mac mentre eri via, al ritorno ricevi una sola notifica: per quanto tempo e quante esecuzioni sono terminate. Nelle Statistiche ora trovi anche le sessioni recenti."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果 Belay 在你离开期间保持了 Mac 唤醒，返回时会收到一条通知：保持了多久，以及完成了多少次运行。统计中现在也会显示最近的会话。"
-          }
-        }
-      }
-    },
-    "If the connection breaks during sleep, Belay restores it when your Mac wakes. Long tool calls also keep their hold through rapid back-to-back activity.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If the connection breaks during sleep, Belay restores it when your Mac wakes. Long tool calls also keep their hold through rapid back-to-back activity."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если связь прерывается во время сна, Belay восстанавливает её после пробуждения Mac. Долгие вызовы инструментов тоже больше не теряют удержание при быстрой череде событий."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bricht die Verbindung im Ruhezustand ab, stellt Belay sie nach dem Aufwachen des Macs wieder her. Lange Tool-Aufrufe verlieren ihren Hold auch bei schneller Folge nicht mehr."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si la conexión se interrumpe mientras el Mac duerme, Belay la restaura al despertar. Las llamadas largas a herramientas tampoco pierden la retención durante actividad rápida en cadena."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si la connexion est interrompue pendant la veille, Belay la rétablit au réveil du Mac. Les longs appels d’outils conservent aussi le maintien lors d’activités rapprochées."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono il hold durante attività ravvicinate."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如果连接在 Mac 睡眠期间中断，Belay 会在唤醒后自动恢复。长时间的工具调用在快速连续活动中也不会再丢失保持唤醒状态。"
           }
         }
       }
@@ -11690,52 +11690,6 @@
         }
       }
     },
-    "One summary when you return": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One summary when you return"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Одна сводка по возвращении"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Zusammenfassung bei deiner Rückkehr"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un resumen al volver"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un résumé à votre retour"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un riepilogo al tuo ritorno"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "返回时查看一份小结"
-          }
-        }
-      }
-    },
     "Open Belay at login": {
       "extractionState": "manual",
       "localizations": {
@@ -12526,52 +12480,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "精确检测"
-          }
-        }
-      }
-    },
-    "Precise Detection reconnects automatically": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Precise Detection reconnects automatically"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Точное определение восстанавливает связь само"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präzise Erkennung verbindet sich automatisch neu"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La detección precisa se reconecta automáticamente"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La détection précise se reconnecte automatiquement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il rilevamento preciso si riconnette automaticamente"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "精确检测会自动重新连接"
           }
         }
       }
@@ -13744,6 +13652,52 @@
         }
       }
     },
+    "Sharper returns": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sharper returns"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Возвращаться стало приятнее"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bessere Rückkehr"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mejores regresos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De meilleurs retours"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritorni migliori"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回来时更省心"
+          }
+        }
+      }
+    },
     "Shortens the sleep delay after your agent finishes.": {
       "localizations": {
         "de": {
@@ -14349,6 +14303,52 @@
         }
       }
     },
+    "Small badges beside each working session – shell, editing, search – straight from the agent's own hooks. And a turn that ends with background tasks still running now keeps your Mac awake, with a \"bg task\" badge saying why.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Small badges beside each working session – shell, editing, search – straight from the agent's own hooks. And a turn that ends with background tasks still running now keeps your Mac awake, with a \"bg task\" badge saying why."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Маленькие бейджи рядом с каждой работающей сессией – shell, правка, поиск – прямо из хуков самого агента. А ход, завершившийся с работающими фоновыми задачами, теперь держит Mac в бодрствовании, и бейдж «фон. задача» объясняет почему."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kleine Badges neben jeder arbeitenden Sitzung – Shell, Bearbeiten, Suche – direkt aus den Hooks des Agents. Und ein Zug, der mit laufenden Hintergrundaufgaben endet, hält den Mac jetzt wach; ein „bg task“-Badge sagt warum."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pequeñas insignias junto a cada sesión activa – shell, edición, búsqueda – directamente de los hooks del propio agente. Y un turno que termina con tareas en segundo plano ahora mantiene el Mac despierto, con una insignia «fondo» que explica por qué."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De petits badges à côté de chaque session active – shell, édition, recherche – directement issus des hooks de l'agent. Et un tour qui se termine avec des tâches d'arrière-plan encore actives garde désormais le Mac éveillé, avec un badge « fond » qui explique pourquoi."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piccoli badge accanto a ogni sessione al lavoro – shell, modifica, ricerca – direttamente dagli hook dell'agente. E un turno che finisce con attività in background ancora attive ora tiene sveglio il Mac, con un badge «bg task» che spiega perché."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每个工作中的会话旁边都有小徽章：命令、编辑、搜索，直接来自智能体自己的钩子。回合结束时若仍有后台任务在运行，Mac 现在会保持唤醒，“后台”徽章会说明原因。"
+          }
+        }
+      }
+    },
     "Software updates": {
       "extractionState": "manual",
       "localizations": {
@@ -14861,52 +14861,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "统计"
-          }
-        }
-      }
-    },
-    "Statistics no longer flicker on hover, and a past Until time no longer starts a timer for tomorrow.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statistics no longer flicker on hover, and a past Until time no longer starts a timer for tomorrow."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Статистика больше не мерцает при наведении, а уже прошедшее время «До» больше не запускает таймер на завтра."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Statistik flackert beim Überfahren nicht mehr, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las estadísticas ya no parpadean al pasar el cursor y una hora «Hasta» ya pasada no inicia un temporizador para mañana."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les statistiques ne clignotent plus au survol et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le statistiche non sfarfallano più al passaggio del puntatore e un orario «Fino a» già passato non avvia più un timer per il giorno successivo."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "统计数据在悬停时不再闪烁，已经过去的“截止”时间也不会再启动明天的计时器。"
           }
         }
       }
@@ -15654,6 +15608,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "Belay 保持 Mac 唤醒的最长时间，超过后就会放手。达到上限时会通知你。"
+          }
+        }
+      }
+    },
+    "The panel shows what agents are doing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The panel shows what agents are doing"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Панель показывает, чем заняты агенты"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Panel zeigt, was die Agents tun"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El panel muestra qué hacen los agentes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le panneau montre ce que font les agents"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il pannello mostra cosa fanno gli agenti"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "面板会显示智能体在做什么"
           }
         }
       }
