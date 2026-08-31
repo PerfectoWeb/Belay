@@ -59,6 +59,7 @@ extension BelayController {
                     switch event {
                     case .willSleep:
                         Diagnostics.note("system sleep")
+                        await self?.awayWatch.noteWillSleep()
                         await assertions.release()
                     case .didWake:
                         // Every timestamp we hold predates the sleep and is
@@ -66,6 +67,7 @@ extension BelayController {
                         // The watchdog's beat is one of those timestamps.
                         Diagnostics.resetBeat()
                         Diagnostics.note("system wake")
+                        await self?.awayWatch.noteDidWake()
                         await coordinator.resync()
                     }
                     self?.refreshSnapshot()

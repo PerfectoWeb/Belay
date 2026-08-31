@@ -74,6 +74,30 @@ final class AwaySummaryTests: XCTestCase {
         XCTAssertEqual(report?.finishedRuns, 0, "a finish they watched needs no retelling")
     }
 
+    /// Closing the lid resets the idle clock exactly as the user leaves; a
+    /// summary fired into a closing lid burns the stretch the real return
+    /// deserved.
+    func testSleepIsNotAReturn() {
+        var summary = AwaySummary()
+        var now = start
+        XCTAssertNil(summary.tick(idle: 6 * 60, holding: true, now: now))
+        for _ in 0..<20 {
+            now += 30
+            XCTAssertNil(summary.tick(idle: 10 * 60, holding: true, now: now))
+        }
+        // The lid closes: an input event zeroes the idle clock, then sleep.
+        summary.noteWillSleep()
+        now += 5
+        XCTAssertNil(summary.tick(idle: 1, holding: false, now: now), "not a return")
+
+        // Hours later the lid opens — that input IS the return.
+        summary.noteDidWake()
+        now += 3 * 3600
+        let report = summary.tick(idle: 2, holding: false, now: now)
+        XCTAssertNotNil(report, "the stretch survived the nap")
+        XCTAssertEqual(report!.heldAway, 20 * 30, accuracy: 1, "sleep added nothing")
+    }
+
     func testPeakThermalIsRemembered() {
         var summary = AwaySummary()
         var now = start

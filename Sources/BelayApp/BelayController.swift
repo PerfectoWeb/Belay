@@ -40,7 +40,7 @@ final class BelayController {
     private var trigger = AnnouncementTrigger()
     var history = SessionHistoryTracker()
     let historyStore = SessionHistoryStore()
-    private lazy var awayWatch = AwayReturnWatch { [weak self] report in
+    lazy var awayWatch = AwayReturnWatch { [weak self] report in
         guard let self else { return }
         Task { @MainActor in
             await self.notifier.whileYouWereAway(

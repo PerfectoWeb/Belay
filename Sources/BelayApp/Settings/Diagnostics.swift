@@ -29,7 +29,11 @@ enum Diagnostics {
     static var file: URL { folder.appendingPathComponent("belay.log") }
 
     private static var watchdog: Timer?
-    private static var beat = Date()
+    // `systemUptime`, not `Date`: the wall clock keeps running while the Mac
+    // sleeps, and a dark wake fires this timer without any wake notification —
+    // every nap over five seconds then read as "the main thread stalled".
+    // Uptime stands still with the machine, so a gap in it is a real stall.
+    private static var beat = ProcessInfo.processInfo.systemUptime
 
     /// Turns collection on or off. Safe to call with the value it already has.
     static func setEnabled(_ on: Bool) {
@@ -64,9 +68,9 @@ enum Diagnostics {
         // gap between ticks catches it from outside.
         let timer = Timer(timeInterval: 2, repeats: true) { _ in
             MainActor.assumeIsolated {
-                let gap = Date().timeIntervalSince(beat)
+                let gap = ProcessInfo.processInfo.systemUptime - beat
                 if gap > 5 { write("the main thread stalled for \(Int(gap))s") }
-                beat = Date()
+                beat = ProcessInfo.processInfo.systemUptime
             }
         }
         timer.tolerance = 0.5
@@ -115,7 +119,7 @@ enum Diagnostics {
     /// length — which then reads as "the main thread stalled for 69s" over a
     /// stall that never happened. The beat restarts at the wake instead.
     static func resetBeat() {
-        beat = Date()
+        beat = ProcessInfo.processInfo.systemUptime
     }
 
     static func write(_ line: String) {

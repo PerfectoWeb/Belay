@@ -30,6 +30,14 @@ struct AwaySummary: Equatable {
     private var finishedRuns = 0
     private var peakThermal = 0
     private var lastTick: Date?
+    /// Between willSleep and didWake nothing counts as a return: closing the
+    /// lid is itself an input event, so the idle clock resets exactly as the
+    /// user leaves — and the summary used to fire into a closing lid, burning
+    /// the stretch the real return deserved.
+    private var sleeping = false
+
+    mutating func noteWillSleep() { sleeping = true }
+    mutating func noteDidWake() { sleeping = false }
 
     /// Whether anything is being accumulated or waited for. The watch uses
     /// this to stop its timer the moment there is nothing left to observe.
@@ -48,7 +56,9 @@ struct AwaySummary: Equatable {
         idle: TimeInterval, holding: Bool, thermal: Int = 0, now: Date
     ) -> Report? {
         defer { lastTick = now }
-        let isAway = AwayTime.isAway(idle)
+        // While the machine sleeps the user is away by definition, whatever
+        // the input clock claims.
+        let isAway = sleeping || AwayTime.isAway(idle)
 
         if away { peakThermal = max(peakThermal, thermal) }
 
@@ -111,6 +121,14 @@ final class AwayReturnWatch {
 
     func noteFinished() {
         summary.noteFinished()
+    }
+
+    func noteWillSleep() {
+        summary.noteWillSleep()
+    }
+
+    func noteDidWake() {
+        summary.noteDidWake()
     }
 
     private func tick(now: Date) {

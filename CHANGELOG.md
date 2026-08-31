@@ -28,6 +28,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   thermal state during the absence, the banner says so — in `ProcessInfo`'s
   own words, never a guessed temperature.
 
+### Fixed
+
+- Closing the lid no longer counts as coming back: the lid press is itself an
+  input event, so the while-you-were-away summary used to fire into a closing
+  lid and the real return got nothing. Sleep now suspends the return check;
+  opening the lid is the return.
+- Dark wakes no longer read as main-thread stalls in the diagnostics log: the
+  watchdog's beat now runs on `systemUptime`, which stands still with the
+  machine, instead of the wall clock, which does not.
+
 ### Removed
 
 - Six internal planning documents that had served their purpose left docs/
