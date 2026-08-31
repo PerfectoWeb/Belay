@@ -15,6 +15,7 @@ struct PanelSessionRow: View {
     var onToggle: (() -> Void)?
 
     @Environment(\.colorSchemeContrast) private var contrast
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         if let onToggle {
@@ -82,23 +83,28 @@ struct PanelSessionRow: View {
     /// at most; the rest become "+N".
     @ViewBuilder private var badgeRow: some View {
         let badges = session.badges
-        if session.rollup.isLive, !badges.isEmpty {
-            HStack(spacing: 3) {
+        // Появление и уход — мягкие: меню может быть открыто в момент
+        // смены, и капсула должна вплывать, а не мигать.
+        HStack(spacing: 4) {
+            if session.rollup.isLive {
                 ForEach(Array(badges.prefix(2).enumerated()), id: \.offset) { _, badge in
                     capsule(Self.label(for: badge))
+                        .transition(.opacity.combined(with: .scale(scale: 0.85)))
                 }
                 if badges.count > 2 {
                     capsule(Text(verbatim: "+\(badges.count - 2)"))
+                        .transition(.opacity.combined(with: .scale(scale: 0.85)))
                 }
             }
-            .accessibilityHidden(true)
         }
+        .animation(reduceMotion ? nil : .easeOut(duration: 0.3), value: badges)
+        .accessibilityHidden(true)
     }
 
     // 1:1 to David's mock: no fill, a one-pixel border, regular weight.
     private func capsule(_ text: Text) -> some View {
         text
-            .font(.system(size: 9))
+            .font(.system(size: 9, weight: .light))
             .foregroundStyle(.secondary)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
@@ -108,7 +114,7 @@ struct PanelSessionRow: View {
     static func label(for badge: SessionRow.Badge) -> Text {
         switch badge {
         case .tool(let tool): return Text(tool.badgeLabel)
-        case .background: return Text("background")
+        case .background: return Text("bg task")
         }
     }
 

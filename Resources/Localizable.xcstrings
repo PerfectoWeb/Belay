@@ -18320,24 +18320,24 @@
         }
       }
     },
-    "background": {
+    "bg task": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "background"
+            "value": "bg task"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "фон"
+            "value": "фон. задача"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hintergrund"
+            "value": "bg task"
           }
         },
         "es": {
@@ -18349,13 +18349,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "arrière-plan"
+            "value": "fond"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "background"
+            "value": "bg task"
           }
         },
         "zh-Hans": {
@@ -19359,7 +19359,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "команда"
+            "value": "shell"
           }
         },
         "de": {
@@ -19405,7 +19405,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "инструмент"
+            "value": "тулза"
           }
         },
         "de": {
@@ -19498,7 +19498,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "веб"
+            "value": "серфинг"
           }
         },
         "de": {
