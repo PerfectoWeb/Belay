@@ -22,6 +22,10 @@ final class LidHoldController {
     private var machine = LidHold()
     private var ticker: Timer?
     private var connection: NSXPCConnection?
+    /// Consecutive XPC failures, for the log's sake only. The heartbeat must
+    /// keep retrying — it is what the helper's own leash is counting on — but
+    /// 828 identical lines in four days said nothing 21 would not.
+    private var xpcFailures = 0
 
     /// What the settings row shows. Published through `AppState.onChange`-free
     /// observation: the row reads it directly each render.
@@ -127,9 +131,19 @@ final class LidHoldController {
     }
 
     private func heartbeat() {
-        proxy()?.keepSleepDisabled(until: Date().addingTimeInterval(Self.leash)) { up in
+        proxy()?.keepSleepDisabled(until: Date().addingTimeInterval(Self.leash)) { [weak self] up in
+            Task { @MainActor in self?.xpcFailures = 0 }
             if !up { Diagnostics.appendFromAnywhere("lid heartbeat refused up=0") }
         }
+    }
+
+    /// First failure loudly, then one line in forty (about ten minutes at the
+    /// sweep's pace): the fact is preserved, the flood is not.
+    private func noteXPCFailure(_ description: String) {
+        xpcFailures += 1
+        guard xpcFailures == 1 || xpcFailures.isMultiple(of: 40) else { return }
+        Diagnostics.appendFromAnywhere(
+            "lid xpc error=\"\(description)\" (\(xpcFailures) in a row)")
     }
 
     private func standDown(cause: String) {
@@ -153,9 +167,9 @@ final class LidHoldController {
         // `@Sendable`, deliberately: the handler runs on the connection's own
         // queue, and a closure born in a main-actor method otherwise inherits
         // that isolation and traps the moment XPC calls it off-main.
-        return connection?.remoteObjectProxyWithErrorHandler { @Sendable error in
-            Diagnostics.appendFromAnywhere(
-                "lid xpc error=\"\(error.localizedDescription)\"")
+        return connection?.remoteObjectProxyWithErrorHandler { @Sendable [weak self] error in
+            let description = error.localizedDescription
+            Task { @MainActor in self?.noteXPCFailure(description) }
         } as? LidHelperProtocol
     }
 }
