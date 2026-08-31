@@ -3,8 +3,47 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.6.4</title>
+            <pubDate>Mon, 31 Aug 2026 12:00:14 +0300</pubDate>
+            <sparkle:version>16</sparkle:version>
+            <sparkle:shortVersionString>1.6.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.6.4. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.6.4</h2>
+<ul>
+  <li><b>Precise Detection reconnects itself.</b> If the connection to an
+      agent breaks during sleep, Belay restores it when your Mac wakes.
+      No relaunch needed.</li>
+  <li><b>Long tool calls keep holding.</b> Rapid back-to-back activity no
+      longer interrupts the hold during a long build or test run.</li>
+  <li><b>One summary when you come back.</b> If Belay kept your Mac awake
+      while you were away, it shows how long it held and how many runs
+      finished. Statistics now also has a sortable list of recent sessions.</li>
+  <li><b>A few rough edges are fixed.</b> Statistics no longer flicker on
+      hover, and an Until time that has already passed no longer starts a
+      timer for tomorrow.</li>
+</ul>
+<p class="quiet">Also: watched Cline sessions end when their files disappear,
+old imported conversations no longer look active, and diagnostics stay fully
+off when Local Reports is off.</p>]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.4/Belay-1.6.4.dmg" length="7253659" type="application/octet-stream" sparkle:edSignature="e0WbJ7SNLLKqBRqowlPwT0iJAxHphMm3EglWIUM3HdEXZQIQooumQvQQHCQ3QbIX1Q1/Fh2CpUwp1+oEZxdwBg=="/>
+        </item>
+        <item>
             <title>1.6.3</title>
-            <pubDate>Fri, 28 Aug 2026 18:45:38 +0300</pubDate>
+            <pubDate>Mon, 31 Aug 2026 12:00:16 +0300</pubDate>
             <sparkle:version>15</sparkle:version>
             <sparkle:shortVersionString>1.6.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -36,7 +75,7 @@ which port it uses, and which agent settings it updates.</p>]]></description>
         </item>
         <item>
             <title>1.6.2</title>
-            <pubDate>Fri, 28 Aug 2026 18:45:41 +0300</pubDate>
+            <pubDate>Mon, 31 Aug 2026 12:00:18 +0300</pubDate>
             <sparkle:version>14</sparkle:version>
             <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -69,7 +108,7 @@ flooding the log.</p>]]></description>
         </item>
         <item>
             <title>1.6.1</title>
-            <pubDate>Fri, 28 Aug 2026 18:45:43 +0300</pubDate>
+            <pubDate>Mon, 31 Aug 2026 12:00:20 +0300</pubDate>
             <sparkle:version>13</sparkle:version>
             <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -106,7 +145,7 @@ exit Belay records what happened in the log on the next launch.</p>]]></descript
         </item>
         <item>
             <title>1.6.0</title>
-            <pubDate>Fri, 28 Aug 2026 18:45:46 +0300</pubDate>
+            <pubDate>Mon, 31 Aug 2026 12:00:22 +0300</pubDate>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -143,47 +182,6 @@ dim consistently, and there&#8217;s a little more polish throughout the
 interface.</p>
 ]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.0/Belay-1.6.0.dmg" length="7076093" type="application/octet-stream" sparkle:edSignature="odscx6+zv0Mfz9MtapFZ1u22DvVo86Pd8bSuxZyMQmdbuz3QDN0xBUyWMw/85TZjdBfXuhdFprb1Q9jGAf7gCQ=="/>
-        </item>
-        <item>
-            <title>1.5.0</title>
-            <pubDate>Fri, 28 Aug 2026 18:45:48 +0300</pubDate>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.5.0. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.5.0</h2>
-<ul>
-  <li><b>Cline is now built in.</b> Turn it on in Settings and Belay
-      follows Cline sessions on its own. No folders to pick.</li>
-  <li><b>Precise Detection for every agent.</b> Claude Code, Codex, and
-      Cline can tell Belay the exact moment work starts, finishes, or
-      waits for you. One click in Settings; Belay shows exactly what it
-      will write before touching anything, and Remove puts it back.</li>
-  <li><b>Agent teams in the panel.</b> When Cline spawns teammate agents,
-      they appear under their session, just like Claude Code
-      subagents.</li>
-  <li><b>Settings, sharpened.</b> Each agent&#8217;s detection now lives in
-      its own tile, and every pane reads cleaner.</li>
-</ul>
-<p class="quiet">Also: sessions touched by other apps&#8217; importers no
-longer wake the panel, the agent switches draw honestly from the first
-frame, and running the test suite can no longer disturb a running
-Belay.</p>
-]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.5.0/Belay-1.5.0.dmg" length="6878589" type="application/octet-stream" sparkle:edSignature="bvotHC0vN8sYIkfX8pisteKMJ8HJ2U0HMO8OjELi7b7KK+i8dqggPEb9UDNvOsTkR+J00hXdDqz41DDUT98GDQ=="/>
         </item>
     </channel>
 </rss>
