@@ -12,8 +12,9 @@ import Foundation
 /// body goes to nothing else.
 ///
 /// The two beyond the original four hold to that line: `toolName` is the name
-/// of a tool, not its input, and `backgroundTasks` is how many entries the
-/// `background_tasks` array had — the entries themselves are never decoded.
+/// of a tool, not its input, and `backgroundTasks` is how many entries of the
+/// `background_tasks` array are running work — of each entry only `type` and
+/// `status` are read, never the description or command.
 ///
 /// It is deliberately not `public`. Nothing outside the bridge should be able to
 /// construct or hold a value that came from a prompt-bearing payload.
@@ -52,10 +53,19 @@ extension HookEnvelope: Decodable {
         case backgroundTasks = "background_tasks"
     }
 
-    /// Decodes an array element without reading any of it: the count is the
-    /// only thing `background_tasks` is allowed to contribute.
+    /// Decodes only the two fields that decide whether an entry is work worth
+    /// staying awake for. Monitors are passive waits — an artifact watch or a
+    /// log tail loses nothing to sleep, yet one idle watch used to keep a
+    /// finished session "working" for the whole thirty-minute budget. And a
+    /// status other than running is by definition not running, whatever a
+    /// future CLI decides to include in the array.
     private struct Counted: Decodable {
-        init(from decoder: Decoder) throws {}
+        let type: String?
+        let status: String?
+
+        var isRunningWork: Bool {
+            type != "monitor" && (status ?? "running") == "running"
+        }
     }
 
     init(from decoder: Decoder) throws {
@@ -69,7 +79,7 @@ extension HookEnvelope: Decodable {
         // one day must not take the whole envelope down with it.
         backgroundTasks =
             (try? container.decodeIfPresent([Counted].self, forKey: .backgroundTasks))?
-            .count
+            .count(where: \.isRunningWork)
     }
 }
 

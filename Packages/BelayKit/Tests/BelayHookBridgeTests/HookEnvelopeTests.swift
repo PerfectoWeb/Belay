@@ -24,9 +24,10 @@ struct HookEnvelopeTests {
         #expect(String(describing: envelope).contains(HookReceiverTests.secret) == false)
     }
 
-    /// A Stop that reports live background tasks is still work; an empty or
-    /// absent array ends the turn as before. The entries themselves are never
-    /// read — a count survives even entries shaped like nothing we expect.
+    /// A Stop that reports running background work is still work; an empty or
+    /// absent array ends the turn as before. Only `type` and `status` of each
+    /// entry are read — the count survives entries shaped like nothing we
+    /// expect, and those count as work (unknown means running, not monitor).
     @Test func stopWithBackgroundTasksKeepsWorking() throws {
         let busy =
             #"{"session_id":"s","hook_event_name":"Stop","background_tasks":[{"id":"t","secret":"x"}]}"#
@@ -37,6 +38,24 @@ struct HookEnvelopeTests {
         #expect(try decode(absent).signal(at: Date())?.activity == .idle)
         let mangled = #"{"session_id":"s","hook_event_name":"Stop","background_tasks":7}"#
         #expect(try decode(mangled).signal(at: Date())?.activity == .idle)
+    }
+
+    /// The 52-finished-tasks session: an artifact watch is a passive wait and
+    /// a completed shell is history — neither keeps a Mac awake. One genuinely
+    /// running shell among them still does.
+    @Test func passiveAndFinishedEntriesDoNotHold() throws {
+        let watches =
+            #"{"session_id":"s","hook_event_name":"Stop","background_tasks":"#
+            + #"[{"type":"monitor","status":"running"},{"type":"monitor","status":"running"}]}"#
+        #expect(try decode(watches).signal(at: Date())?.activity == .idle)
+        let finished =
+            #"{"session_id":"s","hook_event_name":"Stop","background_tasks":"#
+            + #"[{"type":"shell","status":"completed"},{"type":"shell","status":"failed"}]}"#
+        #expect(try decode(finished).signal(at: Date())?.activity == .idle)
+        let mixed =
+            #"{"session_id":"s","hook_event_name":"Stop","background_tasks":"#
+            + #"[{"type":"monitor","status":"running"},{"type":"shell","status":"running"}]}"#
+        #expect(try decode(mixed).signal(at: Date())?.activity == .working)
     }
 
     /// SubagentStop trails the turn's own Stop by seconds and used to pin the

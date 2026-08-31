@@ -39,6 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Two sessions trading turns no longer write a "hold on" log line every few
   seconds: only the off-to-on edge is news, and each session's own
   transitions were already logged.
+- A session whose only background tasks are passive watches (artifact
+  monitors) or already-finished jobs no longer reads as working – the
+  background bracket now counts only running work.
 - The token counter no longer runs the full JSON decoder over every
   transcript line — only records that carry a `usage` block are parsed,
   halving the provider's CPU on a busy session.
