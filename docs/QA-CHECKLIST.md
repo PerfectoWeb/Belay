@@ -41,8 +41,13 @@ for our bundle ID, which is not ours. Match on the pid.
 - [x] Force-quit (`kill -9`) while holding → assertion self-releases within the
       timeout window. **This is invariant 2 and the single most important check
       in this document.** Observed 2026-08-12 (see the invariant-2 row above).
-- [ ] `SIGTERM` → releases and exits
-- [ ] Sleep the Mac manually, wake it → state resyncs, no stale hold
+- [x] `SIGTERM` → releases and exits. Observed 2026-08-31: three assertions
+      (`system`, `display`, `network`) → none within two seconds, process gone,
+      and the 1.7.0 parking wrote its "parked hooks for quit" line on the way
+      out; the relaunch restored all fourteen entries on the same port.
+- [x] Sleep the Mac, wake it → state resyncs, no stale hold. Observed in the
+      2026-08-31 soak (13:05:56 sleep: all three assertions released at the
+      notification; 13:09:35 wake: re-armed fresh, no stale hold in between).
 - [ ] Battery guard: unplug below the floor → releases, panel says why; plug back
       in → re-arms
 
@@ -54,19 +59,24 @@ for our bundle ID, which is not ours. Match on the pid.
 - [x] A real Claude Code session is detected with zero configuration →
       `Details: An agent is working in <project>`
 - [x] Several concurrent sessions aggregate → `2 agent sessions are working`
-- [ ] Start a real long Claude Code task → assertion appears within ~5 s
-- [ ] Assertion persists through the whole run, including a long tool call with
-      no transcript growth (`docs/DISCOVERY.md` §2.2 shows a real 10 s silence)
+- [x] Start a real long Claude Code task → assertion appears within ~5 s.
+      2026-08-31 11:58:23: `UserPromptSubmit` and `hold on` share a timestamp.
+- [x] Assertion persists through the whole run, including a long tool call with
+      no transcript growth. 2026-08-31: repeated four-minute foreground
+      `sleep` tool calls (the badge demos) held continuously — the open
+      tool-call bracket carrying exactly this case.
 - [ ] Assertion **disappears** within grace + 10 s of the run finishing
 - [ ] Set system sleep to 1 minute, run a 10-minute task → no sleep during, then
       the Mac sleeps ~1 minute after it ends
 - [ ] `kill -9` the `claude` process mid-task → release within TTL
 - [x] Launch Belay with 45 old transcripts present → does **not** discover them
       as active sessions and pin the Mac awake
-- [ ] Hook events beyond `UserPromptSubmit`/`SessionEnd` observed for real.
-      Only those two were captured during discovery; the rest are mapped from
-      the live reference. Verify `PreToolUse`, `PostToolUse`, `Stop`,
-      `PermissionRequest`, `Notification` against an interactive session.
+- [x] Hook events beyond `UserPromptSubmit`/`SessionEnd` observed for real.
+      One 2026-08-31 soak day: `PreToolUse` ×1521, `PostToolUse` ×1513,
+      `PostToolBatch` ×1437, `Stop` ×140, `SubagentStart` ×26,
+      `StopFailure`, `PermissionRequest` and `Notification` ×1 each — every
+      mapped event seen live, plus `background_tasks` payloads verified
+      against a captured Stop.
 - [ ] Installing hooks does not measurably slow a Claude Code turn (time a turn
       with and without)
 - [ ] Uninstalling hooks restores `settings.json` exactly
@@ -121,12 +131,17 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ## 4. Performance (`docs/08` budgets)
 
-- [x] Active CPU < 1.0% during a real run – measured 0.072%
+- [!] Active CPU < 1.0% during a real run – 0.072% on the Release M1 build.
+      2026-08-31, Debug build, two live sessions and ~1500 hook posts: 2.04%,
+      traced by `sample` to the token counter running the full JSON decoder
+      over every delta line; a `"usage"` substring pre-filter cut it to 1.47%.
+      Debug carries the rest of the overhang — re-measure on the 1.7.0
+      Release artifact before publishing.
 - [!] Idle CPU < 0.1% – not yet measurable: real Claude Code sessions ran
       throughout every soak, so no interval was idle. Needs a quiet machine.
-- [x] Memory < 40 MB – `footprint` reports **23 MB** `phys_footprint` with every
-      provider and the hook receiver running (15 MB at M1, before Tier B and the
-      generic provider existed).
+- [x] Memory < 40 MB – 2026-08-31, 1.7.0 Debug with badges, history, tokens
+      and the away watch all live: **19 MB** `phys_footprint`, 20 MB peak
+      (23 MB at 1.5.0, 15 MB at M1).
       Measure with `footprint -p <pid>`, **not** `ps -o rss=`: RSS counts shared
       framework pages every app maps and reads ~75 MB here, which is misleading.
 - [ ] Footprint flat between the 30-minute and 8-hour marks
@@ -140,9 +155,8 @@ for our bundle ID, which is not ours. Match on the pid.
 
 - [x] Address sanitizer clean (`scripts/leak-check.sh`) – 118 results, 0 reports
 - [x] Thread sanitizer clean (`scripts/leak-check.sh --thread`) – 0 reports
-- [ ] Leak check proper. Darwin's ASan ships **without** LeakSanitizer, so the
-      clean run above proves no use-after-free or overflow, not no leaks. Use
-      Instruments Leaks for the real thing.
+- [x] Leak check proper. 2026-08-31: `leaks` against the live 1.7.0 process
+      after a full soak day — 30 727 nodes, **0 leaks, 0 bytes**.
 
 ## 5. Platform coverage
 
@@ -152,7 +166,11 @@ for our bundle ID, which is not ours. Match on the pid.
 
 ---
 
-**Last run:** 2026-08-12, M1 and M2 items, on macOS 26.4 / Xcode 26.6.
+**Last run:** 2026-08-31, power/detection/perf items re-run on the 1.7.0
+Debug build during the soak day, macOS 26.4 / Xcode 26.6. Found and fixed one
+regression in the act: the tokens counter was decoding every transcript line
+(2.04% CPU against the 1% budget) — pre-filtered to `"usage"` carriers.
+UI items (§3) remain eyes-only and are listed for a human pass.
 **Last VM run:** 2026-08-16, macOS 15.0, `scripts/qa-vm.sh`. Every mode held or
 released what it should, the 60-second cap fired at 60 seconds, no crash, and no
 `shutdown release timed out` line – which is the fix from this round showing up.

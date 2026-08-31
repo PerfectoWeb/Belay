@@ -35,7 +35,14 @@ enum TranscriptClassifier {
     /// it makes an afternoon read as a billion tokens. Numbers only; the R9
     /// boundary is untouched.
     static func tokens(in lines: [String]) -> Int {
-        lines.compactMap { TranscriptRecord(jsonLine: $0)?.tokens }.reduce(0, +)
+        // The substring check is the budget: only assistant records carry a
+        // usage block, and running the full decoder over every user and
+        // metadata line doubled the provider's CPU on a busy transcript —
+        // caught by the QA pass at 2% where the budget says 1.
+        lines.lazy
+            .filter { $0.contains("\"usage\"") }
+            .compactMap { TranscriptRecord(jsonLine: $0)?.tokens }
+            .reduce(0, +)
     }
 
     /// The newest record clock in the delta, or nil when no record carries one.
