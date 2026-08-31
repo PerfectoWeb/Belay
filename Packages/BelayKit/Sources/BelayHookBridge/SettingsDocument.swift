@@ -66,6 +66,18 @@ struct SettingsDocument: Sendable {
             let destination = backups.appendingPathComponent(
                 "\(prefix)-\(BackupStamp.text(for: now)).json")
             try Data(contentsOf: url).write(to: destination)
+            // Parking hooks on quit made backups routine rather than rare, and
+            // an uncapped pile of identical settings files serves nobody. The
+            // newest twenty stay; the stamp sorts lexically, so name order is
+            // age order.
+            let listing = try? manager.contentsOfDirectory(
+                at: backups, includingPropertiesForKeys: nil)
+            let siblings = (listing ?? [])
+                .filter { $0.lastPathComponent.hasPrefix("\(prefix)-") }
+                .sorted { $0.lastPathComponent > $1.lastPathComponent }
+            for stale in siblings.dropFirst(20) {
+                try? manager.removeItem(at: stale)
+            }
             return destination
         } catch {
             throw BridgeError.backupFailed(error.localizedDescription)

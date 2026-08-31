@@ -16,6 +16,9 @@ extension BelayController {
                 await signals.install { [weak self] in
                     await assertions.release()
                     await self?.bankUsageOnTermination()
+                    // killall and logout land here, not in shutdown(); the
+                    // hooks must leave on this road out too.
+                    await self?.providers.precise.parkForQuit()
                     // The goodbye the next launch reads a kill by: this path
                     // exits before `applicationWillTerminate` can write it.
                     Diagnostics.appendFromAnywhere("collection off")

@@ -89,3 +89,46 @@ extension PreciseDetection {
         }
     }
 }
+
+extension PreciseDetection {
+    // MARK: - Parking across quits
+
+    /// The quit half of parking: Belay's own entries leave the agents'
+    /// settings, so an agent used between quit and relaunch posts to nothing
+    /// and errors at nothing, instead of filling its terminal with
+    /// `ECONNREFUSED` against a port nobody answers. Only entries Belay owns,
+    /// under the standing consent that installed them; what was removed is
+    /// recorded, and only that comes back. Codex is deliberately not parked —
+    /// its uninstall re-trusts the project by spawning `codex app-server`,
+    /// which has no place inside a one-second quit.
+    func parkForQuit() {
+        guard Self.isSupported else { return }
+        var parked = ParkedHooks()
+        if (try? installer.isInstalled()) == true {
+            for installer in claudeInstallers { _ = try? installer.uninstall() }
+            parked.claude = true
+        }
+        if clineInstaller.isInstalled() {
+            for installer in clineInstallers { _ = installer.uninstall() }
+            parked.cline = true
+        }
+        guard !parked.isEmpty else { return }
+        ParkedHooksStore(paths: paths).save(parked)
+        EventLog.note("bridge parked hooks for quit")
+    }
+
+    /// The launch half: exactly what a quit removed, back where it was, at the
+    /// current port. Consumes the record, so it cannot re-add twice.
+    func restoreParked() {
+        let store = ParkedHooksStore(paths: paths)
+        guard let parked = store.load(), let endpoint else { return }
+        if parked.claude {
+            for installer in claudeInstallers { _ = try? installer.install(endpoint: endpoint) }
+        }
+        if parked.cline {
+            for installer in clineInstallers { _ = try? installer.install(endpoint: endpoint) }
+        }
+        store.clear()
+        EventLog.note("bridge restored parked hooks port=\(endpoint.port)")
+    }
+}

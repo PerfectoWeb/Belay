@@ -90,6 +90,7 @@ final class PreciseDetection {
         }
         do {
             endpoint = try await receiver.start()
+            restoreParked()
             isInstalled = (try? installer.isInstalled()) ?? false
             isCodexInstalled = (try? codexInstaller.isInstalled()) ?? false
             isClineInstalled = clineInstaller.isInstalled()

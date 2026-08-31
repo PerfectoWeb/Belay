@@ -44,7 +44,8 @@ final class BelayController {
         guard let self else { return }
         Task { @MainActor in
             await self.notifier.whileYouWereAway(
-                held: report.heldAway, finishedRuns: report.finishedRuns)
+                held: report.heldAway, finishedRuns: report.finishedRuns,
+                peakThermal: report.peakThermal)
         }
     }
     let notifier: Notifier
@@ -148,6 +149,10 @@ final class BelayController {
         // Bank the hold that is still running, or a long overnight run vanishes
         // from the statistics the moment the user quits.
         usage.flush()
+        // Belay's hook entries leave with it: a closed app answers on no
+        // port, and the agent's terminal should not spend the gap printing
+        // ECONNREFUSED. The next launch puts back exactly what this removed.
+        providers.precise.parkForQuit()
         relinquishAllScopes()
 
         let done = DispatchSemaphore(value: 0)
@@ -225,6 +230,7 @@ final class BelayController {
             guard !Task.isCancelled, let self else { return }
             self.usage.update(holdingSince: snapshot.holdingSince)
             let awake = self.awakeTally.update(holdingSince: snapshot.holdingSince)
+            self.state.showToolBadges = self.settings.showToolBadges
             self.state.apply(snapshot, totalAwake: awake)
             self.state.apply(warning: error?.errorDescription)
             // Keeps the Agents tiles' "last activity" current (frozen otherwise).
