@@ -107,6 +107,15 @@ enum ReleaseNotes {
                         body: """
                             Statistics no longer flicker on hover, and a past \
                             Until time no longer starts a timer for tomorrow.
+                            """),
+                    .init(
+                        symbol: Mark.told,
+                        title: "One summary when you return",
+                        body: """
+                            If Belay kept your Mac awake while you were away, you \
+                            get one notification when you return: how long it held \
+                            and how many runs finished. Statistics now also shows \
+                            your recent sessions.
                             """)
                 ]
             )

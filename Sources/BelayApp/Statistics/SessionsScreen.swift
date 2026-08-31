@@ -33,29 +33,29 @@ struct SessionsScreen: View {
                             Text(verbatim: record.agentName)
                         }
                     }
-                    .width(min: 120, ideal: 130, max: 150)
+                    .width(min: 110, ideal: 130, max: 140)
                     TableColumn(Text("Folder"), value: \.folder) { record in
                         Text(verbatim: record.folder)
                             .lineLimit(1)
                             .truncationMode(.middle)
                     }
-                    .width(min: 120, ideal: 180)
+                    .width(min: 110, ideal: 170, max: 200)
                     TableColumn(Text("Duration"), value: \.duration) { record in
                         Text(verbatim: ElapsedTime.compact(record.duration))
                             .monospacedDigit()
                     }
-                    .width(min: 64, ideal: 76, max: 96)
+                    .width(min: 60, ideal: 72, max: 80)
                     TableColumn(Text("Tokens"), value: \.tokensSort) { record in
                         Text(verbatim: record.tokensLabel)
                             .monospacedDigit()
                             .foregroundStyle(.secondary)
                     }
-                    .width(min: 60, ideal: 72, max: 90)
+                    .width(min: 56, ideal: 68, max: 84)
                     TableColumn(Text("Finished"), value: \.endedAt) { record in
-                        Text(record.endedAt, format: .relative(presentation: .named))
+                        Self.finished(record.endedAt)
                             .foregroundStyle(.secondary)
                     }
-                    .width(min: 104, ideal: 120, max: 140)
+                    .width(min: 100, ideal: 116, max: 130)
                 }
                 .tableStyle(.inset(alternatesRowBackgrounds: true))
                 // Fills whatever the window gives it, exactly: the columns'
@@ -65,6 +65,16 @@ struct SessionsScreen: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+    }
+
+    /// "11 hours ago" while recency still means something; a plain date once
+    /// it does not. Three days is where "4 days ago" stops being easier to
+    /// read than "27 Aug".
+    static func finished(_ date: Date, now: Date = Date()) -> Text {
+        if now.timeIntervalSince(date) < 3 * 86_400 {
+            return Text(date, format: .relative(presentation: .named))
+        }
+        return Text(date, format: .dateTime.day().month(.abbreviated))
     }
 
     /// The screen exists before its first finished session does; say so

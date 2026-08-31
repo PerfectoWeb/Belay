@@ -1,33 +1,46 @@
 App Store "What’s New in This Version" – Belay 1.6.4
 
 Nothing here may mention Precise Detection or hooks: the App Store build is
-sandboxed and has neither. The store-safe fixes are the statistics caption,
-the Until dialog, and the sheet/popover race.
+sandboxed and has neither.
 
 --- EN ---
 
-New: one summary when you come back – how long Belay held your Mac awake while you were away, and how many runs finished – plus a recent-sessions list in Statistics. A few rough edges are fixed. Statistics no longer flicker on hover, custom timer dialogs open reliably, and an Until time that has already passed no longer starts a timer for tomorrow.
+One summary when you return. See how long Belay kept your Mac awake while you were away and how many runs finished. Statistics now also includes a list of recent sessions.
+
+Also: Statistics no longer flicker on hover, custom timer dialogs open reliably, and a past Until time no longer starts a timer for tomorrow.
 
 --- RU ---
 
-Новое: одна сводка по возвращении – сколько Belay держал Mac в бодрствовании, пока вас не было, и сколько запусков завершилось – плюс список недавних сессий в статистике. Исправили несколько мелочей. Статистика больше не мерцает при наведении, окна настройки таймера открываются как надо, а уже прошедшее время «До» больше не запускает таймер на завтра.
+Сводка по возвращении. Посмотрите, сколько времени Belay не давал Mac уснуть, пока вас не было, и сколько запусков завершилось. В статистике теперь есть и список недавних сессий.
+
+А ещё: статистика больше не мерцает при наведении, окна настройки таймера открываются как надо, а прошедшее время «До» больше не запускает таймер на завтра.
 
 --- DE ---
 
-Neu: eine Zusammenfassung bei der Rückkehr – wie lange Belay Ihren Mac wach hielt und wie viele Läufe fertig wurden – plus eine Liste der letzten Sitzungen in der Statistik. Ein paar Ecken sind geglättet. Die Statistik flackert beim Überfahren nicht mehr, eigene Timer-Dialoge öffnen sich zuverlässig, und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen mehr.
+Eine Zusammenfassung bei deiner Rückkehr. Sieh, wie lange Belay deinen Mac während deiner Abwesenheit wach gehalten hat und wie viele Läufe abgeschlossen wurden. In der Statistik gibt es jetzt auch eine Liste der letzten Sitzungen.
+
+Außerdem: Die Statistik flackert beim Überfahren nicht mehr, Timer-Dialoge öffnen sich zuverlässig und eine bereits verstrichene „Bis“-Zeit startet keinen Timer für morgen mehr.
 
 --- ES ---
 
-Nuevo: un resumen al volver – cuánto tiempo mantuvo Belay tu Mac despierto y cuántas ejecuciones terminaron – más una lista de sesiones recientes en Estadísticas. Hemos pulido algunos detalles. Las estadísticas ya no parpadean al pasar el cursor, los diálogos del temporizador se abren correctamente y una hora «Hasta» que ya pasó no inicia un temporizador para mañana.
+Un resumen cuando vuelves. Consulta cuánto tiempo mantuvo Belay tu Mac despierto mientras estabas fuera y cuántas ejecuciones terminaron. Estadísticas ahora también incluye una lista de sesiones recientes.
+
+Además: las estadísticas ya no parpadean al pasar el cursor, los diálogos del temporizador se abren correctamente y una hora «Hasta» ya pasada no inicia un temporizador para mañana.
 
 --- FR ---
 
-Nouveau : un résumé à votre retour – combien de temps Belay a maintenu votre Mac éveillé et combien d’exécutions terminées – plus une liste des sessions récentes dans les statistiques. Quelques détails ont été corrigés. Les statistiques ne clignotent plus au survol, les fenêtres du minuteur s’ouvrent correctement et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
+Un résumé à votre retour. Voyez combien de temps Belay a gardé votre Mac éveillé pendant votre absence et combien d’exécutions se sont terminées. Les Statistiques affichent désormais aussi les sessions récentes.
+
+Également : les statistiques ne clignotent plus au survol, les fenêtres du minuteur s’ouvrent correctement et une heure « Jusqu’à » déjà passée ne lance plus de minuteur pour le lendemain.
 
 --- IT ---
 
-Novità: un riepilogo al ritorno – per quanto Belay ha tenuto sveglio il Mac e quante esecuzioni sono finite – più un elenco delle sessioni recenti nelle Statistiche. Sistemati alcuni dettagli. Le statistiche non sfarfallano più al passaggio del puntatore, le finestre del timer si aprono correttamente e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
+Un riepilogo quando torni. Scopri per quanto tempo Belay ha tenuto sveglio il Mac mentre eri via e quante esecuzioni sono terminate. Nelle Statistiche ora trovi anche un elenco delle sessioni recenti.
+
+Inoltre: le statistiche non sfarfallano più al passaggio del puntatore, le finestre del timer si aprono correttamente e un orario «Fino a» già passato non avvia più un timer per il giorno successivo.
 
 --- ZH ---
 
-新增：返回时的一份小结：Belay 在您离开期间保持了 Mac 唤醒多久、完成了多少次运行，统计中还新增最近会话列表。修复了一些小问题。统计数据在悬停时不再闪烁，自定义计时器窗口现在能正常打开，已经过去的“截止”时间也不会再启动一个明天的计时器。
+返回时查看一份小结。你可以看到离开期间 Belay 让 Mac 保持唤醒了多久，以及有多少次运行完成。统计中现在也加入了最近会话列表。
+
+另外：统计数据在悬停时不再闪烁，计时器窗口现在能正常打开，已经过去的“截止”时间也不会再启动明天的计时器。

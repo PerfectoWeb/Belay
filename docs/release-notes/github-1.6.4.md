@@ -1,11 +1,11 @@
-- **Precise Detection reconnects itself.** If the local bridge drops during sleep or at runtime, Belay now reconnects automatically and updates the agent hooks. No relaunch needed.
+- **Precise Detection reconnects automatically.** If the local bridge drops, Belay reconnects and updates agent hooks. No relaunch needed.
 
-- **Back-to-back tool calls keep the hold.** Rapid tool activity no longer lets a late return from one call cancel the hold for the next.
+- **Back-to-back tool calls keep the hold.** A late return from one call no longer cancels the hold for the next.
 
 - **Watched Cline sessions end properly.** Sessions under `/tmp` or `/var` now disappear when their state files are deleted.
 
-- **Imported conversations stay quiet.** Old conversations touched during an import no longer appear as active sessions.
+- **Imported conversations stay quiet.** Old conversations touched during an import no longer appear as active.
 
-- **One summary when you come back.** If Belay held the Mac awake while you were away, returning brings a single notification: how long it held and how many runs finished. Statistics also gains a Sessions screen: a sortable table of the last fifty finished sessions – agent, folder, duration, when – folder names only.
+- **One summary when you return.** Belay shows how long it kept your Mac awake and how many runs finished. Statistics now also includes a sortable list of your 50 most recent sessions, with folder names only.
 
-- **A few rough edges are fixed.** Statistics no longer flicker on hover, past Until times no longer schedule tomorrow, custom timer sheets stay put, and diagnostics remain fully off when Local Reports is off.
+- **A few rough edges are fixed.** Statistics no longer flicker on hover, past Until times no longer schedule tomorrow, timer sheets stay put, and diagnostics remain fully off when Local Reports is off.

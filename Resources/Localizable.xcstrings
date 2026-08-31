@@ -8937,6 +8937,52 @@
         }
       }
     },
+    "If Belay kept your Mac awake while you were away, you get one notification when you return: how long it held and how many runs finished. Statistics now also shows your recent sessions.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If Belay kept your Mac awake while you were away, you get one notification when you return: how long it held and how many runs finished. Statistics now also shows your recent sessions."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если Belay не давал Mac уснуть, пока вас не было, по возвращении придёт одно уведомление: сколько длилось удержание и сколько запусков завершилось. В статистике теперь видны и недавние сессии."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hat Belay deinen Mac wach gehalten, während du weg warst, bekommst du bei deiner Rückkehr eine Mitteilung: wie lange der Hold lief und wie viele Läufe abgeschlossen wurden. In der Statistik siehst du jetzt auch deine letzten Sitzungen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay mantuvo tu Mac despierto mientras estabas fuera, al volver recibes una sola notificación: cuánto tiempo lo mantuvo despierto y cuántas ejecuciones terminaron. Estadísticas ahora también muestra tus sesiones recientes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay a gardé votre Mac éveillé pendant votre absence, vous recevez une seule notification à votre retour : la durée du maintien et le nombre d’exécutions terminées. Les Statistiques affichent désormais aussi vos sessions récentes."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se Belay ha tenuto sveglio il Mac mentre eri via, al ritorno ricevi una sola notifica: per quanto tempo e quante esecuzioni sono terminate. Nelle Statistiche ora trovi anche le sessioni recenti."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果 Belay 在你离开期间保持了 Mac 唤醒，返回时会收到一条通知：保持了多久，以及完成了多少次运行。统计中现在也会显示最近的会话。"
+          }
+        }
+      }
+    },
     "If the connection breaks during sleep, Belay restores it when your Mac wakes. Long tool calls also keep their hold through rapid back-to-back activity.": {
       "localizations": {
         "en": {
@@ -8972,7 +9018,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono l'hold durante attività ravvicinate."
+            "value": "Se la connessione si interrompe durante lo stop, Belay la ripristina quando il Mac si riattiva. Anche le chiamate lunghe agli strumenti mantengono il hold durante attività ravvicinate."
           }
         },
         "zh-Hans": {
@@ -11548,6 +11594,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "返回时提供一份小结：Belay 保持唤醒了多久，完成了多少次运行。"
+          }
+        }
+      }
+    },
+    "One summary when you return": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One summary when you return"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Одна сводка по возвращении"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Zusammenfassung bei deiner Rückkehr"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un resumen al volver"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un résumé à votre retour"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un riepilogo al tuo ritorno"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回时查看一份小结"
           }
         }
       }
