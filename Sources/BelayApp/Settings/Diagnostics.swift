@@ -45,6 +45,9 @@ enum Diagnostics {
         collecting.withLock { $0 = true }
         try? FileManager.default.createDirectory(
             at: folder, withIntermediateDirectories: true)
+        // Trim before the tail is read: the kept megabyte is exactly the
+        // window `endedDirty` looks at, so nothing it needs is ever cut.
+        LogTrim.trimIfOversized(file)
         // A SIGKILL leaves no crash report and no goodbye, so the only place
         // it can ever be seen is here, on the next launch. Caught in the
         // field: an overnight death that looked like nothing at all.

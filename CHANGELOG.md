@@ -5,7 +5,7 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.7.0] - Unreleased
+## [1.7.0] - 2026-09-01
 
 ### Added
 
@@ -39,6 +39,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Two sessions trading turns no longer write a "hold on" log line every few
   seconds: only the off-to-on edge is news, and each session's own
   transitions were already logged.
+- The diagnostics file trims itself at the start of collection: past 3 MB
+  it keeps its last megabyte, so a switch left on for months costs nothing.
 - A session whose only background tasks are passive watches (artifact
   monitors) or already-finished jobs no longer reads as working – the
   background bracket now counts only running work.
