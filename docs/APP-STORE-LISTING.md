@@ -133,6 +133,34 @@ none of them mentioned Chinese.
 
 ---
 
+## What changed in the descriptions for 1.7.0
+
+Three edits, applied to every language on 2026-09-01, in this file first. The
+store still holds the 1.5.0-era copy and 1.7.0 sits in review, so these paste
+into App Store Connect at the next metadata window rather than today.
+
+**Four precise agents.** Copilot CLI graduated from a preset to a first-class
+provider in 1.6.0 and the copy never caught up. The agents sentence now names
+Claude Code, Codex, Copilot CLI and Cline as detected precisely; the preset
+list is Gemini CLI, OpenCode, Aider, Cline for VS Code and Pi. The English,
+Russian and Chinese keyword fields gained `copilot` (the others spend their
+budget on category words, not agent names).
+
+**The return summary.** One sentence in the notifications section: when you
+come back, one summary can say how long Belay held and what finished. Shipped
+in 1.6.4, refined in 1.7.0, present in the App Store build.
+
+**The Sessions table.** One paragraph under statistics: recent runs in a
+sortable table with agent, folder, duration and the token counts the
+session's own files report, plus the CSV export that has been there since
+1.6.1. "Its own files report" is deliberate: Belay counts what the agent
+wrote down, it does not meter anything itself.
+
+What did NOT go in, on purpose: activity badges and hook parking are Precise
+Detection features and the App Store build has no hook listener (see the 1.3
+note below); the lid hold needs a privileged helper the sandbox forbids.
+Anything the App Store build cannot do stays out of its metadata.
+
 ## What changed in the descriptions for 1.5.0
 
 One edit, applied to every language, on top of whatever the store held that day:
@@ -170,7 +198,7 @@ Leave your agents running. Belay keeps your Mac awake while they work, then gets
 
 **Keywords** (100, comma separated, no spaces)
 ```
-ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer
+ai,claude,codex,gemini,cline,copilot,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer
 ```
 
 **Description** (4000)
@@ -185,7 +213,7 @@ While Belay holds, it also asks macOS to keep the network active, so SSH session
 
 WORKS WITH
 
-Claude Code, Codex and Cline are detected precisely, out of the box: Belay reads their own session files, so it knows exactly when a turn starts and ends. Copilot CLI, Gemini CLI, OpenCode, Aider and Pi have ready-made presets.
+Claude Code, Codex, Copilot CLI and Cline are detected precisely, out of the box: Belay reads their own session files, so it knows exactly when a turn starts and ends. Gemini CLI, OpenCode, Aider, Cline for VS Code and Pi have ready-made presets.
 
 For anything else, point Belay at a folder your tool writes to and it will use activity in that folder as the signal. The folders you choose are remembered, so you pick them once.
 
@@ -203,7 +231,7 @@ When Belay stops on purpose, the menu bar icon shows it, so a Mac that went quie
 
 NOTIFICATIONS, IF YOU WANT THEM
 
-Belay can let you know when an agent needs you, a long run finishes, or it stops keeping your Mac awake for safety. Each notification can be turned off.
+Belay can let you know when an agent needs you, a long run finishes, or it stops keeping your Mac awake for safety. And when you come back, one summary can tell you how long Belay held and what finished while you were away. Each notification can be turned off.
 
 STAYS ON YOUR MAC
 
@@ -216,6 +244,8 @@ Your statistics stay on your Mac unless you choose to share them.
 STATISTICS THAT MEAN SOMETHING
 
 See how long Belay kept your Mac awake while you were away, plus runs watched, runs saved and your longest run.
+
+A Sessions view lists recent runs in a sortable table: which agent, in which folder, for how long, and how many tokens the session's own files report. Your statistics export as CSV whenever you like.
 
 Time at the keyboard doesn't count, because your Mac wasn't going to sleep anyway.
 
@@ -235,7 +265,7 @@ Belay не даст Mac уснуть, пока ваши AI агенты рабо
 
 **Keywords** (100)
 ```
-ai,claude,codex,gemini,cline,caffeine,insomnia,sleep,menubar,coding,cli,terminal,developer,код
+ai,claude,codex,gemini,cline,copilot,caffeine,insomnia,sleep,menubar,coding,cli,terminal,код
 ```
 
 **Description** (4000)
@@ -248,7 +278,7 @@ Belay не даёт вашему Mac уснуть, пока работают AI 
 
 ПОДДЕРЖИВАЕМЫЕ АГЕНТЫ
 
-Claude Code, Codex и Cline определяются точно и сразу: Belay читает их собственные файлы сессий и точно знает, когда работа началась и закончилась. Для Copilot CLI, Gemini CLI, OpenCode, Aider и Pi есть готовые пресеты.
+Claude Code, Codex, Copilot CLI и Cline определяются точно и сразу: Belay читает их собственные файлы сессий и точно знает, когда работа началась и закончилась. Для Gemini CLI, OpenCode, Aider, Cline для VS Code и Pi есть готовые пресеты.
 
 Для остальных инструментов можно выбрать папку, и Belay будет определять работу по активности в ней. Выбранные папки запоминаются, так что указать их достаточно один раз.
 
@@ -266,7 +296,7 @@ Belay может немного подождать после завершени
 
 УВЕДОМЛЕНИЯ
 
-Belay может сообщить, когда агенту нужны вы, когда длительная задача завершилась или когда приложение перестало удерживать Mac от сна в целях безопасности. Каждое уведомление можно отключить.
+Belay может сообщить, когда агенту нужны вы, когда длительная задача завершилась или когда приложение перестало удерживать Mac от сна в целях безопасности. А когда вы вернётесь, одна сводка расскажет, сколько Belay держал Mac и что успело завершиться без вас. Каждое уведомление можно отключить.
 
 ВСЁ ОСТАЁТСЯ НА MAC
 
@@ -279,6 +309,8 @@ Belay определяет активность локально. Ваши пр�
 СТАТИСТИКА СО СМЫСЛОМ
 
 Посмотрите, сколько времени Belay действительно не давал Mac уснуть, пока вас не было рядом, сколько запусков он видел, сколько сохранил и какой был самым долгим.
+
+Экран «Сессии» показывает недавние запуски в сортируемой таблице: какой агент, в какой папке, как долго и сколько токенов насчитали его собственные файлы. Статистику можно в любой момент выгрузить в CSV.
 
 Время за клавиатурой не считается: в этот момент Mac и так не собирался засыпать.
 
@@ -313,7 +345,7 @@ Während Belay den Mac wach hält, bittet es macOS auch, das Netzwerk aktiv zu l
 
 UNTERSTÜTZTE AGENTS
 
-Claude Code, Codex und Cline werden präzise erkannt, direkt ab Werk: Belay liest ihre eigenen Sitzungsdateien und weiß genau, wann ein Turn beginnt und endet. Für Copilot CLI, Gemini CLI, OpenCode, Aider und Pi gibt es fertige Presets.
+Claude Code, Codex, Copilot CLI und Cline werden präzise erkannt, direkt ab Werk: Belay liest ihre eigenen Sitzungsdateien und weiß genau, wann ein Turn beginnt und endet. Für Gemini CLI, OpenCode, Aider, Cline für VS Code und Pi gibt es fertige Presets.
 
 Für alles andere kannst du einen Ordner auswählen. Belay erkennt dann anhand der Aktivität in diesem Ordner, ob gerade gearbeitet wird. Die gewählten Ordner werden gemerkt, du wählst sie also nur einmal aus.
 
@@ -333,7 +365,7 @@ Wenn Belay absichtlich aufhört, zeigt das Symbol in der Menüleiste es an. Ein 
 
 BENACHRICHTIGUNGEN, WENN DU SIE WILLST
 
-Belay kann dich informieren, wenn ein Agent dich braucht, ein längerer Lauf fertig ist oder Belay aus Sicherheitsgründen aufhört, deinen Mac wach zu halten.
+Belay kann dich informieren, wenn ein Agent dich braucht, ein längerer Lauf fertig ist oder Belay aus Sicherheitsgründen aufhört, deinen Mac wach zu halten. Und wenn du zurückkommst, kann eine einzige Zusammenfassung sagen, wie lange Belay gehalten hat und was in deiner Abwesenheit fertig wurde.
 
 Jede Benachrichtigung lässt sich einzeln ausschalten.
 
@@ -348,6 +380,8 @@ Auch deine Statistiken bleiben auf deinem Mac, bis du sie selbst teilst.
 STATISTIKEN, DIE ETWAS AUSSAGEN
 
 Sieh, wie lange Belay deinen Mac tatsächlich wach gehalten hat, während du weg warst, wie viele Läufe erkannt und gerettet wurden und welcher am längsten dauerte.
+
+Eine Sitzungsansicht zeigt die letzten Läufe in einer sortierbaren Tabelle: welcher Agent, in welchem Ordner, wie lange und wie viele Tokens seine eigenen Dateien melden. Deine Statistiken lassen sich jederzeit als CSV exportieren.
 
 Zeit an der Tastatur zählt nicht. Dann wäre dein Mac ohnehin nicht eingeschlafen.
 
@@ -382,7 +416,7 @@ Mientras Belay mantiene tu Mac despierto, también pide a macOS que mantenga act
 
 AGENTES COMPATIBLES
 
-Claude Code, Codex y Cline se detectan con precisión desde el primer momento: Belay lee sus propios archivos de sesión y sabe exactamente cuándo empieza y termina un turno. Copilot CLI, Gemini CLI, OpenCode, Aider y Pi cuentan con ajustes predefinidos.
+Claude Code, Codex, Copilot CLI y Cline se detectan con precisión desde el primer momento: Belay lee sus propios archivos de sesión y sabe exactamente cuándo empieza y termina un turno. Gemini CLI, OpenCode, Aider, Cline para VS Code y Pi cuentan con ajustes predefinidos.
 
 Para cualquier otra herramienta, puedes elegir una carpeta y Belay usará la actividad de esa carpeta para saber si hay trabajo en curso. Las carpetas que elijas se recuerdan, así que solo las eliges una vez.
 
@@ -402,7 +436,7 @@ Cuando Belay se detiene a propósito, el icono de la barra de menús lo muestra.
 
 NOTIFICACIONES, SI LAS QUIERES
 
-Belay puede avisarte cuando un agente te necesita, cuando termina una tarea larga o cuando deja de mantener el Mac despierto por seguridad.
+Belay puede avisarte cuando un agente te necesita, cuando termina una tarea larga o cuando deja de mantener el Mac despierto por seguridad. Y al volver, un único resumen puede decirte cuánto tiempo mantuvo Belay tu Mac despierto y qué terminó mientras no estabas.
 
 Puedes desactivar cada aviso por separado.
 
@@ -417,6 +451,8 @@ Tus estadísticas también permanecen en tu Mac hasta que decidas compartirlas.
 ESTADÍSTICAS QUE SÍ CUENTAN
 
 Consulta cuánto tiempo mantuvo Belay tu Mac despierto mientras estabas fuera, cuántas ejecuciones detectó, cuántas salvó y cuál fue la más larga.
+
+Una vista de Sesiones muestra las ejecuciones recientes en una tabla ordenable: qué agente, en qué carpeta, cuánto tiempo y cuántos tokens registran sus propios archivos. Puedes exportar tus estadísticas a CSV en cualquier momento.
 
 El tiempo frente al teclado no cuenta. En ese momento, tu Mac tampoco iba a entrar en reposo.
 
@@ -451,7 +487,7 @@ Pendant que Belay garde votre Mac éveillé, il demande aussi à macOS de mainte
 
 AGENTS PRIS EN CHARGE
 
-Claude Code, Codex et Cline sont détectés avec précision, sans aucune configuration : Belay lit leurs propres fichiers de session et sait exactement quand un tour commence et se termine. Copilot CLI, Gemini CLI, OpenCode, Aider et Pi disposent de préréglages prêts à l’emploi.
+Claude Code, Codex, Copilot CLI et Cline sont détectés avec précision, sans aucune configuration : Belay lit leurs propres fichiers de session et sait exactement quand un tour commence et se termine. Gemini CLI, OpenCode, Aider, Cline pour VS Code et Pi disposent de préréglages prêts à l’emploi.
 
 Pour les autres outils, choisissez simplement un dossier. Belay utilisera son activité pour savoir si un travail est en cours. Les dossiers choisis sont mémorisés, vous ne les indiquez donc qu’une fois.
 
@@ -471,7 +507,7 @@ Quand Belay s’arrête volontairement, l’icône de la barre des menus l’ind
 
 NOTIFICATIONS, SI VOUS LES VOULEZ
 
-Belay peut vous prévenir quand un agent a besoin de vous, quand une longue tâche se termine ou quand il cesse de garder votre Mac éveillé par sécurité.
+Belay peut vous prévenir quand un agent a besoin de vous, quand une longue tâche se termine ou quand il cesse de garder votre Mac éveillé par sécurité. Et à votre retour, un seul résumé peut vous dire combien de temps Belay a tenu et ce qui s’est terminé pendant votre absence.
 
 Chaque notification peut être désactivée séparément.
 
@@ -486,6 +522,8 @@ Vos statistiques restent également sur votre Mac jusqu’à ce que vous décidi
 DES STATISTIQUES QUI ONT DU SENS
 
 Voyez combien de temps Belay a gardé votre Mac éveillé pendant votre absence, combien d’exécutions il a suivies, combien il en a sauvées et quelle a été la plus longue.
+
+Une vue Sessions liste les exécutions récentes dans un tableau triable : quel agent, dans quel dossier, pendant combien de temps et combien de tokens ses propres fichiers rapportent. Vos statistiques s’exportent en CSV à tout moment.
 
 Le temps passé au clavier ne compte pas : à ce moment-là, votre Mac n’allait de toute façon pas s’endormir.
 
@@ -520,7 +558,7 @@ Mentre Belay tiene sveglio il Mac, chiede a macOS di mantenere attiva anche la r
 
 AGENTI SUPPORTATI
 
-Claude Code, Codex e Cline vengono rilevati con precisione, senza alcuna configurazione: Belay legge i loro file di sessione e sa esattamente quando un turno inizia e finisce. Copilot CLI, Gemini CLI, OpenCode, Aider e Pi hanno preset già pronti.
+Claude Code, Codex, Copilot CLI e Cline vengono rilevati con precisione, senza alcuna configurazione: Belay legge i loro file di sessione e sa esattamente quando un turno inizia e finisce. Gemini CLI, OpenCode, Aider, Cline per VS Code e Pi hanno preset già pronti.
 
 Per qualsiasi altro strumento puoi scegliere una cartella. Belay userà l’attività di quella cartella per capire se c’è del lavoro in corso. Le cartelle scelte vengono ricordate, quindi le indichi una volta sola.
 
@@ -540,7 +578,7 @@ Quando Belay si ferma di proposito, l’icona nella barra dei menu lo mostra. Un
 
 NOTIFICHE, SE LE VUOI
 
-Belay può avvisarti quando un agente ha bisogno di te, quando termina un’attività lunga o quando smette di tenere sveglio il Mac per sicurezza.
+Belay può avvisarti quando un agente ha bisogno di te, quando termina un’attività lunga o quando smette di tenere sveglio il Mac per sicurezza. E al tuo ritorno un unico riepilogo può dirti quanto a lungo Belay ha tenuto sveglio il Mac e cosa si è concluso mentre eri via.
 
 Ogni notifica può essere disattivata separatamente.
 
@@ -555,6 +593,8 @@ Anche le statistiche restano sul tuo Mac finché non decidi di condividerle.
 STATISTICHE CHE CONTANO DAVVERO
 
 Scopri per quanto tempo Belay ha tenuto sveglio il Mac mentre eri lontano, quante esecuzioni ha rilevato, quante ne ha salvate e quale è durata di più.
+
+Una vista Sessioni elenca le esecuzioni recenti in una tabella ordinabile: quale agente, in quale cartella, per quanto tempo e quanti token riportano i suoi stessi file. Le statistiche si esportano in CSV in qualsiasi momento.
 
 Il tempo passato alla tastiera non conta. In quel momento il Mac non sarebbe comunque andato in stop.
 
@@ -590,7 +630,7 @@ thing. The three that matter: agent is 智能体 and never 代理, keeping awake
 
 **Keywords** (100)
 ```
-ai,claude,codex,gemini,cline,唤醒,睡眠,防止睡眠,菜单栏,智能体,终端,编程,开发者
+ai,claude,codex,gemini,cline,copilot,唤醒,睡眠,防止睡眠,菜单栏,智能体,终端,编程,开发者
 ```
 
 **Description** (4000)
@@ -605,7 +645,7 @@ Mac 进入了睡眠。你留着继续跑的编程智能体也就停在了那里�
 
 支持的智能体
 
-Claude Code、Codex 和 Cline 开箱即可精确检测：Belay 读取它们自己的会话文件，准确知道轮次何时开始、何时结束。Copilot CLI、Gemini CLI、OpenCode、Aider 和 Pi 都有现成的预设。
+Claude Code、Codex、Copilot CLI 和 Cline 开箱即可精确检测：Belay 读取它们自己的会话文件，准确知道轮次何时开始、何时结束。Gemini CLI、OpenCode、Aider、Cline（VS Code 版）和 Pi 都有现成的预设。
 
 其他工具可以指定一个文件夹，Belay 会用该文件夹的活动来判断是否有工作在进行。你选择的文件夹会被记住，只需指定一次。
 
@@ -623,7 +663,7 @@ Claude Code、Codex 和 Cline 开箱即可精确检测：Belay 读取它们自�
 
 通知，如果你想要的话
 
-智能体需要你、长任务结束、或者 Belay 出于安全考虑停止保持唤醒时，都可以收到通知。每一项都能单独关闭。
+智能体需要你、长任务结束、或者 Belay 出于安全考虑停止保持唤醒时，都可以收到通知。回来时，一条汇总还会告诉你 Belay 保持唤醒了多久、哪些任务在你离开期间完成。每一项都能单独关闭。
 
 一切都留在你的 Mac 上
 
@@ -636,6 +676,8 @@ Belay 在本地判断活动。你的提示词和代码不会被上传到任何�
 有意义的统计
 
 看看你不在的时候 Belay 实际让 Mac 保持唤醒了多久，监视了多少次运行、保住了多少次，以及最长的一次有多久。
+
+“会话”视图以可排序表格列出最近的运行：哪个智能体、在哪个文件夹、运行多久、它自己的文件里记录了多少 token。统计数据随时可导出为 CSV。
 
 在键盘前的时间不计入其中，因为那时 Mac 本来也不会进入睡眠。
 
