@@ -15,7 +15,7 @@ of the last build", which is what the page says.
 DIRECT = 406
 APPSTORE = 183
 RELEASES = 15
-COMMITS = 474
+COMMITS = 475
 STARS = 32
 FIRST_COMMIT = "2026-08-11"
 DIRECT_UPDATED = "2026-09-01"
