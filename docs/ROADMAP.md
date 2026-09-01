@@ -105,6 +105,11 @@ milestone table above keeps only the big ones.
 | [phmullins/awesome-macos](https://github.com/phmullins/awesome-macos/pull/251) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026. The list is barely maintained |
 | [Mac-Menubar-Megalist](https://github.com/SKaplanOfficial/Mac-Menubar-Megalist/issues/54) | <img src="badges/in-review.svg" alt="in review" height="24"> | Issue opened 19 Aug 2026, their preferred channel |
 | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/in-review.svg" alt="in review" height="24"> | Resubmitted; the recommendation issue is open in their queue |
+| [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/757) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026, Companion Apps table |
+| [awesome-ai-devtools](https://github.com/jamesmurdza/awesome-ai-devtools/pull/1044) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026; honest caveat: Belay reacts to agents, is not AI itself |
+| [menubarlist.com](https://menubarlist.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026; they follow up by email before listing |
+| [macosmenubar.com](https://www.macosmenubar.com/submitapp) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Form ready to paste; their bot check wants a human hand |
+| [Softpedia](https://mac.softpedia.com/user/submit.shtml) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Form ready to paste; their captcha wants a human hand |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
 | [jaywcjlove/awesome-swift-macos-apps](https://github.com/jaywcjlove/awesome-swift-macos-apps) | <img src="badges/done.svg" alt="done" height="24"> | Added by the maintainer 19 Aug 2026, found while auditing the list 30 Aug – nobody here submitted it |
