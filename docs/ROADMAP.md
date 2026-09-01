@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.6.4 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.6.3; **1.6.4 is in review** (submitted 1 Sep).
+**1.7.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.6.3; **1.6.4 is in review** (submitted 1 Sep), 1.7.0 follows it.
 
 </div>
 
@@ -64,6 +64,10 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📋 | A sortable sessions table in Statistics, tokens included | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 🩹 | The bridge heals itself after sleep and wake | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
 | 📦 | **v1.6.4 published** | <img src="badges/done.svg" alt="done" height="24"> | [31 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.6.4) |
+| 🏷 | Activity badges beside each session's name | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
+| 🧹 | Hooks park on quit and return on launch | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
+| 🌡 | The away summary remembers the heat | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
+| 📦 | **v1.7.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
