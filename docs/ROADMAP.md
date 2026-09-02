@@ -71,7 +71,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
-| ⭐ | **32 stars**, *the belay party* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Enough people for a small community |
+| ⭐ | **32 stars**, *the belay party* | <img src="badges/done.svg" alt="done" height="24"> | Reached 1 Sep 2026, the day 1.7.0 shipped |
 | ✨ | **64 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
 | 💫 | **128 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
 | 📈 | **1 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
@@ -108,8 +108,10 @@ milestone table above keeps only the big ones.
 | [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/757) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026, Companion Apps table |
 | [awesome-ai-devtools](https://github.com/jamesmurdza/awesome-ai-devtools/pull/1044) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026; honest caveat: Belay reacts to agents, is not AI itself |
 | [menubarlist.com](https://menubarlist.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026; they follow up by email before listing |
-| [macosmenubar.com](https://www.macosmenubar.com/submitapp) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Form ready to paste; their bot check wants a human hand |
-| [Softpedia](https://mac.softpedia.com/user/submit.shtml) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Form ready to paste; their captcha wants a human hand |
+| [macosmenubar.com](https://www.macosmenubar.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026 |
+| [Softpedia](https://mac.softpedia.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026; their review takes up to 30 days |
+| [OpenAlternative](https://openalternative.co/belay) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026, in the free queue |
+| [SaaSHub](https://www.saashub.com/belay-keeps-agents-away) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026, pending approval |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
 | [jaywcjlove/awesome-swift-macos-apps](https://github.com/jaywcjlove/awesome-swift-macos-apps) | <img src="badges/done.svg" alt="done" height="24"> | Added by the maintainer 19 Aug 2026, found while auditing the list 30 Aug – nobody here submitted it |
