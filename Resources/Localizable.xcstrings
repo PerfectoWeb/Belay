@@ -19627,374 +19627,6 @@
         }
       }
     },
-    "See what each project cost": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "See what each project cost"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Видно, во что обошёлся проект"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sieh, was jedes Projekt gekostet hat"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mira lo que ha costado cada proyecto"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Voyez ce que chaque projet a coûté"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guarda quanto è costato ogni progetto"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "看看每个项目花了多少"
-          }
-        }
-      }
-    },
-    "Double-click a session in Statistics to open its folder: total agent time, sessions and tokens since Belay started counting, with that folder's recent runs below.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Double-click a session in Statistics to open its folder: total agent time, sessions and tokens since Belay started counting, with that folder's recent runs below."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Двойной клик по сессии в статистике открывает её папку: общее время агентов, сессии и токены с начала подсчёта, а ниже – недавние запуски в этой папке."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein Doppelklick auf eine Sitzung in der Statistik öffnet ihren Ordner: Agent-Zeit, Sitzungen und Tokens seit Beginn der Zählung, darunter die letzten Läufe in diesem Ordner."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Haz doble clic en una sesión de Estadísticas para abrir su carpeta: tiempo de agentes, sesiones y tokens desde que Belay empezó a contar, con las ejecuciones recientes de esa carpeta debajo."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Double-cliquez sur une session dans les statistiques pour ouvrir son dossier : temps des agents, sessions et tokens depuis le début du comptage, avec les exécutions récentes de ce dossier en dessous."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doppio clic su una sessione nelle statistiche per aprire la sua cartella: tempo degli agenti, sessioni e token da quando Belay ha iniziato a contare, con le esecuzioni recenti di quella cartella sotto."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在统计中双击一次会话即可打开它的文件夹：自开始统计以来的智能体工作时长、会话数和 token 数，下方是该文件夹的最近运行。"
-          }
-        }
-      }
-    },
-    "Background tasks hold steadier": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Background tasks hold steadier"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Фоновые задачи держат надёжнее"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hintergrundaufgaben halten zuverlässiger"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las tareas en segundo plano se sostienen mejor"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les tâches en arrière-plan tiennent mieux"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le attività in background reggono meglio"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "后台任务保持得更稳"
-          }
-        }
-      }
-    },
-    "A hook arriving late or twice can no longer end a hold early, or restart one that was already released.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A hook arriving late or twice can no longer end a hold early, or restart one that was already released."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Опоздавший или повторный хук больше не снимает удержание раньше времени и не возобновляет уже завершённое."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein verspäteter oder doppelter Hook kann das Wachhalten nicht mehr vorzeitig beenden oder ein bereits beendetes wieder starten."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un hook que llega tarde o repetido ya no puede terminar antes de tiempo ni reanudar uno que ya se había soltado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un hook en retard ou reçu deux fois ne peut plus interrompre un maintien trop tôt, ni en relancer un déjà terminé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un hook in ritardo o duplicato non può più interrompere l'hold in anticipo né riavviarne uno già rilasciato."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "迟到或重复的 hook 不会再提前结束保持唤醒，也不会重新开启已经结束的保持。"
-          }
-        }
-      }
-    },
-    "Hooks always find their way back": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hooks always find their way back"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хуки всегда возвращаются"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hooks finden immer zurück"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Los hooks siempre vuelven"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les hooks retrouvent toujours leur place"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gli hook tornano sempre"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hook 总能回来"
-          }
-        }
-      }
-    },
-    "If Belay is killed halfway through quitting, its hook entries still come back on the next launch.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If Belay is killed halfway through quitting, its hook entries still come back on the next launch."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Если Belay убьют посреди выхода, записи хуков всё равно вернутся при следующем запуске."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wird Belay mitten im Beenden abgeschossen, kommen seine Hook-Einträge beim nächsten Start trotzdem zurück."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Belay se cierra a la fuerza a mitad de la salida, sus entradas de hooks vuelven igualmente en el siguiente arranque."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si Belay est tué en plein milieu de sa fermeture, ses entrées de hooks reviennent quand même au prochain lancement."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se Belay viene terminato a metà della chiusura, le sue voci hook tornano comunque all'avvio successivo."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "即使 Belay 在退出过程中被强制终止，它的 hook 条目也会在下次启动时恢复。"
-          }
-        }
-      }
-    },
-    "The diagnostics log stays small": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The diagnostics log stays small"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Лог диагностики не растёт"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Diagnoseprotokoll bleibt klein"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "El registro de diagnóstico se mantiene pequeño"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le journal de diagnostic reste petit"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il log di diagnostica resta piccolo"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "诊断日志不再膨胀"
-          }
-        }
-      }
-    },
-    "Past 3 MB the log trims itself to its last megabyte, so a switch left on for months costs nothing.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Past 3 MB the log trims itself to its last megabyte, so a switch left on for months costs nothing."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "После 3 МБ лог сам ужимается до последнего мегабайта – включённый на месяцы сбор ничего не стоит."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ab 3 MB kürzt sich das Protokoll auf sein letztes Megabyte – ein monatelang eingeschalteter Schalter kostet nichts."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A partir de 3 MB el registro se recorta a su último megabyte, así que dejarlo activado durante meses no cuesta nada."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Au-delà de 3 Mo, le journal se réduit à son dernier mégaoctet : un interrupteur laissé actif des mois ne coûte rien."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oltre i 3 MB il log si riduce all'ultimo megabyte: un interruttore lasciato acceso per mesi non costa nulla."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "超过 3 MB 后，日志会自动裁剪到最后 1 MB，开关开上几个月也没有代价。"
-          }
-        }
-      }
-    },
     "Belay kept your Mac awake for %@ while you were away.": {
       "localizations": {
         "en": {
@@ -20221,6 +19853,374 @@
           "stringUnit": {
             "state": "translated",
             "value": "去评价！"
+          }
+        }
+      }
+    },
+    "See stats for each project": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See stats for each project"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статистика по каждому проекту"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistiken für jedes Projekt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estadísticas por proyecto"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Des statistiques pour chaque projet"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statistiche per ogni progetto"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看每个项目的统计数据"
+          }
+        }
+      }
+    },
+    "Double-click a session in Statistics to see that folder’s total agent time, sessions, tokens, and recent runs.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double-click a session in Statistics to see that folder’s total agent time, sessions, tokens, and recent runs."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дважды нажмите на сессию в Статистике, чтобы увидеть время агентов, количество сессий, токены и недавние запуски для этой папки."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doppelklicke in der Statistik auf eine Sitzung, um Agent-Zeit, Sitzungen, Tokens und letzte Läufe für diesen Ordner zu sehen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haz doble clic en una sesión de Estadísticas para ver el tiempo de los agentes, las sesiones, los tokens y las ejecuciones recientes de esa carpeta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double-cliquez sur une session dans les Statistiques pour voir le temps des agents, les sessions, les tokens et les exécutions récentes de ce dossier."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fai doppio clic su una sessione nelle Statistiche per vedere il tempo degli agenti, le sessioni, i token e le esecuzioni recenti di quella cartella."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“统计”中双击会话，即可查看该文件夹的智能体时间、会话数、token 数和最近运行。"
+          }
+        }
+      }
+    },
+    "Background tasks hold more reliably": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background tasks hold more reliably"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фоновые задачи удерживают надёжнее"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hintergrundaufgaben halten zuverlässiger"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las tareas en segundo plano mantienen la retención con más fiabilidad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les tâches en arrière-plan maintiennent l’éveil plus fiablement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le attività in background mantengono l’hold con più affidabilità"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台任务保持唤醒更可靠"
+          }
+        }
+      }
+    },
+    "Late or duplicate hook events no longer end a hold early or restart one after it has finished.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Late or duplicate hook events no longer end a hold early or restart one after it has finished."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запоздалые или повторные события больше не завершают удержание раньше времени и не запускают его снова после завершения."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verspätete oder doppelte Hook-Ereignisse beenden einen Hold nicht mehr zu früh und starten ihn nach dem Ende nicht erneut."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los eventos tardíos o duplicados ya no terminan una retención antes de tiempo ni la reinician después de haber terminado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les événements de hook tardifs ou en double ne peuvent plus interrompre un maintien trop tôt ni le relancer après sa fin."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gli eventi hook in ritardo o duplicati non terminano più un hold in anticipo e non lo riavviano dopo la fine."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迟到或重复的 hook 事件不会再提前结束保持唤醒，也不会在结束后重新启动。"
+          }
+        }
+      }
+    },
+    "Hooks recover after an interrupted quit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks recover after an interrupted quit"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хуки восстанавливаются после сбоя при выходе"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks werden nach einem unterbrochenen Beenden wiederhergestellt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los hooks se recuperan tras un cierre interrumpido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hooks se rétablissent après une fermeture interrompue"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gli hook si ripristinano dopo una chiusura interrotta"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hook 会在异常退出后恢复"
+          }
+        }
+      }
+    },
+    "If Belay is killed while closing, it restores any missing hook entries on the next launch.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If Belay is killed while closing, it restores any missing hook entries on the next launch."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если Belay принудительно завершится во время закрытия, недостающие записи хуков восстановятся при следующем запуске."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird Belay während des Beendens abgebrochen, stellt es fehlende Hook-Einträge beim nächsten Start wieder her."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay se cierra a la fuerza mientras está saliendo, restaura las entradas de hooks que falten en el siguiente arranque."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay est interrompu pendant sa fermeture, les entrées de hooks manquantes sont restaurées au prochain lancement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se Belay viene terminato mentre si sta chiudendo, le voci hook mancanti vengono ripristinate all’avvio successivo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果 Belay 在退出过程中被强制终止，下次启动时会恢复缺失的 hook 条目。"
+          }
+        }
+      }
+    },
+    "The diagnostics log stays small": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The diagnostics log stays small"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Журнал диагностики остаётся небольшим"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Diagnoseprotokoll bleibt klein"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El registro de diagnóstico se mantiene pequeño"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le journal de diagnostic reste petit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il log di diagnostica resta piccolo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断日志保持精简"
+          }
+        }
+      }
+    },
+    "Once it passes 3 MB, Belay trims it back to the most recent 1 MB.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once it passes 3 MB, Belay trims it back to the most recent 1 MB."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "После 3 МБ Belay автоматически сокращает его до последнего 1 МБ."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sobald es 3 MB überschreitet, kürzt Belay es auf das letzte 1 MB."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando supera los 3 MB, Belay lo reduce al 1 MB más reciente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Au-delà de 3 Mo, Belay le réduit au dernier mégaoctet."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando supera i 3 MB, Belay lo riduce all’ultimo 1 MB."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过 3 MB 后，Belay 会自动将日志缩减到最近的 1 MB。"
           }
         }
       }

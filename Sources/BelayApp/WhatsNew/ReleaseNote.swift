@@ -95,32 +95,31 @@ enum ReleaseNotes {
                 items: [
                     .init(
                         symbol: Mark.chart,
-                        title: "See what each project cost",
+                        title: "See stats for each project",
                         body: """
-                            Double-click a session in Statistics to open its folder: \
-                            total agent time, sessions and tokens since Belay started \
-                            counting, with that folder's recent runs below.
+                            Double-click a session in Statistics to see that folder’s \
+                            total agent time, sessions, tokens, and recent runs.
                             """),
                     .init(
                         symbol: Mark.trace,
-                        title: "Background tasks hold steadier",
+                        title: "Background tasks hold more reliably",
                         body: """
-                            A hook arriving late or twice can no longer end a hold \
-                            early, or restart one that was already released.
+                            Late or duplicate hook events no longer end a hold early or \
+                            restart one after it has finished.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.safety,
-                        title: "Hooks always find their way back",
+                        title: "Hooks recover after an interrupted quit",
                         body: """
-                            If Belay is killed halfway through quitting, its hook \
-                            entries still come back on the next launch.
+                            If Belay is killed while closing, it restores any missing \
+                            hook entries on the next launch.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.quiet,
                         title: "The diagnostics log stays small",
                         body: """
-                            Past 3 MB the log trims itself to its last megabyte, so a \
-                            switch left on for months costs nothing.
+                            Once it passes 3 MB, Belay trims it back to the most recent \
+                            1 MB.
                             """)
                 ]
             )
