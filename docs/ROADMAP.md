@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.7.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.7.0 too (approved 2 Sep) – both channels level for the first time since 1.6.2.
+**1.8.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.7.0; **1.8.0 is being submitted** (4 Sep).
 
 </div>
 
@@ -68,6 +68,10 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🧹 | Hooks park on quit and return on launch | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
 | 🌡 | The away summary remembers the heat | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
 | 📦 | **v1.7.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [1 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.7.0) |
+| 📂 | Statistics drill into one project: sessions, agent time, tokens | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
+| 🎬 | Night dimming stays out of a video's way | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
+| 🐙 | One ask, once: a star or a review, after Belay earned it | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
+| 📦 | **v1.8.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
