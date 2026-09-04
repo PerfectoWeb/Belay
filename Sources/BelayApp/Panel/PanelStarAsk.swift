@@ -79,7 +79,7 @@ struct PanelAskCard<Icon: View>: View {
                             HStack(spacing: 6) {
                                 // Fill plus a round-joined stroke, exactly as the
                                 // site draws it: the stroke is what softens the
-                                // points into the star David picked.
+                                // points into the star the site uses.
                                 RoundedStar()
                                     .stroke(
                                         Color(red: 0.95, green: 0.79, blue: 0.3),
@@ -129,7 +129,7 @@ struct PanelAskCard<Icon: View>: View {
     }
 
     /// Dark: the mode picker's track (#1C1C1C over the dark panel), which is
-    /// what David chose. Light: a wash of the accent instead — the grey track
+    /// the mock asked for. Light: a wash of the accent instead — the grey track
     /// vanished into the light panel, the tint reads as a card.
     private var backdrop: Color {
         colorScheme == .dark ? Color.primary.opacity(0.06) : Color.accentColor.opacity(0.09)

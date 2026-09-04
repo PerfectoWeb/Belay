@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// GitHub's octocat, drawn from David's animated SVG rather than shown as a
+/// GitHub's octocat, drawn from the project's animated SVG rather than shown as a
 /// picture: the body and the two arms are separate paths, so the arms can wave
 /// the way the SVG's keyframes have them do, and the eyes are the body's own
 /// sub-contours, so one of them can wink.

@@ -17,7 +17,7 @@ struct SessionRow: Identifiable, Equatable {
 
     /// What the capsules beside the name say: the session's own tool call,
     /// any distinct tools its subagents are inside, and the background flag.
-    /// David's design, verbatim: badges by the title, the state line stays
+    /// The mock, verbatim: badges by the title, the state line stays
     /// the state line — structure and activity are different facts and no
     /// longer fight over one slot. Two show; the rest are a count.
     enum Badge: Equatable {

@@ -78,7 +78,7 @@ struct PanelSessionRow: View {
 
     /// The state, plus how many agents are working under it. The count is what
     /// makes an otherwise quiet-looking session explain why the Mac is awake.
-    /// The capsules from David's design: activity lives beside the name, so
+    /// The capsules from the mock: activity lives beside the name, so
     /// the state line below stays free for state and the agents count. Two
     /// at most; the rest become "+N".
     @ViewBuilder private var badgeRow: some View {
@@ -103,7 +103,7 @@ struct PanelSessionRow: View {
         .accessibilityHidden(true)
     }
 
-    // 1:1 to David's mock: no fill, a one-pixel border, regular weight.
+    // 1:1 to the mock: no fill, a one-pixel border, regular weight.
     private func capsule(_ text: Text) -> some View {
         text
             .font(.system(size: 9, weight: .light))
