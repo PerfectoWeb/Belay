@@ -3,8 +3,43 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>1.8.0</title>
+            <pubDate>Fri, 04 Sep 2026 14:45:23 +0300</pubDate>
+            <sparkle:version>19</sparkle:version>
+            <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 1.8.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.8.0</h2>
+<ul>
+  <li><b>See stats for each project.</b> Double-click a session in Statistics
+      to see agent time, sessions, tokens and recent runs for that folder.</li>
+  <li><b>Background tasks hold more reliably.</b> Late or duplicate hook
+      events no longer end a hold early or restart one after release.</li>
+  <li><b>Hooks recover after an interrupted quit.</b> If Belay is killed while
+      closing, it restores its agent settings on the next launch.</li>
+  <li><b>The diagnostics log stays small.</b> Once it passes 3&nbsp;MB, Belay
+      trims it back to the most recent 1&nbsp;MB.</li>
+</ul>
+<p class="quiet">Also: Sessions now keeps the latest 100 runs, and its headline
+shows total agent time instead of the number of rows.</p>]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.8.0/Belay-1.8.0.dmg" length="7395052" type="application/octet-stream" sparkle:edSignature="WgYiH4ACY3yEvRlDIgX967cYJpAX8ji2g+m5Vvwm8N+nFUe+1xDOfhGK861b0r4lWFjwnsdjKN8r6c4/fWZMCA=="/>
+        </item>
+        <item>
             <title>1.7.0</title>
-            <pubDate>Tue, 01 Sep 2026 07:34:57 +0300</pubDate>
+            <pubDate>Fri, 04 Sep 2026 14:45:25 +0300</pubDate>
             <sparkle:version>17</sparkle:version>
             <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -40,7 +75,7 @@ and sessions taking turns no longer flood the log.</p>]]></description>
         </item>
         <item>
             <title>1.6.4</title>
-            <pubDate>Tue, 01 Sep 2026 07:34:59 +0300</pubDate>
+            <pubDate>Fri, 04 Sep 2026 14:45:27 +0300</pubDate>
             <sparkle:version>16</sparkle:version>
             <sparkle:shortVersionString>1.6.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -79,7 +114,7 @@ off when Local Reports is off.</p>]]></description>
         </item>
         <item>
             <title>1.6.3</title>
-            <pubDate>Tue, 01 Sep 2026 07:35:01 +0300</pubDate>
+            <pubDate>Fri, 04 Sep 2026 14:45:45 +0300</pubDate>
             <sparkle:version>15</sparkle:version>
             <sparkle:shortVersionString>1.6.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -111,7 +146,7 @@ which port it uses, and which agent settings it updates.</p>]]></description>
         </item>
         <item>
             <title>1.6.2</title>
-            <pubDate>Tue, 01 Sep 2026 07:35:04 +0300</pubDate>
+            <pubDate>Fri, 04 Sep 2026 14:45:48 +0300</pubDate>
             <sparkle:version>14</sparkle:version>
             <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -141,43 +176,6 @@ which port it uses, and which agent settings it updates.</p>]]></description>
 <p class="quiet">Also: repeated diagnostics messages now back off instead of
 flooding the log.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.2/Belay-1.6.2.dmg" length="7158166" type="application/octet-stream" sparkle:edSignature="oP0misfwy4lQoJmcQSAJWaJkoXuefkJdBDsLH1M4VHa7MzQILDirc7PbW47ozdk2LdWU33ogn6vQOLjQLAOuAw=="/>
-        </item>
-        <item>
-            <title>1.6.1</title>
-            <pubDate>Tue, 01 Sep 2026 07:35:05 +0300</pubDate>
-            <sparkle:version>13</sparkle:version>
-            <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.6.1. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.6.1</h2>
-<ul>
-  <li><b>A rare overnight crash is fixed.</b> With local diagnostics enabled,
-      the log could grow heavier over time until a long night of agent activity
-      caused Belay to crash. A detailed bug report helped track it down.</li>
-  <li><b>Set the timer by duration or end time.</b> The custom timer now accepts
-      either one and shows the other as you type.</li>
-  <li><b>Take your statistics with you.</b> Before erasing your history, you can
-      export every recorded day to CSV. Hover over the headline to see your
-      time at the keyboard instead.</li>
-</ul>
-<p class="quiet">Also: chart bars now show their date on hover, disabled agent
-tiles dim consistently, the Off pill looks better in dark mode, shared
-statistics cards now attach correctly in more apps, and after an unexpected
-exit Belay records what happened in the log on the next launch.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.1/Belay-1.6.1.dmg" length="7128958" type="application/octet-stream" sparkle:edSignature="V8tbqaZN5K4AdvGsfnlcJIo00njlskr6oZyctbrqt2iGwWJprZXDS/u9/KIfeI07sYsVju7FmGG5lCKnN/3RDA=="/>
         </item>
     </channel>
 </rss>
