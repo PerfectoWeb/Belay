@@ -1192,3 +1192,142 @@ dialog.film .shut svg { width: 17px; height: 17px; }
         color: #fff;
     }
 }
+
+/* ------------------------------------------------------------ star bar
+   The one ask on the page. Fixed at the top so it moves nothing; arrives
+   only once site.js has seen the visitor read the page; leaves on any answer
+   and stays gone. Sits on the panel colour under a plain grey shadow, so it
+   reads as part of this site rather than a plugin. */
+.starbar {
+    position: fixed;
+    top: 14px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+.starbar-inner {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 16px;
+    padding: 12px 12px 12px 18px;
+    border-radius: 16px;
+    background: rgba(21, 26, 34, 0.9);
+    -webkit-backdrop-filter: blur(16px) saturate(1.25);
+    backdrop-filter: blur(16px) saturate(1.25);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 30px 70px rgba(0, 0, 0, 0.45);
+    transform: translateY(calc(-100% - 24px));
+    opacity: 0;
+    transition:
+        transform 0.62s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.45s ease-out;
+}
+.starbar.is-in .starbar-inner { transform: translateY(0); opacity: 1; }
+.starbar.is-out .starbar-inner {
+    transform: translateY(calc(-100% - 24px));
+    opacity: 0;
+    transition: transform 0.3s ease-in, opacity 0.22s ease-in;
+}
+
+.starbar-star {
+    width: 26px;
+    height: 26px;
+    flex: none;
+    fill: #f2c94c;
+    stroke: #f2c94c;
+    filter: drop-shadow(0 0 0 rgba(242, 201, 76, 0));
+    transform: scale(0.6) rotate(-25deg);
+    opacity: 0;
+}
+/* One twinkle as the bar settles, then still. A star that keeps blinking is
+   an advert; one that lights once is a greeting. */
+.starbar.is-in .starbar-star { animation: starbar-twinkle 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.32s forwards; }
+@keyframes starbar-twinkle {
+    0%   { transform: scale(0.6) rotate(-25deg); opacity: 0; filter: drop-shadow(0 0 0 rgba(242, 201, 76, 0)); }
+    55%  { transform: scale(1.18) rotate(6deg); opacity: 1; filter: drop-shadow(0 0 10px rgba(242, 201, 76, 0.75)); }
+    100% { transform: scale(1) rotate(0); opacity: 1; filter: drop-shadow(0 0 4px rgba(242, 201, 76, 0.35)); }
+}
+
+/* Two lines: the question in bold, the reason under it. */
+.starbar-text {
+    margin: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+}
+.starbar-lead { font-size: 15px; font-weight: 700; color: var(--ink); }
+
+.starbar-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: none;
+    padding: 9px 12px 9px 15px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: filter 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+.starbar-go:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.starbar-go:active { transform: translateY(0); }
+.starbar-count {
+    min-width: 2.2em;
+    padding: 1px 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.starbar-later {
+    flex: none;
+    padding: 8px 6px;
+    border: 0;
+    background: none;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s ease-in-out;
+}
+.starbar-later:hover { color: var(--ink); text-decoration: underline; }
+
+.starbar-go:focus-visible, .starbar-later:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .starbar { top: 10px; }
+    .starbar-inner { flex-wrap: wrap; gap: 10px 12px; padding: 14px 14px 12px 16px; }
+    /* Row one: star and the two lines. Row two: the two answers, right-aligned. */
+    .starbar-text { flex: 1 1 calc(100% - 44px); }
+    .starbar-later { margin-left: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .starbar-inner { transform: none; transition: opacity 0.25s ease-out; }
+    .starbar.is-out .starbar-inner { transform: none; }
+    .starbar-star { transform: none; opacity: 1; animation: none; }
+    .starbar.is-in .starbar-star { animation: none; }
+    .starbar-go, .starbar-go:hover { transform: none; }
+}

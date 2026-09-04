@@ -292,6 +292,138 @@
         });
     }
 
+
+    /* ------------------------------------------------------------- star bar */
+
+    /* The one ask on the page, and when it is allowed to happen.
+
+       Not on arrival: a visitor who has just landed owes nothing and knows
+       nothing, and a bar in their face is the first thing they learn about us.
+       It waits for two signs that the page has actually been read, both
+       required: the numbers under the hero have scrolled into view (they sit
+       past the pitch, so seeing them means the pitch was seen), and about
+       twenty seconds have passed with the tab in front. Then it slides in,
+       once, and any answer ends it: a star is remembered for good, "not now"
+       and the cross for two months. Somebody arriving from the repository
+       itself is already where the bar would send them, so it stays quiet.
+
+       Nothing is fetched to show the count: the number is the one baked into
+       the page by the scheduled job, so the ask costs the visitor no request
+       to a third party. Honest as "as of the last build", like the figures. */
+    function starbar() {
+        var bar = document.querySelector("[data-starbar]");
+        if (!bar) { return; }
+        var KEY = "belay.starbar";
+        var DWELL_MS = 18000;
+        var SNOOZE_MS = 60 * 86400000;
+
+        var memory = {};
+        try { memory = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { memory = {}; }
+        function remember(patch) {
+            Object.keys(patch).forEach(function (k) { memory[k] = patch[k]; });
+            try { localStorage.setItem(KEY, JSON.stringify(memory)); } catch (e) { /* private mode */ }
+        }
+
+        var forced = location.hash === "#starbar";
+        if (!forced) {
+            if (memory.starred) { return; }
+            if (memory.dismissedAt && Date.now() - memory.dismissedAt < SNOOZE_MS) { return; }
+            if (/(^|\.)github\.com$/.test((document.referrer.split("/")[2] || "").toLowerCase())) { return; }
+        }
+
+        var shown = false;
+        var sawTheNumbers = forced;
+        var dwelt = forced;
+        var timer = null;
+        var dwellLeft = DWELL_MS;
+        var dwellStarted = null;
+
+        /* The dwell counts only while the tab is in front: a page left open
+           in a background tab has not been read. */
+        function startDwell() {
+            if (dwelt || timer !== null) { return; }
+            dwellStarted = Date.now();
+            timer = setTimeout(function () { timer = null; dwelt = true; maybeShow(); }, dwellLeft);
+        }
+        function pauseDwell() {
+            if (timer === null) { return; }
+            clearTimeout(timer); timer = null;
+            dwellLeft = Math.max(0, dwellLeft - (Date.now() - dwellStarted));
+        }
+        document.addEventListener("visibilitychange", function () {
+            if (document.hidden) { pauseDwell(); } else { startDwell(); }
+        });
+        if (!document.hidden) { startDwell(); }
+
+        var numbers = document.querySelector(".figures");
+        if (numbers && "IntersectionObserver" in window && !sawTheNumbers) {
+            var watcher = new IntersectionObserver(function (entries) {
+                if (entries.some(function (e) { return e.isIntersecting; })) {
+                    sawTheNumbers = true;
+                    watcher.disconnect();
+                    maybeShow();
+                }
+            }, { threshold: 0.4 });
+            watcher.observe(numbers);
+        } else if (!numbers) {
+            sawTheNumbers = true;
+        }
+
+        /* Never over the demo or the lightbox: someone watching is busy. */
+        function somethingIsOpen() {
+            var box = document.querySelector("[data-lightbox]");
+            return (box && !box.hidden) || !!document.querySelector("dialog[open]");
+        }
+
+        function maybeShow() {
+            if (shown || !sawTheNumbers || !dwelt) { return; }
+            /* Embedded views can report a visible page as hidden; the forced
+               preview ignores that, real visits wait for a tab in front. */
+            if (document.hidden && !forced) { return; }
+            if (somethingIsOpen()) { setTimeout(maybeShow, 4000); return; }
+            shown = true;
+            bar.hidden = false;
+            /* Two frames, so the transition has a "from" to leave. */
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () { bar.classList.add("is-in"); });
+            });
+            document.addEventListener("keydown", onKey);
+            /* The count arrives after the bar has: it starts at nothing and
+               settles on the real number with the same easing as the figures
+               below, which is what makes it read as a live count rather than
+               a label somebody typed. */
+            var count = bar.querySelector("[data-starbar-count]");
+            var total = count ? parseInt(count.textContent, 10) : NaN;
+            if (count && !isNaN(total) && !still.matches) {
+                count.textContent = "0";
+                setTimeout(function () { countUp(count, total, 1100); }, 700);
+            }
+        }
+
+        function hide(patch) {
+            if (patch) { remember(patch); }
+            document.removeEventListener("keydown", onKey);
+            bar.classList.remove("is-in");
+            bar.classList.add("is-out");
+            var done = function () { bar.hidden = true; bar.classList.remove("is-out"); };
+            if (still.matches) { done(); } else { setTimeout(done, 340); }
+        }
+        function onKey(event) {
+            if (event.key === "Escape") { hide({ dismissedAt: Date.now() }); }
+        }
+
+        var go = bar.querySelector("[data-starbar-go]");
+        var later = bar.querySelector("[data-starbar-later]");
+        if (go) {
+            /* The link opens in its own tab (the build adds that); the bar
+               goes on its way here and is never seen again. */
+            go.addEventListener("click", function () { hide({ starred: true }); });
+        }
+        if (later) { later.addEventListener("click", function () { hide({ dismissedAt: Date.now() }); }); }
+
+        if (forced) { maybeShow(); }
+    }
+
     /* ------------------------------------------------------------- startup */
 
     function begin() {
@@ -300,6 +432,7 @@
         rotateTheMiddleFigure();
         tooltips();
         film();
+        starbar();
         if (window.BelayField) { window.BelayField(); }
     }
 
