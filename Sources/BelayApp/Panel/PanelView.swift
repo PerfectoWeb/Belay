@@ -54,6 +54,12 @@ struct PanelView: View {
 
             Divider()
 
+            #if BELAY_MAS
+            PanelReviewAsk(awayHeld: state.statistics().totalAway)
+            #else
+            PanelStarAsk(awayHeld: state.statistics().totalAway)
+            #endif
+
             PanelFooter(totalAwake: state.totalAwake) {
                 onDismiss()
                 state.onOpenSettings()

@@ -37,6 +37,10 @@ public struct NightDimming: Sendable, Equatable {
         /// nothing is held at all, the screen being lit is not Belay's doing
         /// and therefore not Belay's to darken.
         public var holdingDisplay: Bool
+        /// Another app is keeping the display awake — a video, a slideshow, a
+        /// screen share. The machine would not have slept the screen either,
+        /// so Belay must not darken it: the user is watching, not away.
+        public var displayHeldElsewhere: Bool
         /// Seconds since any user input, from `CGEventSource`.
         public var secondsSinceInput: TimeInterval
         /// The system's own display-sleep delay: the moment that would have
@@ -57,7 +61,8 @@ public struct NightDimming: Sendable, Equatable {
             secondsSinceInput: TimeInterval,
             displaySleepDelay: TimeInterval,
             keyOrClick: Bool,
-            pointerTravel: Double
+            pointerTravel: Double,
+            displayHeldElsewhere: Bool = false
         ) {
             self.minuteOfDay = minuteOfDay
             self.holdingDisplay = holdingDisplay
@@ -65,6 +70,7 @@ public struct NightDimming: Sendable, Equatable {
             self.displaySleepDelay = displaySleepDelay
             self.keyOrClick = keyOrClick
             self.pointerTravel = pointerTravel
+            self.displayHeldElsewhere = displayHeldElsewhere
         }
     }
 
@@ -97,6 +103,7 @@ public struct NightDimming: Sendable, Equatable {
                 !enabled
                 || !window.contains(minuteOfDay: sample.minuteOfDay)
                 || !sample.holdingDisplay
+                || sample.displayHeldElsewhere
                 || sample.keyOrClick
                 || sample.pointerTravel > Self.pointerTravelThreshold
             guard leave else { return nil }
@@ -108,6 +115,7 @@ public struct NightDimming: Sendable, Equatable {
             enabled
             && window.contains(minuteOfDay: sample.minuteOfDay)
             && sample.holdingDisplay
+            && !sample.displayHeldElsewhere
             && sample.secondsSinceInput >= sample.displaySleepDelay
         guard enter else { return nil }
         isDimmed = true

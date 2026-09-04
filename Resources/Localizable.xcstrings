@@ -5340,52 +5340,6 @@
         }
       }
     },
-    "Belay removes its entries when it quits and restores them on launch, so agents never keep pointing at a closed Belay.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay removes its entries when it quits and restores them on launch, so agents never keep pointing at a closed Belay."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "При выходе Belay удаляет свои записи из настроек агентов и возвращает их при запуске, поэтому закрытый Belay больше не оставляет нерабочую связь."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay entfernt seine Einträge beim Beenden und stellt sie beim Start wieder her, damit Agents nie auf ein geschlossenes Belay verweisen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay elimina sus entradas al cerrarse y las restaura al abrirse, para que los agentes nunca sigan apuntando a un Belay cerrado."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay retire ses entrées à la fermeture et les rétablit au lancement, afin que les agents ne restent jamais liés à un Belay fermé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay rimuove le proprie voci alla chiusura e le ripristina all’avvio, così gli agenti non restano mai collegati a un Belay chiuso."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belay 退出时会移除自己的设置项，并在启动时恢复，避免智能体继续连接到已经关闭的 Belay。"
-          }
-        }
-      }
-    },
     "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
       "extractionState": "manual",
       "localizations": {
@@ -6738,52 +6692,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "合盖工作"
-          }
-        }
-      }
-    },
-    "Closing the lid no longer hides the “while you were away” summary, and it now mentions if your Mac ran hot.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Closing the lid no longer hides the “while you were away” summary, and it now mentions if your Mac ran hot."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Закрытие крышки больше не скрывает сводку «пока вас не было», а если Mac нагревался, Belay теперь сообщит об этом."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Schließen des Deckels blendet „Während du weg warst“ nicht mehr aus, und Belay weist jetzt darauf hin, wenn dein Mac zu warm wurde."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cerrar la tapa ya no oculta el resumen de «mientras no estabas», y Belay ahora te avisa si el Mac se calentó."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fermer le capot ne masque plus le résumé « pendant votre absence », et Belay indique maintenant si votre Mac a chauffé."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chiudere il coperchio non nasconde più il riepilogo «mentre eri via», e Belay ora segnala se il Mac si è scaldato."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "合上盖子不会再让“离开期间”小结消失；如果 Mac 温度过高，Belay 现在也会提示。"
           }
         }
       }
@@ -8885,52 +8793,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "会再等片刻，以防还有新工作开始。"
-          }
-        }
-      }
-    },
-    "Hooks clean up automatically": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hooks clean up automatically"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хуки убираются автоматически"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hooks werden automatisch aufgeräumt"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Los hooks se limpian automáticamente"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les hooks se nettoient automatiquement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gli hook si puliscono automaticamente"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "钩子会自动清理"
           }
         }
       }
@@ -13280,52 +13142,6 @@
         }
       }
     },
-    "Return summaries work better": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Return summaries work better"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сводка по возвращении стала надёжнее"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zusammenfassungen bei der Rückkehr sind zuverlässiger"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Los resúmenes al volver son más fiables"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les résumés au retour sont plus fiables"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I riepiloghi al ritorno sono più affidabili"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "返回时的小结更可靠"
-          }
-        }
-      }
-    },
     "Rules…": {
       "localizations": {
         "de": {
@@ -13414,52 +13230,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "安全停止"
-          }
-        }
-      }
-    },
-    "See what your agents are doing": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "See what your agents are doing"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Видно, чем заняты агенты"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sieh, was deine Agents tun"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mira qué están haciendo tus agentes"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Voyez ce que font vos agents"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Guarda cosa stanno facendo i tuoi agenti"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "看看智能体正在做什么"
           }
         }
       }
@@ -17711,52 +17481,6 @@
         }
       }
     },
-    "Working sessions now show activity badges like shell, editing and search. Background tasks also keep your Mac awake and show why in the panel.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Working sessions now show activity badges like shell, editing and search. Background tasks also keep your Mac awake and show why in the panel."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Работающие сессии теперь показывают метки вроде shell, правки и поиска. Фоновые задачи тоже продолжают удерживать Mac, а панель показывает почему."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktive Sitzungen zeigen jetzt kleine Hinweise wie Shell, Bearbeiten und Suche. Hintergrundaufgaben halten den Mac ebenfalls wach und zeigen den Grund im Panel."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Las sesiones activas muestran ahora indicadores como shell, edición y búsqueda. Las tareas en segundo plano también mantienen el Mac despierto y el panel muestra por qué."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les sessions actives affichent désormais des indicateurs comme shell, édition et recherche. Les tâches en arrière-plan gardent aussi le Mac éveillé et le panneau indique pourquoi."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le sessioni attive ora mostrano indicatori come shell, modifica e ricerca. Anche le attività in background tengono sveglio il Mac e il pannello mostra il motivo."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "工作中的会话现在会显示 shell、编辑、搜索等活动标签。后台任务也会继续保持 Mac 唤醒，面板会说明原因。"
-          }
-        }
-      }
-    },
     "You asked Belay to stay on until you switch it off.": {
       "extractionState": "manual",
       "localizations": {
@@ -18408,52 +18132,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "编辑"
-          }
-        }
-      }
-    },
-    "finished sessions, folder names only": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "finished sessions, folder names only"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "завершённых сессий, только имена папок"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "beendete Sitzungen, nur Ordnernamen"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sesiones terminadas, solo nombres de carpetas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sessions terminées, noms de dossiers uniquement"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sessioni concluse, solo nomi di cartelle"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "个已完成的会话，仅显示文件夹名称"
           }
         }
       }
@@ -19623,6 +19301,926 @@
           "stringUnit": {
             "state": "translated",
             "value": "✨ Belay %@ 发布了"
+          }
+        }
+      }
+    },
+    "All sessions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All sessions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Все сессии"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Sitzungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todas las sesiones"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les sessions"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutte le sessioni"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部会话"
+          }
+        }
+      }
+    },
+    "%lld sessions": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sessions"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld сессий"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Sitzungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sesiones"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sessions"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sessioni"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 次会话"
+          }
+        }
+      }
+    },
+    "%@ agent time": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ agent time"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ работы агентов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Agent-Zeit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ de tiempo de agentes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ de temps des agents"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ di tempo degli agenti"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体工作 %@"
+          }
+        }
+      }
+    },
+    "%@ tokens": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ tokens"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ токенов"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Tokens"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ tokens"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ tokens"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ token"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ token"
+          }
+        }
+      }
+    },
+    "no token reports": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "no token reports"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "токены не отчитаны"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "keine Token-Meldungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sin datos de tokens"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "aucun décompte de tokens"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nessun dato sui token"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无 token 记录"
+          }
+        }
+      }
+    },
+    "recent sessions in this folder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "recent sessions in this folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "недавние сессии в этой папке"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "letzte Sitzungen in diesem Ordner"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sesiones recientes en esta carpeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sessions récentes dans ce dossier"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sessioni recenti in questa cartella"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此文件夹的最近会话"
+          }
+        }
+      }
+    },
+    "last %lld sessions, folder names only": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "last %lld sessions, folder names only"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "последние %lld сессий, только имена папок"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "letzte %lld Sitzungen, nur Ordnernamen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "últimas %lld sesiones, solo nombres de carpeta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dernières sessions, noms de dossiers seulement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ultime %lld sessioni, solo nomi di cartella"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近 %lld 次会话，仅显示文件夹名"
+          }
+        }
+      }
+    },
+    "See what each project cost": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what each project cost"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видно, во что обошёлся проект"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sieh, was jedes Projekt gekostet hat"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mira lo que ha costado cada proyecto"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voyez ce que chaque projet a coûté"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Guarda quanto è costato ogni progetto"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "看看每个项目花了多少"
+          }
+        }
+      }
+    },
+    "Double-click a session in Statistics to open its folder: total agent time, sessions and tokens since Belay started counting, with that folder's recent runs below.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double-click a session in Statistics to open its folder: total agent time, sessions and tokens since Belay started counting, with that folder's recent runs below."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Двойной клик по сессии в статистике открывает её папку: общее время агентов, сессии и токены с начала подсчёта, а ниже – недавние запуски в этой папке."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Doppelklick auf eine Sitzung in der Statistik öffnet ihren Ordner: Agent-Zeit, Sitzungen und Tokens seit Beginn der Zählung, darunter die letzten Läufe in diesem Ordner."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haz doble clic en una sesión de Estadísticas para abrir su carpeta: tiempo de agentes, sesiones y tokens desde que Belay empezó a contar, con las ejecuciones recientes de esa carpeta debajo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Double-cliquez sur une session dans les statistiques pour ouvrir son dossier : temps des agents, sessions et tokens depuis le début du comptage, avec les exécutions récentes de ce dossier en dessous."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doppio clic su una sessione nelle statistiche per aprire la sua cartella: tempo degli agenti, sessioni e token da quando Belay ha iniziato a contare, con le esecuzioni recenti di quella cartella sotto."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在统计中双击一次会话即可打开它的文件夹：自开始统计以来的智能体工作时长、会话数和 token 数，下方是该文件夹的最近运行。"
+          }
+        }
+      }
+    },
+    "Background tasks hold steadier": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Background tasks hold steadier"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фоновые задачи держат надёжнее"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hintergrundaufgaben halten zuverlässiger"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las tareas en segundo plano se sostienen mejor"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les tâches en arrière-plan tiennent mieux"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le attività in background reggono meglio"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台任务保持得更稳"
+          }
+        }
+      }
+    },
+    "A hook arriving late or twice can no longer end a hold early, or restart one that was already released.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A hook arriving late or twice can no longer end a hold early, or restart one that was already released."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Опоздавший или повторный хук больше не снимает удержание раньше времени и не возобновляет уже завершённое."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein verspäteter oder doppelter Hook kann das Wachhalten nicht mehr vorzeitig beenden oder ein bereits beendetes wieder starten."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un hook que llega tarde o repetido ya no puede terminar antes de tiempo ni reanudar uno que ya se había soltado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un hook en retard ou reçu deux fois ne peut plus interrompre un maintien trop tôt, ni en relancer un déjà terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un hook in ritardo o duplicato non può più interrompere l'hold in anticipo né riavviarne uno già rilasciato."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迟到或重复的 hook 不会再提前结束保持唤醒，也不会重新开启已经结束的保持。"
+          }
+        }
+      }
+    },
+    "Hooks always find their way back": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks always find their way back"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хуки всегда возвращаются"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hooks finden immer zurück"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los hooks siempre vuelven"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les hooks retrouvent toujours leur place"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gli hook tornano sempre"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hook 总能回来"
+          }
+        }
+      }
+    },
+    "If Belay is killed halfway through quitting, its hook entries still come back on the next launch.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If Belay is killed halfway through quitting, its hook entries still come back on the next launch."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если Belay убьют посреди выхода, записи хуков всё равно вернутся при следующем запуске."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird Belay mitten im Beenden abgeschossen, kommen seine Hook-Einträge beim nächsten Start trotzdem zurück."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay se cierra a la fuerza a mitad de la salida, sus entradas de hooks vuelven igualmente en el siguiente arranque."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si Belay est tué en plein milieu de sa fermeture, ses entrées de hooks reviennent quand même au prochain lancement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se Belay viene terminato a metà della chiusura, le sue voci hook tornano comunque all'avvio successivo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "即使 Belay 在退出过程中被强制终止，它的 hook 条目也会在下次启动时恢复。"
+          }
+        }
+      }
+    },
+    "The diagnostics log stays small": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The diagnostics log stays small"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лог диагностики не растёт"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Diagnoseprotokoll bleibt klein"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El registro de diagnóstico se mantiene pequeño"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le journal de diagnostic reste petit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il log di diagnostica resta piccolo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断日志不再膨胀"
+          }
+        }
+      }
+    },
+    "Past 3 MB the log trims itself to its last megabyte, so a switch left on for months costs nothing.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Past 3 MB the log trims itself to its last megabyte, so a switch left on for months costs nothing."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "После 3 МБ лог сам ужимается до последнего мегабайта – включённый на месяцы сбор ничего не стоит."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ab 3 MB kürzt sich das Protokoll auf sein letztes Megabyte – ein monatelang eingeschalteter Schalter kostet nichts."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A partir de 3 MB el registro se recorta a su último megabyte, así que dejarlo activado durante meses no cuesta nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Au-delà de 3 Mo, le journal se réduit à son dernier mégaoctet : un interrupteur laissé actif des mois ne coûte rien."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oltre i 3 MB il log si riduce all'ultimo megabyte: un interruttore lasciato acceso per mesi non costa nulla."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过 3 MB 后，日志会自动裁剪到最后 1 MB，开关开上几个月也没有代价。"
+          }
+        }
+      }
+    },
+    "Belay kept your Mac awake for %@ while you were away.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay kept your Mac awake for %@ while you were away."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay держал Mac бодрым %@, пока вас не было."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay hat deinen Mac %@ lang wach gehalten, während du weg warst."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay mantuvo tu Mac despierto %@ mientras no estabas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay a gardé votre Mac éveillé %@ pendant votre absence."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay ha tenuto sveglio il Mac per %@ mentre eri via."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你不在时，Belay 让 Mac 保持唤醒了 %@。"
+          }
+        }
+      }
+    },
+    "Star it!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Star it!"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поставить звезду!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stern geben!"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Dale estrella!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une étoile !"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dai una stella!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点个星！"
+          }
+        }
+      }
+    },
+    "A GitHub star helps others find it.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GitHub star helps others find it."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Звезда на GitHub помогает другим его найти."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein GitHub-Stern hilft anderen, es zu finden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una estrella en GitHub ayuda a otros a encontrarlo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une étoile GitHub aide les autres à le trouver."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una stella su GitHub aiuta gli altri a trovarlo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub 星标能帮助其他人找到它。"
+          }
+        }
+      }
+    },
+    "An App Store review helps others find it.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An App Store review helps others find it."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отзыв в App Store помогает другим его найти."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine App-Store-Rezension hilft anderen, es zu finden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una reseña en el App Store ayuda a otros a encontrarlo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un avis sur l'App Store aide les autres à le trouver."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una recensione sull'App Store aiuta gli altri a trovarlo."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 App Store 写个评价，能帮助其他人找到它。"
+          }
+        }
+      }
+    },
+    "Rate it!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate it!"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оценить!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bewerten!"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Valóralo!"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notez-le !"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valutalo!"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "去评价！"
           }
         }
       }

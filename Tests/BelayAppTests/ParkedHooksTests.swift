@@ -60,4 +60,52 @@ final class ParkedHooksTests: XCTestCase {
         XCTAssertNil(ParkedHooksStore(paths: paths).load())
         await precise.stop()
     }
+
+    /// The Cline half of the same round trip: script files in ~/.cline/hooks
+    /// leave on quit and come back on launch.
+    func testClineParksAndRestoresToo() async throws {
+        let first = PreciseDetection(paths: paths)
+        _ = await first.start()
+        XCTAssertTrue(first.installCline())
+        XCTAssertTrue(ClineHookInstaller(paths: paths).isInstalled())
+
+        first.parkForQuit()
+        XCTAssertFalse(ClineHookInstaller(paths: paths).isInstalled())
+        XCTAssertEqual(ParkedHooksStore(paths: paths).load(), ParkedHooks(cline: true))
+        await first.stop()
+
+        let second = PreciseDetection(paths: paths)
+        _ = await second.start()
+        XCTAssertTrue(ClineHookInstaller(paths: paths).isInstalled(), "relaunch restores them")
+        XCTAssertNil(ParkedHooksStore(paths: paths).load())
+        await second.stop()
+    }
+
+    /// A restore that cannot write keeps what it owes: the record survives the
+    /// failed launch and the next one pays it.
+    func testFailedRestoreKeepsTheRecord() async throws {
+        let first = PreciseDetection(paths: paths)
+        _ = await first.start()
+        XCTAssertTrue(first.install())
+        first.parkForQuit()
+        await first.stop()
+
+        // A directory where the settings file should be: every write fails.
+        try FileManager.default.removeItem(at: paths.claudeSettings)
+        try FileManager.default.createDirectory(
+            at: paths.claudeSettings, withIntermediateDirectories: false)
+        let blocked = PreciseDetection(paths: paths)
+        _ = await blocked.start()
+        XCTAssertEqual(
+            ParkedHooksStore(paths: paths).load(), ParkedHooks(claude: true),
+            "a failed restore is still owed")
+        await blocked.stop()
+
+        try FileManager.default.removeItem(at: paths.claudeSettings)
+        let third = PreciseDetection(paths: paths)
+        _ = await third.start()
+        XCTAssertTrue(settingsText().contains("/hook?src=belay"), "the next launch pays it")
+        XCTAssertNil(ParkedHooksStore(paths: paths).load())
+        await third.stop()
+    }
 }

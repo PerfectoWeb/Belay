@@ -43,6 +43,9 @@ final class AppState {
     var onRemoveProviderRoot: (ProviderID, String) -> Void = { _, _ in }
     var onAddSuggestedRoot: (ProviderID, String) -> Void = { _, _ in }
     var onOpenSettings: () -> Void = {}
+    /// The same numbers the Statistics pane shows, for the one panel row that
+    /// needs to know whether Belay has earned anything yet.
+    var statistics: () -> UsageStatistics = { UsageStatistics() }
 
     var isHolding: Bool { snapshot.state.holdsAssertion }
 

@@ -75,7 +75,8 @@ final class NightDimmingController {
             displaySleepDelay: DisplaySleepDelay.current(onAC: isOnAC) ?? .infinity,
             keyOrClick: UserInputSource.keyOrClick(
                 within: machine.isDimmed ? Self.dimmedTickInterval : Self.tickInterval),
-            pointerTravel: travel ?? 0)
+            pointerTravel: travel ?? 0,
+            displayHeldElsewhere: DisplayHeldElsewhere.now())
 
         let window = NightDimming.Window(
             start: settings.nightDimmingStart, end: settings.nightDimmingEnd)
@@ -115,6 +116,7 @@ final class NightDimmingController {
     ) -> String {
         if !window.contains(minuteOfDay: sample.minuteOfDay) { return "window" }
         if !sample.holdingDisplay { return "hold-ended" }
+        if sample.displayHeldElsewhere { return "watching" }
         if sample.keyOrClick { return "key" }
         if sample.pointerTravel > NightDimming.pointerTravelThreshold {
             return "travel=\(Int(sample.pointerTravel))"

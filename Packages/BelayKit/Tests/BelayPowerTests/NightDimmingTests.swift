@@ -14,7 +14,8 @@ struct NightDimmingTests {
         idle: TimeInterval = 601,
         delay: TimeInterval = 600,
         keyOrClick: Bool = false,
-        travel: Double = 0
+        travel: Double = 0,
+        heldElsewhere: Bool = false
     ) -> NightDimming.Sample {
         NightDimming.Sample(
             minuteOfDay: minute,
@@ -22,7 +23,8 @@ struct NightDimmingTests {
             secondsSinceInput: idle,
             displaySleepDelay: delay,
             keyOrClick: keyOrClick,
-            pointerTravel: travel)
+            pointerTravel: travel,
+            displayHeldElsewhere: heldElsewhere)
     }
 
     @Test("All four gates open dims; each one alone closed does not")
@@ -34,6 +36,22 @@ struct NightDimmingTests {
         #expect(dimming.evaluate(sample(idle: 60), enabled: true, window: overnight) == nil)
         #expect(dimming.evaluate(sample(), enabled: true, window: overnight) == .dim)
         #expect(dimming.isDimmed)
+    }
+
+    /// The film case: idle, holding, deep in the window — but a video player is
+    /// keeping the screen up, so the screen would not have slept and Belay does
+    /// not dim it. And a video starting mid-dim brings the screen back.
+    @Test("Another app holding the display blocks dimming and restores it")
+    func watchingBlocksDimming() {
+        var dimming = NightDimming()
+        #expect(dimming.evaluate(sample(heldElsewhere: true), enabled: true, window: overnight) == nil)
+        #expect(!dimming.isDimmed)
+
+        // Nothing playing now: the same idle screen dims.
+        #expect(dimming.evaluate(sample(), enabled: true, window: overnight) == .dim)
+        // A video starts while dimmed: restore for the watcher.
+        #expect(dimming.evaluate(sample(heldElsewhere: true), enabled: true, window: overnight) == .restore)
+        #expect(!dimming.isDimmed)
     }
 
     @Test("A window crossing midnight covers both of its evenings")

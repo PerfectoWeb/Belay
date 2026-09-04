@@ -103,21 +103,25 @@ extension PreciseDetection {
     /// which has no place inside a one-second quit.
     func parkForQuit() {
         guard Self.isSupported else { return }
-        var parked = ParkedHooks()
-        if (try? installer.isInstalled()) == true {
+        let parked = ParkedHooks(
+            claude: (try? installer.isInstalled()) == true,
+            cline: clineInstaller.isInstalled())
+        guard !parked.isEmpty else { return }
+        // The record goes down before the first destructive write. A kill in
+        // the other order leaves the hooks gone and nothing owed; in this
+        // order the worst case is a restore onto hooks still present, which
+        // the installers already treat as nothing to do.
+        ParkedHooksStore(paths: paths).save(parked)
+        if parked.claude {
             for installer in claudeInstallers {
                 do { _ = try installer.uninstall() } catch {
                     EventLog.note("bridge park failed: \(error.localizedDescription)")
                 }
             }
-            parked.claude = true
         }
-        if clineInstaller.isInstalled() {
+        if parked.cline {
             for installer in clineInstallers { _ = installer.uninstall() }
-            parked.cline = true
         }
-        guard !parked.isEmpty else { return }
-        ParkedHooksStore(paths: paths).save(parked)
         EventLog.note("bridge parked hooks for quit")
     }
 
@@ -126,18 +130,29 @@ extension PreciseDetection {
     func restoreParked() {
         let store = ParkedHooksStore(paths: paths)
         guard let parked = store.load(), let endpoint else { return }
+        // What fails to come back stays owed: the record narrows to it and
+        // the next launch tries again, instead of one busy settings file
+        // costing the user their hooks for good.
+        var owed = ParkedHooks()
         if parked.claude {
             for installer in claudeInstallers {
                 do { _ = try installer.install(endpoint: endpoint) } catch {
                     EventLog.note("bridge restore failed: \(error.localizedDescription)")
                     lastError = error.localizedDescription
+                    owed.claude = true
                 }
             }
         }
         if parked.cline {
-            for installer in clineInstallers { _ = try? installer.install(endpoint: endpoint) }
+            for installer in clineInstallers {
+                do { _ = try installer.install(endpoint: endpoint) } catch { owed.cline = true }
+            }
         }
-        store.clear()
-        EventLog.note("bridge restored parked hooks port=\(endpoint.port)")
+        store.save(owed)
+        if owed.isEmpty {
+            EventLog.note("bridge restored parked hooks port=\(endpoint.port)")
+        } else {
+            EventLog.note("bridge restore incomplete, kept for the next launch")
+        }
     }
 }

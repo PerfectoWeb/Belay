@@ -98,7 +98,7 @@ struct SessionHistoryTracker: Equatable {
 @MainActor
 struct SessionHistoryStore {
     /// Enough depth for the sessions table to be worth sorting.
-    static let capacity = 50
+    static let capacity = 100
 
     private let key = "sessionHistory"
     private let defaults: UserDefaults
@@ -123,5 +123,8 @@ struct SessionHistoryStore {
     /// The statistics reset clears this too: "start again" means all of it.
     func reset() {
         defaults.removeObject(forKey: key)
+        // A stale accumulator from a build that kept one would otherwise
+        // outlive the list it was meant to sum.
+        defaults.removeObject(forKey: "projectTotals")
     }
 }

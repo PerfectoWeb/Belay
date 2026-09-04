@@ -5,6 +5,47 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-09-04
+
+### Added
+
+- Statistics › Sessions: click a row to select it, double-click (or Return) to
+  open its folder. The folder screen shows what that project has cost since
+  Belay started counting – sessions, agent time and tokens, with the token
+  figure admitting how many sessions actually reported one – above the
+  recent sessions in that folder. Escape or "All sessions" goes back.
+- Per-folder totals are kept beside the recent list and outlive its cap, so
+  a project's numbers never shrink as old sessions fall off. They seed
+  themselves from the existing list on first launch and clear with the
+  statistics reset.
+- The Sessions headline is now the agents' time across every folder for all
+  time, with sessions and tokens under it, instead of the table's row count;
+  the list itself keeps the last 100 sessions (was 50) and says so under the
+  table.
+- One request, once, in the panel: after Belay has held the Mac through an
+  hour of your absence it asks for a GitHub star (direct build) or an App
+  Store review (App Store build), with the number it earned it by. Either
+  answer ends it for good, and it shares that answer with the row in
+  Statistics.
+
+### Fixed
+
+- Night dimming no longer darkens the screen while another app is keeping the
+  display awake – a video, a slideshow, a screen share. The Mac would not have
+  slept the screen then either, so Belay leaves it lit.
+- A Stop hook arriving late or twice can no longer clear the background-tasks
+  bracket a newer Stop armed, nor resurrect one a newer Stop released – the
+  bracket now sits behind the same out-of-order guard as the rest of the
+  exact state.
+- Hook parking writes its record before removing anything, so a kill between
+  the two steps can no longer leave the hooks gone with nothing owed.
+- A restore that fails to write keeps what it owes for the next launch
+  instead of clearing the record on the first try.
+- The diagnostics log trims before collection opens, so a line written from
+  another thread during the trim can no longer vanish.
+- Tests for the tool bracket, the badge gate, the hook tool category and the
+  Cline half of parking, none of which had any.
+
 ## [1.7.0] - 2026-09-01
 
 ### Added

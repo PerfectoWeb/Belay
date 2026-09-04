@@ -85,6 +85,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         )
         statusItem.onOpenPane = { [weak settingsWindow] in settingsWindow?.show(pane: $0) }
+        appState.statistics = { [weak controller] in controller?.usage.statistics ?? UsageStatistics() }
         wireUpdateRow(statusItem, settingsWindow)
         // The panel's "Fix" button. Every notice it can show is resolved on the
         // Providers pane — Claude Code needs folder access, the generic provider

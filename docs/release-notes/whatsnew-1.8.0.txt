@@ -1,0 +1,103 @@
+What's New – Belay 1.8.0
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): "Background tasks hold more reliably" and "Hooks recover after an interrupted quit".
+
+=== en ===
+
+# See stats for each project
+Double-click a session in Statistics to see that folder’s total agent time, sessions, tokens, and recent runs.
+
+# Background tasks hold more reliably
+Late or duplicate hook events no longer end a hold early or restart one after it has finished.
+
+# Hooks recover after an interrupted quit
+If Belay is killed while closing, it restores any missing hook entries on the next launch.
+
+# The diagnostics log stays small
+Once it passes 3 MB, Belay trims it back to the most recent 1 MB.
+
+=== ru ===
+
+# Статистика по каждому проекту
+Дважды нажмите на сессию в Статистике, чтобы увидеть время агентов, количество сессий, токены и недавние запуски для этой папки.
+
+# Фоновые задачи удерживают надёжнее
+Запоздалые или повторные события больше не завершают удержание раньше времени и не запускают его снова после завершения.
+
+# Хуки восстанавливаются после сбоя при выходе
+Если Belay принудительно завершится во время закрытия, недостающие записи хуков восстановятся при следующем запуске.
+
+# Журнал диагностики остаётся небольшим
+После 3 МБ Belay автоматически сокращает его до последнего 1 МБ.
+
+=== de ===
+
+# Statistiken für jedes Projekt
+Doppelklicke in der Statistik auf eine Sitzung, um Agent-Zeit, Sitzungen, Tokens und letzte Läufe für diesen Ordner zu sehen.
+
+# Hintergrundaufgaben halten zuverlässiger
+Verspätete oder doppelte Hook-Ereignisse beenden einen Hold nicht mehr zu früh und starten ihn nach dem Ende nicht erneut.
+
+# Hooks werden nach einem unterbrochenen Beenden wiederhergestellt
+Wird Belay während des Beendens abgebrochen, stellt es fehlende Hook-Einträge beim nächsten Start wieder her.
+
+# Das Diagnoseprotokoll bleibt klein
+Sobald es 3 MB überschreitet, kürzt Belay es auf das letzte 1 MB.
+
+=== es ===
+
+# Estadísticas por proyecto
+Haz doble clic en una sesión de Estadísticas para ver el tiempo de los agentes, las sesiones, los tokens y las ejecuciones recientes de esa carpeta.
+
+# Las tareas en segundo plano mantienen la retención con más fiabilidad
+Los eventos tardíos o duplicados ya no terminan una retención antes de tiempo ni la reinician después de haber terminado.
+
+# Los hooks se recuperan tras un cierre interrumpido
+Si Belay se cierra a la fuerza mientras está saliendo, restaura las entradas de hooks que falten en el siguiente arranque.
+
+# El registro de diagnóstico se mantiene pequeño
+Cuando supera los 3 MB, Belay lo reduce al 1 MB más reciente.
+
+=== fr ===
+
+# Des statistiques pour chaque projet
+Double-cliquez sur une session dans les Statistiques pour voir le temps des agents, les sessions, les tokens et les exécutions récentes de ce dossier.
+
+# Les tâches en arrière-plan maintiennent l’éveil plus fiablement
+Les événements de hook tardifs ou en double ne peuvent plus interrompre un maintien trop tôt ni le relancer après sa fin.
+
+# Les hooks se rétablissent après une fermeture interrompue
+Si Belay est interrompu pendant sa fermeture, les entrées de hooks manquantes sont restaurées au prochain lancement.
+
+# Le journal de diagnostic reste petit
+Au-delà de 3 Mo, Belay le réduit au dernier mégaoctet.
+
+=== it ===
+
+# Statistiche per ogni progetto
+Fai doppio clic su una sessione nelle Statistiche per vedere il tempo degli agenti, le sessioni, i token e le esecuzioni recenti di quella cartella.
+
+# Le attività in background mantengono l’hold con più affidabilità
+Gli eventi hook in ritardo o duplicati non terminano più un hold in anticipo e non lo riavviano dopo la fine.
+
+# Gli hook si ripristinano dopo una chiusura interrotta
+Se Belay viene terminato mentre si sta chiudendo, le voci hook mancanti vengono ripristinate all’avvio successivo.
+
+# Il log di diagnostica resta piccolo
+Quando supera i 3 MB, Belay lo riduce all’ultimo 1 MB.
+
+=== zh-Hans ===
+
+# 查看每个项目的统计数据
+在“统计”中双击会话，即可查看该文件夹的智能体时间、会话数、token 数和最近运行。
+
+# 后台任务保持唤醒更可靠
+迟到或重复的 hook 事件不会再提前结束保持唤醒，也不会在结束后重新启动。
+
+# Hook 会在异常退出后恢复
+如果 Belay 在退出过程中被强制终止，下次启动时会恢复缺失的 hook 条目。
+
+# 诊断日志保持精简
+超过 3 MB 后，Belay 会自动将日志缩减到最近的 1 MB。

@@ -91,30 +91,36 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.7.0",
+                version: "1.8.0",
                 items: [
                     .init(
-                        symbol: Mark.trace,
-                        title: "See what your agents are doing",
+                        symbol: Mark.chart,
+                        title: "See what each project cost",
                         body: """
-                            Working sessions now show activity badges like shell, \
-                            editing and search. Background tasks also keep your Mac \
-                            awake and show why in the panel.
+                            Double-click a session in Statistics to open its folder: \
+                            total agent time, sessions and tokens since Belay started \
+                            counting, with that folder's recent runs below.
+                            """),
+                    .init(
+                        symbol: Mark.trace,
+                        title: "Background tasks hold steadier",
+                        body: """
+                            A hook arriving late or twice can no longer end a hold \
+                            early, or restart one that was already released.
                             """, directOnly: true),
                     .init(
                         symbol: Mark.safety,
-                        title: "Hooks clean up automatically",
+                        title: "Hooks always find their way back",
                         body: """
-                            Belay removes its entries when it quits and restores them \
-                            on launch, so agents never keep pointing at a closed \
-                            Belay.
+                            If Belay is killed halfway through quitting, its hook \
+                            entries still come back on the next launch.
                             """, directOnly: true),
                     .init(
-                        symbol: Mark.told,
-                        title: "Return summaries work better",
+                        symbol: Mark.quiet,
+                        title: "The diagnostics log stays small",
                         body: """
-                            Closing the lid no longer hides the “while you were away” \
-                            summary, and it now mentions if your Mac ran hot.
+                            Past 3 MB the log trims itself to its last megabyte, so a \
+                            switch left on for months costs nothing.
                             """)
                 ]
             )

@@ -67,6 +67,17 @@ struct HookEnvelopeTests {
         #expect(try decode(start).signal(at: Date())?.activity == .working)
     }
 
+    /// The badge's whole supply line: a PreToolUse names its tool, the signal
+    /// carries the category, and nothing else in the stream does.
+    @Test func preToolUseCarriesTheToolCategory() throws {
+        let bash = #"{"session_id":"s","hook_event_name":"PreToolUse","tool_name":"Bash"}"#
+        #expect(try decode(bash).signal(at: Date())?.tool == .command)
+        let post = #"{"session_id":"s","hook_event_name":"PostToolUse","tool_name":"Bash"}"#
+        #expect(try decode(post).signal(at: Date())?.tool == nil)
+        let stop = #"{"session_id":"s","hook_event_name":"Stop"}"#
+        #expect(try decode(stop).signal(at: Date())?.tool == nil)
+    }
+
     /// Starting a question tool means a person has to answer; starting any
     /// other tool is plain work.
     @Test func questionToolsReadAsWaiting() throws {

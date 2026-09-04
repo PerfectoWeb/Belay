@@ -57,4 +57,22 @@ struct BackgroundBracketTests {
         await coordinator.evaluate()
         #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
     }
+
+    /// Stop hooks are fire-and-forget and arrive reordered or twice. A stale
+    /// one must neither clear a bracket a newer Stop armed nor resurrect one
+    /// a newer Stop released — the same guard the rest of the exact state has.
+    @Test("A stale Stop neither clears nor re-arms the bracket")
+    func reorderedStopLeavesTheBracketAlone() {
+        let t0 = Date(timeIntervalSince1970: 1_700_000_000)
+        var state = SessionState(
+            id: SessionID("s1"), provider: .claudeCode, workspace: "acme-api", firstSeen: t0)
+
+        state.record(.make(.working, at: t0 + 100, confidence: .exact, backgroundTasks: 2))
+        state.record(.make(.idle, at: t0 + 90, confidence: .exact, backgroundTasks: 0))
+        #expect(state.backgroundSince == t0 + 100, "the retried earlier Stop must not clear it")
+
+        state.record(.make(.idle, at: t0 + 200, confidence: .exact, backgroundTasks: 0))
+        state.record(.make(.working, at: t0 + 150, confidence: .exact, backgroundTasks: 3))
+        #expect(state.backgroundSince == nil, "the stale busy Stop must not re-arm it")
+    }
 }

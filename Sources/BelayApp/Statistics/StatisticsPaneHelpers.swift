@@ -22,15 +22,18 @@ extension StatisticsPane {
         }
     }
 
-    /// The Sessions side of the headline: same weight, its own subject.
-    /// The number is the table's row count, and the caption carries the
-    /// privacy sentence that used to sit under the table.
+    /// The Sessions side of the headline: same weight, its own subject. The
+    /// number is the agents' time across every folder for all time — a row
+    /// count was a number about the table, not about the work — and the
+    /// caption carries the sessions and tokens behind it. All of it comes
+    /// from the running totals, so nothing here shrinks as the list forgets.
     var sessionsHeadline: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(verbatim: "\(history.count)")
+        let overall = ProjectTotals.over(history)
+        return VStack(alignment: .leading, spacing: 4) {
+            Text(verbatim: ElapsedTime.compact(overall.seconds))
                 .font(.system(size: 40, weight: .semibold, design: .rounded))
                 .monospacedDigit()
-            Text("finished sessions, folder names only")
+            Text(verbatim: overall.caption(withTime: false))
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
         }

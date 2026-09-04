@@ -42,12 +42,14 @@ enum Diagnostics {
 
     private static func start() {
         guard watchdog == nil else { return }
-        collecting.withLock { $0 = true }
         try? FileManager.default.createDirectory(
             at: folder, withIntermediateDirectories: true)
-        // Trim before the tail is read: the kept megabyte is exactly the
+        // Trim while the gate is still shut: an append from another thread
+        // landing inside the atomic replace would vanish with the old file.
+        // And before the tail is read: the kept megabyte is exactly the
         // window `endedDirty` looks at, so nothing it needs is ever cut.
         LogTrim.trimIfOversized(file)
+        collecting.withLock { $0 = true }
         // A SIGKILL leaves no crash report and no goodbye, so the only place
         // it can ever be seen is here, on the next launch. Caught in the
         // field: an overnight death that looked like nothing at all.

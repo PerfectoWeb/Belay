@@ -15,6 +15,9 @@ struct StatisticsPane: View {
     /// identity; Sessions is the drill-down.
     enum Screen { case overview, sessions }
     @State private var screen: Screen = .overview
+    /// The folder opened from the sessions table, while the picker stays on
+    /// Sessions: the drill-down is a depth, not a third tab.
+    @State private var project: String?
     /// Throwing the numbers away is the one destructive thing in Settings, so
     /// it asks first and the pane does not own the data it would be discarding.
     var onReset: () -> Void = {}
@@ -53,21 +56,35 @@ struct StatisticsPane: View {
                 HStack(alignment: .top) {
                     if screen == .overview {
                         headline
+                    } else if let project {
+                        projectScreen(project).headline
                     } else {
                         sessionsHeadline
                     }
                     Spacer()
-                    // The native switcher, where a second toolbar would be
-                    // ceremony: two views of the same numbers, one control.
-                    Picker(selection: $screen) {
-                        Text("Overview").tag(Screen.overview)
-                        Text("Sessions").tag(Screen.sessions)
-                    } label: {
-                        EmptyView()
+                    if project != nil {
+                        // The way back stands where the switcher stood, so
+                        // opening a folder moves nothing else on the page.
+                        Button {
+                            project = nil
+                        } label: {
+                            Label("All sessions", systemImage: "chevron.left")
+                        }
+                        .fixedSize()
+                    } else {
+                        // The native switcher, where a second toolbar would
+                        // be ceremony: two views of the same numbers, one
+                        // control.
+                        Picker(selection: $screen) {
+                            Text("Overview").tag(Screen.overview)
+                            Text("Sessions").tag(Screen.sessions)
+                        } label: {
+                            EmptyView()
+                        }
+                        .pickerStyle(.segmented)
+                        .labelsHidden()
+                        .fixedSize()
                     }
-                    .pickerStyle(.segmented)
-                    .labelsHidden()
-                    .fixedSize()
                 }
                 Divider()
                 switch screen {
@@ -78,7 +95,11 @@ struct StatisticsPane: View {
                     StarAsk(rescued: statistics.totalRescued)
                     StatisticsFooter(statistics: statistics, onReset: onReset)
                 case .sessions:
-                    SessionsScreen(records: history)
+                    if let project {
+                        projectScreen(project)
+                    } else {
+                        SessionsScreen(records: history) { project = $0.workspace }
+                    }
                 }
             }
         }
@@ -107,6 +128,13 @@ struct StatisticsPane: View {
     }
 
     private var empty: some View { EmptyStatistics() }
+
+    private func projectScreen(_ folder: String) -> ProjectScreen {
+        let rows = history.filter { $0.workspace == folder }
+        return ProjectScreen(
+            folder: folder, totals: ProjectTotals.over(rows), records: rows,
+            onBack: { project = nil })
+    }
 
     private var headline: some View {
         // The headline's flip side: held minus away is the part that ran with
@@ -156,18 +184,18 @@ struct StatisticsPane: View {
         HStack(alignment: .top, spacing: 34) {
             // Each one lands a beat after the one to its left, so the row
             // reads left to right rather than arriving as a block.
-            Figure(
+            StatisticsFigure(
                 value: hovered.map { "\($0.rescued)" }
                     ?? "\(Int((Double(statistics.totalRescued) * counted(0)).rounded()))",
                 caption: "runs rescued", morphs: morphs)
-            Figure(
+            StatisticsFigure(
                 value: ElapsedTime.compact(hovered?.longestHold ?? statistics.longestHold * counted(1)),
                 caption: "longest run", morphs: morphs)
-            Figure(
+            StatisticsFigure(
                 value: hovered.map { "\($0.holds)" }
                     ?? "\(Int((Double(statistics.totalHolds) * counted(2)).rounded()))",
                 caption: "runs watched", morphs: morphs)
-            Figure(
+            StatisticsFigure(
                 value: ElapsedTime.compact(hovered?.heldSeconds ?? statistics.totalHeld * counted(3)),
                 caption: "total held", morphs: morphs)
         }
@@ -215,29 +243,5 @@ struct StatisticsPane: View {
     private func counted(_ index: Int) -> Double {
         let start = Double(index) * 0.07
         return min(1, max(0, (reveal - start) / 0.42))
-    }
-
-    /// See the headline: a counting number has to redraw, not dissolve —
-    /// until the reveal is over. After it, the only changes are the hover
-    /// borrowing the row and handing it back, and those roll digit by digit
-    /// (`numericText`), which is the system's own way of saying "same
-    /// counter, different value".
-    private struct Figure: View {
-        let value: String
-        let caption: LocalizedStringKey
-        var morphs = false
-
-        var body: some View {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(value)
-                    .font(.system(size: 17, weight: .medium, design: .rounded))
-                    .monospacedDigit()
-                    .contentTransition(.numericText())
-                    .transaction { $0.animation = morphs ? .easeOut(duration: 0.25) : nil }
-                Text(caption)
-                    .font(.system(size: 10))
-                    .foregroundStyle(.secondary)
-            }
-        }
     }
 }

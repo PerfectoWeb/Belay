@@ -103,15 +103,18 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     /// batches, and hooks are fired asynchronously.
     public mutating func record(_ signal: ActivitySignal) {
         if let total = signal.tokensTotal, total > tokens { tokens = total }
-        if let running = signal.backgroundTasks {
-            backgroundSince = running > 0 ? signal.timestamp : nil
-        }
         let reading = Reading(activity: signal.activity, at: signal.timestamp)
         switch signal.confidence {
         case .exact:
             if let existing = exact, existing.at > signal.timestamp { return }
             exact = reading
             recordToolCallEdge(signal)
+            // Behind the guard on purpose: a Stop only ever arrives exact, and
+            // a retried or reordered one must not clear a bracket a newer
+            // Stop armed, nor resurrect one a newer Stop released.
+            if let running = signal.backgroundTasks {
+                backgroundSince = running > 0 ? signal.timestamp : nil
+            }
         case .inferred:
             if let existing = inferred, existing.at > signal.timestamp { return }
             inferred = reading

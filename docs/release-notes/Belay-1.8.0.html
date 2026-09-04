@@ -1,0 +1,27 @@
+<!-- What Sparkle shows for 1.8.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 1.8.0</h2>
+<ul>
+  <li><b>See stats for each project.</b> Double-click a session in Statistics
+      to see agent time, sessions, tokens and recent runs for that folder.</li>
+  <li><b>Background tasks hold more reliably.</b> Late or duplicate hook
+      events no longer end a hold early or restart one after release.</li>
+  <li><b>Hooks recover after an interrupted quit.</b> If Belay is killed while
+      closing, it restores its agent settings on the next launch.</li>
+  <li><b>The diagnostics log stays small.</b> Once it passes 3&nbsp;MB, Belay
+      trims it back to the most recent 1&nbsp;MB.</li>
+</ul>
+<p class="quiet">Also: Sessions now keeps the latest 100 runs, and its headline
+shows total agent time instead of the number of rows.</p>
