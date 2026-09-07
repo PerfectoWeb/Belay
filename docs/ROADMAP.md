@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.8.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.7.0; **1.8.0 is in review** (submitted 4 Sep).
+**1.8.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.8.0 too (approved 5 Sep) – both channels level.
 
 </div>
 
@@ -111,11 +111,11 @@ milestone table above keeps only the big ones.
 | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/in-review.svg" alt="in review" height="24"> | Resubmitted; the recommendation issue is open in their queue |
 | [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/757) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026, Companion Apps table |
 | [awesome-ai-devtools](https://github.com/jamesmurdza/awesome-ai-devtools/pull/1044) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026; honest caveat: Belay reacts to agents, is not AI itself |
-| [menubarlist.com](https://menubarlist.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026; they follow up by email before listing |
+| [menubarlist.com](https://menubarlist.com/app/belay) | <img src="badges/done.svg" alt="done" height="24"> | Listed 5 Sep 2026 |
 | [macosmenubar.com](https://www.macosmenubar.com/belay) | <img src="badges/done.svg" alt="done" height="24"> | Listed 2 Sep 2026, a day after submission |
 | [Softpedia](https://mac.softpedia.com/) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026; their review takes up to 30 days |
 | [OpenAlternative](https://openalternative.co/belay) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026, in the free queue |
-| [SaaSHub](https://www.saashub.com/belay-keeps-agents-away) | <img src="badges/in-review.svg" alt="in review" height="24"> | Submitted 1 Sep 2026, pending approval |
+| [SaaSHub](https://www.saashub.com/belay-by-perfectoweb) | <img src="badges/done.svg" alt="done" height="24"> | Listed 5 Sep 2026 |
 | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | <img src="badges/waiting.svg" alt="waiting" height="24"> | Needs Homebrew's notability bar first |
 | [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) | <img src="badges/maybe.svg" alt="maybe" height="24"> | Their list is open source only; Belay is source available |
 | [jaywcjlove/awesome-swift-macos-apps](https://github.com/jaywcjlove/awesome-swift-macos-apps) | <img src="badges/done.svg" alt="done" height="24"> | Added by the maintainer 19 Aug 2026, found while auditing the list 30 Aug – nobody here submitted it |
