@@ -1,0 +1,47 @@
+What's New – Belay 1.8.1
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): none.
+
+=== en ===
+
+# Night dimming no longer flickers
+
+Belay now waits 30 seconds after another app stops keeping the display awake before dimming it, so videos and similar apps no longer make the screen blink.
+
+=== ru ===
+
+# Ночное затемнение больше не мерцает
+
+Теперь Belay ждёт 30 секунд после того, как другое приложение перестаёт удерживать экран активным, и только потом затемняет его. Видео и похожие приложения больше не заставляют экран мигать.
+
+=== de ===
+
+# Das Nachtdimmen flackert nicht mehr
+
+Belay wartet jetzt 30 Sekunden, nachdem eine andere App den Bildschirm nicht mehr wach hält, bevor es ihn abdunkelt. Videos und ähnliche Apps lassen den Bildschirm dadurch nicht mehr blinken.
+
+=== es ===
+
+# La atenuación nocturna ya no parpadea
+
+Belay espera ahora 30 segundos después de que otra app deje de mantener la pantalla activa antes de atenuarla. Los vídeos y apps similares ya no hacen parpadear la pantalla.
+
+=== fr ===
+
+# L’atténuation nocturne ne clignote plus
+
+Belay attend désormais 30 secondes après qu’une autre app cesse de maintenir l’écran actif avant de l’assombrir. Les vidéos et apps similaires ne font donc plus clignoter l’écran.
+
+=== it ===
+
+# L’attenuazione notturna non sfarfalla più
+
+Belay ora aspetta 30 secondi dopo che un’altra app smette di mantenere attivo lo schermo prima di attenuarlo. Video e app simili non fanno più lampeggiare lo schermo.
+
+=== zh-Hans ===
+
+# 夜间调暗不再闪烁
+
+其他应用停止保持屏幕唤醒后，Belay 现在会等待 30 秒再调暗屏幕，因此视频和类似应用不会再让屏幕闪烁。

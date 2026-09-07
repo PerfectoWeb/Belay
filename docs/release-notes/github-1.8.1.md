@@ -1,0 +1,1 @@
+- **Night dimming stops flickering.** Belay now waits 30 seconds after another app releases the display before dimming it. Videos and similar apps that repeatedly wake the screen no longer make it blink.

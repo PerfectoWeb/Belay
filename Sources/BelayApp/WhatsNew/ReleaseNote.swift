@@ -91,35 +91,15 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.8.0",
+                version: "1.8.1",
                 items: [
                     .init(
-                        symbol: Mark.chart,
-                        title: "See stats for each project",
-                        body: """
-                            Double-click a session in Statistics to see that folder’s \
-                            total agent time, sessions, tokens, and recent runs.
-                            """),
-                    .init(
-                        symbol: Mark.trace,
-                        title: "Background tasks hold more reliably",
-                        body: """
-                            Late or duplicate hook events no longer end a hold early or \
-                            restart one after it has finished.
-                            """, directOnly: true),
-                    .init(
-                        symbol: Mark.safety,
-                        title: "Hooks recover after an interrupted quit",
-                        body: """
-                            If Belay is killed while closing, it restores any missing \
-                            hook entries on the next launch.
-                            """, directOnly: true),
-                    .init(
                         symbol: Mark.quiet,
-                        title: "The diagnostics log stays small",
+                        title: "Night dimming no longer flickers",
                         body: """
-                            Once it passes 3 MB, Belay trims it back to the most recent \
-                            1 MB.
+                            Belay now waits 30 seconds after another app stops keeping \
+                            the display awake before dimming it, so videos and similar \
+                            apps no longer make the screen blink.
                             """)
                 ]
             )

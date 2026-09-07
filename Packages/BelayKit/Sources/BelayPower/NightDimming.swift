@@ -41,6 +41,12 @@ public struct NightDimming: Sendable, Equatable {
         /// screen share. The machine would not have slept the screen either,
         /// so Belay must not darken it: the user is watching, not away.
         public var displayHeldElsewhere: Bool
+        /// How long it has been since another app last held the display;
+        /// `.infinity` if never. Some players raise and drop their assertion
+        /// every few seconds, and a dim that followed each drop made the
+        /// screen flicker in the field — so entering waits for a calm
+        /// stretch, not just a calm instant.
+        public var secondsSinceDisplayHeldElsewhere: TimeInterval
         /// Seconds since any user input, from `CGEventSource`.
         public var secondsSinceInput: TimeInterval
         /// The system's own display-sleep delay: the moment that would have
@@ -62,7 +68,8 @@ public struct NightDimming: Sendable, Equatable {
             displaySleepDelay: TimeInterval,
             keyOrClick: Bool,
             pointerTravel: Double,
-            displayHeldElsewhere: Bool = false
+            displayHeldElsewhere: Bool = false,
+            secondsSinceDisplayHeldElsewhere: TimeInterval = .infinity
         ) {
             self.minuteOfDay = minuteOfDay
             self.holdingDisplay = holdingDisplay
@@ -71,6 +78,7 @@ public struct NightDimming: Sendable, Equatable {
             self.keyOrClick = keyOrClick
             self.pointerTravel = pointerTravel
             self.displayHeldElsewhere = displayHeldElsewhere
+            self.secondsSinceDisplayHeldElsewhere = secondsSinceDisplayHeldElsewhere
         }
     }
 
@@ -83,6 +91,11 @@ public struct NightDimming: Sendable, Equatable {
 
     /// Pointer movement below this is jitter, not presence.
     public static let pointerTravelThreshold: Double = 20
+    /// How long another app's display hold must have been gone before the
+    /// screen may dim. Longer than any player's renew-and-drop cycle seen in
+    /// the field (about fifteen seconds), short enough that a finished film
+    /// still dims within the minute.
+    public static let watchingSettle: TimeInterval = 30
 
     public private(set) var isDimmed = false
 
@@ -116,6 +129,7 @@ public struct NightDimming: Sendable, Equatable {
             && window.contains(minuteOfDay: sample.minuteOfDay)
             && sample.holdingDisplay
             && !sample.displayHeldElsewhere
+            && sample.secondsSinceDisplayHeldElsewhere >= Self.watchingSettle
             && sample.secondsSinceInput >= sample.displaySleepDelay
         guard enter else { return nil }
         isDimmed = true

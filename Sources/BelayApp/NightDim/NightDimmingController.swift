@@ -28,6 +28,8 @@ final class NightDimmingController {
     /// Fed by the power-source stream the app already watches. AC and battery
     /// carry different display-sleep delays.
     var isOnAC = true
+    /// When another app last held the display, for the settle rule.
+    private var displayHeldElsewhereAt: Date?
 
     init(settings: SettingsStore, state: AppState) {
         self.settings = settings
@@ -62,6 +64,9 @@ final class NightDimmingController {
         // The cheap early-out for the common case: feature off, screen up.
         guard settings.nightDimming || machine.isDimmed else { return }
 
+        let now = Date()
+        let heldElsewhere = DisplayHeldElsewhere.now()
+        if heldElsewhere { displayHeldElsewhereAt = now }
         let travel = pointerAtDim.map { at -> Double in
             let now = UserInputSource.pointerLocation()
             return Double(hypot(now.x - at.x, now.y - at.y))
@@ -76,7 +81,9 @@ final class NightDimmingController {
             keyOrClick: UserInputSource.keyOrClick(
                 within: machine.isDimmed ? Self.dimmedTickInterval : Self.tickInterval),
             pointerTravel: travel ?? 0,
-            displayHeldElsewhere: DisplayHeldElsewhere.now())
+            displayHeldElsewhere: heldElsewhere,
+            secondsSinceDisplayHeldElsewhere: displayHeldElsewhereAt.map { now.timeIntervalSince($0) }
+                ?? .infinity)
 
         let window = NightDimming.Window(
             start: settings.nightDimmingStart, end: settings.nightDimmingEnd)

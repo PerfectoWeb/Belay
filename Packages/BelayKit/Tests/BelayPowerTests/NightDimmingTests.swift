@@ -15,7 +15,8 @@ struct NightDimmingTests {
         delay: TimeInterval = 600,
         keyOrClick: Bool = false,
         travel: Double = 0,
-        heldElsewhere: Bool = false
+        heldElsewhere: Bool = false,
+        sinceHeld: TimeInterval = .infinity
     ) -> NightDimming.Sample {
         NightDimming.Sample(
             minuteOfDay: minute,
@@ -24,7 +25,8 @@ struct NightDimmingTests {
             displaySleepDelay: delay,
             keyOrClick: keyOrClick,
             pointerTravel: travel,
-            displayHeldElsewhere: heldElsewhere)
+            displayHeldElsewhere: heldElsewhere,
+            secondsSinceDisplayHeldElsewhere: sinceHeld)
     }
 
     @Test("All four gates open dims; each one alone closed does not")
@@ -41,6 +43,25 @@ struct NightDimmingTests {
     /// The film case: idle, holding, deep in the window — but a video player is
     /// keeping the screen up, so the screen would not have slept and Belay does
     /// not dim it. And a video starting mid-dim brings the screen back.
+    /// The flicker from the field: a player that renews its assertion every
+    /// fifteen seconds. Each drop is not a calm; the screen dims only once
+    /// the hold has been gone for the whole settle window.
+    @Test("A flickering hold elsewhere never dims until it has settled")
+    func flickeringHoldDoesNotFlapTheScreen() {
+        var dimming = NightDimming()
+        for _ in 0..<6 {
+            #expect(
+                dimming.evaluate(sample(heldElsewhere: true, sinceHeld: 0), enabled: true, window: overnight)
+                    == nil)
+            #expect(dimming.evaluate(sample(sinceHeld: 5), enabled: true, window: overnight) == nil)
+            #expect(dimming.evaluate(sample(sinceHeld: 10), enabled: true, window: overnight) == nil)
+        }
+        #expect(!dimming.isDimmed)
+        #expect(
+            dimming.evaluate(sample(sinceHeld: NightDimming.watchingSettle), enabled: true, window: overnight)
+                == .dim)
+    }
+
     @Test("Another app holding the display blocks dimming and restores it")
     func watchingBlocksDimming() {
         var dimming = NightDimming()
