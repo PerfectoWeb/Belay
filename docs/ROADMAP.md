@@ -74,7 +74,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📦 | **v1.8.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
 | 🌙 | Night dimming waits for a calm screen instead of flickering | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
 | 📦 | **v1.8.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
-| 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
+| 📦 | **500 downloads** | <img src="badges/done.svg" alt="done" height="24"> | 5 Sep 2026, GitHub alone; App Store installs on top |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
 | ⭐ | **32 stars**, *the belay party* | <img src="badges/done.svg" alt="done" height="24"> | Reached 1 Sep 2026, the day 1.7.0 shipped |
