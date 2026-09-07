@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.8.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.8.0 too (approved 5 Sep) – both channels level.
+**1.8.1 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.8.0; **1.8.1 is being submitted** (5 Sep).
 
 </div>
 
@@ -72,6 +72,8 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🎬 | Night dimming stays out of a video's way | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
 | 🐙 | One ask, once: a star or a review, after Belay earned it | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
 | 📦 | **v1.8.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
+| 🌙 | Night dimming waits for a calm screen instead of flickering | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
+| 📦 | **v1.8.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
 | 📦 | 500 downloads | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good place people actually read |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
