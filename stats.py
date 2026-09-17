@@ -12,11 +12,11 @@ it once a day and finalises it a day later, so the pair is honest only as "as
 of the last build", which is what the page says.
 """
 
-DIRECT = 543
+DIRECT = 545
 APPSTORE = 218
 RELEASES = 18
 COMMITS = 490
 STARS = 36
 FIRST_COMMIT = "2026-08-11"
-DIRECT_UPDATED = "2026-09-16"
+DIRECT_UPDATED = "2026-09-17"
 APPSTORE_UPDATED = "2026-09-16"
