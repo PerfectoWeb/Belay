@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.8.1 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.8.0; **1.8.1 is being submitted** (5 Sep).
+**1.8.1 is out** on GitHub, Sparkle, Homebrew and the Mac App Store.
 
 </div>
 
@@ -47,6 +47,7 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📥 | **100 downloads** | <img src="badges/done.svg" alt="done" height="24"> | [19 Aug 2026](https://github.com/PerfectoWeb/Belay/releases) (8 days after launch) |
 | 📦 | **v1.3.2 published** | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.2) |
 | 📦 | **v1.3.3 published** | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.3.3) |
+| 📰 | First independent write-up | <img src="badges/done.svg" alt="done" height="24"> | [20 Aug 2026](https://www.ifun.de/ki-arbeitet-noch-belay-verhindert-den-mac-ruhezustand-286132/), ifun.de |
 | 📦 | **v1.4.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.4.0) |
 | 🦾 | Cline built in, Precise Detection for all three agents | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.5.0) |
 | 📦 | **v1.5.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [24 Aug 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.5.0) |
@@ -81,7 +82,6 @@ Finished work links to the commit or release that closed it. If there is no date
 | ✨ | **64 stars**, *the first pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | One good discussion somewhere |
 | 💫 | **128 stars**, *the second pitch* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Someone else writing about Belay |
 | 📈 | **1 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | A good write-up or a thread that travels |
-| 📰 | First independent write-up | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something worth writing about |
 | 🎛 | Our own update window instead of Sparkle's | <img src="badges/maybe.svg" alt="maybe" height="24"> | `SPUUserDriver`, if Sparkle's window starts getting in the way |
 | 🌠 | **256 stars**, *the summit* | <img src="badges/waiting.svg" alt="waiting" height="24"> | Something that gives people a reason to look |
 | 🏅 | **10 000 downloads** | <img src="badges/waiting.svg" alt="waiting" height="24"> | Nothing to schedule. It follows from the work above |
@@ -108,7 +108,6 @@ milestone table above keeps only the big ones.
 | [iCHAIT/awesome-macOS](https://github.com/iCHAIT/awesome-macOS/pull/1019) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
 | [linsa-io/macos-apps](https://github.com/linsa-io/macos-apps/pull/81) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
 | [SoloUnity/macos-apps-and-enhancements](https://github.com/SoloUnity/macos-apps-and-enhancements/pull/31) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026 |
-| [phmullins/awesome-macos](https://github.com/phmullins/awesome-macos/pull/251) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 19 Aug 2026. The list is barely maintained |
 | [Mac-Menubar-Megalist](https://github.com/SKaplanOfficial/Mac-Menubar-Megalist/issues/54) | <img src="badges/in-review.svg" alt="in review" height="24"> | Issue opened 19 Aug 2026, their preferred channel |
 | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code/issues/2634) | <img src="badges/in-review.svg" alt="in review" height="24"> | Resubmitted; the recommendation issue is open in their queue |
 | [awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit/pull/757) | <img src="badges/in-review.svg" alt="in review" height="24"> | Pull request opened 1 Sep 2026, Companion Apps table |
