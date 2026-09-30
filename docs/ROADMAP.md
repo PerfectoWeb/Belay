@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**1.8.1 is out** on GitHub, Sparkle, Homebrew and the Mac App Store.
+**2.0.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 1.8.1; **2.0.0 is being submitted** (30 Sep).
 
 </div>
 
@@ -75,6 +75,11 @@ Finished work links to the commit or release that closed it. If there is no date
 | 📦 | **v1.8.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [4 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.0) |
 | 🌙 | Night dimming waits for a calm screen instead of flickering | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
 | 📦 | **v1.8.1 published** | <img src="badges/done.svg" alt="done" height="24"> | [5 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v1.8.1) |
+| 🧩 | Modules: extras built into Belay, off until you install them | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
+| 🖼 | Screenshot Cleaner keeps the desktop clear while agents work | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
+| 🎙 | Warm Microphone: dictation hears the first word | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
+| 👆 | Auto Allow answers Claude's requests about local sites (direct build) | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
+| 📦 | **v2.0.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
 | 📦 | **500 downloads** | <img src="badges/done.svg" alt="done" height="24"> | 5 Sep 2026, GitHub alone; App Store installs on top |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |
