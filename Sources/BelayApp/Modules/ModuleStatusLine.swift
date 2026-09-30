@@ -57,7 +57,7 @@ struct ModuleStatusLine: View {
 
     @ViewBuilder private var autoAllow: some View {
         if host.autoAllow.standing == .agentOff {
-            Text("\(AutoAllower.agentName) is switched off in Agents.")
+            AutoAllowSettings.leftAlone(host.autoAllow.appsLeftAlone)
                 .foregroundStyle(.secondary)
         } else if host.autoAllow.standing == .needsAccess {
             Text("Belay needs Accessibility access to press the button.")

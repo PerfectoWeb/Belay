@@ -1,6 +1,6 @@
 import Foundation
 
-/// A session as the Claude app lists it beside its window.
+/// A session as an agent's app lists it beside its window.
 public struct ListedSession: Equatable, Sendable {
     public enum State: Sendable {
         case idle
@@ -41,14 +41,22 @@ public struct ListedSession: Equatable, Sendable {
     }
 }
 
-/// What the Claude window is showing.
+/// What an app's window is showing.
 public enum SessionWindow {
     static let suffix = " - Claude Code"
 
-    /// The window's page is named after the session it shows.
+    /// Claude's page is named after the session it shows.
     public static func shownTitle(from pageTitle: String) -> String? {
         guard pageTitle.hasSuffix(suffix) else { return nil }
         let title = pageTitle.dropLast(suffix.count).trimmingCharacters(in: .whitespaces)
+        return title.isEmpty ? nil : title
+    }
+
+    /// Codex names its page after the session and nothing else. A page that
+    /// shows no session has a name no row carries, and that is checked where
+    /// the rows are.
+    public static func codexTitle(from pageTitle: String) -> String? {
+        let title = pageTitle.trimmingCharacters(in: .whitespaces)
         return title.isEmpty ? nil : title
     }
 }
@@ -65,13 +73,15 @@ public struct SessionVisits: Equatable, Sendable {
 
     /// The session to open, or nil when there is none. Without knowing what
     /// the window shows there would be no way back, so nothing is opened.
+    /// Two sessions by one name cannot be told apart, neither on the way
+    /// there nor on the way back.
     public mutating func next(rows: [ListedSession], shown: String?) -> String? {
         notice(rows)
-        guard let shown, rows.contains(where: { $0.title == shown }) else { return nil }
+        let isTheOnly = { (title: String) in rows.filter { $0.title == title }.count == 1 }
+        guard let shown, isTheOnly(shown) else { return nil }
         return rows.first { row in
             row.state == .awaiting && row.title != shown && !declined.contains(row.title)
-                // Two sessions by one name cannot be told apart.
-                && rows.filter { $0.title == row.title }.count == 1
+                && isTheOnly(row.title)
         }?.title
     }
 

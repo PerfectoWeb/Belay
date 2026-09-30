@@ -11,6 +11,13 @@ public struct AutoAllowRules: Codable, Equatable, Sendable {
         case everything
     }
 
+    /// An app whose requests are answered: every one whose agent is switched
+    /// on in Agents.
+    public enum App: String, Codable, Sendable, CaseIterable {
+        case claude
+        case codex
+    }
+
     /// How long it stays on once switched on, in seconds. Zero is "until I
     /// switch it off".
     public static let durations: [TimeInterval] = [1, 4, 8, 0].map { $0 * 3600 }
@@ -66,16 +73,25 @@ public struct AutoAllowRules: Codable, Equatable, Sendable {
 /// button, in reading order.
 public struct PermissionPrompt: Equatable, Sendable {
     public var texts: [String]
+    /// The site the request is about, where the app marks it out itself: a
+    /// link in the question. Empty when such an app marked none. Nil where
+    /// the site has to be found among the words.
+    public var site: String?
 
-    public init(texts: [String]) {
+    public init(texts: [String], site: String? = nil) {
         self.texts = texts
+        self.site = site
     }
 
-    /// The site a request to act on a site is about. Such a request shows
-    /// what it asks as a record that names the origin, beside whatever the
-    /// action needs: which element, which text. A request to run a command
-    /// names no origin, even when the command mentions a site.
+    /// The site a request to act on a site is about. Where the app does not
+    /// mark it out, such a request shows what it asks as a record that names
+    /// the origin, beside whatever the action needs: which element, which
+    /// text. A request to run a command names no origin, even when the
+    /// command mentions a site.
     public var origin: String? {
+        // An app that marks the site is taken at its mark alone: there the
+        // words are the agent's own, and a record among them proves nothing.
+        if let site { return LocalSite.hosts(in: site).first }
         for text in texts {
             guard let record = try? JSONSerialization.jsonObject(with: Data(text.utf8)),
                 let fields = record as? [String: Any],

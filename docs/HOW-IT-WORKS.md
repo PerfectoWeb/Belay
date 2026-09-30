@@ -173,41 +173,56 @@ be asked. So until the microphone question has been answered in the module,
 Belay plays no sounds on such a device: a click in the panel is never what
 raises that question. On speakers and displays nothing changes.
 
-**Auto Allow** presses "Allow once" in the Claude desktop app. Claude asks
-before every action on a site it has no site-level permission for, and for a
-site that exists only on your Mac there is no way to grant one, so an agent
-testing `myshop.local` stops at every click. The module looks at the Claude
-window every two seconds through the Accessibility interface, finds the
-request card, and reads what it asks for. With the default setting it presses
-the button only when the card is a request for access to a site, the site is
-local (`localhost`, a name ending in `.local`, `.localhost`, `.test`,
-`.internal`, `.lan` or `.home.arpa`, or a private address), and no other site
-is named on the card. A command to run, a file to change, a site on the
-internet: all of those wait for you. "Everything Claude asks" approves them
-too, and says so in orange when you choose it. Either way the module switches
-itself off after the time you set, a restart does not give it more time, and
-the card lists the latest approvals with the time and the site.
+**Auto Allow** presses "Allow once" in the Claude desktop app and in Codex,
+the agent inside the ChatGPT desktop app. Both ask before an action on a site
+they have no site-level permission for, and for a site that exists only on
+your Mac there is no way to grant one, so an agent testing `myshop.local`
+stops at every click. The module looks at each app's window every two seconds
+through the Accessibility interface, finds the request card, and reads what
+it asks for. With the default setting it presses the button only when the
+card is a request for access to a site, the site is local (`localhost`, a name
+ending in `.local`, `.localhost`, `.test`, `.internal`, `.lan` or
+`.home.arpa`, or a private address), and no other site is named on the card.
+A command to run, a file to change, a site on the internet: all of those wait
+for you. "Everything the agent asks" approves them too, and says so in orange
+when you choose it. Either way the module switches itself off after the time
+you set, a restart does not give it more time, and the card lists the latest
+approvals with the time and the site.
 
-A request card exists only in the session the Claude window is showing, and
-agents mostly work in the ones behind it. With "Answer in sessions behind the
+The two apps say what they ask differently. Claude puts the site into a
+record beside the question. Codex writes the question in the agent's own
+words and marks the site as a link in it, so in Codex only that link counts: a
+command that happens to mention `localhost` is a command, and waits for you.
+Codex also ignores the click the Accessibility interface sends to a button;
+there the module gives the button the focus and sends the Return key to the
+Codex process, and only while the button says it has the focus.
+
+A request card exists only in the session the window is showing, and agents
+mostly work in the ones behind it. With "Answer in sessions behind the
 window" on, the module reads the list of sessions beside the window, and when
-one says it is awaiting input it opens that session, answers what the rules
-cover, and brings back the session you had open. It does that only when the
-shown session has nothing to answer, only once the keyboard and the pointer
-have been still for five seconds, in whatever app you are working, and one
-session at a time. Bringing a session into the window can pull Claude to the
-front, which is why it waits for a pause and never cuts into a sentence. A
-session that turned out to wait for something the rules do not cover is not
-opened again until it has moved on. Two sessions with the
-same name are left alone, since they cannot be told apart.
+one says it is awaiting input (Claude) or awaiting approval (Codex) it opens
+that session, answers what the rules cover, and brings back the session you
+had open. It does that only when the shown session has nothing to answer,
+only once the keyboard and the pointer have been still for five seconds, in
+whatever app you are working, and one session at a time. Bringing a session
+into the window can pull the app to the front, which is why it waits for a
+pause and never cuts into a sentence. A session that turned out to wait for
+something the rules do not cover is not opened again until it has moved on.
+Two sessions with the same name are left alone, since they cannot be told
+apart, and so is a list where the session on show has a namesake, since the
+way back would be in doubt.
 
-A module that works for one agent follows that agent's switch in **Settings ▸
-Agents**: with Claude Code switched off there, Auto Allow reads nothing and
-presses nothing, and its card says why.
+A page shown inside either window, such as a site in the agent's own browser,
+is passed over: whatever it draws is not a request card.
 
-Auto Allow is in the direct build only. It works in a Claude interface set to
-English, and it recognises the card and the list by what Claude calls them: if
-a Claude update changes that, the module finds nothing and presses nothing
+A module that works for an agent follows that agent's switch in **Settings ▸
+Agents**: with Claude Code or Codex switched off there, Auto Allow reads
+nothing and presses nothing in that app, and its card says so.
+
+Auto Allow is in the direct build only. In Claude it works with the interface
+set to English; in Codex it knows the button and the mark in every language
+the app speaks. It recognises the card and the list by what each app calls
+them: if an update changes that, the module finds nothing and presses nothing
 until Belay is updated.
 
 ## Talking to Belay from anything

@@ -3,7 +3,7 @@ import BelayModules
 import os
 
 #if !BELAY_MAS
-/// Reading the Claude window: what an element of it says and holds.
+/// Reading an app's window: what an element of it says and holds.
 extension AXUIElement {
     func value(_ attribute: String) -> AnyObject? {
         var value: AnyObject?
@@ -26,12 +26,16 @@ extension AXUIElement {
     var reachableWindows: [AXUIElement] {
         var windows = elements(kAXWindowsAttribute)
         for attribute in [kAXMainWindowAttribute, kAXFocusedWindowAttribute] {
-            guard let found = value(attribute), CFGetTypeID(found) == AXUIElementGetTypeID()
-            else { continue }
-            let window = unsafeDowncast(found, to: AXUIElement.self)
+            guard let window = element(attribute) else { continue }
             if !windows.contains(where: { CFEqual($0, window) }) { windows.append(window) }
         }
         return windows
+    }
+
+    /// The element an attribute names, when it names one.
+    func element(_ attribute: String) -> AXUIElement? {
+        guard let found = value(attribute), CFGetTypeID(found) == AXUIElementGetTypeID() else { return nil }
+        return unsafeDowncast(found, to: AXUIElement.self)
     }
 
     /// A card that was answered leaves the page, and its button with it.
@@ -47,32 +51,34 @@ extension AXUIElement {
             .lazy.map { self.string($0) }.first { !$0.isEmpty } ?? ""
     }
 
-    /// A row of the session list: a button that holds a badge and then a
-    /// title, and says both. The badge is drawn; a button in a conversation
-    /// that reads the same way holds plain text, and is no session.
-    var sessionRow: ListedSession? {
-        let label = label
-        guard label.contains(" "), let badge = elements(kAXChildrenAttribute).first,
-            badge.string(kAXRoleAttribute) != kAXStaticTextRole
-        else { return nil }
-        return ListedSession(label: label, mark: badge.label)
+    /// The names the page gives the element.
+    var classes: [String] {
+        value("AXDOMClassList") as? [String] ?? []
     }
 
-    var isCard: Bool {
-        let classes = value("AXDOMClassList") as? [String] ?? []
-        return classes.contains(ClaudeDesktopScreen.cardClass)
+    /// The first element below this one that fits, the element itself left
+    /// out. A card or a row is a few dozen elements; the limit is for a page
+    /// that is not what it was taken for.
+    func firstBelow(depth: Int = 8, where fits: (AXUIElement) -> Bool) -> AXUIElement? {
+        guard depth > 0 else { return nil }
+        for child in elements(kAXChildrenAttribute) {
+            if fits(child) { return child }
+            if let found = child.firstBelow(depth: depth - 1, where: fits) { return found }
+        }
+        return nil
     }
 }
-/// What the last look could see of Claude, written to the log when it
+
+/// What the last look could see of an app, written to the log when it
 /// changes. "No requests came" and "Belay could not see the window" look the
 /// same from the outside, and only this line tells them apart in a report.
-enum ClaudeSight {
-    private static let last = OSAllocatedUnfairLock(initialState: "")
+enum AppSight {
+    private static let last = OSAllocatedUnfairLock(initialState: [AutoAllowRules.App: String]())
 
-    static func say(_ seen: String) {
+    static func say(_ seen: String, of app: AutoAllowRules.App) {
         let isNews = last.withLock { last in
-            defer { last = seen }
-            return last != seen
+            defer { last[app] = seen }
+            return last[app] != seen
         }
         if isNews { Diagnostics.appendFromAnywhere("autoallow sees \(seen)") }
     }

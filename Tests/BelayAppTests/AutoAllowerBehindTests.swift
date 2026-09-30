@@ -25,7 +25,7 @@ final class AutoAllowerBehindTests: XCTestCase {
 
     private func makeAllower() throws -> AutoAllower {
         let clock = clock
-        return AutoAllower(defaults: try XCTUnwrap(defaults), screen: screen, patience: 0) {
+        return AutoAllower(defaults: try XCTUnwrap(defaults), screens: [.claude: screen], patience: 0) {
             clock.now
         }
     }

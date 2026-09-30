@@ -154,13 +154,22 @@ for our bundle ID, which is not ours. Match on the pid.
       while you were typing
 - [ ] Auto Allow: with the Claude window on another desktop (or behind a
       full-screen app) a request is still answered
-- [ ] Auto Allow: "Everything Claude asks" shows the orange warning and
+- [ ] Auto Allow: "Everything the agent asks" shows the orange warning and
       answers both of those
 - [ ] Auto Allow: with "Switch off after" at one hour the switch is off an hour
       later, also when Belay was quit and opened again in between
 - [ ] Auto Allow: with Claude Code switched off in Agents a request stays
       unanswered and the card says the agent is switched off; switching it
       back on answers the request
+- [ ] Auto Allow: in Codex (the ChatGPT app, permissions set to "Ask for
+      approval") a Browser request for a local site is answered within a few
+      seconds and listed under "Recently approved"; a command whose text
+      mentions `localhost` waits
+- [ ] Auto Allow: a Codex session behind the window that shows "Awaiting
+      approval" is opened, answered and the window shows the same session as
+      before
+- [ ] Auto Allow: with Codex switched off in Agents a Codex request waits and
+      the card names Codex
 - [ ] Auto Allow is absent from the App Store build's list
 - [ ] "Open at login" toggle actually registers with `SMAppService`, survives a
       restart, and reflects the truth after being revoked in System Settings

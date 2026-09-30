@@ -43,7 +43,7 @@ final class ModuleHostTests: XCTestCase {
             screenshots: ScreenshotCleaner(defaults: defaults, sweeper: sweeper, now: now),
             microphone: MicKeepWarm(
                 defaults: defaults, tap: FakeTap(), surroundings: FakeMac().surroundings),
-            autoAllow: AutoAllower(defaults: defaults, screen: FakeScreen()),
+            autoAllow: AutoAllower(defaults: defaults, screens: [.claude: FakeScreen()]),
             captureFolder: { folder }
         )
     }

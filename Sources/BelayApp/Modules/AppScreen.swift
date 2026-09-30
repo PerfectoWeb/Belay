@@ -4,16 +4,13 @@ import BelayModules
 import os
 
 #if !BELAY_MAS
-/// Reads the Claude desktop app through the Accessibility interface.
+/// Reads an agent's desktop app through the Accessibility interface.
 ///
-/// A request there is a card: a group marked `epitaxy-approval-card` holding
-/// the question, what is asked for, and the two buttons. Read off a running
-/// Claude 1.x on 29 September 2026; the class name is theirs and may change,
-/// in which case nothing is found and nothing is pressed.
-struct ClaudeDesktopScreen: PromptScreen {
-    static let bundleIdentifier = "com.anthropic.claudefordesktop"
-    static let cardClass = "epitaxy-approval-card"
-    static let approveTitle = "Allow once"
+/// A request there is a card: a group holding the question, what is asked
+/// for, and the buttons. Which group, which button and which rows is what the
+/// dialect knows; the looking and the pressing are the same for every app.
+struct AppScreen: PromptScreen {
+    let dialect: any AppDialect
 
     /// A page is a few thousand elements. Past this something is wrong, and a
     /// walk that never ends would hold a thread for good.
@@ -32,8 +29,8 @@ struct ClaudeDesktopScreen: PromptScreen {
     var isTrusted: Bool { AXIsProcessTrusted() }
 
     /// Typing, clicking or moving the pointer, in whatever app: bringing a
-    /// session into the window can pull Claude to the front, and nobody is to
-    /// be pulled out of a sentence. A visit waits for a pause.
+    /// session into the window can pull the app to the front, and nobody is
+    /// to be pulled out of a sentence. A visit waits for a pause.
     var isInUse: Bool {
         guard let anyInput = CGEventType(rawValue: ~0) else { return false }
         let quiet = CGEventSource.secondsSinceLastEventType(
@@ -47,7 +44,7 @@ struct ClaudeDesktopScreen: PromptScreen {
     }
 
     func pending() -> [PendingPrompt] {
-        read().cards.compactMap(Self.prompt(from:))
+        read().cards.compactMap(prompt(from:))
     }
 
     func sessions() -> SessionList {
@@ -57,10 +54,10 @@ struct ClaudeDesktopScreen: PromptScreen {
     func survey() -> ScreenSurvey {
         let walk = read()
         return ScreenSurvey(
-            pending: walk.cards.compactMap(Self.prompt(from:)), sessions: list(from: walk))
+            pending: walk.cards.compactMap(prompt(from:)), sessions: list(from: walk))
     }
 
-    private func list(from walk: Walk) -> SessionList {
+    private func list(from walk: Seen) -> SessionList {
         SessionList(shown: walk.shown, rows: walk.rows.map(\.row)) { title in
             Self.open(title, by: self)
         }
@@ -69,7 +66,7 @@ struct ClaudeDesktopScreen: PromptScreen {
     /// Presses the session's row and waits for the window to follow. The
     /// rows are read afresh: the list is redrawn as sessions change state,
     /// and a row found a moment ago may be gone.
-    private static func open(_ title: String, by screen: ClaudeDesktopScreen) -> Bool {
+    private static func open(_ title: String, by screen: AppScreen) -> Bool {
         let began = Date()
         while Date().timeIntervalSince(began) < openingLimit {
             let walk = screen.read()
@@ -81,13 +78,13 @@ struct ClaudeDesktopScreen: PromptScreen {
         return screen.read().shown == title
     }
 
-    private func read() -> Walk {
-        guard isTrusted else { return Walk() }
+    private func read() -> Seen {
+        guard isTrusted else { return Seen() }
         let apps = NSRunningApplication.runningApplications(
-            withBundleIdentifier: Self.bundleIdentifier)
+            withBundleIdentifier: dialect.bundleIdentifier)
         var windows = 0
         var pages = 0
-        let seen = apps.reduce(into: Walk()) { all, app in
+        let seen = apps.reduce(into: Seen()) { all, app in
             let element = AXUIElementCreateApplication(app.processIdentifier)
             AXUIElementSetMessagingTimeout(element, 1)
             let process = app.processIdentifier
@@ -99,11 +96,11 @@ struct ClaudeDesktopScreen: PromptScreen {
                 AXUIElementSetAttributeValue(
                     element, "AXManualAccessibility" as CFString, kCFBooleanTrue)
             }
-            var walk = Walk()
+            var walk = Walk(dialect: dialect)
             let reachable = element.reachableWindows
             windows += reachable.count
             for window in reachable {
-                walk.search(window, depth: 0)
+                walk.search(window, depth: 0, inPage: false)
             }
             // A walk this short saw the window and no page in it, so the tree
             // is not there and the next look says it again.
@@ -116,65 +113,81 @@ struct ClaudeDesktopScreen: PromptScreen {
                     $0.remove(process)
                 }
             }
-            all.cards += walk.cards
+            all.cards += walk.cards.map { Card(element: $0, process: process) }
             all.rows += walk.rows
             all.shown = all.shown ?? walk.shown
         }
-        ClaudeSight.say(
+        AppSight.say(
             """
-            claude=\(apps.count) windows=\(windows) page=\(pages) \
+            \(dialect.app.rawValue)=\(apps.count) windows=\(windows) page=\(pages) \
             session=\(seen.shown == nil ? 0 : 1) list=\(seen.rows.isEmpty ? 0 : 1)
-            """)
+            """, of: dialect.app)
         return seen
     }
 
     /// An element is a reference to something in another process, safe to
     /// send anywhere; the type only predates the word for it.
-    private struct Row: @unchecked Sendable {
+    fileprivate struct Row: @unchecked Sendable {
         let row: ListedSession
         let element: AXUIElement
     }
 
+    struct Card: @unchecked Sendable {
+        let element: AXUIElement
+        let process: pid_t
+    }
+
+    /// What every window of the app together showed.
+    struct Seen {
+        var cards: [Card] = []
+        fileprivate var rows: [Row] = []
+        var shown: String?
+    }
+
     private struct Walk {
+        let dialect: any AppDialect
         var visited = 0
         var cards: [AXUIElement] = []
         var rows: [Row] = []
         var shown: String?
 
-        mutating func search(_ element: AXUIElement, depth: Int) {
+        mutating func search(_ element: AXUIElement, depth: Int, inPage: Bool) {
             visited += 1
-            guard depth < ClaudeDesktopScreen.depthLimit, visited < ClaudeDesktopScreen.nodeLimit
-            else { return }
+            guard depth < AppScreen.depthLimit, visited < AppScreen.nodeLimit else { return }
             let role = element.string(kAXRoleAttribute)
-            if role == kAXGroupRole, element.isCard {
-                cards.append(element)
+            let isPage = role == "AXWebArea"
+            // A page shown inside the app's own page is somebody else's:
+            // whatever it draws, a card of the app's it is not.
+            if isPage, inPage { return }
+            switch dialect.sighting(at: element, role: role) {
+            case .card(let card):
+                cards.append(card)
                 return
-            }
-            if role == kAXButtonRole, let row = element.sessionRow {
-                rows.append(Row(row: row, element: element))
+            case .row(let row, let press):
+                rows.append(Row(row: row, element: press))
                 return
+            case nil:
+                break
             }
-            if role == "AXWebArea", shown == nil {
-                shown = SessionWindow.shownTitle(from: element.label)
-            }
+            if isPage, shown == nil { shown = dialect.shownTitle(from: element.label) }
             for child in element.elements(kAXChildrenAttribute) {
-                search(child, depth: depth + 1)
+                search(child, depth: depth + 1, inPage: inPage || isPage)
             }
         }
     }
 
-    private static func prompt(from card: AXUIElement) -> PendingPrompt? {
+    private func prompt(from card: Card) -> PendingPrompt? {
         var texts: [String] = []
         var button: AXUIElement?
-        collect(card, texts: &texts, button: &button, depth: 0)
+        collect(card.element, texts: &texts, button: &button, depth: 0)
         guard let button else { return nil }
-        let press = Press(card: card, button: button, texts: texts)
-        return PendingPrompt(prompt: PermissionPrompt(texts: texts)) { press.perform() }
+        let press = AppPress(screen: self, card: card, button: button, texts: texts)
+        return PendingPrompt(prompt: dialect.prompt(in: card.element, texts: texts)) { press.perform() }
     }
 
     /// The words of the card outside its buttons, and the button that says
     /// yes once.
-    static func collect(
+    func collect(
         _ element: AXUIElement,
         texts: inout [String],
         button: inout AXUIElement?,
@@ -183,8 +196,7 @@ struct ClaudeDesktopScreen: PromptScreen {
         guard depth < 30, texts.count < 200 else { return }
         let role = element.string(kAXRoleAttribute)
         if role == kAXButtonRole {
-            let words = element.elements(kAXChildrenAttribute).map { $0.string(kAXValueAttribute) }
-            if words.first == approveTitle, button == nil { button = element }
+            if button == nil, dialect.approvesOnce(element) { button = element }
             return
         }
         if role == kAXStaticTextRole {
@@ -194,52 +206,6 @@ struct ClaudeDesktopScreen: PromptScreen {
         }
         for child in element.elements(kAXChildrenAttribute) {
             collect(child, texts: &texts, button: &button, depth: depth + 1)
-        }
-    }
-
-    /// An element is a reference to something in another process, safe to
-    /// send anywhere; the type only predates the word for it.
-    private struct Press: @unchecked Sendable {
-        /// A card that has only just appeared takes a press and ignores it.
-        /// Measured on 30 September 2026: the first press did nothing in
-        /// three seconds, the next one emptied the card in 0.05.
-        static let attempts = 10
-        static let pause: TimeInterval = 0.4
-
-        let card: AXUIElement
-        let button: AXUIElement
-        /// What the card said when the rules agreed to it.
-        let texts: [String]
-
-        /// Presses until the card goes. Before every press the card is read
-        /// again: the page may put the next request into the same place, and
-        /// a yes given to one request must never land on another.
-        func perform() -> PressOutcome {
-            let began = Date()
-            for attempt in 0..<Self.attempts {
-                guard button.isStillThere else {
-                    return attempt == 0
-                        ? .gone : .answered(presses: attempt, seconds: Date().timeIntervalSince(began))
-                }
-                guard saysTheSame else { return .changed }
-                guard AXUIElementPerformAction(button, kAXPressAction as CFString) == .success
-                else { continue }
-                for _ in 0..<4 {
-                    Thread.sleep(forTimeInterval: Self.pause / 4)
-                    if !button.isStillThere {
-                        return .answered(
-                            presses: attempt + 1, seconds: Date().timeIntervalSince(began))
-                    }
-                }
-            }
-            return .unanswered(presses: Self.attempts)
-        }
-
-        private var saysTheSame: Bool {
-            var now: [String] = []
-            var found: AXUIElement?
-            ClaudeDesktopScreen.collect(card, texts: &now, button: &found, depth: 0)
-            return now == texts
         }
     }
 }

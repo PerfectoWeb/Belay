@@ -85,4 +85,17 @@ struct ListedSessionsTests {
         let twins = rows + [ListedSession(title: "Cytrongift", state: .idle)]
         #expect(visits.next(rows: twins, shown: "Belay") == nil)
     }
+
+    /// The way back is a row found by its name: with two of them the window
+    /// could be left on the wrong one.
+    @Test func nothingIsOpenedWhenTheSessionOnShowHasATwin() {
+        var visits = SessionVisits()
+        let twins = rows + [ListedSession(title: "Belay", state: .idle)]
+        #expect(visits.next(rows: twins, shown: "Belay") == nil)
+    }
+
+    @Test func codexNamesItsPageAfterTheSessionAlone() {
+        #expect(SessionWindow.codexTitle(from: "Belay: Humanize") == "Belay: Humanize")
+        #expect(SessionWindow.codexTitle(from: "  ") == nil)
+    }
 }

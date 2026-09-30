@@ -152,7 +152,7 @@ final class FakeScreen: PromptScreen, @unchecked Sendable {
                 guard let self else { return .gone }
                 return self.lock.withLock {
                     guard let index = self.waiting.firstIndex(of: prompt) else { return .gone }
-                    guard !self.jammed else { return .unanswered(presses: 10) }
+                    guard !self.jammed else { return .unanswered(presses: 10, refused: 0) }
                     self.waiting.remove(at: index)
                     self.pressedList.append(prompt)
                     return .answered(presses: 1, seconds: 0.1)

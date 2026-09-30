@@ -40,9 +40,9 @@ it open. The sound is discarded as it arrives. Belay does not record it,
 measure it, keep any of it in memory or on disk, or send it anywhere, and
 macOS shows its orange microphone dot for as long as the module is on.
 
-The Auto Allow module, if you install it in the direct build, reads the Claude
-desktop app's window through the macOS Accessibility interface, looking for a
-permission request. Of what is on the screen it keeps only the text of that
+The Auto Allow module, if you install it in the direct build, reads the
+windows of the Claude desktop app and of Codex (the ChatGPT desktop app)
+through the macOS Accessibility interface, looking for a permission request. Of what is on the screen it keeps only the text of that
 request, for as long as it takes to decide, and of that it stores one thing:
 the site that was approved and when, in a list of the latest fifty that you can
 see in the module's settings. The rest of the window, your conversation
@@ -86,14 +86,17 @@ the Trash, in the folders you gave it and nowhere else. It never deletes a file:
 the Trash is where they stay until you empty it. Nothing happens unless the
 module is installed and switched on.
 
-The Auto Allow module presses "Allow once" in the Claude desktop app in your
-name: by default only for requests about sites on your own Mac or network, and
-for everything Claude asks only if you choose that. If you switch on "Answer in
-sessions behind the window", it also presses a session in Claude's list to
-bring it into the window and the one you had open to bring that back; for this
-it reads the names of your sessions and keeps them only for the length of that
-look, never on disk and never in the log. It presses nothing else, in Claude or
-in any other app, and it stops when its time runs out or you switch it off.
+The Auto Allow module presses "Allow once" in the Claude desktop app and in
+Codex in your name: by default only for requests about sites on your own Mac
+or network, and for everything the agent asks only if you choose that. In
+Codex the press is the Return key, sent to the Codex process while the
+"Allow once" button has the focus, and never otherwise. If you switch on
+"Answer in sessions behind the window", it also presses a session in the
+app's list to bring it into the window and the one you had open to bring that
+back; for this it reads the names of your sessions and keeps them only for the
+length of that look, never on disk and never in the log. It presses nothing
+else, in these apps or in any other, and it stops when its time runs out or
+you switch it off.
 
 ## Sharing
 

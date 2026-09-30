@@ -23,7 +23,7 @@ final class AutoAllowerTests: XCTestCase {
 
     private func makeAllower() throws -> AutoAllower {
         let clock = clock
-        return AutoAllower(defaults: try XCTUnwrap(defaults), screen: screen, patience: 0) {
+        return AutoAllower(defaults: try XCTUnwrap(defaults), screens: [.claude: screen], patience: 0) {
             clock.now
         }
     }
@@ -127,7 +127,7 @@ final class AutoAllowerTests: XCTestCase {
         let allower = try makeAllower()
         defer { allower.stop() }
         var isOn = false
-        allower.agentIsOn = { isOn }
+        allower.agentIsOn = { _ in isOn }
         screen.show(FakeScreen.access(to: "cytron.local"))
 
         allower.activate()

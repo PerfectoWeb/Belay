@@ -15,7 +15,7 @@ what they read and change is in [PRIVACY.md](PRIVACY.md).
 | :--- | :--- | :---: | :---: | :--- |
 | **Screenshot Cleaner** | Moves screenshots to the Trash once they pass the age you choose | yes | yes | the screenshots folder |
 | **Warm Microphone** | Holds the microphone open so dictation hears the first word | yes | yes | the microphone |
-| **Auto Allow** | Presses "Allow once" in the Claude desktop app for requests about local sites | no | yes | Accessibility |
+| **Auto Allow** | Presses "Allow once" in the Claude and Codex desktop apps for requests about local sites | no | yes | Accessibility |
 
 ## What a module is, and is not
 
@@ -188,9 +188,9 @@ and `key=value` pairs, written when something changes and not on every tick.
 | `mic opened kind=…`, `mic released` | a microphone was taken (`builtIn`, `usb`, `bluetooth`, `other`) or let go |
 | `autoallow start scope=… behind=… duration=… minutesLeft=…`, `autoallow rules …` | it started, a setting changed |
 | `autoallow standing=…` | `off`, `agentOff`, `needsAccess` or `watching` |
-| `autoallow sees claude=… windows=… page=… session=… list=…` | what it can read of the Claude app changed |
-| `autoallow approved=… held=… failed=… beaten=… presses=… took=… scope=…` | a look that found requests |
-| `autoallow behind=…`, `autoallow expired` | a session behind the window was visited, the time ran out |
+| `autoallow sees claude=… windows=… page=… session=… list=…`, `autoallow sees codex=…` | what it can read of an app changed |
+| `autoallow approved=… held=… failed=… beaten=… presses=… took=… scope=… app=…` with `refused=…` when the app gave an error for a press | a look that found requests, in that app |
+| `autoallow behind=… app=…`, `autoallow expired` | a session behind the window was visited, the time ran out |
 | `sound silent reason=microphone-undecided` | once a launch, when sounds are held back |
 
 A new module writes the same kind of lines: what it is set to when it starts,
@@ -203,9 +203,11 @@ every state with its reason, and what each piece of work came to.
 - **The name in `ModuleID` never changes**, and neither do the preference keys
   without a migration that is tested.
 - **A module that depends on another app says what happens when that app
-  changes.** Auto Allow finds the request by the names Claude gives its
-  interface; when those change it finds nothing and presses nothing. That is the
-  required direction of failure, and the test for it is part of the change.
+  changes.** Auto Allow finds the request by the names Claude and Codex give
+  their interfaces; when those change it finds nothing and presses nothing.
+  That is the required direction of failure, and the test for it is part of
+  the change. What each app calls things lives in one place per app, its
+  dialect in `AppDialect.swift`; the looking and the pressing are shared.
 - A change users will notice gets a line in `CHANGELOG.md` under the release it
   ships in.
 

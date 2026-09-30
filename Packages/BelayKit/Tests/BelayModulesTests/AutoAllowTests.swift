@@ -104,6 +104,47 @@ struct AutoAllowTests {
         #expect(!AutoAllowDecision.approves(prompt, rules: local))
     }
 
+    /// Codex: the question carries the site as a link, and the rest of the
+    /// card is the agent's own words.
+    private func codex(_ site: String, _ words: String...) -> PermissionPrompt {
+        PermissionPrompt(texts: ["Browser", "Allow ChatGPT to access ", site, "?"] + words, site: site)
+    }
+
+    @Test("A site the app marks out itself is judged like any other")
+    func marked() {
+        #expect(AutoAllowDecision.approves(codex("http://cytron.local:8888"), rules: local))
+        #expect(AutoAllowDecision.approves(codex("localhost:3000"), rules: local))
+        #expect(!AutoAllowDecision.approves(codex("https://example.com"), rules: local))
+        #expect(AutoAllowDecision.subject(of: codex("http://cytron.local:8888")) == "cytron.local")
+    }
+
+    @Test("Where the app marks the site, a record among the words proves nothing")
+    func markedAlone() {
+        let command = PermissionPrompt(
+            texts: ["Terminal", "Allow ChatGPT to run this command?", #"{"origin": "http://localhost"}"#],
+            site: "")
+        #expect(command.origin == nil)
+        #expect(!AutoAllowDecision.approves(command, rules: local))
+        #expect(AutoAllowDecision.approves(command, rules: everything))
+    }
+
+    @Test("A marked local site beside one on the internet is held back")
+    func markedBesideAnother() {
+        let prompt = codex("http://cytron.local", "curl https://example.com/hook")
+        #expect(!AutoAllowDecision.approves(prompt, rules: local))
+    }
+
+    @Test("Codex is known by its words in every language it speaks")
+    func codexWords() {
+        #expect(CodexWords.allowOnce.contains("Allow once"))
+        #expect(CodexWords.allowOnce.contains("Разрешить один раз"))
+        #expect(CodexWords.allowOnce.contains("允许一次"))
+        #expect(CodexWords.awaitingApproval.contains("Awaiting approval"))
+        #expect(CodexWords.awaitingApproval.contains("Genehmigung ausstehend"))
+        // No word may mean both: a mark in the list is never a button.
+        #expect(CodexWords.allowOnce.isDisjoint(with: CodexWords.awaitingApproval))
+    }
+
     @Test("A site that only looks local is not")
     func lookalike() {
         #expect(!AutoAllowDecision.approves(access(to: "cytron.local.example.com"), rules: local))

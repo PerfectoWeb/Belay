@@ -96,7 +96,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             controller?.requestProviderAccess(provider)
         }
         self.settingsWindow = settingsWindow
-        appState.modules.autoAllow.agentIsOn = { [weak settings] in settings?.isEnabled(.claudeCode) ?? true }
+        appState.modules.autoAllow.agentIsOn = { [weak settings] app in
+            settings?.isEnabled(app == .codex ? .codex : .claudeCode) ?? true
+        }
         appState.modules.start()
 
         controller.start()

@@ -1,6 +1,13 @@
 import BelayModules
 import Foundation
 
+/// One app to look at: its screen, and what is known of its sessions.
+struct AutoAllowDesk: Sendable {
+    let app: AutoAllowRules.App
+    let screen: PromptScreen
+    let visits: SessionVisits
+}
+
 /// What one look at the screen came to.
 struct AutoAllowLook: Sendable {
     /// The sites of the requests that were answered.
@@ -13,6 +20,8 @@ struct AutoAllowLook: Sendable {
     var beaten = 0
     var presses = 0
     var seconds: TimeInterval = 0
+    /// The last error an app gave for a press, when one did.
+    var refused: Int32 = 0
     /// What came of bringing a waiting session into the window, when
     /// that was tried.
     var reach: Reach?
@@ -29,6 +38,25 @@ struct AutoAllowLook: Sendable {
 
     var isEmpty: Bool { approved.isEmpty && held == 0 && failed == 0 && beaten == 0 }
 
+    static func take(
+        at desk: AutoAllowDesk, rules: AutoAllowRules, mayReachBehind: Bool, patience: TimeInterval
+    ) -> AutoAllowLook {
+        var look = AutoAllowLook(visits: desk.visits)
+        guard rules.reachesBehind else {
+            look.answer(desk.screen.pending(), rules: rules)
+            return look
+        }
+        // The list is read on every look, reachable or not: what a session
+        // did while the person was at work still counts.
+        let survey = desk.screen.survey()
+        look.visits.notice(survey.sessions.rows)
+        look.answer(survey.pending, rules: rules)
+        if mayReachBehind, look.isEmpty {
+            look.reachBehind(survey.sessions, screen: desk.screen, rules: rules, patience: patience)
+        }
+        return look
+    }
+
     mutating func answer(_ seen: [PendingPrompt], rules: AutoAllowRules) {
         for request in seen {
             guard AutoAllowDecision.approves(request.prompt, rules: rules) else {
@@ -40,9 +68,10 @@ struct AutoAllowLook: Sendable {
                 approved.append(AutoAllowDecision.subject(of: request.prompt))
                 self.presses += presses
                 self.seconds += seconds
-            case .unanswered(let presses):
+            case .unanswered(let presses, let refused):
                 failed += 1
                 self.presses += presses
+                if refused != 0 { self.refused = refused }
             case .gone:
                 beaten += 1
             case .changed:

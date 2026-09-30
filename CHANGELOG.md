@@ -5,6 +5,27 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - Unreleased
+
+### Added
+
+- Auto Allow also answers in Codex, the agent inside the ChatGPT desktop app.
+  The same rules apply: by default a request for access to a site on this Mac
+  or this network, and everything else waits. Codex marks the site as a link
+  in its question, and only that link counts, since the rest of a Codex card
+  is the agent's own words; a command that mentions `localhost` is still left
+  for you. The button and the "Awaiting approval" mark are recognised in every
+  language Codex speaks. Sessions behind the window are visited the same way
+  as in Claude. Each app follows its agent's switch in Settings › Agents, and
+  the card says which agent is switched off.
+
+### Changed
+
+- A page shown inside the Claude or Codex window, such as a site in the
+  agent's browser, is no longer read: whatever it draws is not a request card.
+- A session behind the window is visited only when the session on show has a
+  name of its own in the list, so that the way back is never in doubt.
+
 ## [2.0.0] - 2026-09-30
 
 ### Added

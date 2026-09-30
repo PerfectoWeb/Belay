@@ -45,8 +45,8 @@ struct ModuleDescriptor: Identifiable {
         symbol: "checkmark.shield",
         title: "Auto Allow",
         summary: """
-            Presses Allow once in the Claude app for you, so an agent working \
-            on your local sites does not stop to ask.
+            Presses Allow once in the Claude and Codex apps for you, so an \
+            agent working on your local sites does not stop to ask.
             """,
         channels: [.direct]
     )

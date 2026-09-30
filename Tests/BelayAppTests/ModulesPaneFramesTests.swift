@@ -29,7 +29,7 @@ final class ModulesPaneFramesTests: XCTestCase {
             microphone: MicKeepWarm(
                 defaults: defaults, tap: FakeTap(name: "MacBook Pro Microphone"),
                 surroundings: FakeMac().surroundings),
-            autoAllow: AutoAllower(defaults: defaults, screen: screen),
+            autoAllow: AutoAllower(defaults: defaults, screens: [.claude: screen]),
             captureFolder: { URL(fileURLWithPath: NSHomeDirectory() + "/Desktop") }
         )
         defer { host.stop() }

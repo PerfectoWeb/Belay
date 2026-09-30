@@ -1,9 +1,10 @@
 ﻿key,screen,status,placeholders,source,translation
 %@ agent time,Statistics,translated,%@,%@ agent time,智能体工作 %@
+%@ and %@ are switched off in Agents.,Settings,translated,%@ %@,%@ and %@ are switched off in Agents.,%@ 和 %@ 已在“智能体”中关闭。
 %@ from now,Panel,translated,%@,%@ from now,距现在 %@
 %@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,Statistics,translated,%@ %lld %@,%@ watched %lld agent runs on my Mac and kept it awake for %@.,%@ 在我的 Mac 上监视了 %lld 次智能体运行，并让它保持唤醒 %@。
 "%@ held, %@ away",Statistics,translated,%@ %@,"%@ awake, %@ away",唤醒 %@，离开 %@
-%@ is switched off in Agents.,App,translated,%@,%@ is switched off in Agents.,%@ 已在“智能体”中关闭。
+%@ is switched off in Agents.,Settings,translated,%@,%@ is switched off in Agents.,%@ 已在“智能体”中关闭。
 "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep.,%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 %lld 次智能体运行，使它们不被睡眠打断。
 "%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@,%@ kept my Mac awake for %@ while I was away and saved 1 agent run from being interrupted by sleep.,%@ 在我离开期间让 Mac 保持唤醒 %@，保住了 1 次智能体运行，使它不被睡眠打断。
 %@ panel,Panel,translated,%@,%@ panel,%@ 面板
@@ -61,7 +62,7 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,添加工具…
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,添加到 Claude Code
 Add to Cline,Settings: Providers,translated,,Add to Cline,添加到 Cline
 Add to Codex,Settings: Providers,translated,,Add to Codex,添加到 Codex
-Agent,"App, Settings, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Agent,智能体
+Agent,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Agent,智能体
 Agent needs you,Settings: Notifications,translated,,Agent needs you,智能体需要你
 Agent went quiet,Settings: Notifications,translated,,Agent went quiet,智能体没有动静
 All,"App, Detection, Panel, Settings, Settings: About, Settings: Providers, Statistics, Welcome",translated,,All,全部
@@ -199,8 +200,8 @@ Enable…,(unused),translated,,Enable…,开启…
 Ends at %@,Panel,translated,%@,Ends at %@,将于 %@ 结束
 Erase,Statistics,translated,,Erase,清除
 Erase your statistics?,Statistics,translated,,Erase your statistics?,要清除统计数据吗？
-"Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Settings,translated,,"Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Claude App 中的每个请求都会在你看到之前被批准，包括命令和文件更改。仅在你愿意不看就批准的工作中开启。
-Everything Claude asks,Settings,translated,,Everything Claude asks,Claude 的所有请求
+"Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Settings,translated,,"Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Claude 和 Codex App 中的每个请求都会在你看到之前被批准，包括命令和文件更改。仅在你愿意不看就批准的工作中开启。
+Everything the agent asks,Settings,translated,,Everything the agent asks,智能体的所有请求
 Export…,Statistics,translated,,Export…,导出…
 Finished,"App, Panel, Settings, Settings: Notifications, Statistics, Welcome",translated,,Finished,已完成
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,修复
@@ -322,7 +323,7 @@ Precise,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications,
 Precise Detection,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise Detection,精确检测
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,精确检测规则
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,精确 · 最近活动于 %@ 前
-"Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask.",App,translated,,"Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask.",替你在 Claude App 中点按“Allow once”，让处理本地网站的智能体不必停下来询问。
+"Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask.",App,translated,,"Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask.",替你在 Claude 和 Codex App 中点按“Allow once”，让处理本地网站的智能体不必停下来询问。
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,智能体
 Quit,"App, Menu bar, Settings: General, Settings: Providers",translated,,Quit,退出
 Quit %@,Menu bar,translated,%@,Quit %@,退出 %@
@@ -442,7 +443,7 @@ While holding,"Settings, Settings: Behaviour",translated,,While holding,保持�
 While you were away,Settings: Notifications,translated,,While you were away,在您离开期间
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",启用精确检测后，%@ 会在工作开始、结束或等待你的那一刻直接告诉 Belay。检测变得即时而可靠。
 Working,"App, Detection, Panel, Settings: Providers",translated,,Working,工作中
-"Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",Settings,translated,,"Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",适用于 Claude 桌面 App。本地网站指 localhost、以 .local 或 .test 结尾的名称，以及你自己网络中的地址。其余请求都会等你处理。
+"Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",Settings,translated,,"Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",适用于 Claude 和 Codex 桌面 App。本地网站指 localhost、以 .local 或 .test 结尾的名称，以及你自己网络中的地址。其余请求都会等你处理。
 You asked Belay to stay on until you switch it off.,Panel,translated,,Your Mac stays awake until you turn it off.,Mac 将保持唤醒，直到你关闭为止。
 "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.",Belay 在 Claude Code 设置中发现无法识别的 hooks 条目，因此未做任何更改。
 "Your Claude Code settings file is not plain JSON, so Belay will not modify it.",Detection,translated,,"Your Claude Code settings file isn't plain JSON, so Belay won't modify it.",Claude Code 设置文件不是纯 JSON，因此 Belay 不会修改它。

@@ -2,11 +2,11 @@ import AppKit
 import BelayModules
 
 enum PromptScreens {
-    static var forThisChannel: PromptScreen {
+    static var forThisChannel: [AutoAllowRules.App: PromptScreen] {
         #if BELAY_MAS
-        NoScreen()
+        [.claude: NoScreen()]
         #else
-        ClaudeDesktopScreen()
+        [.claude: AppScreen(dialect: ClaudeDialect()), .codex: AppScreen(dialect: CodexDialect())]
         #endif
     }
 
@@ -20,8 +20,10 @@ enum PromptScreens {
 enum PressOutcome: Sendable, Equatable {
     /// The card went after a press of ours.
     case answered(presses: Int, seconds: TimeInterval)
-    /// Pressed as often as allowed, and the card is still there.
-    case unanswered(presses: Int)
+    /// Pressed as often as allowed, and the card is still there. `refused`
+    /// is the last error the app gave for a press, or zero when every press
+    /// was taken and changed nothing.
+    case unanswered(presses: Int, refused: Int32)
     /// The card went before anything was pressed: the person got there first.
     case gone
     /// The card no longer says what was agreed to, so it was left alone.

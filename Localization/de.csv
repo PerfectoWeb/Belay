@@ -1,9 +1,10 @@
 ﻿key,screen,status,placeholders,source,translation
 %@ agent time,Statistics,translated,%@,%@ agent time,%@ Agent-Zeit
+%@ and %@ are switched off in Agents.,Settings,translated,%@ %@,%@ and %@ are switched off in Agents.,%@ und %@ sind unter Agenten ausgeschaltet.
 %@ from now,Panel,translated,%@,%@ from now,In %@
 %@ has watched %lld agent runs on my Mac and kept it awake for %@ of them.,Statistics,translated,%@ %lld %@,%@ watched %lld agent runs on my Mac and kept it awake for %@.,%@ hat %lld Agentenläufe auf meinem Mac beobachtet und ihn für %@ wach gehalten.
 "%@ held, %@ away",Statistics,translated,%@ %@,"%@ awake, %@ away","%@ wach, %@ weg"
-%@ is switched off in Agents.,App,translated,%@,%@ is switched off in Agents.,%@ ist unter Agenten ausgeschaltet.
+%@ is switched off in Agents.,Settings,translated,%@,%@ is switched off in Agents.,%@ ist unter Agenten ausgeschaltet.
 "%@ kept my Mac awake for %@ while I was away from it, and saved %lld agent runs that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@ %lld,%@ kept my Mac awake for %@ while I was away and saved %lld agent runs from being interrupted by sleep.,"%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und %lld Agentenläufe vor einer Unterbrechung durch den Ruhezustand bewahrt."
 "%@ kept my Mac awake for %@ while I was away from it, and saved 1 agent run that would otherwise have died when the Mac went to sleep.",Statistics,translated,%@ %@,%@ kept my Mac awake for %@ while I was away and saved 1 agent run from being interrupted by sleep.,"%@ hat meinen Mac %@ lang wach gehalten, während ich weg war, und 1 Agentenlauf vor einer Unterbrechung durch den Ruhezustand bewahrt."
 %@ panel,Panel,translated,%@,%@ panel,%@-Panel
@@ -61,7 +62,7 @@ Add a tool…,Settings: Providers,translated,,Add a tool…,Werkzeug hinzufügen
 Add to Claude Code,Settings: Providers,translated,,Add to Claude Code,Zu Claude Code hinzufügen
 Add to Cline,Settings: Providers,translated,,Add to Cline,Zu Cline hinzufügen
 Add to Codex,Settings: Providers,translated,,Add to Codex,Zu Codex hinzufügen
-Agent,"App, Settings, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Agent,Agent
+Agent,"App, Detection, Settings, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Agent,Agent
 Agent needs you,Settings: Notifications,translated,,Agent needs you,Agent braucht dich
 Agent went quiet,Settings: Notifications,translated,,Agent went quiet,Agent verstummt
 All,"App, Detection, Panel, Settings, Settings: About, Settings: Providers, Statistics, Welcome",translated,,All,Alle
@@ -199,8 +200,8 @@ Enable…,(unused),translated,,Enable…,Aktivieren…
 Ends at %@,Panel,translated,%@,Ends at %@,Endet um %@
 Erase,Statistics,needs_review,,Erase,Löschen
 Erase your statistics?,Statistics,needs_review,,Erase your statistics?,Statistik löschen?
-"Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Settings,translated,,"Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.","Jede Anfrage in der Claude-App wird erlaubt, ohne dass du sie siehst, auch Befehle und Änderungen an Dateien. Schalte dies nur für Arbeit ein, die du ungelesen erlauben würdest."
-Everything Claude asks,Settings,translated,,Everything Claude asks,"Alles, was Claude fragt"
+"Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.",Settings,translated,,"Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.","Jede Anfrage in den Apps Claude und Codex wird erlaubt, ohne dass du sie siehst, auch Befehle und Änderungen an Dateien. Schalte dies nur für Arbeit ein, die du ungelesen erlauben würdest."
+Everything the agent asks,Settings,translated,,Everything the agent asks,"Alles, was der Agent fragt"
 Export…,Statistics,translated,,Export…,Exportieren…
 Finished,"App, Panel, Settings, Settings: Notifications, Statistics, Welcome",translated,,Finished,Fertig
 Fix,"App, Panel, Settings, Settings: Providers, Statistics",translated,,Fix,Beheben
@@ -322,7 +323,7 @@ Precise,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications,
 Precise Detection,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise Detection,Präzise Erkennung
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,Regeln der präzisen Erkennung
 Precise · last signal %@ ago,Settings,translated,%@,Precise · last activity %@ ago,Präzise · Aktivität vor %@
-"Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask.",App,translated,,"Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask.","Drückt in der Claude-App für dich auf „Allow once“, damit ein Agent, der an deinen lokalen Websites arbeitet, nicht anhält, um zu fragen."
+"Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask.",App,translated,,"Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask.","Drückt in den Apps Claude und Codex für dich auf „Allow once“, damit ein Agent, der an deinen lokalen Websites arbeitet, nicht anhält, um zu fragen."
 Providers,"App, Detection, Settings, Settings: Providers, Welcome",translated,,Agents,Agenten
 Quit,"App, Menu bar, Settings: General, Settings: Providers",translated,,Quit,Beenden
 Quit %@,Menu bar,translated,%@,Quit %@,%@ beenden
@@ -442,7 +443,7 @@ While holding,"Settings, Settings: Behaviour",translated,,While holding,Während
 While you were away,Settings: Notifications,translated,,While you were away,Während Sie weg waren
 "With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.",Settings: Providers,translated,%@,"With precise detection, %@ tells Belay the exact moment work starts, stops, or waits for you. Detection becomes instant and reliable.","Mit präziser Erkennung meldet %@ Belay den genauen Moment, in dem Arbeit beginnt, endet oder auf dich wartet. Die Erkennung wird sofort und zuverlässig."
 Working,"App, Detection, Panel, Settings: Providers",translated,,Working,Arbeitet
-"Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",Settings,translated,,"Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.","Funktioniert in der Claude-Desktop-App. Lokale Websites sind localhost, Namen, die auf .local oder .test enden, und Adressen in deinem eigenen Netzwerk. Alles andere wartet auf dich."
+"Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.",Settings,translated,,"Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.","Funktioniert in den Desktop-Apps von Claude und Codex. Lokale Websites sind localhost, Namen, die auf .local oder .test enden, und Adressen in deinem eigenen Netzwerk. Alles andere wartet auf dich."
 You asked Belay to stay on until you switch it off.,Panel,needs_review,,Your Mac stays awake until you turn it off.,"Ihr Mac bleibt wach, bis Sie es ausschalten."
 "Your Claude Code settings file has a hooks entry Belay does not recognise, so it made no changes.",Detection,translated,,"Belay found a hooks entry in your Claude Code settings that it doesn't recognize, so nothing was changed.","Belay hat in deinen Claude-Code-Einstellungen einen hooks-Eintrag gefunden, den es nicht erkennt. Deshalb wurde nichts geändert."
 "Your Claude Code settings file is not plain JSON, so Belay will not modify it.",Detection,translated,,"Your Claude Code settings file isn't plain JSON, so Belay won't modify it.","Deine Claude-Code-Einstellungsdatei ist kein reines JSON, deshalb ändert Belay sie nicht."

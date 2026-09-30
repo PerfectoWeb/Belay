@@ -21283,52 +21283,6 @@
         }
       }
     },
-    "Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Presses Allow once in the Claude app for you, so an agent working on your local sites does not stop to ask."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drückt in der Claude-App für dich auf „Allow once“, damit ein Agent, der an deinen lokalen Websites arbeitet, nicht anhält, um zu fragen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pulsa «Allow once» por ti en la app de Claude, para que un agente que trabaja en tus sitios locales no se detenga a preguntar."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appuie sur « Allow once » à votre place dans l'app Claude, pour qu'un agent qui travaille sur vos sites locaux ne s'arrête pas pour demander."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preme «Allow once» al posto tuo nell'app Claude, così un agente che lavora sui tuoi siti locali non si ferma a chiedere."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Нажимает «Allow once» в приложении Claude за вас, чтобы агент, работающий с локальными сайтами, не останавливался с вопросом."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "替你在 Claude App 中点按“Allow once”，让处理本地网站的智能体不必停下来询问。"
-          }
-        }
-      }
-    },
     "Pause on battery power": {
       "localizations": {
         "en": {
@@ -21697,98 +21651,6 @@
         }
       }
     },
-    "Everything Claude asks": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Everything Claude asks"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alles, was Claude fragt"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Todo lo que pida Claude"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tout ce que Claude demande"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tutto ciò che Claude chiede"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Всё, о чём спрашивает Claude"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude 的所有请求"
-          }
-        }
-      }
-    },
-    "Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every request in the Claude app is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jede Anfrage in der Claude-App wird erlaubt, ohne dass du sie siehst, auch Befehle und Änderungen an Dateien. Schalte dies nur für Arbeit ein, die du ungelesen erlauben würdest."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Todas las solicitudes de la app de Claude se aprueban sin que las veas, incluidos los comandos y los cambios en archivos. Actívalo solo para trabajo que aprobarías sin leer."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chaque demande dans l'app Claude est approuvée sans que vous la voyiez, commandes et modifications de fichiers comprises. N'activez ceci que pour un travail que vous approuveriez sans lire."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ogni richiesta nell'app Claude viene approvata senza che tu la veda, comandi e modifiche ai file compresi. Attivalo solo per un lavoro che approveresti senza leggere."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Каждый запрос в приложении Claude подтверждается без вашего участия, включая команды и изменения файлов. Включайте только для работы, которую подтвердили бы не читая."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude App 中的每个请求都会在你看到之前被批准，包括命令和文件更改。仅在你愿意不看就批准的工作中开启。"
-          }
-        }
-      }
-    },
     "Switch off after": {
       "localizations": {
         "en": {
@@ -21969,52 +21831,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "暂无。"
-          }
-        }
-      }
-    },
-    "Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Works in the Claude desktop app. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Funktioniert in der Claude-Desktop-App. Lokale Websites sind localhost, Namen, die auf .local oder .test enden, und Adressen in deinem eigenen Netzwerk. Alles andere wartet auf dich."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Funciona en la app de escritorio de Claude. Los sitios locales son localhost, los nombres que terminan en .local o .test y las direcciones de tu propia red. Todo lo demás te espera."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fonctionne dans l'app de bureau Claude. Les sites locaux sont localhost, les noms se terminant par .local ou .test et les adresses de votre propre réseau. Tout le reste vous attend."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Funziona nell'app desktop di Claude. I siti locali sono localhost, i nomi che finiscono in .local o .test e gli indirizzi della tua rete. Tutto il resto aspetta te."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Работает в настольном приложении Claude. Локальные сайты: localhost, имена с окончанием .local или .test и адреса в вашей собственной сети. Всё остальное ждёт вас."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "适用于 Claude 桌面 App。本地网站指 localhost、以 .local 或 .test 结尾的名称，以及你自己网络中的地址。其余请求都会等你处理。"
           }
         }
       }
@@ -22521,6 +22337,236 @@
           "stringUnit": {
             "state": "translated",
             "value": "已批准：%lld"
+          }
+        }
+      }
+    },
+    "Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Presses Allow once in the Claude and Codex apps for you, so an agent working on your local sites does not stop to ask."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drückt in den Apps Claude und Codex für dich auf „Allow once“, damit ein Agent, der an deinen lokalen Websites arbeitet, nicht anhält, um zu fragen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pulsa «Allow once» por ti en las apps de Claude y Codex, para que un agente que trabaja en tus sitios locales no se detenga a preguntar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appuie sur « Allow once » à votre place dans les apps Claude et Codex, pour qu'un agent qui travaille sur vos sites locaux ne s'arrête pas pour demander."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preme «Allow once» al posto tuo nelle app Claude e Codex, così un agente che lavora sui tuoi siti locali non si ferma a chiedere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажимает «Allow once» в приложениях Claude и Codex за вас, чтобы агент, работающий с локальными сайтами, не останавливался с вопросом."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "替你在 Claude 和 Codex App 中点按“Allow once”，让处理本地网站的智能体不必停下来询问。"
+          }
+        }
+      }
+    },
+    "Everything the agent asks": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything the agent asks"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles, was der Agent fragt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo lo que pida el agente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout ce que l'agent demande"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutto ciò che l'agente chiede"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всё, о чём спрашивает агент"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能体的所有请求"
+          }
+        }
+      }
+    },
+    "%@ and %@ are switched off in Agents.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ and %@ are switched off in Agents."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ und %@ sind unter Agenten ausgeschaltet."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ y %@ están desactivados en Agentes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ et %@ sont désactivés dans Agents."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ e %@ sono disattivati in Agenti."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ и %@ выключены во вкладке «Агенты»."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 和 %@ 已在“智能体”中关闭。"
+          }
+        }
+      }
+    },
+    "Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Works in the Claude and Codex desktop apps. Local sites are localhost, names ending in .local or .test, and addresses on your own network. Everything else waits for you."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funktioniert in den Desktop-Apps von Claude und Codex. Lokale Websites sind localhost, Namen, die auf .local oder .test enden, und Adressen in deinem eigenen Netzwerk. Alles andere wartet auf dich."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funciona en las apps de escritorio de Claude y Codex. Los sitios locales son localhost, los nombres que terminan en .local o .test y las direcciones de tu propia red. Todo lo demás te espera."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fonctionne dans les apps de bureau Claude et Codex. Les sites locaux sont localhost, les noms se terminant par .local ou .test et les adresses de votre propre réseau. Tout le reste vous attend."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funziona nelle app desktop di Claude e Codex. I siti locali sono localhost, i nomi che finiscono in .local o .test e gli indirizzi della tua rete. Tutto il resto aspetta te."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работает в настольных приложениях Claude и Codex. Локальные сайты: localhost, имена с окончанием .local или .test и адреса в вашей собственной сети. Всё остальное ждёт вас."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "适用于 Claude 和 Codex 桌面 App。本地网站指 localhost、以 .local 或 .test 结尾的名称，以及你自己网络中的地址。其余请求都会等你处理。"
+          }
+        }
+      }
+    },
+    "Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every request in the Claude and Codex apps is approved without you seeing it, commands and file changes included. Switch this on only for work you would approve without reading."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede Anfrage in den Apps Claude und Codex wird erlaubt, ohne dass du sie siehst, auch Befehle und Änderungen an Dateien. Schalte dies nur für Arbeit ein, die du ungelesen erlauben würdest."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todas las solicitudes de las apps de Claude y Codex se aprueban sin que las veas, incluidos los comandos y los cambios en archivos. Actívalo solo para trabajo que aprobarías sin leer."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaque demande dans les apps Claude et Codex est approuvée sans que vous la voyiez, commandes et modifications de fichiers comprises. N'activez ceci que pour un travail que vous approuveriez sans lire."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ogni richiesta nelle app Claude e Codex viene approvata senza che tu la veda, comandi e modifiche ai file compresi. Attivalo solo per un lavoro che approveresti senza leggere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каждый запрос в приложениях Claude и Codex подтверждается без вашего участия, включая команды и изменения файлов. Включайте только для работы, которую подтвердили бы не читая."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude 和 Codex App 中的每个请求都会在你看到之前被批准，包括命令和文件更改。仅在你愿意不看就批准的工作中开启。"
           }
         }
       }

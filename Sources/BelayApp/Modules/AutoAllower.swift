@@ -2,7 +2,7 @@ import BelayModules
 import Foundation
 import Observation
 
-/// The automatic approval, running: looks at the Claude app every couple of
+/// The automatic approval, running: looks at the chosen apps every couple of
 /// seconds and presses Allow once on the requests the rules cover.
 @MainActor
 @Observable
@@ -17,13 +17,10 @@ final class AutoAllower {
     static let quickSpell: TimeInterval = 60
     static let untilKey = "BelayAutoAllowUntil"
 
-    /// The agent whose requests these are, as the Agents pane names it.
-    static let agentName = "Claude Code"
-
     enum Standing: Equatable {
         case off
-        /// The agent is switched off in Agents, and a module does nothing for
-        /// an agent Belay was told to leave alone.
+        /// Every app's agent is switched off in Agents, and a module does
+        /// nothing for an agent Belay was told to leave alone.
         case agentOff
         case needsAccess
         case watching
@@ -49,16 +46,16 @@ final class AutoAllower {
 
     /// The time ran out: the owner switches the module off.
     @ObservationIgnored var onExpired: () -> Void = {}
-    /// Whether the agent is switched on in Agents.
-    @ObservationIgnored var agentIsOn: () -> Bool = { true }
+    /// Whether the agent behind an app is switched on in Agents.
+    @ObservationIgnored var agentIsOn: (AutoAllowRules.App) -> Bool = { _ in true }
 
     @ObservationIgnored private let defaults: UserDefaults
-    @ObservationIgnored private let screen: PromptScreen
+    @ObservationIgnored private let screens: [AutoAllowRules.App: PromptScreen]
     @ObservationIgnored private let now: @Sendable () -> Date
     /// How long a request may take to be drawn once its session is in the
     /// window.
     @ObservationIgnored private let patience: TimeInterval
-    @ObservationIgnored private var visits = SessionVisits()
+    @ObservationIgnored private var visits: [AutoAllowRules.App: SessionVisits] = [:]
     @ObservationIgnored private var timer: Timer?
     @ObservationIgnored private var isLooking = false
     @ObservationIgnored private var lastSeen: Date?
@@ -69,12 +66,12 @@ final class AutoAllower {
 
     init(
         defaults: UserDefaults = .standard,
-        screen: PromptScreen = PromptScreens.forThisChannel,
+        screens: [AutoAllowRules.App: PromptScreen] = PromptScreens.forThisChannel,
         patience: TimeInterval = 2,
         now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.defaults = defaults
-        self.screen = screen
+        self.screens = screens
         self.patience = patience
         self.now = now
         rules = AutoAllowRules.load(from: defaults)
@@ -86,7 +83,7 @@ final class AutoAllower {
     func activate() {
         stampDeadline()
         start()
-        if !screen.isTrusted { screen.askForTrust() }
+        desks.first { !$0.screen.isTrusted }?.screen.askForTrust()
     }
 
     func start() {
@@ -109,9 +106,23 @@ final class AutoAllower {
         "scope=\(rules.scope.rawValue) behind=\(rules.reachesBehind ? 1 : 0) duration=\(Int(rules.duration))"
     }
 
+    /// Every app this build can read, in one order.
+    private var desks: [AutoAllowDesk] {
+        AutoAllowRules.App.allCases.compactMap { app in
+            guard let screen = screens[app] else { return nil }
+            return AutoAllowDesk(app: app, screen: screen, visits: visits[app] ?? SessionVisits())
+        }
+    }
+
+    /// The apps whose agent is switched off in Agents, and so left alone.
+    var appsLeftAlone: [AutoAllowRules.App] {
+        desks.map(\.app).filter { !agentIsOn($0) }
+    }
+
     private var current: Standing {
-        guard agentIsOn() else { return .agentOff }
-        return screen.isTrusted ? .watching : .needsAccess
+        let desks = desks.filter { agentIsOn($0.app) }
+        guard !desks.isEmpty else { return .agentOff }
+        return desks.allSatisfy(\.screen.isTrusted) ? .watching : .needsAccess
     }
 
     /// Belay is quitting. The deadline stays on record, so a restart cannot
@@ -165,43 +176,32 @@ final class AutoAllower {
         }
         isLooking = true
         lastLook = now()
-        let screen = screen
+        let desks = desks.filter { agentIsOn($0.app) }
         let rules = rules
         let patience = patience
-        let visits = visits
         // Asked here and not in the look: whether the person is at work is
         // a question about this moment.
-        let mayReachBehind = rules.reachesBehind && !screen.isInUse
+        let mayReachBehind = rules.reachesBehind && !desks.contains { $0.screen.isInUse }
         Task { [weak self] in
-            let result = await Task.detached(priority: .utility) {
-                var look = AutoAllowLook(visits: visits)
-                if rules.reachesBehind {
-                    // The list is read on every look, reachable or not: what a
-                    // session did while the person was at work still counts.
-                    let survey = screen.survey()
-                    look.visits.notice(survey.sessions.rows)
-                    look.answer(survey.pending, rules: rules)
-                    if mayReachBehind, look.isEmpty {
-                        look.reachBehind(
-                            survey.sessions, screen: screen, rules: rules, patience: patience)
-                    }
-                } else {
-                    look.answer(screen.pending(), rules: rules)
+            let looks = await Task.detached(priority: .utility) {
+                desks.map { desk in
+                    let look = AutoAllowLook.take(
+                        at: desk, rules: rules, mayReachBehind: mayReachBehind, patience: patience)
+                    return (desk.app, look)
                 }
-                return look
             }.value
-            self?.record(result)
+            self?.isLooking = false
+            for (app, look) in looks { self?.record(look, in: app) }
+            self?.lookAgain()
             finished()
         }
     }
 
-    private func record(_ look: AutoAllowLook) {
-        isLooking = false
-        visits = look.visits
-        defer { lookAgain() }
+    private func record(_ look: AutoAllowLook, in app: AutoAllowRules.App) {
+        visits[app] = look.visits
         if let reach = look.reach {
             // The session's name stays out of the log, as the sites do.
-            Diagnostics.note("autoallow behind=\(reach.rawValue)")
+            Diagnostics.note("autoallow behind=\(reach.rawValue) app=\(app.rawValue)")
         }
         guard !look.isEmpty else { return }
         // Counts and the scope. The site is in the list the user can see,
@@ -211,7 +211,8 @@ final class AutoAllower {
             """
             autoallow approved=\(look.approved.count) held=\(look.held) \
             failed=\(look.failed) beaten=\(look.beaten) presses=\(look.presses) \
-            took=\(String(format: "%.1f", look.seconds)) scope=\(rules.scope.rawValue)
+            took=\(String(format: "%.1f", look.seconds)) scope=\(rules.scope.rawValue) \
+            app=\(app.rawValue)\(look.refused == 0 ? "" : " refused=\(look.refused)")
             """)
         lastSeen = now()
         // Switched off while the look was under way: what it pressed still

@@ -15,7 +15,7 @@ struct AutoAllowSettings: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Picker(selection: $allower.rules.scope) {
                         Text("Requests for local sites").tag(AutoAllowRules.Scope.localSites)
-                        Text("Everything Claude asks").tag(AutoAllowRules.Scope.everything)
+                        Text("Everything the agent asks").tag(AutoAllowRules.Scope.everything)
                     } label: {
                         EmptyView()
                     }
@@ -24,8 +24,9 @@ struct AutoAllowSettings: View {
                     if allower.rules.scope == .everything {
                         Text(
                             """
-                            Every request in the Claude app is approved without \
-                            you seeing it, commands and file changes included. \
+                            Every request in the Claude and Codex apps is approved \
+                            without you seeing it, commands and file changes \
+                            included. \
                             Switch this on only for work you would approve \
                             without reading.
                             """
@@ -66,13 +67,19 @@ struct AutoAllowSettings: View {
             }
 
             ModuleRow(title: nil) {
-                Text(
-                    """
-                    Works in the Claude desktop app. Local sites are \
-                    localhost, names ending in .local or .test, and addresses \
-                    on your own network. Everything else waits for you.
-                    """
-                )
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(
+                        """
+                        Works in the Claude and Codex desktop apps. Local sites \
+                        are localhost, names ending in .local or .test, and \
+                        addresses on your own network. Everything else waits \
+                        for you.
+                        """
+                    )
+                    if !allower.appsLeftAlone.isEmpty {
+                        Self.leftAlone(allower.appsLeftAlone)
+                    }
+                }
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -89,6 +96,15 @@ struct AutoAllowSettings: View {
             }
             .padding(.top, 4)
         }
+    }
+
+    /// Which apps Belay leaves alone because their agent is off.
+    static func leftAlone(_ apps: [AutoAllowRules.App]) -> Text {
+        let names = apps.map(\.agentName)
+        guard names.count > 1 else {
+            return Text("\(names.first ?? "") is switched off in Agents.")
+        }
+        return Text("\(names[0]) and \(names[1]) are switched off in Agents.")
     }
 
     @ViewBuilder private var recent: some View {
@@ -118,5 +134,15 @@ struct AutoAllowSettings: View {
         let spelled = Duration.seconds(duration).formatted(
             .units(allowed: [.hours], width: .wide, maximumUnitCount: 1))
         return Text(verbatim: spelled)
+    }
+}
+
+extension AutoAllowRules.App {
+    /// The agent behind the app, as the Agents pane names it.
+    var agentName: String {
+        switch self {
+        case .claude: "Claude Code"
+        case .codex: "Codex"
+        }
     }
 }
