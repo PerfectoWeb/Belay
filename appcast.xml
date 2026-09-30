@@ -3,8 +3,44 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>2.0.0</title>
+            <pubDate>Wed, 30 Sep 2026 19:17:06 +0300</pubDate>
+            <sparkle:version>21</sparkle:version>
+            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 2.0.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 2.0.0</h2>
+<ul>
+  <li><b>Modules.</b> Optional tools in Settings. Each stays off until you
+      install it. No downloads needed.</li>
+  <li><b>Screenshot Cleaner.</b> Automatically moves older screenshots to
+      the Trash. You choose how long to keep them.</li>
+  <li><b>Warm Microphone.</b> Keeps the microphone active so dictation catches
+      your first word. No audio is recorded, stored, or sent.</li>
+  <li><b>Auto Allow.</b> Clicks "Allow once" in Claude to approve requests for local sites.
+      Turns off automatically after the time you set.</li>
+</ul>
+<p class="quiet">Auto Allow requires Accessibility access. macOS asks for
+microphone access when you first turn on Warm Microphone.</p>
+]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v2.0.0/Belay-2.0.0.dmg" length="7726202" type="application/octet-stream" sparkle:edSignature="8sZpcvIgkYnf6/R8EULfhhS/9W0wLUBxYkDaO6zyZN2RfWsyxUX84inTdy4vOeF2M/0BRzC3twcaL2dE7i5DAQ=="/>
+        </item>
+        <item>
             <title>1.8.1</title>
-            <pubDate>Mon, 07 Sep 2026 15:09:01 +0300</pubDate>
+            <pubDate>Wed, 30 Sep 2026 19:17:08 +0300</pubDate>
             <sparkle:version>20</sparkle:version>
             <sparkle:shortVersionString>1.8.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -29,7 +65,7 @@
         </item>
         <item>
             <title>1.8.0</title>
-            <pubDate>Mon, 07 Sep 2026 15:09:03 +0300</pubDate>
+            <pubDate>Wed, 30 Sep 2026 19:17:11 +0300</pubDate>
             <sparkle:version>19</sparkle:version>
             <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -64,7 +100,7 @@ shows total agent time instead of the number of rows.</p>]]></description>
         </item>
         <item>
             <title>1.7.0</title>
-            <pubDate>Mon, 07 Sep 2026 15:09:05 +0300</pubDate>
+            <pubDate>Wed, 30 Sep 2026 19:17:14 +0300</pubDate>
             <sparkle:version>17</sparkle:version>
             <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -100,7 +136,7 @@ and sessions taking turns no longer flood the log.</p>]]></description>
         </item>
         <item>
             <title>1.6.4</title>
-            <pubDate>Mon, 07 Sep 2026 15:09:07 +0300</pubDate>
+            <pubDate>Wed, 30 Sep 2026 19:17:16 +0300</pubDate>
             <sparkle:version>16</sparkle:version>
             <sparkle:shortVersionString>1.6.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -136,38 +172,6 @@ and sessions taking turns no longer flood the log.</p>]]></description>
 old imported conversations no longer look active, and diagnostics stay fully
 off when Local Reports is off.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.4/Belay-1.6.4.dmg" length="7253659" type="application/octet-stream" sparkle:edSignature="e0WbJ7SNLLKqBRqowlPwT0iJAxHphMm3EglWIUM3HdEXZQIQooumQvQQHCQ3QbIX1Q1/Fh2CpUwp1+oEZxdwBg=="/>
-        </item>
-        <item>
-            <title>1.6.3</title>
-            <pubDate>Mon, 07 Sep 2026 15:09:09 +0300</pubDate>
-            <sparkle:version>15</sparkle:version>
-            <sparkle:shortVersionString>1.6.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.6.3. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.6.3</h2>
-<ul>
-  <li><b>Precise Detection survives restarts and updates.</b> Belay now keeps
-      the same local address, so agents stay connected when the app restarts
-      or updates.</li>
-  <li><b>Option reveals the longer choices too.</b> In Sleep delay and the
-      Always On timer, hold Option or Shift to show the longer durations.</li>
-</ul>
-<p class="quiet">Also: diagnostics now record when the local bridge starts,
-which port it uses, and which agent settings it updates.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.3/Belay-1.6.3.dmg" length="7162814" type="application/octet-stream" sparkle:edSignature="uR07j/mnzSDJkVDfVqtpemUPFugSs5zTZeVJq5GvIjpRcLXqgQ/+EX2y+hVGEb1NAsiB/YFd2LA5QhOWxva+AQ=="/>
         </item>
     </channel>
 </rss>
