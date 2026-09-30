@@ -122,12 +122,12 @@ final class ScreenshotCleaner {
         let sweeper = sweeper
         let moment = now()
         let floor = pass == .automatic ? activeSince : nil
-        Task.detached(priority: .utility) { [weak self] in
-            let report = sweeper.run(rules: rules, now: moment, notBefore: floor)
-            await MainActor.run {
-                self?.record(report)
-                finished()
-            }
+        Task { [weak self] in
+            let report = await Task.detached(priority: .utility) {
+                sweeper.run(rules: rules, now: moment, notBefore: floor)
+            }.value
+            self?.record(report)
+            finished()
         }
     }
 

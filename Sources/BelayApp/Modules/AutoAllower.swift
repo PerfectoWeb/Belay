@@ -172,26 +172,26 @@ final class AutoAllower {
         // Asked here and not in the look: whether the person is at work is
         // a question about this moment.
         let mayReachBehind = rules.reachesBehind && !screen.isInUse
-        Task.detached(priority: .utility) { [weak self] in
-            var look = AutoAllowLook(visits: visits)
-            if rules.reachesBehind {
-                // The list is read on every look, reachable or not: what a
-                // session did while the person was at work still counts.
-                let survey = screen.survey()
-                look.visits.notice(survey.sessions.rows)
-                look.answer(survey.pending, rules: rules)
-                if mayReachBehind, look.isEmpty {
-                    look.reachBehind(
-                        survey.sessions, screen: screen, rules: rules, patience: patience)
+        Task { [weak self] in
+            let result = await Task.detached(priority: .utility) {
+                var look = AutoAllowLook(visits: visits)
+                if rules.reachesBehind {
+                    // The list is read on every look, reachable or not: what a
+                    // session did while the person was at work still counts.
+                    let survey = screen.survey()
+                    look.visits.notice(survey.sessions.rows)
+                    look.answer(survey.pending, rules: rules)
+                    if mayReachBehind, look.isEmpty {
+                        look.reachBehind(
+                            survey.sessions, screen: screen, rules: rules, patience: patience)
+                    }
+                } else {
+                    look.answer(screen.pending(), rules: rules)
                 }
-            } else {
-                look.answer(screen.pending(), rules: rules)
-            }
-            let result = look
-            await MainActor.run {
-                self?.record(result)
-                finished()
-            }
+                return look
+            }.value
+            self?.record(result)
+            finished()
         }
     }
 
