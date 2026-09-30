@@ -95,35 +95,14 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "2.0.0",
+                version: "2.1.0",
                 items: [
                     .init(
-                        symbol: Mark.modules,
-                        title: "Modules",
-                        body: """
-                            Optional tools in Settings. Each stays off until you install \
-                            it. No downloads needed.
-                            """),
-                    .init(
-                        symbol: Mark.screenshot,
-                        title: "Screenshot Cleaner",
-                        body: """
-                            Automatically moves older screenshots to the Trash. You \
-                            choose how long to keep them.
-                            """),
-                    .init(
-                        symbol: Mark.microphone,
-                        title: "Warm Microphone",
-                        body: """
-                            Keeps the microphone active so dictation catches your first \
-                            word. No audio is recorded, stored, or sent.
-                            """),
-                    .init(
                         symbol: Mark.allow,
-                        title: "Auto Allow",
+                        title: "Auto Allow in Codex",
                         body: """
-                            Clicks "Allow once" in Claude to approve requests for local \
-                            sites. Turns off automatically after the time you set.
+                            Clicks "Allow once" in the ChatGPT desktop app too, with the \
+                            same rules for local sites. Follows the Codex switch in Agents.
                             """,
                         directOnly: true)
                 ]

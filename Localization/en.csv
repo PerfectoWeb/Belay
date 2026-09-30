@@ -87,7 +87,7 @@ Approve the helper in Login Items so it can hold the lid.,Settings,translated,,A
 Approved so far: %lld,App,translated,%lld,Approved so far: %lld,Approved so far: %lld
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Auto
 Auto Allow,App,translated,,Auto Allow,Auto Allow
-Automatically moves older screenshots to the Trash. You choose how long to keep them.,App,translated,,Automatically moves older screenshots to the Trash. You choose how long to keep them.,Automatically moves older screenshots to the Trash. You choose how long to keep them.
+Auto Allow in Codex,App,translated,,Auto Allow in Codex,Auto Allow in Codex
 Awake %@ so far,Panel,translated,%@,Awake for %@,Awake for %@
 Awake limit,Settings: Behaviour,translated,,Awake limit,Awake limit
 Awake mode,Panel,translated,,Awake mode,Awake mode
@@ -167,7 +167,7 @@ Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude
 Clean Up Now,"App, Settings",translated,,Clean Up Now,Clean Up Now
 Clear,App,translated,,Clear,Clear
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,Click to see what changed and install it whenever you like.
-"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.",App,translated,,"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.","Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set."
+"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.",App,translated,,"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.","Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents."
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline is not installed on this Mac.
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Close
@@ -236,7 +236,6 @@ Keep your Mac awake,Panel,translated,,Keep your Mac awake,Keep your Mac awake
 Keeping %@ ready,App,translated,%@,Keeping %@ ready,Keeping %@ ready
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,Keeping the display off saves power and won't interrupt your agent.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Keeping your Mac awake
-"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.",App,translated,,"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.","Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent."
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,Keeps your Mac awake while your agent works.
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,Keeps your Mac awake while your agent works.
 Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,Settings,translated,,Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.
@@ -307,7 +306,6 @@ Open Settings,Panel,translated,,Open Settings,Open Settings
 Open at login,"Settings, Settings: General",translated,,Open at login,Open at login
 Open the App Store,Settings: General,translated,,Open the App Store,Open the App Store
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,Opens a standard macOS folder picker so you can grant access
-Optional tools in Settings. Each stays off until you install it. No downloads needed.,App,translated,,Optional tools in Settings. Each stays off until you install it. No downloads needed.,Optional tools in Settings. Each stays off until you install it. No downloads needed.
 Options,"App, Detection, Panel, Settings, Settings: Providers",translated,,Options,Options
 Other agents,"App, Settings: Providers",translated,,Other agents,Other agents
 Other tools,Settings: Providers,translated,,Other tools,Other tools

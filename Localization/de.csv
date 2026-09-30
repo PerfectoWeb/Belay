@@ -87,7 +87,7 @@ Approve the helper in Login Items so it can hold the lid.,Settings,translated,,A
 Approved so far: %lld,App,translated,%lld,Approved so far: %lld,Bisher erlaubt: %lld
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Automatik
 Auto Allow,App,translated,,Auto Allow,Automatisch erlauben
-Automatically moves older screenshots to the Trash. You choose how long to keep them.,App,translated,,Automatically moves older screenshots to the Trash. You choose how long to keep them.,"Verschiebt ältere Bildschirmfotos automatisch in den Papierkorb. Du entscheidest, wie lange sie aufbewahrt werden."
+Auto Allow in Codex,App,translated,,Auto Allow in Codex,Automatisch erlauben in Codex
 Awake %@ so far,Panel,translated,%@,Awake for %@,Wach seit %@
 Awake limit,Settings: Behaviour,translated,,Awake limit,Wachlimit
 Awake mode,Panel,translated,,Awake mode,Wachmodus
@@ -167,7 +167,7 @@ Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude
 Clean Up Now,"App, Settings",translated,,Clean Up Now,Jetzt aufräumen
 Clear,App,translated,,Clear,Löschen
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Klicke, um zu sehen, was neu ist, und installiere es, wann du willst."
-"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.",App,translated,,"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.",Klickt in Claude bei Anfragen zu lokalen Websites auf „Allow once“. Schaltet sich nach der eingestellten Zeit automatisch aus.
+"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.",App,translated,,"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.","Klickt auch in der ChatGPT-Desktop-App auf „Allow once“, mit denselben Regeln für lokale Websites. Folgt dem Codex-Schalter unter Agenten."
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Cline hat auf diesem Mac noch keine Sitzung gestartet. Belay beginnt von selbst, sobald es passiert."
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline ist auf diesem Mac nicht installiert.
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Schließen
@@ -236,7 +236,6 @@ Keep your Mac awake,Panel,translated,,Keep your Mac awake,Mac wach halten
 Keeping %@ ready,App,translated,%@,Keeping %@ ready,%@ wird bereitgehalten
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,Ein ausgeschaltetes Display spart Strom und unterbricht deinen Agenten nicht.
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,Hält deinen Mac wach
-"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.",App,translated,,"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.","Hält das Mikrofon aktiv, damit beim Diktieren schon dein erstes Wort ankommt. Es wird kein Ton aufgenommen, gespeichert oder gesendet."
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,"Hält deinen Mac wach, solange dein Agent arbeitet."
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,"Hält deinen Mac wach, solange dein Agent arbeitet."
 Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,Settings,translated,,Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,Hält den Mac mit geschlossenem Deckel wach. Endet am Wachlimit oder wenn der Mac zu warm wird.
@@ -307,7 +306,6 @@ Open Settings,Panel,translated,,Open Settings,Einstellungen öffnen
 Open at login,"Settings, Settings: General",translated,,Open at login,Beim Anmelden öffnen
 Open the App Store,Settings: General,translated,,Open the App Store,App Store öffnen
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,"Öffnet die macOS-Ordnerauswahl, damit du Zugriff erlauben kannst"
-Optional tools in Settings. Each stays off until you install it. No downloads needed.,App,translated,,Optional tools in Settings. Each stays off until you install it. No downloads needed.,Zusätzliche Werkzeuge in den Einstellungen. Jedes bleibt bis zur Installation deaktiviert. Es wird nichts heruntergeladen.
 Options,"App, Detection, Panel, Settings, Settings: Providers",translated,,Options,Optionen
 Other agents,"App, Settings: Providers",translated,,Other agents,Weitere Agenten
 Other tools,Settings: Providers,translated,,Other tools,Weitere Werkzeuge

@@ -1,0 +1,38 @@
+App Store "What’s New in This Version" – Belay 2.1.0
+
+Nothing here may mention Precise Detection, hooks or Auto Allow: the App Store
+build is sandboxed and has none of them. Everything below is true of this
+build on its own.
+
+So far 2.1.0 changes nothing the App Store build has. The lines below are a
+placeholder for the store form; replace them once a fix or a feature for the
+store build lands, or submit a store build of this version only when there is
+one.
+
+--- EN ---
+
+Small improvements under the hood. Nothing changes in how Belay looks or works for you.
+
+--- RU ---
+
+Небольшие внутренние улучшения. В работе и внешнем виде Belay ничего не меняется.
+
+--- DE ---
+
+Kleine Verbesserungen unter der Haube. An Aussehen und Verhalten von Belay ändert sich nichts.
+
+--- ES ---
+
+Pequeñas mejoras internas. Nada cambia en el aspecto ni en el funcionamiento de Belay.
+
+--- FR ---
+
+Petites améliorations internes. Rien ne change dans l’apparence ni le fonctionnement de Belay.
+
+--- IT ---
+
+Piccoli miglioramenti interni. Nulla cambia nell’aspetto o nel funzionamento di Belay.
+
+--- ZH ---
+
+内部的小幅改进。Belay 的外观和使用方式没有变化。

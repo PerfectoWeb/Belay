@@ -87,7 +87,7 @@ Approve the helper in Login Items so it can hold the lid.,Settings,translated,,A
 Approved so far: %lld,App,translated,%lld,Approved so far: %lld,已批准：%lld
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,自动
 Auto Allow,App,translated,,Auto Allow,自动允许
-Automatically moves older screenshots to the Trash. You choose how long to keep them.,App,translated,,Automatically moves older screenshots to the Trash. You choose how long to keep them.,自动将旧截屏移到废纸篓，保留时间由你决定。
+Auto Allow in Codex,App,translated,,Auto Allow in Codex,Codex 中的自动允许
 Awake %@ so far,Panel,translated,%@,Awake for %@,已保持唤醒 %@
 Awake limit,Settings: Behaviour,translated,,Awake limit,唤醒上限
 Awake mode,Panel,translated,,Awake mode,唤醒模式
@@ -167,7 +167,7 @@ Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude
 Clean Up Now,"App, Settings",translated,,Clean Up Now,立即清理
 Clear,App,translated,,Clear,清除
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
-"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.",App,translated,,"Clicks ""Allow once"" in Claude to approve requests for local sites. Turns off automatically after the time you set.",为 Claude 中访问本地网站的请求点按“Allow once”，并在设定的时间后自动关闭。
+"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.",App,translated,,"Clicks ""Allow once"" in the ChatGPT desktop app too, with the same rules for local sites. Follows the Codex switch in Agents.",也会在 ChatGPT 桌面 App 中点按“Allow once”，本地网站规则相同。遵循“智能体”中的 Codex 开关。
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,此 Mac 上未安装 Cline。
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,关闭
@@ -236,7 +236,6 @@ Keep your Mac awake,Panel,translated,,Keep your Mac awake,让 Mac 保持唤醒
 Keeping %@ ready,App,translated,%@,Keeping %@ ready,%@ 保持就绪
 Keeping the display off saves power and won't interrupt your agent.,Settings: Behaviour,translated,,Keeping the display off saves power and won't interrupt your agent.,关闭显示器可以省电，也不会打断智能体。
 Keeping your Mac awake,Panel,translated,,Keeping your Mac awake,正在让 Mac 保持唤醒
-"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.",App,translated,,"Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.",让麦克风随时待命，听写从第一个字就能捕捉到。不会录制、存储或发送任何音频。
 Keeps your Mac awake exactly as long as your agent is working.,Settings: About,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
 Keeps your Mac awake while your agent works.,Welcome,translated,,Keeps your Mac awake while your agent works.,在智能体工作时让 Mac 保持唤醒。
 Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,Settings,translated,,Keeps your Mac awake with the lid closed. Ends at the awake limit or if your Mac gets too warm.,合盖时保持 Mac 唤醒。达到唤醒上限或 Mac 过热时结束。
@@ -307,7 +306,6 @@ Open Settings,Panel,translated,,Open Settings,打开设置
 Open at login,"Settings, Settings: General",translated,,Open at login,登录时打开
 Open the App Store,Settings: General,translated,,Open the App Store,打开 App Store
 Opens a standard macOS panel so you can approve the folder,Welcome,translated,,Opens a standard macOS folder picker so you can grant access,打开标准的 macOS 文件夹选择面板，供你允许访问
-Optional tools in Settings. Each stays off until you install it. No downloads needed.,App,translated,,Optional tools in Settings. Each stays off until you install it. No downloads needed.,可在设置中安装的实用工具。各模块安装后才会启用，无需下载任何内容。
 Options,"App, Detection, Panel, Settings, Settings: Providers",translated,,Options,选项
 Other agents,"App, Settings: Providers",translated,,Other agents,其他智能体
 Other tools,Settings: Providers,translated,,Other tools,其他工具

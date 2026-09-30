@@ -1,0 +1,3 @@
+- **Auto Allow in Codex.** Direct build only. The module now also clicks "Allow once" in the ChatGPT desktop app, where Codex asks. The same rules apply: by default only requests for sites on your Mac or local network are approved, and everything else waits for you. Codex names the site as a link in its question, and only that link counts; a command that merely mentions `localhost` is still left to you. Works in every language Codex speaks, visits sessions behind the window the same way as in Claude, and follows the Codex switch in Settings › Agents.
+
+- A page shown inside the Claude or Codex window, such as a site in the agent's browser, is no longer read as a request card.
