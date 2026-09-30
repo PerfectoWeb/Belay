@@ -50,7 +50,7 @@
 </header>
 
 <h1>Privacy policy</h1>
-<p class="stamp">Belay for macOS. Last updated 13 August 2026.</p>
+<p class="stamp">Belay for macOS. Last updated 30 September 2026.</p>
 
 <p class="lede">Belay doesn't have accounts, analytics, advertising or crash reporting. It doesn't build a profile of you or send your work to us. Most of what Belay needs never leaves your Mac.</p>
 
@@ -82,6 +82,16 @@
 <p>To keep your Mac awake, Belay uses the power assertion API macOS provides for it. It doesn't rewrite your Energy Saver settings, and it can't: an assertion sits alongside those settings rather than editing them.</p>
 
 <p>If you turn on precise detection for Claude Code, Belay shows you the exact configuration it would add before anything is written, and only writes after you confirm. It takes a timestamped backup first, adds only its own entry, and "Remove" on the same screen puts the file back.</p>
+
+<h2>Modules</h2>
+
+<p>Modules are extras you install in Settings. A module does nothing until you install it and switch it on, and installing one downloads nothing.</p>
+
+<p><strong>Screenshot Cleaner</strong> lists the folder your screenshots are saved in and moves those older than the age you chose to the Trash. For each file it reads two dates, the kind of file, and the marks macOS and Finder leave on it. It does not open a screenshot or look at what is in the picture, and it never deletes a file: the Trash is where they stay until you empty it.</p>
+
+<p><strong>Warm Microphone</strong> opens the microphone and keeps it open, so dictation starts without a delay. The sound is discarded as it arrives. Belay does not record it, measure it, keep any of it in memory or on disk, or send it anywhere, and macOS shows its orange microphone dot for as long as the module is on.</p>
+
+<p><strong>Auto Allow</strong>, in the direct download only, reads the Claude desktop app's window through the macOS Accessibility interface, looking for a permission request, and presses "Allow once" in your name: by default only for requests about sites on your own Mac or network. It stores the site that was approved and when, in a list of the latest fifty that you can see in the module's settings. The rest of the window, your conversation included, is passed over and not kept.</p>
 
 <h2>Sharing</h2>
 

@@ -50,7 +50,7 @@
 </header>
 
 <h1>Politique de confidentialité</h1>
-<p class="stamp">Belay pour macOS. Dernière mise à jour : 13 août 2026.</p>
+<p class="stamp">Belay pour macOS. Dernière mise à jour : 30 septembre 2026.</p>
 
 <p class="stamp translated">Ceci est une traduction. La version de référence est <a href="../">en anglais</a>.</p>
 
@@ -84,6 +84,16 @@
 <p>Pour garder votre Mac éveillé, Belay utilise l'API d'assertion d'alimentation que macOS prévoit pour cela. Il ne réécrit pas vos réglages d'économie d'énergie, et il ne le peut pas : une assertion coexiste avec eux au lieu de les modifier.</p>
 
 <p>Si vous activez la détection précise pour Claude Code, Belay vous montre d'abord la configuration exacte qu'il ajouterait et n'écrit qu'après votre confirmation. Il fait au préalable une sauvegarde horodatée, n'ajoute que sa propre entrée, et « Supprimer », sur le même écran, remet le fichier en l'état.</p>
+
+<h2>Modules</h2>
+
+<p>Les modules sont des extras que vous installez dans les Réglages. Un module ne fait rien tant que vous ne l'avez pas installé et activé, et l'installation ne télécharge rien.</p>
+
+<p><strong>Nettoyeur de captures</strong> liste le dossier où vos captures d'écran sont enregistrées et place dans la corbeille celles qui dépassent l'âge que vous avez choisi. Pour chaque fichier, il lit deux dates, le type de fichier et les marques que macOS et le Finder y laissent. Il n'ouvre aucune capture et ne regarde pas ce que contient l'image, et il ne supprime jamais un fichier : ils restent dans la corbeille jusqu'à ce que vous la vidiez.</p>
+
+<p><strong>Micro prêt</strong> ouvre le micro et le garde ouvert, pour que la dictée commence sans délai. Le son est jeté à mesure qu'il arrive. Belay ne l'enregistre pas, ne le mesure pas, n'en garde rien en mémoire ni sur le disque et ne l'envoie nulle part, et macOS affiche son point orange de micro tant que le module est activé.</p>
+
+<p><strong>Autorisation automatique</strong>, uniquement dans le téléchargement direct, lit la fenêtre de l'app Claude via l'interface d'accessibilité de macOS, à la recherche d'une demande d'autorisation, et appuie sur « Allow once » en votre nom : par défaut uniquement pour les demandes concernant des sites sur votre propre Mac ou votre réseau. Il enregistre quel site a été approuvé et quand, dans une liste des cinquante derniers que vous pouvez voir dans les réglages du module. Le reste de la fenêtre, votre conversation comprise, est ignoré et n'est pas conservé.</p>
 
 <h2>Partage</h2>
 

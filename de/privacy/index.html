@@ -50,7 +50,7 @@
 </header>
 
 <h1>Datenschutzerklärung</h1>
-<p class="stamp">Belay für macOS. Zuletzt aktualisiert am 13. August 2026.</p>
+<p class="stamp">Belay für macOS. Zuletzt aktualisiert am 30. September 2026.</p>
 
 <p class="stamp translated">Dies ist eine Übersetzung. Maßgeblich ist die <a href="../">englische Fassung</a>.</p>
 
@@ -84,6 +84,16 @@
 <p>Um deinen Mac wach zu halten, nutzt Belay die dafür vorgesehene Power-Assertion-API von macOS. Deine Energiespar-Einstellungen schreibt es nicht um, und es kann es auch nicht: Eine Assertion steht neben ihnen, statt sie zu ändern.</p>
 
 <p>Wenn du die präzise Erkennung für Claude Code einschaltest, zeigt Belay zuerst genau die Konfiguration, die es hinzufügen würde, und schreibt erst nach deiner Bestätigung. Vorher wird eine Sicherung mit Zeitstempel angelegt, es wird nur der eigene Eintrag hinzugefügt, und „Entfernen“ im selben Fenster stellt die Datei wieder her.</p>
+
+<h2>Module</h2>
+
+<p>Module sind Extras, die du in den Einstellungen installierst. Ein Modul tut nichts, bis du es installierst und einschaltest, und beim Installieren wird nichts heruntergeladen.</p>
+
+<p><strong>Bildschirmfoto-Aufräumer</strong> listet den Ordner auf, in dem deine Bildschirmfotos gesichert werden, und legt die in den Papierkorb, die älter sind als das von dir gewählte Alter. Von jeder Datei liest das Modul zwei Datumsangaben, die Art der Datei und die Markierungen, die macOS und der Finder an ihr hinterlassen. Es öffnet kein Bildschirmfoto und sieht nicht nach, was auf dem Bild ist, und es löscht nie eine Datei: Sie bleiben im Papierkorb, bis du ihn leerst.</p>
+
+<p><strong>Mikrofon bereit</strong> öffnet das Mikrofon und hält es offen, damit das Diktat ohne Verzögerung beginnt. Der Ton wird verworfen, sobald er ankommt. Belay nimmt ihn nicht auf, misst ihn nicht, behält nichts davon im Speicher oder auf der Festplatte und sendet ihn nirgendwohin, und macOS zeigt seinen orangefarbenen Mikrofonpunkt, solange das Modul eingeschaltet ist.</p>
+
+<p><strong>Automatisch erlauben</strong>, nur im direkten Download, liest das Fenster der Claude-App über die Bedienungshilfen-Schnittstelle von macOS, sucht dort nach einer Berechtigungsanfrage und drückt in deinem Namen auf „Allow once“: standardmäßig nur bei Anfragen zu Websites auf deinem eigenen Mac oder in deinem Netzwerk. Gespeichert wird, welche Website wann erlaubt wurde, in einer Liste der letzten fünfzig Einträge, die du in den Einstellungen des Moduls siehst. Der Rest des Fensters, dein Gespräch eingeschlossen, wird übergangen und nicht aufbewahrt.</p>
 
 <h2>Weitergabe</h2>
 

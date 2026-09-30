@@ -400,9 +400,9 @@ def external(markup):
 # is one place to change them: edit `Promo/AppStore/` in the Belay repo and every
 # page follows on the next hard refresh.
 #
-# Five of the six. The sixth asks for a rating on the Mac App Store, which is the
-# right thing to say inside the store and the wrong thing to say on a page whose
-# own download button is two sections up.
+# Six of the seven. The seventh asks for a rating on the Mac App Store, which is
+# the right thing to say inside the store and the wrong thing to say on a page
+# whose own download button is two sections up.
 # Served from this site as WebP rather than fetched from the repository as PNG.
 # The whole slide set, every language included, is 77 MB of PNG and 9.8 MB of WebP, and
 # a reader was pulling six of the PNGs, about 11 MB, to look at one picture.
@@ -411,9 +411,9 @@ def external(markup):
 # which is where the landing page lives. It is the only page with a gallery.
 SLIDE_SOURCE = "../img/slides"
 # Zero is the panel that was here before the gallery, kept as the first frame;
-# one to five are the App Store slides.
+# one to six are the App Store slides, the sixth being the modules.
 SLIDE_FIRST = 0
-SLIDE_COUNT = 5
+SLIDE_COUNT = 6
 
 # The slides were named before the site was, and Spanish disagrees: the files say
 # `sp` and every locale code here says `es`. Mapped rather than renamed, because
@@ -451,8 +451,8 @@ def gallery(code, t):
 
     `loading="lazy"` was the obvious answer and does nothing here: the frames are
     stacked in one grid cell and differ only in opacity, so every one of them is
-    in the viewport as far as the browser is concerned, and all six were fetched
-    on load. Holding the address back is the only thing that actually defers it.
+    in the viewport as far as the browser is concerned, and all of them were
+    fetched on load. Holding the address back is the only thing that actually defers it.
     """
     lines = ['<div class="gallery" data-gallery>', '    <div class="frames">']
     for index, url in enumerate(slides(code)):
@@ -794,6 +794,7 @@ def privacy(code):
         ("leaves_head", ["leaves_mas", "leaves_direct"], True),
         ("stores_head", ["stores_1", "stores_2"], False),
         ("changes_head", ["changes_1", "changes_2"], False),
+        ("modules_head", ["modules_1", "modules_2", "modules_3", "modules_4"], False),
         ("sharing_head", ["sharing_1", "sharing_2", "sharing_site"], False),
         ("policy_head", ["policy_1"], False),
         ("contact_head", ["contact_1"], False),
