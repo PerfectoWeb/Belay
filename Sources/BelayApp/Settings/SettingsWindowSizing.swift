@@ -46,9 +46,10 @@ extension SettingsWindow {
 
     /// The built-in switches change the Providers pane's height the same way
     /// the tiles below do: status lines grow, the precise-detection row comes
-    /// and goes. Same growth, same animation.
+    /// and goes. A module card opening does the same to Modules. Same growth,
+    /// same animation.
     func refitProviders() {
-        guard let window, pane == .providers else { return }
+        guard let window, pane == .providers || pane == .modules else { return }
         let wanted = height(for: pane)
         guard abs(window.contentMinSize.height - wanted) > 1 else { return }
         NSAnimationContext.runAnimationGroup { context in

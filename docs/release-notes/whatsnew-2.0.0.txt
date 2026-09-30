@@ -1,0 +1,131 @@
+What's New – Belay 2.0.0
+
+The card's text, every language in one place. '# ' starts an item's title, the paragraph under it is the body. Items must stay in the same order in every language. Edit freely, save, then ask for a rebuild: this file gets synced into the code and the string catalogue, and the card shows it.
+
+Direct-only (never shown in the App Store build): Auto Allow.
+
+=== en ===
+
+# Modules
+
+Optional tools in Settings. Each stays off until you install it. No downloads needed.
+
+# Screenshot Cleaner
+
+Automatically moves older screenshots to the Trash. You choose how long to keep them.
+
+# Warm Microphone
+
+Keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent.
+
+# Auto Allow
+
+Clicks "Allow once" in Claude to approve requests for local sites. Turns off automatically after the time you set.
+
+=== ru ===
+
+# Модули
+
+Дополнительные инструменты в Настройках. Каждый выключен до установки. Скачивать ничего не нужно.
+
+# Уборка снимков экрана
+
+Автоматически отправляет старые снимки экрана в Корзину. Вы выбираете, сколько их хранить.
+
+# Микрофон наготове
+
+Оставляет микрофон включённым, чтобы диктовка не пропускала первое слово. Звук не записывается, не сохраняется и не отправляется.
+
+# Автоподтверждение
+
+Нажимает «Allow once» в Claude для запросов к локальным сайтам. Автоматически отключается через заданное время.
+
+=== de ===
+
+# Module
+
+Zusätzliche Werkzeuge in den Einstellungen. Jedes bleibt bis zur Installation deaktiviert. Es wird nichts heruntergeladen.
+
+# Bildschirmfoto-Aufräumer
+
+Verschiebt ältere Bildschirmfotos automatisch in den Papierkorb. Du entscheidest, wie lange sie aufbewahrt werden.
+
+# Mikrofon bereit
+
+Hält das Mikrofon aktiv, damit beim Diktieren schon dein erstes Wort ankommt. Es wird kein Ton aufgenommen, gespeichert oder gesendet.
+
+# Automatisch erlauben
+
+Klickt in Claude bei Anfragen zu lokalen Websites auf „Allow once“. Schaltet sich nach der eingestellten Zeit automatisch aus.
+
+=== es ===
+
+# Módulos
+
+Herramientas opcionales en Ajustes. Permanecen desactivadas hasta que las instalas. No necesitas descargar nada.
+
+# Limpiador de capturas
+
+Mueve automáticamente las capturas de pantalla antiguas a la papelera. Tú eliges cuánto tiempo conservarlas.
+
+# Micrófono listo
+
+Mantiene el micrófono activo para que el dictado capte tu primera palabra. No se graba, guarda ni envía audio.
+
+# Permitir automáticamente
+
+Pulsa «Allow once» en Claude para las solicitudes de acceso a sitios locales. Se desactiva automáticamente cuando transcurre el tiempo que elijas.
+
+=== fr ===
+
+# Modules
+
+Des outils facultatifs dans les Réglages. Chacun reste désactivé jusqu’à son installation. Aucun téléchargement nécessaire.
+
+# Nettoyeur de captures
+
+Place automatiquement les anciennes captures d’écran dans la corbeille. Vous choisissez combien de temps les conserver.
+
+# Micro prêt
+
+Garde le micro actif pour que la dictée capte votre premier mot. Aucun son n’est enregistré, conservé ni envoyé.
+
+# Autorisation automatique
+
+Clique sur « Allow once » dans Claude pour les demandes d’accès aux sites locaux. Se désactive automatiquement après la durée choisie.
+
+=== it ===
+
+# Moduli
+
+Strumenti opzionali nelle Impostazioni. Restano disattivati finché non li installi. Non serve scaricare nulla.
+
+# Pulizia delle istantanee
+
+Sposta automaticamente le vecchie istantanee nel Cestino. Scegli tu per quanto tempo conservarle.
+
+# Microfono pronto
+
+Mantiene il microfono attivo, così la dettatura coglie la tua prima parola. Nessun audio viene registrato, salvato o inviato.
+
+# Consenso automatico
+
+Preme «Allow once» in Claude per le richieste di accesso ai siti locali. Si disattiva automaticamente dopo il tempo che scegli.
+
+=== zh-Hans ===
+
+# 模块
+
+可在设置中安装的实用工具。各模块安装后才会启用，无需下载任何内容。
+
+# 截屏清理
+
+自动将旧截屏移到废纸篓，保留时间由你决定。
+
+# 麦克风预热
+
+让麦克风随时待命，听写从第一个字就能捕捉到。不会录制、存储或发送任何音频。
+
+# 自动允许
+
+为 Claude 中访问本地网站的请求点按“Allow once”，并在设定的时间后自动关闭。

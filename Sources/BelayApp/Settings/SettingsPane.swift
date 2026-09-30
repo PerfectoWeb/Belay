@@ -10,10 +10,11 @@ enum SettingsPane: String, CaseIterable, Identifiable {
     case providers
     case behaviour
     case notifications
+    case modules
     case statistics
     case about
 
-    /// Fixed, and deliberately generous: six icon-and-label items have to fit on
+    /// Fixed, and deliberately generous: seven icon-and-label items have to fit on
     /// one row with room to spare, in every language.
     static let width: CGFloat = 700
 
@@ -28,6 +29,7 @@ enum SettingsPane: String, CaseIterable, Identifiable {
         case .providers: return String(localized: "Providers")
         case .behaviour: return String(localized: "Behaviour")
         case .notifications: return String(localized: "Notifications")
+        case .modules: return String(localized: "Modules")
         case .statistics: return String(localized: "Statistics")
         case .about: return String(localized: "About")
         }
@@ -39,6 +41,7 @@ enum SettingsPane: String, CaseIterable, Identifiable {
         case .providers: return "sparkles"
         case .behaviour: return "moon.zzz"
         case .notifications: return "bell"
+        case .modules: return "puzzlepiece.extension"
         case .statistics: return "chart.bar"
         case .about: return "info.circle"
         }
@@ -53,6 +56,7 @@ enum SettingsPane: String, CaseIterable, Identifiable {
         case .providers: return 460
         case .behaviour: return 360
         case .notifications: return 300
+        case .modules: return 260
         case .statistics: return 380
         case .about: return 360
         }

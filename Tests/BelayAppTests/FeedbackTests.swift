@@ -1,3 +1,4 @@
+import AVFoundation
 import AppKit
 import BelayCore
 import XCTest
@@ -23,6 +24,16 @@ final class FeedbackTests: XCTestCase {
             }
         }
         return nil
+    }
+
+    /// macOS asks for the microphone when a sound starts on a device that also
+    /// records, and only an app that was never answered can be asked.
+    func testASoundNeverRaisesTheMicrophoneQuestion() {
+        XCTAssertTrue(Feedback.staysSilent(microphone: .notDetermined, outputAlsoRecords: true))
+        XCTAssertFalse(Feedback.staysSilent(microphone: .notDetermined, outputAlsoRecords: false))
+        for answered in [AVAuthorizationStatus.authorized, .denied, .restricted] {
+            XCTAssertFalse(Feedback.staysSilent(microphone: answered, outputAlsoRecords: true))
+        }
     }
 
     func testEverySoundIsInTheBundle() throws {

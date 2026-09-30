@@ -89,7 +89,8 @@ echo "==> required entitlements"
 for key in \
     com.apple.security.app-sandbox \
     com.apple.security.files.user-selected.read-write \
-    com.apple.security.files.bookmarks.app-scope
+    com.apple.security.files.bookmarks.app-scope \
+    com.apple.security.device.audio-input
 do
     if [ "$(has_entitlement "$key")" = "true" ]; then
         pass "$key"

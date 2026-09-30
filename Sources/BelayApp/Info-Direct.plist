@@ -30,8 +30,16 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2026 PerfectoWeb. Source available.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Belay holds the microphone open when you switch on Warm Microphone. The sound is thrown away as it arrives: nothing is recorded, stored or sent.</string>
 	<key>NSSupportsAutomaticTermination</key>
 	<false/>
 	<key>NSSupportsSuddenTermination</key>

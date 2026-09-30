@@ -72,6 +72,7 @@ body:
         - Cline (generic preset)
         - A generic target I configured myself
         - The local webhook
+        - A module (say which in "What happened")
         - Not agent-specific
     validations:
       required: true
@@ -137,6 +138,20 @@ body:
         $ log show --predicate 'subsystem == "com.perfectoweb.belay"' --last 1h --info
 
         ```
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: module-log
+    attributes:
+      label: Module log
+      description: |
+        For a module only. Switch on Settings, General, "Keep crash reports on
+        this Mac", make the problem happen again, press "Show Reports" and paste
+        the lines that start with `modules`, `module`, `screenshots`, `mic`,
+        `autoallow` or `sound`. They hold counts and codes: no paths, no sites,
+        no device names.
       render: text
     validations:
       required: false

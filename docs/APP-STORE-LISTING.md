@@ -133,6 +133,22 @@ none of them mentioned Chinese.
 
 ---
 
+## What changed in the descriptions for 2.0.0
+
+One edit, applied to every language on 2026-09-30, in this file first. It
+pastes into App Store Connect together with the 2.0.0 build.
+
+**The Modules section.** A new section between notifications and privacy:
+what a module is (off until installed, installing downloads nothing) and the
+two modules the App Store build has, Screenshot Cleaner and Warm Microphone.
+The microphone line carries the privacy claim in the same breath, "nothing is
+recorded, stored or sent", because the build now holds the audio-input
+entitlement and a reader should not have to find the policy to learn why.
+
+What did NOT go in, on purpose: Auto Allow presses a button in another app
+through the Accessibility API, which the sandbox forbids, so the App Store
+build does not have it and its metadata does not name it.
+
 ## What changed in the descriptions for 1.7.0
 
 Three edits, applied to every language on 2026-09-01, in this file first. The
@@ -233,6 +249,13 @@ NOTIFICATIONS, IF YOU WANT THEM
 
 Belay can let you know when an agent needs you, a long run finishes, or it stops keeping your Mac awake for safety. And when you come back, one summary can tell you how long Belay held and what finished while you were away. Each notification can be turned off.
 
+MODULES
+
+Extras beside keeping your Mac awake. Each one stays off until you install it in Settings, and installing downloads nothing.
+
+• Screenshot Cleaner: moves screenshots to the Trash once they are older than the age you choose, so the desktop stays clear.
+• Warm Microphone: holds the microphone open, so dictation hears your first word. Nothing is recorded, stored or sent.
+
 STAYS ON YOUR MAC
 
 Belay uses local activity to determine whether an agent is working. It doesn't upload your prompts or code. There is no account, no analytics and no telemetry.
@@ -297,6 +320,13 @@ Belay может немного подождать после завершени
 УВЕДОМЛЕНИЯ
 
 Belay может сообщить, когда агенту нужны вы, когда длительная задача завершилась или когда приложение перестало удерживать Mac от сна в целях безопасности. А когда вы вернётесь, одна сводка расскажет, сколько Belay держал Mac и что успело завершиться без вас. Каждое уведомление можно отключить.
+
+МОДУЛИ
+
+Дополнения помимо того, чтобы не давать Mac уснуть. Каждое выключено, пока вы не установите его в Настройках, и при установке ничего не скачивается.
+
+• Уборка снимков экрана: отправляет снимки экрана в Корзину, когда они становятся старше выбранного вами срока, и рабочий стол остаётся чистым.
+• Микрофон наготове: держит микрофон открытым, чтобы диктовка слышала первое слово. Ничего не записывается, не сохраняется и не отправляется.
 
 ВСЁ ОСТАЁТСЯ НА MAC
 
@@ -369,6 +399,13 @@ Belay kann dich informieren, wenn ein Agent dich braucht, ein längerer Lauf fer
 
 Jede Benachrichtigung lässt sich einzeln ausschalten.
 
+MODULE
+
+Extras neben dem Wachhalten deines Mac. Jedes bleibt aus, bis du es in den Einstellungen installierst, und beim Installieren wird nichts heruntergeladen.
+
+• Bildschirmfoto-Aufräumer: legt Bildschirmfotos in den Papierkorb, sobald sie älter sind als das von dir gewählte Alter, damit der Schreibtisch frei bleibt.
+• Mikrofon bereit: hält das Mikrofon offen, damit das Diktat schon dein erstes Wort hört. Nichts wird aufgenommen, gespeichert oder gesendet.
+
 BLEIBT AUF DEINEM MAC
 
 Belay erkennt Aktivität lokal. Deine Prompts und dein Code werden nicht hochgeladen. Kein Account, keine Analytics, keine Telemetrie.
@@ -439,6 +476,13 @@ NOTIFICACIONES, SI LAS QUIERES
 Belay puede avisarte cuando un agente te necesita, cuando termina una tarea larga o cuando deja de mantener el Mac despierto por seguridad. Y al volver, un único resumen puede decirte cuánto tiempo mantuvo Belay tu Mac despierto y qué terminó mientras no estabas.
 
 Puedes desactivar cada aviso por separado.
+
+MÓDULOS
+
+Extras además de mantener tu Mac despierto. Cada uno permanece apagado hasta que lo instalas en Ajustes, e instalar no descarga nada.
+
+• Limpiador de capturas: mueve las capturas de pantalla a la papelera cuando superan la antigüedad que elijas, para que el escritorio siga despejado.
+• Micrófono listo: mantiene el micrófono abierto para que el dictado oiga tu primera palabra. Nada se graba, se guarda ni se envía.
 
 TODO SE QUEDA EN TU MAC
 
@@ -511,6 +555,13 @@ Belay peut vous prévenir quand un agent a besoin de vous, quand une longue tâc
 
 Chaque notification peut être désactivée séparément.
 
+MODULES
+
+Des extras en plus de garder votre Mac éveillé. Chacun reste désactivé tant que vous ne l’installez pas dans les Réglages, et l’installation ne télécharge rien.
+
+• Nettoyeur de captures : place les captures d’écran dans la corbeille dès qu’elles dépassent l’âge que vous choisissez, pour que le bureau reste dégagé.
+• Micro prêt : garde le micro ouvert pour que la dictée entende votre premier mot. Rien n’est enregistré, conservé ni envoyé.
+
 TOUT RESTE SUR VOTRE MAC
 
 Belay détecte l’activité en local. Vos invites et votre code ne sont envoyés nulle part. Aucun compte, aucune analyse, aucune télémétrie.
@@ -581,6 +632,13 @@ NOTIFICHE, SE LE VUOI
 Belay può avvisarti quando un agente ha bisogno di te, quando termina un’attività lunga o quando smette di tenere sveglio il Mac per sicurezza. E al tuo ritorno un unico riepilogo può dirti quanto a lungo Belay ha tenuto sveglio il Mac e cosa si è concluso mentre eri via.
 
 Ogni notifica può essere disattivata separatamente.
+
+MODULI
+
+Extra oltre a tenere sveglio il Mac. Ognuno resta spento finché non lo installi nelle Impostazioni, e l’installazione non scarica nulla.
+
+• Pulizia delle istantanee: sposta le istantanee nel Cestino quando superano l’età che scegli, così la scrivania resta sgombra.
+• Microfono pronto: tiene aperto il microfono, così la dettatura sente la tua prima parola. Nulla viene registrato, salvato o inviato.
 
 RESTA TUTTO SUL TUO MAC
 
@@ -664,6 +722,13 @@ Claude Code、Codex、Copilot CLI 和 Cline 开箱即可精确检测：Belay 读
 通知，如果你想要的话
 
 智能体需要你、长任务结束、或者 Belay 出于安全考虑停止保持唤醒时，都可以收到通知。回来时，一条汇总还会告诉你 Belay 保持唤醒了多久、哪些任务在你离开期间完成。每一项都能单独关闭。
+
+模块
+
+除了让 Mac 保持唤醒之外的额外功能。每个模块在你于设置中安装前保持关闭，安装不会下载任何内容。
+
+• 截屏清理：截屏超过你选择的时间后会被移到废纸篓，让桌面保持整洁。
+• 麦克风预热：让麦克风保持开启，听写从第一个字就能听到。不会录制、存储或发送任何内容。
 
 一切都留在你的 Mac 上
 

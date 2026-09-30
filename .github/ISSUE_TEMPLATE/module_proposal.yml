@@ -1,0 +1,83 @@
+name: Module proposal
+description: Propose an optional extra for Settings, Modules, before writing it.
+labels: [module]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A module is something Belay can do beside keeping the Mac awake: part of
+        the app, off until somebody installs it. The rules every module keeps and
+        the steps to write one are in
+        [docs/MODULES.md](https://github.com/perfectoweb/belay/blob/main/docs/MODULES.md).
+        These six answers are what a review would ask for anyway.
+
+  - type: input
+    id: sentence
+    attributes:
+      label: The one sentence
+      description: What the card in Settings would say. If it needs two sentences it is probably two modules.
+      placeholder: "Moves old screenshots to the Trash, so the desktop stays clear while you work with agents."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Who reaches for it, and when
+      description: The situation of a person who leaves agents running, not the feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reads
+    attributes:
+      label: What it reads
+      description: Files, another app's window, a device. Name what it looks at and what it never looks at.
+    validations:
+      required: true
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: What it changes, and how that is undone
+      description: Anything a module changes has to be reversible and has to have a limit.
+    validations:
+      required: true
+
+  - type: textarea
+    id: permissions
+    attributes:
+      label: What macOS will ask the user
+      description: The permission, the moment it is asked, and what the module does when the answer is no.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: builds
+    attributes:
+      label: Which builds can run it
+      description: The App Store build is sandboxed and has no network. A module it cannot run is simply not offered there.
+      options:
+        - Both builds
+        - Direct build only
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: failure
+    attributes:
+      label: What happens when it cannot do its work
+      description: The required direction is "it does nothing and says so".
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you send it
+      options:
+        - label: It needs no network, no account and no downloaded code
+          required: true
+        - label: I would write it myself, or I am saying clearly that I am only proposing it
+          required: false

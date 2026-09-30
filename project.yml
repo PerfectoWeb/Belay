@@ -14,11 +14,11 @@ settings:
     # PRODUCT_NAME belongs to the app target only — setting it project-wide also
     # renames the test bundle's Swift module to Belay and the two collide.
     ORG_IDENTIFIER: com.perfectoweb
-    MARKETING_VERSION: "1.8.1"
+    MARKETING_VERSION: "2.0.0"
     # Build 2. Build 1 was uploaded to App Store Connect and carried a Donate
     # link in the sandboxed build, which is a guideline violation. A build
     # number cannot be reused once uploaded, so the replacement needs its own.
-    CURRENT_PROJECT_VERSION: "20"
+    CURRENT_PROJECT_VERSION: "21"
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
     MACOSX_DEPLOYMENT_TARGET: "14.0"
@@ -72,6 +72,8 @@ targetTemplates:
         product: BelaySupport
       - package: BelayKit
         product: BelayChannel
+      - package: BelayKit
+        product: BelayModules
     settings:
       base:
         PRODUCT_NAME: Belay
@@ -110,6 +112,9 @@ targetTemplates:
         CFBundlePackageType: APPL
         LSUIElement: true
         LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        # Asked the first time the Warm Microphone module is switched on, and
+        # never before. Translated in Resources/InfoPlist.xcstrings.
+        NSMicrophoneUsageDescription: "Belay holds the microphone open when you switch on Warm Microphone. The sound is thrown away as it arrives: nothing is recorded, stored or sent."
         # Finder shows this in Get Info, so it is read by people and should be
         # a copyright line. It used to carry "No data leaves your Mac", which is
         # true of the App Store build and not of the direct one, where a daily
@@ -207,6 +212,13 @@ targets:
         # readable by anybody who opens the bundle.
         SUFeedURL: https://perfectoweb.github.io/Belay/appcast.xml
         SUPublicEDKey: Vzv5S2MFDz1si7eu25uDdjAYO/wDqwsA+Y2iDU0c3e8=
+        # macOS shows these under its own question the first time Belay lists
+        # a folder in one of the three protected places. The sandboxed build
+        # never gets there: its folders come through an open panel. The
+        # translations are in Resources/InfoPlist.xcstrings.
+        NSDesktopFolderUsageDescription: "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
+        NSDocumentsFolderUsageDescription: "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
+        NSDownloadsFolderUsageDescription: "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
         # Checked on a schedule, never installed without being asked. People
         # running a system utility choose when it restarts (docs/06).
         # False, and not a default. Belay does its own daily check through

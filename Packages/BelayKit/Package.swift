@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "BelayProviders", targets: ["BelayProviders"]),
         .library(name: "BelayHookBridge", targets: ["BelayHookBridge"]),
         .library(name: "BelayChannel", targets: ["BelayChannel"]),
+        .library(name: "BelayModules", targets: ["BelayModules"]),
     ],
     targets: [
         .target(name: "BelaySupport"),
@@ -25,6 +26,7 @@ let package = Package(
         .target(name: "BelayProviders", dependencies: ["BelaySupport", "BelayCore"]),
         .target(name: "BelayHookBridge", dependencies: ["BelaySupport", "BelayCore"]),
         .target(name: "BelayChannel", dependencies: ["BelaySupport"]),
+        .target(name: "BelayModules"),
 
         .testTarget(name: "BelaySupportTests", dependencies: ["BelaySupport"]),
         .testTarget(name: "BelayCoreTests", dependencies: ["BelayCore"]),
@@ -37,6 +39,7 @@ let package = Package(
         ),
         .testTarget(name: "BelayHookBridgeTests", dependencies: ["BelayHookBridge"]),
         .testTarget(name: "BelayChannelTests", dependencies: ["BelayChannel"]),
+        .testTarget(name: "BelayModulesTests", dependencies: ["BelayModules"]),
 
         // Spans provider → bus → coordinator → power backend. docs/08 asks for
         // the hold/release timeline to be asserted end to end, and no

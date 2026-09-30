@@ -6,6 +6,9 @@ contact_links:
   - name: An agent Belay does not detect
     url: https://github.com/perfectoweb/belay/blob/main/docs/CONTRIBUTING.md#adding-a-provider-preset
     about: Presets are data, not code. Adding one is one array element, and you can configure the same thing yourself today in Settings, Providers.
+  - name: How to write a module
+    url: https://github.com/perfectoweb/belay/blob/main/docs/MODULES.md
+    about: An optional extra in Settings, off until installed. The rules every module keeps and the steps to add one.
   - name: Something that should not be public
     url: https://github.com/perfectoweb/belay/blob/main/docs/SECURITY.md
     about: How to report a security or privacy problem, and what Belay does and does not read.

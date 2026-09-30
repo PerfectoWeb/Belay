@@ -8,6 +8,10 @@ body:
         Belay has one job: hold the Mac awake while an agent is working, and stop
         the moment it is not. Ideas that make that job more reliable land easily.
         Ideas that make Belay a second app land slowly or not at all.
+        Something useful beside agents that is not that job can be a **module**:
+        an optional extra in Settings, off until installed. Those have their own
+        template and their own page,
+        [docs/MODULES.md](https://github.com/perfectoweb/belay/blob/main/docs/MODULES.md).
 
         Two things worth checking first. Support for another agent is usually a
         **preset**, which is one array element and documented in

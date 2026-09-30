@@ -35,6 +35,16 @@ stops it? "None of them, here is why" is a valid answer, but say it. -->
 - [ ] Nothing writes to `~/.claude/` without consent in the UI and a backup first
 - [ ] No new network access, and no timer faster than 5 s
 
+## Modules
+
+<!-- Required if this adds or changes a module. The rules are in docs/MODULES.md. -->
+
+- [ ] Nothing runs, asks or touches a file before the user switches it on
+- [ ] Removing the module leaves no setting and no grant behind
+- [ ] When it cannot do its work it does nothing and says so in its card
+- [ ] Counts and codes in the log, never a path, a site or a name
+- [ ] Every new string is in all seven languages
+
 ## Contributor terms
 
 <!-- Once per contributor, not once per pull request, but leave it ticked. The

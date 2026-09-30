@@ -5,6 +5,68 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-09-30
+
+### Added
+
+- Settings › Modules: extras Belay can do beside keeping the Mac awake, each
+  one off until it is installed. The list can be searched and narrowed to what
+  is installed. Modules are part of the app; installing one downloads nothing,
+  and removing one forgets its settings and its folder access.
+- `docs/MODULES.md`: what a module is, the rules every module keeps and the
+  steps to write one, with a "Module proposal" issue template and a module
+  checklist in the pull request template.
+- Screenshot Cleaner, the first module: moves screenshots to the Trash once
+  they are older than the age you choose (one hour to one week, four hours by
+  default). A screenshot is recognised by the mark macOS puts on the file, not
+  by its name, so a renamed one still counts and a file that merely looks like
+  one is never touched. Tagged or edited screenshots are kept unless you say
+  otherwise, screen recordings are left alone unless you include them, and
+  subfolders are not entered.
+- Installing the cleaner never empties the desk: screenshots that were already
+  there are counted from the moment it is switched on. "Clean Up Now" is the
+  one pass that does not wait.
+- The cleaner also works on a Desktop kept in iCloud Drive, where macOS
+  refuses the ordinary move to the Trash: the direct build moves the file into
+  the Trash itself. A pass that fails says why in the log, as an error code.
+- The direct build explains itself in the macOS question that guards the
+  Desktop, Documents and Downloads folders, in all seven languages.
+- Warm Microphone, a module: holds the microphone open so dictation hears the
+  first word instead of waiting for the microphone to start. It follows the
+  input macOS is set to use, comes back after sleep, and can pause while the
+  Mac runs on its battery. A Bluetooth microphone is left alone unless you say
+  otherwise, because holding one keeps the headphones in call mode and lowers
+  the quality of what you listen to. The sound is discarded as it arrives: nothing is
+  recorded, stored or sent. macOS asks for the microphone the first time the
+  module is switched on, and never before.
+- With "Keep crash reports on this Mac" on, the log says what each module is
+  set to and why it did or did not act: what is installed at launch, what a
+  cleaning pass left alone, why the microphone is not held, and whether Auto
+  Allow could see the Claude window. Counts and codes only: no path, no site,
+  no device name. `docs/MODULES.md` lists the lines.
+- Auto Allow, a module for the direct build: presses "Allow once" in the Claude
+  desktop app, so an agent working on local sites does not stop to ask. By
+  default it answers only requests for access to a site on this Mac or this
+  network (`localhost`, names ending in `.local` or `.test`, private
+  addresses) and leaves everything else for you; approving everything Claude
+  asks is a separate choice with its own warning. It switches itself off after
+  the time you set, four hours by default, and lists what it approved. With
+  "Answer in sessions behind the window" it also opens a session that waits
+  behind the Claude window, answers, and brings back the one you had open,
+  waiting for a pause while you are typing or clicking. It needs the Accessibility
+  permission, and it is not in the App Store build, where the sandbox forbids
+  pressing a button in another app. With Claude Code switched off in
+  Settings › Agents it presses nothing and says so in its card.
+
+### Changed
+
+- Sounds play off the main thread, so an audio device that is slow to start
+  cannot hold the rest of Belay.
+- On an output device that also records (a USB audio interface, a headset)
+  Belay makes no sound until the microphone question has been answered in Warm
+  Microphone. macOS asks for the microphone when a sound starts on such a
+  device, and a click must not be what raises that question.
+
 ## [1.8.1] - 2026-09-05
 
 ### Fixed

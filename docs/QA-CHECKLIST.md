@@ -101,8 +101,67 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Full keyboard navigation through the panel
 - [ ] VoiceOver reads the status item state and every panel control
 - [ ] Settings window opens (Cmd+, with Belay active, or the panel footer link)
-      and all six panes render (General, Agents, Behaviour,
-      Notifications, Statistics, About)
+      and all seven panes render (General, Agents, Behaviour,
+      Notifications, Modules, Statistics, About), with the switcher on one row
+      in every language
+- [ ] Modules: Install on Screenshot Cleaner switches it on and lists the
+      capture folder; the App Store build asks for the folder first, and
+      cancelling that panel installs nothing
+- [ ] Modules: the direct build's first pass raises the macOS folder question
+      with Belay's explanation under it, in the app's language
+- [ ] Modules: a screenshot older than the age goes to the Trash within five
+      minutes once the grace has passed; a tagged one and an edited one stay
+- [ ] Modules: with the Desktop kept in iCloud Drive, the direct build still
+      moves a due screenshot to the Trash (`screenshots trashed=` with no
+      `failed=` in the log); the App Store build is checked the same way
+- [ ] Modules: "Clean Up Now" moves what is past its age at once, in both
+      builds (the App Store build through its folder grant)
+- [ ] Modules: Remove Module stops it, and installing again starts from the
+      defaults
+- [ ] Warm Microphone: the first switch-on raises the macOS microphone
+      question with Belay's explanation, in both builds; the orange dot shows
+      while it is on and goes within seconds of switching it off
+- [ ] Warm Microphone never installed, output set to a device that also
+      records (USB interface, headset): switching modes and opening What's New
+      raise no microphone question and make no sound; on the built-in speakers
+      the sounds play
+- [ ] Warm Microphone: plugging in a headset, or changing the input in System
+      Settings, moves the status line to the new microphone within five seconds
+- [ ] Warm Microphone: connecting AirPods that take over the input moves the
+      status line to "Paused for a Bluetooth microphone", the orange dot goes
+      and music keeps its quality; disconnecting them brings the dot back. With
+      "Leave Bluetooth headphones alone" off the AirPods microphone is held
+- [ ] Modules: with "Keep crash reports on this Mac" on, a launch writes
+      `modules start`, and each module writes its settings and every change of
+      state; no line holds a path, a site or a device name
+- [ ] Warm Microphone: after sleep and wake the dot is back; with "Pause on
+      battery power" on, unplugging lets the microphone go and power brings it
+      back
+- [ ] Warm Microphone: refusing the microphone shows the red line and the
+      button to System Settings, and nothing is opened
+- [ ] Auto Allow (direct build): installing raises the macOS Accessibility
+      question; without the grant the red line shows and nothing is pressed
+- [ ] Auto Allow: a request for a local site in the Claude desktop app is
+      answered within a few seconds and appears under "Recently approved"; a
+      request for a site on the internet, and a request to run a command, wait
+- [ ] Auto Allow: with "Answer in sessions behind the window" on and another
+      app in front, a request in a session the window is not showing is
+      answered and the window shows the same session as before; while you
+      type or click, in any app, the window does not change until five
+      seconds of stillness
+- [ ] Auto Allow: a session behind the window that waited for you, was
+      answered by you and asks again is visited again, also when it moved on
+      while you were typing
+- [ ] Auto Allow: with the Claude window on another desktop (or behind a
+      full-screen app) a request is still answered
+- [ ] Auto Allow: "Everything Claude asks" shows the orange warning and
+      answers both of those
+- [ ] Auto Allow: with "Switch off after" at one hour the switch is off an hour
+      later, also when Belay was quit and opened again in between
+- [ ] Auto Allow: with Claude Code switched off in Agents a request stays
+      unanswered and the card says the agent is switched off; switching it
+      back on answers the request
+- [ ] Auto Allow is absent from the App Store build's list
 - [ ] "Open at login" toggle actually registers with `SMAppService`, survives a
       restart, and reflects the truth after being revoked in System Settings
 - [ ] Turning the battery guard off and on again restores the previous

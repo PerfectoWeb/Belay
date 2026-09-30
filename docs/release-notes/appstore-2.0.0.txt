@@ -1,0 +1,61 @@
+App Store "What’s New in This Version" – Belay 2.0.0
+
+Nothing here may mention Precise Detection, hooks or Auto Allow: the App Store
+build is sandboxed and has none of them. Everything below is true of this
+build on its own.
+
+--- EN ---
+
+Modules. Optional tools in Settings. Each stays off until you install it. No downloads needed.
+
+Screenshot Cleaner automatically moves older screenshots to the Trash. You choose how long to keep them.
+
+Warm Microphone keeps the microphone active so dictation catches your first word. No audio is recorded, stored, or sent. macOS asks for microphone access when you first turn it on.
+
+--- RU ---
+
+Модули. Дополнительные инструменты в Настройках. Каждый выключен до установки. Скачивать ничего не нужно.
+
+«Уборка снимков экрана» автоматически отправляет старые снимки экрана в Корзину. Вы выбираете, сколько их хранить.
+
+«Микрофон наготове» оставляет микрофон включённым, чтобы диктовка не пропускала первое слово. Звук не записывается, не сохраняется и не отправляется. macOS запрашивает доступ к микрофону при первом включении модуля.
+
+--- DE ---
+
+Module. Zusätzliche Werkzeuge in den Einstellungen. Jedes bleibt bis zur Installation deaktiviert. Es wird nichts heruntergeladen.
+
+„Bildschirmfoto-Aufräumer“ verschiebt ältere Bildschirmfotos automatisch in den Papierkorb. Du entscheidest, wie lange sie aufbewahrt werden.
+
+„Mikrofon bereit“ hält das Mikrofon aktiv, damit beim Diktieren schon dein erstes Wort ankommt. Es wird kein Ton aufgenommen, gespeichert oder gesendet. macOS fragt beim ersten Einschalten nach dem Zugriff auf das Mikrofon.
+
+--- ES ---
+
+Módulos. Herramientas opcionales en Ajustes. Permanecen desactivadas hasta que las instalas. No necesitas descargar nada.
+
+«Limpiador de capturas» mueve automáticamente las capturas de pantalla antiguas a la papelera. Tú eliges cuánto tiempo conservarlas.
+
+«Micrófono listo» mantiene el micrófono activo para que el dictado capte tu primera palabra. No se graba, guarda ni envía audio. macOS pide acceso al micrófono la primera vez que activas el módulo.
+
+--- FR ---
+
+Modules. Des outils facultatifs dans les Réglages. Chacun reste désactivé jusqu’à son installation. Aucun téléchargement nécessaire.
+
+« Nettoyeur de captures » place automatiquement les anciennes captures d’écran dans la corbeille. Vous choisissez combien de temps les conserver.
+
+« Micro prêt » garde le micro actif pour que la dictée capte votre premier mot. Aucun son n’est enregistré, conservé ni envoyé. macOS demande l’accès au micro à la première activation du module.
+
+--- IT ---
+
+Moduli. Strumenti opzionali nelle Impostazioni. Restano disattivati finché non li installi. Non serve scaricare nulla.
+
+«Pulizia delle istantanee» sposta automaticamente le vecchie istantanee nel Cestino. Scegli tu per quanto tempo conservarle.
+
+«Microfono pronto» mantiene il microfono attivo, così la dettatura coglie la tua prima parola. Nessun audio viene registrato, salvato o inviato. macOS chiede l’accesso al microfono la prima volta che attivi il modulo.
+
+--- ZH ---
+
+模块。可在设置中安装的实用工具。各模块安装后才会启用，无需下载任何内容。
+
+“截屏清理”自动将旧截屏移到废纸篓，保留时间由你决定。
+
+“麦克风预热”让麦克风随时待命，听写从第一个字就能捕捉到。不会录制、存储或发送任何音频。首次启用时，macOS 会请求麦克风访问权限。

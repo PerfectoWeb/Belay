@@ -83,7 +83,15 @@ if [ -f "$HELPER" ]; then
     codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} --timestamp=none \
         "$HELPER" >/dev/null 2>&1
 fi
-codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} --timestamp=none \
+# Signing again drops the entitlements Xcode put there, and under the hardened
+# runtime that is not a detail: without audio-input macOS refuses the
+# microphone before the user is even asked, and the Warm Microphone module
+# sits there saying it has no access. An ad-hoc build has no hardened runtime
+# and needs none of this.
+ENTITLED=()
+[ "$IDENTITY" != "-" ] && ENTITLED=(--entitlements "$ROOT/Resources/Entitlements/Belay.entitlements")
+codesign --force --sign "$IDENTITY" ${HARDENED[@]+"${HARDENED[@]}"} \
+    ${ENTITLED[@]+"${ENTITLED[@]}"} --timestamp=none \
     "$ROOT/build/Belay.app" >/dev/null 2>&1
 
 echo "==> verify signature"

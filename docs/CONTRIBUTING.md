@@ -12,6 +12,10 @@ code, and both have their own section below. Ready-made starting points sit unde
 the [`good first issue`](https://github.com/PerfectoWeb/Belay/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 label – each one fits in an evening.
 
+The third is a **module**: an optional extra in Settings ▸ Modules, such as the
+screenshot cleaner. That one is code, with its own corner of the codebase and
+its own page, [`docs/MODULES.md`](MODULES.md).
+
 By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## What you need
@@ -232,6 +236,21 @@ under a running process; and the strings a new user meets first, the onboarding
 pane, the panel status line and the About tagline, are the ones worth your
 attention if you only have ten minutes.
 
+## Adding a module
+
+A module is something Belay does beside keeping the Mac awake: compiled into
+the app, off until the user installs it from Settings ▸ Modules. Screenshot
+Cleaner, Warm Microphone and Auto Allow are the three that exist.
+
+[`docs/MODULES.md`](MODULES.md) is the whole guide: what fits and what does
+not, the eleven rules every module keeps, where its two halves live, the nine
+steps from the name to the documentation, and what the tests have to show.
+Propose a new one with the **Module proposal** issue template before writing
+it; a fix to an existing one needs no proposal.
+
+The word is used twice in this project. Below, "module" means a target of the
+Swift package, which is older usage and unrelated.
+
 ## Modules and the dependency rule
 
 The whole library lives in one SwiftPM package, `Packages/BelayKit`, with one
@@ -249,6 +268,7 @@ BelayApp ──▶ BelayCore ──────▶ BelaySupport
    └──▶ BelaySettings ───────▶ BelayCore, BelaySupport
 
 BelayChannel ────────────────▶ BelaySupport
+BelayModules                   (depends on nothing)
 ```
 
 `BelayChannel` answers one question: which build is this, direct or App Store,

@@ -22,6 +22,7 @@ Belay/
 │       ├── BelayHookBridge/    loopback receiver + hook installer + backup/restore
 │       ├── BelaySettings/      typed preferences, migration, defaults
 │       ├── BelayChannel/       DistributionChannel, UpdateChannel
+│       ├── BelayModules/       module ledger, search, rules of the three modules
 │       └── BelaySupport/       Log, FileAccess abstraction
 ├── Sources/BelayApp/           delegate, status item, panel, settings, ProviderHost
 ├── Tests/BelayAppTests/        app-level tests (module suites live in the package)
@@ -37,7 +38,8 @@ BelayApp ──▶ BelayCore ──▶ BelaySupport
    ├──▶ BelayPower    │
    ├──▶ BelayProviders┘
    ├──▶ BelayHookBridge
-   └──▶ BelaySettings
+   ├──▶ BelaySettings
+   └──▶ BelayModules      (depends on nothing)
 ```
 
 `BelayCore` knows nothing about IOKit, the filesystem, or Claude. It receives

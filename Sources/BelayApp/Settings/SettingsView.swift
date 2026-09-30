@@ -22,9 +22,9 @@ struct SettingsView: View {
     var updates: ReleaseChecker
     var onTargetsChanged: ([GenericTarget]) -> Void
     var onResetStatistics: () -> Void = {}
-    /// The Providers pane changed shape for a reason other than the targets —
-    /// a built-in switch toggled, the precise-detection row came or went —
-    /// and the window should re-measure itself.
+    /// A pane changed shape on its own: a built-in switch toggled, the
+    /// precise-detection row came or went, a module card opened. The window
+    /// should re-measure itself.
     var onProvidersReshaped: () -> Void = {}
 
     var body: some View {
@@ -66,6 +66,8 @@ struct SettingsView: View {
             SettingsStack { BehaviourSettingsPane(settings: settings) }
         case .notifications:
             SettingsStack { NotificationSettingsPane(settings: settings) }
+        case .modules:
+            SettingsStack { ModulesPane(host: state.modules, onReshaped: onProvidersReshaped) }
         case .statistics:
             StatisticsPane(
                 statistics: statistics, history: SessionHistoryStore().load(),

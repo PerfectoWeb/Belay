@@ -59,7 +59,14 @@ enum ReleaseFlow {
         closing = NotificationCenter.default.addObserver(
             forName: NSWindow.willCloseNotification, object: made, queue: .main
         ) { _ in
-            Task { @MainActor in dimPreview.stop() }
+            Task { @MainActor in
+                dimPreview.stop()
+                // A closed workbench is thrown away, so the next one opens
+                // on what the files say now and not on what it remembered.
+                window = nil
+                if let closing { NotificationCenter.default.removeObserver(closing) }
+                closing = nil
+            }
         }
         made.makeKeyAndOrderFront(nil)
     }

@@ -1,5 +1,8 @@
+import AVFoundation
 import AppKit
 import BelayCore
+import CoreAudio
+import os
 
 /// The sounds and the one haptic Belay makes.
 ///
@@ -67,10 +70,35 @@ enum Feedback {
     static func play(_ sound: Sound) {
         guard isEnabled(), systemPlaysInterfaceSounds else { return }
         guard let effect = self.sound(sound) else { return }
-        // Stopped first so a second tap restarts it rather than being swallowed:
-        // switching modes twice in a row has to sound like two switches.
-        effect.stop()
-        effect.play()
+        strike(effect)
+    }
+
+    /// Never on the main thread: `play()` returns when CoreAudio has the
+    /// device running, and a device that is slow to start must not hold
+    /// everything else Belay does.
+    private static let speaker = DispatchQueue(label: "com.perfectoweb.belay.feedback", qos: .userInitiated)
+
+    nonisolated private static let saidSilent = OSAllocatedUnfairLock(initialState: false)
+
+    private static func strike(_ effect: NSSound) {
+        nonisolated(unsafe) let effect = effect
+        speaker.async {
+            guard !raisesTheMicrophoneQuestion else {
+                // Once a launch: "the sounds are gone" is a report, and this
+                // is its answer.
+                let isFirst = saidSilent.withLock { said in
+                    defer { said = true }
+                    return !said
+                }
+                if isFirst { Diagnostics.appendFromAnywhere("sound silent reason=microphone-undecided") }
+                return
+            }
+            // Stopped first so a second tap restarts it rather than being
+            // swallowed: switching modes twice in a row has to sound like two
+            // switches.
+            effect.stop()
+            effect.play()
+        }
     }
 
     /// How many notes the statistics chart has to choose from: the bar files
@@ -96,8 +124,7 @@ enum Feedback {
             bars[name] = NSSound(contentsOf: url, byReference: false)
         }
         guard let note = bars[name] else { return }
-        note.stop()
-        note.play()
+        strike(note)
     }
 
     private static var bars: [String: NSSound] = [:]
@@ -106,7 +133,9 @@ enum Feedback {
     /// recordings: a window closed at second three of a fifteen-second piece
     /// must not leave twelve seconds of soundtrack playing over nothing.
     static func stop(_ sound: Sound) {
-        loaded[sound]?.stop()
+        guard let playing = loaded[sound] else { return }
+        nonisolated(unsafe) let effect = playing
+        speaker.async { effect.stop() }
     }
 
     /// A tick under the finger on a Force Touch trackpad, and nothing at all on
@@ -138,6 +167,43 @@ enum Feedback {
         effect.volume = gains[sound] ?? 1
         loaded[sound] = effect
         return effect
+    }
+
+    /// macOS asks for the microphone when a sound starts on an output device
+    /// that also records (a USB interface, a headset), if the app is one that
+    /// may be asked, and with Warm Microphone in it Belay is. A click must
+    /// never be what raises that question, so until the user has answered it
+    /// in the module such a device gets silence.
+    nonisolated static func staysSilent(
+        microphone: AVAuthorizationStatus, outputAlsoRecords: @autoclosure () -> Bool
+    ) -> Bool {
+        microphone == .notDetermined && outputAlsoRecords()
+    }
+
+    nonisolated private static var raisesTheMicrophoneQuestion: Bool {
+        staysSilent(
+            microphone: AVCaptureDevice.authorizationStatus(for: .audio),
+            outputAlsoRecords: outputAlsoRecords)
+    }
+
+    /// Whether the device sounds go to has input streams of its own.
+    nonisolated private static var outputAlsoRecords: Bool {
+        var device = AudioDeviceID(kAudioObjectUnknown)
+        var size = UInt32(MemoryLayout<AudioDeviceID>.size)
+        var output = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDefaultOutputDevice,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain)
+        let system = AudioObjectID(kAudioObjectSystemObject)
+        let found = AudioObjectGetPropertyData(system, &output, 0, nil, &size, &device)
+        guard found == noErr else { return false }
+        var inputs = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyStreams,
+            mScope: kAudioObjectPropertyScopeInput,
+            mElement: kAudioObjectPropertyElementMain)
+        var bytes: UInt32 = 0
+        guard AudioObjectGetPropertyDataSize(device, &inputs, 0, nil, &bytes) == noErr else { return false }
+        return bytes > 0
     }
 
     /// The system-wide switch in Sound settings. Absent means on, which is how

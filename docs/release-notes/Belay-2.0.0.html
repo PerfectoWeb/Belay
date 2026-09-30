@@ -1,0 +1,27 @@
+<!-- What Sparkle shows for 2.0.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 2.0.0</h2>
+<ul>
+  <li><b>Modules.</b> Optional tools in Settings. Each stays off until you
+      install it. No downloads needed.</li>
+  <li><b>Screenshot Cleaner.</b> Automatically moves older screenshots to
+      the Trash. You choose how long to keep them.</li>
+  <li><b>Warm Microphone.</b> Keeps the microphone active so dictation catches
+      your first word. No audio is recorded, stored, or sent.</li>
+  <li><b>Auto Allow.</b> Clicks "Allow once" in Claude to approve requests for local sites.
+      Turns off automatically after the time you set.</li>
+</ul>
+<p class="quiet">Auto Allow requires Accessibility access. macOS asks for
+microphone access when you first turn on Warm Microphone.</p>

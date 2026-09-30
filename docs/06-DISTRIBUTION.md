@@ -35,9 +35,18 @@ product, and it has no review risk. Submit to the App Store after.
 com.apple.security.app-sandbox                        true
 com.apple.security.files.user-selected.read-write     true
 com.apple.security.files.bookmarks.app-scope          true
+com.apple.security.device.audio-input                 true
 ```
 
-Three, and no network entitlement in either direction.
+Four, and no network entitlement in either direction.
+
+`device.audio-input` is for the Warm Microphone module and nothing else. The
+module is off until the user installs it, macOS asks for the microphone at that
+moment, and what it reads is discarded. The direct build carries the same
+entitlement, its only one, because the hardened runtime refuses the microphone
+without it. App Review will ask what a keep-awake utility wants with a
+microphone: the review notes have to say it in one paragraph, with the path to
+the module.
 
 `network.server` was here until 2026-08-16, for the hook bridge. App Review
 asked about it twice under guideline 2.4.5 and the answer, once we looked

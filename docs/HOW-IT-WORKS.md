@@ -124,6 +124,92 @@ after you press Update. Nothing is fetched or installed until you press it.
 Full detail, including how to verify all of this yourself, is in
 [`SECURITY.md`](SECURITY.md).
 
+## Modules
+
+Extras that have nothing to do with sleep, in **Settings ▸ Modules**, each one
+off until you install it. A module is part of the app: installing one downloads
+nothing, switching it off keeps its settings, removing it forgets them. The
+list is open to pull requests: [MODULES.md](MODULES.md) is the guide to writing
+one.
+
+**Screenshot Cleaner** moves screenshots to the Trash once they pass the age you
+choose. It knows a screenshot by the mark macOS writes on the file
+(`kMDItemIsScreenCapture`), never by the name, so renaming one does not hide it
+and naming a file "Screenshot" does not endanger it. It looks every five
+minutes, in the folder's own files only, and leaves alone anything you tagged or
+edited unless you switch that off. Screenshots that were there before you
+switched it on get the full age from that moment. The App Store build asks you
+to choose the folder; the direct build starts with the one macOS saves to.
+
+A Desktop kept in iCloud Drive is a special case. There macOS passes the
+ordinary "move to Trash" request to its file provider, which refuses an app
+that was allowed the Desktop by the usual question. The direct build then moves
+the file into your Trash itself, on the same disk and never over a file already
+there. The one thing such a file lacks is Finder's Put Back; dragging it out of
+the Trash works as always.
+
+**Warm Microphone** holds the microphone open. macOS powers down a microphone
+nobody is reading, and the next app to open it waits for it to start, which is
+where the first word of a dictation goes. The module reads the microphone and
+throws the sound away as it arrives: no recording, no level meter, no buffer
+kept. It follows the input macOS is set to use, reopens three seconds after a
+headset is plugged in or the input is switched, and comes back after sleep.
+One permission covers every microphone: macOS grants it to Belay, not to a
+device, and only the input in use is held. One cost cannot be engineered away:
+macOS shows the orange microphone dot for as long as a microphone is held.
+
+A Bluetooth microphone is the exception. Holding one keeps the headphones in
+call mode, which lowers the quality of what you listen to, so with "Leave
+Bluetooth headphones alone" on, as it is by default, the module lets go while
+AirPods or another Bluetooth microphone are the input and picks up the next
+input when they are gone. "Pause on battery power" lets the microphone go while
+the Mac is unplugged. An app that was told to use a microphone other than the
+one macOS is set to gains nothing from the module.
+
+Carrying the module changes one thing for everybody, installed or not. macOS
+asks for the microphone when any sound starts on an output device that also
+records, such as a USB audio interface or a headset, if the app is one that may
+be asked. So until the microphone question has been answered in the module,
+Belay plays no sounds on such a device: a click in the panel is never what
+raises that question. On speakers and displays nothing changes.
+
+**Auto Allow** presses "Allow once" in the Claude desktop app. Claude asks
+before every action on a site it has no site-level permission for, and for a
+site that exists only on your Mac there is no way to grant one, so an agent
+testing `myshop.local` stops at every click. The module looks at the Claude
+window every two seconds through the Accessibility interface, finds the
+request card, and reads what it asks for. With the default setting it presses
+the button only when the card is a request for access to a site, the site is
+local (`localhost`, a name ending in `.local`, `.localhost`, `.test`,
+`.internal`, `.lan` or `.home.arpa`, or a private address), and no other site
+is named on the card. A command to run, a file to change, a site on the
+internet: all of those wait for you. "Everything Claude asks" approves them
+too, and says so in orange when you choose it. Either way the module switches
+itself off after the time you set, a restart does not give it more time, and
+the card lists the latest approvals with the time and the site.
+
+A request card exists only in the session the Claude window is showing, and
+agents mostly work in the ones behind it. With "Answer in sessions behind the
+window" on, the module reads the list of sessions beside the window, and when
+one says it is awaiting input it opens that session, answers what the rules
+cover, and brings back the session you had open. It does that only when the
+shown session has nothing to answer, only once the keyboard and the pointer
+have been still for five seconds, in whatever app you are working, and one
+session at a time. Bringing a session into the window can pull Claude to the
+front, which is why it waits for a pause and never cuts into a sentence. A
+session that turned out to wait for something the rules do not cover is not
+opened again until it has moved on. Two sessions with the
+same name are left alone, since they cannot be told apart.
+
+A module that works for one agent follows that agent's switch in **Settings ▸
+Agents**: with Claude Code switched off there, Auto Allow reads nothing and
+presses nothing, and its card says why.
+
+Auto Allow is in the direct build only. It works in a Claude interface set to
+English, and it recognises the card and the list by what Claude calls them: if
+a Claude update changes that, the module finds nothing and presses nothing
+until Belay is updated.
+
 ## Talking to Belay from anything
 
 If your tool can run a shell command, it can tell Belay what it is doing. Port

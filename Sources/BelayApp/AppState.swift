@@ -46,6 +46,9 @@ final class AppState {
     /// The same numbers the Statistics pane shows, for the one panel row that
     /// needs to know whether Belay has earned anything yet.
     var statistics: () -> UsageStatistics = { UsageStatistics() }
+    /// The optional extras. Inert until the app delegate starts them, so a
+    /// test that builds an `AppState` moves no files.
+    let modules = ModuleHost()
 
     var isHolding: Bool { snapshot.state.holdsAssertion }
 

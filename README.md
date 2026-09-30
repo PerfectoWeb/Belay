@@ -18,7 +18,7 @@
 
 <a href="https://github.com/PerfectoWeb/Belay/releases/latest/download/Belay.dmg"><picture><source media="(min-width: 501px)" srcset="Promo/Social/btn-download-green-desk.png"><img src="Promo/Social/btn-download-green.png" alt="Download Belay for macOS" height="64"></picture></a><picture><source media="(max-width: 500px)" srcset="Promo/Social/spacer.png"><img src="Promo/Social/spacer-16.png" alt=""></picture><a href="https://perfectoweb.github.io/Belay/"><picture><source media="(min-width: 501px) and (prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark-desk.png"><source media="(min-width: 501px)" srcset="Promo/Social/btn-site-light-desk.png"><source media="(prefers-color-scheme: dark)" srcset="Promo/Social/btn-site-dark.png"><img src="Promo/Social/btn-site-light.png" alt="Learn more on the Belay website" height="64"></picture></a>
 
-<a href="#-install">Install</a> • <a href="#-features">Features</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/ROADMAP.md">Roadmap</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/SECURITY.md">Privacy</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/CHANGELOG.md">Changelog</a>
+<a href="#-install">Install</a> • <a href="#-features">Features</a> • <a href="#-modules">Modules</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/ROADMAP.md">Roadmap</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/docs/SECURITY.md">Privacy</a> • <a href="https://github.com/PerfectoWeb/Belay/blob/main/CHANGELOG.md">Changelog</a>
 </div>
 
 ## 📚 What is it?
@@ -66,11 +66,24 @@ the details live in [docs/03-DETECTION.md](docs/03-DETECTION.md) and
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/agent-teams-dark.svg"><img src="docs/icons/agent-teams-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Agent&nbsp;teams&nbsp;too</b></td><td>Claude Code subagents and Cline teammate agents appear under their session in the panel, and count as part of it, not as noise.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/dimming-dark.svg"><img src="docs/icons/dimming-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Night&nbsp;dimming</b></td><td>While holding at night, Belay can dim the display to a chosen level on your schedule, show the timer's countdown on the dark screen, and restore brightness the moment you come back.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/closed-lid-dark.svg"><img src="docs/icons/closed-lid-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Closed‑lid&nbsp;hold</b></td><td>Opt-in for the direct build: keep working with the lid closed, ending at the awake limit or if the Mac runs hot.</td></tr>
+<tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/modules-dark.svg"><img src="docs/icons/modules-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Modules</b></td><td>Optional tools in Settings, each one off until you install it. <a href="#-modules">Three ship with 2.0</a>, and the list is open to pull requests.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/stats-dark.svg"><img src="docs/icons/stats-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Time&nbsp;saved</b></td><td>Belay counts the time it kept your Mac awake while you were away, when sleep could actually have interrupted the work.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/speaks-up-dark.svg"><img src="docs/icons/speaks-up-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Speaks&nbsp;up</b></td><td>Optional notifications when an agent finishes, waits for you, or goes quiet – and one summary of what ran while you were away. Safety stops explain themselves too, including the lid hold ending because the Mac ran hot.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/local-dark.svg"><img src="docs/icons/local-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Stays&nbsp;local</b></td><td>Agent detection stays on your Mac. No account, analytics or telemetry. Direct builds can check GitHub once a day for updates; you can turn that off.</td></tr>
 <tr><td nowrap><sup><picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/multilingual-dark.svg"><img src="docs/icons/multilingual-light.svg" width="18" align="middle" hspace="5" alt=""></picture></sup>&nbsp;<b>Multilingual</b></td><td>English, Русский, Deutsch, Español, Français, Italiano, 简体中文.</td></tr>
 </table>
+
+## 🧩 Modules
+
+New in 2.0. A module is something Belay can do beside keeping your Mac awake: part of the app, off until you install it in **Settings ▸ Modules**, and gone without a trace when you remove it. Installing one downloads nothing.
+
+| Module | What it does | App Store | Direct |
+| :--- | :--- | :---: | :---: |
+| **Screenshot Cleaner** | Moves screenshots to the Trash once they pass the age you choose. It knows a screenshot by the mark macOS puts on the file, keeps the ones you tagged or edited, and never deletes anything. | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| **Warm Microphone** | Keeps the microphone active so dictation catches your first word. No audio is recorded, stored or sent. | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| **Auto Allow** | Clicks "Allow once" in the Claude desktop app for requests about sites on your own Mac or network, also in sessions behind the window, and turns itself off after the time you set. | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+
+**Write your own.** Modules are the part of Belay built to grow: each one is a small, separate corner of the code with ten plain rules, and the next one can be yours. [`docs/MODULES.md`](docs/MODULES.md) is the guide, and a [module proposal](https://github.com/PerfectoWeb/Belay/issues/new?template=module_proposal.yml) is where an idea starts.
 
 ## 📦 Install
 
@@ -146,9 +159,11 @@ Belay ships in two builds that share the same app and the same detection. The Ma
 | Watched folders for custom config dirs (`CLAUDE_CONFIG_DIR` and friends) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 | Always On timer, by duration or end time | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 | Night dimming, statistics, CSV export | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Modules: Screenshot Cleaner, Warm Microphone | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 | Precise Detection (agent hooks) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 | Local webhook for connecting any tool | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 | Closed-lid hold (privileged helper) | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
+| Auto Allow module for the Claude desktop app | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/no-dark.svg"><img src="docs/icons/no-light.svg" width="18" alt="no"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="docs/icons/check-dark.svg"><img src="docs/icons/check-light.svg" width="18" alt="yes"></picture> |
 
 </details>
 
@@ -308,6 +323,10 @@ most wanted contribution here.
 🔌 **[Add a preset](docs/CONTRIBUTING.md)** for an agent Belay does not know yet.
 Also data, also no need to learn the codebase.
 
+🧩 **[Write a module](docs/MODULES.md)**. An optional extra in Settings with its
+own small corner of the code. Start with a
+[module proposal](https://github.com/PerfectoWeb/Belay/issues/new?template=module_proposal.yml).
+
 💛 **[Donate](https://perfecto-web.com/d/)**. Last on the list on purpose.
 
 > Start at [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md). Security reports go through
@@ -319,6 +338,7 @@ Also data, also no need to learn the codebase.
 <tr><td width="24%"><a href="docs/HOW-IT-WORKS.md">How it works</a></td><td>Detection, the safety rails and talking to Belay from anything</td></tr>
 <tr><td width="24%"><a href="docs/FAQ.md">FAQ</a></td><td>Why not <code>caffeinate</code>, why not CPU, why not an API key</td></tr>
 <tr><td width="24%"><a href="docs/CONTRIBUTING.md">Contributing</a></td><td>Building, testing, translating, adding a preset</td></tr>
+<tr><td width="24%"><a href="docs/MODULES.md">Modules</a></td><td>What a module is, the rules it keeps, and how to write one</td></tr>
 <tr><td width="24%"><a href="docs/02-ARCHITECTURE.md">Architecture</a></td><td>How the app is put together</td></tr>
 <tr><td width="24%"><a href="docs/SECURITY.md">Security</a></td><td>What Belay reads, what it cannot read, and how to verify it</td></tr>
 <tr><td width="24%"><a href="CHANGELOG.md">Changelog</a></td><td>What changed, and why</td></tr>

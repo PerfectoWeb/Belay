@@ -70,6 +70,10 @@ enum ReleaseNotes {
         static let team = "person.2"
         static let folder = "folder"
         static let bug = "ladybug"
+        static let modules = "puzzlepiece.extension"
+        static let screenshot = "camera.viewfinder"
+        static let microphone = "mic"
+        static let allow = "checkmark.shield"
     }
 
     /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
@@ -91,16 +95,37 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "1.8.1",
+                version: "2.0.0",
                 items: [
                     .init(
-                        symbol: Mark.quiet,
-                        title: "Night dimming no longer flickers",
+                        symbol: Mark.modules,
+                        title: "Modules",
                         body: """
-                            Belay now waits 30 seconds after another app stops keeping \
-                            the display awake before dimming it, so videos and similar \
-                            apps no longer make the screen blink.
-                            """)
+                            Optional tools in Settings. Each stays off until you install \
+                            it. No downloads needed.
+                            """),
+                    .init(
+                        symbol: Mark.screenshot,
+                        title: "Screenshot Cleaner",
+                        body: """
+                            Automatically moves older screenshots to the Trash. You \
+                            choose how long to keep them.
+                            """),
+                    .init(
+                        symbol: Mark.microphone,
+                        title: "Warm Microphone",
+                        body: """
+                            Keeps the microphone active so dictation catches your first \
+                            word. No audio is recorded, stored, or sent.
+                            """),
+                    .init(
+                        symbol: Mark.allow,
+                        title: "Auto Allow",
+                        body: """
+                            Clicks "Allow once" in Claude to approve requests for local \
+                            sites. Turns off automatically after the time you set.
+                            """,
+                        directOnly: true)
                 ]
             )
         ]

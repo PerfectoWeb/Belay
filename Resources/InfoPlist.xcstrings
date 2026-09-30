@@ -1,0 +1,194 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSDesktopFolderUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay liest diesen Ordner nur für das, wofür du es eingerichtet hast: ein hinzugefügtes Tool beobachten oder alte Bildschirmfotos in den Papierkorb legen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lee esta carpeta solo para lo que tú has configurado: vigilar una herramienta que añadiste o mover capturas de pantalla antiguas a la papelera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lit ce dossier uniquement pour ce que vous avez configuré : surveiller un outil que vous avez ajouté ou placer les anciennes captures d'écran dans la corbeille."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay legge questa cartella solo per ciò che hai configurato: osservare uno strumento che hai aggiunto o spostare nel Cestino le vecchie istantanee."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay читает эту папку только для того, что вы сами настроили: следить за добавленным инструментом или отправлять старые снимки экрана в Корзину."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay 读取此文件夹只为完成你设置的任务：监视你添加的工具，或将旧截屏移到废纸篓。"
+          }
+        }
+      }
+    },
+    "NSDocumentsFolderUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay liest diesen Ordner nur für das, wofür du es eingerichtet hast: ein hinzugefügtes Tool beobachten oder alte Bildschirmfotos in den Papierkorb legen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lee esta carpeta solo para lo que tú has configurado: vigilar una herramienta que añadiste o mover capturas de pantalla antiguas a la papelera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lit ce dossier uniquement pour ce que vous avez configuré : surveiller un outil que vous avez ajouté ou placer les anciennes captures d'écran dans la corbeille."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay legge questa cartella solo per ciò che hai configurato: osservare uno strumento che hai aggiunto o spostare nel Cestino le vecchie istantanee."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay читает эту папку только для того, что вы сами настроили: следить за добавленным инструментом или отправлять старые снимки экрана в Корзину."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay 读取此文件夹只为完成你设置的任务：监视你添加的工具，或将旧截屏移到废纸篓。"
+          }
+        }
+      }
+    },
+    "NSDownloadsFolderUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay liest diesen Ordner nur für das, wofür du es eingerichtet hast: ein hinzugefügtes Tool beobachten oder alte Bildschirmfotos in den Papierkorb legen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay reads this folder only for what you set it up to do: watching a tool you added, or moving old screenshots to the Trash."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lee esta carpeta solo para lo que tú has configurado: vigilar una herramienta que añadiste o mover capturas de pantalla antiguas a la papelera."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay lit ce dossier uniquement pour ce que vous avez configuré : surveiller un outil que vous avez ajouté ou placer les anciennes captures d'écran dans la corbeille."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay legge questa cartella solo per ciò che hai configurato: osservare uno strumento che hai aggiunto o spostare nel Cestino le vecchie istantanee."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay читает эту папку только для того, что вы сами настроили: следить за добавленным инструментом или отправлять старые снимки экрана в Корзину."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay 读取此文件夹只为完成你设置的任务：监视你添加的工具，或将旧截屏移到废纸篓。"
+          }
+        }
+      }
+    },
+    "NSMicrophoneUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay hält das Mikrofon offen, wenn du „Mikrofon bereit“ einschaltest. Der Ton wird sofort verworfen: Nichts wird aufgenommen, gespeichert oder gesendet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay holds the microphone open when you switch on Warm Microphone. The sound is thrown away as it arrives: nothing is recorded, stored or sent."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay mantiene el micrófono abierto cuando activas Micrófono listo. El sonido se descarta en cuanto llega: no se graba, no se guarda y no se envía nada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay garde le micro ouvert lorsque vous activez Micro prêt. Le son est jeté dès qu’il arrive : rien n’est enregistré, conservé ni envoyé."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay tiene aperto il microfono quando attivi Microfono pronto. L’audio viene scartato appena arriva: nulla viene registrato, salvato o inviato."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belay держит микрофон открытым, когда включён модуль «Микрофон наготове». Звук отбрасывается сразу: ничего не записывается, не сохраняется и не отправляется."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启“麦克风预热”后，Belay 会让麦克风保持开启。声音一到即被丢弃：不录制、不存储、不发送。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

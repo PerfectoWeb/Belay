@@ -13,6 +13,11 @@
 	<key>com.apple.security.files.bookmarks.app-scope</key>
 	<true/>
 
+	<!-- The Warm Microphone module, off until installed. It holds the
+	     microphone open and discards what arrives; nothing else opens one. -->
+	<key>com.apple.security.device.audio-input</key>
+	<true/>
+
 	<!--
 	No network entitlements at all, in either direction, and both absences are
 	deliberate.

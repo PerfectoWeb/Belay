@@ -3,15 +3,22 @@
 <plist version="1.0">
 <dict>
 	<!--
-	Direct (Developer ID) build. Deliberately empty.
+	Direct (Developer ID) build. One entitlement, for one module.
 
-	Hardened Runtime is on, the sandbox is off, and nothing we do needs an
-	entitlement: reading ~/.claude is plain filesystem access, and the hook
-	bridge listens on 127.0.0.1 which is unrestricted outside the sandbox.
+	Hardened Runtime is on, the sandbox is off, and the app itself needs
+	nothing: reading ~/.claude is plain filesystem access, and the hook bridge
+	listens on 127.0.0.1 which is unrestricted outside the sandbox.
+
+	audio-input is for the Warm Microphone module. Under the hardened runtime
+	macOS refuses the microphone to an app without it, before the user is even
+	asked. The module is off until installed, and nothing else opens a
+	microphone.
 
 	Do not add com.apple.security.cs.disable-library-validation or any JIT /
 	unsigned-memory exception here. They weaken the runtime and docs/06 says we
 	have no concrete need for one.
 	-->
+	<key>com.apple.security.device.audio-input</key>
+	<true/>
 </dict>
 </plist>

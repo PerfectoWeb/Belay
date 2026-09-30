@@ -1,6 +1,6 @@
 # Privacy policy
 
-**Belay for macOS. Last updated 13 August 2026.**
+**Belay for macOS. Last updated 29 September 2026.**
 
 Belay doesn't have accounts, analytics, advertising or crash reporting. It
 doesn't build a profile of you or send your work to us. Most of what Belay needs
@@ -28,6 +28,25 @@ or read what is in them. The folder stays yours, and nothing in it is uploaded.
 Which folders Belay looks at is up to you. `~/.claude`, `~/.codex`, `~/.cline`
 and `~/.copilot` for the built-in agents, and for anything else only what you
 point it at.
+
+The Screenshot Cleaner module, if you install it, lists the folder your
+screenshots are saved in. For each file it reads two dates, the kind of file,
+and the marks macOS and Finder leave on it: whether it is a screen capture, and
+whether it carries a tag. It does not open a screenshot or look at what is in
+the picture.
+
+The Warm Microphone module, if you install it, opens the microphone and keeps
+it open. The sound is discarded as it arrives. Belay does not record it,
+measure it, keep any of it in memory or on disk, or send it anywhere, and
+macOS shows its orange microphone dot for as long as the module is on.
+
+The Auto Allow module, if you install it in the direct build, reads the Claude
+desktop app's window through the macOS Accessibility interface, looking for a
+permission request. Of what is on the screen it keeps only the text of that
+request, for as long as it takes to decide, and of that it stores one thing:
+the site that was approved and when, in a list of the latest fifty that you can
+see in the module's settings. The rest of the window, your conversation
+included, is passed over and not kept.
 
 ## What leaves your Mac
 
@@ -61,6 +80,20 @@ If you turn on precise detection for an agent (Claude Code, Codex or Cline),
 Belay shows you the exact configuration it would add before anything is written,
 and only writes after you confirm. It takes a timestamped backup first, adds only
 its own entry, and "Remove" on the same screen puts the file back.
+
+The Screenshot Cleaner module moves screenshots older than the age you chose to
+the Trash, in the folders you gave it and nowhere else. It never deletes a file:
+the Trash is where they stay until you empty it. Nothing happens unless the
+module is installed and switched on.
+
+The Auto Allow module presses "Allow once" in the Claude desktop app in your
+name: by default only for requests about sites on your own Mac or network, and
+for everything Claude asks only if you choose that. If you switch on "Answer in
+sessions behind the window", it also presses a session in Claude's list to
+bring it into the window and the one you had open to bring that back; for this
+it reads the names of your sessions and keeps them only for the length of that
+look, never on disk and never in the log. It presses nothing else, in Claude or
+in any other app, and it stops when its time runs out or you switch it off.
 
 ## Sharing
 

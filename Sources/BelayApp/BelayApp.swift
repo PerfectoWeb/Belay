@@ -96,6 +96,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             controller?.requestProviderAccess(provider)
         }
         self.settingsWindow = settingsWindow
+        appState.modules.autoAllow.agentIsOn = { [weak settings] in settings?.isEnabled(.claudeCode) ?? true }
+        appState.modules.start()
 
         controller.start()
         self.controller = controller
@@ -202,6 +204,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         updateTimer = nil
         settingsWindow?.close()
         settingsWindow = nil
+        appState.modules.stop()
         controller?.shutdown()
         panel?.hide()
         controller = nil

@@ -46,6 +46,11 @@ struct NotesTab: View {
             }
         }
         .padding()
+        // The file may have been edited outside: coming back to Belay reads
+        // it again, which is what the preview is drawn from.
+        .onReceive(cameBack) { _ in
+            revision += 1
+        }
     }
 }
 
@@ -82,6 +87,11 @@ struct StoreTab: View {
     }
 }
 
+/// Belay is in front again, which is when a file edited elsewhere is read anew.
+private var cameBack: NotificationCenter.Publisher {
+    NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
+}
+
 /// Repo-relative, for the caption: the absolute path is noise.
 @MainActor private func relative(_ file: URL) -> String {
     file.path.replacingOccurrences(of: ReleaseFlow.repo.path + "/", with: "")
@@ -89,12 +99,18 @@ struct StoreTab: View {
 
 /// A plain text editor over one file: load on appear, save on demand, and an
 /// honest dot when the buffer and the disk disagree.
+///
+/// The files are also edited outside this window, so the disk is read again
+/// whenever Belay comes back to the front. A buffer with nothing unsaved
+/// takes the new text; one with unsaved edits keeps them and says the file
+/// moved, because neither side may be dropped without being asked.
 struct FileEditor: View {
     let file: URL
     var saved: () -> Void
 
     @State private var text = ""
     @State private var onDisk = ""
+    @State private var movedOnDisk = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -115,15 +131,38 @@ struct FileEditor: View {
                     Text(verbatim: "unsaved changes")
                         .font(.caption).foregroundStyle(.orange)
                 }
+                if movedOnDisk {
+                    Text(verbatim: "changed on disk since it was loaded")
+                        .font(.caption).foregroundStyle(.red)
+                    Button {
+                        load()
+                    } label: {
+                        Text(verbatim: "Reload")
+                    }
+                    .controlSize(.small)
+                }
             }
         }
         .onAppear(perform: load)
+        .onReceive(cameBack) { _ in
+            refresh()
+        }
+    }
+
+    private var disk: String {
+        (try? String(contentsOf: file, encoding: .utf8)) ?? ""
     }
 
     private func load() {
-        let read = (try? String(contentsOf: file, encoding: .utf8)) ?? ""
+        let read = disk
         text = read
         onDisk = read
+        movedOnDisk = false
+    }
+
+    private func refresh() {
+        guard disk != onDisk else { return }
+        if text == onDisk { load() } else { movedOnDisk = true }
     }
 
     private func save() {
@@ -132,6 +171,7 @@ struct FileEditor: View {
                 at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
             try text.write(to: file, atomically: true, encoding: .utf8)
             onDisk = text
+            movedOnDisk = false
             saved()
         } catch {
             // A debug window may be blunt.
