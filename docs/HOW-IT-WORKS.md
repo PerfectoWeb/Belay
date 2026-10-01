@@ -230,9 +230,9 @@ until Belay is updated.
 **Nudge** says it out loud when an agent finishes, waits for you or goes quiet.
 It reads the same picture of your sessions the panel shows, which are working,
 which wait and which are gone, and nothing else: no transcript, no prompt.
-Three short sounds, one struck note each, tell the events apart without
-looking: a run that ended, a session that waits for you (a touch higher) and a
-session that went quiet (the lowest). Each has its own checkbox, and all of
+Three short sounds tell the events apart without looking: a run that ended
+(two bright notes up a fifth, a small chord), a session that waits for you (a
+single note, a touch higher) and a session that went quiet (the lowest). Each has its own checkbox, and all of
 them follow the macOS setting for interface sound effects.
 
 A session that keeps waiting gets a reminder banner, "Still waiting for you",

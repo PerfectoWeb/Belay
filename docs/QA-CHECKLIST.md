@@ -161,7 +161,7 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Nudge: installing asks for notification permission once; with it refused
       the card shows the red line and the button to System Settings, and the
       sounds still play
-- [ ] Nudge: a run of a minute or more that ends plays the finished note and
+- [ ] Nudge: a run of a minute or more that ends plays the finished chord and
       posts "An agent finished" naming the workspace; a run under "Ignore runs
       shorter than" does neither; each checkbox silences only its own sound
 - [ ] Nudge: a session that waits for you plays the waiting note (a touch
@@ -189,6 +189,10 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Auto Allow: a Codex session behind the window that shows "Awaiting
       approval" is opened, answered and the window shows the same session as
       before
+- [ ] Codex Precise Detection: after a ChatGPT update, switching Codex off and
+      on still writes trust (`codex app-server hooks/list` shows the four Belay
+      hooks `trusted`), and a launch with the trust wiped from `config.toml`
+      restores it (log `bridge re-trusted codex hooks`)
 - [ ] Auto Allow: with Codex switched off in Agents a Codex request waits and
       the card names Codex
 - [ ] Auto Allow is absent from the App Store build's list

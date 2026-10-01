@@ -255,6 +255,11 @@ Claude-style hook system (stable, `~/.codex/hooks.json`) is the exact tier and
 shipped in 1.5.0 (`CodexHookInstaller`, `CodexTrust`, `CodexConfigDocument`); it
 sits behind a per-hook trust review, which Belay satisfies by reading the trust
 hashes from `codex app-server hooks/list` and writing them into `config.toml`.
+The binary is looked for on the PATH first, then inside ChatGPT.app, whose
+`Resources/codex-cli/codex-package.json` names the entry point (ChatGPT 26.928
+moved it there from the flat `Resources/codex`). At every launch the hooks'
+trust is read back and written again when codex no longer honours it, since a
+hook codex does not trust is skipped without a word.
 The rollout watcher remains the always-on Tier A beneath it.
 
 **Generic provider (P1).** Configurable by the user, covers everything else
