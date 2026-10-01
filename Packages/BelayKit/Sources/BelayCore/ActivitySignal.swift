@@ -109,6 +109,12 @@ public struct ActivitySignal: Sendable, Equatable {
     /// How many background tasks a `Stop` said were still running. Non-nil
     /// only on signals that actually said — zero clears, positive arms.
     public let backgroundTasks: Int?
+    /// The transcript moved without a turn opening or closing: bytes with no
+    /// readable record, a tool result, an assistant record mid-turn. Proof of
+    /// life, not a word about whose move it is: keeps a session on the books
+    /// for the TTL and never outranks a hook's last word. See
+    /// `SessionState.record`.
+    public let heartbeat: Bool
 
     public init(
         provider: ProviderID,
@@ -123,7 +129,8 @@ public struct ActivitySignal: Sendable, Equatable {
         toolCall: ToolCallEdge? = nil,
         tokensTotal: Int? = nil,
         tool: ToolCategory? = nil,
-        backgroundTasks: Int? = nil
+        backgroundTasks: Int? = nil,
+        heartbeat: Bool = false
     ) {
         self.provider = provider
         self.session = session
@@ -138,6 +145,7 @@ public struct ActivitySignal: Sendable, Equatable {
         self.tokensTotal = tokensTotal
         self.tool = tool
         self.backgroundTasks = backgroundTasks
+        self.heartbeat = heartbeat
     }
 }
 

@@ -60,7 +60,8 @@ extension ActivitySignal {
         workspace: String? = "acme-api",
         toolCall: ToolCallEdge? = nil,
         tool: ToolCategory? = nil,
-        backgroundTasks: Int? = nil
+        backgroundTasks: Int? = nil,
+        heartbeat: Bool = false
     ) -> ActivitySignal {
         ActivitySignal(
             provider: .claudeCode,
@@ -71,7 +72,8 @@ extension ActivitySignal {
             confidence: confidence,
             toolCall: toolCall,
             tool: tool,
-            backgroundTasks: backgroundTasks
+            backgroundTasks: backgroundTasks,
+            heartbeat: heartbeat
         )
     }
 }

@@ -72,7 +72,7 @@ public struct NudgeWatch: Sendable {
             events += step(&track, to: session, now: now, rules: rules)
             tracks[session.id] = track
         }
-        events += vanished(from: sessions)
+        events += vanished(from: sessions, now: now, rules: rules)
         return events
     }
 
@@ -163,8 +163,11 @@ public struct NudgeWatch: Sendable {
 
     /// A working session that is gone, with nothing left that descends from
     /// it, went quiet. A session that finished said so first and left
-    /// `working` before it went.
-    private mutating func vanished(from sessions: [NudgeSession]) -> [NudgeEvent] {
+    /// `working` before it went. The minimum run applies here as to a
+    /// finish: a session closed seconds after it was opened is not news.
+    private mutating func vanished(
+        from sessions: [NudgeSession], now: Date, rules: NudgeRules
+    ) -> [NudgeEvent] {
         let live = Set(sessions.map(\.id))
         var events: [NudgeEvent] = []
         for id in tracks.keys.sorted() where !live.contains(id) {
@@ -172,6 +175,8 @@ public struct NudgeWatch: Sendable {
             guard track.activity == .working, track.isTopLevel,
                 !sessions.contains(where: { $0.parent == id })
             else { continue }
+            let ran = track.worked + (track.workingSince.map { now.timeIntervalSince($0) } ?? 0)
+            guard ran >= TimeInterval(rules.minimumRunSeconds) else { continue }
             events.append(.quiet(session: id))
         }
         return events

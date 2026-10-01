@@ -190,8 +190,16 @@ struct NudgeWatchTests {
     func quiet() {
         var watch = NudgeWatch()
         _ = run(&watch, [session(.working)], at: 0)
-        #expect(run(&watch, [], at: 10) == [.quiet(session: "a")])
-        #expect(run(&watch, [], at: 20).isEmpty)
+        #expect(run(&watch, [], at: 60) == [.quiet(session: "a")])
+        #expect(run(&watch, [], at: 70).isEmpty)
+    }
+
+    /// Found live: a session closed eight seconds after it was resumed.
+    @Test("A session that vanishes before the minimum run is not quiet")
+    func shortRunNotQuiet() {
+        var watch = NudgeWatch()
+        _ = run(&watch, [session(.working)], at: 0)
+        #expect(run(&watch, [], at: 10).isEmpty)
     }
 
     @Test("A session that finished and then went is not quiet")

@@ -148,7 +148,7 @@ public actor CopilotProvider: ActivityProvider {
         // Bytes without a marker prolong a turn, never begin one: model
         // checkpoints and usage records must not flip a quiet session back.
         guard watch.reported == .working else { return false }
-        return report(.working, for: id, at: now)
+        return report(.working, for: id, at: now, heartbeat: true)
     }
 
     func seedExistingSessions() {
@@ -162,7 +162,9 @@ public actor CopilotProvider: ActivityProvider {
     // MARK: - Emitting
 
     @discardableResult
-    func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
+    func report(
+        _ activity: SessionActivity, for id: SessionID, at now: Date, heartbeat: Bool = false
+    ) -> Bool {
         guard var watch = watched[id] else { return false }
         guard activity == .working || activity != watch.reported else { return false }
         // A session whose first word is "idle" is history being followed, not
@@ -180,7 +182,7 @@ public actor CopilotProvider: ActivityProvider {
         watch.reported = activity
         watch.announced = true
         watched[id] = watch
-        yield(activity, from: watch, at: now)
+        yield(activity, from: watch, at: now, heartbeat: heartbeat)
         return true
     }
 
@@ -193,7 +195,9 @@ public actor CopilotProvider: ActivityProvider {
         yield(.ended, from: watch, at: now)
     }
 
-    private func yield(_ activity: SessionActivity, from watch: CopilotWatch, at now: Date) {
+    private func yield(
+        _ activity: SessionActivity, from watch: CopilotWatch, at now: Date, heartbeat: Bool = false
+    ) {
         continuation.yield(
             ActivitySignal(
                 provider: .copilot,
@@ -201,6 +205,7 @@ public actor CopilotProvider: ActivityProvider {
                 activity: activity,
                 workspace: watch.workspace,
                 timestamp: now,
-                confidence: .inferred))
+                confidence: .inferred,
+                heartbeat: heartbeat))
     }
 }

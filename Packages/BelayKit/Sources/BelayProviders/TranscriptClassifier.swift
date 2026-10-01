@@ -21,6 +21,11 @@ enum TranscriptClassifier {
     struct Verdict: Equatable {
         var activity: SessionActivity
         var awaitingAssistant: Bool
+        /// The record is a prompt from the person: the one record that opens
+        /// a turn. A tool result or an assistant record only continues one,
+        /// and after a Stop hook that continuation is trailing output, not
+        /// a reason to call the session working again.
+        var beginsTurn = false
     }
 
     /// `nil` means the delta said nothing about the turn — the caller falls back
@@ -81,7 +86,8 @@ enum TranscriptClassifier {
             case .user:
                 // Either a tool result coming back or a prompt going out; both
                 // mean the turn is in flight and the model owes the next record.
-                return Verdict(activity: .working, awaitingAssistant: true)
+                return Verdict(
+                    activity: .working, awaitingAssistant: true, beginsTurn: !record.isToolResult)
             case .metadata:
                 continue
             }
@@ -125,6 +131,9 @@ private struct TranscriptRecord {
     let isAPIError: Bool
     /// When the record was written, by the CLI's own clock.
     let timestamp: Date?
+    /// A user record carrying a tool's output back, not the person's words.
+    /// Only the block's `type` is read, never what is in it.
+    let isToolResult: Bool
 
     init?(jsonLine: String) {
         guard let data = jsonLine.data(using: .utf8),
@@ -139,6 +148,7 @@ private struct TranscriptRecord {
         tokens = wire.message?.usage.map { ($0.inputTokens ?? 0) + ($0.outputTokens ?? 0) }
         isAPIError = wire.isApiErrorMessage ?? false
         timestamp = wire.timestamp.flatMap(TranscriptRecord.date(from:))
+        isToolResult = wire.message?.blockTypes?.first == "tool_result"
     }
 
     /// The CLI writes RFC 3339 with milliseconds; be liberal about both
@@ -164,19 +174,30 @@ private struct Wire: Decodable {
         }
     }
 
+    /// A content block's kind and nothing else: R9 ends at this field.
+    struct Block: Decodable {
+        let type: String?
+    }
+
     struct Message: Decodable {
         let stopReason: String?
         let usage: Usage?
+        /// The kinds of the content blocks; nil when `content` is a bare
+        /// string, which is how a typed prompt arrives.
+        let blockTypes: [String]?
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             stopReason = try? container.decodeIfPresent(String.self, forKey: .stopReason)
             usage = try? container.decodeIfPresent(Usage.self, forKey: .usage)
+            blockTypes = (try? container.decodeIfPresent([Block].self, forKey: .content))?
+                .compactMap(\.type)
         }
 
         private enum CodingKeys: String, CodingKey {
             case stopReason = "stop_reason"
             case usage
+            case content
         }
     }
 

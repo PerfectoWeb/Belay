@@ -134,7 +134,12 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // metadata says nothing about whose move it is.
         if let verdict { watch.awaitingAssistant = verdict.awaitingAssistant }
         watched[id] = watch
-        if let verdict { return report(verdict.activity, for: id, at: now) }
+        // A record that continues a turn is a heartbeat: with hooks it must
+        // not outrank a Stop, and without them the prompt already said working.
+        if let verdict {
+            let heartbeat = verdict.activity == .working && !verdict.beginsTurn
+            return report(verdict.activity, for: id, at: now, heartbeat: heartbeat)
+        }
         // No conversational record still means bytes arrived, and mid-turn
         // that is itself the signal (docs/03, risk R1) — an unknown record
         // format must never idle a running turn. But the same bytes are not a
@@ -143,13 +148,15 @@ public actor ClaudeCodeProvider: ActivityProvider {
         // session back to Working. A real new turn opens with a prompt the
         // classifier can read; until one arrives, quiet sessions stay quiet.
         guard watch.reported == .working else { return false }
-        return report(.working, for: id, at: now)
+        return report(.working, for: id, at: now, heartbeat: true)
     }
 
     // MARK: - Emitting
 
     @discardableResult
-    func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
+    func report(
+        _ activity: SessionActivity, for id: SessionID, at now: Date, heartbeat: Bool = false
+    ) -> Bool {
         guard var watch = watched[id] else { return false }
         // `.working` repeats deliberately: the coordinator treats it as a
         // heartbeat and needs a fresh timestamp. `.idle` repeating is just noise.
@@ -173,7 +180,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
         watch.reported = activity
         watch.announced = true
         watched[id] = watch
-        yield(activity, from: watch, at: now)
+        yield(activity, from: watch, at: now, heartbeat: heartbeat)
         return true
     }
 
@@ -197,7 +204,9 @@ public actor ClaudeCodeProvider: ActivityProvider {
         }
     }
 
-    private func yield(_ activity: SessionActivity, from watch: TranscriptWatch, at now: Date) {
+    private func yield(
+        _ activity: SessionActivity, from watch: TranscriptWatch, at now: Date, heartbeat: Bool = false
+    ) {
         continuation.yield(
             ActivitySignal(
                 provider: .claudeCode,
@@ -209,6 +218,7 @@ public actor ClaudeCodeProvider: ActivityProvider {
                 name: watch.name,
                 timestamp: now,
                 confidence: .inferred,
-                tokensTotal: watch.tokens > 0 ? watch.tokens : nil))
+                tokensTotal: watch.tokens > 0 ? watch.tokens : nil,
+                heartbeat: heartbeat))
     }
 }

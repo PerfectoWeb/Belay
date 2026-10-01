@@ -146,7 +146,7 @@ public actor CodexProvider: ActivityProvider {
         // must not flip a quiet session back to Working; a real turn opens
         // with a marker.
         guard watch.reported == .working else { return false }
-        return report(.working, for: id, at: now)
+        return report(.working, for: id, at: now, heartbeat: true)
     }
 
     func seedExistingRollouts() {
@@ -160,7 +160,9 @@ public actor CodexProvider: ActivityProvider {
     // MARK: - Emitting
 
     @discardableResult
-    func report(_ activity: SessionActivity, for id: SessionID, at now: Date) -> Bool {
+    func report(
+        _ activity: SessionActivity, for id: SessionID, at now: Date, heartbeat: Bool = false
+    ) -> Bool {
         guard var watch = watched[id] else { return false }
         guard activity == .working || activity != watch.reported else { return false }
         // A session whose first word is "idle" is not news — it is the Codex
@@ -181,7 +183,7 @@ public actor CodexProvider: ActivityProvider {
         watch.reported = activity
         watch.announced = true
         watched[id] = watch
-        yield(activity, from: watch, at: now)
+        yield(activity, from: watch, at: now, heartbeat: heartbeat)
         return true
     }
 
@@ -194,7 +196,9 @@ public actor CodexProvider: ActivityProvider {
         yield(.ended, from: watch, at: now)
     }
 
-    private func yield(_ activity: SessionActivity, from watch: CodexWatch, at now: Date) {
+    private func yield(
+        _ activity: SessionActivity, from watch: CodexWatch, at now: Date, heartbeat: Bool = false
+    ) {
         continuation.yield(
             ActivitySignal(
                 provider: .codex,
@@ -203,6 +207,7 @@ public actor CodexProvider: ActivityProvider {
                 workspace: watch.workspace,
                 timestamp: now,
                 confidence: .inferred,
-                tokensTotal: watch.tokens > 0 ? watch.tokens : nil))
+                tokensTotal: watch.tokens > 0 ? watch.tokens : nil,
+                heartbeat: heartbeat))
     }
 }

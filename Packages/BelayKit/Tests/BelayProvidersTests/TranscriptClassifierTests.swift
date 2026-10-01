@@ -34,6 +34,20 @@ struct TranscriptClassifierTests {
         #expect(TranscriptClassifier.activity(in: [record("user")]) == .working)
     }
 
+    /// Only a typed prompt opens a turn; a tool result and an assistant
+    /// record continue one. Nothing but the block's `type` is read.
+    @Test("A prompt begins a turn, a tool result does not")
+    func beginsTurn() {
+        let prompt = TranscriptScratch.record("user", content: "\"hi\"")
+        let blocks = TranscriptScratch.record("user", content: #"[{"type":"text","text":"hi"}]"#)
+        let result = TranscriptScratch.record(
+            "user", content: #"[{"type":"tool_result","tool_use_id":"t","content":"ok"}]"#)
+        #expect(TranscriptClassifier.verdict(in: [prompt])?.beginsTurn == true)
+        #expect(TranscriptClassifier.verdict(in: [blocks])?.beginsTurn == true)
+        #expect(TranscriptClassifier.verdict(in: [result])?.beginsTurn == false)
+        #expect(TranscriptClassifier.verdict(in: [record("assistant")])?.beginsTurn == false)
+    }
+
     @Test("Metadata after the turn does not hide the assistant record")
     func metadataTailIsIgnored() {
         let lines = [

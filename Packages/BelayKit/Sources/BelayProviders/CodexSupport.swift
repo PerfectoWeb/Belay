@@ -140,7 +140,7 @@ extension CodexProvider {
             // answer is still owed: that is a stall, and the session ends as
             // one rather than idling as a finished turn.
             if watch.turnOpen, silence <= configuration.openTurnGrace {
-                report(.working, for: id, at: now)
+                report(.working, for: id, at: now, heartbeat: true)
                 continue
             }
             if watch.turnOpen {

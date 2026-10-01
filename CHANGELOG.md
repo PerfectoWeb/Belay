@@ -59,6 +59,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   codex binary was found" with hooks written but never trusted. A Codex
   switched on under the old build is dead until it is switched off and on
   again.
+- A session parked on a tool call that waits for a wake-up (a scheduled
+  loop, for instance) no longer turns "working" five minutes after its Stop
+  hook, so it is neither held awake nor announced by Nudge as gone quiet
+  when it expires: once a hook is stale, the transcript outranks it only
+  when a turn has opened or closed since; a tool result, an assistant
+  record mid-turn or bytes alone keep the session on the books and nothing
+  more.
+- Nudge's "went quiet" follows the minimum run too: a session closed seconds
+  after it was opened is not announced.
 - Belay now asks codex at launch whether it still trusts the hooks, and
   writes the trust again when it does not. Codex updates and a failed
   install both left the hooks written but silently skipped.

@@ -153,7 +153,7 @@ extension CopilotProvider {
             // leave the turn looking open for the whole grace.
             if ingest(watch.url, now: now) { continue }
             if watch.turnOpen, silence <= configuration.openTurnGrace {
-                report(.working, for: id, at: now)
+                report(.working, for: id, at: now, heartbeat: true)
                 continue
             }
             if watch.turnOpen {

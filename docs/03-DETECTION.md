@@ -194,7 +194,13 @@ inspection as best-effort and never depend on it for correctness.
 For a given session, the coordinator prefers:
 
 1. an `.exact` signal newer than `hookFreshnessWindow` (default 5 min)
-2. otherwise the newest `.inferred` signal
+2. otherwise the newest `.inferred` signal, provided it is newer than the
+   exact one (by more than `SessionState.inferredLead`); a transcript that
+   has not moved since the hook cannot know more than the hook did, and a
+   record that only continues a turn (a tool result, an assistant record, or
+   bytes with no readable record; `ActivitySignal.heartbeat`) refreshes the
+   TTL only, never the reading: a turn opens with the person's prompt and
+   closes with `end_turn`, and only those two move it
 3. a session with **no** signal for `sessionTTL` (default 10 min) is evicted
 
 When Tier B is active for a session, the transcript watcher for that session

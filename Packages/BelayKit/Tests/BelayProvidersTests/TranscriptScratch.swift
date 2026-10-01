@@ -104,11 +104,13 @@ final class TranscriptScratch {
         return formatter.string(from: Date())
     }
 
-    static func record(_ type: String, stop: String? = nil, at time: String = sampleTime) -> String {
+    static func record(
+        _ type: String, stop: String? = nil, at time: String = sampleTime, content: String = "[]"
+    ) -> String {
         var message = ""
         if type == "assistant" || type == "user" {
             let reason = stop.map { "\"stop_reason\":\"\($0)\"," } ?? ""
-            message = ",\"message\":{\(reason)\"role\":\"\(type)\",\"content\":[]}"
+            message = ",\"message\":{\(reason)\"role\":\"\(type)\",\"content\":\(content)}"
         }
         return "{\"type\":\"\(type)\",\"sessionId\":\"s\",\"timestamp\":\"\(time)\"\(message)}"
     }

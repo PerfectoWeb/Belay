@@ -52,7 +52,7 @@ extension ClaudeCodeProvider {
             // would evict the session mid-retry. A dead CLI does not get the
             // grace; Tier C ends its session within a sweep or two.
             if watch.awaitingAssistant, silence <= configuration.awaitingAssistantGrace {
-                report(.working, for: id, at: now)
+                report(.working, for: id, at: now, heartbeat: true)
                 continue
             }
             if watch.awaitingAssistant {
@@ -116,7 +116,7 @@ extension ClaudeCodeProvider {
             // A freshly started child means a tool is running (risk R6).
             if busy?.contains(record.pid) == true {
                 watched[record.session]?.lastBusyChildAt = now
-                report(.working, for: record.session, at: now)
+                report(.working, for: record.session, at: now, heartbeat: true)
             }
         }
     }

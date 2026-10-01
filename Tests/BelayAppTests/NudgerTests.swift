@@ -162,6 +162,7 @@ final class NudgerTests: XCTestCase {
         let nudger = try makeNudger()
         nudger.start()
         nudger.observe(snapshot(.working))
+        clock.advance(by: 60)
         nudger.observe(snapshot(nil))
 
         XCTAssertEqual(sounds.played, [.nudgeQuiet])

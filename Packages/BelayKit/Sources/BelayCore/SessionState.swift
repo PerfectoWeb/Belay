@@ -90,13 +90,14 @@ public struct SessionState: Sendable, Equatable, Identifiable {
     }
 
     public var lastSignal: Date {
-        switch (exact?.at, inferred?.at) {
-        case (let exactAt?, let inferredAt?): return max(exactAt, inferredAt)
-        case (let exactAt?, nil): return exactAt
-        case (nil, let inferredAt?): return inferredAt
-        case (nil, nil): return firstSeen
-        }
+        let readings = [exact?.at, inferred?.at, lastHeartbeat].compactMap { $0 }
+        return readings.max() ?? firstSeen
     }
+
+    /// The last time bytes landed in the transcript without a readable
+    /// record. Kept apart from `inferred` so a flush after a Stop refreshes
+    /// the TTL without lending the stale reading a newer date.
+    public var lastHeartbeat: Date?
 
     /// Records an observation, ignoring anything older than what that slot
     /// already holds. Out-of-order delivery is normal: the transcript watcher
@@ -116,8 +117,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
                 backgroundSince = running > 0 ? signal.timestamp : nil
             }
         case .inferred:
-            if let existing = inferred, existing.at > signal.timestamp { return }
-            inferred = reading
+            guard recordInferred(reading, heartbeat: signal.heartbeat) else { return }
         }
         if let workspace = signal.workspace, !workspace.isEmpty {
             self.workspace = workspace
@@ -130,6 +130,20 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         // already reported the session, so this arrives late and must not be
         // dropped — but it never changes once known.
         if name == nil { name = signal.name }
+    }
+
+    /// Whether the reading was taken. A heartbeat is life, not news: the
+    /// transcript was flushed or continued, not opened or closed, so only
+    /// `lastHeartbeat` moves. The one exception is a session with no reading
+    /// yet, adopted mid-turn: its first heartbeat is all there is to go on.
+    private mutating func recordInferred(_ reading: Reading, heartbeat: Bool) -> Bool {
+        if let existing = inferred, existing.at > reading.at { return false }
+        if heartbeat, inferred != nil {
+            lastHeartbeat = max(lastHeartbeat ?? .distantPast, reading.at)
+            return false
+        }
+        inferred = reading
+        return true
     }
 
     /// How close behind an open a tool's *return* may land and still be the
@@ -166,59 +180,7 @@ public struct SessionState: Sendable, Equatable, Identifiable {
         }
     }
 
-    /// The fusion rule from docs/03, evaluated against `now`.
-    ///
-    /// An exact observation outranks any inferred one while it is fresh, which
-    /// is what stops a lagging file write from resurrecting a finished turn. Once
-    /// hooks go quiet for `freshness`, the file watcher takes over again.
-    public func effectiveActivity(
-        now: Date, freshness: TimeInterval, toolCallBudget: TimeInterval = .infinity
-    ) -> SessionActivity {
-        if exact?.activity == .ended || inferred?.activity == .ended { return .ended }
-        if let exact {
-            let fresh = now.timeIntervalSince(exact.at) <= freshness
-            let running = isInsideToolCall(now: now, budget: toolCallBudget)
-            let backgrounded = isInsideBackground(now: now)
-            if fresh || running || backgrounded { return exact.activity }
-        }
-        if let inferred { return inferred.activity }
-        return exact?.activity ?? .idle
-    }
-
-    /// Whether the agent is still inside a tool call it opened and, if so,
-    /// whether that claim is young enough to be worth believing.
-    public func isInsideToolCall(now: Date, budget: TimeInterval) -> Bool {
-        guard let since = openToolCallSince else { return false }
-        return now.timeIntervalSince(since) <= budget
-    }
-
-    /// Whether a Stop's background-task claim is still young enough to hold.
-    public func isInsideBackground(now: Date) -> Bool {
-        guard let since = backgroundSince else { return false }
-        return now.timeIntervalSince(since) <= AwakePolicy.backgroundTasksBudget
-    }
-
     public func isExpired(now: Date, ttl: TimeInterval) -> Bool {
         now.timeIntervalSince(lastSignal) > ttl
-    }
-
-    /// The moment an exact reading stops outranking the inferred one, which is
-    /// the earliest time `effectiveActivity` can flip with no new input at all.
-    /// `nil` when there is nothing to flip to, or the two already agree — the
-    /// crossing changes nothing then. Lets the driver wake exactly at the flip
-    /// instead of noticing it up to a safety tick late.
-    public func exactFreshnessDeadline(window: TimeInterval, toolCallBudget: TimeInterval) -> Date? {
-        guard let exact, let inferred, exact.activity != inferred.activity else { return nil }
-        // An open bracket suspends the crossing, so the moment worth waking for
-        // is the bracket's own ceiling instead.
-        if let since = openToolCallSince {
-            let ceiling = since + toolCallBudget
-            return max(ceiling, exact.at + window)
-        }
-        if let since = backgroundSince {
-            let ceiling = since + AwakePolicy.backgroundTasksBudget
-            return max(ceiling, exact.at + window)
-        }
-        return exact.at + window
     }
 }

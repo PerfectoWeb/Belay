@@ -39,6 +39,9 @@ struct ClaudeCodeRetryTests {
         await provider.sweepForIdle(now: start.addingTimeInterval(400))
         let held = await collector.wait(for: 3)
         #expect(held.map(\.activity) == [.working, .working, .working])
+        // The prompt opened the turn; the silence heartbeats only keep it on
+        // the books, so a hook's Stop in between is never outranked.
+        #expect(held.map(\.heartbeat) == [false, true, true])
 
         // The grace is a budget, not a promise: past it the answer is still
         // owed and nothing came, so the session went quiet — it did not finish.
