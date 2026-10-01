@@ -35,6 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Nudge's finished sound is two bright notes up a fifth, a small chord
+  instead of a single thud.
 - Settings › Modules: each module has a colour of its own, the icon bounces
   when the pointer arrives, every summary fits on one line, and the note
   under the list is gone. Nudge's icon is a bell with a badge, the same size

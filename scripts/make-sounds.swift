@@ -164,13 +164,20 @@ let sounds: [String: [Double]] = [
                 partials: [(2.0, 0.05)])
         ], length: 0.26),
 
-    // The Nudge module. Three single notes with nothing in common with the
-    // modes above but the family: a run that finished is the plainest, a
-    // session that waits for the person is a touch higher because it asks for
-    // something, and one that went quiet is the lowest and shortest, since it
-    // is news nobody wanted.
+    // The Nudge module. Nothing in common with the modes above but the
+    // family: a run that finished is two bright notes up a fifth, a small
+    // chord for good news; a session that waits for the person is a single
+    // note a touch higher because it asks for something; one that went quiet
+    // is the lowest and shortest, since it is news nobody wanted.
     "nudge-finished": render(
-        [Note(frequency: 523.25, at: 0, decay: 0.085, level: 0.12)], length: 0.32),
+        [
+            Note(
+                frequency: 523.25, at: 0, decay: 0.11, level: 0.12,
+                partials: [(2.0, 0.11), (3.0, 0.04)]),
+            Note(
+                frequency: 783.99, at: 0.09, decay: 0.18, level: 0.13,
+                partials: [(2.0, 0.11), (3.17, 0.04)]),
+        ], length: 0.5),
     "nudge-waiting": render(
         [
             Note(
