@@ -346,8 +346,9 @@ func runImport(dryRun: Bool, prune: Bool) throws {
                 continue
             }
             // House rule, and one a spreadsheet breaks by itself: some editors
-            // turn a typed hyphen into an em dash without being asked.
-            if translation.contains("—") || translation.contains("–") {
+            // turn a typed hyphen into an em dash without being asked. The en
+            // dash is the one the interface does use.
+            if translation.contains("—") {
                 problems.append("\(language).csv:\(line): contains a dash we do not use")
             }
             if placeholders(translation) != placeholders(source) {

@@ -199,7 +199,7 @@ final class ModuleHostTests: XCTestCase {
     /// Store build must not offer the module that does.
     func testTheAppStoreBuildOffersOnlyWhatTheSandboxAllows() {
         let offered = ModuleDescriptor.offered(in: .appStore).map(\.id)
-        XCTAssertEqual(offered, [.screenshotCleaner, .micKeepWarm])
+        XCTAssertEqual(offered, [.screenshotCleaner, .micKeepWarm, .nudge, .orphanWatch])
         XCTAssertTrue(ModuleDescriptor.offered(in: .direct).map(\.id).contains(.autoAllow))
     }
 

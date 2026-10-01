@@ -36,16 +36,6 @@ struct ModulesPane: View {
                     }
                 }
             }
-
-            Text(
-                """
-                Modules are part of Belay and stay off until you install them. \
-                Installing downloads nothing.
-                """
-            )
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .fixedSize(horizontal: false, vertical: true)
         }
         .onChange(of: browsing.query) { onReshaped() }
         .onChange(of: browsing.scope) { onReshaped() }

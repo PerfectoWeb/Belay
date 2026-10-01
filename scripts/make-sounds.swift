@@ -164,6 +164,26 @@ let sounds: [String: [Double]] = [
                 partials: [(2.0, 0.05)])
         ], length: 0.26),
 
+    // The Nudge module. Three single notes with nothing in common with the
+    // modes above but the family: a run that finished is the plainest, a
+    // session that waits for the person is a touch higher because it asks for
+    // something, and one that went quiet is the lowest and shortest, since it
+    // is news nobody wanted.
+    "nudge-finished": render(
+        [Note(frequency: 523.25, at: 0, decay: 0.085, level: 0.12)], length: 0.32),
+    "nudge-waiting": render(
+        [
+            Note(
+                frequency: 659.25, at: 0, decay: 0.08, level: 0.12,
+                partials: [(2.0, 0.09), (3.17, 0.03)])
+        ], length: 0.30),
+    "nudge-quiet": render(
+        [
+            Note(
+                frequency: 392.00, at: 0, decay: 0.07, level: 0.11,
+                partials: [(2.0, 0.05)])
+        ], length: 0.26),
+
     // A button did something. Barely there on purpose.
     "tick": render(
         [

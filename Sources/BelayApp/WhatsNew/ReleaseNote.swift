@@ -74,6 +74,8 @@ enum ReleaseNotes {
         static let screenshot = "camera.viewfinder"
         static let microphone = "mic"
         static let allow = "checkmark.shield"
+        static let nudge = "bell.badge"
+        static let orphans = "point.3.connected.trianglepath.dotted"
     }
 
     /// Computed rather than stored: `LocalizedStringKey` is not `Sendable`, and
@@ -101,10 +103,26 @@ enum ReleaseNotes {
                         symbol: Mark.allow,
                         title: "Auto Allow in Codex",
                         body: """
-                            Clicks "Allow once" in the ChatGPT desktop app too, with the \
-                            same rules for local sites. Follows the Codex switch in Agents.
+                            Clicks "Allow once" in the ChatGPT desktop app too, using the same \
+                            rules for local sites. Works when Codex is enabled in Settings › \
+                            Agents.
                             """,
-                        directOnly: true)
+                        directOnly: true),
+                    .init(
+                        symbol: Mark.nudge,
+                        title: "Nudge",
+                        body: """
+                            Plays a sound when an agent finishes, needs you, or goes quiet. \
+                            Reminds you if it's still waiting. Click a notification to bring its \
+                            app to the front.
+                            """),
+                    .init(
+                        symbol: Mark.orphans,
+                        title: "Orphan Watch",
+                        body: """
+                            Shows processes left running after a session ends and high CPU use \
+                            while an agent is idle. Never reads command lines or file contents.
+                            """)
                 ]
             )
         ]

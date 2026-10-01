@@ -84,6 +84,7 @@ final class BelayController {
         assertions = PowerAssertionController()
         powerSource = PowerSourceMonitor()
         notifier = Notifier(settings: settings)
+        state.modules.nudge.notices = NotifierNotices(notifier: notifier)
         nightDimming = NightDimmingController(settings: settings, state: state)
         #if !BELAY_MAS
         lidHold = LidHoldController(settings: settings, state: state, notifier: notifier)
@@ -241,6 +242,7 @@ final class BelayController {
             for announcement in announcements {
                 if case .finished = announcement { self.awayWatch.noteFinished() }
             }
+            self.state.modules.nudge.observe(snapshot)
             await self.notifier.handle(announcements)
         }
     }

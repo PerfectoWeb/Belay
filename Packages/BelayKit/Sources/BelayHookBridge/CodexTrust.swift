@@ -122,14 +122,35 @@ enum CodexAppServer {
     /// ChatGPT app's bundled copy is the fallback that exists on this Mac's
     /// kind of install, where nothing was ever symlinked into the PATH.
     static func locateBinary() -> URL? {
-        let candidates = [
-            "/usr/local/bin/codex",
-            "/opt/homebrew/bin/codex",
-            "/Applications/ChatGPT.app/Contents/Resources/codex"
-        ]
+        locateBinary(
+            onPath: ["/usr/local/bin/codex", "/opt/homebrew/bin/codex"],
+            chatGPT: URL(fileURLWithPath: "/Applications/ChatGPT.app"))
+    }
+
+    /// ChatGPT 26.928 moved its codex from `Resources/codex` into a
+    /// `Resources/codex-cli/` layout whose `codex-package.json` names the
+    /// entry point, a launcher script in `bin/`. The manifest is read so the
+    /// next move inside that layout does not break the lookup; the old flat
+    /// path still counts for an app that has not updated.
+    static func locateBinary(onPath: [String], chatGPT: URL) -> URL? {
+        let resources = chatGPT.appendingPathComponent("Contents/Resources", isDirectory: true)
+        let layout = resources.appendingPathComponent("codex-cli", isDirectory: true)
+        var candidates = onPath
+        if let entry = bundledEntryPoint(in: layout) { candidates.append(entry) }
+        candidates.append(layout.appendingPathComponent("bin/codex").path)
+        candidates.append(resources.appendingPathComponent("codex").path)
         for path in candidates where FileManager.default.isExecutableFile(atPath: path) {
             return URL(fileURLWithPath: path)
         }
         return nil
+    }
+
+    private static func bundledEntryPoint(in layout: URL) -> String? {
+        let manifest = layout.appendingPathComponent("codex-package.json")
+        guard let data = try? Data(contentsOf: manifest),
+            let parsed = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+            let entry = parsed["entrypoint"] as? String, !entry.isEmpty, !entry.hasPrefix("/")
+        else { return nil }
+        return layout.appendingPathComponent(entry).path
     }
 }

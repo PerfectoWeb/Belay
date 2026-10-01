@@ -15,9 +15,24 @@
 <h2>Belay 2.1.0</h2>
 <ul>
   <li><b>Auto Allow in Codex.</b> Clicks "Allow once" in the ChatGPT desktop
-      app too, with the same rules for local sites. Follows the Codex switch
-      in Agents.</li>
-  <li>A page shown inside the Claude or Codex window, such as a site in the
-      agent's browser, is no longer read as a request card.</li>
+      app too, using the same rules for local sites. Works when Codex is
+      enabled in Settings › Agents.</li>
+  <li><b>Nudge</b>, a new module. Plays a sound when an agent finishes,
+      needs you, or goes quiet, and reminds you if it's still waiting.
+      Click a notification to bring its app to the front.</li>
+  <li><b>Orphan Watch</b>, a new module. Shows processes left running after
+      a session ends and high CPU use while an agent is idle. End asks a
+      process to quit after you confirm. Never reads command lines or file contents.</li>
+  <li>Auto Allow returns you to your previous app after checking a background
+      session, unless you've started using your Mac.</li>
+  <li>With Precise Detection on, Auto Allow no longer opens background Claude
+      sessions unnecessarily after a turn ends.</li>
+  <li>Precise Detection works with ChatGPT 26.928's bundled Codex again.
+      If setup failed after that ChatGPT update, turn Codex off and on in
+      Settings › Agents after updating Belay.</li>
+  <li>Modules are easier to scan, with distinct colors, shorter summaries,
+      and icons that animate on hover.</li>
+  <li>Auto Allow no longer mistakes embedded web pages in Claude or Codex
+      for permission requests.</li>
 </ul>
 <p class="quiet">Auto Allow requires Accessibility access.</p>

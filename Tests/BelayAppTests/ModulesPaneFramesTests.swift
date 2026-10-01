@@ -23,6 +23,7 @@ final class ModulesPaneFramesTests: XCTestCase {
 
         let sweeper = ScreenshotSweeper(list: { _ in [] }, trash: { _ in })
         let screen = FakeScreen()
+        let processes = FakeProcesses()
         let host = ModuleHost(
             defaults: defaults,
             screenshots: ScreenshotCleaner(defaults: defaults, sweeper: sweeper),
@@ -30,6 +31,10 @@ final class ModulesPaneFramesTests: XCTestCase {
                 defaults: defaults, tap: FakeTap(name: "MacBook Pro Microphone"),
                 surroundings: FakeMac().surroundings),
             autoAllow: AutoAllower(defaults: defaults, screens: [.claude: screen]),
+            nudge: Nudger(
+                defaults: defaults, sounds: FakeSounds(), notices: FakeNotices(),
+                finder: FakeAgentApps()),
+            orphans: OrphanWatcher(defaults: defaults, source: processes),
             captureFolder: { URL(fileURLWithPath: NSHomeDirectory() + "/Desktop") }
         )
         defer { host.stop() }
@@ -56,6 +61,11 @@ final class ModulesPaneFramesTests: XCTestCase {
         wait(for: [warm], timeout: 5)
         try write("modules-microphone", host, to: out)
 
+        host.install(.nudge)
+        try write("modules-nudge-installed", host, to: out)
+        host.browsing.expanded = .nudge
+        try write("modules-nudge-settings", host, to: out)
+
         host.install(.autoAllow)
         host.browsing.expanded = .autoAllow
         try write("modules-autoallow-empty", host, to: out)
@@ -71,6 +81,19 @@ final class ModulesPaneFramesTests: XCTestCase {
         let again = expectation(description: "looked again")
         host.autoAllow.tick { again.fulfill() }
         wait(for: [again], timeout: 5)
+
+        host.install(.orphanWatch)
+        host.browsing.expanded = .orphanWatch
+        try write("modules-orphans-empty", host, to: out)
+        processes.put(100, "claude")
+        processes.put(101, "zsh", parent: 100)
+        processes.put(102, "node", parent: 101, started: 5)
+        processes.put(103, "next-server", parent: 101, started: 40)
+        host.orphans.sweep()
+        processes.drop(100)
+        processes.drop(101)
+        host.orphans.sweep()
+        try write("modules-orphans-two", host, to: out)
         host.browsing.expanded = nil
         try write("modules-all-installed", host, to: out)
     }

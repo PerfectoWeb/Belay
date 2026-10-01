@@ -6,7 +6,11 @@ import SwiftUI
 struct ModuleCard: View {
     let module: ModuleDescriptor
     var host: ModuleHost
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var hoveringSettings = false
+    @State private var hovering = false
+    /// Counts the pointer's arrivals: the icon bounces once per arrival.
+    @State private var arrivals = 0
 
     private var isInstalled: Bool { host.ledger.isInstalled(module.id) }
     private var isEnabled: Bool { host.ledger.isEnabled(module.id) }
@@ -26,6 +30,15 @@ struct ModuleCard: View {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(Color.primary.opacity(isInstalled && !isEnabled ? 0.022 : 0.045))
         )
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(module.tint.opacity(hovering ? 0.08 : 0))
+        )
+        .animation(.easeOut(duration: 0.18), value: hovering)
+        .onHover { inside in
+            hovering = inside
+            if inside, !reduceMotion { arrivals += 1 }
+        }
     }
 
     private var header: some View {
@@ -33,10 +46,11 @@ struct ModuleCard: View {
             Image(systemName: module.symbol)
                 .font(.system(size: 17, weight: .medium))
                 .foregroundStyle(.white)
+                .symbolEffect(.bounce, value: arrivals)
                 .frame(width: 36, height: 36)
                 .background(
                     RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .fill(Color.accentColor)
+                        .fill(module.tint)
                 )
                 .opacity(isInstalled && !isEnabled ? 0.4 : 1)
                 .accessibilityHidden(true)
@@ -47,7 +61,7 @@ struct ModuleCard: View {
                 Text(module.summary)
                     .font(.system(size: 11))
                     .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(1)
                 if isInstalled {
                     ModuleStatusLine(module: module.id, host: host)
                         .padding(.top, 2)
@@ -97,6 +111,10 @@ struct ModuleCard: View {
             MicKeepWarmSettings(keeper: host.microphone) { host.remove(module.id) }
         case .autoAllow:
             AutoAllowSettings(allower: host.autoAllow) { host.remove(module.id) }
+        case .nudge:
+            NudgeSettings(nudger: host.nudge) { host.remove(module.id) }
+        case .orphanWatch:
+            OrphanWatchSettings(watcher: host.orphans) { host.remove(module.id) }
         default:
             EmptyView()
         }

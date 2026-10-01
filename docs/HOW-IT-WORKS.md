@@ -198,19 +198,21 @@ there the module gives the button the focus and sends the Return key to the
 Codex process, and only while the button says it has the focus.
 
 A request card exists only in the session the window is showing, and agents
-mostly work in the ones behind it. With "Answer in sessions behind the
-window" on, the module reads the list of sessions beside the window, and when
-one says it is awaiting input (Claude) or awaiting approval (Codex) it opens
-that session, answers what the rules cover, and brings back the session you
-had open. It does that only when the shown session has nothing to answer,
-only once the keyboard and the pointer have been still for five seconds, in
+mostly work in the ones behind it. With "Answer in sessions behind the window"
+on, the module reads the list of sessions beside the window, and when one says
+it is awaiting input (Claude) or awaiting approval (Codex) it opens that
+session, answers what the rules cover, and brings back the session you had
+open. It does that only when the shown session has nothing to answer, only
+once the keyboard and the pointer have been still for five seconds, in
 whatever app you are working, and one session at a time. Bringing a session
 into the window can pull the app to the front, which is why it waits for a
-pause and never cuts into a sentence. A session that turned out to wait for
-something the rules do not cover is not opened again until it has moved on.
-Two sessions with the same name are left alone, since they cannot be told
-apart, and so is a list where the session on show has a namesake, since the
-way back would be in doubt.
+pause and never cuts into a sentence. When a visit has pulled the agent's app
+to the front, the app that was in front before is brought back, unless the
+keyboard or the pointer has moved in the meantime. A session that turned out
+to wait for something the rules do not cover is not opened again until it has
+moved on. Two sessions with the same name are left alone, since they cannot be
+told apart, and so is a list where the session on show has a namesake, since
+the way back would be in doubt.
 
 A page shown inside either window, such as a site in the agent's own browser,
 is passed over: whatever it draws is not a request card.
@@ -224,6 +226,77 @@ set to English; in Codex it knows the button and the mark in every language
 the app speaks. It recognises the card and the list by what each app calls
 them: if an update changes that, the module finds nothing and presses nothing
 until Belay is updated.
+
+**Nudge** says it out loud when an agent finishes, waits for you or goes quiet.
+It reads the same picture of your sessions the panel shows, which are working,
+which wait and which are gone, and nothing else: no transcript, no prompt.
+Three short sounds, one struck note each, tell the events apart without
+looking: a run that ended, a session that waits for you (a touch higher) and a
+session that went quiet (the lowest). Each has its own checkbox, and all of
+them follow the macOS setting for interface sound effects.
+
+A session that keeps waiting gets a reminder banner, "Still waiting for you",
+after the time you choose (2, 5, 10 or 15 minutes, or never), again at the
+same interval, and at most as many times as you choose (1, 3, 5 or 10). The
+first banner, "An agent is waiting for you", is the one from Notifications and
+the module does not repeat it; the count starts over when the session resumes.
+"A run finishes, naming its workspace" posts one banner per session, with the
+workspace and how long the run took, for runs at least as long as "Ignore runs
+shorter than" (10 seconds, 30 seconds, 1 minute or 5 minutes). Time spent
+waiting for you is not counted as time worked. This banner is per session,
+unlike "Your agent finished" in Notifications, which is per stretch of holding,
+so with both on you may get both. A subagent does not ring on its own: a run
+ending or a silence is about the session you started, while a subagent that
+waits for you does count, because the whole run stands still on it.
+
+Clicking a Nudge banner brings forward the app the session lives in. For a
+Claude Code session the session file in `~/.claude/sessions` says whether it
+runs inside the Claude desktop app; if so, that app. Otherwise the application
+that owns the session's process, the terminal or the editor, found by walking
+from the process up through its parents: only the process and parent-process
+numbers are read, never another process's arguments. For Codex it is the
+ChatGPT app, when it is running. When none of these can be found, the banner
+raises nothing.
+
+The first switch-on asks macOS for permission to send notifications. If that
+is refused the card says so in red and offers the button to System Settings;
+the sounds carry on.
+
+**Orphan Watch** finds what an agent started and left running after its
+session ended: a dev server, an MCP server, a headless browser nobody closed.
+Once a minute it reads the process table, the same table Belay reads to tell
+whether an agent is alive, and takes as agents every process named `claude` or
+`codex` and every process in Claude Code's session registry that is still the
+process that wrote its file. It remembers what runs below each of them, up to
+eight levels down, by number and start time. When an agent is gone, or its
+number belongs to another process now, whatever it started and still runs is
+listed as left behind, with its name, its number, its age and the agent it
+came from. Only what was seen below a live agent is listed, so a process that
+was orphaned before Belay looked is not claimed, and nothing is written to disk
+except the rules and the names you ignore. A number handed out again is never
+taken for the old process: the start time has to match too.
+
+With "List processes running hot" on, as it is by default, an agent process or
+one of its descendants that averaged more than the share of a core you chose
+(30, 50 or 80 percent) over the time you chose (5, 10 or 30 minutes) is listed
+as running hot, provided no session of that agent was working in Belay's own
+view at any point in that time. The CPU time comes from the system for the
+remembered processes only.
+
+Names are the short command name the system keeps (sixteen characters), never a
+path and never arguments: Belay does not read another process's command line.
+"Ignore" on a row leaves that name out of the list and the counts. A banner,
+"Left behind by an agent", says so once when something new appears, in one
+banner per look, and a click on it opens Settings ▸ Modules.
+
+In the direct build, "End" on a row and "End All" ask first, then send each
+process the polite request to quit (SIGTERM), look again two seconds later and
+say how many are still running. Nothing stronger is ever sent and nothing is
+ended without a press. "End All" covers what was left behind, never a process
+listed as running hot, which may be an agent that is working. The App Store
+build lists and ends nothing, since its sandbox lets no signal out; the card
+points to Activity Monitor. Orphan Watch follows the agent's switch in
+**Settings ▸ Agents** like the other modules that work for an agent.
 
 ## Talking to Belay from anything
 

@@ -1,3 +1,4 @@
+import BelayCore
 import BelayModules
 import Foundation
 
@@ -190,4 +191,121 @@ final class TestClock: @unchecked Sendable {
     var now: Date { lock.withLock { moment } }
 
     func advance(by seconds: TimeInterval) { lock.withLock { moment += seconds } }
+}
+
+/// The nudge's sound: a list of what was asked for.
+@MainActor
+final class FakeSounds: NudgeSounds {
+    private(set) var played: [Feedback.Sound] = []
+
+    func play(_ sound: Feedback.Sound) { played.append(sound) }
+    func clear() { played.removeAll() }
+}
+
+/// The nudge's banners: what was posted, and what macOS would answer.
+@MainActor
+final class FakeNotices: NudgeNotices {
+    struct Banner: Equatable {
+        let title: String
+        let body: String
+        let bundleID: String?
+    }
+
+    private(set) var posted: [Banner] = []
+    private(set) var asked = 0
+    var refused = false
+
+    func post(title: String, body: String, raising bundleID: String?) {
+        posted.append(Banner(title: title, body: body, bundleID: bundleID))
+    }
+
+    func authorize() async -> Bool {
+        asked += 1
+        return !refused
+    }
+
+    func isRefused() async -> Bool { refused }
+}
+
+/// Which app each session lives in, as a test wants it.
+@MainActor
+final class FakeAgentApps: AgentAppFinding {
+    private var apps: [SessionID: String] = [:]
+
+    func seat(_ session: String, in bundleID: String) {
+        apps[SessionID(session)] = bundleID
+    }
+
+    func bundleID(provider: ProviderID, session: SessionID) -> String? {
+        apps[session]
+    }
+}
+
+/// A process table that is a dictionary.
+struct FakeAncestry: ProcessAncestry {
+    var apps: [pid_t: String] = [:]
+    var parents: [pid_t: pid_t] = [:]
+
+    func owningApp(ofPid pid: pid_t) -> String? {
+        ProcessWalk.owner(of: pid, parent: { parents[$0] }, app: { apps[$0] })
+    }
+}
+
+/// A process table a test writes by hand. Ending a process removes its row,
+/// unless the test made it stubborn.
+final class FakeProcesses: ProcessSource, @unchecked Sendable {
+    static let epoch = Date(timeIntervalSince1970: 1_790_000_000)
+
+    private let lock = NSLock()
+    private var rows: [ProcessSnapshot] = []
+    private var registry: [pid_t: Date] = [:]
+    private var readable = true
+    private var stubborn: Set<pid_t> = []
+    private var readCount = 0
+    private var termed: [pid_t] = []
+
+    /// How often the table was read.
+    var reads: Int { lock.withLock { readCount } }
+    /// Who was sent SIGTERM, in order.
+    var signalled: [pid_t] { lock.withLock { termed } }
+
+    func put(
+        _ pid: pid_t, _ name: String, parent: pid_t = 1, started: TimeInterval = 0,
+        cpu: Double? = nil
+    ) {
+        let row = ProcessSnapshot(
+            pid: pid, parent: parent, name: name,
+            startedAt: Self.epoch.addingTimeInterval(started), cpuSeconds: cpu)
+        lock.withLock {
+            rows.removeAll { $0.pid == pid }
+            rows.append(row)
+        }
+    }
+
+    func drop(_ pid: pid_t) { lock.withLock { rows.removeAll { $0.pid == pid } } }
+
+    func register(_ pid: pid_t, writtenAt seconds: TimeInterval) {
+        lock.withLock { registry[pid] = Self.epoch.addingTimeInterval(seconds) }
+    }
+
+    func makeReadable(_ readable: Bool) { lock.withLock { self.readable = readable } }
+    func ignoreSignals(from pid: pid_t) { lock.withLock { _ = stubborn.insert(pid) } }
+
+    func table() -> [ProcessSnapshot]? {
+        lock.withLock {
+            readCount += 1
+            return readable ? rows : nil
+        }
+    }
+
+    func cpuSeconds(of pids: [pid_t]) -> [pid_t: Double] { [:] }
+    func sessionRegistry() -> [pid_t: Date] { lock.withLock { registry } }
+
+    func terminate(_ pid: pid_t) -> Bool {
+        lock.withLock {
+            termed.append(pid)
+            if !stubborn.contains(pid) { rows.removeAll { $0.pid == pid } }
+            return true
+        }
+    }
 }

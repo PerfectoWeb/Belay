@@ -21,6 +21,8 @@ struct ModuleStatusLine: View {
             case .screenshotCleaner: screenshots
             case .micKeepWarm: microphone
             case .autoAllow: autoAllow
+            case .nudge: nudge
+            case .orphanWatch: orphans
             default: EmptyView()
             }
         }
@@ -52,6 +54,27 @@ struct ModuleStatusLine: View {
             Text("No microphone found.").foregroundStyle(.secondary)
         case .off:
             Text(verbatim: " ")
+        }
+    }
+
+    @ViewBuilder private var nudge: some View {
+        if host.nudge.notificationsRefused {
+            Text("Notifications are off for Belay in System Settings.").foregroundStyle(.red)
+        } else if host.nudge.waiting > 0 {
+            Text("Waiting for you: \(host.nudge.waiting)").foregroundStyle(.secondary)
+        } else {
+            Text("Listening for your agents").foregroundStyle(.secondary)
+        }
+    }
+
+    @ViewBuilder private var orphans: some View {
+        let found = host.orphans.findings
+        if !found.leftBehind.isEmpty {
+            Text("Left behind: \(found.leftBehind.count)").foregroundStyle(.orange)
+        } else if !found.hot.isEmpty {
+            Text("Running hot: \(found.hot.count)").foregroundStyle(.orange)
+        } else {
+            Text("Nothing left behind").foregroundStyle(.secondary)
         }
     }
 

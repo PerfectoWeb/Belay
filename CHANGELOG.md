@@ -18,13 +18,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   language Codex speaks. Sessions behind the window are visited the same way
   as in Claude. Each app follows its agent's switch in Settings › Agents, and
   the card says which agent is switched off.
+- Nudge, a new module: a short sound when an agent finishes a run, waits for
+  you or goes quiet, each with its own checkbox, a "Still waiting for you"
+  reminder while a session keeps waiting (every 2 to 15 minutes, at most 1 to
+  10 times), and a banner naming the workspace when a run ends. Runs shorter
+  than the limit you set are ignored. Clicking a banner brings forward the app
+  the session lives in: the Claude desktop app, the terminal or editor that
+  owns the session, or the ChatGPT app for Codex. Available in both builds.
+- Orphan Watch, a module for both builds, lists what an agent started and left
+  running after its session ended, such as a dev server or an MCP server, and
+  any agent process that keeps a core busy while none of its sessions is
+  working. It reads process names and numbers only, never command lines. In
+  the direct build "End" and "End All" ask the process to quit after you
+  confirm; nothing is ended by itself. One banner says so when something new
+  is left behind.
 
 ### Changed
 
+- Settings › Modules: each module has a colour of its own, the icon bounces
+  when the pointer arrives, every summary fits on one line, and the note
+  under the list is gone. Nudge's icon is a bell with a badge, the same size
+  as the others.
 - A page shown inside the Claude or Codex window, such as a site in the
   agent's browser, is no longer read: whatever it draws is not a request card.
 - A session behind the window is visited only when the session on show has a
   name of its own in the list, so that the way back is never in doubt.
+- After a visit to a session behind the window, the app that was in front
+  before comes back, unless the Mac was in use in the meantime.
+- With Precise Detection on, a Claude session behind the window is visited
+  only while one of its tool calls is under way, since that is the only time
+  a request card can be up. A session that had just finished its turn was
+  sometimes opened for nothing.
+
+### Fixed
+
+- Precise Detection for Codex finds the codex that ChatGPT 26.928 bundles in
+  its new `codex-cli` folder, so switching Codex on no longer ends in "no
+  codex binary was found" with hooks written but never trusted. A Codex
+  switched on under the old build is dead until it is switched off and on
+  again.
+- Belay now asks codex at launch whether it still trusts the hooks, and
+  writes the trust again when it does not. Codex updates and a failed
+  install both left the hooks written but silently skipped.
 
 ## [2.0.0] - 2026-09-30
 

@@ -48,6 +48,22 @@ the site that was approved and when, in a list of the latest fifty that you can
 see in the module's settings. The rest of the window, your conversation
 included, is passed over and not kept.
 
+The Nudge module, if you install it, reads which of your agent sessions are
+working, waiting or gone, and the workspace name of each, only to word its
+banners; none of it is stored or written to the log. To bring the right app
+forward after a click it looks the session up in `~/.claude/sessions` (the
+process number, and whether it runs inside the Claude desktop app) and reads
+the process and parent-process numbers from the list of processes on the Mac.
+It never reads another process's arguments or environment.
+
+The Orphan Watch module, if you install it, reads the process table of your
+Mac: for each process its number, its parent's number, its start time and its
+short command name, and the CPU time of the processes an agent started. It
+never reads what a process was asked to do, its arguments, its environment, its
+files or its memory. Of Claude Code's session files it reads the name and the
+time of last change, not what is inside. The only thing kept is the list of
+names you ask it to ignore; the log holds counts, never a name.
+
 ## What leaves your Mac
 
 **Mac App Store.** Belay makes no outbound network connections. That build ships
@@ -97,6 +113,15 @@ back; for this it reads the names of your sessions and keeps them only for the
 length of that look, never on disk and never in the log. It presses nothing
 else, in these apps or in any other, and it stops when its time runs out or
 you switch it off.
+
+The Nudge module plays sounds and posts notifications. When you click one of
+its notifications it brings to the front an app that is already running, and it
+does nothing else to it: it closes nothing, types nothing and sends nothing.
+
+The Orphan Watch module in the direct build ends a process only when you press
+End on it, or End All, and confirm. It asks the process to quit (SIGTERM) and
+does nothing stronger; it never ends anything by itself. The App Store build
+cannot send a signal and ends nothing.
 
 ## Sharing
 

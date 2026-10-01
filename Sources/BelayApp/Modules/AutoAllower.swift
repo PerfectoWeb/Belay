@@ -1,3 +1,4 @@
+import AppKit
 import BelayModules
 import Foundation
 import Observation
@@ -48,6 +49,9 @@ final class AutoAllower {
     @ObservationIgnored var onExpired: () -> Void = {}
     /// Whether the agent behind an app is switched on in Agents.
     @ObservationIgnored var agentIsOn: (AutoAllowRules.App) -> Bool = { _ in true }
+    /// Whether a session behind the window can be waiting on a card at all,
+    /// as far as the agent's hooks know. See `AutoAllower.mayBeAsking`.
+    @ObservationIgnored var mayHaveRequest: (AutoAllowRules.App) -> Bool = { _ in true }
 
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let screens: [AutoAllowRules.App: PromptScreen]
@@ -107,7 +111,7 @@ final class AutoAllower {
     }
 
     /// Every app this build can read, in one order.
-    private var desks: [AutoAllowDesk] {
+    var desks: [AutoAllowDesk] {
         AutoAllowRules.App.allCases.compactMap { app in
             guard let screen = screens[app] else { return nil }
             return AutoAllowDesk(app: app, screen: screen, visits: visits[app] ?? SessionVisits())
@@ -182,16 +186,21 @@ final class AutoAllower {
         // Asked here and not in the look: whether the person is at work is
         // a question about this moment.
         let mayReachBehind = rules.reachesBehind && !desks.contains { $0.screen.isInUse }
+        let reachable = Set(desks.map(\.app).filter { mayReachBehind && mayHaveRequest($0) })
+        // Where the person was before a visit, to be put back afterwards.
+        let front = reachable.isEmpty ? nil : NSWorkspace.shared.frontmostApplication
         Task { [weak self] in
             let looks = await Task.detached(priority: .utility) {
                 desks.map { desk in
                     let look = AutoAllowLook.take(
-                        at: desk, rules: rules, mayReachBehind: mayReachBehind, patience: patience)
+                        at: desk, rules: rules, mayReachBehind: reachable.contains(desk.app),
+                        patience: patience)
                     return (desk.app, look)
                 }
             }.value
             self?.isLooking = false
             for (app, look) in looks { self?.record(look, in: app) }
+            if looks.contains(where: { $0.1.reach != nil }) { self?.putBack(front) }
             self?.lookAgain()
             finished()
         }

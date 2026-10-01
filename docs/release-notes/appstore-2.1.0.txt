@@ -4,35 +4,58 @@ Nothing here may mention Precise Detection, hooks or Auto Allow: the App Store
 build is sandboxed and has none of them. Everything below is true of this
 build on its own.
 
-So far 2.1.0 changes nothing the App Store build has. The lines below are a
-placeholder for the store form; replace them once a fix or a feature for the
-store build lands, or submit a store build of this version only when there is
-one.
-
 --- EN ---
 
-Small improvements under the hood. Nothing changes in how Belay looks or works for you.
+Two new optional modules in Settings › Modules. Both stay off until you install them.
+
+Nudge plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.
+
+Orphan Watch shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.
 
 --- RU ---
 
-Небольшие внутренние улучшения. В работе и внешнем виде Belay ничего не меняется.
+Два новых модуля в Настройках › Модули. Каждый выключен до установки.
+
+«Напоминание» сообщает звуком о завершении работы, ожидании ответа или отсутствии активности. Если агент продолжает ждать, напоминает об этом. Нажмите на уведомление, чтобы перейти в его приложение.
+
+«Присмотр за процессами» показывает процессы, оставшиеся после завершения сессии, и высокую нагрузку на процессор, пока агент бездействует. Не читает команды запуска и содержимое файлов.
 
 --- DE ---
 
-Kleine Verbesserungen unter der Haube. An Aussehen und Verhalten von Belay ändert sich nichts.
+Zwei neue optionale Module unter Einstellungen › Module. Beide bleiben deaktiviert, bis du sie installierst.
+
+Anstoß spielt einen Ton, wenn ein Agent fertig ist, dich braucht oder keine Aktivität mehr zeigt. Erinnert dich, wenn er weiter wartet. Klicke auf eine Mitteilung, um seine App in den Vordergrund zu holen.
+
+Prozesswächter zeigt Prozesse, die nach Sitzungsende weiterlaufen, und hohe CPU-Auslastung, während ein Agent untätig ist. Liest keine Befehlszeilen oder Dateiinhalte.
 
 --- ES ---
 
-Pequeñas mejoras internas. Nada cambia en el aspecto ni en el funcionamiento de Belay.
+Dos nuevos módulos opcionales en Ajustes › Módulos. Permanecen desactivados hasta que los instales.
+
+Aviso reproduce un sonido cuando un agente termina, necesita tu atención o deja de mostrar actividad. Te avisa de nuevo si sigue esperando. Haz clic en una notificación para traer su app al frente.
+
+Vigilante de procesos muestra los procesos que siguen en ejecución tras finalizar una sesión y el uso elevado de CPU cuando un agente está inactivo. No lee líneas de comandos ni el contenido de los archivos.
 
 --- FR ---
 
-Petites améliorations internes. Rien ne change dans l’apparence ni le fonctionnement de Belay.
+Deux nouveaux modules facultatifs dans Réglages › Modules. Ils restent désactivés jusqu’à leur installation.
+
+Rappel émet un son quand un agent termine, a besoin de vous ou ne montre plus d’activité. Vous recevez un rappel si l’agent attend toujours. Cliquez sur une notification pour afficher son app au premier plan.
+
+Veille des processus affiche les processus qui continuent de tourner après la fin d’une session et une utilisation élevée du processeur lorsqu’un agent est inactif. Ne lit ni les lignes de commande ni le contenu des fichiers.
 
 --- IT ---
 
-Piccoli miglioramenti interni. Nulla cambia nell’aspetto o nel funzionamento di Belay.
+Due nuovi moduli opzionali in Impostazioni › Moduli. Restano disattivati finché non li installi.
+
+Promemoria emette un suono quando un agente termina, ha bisogno di te o non mostra più attività. Ti avvisa di nuovo se resta in attesa. Fai clic su una notifica per portare la sua app in primo piano.
+
+Controllo processi mostra i processi rimasti in esecuzione dopo la fine di una sessione e l’uso elevato della CPU quando un agente è inattivo. Non legge righe di comando né il contenuto dei file.
 
 --- ZH ---
 
-内部的小幅改进。Belay 的外观和使用方式没有变化。
+“设置 › 模块”中新增两个可选模块，安装后才会启用。
+
+“提醒”会在智能体完成、需要你回应或不再有活动时播放提示音。如果仍在等待，还会再次提醒。点按通知即可将其所在的 App 切到前台。
+
+“遗留进程监视”显示会话结束后仍在运行的进程，以及智能体空闲时的高 CPU 占用。不读取命令行或文件内容。

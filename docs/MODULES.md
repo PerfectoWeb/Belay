@@ -16,6 +16,8 @@ what they read and change is in [PRIVACY.md](PRIVACY.md).
 | **Screenshot Cleaner** | Moves screenshots to the Trash once they pass the age you choose | yes | yes | the screenshots folder |
 | **Warm Microphone** | Holds the microphone open so dictation hears the first word | yes | yes | the microphone |
 | **Auto Allow** | Presses "Allow once" in the Claude and Codex desktop apps for requests about local sites | no | yes | Accessibility |
+| **Nudge** | Plays a sound when an agent finishes, waits or goes quiet, and reminds you while one keeps waiting | yes | yes | notifications |
+| **Orphan Watch** | Lists processes an agent left running after its session ended, and the ones running hot; ends them when you press End (direct build) | yes | yes | nothing |
 
 ## What a module is, and is not
 
@@ -126,8 +128,8 @@ closures: list a folder, move a file to the Trash.
    `halt` and `remove`.
 5. **The card.** A descriptor in
    [`ModuleDescriptor.swift`](../Sources/BelayApp/Modules/ModuleDescriptor.swift)
-   with an SF Symbol, a title, a one-sentence summary and the builds it runs
-   in, added to `all`. The list, the search and the Installed filter read that
+   with an SF Symbol, a tint of its own, a title, a summary short enough for
+   one line in every language and the builds it runs in, added to `all`. The list, the search and the Installed filter read that
    array; there is no view to touch for them.
 6. **The settings.** A `<Name>Settings` view, one case in
    [`ModuleCard.swift`](../Sources/BelayApp/Modules/ModuleCard.swift) and one in
@@ -191,6 +193,13 @@ and `key=value` pairs, written when something changes and not on every tick.
 | `autoallow sees claude=… windows=… page=… session=… list=…`, `autoallow sees codex=…` | what it can read of an app changed |
 | `autoallow approved=… held=… failed=… beaten=… presses=… took=… scope=… app=…` with `refused=…` when the app gave an error for a press | a look that found requests, in that app |
 | `autoallow behind=… app=…`, `autoallow expired` | a session behind the window was visited, the time ran out |
+| `autoallow front=…` | after a visit: the app that was in front before was `restored`, was still there (`kept`), was `left` because the Mac was in use, or the system `refused` to bring it back |
+| `nudge start finish=… wait=… quiet=… names=… repeatMinutes=… repeatMax=… minimumRun=…`, `nudge rules …` | it started, a setting changed |
+| `nudge sees session(…) working->other top=1` | a session's activity as the nudge sees it changed; `other` is idle or gone, `top=0` is a subagent |
+| `nudge said kind=…` | one per event: `finished`, `waiting`, `quiet` or `reminder`, never a workspace or a session name |
+| `orphans start spinning=… percent=… minutes=… notifies=… ignored=…`, `orphans rules …` | it started, a setting changed |
+| `orphans sweep roots=… tracked=… orphans=… hot=…` | a look whose numbers differ from the look before |
+| `orphans ended=… failed=…` | after End or End All: what was gone two seconds later, and what was not |
 | `sound silent reason=microphone-undecided` | once a launch, when sounds are held back |
 
 A new module writes the same kind of lines: what it is set to when it starts,

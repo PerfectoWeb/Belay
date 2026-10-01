@@ -12,6 +12,9 @@ struct AgentProcessRecord: Sendable, Equatable {
     /// Two sessions in one checkout share a workspace, so this is the only thing
     /// that tells their rows apart. Display only, and only when it is needed.
     let name: String?
+    /// Where the session runs: "claude-desktop" inside the Claude desktop app,
+    /// something else (or nothing) for a terminal or an editor.
+    let entrypoint: String?
     let isAlive: Bool
 }
 
@@ -47,6 +50,7 @@ enum ProcessPresence {
                 session: SessionID(wire.sessionId),
                 workspace: wire.cwd.map { URL(fileURLWithPath: $0).lastPathComponent },
                 name: wire.name.flatMap { $0.isEmpty ? nil : $0 },
+                entrypoint: wire.entrypoint.flatMap { $0.isEmpty ? nil : $0 },
                 isAlive: isAlive(wire.pid))
         }
     }
@@ -65,4 +69,20 @@ private struct SessionFile: Decodable {
     let sessionId: String
     let cwd: String?
     let name: String?
+    let entrypoint: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case pid, sessionId, cwd, name, entrypoint
+    }
+
+    /// `entrypoint` is read on sufferance: a shape this build does not know
+    /// must cost the feature that wanted it, never the session's presence.
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        pid = try values.decode(pid_t.self, forKey: .pid)
+        sessionId = try values.decode(String.self, forKey: .sessionId)
+        cwd = try values.decodeIfPresent(String.self, forKey: .cwd)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        entrypoint = try? values.decodeIfPresent(String.self, forKey: .entrypoint)
+    }
 }

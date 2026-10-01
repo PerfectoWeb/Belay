@@ -15,6 +15,8 @@ public struct CodexHookInstaller: Sendable {
     public enum Outcome: Sendable, Equatable {
         case unchanged
         case written(backup: URL?)
+        /// The file was right; only codex's trust ledger was written.
+        case trusted
     }
 
     private let document: SettingsDocument
@@ -83,19 +85,30 @@ public struct CodexHookInstaller: Sendable {
         return outcome
     }
 
-    /// Self-heal for a moved port: rewrite and re-trust, only when installed.
+    /// Self-heal, only when installed: a moved port is rewritten and
+    /// re-trusted; on the current port codex is asked whether it still
+    /// trusts the hooks, since a codex update or an install whose trust step
+    /// failed leaves them written but inert, with nothing on screen to say so.
     @discardableResult
     public func reconcile(endpoint: BridgeEndpoint) throws -> Outcome {
         guard try isInstalled() else { return .unchanged }
         let expected = CodexHookConfiguration.url(port: endpoint.port)
         let current = SettingsMerge.installedURLs(
             in: try document.load(), vocabulary: CodexHookVocabulary.self)
-        guard current.contains(where: { $0 != expected }) else { return .unchanged }
-        let outcome = try install(endpoint: endpoint)
-        if case .written = outcome {
-            Log.bridge.info("Rewrote Codex hooks: the recorded receiver URL was stale")
+        if current.contains(where: { $0 != expected }) {
+            let outcome = try install(endpoint: endpoint)
+            if case .written = outcome {
+                Log.bridge.info("Rewrote Codex hooks: the recorded receiver URL was stale")
+            }
+            return outcome
         }
-        return outcome
+        let listed = try listHooks()
+        let wanted = try ownTrustKeys()
+        guard listed.contains(where: { wanted.contains($0.key) && !$0.isTrusted }) else {
+            return .unchanged
+        }
+        try trustOwnHooks(listed: listed)
+        return .trusted
     }
 
     // MARK: - Steps
@@ -114,8 +127,8 @@ public struct CodexHookInstaller: Sendable {
     /// Writes `trusted_hash` tables for exactly the hooks that are ours: same
     /// source file, marker in the command. A user's own hook in the same file
     /// is never touched — trusting someone else's hook is not Belay's call.
-    private func trustOwnHooks() throws {
-        let listed = try listHooks()
+    private func trustOwnHooks(listed: [CodexListedHook]? = nil) throws {
+        let listed = try listed ?? listHooks()
         let ours = listed.filter {
             $0.sourcePath == document.url.path && $0.key.hasPrefix(document.url.path + ":")
                 && !$0.currentHash.isEmpty

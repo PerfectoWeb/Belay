@@ -18,9 +18,12 @@ final class Notifier {
         case wentQuiet = "belay.went-quiet"
         case updateAvailable = "belay.update-available"
         case awaySummary = "belay.away-summary"
+        case nudge = "belay.nudge"
+        case orphans = "belay.orphans"
     }
 
-    private let centre: UNUserNotificationCenter
+    /// Internal, with `post` and `isAuthorized`: `NotifierNudge.swift` builds on them.
+    let centre: UNUserNotificationCenter
     private let settings: SettingsStore
     /// Sessions already announced as waiting, so a session that stays blocked
     /// for fifteen minutes produces one notification rather than fifteen.
@@ -207,13 +210,11 @@ final class Notifier {
         announcedWaiting.remove(session)
     }
 
-    private func post(category: Category, title: String, body: String) async {
+    func post(
+        category: Category, title: String, body: String, userInfo: [String: String] = [:]
+    ) async {
         guard await isAuthorized() else { return }
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-        content.categoryIdentifier = category.rawValue
-        content.sound = category == .needsInput ? .default : nil
+        let content = Self.content(category: category, title: title, body: body, userInfo: userInfo)
 
         do {
             try await centre.add(
@@ -224,7 +225,7 @@ final class Notifier {
         }
     }
 
-    private func isAuthorized() async -> Bool {
+    func isAuthorized() async -> Bool {
         // Only a positive answer is cached. Caching a "no" for the process
         // lifetime meant a user who denied the first prompt and later allowed
         // notifications in System Settings stayed silent until relaunch.

@@ -29,6 +29,8 @@ final class ModuleHost {
     let screenshots: ScreenshotCleaner
     let microphone: MicKeepWarm
     let autoAllow: AutoAllower
+    let nudge: Nudger
+    let orphans: OrphanWatcher
     let browsing = ModuleBrowsing()
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -41,6 +43,8 @@ final class ModuleHost {
         screenshots: ScreenshotCleaner? = nil,
         microphone: MicKeepWarm? = nil,
         autoAllow: AutoAllower? = nil,
+        nudge: Nudger? = nil,
+        orphans: OrphanWatcher? = nil,
         captureFolder: @escaping () -> URL = { ScreenshotFolderAccess.systemFolder }
     ) {
         self.defaults = defaults
@@ -49,6 +53,8 @@ final class ModuleHost {
         self.screenshots = screenshots ?? ScreenshotCleaner(defaults: defaults)
         self.microphone = microphone ?? MicKeepWarm(defaults: defaults)
         self.autoAllow = autoAllow ?? AutoAllower(defaults: defaults)
+        self.nudge = nudge ?? Nudger(defaults: defaults)
+        self.orphans = orphans ?? OrphanWatcher(defaults: defaults)
         self.autoAllow.onExpired = { [weak self] in self?.setEnabled(false, for: .autoAllow) }
     }
 
@@ -74,6 +80,8 @@ final class ModuleHost {
         screenshots.stop()
         microphone.stop()
         autoAllow.stop()
+        nudge.stop()
+        orphans.stop()
         ScreenshotFolderAccess.relinquish()
     }
 
@@ -94,6 +102,8 @@ final class ModuleHost {
         case .screenshotCleaner: screenshots.forgetEverything()
         case .micKeepWarm: microphone.forgetEverything()
         case .autoAllow: autoAllow.forgetEverything()
+        case .nudge: nudge.forgetEverything()
+        case .orphanWatch: orphans.forgetEverything()
         default: break
         }
         ledger.remove(id)
@@ -116,6 +126,8 @@ final class ModuleHost {
         case .screenshotCleaner: screenshots.start()
         case .micKeepWarm: microphone.start()
         case .autoAllow: autoAllow.start()
+        case .nudge: nudge.start()
+        case .orphanWatch: orphans.start()
         default: break
         }
     }
@@ -126,6 +138,8 @@ final class ModuleHost {
         case .screenshotCleaner: screenshots.activate()
         case .micKeepWarm: microphone.activate()
         case .autoAllow: autoAllow.activate()
+        case .nudge: nudge.activate()
+        case .orphanWatch: orphans.activate()
         default: break
         }
     }
@@ -135,6 +149,8 @@ final class ModuleHost {
         case .screenshotCleaner: screenshots.stop()
         case .micKeepWarm: microphone.stop()
         case .autoAllow: autoAllow.deactivate()
+        case .nudge: nudge.stop()
+        case .orphanWatch: orphans.stop()
         default: break
         }
     }

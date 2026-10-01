@@ -175,9 +175,15 @@ final class PreciseDetection {
         let outcome = await Task.detached {
             Result {
                 for installer in installers {
-                    if case .written = try installer.reconcile(endpoint: endpoint) {
+                    switch try installer.reconcile(endpoint: endpoint) {
+                    case .written:
                         Log.bridge.notice("repointed existing Codex hooks at the current port")
                         EventLog.note("bridge repointed codex hooks port=\(endpoint.port)")
+                    case .trusted:
+                        Log.bridge.notice("re-trusted Codex hooks that codex had stopped trusting")
+                        EventLog.note("bridge re-trusted codex hooks")
+                    case .unchanged:
+                        break
                     }
                 }
             }

@@ -15,19 +15,22 @@ struct CodexInstallerTests {
     }
 
     private func installer(
-        _ scratch: BridgeScratch, listed: [CodexListedHook]? = nil
+        _ scratch: BridgeScratch, listed: [CodexListedHook]? = nil, trusted: Bool = false
     ) -> CodexHookInstaller {
-        let path = scratch.paths.codexHooks.path
-        let hooks =
-            listed
-            ?? CodexHookConfiguration.eventNames.map {
-                CodexListedHook(
-                    key: "\(path):\(CodexHookConfiguration.snakeCase($0)):0:0",
-                    currentHash: "sha256:hash-\($0)",
-                    trustStatus: "untrusted",
-                    sourcePath: path)
-            }
+        let hooks = listed ?? ownHooks(scratch, trusted: trusted)
         return CodexHookInstaller(paths: scratch.paths, listHooks: { hooks })
+    }
+
+    /// Belay's four hooks as codex would list them.
+    private func ownHooks(_ scratch: BridgeScratch, trusted: Bool) -> [CodexListedHook] {
+        let path = scratch.paths.codexHooks.path
+        return CodexHookConfiguration.eventNames.map {
+            CodexListedHook(
+                key: "\(path):\(CodexHookConfiguration.snakeCase($0)):0:0",
+                currentHash: "sha256:hash-\($0)",
+                trustStatus: trusted ? "trusted" : "untrusted",
+                sourcePath: path)
+        }
     }
 
     private func hooksObject(_ scratch: BridgeScratch) throws -> [String: Any] {
@@ -132,7 +135,7 @@ struct CodexInstallerTests {
     @Test("Reconcile rewrites a stale port and leaves a current one alone")
     func reconcile() throws {
         let scratch = try self.scratch()
-        let installer = installer(scratch)
+        let installer = installer(scratch, trusted: true)
         #expect(try installer.reconcile(endpoint: endpoint) == .unchanged, "not installed, nothing to heal")
         try installer.install(endpoint: endpoint)
         #expect(try installer.reconcile(endpoint: endpoint) == .unchanged)
@@ -145,6 +148,21 @@ struct CodexInstallerTests {
         let entry =
             ((section["Stop"] as? [[String: Any]])?.first?["hooks"] as? [[String: Any]])?.first
         #expect((entry?["command"] as? String ?? "").contains(":5555/"))
+    }
+
+    /// Found live: a ChatGPT update moved codex, the trust step of a
+    /// reinstall failed, and the hooks sat written but untrusted for hours.
+    @Test("Reconcile re-trusts hooks codex no longer trusts")
+    func reconcileRetrusts() throws {
+        let scratch = try self.scratch()
+        try installer(scratch, trusted: true).install(endpoint: endpoint)
+        try Data().write(to: scratch.paths.codexConfig)
+
+        let outcome = try installer(scratch, trusted: false).reconcile(endpoint: endpoint)
+
+        #expect(outcome == .trusted)
+        let config = try String(contentsOf: scratch.paths.codexConfig, encoding: .utf8)
+        #expect(config.contains("trusted_hash = \"sha256:hash-Stop\""))
     }
 
     @Test("The trust ledger edit is surgical")

@@ -15,4 +15,6 @@ public struct ModuleID: RawRepresentable, Hashable, Codable, Sendable {
     public static let screenshotCleaner = ModuleID(rawValue: "screenshot-cleaner")
     public static let micKeepWarm = ModuleID(rawValue: "mic-keep-warm")
     public static let autoAllow = ModuleID(rawValue: "auto-allow")
+    public static let nudge = ModuleID(rawValue: "nudge")
+    public static let orphanWatch = ModuleID(rawValue: "orphan-watch")
 }

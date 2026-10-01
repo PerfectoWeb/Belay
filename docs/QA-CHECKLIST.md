@@ -133,7 +133,7 @@ for our bundle ID, which is not ours. Match on the pid.
       "Leave Bluetooth headphones alone" off the AirPods microphone is held
 - [ ] Modules: with "Keep crash reports on this Mac" on, a launch writes
       `modules start`, and each module writes its settings and every change of
-      state; no line holds a path, a site or a device name
+      state; no line holds a path, a site, a process name or a device name
 - [ ] Warm Microphone: after sleep and wake the dot is back; with "Pause on
       battery power" on, unplugging lets the microphone go and power brings it
       back
@@ -148,7 +148,9 @@ for our bundle ID, which is not ours. Match on the pid.
       app in front, a request in a session the window is not showing is
       answered and the window shows the same session as before; while you
       type or click, in any app, the window does not change until five
-      seconds of stillness
+      seconds of stillness; when the visit pulled the agent's app to the
+      front, the app you had in front comes back, and the log says
+      `autoallow front=restored`
 - [ ] Auto Allow: a session behind the window that waited for you, was
       answered by you and asks again is visited again, also when it moved on
       while you were typing
@@ -156,6 +158,25 @@ for our bundle ID, which is not ours. Match on the pid.
       full-screen app) a request is still answered
 - [ ] Auto Allow: "Everything the agent asks" shows the orange warning and
       answers both of those
+- [ ] Nudge: installing asks for notification permission once; with it refused
+      the card shows the red line and the button to System Settings, and the
+      sounds still play
+- [ ] Nudge: a run of a minute or more that ends plays the finished note and
+      posts "An agent finished" naming the workspace; a run under "Ignore runs
+      shorter than" does neither; each checkbox silences only its own sound
+- [ ] Nudge: a session that waits for you plays the waiting note (a touch
+      higher than the finished one), the card says "Waiting for you: 1", and a
+      reminder comes after the chosen minutes, at most the chosen number of
+      times; answering the session stops them and resets the count
+- [ ] Nudge: killing an agent mid-run plays the lowest note
+- [ ] Nudge: with "Your agent finished" also on in Notifications, a run that
+      ends gives both banners and says so in the card's text
+- [ ] Nudge: clicking a banner for a Claude Code session in the Claude desktop
+      app brings that app forward; for one in a terminal or an editor, that
+      terminal or editor; for Codex, the ChatGPT app; with none found, nothing
+      moves
+- [ ] Nudge: with the output on a device that also records and the microphone
+      question unanswered, the three sounds stay silent
 - [ ] Auto Allow: with "Switch off after" at one hour the switch is off an hour
       later, also when Belay was quit and opened again in between
 - [ ] Auto Allow: with Claude Code switched off in Agents a request stays
@@ -171,6 +192,28 @@ for our bundle ID, which is not ours. Match on the pid.
 - [ ] Auto Allow: with Codex switched off in Agents a Codex request waits and
       the card names Codex
 - [ ] Auto Allow is absent from the App Store build's list
+- [ ] Orphan Watch: installing it lists nothing and asks macOS for nothing; with
+      a Claude Code session open, a `node` started in the background from it
+      (`node -e "setInterval(()=>{},1000)"`) stays unlisted while the session
+      lives, and after the session is closed the card shows "Left behind: 1"
+      with `node`, its number, its age and Claude Code within a minute, and
+      one banner "Left behind by an agent"; a click on it opens Settings ▸
+      Modules
+- [ ] Orphan Watch (direct build): End on that row asks first, and after
+      Confirm the process is gone within seconds and the row with it; Cancel
+      changes nothing; `orphans ended=1 failed=0` is in the log. End All names
+      the count. A process that ignores SIGTERM (`trap '' TERM`) is reported as
+      still running and is not killed
+- [ ] Orphan Watch (App Store build): the list shows the same rows with no End
+      button and the line "End it in Activity Monitor."
+- [ ] Orphan Watch: "Ignore" on a row takes the name off the list at once and
+      into "Ignored"; the minus beside it brings it back
+- [ ] Orphan Watch: a process from an agent's tree that burns a core (`yes >
+      /dev/null`) while no session of that agent is working shows under
+      "Running hot" after the chosen time, with the percentage; while a
+      session of that agent is working it does not
+- [ ] Orphan Watch: with Codex switched off in Agents its processes are not
+      listed and the card names Codex; the log holds no process name
 - [ ] "Open at login" toggle actually registers with `SMAppService`, survives a
       restart, and reflects the truth after being revoked in System Settings
 - [ ] Turning the battery guard off and on again restores the previous

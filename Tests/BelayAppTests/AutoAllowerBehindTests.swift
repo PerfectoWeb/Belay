@@ -125,6 +125,36 @@ final class AutoAllowerBehindTests: XCTestCase {
         XCTAssertEqual(screen.opened, ["Cytrongift", "Belay", "Cytrongift", "Belay"])
     }
 
+    /// Found live: a session that had just stopped was opened for nothing.
+    /// While the hooks see no tool call under way, nothing can be asking.
+    func testNoVisitWhileNoToolCallIsUnderWay() throws {
+        let allower = try makeReachingAllower()
+        defer { allower.stop() }
+        var asking = false
+        allower.mayHaveRequest = { _ in asking }
+        screen.park([FakeScreen.click(on: "cytron.local")], in: "Cytrongift")
+
+        look(allower)
+        XCTAssertTrue(screen.opened.isEmpty)
+
+        asking = true
+        look(allower)
+        XCTAssertEqual(screen.pressed, [FakeScreen.click(on: "cytron.local")])
+        XCTAssertEqual(screen.opened, ["Cytrongift", "Belay"])
+    }
+
+    /// The window on show is answered whatever the hooks say.
+    func testTheShownSessionIsAnsweredWithoutAToolCall() throws {
+        let allower = try makeReachingAllower()
+        defer { allower.stop() }
+        allower.mayHaveRequest = { _ in false }
+        screen.show(FakeScreen.access(to: "cytron.local"))
+
+        look(allower)
+
+        XCTAssertEqual(screen.pressed, [FakeScreen.access(to: "cytron.local")])
+    }
+
     func testTheSessionInTheWindowComesFirst() throws {
         let allower = try makeReachingAllower()
         defer { allower.stop() }

@@ -49,6 +49,12 @@ enum Feedback {
         case driftingOff = "drifting-off"
         /// And coming back: the same two notes the other way up.
         case wakingUp = "waking-up"
+        /// Nudge: a run ended.
+        case nudgeFinished = "nudge-finished"
+        /// Nudge: a session is waiting for the person. A touch higher.
+        case nudgeWaiting = "nudge-waiting"
+        /// Nudge: a session went quiet. The lowest of the three.
+        case nudgeQuiet = "nudge-quiet"
     }
 
     static var isEnabled: () -> Bool = { true }
