@@ -3,8 +3,55 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>2.1.0</title>
+            <pubDate>Fri, 02 Oct 2026 17:20:08 +0300</pubDate>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 2.1.0. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  p.quiet { color: #777; margin: 8px 0 0; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; } p.quiet { color: #999; }
+  }
+</style>
+<h2>Belay 2.1.0</h2>
+<ul>
+  <li><b>Auto Allow in Codex.</b> Clicks "Allow once" in the ChatGPT desktop
+      app too, using the same rules for local sites. Works when Codex is
+      enabled in Settings › Agents.</li>
+  <li><b>Nudge</b>, a new module. Plays a sound when an agent finishes,
+      needs you, or goes quiet, and reminds you if it's still waiting.
+      Click a notification to bring its app to the front.</li>
+  <li><b>Orphan Watch</b>, a new module. Shows processes left running after
+      a session ends and high CPU use while an agent is idle. End asks a
+      process to quit after you confirm. Never reads command lines or file contents.</li>
+  <li>Auto Allow returns you to your previous app after checking a background
+      session, unless you've started using your Mac.</li>
+  <li>With Precise Detection on, Auto Allow no longer opens background Claude
+      sessions unnecessarily after a turn ends.</li>
+  <li>Precise Detection works with ChatGPT 26.928's bundled Codex again.
+      If setup failed after that ChatGPT update, turn Codex off and on in
+      Settings › Agents after updating Belay.</li>
+  <li>Modules are easier to scan, with distinct colors, shorter summaries,
+      and icons that animate on hover.</li>
+  <li>Auto Allow no longer mistakes embedded web pages in Claude or Codex
+      for permission requests.</li>
+</ul>
+<p class="quiet">Auto Allow requires Accessibility access.</p>
+]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v2.1.0/Belay-2.1.0.dmg" length="8132917" type="application/octet-stream" sparkle:edSignature="hZR5FkERDttsQ4zVWlyLKbMLcPQysu0Le6WtJsYRVLkwOeu3zXn6UtleoJPyrKR4vUyAb+K5uI6lrr9kxPxACQ=="/>
+        </item>
+        <item>
             <title>2.0.0</title>
-            <pubDate>Wed, 30 Sep 2026 19:17:06 +0300</pubDate>
+            <pubDate>Fri, 02 Oct 2026 17:20:16 +0300</pubDate>
             <sparkle:version>21</sparkle:version>
             <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -40,7 +87,7 @@ microphone access when you first turn on Warm Microphone.</p>
         </item>
         <item>
             <title>1.8.1</title>
-            <pubDate>Wed, 30 Sep 2026 19:17:08 +0300</pubDate>
+            <pubDate>Fri, 02 Oct 2026 17:20:22 +0300</pubDate>
             <sparkle:version>20</sparkle:version>
             <sparkle:shortVersionString>1.8.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -65,7 +112,7 @@ microphone access when you first turn on Warm Microphone.</p>
         </item>
         <item>
             <title>1.8.0</title>
-            <pubDate>Wed, 30 Sep 2026 19:17:11 +0300</pubDate>
+            <pubDate>Fri, 02 Oct 2026 17:20:36 +0300</pubDate>
             <sparkle:version>19</sparkle:version>
             <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -100,7 +147,7 @@ shows total agent time instead of the number of rows.</p>]]></description>
         </item>
         <item>
             <title>1.7.0</title>
-            <pubDate>Wed, 30 Sep 2026 19:17:14 +0300</pubDate>
+            <pubDate>Fri, 02 Oct 2026 17:20:39 +0300</pubDate>
             <sparkle:version>17</sparkle:version>
             <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -133,45 +180,6 @@ shows total agent time instead of the number of rows.</p>]]></description>
 <p class="quiet">Also: dark wakes no longer look like stalls in diagnostics,
 and sessions taking turns no longer flood the log.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.7.0/Belay-1.7.0.dmg" length="7301289" type="application/octet-stream" sparkle:edSignature="/nMDQO9crVHv7SkRq2Df/U+TQKQkxaCHgPmQ4FC73EbHkJ5N4sW0ZB57MvLGmQ2FEJ1oXJhQY3h6OYH8ACgiBw=="/>
-        </item>
-        <item>
-            <title>1.6.4</title>
-            <pubDate>Wed, 30 Sep 2026 19:17:16 +0300</pubDate>
-            <sparkle:version>16</sparkle:version>
-            <sparkle:shortVersionString>1.6.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.6.4. generate_appcast embeds any
-     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
-     copies it there. One file per version, English only: Sparkle does not
-     negotiate locale, and plain English is better than half-localised notes. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.6.4</h2>
-<ul>
-  <li><b>Precise Detection reconnects itself.</b> If the connection to an
-      agent breaks during sleep, Belay restores it when your Mac wakes.
-      No relaunch needed.</li>
-  <li><b>Long tool calls keep holding.</b> Rapid back-to-back activity no
-      longer interrupts the hold during a long build or test run.</li>
-  <li><b>One summary when you come back.</b> If Belay kept your Mac awake
-      while you were away, it shows how long it held and how many runs
-      finished. Statistics now also has a sortable list of recent sessions.</li>
-  <li><b>A few rough edges are fixed.</b> Statistics no longer flicker on
-      hover, and an Until time that has already passed no longer starts a
-      timer for tomorrow.</li>
-</ul>
-<p class="quiet">Also: watched Cline sessions end when their files disappear,
-old imported conversations no longer look active, and diagnostics stay fully
-off when Local Reports is off.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.6.4/Belay-1.6.4.dmg" length="7253659" type="application/octet-stream" sparkle:edSignature="e0WbJ7SNLLKqBRqowlPwT0iJAxHphMm3EglWIUM3HdEXZQIQooumQvQQHCQ3QbIX1Q1/Fh2CpUwp1+oEZxdwBg=="/>
         </item>
     </channel>
 </rss>
