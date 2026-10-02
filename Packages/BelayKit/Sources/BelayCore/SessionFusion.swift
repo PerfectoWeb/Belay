@@ -22,10 +22,14 @@ extension SessionState {
             // A parked session, its last record a tool call waiting on a
             // wake-up, used to turn "working" five minutes after its Stop and
             // be reported as gone quiet when the TTL took it.
-            guard let inferred, inferred.at > exact.at + Self.inferredLead else {
-                return exact.activity
-            }
-            return inferred.activity
+            if let inferred, inferred.at > exact.at + Self.inferredLead { return inferred.activity }
+            // A Stop that claimed background tasks reads as working only for
+            // the claim's budget; once that is spent, the Stop means what a
+            // Stop means. Found live: the transcript's end_turn landed a
+            // second before the hook, so the hook kept the last word and the
+            // session expired as one that went quiet.
+            if backgroundSince != nil { return .idle }
+            return exact.activity
         }
         if let inferred { return inferred.activity }
         return .idle

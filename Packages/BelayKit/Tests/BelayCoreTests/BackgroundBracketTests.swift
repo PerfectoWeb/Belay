@@ -28,6 +28,20 @@ struct BackgroundBracketTests {
         #expect(await coordinator.snapshot.state.holdsAssertion)
     }
 
+    /// Found live: the transcript said idle a second before the Stop with
+    /// tasks arrived, so after the budget the stale Stop still outranked it.
+    @Test("After the budget a Stop with tasks reads as idle, not working")
+    func spentClaimReadsIdle() {
+        let base = Date(timeIntervalSince1970: 1000)
+        var session = SessionState(
+            id: SessionID("s1"), provider: .claudeCode, workspace: nil, firstSeen: base)
+        session.record(.make(.idle, at: base, confidence: .inferred))
+        session.record(.make(.working, at: base + 1, confidence: .exact, backgroundTasks: 1))
+        #expect(session.effectiveActivity(now: base + 60, freshness: 300) == .working)
+        let later = base + AwakePolicy.backgroundTasksBudget + 60
+        #expect(session.effectiveActivity(now: later, freshness: 300) == .idle)
+    }
+
     @Test("The claim expires on its budget")
     func backgroundBudgetExpires() async {
         let clock = TestClock()
