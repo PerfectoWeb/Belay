@@ -101,7 +101,8 @@ final class Nudger {
             NudgeSession(
                 id: session.id.rawValue,
                 activity: Self.activity(snapshot.activities[session.id]),
-                parent: session.parent?.rawValue)
+                parent: session.parent?.rawValue,
+                isEvidenced: session.inferred != nil || session.lastHeartbeat != nil)
         }
         noteChanges()
         advance()

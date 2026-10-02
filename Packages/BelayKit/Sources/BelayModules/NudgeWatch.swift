@@ -14,11 +14,17 @@ public struct NudgeSession: Equatable, Sendable {
     public var id: String
     public var activity: Activity
     public var parent: String?
+    /// Something beside a hook has seen the session: a transcript, a
+    /// process. A session known from one prompt hook alone can vanish for
+    /// reasons that are not news, such as Codex resuming an old thread under
+    /// a new id, and is never reported as gone quiet.
+    public var isEvidenced: Bool
 
-    public init(id: String, activity: Activity, parent: String? = nil) {
+    public init(id: String, activity: Activity, parent: String? = nil, isEvidenced: Bool = true) {
         self.id = id
         self.activity = activity
         self.parent = parent
+        self.isEvidenced = isEvidenced
     }
 }
 
@@ -42,6 +48,8 @@ public struct NudgeWatch: Sendable {
     private struct Track {
         var activity: NudgeSession.Activity
         var isTopLevel: Bool
+        /// Sticky: once anything but a hook has seen the session, it stays seen.
+        var isEvidenced = false
         /// Work done in earlier stretches of the run, before it paused to wait.
         var worked: TimeInterval = 0
         var workingSince: Date?
@@ -82,6 +90,7 @@ public struct NudgeWatch: Sendable {
         let before = track?.activity
         var current = track ?? Track(activity: session.activity, isTopLevel: session.parent == nil)
         current.isTopLevel = session.parent == nil
+        current.isEvidenced = current.isEvidenced || session.isEvidenced
         defer { track = current }
 
         let events: [NudgeEvent]
@@ -164,7 +173,8 @@ public struct NudgeWatch: Sendable {
     /// A working session that is gone, with nothing left that descends from
     /// it, went quiet. A session that finished said so first and left
     /// `working` before it went. The minimum run applies here as to a
-    /// finish: a session closed seconds after it was opened is not news.
+    /// finish: a session closed seconds after it was opened is not news, and
+    /// neither is one nothing but a hook ever saw.
     private mutating func vanished(
         from sessions: [NudgeSession], now: Date, rules: NudgeRules
     ) -> [NudgeEvent] {
@@ -172,7 +182,7 @@ public struct NudgeWatch: Sendable {
         var events: [NudgeEvent] = []
         for id in tracks.keys.sorted() where !live.contains(id) {
             guard let track = tracks.removeValue(forKey: id) else { continue }
-            guard track.activity == .working, track.isTopLevel,
+            guard track.activity == .working, track.isTopLevel, track.isEvidenced,
                 !sessions.contains(where: { $0.parent == id })
             else { continue }
             let ran = track.worked + (track.workingSince.map { now.timeIntervalSince($0) } ?? 0)

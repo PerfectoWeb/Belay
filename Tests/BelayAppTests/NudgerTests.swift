@@ -36,9 +36,11 @@ final class NudgerTests: XCTestCase {
         _ activity: SessionActivity?, session: String = "a", workspace: String = "Belay"
     ) -> CoordinatorSnapshot {
         guard let activity else { return .idle }
-        let state = SessionState(
+        var state = SessionState(
             id: SessionID(session), provider: .claudeCode, workspace: workspace,
             firstSeen: clock.now)
+        // A transcript has seen it, as every real session of this provider has.
+        state.inferred = Reading(activity: activity, at: clock.now)
         return CoordinatorSnapshot(
             state: .working, sessions: [state], activities: [state.id: activity],
             holdReason: nil, holdingSince: nil)

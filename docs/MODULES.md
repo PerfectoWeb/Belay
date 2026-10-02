@@ -196,7 +196,7 @@ and `key=value` pairs, written when something changes and not on every tick.
 | `autoallow front=…` | after a visit: the app that was in front before was `restored`, was still there (`kept`), was `left` because the Mac was in use, or the system `refused` to bring it back |
 | `nudge start finish=… wait=… quiet=… names=… repeatMinutes=… repeatMax=… minimumRun=…`, `nudge rules …` | it started, a setting changed |
 | `nudge sees session(…) working->other top=1` | a session's activity as the nudge sees it changed; `other` is idle or gone, `top=0` is a subagent |
-| `nudge said kind=…` | one per event: `finished`, `waiting`, `quiet` or `reminder`, never a workspace or a session name |
+| `nudge said kind=…` | one per event: `finished`, `waiting`, `quiet` or `reminder`, never a workspace or a session name; `quiet` only for a session a transcript or a process had seen at work, not one heard from a hook alone |
 | `orphans start spinning=… percent=… minutes=… notifies=… ignored=…`, `orphans rules …` | it started, a setting changed |
 | `orphans sweep roots=… tracked=… orphans=… hot=…` | a look whose numbers differ from the look before |
 | `orphans ended=… failed=…` | after End or End All: what was gone two seconds later, and what was not |

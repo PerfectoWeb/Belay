@@ -67,7 +67,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   record mid-turn or bytes alone keep the session on the books and nothing
   more.
 - Nudge's "went quiet" follows the minimum run too: a session closed seconds
-  after it was opened is not announced.
+  after it was opened is not announced, and neither is a session nothing but
+  a hook ever saw, such as the old id Codex leaves behind when it resumes a
+  thread under a new one.
 - Belay now asks codex at launch whether it still trusts the hooks, and
   writes the trust again when it does not. Codex updates and a failed
   install both left the hooks written but silently skipped.
