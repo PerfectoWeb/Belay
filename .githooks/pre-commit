@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # Refuses a commit that would add a second author to a tracked file.
 # Enable with:  git config core.hooksPath .githooks
-exec "$(git rev-parse --show-toplevel)/scripts/no-ai-authors.sh" --staged
+# Resolved through the common dir: a temporary worktree (the appcast publish
+# makes one) has no scripts/ of its own.
+exec "$(cd "$(git rev-parse --git-common-dir)/.." && pwd)/scripts/no-ai-authors.sh" --staged
