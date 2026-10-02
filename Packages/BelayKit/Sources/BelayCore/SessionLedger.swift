@@ -13,6 +13,12 @@ struct SessionLedger {
     /// minute later from the silence heartbeat, as a working session nothing
     /// would ever finish, and expired as one that went quiet.
     private(set) var ended: [SessionID: Date] = [:]
+    /// What each session was doing at the last prune. A session that stops
+    /// working and expires in the same breath is kept for one more look, so
+    /// the snapshot shows it idle before it goes: a bracket's budget ends and
+    /// the TTL has long passed, and the nudge used to see a working session
+    /// vanish and call it gone quiet.
+    private var lastActivities: [SessionID: SessionActivity] = [:]
     /// How long an ending is remembered. Longer than any grace a provider
     /// keeps heartbeating for after the last real word.
     static let endedMemory: TimeInterval = 60 * 60
@@ -48,14 +54,17 @@ struct SessionLedger {
 
     mutating func prune(now: Date, policy: AwakePolicy) {
         ended = ended.filter { now.timeIntervalSince($0.value) < Self.endedMemory }
+        var activities: [SessionID: SessionActivity] = [:]
         sessions = sessions.filter { id, session in
             let activity = session.effectiveActivity(
                 now: now, freshness: policy.hookFreshnessWindow,
                 toolCallBudget: AwakePolicy.openToolCallBudget)
+            activities[id] = activity
             guard activity != .ended else {
                 ended[id] = now
                 return false
             }
+            if activity != .working, lastActivities[id] == .working { return true }
             // A tool call emits nothing while it runs, so the plain TTL would
             // evict the very session the bracket exists to protect — ten
             // minutes into a half-hour test suite, with the hold going with it.
@@ -70,6 +79,7 @@ struct SessionLedger {
             }
             return !session.isExpired(now: now, ttl: Self.ttl(for: activity, policy: policy))
         }
+        lastActivities = activities.filter { sessions[$0.key] != nil }
     }
 
     /// Recomputes fused activity and the per-session transition timestamps that

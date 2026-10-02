@@ -42,6 +42,29 @@ struct BackgroundBracketTests {
         #expect(session.effectiveActivity(now: later, freshness: 300) == .idle)
     }
 
+    /// Found live, in the shipped 2.1.0: the budget ran out and the TTL had
+    /// long passed, so the session was evicted in the same pass it turned
+    /// idle, and the nudge saw a working session vanish.
+    @Test("A session is shown idle once before it is evicted")
+    func idleShownBeforeEviction() async {
+        let clock = TestClock()
+        let coordinator = coordinator(clock)
+        let session = SessionID("s1")
+
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .inferred))
+        clock.advance(10)
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .exact, backgroundTasks: 1))
+        clock.advance(60)
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .inferred))
+
+        clock.advance(AwakePolicy.backgroundTasksBudget + 60)
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.activities[session] == .idle, "one look at it idle")
+
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.activities[session] == nil, "then it goes")
+    }
+
     @Test("The claim expires on its budget")
     func backgroundBudgetExpires() async {
         let clock = TestClock()

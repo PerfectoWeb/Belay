@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- A session that stops working and expires in the same moment, as one with a
+  spent background claim does, is shown idle once before it leaves the list,
+  so Nudge no longer reports it as gone quiet.
 - A session whose Stop reported background tasks no longer reads as working
   once the thirty-minute budget for that claim is spent: it is idle, as its
   transcript said, so it expires quietly instead of as a session that went
