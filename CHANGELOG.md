@@ -5,7 +5,7 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.1.0] - Unreleased
+## [2.1.0] - 2026-10-02
 
 ### Added
 
@@ -66,6 +66,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   when a turn has opened or closed since; a tool result, an assistant
   record mid-turn or bytes alone keep the session on the books and nothing
   more.
+- A session the hooks ended stays ended: the transcript watcher keeps
+  following its file for a while and used to bring the session back from one
+  of its heartbeats, as a working session nothing would ever finish, which
+  then expired as one that went quiet.
+- Nudge says "waits for you" once per wait: a permission prompt that stays up
+  while the agent's parallel tools keep reporting read as working for a
+  second and waiting again a few seconds later, and the sound played twice.
 - Nudge's "went quiet" follows the minimum run too: a session closed seconds
   after it was opened is not announced, and neither is a session nothing but
   a hook ever saw, such as the old id Codex leaves behind when it resumes a

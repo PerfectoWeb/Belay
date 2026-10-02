@@ -201,7 +201,9 @@ For a given session, the coordinator prefers:
    bytes with no readable record; `ActivitySignal.heartbeat`) refreshes the
    TTL only, never the reading: a turn opens with the person's prompt and
    closes with `end_turn`, and only those two move it
-3. a session with **no** signal for `sessionTTL` (default 10 min) is evicted
+3. a session with **no** signal for `sessionTTL` (default 10 min) is evicted;
+   a session that ended is remembered for an hour, and a heartbeat for it in
+   that time is dropped rather than starting it over (a prompt starts it over)
 
 When Tier B is active for a session, the transcript watcher for that session
 downgrades to a heartbeat-only role – it can keep `.working` alive but cannot

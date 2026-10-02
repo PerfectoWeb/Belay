@@ -7,6 +7,15 @@ import Foundation
 /// or a single `await`.
 struct SessionLedger {
     private(set) var sessions: [SessionID: SessionState] = [:]
+    /// Sessions that ended, and when: a heartbeat arriving afterwards is the
+    /// provider still following the file, not the session coming back.
+    /// Found live: a session closed with a prompt unanswered was reborn a
+    /// minute later from the silence heartbeat, as a working session nothing
+    /// would ever finish, and expired as one that went quiet.
+    private(set) var ended: [SessionID: Date] = [:]
+    /// How long an ending is remembered. Longer than any grace a provider
+    /// keeps heartbeating for after the last real word.
+    static let endedMemory: TimeInterval = 60 * 60
 
     var ordered: [SessionState] {
         sessions.values.sorted { $0.firstSeen < $1.firstSeen }
@@ -15,6 +24,10 @@ struct SessionLedger {
     var isEmpty: Bool { sessions.isEmpty }
 
     mutating func record(_ signal: ActivitySignal, now: Date) {
+        if sessions[signal.session] == nil, let at = ended[signal.session] {
+            if signal.heartbeat, now.timeIntervalSince(at) < Self.endedMemory { return }
+            ended[signal.session] = nil
+        }
         sessions[
             signal.session,
             default: SessionState(
@@ -34,11 +47,15 @@ struct SessionLedger {
     }
 
     mutating func prune(now: Date, policy: AwakePolicy) {
-        sessions = sessions.filter { _, session in
+        ended = ended.filter { now.timeIntervalSince($0.value) < Self.endedMemory }
+        sessions = sessions.filter { id, session in
             let activity = session.effectiveActivity(
                 now: now, freshness: policy.hookFreshnessWindow,
                 toolCallBudget: AwakePolicy.openToolCallBudget)
-            guard activity != .ended else { return false }
+            guard activity != .ended else {
+                ended[id] = now
+                return false
+            }
             // A tool call emits nothing while it runs, so the plain TTL would
             // evict the very session the bracket exists to protect — ten
             // minutes into a half-hour test suite, with the hold going with it.

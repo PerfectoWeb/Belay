@@ -12,7 +12,7 @@ Finished work links to the commit or release that closed it. If there is no date
 ![macOS 14+](https://img.shields.io/badge/macOS-14%2B-111?style=flat&logo=apple&logoColor=white)
 [![Homebrew](https://img.shields.io/badge/homebrew-perfectoweb%2Ftap-1f6bff?style=flat&logo=homebrew&logoColor=white)](https://github.com/PerfectoWeb/homebrew-tap)
 
-**2.0.0 is out** on GitHub, Sparkle, Homebrew and the Mac App Store (approved 1 Oct); both channels are level.
+**2.1.0 is out** on GitHub, Sparkle and Homebrew. The Mac App Store serves 2.0.0; **2.1.0 is being submitted** (2 Oct).
 
 </div>
 
@@ -80,6 +80,10 @@ Finished work links to the commit or release that closed it. If there is no date
 | 🎙 | Warm Microphone: dictation hears the first word | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
 | 👆 | Auto Allow answers Claude's requests about local sites (direct build) | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
 | 📦 | **v2.0.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [30 Sep 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.0.0) |
+| 🔔 | Nudge: a sound and a banner when an agent finishes, waits or goes quiet | <img src="badges/done.svg" alt="done" height="24"> | [2 Oct 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.1.0) |
+| 🧹 | Orphan Watch lists what an agent left running, and ends it on request (direct build) | <img src="badges/done.svg" alt="done" height="24"> | [2 Oct 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.1.0) |
+| 👆 | Auto Allow answers Codex too (direct build) | <img src="badges/done.svg" alt="done" height="24"> | [2 Oct 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.1.0) |
+| 📦 | **v2.1.0 published** | <img src="badges/done.svg" alt="done" height="24"> | [2 Oct 2026](https://github.com/PerfectoWeb/Belay/releases/tag/v2.1.0) |
 | 📦 | **500 downloads** | <img src="badges/done.svg" alt="done" height="24"> | 5 Sep 2026, GitHub alone; App Store installs on top |
 | 🧭 | Cursor and Windsurf, looked at properly | <img src="badges/waiting.svg" alt="waiting" height="24"> | After 1.6.x settles |
 | 🗣 | Every translation checked by a native speaker | <img src="badges/waiting.svg" alt="waiting" height="24"> | Finding those people |

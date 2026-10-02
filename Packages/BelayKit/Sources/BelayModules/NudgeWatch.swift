@@ -56,7 +56,16 @@ public struct NudgeWatch: Sendable {
         var waitingSince: Date?
         var lastReminder: Date?
         var reminders = 0
+        /// When the last wait was interrupted, so a wait that comes straight
+        /// back is known for the same one.
+        var waitInterruptedAt: Date?
     }
+
+    /// A wait that resumes within this of being interrupted is the same wait.
+    /// Found live: a permission prompt stays up while the agent's parallel
+    /// tools keep reporting, so the session read as working for a second and
+    /// waiting again six seconds later, and the sound played twice.
+    public static let rewaitGrace: TimeInterval = 30
 
     private var tracks: [String: Track] = [:]
 
@@ -108,8 +117,9 @@ public struct NudgeWatch: Sendable {
     ) -> [NudgeEvent] {
         if before == nil || before == .other { track.worked = 0 }
         if before != .working { track.workingSince = now }
-        track.waitingSince = nil
-        return before == .waiting ? [.resumed(session: id)] : []
+        guard before == .waiting else { return [] }
+        track.waitInterruptedAt = now
+        return [.resumed(session: id)]
     }
 
     private func waits(
@@ -124,6 +134,11 @@ public struct NudgeWatch: Sendable {
         }
         track.workingSince = nil
         if before != .waiting {
+            let interrupted = track.waitInterruptedAt.map { now.timeIntervalSince($0) } ?? .infinity
+            track.waitInterruptedAt = nil
+            // Back within the grace: the same wait, carrying on from where it
+            // was, reminders and all. Said once.
+            if interrupted < Self.rewaitGrace, track.waitingSince != nil { return [] }
             track.waitingSince = now
             track.lastReminder = nil
             track.reminders = 0
@@ -153,6 +168,7 @@ public struct NudgeWatch: Sendable {
         track.worked = 0
         track.workingSince = nil
         track.waitingSince = nil
+        track.waitInterruptedAt = nil
         return events
     }
 

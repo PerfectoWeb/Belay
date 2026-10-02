@@ -102,6 +102,20 @@ struct NudgeWatchTests {
         #expect(watch.waitingCount == 1)
     }
 
+    /// Found live: a permission prompt stayed up while parallel tools kept
+    /// reporting, so the session flapped to working for a second.
+    @Test("A wait interrupted for seconds is one wait, said once")
+    func interruptedWaitIsOneWait() {
+        var watch = NudgeWatch()
+        _ = run(&watch, [session(.working)], at: 0)
+        #expect(run(&watch, [session(.waiting)], at: 10) == [.waiting(session: "a")])
+        #expect(run(&watch, [session(.working)], at: 11) == [.resumed(session: "a")])
+        #expect(run(&watch, [session(.waiting)], at: 16).isEmpty)
+        // The reminder counts from the first wait, not the second.
+        let events = run(&watch, [session(.waiting)], at: 10 + 300)
+        #expect(events == [.reminder(session: "a", waited: 300, count: 1)])
+    }
+
     @Test("A subagent that waits is said, because the run is stuck on it")
     func subagentWaiting() {
         var watch = NudgeWatch()
