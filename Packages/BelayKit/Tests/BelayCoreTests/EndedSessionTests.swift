@@ -25,6 +25,24 @@ struct EndedSessionTests {
         #expect(await coordinator.snapshot.sessions.isEmpty)
     }
 
+    /// Found live, in the shipped 2.1.0: a parked session idled, the TTL took
+    /// it, the provider's silence heartbeat seeded it again as working, and
+    /// the provider's own grace then ended it as one that went quiet.
+    @Test("A heartbeat after a TTL eviction does not resurrect the session either")
+    func heartbeatDoesNotResurrectAfterExpiry() async {
+        let clock = TestClock()
+        let coordinator = ActivityCoordinator(clock: clock, policy: .default)
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact))
+        clock.advance(AwakePolicy.default.sessionTTL + AwakePolicy.default.awaitingUserBudget + 60)
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.sessions.isEmpty)
+
+        clock.advance(30)
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .inferred, heartbeat: true))
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.sessions.isEmpty)
+    }
+
     @Test("A new prompt after the end is a new session")
     func promptRevives() async {
         let clock = TestClock()

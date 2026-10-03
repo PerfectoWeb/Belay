@@ -7,8 +7,9 @@ import Foundation
 /// or a single `await`.
 struct SessionLedger {
     private(set) var sessions: [SessionID: SessionState] = [:]
-    /// Sessions that ended, and when: a heartbeat arriving afterwards is the
-    /// provider still following the file, not the session coming back.
+    /// Sessions that left the ledger, by ending or by expiry, and when: a
+    /// heartbeat arriving afterwards is the provider still following the
+    /// file, not the session coming back.
     /// Found live: a session closed with a prompt unanswered was reborn a
     /// minute later from the silence heartbeat, as a working session nothing
     /// would ever finish, and expired as one that went quiet.
@@ -55,31 +56,41 @@ struct SessionLedger {
     mutating func prune(now: Date, policy: AwakePolicy) {
         ended = ended.filter { now.timeIntervalSince($0.value) < Self.endedMemory }
         var activities: [SessionID: SessionActivity] = [:]
-        sessions = sessions.filter { id, session in
+        var dropped: [SessionID] = []
+        for (id, session) in sessions {
             let activity = session.effectiveActivity(
                 now: now, freshness: policy.hookFreshnessWindow,
                 toolCallBudget: AwakePolicy.openToolCallBudget)
             activities[id] = activity
-            guard activity != .ended else {
-                ended[id] = now
-                return false
-            }
-            if activity != .working, lastActivities[id] == .working { return true }
-            // A tool call emits nothing while it runs, so the plain TTL would
-            // evict the very session the bracket exists to protect — ten
-            // minutes into a half-hour test suite, with the hold going with it.
-            if session.isInsideToolCall(now: now, budget: AwakePolicy.openToolCallBudget) {
-                return true
-            }
-            // Same exemption for the background bracket: an idle-with-tasks
-            // session emits nothing, and the plain TTL would evict it well
-            // before its thirty minutes were up.
-            if session.isInsideBackground(now: now) {
-                return true
-            }
-            return !session.isExpired(now: now, ttl: Self.ttl(for: activity, policy: policy))
+            if !keeps(session, activity: activity, now: now, policy: policy) { dropped.append(id) }
+        }
+        // Every way out is remembered the same way: a heartbeat for a session
+        // the TTL took is the provider still following the file, exactly as
+        // after an end, and used to seed it again as a working session.
+        for id in dropped {
+            ended[id] = now
+            sessions[id] = nil
         }
         lastActivities = activities.filter { sessions[$0.key] != nil }
+    }
+
+    private func keeps(
+        _ session: SessionState, activity: SessionActivity, now: Date, policy: AwakePolicy
+    ) -> Bool {
+        if activity == .ended { return false }
+        // Shown once more before it goes, so the snapshot carries the change.
+        if activity != .working, lastActivities[session.id] == .working { return true }
+        // A tool call emits nothing while it runs, so the plain TTL would
+        // evict the very session the bracket exists to protect, ten
+        // minutes into a half-hour test suite, with the hold going with it.
+        if session.isInsideToolCall(now: now, budget: AwakePolicy.openToolCallBudget) {
+            return true
+        }
+        // Same exemption for the background bracket: an idle-with-tasks
+        // session emits nothing, and the plain TTL would evict it well
+        // before its thirty minutes were up.
+        if session.isInsideBackground(now: now) { return true }
+        return !session.isExpired(now: now, ttl: Self.ttl(for: activity, policy: policy))
     }
 
     /// Recomputes fused activity and the per-session transition timestamps that

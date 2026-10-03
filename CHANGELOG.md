@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- A session the list let go of, by its ending or by its time running out,
+  stays gone until a real new record: the transcript watcher's heartbeats
+  used to bring a parked session back as working, and its own grace then
+  ended it as one that went quiet.
 - A session that stops working and expires in the same moment, as one with a
   spent background claim does, is shown idle once before it leaves the list,
   so Nudge no longer reports it as gone quiet.
