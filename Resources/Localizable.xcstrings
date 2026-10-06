@@ -2529,6 +2529,52 @@
         }
       }
     },
+    "A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine fertige Sitzung wird nicht mehr eine Viertelstunde später als verstummt gemeldet, egal was danach in ihr Protokoll geschrieben wird."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sesión que ha terminado ya no se informa como en silencio un cuarto de hora después, se escriba lo que se escriba luego en su transcripción."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une session terminée n'est plus signalée comme silencieuse un quart d'heure plus tard, quoi qu'il s'écrive ensuite dans sa transcription."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una sessione conclusa non viene più segnalata come silenziosa un quarto d'ora dopo, qualunque cosa venga scritta poi nella sua trascrizione."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завершённая сессия больше не объявляется затихшей через четверть часа, что бы ни дописывалось в её журнал после."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已完成的会话不会再在一刻钟后被报告为没有动静，无论之后向其记录中写入什么。"
+          }
+        }
+      }
+    },
     "A session waits for you": {
       "extractionState": "manual",
       "localizations": {
@@ -4529,52 +4575,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "自动允许"
-          }
-        }
-      }
-    },
-    "Auto Allow in Codex": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatisch erlauben in Codex"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auto Allow in Codex"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Permitir automáticamente en Codex"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Autorisation automatique dans Codex"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Consenso automatico in Codex"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Автоподтверждение в Codex"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Codex 中的自动允许"
           }
         }
       }
@@ -6865,6 +6865,52 @@
         }
       }
     },
+    "Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay erneuert die Registrierung des Deckel-Helfers bei jedem Start, damit das Wachhalten bei geschlossenem Deckel jedes Update übersteht."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay renueva el registro del ayudante de la tapa en cada inicio, para que mantener el Mac despierto con la tapa cerrada sobreviva a cada actualización."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay renouvelle l'enregistrement de l'assistant du capot à chaque lancement, pour que garder le Mac éveillé capot fermé survive à chaque mise à jour."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay rinnova la registrazione dell'assistente del coperchio a ogni avvio, così tenere sveglio il Mac a coperchio chiuso sopravvive a ogni aggiornamento."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay обновляет регистрацию помощника при каждом запуске, поэтому удержание Mac с закрытой крышкой переживает каждое обновление."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belay 在每次启动时都会刷新合盖助手的注册，因此合盖保持唤醒在每次更新后仍然有效。"
+          }
+        }
+      }
+    },
     "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.": {
       "extractionState": "manual",
       "localizations": {
@@ -8308,52 +8354,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "点击查看更新内容，随时安装。"
-          }
-        }
-      }
-    },
-    "Clicks \"Allow once\" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Klickt jetzt auch in der ChatGPT-Desktop-App auf „Allow once“. Es gelten dieselben Regeln für lokale Websites. Codex muss dafür unter Einstellungen › Agenten eingeschaltet sein."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clicks \"Allow once\" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ahora también pulsa «Allow once» en la app de escritorio de ChatGPT, con las mismas reglas para sitios locales. Funciona si Codex está activado en Ajustes › Agentes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clique désormais aussi sur « Allow once » dans l’app de bureau ChatGPT, avec les mêmes règles pour les sites locaux. Codex doit être activé dans Réglages › Agents."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ora preme «Allow once» anche nell’app desktop di ChatGPT, con le stesse regole per i siti locali. Funziona quando Codex è attivo in Impostazioni › Agenti."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Нажимает «Allow once» и в приложении ChatGPT для Mac, по тем же правилам для локальных сайтов. Работает, когда Codex включён в Настройках › Агенты."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "现在也能在 ChatGPT 桌面 App 中点按“Allow once”，沿用相同的本地网站规则。需先在“设置 › 智能体”中启用 Codex。"
           }
         }
       }
@@ -12729,6 +12729,52 @@
         }
       }
     },
+    "Lid Hold works again after an update": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbeiten bei geschlossenem Deckel funktioniert nach einem Update wieder"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lid Hold works again after an update"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El trabajo con la tapa cerrada vuelve a funcionar tras una actualización"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le travail capot fermé fonctionne à nouveau après une mise à jour"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il lavoro a coperchio chiuso funziona di nuovo dopo un aggiornamento"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Работа с закрытой крышкой снова действует после обновления"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合盖工作在更新后恢复正常"
+          }
+        }
+      }
+    },
     "List processes running hot": {
       "localizations": {
         "de": {
@@ -14962,6 +15008,52 @@
         }
       }
     },
+    "Nudge trusts a finished session": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anstoß vertraut einer fertigen Sitzung"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nudge trusts a finished session"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso confía en una sesión terminada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rappel fait confiance à une session terminée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Promemoria si fida di una sessione conclusa"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«Напоминание» верит завершённой сессии"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提醒信任已完成的会话"
+          }
+        }
+      }
+    },
     "Numbers stay on this Mac unless you share them.": {
       "extractionState": "manual",
       "localizations": {
@@ -16309,52 +16401,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "播放声音"
-          }
-        }
-      }
-    },
-    "Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spielt einen Ton, wenn ein Agent fertig ist, dich braucht oder keine Aktivität mehr zeigt. Erinnert dich, wenn er weiter wartet. Klicke auf eine Mitteilung, um seine App in den Vordergrund zu holen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reproduce un sonido cuando un agente termina, necesita tu atención o deja de mostrar actividad. Te avisa de nuevo si sigue esperando. Haz clic en una notificación para traer su app al frente."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Émet un son quand un agent termine, a besoin de vous ou ne montre plus d’activité. Vous recevez un rappel si l’agent attend toujours. Cliquez sur une notification pour afficher son app au premier plan."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emette un suono quando un agente termina, ha bisogno di te o non mostra più attività. Ti avvisa di nuovo se resta in attesa. Fai clic su una notifica per portare la sua app in primo piano."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Сообщает звуком о завершении работы, ожидании ответа или отсутствии активности. Если агент продолжает ждать, напоминает об этом. Нажмите на уведомление, чтобы перейти в его приложение."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "智能体完成、需要你回应或不再有活动时，会播放提示音。如果仍在等待，还会再次提醒。点按通知即可将其所在的 App 切到前台。"
           }
         }
       }
@@ -18728,52 +18774,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "在写入任何内容前，预览 Belay 将添加的确切内容"
-          }
-        }
-      }
-    },
-    "Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeigt Prozesse, die nach Sitzungsende weiterlaufen, und hohe CPU-Auslastung, während ein Agent untätig ist. Liest keine Befehlszeilen oder Dateiinhalte."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Muestra los procesos que siguen en ejecución tras finalizar una sesión y el uso elevado de CPU cuando un agente está inactivo. No lee líneas de comandos ni el contenido de los archivos."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Affiche les processus qui continuent de tourner après la fin d’une session et une utilisation élevée du processeur lorsqu’un agent est inactif. Ne lit ni les lignes de commande ni le contenu des fichiers."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra i processi rimasti in esecuzione dopo la fine di una sessione e l’uso elevato della CPU quando un agente è inattivo. Non legge righe di comando né il contenuto dei file."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показывает процессы, оставшиеся после завершения сессии, и высокую нагрузку на процессор, пока агент бездействует. Не читает команды запуска и содержимое файлов."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "显示会话结束后仍在运行的进程，以及智能体空闲时的高 CPU 占用。不读取命令行或文件内容。"
           }
         }
       }

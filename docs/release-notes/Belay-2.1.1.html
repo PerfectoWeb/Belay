@@ -1,0 +1,26 @@
+<!-- What Sparkle shows for 2.1.1. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; }
+  }
+</style>
+<h2>Belay 2.1.1</h2>
+<ul>
+  <li><b>Lid Hold works again after an update.</b> The system kept a stale
+      record of Belay's lid helper after the 2.1.0 update and refused every
+      request to it, so holding through a closed lid silently did nothing.
+      Belay now refreshes the registration at every launch and again if the
+      helper stops answering.</li>
+  <li><b>Nudge no longer reports a finished session as gone quiet.</b> A
+      /compact after a Stop, a parked session's trailing writes, a session
+      that stopped and expired in the same moment, and a Stop with
+      background tasks past its budget all used to sound as a session that
+      went quiet.</li>
+</ul>

@@ -7,8 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.1] - 2026-10-06
+
 ### Fixed
 
+- Lid Hold works again after an update. Registering the helper records its
+  checksum with the system, and a new build of the helper left that record
+  stale: the system reported it enabled and refused every request to it, so
+  the lid hold silently did nothing. Belay now refreshes the registration at
+  every launch and again after a minute of refused requests.
+- A `/compact` or another local command after a Stop no longer turns the
+  session working: the records the CLI writes for its own commands are read
+  as metadata, not as a prompt, and a transcript reading made while hooks
+  were fresh never outranks the hook once it goes stale, since a real prompt
+  brings its own hook. Either used to make Nudge report a finished session
+  as gone quiet fifteen minutes later.
 - A session the list let go of, by its ending or by its time running out,
   stays gone until a real new record: the transcript watcher's heartbeats
   used to bring a parked session back as working, and its own grace then

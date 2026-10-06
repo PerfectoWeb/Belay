@@ -194,8 +194,11 @@ inspection as best-effort and never depend on it for correctness.
 For a given session, the coordinator prefers:
 
 1. an `.exact` signal newer than `hookFreshnessWindow` (default 5 min)
-2. otherwise the newest `.inferred` signal, provided it is newer than the
-   exact one (by more than `SessionState.inferredLead`); a transcript that
+2. otherwise the newest `.inferred` signal, provided it was made after the
+   exact one's window closed; while hooks are fresh every prompt arrives
+   with its own hook, so a transcript reading from inside that window only
+   continues a turn (a parked tool call, the records `/compact` writes after
+   a Stop) and never outranks the hook once it is stale; a transcript that
    has not moved since the hook cannot know more than the hook did, and a
    record that only continues a turn (a tool result, an assistant record, or
    bytes with no readable record; `ActivitySignal.heartbeat`) refreshes the

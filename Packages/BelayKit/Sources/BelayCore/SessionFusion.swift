@@ -17,12 +17,14 @@ extension SessionState {
             let running = isInsideToolCall(now: now, budget: toolCallBudget)
             let backgrounded = isInsideBackground(now: now)
             if fresh || running || backgrounded { return exact.activity }
-            // Stale, but still the last word unless the transcript has moved
-            // since: a reading older than the hook cannot know more than it.
-            // A parked session, its last record a tool call waiting on a
-            // wake-up, used to turn "working" five minutes after its Stop and
-            // be reported as gone quiet when the TTL took it.
-            if let inferred, inferred.at > exact.at + Self.inferredLead { return inferred.activity }
+            // Stale, but still the last word unless the transcript moved after
+            // the hooks fell silent. While they were fresh every prompt came
+            // with its own hook, so a transcript reading from inside that
+            // window only continues a turn: a parked session's tool call
+            // waiting on a wake-up, or the records a /compact writes two
+            // minutes after the Stop, used to turn "working" when the window
+            // closed and be reported as gone quiet when the grace ran out.
+            if let inferred, inferred.at > exact.at + freshness { return inferred.activity }
             // A Stop that claimed background tasks reads as working only for
             // the claim's budget; once that is spent, the Stop means what a
             // Stop means. Found live: the transcript's end_turn landed a
@@ -34,12 +36,6 @@ extension SessionState {
         if let inferred { return inferred.activity }
         return .idle
     }
-
-    /// How much newer than the hook a transcript reading must be to outrank
-    /// it once the hook is stale. The sweep stamps a write when it finds it,
-    /// so the record a hook describes can carry a timestamp a little after
-    /// the hook's own.
-    public static let inferredLead: TimeInterval = returnGrace
 
     /// Whether the agent is still inside a tool call it opened and, if so,
     /// whether that claim is young enough to be worth believing.
@@ -59,20 +55,24 @@ extension SessionState {
     /// `nil` when there is nothing to flip to, or the two already agree — the
     /// crossing changes nothing then. Lets the driver wake exactly at the flip
     /// instead of noticing it up to a safety tick late.
+    ///
+    /// A transcript reading outranks a hook only once it is newer than the
+    /// hook's whole window, by which time the window has closed, so the flip
+    /// is immediate. Only an open bracket can still hold the hook's word past
+    /// that point, and then the moment worth waking for is the bracket's own
+    /// ceiling.
     public func exactFreshnessDeadline(window: TimeInterval, toolCallBudget: TimeInterval) -> Date? {
         guard let exact, let inferred, exact.activity != inferred.activity,
-            inferred.at > exact.at + Self.inferredLead
+            inferred.at > exact.at + window
         else { return nil }
-        // An open bracket suspends the crossing, so the moment worth waking for
-        // is the bracket's own ceiling instead.
         if let since = openToolCallSince {
             let ceiling = since + toolCallBudget
-            return max(ceiling, exact.at + window)
+            return ceiling > inferred.at ? ceiling : nil
         }
         if let since = backgroundSince {
             let ceiling = since + AwakePolicy.backgroundTasksBudget
-            return max(ceiling, exact.at + window)
+            return ceiling > inferred.at ? ceiling : nil
         }
-        return exact.at + window
+        return nil
     }
 }

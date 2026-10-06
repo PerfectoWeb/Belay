@@ -97,31 +97,23 @@ enum ReleaseNotes {
     private static var written: [ReleaseNote] {
         [
             ReleaseNote(
-                version: "2.1.0",
+                version: "2.1.1",
                 items: [
                     .init(
-                        symbol: Mark.allow,
-                        title: "Auto Allow in Codex",
+                        symbol: Mark.laptop,
+                        title: "Lid Hold works again after an update",
                         body: """
-                            Clicks "Allow once" in the ChatGPT desktop app too, using the same \
-                            rules for local sites. Works when Codex is enabled in Settings › \
-                            Agents.
+                            Belay refreshes the lid helper's registration at every launch, so \
+                            keeping your Mac awake with the lid closed survives each update.
                             """,
                         directOnly: true),
                     .init(
                         symbol: Mark.nudge,
-                        title: "Nudge",
+                        title: "Nudge trusts a finished session",
                         body: """
-                            Plays a sound when an agent finishes, needs you, or goes quiet. \
-                            Reminds you if it's still waiting. Click a notification to bring its \
-                            app to the front.
-                            """),
-                    .init(
-                        symbol: Mark.orphans,
-                        title: "Orphan Watch",
-                        body: """
-                            Shows processes left running after a session ends and high CPU use \
-                            while an agent is idle. Never reads command lines or file contents.
+                            A session that has finished is no longer reported as gone quiet a \
+                            quarter of an hour later, whatever gets written to its transcript \
+                            afterwards.
                             """)
                 ]
             )

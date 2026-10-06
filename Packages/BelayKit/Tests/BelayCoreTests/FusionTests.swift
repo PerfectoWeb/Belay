@@ -31,13 +31,35 @@ struct FusionTests {
         let coordinator = ActivityCoordinator(clock: clock, policy: policy)
 
         await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact))
-        clock.advance(SessionState.inferredLead + 1)
+        clock.advance(policy.hookFreshnessWindow + 1)
+        await coordinator.evaluate()
+        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
+
+        await coordinator.ingest(.make(.working, at: clock.now, confidence: .inferred))
+        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .working)
+    }
+
+    /// Found live: a /compact two minutes after the Stop. The CLI writes the
+    /// command's records with no hook, the classifier read them as a prompt,
+    /// and when the hook's window closed the session turned working, rode
+    /// the awaiting grace and was reported as gone quiet. While hooks are
+    /// fresh a real prompt brings its own hook, so a transcript reading from
+    /// inside the window can only be a continuation.
+    @Test("A transcript reading from inside the hook's window never outranks it")
+    func inferredFromInsideTheWindowStaysBehind() async {
+        let clock = TestClock()
+        var policy = AwakePolicy.default
+        policy.sessionTTL = 3600
+        let coordinator = ActivityCoordinator(clock: clock, policy: policy)
+
+        await coordinator.ingest(.make(.idle, at: clock.now, confidence: .exact))
+        clock.advance(120)
         await coordinator.ingest(.make(.working, at: clock.now, confidence: .inferred))
         #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
 
-        clock.advance(policy.hookFreshnessWindow + 1)
+        clock.advance(policy.hookFreshnessWindow)
         await coordinator.evaluate()
-        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .working)
+        #expect(await coordinator.snapshot.activities[SessionID("s1")] == .idle)
     }
 
     /// Found live: a session parked on a tool call that waits for a wake-up.
@@ -109,15 +131,27 @@ struct FusionTests {
         var session = SessionState(
             id: SessionID("s1"), provider: .claudeCode, workspace: nil, firstSeen: base)
         session.record(.make(.working, at: base, confidence: .exact))
-        let later = base.addingTimeInterval(SessionState.inferredLead + 1)
+        session.openToolCallSince = base
+        let later = base.addingTimeInterval(301)
         session.record(.make(.idle, at: later, confidence: .inferred))
+        // The open tool call holds the hook's word until its budget runs out;
+        // that ceiling is the flip.
         #expect(
-            session.exactFreshnessDeadline(window: 300, toolCallBudget: .infinity)
-                == base.addingTimeInterval(300))
+            session.exactFreshnessDeadline(window: 300, toolCallBudget: 3600)
+                == base.addingTimeInterval(3600))
+        // A budget already spent when the reading arrived: the flip was
+        // immediate, nothing to wake for.
+        #expect(session.exactFreshnessDeadline(window: 300, toolCallBudget: 200) == nil)
+
+        // No bracket: a reading that outranks the hook arrived after the
+        // window closed, so the flip has happened and there is no crossing.
+        session.openToolCallSince = nil
+        #expect(session.exactFreshnessDeadline(window: 300, toolCallBudget: .infinity) == nil)
 
         // Agreeing readings: the crossing changes nothing, so there is none.
+        session.openToolCallSince = base
         session.record(.make(.working, at: later, confidence: .inferred))
-        #expect(session.exactFreshnessDeadline(window: 300, toolCallBudget: .infinity) == nil)
+        #expect(session.exactFreshnessDeadline(window: 300, toolCallBudget: 3600) == nil)
 
         // Only an exact reading: nothing to fall back to when it goes stale.
         var lone = SessionState(

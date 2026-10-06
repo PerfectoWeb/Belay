@@ -48,6 +48,26 @@ struct TranscriptClassifierTests {
         #expect(TranscriptClassifier.verdict(in: [record("assistant")])?.beginsTurn == false)
     }
 
+    /// Found live: a /compact after the Stop. The CLI files its summary and
+    /// the caveat over a local command's output as user records; read as a
+    /// prompt they opened a turn nobody would answer, and the session was
+    /// reported as gone quiet when the grace ran out.
+    @Test("The CLI's own user records are metadata, not a prompt")
+    func cliNotesAreNotPrompts() {
+        func note(_ flag: String) -> String {
+            "{\"type\":\"user\",\"\(flag)\":true,\"timestamp\":\"\(Self.defaultTime)\","
+                + "\"message\":{\"role\":\"user\",\"content\":\"from the CLI\"}}"
+        }
+        let summary = note("isCompactSummary")
+        let caveat = note("isMeta")
+        #expect(TranscriptClassifier.verdict(in: [summary]) == nil)
+        #expect(TranscriptClassifier.verdict(in: [caveat]) == nil)
+        let closed = [record("assistant", "end_turn"), summary, caveat]
+        #expect(TranscriptClassifier.verdict(in: closed)?.activity == .idle)
+        let typed = TranscriptScratch.record("user", content: "\"hi\"")
+        #expect(TranscriptClassifier.verdict(in: [typed])?.beginsTurn == true)
+    }
+
     @Test("Metadata after the turn does not hide the assistant record")
     func metadataTailIsIgnored() {
         let lines = [

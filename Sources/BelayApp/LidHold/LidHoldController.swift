@@ -52,21 +52,31 @@ final class LidHoldController {
         ticker = timer
     }
 
-    /// Reads the helper's status off the main thread and, if the opt-in stands
-    /// while the helper is unregistered, registers it. The flip in the settings
-    /// row is not the only way the setting arrives: restored preferences, a
-    /// rebuilt app, a helper unregistered behind our back — the opt-in standing
-    /// while nothing is registered is a promise nobody is keeping.
+    /// Registers the helper whenever the opt-in stands, not only when nothing
+    /// is registered yet. The registration launchd keeps records the helper's
+    /// checksum, and an update replaces the helper: the old record then reads
+    /// `enabled` while every lookup of the daemon fails, and the lid hold is a
+    /// promise nobody is keeping. Found live after the 2.1.0 update, four
+    /// days of "Couldn't communicate with a helper application". Registering
+    /// again refreshes the record; registering an unchanged helper changes
+    /// nothing.
     private func registerAtStartIfNeeded() async {
-        var status = await Self.readStatus()
-        if settings.lidHold, status == .notRegistered {
-            await Task.detached(priority: .userInitiated) {
-                try? SMAppService.daemon(plistName: LidDaemon.plistName).register()
-            }.value
-            status = await Self.readStatus()
-            Diagnostics.note("lid helper register-at-start status=\(status.rawValue)")
+        guard settings.lidHold else {
+            serviceStatus = await Self.readStatus()
+            return
         }
-        serviceStatus = status
+        serviceStatus = await Self.register(cause: "start")
+    }
+
+    /// Registers off the main thread and reads back the status, with one log
+    /// line saying what it came to.
+    private static func register(cause: String) async -> SMAppService.Status {
+        await Task.detached(priority: .userInitiated) {
+            try? SMAppService.daemon(plistName: LidDaemon.plistName).register()
+        }.value
+        let status = await readStatus()
+        Diagnostics.note("lid helper register cause=\(cause) status=\(status.rawValue)")
+        return status
     }
 
     /// The XPC status read, hopped off the main thread. `SMAppService.Status`
@@ -138,9 +148,15 @@ final class LidHoldController {
     }
 
     /// First failure loudly, then one line in forty (about ten minutes at the
-    /// sweep's pace): the fact is preserved, the flood is not.
+    /// sweep's pace): the fact is preserved, the flood is not. A minute of
+    /// failures, and then once an hour, the registration is refreshed: a
+    /// helper launchd will not look up is most often one whose record is
+    /// stale, and the next beat tells whether that was it.
     private func noteXPCFailure(_ description: String) {
         xpcFailures += 1
+        if xpcFailures == 4 || xpcFailures.isMultiple(of: 240), settings.lidHold {
+            Task { self.serviceStatus = await Self.register(cause: "xpc-failures") }
+        }
         guard xpcFailures == 1 || xpcFailures.isMultiple(of: 40) else { return }
         Diagnostics.appendFromAnywhere(
             "lid xpc error=\"\(description)\" (\(xpcFailures) in a row)")

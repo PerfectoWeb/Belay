@@ -53,6 +53,7 @@ A run finishes,Settings,translated,,A run finishes,运行完成时
 "A session appears here once it ends, if it ran for at least a minute.",Statistics,translated,,"A session appears here once it ends, if it ran for at least a minute.",会话结束后会显示在这里（至少运行一分钟）。
 A session goes quiet,Settings,translated,,A session goes quiet,会话没有动静时
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.",会话尚未完成就停止了响应，通常是 CLI 在等待输入或已被关闭。
+"A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards.",App,translated,,"A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards.",已完成的会话不会再在一刻钟后被报告为没有动静，无论之后向其记录中写入什么。
 A session waits for you,Settings,translated,,A session waits for you,会话等待你回应时
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,手动切换模式时播放短促提示音。遵循系统声音设置。
 A sound and a reminder when an agent finishes or waits for you.,App,translated,,A sound and a reminder when an agent finishes or waits for you.,智能体完成或等待你时发出声音并提醒。
@@ -96,7 +97,6 @@ Approve the helper in Login Items so it can hold the lid.,Settings,translated,,A
 Approved so far: %lld,App,translated,%lld,Approved so far: %lld,已批准：%lld
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,自动
 Auto Allow,App,translated,,Auto Allow,自动允许
-Auto Allow in Codex,App,translated,,Auto Allow in Codex,Codex 中的自动允许
 Average use above,Settings,translated,,Average use above,平均占用高于
 "Averaging %lld%% of a core while %@ is idle, running for %@",App,translated,%lld %@ %@,"Averaging %lld%% of a core while %@ is idle, running for %@",平均占用 %lld%% 个核心，而 %@ 处于空闲，已运行 %@
 Awake %@ so far,Panel,translated,%@,Awake for %@,已保持唤醒 %@
@@ -149,6 +149,7 @@ Belay reached its maximum awake time and stopped keeping your Mac awake.,Setting
 "Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,translated,,The maximum awake time was reached.,已达到最长唤醒时间。
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,Belay 只读取判断智能体是否在工作所需的会话数据。它从不读取你的提示词或代码。一切都留在这台 Mac 上。
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Settings,translated,,"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Belay 只读取智能体会话文件中足以判断它是否在工作的部分。绝不读取你的提示词，绝不读取你的代码，关于你的任何信息都不会离开这台 Mac。它只在两种情况下使用网络：每天检查一次是否有新版本（可以关闭），以及在你请求时下载新版本。
+"Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update.",App,translated,,"Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update.",Belay 在每次启动时都会刷新合盖助手的注册，因此合盖保持唤醒在每次更新后仍然有效。
 "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings,translated,,"Saves crash, freeze, and error reports locally. Nothing is sent automatically.",在本地保存崩溃、卡死和错误报告。不会自动发送任何内容。
 Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,你仍然可以使用“常开”或“关闭”。
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay 已停止保持唤醒
@@ -180,7 +181,6 @@ Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude
 Clean Up Now,"App, Settings",translated,,Clean Up Now,立即清理
 Clear,App,translated,,Clear,清除
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,点击查看更新内容，随时安装。
-"Clicks ""Allow once"" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents.",App,translated,,"Clicks ""Allow once"" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents.",现在也能在 ChatGPT 桌面 App 中点按“Allow once”，沿用相同的本地网站规则。需先在“设置 › 智能体”中启用 Codex。
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Cline 尚未在这台 Mac 上启动过会话。一旦启动，Belay 会自动开始监视。
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,此 Mac 上未安装 Cline。
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,关闭
@@ -275,6 +275,7 @@ Let Belay read your ~/.cline folder so it can tell when Cline is working.,"Setti
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,允许访问 ~/.codex，Belay 才能判断 Codex 何时在工作。
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,允许访问 ~/.copilot，Belay 才能判断 Copilot 何时在工作。
 Let's go,(unused),translated,,Let's go,开始吧
+Lid Hold works again after an update,App,translated,,Lid Hold works again after an update,合盖工作在更新后恢复正常
 List processes running hot,Settings,translated,,List processes running hot,列出高负载进程
 Listening for your agents,App,translated,,Listening for your agents,正在关注你的智能体
 Local only,Settings: About,translated,,Local only,仅本地
@@ -323,6 +324,7 @@ Notify when a new version is out,Settings: Notifications,translated,,Notify when
 Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,当智能体没有动静时通知我
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,智能体需要你时通知我
 Nudge,"App, Detection, Settings, Settings: Notifications",translated,,Nudge,提醒
+Nudge trusts a finished session,App,translated,,Nudge trusts a finished session,提醒信任已完成的会话
 Numbers stay on this Mac unless you share them.,Statistics,translated,,Numbers stay on this Mac unless you share them.,除非你共享，这些数字都留在这台 Mac 上。
 Off,"App, Detection, Menu bar, Panel, Settings, Settings: Providers, Welcome",translated,,Off,关闭
 "On battery, Belay lets your Mac sleep at %lld%%.",Settings: Behaviour,translated,%lld,"On battery, Belay lets your Mac sleep at %lld%%.",使用电池时，电量降至 %lld%% 后 Belay 会让 Mac 进入睡眠。
@@ -352,7 +354,6 @@ Paused on battery power,App,translated,,Paused on battery power,使用电池，�
 Play a sound when,Settings,translated,,Play a sound when,在以下情况播放声音
 Play interface sounds,Settings: General,translated,,Play interface sounds,播放界面声音
 Play sounds,Settings: General,translated,,Play sounds,播放声音
-"Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.",App,translated,,"Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.",智能体完成、需要你回应或不再有活动时，会播放提示音。如果仍在等待，还会再次提醒。点按通知即可将其所在的 App 切到前台。
 Precise,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise,精确
 Precise Detection,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise Detection,精确检测
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,精确检测规则
@@ -389,7 +390,7 @@ Safety stop,Settings: Notifications,translated,,Safety stop,安全停止
 Screenshot Cleaner,App,translated,,Screenshot Cleaner,截屏清理
 Search modules,App,translated,,Search modules,搜索模块
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,每个版本只发送一次。即使关闭此项，菜单栏图标仍会显示更新标记。
-Sessions,"App, Panel, Settings, Settings: Notifications, Settings: Providers, Statistics",translated,,Sessions,会话
+Sessions,"App, Detection, Panel, Settings, Settings: Notifications, Settings: Providers, Statistics",translated,,Sessions,会话
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,设置
 Settings…,Menu bar,translated,,Settings…,设置…
 Share,"App, Statistics",translated,,Share,共享
@@ -404,7 +405,6 @@ Show fewer sessions,Panel,translated,,Show fewer sessions,收起会话
 Show in Finder,Settings,translated,,Show in Finder,在访达中显示
 "Show what a working agent is doing – running a command, editing files – next to its state. Requires Precise Detection.",Settings: Behaviour,translated,,"Show what a working agent is doing – running a command, editing files – next to its state. Requires Precise Detection.",在状态旁边显示工作中的智能体正在做什么：运行命令、编辑文件等。需要精确检测。
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,在写入任何内容前，预览 Belay 将添加的确切内容
-Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.,App,translated,,Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.,显示会话结束后仍在运行的进程，以及智能体空闲时的高 CPU 占用。不读取命令行或文件内容。
 Since %@,Statistics,translated,%@,Since %@,自 %@ 起
 Skip for now,Welcome,translated,,Skip now,跳过
 "Skipped, already taken by your own scripts: %@",(unused),translated,%@,"Skipped, already taken by your own scripts: %@",已跳过，文件名已被你自己的脚本占用：%@

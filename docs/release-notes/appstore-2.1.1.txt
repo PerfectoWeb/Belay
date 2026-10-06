@@ -1,0 +1,33 @@
+App Store "What’s New in This Version" – Belay 2.1.1
+
+Nothing here may mention Precise Detection, hooks, Auto Allow or Lid Hold: the
+App Store build is sandboxed and has none of them. Everything below is true of
+this build on its own.
+
+--- EN ---
+
+Nudge no longer reports a session that had finished as gone quiet. A session that stops and leaves the list in the same moment is now shown idle first, and a session that has ended stays ended.
+
+--- RU ---
+
+«Напоминание» больше не сообщает об отсутствии активности в сессии, которая уже завершила работу. Сессия, которая останавливается и покидает список в один момент, сначала показывается бездействующей, а завершённая сессия остаётся завершённой.
+
+--- DE ---
+
+Anstoß meldet eine bereits abgeschlossene Sitzung nicht mehr als verstummt. Eine Sitzung, die im selben Moment stoppt und die Liste verlässt, wird zuerst als untätig angezeigt, und eine beendete Sitzung bleibt beendet.
+
+--- ES ---
+
+Aviso ya no informa de que una sesión que había terminado se quedó en silencio. Una sesión que se detiene y sale de la lista en el mismo instante se muestra primero como inactiva, y una sesión finalizada permanece finalizada.
+
+--- FR ---
+
+Rappel ne signale plus comme silencieuse une session qui avait terminé. Une session qui s’arrête et quitte la liste au même instant est d’abord affichée inactive, et une session terminée reste terminée.
+
+--- IT ---
+
+Promemoria non segnala più come silenziosa una sessione che aveva finito. Una sessione che si ferma e lascia l’elenco nello stesso istante viene prima mostrata inattiva, e una sessione conclusa resta conclusa.
+
+--- ZH ---
+
+提醒不再把已经完成的会话报告为静默。在同一时刻停止并离开列表的会话会先显示为空闲，已结束的会话保持结束状态。

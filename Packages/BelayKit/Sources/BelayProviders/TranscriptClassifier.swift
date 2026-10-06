@@ -141,6 +141,12 @@ private struct TranscriptRecord {
         else { return nil }
         switch wire.type {
         case "assistant": kind = .assistant
+        // The CLI files a few of its own notes as user records: the summary a
+        // /compact leaves behind, the caveat above a local command's output.
+        // Nobody typed them and no model answers them, so they say as much
+        // about the turn as a `last-prompt` line does. Flags beside the
+        // message; the message itself stays unread (R9).
+        case "user" where wire.isMeta == true || wire.isCompactSummary == true: kind = .metadata
         case "user": kind = .user
         default: kind = .metadata
         }
@@ -204,11 +210,15 @@ private struct Wire: Decodable {
     let type: String
     let message: Message?
     let isApiErrorMessage: Bool?
+    let isMeta: Bool?
+    let isCompactSummary: Bool?
     let timestamp: String?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         type = try container.decode(String.self, forKey: .type)
+        isMeta = try? container.decodeIfPresent(Bool.self, forKey: .isMeta)
+        isCompactSummary = try? container.decodeIfPresent(Bool.self, forKey: .isCompactSummary)
         // `message` is an object on conversational records but a bare string on
         // some metadata ones; a mistyped field must lose the field, not the
         // record, or an unknown shape becomes a missing signal.
@@ -221,6 +231,8 @@ private struct Wire: Decodable {
         case type
         case message
         case isApiErrorMessage
+        case isMeta
+        case isCompactSummary
         case timestamp
     }
 }

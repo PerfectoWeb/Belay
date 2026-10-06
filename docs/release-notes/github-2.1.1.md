@@ -1,0 +1,3 @@
+- **Lid Hold works again after an update.** The system kept a stale record of Belay's lid helper after the 2.1.0 update, reported it enabled and refused every request to it, so holding through a closed lid silently did nothing. Belay now refreshes the registration at every launch and again if the helper stops answering. Direct build only.
+
+- **Nudge no longer reports a finished session as gone quiet.** Four causes found live and fixed: a `/compact` or another local command after a Stop read as a new prompt; a parked session brought back by the transcript's own heartbeats; a session that stopped and expired in the same moment; and a Stop with background tasks still reading as working after its thirty-minute budget.

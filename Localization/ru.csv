@@ -53,6 +53,7 @@ A run finishes,Settings,translated,,A run finishes,Запуск завершил
 "A session appears here once it ends, if it ran for at least a minute.",Statistics,translated,,"A session appears here once it ends, if it ran for at least a minute.","Сессия появится здесь после завершения, если проработала хотя бы минуту."
 A session goes quiet,Settings,translated,,A session goes quiet,Сессия замолчала
 "A session stopped responding without finishing, usually because the CLI needs input or was closed.",Settings: Notifications,translated,,"A session stopped responding without finishing, usually because the CLI needs input or was closed.","Сессия перестала отвечать, не завершившись. Обычно CLI ждёт ввода или был закрыт."
+"A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards.",App,translated,,"A session that has finished is no longer reported as gone quiet a quarter of an hour later, whatever gets written to its transcript afterwards.","Завершённая сессия больше не объявляется затихшей через четверть часа, что бы ни дописывалось в её журнал после."
 A session waits for you,Settings,translated,,A session waits for you,Сессия ждёт вас
 A short note when you change mode by hand. Turning off interface sounds in System Settings silences these too.,Settings: General,translated,,Plays a short sound when you change modes manually. Respects your system sound settings.,Нейтральное звуковое сопровождение по интерфейсу. Учитывает настройки системных звуков.
 A sound and a reminder when an agent finishes or waits for you.,App,translated,,A sound and a reminder when an agent finishes or waits for you.,"Звук и напоминание, когда агент закончил или ждёт вас."
@@ -96,7 +97,6 @@ Approve the helper in Login Items so it can hold the lid.,Settings,translated,,A
 Approved so far: %lld,App,translated,%lld,Approved so far: %lld,Подтверждено: %lld
 Auto,"App, Detection, Menu bar, Panel, Settings, Settings: General",translated,,Auto,Авто
 Auto Allow,App,translated,,Auto Allow,Автоподтверждение
-Auto Allow in Codex,App,translated,,Auto Allow in Codex,Автоподтверждение в Codex
 Average use above,Settings,translated,,Average use above,Средняя загрузка выше
 "Averaging %lld%% of a core while %@ is idle, running for %@",App,translated,%lld %@ %@,"Averaging %lld%% of a core while %@ is idle, running for %@","В среднем %lld%% ядра, пока %@ бездействует, работает уже %@"
 Awake %@ so far,Panel,translated,%@,Awake for %@,Mac не спит %@
@@ -149,6 +149,7 @@ Belay reached its maximum awake time and stopped keeping your Mac awake.,Setting
 "Belay reached the longest stretch you allow it to hold, so it stopped.",Panel,needs_review,,The maximum awake time was reached.,Достигнут предел времени без сна.
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac.",Settings,translated,,Belay reads only the session data it needs to tell whether an agent is working. It never reads your prompts or code. Everything stays on this Mac.,"Belay читает только данные сессии, необходимые, чтобы понять, работает ли агент. Ваши промпты и код он не читает. Всё остаётся на этом Mac."
 "Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.",Settings,translated,,"Belay reads only enough of your agent's session files to know whether it is running. Never your prompts, never your code, and nothing about you leaves this Mac. It uses the network twice: a daily check for a newer version, which you can switch off, and the download itself when you ask for one.","Belay читает из файлов сессии вашего агента ровно столько, чтобы понять, работает ли он. Никогда ваши промпты, никогда ваш код, и ничего о вас не покидает этот Mac. Сеть используется дважды: ежедневная проверка новой версии, которую можно отключить, и сама загрузка, когда вы её запросите."
+"Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update.",App,translated,,"Belay refreshes the lid helper's registration at every launch, so keeping your Mac awake with the lid closed survives each update.","Belay обновляет регистрацию помощника при каждом запуске, поэтому удержание Mac с закрытой крышкой переживает каждое обновление."
 "Belay saves crash, freeze, and error reports locally. Nothing is sent automatically. You decide what to share when reporting a problem.",Settings,translated,,"Saves crash, freeze, and error reports locally. Nothing is sent automatically.","Отчёты о сбоях, зависаниях и ошибках сохраняются локально. Данные не отправляются никуда, они служат инструментом для разработчиков и баг-репортеров."
 Belay still works in Always on and Off modes,Welcome,translated,,You can still use Always On or Off.,Режимы «Всегда» и «Выключен» по-прежнему доступны.
 Belay stopped holding,"App, Menu bar, Panel, Settings: Notifications",translated,,Belay stopped holding,Belay перестал удерживать
@@ -180,7 +181,6 @@ Claude Code is not installed on this Mac.,Settings: Providers,translated,,Claude
 Clean Up Now,"App, Settings",translated,,Clean Up Now,Убрать сейчас
 Clear,App,translated,,Clear,Очистить
 Click to see what changed and install it whenever you like.,Settings: Notifications,translated,,Click to see what changed and install it whenever you like.,"Нажмите, чтобы посмотреть, что изменилось, и установить когда удобно."
-"Clicks ""Allow once"" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents.",App,translated,,"Clicks ""Allow once"" in the ChatGPT desktop app too, using the same rules for local sites. Works when Codex is enabled in Settings › Agents.","Нажимает «Allow once» и в приложении ChatGPT для Mac, по тем же правилам для локальных сайтов. Работает, когда Codex включён в Настройках › Агенты."
 Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,Settings: Providers,translated,,Cline has not started a session on this Mac yet. Belay starts watching by itself when it does.,"Cline ещё не запускал здесь ни одной сессии. Belay начнёт следить сам, как только это произойдёт."
 Cline is not installed on this Mac.,Settings: Providers,translated,,Cline is not installed on this Mac.,Cline не установлен на этом Mac.
 Close,"App, Detection, Panel, Settings, Settings: Providers, Welcome",translated,,Close,Закрыть
@@ -275,6 +275,7 @@ Let Belay read your ~/.cline folder so it can tell when Cline is working.,"Setti
 Let Belay read your ~/.codex folder so it can tell when Codex is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.codex so Belay can tell when Codex is working.,"Разрешите доступ к ~/.codex, чтобы Belay видел, когда Codex работает."
 Let Belay read your ~/.copilot folder so it can tell when Copilot is working.,"Settings: Providers, Welcome",translated,,Allow access to ~/.copilot so Belay can tell when Copilot is working.,"Разрешите доступ к ~/.copilot, чтобы Belay видел, когда Copilot работает."
 Let's go,(unused),translated,,Let's go,Поехали
+Lid Hold works again after an update,App,translated,,Lid Hold works again after an update,Работа с закрытой крышкой снова действует после обновления
 List processes running hot,Settings,translated,,List processes running hot,Показывать процессы с высокой нагрузкой
 Listening for your agents,App,translated,,Listening for your agents,Следит за вашими агентами
 Local only,Settings: About,translated,,Local only,Локально
@@ -323,6 +324,7 @@ Notify when a new version is out,Settings: Notifications,translated,,Notify when
 Notify when an agent goes quiet,Settings: Notifications,translated,,Notify when an agent goes quiet,"Уведомлять, когда агент замолкает"
 Notify when an agent needs you,Settings: Notifications,translated,,Notify when an agent needs you,"Уведомлять, когда агенту нужны вы"
 Nudge,"App, Detection, Settings, Settings: Notifications",translated,,Nudge,Напоминание
+Nudge trusts a finished session,App,translated,,Nudge trusts a finished session,«Напоминание» верит завершённой сессии
 Numbers stay on this Mac unless you share them.,Statistics,needs_review,,Numbers stay on this Mac unless you share them.,"Статистика никуда не отправляется, пока вы сами ею не поделитесь."
 Off,"App, Detection, Menu bar, Panel, Settings, Settings: Providers, Welcome",translated,,Off,Выключен
 "On battery, Belay lets your Mac sleep at %lld%%.",Settings: Behaviour,translated,%lld,"On battery, Belay lets your Mac sleep at %lld%%.","При работе от батареи Belay разрешает Mac заснуть, когда заряд менее %lld%%."
@@ -352,7 +354,6 @@ Paused on battery power,App,translated,,Paused on battery power,Пауза пр�
 Play a sound when,Settings,translated,,Play a sound when,"Звук, когда"
 Play interface sounds,Settings: General,needs_review,,Play interface sounds,Звуки интерфейса
 Play sounds,Settings: General,translated,,Play sounds,Воспроизводить звуки
-"Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.",App,translated,,"Plays a sound when an agent finishes, needs you, or goes quiet. Reminds you if it's still waiting. Click a notification to bring its app to the front.","Сообщает звуком о завершении работы, ожидании ответа или отсутствии активности. Если агент продолжает ждать, напоминает об этом. Нажмите на уведомление, чтобы перейти в его приложение."
 Precise,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise,Точное
 Precise Detection,"App, Detection, Settings, Settings: Behaviour, Settings: Notifications, Settings: Providers",translated,,Precise Detection,Точное определение
 Precise detection rules,Settings: Providers,translated,,Precise detection rules,Правила точного определения
@@ -389,7 +390,7 @@ Safety stop,Settings: Notifications,translated,,Safety stop,Безопасная
 Screenshot Cleaner,App,translated,,Screenshot Cleaner,Уборка снимков экрана
 Search modules,App,translated,,Search modules,Поиск модулей
 Sent once per version. The menu bar icon still shows the update badge when this is off.,Settings: Notifications,translated,,Sent once per version. The menu bar icon still shows the update badge when this is off.,"Уведомление приходит один раз для каждой версии. Значок обновления в строке меню остаётся виден, даже если этот пункт выключен."
-Sessions,"App, Panel, Settings, Settings: Notifications, Settings: Providers, Statistics",translated,,Sessions,Сессии
+Sessions,"App, Detection, Panel, Settings, Settings: Notifications, Settings: Providers, Statistics",translated,,Sessions,Сессии
 Settings,"App, Detection, Menu bar, Panel, Settings, Settings: Behaviour, Settings: General, Settings: Notifications, Settings: Providers, Statistics, Welcome",translated,,Settings,Настройки
 Settings…,Menu bar,translated,,Settings…,Настройки…
 Share,"App, Statistics",translated,,Share,Поделиться
@@ -404,7 +405,6 @@ Show fewer sessions,Panel,translated,,Show fewer sessions,Показать ме�
 Show in Finder,Settings,translated,,Show in Finder,Показать в Finder
 "Show what a working agent is doing – running a command, editing files – next to its state. Requires Precise Detection.",Settings: Behaviour,translated,,"Show what a working agent is doing – running a command, editing files – next to its state. Requires Precise Detection.","Показывать, чем занят работающий агент – выполняет команду, редактирует файлы – рядом с его состоянием. Требуется точное определение."
 Shows exactly what will be added before anything is written,(unused),translated,,Previews exactly what Belay will add before it writes anything,"Показывает, что именно Belay добавит, прежде чем что-либо записывать"
-Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.,App,translated,,Shows processes left running after a session ends and high CPU use while an agent is idle. Never reads command lines or file contents.,"Показывает процессы, оставшиеся после завершения сессии, и высокую нагрузку на процессор, пока агент бездействует. Не читает команды запуска и содержимое файлов."
 Since %@,Statistics,needs_review,%@,Since %@,С %@
 Skip for now,Welcome,translated,,Skip now,Пропустить
 "Skipped, already taken by your own scripts: %@",(unused),translated,%@,"Skipped, already taken by your own scripts: %@","Пропущено, имя занято вашими скриптами: %@"
