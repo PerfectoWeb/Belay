@@ -133,6 +133,19 @@ none of them mentioned Chinese.
 
 ---
 
+## What changed in the descriptions for 2.1.1
+
+One edit, applied to every language on 2026-10-06 through the App Store
+Connect API, in this file first. The Modules section gains the two modules
+2.1 added to the App Store build, Nudge and Orphan Watch, one bullet each in
+the shape of the first two: the name, what it does, and the privacy claim in
+the same breath. English, Russian and Chinese took the section as is.
+German, Spanish, French and Italian were already close to the 4000-character
+limit, so there the four bullets are a little tighter and a dozen sentences
+each were trimmed by a few words (shorter clauses, the same claims, nothing
+dropped except the French line about the timer on the dimmed screen); the
+live text in App Store Connect is the record of those trims.
+
 ## What changed in the descriptions for 2.0.0
 
 One edit, applied to every language on 2026-09-30, in this file first. It
@@ -255,6 +268,8 @@ Extras beside keeping your Mac awake. Each one stays off until you install it in
 
 • Screenshot Cleaner: moves screenshots to the Trash once they are older than the age you choose, so the desktop stays clear.
 • Warm Microphone: holds the microphone open, so dictation hears your first word. Nothing is recorded, stored or sent.
+• Nudge: plays a sound when an agent finishes, needs you, or goes quiet, and reminds you if it's still waiting. Click a notification to bring its app to the front.
+• Orphan Watch: shows processes left running after a session ends and high CPU use while an agent is idle. It reads process metadata, never command lines or file contents.
 
 STAYS ON YOUR MAC
 
@@ -327,6 +342,8 @@ Belay может сообщить, когда агенту нужны вы, ко
 
 • Уборка снимков экрана: отправляет снимки экрана в Корзину, когда они становятся старше выбранного вами срока, и рабочий стол остаётся чистым.
 • Микрофон наготове: держит микрофон открытым, чтобы диктовка слышала первое слово. Ничего не записывается, не сохраняется и не отправляется.
+• Напоминание: сообщает звуком, когда агент закончил, ждёт вас или затих, и напоминает, если он всё ещё ждёт. Нажмите на уведомление, чтобы перейти в его приложение.
+• Присмотр за процессами: показывает процессы, оставшиеся после завершения сессии, и высокую нагрузку на процессор, пока агент бездействует. Читает только метаданные процессов, никогда команды запуска и содержимое файлов.
 
 ВСЁ ОСТАЁТСЯ НА MAC
 
@@ -405,6 +422,8 @@ Extras neben dem Wachhalten deines Mac. Jedes bleibt aus, bis du es in den Einst
 
 • Bildschirmfoto-Aufräumer: legt Bildschirmfotos in den Papierkorb, sobald sie älter sind als das von dir gewählte Alter, damit der Schreibtisch frei bleibt.
 • Mikrofon bereit: hält das Mikrofon offen, damit das Diktat schon dein erstes Wort hört. Nichts wird aufgenommen, gespeichert oder gesendet.
+• Anstoß: spielt einen Ton, wenn ein Agent fertig ist, dich braucht oder verstummt, und erinnert dich, wenn er weiter wartet. Ein Klick auf die Mitteilung holt seine App nach vorn.
+• Prozesswächter: zeigt Prozesse, die nach einer Sitzung weiterlaufen, und hohe CPU-Last, während ein Agent untätig ist. Liest nur Prozess-Metadaten, nie Befehlszeilen oder Dateiinhalte.
 
 BLEIBT AUF DEINEM MAC
 
@@ -483,6 +502,8 @@ Extras además de mantener tu Mac despierto. Cada uno permanece apagado hasta qu
 
 • Limpiador de capturas: mueve las capturas de pantalla a la papelera cuando superan la antigüedad que elijas, para que el escritorio siga despejado.
 • Micrófono listo: mantiene el micrófono abierto para que el dictado oiga tu primera palabra. Nada se graba, se guarda ni se envía.
+• Aviso: reproduce un sonido cuando un agente termina, te necesita o se queda en silencio, y te lo recuerda si sigue esperando. Un clic en el aviso trae su app al frente.
+• Vigilante de procesos: muestra los procesos que siguen en marcha tras una sesión y el uso alto de CPU con un agente inactivo. Solo lee metadatos, nunca comandos ni archivos.
 
 TODO SE QUEDA EN TU MAC
 
@@ -561,6 +582,8 @@ Des extras en plus de garder votre Mac éveillé. Chacun reste désactivé tant 
 
 • Nettoyeur de captures : place les captures d’écran dans la corbeille dès qu’elles dépassent l’âge que vous choisissez, pour que le bureau reste dégagé.
 • Micro prêt : garde le micro ouvert pour que la dictée entende votre premier mot. Rien n’est enregistré, conservé ni envoyé.
+• Rappel : émet un son quand un agent termine, a besoin de vous ou se tait, et vous le rappelle s’il attend toujours. Un clic sur la notification ramène son app au premier plan.
+• Veille des processus : affiche les processus encore en cours après une session et une forte charge processeur quand un agent est inactif. Ne lit que des métadonnées, jamais les commandes ni les fichiers.
 
 TOUT RESTE SUR VOTRE MAC
 
@@ -639,6 +662,8 @@ Extra oltre a tenere sveglio il Mac. Ognuno resta spento finché non lo installi
 
 • Pulizia delle istantanee: sposta le istantanee nel Cestino quando superano l’età che scegli, così la scrivania resta sgombra.
 • Microfono pronto: tiene aperto il microfono, così la dettatura sente la tua prima parola. Nulla viene registrato, salvato o inviato.
+• Promemoria: emette un suono quando un agente termina, ha bisogno di te o tace, e te lo ricorda se sta ancora aspettando. Un clic sulla notifica porta la sua app in primo piano.
+• Controllo processi: mostra i processi rimasti in esecuzione dopo una sessione e l’uso elevato della CPU con un agente inattivo. Legge solo metadati, mai righe di comando o file.
 
 RESTA TUTTO SUL TUO MAC
 
@@ -729,6 +754,8 @@ Claude Code、Codex、Copilot CLI 和 Cline 开箱即可精确检测：Belay 读
 
 • 截屏清理：截屏超过你选择的时间后会被移到废纸篓，让桌面保持整洁。
 • 麦克风预热：让麦克风保持开启，听写从第一个字就能听到。不会录制、存储或发送任何内容。
+• 提醒：在智能体完成、需要你或没有动静时播放提示音，如果它仍在等待则再次提醒。点击通知即可将其应用带到前台。
+• 遗留进程监视：显示会话结束后仍在运行的进程，以及智能体空闲时的高 CPU 占用。只读取进程元数据，绝不读取命令行或文件内容。
 
 一切都留在你的 Mac 上
 
