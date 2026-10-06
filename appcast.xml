@@ -3,8 +3,43 @@
     <channel>
         <title>Belay</title>
         <item>
+            <title>2.1.1</title>
+            <pubDate>Tue, 06 Oct 2026 19:16:52 +0300</pubDate>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<!-- What Sparkle shows for 2.1.1. generate_appcast embeds any
+     Belay-<version>.html beside the matching DMG, and publish-appcast.sh
+     copies it there. One file per version, English only: Sparkle does not
+     negotiate locale, and plain English is better than half-localised notes. -->
+<style>
+  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
+  h2 { font-size: 14px; margin: 0 0 8px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  li { margin-bottom: 6px; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #ddd; }
+  }
+</style>
+<h2>Belay 2.1.1</h2>
+<ul>
+  <li><b>Lid Hold works again after an update.</b> The system kept a stale
+      record of Belay's lid helper after the 2.1.0 update and refused every
+      request to it, so holding through a closed lid silently did nothing.
+      Belay now refreshes the registration at every launch and again if the
+      helper stops answering.</li>
+  <li><b>Nudge no longer reports a finished session as gone quiet.</b> A
+      /compact after a Stop, a parked session's trailing writes, a session
+      that stopped and expired in the same moment, and a Stop with
+      background tasks past its budget all used to sound as a session that
+      went quiet.</li>
+</ul>
+]]></description>
+            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v2.1.1/Belay-2.1.1.dmg" length="8133618" type="application/octet-stream" sparkle:edSignature="whbJdF0p9tTtQCgxWRrh3VoGLBSAywZd27ji98HAa5V9nvPJEhBqvY5IKDj+oLJj56wmDO0+TMM0V9GUexQBCw=="/>
+        </item>
+        <item>
             <title>2.1.0</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:08 +0300</pubDate>
+            <pubDate>Tue, 06 Oct 2026 19:16:58 +0300</pubDate>
             <sparkle:version>22</sparkle:version>
             <sparkle:shortVersionString>2.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -51,7 +86,7 @@
         </item>
         <item>
             <title>2.0.0</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:16 +0300</pubDate>
+            <pubDate>Tue, 06 Oct 2026 19:17:27 +0300</pubDate>
             <sparkle:version>21</sparkle:version>
             <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -87,7 +122,7 @@ microphone access when you first turn on Warm Microphone.</p>
         </item>
         <item>
             <title>1.8.1</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:22 +0300</pubDate>
+            <pubDate>Tue, 06 Oct 2026 19:17:33 +0300</pubDate>
             <sparkle:version>20</sparkle:version>
             <sparkle:shortVersionString>1.8.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -112,7 +147,7 @@ microphone access when you first turn on Warm Microphone.</p>
         </item>
         <item>
             <title>1.8.0</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:36 +0300</pubDate>
+            <pubDate>Tue, 06 Oct 2026 19:17:58 +0300</pubDate>
             <sparkle:version>19</sparkle:version>
             <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
@@ -144,42 +179,6 @@ microphone access when you first turn on Warm Microphone.</p>
 <p class="quiet">Also: Sessions now keeps the latest 100 runs, and its headline
 shows total agent time instead of the number of rows.</p>]]></description>
             <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.8.0/Belay-1.8.0.dmg" length="7395052" type="application/octet-stream" sparkle:edSignature="WgYiH4ACY3yEvRlDIgX967cYJpAX8ji2g+m5Vvwm8N+nFUe+1xDOfhGK861b0r4lWFjwnsdjKN8r6c4/fWZMCA=="/>
-        </item>
-        <item>
-            <title>1.7.0</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:39 +0300</pubDate>
-            <sparkle:version>17</sparkle:version>
-            <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<!-- What Sparkle shows for 1.7.0. One file per version, English only. -->
-<style>
-  body { font: 13px -apple-system, sans-serif; color: #333; margin: 12px 16px; }
-  h2 { font-size: 14px; margin: 0 0 8px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 6px; }
-  p.quiet { color: #777; margin: 8px 0 0; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #ddd; } p.quiet { color: #999; }
-  }
-</style>
-<h2>Belay 1.7.0</h2>
-<ul>
-  <li><b>See what your agents are doing.</b> Working sessions now show small
-      activity badges like shell, editing and search. Categories only, never
-      your prompts or code.</li>
-  <li><b>Background tasks keep the hold.</b> If agents or shell jobs keep
-      running after a turn ends, Belay keeps your Mac awake and shows a
-      background-task badge.</li>
-  <li><b>Hooks clean up automatically.</b> Belay removes its entries when it
-      quits and restores them on launch, so closed Belay never leaves agents
-      pointing at a dead connection.</li>
-  <li><b>Return summaries are more reliable.</b> Closing the lid no longer
-      hides the while-you-were-away summary, and it now mentions if your Mac
-      ran hot.</li>
-</ul>
-<p class="quiet">Also: dark wakes no longer look like stalls in diagnostics,
-and sessions taking turns no longer flood the log.</p>]]></description>
-            <enclosure url="https://github.com/PerfectoWeb/Belay/releases/download/v1.7.0/Belay-1.7.0.dmg" length="7301289" type="application/octet-stream" sparkle:edSignature="/nMDQO9crVHv7SkRq2Df/U+TQKQkxaCHgPmQ4FC73EbHkJ5N4sW0ZB57MvLGmQ2FEJ1oXJhQY3h6OYH8ACgiBw=="/>
         </item>
     </channel>
 </rss>
