@@ -12,7 +12,7 @@ it once a day and finalises it a day later, so the pair is honest only as "as
 of the last build", which is what the page says.
 """
 
-DIRECT = 701
+DIRECT = 702
 APPSTORE = 263
 RELEASES = 21
 COMMITS = 512
